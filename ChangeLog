@@ -1,5 +1,6 @@
-Now
-  Current
+2005-4-3
+  0.2.2
+	Should have fixed segfault of GTK+ 2.4.x with search and replace
 	Removed include of m4 subdir, since it doesn't exist anymore
 	Fixed configure wanting GTK+ 2.4.x even though 2.2.x is sufficient
 2005-2-20

@@ -1,5 +1,5 @@
 # Process this file with autoconf to produce a configure script.
-AC_INIT(Mousepad, 0.2.1+, erikharrison@gmail.com)
+AC_INIT(Mousepad, 0.2.2, erikharrison@gmail.com)
 AM_INIT_AUTOMAKE($PACKAGE_TARNAME, $PACKAGE_VERSION)
 AC_CONFIG_SRCDIR([src/mousepad.h])
 AM_CONFIG_HEADER([config.h])
