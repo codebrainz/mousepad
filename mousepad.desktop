@@ -1,0 +1,26 @@
+[Desktop Entry]
+Type=Application
+Encoding=UTF-8
+Name=Mousepad
+Comment=Simple text editor
+Comment[ca]=Editor de text simple
+Comment[cs]=Jednoduchý textový editor
+Comment[de]=Einfacher Texteditor
+Comment[es]=Editor de texto simple
+Comment[fr]=Un éditeur de texte tout simple
+Comment[hu]=Egyszerű szöveg szerkesztő
+Comment[it]=Semplice editor testuale
+Comment[ja]=シンプルなテキストエディタ
+Comment[lt]=Paprastas teksto redaktorius
+Comment[pl]=Prosty edytor tekstu
+Comment[ru]=Простой текстовый редактор
+Comment[sk]=JednoduchÃ½ textovÃ½ editor
+Comment[sv]=Enkel texteditor
+Comment[ta]=எளிமையான உரை பதிப்பான்
+Comment[zh_CN]=简易文字编辑器
+Comment[zh_TW]=簡易文字編輯器
+Exec=mousepad %f
+Icon=mousepad.png
+Terminal=false
+MimeType=text/plain
+Categories=Application;Utility;TextEditor;

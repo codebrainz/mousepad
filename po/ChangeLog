@@ -1,0 +1,79 @@
+2004-12-21  Michal Wrobel <wrobel@task.gda.pl>
+
+	* pl.po: Added Polish translation.
+
+2004-12-18  Isak Savo <iso01001@student.mdh.se>
+
+	* sv.po: Updated Swedish translation.
+
+2004-12-07  Lech Jankovski <godgard@gmail.com>
+
+	* lt.po: Added Lithuanian translation.
+
+2004-11-29  Alessio D'Ascanio <g3ntaro@gmail.com>
+
+	* it.po: Added Italian translation.
+
+2004-11-25  Vijay Durairaj <vjd81@yahoo.com>
+
+	* ta.po: Added Tamil translation.
+
+2004-11-23  David Rosal <davidrr@users.sourceforge.net>
+
+	* ca.po: Added Catalan translation.
+
+2004-11-20  Reviczky Adam Janos <reviczky@freemail.hu>
+
+	* hu.po: Added Hungarian translation.
+
+2004-11-19  Petr Vyslouzil <evyslouz@volny.cz>
+
+	* cs.po: Added Czech translation.
+
+2004-11-14  Ruediger Arp <ruediger@gmx.net>
+
+	* de.po: Updated German translation.
+
+2004-11-09  gettextize  <bug-gnu-gettext@gnu.org>
+
+	* Makefile.in.in: Downgrade to gettext-0.11.4.
+
+2004-11-09  Lucas Vieites <lucas@asixinformatica.com>
+
+	* es.po: Added Spanish translation.
+
+2004-11-03  Luc Pionchon <luc@handhelds.org>
+
+	* fr.po: Added French translation.
+
+2004-10-28  Sebastian Stach <sebsta@t-online.de>
+
+	* de.po: Added German translation.
+
+2004-10-28  Isak Savo <iso01001@student.mdh.se>
+
+	* sv.po: Added Swedish translation.
+
+2004-10-24  Artem Vakhitov <temcat@mail.ru>
+
+	* ru.po: Added Russian translation.
+
+2004-10-04  OLS3 <ols3@lxer.idv.tw>
+
+	* zh_TW.po: Added Traditional Chinese translation.
+
+2004-09-28  Carlos Z.F. Liu <carlos_liu@yahoo.com>
+
+	* zh_CN.po: Added Simplified Chinese translation.
+
+2004-09-11  gettextize  <bug-gnu-gettext@gnu.org>
+
+	* Makefile.in.in: New file, from gettext-0.12.1.
+	* Rules-quot: New file, from gettext-0.12.1.
+	* boldquot.sed: New file, from gettext-0.12.1.
+	* en@boldquot.header: New file, from gettext-0.12.1.
+	* en@quot.header: New file, from gettext-0.12.1.
+	* insert-header.sin: New file, from gettext-0.12.1.
+	* quot.sed: New file, from gettext-0.12.1.
+	* remove-potcdate.sin: New file, from gettext-0.12.1.
+

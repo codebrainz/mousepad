@@ -1,0 +1,293 @@
+# Catalan translation of Leafpad
+# Copyright (C) 2004 Free Software Foundation, Inc.
+# This file is distributed under the same license as the leafpad package.
+# David Rosal <davidrr@users.sourceforge.net> 2004.
+# 
+msgid ""
+msgstr ""
+"Project-Id-Version: Leafpad 0.7.7\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2005-02-21 16:40-0500\n"
+"PO-Revision-Date: 2004-11-04 10:10+0100\n"
+"Last-Translator: David Rosal <davidrr@users.sourceforge.net>\n"
+"Language-Team: Catalan\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: src/callback.c:34
+#, c-format
+msgid "Save changes to '%s'?"
+msgstr "Vols desar els canvis fets a '%s'?"
+
+#: src/callback.c:180 src/file.c:150
+#, c-format
+msgid "Can't convert codeset to '%s'"
+msgstr "No es pot convertir la codificació a '%s'"
+
+#: src/callback.c:207
+#, fuzzy
+msgid "Can't open pipe to process"
+msgstr "No es pot obrir el fitxer per a escriure"
+
+#: src/callback.c:366
+msgid "A text editor for Xfce"
+msgstr ""
+
+#: src/dialog.c:135
+#, c-format
+msgid "About %s"
+msgstr "Respecte a %s"
+
+#: src/file.c:163
+msgid "Can't open file to write"
+msgstr "No es pot obrir el fitxer per a escriure"
+
+#: src/file.c:168
+msgid "Can't write file"
+msgstr "No es pot escriure al fitxer"
+
+#: src/font.c:49
+msgid "Font"
+msgstr "Tipografia"
+
+#: src/menu.c:60
+msgid "/_File"
+msgstr "/_Fitxer"
+
+#: src/menu.c:62
+msgid "/File/_New"
+msgstr "/Fitxer/_Nou"
+
+#. { N_("/File/New _Window"), "<shift><control>N",
+#. G_CALLBACK(cb_file_new), 1 },
+#: src/menu.c:66
+msgid "/File/_Open..."
+msgstr "/Fitxer/_Obrir..."
+
+#: src/menu.c:68
+msgid "/File/_Save"
+msgstr "/Fitxer/_Guardar"
+
+#: src/menu.c:70
+msgid "/File/Save _As..."
+msgstr "/Fitxer/Guardar com _a..."
+
+#: src/menu.c:72
+#, fuzzy
+msgid "/File/_Print..."
+msgstr "/Fitxer/_Obrir..."
+
+#: src/menu.c:76
+msgid "/File/_Quit"
+msgstr "/Fitxer/_Sortir"
+
+#: src/menu.c:78
+msgid "/_Edit"
+msgstr "/_Editar"
+
+#: src/menu.c:80
+msgid "/Edit/_Undo"
+msgstr "/Editar/_Desfer"
+
+#: src/menu.c:82
+msgid "/Edit/_Redo"
+msgstr "/Editar/_Refer"
+
+#: src/menu.c:86
+msgid "/Edit/Cu_t"
+msgstr "/Editar/_Tallar"
+
+#: src/menu.c:88
+msgid "/Edit/_Copy"
+msgstr "/Editar/_Copiar"
+
+#: src/menu.c:90
+msgid "/Edit/_Paste"
+msgstr "/Editar/_Enganxar"
+
+#: src/menu.c:92
+msgid "/Edit/_Delete"
+msgstr "/Editar/Es_borrar"
+
+#: src/menu.c:96
+msgid "/Edit/Select _All"
+msgstr "/Editar/_Seleccionar-ho tot"
+
+#: src/menu.c:98
+msgid "/_Search"
+msgstr "/_Cercar"
+
+#: src/menu.c:100
+msgid "/Search/_Find..."
+msgstr "/Cercar/_Cercar..."
+
+#: src/menu.c:102
+msgid "/Search/Find _Next"
+msgstr "/Cercar/Cercar el _següent"
+
+#: src/menu.c:104
+msgid "/Search/Find _Previous"
+msgstr "/Cercar/Cercar l'_anterior"
+
+#: src/menu.c:106
+msgid "/Search/_Replace..."
+msgstr "/Cercar/_Substituir"
+
+#: src/menu.c:110
+msgid "/Search/_Jump To..."
+msgstr "/Cercar/Saltar a la _línia..."
+
+#: src/menu.c:112
+msgid "/_Options"
+msgstr "/_Opcions"
+
+#: src/menu.c:114
+msgid "/Options/_Font..."
+msgstr "/Opcions/_Tipografia..."
+
+#: src/menu.c:116
+msgid "/Options/_Word Wrap"
+msgstr "/Opcions/_Ajust de línia"
+
+#: src/menu.c:118
+msgid "/Options/_Line Numbers"
+msgstr "/Opcions/_Numerar les línies"
+
+#: src/menu.c:122
+msgid "/Options/_Auto Indent"
+msgstr "/Opcions/Auto_indentació"
+
+#: src/menu.c:124
+msgid "/_Help"
+msgstr "/A_jut"
+
+#: src/menu.c:126
+msgid "/Help/_About"
+msgstr "/Ajut/_Respecte a"
+
+#: src/search.c:73
+msgid "Search string not found"
+msgstr "No s'ha trobat la cadena desitjada"
+
+#: src/search.c:115
+msgid "Replace?"
+msgstr "Substituir?"
+
+#: src/search.c:143
+#, c-format
+msgid "%d strings replaced"
+msgstr "S'han substituit %d cadenes"
+
+#: src/search.c:188
+msgid "Find"
+msgstr "Cercar"
+
+#: src/search.c:200 src/search.c:265
+msgid "Fi_nd what: "
+msgstr "_Cercar: "
+
+#: src/search.c:219 src/search.c:292
+msgid "_Match case"
+msgstr "Distingir _majúscules / minúscules"
+
+#: src/search.c:253
+msgid "Replace"
+msgstr "Substituir"
+
+#: src/search.c:280
+msgid "Re_place with: "
+msgstr "_Substituir per: "
+
+#: src/search.c:296
+msgid "Replace _all at once"
+msgstr "Substituir-les _totes de cop"
+
+#: src/search.c:342
+msgid "Jump To"
+msgstr "Saltar a"
+
+#: src/search.c:347
+msgid "_Jump"
+msgstr "_Saltar"
+
+#: src/search.c:353
+msgid "_Line number: "
+msgstr "Número de _línia: "
+
+#: src/selector.c:103
+#, c-format
+msgid "Current Locale (%s)"
+msgstr "Locale actual (%s)"
+
+#: src/selector.c:147
+msgid "Other Codeset"
+msgstr "Una altra codificació"
+
+#: src/selector.c:186
+msgid "Code_set:"
+msgstr "Codificació:"
+
+#: src/selector.c:207
+#, c-format
+msgid "'%s' is not supported"
+msgstr "'%s' no és suportat"
+
+#: src/selector.c:271
+msgid "Auto Detect"
+msgstr "Autodetectar"
+
+#: src/selector.c:325
+msgid "Open"
+msgstr "Obrir"
+
+#: src/selector.c:325
+msgid "Save As"
+msgstr "Guardar com a"
+
+#: src/selector.c:345
+msgid "Ch_aracter Coding: "
+msgstr "Codificació de c_aràcters: "
+
+#: src/selector.c:401
+#, c-format
+msgid "'%s' already exists. Overwrite?"
+msgstr "'%s' ja existeix. Vols sobreescriure'l?"
+
+#: src/window.c:141
+msgid "Untitled"
+msgstr "Sense nom"
+
+#~ msgid "GTK+ based simple text editor"
+#~ msgstr "Editor de text simple, basat en GTK+"
+
+#~ msgid "Other Codeset (%s)"
+#~ msgstr "Una altra codificació (%s)"
+
+#~ msgid "Other Codeset..."
+#~ msgstr "Una altra codificació..."
+
+#, fuzzy
+#~ msgid "Unicode (UTF-8)"
+#~ msgstr "Unicode"
+
+#~ msgid "Western"
+#~ msgstr "Occidental"
+
+#~ msgid "Cyrillic"
+#~ msgstr "Ciríl.lic"
+
+#~ msgid "Chinese Simplified"
+#~ msgstr "Xinès simplificat"
+
+#~ msgid "Chinese Traditional"
+#~ msgstr "Xinès tradicional"
+
+#~ msgid "Japanese"
+#~ msgstr "Japonès"
+
+#~ msgid "Korean"
+#~ msgstr "Coreà"
+
+#~ msgid "Enter Codeset"
+#~ msgstr "Introduiex la codificació"

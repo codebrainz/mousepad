@@ -1,0 +1,292 @@
+# Hungarian translation of Leafpad
+# Copyright (C) 2004 Free Software Foundation, Inc.
+# This file is distributed under the same license as the Leafpad package.
+# Reviczky Ádám János <reviczky@freemail.hu>, 2004.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Leafpad 0.7.7\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2005-02-21 16:40-0500\n"
+"PO-Revision-Date: 2004-11-20 12:00+0100\n"
+"Last-Translator: Reviczky Ádám János <reviczky@freemail.hu>\n"
+"Language-Team: Hungarian <hu@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: src/callback.c:34
+#, c-format
+msgid "Save changes to '%s'?"
+msgstr "'%s' változások mentése?"
+
+#: src/callback.c:180 src/file.c:150
+#, c-format
+msgid "Can't convert codeset to '%s'"
+msgstr "A kódtáblát nem lehet erre '%s' konvertálni"
+
+#: src/callback.c:207
+#, fuzzy
+msgid "Can't open pipe to process"
+msgstr "Nem lehet írásra megnyitni a fájlt"
+
+#: src/callback.c:366
+msgid "A text editor for Xfce"
+msgstr ""
+
+#: src/dialog.c:135
+#, c-format
+msgid "About %s"
+msgstr "%s névjegye"
+
+#: src/file.c:163
+msgid "Can't open file to write"
+msgstr "Nem lehet írásra megnyitni a fájlt"
+
+#: src/file.c:168
+msgid "Can't write file"
+msgstr "Nem lehet írni a fájlt"
+
+#: src/font.c:49
+msgid "Font"
+msgstr "Betütípus"
+
+#: src/menu.c:60
+msgid "/_File"
+msgstr "/_Fájl"
+
+#: src/menu.c:62
+msgid "/File/_New"
+msgstr "/Fájl/_Új"
+
+#. { N_("/File/New _Window"), "<shift><control>N",
+#. G_CALLBACK(cb_file_new), 1 },
+#: src/menu.c:66
+msgid "/File/_Open..."
+msgstr "/Fájl/Meg_nyit"
+
+#: src/menu.c:68
+msgid "/File/_Save"
+msgstr "/Fájl/_Ment"
+
+#: src/menu.c:70
+msgid "/File/Save _As..."
+msgstr "/Fájl/Ment má_skent..."
+
+#: src/menu.c:72
+#, fuzzy
+msgid "/File/_Print..."
+msgstr "/Fájl/Meg_nyit"
+
+#: src/menu.c:76
+msgid "/File/_Quit"
+msgstr "/Fájl/_Kilép"
+
+#: src/menu.c:78
+msgid "/_Edit"
+msgstr "Sz_erkesztés"
+
+#: src/menu.c:80
+msgid "/Edit/_Undo"
+msgstr "/Szerkesztés/_Visszavon"
+
+#: src/menu.c:82
+msgid "/Edit/_Redo"
+msgstr "/Szerkesztés/Ú_jra"
+
+#: src/menu.c:86
+msgid "/Edit/Cu_t"
+msgstr "/Szerkesztés/K_ivág"
+
+#: src/menu.c:88
+msgid "/Edit/_Copy"
+msgstr "/Szerkesztés/M_ásol"
+
+#: src/menu.c:90
+msgid "/Edit/_Paste"
+msgstr "/Szerkesztés/_Beilleszt"
+
+#: src/menu.c:92
+msgid "/Edit/_Delete"
+msgstr "/Szerkesztés/Tö_röl"
+
+#: src/menu.c:96
+msgid "/Edit/Select _All"
+msgstr "/Szerkesztés/Mindent Kije_löl"
+
+#: src/menu.c:98
+msgid "/_Search"
+msgstr "/Keres_és"
+
+#: src/menu.c:100
+msgid "/Search/_Find..."
+msgstr "/Keresés/_Keres..."
+
+#: src/menu.c:102
+msgid "/Search/Find _Next"
+msgstr "/Keresés/K_övetkező Keresése"
+
+#: src/menu.c:104
+msgid "/Search/Find _Previous"
+msgstr "/Keresés/Elő_ző Keresése"
+
+#: src/menu.c:106
+msgid "/Search/_Replace..."
+msgstr "/Keresés/Ki_cserél..."
+
+#: src/menu.c:110
+msgid "/Search/_Jump To..."
+msgstr "/Keresés/_Ugrás..."
+
+#: src/menu.c:112
+msgid "/_Options"
+msgstr "_Beállítások"
+
+#: src/menu.c:114
+msgid "/Options/_Font..."
+msgstr "/Beállítások/Betütí_pus..."
+
+#: src/menu.c:116
+msgid "/Options/_Word Wrap"
+msgstr "/Beállítások/_Sortörés"
+
+#: src/menu.c:118
+msgid "/Options/_Line Numbers"
+msgstr "/Beállítások/Sorszá_mok"
+
+#: src/menu.c:122
+msgid "/Options/_Auto Indent"
+msgstr "/Beállítások/Automatikus Be_húzás"
+
+#: src/menu.c:124
+msgid "/_Help"
+msgstr "_Súgó"
+
+#: src/menu.c:126
+msgid "/Help/_About"
+msgstr "/Súgó/_Névjegy"
+
+#: src/search.c:73
+msgid "Search string not found"
+msgstr "Szövegrészlet nem fodul elő"
+
+#: src/search.c:115
+msgid "Replace?"
+msgstr "Kicserél?"
+
+#: src/search.c:143
+#, c-format
+msgid "%d strings replaced"
+msgstr "%d szövegrészlet kicserélve"
+
+#: src/search.c:188
+msgid "Find"
+msgstr "Keres"
+
+#: src/search.c:200 src/search.c:265
+msgid "Fi_nd what: "
+msgstr "_Amit keres: "
+
+#: src/search.c:219 src/search.c:292
+msgid "_Match case"
+msgstr "_Kis/nagybetű számít"
+
+#: src/search.c:253
+msgid "Replace"
+msgstr "Kicserél"
+
+#: src/search.c:280
+msgid "Re_place with: "
+msgstr "Ki_cserél erre: "
+
+#: src/search.c:296
+msgid "Replace _all at once"
+msgstr "Mindent _egyszerre kicserél"
+
+#: src/search.c:342
+msgid "Jump To"
+msgstr "Ugrás Ide"
+
+#: src/search.c:347
+msgid "_Jump"
+msgstr "_Ugrás"
+
+#: src/search.c:353
+msgid "_Line number: "
+msgstr "S_orszám: "
+
+#: src/selector.c:103
+#, c-format
+msgid "Current Locale (%s)"
+msgstr "Jelenlegi Locale (%s)"
+
+#: src/selector.c:147
+msgid "Other Codeset"
+msgstr "Más Kódtábla"
+
+#: src/selector.c:186
+msgid "Code_set:"
+msgstr "Kód_tábla:"
+
+#: src/selector.c:207
+#, c-format
+msgid "'%s' is not supported"
+msgstr "'%s' nem támogatott"
+
+#: src/selector.c:271
+msgid "Auto Detect"
+msgstr "Automatikus Felismerés"
+
+#: src/selector.c:325
+msgid "Open"
+msgstr "Megnyit"
+
+#: src/selector.c:325
+msgid "Save As"
+msgstr "Mentés másként"
+
+#: src/selector.c:345
+msgid "Ch_aracter Coding: "
+msgstr "K_arakter Kódolás: "
+
+#: src/selector.c:401
+#, c-format
+msgid "'%s' already exists. Overwrite?"
+msgstr "%s' már létezik. Felülír?"
+
+#: src/window.c:141
+msgid "Untitled"
+msgstr "Névtelen"
+
+#~ msgid "GTK+ based simple text editor"
+#~ msgstr "GTK+-ra épülő egyszerű szöveg szerkesztő"
+
+#~ msgid "Other Codeset (%s)"
+#~ msgstr "Más Kódtábla (%s)"
+
+#~ msgid "Other Codeset..."
+#~ msgstr "Más Kódtábla..."
+
+#~ msgid "Unicode (UTF-8)"
+#~ msgstr "Unicode"
+
+#~ msgid "Western"
+#~ msgstr "Nyugat Európai"
+
+#~ msgid "Cyrillic"
+#~ msgstr "Cirill"
+
+#~ msgid "Chinese Simplified"
+#~ msgstr "Kínai egyszerűsített"
+
+#~ msgid "Chinese Traditional"
+#~ msgstr "Kínai hagyományos"
+
+#~ msgid "Japanese"
+#~ msgstr "Japán"
+
+#~ msgid "Korean"
+#~ msgstr "Kóreai"
+
+#~ msgid "Enter Codeset"
+#~ msgstr "Kódtábla megadása"

@@ -1,0 +1,294 @@
+# Spanish/Spain translation of Leafpad
+# Copyright (C) 2004 Free Software Foundation, Inc.
+# This file is distributed under the same license as the leafpad package.
+# Lucas Vieites <lucas@asixinformatica.com>, 2004.
+# 
+# 
+msgid ""
+msgstr ""
+"Project-Id-Version: Leafpad 0.7.5\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2005-02-21 16:40-0500\n"
+"PO-Revision-Date: 2004-11-04 10:10+0100\n"
+"Last-Translator: Lucas Vieites <lucas@asixinformatica.com>\n"
+"Language-Team: Spanish/Spain <es@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: src/callback.c:34
+#, c-format
+msgid "Save changes to '%s'?"
+msgstr "¿Desea guardar los cambios a «%s»?"
+
+#: src/callback.c:180 src/file.c:150
+#, c-format
+msgid "Can't convert codeset to '%s'"
+msgstr "No se puede convertir el conjunto de códigos a «%s»"
+
+#: src/callback.c:207
+#, fuzzy
+msgid "Can't open pipe to process"
+msgstr "No se puede abrir el archivo para escritura"
+
+#: src/callback.c:366
+msgid "A text editor for Xfce"
+msgstr ""
+
+#: src/dialog.c:135
+#, c-format
+msgid "About %s"
+msgstr "Acerca de %s"
+
+#: src/file.c:163
+msgid "Can't open file to write"
+msgstr "No se puede abrir el archivo para escritura"
+
+#: src/file.c:168
+msgid "Can't write file"
+msgstr "No se puede escribir en el archivo"
+
+#: src/font.c:49
+msgid "Font"
+msgstr "Tipografía"
+
+#: src/menu.c:60
+msgid "/_File"
+msgstr "/_Archivo"
+
+#: src/menu.c:62
+msgid "/File/_New"
+msgstr "/Archivo/_Nuevo"
+
+#. { N_("/File/New _Window"), "<shift><control>N",
+#. G_CALLBACK(cb_file_new), 1 },
+#: src/menu.c:66
+msgid "/File/_Open..."
+msgstr "/Archivo/_Abrir..."
+
+#: src/menu.c:68
+msgid "/File/_Save"
+msgstr "/Archivo/_Guardar"
+
+#: src/menu.c:70
+msgid "/File/Save _As..."
+msgstr "/Archivo/Guardar _como..."
+
+#: src/menu.c:72
+#, fuzzy
+msgid "/File/_Print..."
+msgstr "/Archivo/_Abrir..."
+
+#: src/menu.c:76
+msgid "/File/_Quit"
+msgstr "/Archivo/_Salir"
+
+#: src/menu.c:78
+msgid "/_Edit"
+msgstr "/_Editar"
+
+#: src/menu.c:80
+msgid "/Edit/_Undo"
+msgstr "/Editar/_Deshacer"
+
+#: src/menu.c:82
+msgid "/Edit/_Redo"
+msgstr "/Editar/_Rehacer"
+
+#: src/menu.c:86
+msgid "/Edit/Cu_t"
+msgstr "/Editar/Cor_tar"
+
+#: src/menu.c:88
+msgid "/Edit/_Copy"
+msgstr "/Editar/_Copiar"
+
+#: src/menu.c:90
+msgid "/Edit/_Paste"
+msgstr "/Editar/_Pegar"
+
+#: src/menu.c:92
+msgid "/Edit/_Delete"
+msgstr "/Editar/_Borrar"
+
+#: src/menu.c:96
+msgid "/Edit/Select _All"
+msgstr "/Editar/Seleccionar _todo"
+
+#: src/menu.c:98
+msgid "/_Search"
+msgstr "/_Buscar"
+
+#: src/menu.c:100
+msgid "/Search/_Find..."
+msgstr "/Buscar/_Buscar"
+
+#: src/menu.c:102
+msgid "/Search/Find _Next"
+msgstr "/Buscar/Buscar el _siguiente"
+
+#: src/menu.c:104
+msgid "/Search/Find _Previous"
+msgstr "/Buscar/Buscar el an_terior"
+
+#: src/menu.c:106
+msgid "/Search/_Replace..."
+msgstr "/Buscar/_Reemplazar"
+
+#: src/menu.c:110
+msgid "/Search/_Jump To..."
+msgstr "/Buscar/Ira a la _línea"
+
+#: src/menu.c:112
+msgid "/_Options"
+msgstr "/_Opciones"
+
+#: src/menu.c:114
+msgid "/Options/_Font..."
+msgstr "/Opciones/Tipogra_fía..."
+
+#: src/menu.c:116
+msgid "/Options/_Word Wrap"
+msgstr "/Opciones/Ajus_te de línea"
+
+#: src/menu.c:118
+msgid "/Options/_Line Numbers"
+msgstr "/Opciones/_Numeración de líneas"
+
+#: src/menu.c:122
+msgid "/Options/_Auto Indent"
+msgstr "/Opciones/_Autoindentación"
+
+#: src/menu.c:124
+msgid "/_Help"
+msgstr "/A_yuda"
+
+#: src/menu.c:126
+msgid "/Help/_About"
+msgstr "/Ayuda/_Acerca de"
+
+#: src/search.c:73
+msgid "Search string not found"
+msgstr "No se ha encontrado la cadena buscada"
+
+#: src/search.c:115
+msgid "Replace?"
+msgstr "¿Desea reemplazar?"
+
+#: src/search.c:143
+#, c-format
+msgid "%d strings replaced"
+msgstr "Se han reemplazado %d cadenas"
+
+#: src/search.c:188
+msgid "Find"
+msgstr "Buscar"
+
+#: src/search.c:200 src/search.c:265
+msgid "Fi_nd what: "
+msgstr "Buscar: "
+
+#: src/search.c:219 src/search.c:292
+msgid "_Match case"
+msgstr "Coi_ncidir con capitalización"
+
+#: src/search.c:253
+msgid "Replace"
+msgstr "Reemplazar"
+
+#: src/search.c:280
+msgid "Re_place with: "
+msgstr "Reem_plazar con: "
+
+#: src/search.c:296
+msgid "Replace _all at once"
+msgstr "Reemplaz_ar todos"
+
+#: src/search.c:342
+msgid "Jump To"
+msgstr "Ir a"
+
+#: src/search.c:347
+msgid "_Jump"
+msgstr "_Saltar"
+
+#: src/search.c:353
+msgid "_Line number: "
+msgstr "Número de _línea: "
+
+#: src/selector.c:103
+#, c-format
+msgid "Current Locale (%s)"
+msgstr "Locale actual (%s)"
+
+#: src/selector.c:147
+msgid "Other Codeset"
+msgstr "Otro conjunto de códigos"
+
+#: src/selector.c:186
+msgid "Code_set:"
+msgstr "Con_junto de códigos:"
+
+#: src/selector.c:207
+#, c-format
+msgid "'%s' is not supported"
+msgstr "No se soporta «%s»"
+
+#: src/selector.c:271
+msgid "Auto Detect"
+msgstr "Autodetectar"
+
+#: src/selector.c:325
+msgid "Open"
+msgstr "Abrir"
+
+#: src/selector.c:325
+msgid "Save As"
+msgstr "Guardar como"
+
+#: src/selector.c:345
+msgid "Ch_aracter Coding: "
+msgstr "Codificación de c_aracteres: "
+
+#: src/selector.c:401
+#, c-format
+msgid "'%s' already exists. Overwrite?"
+msgstr "«%s» ya existe. ¿Desea sobrescribirlo?"
+
+#: src/window.c:141
+msgid "Untitled"
+msgstr "Sin nombre"
+
+#~ msgid "GTK+ based simple text editor"
+#~ msgstr "Editor de texto simple, basado en GTK+"
+
+#~ msgid "Other Codeset (%s)"
+#~ msgstr "Otro conjunto de códigos (%s)"
+
+#~ msgid "Other Codeset..."
+#~ msgstr "Otro conjunto de códigos..."
+
+#, fuzzy
+#~ msgid "Unicode (UTF-8)"
+#~ msgstr "Unicode"
+
+#~ msgid "Western"
+#~ msgstr "Occidental"
+
+#~ msgid "Cyrillic"
+#~ msgstr "Cirílico"
+
+#~ msgid "Chinese Simplified"
+#~ msgstr "Chino simplificado"
+
+#~ msgid "Chinese Traditional"
+#~ msgstr "Chino tradicional"
+
+#~ msgid "Japanese"
+#~ msgstr "Japonés"
+
+#~ msgid "Korean"
+#~ msgstr "Coreano"
+
+#~ msgid "Enter Codeset"
+#~ msgstr "Introduzca conjunto de códigos"

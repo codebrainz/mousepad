@@ -1,0 +1,290 @@
+# Swedish translation of Leafpad text editor.
+# Copyright (C) 2004 Free Software Foundation, Inc.
+# This file is distributed under the same license as the PACKAGE package.
+# Isak Savo <iso01001@student.mdh.se>, 2004.
+# 
+msgid ""
+msgstr ""
+"Project-Id-Version: Leafpad 0.7.8\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2005-02-21 16:40-0500\n"
+"PO-Revision-Date: 2004-12-14 13:06+0200\n"
+"Last-Translator: Isak Savo <iso01001@student.mdh.se>\n"
+"Language-Team: Swedish <sv@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: src/callback.c:34
+#, c-format
+msgid "Save changes to '%s'?"
+msgstr "Spara ändringar för '%s'?"
+
+#: src/callback.c:180 src/file.c:150
+#, c-format
+msgid "Can't convert codeset to '%s'"
+msgstr "Kan inte konvertera kodning till '%s'"
+
+#: src/callback.c:207
+#, fuzzy
+msgid "Can't open pipe to process"
+msgstr "Kan inte öppna fil att skriva till"
+
+#: src/callback.c:366
+msgid "A text editor for Xfce"
+msgstr ""
+
+#: src/dialog.c:135
+#, c-format
+msgid "About %s"
+msgstr "Om %s"
+
+#: src/file.c:163
+msgid "Can't open file to write"
+msgstr "Kan inte öppna fil att skriva till"
+
+#: src/file.c:168
+msgid "Can't write file"
+msgstr "Kan inte skriva till fil"
+
+#: src/font.c:49
+msgid "Font"
+msgstr "Typsnitt"
+
+#: src/menu.c:60
+msgid "/_File"
+msgstr "/_Arkiv"
+
+#: src/menu.c:62
+msgid "/File/_New"
+msgstr "/Arkiv/_Ny"
+
+#. { N_("/File/New _Window"), "<shift><control>N",
+#. G_CALLBACK(cb_file_new), 1 },
+#: src/menu.c:66
+msgid "/File/_Open..."
+msgstr "/Arkiv/_Öppna..."
+
+#: src/menu.c:68
+msgid "/File/_Save"
+msgstr "/Arkiv/_Spara"
+
+#: src/menu.c:70
+msgid "/File/Save _As..."
+msgstr "/Arkiv/S_para som..."
+
+#: src/menu.c:72
+#, fuzzy
+msgid "/File/_Print..."
+msgstr "/Arkiv/_Öppna..."
+
+#: src/menu.c:76
+msgid "/File/_Quit"
+msgstr "Arkiv/_Avsluta"
+
+#: src/menu.c:78
+msgid "/_Edit"
+msgstr "/_Redigera"
+
+#: src/menu.c:80
+msgid "/Edit/_Undo"
+msgstr "/Redigera/_Ångra"
+
+#: src/menu.c:82
+msgid "/Edit/_Redo"
+msgstr "/Redigera/_Upprepa"
+
+#: src/menu.c:86
+msgid "/Edit/Cu_t"
+msgstr "/Redigera/Klipp _ut"
+
+#: src/menu.c:88
+msgid "/Edit/_Copy"
+msgstr "/Redigera/K_opiera"
+
+#: src/menu.c:90
+msgid "/Edit/_Paste"
+msgstr "/Redigera/Klistra _in"
+
+#: src/menu.c:92
+msgid "/Edit/_Delete"
+msgstr "/Redigera/_Radera"
+
+#: src/menu.c:96
+msgid "/Edit/Select _All"
+msgstr "/Redigera/Markera _allt"
+
+#: src/menu.c:98
+msgid "/_Search"
+msgstr "/_Sök"
+
+#: src/menu.c:100
+msgid "/Search/_Find..."
+msgstr "/Sök/_Sök..."
+
+#: src/menu.c:102
+msgid "/Search/Find _Next"
+msgstr "/Sök/Sök _nästa"
+
+#: src/menu.c:104
+msgid "/Search/Find _Previous"
+msgstr "/Sök/Sök _föregående"
+
+#: src/menu.c:106
+msgid "/Search/_Replace..."
+msgstr "/Sök/_Ersätt..."
+
+#: src/menu.c:110
+msgid "/Search/_Jump To..."
+msgstr "/Sök/_Hoppa till..."
+
+#: src/menu.c:112
+msgid "/_Options"
+msgstr "/_Inställningar"
+
+#: src/menu.c:114
+msgid "/Options/_Font..."
+msgstr "/Inställningar/_Typsnitt..."
+
+#: src/menu.c:116
+msgid "/Options/_Word Wrap"
+msgstr "/Inställningar/_Radbrytning"
+
+#: src/menu.c:118
+msgid "/Options/_Line Numbers"
+msgstr "/Inställningar/Rad_nummer"
+
+#: src/menu.c:122
+msgid "/Options/_Auto Indent"
+msgstr "/Inställningar/Automatisk _indentering"
+
+#: src/menu.c:124
+msgid "/_Help"
+msgstr "/_Hjälp"
+
+#: src/menu.c:126
+msgid "/Help/_About"
+msgstr "/Hjälp/_Om"
+
+#: src/search.c:73
+msgid "Search string not found"
+msgstr "Söksträngen hittades inte"
+
+#: src/search.c:115
+msgid "Replace?"
+msgstr "Ersätt?"
+
+#: src/search.c:143
+#, c-format
+msgid "%d strings replaced"
+msgstr "%d strängar har ersatts"
+
+#: src/search.c:188
+msgid "Find"
+msgstr "Sök"
+
+#: src/search.c:200 src/search.c:265
+msgid "Fi_nd what: "
+msgstr "S_öksträng: "
+
+#: src/search.c:219 src/search.c:292
+msgid "_Match case"
+msgstr "Matcha _gemener/VERSALER"
+
+#: src/search.c:253
+msgid "Replace"
+msgstr "Ersätt"
+
+#: src/search.c:280
+msgid "Re_place with: "
+msgstr "Ersätt _med: "
+
+#: src/search.c:296
+msgid "Replace _all at once"
+msgstr "_Ändra alla på en gång"
+
+#: src/search.c:342
+msgid "Jump To"
+msgstr "Hoppa till"
+
+#: src/search.c:347
+msgid "_Jump"
+msgstr "_Hoppa"
+
+#: src/search.c:353
+msgid "_Line number: "
+msgstr "_Radnummer: "
+
+# Här syftar 'Locale' på teckenkodning när man sparar/öppnar dokument
+#: src/selector.c:103
+#, c-format
+msgid "Current Locale (%s)"
+msgstr "Nuvarande kodning (%s)"
+
+#: src/selector.c:147
+msgid "Other Codeset"
+msgstr "Annan kodning"
+
+#: src/selector.c:186
+msgid "Code_set:"
+msgstr "_Kodning:"
+
+#: src/selector.c:207
+#, c-format
+msgid "'%s' is not supported"
+msgstr "'%s' stöds inte"
+
+#: src/selector.c:271
+msgid "Auto Detect"
+msgstr "Automatisk"
+
+#: src/selector.c:325
+msgid "Open"
+msgstr "Öppna"
+
+#: src/selector.c:325
+msgid "Save As"
+msgstr "Spara som"
+
+#: src/selector.c:345
+msgid "Ch_aracter Coding: "
+msgstr "Tecken_kodning: "
+
+#: src/selector.c:401
+#, c-format
+msgid "'%s' already exists. Overwrite?"
+msgstr "'%s' finns redan. Vill du skriva över?"
+
+#: src/window.c:141
+msgid "Untitled"
+msgstr "Namnlös"
+
+#~ msgid "GTK+ based simple text editor"
+#~ msgstr "Enkel GTK+-baserad texteditor"
+
+#~ msgid "Unicode"
+#~ msgstr "Unicode"
+
+#~ msgid "Western"
+#~ msgstr "Västlig"
+
+#~ msgid "Cyrillic"
+#~ msgstr "Kyryllisk"
+
+#~ msgid "Chinese Simplified"
+#~ msgstr "Kinesisk (Enkel)"
+
+#~ msgid "Chinese Traditional"
+#~ msgstr "Kinesisk (Traditionell)"
+
+#~ msgid "Japanese"
+#~ msgstr "Japansk"
+
+#~ msgid "Korean"
+#~ msgstr "Koreansk"
+
+#~ msgid "Other Codeset (%s)"
+#~ msgstr "Annan kodning (%s)"
+
+#~ msgid "Enter Codeset"
+#~ msgstr "Ange kodning"

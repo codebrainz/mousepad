@@ -1,0 +1,259 @@
+# Slovak translation of mousepad.
+# Copyright (C) 2005 THE mousepad'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the mousepad package.
+# Roman Moravcik <morgan@pobox.sk>, 2005.
+# Roman Moravcik <morgan@pobox.sk>, 2005.
+# 
+# 
+msgid ""
+msgstr ""
+"Project-Id-Version: mousepad 0.1.1\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2005-02-21 16:40-0500\n"
+"PO-Revision-Date: 2005-01-30 14:34+0100\n"
+"Last-Translator: Roman MoravÄÃ­k <morgan@pobox.sk>\n"
+"Language-Team: Slovak <sk-i18n@linux.sk>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: src/callback.c:34
+#, c-format
+msgid "Save changes to '%s'?"
+msgstr "UloÅ¾iÅ¥ zmeny do '%s'?"
+
+#: src/callback.c:180 src/file.c:150
+#, c-format
+msgid "Can't convert codeset to '%s'"
+msgstr "NemÃ´Å¾em konvertovaÅ¥ znakovÃº sadu do '%s'"
+
+#: src/callback.c:207
+msgid "Can't open pipe to process"
+msgstr "NemÃ´Å¾em otvoriÅ¥ rÃºru k procesu"
+
+#: src/callback.c:366
+msgid "A text editor for Xfce"
+msgstr "TextovÃ½ editor pre XFCE"
+
+#: src/dialog.c:135
+#, c-format
+msgid "About %s"
+msgstr "O %s"
+
+#: src/file.c:163
+msgid "Can't open file to write"
+msgstr "NemÃ´Å¾em otvoriÅ¥ sÃºbor pre zÃ¡pis"
+
+#: src/file.c:168
+msgid "Can't write file"
+msgstr "NemÃ´Å¾em zapÃ­saÅ¥ sÃºbor"
+
+#: src/font.c:49
+msgid "Font"
+msgstr "PÃ­smo"
+
+#: src/menu.c:60
+msgid "/_File"
+msgstr "/_SÃºbor"
+
+#: src/menu.c:62
+msgid "/File/_New"
+msgstr "/SÃºbor/_NovÃ½"
+
+#. { N_("/File/New _Window"), "<shift><control>N",
+#. G_CALLBACK(cb_file_new), 1 },
+#: src/menu.c:66
+msgid "/File/_Open..."
+msgstr "/SÃºbor/_OtvoriÅ¥..."
+
+#: src/menu.c:68
+msgid "/File/_Save"
+msgstr "/SÃºbor/_UloÅ¾iÅ¥"
+
+#: src/menu.c:70
+msgid "/File/Save _As..."
+msgstr "/SÃºbor/UloÅ¾iÅ¥ _ako..."
+
+#: src/menu.c:72
+msgid "/File/_Print..."
+msgstr "/SÃºbor/_TlaÄiÅ¥..."
+
+#: src/menu.c:76
+msgid "/File/_Quit"
+msgstr "/SÃºbor/_Koniec"
+
+#: src/menu.c:78
+msgid "/_Edit"
+msgstr "/_UpraviÅ¥"
+
+#: src/menu.c:80
+msgid "/Edit/_Undo"
+msgstr "/UpraviÅ¥/V_rÃ¡tiÅ¥ spÃ¤Å¥"
+
+#: src/menu.c:82
+msgid "/Edit/_Redo"
+msgstr "/UpraviÅ¥/_OpakovaÅ¥ vrÃ¡tenÃ©"
+
+#: src/menu.c:86
+msgid "/Edit/Cu_t"
+msgstr "/UpraviÅ¥/Vys_trihnÃºÅ¥"
+
+#: src/menu.c:88
+msgid "/Edit/_Copy"
+msgstr "/UpraviÅ¥/_KopÃ­rovaÅ¥"
+
+#: src/menu.c:90
+msgid "/Edit/_Paste"
+msgstr "/UpraviÅ¥/_VloÅ¾iÅ¥"
+
+#: src/menu.c:92
+msgid "/Edit/_Delete"
+msgstr "/UpraviÅ¥/V_ymazaÅ¥"
+
+#: src/menu.c:96
+msgid "/Edit/Select _All"
+msgstr "/UpraviÅ¥/Vybr_aÅ¥ vÅ¡etko"
+
+#: src/menu.c:98
+msgid "/_Search"
+msgstr "/_HÄ¾adaÅ¥"
+
+#: src/menu.c:100
+msgid "/Search/_Find..."
+msgstr "/HÄ¾adaÅ¥/_NÃ¡jsÅ¥..."
+
+#: src/menu.c:102
+msgid "/Search/Find _Next"
+msgstr "/HÄ¾adaÅ¥/NÃ¡jsÅ¥ _ÄalÅ¡ie"
+
+#: src/menu.c:104
+msgid "/Search/Find _Previous"
+msgstr "/HÄ¾adaÅ¥/NÃ¡jsÅ¥ _predchÃ¡dzajÃºce"
+
+#: src/menu.c:106
+msgid "/Search/_Replace..."
+msgstr "/HÄ¾adaÅ¥/Nah_radiÅ¥..."
+
+#: src/menu.c:110
+msgid "/Search/_Jump To..."
+msgstr "/HÄ¾adaÅ¥/_SkoÄiÅ¥ na..."
+
+#: src/menu.c:112
+msgid "/_Options"
+msgstr "/P_redvoÄ¾by"
+
+#: src/menu.c:114
+msgid "/Options/_Font..."
+msgstr "/PredvoÄ¾by/_PÃ­smo..."
+
+#: src/menu.c:116
+msgid "/Options/_Word Wrap"
+msgstr "/PredvoÄ¾by/_ZalomiÅ¥ text"
+
+#: src/menu.c:118
+msgid "/Options/_Line Numbers"
+msgstr "/PredvoÄ¾by/_ÄŒÃ­sla riadkov"
+
+#: src/menu.c:122
+msgid "/Options/_Auto Indent"
+msgstr "/PredvoÄ¾by/_AutomatickÃ© odsadenie"
+
+#: src/menu.c:124
+msgid "/_Help"
+msgstr "/_PomocnÃ­k"
+
+#: src/menu.c:126
+msgid "/Help/_About"
+msgstr "/PomocnÃ­k/O progr_ame"
+
+#: src/search.c:73
+msgid "Search string not found"
+msgstr "HÄ¾adanÃ½ reÅ¥azec nebol nÃ¡jdenÃ½\t"
+
+#: src/search.c:115
+msgid "Replace?"
+msgstr "NahradiÅ¥?"
+
+#: src/search.c:143
+#, c-format
+msgid "%d strings replaced"
+msgstr "reÅ¥azec %d nahradenÃ½"
+
+#: src/search.c:188
+msgid "Find"
+msgstr "NÃ¡jsÅ¥"
+
+#: src/search.c:200 src/search.c:265
+msgid "Fi_nd what: "
+msgstr "HÄ¾adaÅ¥: "
+
+#: src/search.c:219 src/search.c:292
+msgid "_Match case"
+msgstr "RozliÅ¡ovaÅ¥ malÃ© a veÄ¾kÃ© pÃ­s_menÃ¡"
+
+#: src/search.c:253
+msgid "Replace"
+msgstr "NahradiÅ¥"
+
+#: src/search.c:280
+msgid "Re_place with: "
+msgstr "NahradiÅ¥ s:"
+
+#: src/search.c:296
+msgid "Replace _all at once"
+msgstr "N_ahradiÅ¥ vÅ¡etko"
+
+#: src/search.c:342
+msgid "Jump To"
+msgstr "SkoÄiÅ¥ na"
+
+#: src/search.c:347
+msgid "_Jump"
+msgstr "_SkoÄiÅ¥"
+
+#: src/search.c:353
+msgid "_Line number: "
+msgstr "_ÄŒÃ­slo riadka:"
+
+#: src/selector.c:103
+#, c-format
+msgid "Current Locale (%s)"
+msgstr "AktuÃ¡lna znakovÃ¡ sad (%s)"
+
+#: src/selector.c:147
+msgid "Other Codeset"
+msgstr "InÃ¡ znakovÃ¡ sada"
+
+#: src/selector.c:186
+msgid "Code_set:"
+msgstr "ZnakovÃ¡ _sada:"
+
+#: src/selector.c:207
+#, c-format
+msgid "'%s' is not supported"
+msgstr "'%s' nie je podporovanÃ½"
+
+#: src/selector.c:271
+msgid "Auto Detect"
+msgstr "AutomatickÃ¡ detekcia"
+
+#: src/selector.c:325
+msgid "Open"
+msgstr "OtvoriÅ¥"
+
+#: src/selector.c:325
+msgid "Save As"
+msgstr "UloÅ¾iÅ¥ ako"
+
+#: src/selector.c:345
+msgid "Ch_aracter Coding: "
+msgstr "KÃ³dov_anie pÃ­sma: "
+
+#: src/selector.c:401
+#, c-format
+msgid "'%s' already exists. Overwrite?"
+msgstr "SÃºbor '%s' uÅ¾ existuje. Chcete ho prepÃ­saÅ¥?"
+
+#: src/window.c:141
+msgid "Untitled"
+msgstr "NepomenovanÃ½"

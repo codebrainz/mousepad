@@ -1,0 +1,75 @@
+Now
+  Current
+	Removed include of m4 subdir, since it doesn't exist anymore
+	Fixed configure wanting GTK+ 2.4.x even though 2.2.x is sufficient
+2005-2-20
+  0.2.1
+	Fixed segfault on startup if config file was missing, but ~/.config/mousepad/ existed
+
+2005-2-17
+  0.2.0
+	Moved to new rc file location 
+	Removed deprecated g_strcasecmp
+	Removed some 2.4-isms that creeped in
+	Open xfprint asynchronously
+	Chanegd some GtkWidgets into real types
+	Purged search.c of globals
+	Migrated to Xfce Developer Tools
+	New Slovak translation (Roman Moravčík)
+
+2005-1-25
+  version 0.1.1
+	Refactored find/search dialog code
+	Fixed bug where system wide config would be ignored
+	Made printing work with 4.2.0 versions of xfprint4
+	Changed BM_DEBUG to BM_DEBUG_SUPPORT (Thanks, Benny)
+
+2005-1-19
+  version 0.1.0
+	Added debug options to the build
+	Removed GTK+ dependency directly, we get it through libxfcegui4
+	Cleaned up configure.ac
+	Switched to match Xfce toolchain
+	Incremented version number, those who actually installed 0.5.0 will loose their settings
+
+2005-1-18
+  version 0.0.7
+	Fixed include causing compile warnings
+	Fixed internationalization
+	Fixed a few type errors with XfceFileChooser
+
+2005-1-18
+  version 0.0.6
+	Based on Leafpad patch, switched to using XfceFileChooser.
+
+2005-1-17
+  version 0.0.5
+	Fixed some make install problems, cleaned up local source tree alot
+
+2005-1-16
+  version 0.0.4
+	I think I fixed the ./po build. It's all very hand wavey, I don't actually know how the thing works
+
+2005-1-16
+  version 0.0.3
+	At some point, I broke the build in ./po. Ripped out po and references
+	Switched to using xfce_resource_save instead of hardcoding ~/.config/mousepad
+	Completed removal of intl.h, we depend on libxfce4util entirely now
+	Removed macro definitions for _, and N_ from intl.h, fixed includes
+	Changed minimum config file version to 0.0.1
+	Moved config from ~/.leafpad to ~/.config/mousepad
+	Renamed leafpad.h to mousepad.h, and fixed includes
+	Changed build to now create a "mousepad" binary, instead of "leafpad"
+	Began the tedious rebranding effort - added copyright to changed files
+
+2005-1-15
+  version 0.0.2
+	Imported m4 directory from Xfce
+	Got source to semi-legitimately build - Makefile.am, src/Makefile.am, configure.ac
+2005-1-13
+  version 0.0.1
+	Initial leafpad import
+	leafpad.h - included libxfce4util and libxfcegui4
+	hacked Makefile to coerce code to build
+	preliminary printing support using xfprint4 - xfprint4 bug is what makes it preliminary
+	

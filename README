@@ -1,0 +1,73 @@
+Mousepad - A simple text editor for Xfce
+
+
+Description
+===========
+
+Mousepad is a text editor for Xfce based on Leafpad. The initial reason for 
+Mousepad was to provide printing support, which would have been difficult 
+for Leafpad for various reasons.
+
+Although some features are under development, currently Mousepad has folowing
+features:
+
+    * Complete support for UTF-8 text
+    * Cut/Copy/Paste and Select All text
+    * Search and Replace
+    * Font selecton
+    * Word Wrap
+    * Character coding selection
+    * Auto character coding detection (UTF-8 and some codesets)
+    * Manual codeset setting
+    * Infinite Undo/Redo by word
+    * Auto Indent
+    * Multi-line Indent
+    * Display line numbers
+    * Drag and Drop
+    * Printing
+
+Mousepad is released under the GNU General Public License (GPL) version 2, see
+the file 'COPYING' for more information.
+
+
+Installation
+============
+
+Leafpad requires GTK+-2.2.x libraries.
+
+Simple install procedure:
+
+  $ tar xzvf mousepad-x.x.x.tar.gz       # unpack the sources
+  $ cd mousepad-x.x.x                    # change to the toplevel directory
+  $ ./configure                          # run the `configure' script
+  $ make                                 # build mousepad
+  [ Become root if necessary ]
+  # make install-strip                   # install Mousepad
+
+See the file 'INSTALL' for more detailed information.
+
+
+Keybindings
+===========
+Ctrl+N                          New
+Ctrl+O                          Open
+Ctrl+S                          Save
+Shift+Ctrl+S                    Save As
+Ctrl+W                          Close
+Ctrl+Q                          Quit
+Ctrl+Z                          Undo
+Ctrl+Y (Shift+Ctrl+Z)           Redo
+Ctrl+X                          Cut
+Ctrl+C                          Copy
+Ctrl+V                          Paste
+Ctrl+A                          Select All
+Ctrl+F                          Find
+F3 (Ctrl+G)                     Find Next
+Shift+F3 (Shift+Ctrl+G)         Find Previous
+Ctrl+H (Ctrl+R)                 Replace
+Ctrl+J                          Jump To
+F1                              About
+Ctrl+Tab                        toggle tab width
+Tab with selection bound        multi-line indent
+Shift+Tab with selection bound  multi-line unindent
+Shift+Return                    new-line with/without indent

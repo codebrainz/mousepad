@@ -1,0 +1,17 @@
+src/callback.c
+src/dialog.c
+src/dnd.c
+src/encoding.c
+src/file.c
+src/font.c
+src/gtksourceiter.c
+src/indent.c
+src/keyevent.c
+src/linenum.c
+src/main.c
+src/menu.c
+src/search.c
+src/selector.c
+src/undo.c
+src/utils.c
+src/window.c
