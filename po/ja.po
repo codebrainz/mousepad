@@ -1,262 +1,288 @@
-# Japanese translation of Leafpad
-# Copyright (C) 2004 Free Software Foundation, Inc.
-# This file is distributed under the same license as the Leafpad package.
+# Japanese translations for Mousepad package.
+# Copyright (C) 2005 Erik Harrison
+# This file is distributed under the same license as the Mousepad package.
 # Tarot Osuji <tarot@sdf.lonestar.org>, 2004.
+# Daichi Kawahata <daichik@users.sourceforge.net>, 2005.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Leafpad 0.7.9\n"
+"Project-Id-Version: Mousepad 0.2.2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-02-21 16:40-0500\n"
-"PO-Revision-Date: 2004-09-09 21:32+0900\n"
-"Last-Translator: Tarot Osuji <tarot@sdf.lonestar.org>\n"
-"Language-Team: Japanese <ja@li.org>\n"
+"POT-Creation-Date: 2005-05-14 22:49+0900\n"
+"PO-Revision-Date: 2005-05-15 09:08+0900\n"
+"Last-Translator: Daichi Kawahata <daichik@users.sourceforge.net>\n"
+"Language-Team: xfce-users-jp <xfce-users-jp@ml.fdiary.net>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: src/callback.c:34
+#: ../mousepad.desktop.in.h:1
+msgid "Mousepad"
+msgstr "Mousepad"
+
+#: ../mousepad.desktop.in.h:2
+msgid "Simple text editor"
+msgstr "簡易テキストエディタです"
+
+#: ../mousepad.desktop.in.h:3
+msgid "Text editor"
+msgstr "テキストエディタ"
+
+#: ../src/callback.c:34
 #, c-format
 msgid "Save changes to '%s'?"
-msgstr "'%s' の変更を保存しますか?"
+msgstr "'%s' の変更を保存しますか？"
 
-#: src/callback.c:180 src/file.c:150
+#: ../src/callback.c:180 ../src/file.c:152
 #, c-format
 msgid "Can't convert codeset to '%s'"
 msgstr "文字コードを '%s' に変換できませんでした"
 
-#: src/callback.c:207
-#, fuzzy
+#: ../src/callback.c:207
 msgid "Can't open pipe to process"
-msgstr "ファイルを作成できませんでした"
+msgstr "処理に使うパイプを開けませんでした"
 
-#: src/callback.c:366
-msgid "A text editor for Xfce"
+#: ../src/callback.c:395
+msgid "Translator"
+msgstr "翻訳者"
+
+#: ../src/callback.c:399
+msgid ""
+"A text editor for Xfce\n"
+"\n"
+"based on Code by Tarot Osuji and the Gedit team"
 msgstr ""
+"Xfce テキストエディタ\n"
+"\n"
+"Tarot Osuji および Gedit チームのコードを元に作成されました"
 
-#: src/dialog.c:135
+#: ../src/callback.c:408
+msgid "Original Author"
+msgstr "原著作者"
+
+#: ../src/callback.c:411
+msgid "Original Author of Leafpad"
+msgstr "Leafpad の原著作者"
+
+#: ../src/dialog.c:138
 #, c-format
 msgid "About %s"
 msgstr "%s について"
 
-#: src/file.c:163
+#: ../src/file.c:165
 msgid "Can't open file to write"
-msgstr "ファイルを作成できませんでした"
+msgstr "書き込むファイルを開けませんでした"
 
-#: src/file.c:168
+#: ../src/file.c:170
 msgid "Can't write file"
-msgstr "ファイルに書きこめませんでした"
+msgstr "ファイルに書き込めませんでした"
 
-#: src/font.c:49
+#: ../src/font.c:50
 msgid "Font"
-msgstr "フォント"
+msgstr "フォントを選んで下さい"
 
-#: src/menu.c:60
+#: ../src/menu.c:61
 msgid "/_File"
 msgstr "/ファイル(_F)"
 
-#: src/menu.c:62
+#: ../src/menu.c:63
 msgid "/File/_New"
 msgstr "/ファイル/新規(_N)"
 
 #. { N_("/File/New _Window"), "<shift><control>N",
 #. G_CALLBACK(cb_file_new), 1 },
-#: src/menu.c:66
+#: ../src/menu.c:67
 msgid "/File/_Open..."
 msgstr "/ファイル/開く(_O)..."
 
-#: src/menu.c:68
+#: ../src/menu.c:69
 msgid "/File/_Save"
 msgstr "/ファイル/保存(_S)"
 
-#: src/menu.c:70
+#: ../src/menu.c:71
 msgid "/File/Save _As..."
 msgstr "/ファイル/別名で保存(_A)..."
 
-#: src/menu.c:72
-#, fuzzy
+#: ../src/menu.c:73
 msgid "/File/_Print..."
-msgstr "/ファイル/開く(_O)..."
+msgstr "/ファイル/印刷(_P)..."
 
-#: src/menu.c:76
+#: ../src/menu.c:77
 msgid "/File/_Quit"
 msgstr "/ファイル/終了(_Q)"
 
-#: src/menu.c:78
+#: ../src/menu.c:79
 msgid "/_Edit"
 msgstr "/編集(_E)"
 
-#: src/menu.c:80
+#: ../src/menu.c:81
 msgid "/Edit/_Undo"
 msgstr "/編集/元に戻す(_U)"
 
-#: src/menu.c:82
+#: ../src/menu.c:83
 msgid "/Edit/_Redo"
 msgstr "/編集/やり直す(_R)"
 
-#: src/menu.c:86
+#: ../src/menu.c:87
 msgid "/Edit/Cu_t"
 msgstr "/編集/切り取り(_T)"
 
-#: src/menu.c:88
+#: ../src/menu.c:89
 msgid "/Edit/_Copy"
 msgstr "/編集/コピー(_C)"
 
-#: src/menu.c:90
+#: ../src/menu.c:91
 msgid "/Edit/_Paste"
 msgstr "/編集/貼り付け(_P)"
 
-#: src/menu.c:92
+#: ../src/menu.c:93
 msgid "/Edit/_Delete"
 msgstr "/編集/削除(_D)"
 
-#: src/menu.c:96
+#: ../src/menu.c:97
 msgid "/Edit/Select _All"
 msgstr "/編集/全て選択(_A)"
 
-#: src/menu.c:98
+#: ../src/menu.c:99
 msgid "/_Search"
 msgstr "/検索(_S)"
 
-#: src/menu.c:100
+#: ../src/menu.c:101
 msgid "/Search/_Find..."
 msgstr "/検索/検索(_F)..."
 
-#: src/menu.c:102
+#: ../src/menu.c:103
 msgid "/Search/Find _Next"
 msgstr "/検索/次を検索(_N)"
 
-#: src/menu.c:104
+#: ../src/menu.c:105
 msgid "/Search/Find _Previous"
 msgstr "/検索/前を検索(_P)"
 
-#: src/menu.c:106
+#: ../src/menu.c:107
 msgid "/Search/_Replace..."
 msgstr "/検索/置換(_R)..."
 
-#: src/menu.c:110
+#: ../src/menu.c:111
 msgid "/Search/_Jump To..."
-msgstr "/検索/行へジャンプ(_J)..."
+msgstr "/検索/行へ移動(_J)..."
 
-#: src/menu.c:112
+#: ../src/menu.c:113
 msgid "/_Options"
 msgstr "/オプション(_O)"
 
-#: src/menu.c:114
+#: ../src/menu.c:115
 msgid "/Options/_Font..."
 msgstr "/オプション/フォント(_F)..."
 
-#: src/menu.c:116
+#: ../src/menu.c:117
 msgid "/Options/_Word Wrap"
-msgstr "/オプション/右端で折り返す(_W)"
+msgstr "/オプション/右端で折返す(_W)"
 
-#: src/menu.c:118
+#: ../src/menu.c:119
 msgid "/Options/_Line Numbers"
-msgstr "行番号を表示(_L)"
+msgstr "/オプション/行番号を表示(_L)"
 
-#: src/menu.c:122
+#: ../src/menu.c:123
 msgid "/Options/_Auto Indent"
-msgstr "/オプション/自動インデント(_A)"
+msgstr "/オプション/自動字下げ(_A)"
 
-#: src/menu.c:124
+#: ../src/menu.c:125
 msgid "/_Help"
 msgstr "/ヘルプ(_H)"
 
-#: src/menu.c:126
+#: ../src/menu.c:127
 msgid "/Help/_About"
-msgstr "/ヘルプ/情報(_A)"
+msgstr "/ヘルプ/このプログラムについて(_A)"
 
-#: src/search.c:73
+#: ../src/search.c:73
 msgid "Search string not found"
 msgstr "検索文字列が見つかりません"
 
-#: src/search.c:115
+#: ../src/search.c:115
 msgid "Replace?"
-msgstr "置換しますか?"
+msgstr "置き換えますか？"
 
-#: src/search.c:143
+#: ../src/search.c:143
 #, c-format
 msgid "%d strings replaced"
-msgstr "%d 個の文字列を置換しました"
+msgstr "%d 個の文字列を置き換えました"
 
-#: src/search.c:188
+#: ../src/search.c:188
 msgid "Find"
-msgstr "検索"
+msgstr "文字列を検索します"
 
-#: src/search.c:200 src/search.c:265
+#: ../src/search.c:200 ../src/search.c:265
 msgid "Fi_nd what: "
 msgstr "検索する文字列(_N): "
 
-#: src/search.c:219 src/search.c:292
+#: ../src/search.c:219 ../src/search.c:292
 msgid "_Match case"
 msgstr "大文字と小文字を区別する(_M)"
 
-#: src/search.c:253
+#: ../src/search.c:253
 msgid "Replace"
-msgstr "置換"
+msgstr "文字列を置き換えます"
 
-#: src/search.c:280
+#: ../src/search.c:280
 msgid "Re_place with: "
 msgstr "置換後の文字列(_P): "
 
-#: src/search.c:296
+#: ../src/search.c:296
 msgid "Replace _all at once"
-msgstr "全て置換(_A)"
+msgstr "一度に全て置き換える(_A)"
 
-#: src/search.c:342
+#: ../src/search.c:342
 msgid "Jump To"
-msgstr "行へジャンプ"
+msgstr "入力した行へ移動します"
 
-#: src/search.c:347
+#: ../src/search.c:347
 msgid "_Jump"
-msgstr "ジャンプ(_J)"
+msgstr "移動(_J)"
 
-#: src/search.c:353
+#: ../src/search.c:353
 msgid "_Line number: "
 msgstr "行番号(_L): "
 
-#: src/selector.c:103
+#: ../src/selector.c:103
 #, c-format
 msgid "Current Locale (%s)"
 msgstr "現在のロケール (%s)"
 
-#: src/selector.c:147
+#: ../src/selector.c:147
 msgid "Other Codeset"
 msgstr "その他の文字コード"
 
-#: src/selector.c:186
+#: ../src/selector.c:186
 msgid "Code_set:"
 msgstr "文字コード(_S):"
 
-#: src/selector.c:207
+#: ../src/selector.c:207
 #, c-format
 msgid "'%s' is not supported"
 msgstr "'%s' はサポートされていません"
 
-#: src/selector.c:271
+#: ../src/selector.c:271
 msgid "Auto Detect"
-msgstr "自動検出"
+msgstr "文字コードを自動検出する"
 
-#: src/selector.c:325
+#: ../src/selector.c:325
 msgid "Open"
-msgstr "開く"
+msgstr "開くファイルを選択して下さい"
 
-#: src/selector.c:325
+#: ../src/selector.c:325
 msgid "Save As"
 msgstr "別名で保存"
 
-#: src/selector.c:345
+#: ../src/selector.c:345
 msgid "Ch_aracter Coding: "
 msgstr "文字コード(_A): "
 
-#: src/selector.c:401
+#: ../src/selector.c:401
 #, c-format
 msgid "'%s' already exists. Overwrite?"
-msgstr "'%s' は既に存在します. 上書きしますか?"
+msgstr "'%s' は既に存在します。上書きしますか？"
 
-#: src/window.c:141
+#: ../src/window.c:146
 msgid "Untitled"
 msgstr "無題"
-
-#~ msgid "GTK+ based simple text editor"
-#~ msgstr "GTK+ ベースのシンプルなテキストエディタ"
