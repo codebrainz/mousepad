@@ -1,0 +1,260 @@
+# translation of gu.po to Gujarati
+# This file is distributed under the same license as the PACKAGE package.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER.
+# Ankit Patel <ankit644@yahoo.com>, 2005.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: gu\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2005-02-21 16:40-0500\n"
+"PO-Revision-Date: 2005-08-26 09:50+0530\n"
+"Last-Translator: Ankit Patel <ankit644@yahoo.com>\n"
+"Language-Team: Gujarati <indianoss-gujarati@lists.sourceforge.net>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: KBabel 1.9.1\n"
+"Plural-Forms: nplurals=2; plural=(n!=1);\n\n"
+
+#: src/callback.c:34
+#, c-format
+msgid "Save changes to '%s'?"
+msgstr "શું '%s' ના ફેરફારો સંગ્રહવા છે?"
+
+#: src/callback.c:180 src/file.c:150
+#, c-format
+msgid "Can't convert codeset to '%s'"
+msgstr "કોડસેટને '%s' માં ફેરવી શકતા નથી"
+
+#: src/callback.c:207
+msgid "Can't open pipe to process"
+msgstr "પ્રક્રિયા કરવા માટે pipe ખોલી શકતા નથી"
+
+#: src/callback.c:366
+msgid "A text editor for Xfce"
+msgstr "Xfce માટે લખાણ સંપાદક"
+
+#: src/dialog.c:135
+#, c-format
+msgid "About %s"
+msgstr "%s વિશે"
+
+#: src/file.c:163
+msgid "Can't open file to write"
+msgstr "લખવા માટે ફાઈલ ખોલી શકતા નથી"
+
+#: src/file.c:168
+msgid "Can't write file"
+msgstr "ફાઈલ લખી શકતા નથી"
+
+#: src/font.c:49
+msgid "Font"
+msgstr "ફોન્ટ"
+
+#: src/menu.c:60
+msgid "/_File"
+msgstr "/ફાઈલ (_F)"
+
+#: src/menu.c:62
+msgid "/File/_New"
+msgstr "/ફાઈલ/નવી (_N)"
+
+#. { N_("/File/New _Window"), "<shift><control>N",
+#. G_CALLBACK(cb_file_new), 1 },
+#: src/menu.c:66
+msgid "/File/_Open..."
+msgstr "/ફાઈલ/ખોલો (_O)..."
+
+#: src/menu.c:68
+msgid "/File/_Save"
+msgstr "/ફાઈલ/સંગ્રહો (_S)"
+
+#: src/menu.c:70
+msgid "/File/Save _As..."
+msgstr "/ફાઈલ/આ રીતે સંગ્રહો (_A)..."
+
+#: src/menu.c:72
+msgid "/File/_Print..."
+msgstr "/ફાઈલ/છાપો (_P)..."
+
+#: src/menu.c:76
+msgid "/File/_Quit"
+msgstr "/ફાઈલ/બહાર નીકળો (_Q)"
+
+#: src/menu.c:78
+msgid "/_Edit"
+msgstr "/ફેરફાર (_E)"
+
+#: src/menu.c:80
+msgid "/Edit/_Undo"
+msgstr "/ફેરફાર/છેલ્લી ક્રિયા રદ કરો (_U)"
+
+#: src/menu.c:82
+msgid "/Edit/_Redo"
+msgstr "/ફેરફાર/રદ કરેલી ક્રિયા ફરી કરો (_R)"
+
+#: src/menu.c:86
+msgid "/Edit/Cu_t"
+msgstr "/ફેરફાર/કાપો (_t)"
+
+#: src/menu.c:88
+msgid "/Edit/_Copy"
+msgstr "/ફેરફાર/નકલ કરો (_C)"
+
+#: src/menu.c:90
+msgid "/Edit/_Paste"
+msgstr "/ફેરફાર/ચોંટાડો (_P)"
+
+#: src/menu.c:92
+msgid "/Edit/_Delete"
+msgstr "/ફેરફાર/કાઢી નાંખો (_D)"
+
+#: src/menu.c:96
+msgid "/Edit/Select _All"
+msgstr "/ફેરફાર/બધું પસંદ કરો (_A)"
+
+#: src/menu.c:98
+msgid "/_Search"
+msgstr "/શોધ (_S)"
+
+#: src/menu.c:100
+msgid "/Search/_Find..."
+msgstr "/શોધ/શોધો (_F)..."
+
+#: src/menu.c:102
+msgid "/Search/Find _Next"
+msgstr "/શોધ/આગળનું શોધો (_N)"
+
+#: src/menu.c:104
+msgid "/Search/Find _Previous"
+msgstr "/શોધ/પહેલાંનું શોધો (_P)"
+
+#: src/menu.c:106
+msgid "/Search/_Replace..."
+msgstr "/શોધ/બદલો (_R)..."
+
+#: src/menu.c:110
+msgid "/Search/_Jump To..."
+msgstr "/શોધ/પર કૂદો (_J)..."
+
+#: src/menu.c:112
+msgid "/_Options"
+msgstr "/વિકલ્પો (_O)"
+
+#: src/menu.c:114
+msgid "/Options/_Font..."
+msgstr "/વિકલ્પો/ફોન્ટ (_F)..."
+
+#: src/menu.c:116
+msgid "/Options/_Word Wrap"
+msgstr "/વિકલ્પો/શબ્દ લપેટો (_W)"
+
+#: src/menu.c:118
+msgid "/Options/_Line Numbers"
+msgstr "/વિકલ્પો/લીટી નંબરો (_L)"
+
+#: src/menu.c:122
+msgid "/Options/_Auto Indent"
+msgstr "/વિકલ્પો/આપોઆપ હાંસિયો (_A)"
+
+#: src/menu.c:124
+msgid "/_Help"
+msgstr "/મદદ (_H)"
+
+#: src/menu.c:126
+msgid "/Help/_About"
+msgstr "/મદદ/વિશે (_A)"
+
+#: src/search.c:73
+msgid "Search string not found"
+msgstr "શોધ શબ્દમાળા મળી નહિં"
+
+#: src/search.c:115
+msgid "Replace?"
+msgstr "શું બદલવું છે?"
+
+#: src/search.c:143
+#, c-format
+msgid "%d strings replaced"
+msgstr "%d શબ્દમાળાઓ બદલાઈ ગયેલ છે"
+
+#: src/search.c:188
+msgid "Find"
+msgstr "શોધો"
+
+#: src/search.c:200 src/search.c:265
+msgid "Fi_nd what: "
+msgstr "શું શોધવું છે (_n): "
+
+#: src/search.c:219 src/search.c:292
+msgid "_Match case"
+msgstr "કેસ સરખાવો (_M)"
+
+#: src/search.c:253
+msgid "Replace"
+msgstr "બદલો"
+
+#: src/search.c:280
+msgid "Re_place with: "
+msgstr "આનાથી બદલો (_p): "
+
+#: src/search.c:296
+msgid "Replace _all at once"
+msgstr "બધું એક જ વારમાં બદલો (_a)"
+
+#: src/search.c:342
+msgid "Jump To"
+msgstr "પર કૂદો"
+
+#: src/search.c:347
+msgid "_Jump"
+msgstr "કૂદો (_J)"
+
+#: src/search.c:353
+msgid "_Line number: "
+msgstr "લીટી ક્રમાંક (_L): "
+
+#: src/selector.c:103
+#, c-format
+msgid "Current Locale (%s)"
+msgstr "વર્તમાન લોકેલ (%s)"
+
+#: src/selector.c:147
+msgid "Other Codeset"
+msgstr "અન્ય કોડસેટ"
+
+#: src/selector.c:186
+msgid "Code_set:"
+msgstr "કોડસેટ (_s):"
+
+#: src/selector.c:207
+#, c-format
+msgid "'%s' is not supported"
+msgstr "'%s' એ આધારભૂત નથી"
+
+#: src/selector.c:271
+msgid "Auto Detect"
+msgstr "આપોઆપ શોધો"
+
+#: src/selector.c:325
+msgid "Open"
+msgstr "ખોલો"
+
+#: src/selector.c:325
+msgid "Save As"
+msgstr "આ રીતે સંગ્રહો"
+
+#: src/selector.c:345
+msgid "Ch_aracter Coding: "
+msgstr "અક્ષર સંગ્રહપદ્ધતિ (_a): "
+
+#: src/selector.c:401
+#, c-format
+msgid "'%s' already exists. Overwrite?"
+msgstr "'%s' પહેલાથી જ હાજર છે. શું ફરીથી લખવું છે?"
+
+#: src/window.c:141
+msgid "Untitled"
+msgstr "શીર્ષકવિહિન"
+
