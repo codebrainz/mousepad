@@ -16,7 +16,7 @@ XDT_CHECK_PACKAGE([GTK], [gtk+-2.0], [2.2.0])
 
 BM_DEBUG_SUPPORT
 
-XDT_I18N([ca cs de el es fr gu hu it ja lt pl ru sk sv ta zh_CN zh_TW])
+XDT_I18N([ca cs de el es fr gu hu it ja lt pl pt_BR ru sk sv ta zh_CN zh_TW])
 
 AC_CONFIG_FILES([Makefile
                  po/Makefile.in
