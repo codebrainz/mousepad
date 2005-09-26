@@ -2,15 +2,17 @@
 # Copyright (C) 2004 Free Software Foundation, Inc.
 # This file is distributed under the same license as the leafpad package.
 # Carlos Z.F. Liu <carlos_liu@yahoo.com>, 2004.
+# OLS3 <ols3@lxer.idv.tw>, 2004.
+# Hydonsingore Cia <hydonsingore@mail.educities.edu.tw>, 2005 
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Leafpad 0.7.2\n"
+"Project-Id-Version: Mousepad\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2005-02-21 16:40-0500\n"
-"PO-Revision-Date: 2004-10-04 08:21+0800\n"
-"Last-Translator: OLS3 <ols3@lxer.idv.tw>\n"
-"Language-Team: OLS3 <ols3@lxer.idv.tw>\n"
+"PO-Revision-Date: 2005-09-26 09:45+0800\n"
+"Last-Translator: Hydonsingore Cia <hydonsingore@mail.educities.edu.tw>\n"
+"Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -26,13 +28,12 @@ msgid "Can't convert codeset to '%s'"
 msgstr "無法將編碼轉換為 “%s”"
 
 #: src/callback.c:207
-#, fuzzy
 msgid "Can't open pipe to process"
-msgstr "無法打開要寫入的檔案"
+msgstr "無法打開至程序的管線"
 
 #: src/callback.c:366
 msgid "A text editor for Xfce"
-msgstr ""
+msgstr "一個 Xfce 的文字編輯器"
 
 #: src/dialog.c:135
 #, c-format
@@ -74,9 +75,8 @@ msgid "/File/Save _As..."
 msgstr "/檔案(F)/另存為(_A)..."
 
 #: src/menu.c:72
-#, fuzzy
 msgid "/File/_Print..."
-msgstr "/檔案(F)/開啟(_O)..."
+msgstr "/檔案(F)/列印(_P)..."
 
 #: src/menu.c:76
 msgid "/File/_Quit"
@@ -252,7 +252,7 @@ msgstr "字元編碼(_A): "
 #: src/selector.c:401
 #, c-format
 msgid "'%s' already exists. Overwrite?"
-msgstr "檔案“%s”已經存在. 要覆蓋它嗎?"
+msgstr "檔案“%s”已經存在. 要覆蓋它嗎？"
 
 #: src/window.c:141
 msgid "Untitled"
@@ -267,7 +267,6 @@ msgstr "無標題"
 #~ msgid "Other Codeset..."
 #~ msgstr "其它編碼..."
 
-#, fuzzy
 #~ msgid "Unicode (UTF-8)"
 #~ msgstr "統一碼"
 
