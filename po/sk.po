@@ -1,17 +1,15 @@
-# Slovak translation of mousepad.
-# Copyright (C) 2005 THE mousepad'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the mousepad package.
-# Roman Moravcik <morgan@pobox.sk>, 2005.
-# Roman Moravcik <morgan@pobox.sk>, 2005.
-# 
-# 
+# Slovak translation of Mousepad.
+# Copyright (C) 2005 Erik Harrison.
+# This file is distributed under the same license as the Mousepad package.
+# Roman Moravcik <roman.moravcik@gmail.com>, 2005.
+#
 msgid ""
 msgstr ""
-"Project-Id-Version: mousepad 0.1.1\n"
+"Project-Id-Version: Mousepad 0.2.2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-02-21 16:40-0500\n"
-"PO-Revision-Date: 2005-01-30 14:34+0100\n"
-"Last-Translator: Roman MoravÄÃ­k <morgan@pobox.sk>\n"
+"POT-Creation-Date: 2005-10-07 23:43+0900\n"
+"PO-Revision-Date: 2005-10-07 23:43+0900\n"
+"Last-Translator: Roman Moravcik <roman.moravcik@gmail.com>\n"
 "Language-Team: Slovak <sk-i18n@linux.sk>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -20,20 +18,20 @@ msgstr ""
 #: src/callback.c:34
 #, c-format
 msgid "Save changes to '%s'?"
-msgstr "UloÅ¾iÅ¥ zmeny do '%s'?"
+msgstr "Uložiť zmeny do '%s'?"
 
 #: src/callback.c:180 src/file.c:150
 #, c-format
 msgid "Can't convert codeset to '%s'"
-msgstr "NemÃ´Å¾em konvertovaÅ¥ znakovÃº sadu do '%s'"
+msgstr "Nemôžem konvertovať znakovú sadu do '%s'"
 
 #: src/callback.c:207
 msgid "Can't open pipe to process"
-msgstr "NemÃ´Å¾em otvoriÅ¥ rÃºru k procesu"
+msgstr "Nemôžem otvoriť rúru k procesu"
 
 #: src/callback.c:366
 msgid "A text editor for Xfce"
-msgstr "TextovÃ½ editor pre XFCE"
+msgstr "Textový editor pre XFCE"
 
 #: src/dialog.c:135
 #, c-format
@@ -42,218 +40,218 @@ msgstr "O %s"
 
 #: src/file.c:163
 msgid "Can't open file to write"
-msgstr "NemÃ´Å¾em otvoriÅ¥ sÃºbor pre zÃ¡pis"
+msgstr "Nemôžem otvoriť súbor pre zápis"
 
 #: src/file.c:168
 msgid "Can't write file"
-msgstr "NemÃ´Å¾em zapÃ­saÅ¥ sÃºbor"
+msgstr "Nemôžem zapísať súbor"
 
 #: src/font.c:49
 msgid "Font"
-msgstr "PÃ­smo"
+msgstr "Písmo"
 
 #: src/menu.c:60
 msgid "/_File"
-msgstr "/_SÃºbor"
+msgstr "/_Súbor"
 
 #: src/menu.c:62
 msgid "/File/_New"
-msgstr "/SÃºbor/_NovÃ½"
+msgstr "/Súbor/_Nový"
 
 #. { N_("/File/New _Window"), "<shift><control>N",
 #. G_CALLBACK(cb_file_new), 1 },
 #: src/menu.c:66
 msgid "/File/_Open..."
-msgstr "/SÃºbor/_OtvoriÅ¥..."
+msgstr "/Súbor/_Otvoriť..."
 
 #: src/menu.c:68
 msgid "/File/_Save"
-msgstr "/SÃºbor/_UloÅ¾iÅ¥"
+msgstr "/Súbor/_Uložiť"
 
 #: src/menu.c:70
 msgid "/File/Save _As..."
-msgstr "/SÃºbor/UloÅ¾iÅ¥ _ako..."
+msgstr "/Súbor/Uložiť _ako..."
 
 #: src/menu.c:72
 msgid "/File/_Print..."
-msgstr "/SÃºbor/_TlaÄiÅ¥..."
+msgstr "/Súbor/_Tlačiť..."
 
 #: src/menu.c:76
 msgid "/File/_Quit"
-msgstr "/SÃºbor/_Koniec"
+msgstr "/Súbor/_Koniec"
 
 #: src/menu.c:78
 msgid "/_Edit"
-msgstr "/_UpraviÅ¥"
+msgstr "/_Upraviť"
 
 #: src/menu.c:80
 msgid "/Edit/_Undo"
-msgstr "/UpraviÅ¥/V_rÃ¡tiÅ¥ spÃ¤Å¥"
+msgstr "/Upraviť/V_rátiť späť"
 
 #: src/menu.c:82
 msgid "/Edit/_Redo"
-msgstr "/UpraviÅ¥/_OpakovaÅ¥ vrÃ¡tenÃ©"
+msgstr "/Upraviť/_Opakovať vrátené"
 
 #: src/menu.c:86
 msgid "/Edit/Cu_t"
-msgstr "/UpraviÅ¥/Vys_trihnÃºÅ¥"
+msgstr "/Upraviť/Vys_trihnúť"
 
 #: src/menu.c:88
 msgid "/Edit/_Copy"
-msgstr "/UpraviÅ¥/_KopÃ­rovaÅ¥"
+msgstr "/Upraviť/_Kopírovať"
 
 #: src/menu.c:90
 msgid "/Edit/_Paste"
-msgstr "/UpraviÅ¥/_VloÅ¾iÅ¥"
+msgstr "/Upraviť/_Vložiť"
 
 #: src/menu.c:92
 msgid "/Edit/_Delete"
-msgstr "/UpraviÅ¥/V_ymazaÅ¥"
+msgstr "/Upraviť/V_ymazať"
 
 #: src/menu.c:96
 msgid "/Edit/Select _All"
-msgstr "/UpraviÅ¥/Vybr_aÅ¥ vÅ¡etko"
+msgstr "/Upraviť/Vybr_ať všetko"
 
 #: src/menu.c:98
 msgid "/_Search"
-msgstr "/_HÄ¾adaÅ¥"
+msgstr "/_Hľadať"
 
 #: src/menu.c:100
 msgid "/Search/_Find..."
-msgstr "/HÄ¾adaÅ¥/_NÃ¡jsÅ¥..."
+msgstr "/Hľadať/_Nájsť..."
 
 #: src/menu.c:102
 msgid "/Search/Find _Next"
-msgstr "/HÄ¾adaÅ¥/NÃ¡jsÅ¥ _ÄalÅ¡ie"
+msgstr "/Hľadať/Nájsť _ďalšie"
 
 #: src/menu.c:104
 msgid "/Search/Find _Previous"
-msgstr "/HÄ¾adaÅ¥/NÃ¡jsÅ¥ _predchÃ¡dzajÃºce"
+msgstr "/Hľadať/Nájsť _predchádzajúce"
 
 #: src/menu.c:106
 msgid "/Search/_Replace..."
-msgstr "/HÄ¾adaÅ¥/Nah_radiÅ¥..."
+msgstr "/Hľadať/Nah_radiť..."
 
 #: src/menu.c:110
 msgid "/Search/_Jump To..."
-msgstr "/HÄ¾adaÅ¥/_SkoÄiÅ¥ na..."
+msgstr "/Hľadať/_Skočiť na..."
 
 #: src/menu.c:112
 msgid "/_Options"
-msgstr "/P_redvoÄ¾by"
+msgstr "/P_redvoľby"
 
 #: src/menu.c:114
 msgid "/Options/_Font..."
-msgstr "/PredvoÄ¾by/_PÃ­smo..."
+msgstr "/Predvoľby/_Písmo..."
 
 #: src/menu.c:116
 msgid "/Options/_Word Wrap"
-msgstr "/PredvoÄ¾by/_ZalomiÅ¥ text"
+msgstr "/Predvoľby/_Zalomiť text"
 
 #: src/menu.c:118
 msgid "/Options/_Line Numbers"
-msgstr "/PredvoÄ¾by/_ÄŒÃ­sla riadkov"
+msgstr "/Predvoľby/Zobraziť čís_la riadkov"
 
 #: src/menu.c:122
 msgid "/Options/_Auto Indent"
-msgstr "/PredvoÄ¾by/_AutomatickÃ© odsadenie"
+msgstr "/Predvoľby/_Automatické odsadenie"
 
 #: src/menu.c:124
 msgid "/_Help"
-msgstr "/_PomocnÃ­k"
+msgstr "/_Pomocník"
 
 #: src/menu.c:126
 msgid "/Help/_About"
-msgstr "/PomocnÃ­k/O progr_ame"
+msgstr "/Pomocník/O progr_ame"
 
 #: src/search.c:73
 msgid "Search string not found"
-msgstr "HÄ¾adanÃ½ reÅ¥azec nebol nÃ¡jdenÃ½\t"
+msgstr "Hľadaný reťazec nebol nájdený\t"
 
 #: src/search.c:115
 msgid "Replace?"
-msgstr "NahradiÅ¥?"
+msgstr "Nahradiť?"
 
 #: src/search.c:143
 #, c-format
 msgid "%d strings replaced"
-msgstr "reÅ¥azec %d nahradenÃ½"
+msgstr "reťazec %d nahradený"
 
 #: src/search.c:188
 msgid "Find"
-msgstr "NÃ¡jsÅ¥"
+msgstr "Nájsť"
 
 #: src/search.c:200 src/search.c:265
 msgid "Fi_nd what: "
-msgstr "HÄ¾adaÅ¥: "
+msgstr "Hľadať: "
 
 #: src/search.c:219 src/search.c:292
 msgid "_Match case"
-msgstr "RozliÅ¡ovaÅ¥ malÃ© a veÄ¾kÃ© pÃ­s_menÃ¡"
+msgstr "Rozlišovať malé a veľké pís_mená"
 
 #: src/search.c:253
 msgid "Replace"
-msgstr "NahradiÅ¥"
+msgstr "Nahradiť"
 
 #: src/search.c:280
 msgid "Re_place with: "
-msgstr "NahradiÅ¥ s:"
+msgstr "Nahradiť s:"
 
 #: src/search.c:296
 msgid "Replace _all at once"
-msgstr "N_ahradiÅ¥ vÅ¡etko"
+msgstr "N_ahradiť všetko"
 
 #: src/search.c:342
 msgid "Jump To"
-msgstr "SkoÄiÅ¥ na"
+msgstr "Skočiť na"
 
 #: src/search.c:347
 msgid "_Jump"
-msgstr "_SkoÄiÅ¥"
+msgstr "_Skočiť"
 
 #: src/search.c:353
 msgid "_Line number: "
-msgstr "_ÄŒÃ­slo riadka:"
+msgstr "_Číslo riadku:"
 
 #: src/selector.c:103
 #, c-format
 msgid "Current Locale (%s)"
-msgstr "AktuÃ¡lna znakovÃ¡ sad (%s)"
+msgstr "Aktuálna znaková sad (%s)"
 
 #: src/selector.c:147
 msgid "Other Codeset"
-msgstr "InÃ¡ znakovÃ¡ sada"
+msgstr "Iná znaková sada"
 
 #: src/selector.c:186
 msgid "Code_set:"
-msgstr "ZnakovÃ¡ _sada:"
+msgstr "Znaková _sada:"
 
 #: src/selector.c:207
 #, c-format
 msgid "'%s' is not supported"
-msgstr "'%s' nie je podporovanÃ½"
+msgstr "'%s' nie je podporovaný"
 
 #: src/selector.c:271
 msgid "Auto Detect"
-msgstr "AutomatickÃ¡ detekcia"
+msgstr "Automatická detekcia"
 
 #: src/selector.c:325
 msgid "Open"
-msgstr "OtvoriÅ¥"
+msgstr "Otvoriť"
 
 #: src/selector.c:325
 msgid "Save As"
-msgstr "UloÅ¾iÅ¥ ako"
+msgstr "Uložiť ako"
 
 #: src/selector.c:345
 msgid "Ch_aracter Coding: "
-msgstr "KÃ³dov_anie pÃ­sma: "
+msgstr "Kódov_anie písma: "
 
 #: src/selector.c:401
 #, c-format
 msgid "'%s' already exists. Overwrite?"
-msgstr "SÃºbor '%s' uÅ¾ existuje. Chcete ho prepÃ­saÅ¥?"
+msgstr "Súbor '%s' už existuje. Chcete ho prepísať?"
 
 #: src/window.c:141
 msgid "Untitled"
-msgstr "NepomenovanÃ½"
+msgstr "Nepomenovaný"
