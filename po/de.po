@@ -1,14 +1,14 @@
-# German translation of Leafpad
-# Copyright (C) 2004 Free Software Foundation, Inc.
-# This file is distributed under the same license as the Leafpad package.
+# German translation of Mousepad.
+# Copyright (C) 2005 Erik Harrison.
+# This file is distributed under the same license as the Mousepad package.
 # Sebastian Stach <sebsta@t-online.de>, 2004.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Leafpad 0.7.6\n"
+"Project-Id-Version: Mousepad 0.2.2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-02-21 16:40-0500\n"
-"PO-Revision-Date: 2004-11-14 18:33+0100\n"
+"POT-Creation-Date: 2005-10-07 18:54+0900\n"
+"PO-Revision-Date: 2005-10-07 18:38+0900\n"
 "Last-Translator: Ruediger Arp <ruediger@gmx.net>\n"
 "Language-Team: German <de@li.org>\n"
 "MIME-Version: 1.0\n"

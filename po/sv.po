@@ -1,14 +1,14 @@
-# Swedish translation of Leafpad text editor.
-# Copyright (C) 2004 Free Software Foundation, Inc.
-# This file is distributed under the same license as the PACKAGE package.
+# Swedish translation of Mousepad text editor.
+# Copyright (C) 2005 Erik Harrison.
+# This file is distributed under the same license as the Mousepad package.
 # Isak Savo <iso01001@student.mdh.se>, 2004.
-# 
+#
 msgid ""
 msgstr ""
-"Project-Id-Version: Leafpad 0.7.8\n"
+"Project-Id-Version: Mousepad 0.2.2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-02-21 16:40-0500\n"
-"PO-Revision-Date: 2004-12-14 13:06+0200\n"
+"POT-Creation-Date: 2005-10-07 18:54+0900\n"
+"PO-Revision-Date: 2005-10-07 18:51+0900\n"
 "Last-Translator: Isak Savo <iso01001@student.mdh.se>\n"
 "Language-Team: Swedish <sv@li.org>\n"
 "MIME-Version: 1.0\n"

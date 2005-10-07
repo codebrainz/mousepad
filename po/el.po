@@ -1,14 +1,14 @@
-# Translation of mousepad.pot to ÎÎ»Î»Î·Î½Î¹ÎºÎ¬
+# Greek translations for Mousepad package.
 # Copyright (C) 2005 Erik Harrison <erikharrison@gmail.com>
-# This file is distributed under the same license as the mousepad package.
-# Stavros Giannouris <stavrosg2002@freemail.gr>, 2005
+# This file is distributed under the same license as the Mousepad package.
+# Stavros Giannouris <stavrosg2002@freemail.gr>, 2005.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: mousepad 0.2.2\n"
+"Project-Id-Version: Mousepad 0.2.2\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2005-02-21 16:40-0500\n"
-"PO-Revision-Date: 2005-08-06 14:17+0200\n"
+"PO-Revision-Date: 2005-10-07 18:59+0900\n"
 "Last-Translator: Stavros Giannouris <stavrosg2002@freemail.gr>\n"
 "Language-Team: Greek <i18ngr@hellug.gr>\n"
 "MIME-Version: 1.0\n"

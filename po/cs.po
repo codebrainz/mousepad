@@ -1,16 +1,16 @@
-# Czech translation of leafpad.
-# Copyright (C) 2004 Free Software Foundation, Inc.
-# This file is distributed under the same license as the leafpad package.
+# Czech translation of Mousepad.
+# Copyright (C) 2005 Erik Harrison.
+# This file is distributed under the same license as the Mousepad package.
 # Petr Vysloužil <evyslouz@volny.cz>, 2004.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: leafpad 0.7.6\n"
+"Project-Id-Version: Mousepad 0.2.2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-02-21 16:40-0500\n"
-"PO-Revision-Date: 2005-08-20 17:12+0900\n"
+"POT-Creation-Date: 2005-10-07 18:54+0900\n"
+"PO-Revision-Date: 2005-10-07 18:37+0900\n"
 "Last-Translator: Petr Vysloužil <evyslouz@volny.cz>\n"
-"Language-Team: Czech <cs@li.org>\n"
+"Language-Team: Czech <translation-team-cs@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"

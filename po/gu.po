@@ -1,21 +1,21 @@
-# translation of gu.po to Gujarati
-# This file is distributed under the same license as the PACKAGE package.
-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER.
+# Gujarati translations for Mousepad package.
+# Copyright (C) 2005 Erik Harrison.
+# This file is distributed under the same license as the Mousepad package.
 # Ankit Patel <ankit644@yahoo.com>, 2005.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: gu\n"
+"Project-Id-Version: Mousepad 0.2.2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-02-21 16:40-0500\n"
-"PO-Revision-Date: 2005-08-26 09:50+0530\n"
+"POT-Creation-Date: 2005-10-07 18:54+0900\n"
+"PO-Revision-Date: 2005-10-07 18:41+0900\n"
 "Last-Translator: Ankit Patel <ankit644@yahoo.com>\n"
 "Language-Team: Gujarati <indianoss-gujarati@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: KBabel 1.9.1\n"
-"Plural-Forms: nplurals=2; plural=(n!=1);\n\n"
+"Plural-Forms: nplurals=2; plural=(n!=1);\n"
 
 #: src/callback.c:34
 #, c-format
@@ -257,4 +257,3 @@ msgstr "'%s' પહેલાથી જ હાજર છે. શું ફરી�
 #: src/window.c:141
 msgid "Untitled"
 msgstr "શીર્ષકવિહિન"
-

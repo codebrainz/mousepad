@@ -1,16 +1,14 @@
-# Tamil translation of leafpad.
-# Copyright (C) 2004 Free Software Foundation, Inc.
-# This file is distributed under the same license as the leafpad package.
+# Tamil translation of Mousepad.
+# Copyright (C) 2005 Erik Harrison.
+# This file is distributed under the same license as the Mousepad package.
 # Vijay Durairaj <vjd81@yahoo.com>, 2004.
-# , fuzzy
-# 
-# 
+#
 msgid ""
 msgstr ""
-"Project-Id-Version: leafpad 0.7.7\n"
+"Project-Id-Version: Mousepad 0.2.2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-02-21 16:40-0500\n"
-"PO-Revision-Date: 2004-11-25 03:24-0700\n"
+"POT-Creation-Date: 2005-10-07 18:54+0900\n"
+"PO-Revision-Date: 2005-10-07 18:52+0900\n"
 "Last-Translator: Vijay Durairaj <vjd81@yahoo.com>\n"
 "Language-Team: Tamil <tamilinix@yahoogroups.com>\n"
 "MIME-Version: 1.0\n"

@@ -1,16 +1,16 @@
-# Simplified Chinese translation for LeafPad
-# Copyright (C) 2004 Free Software Foundation, Inc.
-# This file is distributed under the same license as the leafpad package.
+# Simplified Chinese translation for MousePad.
+# Copyright (C) 2005 Erik Harrison.
+# This file is distributed under the same license as the Mousepad package.
 # Carlos Z.F. Liu <carlos_liu@yahoo.com>, 2004.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Leafpad 0.7.2\n"
+"Project-Id-Version: Mousepad 0.2.2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-02-21 16:40-0500\n"
-"PO-Revision-Date: 2004-10-01 03:34+1200\n"
+"POT-Creation-Date: 2005-10-07 18:54+0900\n"
+"PO-Revision-Date: 2005-10-07 18:52+0900\n"
 "Last-Translator: Carlos Z.F. Liu <carlos_liu@yahoo.com>\n"
-"Language-Team: zh_CN <i18n-translation@lists.linux.net.cn>\n"
+"Language-Team: Simplified Chinese <i18n-translation@lists.linux.net.cn>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
