@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mousepad 0.2.2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-02-21 16:40-0500\n"
+"POT-Creation-Date: 2005-10-17 06:53+0900\n"
 "PO-Revision-Date: 2005-10-07 18:59+0900\n"
 "Last-Translator: Stavros Giannouris <stavrosg2002@freemail.gr>\n"
 "Language-Team: Greek <i18ngr@hellug.gr>\n"
@@ -22,8 +22,7 @@ msgstr ""
 msgid "Save changes to '%s'?"
 msgstr "Αποθήκευση αλλαγών στο '%s' ;"
 
-#: src/callback.c:180
-#: src/file.c:150
+#: src/callback.c:180 src/file.c:150
 #, c-format
 msgid "Can't convert codeset to '%s'"
 msgstr "Αδυναμία μετατροπής της κωδικοσελίδας σε '%s'"
@@ -184,13 +183,11 @@ msgstr "%d επαναλήψεις αντικαταστάθηκαν."
 msgid "Find"
 msgstr "Εύρεση"
 
-#: src/search.c:200
-#: src/search.c:265
+#: src/search.c:200 src/search.c:265
 msgid "Fi_nd what: "
 msgstr "Ε_υρεση Κειμένου:"
 
-#: src/search.c:219
-#: src/search.c:292
+#: src/search.c:219 src/search.c:292
 msgid "_Match case"
 msgstr "_Ταίριασμα πεζών-κεφαλαίων"
 
@@ -260,4 +257,3 @@ msgstr "Το '%s' υπάρχει ήδη. Αντικατάσταση;"
 #: src/window.c:141
 msgid "Untitled"
 msgstr "Χωρίς Τίτλο"
-
