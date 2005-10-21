@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mousepad 0.2.2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-10-17 06:53+0900\n"
+"POT-Creation-Date: 2005-10-21 17:30+0900\n"
 "PO-Revision-Date: 2005-10-07 18:52+0900\n"
 "Last-Translator: Carlos Z.F. Liu <carlos_liu@yahoo.com>\n"
 "Language-Team: Simplified Chinese <i18n-translation@lists.linux.net.cn>\n"
@@ -15,282 +15,245 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: src/callback.c:34
+#: ../src/callback.c:34
 #, c-format
 msgid "Save changes to '%s'?"
 msgstr "将更改保存到“%s”吗？"
 
-#: src/callback.c:180 src/file.c:150
+#: ../src/callback.c:180 ../src/file.c:150
 #, c-format
 msgid "Can't convert codeset to '%s'"
 msgstr "无法将编码转换到“%s”"
 
-#: src/callback.c:207
+#: ../src/callback.c:207
 #, fuzzy
 msgid "Can't open pipe to process"
 msgstr "无法打开要写入的文件"
 
-#: src/callback.c:366
+#: ../src/callback.c:366
 msgid "A text editor for Xfce"
 msgstr ""
 
-#: src/dialog.c:135
+#: ../src/dialog.c:135
 #, c-format
 msgid "About %s"
 msgstr "关于 %s"
 
-#: src/file.c:163
+#: ../src/file.c:163
 msgid "Can't open file to write"
 msgstr "无法打开要写入的文件"
 
-#: src/file.c:168
+#: ../src/file.c:168
 msgid "Can't write file"
 msgstr "无法写入文件"
 
-#: src/font.c:49
+#: ../src/font.c:49
 msgid "Font"
 msgstr "字体"
 
-#: src/menu.c:60
+#: ../src/menu.c:60
 msgid "/_File"
 msgstr "/文件(_F)"
 
-#: src/menu.c:62
+#: ../src/menu.c:62
 msgid "/File/_New"
 msgstr "/文件(F)/新建(_N)"
 
 #. { N_("/File/New _Window"), "<shift><control>N",
 #. G_CALLBACK(cb_file_new), 1 },
-#: src/menu.c:66
+#: ../src/menu.c:66
 msgid "/File/_Open..."
 msgstr "/文件(F)/打开(_O)..."
 
-#: src/menu.c:68
+#: ../src/menu.c:68
 msgid "/File/_Save"
 msgstr "/文件(F)/保存(_S)"
 
-#: src/menu.c:70
+#: ../src/menu.c:70
 msgid "/File/Save _As..."
 msgstr "/文件(F)/另存为(_A)..."
 
-#: src/menu.c:72
+#: ../src/menu.c:72
 #, fuzzy
 msgid "/File/_Print..."
 msgstr "/文件(F)/打开(_O)..."
 
-#: src/menu.c:76
+#: ../src/menu.c:76
 msgid "/File/_Quit"
 msgstr "/文件(F)/退出(_Q)"
 
-#: src/menu.c:78
+#: ../src/menu.c:78
 msgid "/_Edit"
 msgstr "/编辑(_E)"
 
-#: src/menu.c:80
+#: ../src/menu.c:80
 msgid "/Edit/_Undo"
 msgstr "/编辑(E)/撤销(_U)"
 
-#: src/menu.c:82
+#: ../src/menu.c:82
 msgid "/Edit/_Redo"
 msgstr "/编辑(E)/重复(_R)"
 
-#: src/menu.c:86
+#: ../src/menu.c:86
 msgid "/Edit/Cu_t"
 msgstr "/编辑(E)/剪切(_T)"
 
-#: src/menu.c:88
+#: ../src/menu.c:88
 msgid "/Edit/_Copy"
 msgstr "/编辑(E)/复制(_C)"
 
-#: src/menu.c:90
+#: ../src/menu.c:90
 msgid "/Edit/_Paste"
 msgstr "/编辑(E)/粘贴(_P)"
 
-#: src/menu.c:92
+#: ../src/menu.c:92
 msgid "/Edit/_Delete"
 msgstr "/编辑(E)/删除(_D)"
 
-#: src/menu.c:96
+#: ../src/menu.c:96
 msgid "/Edit/Select _All"
 msgstr "/编辑(E)/选择全部(_A)"
 
-#: src/menu.c:98
+#: ../src/menu.c:98
 msgid "/_Search"
 msgstr "/搜索(_S)"
 
-#: src/menu.c:100
+#: ../src/menu.c:100
 msgid "/Search/_Find..."
 msgstr "/搜索(S)/查找(_F)..."
 
-#: src/menu.c:102
+#: ../src/menu.c:102
 msgid "/Search/Find _Next"
 msgstr "/搜索(S)/查找下一个(_N)"
 
-#: src/menu.c:104
+#: ../src/menu.c:104
 msgid "/Search/Find _Previous"
 msgstr "/搜索(S)/查找上一个(_P)"
 
-#: src/menu.c:106
+#: ../src/menu.c:106
 msgid "/Search/_Replace..."
 msgstr "/搜索/替换(_R)..."
 
-#: src/menu.c:110
+#: ../src/menu.c:110
 msgid "/Search/_Jump To..."
 msgstr "/搜索(S)/跳转到(_J)..."
 
-#: src/menu.c:112
+#: ../src/menu.c:112
 msgid "/_Options"
 msgstr "/选项(_O)"
 
-#: src/menu.c:114
+#: ../src/menu.c:114
 msgid "/Options/_Font..."
 msgstr "/选项(O)/字体(_F)..."
 
-#: src/menu.c:116
+#: ../src/menu.c:116
 msgid "/Options/_Word Wrap"
 msgstr "/选项(O)/自动换行(_W)"
 
-#: src/menu.c:118
+#: ../src/menu.c:118
 msgid "/Options/_Line Numbers"
 msgstr "/选项(O)/行号(_L)"
 
-#: src/menu.c:122
+#: ../src/menu.c:122
 msgid "/Options/_Auto Indent"
 msgstr "/选项(O)/自动缩进(_A)"
 
-#: src/menu.c:124
+#: ../src/menu.c:124
 msgid "/_Help"
 msgstr "/帮助(_H)"
 
-#: src/menu.c:126
+#: ../src/menu.c:126
 msgid "/Help/_About"
 msgstr "/帮助(H)/关于(_A)"
 
-#: src/search.c:73
+#: ../src/search.c:73
 msgid "Search string not found"
 msgstr "找不到搜索字串"
 
-#: src/search.c:115
+#: ../src/search.c:115
 msgid "Replace?"
 msgstr "替换吗？"
 
-#: src/search.c:143
+#: ../src/search.c:143
 #, c-format
 msgid "%d strings replaced"
 msgstr "替换了 %d 个字符串"
 
-#: src/search.c:188
+#: ../src/search.c:188
 msgid "Find"
 msgstr "查找"
 
-#: src/search.c:200 src/search.c:265
+#: ../src/search.c:200 ../src/search.c:265
 msgid "Fi_nd what: "
 msgstr "查找(_N)："
 
-#: src/search.c:219 src/search.c:292
+#: ../src/search.c:219 ../src/search.c:292
 msgid "_Match case"
 msgstr "区分大小写(_M)"
 
-#: src/search.c:253
+#: ../src/search.c:253
 msgid "Replace"
 msgstr "替换"
 
-#: src/search.c:280
+#: ../src/search.c:280
 msgid "Re_place with: "
 msgstr "替换为(_A)："
 
-#: src/search.c:296
+#: ../src/search.c:296
 msgid "Replace _all at once"
 msgstr "全部替换(_A)"
 
-#: src/search.c:342
+#: ../src/search.c:342
 msgid "Jump To"
 msgstr "跳转至"
 
-#: src/search.c:347
+#: ../src/search.c:347
 msgid "_Jump"
 msgstr "跳转(_J)"
 
-#: src/search.c:353
+#: ../src/search.c:353
 msgid "_Line number: "
 msgstr "行号(_L)："
 
-#: src/selector.c:103
+#: ../src/selector.c:103
 #, c-format
 msgid "Current Locale (%s)"
 msgstr "当前区域 (%s)"
 
-#: src/selector.c:147
+#: ../src/selector.c:147
 msgid "Other Codeset"
 msgstr "其它编码"
 
-#: src/selector.c:186
+#: ../src/selector.c:186
 msgid "Code_set:"
 msgstr "编码(_S)："
 
-#: src/selector.c:207
+#: ../src/selector.c:207
 #, c-format
 msgid "'%s' is not supported"
 msgstr "“%s”不被支持"
 
-#: src/selector.c:271
+#: ../src/selector.c:271
 msgid "Auto Detect"
 msgstr "自动检测"
 
-#: src/selector.c:325
+#: ../src/selector.c:325
 msgid "Open"
 msgstr "打开"
 
-#: src/selector.c:325
+#: ../src/selector.c:325
 msgid "Save As"
 msgstr "另存为"
 
-#: src/selector.c:345
+#: ../src/selector.c:345
 msgid "Ch_aracter Coding: "
 msgstr "字符编码(_A)："
 
-#: src/selector.c:401
+#: ../src/selector.c:401
 #, c-format
 msgid "'%s' already exists. Overwrite?"
 msgstr "文件“%s”已经存在。覆盖它吗？"
 
-#: src/window.c:141
+#: ../src/window.c:141
 msgid "Untitled"
 msgstr "无标题"
-
-#~ msgid "GTK+ based simple text editor"
-#~ msgstr "基于 GTK+ 的简易文字编辑器"
-
-#~ msgid "Other Codeset (%s)"
-#~ msgstr "其它编码(%s)"
-
-#~ msgid "Other Codeset..."
-#~ msgstr "其它编码..."
-
-#, fuzzy
-#~ msgid "Unicode (UTF-8)"
-#~ msgstr "统一码"
-
-#~ msgid "Western"
-#~ msgstr "西欧"
-
-#~ msgid "Cyrillic"
-#~ msgstr "西里尔文"
-
-#~ msgid "Chinese Simplified"
-#~ msgstr "简体中文"
-
-#~ msgid "Chinese Traditional"
-#~ msgstr "繁体中文"
-
-#~ msgid "Japanese"
-#~ msgstr "日语"
-
-#~ msgid "Korean"
-#~ msgstr "朝鲜语"
-
-#~ msgid "Enter Codeset"
-#~ msgstr "输入编码"
-
-#~ msgid "GTK-based Notepad clone"
-#~ msgstr "基于 GTK 的记事本克隆"

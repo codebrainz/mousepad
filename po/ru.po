@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mousepad 0.2.2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-10-17 06:53+0900\n"
+"POT-Creation-Date: 2005-10-21 17:30+0900\n"
 "PO-Revision-Date: 2005-10-07 18:48+0900\n"
 "Last-Translator: Artem Vakhitov <temcat@mail.ru>\n"
 "Language-Team: Russian <ru@li.org>\n"
@@ -15,279 +15,245 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: src/callback.c:34
+#: ../src/callback.c:34
 #, c-format
 msgid "Save changes to '%s'?"
 msgstr "Сохранить изменения в '%s'?"
 
-#: src/callback.c:180 src/file.c:150
+#: ../src/callback.c:180 ../src/file.c:150
 #, c-format
 msgid "Can't convert codeset to '%s'"
 msgstr "Не удалось преобразовать кодировку в '%s'"
 
-#: src/callback.c:207
+#: ../src/callback.c:207
 #, fuzzy
 msgid "Can't open pipe to process"
 msgstr "Не удалось открыть файл для записи"
 
-#: src/callback.c:366
+#: ../src/callback.c:366
 msgid "A text editor for Xfce"
 msgstr ""
 
-#: src/dialog.c:135
+#: ../src/dialog.c:135
 #, c-format
 msgid "About %s"
 msgstr "О программе \"%s\""
 
-#: src/file.c:163
+#: ../src/file.c:163
 msgid "Can't open file to write"
 msgstr "Не удалось открыть файл для записи"
 
-#: src/file.c:168
+#: ../src/file.c:168
 msgid "Can't write file"
 msgstr "Не удалось записать файл"
 
-#: src/font.c:49
+#: ../src/font.c:49
 msgid "Font"
 msgstr "Шрифт"
 
-#: src/menu.c:60
+#: ../src/menu.c:60
 msgid "/_File"
 msgstr "/_Файл"
 
-#: src/menu.c:62
+#: ../src/menu.c:62
 msgid "/File/_New"
 msgstr "/Файл/_Создать"
 
 #. { N_("/File/New _Window"), "<shift><control>N",
 #. G_CALLBACK(cb_file_new), 1 },
-#: src/menu.c:66
+#: ../src/menu.c:66
 msgid "/File/_Open..."
 msgstr "/Файл/_Открыть..."
 
-#: src/menu.c:68
+#: ../src/menu.c:68
 msgid "/File/_Save"
 msgstr "/Файл/Со_хранить"
 
-#: src/menu.c:70
+#: ../src/menu.c:70
 msgid "/File/Save _As..."
 msgstr "/Файл/Сохранить _как..."
 
-#: src/menu.c:72
+#: ../src/menu.c:72
 #, fuzzy
 msgid "/File/_Print..."
 msgstr "/Файл/_Открыть..."
 
-#: src/menu.c:76
+#: ../src/menu.c:76
 msgid "/File/_Quit"
 msgstr "/Файл/В_ыход"
 
-#: src/menu.c:78
+#: ../src/menu.c:78
 msgid "/_Edit"
 msgstr "/_Правка"
 
-#: src/menu.c:80
+#: ../src/menu.c:80
 msgid "/Edit/_Undo"
 msgstr "/Правка/_Отменить"
 
-#: src/menu.c:82
+#: ../src/menu.c:82
 msgid "/Edit/_Redo"
 msgstr "/Правка/Ве_рнуть"
 
-#: src/menu.c:86
+#: ../src/menu.c:86
 msgid "/Edit/Cu_t"
 msgstr "/Правка/_Вырезать"
 
-#: src/menu.c:88
+#: ../src/menu.c:88
 msgid "/Edit/_Copy"
 msgstr "/Правка/_Копировать"
 
-#: src/menu.c:90
+#: ../src/menu.c:90
 msgid "/Edit/_Paste"
 msgstr "/Правка/Вст_авить"
 
-#: src/menu.c:92
+#: ../src/menu.c:92
 msgid "/Edit/_Delete"
 msgstr "/Правка/У_далить"
 
-#: src/menu.c:96
+#: ../src/menu.c:96
 msgid "/Edit/Select _All"
 msgstr "/Правка/В_ыделить все"
 
-#: src/menu.c:98
+#: ../src/menu.c:98
 msgid "/_Search"
 msgstr "/П_оиск"
 
-#: src/menu.c:100
+#: ../src/menu.c:100
 msgid "/Search/_Find..."
 msgstr "/Поиск/_Найти..."
 
-#: src/menu.c:102
+#: ../src/menu.c:102
 msgid "/Search/Find _Next"
 msgstr "/Поиск/Найти след_ующее"
 
-#: src/menu.c:104
+#: ../src/menu.c:104
 msgid "/Search/Find _Previous"
 msgstr "/Поиск/Найти пред_ыдущее"
 
-#: src/menu.c:106
+#: ../src/menu.c:106
 msgid "/Search/_Replace..."
 msgstr "/Поиск/За_менить..."
 
-#: src/menu.c:110
+#: ../src/menu.c:110
 msgid "/Search/_Jump To..."
 msgstr "/Поиск/Перейти к _строке..."
 
-#: src/menu.c:112
+#: ../src/menu.c:112
 msgid "/_Options"
 msgstr "Параметры"
 
-#: src/menu.c:114
+#: ../src/menu.c:114
 msgid "/Options/_Font..."
 msgstr "/Параметры/_Шрифт..."
 
-#: src/menu.c:116
+#: ../src/menu.c:116
 msgid "/Options/_Word Wrap"
 msgstr "/Параметры/_Переносить слова"
 
-#: src/menu.c:118
+#: ../src/menu.c:118
 msgid "/Options/_Line Numbers"
 msgstr "/Параметры/Показывать _номера строк"
 
-#: src/menu.c:122
+#: ../src/menu.c:122
 msgid "/Options/_Auto Indent"
 msgstr "/Параметры/_Автоматический отступ"
 
-#: src/menu.c:124
+#: ../src/menu.c:124
 msgid "/_Help"
 msgstr "/_Справка"
 
-#: src/menu.c:126
+#: ../src/menu.c:126
 msgid "/Help/_About"
 msgstr "/Справка/_О программе"
 
-#: src/search.c:73
+#: ../src/search.c:73
 msgid "Search string not found"
 msgstr "Искомая строка не найдена"
 
-#: src/search.c:115
+#: ../src/search.c:115
 msgid "Replace?"
 msgstr "Заменить?"
 
-#: src/search.c:143
+#: ../src/search.c:143
 #, c-format
 msgid "%d strings replaced"
 msgstr "%d строк заменено"
 
-#: src/search.c:188
+#: ../src/search.c:188
 msgid "Find"
 msgstr "Поиск"
 
-#: src/search.c:200 src/search.c:265
+#: ../src/search.c:200 ../src/search.c:265
 msgid "Fi_nd what: "
 msgstr "На_йти: "
 
-#: src/search.c:219 src/search.c:292
+#: ../src/search.c:219 ../src/search.c:292
 msgid "_Match case"
 msgstr "Учитывать _регистр"
 
-#: src/search.c:253
+#: ../src/search.c:253
 msgid "Replace"
 msgstr "Замена"
 
-#: src/search.c:280
+#: ../src/search.c:280
 msgid "Re_place with: "
 msgstr "З_аменить на: "
 
-#: src/search.c:296
+#: ../src/search.c:296
 msgid "Replace _all at once"
 msgstr "Заменить _все"
 
-#: src/search.c:342
+#: ../src/search.c:342
 msgid "Jump To"
 msgstr "Переход"
 
-#: src/search.c:347
+#: ../src/search.c:347
 msgid "_Jump"
 msgstr "_Перейти"
 
-#: src/search.c:353
+#: ../src/search.c:353
 msgid "_Line number: "
 msgstr "_Номер строки: "
 
-#: src/selector.c:103
+#: ../src/selector.c:103
 #, c-format
 msgid "Current Locale (%s)"
 msgstr "Текущая локаль (%s)"
 
-#: src/selector.c:147
+#: ../src/selector.c:147
 msgid "Other Codeset"
 msgstr "Другая кодировка"
 
-#: src/selector.c:186
+#: ../src/selector.c:186
 msgid "Code_set:"
 msgstr "_Кодировка:"
 
-#: src/selector.c:207
+#: ../src/selector.c:207
 #, c-format
 msgid "'%s' is not supported"
 msgstr "'%s' не поддерживается"
 
-#: src/selector.c:271
+#: ../src/selector.c:271
 msgid "Auto Detect"
 msgstr "Автоопределение"
 
-#: src/selector.c:325
+#: ../src/selector.c:325
 msgid "Open"
 msgstr "Открытие файла"
 
-#: src/selector.c:325
+#: ../src/selector.c:325
 msgid "Save As"
 msgstr "Сохранение файла"
 
-#: src/selector.c:345
+#: ../src/selector.c:345
 msgid "Ch_aracter Coding: "
 msgstr "Ко_дировка символов"
 
-#: src/selector.c:401
+#: ../src/selector.c:401
 #, c-format
 msgid "'%s' already exists. Overwrite?"
 msgstr "'%s' уже существует. Переписать?"
 
-#: src/window.c:141
+#: ../src/window.c:141
 msgid "Untitled"
 msgstr "Без имени"
-
-#~ msgid "GTK+ based simple text editor"
-#~ msgstr "Простой текстовый редактор на основе GTK+"
-
-#~ msgid "Other Codeset (%s)"
-#~ msgstr "Другая кодировка (%s)"
-
-#~ msgid "Other Codeset..."
-#~ msgstr "Другая кодировка..."
-
-#, fuzzy
-#~ msgid "Unicode (UTF-8)"
-#~ msgstr "Юникод"
-
-#~ msgid "Western"
-#~ msgstr "Западноевропейская"
-
-#~ msgid "Cyrillic"
-#~ msgstr "Кириллица"
-
-#~ msgid "Chinese Simplified"
-#~ msgstr "Упрощенная китайская"
-
-#~ msgid "Chinese Traditional"
-#~ msgstr "Традиционная китайская"
-
-#~ msgid "Japanese"
-#~ msgstr "Японская"
-
-#~ msgid "Korean"
-#~ msgstr "Корейская"
-
-#~ msgid "Enter Codeset"
-#~ msgstr "Введите название кодировки"

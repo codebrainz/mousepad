@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mousepad 0.2.2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-10-17 06:53+0900\n"
+"POT-Creation-Date: 2005-10-21 17:30+0900\n"
 "PO-Revision-Date: 2005-10-07 18:42+0900\n"
 "Last-Translator: SZERVÁC Attila <sas@321.hu>\n"
 "Language-Team: Hungarian <translation-team-hu@lists.sourceforge.net>\n"
@@ -17,244 +17,244 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: src/callback.c:34
+#: ../src/callback.c:34
 #, c-format
 msgid "Save changes to '%s'?"
 msgstr "Mented az alábbi változásait?: '%s'"
 
-#: src/callback.c:180 src/file.c:150
+#: ../src/callback.c:180 ../src/file.c:150
 #, c-format
 msgid "Can't convert codeset to '%s'"
 msgstr "A kódkészlet nem váltható erre: '%s'"
 
-#: src/callback.c:207
+#: ../src/callback.c:207
 #, fuzzy
 msgid "Can't open pipe to process"
 msgstr "Nem lehet írásra megnyitni a fájlt"
 
-#: src/callback.c:366
+#: ../src/callback.c:366
 msgid "A text editor for Xfce"
 msgstr "Egyszerű Xfce szövegszerkesztő"
 
-#: src/dialog.c:135
+#: ../src/dialog.c:135
 #, c-format
 msgid "About %s"
 msgstr "%s névjegy"
 
-#: src/file.c:163
+#: ../src/file.c:163
 msgid "Can't open file to write"
 msgstr "Nem lehet írásra megnyitni a fájlt"
 
-#: src/file.c:168
+#: ../src/file.c:168
 msgid "Can't write file"
 msgstr "Nem lehet írni a fájlt"
 
-#: src/font.c:49
+#: ../src/font.c:49
 msgid "Font"
 msgstr "Betű"
 
-#: src/menu.c:60
+#: ../src/menu.c:60
 msgid "/_File"
 msgstr "/_Fájl"
 
-#: src/menu.c:62
+#: ../src/menu.c:62
 msgid "/File/_New"
 msgstr "/Fájl/_Új"
 
 #. { N_("/File/New _Window"), "<shift><control>N",
 #. G_CALLBACK(cb_file_new), 1 },
-#: src/menu.c:66
+#: ../src/menu.c:66
 msgid "/File/_Open..."
 msgstr "/Fájl/Meg_nyit"
 
-#: src/menu.c:68
+#: ../src/menu.c:68
 msgid "/File/_Save"
 msgstr "/Fájl/_Ment"
 
-#: src/menu.c:70
+#: ../src/menu.c:70
 msgid "/File/Save _As..."
 msgstr "/Fájl/Ment má_sként..."
 
-#: src/menu.c:72
+#: ../src/menu.c:72
 msgid "/File/_Print..."
 msgstr "/Fájl/N_yomtat..."
 
-#: src/menu.c:76
+#: ../src/menu.c:76
 msgid "/File/_Quit"
 msgstr "/Fájl/_Kilép"
 
-#: src/menu.c:78
+#: ../src/menu.c:78
 msgid "/_Edit"
 msgstr "Sz_erkesztés"
 
-#: src/menu.c:80
+#: ../src/menu.c:80
 msgid "/Edit/_Undo"
 msgstr "/Szerkesztés/_Visszavon"
 
-#: src/menu.c:82
+#: ../src/menu.c:82
 msgid "/Edit/_Redo"
 msgstr "/Szerkesztés/Új_ra"
 
-#: src/menu.c:86
+#: ../src/menu.c:86
 msgid "/Edit/Cu_t"
 msgstr "/Szerkesztés/_Kivág"
 
-#: src/menu.c:88
+#: ../src/menu.c:88
 msgid "/Edit/_Copy"
 msgstr "/Szerkesztés/_Másol"
 
-#: src/menu.c:90
+#: ../src/menu.c:90
 msgid "/Edit/_Paste"
 msgstr "/Szerkesztés/_Beilleszt"
 
-#: src/menu.c:92
+#: ../src/menu.c:92
 msgid "/Edit/_Delete"
 msgstr "/Szerkesztés/_Töröl"
 
-#: src/menu.c:96
+#: ../src/menu.c:96
 msgid "/Edit/Select _All"
 msgstr "/Szerkesztés/Min_dent kijelöl"
 
-#: src/menu.c:98
+#: ../src/menu.c:98
 msgid "/_Search"
 msgstr "/_Keresés"
 
-#: src/menu.c:100
+#: ../src/menu.c:100
 msgid "/Search/_Find..."
 msgstr "/Keresés/_Találd meg..."
 
-#: src/menu.c:102
+#: ../src/menu.c:102
 msgid "/Search/Find _Next"
 msgstr "/Keresés/_Következő keresése"
 
-#: src/menu.c:104
+#: ../src/menu.c:104
 msgid "/Search/Find _Previous"
 msgstr "/Keresés/_Előző keresése"
 
-#: src/menu.c:106
+#: ../src/menu.c:106
 msgid "/Search/_Replace..."
 msgstr "/Keresés/_Csere..."
 
-#: src/menu.c:110
+#: ../src/menu.c:110
 msgid "/Search/_Jump To..."
 msgstr "/Keresés/_Ugrás..."
 
-#: src/menu.c:112
+#: ../src/menu.c:112
 msgid "/_Options"
 msgstr "/_Beállítások"
 
-#: src/menu.c:114
+#: ../src/menu.c:114
 msgid "/Options/_Font..."
 msgstr "/Beállítások/_Betű..."
 
-#: src/menu.c:116
+#: ../src/menu.c:116
 msgid "/Options/_Word Wrap"
 msgstr "/Beállítások/Tördelés"
 
-#: src/menu.c:118
+#: ../src/menu.c:118
 msgid "/Options/_Line Numbers"
 msgstr "/Beállítások/_Sorszámok"
 
-#: src/menu.c:122
+#: ../src/menu.c:122
 msgid "/Options/_Auto Indent"
 msgstr "/Beállítások/_Automatikus behúzás"
 
-#: src/menu.c:124
+#: ../src/menu.c:124
 msgid "/_Help"
 msgstr "_Súgó"
 
-#: src/menu.c:126
+#: ../src/menu.c:126
 msgid "/Help/_About"
 msgstr "/Súgó/_Névjegy"
 
-#: src/search.c:73
+#: ../src/search.c:73
 msgid "Search string not found"
 msgstr "A keresett szöveg nem található"
 
-#: src/search.c:115
+#: ../src/search.c:115
 msgid "Replace?"
 msgstr "Cseréljük?"
 
-#: src/search.c:143
+#: ../src/search.c:143
 #, c-format
 msgid "%d strings replaced"
 msgstr "%d szövegrészletet cseréltünk"
 
-#: src/search.c:188
+#: ../src/search.c:188
 msgid "Find"
 msgstr "Keres"
 
-#: src/search.c:200 src/search.c:265
+#: ../src/search.c:200 ../src/search.c:265
 msgid "Fi_nd what: "
 msgstr "_Amit keres: "
 
-#: src/search.c:219 src/search.c:292
+#: ../src/search.c:219 ../src/search.c:292
 msgid "_Match case"
 msgstr "_Kis/nagybetű számít"
 
-#: src/search.c:253
+#: ../src/search.c:253
 msgid "Replace"
 msgstr "Csere"
 
-#: src/search.c:280
+#: ../src/search.c:280
 msgid "Re_place with: "
 msgstr "_Csere erre: "
 
-#: src/search.c:296
+#: ../src/search.c:296
 msgid "Replace _all at once"
 msgstr "Mindent _egyszerre kicserél"
 
-#: src/search.c:342
+#: ../src/search.c:342
 msgid "Jump To"
 msgstr "Ugrás Ide"
 
-#: src/search.c:347
+#: ../src/search.c:347
 msgid "_Jump"
 msgstr "_Ugrás"
 
-#: src/search.c:353
+#: ../src/search.c:353
 msgid "_Line number: "
 msgstr "S_orszám: "
 
-#: src/selector.c:103
+#: ../src/selector.c:103
 #, c-format
 msgid "Current Locale (%s)"
 msgstr "Jelenlegi locale (%s)"
 
-#: src/selector.c:147
+#: ../src/selector.c:147
 msgid "Other Codeset"
 msgstr "Más kódkészlet"
 
-#: src/selector.c:186
+#: ../src/selector.c:186
 msgid "Code_set:"
 msgstr "Kódké_szlet:"
 
-#: src/selector.c:207
+#: ../src/selector.c:207
 #, c-format
 msgid "'%s' is not supported"
 msgstr "'%s' nem támogatott"
 
-#: src/selector.c:271
+#: ../src/selector.c:271
 msgid "Auto Detect"
 msgstr "Automatikus Felismerés"
 
-#: src/selector.c:325
+#: ../src/selector.c:325
 msgid "Open"
 msgstr "Megnyitás"
 
-#: src/selector.c:325
+#: ../src/selector.c:325
 msgid "Save As"
 msgstr "Mentés másként"
 
-#: src/selector.c:345
+#: ../src/selector.c:345
 msgid "Ch_aracter Coding: "
 msgstr "K_arakter kódolás: "
 
-#: src/selector.c:401
+#: ../src/selector.c:401
 #, c-format
 msgid "'%s' already exists. Overwrite?"
 msgstr "'%s' már létezik. Felülírod?"
 
-#: src/window.c:141
+#: ../src/window.c:141
 msgid "Untitled"
 msgstr "Névtelen"
