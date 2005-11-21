@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mousepad 0.2.2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-10-21 17:30+0900\n"
+"POT-Creation-Date: 2005-11-21 22:23+0900\n"
 "PO-Revision-Date: 2005-10-07 18:38+0900\n"
 "Last-Translator: Ruediger Arp <ruediger@gmx.net>\n"
 "Language-Team: German <de@li.org>\n"
@@ -15,245 +15,245 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: ../src/callback.c:34
+#: src/callback.c:34
 #, c-format
 msgid "Save changes to '%s'?"
 msgstr "Änderungen an '%s' speichern?"
 
-#: ../src/callback.c:180 ../src/file.c:150
+#: src/callback.c:180 src/file.c:150
 #, c-format
 msgid "Can't convert codeset to '%s'"
 msgstr "Der Zeichensatz kann nicht nach '%s' konvertiert werden"
 
-#: ../src/callback.c:207
+#: src/callback.c:207
 #, fuzzy
 msgid "Can't open pipe to process"
 msgstr "Die Datei kann nicht zum Schreiben geöffnet werden"
 
-#: ../src/callback.c:366
+#: src/callback.c:366
 msgid "A text editor for Xfce"
 msgstr ""
 
-#: ../src/dialog.c:135
+#: src/dialog.c:135
 #, c-format
 msgid "About %s"
 msgstr "Info zu %s"
 
-#: ../src/file.c:163
+#: src/file.c:163
 msgid "Can't open file to write"
 msgstr "Die Datei kann nicht zum Schreiben geöffnet werden"
 
-#: ../src/file.c:168
+#: src/file.c:168
 msgid "Can't write file"
 msgstr "Die Datei kann nicht geschrieben werden"
 
-#: ../src/font.c:49
+#: src/font.c:49
 msgid "Font"
 msgstr "Schriftart"
 
-#: ../src/menu.c:60
+#: src/menu.c:60
 msgid "/_File"
 msgstr "/_Datei"
 
-#: ../src/menu.c:62
+#: src/menu.c:62
 msgid "/File/_New"
 msgstr "/Datei/_Neu"
 
 #. { N_("/File/New _Window"), "<shift><control>N",
 #. G_CALLBACK(cb_file_new), 1 },
-#: ../src/menu.c:66
+#: src/menu.c:66
 msgid "/File/_Open..."
 msgstr "/Datei/Ö_ffnen"
 
-#: ../src/menu.c:68
+#: src/menu.c:68
 msgid "/File/_Save"
 msgstr "/Datei/_Speichern"
 
-#: ../src/menu.c:70
+#: src/menu.c:70
 msgid "/File/Save _As..."
 msgstr "/Datei/Speichern _unter"
 
-#: ../src/menu.c:72
+#: src/menu.c:72
 #, fuzzy
 msgid "/File/_Print..."
 msgstr "/Datei/Ö_ffnen"
 
-#: ../src/menu.c:76
+#: src/menu.c:76
 msgid "/File/_Quit"
 msgstr "/Datei/_Beenden"
 
-#: ../src/menu.c:78
+#: src/menu.c:78
 msgid "/_Edit"
 msgstr "/_Bearbeiten"
 
-#: ../src/menu.c:80
+#: src/menu.c:80
 msgid "/Edit/_Undo"
 msgstr "/Bearbeiten/_Rückgängig"
 
-#: ../src/menu.c:82
+#: src/menu.c:82
 msgid "/Edit/_Redo"
 msgstr "/Bearbeiten/_Wiederholen"
 
-#: ../src/menu.c:86
+#: src/menu.c:86
 msgid "/Edit/Cu_t"
 msgstr "/Bearbeiten/A_usschneiden"
 
-#: ../src/menu.c:88
+#: src/menu.c:88
 msgid "/Edit/_Copy"
 msgstr "/Bearbeiten/_Kopieren"
 
-#: ../src/menu.c:90
+#: src/menu.c:90
 msgid "/Edit/_Paste"
 msgstr "/Bearbeiten/E_infügen"
 
-#: ../src/menu.c:92
+#: src/menu.c:92
 msgid "/Edit/_Delete"
 msgstr "/Bearbeiten/_Löschen"
 
-#: ../src/menu.c:96
+#: src/menu.c:96
 msgid "/Edit/Select _All"
 msgstr "/Bearbeiten/_Alles markieren"
 
-#: ../src/menu.c:98
+#: src/menu.c:98
 msgid "/_Search"
 msgstr "/_Suchen"
 
-#: ../src/menu.c:100
+#: src/menu.c:100
 msgid "/Search/_Find..."
 msgstr "/Suchen/_Suchen"
 
-#: ../src/menu.c:102
+#: src/menu.c:102
 msgid "/Search/Find _Next"
 msgstr "/Suchen/_Weitersuchen"
 
-#: ../src/menu.c:104
+#: src/menu.c:104
 msgid "/Search/Find _Previous"
 msgstr "/Suchen/_Rückwärts suchen"
 
-#: ../src/menu.c:106
+#: src/menu.c:106
 msgid "/Search/_Replace..."
 msgstr "/Suchen/_Ersetzen..."
 
-#: ../src/menu.c:110
+#: src/menu.c:110
 msgid "/Search/_Jump To..."
 msgstr "/Suchen/_Gehe zu..."
 
-#: ../src/menu.c:112
+#: src/menu.c:112
 msgid "/_Options"
 msgstr "/_Optionen"
 
-#: ../src/menu.c:114
+#: src/menu.c:114
 msgid "/Options/_Font..."
 msgstr "/Optionen/_Schriftart"
 
-#: ../src/menu.c:116
+#: src/menu.c:116
 msgid "/Options/_Word Wrap"
 msgstr "/Optionen/_Zeilenumbruch"
 
-#: ../src/menu.c:118
+#: src/menu.c:118
 msgid "/Options/_Line Numbers"
 msgstr "/Optionen/Zeilen_nummern"
 
-#: ../src/menu.c:122
+#: src/menu.c:122
 msgid "/Options/_Auto Indent"
 msgstr "/Optionen/_Auto-Einzug"
 
-#: ../src/menu.c:124
+#: src/menu.c:124
 msgid "/_Help"
 msgstr "/_Hilfe"
 
-#: ../src/menu.c:126
+#: src/menu.c:126
 msgid "/Help/_About"
 msgstr "/Hilfe/_Info"
 
-#: ../src/search.c:73
+#: src/search.c:73
 msgid "Search string not found"
 msgstr "Gesuchter Text wurde nicht gefunden"
 
-#: ../src/search.c:115
+#: src/search.c:115
 msgid "Replace?"
 msgstr "Ersetzen?"
 
-#: ../src/search.c:143
+#: src/search.c:143
 #, c-format
 msgid "%d strings replaced"
 msgstr "%d Mal gefunden und ersetzt"
 
-#: ../src/search.c:188
+#: src/search.c:188
 msgid "Find"
 msgstr "Suchen"
 
-#: ../src/search.c:200 ../src/search.c:265
+#: src/search.c:200 src/search.c:265
 msgid "Fi_nd what: "
 msgstr "_Suchen nach: "
 
-#: ../src/search.c:219 ../src/search.c:292
+#: src/search.c:219 src/search.c:292
 msgid "_Match case"
 msgstr "_Groß-/Kleinschreibung berücksichtigen"
 
-#: ../src/search.c:253
+#: src/search.c:253
 msgid "Replace"
 msgstr "Ersetzen"
 
-#: ../src/search.c:280
+#: src/search.c:280
 msgid "Re_place with: "
 msgstr "_Ersetzen durch: "
 
-#: ../src/search.c:296
+#: src/search.c:296
 msgid "Replace _all at once"
 msgstr "_Alles ersetzen"
 
-#: ../src/search.c:342
+#: src/search.c:342
 msgid "Jump To"
 msgstr "Gehe zu"
 
-#: ../src/search.c:347
+#: src/search.c:347
 msgid "_Jump"
 msgstr "_Gehe zu"
 
-#: ../src/search.c:353
+#: src/search.c:353
 msgid "_Line number: "
 msgstr "Zeilen_nummer: "
 
-#: ../src/selector.c:103
+#: src/selector.c:103
 #, c-format
 msgid "Current Locale (%s)"
 msgstr "Derzeitige Standorteinstellung (%s)"
 
-#: ../src/selector.c:147
+#: src/selector.c:147
 msgid "Other Codeset"
 msgstr "Anderer Zeichensatz"
 
-#: ../src/selector.c:186
+#: src/selector.c:186
 msgid "Code_set:"
 msgstr "_Zeichensatz:"
 
-#: ../src/selector.c:207
+#: src/selector.c:207
 #, c-format
 msgid "'%s' is not supported"
 msgstr "'%s' wird nicht unterstützt"
 
-#: ../src/selector.c:271
+#: src/selector.c:271
 msgid "Auto Detect"
 msgstr "Automatisch erkennen"
 
-#: ../src/selector.c:325
+#: src/selector.c:325
 msgid "Open"
 msgstr "Öffnen"
 
-#: ../src/selector.c:325
+#: src/selector.c:325
 msgid "Save As"
 msgstr "Speichern unter"
 
-#: ../src/selector.c:345
+#: src/selector.c:345
 msgid "Ch_aracter Coding: "
 msgstr "Zeichenkodierung: "
 
-#: ../src/selector.c:401
+#: src/selector.c:401
 #, c-format
 msgid "'%s' already exists. Overwrite?"
 msgstr "'%s' existiert bereits. Überschreiben?"
 
-#: ../src/window.c:141
+#: src/window.c:141
 msgid "Untitled"
 msgstr "Unbenannt"

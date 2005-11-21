@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mousepad 0.2.2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-10-21 17:30+0900\n"
+"POT-Creation-Date: 2005-11-21 22:23+0900\n"
 "PO-Revision-Date: 2005-10-07 18:54+0900\n"
 "Last-Translator: Hydonsingore Cia <hydonsingore@mail.educities.edu.tw>\n"
 "Language-Team: Chinese (traditional) <zh-l10n@linux.org.tw>\n"
@@ -17,243 +17,243 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: ../src/callback.c:34
+#: src/callback.c:34
 #, c-format
 msgid "Save changes to '%s'?"
 msgstr "要將變更儲存到“%s”?"
 
-#: ../src/callback.c:180 ../src/file.c:150
+#: src/callback.c:180 src/file.c:150
 #, c-format
 msgid "Can't convert codeset to '%s'"
 msgstr "無法將編碼轉換為 “%s”"
 
-#: ../src/callback.c:207
+#: src/callback.c:207
 msgid "Can't open pipe to process"
 msgstr "無法打開至程序的管線"
 
-#: ../src/callback.c:366
+#: src/callback.c:366
 msgid "A text editor for Xfce"
 msgstr "一個 Xfce 的文字編輯器"
 
-#: ../src/dialog.c:135
+#: src/dialog.c:135
 #, c-format
 msgid "About %s"
 msgstr "關於 %s"
 
-#: ../src/file.c:163
+#: src/file.c:163
 msgid "Can't open file to write"
 msgstr "無法打開要寫入的檔案"
 
-#: ../src/file.c:168
+#: src/file.c:168
 msgid "Can't write file"
 msgstr "無法寫入檔案"
 
-#: ../src/font.c:49
+#: src/font.c:49
 msgid "Font"
 msgstr "字型"
 
-#: ../src/menu.c:60
+#: src/menu.c:60
 msgid "/_File"
 msgstr "/檔案(_F)"
 
-#: ../src/menu.c:62
+#: src/menu.c:62
 msgid "/File/_New"
 msgstr "/檔案(F)/新建(_N)"
 
 #. { N_("/File/New _Window"), "<shift><control>N",
 #. G_CALLBACK(cb_file_new), 1 },
-#: ../src/menu.c:66
+#: src/menu.c:66
 msgid "/File/_Open..."
 msgstr "/檔案(F)/開啟(_O)..."
 
-#: ../src/menu.c:68
+#: src/menu.c:68
 msgid "/File/_Save"
 msgstr "/檔案(F)/儲存(_S)"
 
-#: ../src/menu.c:70
+#: src/menu.c:70
 msgid "/File/Save _As..."
 msgstr "/檔案(F)/另存為(_A)..."
 
-#: ../src/menu.c:72
+#: src/menu.c:72
 msgid "/File/_Print..."
 msgstr "/檔案(F)/列印(_P)..."
 
-#: ../src/menu.c:76
+#: src/menu.c:76
 msgid "/File/_Quit"
 msgstr "/檔案(F)/離開(_Q)"
 
-#: ../src/menu.c:78
+#: src/menu.c:78
 msgid "/_Edit"
 msgstr "/編輯(_E)"
 
-#: ../src/menu.c:80
+#: src/menu.c:80
 msgid "/Edit/_Undo"
 msgstr "/編輯(E)/回復(_U)"
 
-#: ../src/menu.c:82
+#: src/menu.c:82
 msgid "/Edit/_Redo"
 msgstr "/編輯(E)/重做(_R)"
 
-#: ../src/menu.c:86
+#: src/menu.c:86
 msgid "/Edit/Cu_t"
 msgstr "/編輯(E)/剪下(_T)"
 
-#: ../src/menu.c:88
+#: src/menu.c:88
 msgid "/Edit/_Copy"
 msgstr "/編輯(E)/複製(_C)"
 
-#: ../src/menu.c:90
+#: src/menu.c:90
 msgid "/Edit/_Paste"
 msgstr "/編輯(E)/貼上(_P)"
 
-#: ../src/menu.c:92
+#: src/menu.c:92
 msgid "/Edit/_Delete"
 msgstr "/編輯(E)/刪除(_D)"
 
-#: ../src/menu.c:96
+#: src/menu.c:96
 msgid "/Edit/Select _All"
 msgstr "/編輯(E)/全選(_A)"
 
-#: ../src/menu.c:98
+#: src/menu.c:98
 msgid "/_Search"
 msgstr "/搜尋(_S)"
 
-#: ../src/menu.c:100
+#: src/menu.c:100
 msgid "/Search/_Find..."
 msgstr "/搜尋(S)/尋找(_F)..."
 
-#: ../src/menu.c:102
+#: src/menu.c:102
 msgid "/Search/Find _Next"
 msgstr "/搜尋(S)/尋找下一個(_N)"
 
-#: ../src/menu.c:104
+#: src/menu.c:104
 msgid "/Search/Find _Previous"
 msgstr "/搜尋(S)/尋找上一個(_P)"
 
-#: ../src/menu.c:106
+#: src/menu.c:106
 msgid "/Search/_Replace..."
 msgstr "/搜尋/置換(_R)..."
 
-#: ../src/menu.c:110
+#: src/menu.c:110
 msgid "/Search/_Jump To..."
 msgstr "/搜尋(S)/跳到(_J)..."
 
-#: ../src/menu.c:112
+#: src/menu.c:112
 msgid "/_Options"
 msgstr "/選項(_O)"
 
-#: ../src/menu.c:114
+#: src/menu.c:114
 msgid "/Options/_Font..."
 msgstr "/選項(O)/字型(_F)..."
 
-#: ../src/menu.c:116
+#: src/menu.c:116
 msgid "/Options/_Word Wrap"
 msgstr "/選項(O)/自動換行(_W)"
 
-#: ../src/menu.c:118
+#: src/menu.c:118
 msgid "/Options/_Line Numbers"
 msgstr "/選項(O)/列號(_L)"
 
-#: ../src/menu.c:122
+#: src/menu.c:122
 msgid "/Options/_Auto Indent"
 msgstr "/選項(O)/自動縮排(_A)"
 
-#: ../src/menu.c:124
+#: src/menu.c:124
 msgid "/_Help"
 msgstr "/說明(_H)"
 
-#: ../src/menu.c:126
+#: src/menu.c:126
 msgid "/Help/_About"
 msgstr "/說明(H)/關於(_A)"
 
-#: ../src/search.c:73
+#: src/search.c:73
 msgid "Search string not found"
 msgstr "找不到搜尋字串"
 
-#: ../src/search.c:115
+#: src/search.c:115
 msgid "Replace?"
 msgstr "要置換嗎?"
 
-#: ../src/search.c:143
+#: src/search.c:143
 #, c-format
 msgid "%d strings replaced"
 msgstr "置換了 %d 個字串"
 
-#: ../src/search.c:188
+#: src/search.c:188
 msgid "Find"
 msgstr "查找"
 
-#: ../src/search.c:200 ../src/search.c:265
+#: src/search.c:200 src/search.c:265
 msgid "Fi_nd what: "
 msgstr "查找(_N): "
 
-#: ../src/search.c:219 ../src/search.c:292
+#: src/search.c:219 src/search.c:292
 msgid "_Match case"
 msgstr "區分大小寫(_M)"
 
-#: ../src/search.c:253
+#: src/search.c:253
 msgid "Replace"
 msgstr "置換"
 
-#: ../src/search.c:280
+#: src/search.c:280
 msgid "Re_place with: "
 msgstr "置換成(_A): "
 
-#: ../src/search.c:296
+#: src/search.c:296
 msgid "Replace _all at once"
 msgstr "全部置換(_A)"
 
-#: ../src/search.c:342
+#: src/search.c:342
 msgid "Jump To"
 msgstr "跳到"
 
-#: ../src/search.c:347
+#: src/search.c:347
 msgid "_Jump"
 msgstr "跳(_J)"
 
-#: ../src/search.c:353
+#: src/search.c:353
 msgid "_Line number: "
 msgstr "列號(_L): "
 
-#: ../src/selector.c:103
+#: src/selector.c:103
 #, c-format
 msgid "Current Locale (%s)"
 msgstr "目前語系 (%s)"
 
-#: ../src/selector.c:147
+#: src/selector.c:147
 msgid "Other Codeset"
 msgstr "其它編碼"
 
-#: ../src/selector.c:186
+#: src/selector.c:186
 msgid "Code_set:"
 msgstr "編碼(_S):"
 
-#: ../src/selector.c:207
+#: src/selector.c:207
 #, c-format
 msgid "'%s' is not supported"
 msgstr "“%s”尚未支援"
 
-#: ../src/selector.c:271
+#: src/selector.c:271
 msgid "Auto Detect"
 msgstr "自動偵測"
 
-#: ../src/selector.c:325
+#: src/selector.c:325
 msgid "Open"
 msgstr "開啟"
 
-#: ../src/selector.c:325
+#: src/selector.c:325
 msgid "Save As"
 msgstr "另存為"
 
-#: ../src/selector.c:345
+#: src/selector.c:345
 msgid "Ch_aracter Coding: "
 msgstr "字元編碼(_A): "
 
-#: ../src/selector.c:401
+#: src/selector.c:401
 #, c-format
 msgid "'%s' already exists. Overwrite?"
 msgstr "檔案“%s”已經存在. 要覆蓋它嗎？"
 
-#: ../src/window.c:141
+#: src/window.c:141
 msgid "Untitled"
 msgstr "無標題"

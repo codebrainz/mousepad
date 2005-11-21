@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mousepad 0.2.2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-10-21 17:30+0900\n"
+"POT-Creation-Date: 2005-11-21 22:23+0900\n"
 "PO-Revision-Date: 2005-10-07 23:43+0900\n"
 "Last-Translator: Roman Moravcik <roman.moravcik@gmail.com>\n"
 "Language-Team: Slovak <sk-i18n@linux.sk>\n"
@@ -15,243 +15,243 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: ../src/callback.c:34
+#: src/callback.c:34
 #, c-format
 msgid "Save changes to '%s'?"
 msgstr "Uložiť zmeny do '%s'?"
 
-#: ../src/callback.c:180 ../src/file.c:150
+#: src/callback.c:180 src/file.c:150
 #, c-format
 msgid "Can't convert codeset to '%s'"
 msgstr "Nemôžem konvertovať znakovú sadu do '%s'"
 
-#: ../src/callback.c:207
+#: src/callback.c:207
 msgid "Can't open pipe to process"
 msgstr "Nemôžem otvoriť rúru k procesu"
 
-#: ../src/callback.c:366
+#: src/callback.c:366
 msgid "A text editor for Xfce"
 msgstr "Textový editor pre XFCE"
 
-#: ../src/dialog.c:135
+#: src/dialog.c:135
 #, c-format
 msgid "About %s"
 msgstr "O %s"
 
-#: ../src/file.c:163
+#: src/file.c:163
 msgid "Can't open file to write"
 msgstr "Nemôžem otvoriť súbor pre zápis"
 
-#: ../src/file.c:168
+#: src/file.c:168
 msgid "Can't write file"
 msgstr "Nemôžem zapísať súbor"
 
-#: ../src/font.c:49
+#: src/font.c:49
 msgid "Font"
 msgstr "Písmo"
 
-#: ../src/menu.c:60
+#: src/menu.c:60
 msgid "/_File"
 msgstr "/_Súbor"
 
-#: ../src/menu.c:62
+#: src/menu.c:62
 msgid "/File/_New"
 msgstr "/Súbor/_Nový"
 
 #. { N_("/File/New _Window"), "<shift><control>N",
 #. G_CALLBACK(cb_file_new), 1 },
-#: ../src/menu.c:66
+#: src/menu.c:66
 msgid "/File/_Open..."
 msgstr "/Súbor/_Otvoriť..."
 
-#: ../src/menu.c:68
+#: src/menu.c:68
 msgid "/File/_Save"
 msgstr "/Súbor/_Uložiť"
 
-#: ../src/menu.c:70
+#: src/menu.c:70
 msgid "/File/Save _As..."
 msgstr "/Súbor/Uložiť _ako..."
 
-#: ../src/menu.c:72
+#: src/menu.c:72
 msgid "/File/_Print..."
 msgstr "/Súbor/_Tlačiť..."
 
-#: ../src/menu.c:76
+#: src/menu.c:76
 msgid "/File/_Quit"
 msgstr "/Súbor/_Koniec"
 
-#: ../src/menu.c:78
+#: src/menu.c:78
 msgid "/_Edit"
 msgstr "/_Upraviť"
 
-#: ../src/menu.c:80
+#: src/menu.c:80
 msgid "/Edit/_Undo"
 msgstr "/Upraviť/V_rátiť späť"
 
-#: ../src/menu.c:82
+#: src/menu.c:82
 msgid "/Edit/_Redo"
 msgstr "/Upraviť/_Opakovať vrátené"
 
-#: ../src/menu.c:86
+#: src/menu.c:86
 msgid "/Edit/Cu_t"
 msgstr "/Upraviť/Vys_trihnúť"
 
-#: ../src/menu.c:88
+#: src/menu.c:88
 msgid "/Edit/_Copy"
 msgstr "/Upraviť/_Kopírovať"
 
-#: ../src/menu.c:90
+#: src/menu.c:90
 msgid "/Edit/_Paste"
 msgstr "/Upraviť/_Vložiť"
 
-#: ../src/menu.c:92
+#: src/menu.c:92
 msgid "/Edit/_Delete"
 msgstr "/Upraviť/V_ymazať"
 
-#: ../src/menu.c:96
+#: src/menu.c:96
 msgid "/Edit/Select _All"
 msgstr "/Upraviť/Vybr_ať všetko"
 
-#: ../src/menu.c:98
+#: src/menu.c:98
 msgid "/_Search"
 msgstr "/_Hľadať"
 
-#: ../src/menu.c:100
+#: src/menu.c:100
 msgid "/Search/_Find..."
 msgstr "/Hľadať/_Nájsť..."
 
-#: ../src/menu.c:102
+#: src/menu.c:102
 msgid "/Search/Find _Next"
 msgstr "/Hľadať/Nájsť _ďalšie"
 
-#: ../src/menu.c:104
+#: src/menu.c:104
 msgid "/Search/Find _Previous"
 msgstr "/Hľadať/Nájsť _predchádzajúce"
 
-#: ../src/menu.c:106
+#: src/menu.c:106
 msgid "/Search/_Replace..."
 msgstr "/Hľadať/Nah_radiť..."
 
-#: ../src/menu.c:110
+#: src/menu.c:110
 msgid "/Search/_Jump To..."
 msgstr "/Hľadať/_Skočiť na..."
 
-#: ../src/menu.c:112
+#: src/menu.c:112
 msgid "/_Options"
 msgstr "/P_redvoľby"
 
-#: ../src/menu.c:114
+#: src/menu.c:114
 msgid "/Options/_Font..."
 msgstr "/Predvoľby/_Písmo..."
 
-#: ../src/menu.c:116
+#: src/menu.c:116
 msgid "/Options/_Word Wrap"
 msgstr "/Predvoľby/_Zalomiť text"
 
-#: ../src/menu.c:118
+#: src/menu.c:118
 msgid "/Options/_Line Numbers"
 msgstr "/Predvoľby/Zobraziť čís_la riadkov"
 
-#: ../src/menu.c:122
+#: src/menu.c:122
 msgid "/Options/_Auto Indent"
 msgstr "/Predvoľby/_Automatické odsadenie"
 
-#: ../src/menu.c:124
+#: src/menu.c:124
 msgid "/_Help"
 msgstr "/_Pomocník"
 
-#: ../src/menu.c:126
+#: src/menu.c:126
 msgid "/Help/_About"
 msgstr "/Pomocník/O progr_ame"
 
-#: ../src/search.c:73
+#: src/search.c:73
 msgid "Search string not found"
 msgstr "Hľadaný reťazec nebol nájdený\t"
 
-#: ../src/search.c:115
+#: src/search.c:115
 msgid "Replace?"
 msgstr "Nahradiť?"
 
-#: ../src/search.c:143
+#: src/search.c:143
 #, c-format
 msgid "%d strings replaced"
 msgstr "reťazec %d nahradený"
 
-#: ../src/search.c:188
+#: src/search.c:188
 msgid "Find"
 msgstr "Nájsť"
 
-#: ../src/search.c:200 ../src/search.c:265
+#: src/search.c:200 src/search.c:265
 msgid "Fi_nd what: "
 msgstr "Hľadať: "
 
-#: ../src/search.c:219 ../src/search.c:292
+#: src/search.c:219 src/search.c:292
 msgid "_Match case"
 msgstr "Rozlišovať malé a veľké pís_mená"
 
-#: ../src/search.c:253
+#: src/search.c:253
 msgid "Replace"
 msgstr "Nahradiť"
 
-#: ../src/search.c:280
+#: src/search.c:280
 msgid "Re_place with: "
 msgstr "Nahradiť s:"
 
-#: ../src/search.c:296
+#: src/search.c:296
 msgid "Replace _all at once"
 msgstr "N_ahradiť všetko"
 
-#: ../src/search.c:342
+#: src/search.c:342
 msgid "Jump To"
 msgstr "Skočiť na"
 
-#: ../src/search.c:347
+#: src/search.c:347
 msgid "_Jump"
 msgstr "_Skočiť"
 
-#: ../src/search.c:353
+#: src/search.c:353
 msgid "_Line number: "
 msgstr "_Číslo riadku:"
 
-#: ../src/selector.c:103
+#: src/selector.c:103
 #, c-format
 msgid "Current Locale (%s)"
 msgstr "Aktuálna znaková sad (%s)"
 
-#: ../src/selector.c:147
+#: src/selector.c:147
 msgid "Other Codeset"
 msgstr "Iná znaková sada"
 
-#: ../src/selector.c:186
+#: src/selector.c:186
 msgid "Code_set:"
 msgstr "Znaková _sada:"
 
-#: ../src/selector.c:207
+#: src/selector.c:207
 #, c-format
 msgid "'%s' is not supported"
 msgstr "'%s' nie je podporovaný"
 
-#: ../src/selector.c:271
+#: src/selector.c:271
 msgid "Auto Detect"
 msgstr "Automatická detekcia"
 
-#: ../src/selector.c:325
+#: src/selector.c:325
 msgid "Open"
 msgstr "Otvoriť"
 
-#: ../src/selector.c:325
+#: src/selector.c:325
 msgid "Save As"
 msgstr "Uložiť ako"
 
-#: ../src/selector.c:345
+#: src/selector.c:345
 msgid "Ch_aracter Coding: "
 msgstr "Kódov_anie písma: "
 
-#: ../src/selector.c:401
+#: src/selector.c:401
 #, c-format
 msgid "'%s' already exists. Overwrite?"
 msgstr "Súbor '%s' už existuje. Chcete ho prepísať?"
 
-#: ../src/window.c:141
+#: src/window.c:141
 msgid "Untitled"
 msgstr "Nepomenovaný"
