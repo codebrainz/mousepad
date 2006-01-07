@@ -1,5 +1,5 @@
 # Swedish translation of Mousepad text editor.
-# Copyright (C) 2005 Erik Harrison.
+# Copyright (C) 2005-2006 Erik Harrison.
 # This file is distributed under the same license as the Mousepad package.
 # Isak Savo <iso01001@student.mdh.se>, 2004.
 #

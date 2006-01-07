@@ -1,5 +1,5 @@
 # Tamil translation of Mousepad.
-# Copyright (C) 2005 Erik Harrison.
+# Copyright (C) 2005-2006 Erik Harrison.
 # This file is distributed under the same license as the Mousepad package.
 # Vijay Durairaj <vjd81@yahoo.com>, 2004.
 #

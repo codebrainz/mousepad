@@ -1,7 +1,7 @@
 # $Id$
 #
 # Japanese translations for Mousepad package.
-# Copyright (C) 2005 Erik Harrison.
+# Copyright (C) 2005-2006 Erik Harrison.
 # This file is distributed under the same license as the Mousepad package.
 # Tarot Osuji <tarot@sdf.lonestar.org>, 2004.
 # Daichi Kawahata <daichi@xfce.org>, 2005.

@@ -1,5 +1,5 @@
 # Greek translations for Mousepad package.
-# Copyright (C) 2005 Erik Harrison <erikharrison@gmail.com>
+# Copyright (C) 2005-2006 Erik Harrison.
 # This file is distributed under the same license as the Mousepad package.
 # Stavros Giannouris <stavrosg2002@freemail.gr>, 2005.
 #

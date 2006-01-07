@@ -1,5 +1,5 @@
 # Brazilian Portuguese translations for Mousepad package.
-# Copyright (C) 2005 Erik Harrison.
+# Copyright (C) 2005-2006 Erik Harrison.
 # This file is distributed under the same license as the Mousepad package.
 # Tomas Schertel <tschertel@gmail.com>, 2005.
 # Adriano Winter Bess <awbess@gmail.com>, 2005.

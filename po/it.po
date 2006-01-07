@@ -1,5 +1,5 @@
 # Italian translations for Mousepad package.
-# Copyright (C) 2005 Erik Harrison.
+# Copyright (C) 2005-2006 Erik Harrison.
 # This file is distributed under the same license as the Mousepad package.
 # Alessio D'Ascanio <g3ntaro@gmail.com>, 2004.
 #

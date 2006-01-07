@@ -1,5 +1,5 @@
 # Spanish/Spain translation of Mousepad.
-# Copyright (C) 2005 Erik Harrison.
+# Copyright (C) 2005-2006 Erik Harrison.
 # This file is distributed under the same license as the Mousepad package.
 # Lucas Vieites <lucas@asixinformatica.com>, 2004.
 #

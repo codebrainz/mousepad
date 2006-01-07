@@ -1,5 +1,5 @@
 # Simplified Chinese translation for MousePad.
-# Copyright (C) 2005 Erik Harrison.
+# Copyright (C) 2005-2006 Erik Harrison.
 # This file is distributed under the same license as the Mousepad package.
 # Carlos Z.F. Liu <carlos_liu@yahoo.com>, 2004.
 #
