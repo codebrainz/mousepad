@@ -1,21 +1,22 @@
-# translation of ca.po to català
+# translation of ca.po to Catalan
 # Catalan translation of Mousepad.
 # Copyright (C) 2005-2006 Erik Harrison.
 # This file is distributed under the same license as the Mousepad package.
-# David Rosal <davidrr@users.sourceforge.net>, 2004.
-# Pau Rul·lan Ferragut <paurullan@bulma.net> 2005, 2006
 #
+# David Rosal <davidrr@users.sourceforge.net>, 2004.
+# Pau Rul·lan Ferragut <paurullan@bulma.net> 2005, 2006.
 msgid ""
 msgstr ""
-"Project-Id-Version: Mousepad 0.2.2\n"
+"Project-Id-Version: ca\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2005-11-21 22:23+0900\n"
-"PO-Revision-Date: 2006-01-08 21:53+0100\n"
+"PO-Revision-Date: 2006-03-19 17:33+0100\n"
 "Last-Translator: Pau Rul·lan Ferragut <paurullan@bulma.net>\n"
-"Language-Team: catalan\n"
+"Language-Team: Catalan\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"X-Generator: KBabel 1.11.2\n"
 
 #: src/callback.c:34
 #, fuzzy, c-format
@@ -132,7 +133,7 @@ msgstr "/Edita/_Suprimeix"
 #: src/menu.c:96
 #, fuzzy
 msgid "/Edit/Select _All"
-msgstr "Edita Seleccioneu Totes"
+msgstr "Edita Seleccioneu Tots"
 
 #: src/menu.c:98
 #, fuzzy
@@ -192,7 +193,7 @@ msgstr "Opcions Auto Sagnat"
 #: src/menu.c:124
 #, fuzzy
 msgid "/_Help"
-msgstr "/_Ajuda"
+msgstr "Ajuda"
 
 #: src/menu.c:126
 #, fuzzy
@@ -306,3 +307,4 @@ msgstr "existeix Sobreescriu?"
 #, fuzzy
 msgid "Untitled"
 msgstr "Sense títol"
+
