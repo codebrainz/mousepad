@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: ca\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2005-11-21 22:23+0900\n"
-"PO-Revision-Date: 2006-03-19 17:33+0100\n"
+"PO-Revision-Date: 2006-04-02 18:00+0200\n"
 "Last-Translator: Pau Rul·lan Ferragut <paurullan@bulma.net>\n"
 "Language-Team: Catalan\n"
 "MIME-Version: 1.0\n"
@@ -19,9 +19,9 @@ msgstr ""
 "X-Generator: KBabel 1.11.2\n"
 
 #: src/callback.c:34
-#, fuzzy, c-format
+#, c-format
 msgid "Save changes to '%s'?"
-msgstr "Vols desar els canvis fets a '%s'?"
+msgstr "Voleu desar els canvis fets a '%s'?"
 
 #: src/callback.c:180 src/file.c:150
 #, fuzzy, c-format
