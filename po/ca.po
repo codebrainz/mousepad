@@ -7,7 +7,7 @@
 # Pau Rul·lan Ferragut <paurullan@bulma.net> 2005, 2006.
 msgid ""
 msgstr ""
-"Project-Id-Version: ca\n"
+"Project-Id-Version: Mousepad 0.2.2\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2005-11-21 22:23+0900\n"
 "PO-Revision-Date: 2006-04-02 18:00+0200\n"
@@ -307,4 +307,3 @@ msgstr "existeix Sobreescriu?"
 #, fuzzy
 msgid "Untitled"
 msgstr "Sense títol"
-
