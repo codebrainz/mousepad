@@ -1,0 +1,258 @@
+# Korean translations for mousepad package.
+# Copyright (C) 2002-2006 The Xfce development team.
+# This file is distributed under the same license as the mousepad package.
+# ByungHyun Choi <byunghyun.choi@gmail.com>, 2006.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: mousepad 0.2.2\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2005-11-21 22:23+0900\n"
+"PO-Revision-Date: 2006-04-15 04:49+0900\n"
+"Last-Translator: ByungHyun Choi <byunghyunchoi@hotmail.com>\n"
+"Language-Team: xfce4-users-kr-i18n <xfce4-users-kr-i18n@lists.sourceforge."
+"net>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: src/callback.c:34
+#, c-format
+msgid "Save changes to '%s'?"
+msgstr "변경된 부분을 '%s'에 저장할까요?"
+
+#: src/callback.c:180 src/file.c:150
+#, c-format
+msgid "Can't convert codeset to '%s'"
+msgstr "코드셋을 '%s'로 변환할 수 없습니다."
+
+#: src/callback.c:207
+msgid "Can't open pipe to process"
+msgstr "프로세스에 사용할 파이프를 열지 못 했습니다."
+
+#: src/callback.c:366
+msgid "A text editor for Xfce"
+msgstr "Xfce 텍스트 편집기"
+
+#: src/dialog.c:135
+#, c-format
+msgid "About %s"
+msgstr "%s에 대하여"
+
+#: src/file.c:163
+msgid "Can't open file to write"
+msgstr "저장할 화일을 열지 못 했습니다."
+
+#: src/file.c:168
+msgid "Can't write file"
+msgstr "화일을 저장하지 못 했습니다."
+
+#: src/font.c:49
+msgid "Font"
+msgstr "글꼴"
+
+#: src/menu.c:60
+msgid "/_File"
+msgstr "/화일(_F)"
+
+#: src/menu.c:62
+msgid "/File/_New"
+msgstr "/화일/새 화일(_N)"
+
+#. { N_("/File/New _Window"), "<shift><control>N",
+#. G_CALLBACK(cb_file_new), 1 },
+#: src/menu.c:66
+msgid "/File/_Open..."
+msgstr "/화일/열기(_O)"
+
+#: src/menu.c:68
+msgid "/File/_Save"
+msgstr "/화일/저장(_S)"
+
+#: src/menu.c:70
+msgid "/File/Save _As..."
+msgstr "/화일/새로운 이름으로(_A)"
+
+#: src/menu.c:72
+msgid "/File/_Print..."
+msgstr "/화일/출력(_P)"
+
+#: src/menu.c:76
+msgid "/File/_Quit"
+msgstr "/화일/종료(_Q)"
+
+#: src/menu.c:78
+msgid "/_Edit"
+msgstr "/편집(_E)"
+
+#: src/menu.c:80
+msgid "/Edit/_Undo"
+msgstr "/편집/되살리기(_U)"
+
+#: src/menu.c:82
+msgid "/Edit/_Redo"
+msgstr "/편집/다시실행(_R)"
+
+#: src/menu.c:86
+msgid "/Edit/Cu_t"
+msgstr "/편집/잘라내기(_t)"
+
+#: src/menu.c:88
+msgid "/Edit/_Copy"
+msgstr "/편집/복사(_C)"
+
+#: src/menu.c:90
+msgid "/Edit/_Paste"
+msgstr "/편집/붙여넣기(_P)"
+
+#: src/menu.c:92
+msgid "/Edit/_Delete"
+msgstr "/편집/삭제(_D)"
+
+#: src/menu.c:96
+msgid "/Edit/Select _All"
+msgstr "/편집/모두 선택(_A)"
+
+#: src/menu.c:98
+msgid "/_Search"
+msgstr "/검색(_S)"
+
+#: src/menu.c:100
+msgid "/Search/_Find..."
+msgstr "/검색/찾기(_F)"
+
+#: src/menu.c:102
+msgid "/Search/Find _Next"
+msgstr "/검색/다음(_N)"
+
+#: src/menu.c:104
+msgid "/Search/Find _Previous"
+msgstr "/검색/이전(_P)"
+
+#: src/menu.c:106
+msgid "/Search/_Replace..."
+msgstr "/검색/바꾸기(_R)"
+
+#: src/menu.c:110
+msgid "/Search/_Jump To..."
+msgstr "/검색/건너뛰기(_J)"
+
+#: src/menu.c:112
+msgid "/_Options"
+msgstr "/선택(_O)"
+
+#: src/menu.c:114
+msgid "/Options/_Font..."
+msgstr "/선택/글꼴(_F)"
+
+#: src/menu.c:116
+msgid "/Options/_Word Wrap"
+msgstr "/선택/단어(_W)"
+
+#: src/menu.c:118
+msgid "/Options/_Line Numbers"
+msgstr "/선택/줄 번호(_L)"
+
+#: src/menu.c:122
+msgid "/Options/_Auto Indent"
+msgstr "/선택/들여쓰기(_A)"
+
+#: src/menu.c:124
+msgid "/_Help"
+msgstr "/도움말"
+
+#: src/menu.c:126
+msgid "/Help/_About"
+msgstr "/도우말/마우스 패스에 대하여"
+
+#: src/search.c:73
+msgid "Search string not found"
+msgstr "검색 문자열을 못 찾았습니다."
+
+#: src/search.c:115
+msgid "Replace?"
+msgstr "바꿀까요?"
+
+#: src/search.c:143
+#, c-format
+msgid "%d strings replaced"
+msgstr "%d개의 문자열을 바꾸었습니다."
+
+#: src/search.c:188
+msgid "Find"
+msgstr "찾기"
+
+#: src/search.c:200 src/search.c:265
+msgid "Fi_nd what: "
+msgstr "찾을 단어(_n): "
+
+#: src/search.c:219 src/search.c:292
+msgid "_Match case"
+msgstr "대소문자 구분(_M)"
+
+#: src/search.c:253
+msgid "Replace"
+msgstr "바꾸기"
+
+#: src/search.c:280
+msgid "Re_place with: "
+msgstr "바꿀 단어(_p); "
+
+#: src/search.c:296
+msgid "Replace _all at once"
+msgstr "모두 바꾸기(_a)"
+
+#: src/search.c:342
+msgid "Jump To"
+msgstr "건너뛰기"
+
+#: src/search.c:347
+msgid "_Jump"
+msgstr "건너뛰기(_J)"
+
+#: src/search.c:353
+msgid "_Line number: "
+msgstr "줄 번호(_L): "
+
+#: src/selector.c:103
+#, c-format
+msgid "Current Locale (%s)"
+msgstr "현재 언어 (%s)"
+
+#: src/selector.c:147
+msgid "Other Codeset"
+msgstr "다른 문자셋"
+
+#: src/selector.c:186
+msgid "Code_set:"
+msgstr "코드셋(_s):"
+
+#: src/selector.c:207
+#, c-format
+msgid "'%s' is not supported"
+msgstr "'%s'는(은) 지원하지 않습니다."
+
+#: src/selector.c:271
+msgid "Auto Detect"
+msgstr "자동 검색"
+
+#: src/selector.c:325
+msgid "Open"
+msgstr "열기"
+
+#: src/selector.c:325
+msgid "Save As"
+msgstr "다른 이름으로 저장"
+
+#: src/selector.c:345
+msgid "Ch_aracter Coding: "
+msgstr "문자 코드(_a): "
+
+#: src/selector.c:401
+#, c-format
+msgid "'%s' already exists. Overwrite?"
+msgstr "'%s'가(이) 이미 있는 데 덮어 쓸까요?"
+
+#: src/window.c:141
+msgid "Untitled"
+msgstr "이름 없는 화일"
