@@ -255,3 +255,7 @@ msgstr "Súbor '%s' už existuje. Chcete ho prepísať?"
 #: src/window.c:141
 msgid "Untitled"
 msgstr "Nepomenovaný"
+
+#: mousepad.desktop.in:6
+msgid "Simple text editor"
+msgstr "JednoduchÃ½ textovÃ½ editor"

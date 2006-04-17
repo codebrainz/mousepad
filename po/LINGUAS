@@ -1,16 +1,2 @@
-ca
-cs
-de
-es
-fr
-hu
-it
-ja
-lt
-pl
-pt_BR
-ru
-sv
-ta
-zh_CN
-zh_TW
+# set of available languages (in alphabetic order)
+ca cs de es fr hu it ja lt pl pt_BR ru sv ta zh_CN zh_TW

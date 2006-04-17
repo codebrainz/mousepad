@@ -364,6 +364,6 @@ void cb_help_about(StructData *sd)
 		PACKAGE_NAME,
 		PACKAGE_VERSION,
 		_("A text editor for Xfce"),
-		"Copyright &#169; 2005 Erik Harrison\nBased on Code by Tarot Osuji and the Gedit team",
+		"Copyright &#169; 2005-2006 Erik Harrison\nBased on Code by Tarot Osuji and the Gedit team",
 		ICONDIR G_DIR_SEPARATOR_S PACKAGE ".png");
 }

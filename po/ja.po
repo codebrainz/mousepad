@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mousepad 0.2.2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-11-21 22:23+0900\n"
+"POT-Creation-Date: 2006-04-17 11:28+0200\n"
 "PO-Revision-Date: 2005-08-18 20:13+0900\n"
 "Last-Translator: Daichi Kawahata <daichi@xfce.org>\n"
 "Language-Team: Japanese <xfce-users-jp@ml.fdiary.net>\n"
@@ -18,243 +18,256 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: src/callback.c:34
+#: ../src/callback.c:34
 #, c-format
 msgid "Save changes to '%s'?"
 msgstr "'%s' の変更を保存しますか？"
 
-#: src/callback.c:180 src/file.c:150
+#: ../src/callback.c:180 ../src/file.c:150
 #, c-format
 msgid "Can't convert codeset to '%s'"
 msgstr "文字コードを '%s' に変換できませんでした"
 
-#: src/callback.c:207
+#: ../src/callback.c:207
 msgid "Can't open pipe to process"
 msgstr "処理に使うパイプを開けませんでした"
 
-#: src/callback.c:366
+#: ../src/callback.c:366
 msgid "A text editor for Xfce"
 msgstr "Xfce テキストエディタ"
 
-#: src/dialog.c:135
+#: ../src/dialog.c:135
 #, c-format
 msgid "About %s"
 msgstr "%s について"
 
-#: src/file.c:163
+#: ../src/file.c:163
 msgid "Can't open file to write"
 msgstr "書き込むファイルを開けませんでした"
 
-#: src/file.c:168
+#: ../src/file.c:168
 msgid "Can't write file"
 msgstr "ファイルに書き込めませんでした"
 
-#: src/font.c:49
+#: ../src/font.c:49
 msgid "Font"
 msgstr "フォントを選んで下さい"
 
-#: src/menu.c:60
+#: ../src/menu.c:60
 msgid "/_File"
 msgstr "/ファイル(_F)"
 
-#: src/menu.c:62
+#: ../src/menu.c:62
 msgid "/File/_New"
 msgstr "/ファイル/新規(_N)"
 
 #. { N_("/File/New _Window"), "<shift><control>N",
 #. G_CALLBACK(cb_file_new), 1 },
-#: src/menu.c:66
+#: ../src/menu.c:66
 msgid "/File/_Open..."
 msgstr "/ファイル/開く(_O)..."
 
-#: src/menu.c:68
+#: ../src/menu.c:68
 msgid "/File/_Save"
 msgstr "/ファイル/保存(_S)"
 
-#: src/menu.c:70
+#: ../src/menu.c:70
 msgid "/File/Save _As..."
 msgstr "/ファイル/別名で保存(_A)..."
 
-#: src/menu.c:72
+#: ../src/menu.c:72
 msgid "/File/_Print..."
 msgstr "/ファイル/印刷(_P)..."
 
-#: src/menu.c:76
+#: ../src/menu.c:76
 msgid "/File/_Quit"
 msgstr "/ファイル/終了(_Q)"
 
-#: src/menu.c:78
+#: ../src/menu.c:78
 msgid "/_Edit"
 msgstr "/編集(_E)"
 
-#: src/menu.c:80
+#: ../src/menu.c:80
 msgid "/Edit/_Undo"
 msgstr "/編集/元に戻す(_U)"
 
-#: src/menu.c:82
+#: ../src/menu.c:82
 msgid "/Edit/_Redo"
 msgstr "/編集/やり直す(_R)"
 
-#: src/menu.c:86
+#: ../src/menu.c:86
 msgid "/Edit/Cu_t"
 msgstr "/編集/切り取り(_T)"
 
-#: src/menu.c:88
+#: ../src/menu.c:88
 msgid "/Edit/_Copy"
 msgstr "/編集/コピー(_C)"
 
-#: src/menu.c:90
+#: ../src/menu.c:90
 msgid "/Edit/_Paste"
 msgstr "/編集/貼り付け(_P)"
 
-#: src/menu.c:92
+#: ../src/menu.c:92
 msgid "/Edit/_Delete"
 msgstr "/編集/削除(_D)"
 
-#: src/menu.c:96
+#: ../src/menu.c:96
 msgid "/Edit/Select _All"
 msgstr "/編集/全て選択(_A)"
 
-#: src/menu.c:98
+#: ../src/menu.c:98
 msgid "/_Search"
 msgstr "/検索(_S)"
 
-#: src/menu.c:100
+#: ../src/menu.c:100
 msgid "/Search/_Find..."
 msgstr "/検索/検索(_F)..."
 
-#: src/menu.c:102
+#: ../src/menu.c:102
 msgid "/Search/Find _Next"
 msgstr "/検索/次を検索(_N)"
 
-#: src/menu.c:104
+#: ../src/menu.c:104
 msgid "/Search/Find _Previous"
 msgstr "/検索/前を検索(_P)"
 
-#: src/menu.c:106
+#: ../src/menu.c:106
 msgid "/Search/_Replace..."
 msgstr "/検索/置換(_R)..."
 
-#: src/menu.c:110
+#: ../src/menu.c:110
 msgid "/Search/_Jump To..."
 msgstr "/検索/行へ移動(_J)..."
 
-#: src/menu.c:112
+#: ../src/menu.c:112
 msgid "/_Options"
 msgstr "/オプション(_O)"
 
-#: src/menu.c:114
+#: ../src/menu.c:114
 msgid "/Options/_Font..."
 msgstr "/オプション/フォント(_F)..."
 
-#: src/menu.c:116
+#: ../src/menu.c:116
 msgid "/Options/_Word Wrap"
 msgstr "/オプション/右端で折返す(_W)"
 
-#: src/menu.c:118
+#: ../src/menu.c:118
 msgid "/Options/_Line Numbers"
 msgstr "/オプション/行番号を表示(_L)"
 
-#: src/menu.c:122
+#: ../src/menu.c:122
 msgid "/Options/_Auto Indent"
 msgstr "/オプション/自動字下げ(_A)"
 
-#: src/menu.c:124
+#: ../src/menu.c:124
 msgid "/_Help"
 msgstr "/ヘルプ(_H)"
 
-#: src/menu.c:126
+#: ../src/menu.c:126
 msgid "/Help/_About"
 msgstr "/ヘルプ/このプログラムについて(_A)"
 
-#: src/search.c:73
+#: ../src/search.c:73
 msgid "Search string not found"
 msgstr "検索文字列が見つかりません"
 
-#: src/search.c:115
+#: ../src/search.c:115
 msgid "Replace?"
 msgstr "置き換えますか？"
 
-#: src/search.c:143
+#: ../src/search.c:143
 #, c-format
 msgid "%d strings replaced"
 msgstr "%d 個の文字列を置き換えました"
 
-#: src/search.c:188
+#: ../src/search.c:188
 msgid "Find"
 msgstr "文字列を検索します"
 
-#: src/search.c:200 src/search.c:265
+#: ../src/search.c:200 ../src/search.c:265
 msgid "Fi_nd what: "
 msgstr "検索する文字列(_N): "
 
-#: src/search.c:219 src/search.c:292
+#: ../src/search.c:219 ../src/search.c:292
 msgid "_Match case"
 msgstr "大文字と小文字を区別する(_M)"
 
-#: src/search.c:253
+#: ../src/search.c:253
 msgid "Replace"
 msgstr "文字列を置き換えます"
 
-#: src/search.c:280
+#: ../src/search.c:280
 msgid "Re_place with: "
 msgstr "置換後の文字列(_P): "
 
-#: src/search.c:296
+#: ../src/search.c:296
 msgid "Replace _all at once"
 msgstr "一度に全て置き換える(_A)"
 
-#: src/search.c:342
+#: ../src/search.c:342
 msgid "Jump To"
 msgstr "入力した行へ移動します"
 
-#: src/search.c:347
+#: ../src/search.c:347
 msgid "_Jump"
 msgstr "移動(_J)"
 
-#: src/search.c:353
+#: ../src/search.c:353
 msgid "_Line number: "
 msgstr "行番号(_L): "
 
-#: src/selector.c:103
+#: ../src/selector.c:103
 #, c-format
 msgid "Current Locale (%s)"
 msgstr "現在のロケール (%s)"
 
-#: src/selector.c:147
+#: ../src/selector.c:147
 msgid "Other Codeset"
 msgstr "その他の文字コード"
 
-#: src/selector.c:186
+#: ../src/selector.c:186
 msgid "Code_set:"
 msgstr "文字コード(_S):"
 
-#: src/selector.c:207
+#: ../src/selector.c:207
 #, c-format
 msgid "'%s' is not supported"
 msgstr "'%s' はサポートされていません"
 
-#: src/selector.c:271
+#: ../src/selector.c:271
 msgid "Auto Detect"
 msgstr "文字コードを自動検出する"
 
-#: src/selector.c:325
+#: ../src/selector.c:325
 msgid "Open"
 msgstr "開くファイルを選択して下さい"
 
-#: src/selector.c:325
+#: ../src/selector.c:325
 msgid "Save As"
 msgstr "別名で保存"
 
-#: src/selector.c:345
+#: ../src/selector.c:345
 msgid "Ch_aracter Coding: "
 msgstr "文字コード(_A): "
 
-#: src/selector.c:401
+#: ../src/selector.c:401
 #, c-format
 msgid "'%s' already exists. Overwrite?"
 msgstr "'%s' は既に存在します。上書きしますか？"
 
-#: src/window.c:141
+#: ../src/window.c:141
 msgid "Untitled"
 msgstr "無題"
+
+#: ../mousepad.desktop.in.h:1
+msgid "Mousepad"
+msgstr ""
+
+#: ../mousepad.desktop.in.h:2
+msgid "Simple text editor"
+msgstr "シンプルなテキストエディタ"
+
+#: ../mousepad.desktop.in.h:3
+#, fuzzy
+msgid "Text Editor"
+msgstr "シンプルなテキストエディタ"

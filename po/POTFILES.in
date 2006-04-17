@@ -8,3 +8,5 @@ src/menu.c
 src/search.c
 src/selector.c
 src/window.c
+
+mousepad.desktop.in
