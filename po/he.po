@@ -1,0 +1,272 @@
+# translation of mousepad_he.po to Hebrew
+# This file is distributed under the same license as the PACKAGE package.
+# Copyright (C) 2005-2006 Erik Harrison.
+# Dotan Kamber <kamberd@yahoo.com>, 2006.
+# Yuval Tanny <tanai@int.gov.il>, 2006.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: mousepad_he\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2006-04-17 11:28+0200\n"
+"PO-Revision-Date: 2006-04-18 19:29+0300\n"
+"Last-Translator: Yuval Tanny <tanai@int.gov.il>\n"
+"Language-Team: Hebrew\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: KBabel 1.10.2\n"
+
+#: ../src/callback.c:34
+#, c-format
+msgid "Save changes to '%s'?"
+msgstr "לשמור את השינויים של \"%s\"?"
+
+#: ../src/callback.c:180 ../src/file.c:150
+#, c-format
+msgid "Can't convert codeset to '%s'"
+msgstr "אין אפשרות להמיר את הקידוד ל-\"%s\""
+
+#: ../src/callback.c:207
+msgid "Can't open pipe to process"
+msgstr "אין אפשרות לפתוח צינור לתהליך"
+
+#: ../src/callback.c:366
+msgid "A text editor for Xfce"
+msgstr "עורך טקסט עבור Xfce"
+
+#: ../src/dialog.c:135
+#, c-format
+msgid "About %s"
+msgstr "אודות %s"
+
+#: ../src/file.c:163
+msgid "Can't open file to write"
+msgstr "אין אפשרות לפתוח קובץ לכתיבה"
+
+#: ../src/file.c:168
+msgid "Can't write file"
+msgstr "אין אפשרות לכתוב את הקובץ"
+
+#: ../src/font.c:49
+msgid "Font"
+msgstr "גופן"
+
+#: ../src/menu.c:60
+msgid "/_File"
+msgstr "/_קובץ"
+
+#: ../src/menu.c:62
+msgid "/File/_New"
+msgstr "/קובץ/_חדש"
+
+#. { N_("/File/New _Window"), "<shift><control>N",
+#. G_CALLBACK(cb_file_new), 1 },
+#: ../src/menu.c:66
+msgid "/File/_Open..."
+msgstr "/קובץ/_פתיחה..."
+
+#: ../src/menu.c:68
+msgid "/File/_Save"
+msgstr "/קובץ/_שמור"
+
+#: ../src/menu.c:70
+msgid "/File/Save _As..."
+msgstr "/קובץ/שמירה _בשם..."
+
+#: ../src/menu.c:72
+msgid "/File/_Print..."
+msgstr "/קובץ/_הדפסה..."
+
+#: ../src/menu.c:76
+msgid "/File/_Quit"
+msgstr "/קובץ/_יציאה"
+
+#: ../src/menu.c:78
+msgid "/_Edit"
+msgstr "/_עריכה"
+
+#: ../src/menu.c:80
+msgid "/Edit/_Undo"
+msgstr "/עריכה/_בטל"
+
+#: ../src/menu.c:82
+msgid "/Edit/_Redo"
+msgstr "/עריכה/בצע_שוב"
+
+#: ../src/menu.c:86
+msgid "/Edit/Cu_t"
+msgstr "/עריכה/_גזור"
+
+#: ../src/menu.c:88
+msgid "/Edit/_Copy"
+msgstr "/עריכה/_העתק"
+
+#: ../src/menu.c:90
+msgid "/Edit/_Paste"
+msgstr "/עריכה/ה_דבק"
+
+#: ../src/menu.c:92
+msgid "/Edit/_Delete"
+msgstr "/עריכה/_מחק"
+
+#: ../src/menu.c:96
+msgid "/Edit/Select _All"
+msgstr "/עריכה/_בחר הכל"
+
+#: ../src/menu.c:98
+msgid "/_Search"
+msgstr "/_חיפוש"
+
+#: ../src/menu.c:100
+msgid "/Search/_Find..."
+msgstr "/חיפוש/_מצא..."
+
+#: ../src/menu.c:102
+msgid "/Search/Find _Next"
+msgstr "/חיפוש/מצא _הבא"
+
+#: ../src/menu.c:104
+msgid "/Search/Find _Previous"
+msgstr "/חיפוש/מצא _קודם"
+
+#: ../src/menu.c:106
+msgid "/Search/_Replace..."
+msgstr "/חיפוש/_החלף..."
+
+#: ../src/menu.c:110
+msgid "/Search/_Jump To..."
+msgstr "/חיפוש/_עבור אל"
+
+#: ../src/menu.c:112
+msgid "/_Options"
+msgstr "/_אפשרויות"
+
+#: ../src/menu.c:114
+msgid "/Options/_Font..."
+msgstr "/אפשרויות/_גופן..."
+
+#: ../src/menu.c:116
+msgid "/Options/_Word Wrap"
+msgstr "/אפשרויות/גלישת _שורות"
+
+#: ../src/menu.c:118
+msgid "/Options/_Line Numbers"
+msgstr "/אפשרויות/_מספרי שורות"
+
+#: ../src/menu.c:122
+msgid "/Options/_Auto Indent"
+msgstr "/אפשרויות/_הזחה אוטומטית"
+
+#: ../src/menu.c:124
+msgid "/_Help"
+msgstr "/_עזרה"
+
+#: ../src/menu.c:126
+msgid "/Help/_About"
+msgstr "/עזרה/_אודות"
+
+#: ../src/search.c:73
+msgid "Search string not found"
+msgstr "המחרוזת לא נמצאה"
+
+#: ../src/search.c:115
+msgid "Replace?"
+msgstr "להחליף?"
+
+#: ../src/search.c:143
+#, c-format
+msgid "%d strings replaced"
+msgstr "%d מחרוזות הוחלפו"
+
+#: ../src/search.c:188
+msgid "Find"
+msgstr "חיפוש"
+
+#: ../src/search.c:200 ../src/search.c:265
+msgid "Fi_nd what: "
+msgstr "מה _לחפש:"
+
+#: ../src/search.c:219 ../src/search.c:292
+msgid "_Match case"
+msgstr "_התאם גודל אותיות"
+
+#: ../src/search.c:253
+msgid "Replace"
+msgstr "החלפה"
+
+#: ../src/search.c:280
+msgid "Re_place with: "
+msgstr "החלף _עם:"
+
+#: ../src/search.c:296
+msgid "Replace _all at once"
+msgstr "החלף ה_כל באחת"
+
+#: ../src/search.c:342
+msgid "Jump To"
+msgstr "עבור אל"
+
+#: ../src/search.c:347
+msgid "_Jump"
+msgstr "_עבור"
+
+#: ../src/search.c:353
+msgid "_Line number: "
+msgstr "מספר _שורה:"
+
+#: ../src/selector.c:103
+#, c-format
+msgid "Current Locale (%s)"
+msgstr "לוקאל נוכחי (%s)"
+
+#: ../src/selector.c:147
+msgid "Other Codeset"
+msgstr "קידודים נוספים"
+
+#: ../src/selector.c:186
+msgid "Code_set:"
+msgstr "_קידוד:"
+
+#: ../src/selector.c:207
+#, c-format
+msgid "'%s' is not supported"
+msgstr "\"%s\" אינו נתמך"
+
+#: ../src/selector.c:271
+msgid "Auto Detect"
+msgstr "זיהוי אוטומטי"
+
+#: ../src/selector.c:325
+msgid "Open"
+msgstr "פתיחה"
+
+#: ../src/selector.c:325
+msgid "Save As"
+msgstr "שמירה בשם"
+
+#: ../src/selector.c:345
+msgid "Ch_aracter Coding: "
+msgstr "קידוד _תווים:"
+
+#: ../src/selector.c:401
+#, c-format
+msgid "'%s' already exists. Overwrite?"
+msgstr "\"%s\" כבר קיים. לשכתב?"
+
+#: ../src/window.c:141
+msgid "Untitled"
+msgstr "ללא כותרת"
+
+#: ../mousepad.desktop.in.h:1
+msgid "Mousepad"
+msgstr "Mousepad"
+
+#: ../mousepad.desktop.in.h:2
+msgid "Simple text editor"
+msgstr "עורך טקסט פשוט"
+
+#: ../mousepad.desktop.in.h:3
+msgid "Text Editor"
+msgstr "עורך טקסט"
+
