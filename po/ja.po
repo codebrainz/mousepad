@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: Mousepad 0.2.2\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2006-04-17 11:28+0200\n"
-"PO-Revision-Date: 2005-08-18 20:13+0900\n"
+"PO-Revision-Date: 2006-04-23 16:34+0900\n"
 "Last-Translator: Daichi Kawahata <daichi@xfce.org>\n"
 "Language-Team: Japanese <xfce-users-jp@ml.fdiary.net>\n"
 "MIME-Version: 1.0\n"
@@ -261,13 +261,12 @@ msgstr "無題"
 
 #: ../mousepad.desktop.in.h:1
 msgid "Mousepad"
-msgstr ""
+msgstr "マウスパッド"
 
 #: ../mousepad.desktop.in.h:2
 msgid "Simple text editor"
-msgstr "シンプルなテキストエディタ"
+msgstr "シンプルなテキストエディター"
 
 #: ../mousepad.desktop.in.h:3
-#, fuzzy
 msgid "Text Editor"
-msgstr "シンプルなテキストエディタ"
+msgstr "テキストエディター"
