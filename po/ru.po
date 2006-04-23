@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Mousepad 0.2.2\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2006-04-17 11:28+0200\n"
-"PO-Revision-Date: 2006-03-13 20:48+0500\n"
+"PO-Revision-Date: 2006-04-22 14:38+0600\n"
 "Last-Translator: Sergey Fedoseev <fedoseev.sergey@gmail.com>\n"
 "Language-Team: Russian <ru@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -27,9 +27,8 @@ msgid "Can't convert codeset to '%s'"
 msgstr "Не удалось преобразовать кодировку в '%s'"
 
 #: ../src/callback.c:207
-#, fuzzy
 msgid "Can't open pipe to process"
-msgstr "Не удалось открыть файл для записи"
+msgstr "Не удалось открыть канал к процессу"
 
 #: ../src/callback.c:366
 msgid "A text editor for Xfce"
@@ -260,13 +259,12 @@ msgstr "Без имени"
 
 #: ../mousepad.desktop.in.h:1
 msgid "Mousepad"
-msgstr ""
+msgstr "Mousepad"
 
 #: ../mousepad.desktop.in.h:2
 msgid "Simple text editor"
 msgstr "Простой текстовый редактор"
 
 #: ../mousepad.desktop.in.h:3
-#, fuzzy
 msgid "Text Editor"
-msgstr "Простой текстовый редактор"
+msgstr "Текстовый редактор"
