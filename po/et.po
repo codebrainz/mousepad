@@ -1,0 +1,272 @@
+# Estonian translation of xfce4.
+# Copyright (C) 2006 THE xfce4'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the xfce4 package.
+# Peeter Vois <Peeter.Vois@mail.ee>, 2006.
+# 
+# 
+# 
+msgid ""
+msgstr ""
+"Project-Id-Version: xfce4 4.4\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2006-04-17 11:28+0200\n"
+"PO-Revision-Date: 2006-04-24 07:55+0300\n"
+"Last-Translator: Peeter Vois <Peeter.Vois@mail.ee>\n"
+"Language-Team: Estonian <et@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit"
+
+#: ../src/callback.c:34
+#, c-format
+msgid "Save changes to '%s'?"
+msgstr "Kas salvestan muudatused '%s'-i ?"
+
+#: ../src/callback.c:180 ../src/file.c:150
+#, c-format
+msgid "Can't convert codeset to '%s'"
+msgstr "Kodeeringu muundamine '%s'-le läks nässu"
+
+#: ../src/callback.c:207
+msgid "Can't open pipe to process"
+msgstr "Protsessi juurde toru avamine läks nässu"
+
+#: ../src/callback.c:366
+msgid "A text editor for Xfce"
+msgstr "Teksti redaktor Xfce jaoks"
+
+#: ../src/dialog.c:135
+#, c-format
+msgid "About %s"
+msgstr "Info %s-i kohta"
+
+#: ../src/file.c:163
+msgid "Can't open file to write"
+msgstr "Faili avamine kirjutamiseks läks nässu"
+
+#: ../src/file.c:168
+msgid "Can't write file"
+msgstr "Faili kirjutamine läks nässu"
+
+#: ../src/font.c:49
+msgid "Font"
+msgstr "Kirjatüüp"
+
+#: ../src/menu.c:60
+msgid "/_File"
+msgstr "/_Fail"
+
+#: ../src/menu.c:62
+msgid "/File/_New"
+msgstr "/Fail/_Uus"
+
+#. { N_("/File/New _Window"), "<shift><control>N",
+#. G_CALLBACK(cb_file_new), 1 },
+#: ../src/menu.c:66
+msgid "/File/_Open..."
+msgstr "/Fail/_Ava"
+
+#: ../src/menu.c:68
+msgid "/File/_Save"
+msgstr "/Fail/_Salvesta"
+
+#: ../src/menu.c:70
+msgid "/File/Save _As..."
+msgstr "/Fail/Salvesta _kui ..."
+
+#: ../src/menu.c:72
+msgid "/File/_Print..."
+msgstr "/Fail/_Print..."
+
+#: ../src/menu.c:76
+msgid "/File/_Quit"
+msgstr "/Fail/_Välja"
+
+#: ../src/menu.c:78
+msgid "/_Edit"
+msgstr "/_Redaktor"
+
+#: ../src/menu.c:80
+msgid "/Edit/_Undo"
+msgstr "/Redaktor/T_ühista"
+
+#: ../src/menu.c:82
+msgid "/Edit/_Redo"
+msgstr "/Redaktor/_Taasta"
+
+#: ../src/menu.c:86
+msgid "/Edit/Cu_t"
+msgstr "/Redaktor/_Lõika"
+
+#: ../src/menu.c:88
+msgid "/Edit/_Copy"
+msgstr "/Redaktor/K_operri"
+
+#: ../src/menu.c:90
+msgid "/Edit/_Paste"
+msgstr "/Redaktor/K_leebi"
+
+#: ../src/menu.c:92
+msgid "/Edit/_Delete"
+msgstr "/Redaktor/_Kustuta"
+
+#: ../src/menu.c:96
+msgid "/Edit/Select _All"
+msgstr "/Redaktor/Vali _Kõik"
+
+#: ../src/menu.c:98
+msgid "/_Search"
+msgstr "/_Otsing"
+
+#: ../src/menu.c:100
+msgid "/Search/_Find..."
+msgstr "/Otsing/_Leia..."
+
+#: ../src/menu.c:102
+msgid "/Search/Find _Next"
+msgstr "/Otsing/Leia _Järgmine"
+
+#: ../src/menu.c:104
+msgid "/Search/Find _Previous"
+msgstr "/Otsing/Leia _Eelmine"
+
+#: ../src/menu.c:106
+msgid "/Search/_Replace..."
+msgstr "/Otsing/_Asenda..."
+
+#: ../src/menu.c:110
+msgid "/Search/_Jump To..."
+msgstr "/Otsing/_Hüppa..."
+
+#: ../src/menu.c:112
+msgid "/_Options"
+msgstr "/_Seaded"
+
+#: ../src/menu.c:114
+msgid "/Options/_Font..."
+msgstr "/Seaded/_Kirjakuju..."
+
+#: ../src/menu.c:116
+msgid "/Options/_Word Wrap"
+msgstr "/Seaded/_Sõna murdmine"
+
+#: ../src/menu.c:118
+msgid "/Options/_Line Numbers"
+msgstr "/Seaded/_Rea numbrid"
+
+#: ../src/menu.c:122
+msgid "/Options/_Auto Indent"
+msgstr "/Seaded/_Automaatne ääristamine"
+
+#: ../src/menu.c:124
+msgid "/_Help"
+msgstr "/_Abi"
+
+#: ../src/menu.c:126
+msgid "/Help/_About"
+msgstr "/Abi/_Sellest"
+
+#: ../src/search.c:73
+msgid "Search string not found"
+msgstr "Otsitavat sõna ei leitud"
+
+#: ../src/search.c:115
+msgid "Replace?"
+msgstr "Kas asendan?"
+
+#: ../src/search.c:143
+#, c-format
+msgid "%d strings replaced"
+msgstr "muudetud sai %d sõna"
+
+#: ../src/search.c:188
+msgid "Find"
+msgstr "Otsi"
+
+#: ../src/search.c:200 ../src/search.c:265
+msgid "Fi_nd what: "
+msgstr "_Mida otsida: "
+
+#: ../src/search.c:219 ../src/search.c:292
+msgid "_Match case"
+msgstr "Suur ja väiketähed loevad"
+
+#: ../src/search.c:253
+msgid "Replace"
+msgstr "Asenda"
+
+#: ../src/search.c:280
+msgid "Re_place with: "
+msgstr "Asendus:"
+
+#: ../src/search.c:296
+msgid "Replace _all at once"
+msgstr "Asenda kõik korraga"
+
+#: ../src/search.c:342
+msgid "Jump To"
+msgstr "Hüppa reale"
+
+#: ../src/search.c:347
+msgid "_Jump"
+msgstr "_Hüppa"
+
+#: ../src/search.c:353
+msgid "_Line number: "
+msgstr "_Rea number:"
+
+#: ../src/selector.c:103
+#, c-format
+msgid "Current Locale (%s)"
+msgstr "Praegune lokaal (%s)"
+
+#: ../src/selector.c:147
+msgid "Other Codeset"
+msgstr "Muu kood"
+
+#: ../src/selector.c:186
+msgid "Code_set:"
+msgstr "Koodid:"
+
+#: ../src/selector.c:207
+#, c-format
+msgid "'%s' is not supported"
+msgstr "'%s' ei ole toetatud"
+
+#: ../src/selector.c:271
+msgid "Auto Detect"
+msgstr "Määra automaatselt"
+
+#: ../src/selector.c:325
+msgid "Open"
+msgstr "Ava"
+
+#: ../src/selector.c:325
+msgid "Save As"
+msgstr "Salvesta kui"
+
+#: ../src/selector.c:345
+msgid "Ch_aracter Coding: "
+msgstr "Sü_mbolite kodeering"
+
+#: ../src/selector.c:401
+#, c-format
+msgid "'%s' already exists. Overwrite?"
+msgstr "'%s' on juba olemas, kas kirjutan üle?"
+
+#: ../src/window.c:141
+msgid "Untitled"
+msgstr "Nimetu"
+
+#: ../mousepad.desktop.in.h:1
+msgid "Mousepad"
+msgstr "Mousepad"
+
+#: ../mousepad.desktop.in.h:2
+msgid "Simple text editor"
+msgstr "Lihtne teksti redaktor"
+
+#: ../mousepad.desktop.in.h:3
+msgid "Text Editor"
+msgstr "Teksti redaktor"
+
