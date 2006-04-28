@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: Mousepad 0.2.2\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2006-04-17 11:28+0200\n"
-"PO-Revision-Date: 2005-10-07 18:54+0900\n"
+"PO-Revision-Date: 2006-04-29 07:34+0800\n"
 "Last-Translator: Hydonsingore Cia <hydonsingore@mail.educities.edu.tw>\n"
 "Language-Team: Chinese (traditional) <zh-l10n@linux.org.tw>\n"
 "MIME-Version: 1.0\n"
@@ -260,13 +260,12 @@ msgstr "無標題"
 
 #: ../mousepad.desktop.in.h:1
 msgid "Mousepad"
-msgstr ""
+msgstr "Mousepad"
 
 #: ../mousepad.desktop.in.h:2
 msgid "Simple text editor"
 msgstr "簡易文字編輯器"
 
 #: ../mousepad.desktop.in.h:3
-#, fuzzy
 msgid "Text Editor"
-msgstr "簡易文字編輯器"
+msgstr "文字編輯器"
