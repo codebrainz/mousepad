@@ -18,6 +18,15 @@
 
 	* zh_TW.po: Updated traditional Chinese translations.
 
+2006-04-26  Peeter Vois <Peeter.Vois@mail.ee>
+
+	* LINGUAS: .
+	* et.po: .
+
+2006-04-24  Szervac Attila <sas@321.hu>
+
+	* hu.po: hu trunk: mousepad update
+
 2006-04-23  Daichi Kawahata <daichi@xfce.org>
 
 	* ru.po: Updated Russian translations by Sergey Fedoseev
@@ -31,10 +40,43 @@
 	* zh_CN.po: Updated Simplified Chinese translations by Jick Nan
 	<jick.nan@gmail.com>.
 
+2006-04-20  Maxim V. Dziumanenko <mvd@mylinux.ua>
+
+	* uk.po: Updated Ukrainian translation.
+
+2006-04-19  Szervac Attila <sas@321.hu>
+
+	* hu.po: hu trunk: updates
+
+2006-04-18  Yuval Tanny <tanai@int.gov.il>
+
+	* LINGUAS, he.po: Hebrew translation for Mousepad.
+
+2006-04-17  Benedikt Meurer <benny@xfce.org>
+
+	* LINGUAS: Added.
+	* Makevars, POTFILES, POTFILES.in, Rules-quot, boldquot.sed,
+	  en@boldquot.header, en@quot.header, insert-header.sin, quot.sed,
+	  remove-potcdate.sin: Removed.
+	* mousepad.pot, *.po: Updated.
+
 2006-04-15  Daichi Kawahata <daichi@xfce.org>
 
 	* ko.po: Added Korean translations by ByungHyun Choi
 	  <byunghyun.choi@gmail.com>.
+
+2006-04-02  Pau Rullan Ferragut <paurullan@bulma.net>
+
+	* ca.po: catalan little of work on catalan translations
+
+2006-04-01  Stavros Giannouris <stavrosg2002@freemail.gr>
+
+	* el.po: Greek translations update & polish by Stathis Kamperis
+	  <ekamperi@auth.gr>.
+
+2006-03-19  Pau Rullan Ferragut <paurullan@bulma.net>
+
+	* ca.po: catalan seems a lot of work but they all are fuzzy
 
 2006-03-18  Daichi Kawahata <daichi@xfce.org>
 
