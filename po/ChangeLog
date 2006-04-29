@@ -1,3 +1,7 @@
+2006-04-29  Daichi Kawahata <daichi@xfce.org>
+
+	* LINGUAS: Added missing language codes.
+
 2006-04-29  Stavros Giannouris <stavrosg2002@freemail.gr>
 
 	* el.po: Greek translation update.
@@ -5,6 +9,7 @@
 	
 2006-04-29  Daichi Kawahata <daichi@xfce.org>
 
+	* ko.po: Updated.
 	* pl.po: Updated Polish translations by Piotr Malinski
 	<riklaunim@gmail.com>.
 
