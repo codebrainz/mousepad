@@ -8,7 +8,7 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Mousepad 0.2.2\n"
+"Project-Id-Version: Mousepad 0.2.5svn\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2006-04-17 11:28+0200\n"
 "PO-Revision-Date: 2006-04-23 16:17+0100\n"
@@ -23,8 +23,7 @@ msgstr ""
 msgid "Save changes to '%s'?"
 msgstr "Mented \"%s\" változásait?"
 
-#: ../src/callback.c:180
-#: ../src/file.c:150
+#: ../src/callback.c:180 ../src/file.c:150
 #, c-format
 msgid "Can't convert codeset to '%s'"
 msgstr "A kódolás nem alakítható át erre: \"%s\""
@@ -185,13 +184,11 @@ msgstr "%d csere volt"
 msgid "Find"
 msgstr "Keresés"
 
-#: ../src/search.c:200
-#: ../src/search.c:265
+#: ../src/search.c:200 ../src/search.c:265
 msgid "Fi_nd what: "
 msgstr "_Keresett szöveg: "
 
-#: ../src/search.c:219
-#: ../src/search.c:292
+#: ../src/search.c:219 ../src/search.c:292
 msgid "_Match case"
 msgstr "Kis- és _nagybetű számít"
 
@@ -274,4 +271,3 @@ msgstr "Egyszerű szövegszerkesztő"
 #: ../mousepad.desktop.in.h:3
 msgid "Text Editor"
 msgstr "Szövegszerkesztő"
-

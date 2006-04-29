@@ -6,7 +6,7 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: mousepad_he\n"
+"Project-Id-Version: Mousepad 0.2.5svn\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2006-04-17 11:28+0200\n"
 "PO-Revision-Date: 2006-04-18 19:29+0300\n"
@@ -269,4 +269,3 @@ msgstr "עורך טקסט פשוט"
 #: ../mousepad.desktop.in.h:3
 msgid "Text Editor"
 msgstr "עורך טקסט"
-
