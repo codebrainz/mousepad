@@ -32,7 +32,7 @@ msgstr "Nie można otworzyć pliku do zapisu"
 
 #: ../src/callback.c:366
 msgid "A text editor for Xfce"
-msgstr ""
+msgstr "Edytor tekstowy dla XFCE"
 
 #: ../src/dialog.c:135
 #, c-format
@@ -260,7 +260,7 @@ msgstr "Dokument"
 
 #: ../mousepad.desktop.in.h:1
 msgid "Mousepad"
-msgstr ""
+msgstr "Mousepad"
 
 #: ../mousepad.desktop.in.h:2
 msgid "Simple text editor"
