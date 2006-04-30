@@ -4,219 +4,185 @@
 # This file is distributed under the same license as the Mousepad package.
 #
 # David Rosal <davidrr@users.sourceforge.net>, 2004.
-# Pau Rul·lan Ferragut <paurullan@bulma.net> 2005, 2006.
+# Pau Rul·lan Ferragut <paurullan@bulma.net>, 2005, 2006.
+# Carles Muñoz Gorriz <carlesmu@internautas.org>, 2006.
 msgid ""
 msgstr ""
 "Project-Id-Version: Mousepad 0.2.5svn\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2006-04-17 11:28+0200\n"
-"PO-Revision-Date: 2006-04-02 18:00+0200\n"
-"Last-Translator: Pau Rul·lan Ferragut <paurullan@bulma.net>\n"
+"PO-Revision-Date: 2006-04-30 11:44+0100\n"
+"Last-Translator: Carles Muñoz Gorriz <carlesmu@internautas.org>\n"
 "Language-Team: Catalan\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "X-Generator: KBabel 1.11.2\n"
 
 #: ../src/callback.c:34
 #, c-format
 msgid "Save changes to '%s'?"
-msgstr "Voleu desar els canvis fets a '%s'?"
+msgstr "Voleu desar els canvis fets a «%s»?"
 
 #: ../src/callback.c:180 ../src/file.c:150
-#, fuzzy, c-format
+#, c-format
 msgid "Can't convert codeset to '%s'"
-msgstr "converteix a "
+msgstr "No es pot convertir la codificació a «%s»"
 
 #: ../src/callback.c:207
-#, fuzzy
 msgid "Can't open pipe to process"
-msgstr "obre conducte a "
+msgstr "No es pot inicialitzar el conducte cap al procés"
 
 #: ../src/callback.c:366
-#, fuzzy
 msgid "A text editor for Xfce"
-msgstr "A text per a"
+msgstr "Un editor de text per l'Xfce"
 
 #: ../src/dialog.c:135
-#, fuzzy, c-format
+#, c-format
 msgid "About %s"
 msgstr "Quant a %s"
 
 #: ../src/file.c:163
-#, fuzzy
 msgid "Can't open file to write"
-msgstr "obre fitxer a "
+msgstr "No es pot obrir el fitxer per a escriure"
 
 #: ../src/file.c:168
-#, fuzzy
 msgid "Can't write file"
-msgstr "fitxer"
+msgstr "No es pot escriure al fitxer"
 
 #: ../src/font.c:49
-#, fuzzy
 msgid "Font"
 msgstr "Tipus de lletra"
 
 #: ../src/menu.c:60
-#, fuzzy
 msgid "/_File"
 msgstr "/_Fitxer"
 
 #: ../src/menu.c:62
-#, fuzzy
 msgid "/File/_New"
 msgstr "/Fitxer/_Nou"
 
 #. { N_("/File/New _Window"), "<shift><control>N",
 #. G_CALLBACK(cb_file_new), 1 },
 #: ../src/menu.c:66
-#, fuzzy
 msgid "/File/_Open..."
-msgstr "/Fitxer/_Obre..."
+msgstr "/Fitxer/_Obre…"
 
 #: ../src/menu.c:68
-#, fuzzy
 msgid "/File/_Save"
 msgstr "/Fitxer/_Desa"
 
 #: ../src/menu.c:70
-#, fuzzy
 msgid "/File/Save _As..."
-msgstr "/Fitxer/Des_a com a..."
+msgstr "/Fitxer/_Anomena i desa"
 
 #: ../src/menu.c:72
-#, fuzzy
 msgid "/File/_Print..."
-msgstr "/Fitxer/Im_primeix..."
+msgstr "/Fitxer/Im_primeix…"
 
 #: ../src/menu.c:76
-#, fuzzy
 msgid "/File/_Quit"
-msgstr "Fitxer Surt"
+msgstr "/Fitxer/_Surt"
 
 #: ../src/menu.c:78
-#, fuzzy
 msgid "/_Edit"
 msgstr "/_Edita"
 
 #: ../src/menu.c:80
-#, fuzzy
 msgid "/Edit/_Undo"
 msgstr "/Edita/_Desfés"
 
 #: ../src/menu.c:82
-#, fuzzy
 msgid "/Edit/_Redo"
-msgstr "/Edita/_Torna a fer"
+msgstr "/Edita/_Refés"
 
 #: ../src/menu.c:86
-#, fuzzy
 msgid "/Edit/Cu_t"
 msgstr "/Edita/Re_talla"
 
 #: ../src/menu.c:88
-#, fuzzy
 msgid "/Edit/_Copy"
 msgstr "/Edita/_Copia"
 
 #: ../src/menu.c:90
-#, fuzzy
 msgid "/Edit/_Paste"
 msgstr "/Edita/_Enganxa"
 
 #: ../src/menu.c:92
-#, fuzzy
 msgid "/Edit/_Delete"
 msgstr "/Edita/_Suprimeix"
 
 #: ../src/menu.c:96
-#, fuzzy
 msgid "/Edit/Select _All"
-msgstr "Edita Seleccioneu Tots"
+msgstr "/Edita/Selecciona-ho t_ot"
 
 #: ../src/menu.c:98
-#, fuzzy
 msgid "/_Search"
-msgstr "Cerca"
+msgstr "/_Cerca"
 
 #: ../src/menu.c:100
-#, fuzzy
 msgid "/Search/_Find..."
-msgstr "Cerca Cerca."
+msgstr "/Cerca/_Cercar…"
 
 #: ../src/menu.c:102
-#, fuzzy
 msgid "/Search/Find _Next"
-msgstr "Cerca Cerca Següent"
+msgstr "/Cerca/Cercar el _següent"
 
 #: ../src/menu.c:104
-#, fuzzy
 msgid "/Search/Find _Previous"
-msgstr "Cerca Cerca Anterior"
+msgstr "/Cerca/Cerca l'_anterior"
 
 #: ../src/menu.c:106
-#, fuzzy
 msgid "/Search/_Replace..."
-msgstr "Cerca Reemplaça."
+msgstr "/Cerca/_Substitueix"
 
 #: ../src/menu.c:110
-#, fuzzy
 msgid "/Search/_Jump To..."
-msgstr "Cerca Salta A."
+msgstr "/Cerca/Vés a la _línia…"
 
 #: ../src/menu.c:112
-#, fuzzy
 msgid "/_Options"
 msgstr "/_Opcions"
 
 #: ../src/menu.c:114
-#, fuzzy
 msgid "/Options/_Font..."
-msgstr "Opcions Tipus de lletra."
+msgstr "/Opcions/Tipus de _lletra"
 
 #: ../src/menu.c:116
-#, fuzzy
 msgid "/Options/_Word Wrap"
-msgstr "Opcions Paraula Ajusta"
+msgstr "/Opcions/_Ajust de línia"
 
 #: ../src/menu.c:118
-#, fuzzy
 msgid "/Options/_Line Numbers"
-msgstr "Opcions Línia Números"
+msgstr "/Opcions/_Numera les línies"
 
 #: ../src/menu.c:122
-#, fuzzy
 msgid "/Options/_Auto Indent"
-msgstr "Opcions Auto Sagnat"
+msgstr "/Opcions/Auto_indentació"
 
 #: ../src/menu.c:124
-#, fuzzy
 msgid "/_Help"
-msgstr "Ajuda"
+msgstr "/A_juda"
 
 #: ../src/menu.c:126
-#, fuzzy
 msgid "/Help/_About"
-msgstr "/Ajuda/_Quant a"
+msgstr "/Ajuda/_Quant a…"
 
 #: ../src/search.c:73
-#, fuzzy
 msgid "Search string not found"
-msgstr "Cerca cadena de text no"
+msgstr "No s'ha trobat la cadena desitjada"
 
 #: ../src/search.c:115
-#, fuzzy
 msgid "Replace?"
-msgstr "Reemplaça?"
+msgstr "Substituir?"
 
 #: ../src/search.c:143
 #, c-format
 msgid "%d strings replaced"
-msgstr "S'han substituit %d cadenes"
+msgstr "S'han substituït %d cadenes"
 
 #: ../src/search.c:188
-#, fuzzy
 msgid "Find"
 msgstr "Cerca"
 
@@ -225,72 +191,60 @@ msgid "Fi_nd what: "
 msgstr "_Cercar: "
 
 #: ../src/search.c:219 ../src/search.c:292
-#, fuzzy
 msgid "_Match case"
-msgstr "Coi_ncidència de majúscules i minúscules"
+msgstr "Distingir _majúscules / minúscules"
 
 #: ../src/search.c:253
-#, fuzzy
 msgid "Replace"
-msgstr "Reemplaça"
+msgstr "Substituir"
 
 #: ../src/search.c:280
-#, fuzzy
 msgid "Re_place with: "
-msgstr "amb "
+msgstr "_Substitueix amb:"
 
 #: ../src/search.c:296
-#, fuzzy
 msgid "Replace _all at once"
-msgstr "Reemplaça all"
+msgstr "Substituir-les _totes de cop"
 
 #: ../src/search.c:342
-#, fuzzy
 msgid "Jump To"
-msgstr "Salta A"
+msgstr "Salta a"
 
 #: ../src/search.c:347
-#, fuzzy
 msgid "_Jump"
-msgstr "Salta"
+msgstr "_Salta"
 
 #: ../src/search.c:353
-#, fuzzy
 msgid "_Line number: "
-msgstr "Línia nombre "
+msgstr "Número de _línia: "
 
 #: ../src/selector.c:103
-#, fuzzy, c-format
+#, c-format
 msgid "Current Locale (%s)"
-msgstr "Locale actual (%s)"
+msgstr "Locale actual («%s»)"
 
 #: ../src/selector.c:147
-#, fuzzy
 msgid "Other Codeset"
-msgstr "Altres"
+msgstr "Una altra codificació"
 
 #: ../src/selector.c:186
-#, fuzzy
 msgid "Code_set:"
-msgstr "Codi set:"
+msgstr "_Codificació:"
 
 #: ../src/selector.c:207
-#, fuzzy, c-format
+#, c-format
 msgid "'%s' is not supported"
-msgstr "és no"
+msgstr "«%s» no és suportat"
 
 #: ../src/selector.c:271
-#, fuzzy
 msgid "Auto Detect"
 msgstr "Detecció automàtica"
 
 #: ../src/selector.c:325
-#, fuzzy
 msgid "Open"
 msgstr "Obre"
 
 #: ../src/selector.c:325
-#, fuzzy
 msgid "Save As"
 msgstr "Anomena i desa"
 
@@ -299,24 +253,22 @@ msgid "Ch_aracter Coding: "
 msgstr "Codificació de c_aràcters: "
 
 #: ../src/selector.c:401
-#, fuzzy, c-format
+#, c-format
 msgid "'%s' already exists. Overwrite?"
-msgstr "existeix Sobreescriu?"
+msgstr "«%s» ja existeix. Voleu sobreescriure'l?"
 
 #: ../src/window.c:141
-#, fuzzy
 msgid "Untitled"
 msgstr "Sense títol"
 
 #: ../mousepad.desktop.in.h:1
 msgid "Mousepad"
-msgstr ""
+msgstr "Mousepad"
 
 #: ../mousepad.desktop.in.h:2
 msgid "Simple text editor"
 msgstr "Editor de text simple"
 
 #: ../mousepad.desktop.in.h:3
-#, fuzzy
 msgid "Text Editor"
-msgstr "Editor de text simple"
+msgstr "Editor de text"
