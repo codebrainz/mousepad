@@ -26,9 +26,8 @@ msgid "Can't convert codeset to '%s'"
 msgstr "Nie można przekonwertować strony kodowej do '%s'"
 
 #: ../src/callback.c:207
-#, fuzzy
 msgid "Can't open pipe to process"
-msgstr "Nie można otworzyć pliku do zapisu"
+msgstr "Nie można otworzyć rurki dla procesu"
 
 #: ../src/callback.c:366
 msgid "A text editor for Xfce"
@@ -74,9 +73,8 @@ msgid "/File/Save _As..."
 msgstr "/Plik/Zapisz j_ako"
 
 #: ../src/menu.c:72
-#, fuzzy
 msgid "/File/_Print..."
-msgstr "/Plik/_Otwórz"
+msgstr "/Plik/_Drukuj..."
 
 #: ../src/menu.c:76
 msgid "/File/_Quit"
@@ -267,6 +265,5 @@ msgid "Simple text editor"
 msgstr "Prosty edytor tekstu"
 
 #: ../mousepad.desktop.in.h:3
-#, fuzzy
 msgid "Text Editor"
-msgstr "Prosty edytor tekstu"
+msgstr "Edytor Tekstu"
