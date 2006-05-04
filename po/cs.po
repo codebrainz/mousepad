@@ -2,18 +2,22 @@
 # Copyright (C) 2005-2006 Erik Harrison.
 # This file is distributed under the same license as the Mousepad package.
 # Petr Vysloužil <evyslouz@volny.cz>, 2004.
+# Michal Várady <miko.vaji@gmail.com>, 2006.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: Mousepad 0.2.5svn\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2006-04-17 11:28+0200\n"
-"PO-Revision-Date: 2005-10-07 18:37+0900\n"
-"Last-Translator: Petr Vysloužil <evyslouz@volny.cz>\n"
+"PO-Revision-Date: 2006-05-04 20:12+0100\n"
+"Last-Translator: Michal Várady <miko.vaji@gmail.com>\n"
 "Language-Team: Czech <translation-team-cs@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-Language: Czech\n"
+"X-Poedit-Country: CZECH REPUBLIC\n"
+"X-Poedit-SourceCharset: utf-8\n"
 
 #: ../src/callback.c:34
 #, c-format
@@ -26,13 +30,12 @@ msgid "Can't convert codeset to '%s'"
 msgstr "Nemohu převést znakovou sadu na '%s'"
 
 #: ../src/callback.c:207
-#, fuzzy
 msgid "Can't open pipe to process"
-msgstr "Nemohu otevřít soubor k zápisu"
+msgstr "Nemohu otevřít rouru ke zpracování"
 
 #: ../src/callback.c:366
 msgid "A text editor for Xfce"
-msgstr ""
+msgstr "Textový editor pro Xfce"
 
 #: ../src/dialog.c:135
 #, c-format
@@ -74,9 +77,8 @@ msgid "/File/Save _As..."
 msgstr "/Soubor/Uložit _jako..."
 
 #: ../src/menu.c:72
-#, fuzzy
 msgid "/File/_Print..."
-msgstr "/Soubor/_Otevřít"
+msgstr "/Soubor/_Tisk..."
 
 #: ../src/menu.c:76
 msgid "/File/_Quit"
@@ -84,35 +86,35 @@ msgstr "/Soubor/_Konec"
 
 #: ../src/menu.c:78
 msgid "/_Edit"
-msgstr "/Ú_pravy"
+msgstr "/Úp_ravy"
 
 #: ../src/menu.c:80
 msgid "/Edit/_Undo"
-msgstr "/Ú_pravy/_Zpět"
+msgstr "/Úpravy/_Zpět"
 
 #: ../src/menu.c:82
 msgid "/Edit/_Redo"
-msgstr "/Ú_pravy/Zn_ovu"
+msgstr "/Úpravy/Znov_u"
 
 #: ../src/menu.c:86
 msgid "/Edit/Cu_t"
-msgstr "/Ú_pravy/_Vyjmout"
+msgstr "/Úpravy/_Vyjmout"
 
 #: ../src/menu.c:88
 msgid "/Edit/_Copy"
-msgstr "/Ú_pravy/_Kopírovat"
+msgstr "/Úpravy/_Kopírovat"
 
 #: ../src/menu.c:90
 msgid "/Edit/_Paste"
-msgstr "/Ú_pravy/V_ložit"
+msgstr "/Úpravy/V_ložit"
 
 #: ../src/menu.c:92
 msgid "/Edit/_Delete"
-msgstr "/Ú_pravy/_Odstranit"
+msgstr "/Úpravy/_Odstranit"
 
 #: ../src/menu.c:96
 msgid "/Edit/Select _All"
-msgstr "/Ú_pravy/_Vybrat vše"
+msgstr "/Úpravy/_Vybrat vše"
 
 #: ../src/menu.c:98
 msgid "/_Search"
@@ -160,7 +162,7 @@ msgstr "/Nastavení/_Automatické odsazování"
 
 #: ../src/menu.c:124
 msgid "/_Help"
-msgstr "/_Nápověda"
+msgstr "/Nápo_věda"
 
 #: ../src/menu.c:126
 msgid "/Help/_About"
@@ -260,13 +262,12 @@ msgstr "Nepojmenovaný"
 
 #: ../mousepad.desktop.in.h:1
 msgid "Mousepad"
-msgstr ""
+msgstr "Mousepad"
 
 #: ../mousepad.desktop.in.h:2
 msgid "Simple text editor"
 msgstr "Jednoduchý textový editor"
 
 #: ../mousepad.desktop.in.h:3
-#, fuzzy
 msgid "Text Editor"
-msgstr "Jednoduchý textový editor"
+msgstr "Textový editor"
