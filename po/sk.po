@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Mousepad 0.2.5svn\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2006-04-17 11:28+0200\n"
-"PO-Revision-Date: 2005-10-07 23:43+0900\n"
+"PO-Revision-Date: 2006-05-02 20:13+0200\n"
 "Last-Translator: Roman Moravcik <roman.moravcik@gmail.com>\n"
 "Language-Team: Slovak <sk-i18n@linux.sk>\n"
 "MIME-Version: 1.0\n"
@@ -258,13 +258,12 @@ msgstr "Nepomenovaný"
 
 #: ../mousepad.desktop.in.h:1
 msgid "Mousepad"
-msgstr ""
+msgstr "Mousepad"
 
 #: ../mousepad.desktop.in.h:2
 msgid "Simple text editor"
-msgstr "JednoduchÃ½ textovÃ½ editor"
+msgstr "Jednoduchý textový editor"
 
 #: ../mousepad.desktop.in.h:3
-#, fuzzy
 msgid "Text Editor"
-msgstr "JednoduchÃ½ textovÃ½ editor"
+msgstr "Textový editor"
