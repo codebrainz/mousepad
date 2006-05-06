@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Mousepad 0.2.5svn\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2006-04-17 11:28+0200\n"
-"PO-Revision-Date: 2005-11-17 17:42+0900\n"
+"PO-Revision-Date: 2006-05-01 21:53-0300\n"
 "Last-Translator: Adriano Winter Bess <awbess@gmail.com>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -28,11 +28,11 @@ msgstr "Não é possível converter a codificação para '%s'"
 
 #: ../src/callback.c:207
 msgid "Can't open pipe to process"
-msgstr "Não é possível abrir \"pipe\" para o processo"
+msgstr "Não é possível abrir canal para o processo"
 
 #: ../src/callback.c:366
 msgid "A text editor for Xfce"
-msgstr "Um editor de textos para o Xfce"
+msgstr "Um editor de texto para o Xfce"
 
 #: ../src/dialog.c:135
 #, c-format
@@ -151,7 +151,7 @@ msgstr "/Opções/_Quebra de Palavra"
 
 #: ../src/menu.c:118
 msgid "/Options/_Line Numbers"
-msgstr "/Opções/Números das _linhas"
+msgstr "/Opções/Números das _Linhas"
 
 #: ../src/menu.c:122
 msgid "/Options/_Auto Indent"
@@ -259,12 +259,12 @@ msgstr "Sem Nome"
 
 #: ../mousepad.desktop.in.h:1
 msgid "Mousepad"
-msgstr ""
+msgstr "Mousepad"
 
 #: ../mousepad.desktop.in.h:2
 msgid "Simple text editor"
-msgstr ""
+msgstr "Editor de texto simples"
 
 #: ../mousepad.desktop.in.h:3
 msgid "Text Editor"
-msgstr ""
+msgstr "Editor de Texto"
