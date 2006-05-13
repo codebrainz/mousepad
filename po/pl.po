@@ -2,14 +2,15 @@
 # Copyright (C) 2005-2006 Erik Harrison.
 # This file is distributed under the same license as the Mousepad package.
 # Michal Wrobel <wrobel@task.gda.pl>, 2004.
+# Szymon Kałasz <szymon_maestro@gazeta.pl>, 2006.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: Mousepad 0.2.5svn\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2006-04-17 11:28+0200\n"
-"PO-Revision-Date: 2005-10-07 18:45+0900\n"
-"Last-Translator: Michał Wróbel <wrobel@task.gda.pl>\n"
+"PO-Revision-Date: 2006-05-07 19:50+0200\n"
+"Last-Translator: Szymon Kałasz <szymon_maestro@gazeta.pl>\n"
 "Language-Team: Polish <translation-team-pl@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -250,7 +251,7 @@ msgstr "Strona kodowa: "
 #: ../src/selector.c:401
 #, c-format
 msgid "'%s' already exists. Overwrite?"
-msgstr "'%s' już instnieje. Czy go zastąpić?"
+msgstr "'%s' już istnieje. Czy go zastąpić?"
 
 #: ../src/window.c:141
 msgid "Untitled"
