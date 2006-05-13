@@ -3,6 +3,10 @@
 	* pl.po: Updated Polish translations by Szymon Kalasz
 	  <szymon_maestro@gazeta.pl>.
 
+2006-05-10  Jari Rahkonen <jari.rahkonen@pp1.inet.fi>
+
+	* LINGUAS, fi.po: A new translation for mousepad added.
+
 2006-05-05  Daichi Kawahata <daichi@xfce.org>
 
 	* sk.po: Updated Slovak translations by Roman Moravcik
