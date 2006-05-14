@@ -2,15 +2,16 @@
 # Copyright (C) 2005-2006 Erik Harrison.
 # This file is distributed under the same license as the Mousepad package.
 # Luc Pionchon <luc@handhelds.org>, 2004.
-#
+# Maximilian Schleiss <maxschleiss@bluewin.ch>, 2006.
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mousepad 0.2.5svn\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2006-04-17 11:28+0200\n"
-"PO-Revision-Date: 2005-10-07 18:40+0900\n"
-"Last-Translator: Luc Pionchon <luc@handhelds.org>\n"
-"Language-Team: French <traduc@traduc.org>\n"
+"PO-Revision-Date: 2006-05-14 22:25+0200\n"
+"Last-Translator: Maximilian Schleiss <maxschleiss@bluewin.ch>\n"
+"Language-Team: French <xfce-i18n@xfce.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -23,16 +24,15 @@ msgstr "Enregistrer les changements pour '%s' ?"
 #: ../src/callback.c:180 ../src/file.c:150
 #, c-format
 msgid "Can't convert codeset to '%s'"
-msgstr "Erreur de conversion avec le jeu de caractères '%s'"
+msgstr "Impossible de convertir le jeu de caractères '%s'"
 
 #: ../src/callback.c:207
-#, fuzzy
 msgid "Can't open pipe to process"
 msgstr "Impossible d'ouvrir le fichier en écriture"
 
 #: ../src/callback.c:366
 msgid "A text editor for Xfce"
-msgstr ""
+msgstr "Un éditeur de texte pour Xfce"
 
 #: ../src/dialog.c:135
 #, c-format
@@ -49,7 +49,7 @@ msgstr "Impossible d'enregistrer le fichier"
 
 #: ../src/font.c:49
 msgid "Font"
-msgstr "Fonte"
+msgstr "Police de caractère"
 
 #: ../src/menu.c:60
 msgid "/_File"
@@ -74,9 +74,8 @@ msgid "/File/Save _As..."
 msgstr "/Fichier/Enregistrer _sous..."
 
 #: ../src/menu.c:72
-#, fuzzy
 msgid "/File/_Print..."
-msgstr "/Fichier/_Ouvrir..."
+msgstr "/Fichier/_Imprimer..."
 
 #: ../src/menu.c:76
 msgid "/File/_Quit"
@@ -144,7 +143,7 @@ msgstr "/_Options"
 
 #: ../src/menu.c:114
 msgid "/Options/_Font..."
-msgstr "/Options/_Fonte..."
+msgstr "/Options/_Police d'écriture..."
 
 #: ../src/menu.c:116
 msgid "/Options/_Word Wrap"
@@ -156,7 +155,7 @@ msgstr "/Options/_Numérotation des lignes"
 
 #: ../src/menu.c:122
 msgid "/Options/_Auto Indent"
-msgstr "/Options/_Indentation automatique"
+msgstr "/Options/_Alinéa automatique"
 
 #: ../src/menu.c:124
 msgid "/_Help"
@@ -172,12 +171,12 @@ msgstr "Le texte recherché n'a pas été trouvé"
 
 #: ../src/search.c:115
 msgid "Replace?"
-msgstr "Remplacer ?"
+msgstr "Remplacer?"
 
 #: ../src/search.c:143
 #, c-format
 msgid "%d strings replaced"
-msgstr "%d occurences trouvées et remplacées."
+msgstr "%d occurences remplacées."
 
 #: ../src/search.c:188
 msgid "Find"
@@ -235,7 +234,7 @@ msgstr "'%s' n'est pas supporté"
 
 #: ../src/selector.c:271
 msgid "Auto Detect"
-msgstr "Auto-détecté"
+msgstr "Détection Automatique"
 
 #: ../src/selector.c:325
 msgid "Open"
@@ -252,9 +251,7 @@ msgstr "Jeu de _caractères : "
 #: ../src/selector.c:401
 #, c-format
 msgid "'%s' already exists. Overwrite?"
-msgstr ""
-"Le fichier '%s' existe déjà. Voulez-vous remplacer le fichier existant par "
-"celui-ci ?"
+msgstr "Le fichier '%s' existe déjà. Voulez-vous l'écraser?"
 
 #: ../src/window.c:141
 msgid "Untitled"
@@ -262,13 +259,12 @@ msgstr "Sans titre"
 
 #: ../mousepad.desktop.in.h:1
 msgid "Mousepad"
-msgstr ""
+msgstr "Mousepad"
 
 #: ../mousepad.desktop.in.h:2
 msgid "Simple text editor"
 msgstr "Un éditeur de texte tout simple"
 
 #: ../mousepad.desktop.in.h:3
-#, fuzzy
 msgid "Text Editor"
-msgstr "Un éditeur de texte tout simple"
+msgstr "Éditeur de texte"
