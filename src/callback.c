@@ -141,6 +141,7 @@ gint cb_file_save_as(StructData *sd)
 
 gint cb_file_print(StructData *sd)
 {
+	GtkTextBuffer *textbuffer;
 	GtkTextIter start, end;
 	gchar       *str;
 	gint        rbytes, wbytes;
@@ -156,7 +157,7 @@ gint cb_file_print(StructData *sd)
 	child_argv[1] = NULL;
 	child_argv[2] = NULL;
 
-	GtkTextBuffer *textbuffer = gtk_text_view_get_buffer(GTK_TEXT_VIEW(sd->mainwin->textview));
+	textbuffer = gtk_text_view_get_buffer(GTK_TEXT_VIEW(sd->mainwin->textview));
 
 	gtk_text_buffer_get_start_iter(textbuffer, &start);
 	gtk_text_buffer_get_end_iter(textbuffer, &end);	
