@@ -49,8 +49,8 @@ DV({
 	g_print("selection_data->length    = %d\n", selection_data->length);
 });	
 	
-	if (selection_data->data && g_strstr_len(selection_data->data, 5, "file:")) {
-		files = g_strsplit(selection_data->data, "\n" , 2);
+	if (selection_data->data && g_strstr_len((gchar *) selection_data->data, 5, "file:")) {
+		files = g_strsplit((gchar *) selection_data->data, "\n" , 2);
 		filename = g_filename_from_uri(files[0], NULL, NULL);
 		if (g_strrstr(filename, " ")) {
 			strs = g_strsplit(filename, " ", -1);
@@ -76,11 +76,13 @@ static gint n_drag_types = sizeof(drag_types) / sizeof(drag_types[0]);
 
 void dnd_init(GtkWidget *widget)
 {
-//	GtkWidget *w = gtk_widget_get_ancestor(widget, GTK_TYPE_CONTAINER);
-//	GtkWidget *w = gtk_widget_get_parent(widget);
-//	GtkWidget *w = gtk_widget_get_parent(gtk_widget_get_parent(gtk_widget_get_parent(widget)));
+#if 0
+	GtkWidget *w = gtk_widget_get_ancestor(widget, GTK_TYPE_CONTAINER);
+	GtkWidget *w = gtk_widget_get_parent(widget);
+	GtkWidget *w = gtk_widget_get_parent(gtk_widget_get_parent(gtk_widget_get_parent(widget)));
 	
-//	g_print(gtk_widget_get_name(w));
+	g_print(gtk_widget_get_name(w));
+#endif
 	gtk_drag_dest_set(widget, GTK_DEST_DEFAULT_ALL,
 		drag_types, n_drag_types, GDK_ACTION_COPY);
 	g_signal_connect(G_OBJECT(widget), "drag_data_received",

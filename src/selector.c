@@ -64,7 +64,7 @@ static GtkWidget *create_lineend_menu(FileInfo *selected_fi)
 	for (i = 0; i <= 2; i++) {
 		menu_item = gtk_menu_item_new_with_label(lineend_str[i]);
 		gtk_menu_shell_append(GTK_MENU_SHELL(menu), menu_item);
-		gtk_widget_show(menu_item); // <- required for width adjustment
+		gtk_widget_show(menu_item); /* <- required for width adjustment */
 	}
 	gtk_option_menu_set_menu(GTK_OPTION_MENU(option_menu), menu);
 	
@@ -103,7 +103,7 @@ static CharsetTable *get_charset_table(void)
 		ctable->str[ctable->num] = g_strdup_printf(_("Current Locale (%s)"), get_default_charset());
 		ctable->num++;
 		ctable->charset[ctable->num] = "UTF-8";
-	//	ctable->str[ctable->num] = g_strdup("Unicode (UTF-8)");
+	/*	ctable->str[ctable->num] = g_strdup("Unicode (UTF-8)"); */
 		ctable->str[ctable->num] = ctable->charset[ctable->num];
 		ctable->num++;
 		encarray = get_encoding_items(get_encoding_code());
@@ -154,7 +154,7 @@ static GtkWidget *init_menu_item_manual_charset(gchar *manual_charset)
 		menu_item_manual_charset = gtk_menu_item_new_with_label(str);
 		label = GTK_LABEL(GTK_BIN(menu_item_manual_charset)->child);
 	} else
-//		gtk_label_set_text(GTK_LABEL(GTK_BIN(menu_item_manual_charset)->child), str);
+/*		gtk_label_set_text(GTK_LABEL(GTK_BIN(menu_item_manual_charset)->child), str); */
 		gtk_label_set_text(label, str);
 	g_free(str);
 	
@@ -205,7 +205,7 @@ static gboolean get_manual_charset(GtkOptionMenu *option_menu, FileInfo *selecte
 			g_error_free(err);
 			gtk_widget_hide(dialog);
 			str = g_strdup_printf(_("'%s' is not supported"), gtk_entry_get_text(GTK_ENTRY(entry)));
-//			run_dialog_message(filesel, GTK_MESSAGE_ERROR, str);
+/*			run_dialog_message(filesel, GTK_MESSAGE_ERROR, str); */
 			run_dialog_message(gtk_widget_get_toplevel(GTK_WIDGET(option_menu)),
 				GTK_MESSAGE_ERROR, str);
 			g_free(str);
@@ -270,18 +270,18 @@ static GtkWidget *create_charset_menu(FileInfo *selected_fi)
 	if (mode == OPEN) {
 		menu_item = gtk_menu_item_new_with_label(_("Auto Detect"));
 		gtk_menu_shell_append(GTK_MENU_SHELL(menu), menu_item);
-		gtk_widget_show(menu_item); // <- required for width adjustment
+		gtk_widget_show(menu_item); /* <- required for width adjustment */
 	}
 	ctable = get_charset_table();
 	for (i = 0; i < ctable->num; i++) {
 		menu_item = gtk_menu_item_new_with_label(ctable->str[i]);
 		gtk_menu_shell_append(GTK_MENU_SHELL(menu), menu_item);
-		gtk_widget_show(menu_item); // <- required for width adjustment
+		gtk_widget_show(menu_item); /* <- required for width adjustment */
 	}
 	menu_item_manual_charset = NULL;
 	gtk_menu_shell_append(GTK_MENU_SHELL(menu),
 		init_menu_item_manual_charset(selected_fi->manual_charset));
-	gtk_widget_show(menu_item_manual_charset); // <- required for width adjustment
+	gtk_widget_show(menu_item_manual_charset); /* <- required for width adjustment */
 	
 	charset_menu_init_flag = TRUE;
 	g_signal_connect(G_OBJECT(option_menu), "changed",
@@ -325,25 +325,25 @@ static GtkWidget *create_file_chooser(FileInfo *selected_fi, GtkWidget *window)
 	title = mode ? _("Open") : _("Save As");
 	
 	if(mode == OPEN)
-		filesel = xfce_file_chooser_new(title, GTK_WINDOW(window),
-				XFCE_FILE_CHOOSER_ACTION_OPEN,
+		filesel = gtk_file_chooser_dialog_new(title, GTK_WINDOW(window),
+				GTK_FILE_CHOOSER_ACTION_OPEN,
 				GTK_STOCK_CANCEL,GTK_RESPONSE_CANCEL,
-				GTK_STOCK_OPEN, GTK_RESPONSE_ACCEPT,NULL);
+				GTK_STOCK_OPEN, GTK_RESPONSE_ACCEPT, NULL);
 	else
-		filesel = xfce_file_chooser_new(title, GTK_WINDOW(window),
-				XFCE_FILE_CHOOSER_ACTION_SAVE,
+		filesel = gtk_file_chooser_dialog_new(title, GTK_WINDOW(window),
+				GTK_FILE_CHOOSER_ACTION_SAVE,
 				GTK_STOCK_CANCEL,GTK_RESPONSE_CANCEL,
-				GTK_STOCK_SAVE,GTK_RESPONSE_ACCEPT,NULL);
+				GTK_STOCK_SAVE,GTK_RESPONSE_ACCEPT, NULL);
 	
 	align = gtk_alignment_new(1, 0, 0, 0);
-	xfce_file_chooser_set_extra_widget(XFCE_FILE_CHOOSER(filesel),align);
+	gtk_file_chooser_set_extra_widget(GTK_FILE_CHOOSER(filesel),align);
 	table = gtk_table_new(2, 2, FALSE);
 	gtk_table_set_row_spacings(GTK_TABLE(table), 5);
 	gtk_container_add(GTK_CONTAINER(align), table);
 	
 	option_menu_charset = create_charset_menu(selected_fi);
-	label = gtk_label_new_with_mnemonic(_("Ch_aracter Coding: ")); // dummy for pot
-//	gtk_label_set_mnemonic_widget(GTK_LABEL(label), option_menu_charset);
+	label = gtk_label_new_with_mnemonic(_("Ch_aracter Coding: ")); /* dummy for pot */
+/*	gtk_label_set_mnemonic_widget(GTK_LABEL(label), option_menu_charset); */
 	gtk_table_attach_defaults(GTK_TABLE(table), option_menu_charset, 0, 1, 0, 1);
 	if (mode == SAVE) {
 		option_menu_lineend = create_lineend_menu(selected_fi);
@@ -352,7 +352,7 @@ static GtkWidget *create_file_chooser(FileInfo *selected_fi, GtkWidget *window)
 	gtk_widget_show_all(GTK_WIDGET(filesel));
 	
 	if (selected_fi->filename)
-		xfce_file_chooser_set_filename(XFCE_FILE_CHOOSER(filesel), selected_fi->filename);
+		gtk_file_chooser_set_filename(GTK_FILE_CHOOSER(filesel), selected_fi->filename);
 	
 	return filesel;
 }
@@ -385,14 +385,14 @@ FileInfo *get_fileinfo_from_chooser(GtkWidget *window, FileInfo *fi, gint reques
 			if (selected_fi->filename)
 				g_free(selected_fi->filename);
 			selected_fi->filename = g_strdup(
-				xfce_file_chooser_get_filename(XFCE_FILE_CHOOSER(filesel)));
+				gtk_file_chooser_get_filename(GTK_FILE_CHOOSER(filesel)));
 			if (g_file_test(selected_fi->filename, G_FILE_TEST_IS_DIR)) {
 				len = strlen(selected_fi->filename);
 				if (len < 1 || selected_fi->filename[len - 1] != G_DIR_SEPARATOR)
 					str = g_strconcat(selected_fi->filename, G_DIR_SEPARATOR_S, NULL);
 				else
 					str = g_strdup(selected_fi->filename);
-				xfce_file_chooser_set_filename(XFCE_FILE_CHOOSER(filesel), str);
+				gtk_file_chooser_set_filename(GTK_FILE_CHOOSER(filesel), str);
 				g_free(str);
 				continue;
 			}
@@ -418,8 +418,8 @@ FileInfo *get_fileinfo_from_chooser(GtkWidget *window, FileInfo *fi, gint reques
 			g_free(selected_fi->charset);
 		if (selected_fi->manual_charset)
 			g_free(selected_fi->manual_charset);
-		selected_fi = NULL;
 		g_free(selected_fi);
+		selected_fi = NULL;
 	}
 	
 	gtk_widget_destroy(filesel);

@@ -41,7 +41,7 @@ static void cb_scroll_event(GtkAdjustment *adj, GtkWidget *view)
 }
 */
 
-//static void cb_mark_set(GtkTextBuffer *buffer, GtkTextIter *arg1, GtkTextMark *arg2, GtkWidget *menubar)
+/* static void cb_mark_set(GtkTextBuffer *buffer, GtkTextIter *arg1, GtkTextMark *arg2, GtkWidget *menubar) */
 static void cb_mark_set(GtkTextBuffer *buffer)
 {
 /*	static gboolean selected_flag = FALSE;
@@ -53,7 +53,8 @@ static void cb_mark_set(GtkTextBuffer *buffer)
 		selected_flag = selected;
 	}
 */	menu_toggle_clipboard_item(gtk_text_buffer_get_selection_bounds(buffer, NULL, NULL));
-//g_print("MARK_SET!");
+
+/* g_print("MARK_SET!"); */
 }
 /*
 static void cb_text_receive(GtkClipboard *clipboard, const gchar *text, gpointer data)
@@ -91,16 +92,17 @@ MainWindow *create_main_window(StructData *sd)
 	sw = gtk_scrolled_window_new(NULL, NULL);
 	gtk_scrolled_window_set_policy(GTK_SCROLLED_WINDOW(sw),
 		GTK_POLICY_AUTOMATIC, GTK_POLICY_ALWAYS);
-//	gtk_scrolled_window_set_shadow_type(GTK_SCROLLED_WINDOW(sw),
-//		GTK_SHADOW_IN);
-//	remove_scrollbar_spacing(GTK_SCROLLED_WINDOW(sw));
+/*	gtk_scrolled_window_set_shadow_type(GTK_SCROLLED_WINDOW(sw),
+ *		GTK_SHADOW_IN);
+ *	remove_scrollbar_spacing(GTK_SCROLLED_WINDOW(sw));
+ */
 	gtk_box_pack_start(GTK_BOX(vbox), sw, TRUE, TRUE, 0);
 	
 	textview = gtk_text_view_new();
 	gtk_container_add(GTK_CONTAINER(sw), textview);
 	
 	textbuffer = gtk_text_view_get_buffer(GTK_TEXT_VIEW(textview));
-/*	//Following code has possibility of confliction if scroll policy of GTK changed
+/*	Following code has possibility of confliction if scroll policy of GTK changed
 	GtkAdjustment *hadj = gtk_scrolled_window_get_hadjustment(GTK_SCROLLED_WINDOW(sw));
 	GtkAdjustment *vadj = gtk_scrolled_window_get_vadjustment(GTK_SCROLLED_WINDOW(sw));
 	
@@ -156,8 +158,9 @@ void set_main_window_title(StructData *sd)
 			title = g_strdup_printf("(%s)", basename);
 	} else
 		title = g_strdup_printf("(%s)", basename);
-//		title = g_strdup(basename);
-//		title = g_strdup_printf(PACKAGE_NAME);
+/*		title = g_strdup(basename);
+ *		title = g_strdup_printf(PACKAGE_NAME);
+ */
 	gtk_window_set_title(GTK_WINDOW(sd->mainwin->window), title);
 	g_free(title);
 	g_free(basename);

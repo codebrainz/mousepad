@@ -157,7 +157,7 @@ static void toggle_sensitivity(GtkWidget *w, gint pos1, gint pos2, gint *pos3)
 			gtk_dialog_set_response_sensitive(GTK_DIALOG(gtk_widget_get_toplevel(w)),
 				GTK_RESPONSE_OK, TRUE);
 		entry_len += pos2;
-//		entry_len = entry_len + pos2;
+/*		entry_len = entry_len + pos2; */
 	} else {
 		entry_len = entry_len + pos1 - pos2;
 		if (!entry_len)

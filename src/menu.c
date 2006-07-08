@@ -34,7 +34,7 @@ gboolean menu_toggle_paste_item(void)
 		paste_menu_item,
 		gtk_clipboard_wait_is_text_available(
 			gtk_clipboard_get(GDK_SELECTION_CLIPBOARD)));
-//g_print("CLIPBOARD_CHECKED!\n");
+/*g_print("CLIPBOARD_CHECKED!\n"); */
 	
 	return FALSE;
 }
@@ -44,7 +44,7 @@ void menu_toggle_clipboard_item(gboolean selected)
 	gtk_widget_set_sensitive(cut_menu_item, selected);
 	gtk_widget_set_sensitive(copy_menu_item, selected);
 	gtk_widget_set_sensitive(delete_menu_item, selected);
-//	menu_toggle_paste_item();
+/*	menu_toggle_paste_item(); */
 }
 
 static gchar *menu_translate(const gchar *path, gpointer data)
@@ -55,14 +55,16 @@ static gchar *menu_translate(const gchar *path, gpointer data)
 	return retval;
 }
 
-static GtkItemFactoryEntry menu_items[] =
+static const GtkItemFactoryEntry menu_items[] =
 {
 	{ N_("/_File"), NULL,
 		NULL, 0, "<Branch>" },
 	{ N_("/File/_New"), "<control>N",
 		G_CALLBACK(cb_file_new_window), 0, "<StockItem>", GTK_STOCK_NEW },
-//	{ N_("/File/New _Window"), "<shift><control>N",
-//		G_CALLBACK(cb_file_new), 1 },
+#if 0
+	{ N_("/File/New _Window"), "<shift><control>N",
+		G_CALLBACK(cb_file_new), 1 },
+#endif
 	{ N_("/File/_Open..."), "<control>O",
 		G_CALLBACK(cb_file_open), 0, "<StockItem>", GTK_STOCK_OPEN },
 	{ N_("/File/_Save"), "<control>S",

@@ -37,7 +37,7 @@ gboolean indent_get_state(void)
 	return auto_indent;
 }
 
-static gchar *compute_indentation(GtkTextBuffer *buffer, gint line) // from gedit
+static gchar *compute_indentation(GtkTextBuffer *buffer, gint line) /* from gedit */
 {
 	GtkTextIter start_iter, end_iter;
 	gunichar ch;
@@ -76,7 +76,7 @@ void indent_real(GtkWidget *text_view)
 		gtk_text_buffer_get_insert(buffer));
 }
 
-static gint calculate_real_tab_width(GtkWidget *text_view, guint tab_size) //from gtesourceview
+static gint calculate_real_tab_width(GtkWidget *text_view, guint tab_size) /* from gtesourceview */
 {
 	PangoLayout *layout;
 	gchar *tab_string;
@@ -111,7 +111,7 @@ void indent_refresh_tab_width(GtkWidget *text_view)
 
 void indent_toggle_tab_width(GtkWidget *text_view)
 {
-//	PangoTabArray *tab_array;
+/*	PangoTabArray *tab_array; */
 	gint width = 8;
 	
 	if (current_tab_width == 8)
@@ -179,7 +179,7 @@ void indent_multi_line_unindent(GtkTextBuffer *buffer)
 	end_line = gtk_text_iter_get_line(&end_iter);
 	gtk_text_buffer_get_iter_at_mark(buffer, &iter, gtk_text_buffer_get_insert(buffer));
 	pos = gtk_text_iter_equal(&iter, &start_iter);
-//	for (i = start_line; i < end_line; i++) {
+/*	for (i = start_line; i < end_line; i++) { */
 	i = start_line;
 	do {
 		ind = compute_indentation(buffer, i);
@@ -196,7 +196,7 @@ void indent_multi_line_unindent(GtkTextBuffer *buffer)
 		}
 		i++;
 	} while (i < end_line);
-//	}
+/*	} */
 	undo_set_sequency(FALSE);
 	
 	gtk_text_buffer_get_iter_at_line(buffer, &start_iter, start_line);

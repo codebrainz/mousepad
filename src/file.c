@@ -103,7 +103,7 @@ gint file_open_real(GtkWidget *textview, FileInfo *fi)
 		}
 	g_free(contents);
 	
-//	undo_disconnect_signal(textbuffer);
+/*	undo_disconnect_signal(textbuffer); */
 	undo_block_signal(textbuffer);
 	gtk_text_buffer_set_text(textbuffer, "", 0);
 	gtk_text_buffer_get_start_iter(textbuffer, &iter);
@@ -123,7 +123,7 @@ gint file_save_real(GtkWidget *textview, FileInfo *fi)
 	FILE *fp;
 	GtkTextIter start, end;
 	gchar *str;
-	gint rbytes, wbytes;
+	gsize rbytes, wbytes;
 	GError *err = NULL;
 	
 	GtkTextBuffer *textbuffer = gtk_text_view_get_buffer(GTK_TEXT_VIEW(textview));

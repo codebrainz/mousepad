@@ -27,7 +27,7 @@
 #include "undo.h"
 
 static guint keyval = 0;
-//static gchar ctrl_key_flag = 0;
+/* static gchar ctrl_key_flag = 0; */
 static GdkWindow *gdkwin;
 
 guint keyevent_getval(void)
@@ -114,7 +114,7 @@ static gboolean cb_key_press_event(GtkWidget *text_view, GdkEventKey *event)
 /*	case GDK_Control_L:
 	case GDK_Control_R:
 		ctrl_key_flag = 1;
-//g_print(">>>>ctrl_key_flag = 1\n");
+		g_print(">>>>ctrl_key_flag = 1\n");
 */	}
 	
 	return FALSE;
@@ -126,7 +126,7 @@ static gboolean cb_key_release_event(GtkWidget *text_view, GdkEventKey *event)
 	case GDK_Control_L:
 	case GDK_Control_R:
 		ctrl_key_flag = 0;
-//g_print("<<<<ctrl_key_flag = 0\n");
+		g_print("<<<<ctrl_key_flag = 0\n");
 	}
 	
 	return FALSE;
@@ -144,8 +144,10 @@ void keyevent_init(GtkWidget *text_view)
 	gdkwin = gtk_text_view_get_window(GTK_TEXT_VIEW(text_view), GTK_TEXT_WINDOW_WIDGET);
 	g_signal_connect(G_OBJECT(text_view), "key-press-event",
 		G_CALLBACK(cb_key_press_event), NULL);
-//	g_signal_connect(G_OBJECT(text_view), "key-release-event",
-//		G_CALLBACK(cb_key_release_event), NULL);
+#if 0
+	g_signal_connect(G_OBJECT(text_view), "key-release-event",
+		G_CALLBACK(cb_key_release_event), NULL);
+#endif
 	g_signal_connect(G_OBJECT(text_view), "button-press-event",
 		G_CALLBACK(cb_button_press_event), NULL);
 }

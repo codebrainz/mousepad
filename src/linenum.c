@@ -113,7 +113,7 @@ line_numbers_expose (GtkWidget      *widget,
 {
 	GtkTextView *text_view;
 	GdkWindow *win;
-//	GtkStyle *style;
+/*	GtkStyle *style; */
 	PangoLayout *layout;
 	PangoAttrList *alist;
 	PangoAttribute *attr;
@@ -124,7 +124,7 @@ line_numbers_expose (GtkWidget      *widget,
 	gint layout_width;
 	gint justify_width = 0;
 	gint i;
-//	gchar *str;
+/*	gchar *str; */
 	gchar str [8];  /* we don't expect more than ten million lines */
 	
 	text_view = GTK_TEXT_VIEW (widget);
@@ -153,9 +153,9 @@ line_numbers_expose (GtkWidget      *widget,
 	if (event->window != win)
 		return FALSE;
 	
-//	style = gtk_style_copy (widget->style);
-//	style = gtk_style_copy (gtk_widget_get_default_style());
-	
+/*	style = gtk_style_copy (widget->style);
+ *	style = gtk_style_copy (gtk_widget_get_default_style());
+ */	
 	y1 = event->area.y;
 	y2 = y1 + event->area.height;
 	
@@ -201,11 +201,11 @@ DV({g_print("Painting line numbers %d - %d\n",
 	
 	layout = gtk_widget_create_pango_layout (widget, "");
 	
-//	str = g_strdup_printf ("%d", gtk_text_buffer_get_line_count(text_view->buffer));
+/*	str = g_strdup_printf ("%d", gtk_text_buffer_get_line_count(text_view->buffer)); */
 	g_snprintf (str, sizeof (str),
 			"%d", MAX (99, gtk_text_buffer_get_line_count(text_view->buffer)));
 	pango_layout_set_text (layout, str, -1);
-//	g_free (str);
+/*	g_free (str); */
 	
 	pango_layout_get_pixel_size (layout, &layout_width, NULL);
 	
@@ -215,11 +215,11 @@ DV({g_print("Painting line numbers %d - %d\n",
 											  GTK_TEXT_WINDOW_LEFT,
 											  layout_width + margin);
 	else {
-//		if ((gtk_text_view_get_border_window_size (text_view, GTK_TEXT_WINDOW_LEFT) - 5) > layout_width) {
+/*		if ((gtk_text_view_get_border_window_size (text_view, GTK_TEXT_WINDOW_LEFT) - 5) > layout_width) { */
 			gtk_text_view_set_border_window_size (text_view,
 												  GTK_TEXT_WINDOW_LEFT,
 												  min_number_window_width + margin);
-//		}
+/*		} */
 		justify_width = min_number_window_width - layout_width;
 	}
 	
@@ -250,7 +250,7 @@ DV({g_print("Painting line numbers %d - %d\n",
 		                                       NULL,
 		                                       &pos);
 		
-//		str = g_strdup_printf ("%d", g_array_index (numbers, gint, i) + 1);
+/*		str = g_strdup_printf ("%d", g_array_index (numbers, gint, i) + 1); */
 		g_snprintf (str, sizeof (str),
 				"%d", g_array_index (numbers, gint, i) + 1);
 		
@@ -265,7 +265,7 @@ DV({g_print("Painting line numbers %d - %d\n",
 		                  NULL,
 		                  layout_width + justify_width + 1, pos,
 		                  layout);
-//		g_free (str);
+/*		g_free (str); */
 		
 		++i;
 	}
@@ -274,7 +274,7 @@ DV({g_print("Painting line numbers %d - %d\n",
 	g_array_free (numbers, TRUE);
 	
 	g_object_unref (G_OBJECT (layout));
-//	g_object_ref (G_OBJECT (style));
+/*	g_object_ref (G_OBJECT (style)); */
 	
 	/* don't stop emission, need to draw children */
 	return FALSE;

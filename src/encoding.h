@@ -22,7 +22,7 @@
 #ifndef _ENCODING_H
 #define _ENCODING_H
 
-//#define ENCODING_MAX_ITEM_NUM 3
+/* #define ENCODING_MAX_ITEM_NUM 3 */
 
 enum {
 	IANA = 0,

@@ -30,7 +30,7 @@ typedef struct {
 	gint command;
 	gint start;
 	gint end;
-	gboolean seq; // sequency flag
+	gboolean seq; /* sequency flag */
 	gchar *str;
 } UndoInfo;
 
@@ -51,7 +51,7 @@ static gint step_modif;
 static GtkWidget *view;
 static gboolean overwrite_mode = FALSE;
 static guint keyval;
-static guint prev_keyval;//, keyevent_setval(0);
+static guint prev_keyval;/*, keyevent_setval(0); */
 
 static void cb_toggle_overwrite(void)
 {
@@ -189,7 +189,7 @@ DV(g_print("delete-range: keyval = 0x%x\n", keyval));
 	
 	if (!keyval && prev_keyval)
 		undo_set_sequency(TRUE);
-	if (keyval == 0x10000 && prev_keyval > 0x10000) // for Ctrl+V overwrite
+	if (keyval == 0x10000 && prev_keyval > 0x10000) /* for Ctrl+V overwrite */
 		undo_set_sequency(TRUE);
 	if (keyval == GDK_BackSpace)
 		command = BS;
@@ -210,8 +210,10 @@ DV(g_print("insert-text: keyval = 0x%x\n", keyevent_getval()));
 	
 	if (!keyval && prev_keyval)
 		undo_set_sequency(TRUE);
-//	if (keyval == 0x10000 && prev_keyval > 0x10000) // don't need probably
-//		undo_set_sequency(TRUE);
+#if 0
+	if (keyval == 0x10000 && prev_keyval > 0x10000) /* don't need probably */
+		undo_set_sequency(TRUE);
+#endif
 	undo_create_undo_info(buffer, INS, start, end);
 }
 
@@ -267,7 +269,7 @@ static gint undo_connect_signal(GtkTextBuffer *buffer)
 void undo_init(GtkWidget *textview, GtkTextBuffer *buffer, GtkWidget *menubar)
 {
 	GtkItemFactory *ifactory;
-	static guint init_flag = 0; // TODO: divide to undo_clear()
+	static guint init_flag = 0; /* TODO: divide to undo_clear() */
 	
 	if (undo_list)
 		undo_clear_undo_info();
@@ -291,7 +293,7 @@ DV(g_print("undo_init: list reseted\n"));
 		init_flag = undo_connect_signal(buffer);
 		keyevent_setval(0);
 		ui_tmp = g_malloc(sizeof(UndoInfo));
-		//ui_tmp->str = g_strdup("");
+		/* ui_tmp->str = g_strdup(""); */
 		undo_gstr = g_string_new("");
 	}
 	ui_tmp->command = INS;
@@ -302,7 +304,7 @@ gint undo_block_signal(GtkTextBuffer *buffer)
 {
 	return 
 	g_signal_handlers_block_by_func(G_OBJECT(buffer), G_CALLBACK(cb_delete_range), buffer) +
-//	g_signal_handlers_block_by_func(G_OBJECT(buffer), G_CALLBACK(cb_modified_changed), buffer) +
+/*	g_signal_handlers_block_by_func(G_OBJECT(buffer), G_CALLBACK(cb_modified_changed), buffer) + */
 	g_signal_handlers_block_by_func(G_OBJECT(buffer), G_CALLBACK(cb_insert_text), buffer);
 }
 
@@ -310,15 +312,15 @@ gint undo_unblock_signal(GtkTextBuffer *buffer)
 {
 	return 
 	g_signal_handlers_unblock_by_func(G_OBJECT(buffer), G_CALLBACK(cb_delete_range), buffer) +
-//	g_signal_handlers_unblock_by_func(G_OBJECT(buffer), G_CALLBACK(cb_modified_changed), buffer) +
+/*	g_signal_handlers_unblock_by_func(G_OBJECT(buffer), G_CALLBACK(cb_modified_changed), buffer) + */
 	g_signal_handlers_unblock_by_func(G_OBJECT(buffer), G_CALLBACK(cb_insert_text), buffer);
 }
 
-gint undo_disconnect_signal(GtkTextBuffer *buffer) //must be not needed
+gint undo_disconnect_signal(GtkTextBuffer *buffer) /*must be not needed */
 {
 	return 
 	g_signal_handlers_disconnect_by_func(G_OBJECT(buffer), G_CALLBACK(cb_delete_range), buffer) +
-//	g_signal_handlers_disconnect_by_func(G_OBJECT(buffer), G_CALLBACK(cb_modified_changed), buffer) +
+/*	g_signal_handlers_disconnect_by_func(G_OBJECT(buffer), G_CALLBACK(cb_modified_changed), buffer) + */
 	g_signal_handlers_disconnect_by_func(G_OBJECT(buffer), G_CALLBACK(cb_insert_text), buffer);
 }
 

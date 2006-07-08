@@ -21,6 +21,8 @@
  */
 
 #include "mousepad.h"
+#include <gtk/gtk.h>
+#include <glib.h>
 
 static gint check_text_modification(StructData *sd)
 {
@@ -93,7 +95,7 @@ void cb_file_open(StructData *sd)
 	FileInfo *fi;
 	
 	if (!check_text_modification(sd)) {
-//		fi = get_file_info_by_selector(OPEN, sd->fi);
+/*		fi = get_file_info_by_selector(OPEN, sd->fi); */
 		fi = get_fileinfo_from_chooser(sd->mainwin->window, sd->fi, OPEN);
 		if (fi) {
 			if (file_open_real(sd->mainwin->textview, fi)) {
@@ -123,7 +125,8 @@ gint cb_file_save(StructData *sd)
 gint cb_file_save_as(StructData *sd)
 {
 	FileInfo *fi;
-	
+
+	g_return_val_if_fail (sd != NULL, -1);
 	fi = get_fileinfo_from_chooser(sd->mainwin->window, sd->fi, SAVE);
 	if (fi) {
 		if (file_save_real(sd->mainwin->textview, fi))
@@ -144,7 +147,7 @@ gint cb_file_print(StructData *sd)
 	GtkTextBuffer *textbuffer;
 	GtkTextIter start, end;
 	gchar       *str;
-	gint        rbytes, wbytes;
+	gsize       rbytes, wbytes;
 
 	gint   xfprint_pipe;
 	GPid   child_pid;
@@ -246,14 +249,14 @@ void cb_edit_cut(StructData *sd)
 {
 	gtk_text_buffer_cut_clipboard(sd->mainwin->textbuffer,
 		gtk_clipboard_get(GDK_SELECTION_CLIPBOARD), TRUE);
-	menu_toggle_paste_item(); // TODO: remove this line
+	menu_toggle_paste_item(); /* TODO: remove this line */
 }
 
 void cb_edit_copy(StructData *sd)
 {
 	gtk_text_buffer_copy_clipboard(sd->mainwin->textbuffer,
 		gtk_clipboard_get(GDK_SELECTION_CLIPBOARD));
-	menu_toggle_paste_item(); // TODO: remove this line
+	menu_toggle_paste_item(); /* TODO: remove this line */
 }
 
 void cb_edit_paste(StructData *sd)

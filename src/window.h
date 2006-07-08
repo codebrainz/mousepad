@@ -22,12 +22,12 @@
 #ifndef _WINDOW_H
 #define _WINDOW_H
 
-//#include "mousepad.h"
-
 MainWindow *create_main_window(StructData *sd);
 gchar *get_current_file_basename(gchar *filename);
 void set_main_window_title(StructData *sd);
-//void set_main_window_title_with_asterisk(gboolean flag);
-//void set_main_window_title_toggle_asterisk(void);
+#if 0
+void set_main_window_title_with_asterisk(gboolean flag);
+void set_main_window_title_toggle_asterisk(void);
+#endif /* 0 */
 
 #endif /* _WINDOW_H */

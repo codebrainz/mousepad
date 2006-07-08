@@ -263,7 +263,7 @@ static const gchar *detect_charset_chinese(const gchar *text)
 			if ((c >= 0x30 && c <= 0x39) || (c >= 0x80 && c <= 0xA0)) {
 				charset = "GB18030";
 				break;
-			} //else GBK/Big5-HKSCS cannot determine
+			} /* else GBK/Big5-HKSCS cannot determine */
 		}
 		else if ((c >= 0xA1 && c <= 0xC6) || (c >= 0xC9 && c <= 0xF9)) {
 			c = *text++;
@@ -359,25 +359,25 @@ const gchar *detect_charset(const gchar *text)
 				if (c == '$') {
 					c = *text++;
 					switch (c) {
-					case 'B': // JIS X 0208-1983
-					case '@': // JIS X 0208-1978
+					case 'B': /* JIS X 0208-1983 */
+					case '@': /* JIS X 0208-1978 */
 						charset = "ISO-2022-JP";
 						continue;
-					case 'A': // GB2312-1980
+					case 'A': /* GB2312-1980 */
 						charset = "ISO-2022-JP-2";
 						break;
 					case '(':
 						c = *text++;
 						switch (c) {
-						case 'C': // KSC5601-1987
-						case 'D': // JIS X 0212-1990
+						case 'C': /* KSC5601-1987 */
+						case 'D': /* JIS X 0212-1990 */
 							charset = "ISO-2022-JP-2";
 						}
 						break;
 					case ')':
 						c = *text++;
 						if (c == 'C')
-							charset = "ISO-2022-KR"; // KSC5601-1987
+							charset = "ISO-2022-KR"; /* KSC5601-1987 */
 					}
 					break;
 				}
@@ -392,7 +392,7 @@ const gchar *detect_charset(const gchar *text)
 		case LATINC:
 		case LATINC_UA:
 		case LATINC_TJ:
-			charset = detect_charset_cylillic(text); // fuzzy...
+			charset = detect_charset_cylillic(text); /* fuzzy... */
 			break;
 		case CHINESE_CN:
 		case CHINESE_TW:

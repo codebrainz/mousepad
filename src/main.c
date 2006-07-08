@@ -181,7 +181,7 @@ static void create_new_process(gchar *filename)
 	} else
 		cb_file_new(sd);
 	
-//	dnd_init(sd->mainwin->window);
+/*	dnd_init(sd->mainwin->window); */
 	dnd_init(sd->mainwin->textview);
 	keyevent_init(sd->mainwin->textview);
 
