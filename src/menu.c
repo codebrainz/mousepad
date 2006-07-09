@@ -139,7 +139,7 @@ GtkWidget *create_menu_bar(GtkWidget *window, StructData *sd)
 	accel_group = gtk_accel_group_new();
 	ifactory = gtk_item_factory_new(GTK_TYPE_MENU_BAR, "<main>", accel_group);
 	gtk_item_factory_set_translate_func(ifactory, menu_translate, NULL, NULL);
-	gtk_item_factory_create_items(ifactory, nmenu_items, menu_items, sd);
+	gtk_item_factory_create_items(ifactory, nmenu_items, (GtkItemFactoryEntry*) menu_items, sd);
 	gtk_window_add_accel_group(GTK_WINDOW(window), accel_group);
 	
 	/* hidden keybinds */
