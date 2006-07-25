@@ -11,8 +11,8 @@ msgstr ""
 "Project-Id-Version: Mousepad 0.2.5svn\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2006-04-17 11:28+0200\n"
-"PO-Revision-Date: 2006-04-23 16:17+0100\n"
-"Last-Translator: Andras Mohari <mayday@mailpont.hu>\n"
+"PO-Revision-Date: 2006-07-25 09:56+0100\n"
+"Last-Translator: SZERVÑC Attila <sas@321.hu>\n"
 "Language-Team: Hungarian <translation-team-hu@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -23,14 +23,15 @@ msgstr ""
 msgid "Save changes to '%s'?"
 msgstr "Mented \"%s\" változásait?"
 
-#: ../src/callback.c:180 ../src/file.c:150
+#: ../src/callback.c:180
+#: ../src/file.c:150
 #, c-format
 msgid "Can't convert codeset to '%s'"
 msgstr "A kódolás nem alakítható át erre: \"%s\""
 
 #: ../src/callback.c:207
 msgid "Can't open pipe to process"
-msgstr "Nem nyitható pipe a processzhez"
+msgstr "Nem nyitható cső a folyamathoz"
 
 #: ../src/callback.c:366
 msgid "A text editor for Xfce"
@@ -173,7 +174,7 @@ msgstr "A keresett szöveg nem található"
 
 #: ../src/search.c:115
 msgid "Replace?"
-msgstr "Kicseréled?"
+msgstr "Cseréled?"
 
 #: ../src/search.c:143
 #, c-format
@@ -184,13 +185,15 @@ msgstr "%d csere volt"
 msgid "Find"
 msgstr "Keresés"
 
-#: ../src/search.c:200 ../src/search.c:265
+#: ../src/search.c:200
+#: ../src/search.c:265
 msgid "Fi_nd what: "
 msgstr "_Keresett szöveg: "
 
-#: ../src/search.c:219 ../src/search.c:292
+#: ../src/search.c:219
+#: ../src/search.c:292
 msgid "_Match case"
-msgstr "Kis- és _nagybetű számít"
+msgstr "_Nagybetű érzékeny"
 
 #: ../src/search.c:253
 msgid "Replace"
@@ -202,7 +205,7 @@ msgstr "C_sere erre: "
 
 #: ../src/search.c:296
 msgid "Replace _all at once"
-msgstr "Az összes találat cseréje _egyszerre"
+msgstr "Mindent cserél _egyszerre"
 
 #: ../src/search.c:342
 msgid "Jump To"
@@ -271,3 +274,4 @@ msgstr "Egyszerű szövegszerkesztő"
 #: ../mousepad.desktop.in.h:3
 msgid "Text Editor"
 msgstr "Szövegszerkesztő"
+
