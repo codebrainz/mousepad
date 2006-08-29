@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mousepad 0.2.5svn\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-04-17 11:28+0200\n"
+"POT-Creation-Date: 2006-07-10 14:29+0200\n"
 "PO-Revision-Date: 2006-05-01 00:20+0200\n"
 "Last-Translator: Piarres Beobide <pi@beobide.net>\n"
 "Language-Team: librezale <librezale@librezale.org>\n"
@@ -17,21 +17,21 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: KBabel 1.11.2\n"
 
-#: ../src/callback.c:34
+#: ../src/callback.c:36
 #, c-format
 msgid "Save changes to '%s'?"
 msgstr "'%s'-ren aldaketak gorde?"
 
-#: ../src/callback.c:180 ../src/file.c:150
+#: ../src/callback.c:184 ../src/file.c:150
 #, c-format
 msgid "Can't convert codeset to '%s'"
 msgstr "Ezin da kodeketa '%s'-ra bihurtu"
 
-#: ../src/callback.c:207
+#: ../src/callback.c:211
 msgid "Can't open pipe to process"
 msgstr "Ezin prozesura tutu bat ireki"
 
-#: ../src/callback.c:366
+#: ../src/callback.c:370
 msgid "A text editor for Xfce"
 msgstr "Xfce-rentzat testu editorea"
 
@@ -60,109 +60,111 @@ msgstr "/_Fitxategia"
 msgid "/File/_New"
 msgstr "/Fitxategia/_Berria"
 
-#. { N_("/File/New _Window"), "<shift><control>N",
-#. G_CALLBACK(cb_file_new), 1 },
-#: ../src/menu.c:66
+#: ../src/menu.c:65
+msgid "/File/New _Window"
+msgstr "/Fitxategia/_Leiho Berria"
+
+#: ../src/menu.c:68
 msgid "/File/_Open..."
 msgstr "/fitxategia/_Ireki"
 
-#: ../src/menu.c:68
+#: ../src/menu.c:70
 msgid "/File/_Save"
 msgstr "/Fitxategia_Gorde"
 
-#: ../src/menu.c:70
+#: ../src/menu.c:72
 msgid "/File/Save _As..."
 msgstr "/Fitxategia/Gorde _Honela"
 
-#: ../src/menu.c:72
+#: ../src/menu.c:74
 msgid "/File/_Print..."
 msgstr "/Fitxategia/_Inprimatu"
 
-#: ../src/menu.c:76
+#: ../src/menu.c:78
 msgid "/File/_Quit"
 msgstr "/Fitxategia/It_xi"
 
-#: ../src/menu.c:78
+#: ../src/menu.c:80
 msgid "/_Edit"
 msgstr "/_Editatu"
 
-#: ../src/menu.c:80
+#: ../src/menu.c:82
 msgid "/Edit/_Undo"
 msgstr "/Editatu/_Desegin"
 
-#: ../src/menu.c:82
+#: ../src/menu.c:84
 msgid "/Edit/_Redo"
 msgstr "/Editatu/_Berregin"
 
-#: ../src/menu.c:86
+#: ../src/menu.c:88
 msgid "/Edit/Cu_t"
 msgstr "/Editatu/Moz_tu"
 
-#: ../src/menu.c:88
+#: ../src/menu.c:90
 msgid "/Edit/_Copy"
 msgstr "/Editatu/_Kopiatu"
 
-#: ../src/menu.c:90
+#: ../src/menu.c:92
 msgid "/Edit/_Paste"
 msgstr "/Editatu/_Itsatsi"
 
-#: ../src/menu.c:92
+#: ../src/menu.c:94
 msgid "/Edit/_Delete"
 msgstr "/Editatu/_Ezabatu"
 
-#: ../src/menu.c:96
+#: ../src/menu.c:98
 msgid "/Edit/Select _All"
 msgstr "/Editatu/Dena _Hautatu"
 
-#: ../src/menu.c:98
+#: ../src/menu.c:100
 msgid "/_Search"
 msgstr "/_Bilaketa"
 
-#: ../src/menu.c:100
+#: ../src/menu.c:102
 msgid "/Search/_Find..."
 msgstr "/Bilaketa/_Bilatu"
 
-#: ../src/menu.c:102
+#: ../src/menu.c:104
 msgid "/Search/Find _Next"
 msgstr "/Bilaketa/Bilatu _Hurrengoa"
 
-#: ../src/menu.c:104
+#: ../src/menu.c:106
 msgid "/Search/Find _Previous"
 msgstr "/Bilaketa/Bilatu _Aurrekoa"
 
-#: ../src/menu.c:106
+#: ../src/menu.c:108
 msgid "/Search/_Replace..."
 msgstr "/Bilaketa/_Ordeztu"
 
-#: ../src/menu.c:110
+#: ../src/menu.c:112
 msgid "/Search/_Jump To..."
 msgstr "/Bilaketa/_Joan hona..."
 
-#: ../src/menu.c:112
+#: ../src/menu.c:114
 msgid "/_Options"
 msgstr "/_Aukerak"
 
-#: ../src/menu.c:114
+#: ../src/menu.c:116
 msgid "/Options/_Font..."
 msgstr "/Aukerak/_Letra-tipoa"
 
-#: ../src/menu.c:116
+#: ../src/menu.c:118
 msgid "/Options/_Word Wrap"
 msgstr "/Aukerak/_Itzulbira "
 
-#: ../src/menu.c:118
+#: ../src/menu.c:120
 msgid "/Options/_Line Numbers"
 msgstr "/Aukerak/_Lerro Zenbakiak"
 
-#: ../src/menu.c:122
+#: ../src/menu.c:124
 msgid "/Options/_Auto Indent"
 msgstr "/Aukerak/_Auto Kontaktu"
 
-#: ../src/menu.c:124
+#: ../src/menu.c:126
 msgid "/_Help"
 msgstr "/_Laguntza"
 
-#: ../src/menu.c:126
+#: ../src/menu.c:128
 msgid "/Help/_About"
 msgstr "/Laguntza/_Honi buruz"
 
@@ -254,7 +256,7 @@ msgstr "K_araketere Kodeketa"
 msgid "'%s' already exists. Overwrite?"
 msgstr "'%s' badago dagoeneko. Gainidatzi?"
 
-#: ../src/window.c:141
+#: ../src/window.c:143
 msgid "Untitled"
 msgstr "Izenburu gabea"
 
@@ -269,4 +271,3 @@ msgstr "Testu Editore Sinplea"
 #: ../mousepad.desktop.in.h:3
 msgid "Text Editor"
 msgstr "Testu Editorea"
-
