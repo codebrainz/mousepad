@@ -1,0 +1,274 @@
+# Dutch translations for Mousepad package.
+# Copyright (C) 2006 THE Mousepad'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the Mousepad package.
+# Stephan Arts <psybsd@gmail.com>, 2006.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Mousepad 0.2.7svn-r22930\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2006-07-10 14:29+0200\n"
+"PO-Revision-Date: 2006-09-02 18:17+0200\n"
+"Last-Translator: Stephan Arts <psybsd@gmail.com>\n"
+"Language-Team: Dutch <vertaling@vrijschrift.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=ISO-8859-1\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: ../src/callback.c:36
+#, c-format
+msgid "Save changes to '%s'?"
+msgstr "Wijzigingen opslaan naar '%s'?"
+
+#: ../src/callback.c:184 ../src/file.c:150
+#, c-format
+msgid "Can't convert codeset to '%s'"
+msgstr "Kan codeset niet converteren naar '%s'"
+
+#: ../src/callback.c:211
+msgid "Can't open pipe to process"
+msgstr "Kan geen pipe naar proces openen"
+
+#: ../src/callback.c:370
+msgid "A text editor for Xfce"
+msgstr "Een tekstverwerker voor Xfce"
+
+#: ../src/dialog.c:135
+#, c-format
+msgid "About %s"
+msgstr "Over %s"
+
+#: ../src/file.c:163
+msgid "Can't open file to write"
+msgstr "Kan bestand niet openen voor schrijven"
+
+#: ../src/file.c:168
+msgid "Can't write file"
+msgstr "Kan niet naar bestand schrijven"
+
+#: ../src/font.c:49
+msgid "Font"
+msgstr "Lettertype"
+
+#: ../src/menu.c:60
+msgid "/_File"
+msgstr "/_Bestand"
+
+#: ../src/menu.c:62
+msgid "/File/_New"
+msgstr "/Bestand/_Nieuw"
+
+#: ../src/menu.c:65
+msgid "/File/New _Window"
+msgstr "/Bestand/Nieuw _Venster"
+
+#: ../src/menu.c:68
+msgid "/File/_Open..."
+msgstr "/Bestand/_Open..."
+
+#: ../src/menu.c:70
+msgid "/File/_Save"
+msgstr "/Bestand/Op_slaan"
+
+#: ../src/menu.c:72
+msgid "/File/Save _As..."
+msgstr "/Bestand/Opslaan _als..."
+
+#: ../src/menu.c:74
+msgid "/File/_Print..."
+msgstr "/Bestand/_Printen..."
+
+#: ../src/menu.c:78
+msgid "/File/_Quit"
+msgstr "/Bestand/Af_sluiten"
+
+#: ../src/menu.c:80
+msgid "/_Edit"
+msgstr "/Be_werken"
+
+#: ../src/menu.c:82
+msgid "/Edit/_Undo"
+msgstr "/Bewerken/_Ongedaan maken"
+
+#: ../src/menu.c:84
+msgid "/Edit/_Redo"
+msgstr "/Bewerken/_Herhalen"
+
+#: ../src/menu.c:88
+msgid "/Edit/Cu_t"
+msgstr "/Bewerken/K_nippen"
+
+#: ../src/menu.c:90
+msgid "/Edit/_Copy"
+msgstr "/Bewerken/_Kopieren"
+
+#: ../src/menu.c:92
+msgid "/Edit/_Paste"
+msgstr "/Bewerken/_Plakken"
+
+#: ../src/menu.c:94
+msgid "/Edit/_Delete"
+msgstr "/Bestand/Ver_wijderen"
+
+#: ../src/menu.c:98
+msgid "/Edit/Select _All"
+msgstr "/Bewerken/_Alles selecteren"
+
+#: ../src/menu.c:100
+msgid "/_Search"
+msgstr "/_Zoeken"
+
+#: ../src/menu.c:102
+msgid "/Search/_Find..."
+msgstr "/Zoeken/_Zoeken naar..."
+
+#: ../src/menu.c:104
+msgid "/Search/Find _Next"
+msgstr "/Zoeken/_Volgende zoeken"
+
+#: ../src/menu.c:106
+msgid "/Search/Find _Previous"
+msgstr "/Zoeken/V_orige zoeken"
+
+#: ../src/menu.c:108
+msgid "/Search/_Replace..."
+msgstr "/Zoeken/Ve_rvangen"
+
+#: ../src/menu.c:112
+msgid "/Search/_Jump To..."
+msgstr "/Zoeken/_Ga naar..."
+
+#: ../src/menu.c:114
+msgid "/_Options"
+msgstr "/_Opties"
+
+#: ../src/menu.c:116
+msgid "/Options/_Font..."
+msgstr "/Opties/_Lettertype..."
+
+#: ../src/menu.c:118
+msgid "/Options/_Word Wrap"
+msgstr ""
+
+#: ../src/menu.c:120
+msgid "/Options/_Line Numbers"
+msgstr "/Opties/Regelnummers"
+
+#: ../src/menu.c:124
+msgid "/Options/_Auto Indent"
+msgstr "/Opties/_Automatisch inspringen"
+
+#: ../src/menu.c:126
+msgid "/_Help"
+msgstr "/_Hulp"
+
+#: ../src/menu.c:128
+msgid "/Help/_About"
+msgstr "/Hulp/In_fo"
+
+#: ../src/search.c:73
+#, fuzzy
+msgid "Search string not found"
+msgstr "Zoek string niet gevonden"
+
+#: ../src/search.c:115
+msgid "Replace?"
+msgstr "Vervangen?"
+
+#: ../src/search.c:143
+#, c-format, fuzzy
+msgid "%d strings replaced"
+msgstr "%d strings vervangen"
+
+#: ../src/search.c:188
+msgid "Find"
+msgstr "Zoeken"
+
+#: ../src/search.c:200 ../src/search.c:265
+msgid "Fi_nd what: "
+msgstr "_Zoeken naar: "
+
+#: ../src/search.c:219 ../src/search.c:292
+msgid "_Match case"
+msgstr ""
+
+#: ../src/search.c:253
+msgid "Replace"
+msgstr "Vervangen"
+
+#: ../src/search.c:280
+msgid "Re_place with: "
+msgstr "Ve_rvangen met:"
+
+#: ../src/search.c:296
+msgid "Replace _all at once"
+msgstr "Vervang _alles in eens"
+
+#: ../src/search.c:342
+msgid "Jump To"
+msgstr "Ga naar"
+
+#: ../src/search.c:347
+msgid "_Jump"
+msgstr ""
+
+#: ../src/search.c:353
+msgid "_Line number: "
+msgstr "_Regel nummer: "
+
+#: ../src/selector.c:103
+#, c-format, fuzzy
+msgid "Current Locale (%s)"
+msgstr "Huidige Locale (%s)"
+
+#: ../src/selector.c:147
+#, fuzzy
+msgid "Other Codeset"
+msgstr "Andere Codeset"
+
+#: ../src/selector.c:186
+msgid "Code_set:"
+msgstr ""
+
+#: ../src/selector.c:207
+#, c-format
+msgid "'%s' is not supported"
+msgstr "'%s' wordt niet ondersteund"
+
+#: ../src/selector.c:271
+msgid "Auto Detect"
+msgstr "Automatisch detecteren"
+
+#: ../src/selector.c:325
+msgid "Open"
+msgstr "Openen"
+
+#: ../src/selector.c:325
+msgid "Save As"
+msgstr "Opslaan Als"
+
+#: ../src/selector.c:345
+msgid "Ch_aracter Coding: "
+msgstr "Karakter Codering: "
+
+#: ../src/selector.c:401
+#, c-format
+msgid "'%s' already exists. Overwrite?"
+msgstr "'%s' bestaat al. Overschrijven?"
+
+#: ../src/window.c:143
+msgid "Untitled"
+msgstr "Naamloos"
+
+#: ../mousepad.desktop.in.h:1
+msgid "Mousepad"
+msgstr "Muispad"
+
+#: ../mousepad.desktop.in.h:2
+msgid "Simple text editor"
+msgstr "Simpele tekstverwerker"
+
+#: ../mousepad.desktop.in.h:3
+msgid "Text Editor"
+msgstr "Tekstverwerker"
