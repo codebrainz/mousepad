@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mousepad 0.2.5svn\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-04-17 11:28+0200\n"
-"PO-Revision-Date: 2006-04-30 11:44+0100\n"
+"POT-Creation-Date: 2006-07-10 14:29+0200\n"
+"PO-Revision-Date: 2006-09-18 23:37+0200\n"
 "Last-Translator: Carles Muñoz Gorriz <carlesmu@internautas.org>\n"
 "Language-Team: Catalan\n"
 "MIME-Version: 1.0\n"
@@ -20,21 +20,21 @@ msgstr ""
 "Plural-Forms: Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "X-Generator: KBabel 1.11.2\n"
 
-#: ../src/callback.c:34
+#: ../src/callback.c:36
 #, c-format
 msgid "Save changes to '%s'?"
 msgstr "Voleu desar els canvis fets a «%s»?"
 
-#: ../src/callback.c:180 ../src/file.c:150
+#: ../src/callback.c:184 ../src/file.c:150
 #, c-format
 msgid "Can't convert codeset to '%s'"
 msgstr "No es pot convertir la codificació a «%s»"
 
-#: ../src/callback.c:207
+#: ../src/callback.c:211
 msgid "Can't open pipe to process"
 msgstr "No es pot inicialitzar el conducte cap al procés"
 
-#: ../src/callback.c:366
+#: ../src/callback.c:370
 msgid "A text editor for Xfce"
 msgstr "Un editor de text per l'Xfce"
 
@@ -63,109 +63,111 @@ msgstr "/_Fitxer"
 msgid "/File/_New"
 msgstr "/Fitxer/_Nou"
 
-#. { N_("/File/New _Window"), "<shift><control>N",
-#. G_CALLBACK(cb_file_new), 1 },
-#: ../src/menu.c:66
+#: ../src/menu.c:65
+msgid "/File/New _Window"
+msgstr "/Fitxer/Nova _Finesta"
+
+#: ../src/menu.c:68
 msgid "/File/_Open..."
 msgstr "/Fitxer/_Obre…"
 
-#: ../src/menu.c:68
+#: ../src/menu.c:70
 msgid "/File/_Save"
 msgstr "/Fitxer/_Desa"
 
-#: ../src/menu.c:70
+#: ../src/menu.c:72
 msgid "/File/Save _As..."
 msgstr "/Fitxer/_Anomena i desa"
 
-#: ../src/menu.c:72
+#: ../src/menu.c:74
 msgid "/File/_Print..."
 msgstr "/Fitxer/Im_primeix…"
 
-#: ../src/menu.c:76
+#: ../src/menu.c:78
 msgid "/File/_Quit"
 msgstr "/Fitxer/_Surt"
 
-#: ../src/menu.c:78
+#: ../src/menu.c:80
 msgid "/_Edit"
 msgstr "/_Edita"
 
-#: ../src/menu.c:80
+#: ../src/menu.c:82
 msgid "/Edit/_Undo"
 msgstr "/Edita/_Desfés"
 
-#: ../src/menu.c:82
+#: ../src/menu.c:84
 msgid "/Edit/_Redo"
 msgstr "/Edita/_Refés"
 
-#: ../src/menu.c:86
+#: ../src/menu.c:88
 msgid "/Edit/Cu_t"
 msgstr "/Edita/Re_talla"
 
-#: ../src/menu.c:88
+#: ../src/menu.c:90
 msgid "/Edit/_Copy"
 msgstr "/Edita/_Copia"
 
-#: ../src/menu.c:90
+#: ../src/menu.c:92
 msgid "/Edit/_Paste"
 msgstr "/Edita/_Enganxa"
 
-#: ../src/menu.c:92
+#: ../src/menu.c:94
 msgid "/Edit/_Delete"
 msgstr "/Edita/_Suprimeix"
 
-#: ../src/menu.c:96
+#: ../src/menu.c:98
 msgid "/Edit/Select _All"
 msgstr "/Edita/Selecciona-ho t_ot"
 
-#: ../src/menu.c:98
+#: ../src/menu.c:100
 msgid "/_Search"
 msgstr "/_Cerca"
 
-#: ../src/menu.c:100
+#: ../src/menu.c:102
 msgid "/Search/_Find..."
 msgstr "/Cerca/_Cercar…"
 
-#: ../src/menu.c:102
+#: ../src/menu.c:104
 msgid "/Search/Find _Next"
 msgstr "/Cerca/Cercar el _següent"
 
-#: ../src/menu.c:104
+#: ../src/menu.c:106
 msgid "/Search/Find _Previous"
 msgstr "/Cerca/Cerca l'_anterior"
 
-#: ../src/menu.c:106
+#: ../src/menu.c:108
 msgid "/Search/_Replace..."
 msgstr "/Cerca/_Substitueix"
 
-#: ../src/menu.c:110
+#: ../src/menu.c:112
 msgid "/Search/_Jump To..."
 msgstr "/Cerca/Vés a la _línia…"
 
-#: ../src/menu.c:112
+#: ../src/menu.c:114
 msgid "/_Options"
 msgstr "/_Opcions"
 
-#: ../src/menu.c:114
+#: ../src/menu.c:116
 msgid "/Options/_Font..."
 msgstr "/Opcions/Tipus de _lletra"
 
-#: ../src/menu.c:116
+#: ../src/menu.c:118
 msgid "/Options/_Word Wrap"
 msgstr "/Opcions/_Ajust de línia"
 
-#: ../src/menu.c:118
+#: ../src/menu.c:120
 msgid "/Options/_Line Numbers"
 msgstr "/Opcions/_Numera les línies"
 
-#: ../src/menu.c:122
+#: ../src/menu.c:124
 msgid "/Options/_Auto Indent"
 msgstr "/Opcions/Auto_indentació"
 
-#: ../src/menu.c:124
+#: ../src/menu.c:126
 msgid "/_Help"
 msgstr "/A_juda"
 
-#: ../src/menu.c:126
+#: ../src/menu.c:128
 msgid "/Help/_About"
 msgstr "/Ajuda/_Quant a…"
 
@@ -257,7 +259,7 @@ msgstr "Codificació de c_aràcters: "
 msgid "'%s' already exists. Overwrite?"
 msgstr "«%s» ja existeix. Voleu sobreescriure'l?"
 
-#: ../src/window.c:141
+#: ../src/window.c:143
 msgid "Untitled"
 msgstr "Sense títol"
 
