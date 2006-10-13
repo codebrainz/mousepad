@@ -149,11 +149,11 @@ msgstr "/Opties/_Lettertype..."
 
 #: ../src/menu.c:118
 msgid "/Options/_Word Wrap"
-msgstr ""
+msgstr "/Opties/_Regelafbreking"
 
 #: ../src/menu.c:120
 msgid "/Options/_Line Numbers"
-msgstr "/Opties/Regelnummers"
+msgstr "/Opties/Regel_nummers"
 
 #: ../src/menu.c:124
 msgid "/Options/_Auto Indent"
@@ -168,16 +168,15 @@ msgid "/Help/_About"
 msgstr "/Hulp/In_fo"
 
 #: ../src/search.c:73
-#, fuzzy
 msgid "Search string not found"
-msgstr "Zoek string niet gevonden"
+msgstr "Zoektekst niet gevonden"
 
 #: ../src/search.c:115
 msgid "Replace?"
 msgstr "Vervangen?"
 
 #: ../src/search.c:143
-#, c-format, fuzzy
+#, c-format
 msgid "%d strings replaced"
 msgstr "%d strings vervangen"
 
@@ -191,7 +190,7 @@ msgstr "_Zoeken naar: "
 
 #: ../src/search.c:219 ../src/search.c:292
 msgid "_Match case"
-msgstr ""
+msgstr "_Hoofdletter gevoelig"
 
 #: ../src/search.c:253
 msgid "Replace"
@@ -211,25 +210,24 @@ msgstr "Ga naar"
 
 #: ../src/search.c:347
 msgid "_Jump"
-msgstr ""
+msgstr "_Springen"
 
 #: ../src/search.c:353
 msgid "_Line number: "
 msgstr "_Regel nummer: "
 
 #: ../src/selector.c:103
-#, c-format, fuzzy
+#, c-format
 msgid "Current Locale (%s)"
 msgstr "Huidige Locale (%s)"
 
 #: ../src/selector.c:147
-#, fuzzy
 msgid "Other Codeset"
 msgstr "Andere Codeset"
 
 #: ../src/selector.c:186
 msgid "Code_set:"
-msgstr ""
+msgstr "Code_set:"
 
 #: ../src/selector.c:207
 #, c-format
@@ -250,7 +248,7 @@ msgstr "Opslaan Als"
 
 #: ../src/selector.c:345
 msgid "Ch_aracter Coding: "
-msgstr "Karakter Codering: "
+msgstr "T_eken Codering: "
 
 #: ../src/selector.c:401
 #, c-format
