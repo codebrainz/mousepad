@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: Mousepad 0.2.5svn\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2006-04-17 11:28+0200\n"
-"PO-Revision-Date: 2006-04-15 04:49+0900\n"
-"Last-Translator: ByungHyun Choi <byunghyunchoi@hotmail.com>\n"
+"PO-Revision-Date: 2006-10-17 22:14+0900\n"
+"Last-Translator: ByungHyun Choi <byunghyunchoi@gmail.com>\n"
 "Language-Team: xfce4-users-kr-i18n <xfce4-users-kr-i18n@lists.sourceforge."
 "net>\n"
 "MIME-Version: 1.0\n"
@@ -259,12 +259,12 @@ msgstr "이름 없는 화일"
 
 #: ../mousepad.desktop.in.h:1
 msgid "Mousepad"
-msgstr ""
+msgstr "마우스패드"
 
 #: ../mousepad.desktop.in.h:2
 msgid "Simple text editor"
-msgstr ""
+msgstr "단순한 문서 편집기"
 
 #: ../mousepad.desktop.in.h:3
 msgid "Text Editor"
-msgstr ""
+msgstr "문서 편집기"
