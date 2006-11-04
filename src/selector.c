@@ -335,6 +335,8 @@ static GtkWidget *create_file_chooser(FileInfo *selected_fi, GtkWidget *window)
 				GTK_STOCK_CANCEL,GTK_RESPONSE_CANCEL,
 				GTK_STOCK_SAVE,GTK_RESPONSE_ACCEPT, NULL);
 	
+	gtk_dialog_set_default_response(GTK_DIALOG (filesel),GTK_RESPONSE_ACCEPT);
+
 	align = gtk_alignment_new(1, 0, 0, 0);
 	gtk_file_chooser_set_extra_widget(GTK_FILE_CHOOSER(filesel),align);
 	table = gtk_table_new(2, 2, FALSE);
