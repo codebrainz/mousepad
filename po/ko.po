@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mousepad 0.2.10\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-04-17 11:28+0200\n"
+"POT-Creation-Date: 2006-11-04 17:08+0100\n"
 "PO-Revision-Date: 2006-10-17 22:14+0900\n"
 "Last-Translator: ByungHyun Choi <byunghyunchoi@gmail.com>\n"
 "Language-Team: xfce4-users-kr-i18n <xfce4-users-kr-i18n@lists.sourceforge."
@@ -16,21 +16,21 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: ../src/callback.c:34
+#: ../src/callback.c:36
 #, c-format
 msgid "Save changes to '%s'?"
 msgstr "변경된 부분을 '%s'에 저장할까요?"
 
-#: ../src/callback.c:180 ../src/file.c:150
+#: ../src/callback.c:184 ../src/file.c:150
 #, c-format
 msgid "Can't convert codeset to '%s'"
 msgstr "코드셋을 '%s'로 변환할 수 없습니다."
 
-#: ../src/callback.c:207
+#: ../src/callback.c:211
 msgid "Can't open pipe to process"
 msgstr "프로세스에 사용할 파이프를 열지 못 했습니다."
 
-#: ../src/callback.c:366
+#: ../src/callback.c:370
 msgid "A text editor for Xfce"
 msgstr "Xfce 텍스트 편집기"
 
@@ -59,109 +59,112 @@ msgstr "/화일(_F)"
 msgid "/File/_New"
 msgstr "/화일/새 화일(_N)"
 
-#. { N_("/File/New _Window"), "<shift><control>N",
-#. G_CALLBACK(cb_file_new), 1 },
-#: ../src/menu.c:66
+#: ../src/menu.c:65
+#, fuzzy
+msgid "/File/New _Window"
+msgstr "/화일/새 화일(_N)"
+
+#: ../src/menu.c:68
 msgid "/File/_Open..."
 msgstr "/화일/열기(_O)"
 
-#: ../src/menu.c:68
+#: ../src/menu.c:70
 msgid "/File/_Save"
 msgstr "/화일/저장(_S)"
 
-#: ../src/menu.c:70
+#: ../src/menu.c:72
 msgid "/File/Save _As..."
 msgstr "/화일/새로운 이름으로(_A)"
 
-#: ../src/menu.c:72
+#: ../src/menu.c:74
 msgid "/File/_Print..."
 msgstr "/화일/출력(_P)"
 
-#: ../src/menu.c:76
+#: ../src/menu.c:78
 msgid "/File/_Quit"
 msgstr "/화일/종료(_Q)"
 
-#: ../src/menu.c:78
+#: ../src/menu.c:80
 msgid "/_Edit"
 msgstr "/편집(_E)"
 
-#: ../src/menu.c:80
+#: ../src/menu.c:82
 msgid "/Edit/_Undo"
 msgstr "/편집/되살리기(_U)"
 
-#: ../src/menu.c:82
+#: ../src/menu.c:84
 msgid "/Edit/_Redo"
 msgstr "/편집/다시실행(_R)"
 
-#: ../src/menu.c:86
+#: ../src/menu.c:88
 msgid "/Edit/Cu_t"
 msgstr "/편집/잘라내기(_t)"
 
-#: ../src/menu.c:88
+#: ../src/menu.c:90
 msgid "/Edit/_Copy"
 msgstr "/편집/복사(_C)"
 
-#: ../src/menu.c:90
+#: ../src/menu.c:92
 msgid "/Edit/_Paste"
 msgstr "/편집/붙여넣기(_P)"
 
-#: ../src/menu.c:92
+#: ../src/menu.c:94
 msgid "/Edit/_Delete"
 msgstr "/편집/삭제(_D)"
 
-#: ../src/menu.c:96
+#: ../src/menu.c:98
 msgid "/Edit/Select _All"
 msgstr "/편집/모두 선택(_A)"
 
-#: ../src/menu.c:98
+#: ../src/menu.c:100
 msgid "/_Search"
 msgstr "/검색(_S)"
 
-#: ../src/menu.c:100
+#: ../src/menu.c:102
 msgid "/Search/_Find..."
 msgstr "/검색/찾기(_F)"
 
-#: ../src/menu.c:102
+#: ../src/menu.c:104
 msgid "/Search/Find _Next"
 msgstr "/검색/다음(_N)"
 
-#: ../src/menu.c:104
+#: ../src/menu.c:106
 msgid "/Search/Find _Previous"
 msgstr "/검색/이전(_P)"
 
-#: ../src/menu.c:106
+#: ../src/menu.c:108
 msgid "/Search/_Replace..."
 msgstr "/검색/바꾸기(_R)"
 
-#: ../src/menu.c:110
+#: ../src/menu.c:112
 msgid "/Search/_Jump To..."
 msgstr "/검색/건너뛰기(_J)"
 
-#: ../src/menu.c:112
+#: ../src/menu.c:114
 msgid "/_Options"
 msgstr "/선택(_O)"
 
-#: ../src/menu.c:114
+#: ../src/menu.c:116
 msgid "/Options/_Font..."
 msgstr "/선택/글꼴(_F)"
 
-#: ../src/menu.c:116
+#: ../src/menu.c:118
 msgid "/Options/_Word Wrap"
 msgstr "/선택/단어(_W)"
 
-#: ../src/menu.c:118
+#: ../src/menu.c:120
 msgid "/Options/_Line Numbers"
 msgstr "/선택/줄 번호(_L)"
 
-#: ../src/menu.c:122
+#: ../src/menu.c:124
 msgid "/Options/_Auto Indent"
 msgstr "/선택/들여쓰기(_A)"
 
-#: ../src/menu.c:124
+#: ../src/menu.c:126
 msgid "/_Help"
 msgstr "/도움말"
 
-#: ../src/menu.c:126
+#: ../src/menu.c:128
 msgid "/Help/_About"
 msgstr "/도우말/마우스 패스에 대하여"
 
@@ -253,7 +256,12 @@ msgstr "문자 코드(_a): "
 msgid "'%s' already exists. Overwrite?"
 msgstr "'%s'가(이) 이미 있는 데 덮어 쓸까요?"
 
-#: ../src/window.c:141
+#. add the label with the root warning
+#: ../src/window.c:110
+msgid "Warning, you are using the root account, you may harm your system."
+msgstr ""
+
+#: ../src/window.c:169
 msgid "Untitled"
 msgstr "이름 없는 화일"
 

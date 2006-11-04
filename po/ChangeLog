@@ -1,5 +1,10 @@
 2006-11-04  Benedikt Meurer <benny@xfce.org>
 
+	* mousepad.pot, *.po: Merge new strings.
+	* de.po: Updated german translations.
+
+2006-11-04  Benedikt Meurer <benny@xfce.org>
+
 	* *.po: Update Project-Id-Version.
 
 2006-10-28  Pau Rul-lan Ferragut <paurullan@bulma.net>

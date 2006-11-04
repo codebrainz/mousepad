@@ -1,5 +1,12 @@
 2006-11-04	Benedikt Meurer <benny@xfce.org>
 
+	* configure.in.in: Post-release version bump.
+	* src/window.c: Add root warning. Bug #2245.
+	* po/mousepad.pot, po/*.po: Merge new strings.
+	* po/de.po: Updated german translations.
+
+2006-11-04	Benedikt Meurer <benny@xfce.org>
+
 	* === Released 0.2.10 ===
 	* NEWS, configure.in.in: Bump version.
 	* po/*.po: Update Project-Id-Version.

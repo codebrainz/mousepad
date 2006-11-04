@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mousepad 0.2.10\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-04-17 11:28+0200\n"
+"POT-Creation-Date: 2006-11-04 17:08+0100\n"
 "PO-Revision-Date: 2006-07-15 17:16+0100\n"
 "Last-Translator: Maximilian Schleiss <maxschleiss@bluewin.ch>\n"
 "Language-Team: French <xfce-i18n@xfce.org>\n"
@@ -21,8 +21,7 @@ msgstr ""
 msgid "Save changes to '%s'?"
 msgstr "Enregistrer les changements pour '%s' ?"
 
-#: ../src/callback.c:184
-#: ../src/file.c:150
+#: ../src/callback.c:184 ../src/file.c:150
 #, c-format
 msgid "Can't convert codeset to '%s'"
 msgstr "Impossible de convertir le jeu de caractères '%s'"
@@ -185,13 +184,11 @@ msgstr "%d occurences remplacées."
 msgid "Find"
 msgstr "Trouver"
 
-#: ../src/search.c:200
-#: ../src/search.c:265
+#: ../src/search.c:200 ../src/search.c:265
 msgid "Fi_nd what: "
 msgstr "_Rechercher :"
 
-#: ../src/search.c:219
-#: ../src/search.c:292
+#: ../src/search.c:219 ../src/search.c:292
 msgid "_Match case"
 msgstr "Respecter la _casse"
 
@@ -258,7 +255,12 @@ msgstr "Jeu de _caractères : "
 msgid "'%s' already exists. Overwrite?"
 msgstr "Le fichier '%s' existe déjà. Voulez-vous l'écraser?"
 
-#: ../src/window.c:143
+#. add the label with the root warning
+#: ../src/window.c:110
+msgid "Warning, you are using the root account, you may harm your system."
+msgstr ""
+
+#: ../src/window.c:169
 msgid "Untitled"
 msgstr "Sans titre"
 
@@ -273,4 +275,3 @@ msgstr "Un éditeur de texte tout simple"
 #: ../mousepad.desktop.in.h:3
 msgid "Text Editor"
 msgstr "Éditeur de texte"
-

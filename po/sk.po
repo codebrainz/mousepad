@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mousepad 0.2.10\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-04-17 11:28+0200\n"
+"POT-Creation-Date: 2006-11-04 17:08+0100\n"
 "PO-Revision-Date: 2006-05-02 20:13+0200\n"
 "Last-Translator: Roman Moravcik <roman.moravcik@gmail.com>\n"
 "Language-Team: Slovak <sk-i18n@linux.sk>\n"
@@ -15,21 +15,21 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: ../src/callback.c:34
+#: ../src/callback.c:36
 #, c-format
 msgid "Save changes to '%s'?"
 msgstr "Uložiť zmeny do '%s'?"
 
-#: ../src/callback.c:180 ../src/file.c:150
+#: ../src/callback.c:184 ../src/file.c:150
 #, c-format
 msgid "Can't convert codeset to '%s'"
 msgstr "Nemôžem konvertovať znakovú sadu do '%s'"
 
-#: ../src/callback.c:207
+#: ../src/callback.c:211
 msgid "Can't open pipe to process"
 msgstr "Nemôžem otvoriť rúru k procesu"
 
-#: ../src/callback.c:366
+#: ../src/callback.c:370
 msgid "A text editor for Xfce"
 msgstr "Textový editor pre XFCE"
 
@@ -58,109 +58,112 @@ msgstr "/_Súbor"
 msgid "/File/_New"
 msgstr "/Súbor/_Nový"
 
-#. { N_("/File/New _Window"), "<shift><control>N",
-#. G_CALLBACK(cb_file_new), 1 },
-#: ../src/menu.c:66
+#: ../src/menu.c:65
+#, fuzzy
+msgid "/File/New _Window"
+msgstr "/Súbor/_Nový"
+
+#: ../src/menu.c:68
 msgid "/File/_Open..."
 msgstr "/Súbor/_Otvoriť..."
 
-#: ../src/menu.c:68
+#: ../src/menu.c:70
 msgid "/File/_Save"
 msgstr "/Súbor/_Uložiť"
 
-#: ../src/menu.c:70
+#: ../src/menu.c:72
 msgid "/File/Save _As..."
 msgstr "/Súbor/Uložiť _ako..."
 
-#: ../src/menu.c:72
+#: ../src/menu.c:74
 msgid "/File/_Print..."
 msgstr "/Súbor/_Tlačiť..."
 
-#: ../src/menu.c:76
+#: ../src/menu.c:78
 msgid "/File/_Quit"
 msgstr "/Súbor/_Koniec"
 
-#: ../src/menu.c:78
+#: ../src/menu.c:80
 msgid "/_Edit"
 msgstr "/_Upraviť"
 
-#: ../src/menu.c:80
+#: ../src/menu.c:82
 msgid "/Edit/_Undo"
 msgstr "/Upraviť/V_rátiť späť"
 
-#: ../src/menu.c:82
+#: ../src/menu.c:84
 msgid "/Edit/_Redo"
 msgstr "/Upraviť/_Opakovať vrátené"
 
-#: ../src/menu.c:86
+#: ../src/menu.c:88
 msgid "/Edit/Cu_t"
 msgstr "/Upraviť/Vys_trihnúť"
 
-#: ../src/menu.c:88
+#: ../src/menu.c:90
 msgid "/Edit/_Copy"
 msgstr "/Upraviť/_Kopírovať"
 
-#: ../src/menu.c:90
+#: ../src/menu.c:92
 msgid "/Edit/_Paste"
 msgstr "/Upraviť/_Vložiť"
 
-#: ../src/menu.c:92
+#: ../src/menu.c:94
 msgid "/Edit/_Delete"
 msgstr "/Upraviť/V_ymazať"
 
-#: ../src/menu.c:96
+#: ../src/menu.c:98
 msgid "/Edit/Select _All"
 msgstr "/Upraviť/Vybr_ať všetko"
 
-#: ../src/menu.c:98
+#: ../src/menu.c:100
 msgid "/_Search"
 msgstr "/_Hľadať"
 
-#: ../src/menu.c:100
+#: ../src/menu.c:102
 msgid "/Search/_Find..."
 msgstr "/Hľadať/_Nájsť..."
 
-#: ../src/menu.c:102
+#: ../src/menu.c:104
 msgid "/Search/Find _Next"
 msgstr "/Hľadať/Nájsť _ďalšie"
 
-#: ../src/menu.c:104
+#: ../src/menu.c:106
 msgid "/Search/Find _Previous"
 msgstr "/Hľadať/Nájsť _predchádzajúce"
 
-#: ../src/menu.c:106
+#: ../src/menu.c:108
 msgid "/Search/_Replace..."
 msgstr "/Hľadať/Nah_radiť..."
 
-#: ../src/menu.c:110
+#: ../src/menu.c:112
 msgid "/Search/_Jump To..."
 msgstr "/Hľadať/_Skočiť na..."
 
-#: ../src/menu.c:112
+#: ../src/menu.c:114
 msgid "/_Options"
 msgstr "/P_redvoľby"
 
-#: ../src/menu.c:114
+#: ../src/menu.c:116
 msgid "/Options/_Font..."
 msgstr "/Predvoľby/_Písmo..."
 
-#: ../src/menu.c:116
+#: ../src/menu.c:118
 msgid "/Options/_Word Wrap"
 msgstr "/Predvoľby/_Zalomiť text"
 
-#: ../src/menu.c:118
+#: ../src/menu.c:120
 msgid "/Options/_Line Numbers"
 msgstr "/Predvoľby/Zobraziť čís_la riadkov"
 
-#: ../src/menu.c:122
+#: ../src/menu.c:124
 msgid "/Options/_Auto Indent"
 msgstr "/Predvoľby/_Automatické odsadenie"
 
-#: ../src/menu.c:124
+#: ../src/menu.c:126
 msgid "/_Help"
 msgstr "/_Pomocník"
 
-#: ../src/menu.c:126
+#: ../src/menu.c:128
 msgid "/Help/_About"
 msgstr "/Pomocník/O progr_ame"
 
@@ -252,7 +255,12 @@ msgstr "Kódov_anie písma: "
 msgid "'%s' already exists. Overwrite?"
 msgstr "Súbor '%s' už existuje. Chcete ho prepísať?"
 
-#: ../src/window.c:141
+#. add the label with the root warning
+#: ../src/window.c:110
+msgid "Warning, you are using the root account, you may harm your system."
+msgstr ""
+
+#: ../src/window.c:169
 msgid "Untitled"
 msgstr "Nepomenovaný"
 

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mousepad 0.2.10\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-07-10 14:29+0200\n"
+"POT-Creation-Date: 2006-11-04 17:08+0100\n"
 "PO-Revision-Date: 2006-09-02 18:17+0200\n"
 "Last-Translator: Stephan Arts <psybsd@gmail.com>\n"
 "Language-Team: Dutch <vertaling@vrijschrift.org>\n"
@@ -255,7 +255,12 @@ msgstr "T_eken Codering: "
 msgid "'%s' already exists. Overwrite?"
 msgstr "'%s' bestaat al. Overschrijven?"
 
-#: ../src/window.c:143
+#. add the label with the root warning
+#: ../src/window.c:110
+msgid "Warning, you are using the root account, you may harm your system."
+msgstr ""
+
+#: ../src/window.c:169
 msgid "Untitled"
 msgstr "Naamloos"
 

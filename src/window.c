@@ -1,8 +1,9 @@
 /*
  *  window.c
- *  This file is part of Leafpad
+ *  This file is part of Mousepad
  *
  *  Copyright (C) 2004 Tarot Osuji
+ *  Copyright (C) 2006 Benedikt Meurer <benny@xfce.org>
  *
  *  This program is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -68,7 +69,10 @@ MainWindow *create_main_window(StructData *sd)
 	GtkWidget *window;
 	GtkWidget *vbox;
  	GtkWidget *menubar;
- 	GtkWidget *sw;
+  	GtkWidget *ebox;
+ 	GtkWidget *label;
+ 	GtkWidget *separator;
+	GtkWidget *sw;
  	GtkWidget *textview;
 	GtkTextBuffer *textbuffer;
  	GdkPixbuf *icon;
@@ -89,6 +93,28 @@ MainWindow *create_main_window(StructData *sd)
 	menubar = create_menu_bar(window, sd);
 	gtk_box_pack_start(GTK_BOX(vbox), menubar, FALSE, FALSE, 0);
 	
+	/* check if we need to add the root warning */
+	if (G_UNLIKELY (geteuid () == 0))
+	{
+		/* install default settings for the root warning text box */
+		gtk_rc_parse_string("style\"mousepad-window-root-style\"{bg[NORMAL]=\"#b4254b\"\nfg[NORMAL]=\"#fefefe\"}\n"
+				"widget\"GtkWindow.*.root-warning\"style\"mousepad-window-root-style\"\n"
+				"widget\"GtkWindow.*.root-warning.GtkLabel\"style\"mousepad-window-root-style\"\n");
+
+		/* add the box for the root warning */
+		ebox = gtk_event_box_new();
+		gtk_widget_set_name(ebox, "root-warning");
+		gtk_box_pack_start(GTK_BOX(vbox), ebox, FALSE, FALSE, 0);
+
+		/* add the label with the root warning */
+		label = gtk_label_new(_("Warning, you are using the root account, you may harm your system."));
+		gtk_misc_set_padding(GTK_MISC(label), 6, 3);
+		gtk_container_add(GTK_CONTAINER(ebox), label);
+
+		separator = gtk_hseparator_new();
+		gtk_box_pack_start(GTK_BOX(vbox), separator, FALSE, FALSE, 0);
+	}
+
 	sw = gtk_scrolled_window_new(NULL, NULL);
 	gtk_scrolled_window_set_policy(GTK_SCROLLED_WINDOW(sw),
 		GTK_POLICY_AUTOMATIC, GTK_POLICY_ALWAYS);

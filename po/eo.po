@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mousepad 0.2.10\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-04-17 11:28+0200\n"
+"POT-Creation-Date: 2006-11-04 17:08+0100\n"
 "PO-Revision-Date: 2006-05-01 21:53-0300\n"
 "Last-Translator: Jarbas Araujo Jr. <jarbasaraujojr@yahoo.com.br>\n"
 "Language-Team: debian-l10n-esperanto@lists.debian.org\n"
@@ -22,8 +22,7 @@ msgstr ""
 msgid "Save changes to '%s'?"
 msgstr "Savi modifojn en '%s'?"
 
-#: ../src/callback.c:184
-#: ../src/file.c:150
+#: ../src/callback.c:184 ../src/file.c:150
 #, c-format
 msgid "Can't convert codeset to '%s'"
 msgstr "Ne eblas konverti la kodpaĝon al '%s'"
@@ -186,13 +185,11 @@ msgstr "%d ĉenoj anstataŭigitaj"
 msgid "Find"
 msgstr "Trovi"
 
-#: ../src/search.c:200
-#: ../src/search.c:265
+#: ../src/search.c:200 ../src/search.c:265
 msgid "Fi_nd what: "
 msgstr "Trov_u:"
 
-#: ../src/search.c:219
-#: ../src/search.c:292
+#: ../src/search.c:219 ../src/search.c:292
 msgid "_Match case"
 msgstr "Laŭ _Uskleco"
 
@@ -259,7 +256,12 @@ msgstr "Si_gnokodo: "
 msgid "'%s' already exists. Overwrite?"
 msgstr "'%s' jam ekzistas. Ĉu anstataŭskribi?"
 
-#: ../src/window.c:143
+#. add the label with the root warning
+#: ../src/window.c:110
+msgid "Warning, you are using the root account, you may harm your system."
+msgstr ""
+
+#: ../src/window.c:169
 msgid "Untitled"
 msgstr "Sen Titolo"
 

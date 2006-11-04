@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mousepad 0.2.10\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-07-10 14:29+0200\n"
+"POT-Creation-Date: 2006-11-04 17:08+0100\n"
 "PO-Revision-Date: 2006-10-19 15:43+0530\n"
 "Last-Translator: wangmo sherpa <rinwanshe@yahoo.com>\n"
 "Language-Team: Dzongkha <pgeyleg@dit.gov.bt>\n"
@@ -258,7 +258,12 @@ msgstr "ཡིག་འབྲུ་ ཀོ་ཌིང་།:(_a)"
 msgid "'%s' already exists. Overwrite?"
 msgstr "'%s' འདི་ ཧེ་མ་ལས་རང་གནས་བཞིན་འདུག ཚབ་སྲུང་འབད་ནི་ཨིན་ན?"
 
-#: ../src/window.c:143
+#. add the label with the root warning
+#: ../src/window.c:110
+msgid "Warning, you are using the root account, you may harm your system."
+msgstr ""
+
+#: ../src/window.c:169
 msgid "Untitled"
 msgstr "མགོ་མིང་མ་བཏགསཔ།"
 

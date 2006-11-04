@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mousepad 0.2.10\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-04-17 11:28+0200\n"
+"POT-Creation-Date: 2006-11-04 17:08+0100\n"
 "PO-Revision-Date: 2005-10-07 18:52+0900\n"
 "Last-Translator: Vijay Durairaj <vjd81@yahoo.com>\n"
 "Language-Team: Tamil <tamilinix@yahoogroups.com>\n"
@@ -15,22 +15,22 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: ../src/callback.c:34
+#: ../src/callback.c:36
 #, c-format
 msgid "Save changes to '%s'?"
 msgstr "மாற்றங்களை '%s' இல் சேமி?"
 
-#: ../src/callback.c:180 ../src/file.c:150
+#: ../src/callback.c:184 ../src/file.c:150
 #, c-format
 msgid "Can't convert codeset to '%s'"
 msgstr ""
 
-#: ../src/callback.c:207
+#: ../src/callback.c:211
 #, fuzzy
 msgid "Can't open pipe to process"
 msgstr "கோப்பை எழுதுவதற்காக திறக்க முடியவில்லை"
 
-#: ../src/callback.c:366
+#: ../src/callback.c:370
 msgid "A text editor for Xfce"
 msgstr ""
 
@@ -59,110 +59,113 @@ msgstr "/கோப்பு(_F)"
 msgid "/File/_New"
 msgstr "/கோப்பு(F)/புதிது(_N)"
 
-#. { N_("/File/New _Window"), "<shift><control>N",
-#. G_CALLBACK(cb_file_new), 1 },
-#: ../src/menu.c:66
+#: ../src/menu.c:65
+#, fuzzy
+msgid "/File/New _Window"
+msgstr "/கோப்பு(F)/புதிது(_N)"
+
+#: ../src/menu.c:68
 msgid "/File/_Open..."
 msgstr "/கோப்பு(F)/திற(_O)..."
 
-#: ../src/menu.c:68
+#: ../src/menu.c:70
 msgid "/File/_Save"
 msgstr "/கோப்பு(F)/சேமி(_S)"
 
-#: ../src/menu.c:70
+#: ../src/menu.c:72
 msgid "/File/Save _As..."
 msgstr "/கோப்பு(F)/வேறு பேரில் சேமி(_A)..."
 
-#: ../src/menu.c:72
+#: ../src/menu.c:74
 #, fuzzy
 msgid "/File/_Print..."
 msgstr "/கோப்பு(F)/திற(_O)..."
 
-#: ../src/menu.c:76
+#: ../src/menu.c:78
 msgid "/File/_Quit"
 msgstr "/கோப்பு(F)/வெளிச்செல்(_Q)"
 
-#: ../src/menu.c:78
+#: ../src/menu.c:80
 msgid "/_Edit"
 msgstr "/தொகு(_E)"
 
-#: ../src/menu.c:80
+#: ../src/menu.c:82
 msgid "/Edit/_Undo"
 msgstr "/தொகு(E)/கவில் செய்(_U)"
 
-#: ../src/menu.c:82
+#: ../src/menu.c:84
 msgid "/Edit/_Redo"
 msgstr "/தொகு(E)/மீண்டும்(_R)"
 
-#: ../src/menu.c:86
+#: ../src/menu.c:88
 msgid "/Edit/Cu_t"
 msgstr "/தொகு(E)/வெட்டு(_T)"
 
-#: ../src/menu.c:88
+#: ../src/menu.c:90
 msgid "/Edit/_Copy"
 msgstr "/தொகு(E)/நகல்(_C)"
 
-#: ../src/menu.c:90
+#: ../src/menu.c:92
 msgid "/Edit/_Paste"
 msgstr "/தொகு(E)/ஒட்டு(_P)"
 
-#: ../src/menu.c:92
+#: ../src/menu.c:94
 msgid "/Edit/_Delete"
 msgstr "/தொகு(E)/நீக்கு(_D)"
 
-#: ../src/menu.c:96
+#: ../src/menu.c:98
 msgid "/Edit/Select _All"
 msgstr "/தொகு(E)/அனைத்தையும் தேர்வு செய்க(_A)"
 
-#: ../src/menu.c:98
+#: ../src/menu.c:100
 msgid "/_Search"
 msgstr "/தேடுக(_S)"
 
-#: ../src/menu.c:100
+#: ../src/menu.c:102
 msgid "/Search/_Find..."
 msgstr "/தேடுக(S)/கண்டுபிடி(_F).."
 
-#: ../src/menu.c:102
+#: ../src/menu.c:104
 msgid "/Search/Find _Next"
 msgstr "/தேடுக(S)/அடுத்ததை கண்டுபிடி(_N)"
 
-#: ../src/menu.c:104
+#: ../src/menu.c:106
 msgid "/Search/Find _Previous"
 msgstr "/தேர்வுகள்(O)/தேடலை பின்னோக்கு(_p)"
 
-#: ../src/menu.c:106
+#: ../src/menu.c:108
 msgid "/Search/_Replace..."
 msgstr "/தேடுக(S)/இடமாற்று(_R)..."
 
-#: ../src/menu.c:110
+#: ../src/menu.c:112
 msgid "/Search/_Jump To..."
 msgstr "/தேடுக(S)/இங்கு போ(_J)..."
 
-#: ../src/menu.c:112
+#: ../src/menu.c:114
 msgid "/_Options"
 msgstr "/தேர்வுகள்(_O)"
 
-#: ../src/menu.c:114
+#: ../src/menu.c:116
 msgid "/Options/_Font..."
 msgstr "/தேர்வுகள்(O)/எழுத்துரு(_F).."
 
-#: ../src/menu.c:116
+#: ../src/menu.c:118
 msgid "/Options/_Word Wrap"
 msgstr "/தேர்வுகள்(O)/சொல் மடிப்பு(_W)"
 
-#: ../src/menu.c:118
+#: ../src/menu.c:120
 msgid "/Options/_Line Numbers"
 msgstr "/தேர்வுகள்(O)/வரி எண்கள்(_L)"
 
-#: ../src/menu.c:122
+#: ../src/menu.c:124
 msgid "/Options/_Auto Indent"
 msgstr "/தேர்வுகள்(O)/தன்னியக்க தள்ளல்(_A)"
 
-#: ../src/menu.c:124
+#: ../src/menu.c:126
 msgid "/_Help"
 msgstr "/உதவி(_H)"
 
-#: ../src/menu.c:126
+#: ../src/menu.c:128
 msgid "/Help/_About"
 msgstr "/உதவி(_H)/பற்றி(_A)"
 
@@ -254,7 +257,12 @@ msgstr ""
 msgid "'%s' already exists. Overwrite?"
 msgstr "'%s' ஏற்கனவே உள்ளது. மேல் எழுதவா?"
 
-#: ../src/window.c:141
+#. add the label with the root warning
+#: ../src/window.c:110
+msgid "Warning, you are using the root account, you may harm your system."
+msgstr ""
+
+#: ../src/window.c:169
 msgid "Untitled"
 msgstr "தலைப்பில்லாதது"
 
