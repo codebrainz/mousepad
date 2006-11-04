@@ -2,6 +2,7 @@
  *  menu.c
  *  This file is part of Mousepad
  *
+ *  Copyright (C) 2006 Benedikt Meurer <benny@xfce.org>
  *  Copyright (C) 2005 Erik Harrison
  *  Copyright (C) 2004 Tarot Osuji
  *
@@ -67,10 +68,18 @@ static const GtkItemFactoryEntry menu_items[] =
 #endif
 	{ N_("/File/_Open..."), "<control>O",
 		G_CALLBACK(cb_file_open), 0, "<StockItem>", GTK_STOCK_OPEN },
+#if GTK_CHECK_VERSION(2,10,0)
+  { N_("/File/Open _Recent"), NULL,
+    NULL, 0, "<Item>", NULL, },
+#endif
+	{ "/File/---", NULL,
+		NULL, 0, "<Separator>" },
 	{ N_("/File/_Save"), "<control>S",
 		G_CALLBACK(cb_file_save), 0, "<StockItem>", GTK_STOCK_SAVE },
 	{ N_("/File/Save _As..."), NULL,
 		G_CALLBACK(cb_file_save_as), 0, "<StockItem>", GTK_STOCK_SAVE_AS },
+	{ "/File/---", NULL,
+		NULL, 0, "<Separator>" },
 	{ N_("/File/_Print..."), "<control>P",
 		G_CALLBACK(cb_file_print), 0, "<StockItem>", GTK_STOCK_PRINT },
 	{ "/File/---", NULL,
@@ -135,6 +144,11 @@ GtkWidget *create_menu_bar(GtkWidget *window, StructData *sd)
 {
 	GtkAccelGroup *accel_group;
 	GtkItemFactory *ifactory;
+#if GTK_CHECK_VERSION(2,10,0)
+  GtkRecentFilter *recent_filter;
+  GtkWidget *recent_menu_item;
+  GtkWidget *recent_menu;
+#endif
 	
 	accel_group = gtk_accel_group_new();
 	ifactory = gtk_item_factory_new(GTK_TYPE_MENU_BAR, "<main>", accel_group);
@@ -186,6 +200,21 @@ GtkWidget *create_menu_bar(GtkWidget *window, StructData *sd)
 		gtk_item_factory_get_widget(ifactory, "<main>/Options/Auto Indent"),
 		FALSE);
 	gtk_item_factory_delete_item(ifactory, "/File/New Window"); */
+
+#if GTK_CHECK_VERSION(2,10,0)
+  /* add the recent chooser menu */
+  recent_menu = gtk_recent_chooser_menu_new();
+  recent_filter = gtk_recent_filter_new();
+  gtk_recent_filter_add_application(recent_filter, "Mousepad Text Editor");
+  gtk_recent_chooser_add_filter(GTK_RECENT_CHOOSER(recent_menu), recent_filter);
+  gtk_recent_chooser_set_local_only(GTK_RECENT_CHOOSER(recent_menu), TRUE);
+  gtk_recent_chooser_set_limit(GTK_RECENT_CHOOSER(recent_menu), 10);
+  gtk_recent_chooser_set_show_tips(GTK_RECENT_CHOOSER(recent_menu), TRUE);
+  g_signal_connect_swapped(G_OBJECT(recent_menu), "item-activated", G_CALLBACK(cb_file_open_recent), sd);
+
+  recent_menu_item = gtk_item_factory_get_widget(ifactory, "/File/Open Recent");
+  gtk_menu_item_set_submenu(GTK_MENU_ITEM(recent_menu_item), recent_menu);
+#endif
 	
 	return gtk_item_factory_get_widget(ifactory, "<main>");
 }

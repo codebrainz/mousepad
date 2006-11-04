@@ -1,5 +1,12 @@
 2006-11-04	Benedikt Meurer <benny@xfce.org>
 
+	* AUTHORS, src/callback.{c,h}, src/file.c, src/menu.c: Merge the
+	  support for the new recently-used database, using the GtkRecent
+	  functionality, available in GTK+ 2.10 and later, instead of the
+	  planned libfrap module.
+
+2006-11-04	Benedikt Meurer <benny@xfce.org>
+
 	* src/selector.c(create_file_chooser): Apply patch from Nick Schermer
 	  <nick@xfce.org> to set default response in the open/save file dialogs
 	  so hitting enter opens/saves the file. Bug #2249.

@@ -1,7 +1,8 @@
 /*
  *  file.c
- *  This file is part of Leafpad
+ *  This file is part of Mousepad
  *
+ *  Copyright (C) 2006 Benedikt Meurer <benny@xfce.org>
  *  Copyright (C) 2004 Tarot Osuji
  *
  *  This program is free software; you can redistribute it and/or modify
@@ -36,6 +37,10 @@ gint file_open_real(GtkWidget *textview, FileInfo *fi)
 	const gchar *charset;
 	gchar *str = NULL;
 	GtkTextIter iter;
+#if GTK_CHECK_VERSION(2,10,0)
+  GtkRecentData recent_data;
+  gchar *uri;
+#endif
 	
 	GtkTextBuffer *textbuffer = gtk_text_view_get_buffer(GTK_TEXT_VIEW(textview));
 	
@@ -115,6 +120,25 @@ gint file_open_real(GtkWidget *textview, FileInfo *fi)
 	g_free(str);
 	undo_unblock_signal(textbuffer);
 	
+#if GTK_CHECK_VERSION(2,10,0)
+  /* generate the recently-used data */
+  recent_data.display_name = NULL;
+  recent_data.description = NULL;
+  recent_data.mime_type = "text/plain";
+  recent_data.app_name = "Mousepad Text Editor";
+  recent_data.app_exec = "mousepad %f";
+  recent_data.groups = NULL;
+  recent_data.is_private = FALSE;
+
+  /* add the file to the recently-used database */
+  uri = g_filename_to_uri(fi->filename, NULL, NULL);
+  if (G_LIKELY(uri != NULL))
+    {
+      gtk_recent_manager_add_full(gtk_recent_manager_get_default(), uri, &recent_data);
+      g_free(uri);
+    }
+#endif
+
 	return 0;
 }
 

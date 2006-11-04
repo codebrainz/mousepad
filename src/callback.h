@@ -2,6 +2,7 @@
  *  callback.h
  *  This file is part of Mousepad
  *
+ *  Copyright (C) 2006 Benedikt Meurer <benny@xfce.org>
  *  Copyright (C) 2005 Erik Harrison
  *  Copyright (C) 2004 Tarot Osuji
  *
@@ -26,6 +27,9 @@
 void cb_file_new(StructData *sd);
 void cb_file_new_window(StructData *sd);
 void cb_file_open(StructData *sd);
+#if GTK_CHECK_VERSION(2,10,0)
+void cb_file_open_recent(StructData *sd, GtkRecentChooser *chooser);
+#endif
 gint cb_file_save(StructData *sd);
 gint cb_file_save_as(StructData *sd);
 gint cb_file_print(StructData *sd);

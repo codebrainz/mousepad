@@ -2,6 +2,7 @@
  *  callback.c
  *  This file is part of Mousepad
  *
+ *  Copyright (C) 2006 Benedikt Meurer <benny@xfce.org>
  *  Copyright (C) 2005 Erik Harrison
  *  Copyright (C) 2004 Tarot Osuji
  *
@@ -109,6 +110,34 @@ void cb_file_open(StructData *sd)
 		}
 	}
 }
+
+#if GTK_CHECK_VERSION(2,10,0)
+void cb_file_open_recent(StructData *sd, GtkRecentChooser *chooser)
+{
+  FileInfo *fi;
+  gchar *uri;
+
+  uri = gtk_recent_chooser_get_current_uri(chooser);
+  if (G_LIKELY(uri != NULL)) {
+    fi = g_new0(FileInfo, 1);
+    fi->lineend = sd->fi->lineend;
+    fi->charset = g_strdup(sd->fi->charset);
+    fi->manual_charset = g_strdup(sd->fi->manual_charset);
+    fi->filename = g_filename_from_uri(uri, NULL, NULL);
+    if (G_LIKELY(fi->filename != NULL)) {
+			if (file_open_real(sd->mainwin->textview, fi)) {
+				g_free(fi);
+			} else {
+				g_free(sd->fi);
+				sd->fi = fi;
+				set_main_window_title(sd);
+				undo_init(sd->mainwin->textview, sd->mainwin->textbuffer, sd->mainwin->menubar);
+			}
+    }
+    g_free(uri);
+  }
+}
+#endif
 
 gint cb_file_save(StructData *sd)
 {
