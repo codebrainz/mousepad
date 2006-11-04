@@ -5,7 +5,7 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: mousepad 0.2.2\n"
+"Project-Id-Version: mousepad 0.2.10\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2006-08-04 10:57+0300\n"
 "PO-Revision-Date: 2006-08-04 10:58+0300\n"

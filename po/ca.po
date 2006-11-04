@@ -8,7 +8,7 @@
 # Carles Muñoz Gorriz <carlesmu@internautas.org>, 2006.
 msgid ""
 msgstr ""
-"Project-Id-Version: Mousepad 0.2.5svn\n"
+"Project-Id-Version: mousepad 0.2.10\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2006-07-10 14:29+0200\n"
 "PO-Revision-Date: 2006-09-18 23:37+0200\n"

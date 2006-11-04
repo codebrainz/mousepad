@@ -1,13 +1,5 @@
-For those switching from Leafpad, here is good readable description of the changes since Leafpad 0.7.9
-
-First off, we've partially switched over to Xfce widgets. That means you get whatever file chooser is 
-best for your version of GTK+.
-
-We've made the config file follow the XDG standard. The laymen's version is that the config lives in 
-~/.config/mousepad instead of cluttering up your home directory directly.
-
-We also have printing support, which is nice. Previously Leafpad was only good as a viewer/editor. Now you 
-can do pretty much all the basic text filey things. xfprint4, which is used to do the printing, can do pretty 
-printing based on file type. Nice for printing out shell scripts or other structured text.
-
-We have an optional debugging build as well.
+0.2.10
+======
+- Updated translations: Pau Rul-lan Ferragut (ca), ByungHyun Choi (ko),
+			Szymon Kałasz (pl), Daniel Nylander (sv)
+- New translations: Wangmo Sherpa (dz)
