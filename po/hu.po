@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: mousepad 0.2.10\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2006-11-04 17:08+0100\n"
-"PO-Revision-Date: 2006-09-01 11:40+0100\n"
+"PO-Revision-Date: 2006-11-05 19:01+0100\n"
 "Last-Translator: SZERVÁC Attila <sas@321.hu>\n"
 "Language-Team: Hungarian <translation-team-hu@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -23,7 +23,8 @@ msgstr ""
 msgid "Save changes to '%s'?"
 msgstr "Mented \"%s\" változásait?"
 
-#: ../src/callback.c:184 ../src/file.c:150
+#: ../src/callback.c:184
+#: ../src/file.c:150
 #, c-format
 msgid "Can't convert codeset to '%s'"
 msgstr "A kódolás nem alakítható át erre: \"%s\""
@@ -62,9 +63,8 @@ msgid "/File/_New"
 msgstr "/Fájl/Ú_j"
 
 #: ../src/menu.c:65
-#, fuzzy
 msgid "/File/New _Window"
-msgstr "/Fájl/Ú_j"
+msgstr "/Fájl/Új _ablak"
 
 #: ../src/menu.c:68
 msgid "/File/_Open..."
@@ -187,11 +187,13 @@ msgstr "%d csere volt"
 msgid "Find"
 msgstr "Keresés"
 
-#: ../src/search.c:200 ../src/search.c:265
+#: ../src/search.c:200
+#: ../src/search.c:265
 msgid "Fi_nd what: "
 msgstr "Kerese_ndő: "
 
-#: ../src/search.c:219 ../src/search.c:292
+#: ../src/search.c:219
+#: ../src/search.c:292
 msgid "_Match case"
 msgstr "_Nagybetű érzékeny"
 
@@ -262,7 +264,7 @@ msgstr "\"%s\" már létezik. Felülírod?"
 #. add the label with the root warning
 #: ../src/window.c:110
 msgid "Warning, you are using the root account, you may harm your system."
-msgstr ""
+msgstr "Figyelem, root hozzáférést használsz, árthatsz a rendszernek."
 
 #: ../src/window.c:169
 msgid "Untitled"
@@ -279,3 +281,4 @@ msgstr "Egyszerű szövegszerkesztő"
 #: ../mousepad.desktop.in.h:3
 msgid "Text Editor"
 msgstr "Szövegszerkesztő"
+
