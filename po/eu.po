@@ -259,7 +259,7 @@ msgstr "'%s' badago dagoeneko. Gainidatzi?"
 #. add the label with the root warning
 #: ../src/window.c:110
 msgid "Warning, you are using the root account, you may harm your system."
-msgstr ""
+msgstr "Kontuz, root kontua erabiltzen ari zara, zure sistema hondatu dezakezu."
 
 #: ../src/window.c:169
 msgid "Untitled"
