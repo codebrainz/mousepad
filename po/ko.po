@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: mousepad 0.2.10\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2006-11-04 17:08+0100\n"
-"PO-Revision-Date: 2006-10-17 22:14+0900\n"
-"Last-Translator: ByungHyun Choi <byunghyunchoi@gmail.com>\n"
+"PO-Revision-Date: 2006-11-11 22:43+0900\n"
+"Last-Translator: ByungHyun Choi <byunghyun.choi@debianusers.org>\n"
 "Language-Team: xfce4-users-kr-i18n <xfce4-users-kr-i18n@lists.sourceforge."
 "net>\n"
 "MIME-Version: 1.0\n"
@@ -57,12 +57,11 @@ msgstr "/화일(_F)"
 
 #: ../src/menu.c:62
 msgid "/File/_New"
-msgstr "/화일/새 화일(_N)"
+msgstr "/화일/새로운 화일(_N)"
 
 #: ../src/menu.c:65
-#, fuzzy
 msgid "/File/New _Window"
-msgstr "/화일/새 화일(_N)"
+msgstr "/화일/새로운 창(_W)"
 
 #: ../src/menu.c:68
 msgid "/File/_Open..."
@@ -259,7 +258,7 @@ msgstr "'%s'가(이) 이미 있는 데 덮어 쓸까요?"
 #. add the label with the root warning
 #: ../src/window.c:110
 msgid "Warning, you are using the root account, you may harm your system."
-msgstr ""
+msgstr "경고, 루트 유저로 사용하고 있기 때문에, 시스템에 장애를 초래할 수 있습니다."
 
 #: ../src/window.c:169
 msgid "Untitled"
