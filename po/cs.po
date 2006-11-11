@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: mousepad 0.2.10\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2006-11-04 17:08+0100\n"
-"PO-Revision-Date: 2006-08-26 18:38+0100\n"
+"PO-Revision-Date: 2006-11-10 11:11+0100\n"
 "Last-Translator: Michal Várady <miko.vaji@gmail.com>\n"
 "Language-Team: Czech <translation-team-cs@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -24,7 +24,8 @@ msgstr ""
 msgid "Save changes to '%s'?"
 msgstr "Uložit změny v souboru '%s'?"
 
-#: ../src/callback.c:184 ../src/file.c:150
+#: ../src/callback.c:184
+#: ../src/file.c:150
 #, c-format
 msgid "Can't convert codeset to '%s'"
 msgstr "Nemohu převést znakovou sadu na '%s'"
@@ -187,11 +188,13 @@ msgstr "Nahrazeno '%d' řetězců"
 msgid "Find"
 msgstr "Hledat"
 
-#: ../src/search.c:200 ../src/search.c:265
+#: ../src/search.c:200
+#: ../src/search.c:265
 msgid "Fi_nd what: "
 msgstr "H_ledat:"
 
-#: ../src/search.c:219 ../src/search.c:292
+#: ../src/search.c:219
+#: ../src/search.c:292
 msgid "_Match case"
 msgstr "Rozlišovat _velikost písmen"
 
@@ -261,7 +264,7 @@ msgstr "'%s' již existuje. Přepsat?"
 #. add the label with the root warning
 #: ../src/window.c:110
 msgid "Warning, you are using the root account, you may harm your system."
-msgstr ""
+msgstr "Varování: Používáte-li účet správce (root), můžete poškodit Váš systém."
 
 #: ../src/window.c:169
 msgid "Untitled"
@@ -278,3 +281,4 @@ msgstr "Jednoduchý textový editor"
 #: ../mousepad.desktop.in.h:3
 msgid "Text Editor"
 msgstr "Textový editor"
+
