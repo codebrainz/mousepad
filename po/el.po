@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: mousepad 0.2.10\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2006-11-04 17:08+0100\n"
-"PO-Revision-Date: 2006-07-22 03:02+0200\n"
+"PO-Revision-Date: 2006-11-11 20:14+0200\n"
 "Last-Translator: Stavros Giannouris <stavrosg2002@freemail.gr>\n"
 "Language-Team: Greek <nls@tux.hellug.gr>\n"
 "MIME-Version: 1.0\n"
@@ -23,7 +23,8 @@ msgstr ""
 msgid "Save changes to '%s'?"
 msgstr "Αποθήκευση αλλαγών στο '%s' ;"
 
-#: ../src/callback.c:184 ../src/file.c:150
+#: ../src/callback.c:184
+#: ../src/file.c:150
 #, c-format
 msgid "Can't convert codeset to '%s'"
 msgstr "Αδυναμία μετατροπής της κωδικοσελίδας σε '%s'"
@@ -186,11 +187,13 @@ msgstr "%d επαναλήψεις αντικαταστάθηκαν"
 msgid "Find"
 msgstr "Εύρεση"
 
-#: ../src/search.c:200 ../src/search.c:265
+#: ../src/search.c:200
+#: ../src/search.c:265
 msgid "Fi_nd what: "
 msgstr "Ε_υρεση του:"
 
-#: ../src/search.c:219 ../src/search.c:292
+#: ../src/search.c:219
+#: ../src/search.c:292
 msgid "_Match case"
 msgstr "_Ταίριασμα πεζών-κεφαλαίων"
 
@@ -260,7 +263,7 @@ msgstr "Το '%s' υπάρχει ήδη. Αντικατάσταση;"
 #. add the label with the root warning
 #: ../src/window.c:110
 msgid "Warning, you are using the root account, you may harm your system."
-msgstr ""
+msgstr "Προσοχή, χρησιμοποιείτε τον λογαριασμό υπερχρήστη, και είναι δυνατό να κάνετε ζημιά στο σύστημά σας."
 
 #: ../src/window.c:169
 msgid "Untitled"
@@ -277,3 +280,4 @@ msgstr "Απλός επεξεργαστής κειμένου"
 #: ../mousepad.desktop.in.h:3
 msgid "Text Editor"
 msgstr "Επεξεργαστής κειμένου"
+
