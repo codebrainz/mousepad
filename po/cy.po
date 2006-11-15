@@ -1,7 +1,8 @@
-# translation of cy.po to Welsh
+# Welsh translation of the mousepad package.
+# Copyright (C) 2005-2006 Erik Harrison.
 # This file is distributed under the same license as the mousepad package.
-#
 # Geraint Rowlands <ansbaradigeidfran@gmail.com>, 2006.
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: cy\n"
