@@ -1,21 +1,21 @@
-# translation of mousepad_he.po to Hebrew
+# translation of he.po to Hebrew
 # This file is distributed under the same license as the PACKAGE package.
 # Copyright (C) 2005-2006 Erik Harrison.
+#
 # Dotan Kamber <kamberd@yahoo.com>, 2006.
 # Yuval Tanny <tanai@int.gov.il>, 2006.
-#
 msgid ""
 msgstr ""
-"Project-Id-Version: mousepad 0.2.10\n"
+"Project-Id-Version: he\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2006-11-04 17:08+0100\n"
-"PO-Revision-Date: 2006-04-18 19:29+0300\n"
+"PO-Revision-Date: 2006-11-16 02:10+0200\n"
 "Last-Translator: Yuval Tanny <tanai@int.gov.il>\n"
 "Language-Team: Hebrew\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: KBabel 1.10.2\n"
+"X-Generator: KBabel 1.11.4\n"
 
 #: ../src/callback.c:36
 #, c-format
@@ -61,9 +61,8 @@ msgid "/File/_New"
 msgstr "/קובץ/_חדש"
 
 #: ../src/menu.c:65
-#, fuzzy
 msgid "/File/New _Window"
-msgstr "/קובץ/_חדש"
+msgstr "/קובץ/ח_לון חדש"
 
 #: ../src/menu.c:68
 msgid "/File/_Open..."
@@ -260,7 +259,7 @@ msgstr "\"%s\" כבר קיים. לשכתב?"
 #. add the label with the root warning
 #: ../src/window.c:110
 msgid "Warning, you are using the root account, you may harm your system."
-msgstr ""
+msgstr "אזהרה, אתה משתמש בחשבון root, אתה עלול להזיק למערכת שלך."
 
 #: ../src/window.c:169
 msgid "Untitled"
@@ -277,3 +276,4 @@ msgstr "עורך טקסט פשוט"
 #: ../mousepad.desktop.in.h:3
 msgid "Text Editor"
 msgstr "עורך טקסט"
+
