@@ -11,7 +11,7 @@
 
 	* cy.po: Add Welsh translations by Geraint Rowlands <ansbaradigeidfran@gmail.com>
 
-2006-11-11  Stavros Giannouris <stavrosg2002@freemail.gr>
+2006-11-11  Stavros Giannouris <stavrosg@serverhive.com>
 
 	* el.po: Greek translation update
 
@@ -160,7 +160,7 @@
 	* LINGUAS: Added a last missing language code.
 	* LINGUAS: Added missing language codes.
 
-2006-04-29  Stavros Giannouris <stavrosg2002@freemail.gr>
+2006-04-29  Stavros Giannouris <stavrosg@serverhive.com>
 
 	* el.po: Greek translation update.
 	* LINGUAS: Added `el'.
@@ -226,7 +226,7 @@
 
 	* ca.po: catalan little of work on catalan translations
 
-2006-04-01  Stavros Giannouris <stavrosg2002@freemail.gr>
+2006-04-01  Stavros Giannouris <stavrosg@serverhive.com>
 
 	* el.po: Greek translations update & polish by Stathis Kamperis
 	  <ekamperi@auth.gr>.
