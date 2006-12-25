@@ -1,0 +1,278 @@
+# translation of mousepad.po to Macedonian
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+#
+# Tome Boshevski <tome@lugola.net>, 2006.
+msgid ""
+msgstr ""
+"Project-Id-Version: mousepad\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2006-11-04 17:08+0100\n"
+"PO-Revision-Date: 2006-12-23 21:58+0100\n"
+"Last-Translator: Tome Boshevski <tome@lugola.net>\n"
+"Language-Team: Macedonian\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: KBabel 1.11.2\n"
+
+#: ../src/callback.c:36
+#, c-format
+msgid "Save changes to '%s'?"
+msgstr "Зачувај ги промените во '%s'?"
+
+#: ../src/callback.c:184 ../src/file.c:150
+#, c-format
+msgid "Can't convert codeset to '%s'"
+msgstr "Неможам да го конвертирам множеството од знаци во '%s'"
+
+#: ../src/callback.c:211
+msgid "Can't open pipe to process"
+msgstr "Неможам да отворам цевка за обработување"
+
+#: ../src/callback.c:370
+msgid "A text editor for Xfce"
+msgstr "Уредувач на текст за Xfce"
+
+#: ../src/dialog.c:135
+#, c-format
+msgid "About %s"
+msgstr "За %s"
+
+#: ../src/file.c:163
+msgid "Can't open file to write"
+msgstr "Неможам да ја отворам датотеката за запишување"
+
+#: ../src/file.c:168
+msgid "Can't write file"
+msgstr "Неможам да запишам во датотеката"
+
+#: ../src/font.c:49
+msgid "Font"
+msgstr "Фонт"
+
+#: ../src/menu.c:60
+msgid "/_File"
+msgstr "/_Датотека"
+
+#: ../src/menu.c:62
+msgid "/File/_New"
+msgstr "/Датотека/_Нова"
+
+#: ../src/menu.c:65
+msgid "/File/New _Window"
+msgstr "/Датотека/Нов _прозорец"
+
+#: ../src/menu.c:68
+msgid "/File/_Open..."
+msgstr "/Датотека/_Отвори..."
+
+#: ../src/menu.c:70
+msgid "/File/_Save"
+msgstr "/Датотека/_Зачувај"
+
+#: ../src/menu.c:72
+msgid "/File/Save _As..."
+msgstr "/Датотека/Зачувај _како..."
+
+#: ../src/menu.c:74
+msgid "/File/_Print..."
+msgstr "/Датотека/_Печати..."
+
+#: ../src/menu.c:78
+msgid "/File/_Quit"
+msgstr "/Датотека/_Излез"
+
+#: ../src/menu.c:80
+msgid "/_Edit"
+msgstr "/_Уреди"
+
+#: ../src/menu.c:82
+msgid "/Edit/_Undo"
+msgstr "/Уреди/_Отповикај"
+
+#: ../src/menu.c:84
+msgid "/Edit/_Redo"
+msgstr "/Уреди/_Врати назад"
+
+#: ../src/menu.c:88
+msgid "/Edit/Cu_t"
+msgstr "/Уреди/_Сечи"
+
+#: ../src/menu.c:90
+msgid "/Edit/_Copy"
+msgstr "/Уреди/_Копирај"
+
+#: ../src/menu.c:92
+msgid "/Edit/_Paste"
+msgstr "/Уреди/_Залепи"
+
+#: ../src/menu.c:94
+msgid "/Edit/_Delete"
+msgstr "/Уреди/_Избриши"
+
+#: ../src/menu.c:98
+msgid "/Edit/Select _All"
+msgstr "/Уреди/Избери _сѐ"
+
+#: ../src/menu.c:100
+msgid "/_Search"
+msgstr "/_Барај"
+
+#: ../src/menu.c:102
+msgid "/Search/_Find..."
+msgstr "/Барај/_Најди..."
+
+#: ../src/menu.c:104
+msgid "/Search/Find _Next"
+msgstr "/Барај/Најди _следно"
+
+#: ../src/menu.c:106
+msgid "/Search/Find _Previous"
+msgstr "/Барај/Најди _претходно"
+
+#: ../src/menu.c:108
+msgid "/Search/_Replace..."
+msgstr "/Најди/_Замени..."
+
+#: ../src/menu.c:112
+msgid "/Search/_Jump To..."
+msgstr "/Најди/_Скокни до..."
+
+#: ../src/menu.c:114
+msgid "/_Options"
+msgstr "/_Опции"
+
+#: ../src/menu.c:116
+msgid "/Options/_Font..."
+msgstr "/Опции/_Фонт..."
+
+#: ../src/menu.c:118
+msgid "/Options/_Word Wrap"
+msgstr "/Опции/_Пренесување на зборови"
+
+#: ../src/menu.c:120
+msgid "/Options/_Line Numbers"
+msgstr "/Опции/_Броеви на линиите"
+
+#: ../src/menu.c:124
+msgid "/Options/_Auto Indent"
+msgstr "/Опции/_Автоматско вовлекување"
+
+#: ../src/menu.c:126
+msgid "/_Help"
+msgstr "/_Помош"
+
+#: ../src/menu.c:128
+msgid "/Help/_About"
+msgstr "/Помош/_За"
+
+#: ../src/search.c:73
+msgid "Search string not found"
+msgstr "Бараната низа не е најдена"
+
+#: ../src/search.c:115
+msgid "Replace?"
+msgstr "Замени?"
+
+#: ../src/search.c:143
+#, c-format
+msgid "%d strings replaced"
+msgstr "%d низи заменети"
+
+#: ../src/search.c:188
+msgid "Find"
+msgstr "Најди"
+
+#: ../src/search.c:200 ../src/search.c:265
+msgid "Fi_nd what: "
+msgstr "_Што да најдам: "
+
+#: ../src/search.c:219 ../src/search.c:292
+msgid "_Match case"
+msgstr "_Токму така"
+
+#: ../src/search.c:253
+msgid "Replace"
+msgstr "Замени"
+
+#: ../src/search.c:280
+msgid "Re_place with: "
+msgstr "За_мени со:"
+
+#: ../src/search.c:296
+msgid "Replace _all at once"
+msgstr "Замени _ги сите одеднаш"
+
+#: ../src/search.c:342
+msgid "Jump To"
+msgstr "Скокни до"
+
+#: ../src/search.c:347
+msgid "_Jump"
+msgstr "_Скокни"
+
+#: ../src/search.c:353
+msgid "_Line number: "
+msgstr "_Број на линија: "
+
+#: ../src/selector.c:103
+#, c-format
+msgid "Current Locale (%s)"
+msgstr "Тековно локале (%s)"
+
+#: ../src/selector.c:147
+msgid "Other Codeset"
+msgstr "Друго множесво на знаци"
+
+#: ../src/selector.c:186
+msgid "Code_set:"
+msgstr "Мно_жество на знаци:"
+
+#: ../src/selector.c:207
+#, c-format
+msgid "'%s' is not supported"
+msgstr "'%s' не е поддржано"
+
+#: ../src/selector.c:271
+msgid "Auto Detect"
+msgstr "Автоматско препознавање"
+
+#: ../src/selector.c:325
+msgid "Open"
+msgstr "Отвори"
+
+#: ../src/selector.c:325
+msgid "Save As"
+msgstr "Зачувај како"
+
+#: ../src/selector.c:345
+msgid "Ch_aracter Coding: "
+msgstr "_Кодирање на знаци: "
+
+#: ../src/selector.c:401
+#, c-format
+msgid "'%s' already exists. Overwrite?"
+msgstr "'%s' веќе постои. Да презапишам?"
+
+#. add the label with the root warning
+#: ../src/window.c:110
+msgid "Warning, you are using the root account, you may harm your system."
+msgstr "Предупредување, вие ја користите сметката на root, можете да го оштетите вашиот систем. "
+
+#: ../src/window.c:169
+msgid "Untitled"
+msgstr "Неименуван"
+
+#: ../mousepad.desktop.in.h:1
+msgid "Mousepad"
+msgstr "Mousepad"
+
+#: ../mousepad.desktop.in.h:2
+msgid "Simple text editor"
+msgstr "Едноставен уредувач на текст"
+
+#: ../mousepad.desktop.in.h:3
+msgid "Text Editor"
+msgstr "Уредувач на текст"
+
