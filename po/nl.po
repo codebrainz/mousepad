@@ -258,7 +258,7 @@ msgstr "'%s' bestaat al. Overschrijven?"
 #. add the label with the root warning
 #: ../src/window.c:110
 msgid "Warning, you are using the root account, you may harm your system."
-msgstr ""
+msgstr "Waarshueing, u werkt als root, u kunt hiermee uw systeem beschadigen."
 
 #: ../src/window.c:169
 msgid "Untitled"
