@@ -1,0 +1,283 @@
+# translation of pa.po to Punjabi
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+#
+# A S Alam <apbrar@gmail.com>, 2006.
+msgid ""
+msgstr ""
+"Project-Id-Version: pa\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2006-11-04 17:08+0100\n"
+"PO-Revision-Date: 2006-12-29 00:10+0530\n"
+"Last-Translator: A S Alam <apbrar@gmail.com>\n"
+"Language-Team: Punjabi <fedora-trans-pa@redhat.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: KBabel 1.11.4\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: ../src/callback.c:36
+#, c-format
+msgid "Save changes to '%s'?"
+msgstr "'%s' 'ਚ ਤਬਦੀਲੀਆਂ ਨੂੰ ਸੰਭਾਲਣਾ ਹੈ?"
+
+#: ../src/callback.c:184 ../src/file.c:150
+#, c-format
+msgid "Can't convert codeset to '%s'"
+msgstr ""
+
+#: ../src/callback.c:211
+msgid "Can't open pipe to process"
+msgstr ""
+
+#: ../src/callback.c:370
+msgid "A text editor for Xfce"
+msgstr "Xfce ਲਈ ਟੈਸਕਟ ਐਡੀਟਰ"
+
+#: ../src/dialog.c:135
+#, c-format
+msgid "About %s"
+msgstr " %s ਬਾਰੇ"
+
+#: ../src/file.c:163
+msgid "Can't open file to write"
+msgstr ""
+
+#: ../src/file.c:168
+msgid "Can't write file"
+msgstr "ਫਾਇਲ ਲਿਖੀ ਨਹੀਂ ਜਾ ਸਕਦੀ"
+
+#: ../src/font.c:49
+msgid "Font"
+msgstr "ਫੋਂਟ"
+
+#: ../src/menu.c:60
+msgid "/_File"
+msgstr "/ਫਾਇਲ(_F)"
+
+#: ../src/menu.c:62
+msgid "/File/_New"
+msgstr "/ਫਾਇਲ/ਨਵੀਂ(_N)"
+
+#: ../src/menu.c:65
+msgid "/File/New _Window"
+msgstr "/ਫਾਇਲ/ਨਵੀਂ ਵਿੰਡੋ(_W)"
+
+#: ../src/menu.c:68
+msgid "/File/_Open..."
+msgstr "/ਫਾਇਲ/ਖੋਲ੍ਹੋ(_O)..."
+
+#: ../src/menu.c:70
+msgid "/File/_Save"
+msgstr "/ਫਾਇਲ/ਸੰਭਾਲੋ(_S)"
+
+#: ../src/menu.c:72
+msgid "/File/Save _As..."
+msgstr "/ਫਾਇਲ/ਇੰਜ ਸੰਭਾਲੋ(_A)..."
+
+#: ../src/menu.c:74
+msgid "/File/_Print..."
+msgstr "/ਫਾਇਲ/ਪ੍ਰਿੰਟ(_P)..."
+
+#: ../src/menu.c:78
+msgid "/File/_Quit"
+msgstr "/ਫਾਇਲ/ਬਾਹਰ(_Q)"
+
+#: ../src/menu.c:80
+msgid "/_Edit"
+msgstr "/ਸੋਧ(_E)"
+
+#: ../src/menu.c:82
+msgid "/Edit/_Undo"
+msgstr "/ਸੋਧ/ਅਨ-ਡੂ(_U)"
+
+#: ../src/menu.c:84
+msgid "/Edit/_Redo"
+msgstr ""
+
+#: ../src/menu.c:88
+msgid "/Edit/Cu_t"
+msgstr ""
+
+#: ../src/menu.c:90
+msgid "/Edit/_Copy"
+msgstr ""
+
+#: ../src/menu.c:92
+msgid "/Edit/_Paste"
+msgstr ""
+
+#: ../src/menu.c:94
+msgid "/Edit/_Delete"
+msgstr ""
+
+#: ../src/menu.c:98
+msgid "/Edit/Select _All"
+msgstr ""
+
+#: ../src/menu.c:100
+msgid "/_Search"
+msgstr "/ਖੋਜ(_S)"
+
+#: ../src/menu.c:102
+msgid "/Search/_Find..."
+msgstr ""
+
+#: ../src/menu.c:104
+msgid "/Search/Find _Next"
+msgstr ""
+
+#: ../src/menu.c:106
+msgid "/Search/Find _Previous"
+msgstr ""
+
+#: ../src/menu.c:108
+msgid "/Search/_Replace..."
+msgstr ""
+
+#: ../src/menu.c:112
+msgid "/Search/_Jump To..."
+msgstr ""
+
+#: ../src/menu.c:114
+msgid "/_Options"
+msgstr "/ਚੋਣਾਂ(_O)"
+
+#: ../src/menu.c:116
+msgid "/Options/_Font..."
+msgstr ""
+
+#: ../src/menu.c:118
+msgid "/Options/_Word Wrap"
+msgstr ""
+
+#: ../src/menu.c:120
+msgid "/Options/_Line Numbers"
+msgstr ""
+
+#: ../src/menu.c:124
+msgid "/Options/_Auto Indent"
+msgstr ""
+
+#: ../src/menu.c:126
+msgid "/_Help"
+msgstr "/ਸਹਾਇਤਾ(_H)"
+
+#: ../src/menu.c:128
+msgid "/Help/_About"
+msgstr ""
+
+#: ../src/search.c:73
+msgid "Search string not found"
+msgstr ""
+
+#: ../src/search.c:115
+msgid "Replace?"
+msgstr "ਤਬਦੀਲ?"
+
+#: ../src/search.c:143
+#, c-format
+msgid "%d strings replaced"
+msgstr ""
+
+#: ../src/search.c:188
+#, fuzzy
+msgid "Find"
+msgstr "ਖੋਜ"
+
+#: ../src/search.c:200 ../src/search.c:265
+msgid "Fi_nd what: "
+msgstr ""
+
+#: ../src/search.c:219 ../src/search.c:292
+#, fuzzy
+msgid "_Match case"
+msgstr "ਅੱਖਰ ਆਕਾਰ ਮਿਲਾਓ(_ਨ)se"
+
+#: ../src/search.c:253
+#, fuzzy
+msgid "Replace"
+msgstr "ਤਬਦੀਲ"
+
+#: ../src/search.c:280
+msgid "Re_place with: "
+msgstr ""
+
+#: ../src/search.c:296
+msgid "Replace _all at once"
+msgstr ""
+
+#: ../src/search.c:342
+msgid "Jump To"
+msgstr "ਜਾਓ"
+
+#: ../src/search.c:347
+msgid "_Jump"
+msgstr ""
+
+#: ../src/search.c:353
+msgid "_Line number: "
+msgstr ""
+
+#: ../src/selector.c:103
+#, c-format
+msgid "Current Locale (%s)"
+msgstr "ਕਰੰਟ ਲੋਕੇਲ (%s)"
+
+#: ../src/selector.c:147
+msgid "Other Codeset"
+msgstr ""
+
+#: ../src/selector.c:186
+msgid "Code_set:"
+msgstr ""
+
+#: ../src/selector.c:207
+#, c-format
+msgid "'%s' is not supported"
+msgstr ""
+
+#: ../src/selector.c:271
+msgid "Auto Detect"
+msgstr "ਆਟੋ ਡਿਟੈਕਟ"
+
+#: ../src/selector.c:325
+msgid "Open"
+msgstr "ਖੋਲ੍ਹੋ"
+
+#: ../src/selector.c:325
+msgid "Save As"
+msgstr "ਇੰਝ ਸੰਭਾਲੋ"
+
+#: ../src/selector.c:345
+msgid "Ch_aracter Coding: "
+msgstr ""
+
+#: ../src/selector.c:401
+#, c-format
+msgid "'%s' already exists. Overwrite?"
+msgstr ""
+
+#. add the label with the root warning
+#: ../src/window.c:110
+msgid "Warning, you are using the root account, you may harm your system."
+msgstr ""
+
+#: ../src/window.c:169
+#, fuzzy
+msgid "Untitled"
+msgstr "ਬਿਨਾਂ-ਟਾਇਟਲ"
+
+#: ../mousepad.desktop.in.h:1
+msgid "Mousepad"
+msgstr "ਮਾਊਂਸਪੈਡ"
+
+#: ../mousepad.desktop.in.h:2
+msgid "Simple text editor"
+msgstr "ਸਧਾਰਨ ਟੈਕਸਟ ਐਡੀਟਰ"
+
+#: ../mousepad.desktop.in.h:3
+msgid "Text Editor"
+msgstr "ਟੈਕਸਟ ਐਡੀਟਰ"
+
