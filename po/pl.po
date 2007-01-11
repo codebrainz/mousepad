@@ -60,9 +60,8 @@ msgid "/File/_New"
 msgstr "/Plik/_Nowy"
 
 #: ../src/menu.c:65
-#, fuzzy
 msgid "/File/New _Window"
-msgstr "/Plik/_Nowy"
+msgstr "/Plik/Nowe_Okno"
 
 #: ../src/menu.c:68
 msgid "/File/_Open..."
@@ -259,7 +258,7 @@ msgstr "'%s' już istnieje. Czy go zastąpić?"
 #. add the label with the root warning
 #: ../src/window.c:110
 msgid "Warning, you are using the root account, you may harm your system."
-msgstr ""
+msgstr "Uwaga, używasz konta root, możesz uszkodzić swój system."
 
 #: ../src/window.c:169
 msgid "Untitled"
