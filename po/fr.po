@@ -2,14 +2,14 @@
 # Copyright (C) 2005-2006 Erik Harrison.
 # This file is distributed under the same license as the mousepad package.
 # Luc Pionchon <luc@handhelds.org>, 2004.
-# Maximilian Schleiss <maxschleiss@bluewin.ch>, 2006.
+# Maximilian Schleiss <maxschleiss@bluewin.ch>, 2006-2007.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: mousepad 0.2.10\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2006-11-04 17:08+0100\n"
-"PO-Revision-Date: 2006-11-08 08:16+0100\n"
+"PO-Revision-Date: 2007-01-14 20:01+0100\n"
 "Last-Translator: Maximilian Schleiss <maxschleiss@bluewin.ch>\n"
 "Language-Team: French <xfce-i18n@xfce.org>\n"
 "MIME-Version: 1.0\n"
@@ -166,7 +166,7 @@ msgstr "/_Aide"
 
 #: ../src/menu.c:128
 msgid "/Help/_About"
-msgstr "/_Aide/À _propos"
+msgstr "/Aide/À _propos"
 
 #: ../src/search.c:73
 msgid "Search string not found"
@@ -213,7 +213,7 @@ msgstr "Aller à la ligne"
 
 #: ../src/search.c:347
 msgid "_Jump"
-msgstr "Aller à la ligne"
+msgstr "_Aller à la ligne..."
 
 #: ../src/search.c:353
 msgid "_Line number: "
