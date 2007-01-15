@@ -1,2 +1,8 @@
+undo.c:
+	reorganize undo_create_undo_info
+	add the OVR case
+	try to replace undo_set_sequency with something more sane
+	trim memory use based on previous changes
+
 Add files to the recently used list, add recently used to the open dialog
 Make multiple windows run in the same process.
