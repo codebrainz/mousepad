@@ -264,14 +264,12 @@ void cb_file_quit(StructData *sd)
 
 void cb_edit_undo(StructData *sd)
 {
-	while (undo_undo(sd->mainwin->textbuffer)) {}
+	undo_undo(sd->mainwin->textbuffer);
 }
 
 void cb_edit_redo(StructData *sd)
 {
-	while (undo_redo(sd->mainwin->textbuffer)) {
-		undo_set_sequency(TRUE);
-	}
+	undo_redo(sd->mainwin->textbuffer);
 }
 
 void cb_edit_cut(StructData *sd)

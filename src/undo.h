@@ -28,7 +28,7 @@ gint undo_block_signal(GtkTextBuffer *buffer);
 gint undo_unblock_signal(GtkTextBuffer *buffer);
 gint undo_disconnect_signal(GtkTextBuffer *buffer);
 void undo_set_sequency(gboolean seq);
-gboolean undo_undo(GtkTextBuffer *buffer);
-gboolean undo_redo(GtkTextBuffer *buffer);
+void undo_undo(GtkTextBuffer *buffer);
+void undo_redo(GtkTextBuffer *buffer);
 
 #endif /* _UNDO_H */
