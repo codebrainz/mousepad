@@ -11,7 +11,7 @@ m4_define([mp_version_major], [0])
 m4_define([mp_version_minor], [2])
 m4_define([mp_version_micro], [11])
 m4_define([mp_version_build], [r@REVISION@])
-m4_define([mp_version_tag], [svn])
+m4_define([mp_version_tag], [])
 m4_define([mp_version], [mp_version_major().mp_version_minor().mp_version_micro()ifelse(mp_version_tag(), [svn], [mp_version_tag()-mp_version_build()], [mp_version_tag()])])
 
 dnl *******************************************
@@ -53,8 +53,8 @@ XDT_I18N([@LINGUAS@])
 dnl ***********************************
 dnl *** Check for required packages ***
 dnl ***********************************
-XDT_CHECK_PACKAGE([LIBXFCEGUI4], [libxfcegui4-1.0], [4.2.0])
-XDT_CHECK_PACKAGE([GTK], [gtk+-2.0], [2.2.0])
+XDT_CHECK_PACKAGE([LIBXFCEGUI4], [libxfcegui4-1.0], [4.4.0])
+XDT_CHECK_PACKAGE([GTK], [gtk+-2.0], [2.6.0])
 
 dnl ***********************************
 dnl *** Check for debugging support ***
