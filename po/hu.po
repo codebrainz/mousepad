@@ -11,19 +11,23 @@ msgstr ""
 "Project-Id-Version: mousepad 0.2.10\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2007-01-20 12:34+0100\n"
-"PO-Revision-Date: 2006-11-05 19:01+0100\n"
+"PO-Revision-Date: 2007-01-20 15:57+0100\n"
 "Last-Translator: SZERVÁC Attila <sas@321.hu>\n"
 "Language-Team: Hungarian <translation-team-hu@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Poedit-Language: Hungarian\n"
+"X-Poedit-Country: HUNGARY\n"
 
 #: ../src/callback.c:37
 #, c-format
 msgid "Save changes to '%s'?"
 msgstr "Mented \"%s\" változásait?"
 
-#: ../src/callback.c:213 ../src/file.c:174
+#: ../src/callback.c:213
+#: ../src/file.c:174
 #, c-format
 msgid "Can't convert codeset to '%s'"
 msgstr "A kódolás nem alakítható át erre: \"%s\""
@@ -70,9 +74,8 @@ msgid "/File/_Open..."
 msgstr "/Fájl/_Megnyitás"
 
 #: ../src/menu.c:72
-#, fuzzy
 msgid "/File/Open _Recent"
-msgstr "/Fájl/_Megnyitás"
+msgstr "/Fájl/_Legutóbbi megnyitása"
 
 #: ../src/menu.c:77
 msgid "/File/_Save"
@@ -191,11 +194,13 @@ msgstr "%d csere volt"
 msgid "Find"
 msgstr "Keresés"
 
-#: ../src/search.c:200 ../src/search.c:265
+#: ../src/search.c:200
+#: ../src/search.c:265
 msgid "Fi_nd what: "
 msgstr "Kerese_ndő: "
 
-#: ../src/search.c:219 ../src/search.c:292
+#: ../src/search.c:219
+#: ../src/search.c:292
 msgid "_Match case"
 msgstr "_Nagybetű érzékeny"
 
@@ -283,3 +288,4 @@ msgstr "Egyszerű szövegszerkesztő"
 #: ../mousepad.desktop.in.h:3
 msgid "Text Editor"
 msgstr "Szövegszerkesztő"
+
