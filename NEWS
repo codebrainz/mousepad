@@ -1,3 +1,19 @@
+0.2.12
+======
+- Add support for the new recently-used database, using the GtkRecent
+  functionality available in GTK+ 2.10 and later.
+- Set default response in Open/Save dialogs (Bug #2249).
+- Merge new undo system.
+- Updated translations: Carles Muñoz Gorriz (ca), Michal Várady (cz), Benedikt
+                        Meurer (de), Stavros Giannouris (el), Piarres Beobide
+			(eu), Jari Rahkonen (fi), Maximilian Schleiss (fr),
+			ByungHyun Choi (ko), Piotr Maliński (pl), Adriano
+			Winter Bess (pt_BR), Andrey Fedoseev (ru), Alexander
+			Toresson (sv)
+- New translations: Alexander Nyakhaychyk (be), Geraint Rowlands (cy), Tome
+                    Boshevski (mk), A S Alam (pa)
+
+
 0.2.10
 ======
 - Updated translations: Pau Rul-lan Ferragut (ca), ByungHyun Choi (ko),

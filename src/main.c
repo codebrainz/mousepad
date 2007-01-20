@@ -1,7 +1,8 @@
 /*
  *  main.c
- *  This file is part of Leafpad
+ *  This file is part of Mousepad
  *
+ *  Copyright (C) 2006 Benedikt Meurer <benny@xfce.org>
  *  Copyright (C) 2004 Tarot Osuji
  *
  *  This program is free software; you can redistribute it and/or modify

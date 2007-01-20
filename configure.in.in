@@ -1,7 +1,7 @@
 dnl $Id$
 dnl
-dnl Copyright (c) 2005-2006 Erik Harrison <erikharrison@gxfce.org>
-dnl Copyright (c) 2003-2006 Benedikt Meurer <benny@xfce.org>
+dnl Copyright (c) 2005-2007 Erik Harrison <erikharrison@gxfce.org>
+dnl Copyright (c) 2003-2007 Benedikt Meurer <benny@xfce.org>
 dnl
 
 dnl ***************************
@@ -9,7 +9,7 @@ dnl *** Version information ***
 dnl ***************************
 m4_define([mp_version_major], [0])
 m4_define([mp_version_minor], [2])
-m4_define([mp_version_micro], [11])
+m4_define([mp_version_micro], [12])
 m4_define([mp_version_build], [r@REVISION@])
 m4_define([mp_version_tag], [])
 m4_define([mp_version], [mp_version_major().mp_version_minor().mp_version_micro()ifelse(mp_version_tag(), [svn], [mp_version_tag()-mp_version_build()], [mp_version_tag()])])
@@ -22,7 +22,7 @@ m4_define([mp_debug_default], [ifelse(mp_version_tag(), [svn], [yes], [minimum])
 dnl ***************************
 dnl *** Initialize autoconf ***
 dnl ***************************
-AC_COPYRIGHT([Copyright (c) 2005-2006
+AC_COPYRIGHT([Copyright (c) 2005-2007
         Erik Harrison <erikharrison@gmail.com>])
 AC_INIT([Mousepad], [mp_version()], [erikharrison@gmail.com])
 AC_PREREQ([2.50])
