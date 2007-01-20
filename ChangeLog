@@ -8,7 +8,7 @@
 	* NEWS, configure.in.in: Bump version.
 	* po/*.po: Update Project-Id-Version.
 
-2007-01-15	Erik Harrison <erik@xfce.org>
+2007-01-15	Erik Harrison <erikharrison@xfce.org>
 
 	* src/: Moving undo system changes from local tree to Xfce svn, and
 	  resuming work there.
