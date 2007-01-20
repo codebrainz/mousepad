@@ -1,0 +1,280 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: mousepad trunk\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2006-11-04 17:08+0100\n"
+"PO-Revision-Date: 2007-01-20 02:33+0200\n"
+"Last-Translator: Alexander Nyakhaychyk <nyakhaychyk@gmail.com>\n"
+"Language-Team: Belarusian <i18n@mova.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../src/callback.c:36
+#, c-format
+msgid "Save changes to '%s'?"
+msgstr "Захаваць зьмены ў \"%s\"?"
+
+#: ../src/callback.c:184
+#: ../src/file.c:150
+#, c-format
+msgid "Can't convert codeset to '%s'"
+msgstr "Немагчыма пераўтварыць кадаваньне ў \"%s\""
+
+#: ../src/callback.c:211
+msgid "Can't open pipe to process"
+msgstr "Немагчыма адкрыць канал да працэсу"
+
+#: ../src/callback.c:370
+msgid "A text editor for Xfce"
+msgstr "Тэкставы рэдактар для Xfce"
+
+#: ../src/dialog.c:135
+#, c-format
+msgid "About %s"
+msgstr "Пра %s"
+
+#: ../src/file.c:163
+msgid "Can't open file to write"
+msgstr "Немагчыма адкрыць файл для запісу"
+
+#: ../src/file.c:168
+msgid "Can't write file"
+msgstr "Немагчыма запісаць у файл"
+
+#: ../src/font.c:49
+msgid "Font"
+msgstr "Шрыфт"
+
+#: ../src/menu.c:60
+msgid "/_File"
+msgstr "/_Файл"
+
+#: ../src/menu.c:62
+msgid "/File/_New"
+msgstr "/Файл/_Стварыць"
+
+#: ../src/menu.c:65
+msgid "/File/New _Window"
+msgstr "/Файл/Н_овае вакно"
+
+#: ../src/menu.c:68
+msgid "/File/_Open..."
+msgstr "/Файл/_Адкрыць..."
+
+#: ../src/menu.c:70
+msgid "/File/_Save"
+msgstr "/Файл/За_хаваць"
+
+#: ../src/menu.c:72
+msgid "/File/Save _As..."
+msgstr "/Файл/Захаваць _як..."
+
+#: ../src/menu.c:74
+msgid "/File/_Print..."
+msgstr "/Файл/Д_рук..."
+
+#: ../src/menu.c:78
+msgid "/File/_Quit"
+msgstr "/Файл/Вы_йсьці"
+
+#: ../src/menu.c:80
+msgid "/_Edit"
+msgstr "/_Рэдагаваньне"
+
+#: ../src/menu.c:82
+msgid "/Edit/_Undo"
+msgstr "/Рэдагаваньне/_Скасаваць зьмены"
+
+#: ../src/menu.c:84
+msgid "/Edit/_Redo"
+msgstr "/Рэдагаваньне/Пе_рарабіць"
+
+#: ../src/menu.c:88
+msgid "/Edit/Cu_t"
+msgstr "/Рэдагаваньне/_Выразаць"
+
+#: ../src/menu.c:90
+msgid "/Edit/_Copy"
+msgstr "/Рэдагаваньне/Ска_піяваць"
+
+#: ../src/menu.c:92
+msgid "/Edit/_Paste"
+msgstr "/Рэдагаваньне/Ус_тавіць"
+
+#: ../src/menu.c:94
+msgid "/Edit/_Delete"
+msgstr "/Рэдагаваньне/Вы_даліць"
+
+#: ../src/menu.c:98
+msgid "/Edit/Select _All"
+msgstr "/Рэдагаваньне/Вылучыць _усё"
+
+#: ../src/menu.c:100
+msgid "/_Search"
+msgstr "/По_шук"
+
+#: ../src/menu.c:102
+msgid "/Search/_Find..."
+msgstr "/Пошук/_Шукаць..."
+
+#: ../src/menu.c:104
+msgid "/Search/Find _Next"
+msgstr "/Пошук/Шукаць _далей"
+
+#: ../src/menu.c:106
+msgid "/Search/Find _Previous"
+msgstr "/Пошук/Шукаць _раней"
+
+#: ../src/menu.c:108
+msgid "/Search/_Replace..."
+msgstr "/Пошук/За_мена..."
+
+#: ../src/menu.c:112
+msgid "/Search/_Jump To..."
+msgstr "/Пошук/Пера_ход да..."
+
+#: ../src/menu.c:114
+msgid "/_Options"
+msgstr "/_Опцыі"
+
+#: ../src/menu.c:116
+msgid "/Options/_Font..."
+msgstr "/Опцыі/_Шрыфт..."
+
+#: ../src/menu.c:118
+msgid "/Options/_Word Wrap"
+msgstr "/Опцыі/За_гортваньне слоў"
+
+#: ../src/menu.c:120
+msgid "/Options/_Line Numbers"
+msgstr "/Опцыі/Н_умары радкоў"
+
+#: ../src/menu.c:124
+msgid "/Options/_Auto Indent"
+msgstr "/Опцыі/Аўта-водступ"
+
+#: ../src/menu.c:126
+msgid "/_Help"
+msgstr "/_Даведка"
+
+#: ../src/menu.c:128
+msgid "/Help/_About"
+msgstr "/Даведка/_Пра праграму"
+
+#: ../src/search.c:73
+msgid "Search string not found"
+msgstr "Радок ня знойдзены"
+
+#: ../src/search.c:115
+msgid "Replace?"
+msgstr "Замяніць?"
+
+#: ../src/search.c:143
+#, c-format
+msgid "%d strings replaced"
+msgstr "%d радкоў заменена"
+
+#: ../src/search.c:188
+msgid "Find"
+msgstr "Пошук"
+
+#: ../src/search.c:200
+#: ../src/search.c:265
+msgid "Fi_nd what: "
+msgstr "По_шук:"
+
+#: ../src/search.c:219
+#: ../src/search.c:292
+msgid "_Match case"
+msgstr "Су_падзеньне рэгістру"
+
+#: ../src/search.c:253
+msgid "Replace"
+msgstr "Замена"
+
+#: ../src/search.c:280
+msgid "Re_place with: "
+msgstr "За_мяніць на:"
+
+#: ../src/search.c:296
+msgid "Replace _all at once"
+msgstr "Замяніць _усюды"
+
+#: ../src/search.c:342
+msgid "Jump To"
+msgstr "Пераход да"
+
+#: ../src/search.c:347
+msgid "_Jump"
+msgstr "Пера_ход"
+
+#: ../src/search.c:353
+msgid "_Line number: "
+msgstr "_Нумар радка:"
+
+#: ../src/selector.c:103
+#, c-format
+msgid "Current Locale (%s)"
+msgstr "Бягучая мясцовасьць (%s)"
+
+#: ../src/selector.c:147
+msgid "Other Codeset"
+msgstr "Іншае кадаваньне"
+
+#: ../src/selector.c:186
+msgid "Code_set:"
+msgstr "Када_ваньне:"
+
+#: ../src/selector.c:207
+#, c-format
+msgid "'%s' is not supported"
+msgstr "\"%s\" не падтрымліваецца"
+
+#: ../src/selector.c:271
+msgid "Auto Detect"
+msgstr "Аўта-вызначэньне"
+
+#: ../src/selector.c:325
+msgid "Open"
+msgstr "Адкрыць"
+
+#: ../src/selector.c:325
+msgid "Save As"
+msgstr "Захаваць як"
+
+#: ../src/selector.c:345
+msgid "Ch_aracter Coding: "
+msgstr "_Кадаваньне знакаў:"
+
+#: ../src/selector.c:401
+#, c-format
+msgid "'%s' already exists. Overwrite?"
+msgstr "\"%s\" ужо існуе. Перазапісаць?"
+
+#. add the label with the root warning
+#: ../src/window.c:110
+msgid "Warning, you are using the root account, you may harm your system."
+msgstr "Увага! Вы выкарыстоўваеце ўліковы запіс root. Вы можаце пашкодзіць вашу сыстэму."
+
+#: ../src/window.c:169
+msgid "Untitled"
+msgstr "Безназоўны"
+
+#: ../mousepad.desktop.in.h:1
+msgid "Mousepad"
+msgstr "Mousepad"
+
+#: ../mousepad.desktop.in.h:2
+msgid "Simple text editor"
+msgstr "Просты тэкставы рэдактар"
+
+#: ../mousepad.desktop.in.h:3
+msgid "Text Editor"
+msgstr "Тэкставы рэдактар"
+

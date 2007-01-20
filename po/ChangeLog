@@ -1,3 +1,8 @@
+2007-01-20  Alexander Nyakhaychyk  <nyakhaychyk@gmail.com>
+
+	* be.po: Added Belarusian Translation
+	* LINGUAS: Added "be"
+
 2007-01-18  Alexander Toresson <alexander.toresson@gmail.com>
 
 	* sv.po: Updated Swedish translation.
