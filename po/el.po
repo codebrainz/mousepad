@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mousepad 0.2.10\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-11-04 17:08+0100\n"
+"POT-Creation-Date: 2007-01-20 12:34+0100\n"
 "PO-Revision-Date: 2006-11-11 20:14+0200\n"
 "Last-Translator: Stavros Giannouris <stavrosg@serverhive.com>\n"
 "Language-Team: Greek <nls@tux.hellug.gr>\n"
@@ -18,22 +18,21 @@ msgstr ""
 "X-Poedit-Language: Greek\n"
 "X-Poedit-Country: GREECE\n"
 
-#: ../src/callback.c:36
+#: ../src/callback.c:37
 #, c-format
 msgid "Save changes to '%s'?"
 msgstr "Αποθήκευση αλλαγών στο '%s' ;"
 
-#: ../src/callback.c:184
-#: ../src/file.c:150
+#: ../src/callback.c:213 ../src/file.c:174
 #, c-format
 msgid "Can't convert codeset to '%s'"
 msgstr "Αδυναμία μετατροπής της κωδικοσελίδας σε '%s'"
 
-#: ../src/callback.c:211
+#: ../src/callback.c:240
 msgid "Can't open pipe to process"
 msgstr "Αδυναμία ανοίγματος διασωλήνωσης προς τη διεργασία"
 
-#: ../src/callback.c:370
+#: ../src/callback.c:397
 msgid "A text editor for Xfce"
 msgstr "Κειμενογράφος για το Xfce"
 
@@ -42,11 +41,11 @@ msgstr "Κειμενογράφος για το Xfce"
 msgid "About %s"
 msgstr "Περί %s"
 
-#: ../src/file.c:163
+#: ../src/file.c:187
 msgid "Can't open file to write"
 msgstr "Αδυναμία εγγραφής σε αυτό το αρχείο"
 
-#: ../src/file.c:168
+#: ../src/file.c:192
 msgid "Can't write file"
 msgstr "Αδύνατη η εγγραφή του αρχείου"
 
@@ -54,119 +53,124 @@ msgstr "Αδύνατη η εγγραφή του αρχείου"
 msgid "Font"
 msgstr "Γραμματοσειρά"
 
-#: ../src/menu.c:60
+#: ../src/menu.c:61
 msgid "/_File"
 msgstr "/_Αρχείο"
 
-#: ../src/menu.c:62
+#: ../src/menu.c:63
 msgid "/File/_New"
 msgstr "/Αρχείο/_Νέο"
 
-#: ../src/menu.c:65
+#: ../src/menu.c:66
 msgid "/File/New _Window"
 msgstr "/Αρχείο/Νέο _παράθυρο"
 
-#: ../src/menu.c:68
+#: ../src/menu.c:69
 msgid "/File/_Open..."
 msgstr "/Αρχείο/Άν_οιγμα..."
 
-#: ../src/menu.c:70
+#: ../src/menu.c:72
+#, fuzzy
+msgid "/File/Open _Recent"
+msgstr "/Αρχείο/Άν_οιγμα..."
+
+#: ../src/menu.c:77
 msgid "/File/_Save"
 msgstr "/Αρχείο/Α_ποθήκευση"
 
-#: ../src/menu.c:72
+#: ../src/menu.c:79
 msgid "/File/Save _As..."
 msgstr "/Αρχείο/Αποθήκευση _ως..."
 
-#: ../src/menu.c:74
+#: ../src/menu.c:83
 msgid "/File/_Print..."
 msgstr "/Αρχείο/Ε_κτύπωση..."
 
-#: ../src/menu.c:78
+#: ../src/menu.c:87
 msgid "/File/_Quit"
 msgstr "/Αρχείο/_Έξοδος"
 
-#: ../src/menu.c:80
+#: ../src/menu.c:89
 msgid "/_Edit"
 msgstr "/_Επεξεργασία"
 
-#: ../src/menu.c:82
+#: ../src/menu.c:91
 msgid "/Edit/_Undo"
 msgstr "/Επεξεργασία/_Αναίρεση"
 
-#: ../src/menu.c:84
+#: ../src/menu.c:93
 msgid "/Edit/_Redo"
 msgstr "/Επεξεργασία/Ε_πανάληψη"
 
-#: ../src/menu.c:88
+#: ../src/menu.c:97
 msgid "/Edit/Cu_t"
 msgstr "/Επεξεργασία/_Αποκοπή"
 
-#: ../src/menu.c:90
+#: ../src/menu.c:99
 msgid "/Edit/_Copy"
 msgstr "/Επεξεργασία/Α_ντιγραφή"
 
-#: ../src/menu.c:92
+#: ../src/menu.c:101
 msgid "/Edit/_Paste"
 msgstr "/Επεξεργασία/_Επικόλληση"
 
-#: ../src/menu.c:94
+#: ../src/menu.c:103
 msgid "/Edit/_Delete"
 msgstr "/Επεξεργασία/_Διαγραφή"
 
-#: ../src/menu.c:98
+#: ../src/menu.c:107
 msgid "/Edit/Select _All"
 msgstr "/Επεξεργασία/Επιλογή _όλων"
 
-#: ../src/menu.c:100
+#: ../src/menu.c:109
 msgid "/_Search"
 msgstr "/Ανα_ζήτηση:"
 
-#: ../src/menu.c:102
+#: ../src/menu.c:111
 msgid "/Search/_Find..."
 msgstr "/Αναζήτηση/_Εύρεση..."
 
-#: ../src/menu.c:104
+#: ../src/menu.c:113
 msgid "/Search/Find _Next"
 msgstr "/Αναζήτηση/Εύρεση επόμε_νου"
 
-#: ../src/menu.c:106
+#: ../src/menu.c:115
 msgid "/Search/Find _Previous"
 msgstr "/Αναζήτηση/Εύρεση _προηγούμενου"
 
-#: ../src/menu.c:108
+#: ../src/menu.c:117
 msgid "/Search/_Replace..."
 msgstr "/Αναζήτηση/_Αντικατάσταση..."
 
-#: ../src/menu.c:112
+#: ../src/menu.c:121
 msgid "/Search/_Jump To..."
 msgstr "/Αναζήτηση/_Μετάβαση σε..."
 
-#: ../src/menu.c:114
+#: ../src/menu.c:123
 msgid "/_Options"
 msgstr "/Ε_πιλογές"
 
-#: ../src/menu.c:116
+#: ../src/menu.c:125
 msgid "/Options/_Font..."
 msgstr "/Επιλογές/_Γραμματοσειρά..."
 
-#: ../src/menu.c:118
+#: ../src/menu.c:127
 msgid "/Options/_Word Wrap"
 msgstr "/Επιλογές/_Αναδίπλωση λέξεων"
 
-#: ../src/menu.c:120
+#: ../src/menu.c:129
 msgid "/Options/_Line Numbers"
 msgstr "/Επιλογές/Α_ριθμοί Γραμμών"
 
-#: ../src/menu.c:124
+#: ../src/menu.c:133
 msgid "/Options/_Auto Indent"
 msgstr "/Επιλογές/Αυ_τόματες εσοχές"
 
-#: ../src/menu.c:126
+#: ../src/menu.c:135
 msgid "/_Help"
 msgstr "/_Βοήθεια"
 
-#: ../src/menu.c:128
+#: ../src/menu.c:137
 msgid "/Help/_About"
 msgstr "/Βοήθεια/_Περί"
 
@@ -187,13 +191,11 @@ msgstr "%d επαναλήψεις αντικαταστάθηκαν"
 msgid "Find"
 msgstr "Εύρεση"
 
-#: ../src/search.c:200
-#: ../src/search.c:265
+#: ../src/search.c:200 ../src/search.c:265
 msgid "Fi_nd what: "
 msgstr "Ε_υρεση του:"
 
-#: ../src/search.c:219
-#: ../src/search.c:292
+#: ../src/search.c:219 ../src/search.c:292
 msgid "_Match case"
 msgstr "_Ταίριασμα πεζών-κεφαλαίων"
 
@@ -251,11 +253,11 @@ msgstr "Άνοιγμα"
 msgid "Save As"
 msgstr "Αποθήκευση ως"
 
-#: ../src/selector.c:345
+#: ../src/selector.c:347
 msgid "Ch_aracter Coding: "
 msgstr "Κωδικοποίηση χ_αρακτήρων:"
 
-#: ../src/selector.c:401
+#: ../src/selector.c:403
 #, c-format
 msgid "'%s' already exists. Overwrite?"
 msgstr "Το '%s' υπάρχει ήδη. Αντικατάσταση;"
@@ -263,7 +265,9 @@ msgstr "Το '%s' υπάρχει ήδη. Αντικατάσταση;"
 #. add the label with the root warning
 #: ../src/window.c:110
 msgid "Warning, you are using the root account, you may harm your system."
-msgstr "Προσοχή, χρησιμοποιείτε τον λογαριασμό υπερχρήστη, και είναι δυνατό να κάνετε ζημιά στο σύστημά σας."
+msgstr ""
+"Προσοχή, χρησιμοποιείτε τον λογαριασμό υπερχρήστη, και είναι δυνατό να "
+"κάνετε ζημιά στο σύστημά σας."
 
 #: ../src/window.c:169
 msgid "Untitled"
@@ -280,4 +284,3 @@ msgstr "Απλός επεξεργαστής κειμένου"
 #: ../mousepad.desktop.in.h:3
 msgid "Text Editor"
 msgstr "Επεξεργαστής κειμένου"
-

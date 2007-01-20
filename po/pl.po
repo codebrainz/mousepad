@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mousepad 0.2.10\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-11-04 17:08+0100\n"
+"POT-Creation-Date: 2007-01-20 12:34+0100\n"
 "PO-Revision-Date: 2006-10-26 07:12+0200\n"
 "Last-Translator: Szymon Kałasz <szymon_maestro@gazeta.pl>\n"
 "Language-Team: Polish <translation-team-pl@lists.sourceforge.net>\n"
@@ -16,21 +16,21 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: ../src/callback.c:36
+#: ../src/callback.c:37
 #, c-format
 msgid "Save changes to '%s'?"
 msgstr "Zachować zmiany w '%s'?"
 
-#: ../src/callback.c:184 ../src/file.c:150
+#: ../src/callback.c:213 ../src/file.c:174
 #, c-format
 msgid "Can't convert codeset to '%s'"
 msgstr "Nie można przekonwertować strony kodowej do '%s'"
 
-#: ../src/callback.c:211
+#: ../src/callback.c:240
 msgid "Can't open pipe to process"
 msgstr "Nie można otworzyć rurki dla procesu"
 
-#: ../src/callback.c:370
+#: ../src/callback.c:397
 msgid "A text editor for Xfce"
 msgstr "Edytor tekstowy dla XFCE"
 
@@ -39,11 +39,11 @@ msgstr "Edytor tekstowy dla XFCE"
 msgid "About %s"
 msgstr "O %s"
 
-#: ../src/file.c:163
+#: ../src/file.c:187
 msgid "Can't open file to write"
 msgstr "Nie można otworzyć pliku do zapisu"
 
-#: ../src/file.c:168
+#: ../src/file.c:192
 msgid "Can't write file"
 msgstr "Nie można zapisać pliku"
 
@@ -51,119 +51,124 @@ msgstr "Nie można zapisać pliku"
 msgid "Font"
 msgstr "Czcionka"
 
-#: ../src/menu.c:60
+#: ../src/menu.c:61
 msgid "/_File"
 msgstr "/_Plik"
 
-#: ../src/menu.c:62
+#: ../src/menu.c:63
 msgid "/File/_New"
 msgstr "/Plik/_Nowy"
 
-#: ../src/menu.c:65
+#: ../src/menu.c:66
 msgid "/File/New _Window"
 msgstr "/Plik/Nowe_Okno"
 
-#: ../src/menu.c:68
+#: ../src/menu.c:69
 msgid "/File/_Open..."
 msgstr "/Plik/_Otwórz"
 
-#: ../src/menu.c:70
+#: ../src/menu.c:72
+#, fuzzy
+msgid "/File/Open _Recent"
+msgstr "/Plik/_Otwórz"
+
+#: ../src/menu.c:77
 msgid "/File/_Save"
 msgstr "/Plik/_Zapisz"
 
-#: ../src/menu.c:72
+#: ../src/menu.c:79
 msgid "/File/Save _As..."
 msgstr "/Plik/Zapisz j_ako"
 
-#: ../src/menu.c:74
+#: ../src/menu.c:83
 msgid "/File/_Print..."
 msgstr "/Plik/_Drukuj..."
 
-#: ../src/menu.c:78
+#: ../src/menu.c:87
 msgid "/File/_Quit"
 msgstr "/Plik/Za_kończ"
 
-#: ../src/menu.c:80
+#: ../src/menu.c:89
 msgid "/_Edit"
 msgstr "/_Edycja"
 
-#: ../src/menu.c:82
+#: ../src/menu.c:91
 msgid "/Edit/_Undo"
 msgstr "/Edycja/C_ofnij"
 
-#: ../src/menu.c:84
+#: ../src/menu.c:93
 msgid "/Edit/_Redo"
 msgstr "/Edycja/Anuluj _cofnięcie"
 
-#: ../src/menu.c:88
+#: ../src/menu.c:97
 msgid "/Edit/Cu_t"
 msgstr "/Edycja/Wyt_nij"
 
-#: ../src/menu.c:90
+#: ../src/menu.c:99
 msgid "/Edit/_Copy"
 msgstr "/Edycja/S_kopiuj"
 
-#: ../src/menu.c:92
+#: ../src/menu.c:101
 msgid "/Edit/_Paste"
 msgstr "/Edycja/Wkl_ej"
 
-#: ../src/menu.c:94
+#: ../src/menu.c:103
 msgid "/Edit/_Delete"
 msgstr "/Edycja/_Usuń"
 
-#: ../src/menu.c:98
+#: ../src/menu.c:107
 msgid "/Edit/Select _All"
 msgstr "/Edycja/_Zaznacz wszystko"
 
-#: ../src/menu.c:100
+#: ../src/menu.c:109
 msgid "/_Search"
 msgstr "/_Szukaj"
 
-#: ../src/menu.c:102
+#: ../src/menu.c:111
 msgid "/Search/_Find..."
 msgstr "/Szukaj/_Znajdź"
 
-#: ../src/menu.c:104
+#: ../src/menu.c:113
 msgid "/Search/Find _Next"
 msgstr "/Szukaj/Znajdź _następny"
 
-#: ../src/menu.c:106
+#: ../src/menu.c:115
 msgid "/Search/Find _Previous"
 msgstr "/Szukaj/Znajdź _poprzedni"
 
-#: ../src/menu.c:108
+#: ../src/menu.c:117
 msgid "/Search/_Replace..."
 msgstr "/Szukaj/Z_astąp"
 
-#: ../src/menu.c:112
+#: ../src/menu.c:121
 msgid "/Search/_Jump To..."
 msgstr "/Szukaj/_Idź do..."
 
-#: ../src/menu.c:114
+#: ../src/menu.c:123
 msgid "/_Options"
 msgstr "/_Opcje"
 
-#: ../src/menu.c:116
+#: ../src/menu.c:125
 msgid "/Options/_Font..."
 msgstr "/Opcje/_Czcionka"
 
-#: ../src/menu.c:118
+#: ../src/menu.c:127
 msgid "/Options/_Word Wrap"
 msgstr "/Opcje/_Zawijanie linii"
 
-#: ../src/menu.c:120
+#: ../src/menu.c:129
 msgid "/Options/_Line Numbers"
 msgstr "/Opcje/_Numerowanie linii"
 
-#: ../src/menu.c:124
+#: ../src/menu.c:133
 msgid "/Options/_Auto Indent"
 msgstr "/Opcje/_Automatyczne wcięcia"
 
-#: ../src/menu.c:126
+#: ../src/menu.c:135
 msgid "/_Help"
 msgstr "/Pomo_c"
 
-#: ../src/menu.c:128
+#: ../src/menu.c:137
 msgid "/Help/_About"
 msgstr "/Pomoc/_O programie"
 
@@ -246,11 +251,11 @@ msgstr "Otwórz"
 msgid "Save As"
 msgstr "Zapisz jako"
 
-#: ../src/selector.c:345
+#: ../src/selector.c:347
 msgid "Ch_aracter Coding: "
 msgstr "Stron_a kodowa: "
 
-#: ../src/selector.c:401
+#: ../src/selector.c:403
 #, c-format
 msgid "'%s' already exists. Overwrite?"
 msgstr "'%s' już istnieje. Czy go zastąpić?"

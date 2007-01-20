@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mousepad 0.2.10\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-11-04 17:08+0100\n"
+"POT-Creation-Date: 2007-01-20 12:34+0100\n"
 "PO-Revision-Date: 2006-04-20 21:27+0800\n"
 "Last-Translator: Jick Nan <jick.nan@gmail.com>\n"
 "Language-Team: Simplified Chinese <i18n-translation@lists.linux.net.cn>\n"
@@ -16,21 +16,21 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: ../src/callback.c:36
+#: ../src/callback.c:37
 #, c-format
 msgid "Save changes to '%s'?"
 msgstr "将更改保存到“%s”吗？"
 
-#: ../src/callback.c:184 ../src/file.c:150
+#: ../src/callback.c:213 ../src/file.c:174
 #, c-format
 msgid "Can't convert codeset to '%s'"
 msgstr "无法将编码转换到“%s”"
 
-#: ../src/callback.c:211
+#: ../src/callback.c:240
 msgid "Can't open pipe to process"
 msgstr "无法打开到程序的管道"
 
-#: ../src/callback.c:370
+#: ../src/callback.c:397
 msgid "A text editor for Xfce"
 msgstr "一个 Xfce 的文本编辑器"
 
@@ -39,11 +39,11 @@ msgstr "一个 Xfce 的文本编辑器"
 msgid "About %s"
 msgstr "关于 %s"
 
-#: ../src/file.c:163
+#: ../src/file.c:187
 msgid "Can't open file to write"
 msgstr "无法打开要写入的文件"
 
-#: ../src/file.c:168
+#: ../src/file.c:192
 msgid "Can't write file"
 msgstr "无法写入文件"
 
@@ -51,120 +51,125 @@ msgstr "无法写入文件"
 msgid "Font"
 msgstr "字体"
 
-#: ../src/menu.c:60
+#: ../src/menu.c:61
 msgid "/_File"
 msgstr "/文件(_F)"
 
-#: ../src/menu.c:62
+#: ../src/menu.c:63
 msgid "/File/_New"
 msgstr "/文件(F)/新建(_N)"
 
-#: ../src/menu.c:65
+#: ../src/menu.c:66
 #, fuzzy
 msgid "/File/New _Window"
 msgstr "/文件(F)/新建(_N)"
 
-#: ../src/menu.c:68
+#: ../src/menu.c:69
 msgid "/File/_Open..."
 msgstr "/文件(F)/打开(_O)..."
 
-#: ../src/menu.c:70
+#: ../src/menu.c:72
+#, fuzzy
+msgid "/File/Open _Recent"
+msgstr "/文件(F)/打开(_O)..."
+
+#: ../src/menu.c:77
 msgid "/File/_Save"
 msgstr "/文件(F)/保存(_S)"
 
-#: ../src/menu.c:72
+#: ../src/menu.c:79
 msgid "/File/Save _As..."
 msgstr "/文件(F)/另存为(_A)..."
 
-#: ../src/menu.c:74
+#: ../src/menu.c:83
 msgid "/File/_Print..."
 msgstr "/文件(F)/打印(_P)..."
 
-#: ../src/menu.c:78
+#: ../src/menu.c:87
 msgid "/File/_Quit"
 msgstr "/文件(F)/退出(_Q)"
 
-#: ../src/menu.c:80
+#: ../src/menu.c:89
 msgid "/_Edit"
 msgstr "/编辑(_E)"
 
-#: ../src/menu.c:82
+#: ../src/menu.c:91
 msgid "/Edit/_Undo"
 msgstr "/编辑(E)/撤销(_U)"
 
-#: ../src/menu.c:84
+#: ../src/menu.c:93
 msgid "/Edit/_Redo"
 msgstr "/编辑(E)/重复(_R)"
 
-#: ../src/menu.c:88
+#: ../src/menu.c:97
 msgid "/Edit/Cu_t"
 msgstr "/编辑(E)/剪切(_T)"
 
-#: ../src/menu.c:90
+#: ../src/menu.c:99
 msgid "/Edit/_Copy"
 msgstr "/编辑(E)/复制(_C)"
 
-#: ../src/menu.c:92
+#: ../src/menu.c:101
 msgid "/Edit/_Paste"
 msgstr "/编辑(E)/粘贴(_P)"
 
-#: ../src/menu.c:94
+#: ../src/menu.c:103
 msgid "/Edit/_Delete"
 msgstr "/编辑(E)/删除(_D)"
 
-#: ../src/menu.c:98
+#: ../src/menu.c:107
 msgid "/Edit/Select _All"
 msgstr "/编辑(E)/选择全部(_A)"
 
-#: ../src/menu.c:100
+#: ../src/menu.c:109
 msgid "/_Search"
 msgstr "/搜索(_S)"
 
-#: ../src/menu.c:102
+#: ../src/menu.c:111
 msgid "/Search/_Find..."
 msgstr "/搜索(S)/查找(_F)..."
 
-#: ../src/menu.c:104
+#: ../src/menu.c:113
 msgid "/Search/Find _Next"
 msgstr "/搜索(S)/查找下一个(_N)"
 
-#: ../src/menu.c:106
+#: ../src/menu.c:115
 msgid "/Search/Find _Previous"
 msgstr "/搜索(S)/查找上一个(_P)"
 
-#: ../src/menu.c:108
+#: ../src/menu.c:117
 msgid "/Search/_Replace..."
 msgstr "/搜索/替换(_R)..."
 
-#: ../src/menu.c:112
+#: ../src/menu.c:121
 msgid "/Search/_Jump To..."
 msgstr "/搜索(S)/跳转到(_J)..."
 
-#: ../src/menu.c:114
+#: ../src/menu.c:123
 msgid "/_Options"
 msgstr "/选项(_O)"
 
-#: ../src/menu.c:116
+#: ../src/menu.c:125
 msgid "/Options/_Font..."
 msgstr "/选项(O)/字体(_F)..."
 
-#: ../src/menu.c:118
+#: ../src/menu.c:127
 msgid "/Options/_Word Wrap"
 msgstr "/选项(O)/自动换行(_W)"
 
-#: ../src/menu.c:120
+#: ../src/menu.c:129
 msgid "/Options/_Line Numbers"
 msgstr "/选项(O)/行号(_L)"
 
-#: ../src/menu.c:124
+#: ../src/menu.c:133
 msgid "/Options/_Auto Indent"
 msgstr "/选项(O)/自动缩进(_A)"
 
-#: ../src/menu.c:126
+#: ../src/menu.c:135
 msgid "/_Help"
 msgstr "/帮助(_H)"
 
-#: ../src/menu.c:128
+#: ../src/menu.c:137
 msgid "/Help/_About"
 msgstr "/帮助(H)/关于(_A)"
 
@@ -247,11 +252,11 @@ msgstr "打开"
 msgid "Save As"
 msgstr "另存为"
 
-#: ../src/selector.c:345
+#: ../src/selector.c:347
 msgid "Ch_aracter Coding: "
 msgstr "字符编码(_A)："
 
-#: ../src/selector.c:401
+#: ../src/selector.c:403
 #, c-format
 msgid "'%s' already exists. Overwrite?"
 msgstr "文件“%s”已经存在。覆盖它吗？"

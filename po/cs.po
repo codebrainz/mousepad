@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mousepad 0.2.10\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-11-04 17:08+0100\n"
+"POT-Creation-Date: 2007-01-20 12:34+0100\n"
 "PO-Revision-Date: 2006-11-10 11:11+0100\n"
 "Last-Translator: Michal Várady <miko.vaji@gmail.com>\n"
 "Language-Team: Czech <translation-team-cs@lists.sourceforge.net>\n"
@@ -19,22 +19,21 @@ msgstr ""
 "X-Poedit-Country: CZECH REPUBLIC\n"
 "X-Poedit-SourceCharset: utf-8\n"
 
-#: ../src/callback.c:36
+#: ../src/callback.c:37
 #, c-format
 msgid "Save changes to '%s'?"
 msgstr "Uložit změny v souboru '%s'?"
 
-#: ../src/callback.c:184
-#: ../src/file.c:150
+#: ../src/callback.c:213 ../src/file.c:174
 #, c-format
 msgid "Can't convert codeset to '%s'"
 msgstr "Nemohu převést znakovou sadu na '%s'"
 
-#: ../src/callback.c:211
+#: ../src/callback.c:240
 msgid "Can't open pipe to process"
 msgstr "Nemohu otevřít rouru pro zpracování"
 
-#: ../src/callback.c:370
+#: ../src/callback.c:397
 msgid "A text editor for Xfce"
 msgstr "Textový editor pro Xfce"
 
@@ -43,11 +42,11 @@ msgstr "Textový editor pro Xfce"
 msgid "About %s"
 msgstr "O aplikaci %s"
 
-#: ../src/file.c:163
+#: ../src/file.c:187
 msgid "Can't open file to write"
 msgstr "Nelze otevřít soubor pro zápis"
 
-#: ../src/file.c:168
+#: ../src/file.c:192
 msgid "Can't write file"
 msgstr "Nelze zapsat soubor"
 
@@ -55,119 +54,124 @@ msgstr "Nelze zapsat soubor"
 msgid "Font"
 msgstr "Písmo"
 
-#: ../src/menu.c:60
+#: ../src/menu.c:61
 msgid "/_File"
 msgstr "/_Soubor"
 
-#: ../src/menu.c:62
+#: ../src/menu.c:63
 msgid "/File/_New"
 msgstr "/Soubor/_Nový"
 
-#: ../src/menu.c:65
+#: ../src/menu.c:66
 msgid "/File/New _Window"
 msgstr "/Soubor/No_vé okno"
 
-#: ../src/menu.c:68
+#: ../src/menu.c:69
 msgid "/File/_Open..."
 msgstr "/Soubor/_Otevřít"
 
-#: ../src/menu.c:70
+#: ../src/menu.c:72
+#, fuzzy
+msgid "/File/Open _Recent"
+msgstr "/Soubor/_Otevřít"
+
+#: ../src/menu.c:77
 msgid "/File/_Save"
 msgstr "/Soubor/_Uložit"
 
-#: ../src/menu.c:72
+#: ../src/menu.c:79
 msgid "/File/Save _As..."
 msgstr "/Soubor/Uložit _jako..."
 
-#: ../src/menu.c:74
+#: ../src/menu.c:83
 msgid "/File/_Print..."
 msgstr "/Soubor/_Tisk..."
 
-#: ../src/menu.c:78
+#: ../src/menu.c:87
 msgid "/File/_Quit"
 msgstr "/Soubor/_Konec"
 
-#: ../src/menu.c:80
+#: ../src/menu.c:89
 msgid "/_Edit"
 msgstr "/Úp_ravy"
 
-#: ../src/menu.c:82
+#: ../src/menu.c:91
 msgid "/Edit/_Undo"
 msgstr "/Úpravy/_Zpět"
 
-#: ../src/menu.c:84
+#: ../src/menu.c:93
 msgid "/Edit/_Redo"
 msgstr "/Úpravy/Znov_u"
 
-#: ../src/menu.c:88
+#: ../src/menu.c:97
 msgid "/Edit/Cu_t"
 msgstr "/Úpravy/_Vyjmout"
 
-#: ../src/menu.c:90
+#: ../src/menu.c:99
 msgid "/Edit/_Copy"
 msgstr "/Úpravy/_Kopírovat"
 
-#: ../src/menu.c:92
+#: ../src/menu.c:101
 msgid "/Edit/_Paste"
 msgstr "/Úpravy/V_ložit"
 
-#: ../src/menu.c:94
+#: ../src/menu.c:103
 msgid "/Edit/_Delete"
 msgstr "/Úpravy/_Odstranit"
 
-#: ../src/menu.c:98
+#: ../src/menu.c:107
 msgid "/Edit/Select _All"
 msgstr "/Úpravy/Oz_načit vše"
 
-#: ../src/menu.c:100
+#: ../src/menu.c:109
 msgid "/_Search"
 msgstr "/_Hledat"
 
-#: ../src/menu.c:102
+#: ../src/menu.c:111
 msgid "/Search/_Find..."
 msgstr "/Hledat/_Hledat"
 
-#: ../src/menu.c:104
+#: ../src/menu.c:113
 msgid "/Search/Find _Next"
 msgstr "/Hledat/Hledat _následující"
 
-#: ../src/menu.c:106
+#: ../src/menu.c:115
 msgid "/Search/Find _Previous"
 msgstr "/Hledat/Hledat _předchozí"
 
-#: ../src/menu.c:108
+#: ../src/menu.c:117
 msgid "/Search/_Replace..."
 msgstr "/Hledat/Nah_radit"
 
-#: ../src/menu.c:112
+#: ../src/menu.c:121
 msgid "/Search/_Jump To..."
 msgstr "/Hledat/Př_ejít na"
 
-#: ../src/menu.c:114
+#: ../src/menu.c:123
 msgid "/_Options"
 msgstr "/_Nástroje"
 
-#: ../src/menu.c:116
+#: ../src/menu.c:125
 msgid "/Options/_Font..."
 msgstr "/_Nástroje/_Písmo"
 
-#: ../src/menu.c:118
+#: ../src/menu.c:127
 msgid "/Options/_Word Wrap"
 msgstr "/Nástroje/_Zalamovat řádky"
 
-#: ../src/menu.c:120
+#: ../src/menu.c:129
 msgid "/Options/_Line Numbers"
 msgstr "/_Nástroje/Čí_slovat řádky"
 
-#: ../src/menu.c:124
+#: ../src/menu.c:133
 msgid "/Options/_Auto Indent"
 msgstr "/Nastavení/_Automatické odsazování"
 
-#: ../src/menu.c:126
+#: ../src/menu.c:135
 msgid "/_Help"
 msgstr "/Nápo_věda"
 
-#: ../src/menu.c:128
+#: ../src/menu.c:137
 msgid "/Help/_About"
 msgstr "/Nápověda/O _aplikaci"
 
@@ -188,13 +192,11 @@ msgstr "Nahrazeno '%d' řetězců"
 msgid "Find"
 msgstr "Hledat"
 
-#: ../src/search.c:200
-#: ../src/search.c:265
+#: ../src/search.c:200 ../src/search.c:265
 msgid "Fi_nd what: "
 msgstr "H_ledat:"
 
-#: ../src/search.c:219
-#: ../src/search.c:292
+#: ../src/search.c:219 ../src/search.c:292
 msgid "_Match case"
 msgstr "Rozlišovat _velikost písmen"
 
@@ -252,11 +254,11 @@ msgstr "Otevřít"
 msgid "Save As"
 msgstr "Uložit jako"
 
-#: ../src/selector.c:345
+#: ../src/selector.c:347
 msgid "Ch_aracter Coding: "
 msgstr "_Kódování znaků:"
 
-#: ../src/selector.c:401
+#: ../src/selector.c:403
 #, c-format
 msgid "'%s' already exists. Overwrite?"
 msgstr "'%s' již existuje. Přepsat?"
@@ -264,7 +266,8 @@ msgstr "'%s' již existuje. Přepsat?"
 #. add the label with the root warning
 #: ../src/window.c:110
 msgid "Warning, you are using the root account, you may harm your system."
-msgstr "Varování: Používáte-li účet správce (root), můžete poškodit Váš systém."
+msgstr ""
+"Varování: Používáte-li účet správce (root), můžete poškodit Váš systém."
 
 #: ../src/window.c:169
 msgid "Untitled"
@@ -281,4 +284,3 @@ msgstr "Jednoduchý textový editor"
 #: ../mousepad.desktop.in.h:3
 msgid "Text Editor"
 msgstr "Textový editor"
-

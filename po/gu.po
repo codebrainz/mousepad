@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mousepad 0.2.10\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-11-04 17:08+0100\n"
+"POT-Creation-Date: 2007-01-20 12:34+0100\n"
 "PO-Revision-Date: 2005-10-07 18:41+0900\n"
 "Last-Translator: Ankit Patel <ankit644@yahoo.com>\n"
 "Language-Team: Gujarati <indianoss-gujarati@lists.sourceforge.net>\n"
@@ -17,21 +17,21 @@ msgstr ""
 "X-Generator: KBabel 1.9.1\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
 
-#: ../src/callback.c:36
+#: ../src/callback.c:37
 #, c-format
 msgid "Save changes to '%s'?"
 msgstr "શું '%s' ના ફેરફારો સંગ્રહવા છે?"
 
-#: ../src/callback.c:184 ../src/file.c:150
+#: ../src/callback.c:213 ../src/file.c:174
 #, c-format
 msgid "Can't convert codeset to '%s'"
 msgstr "કોડસેટને '%s' માં ફેરવી શકતા નથી"
 
-#: ../src/callback.c:211
+#: ../src/callback.c:240
 msgid "Can't open pipe to process"
 msgstr "પ્રક્રિયા કરવા માટે pipe ખોલી શકતા નથી"
 
-#: ../src/callback.c:370
+#: ../src/callback.c:397
 msgid "A text editor for Xfce"
 msgstr "Xfce માટે લખાણ સંપાદક"
 
@@ -40,11 +40,11 @@ msgstr "Xfce માટે લખાણ સંપાદક"
 msgid "About %s"
 msgstr "%s વિશે"
 
-#: ../src/file.c:163
+#: ../src/file.c:187
 msgid "Can't open file to write"
 msgstr "લખવા માટે ફાઈલ ખોલી શકતા નથી"
 
-#: ../src/file.c:168
+#: ../src/file.c:192
 msgid "Can't write file"
 msgstr "ફાઈલ લખી શકતા નથી"
 
@@ -52,120 +52,125 @@ msgstr "ફાઈલ લખી શકતા નથી"
 msgid "Font"
 msgstr "ફોન્ટ"
 
-#: ../src/menu.c:60
+#: ../src/menu.c:61
 msgid "/_File"
 msgstr "/ફાઈલ (_F)"
 
-#: ../src/menu.c:62
+#: ../src/menu.c:63
 msgid "/File/_New"
 msgstr "/ફાઈલ/નવી (_N)"
 
-#: ../src/menu.c:65
+#: ../src/menu.c:66
 #, fuzzy
 msgid "/File/New _Window"
 msgstr "/ફાઈલ/નવી (_N)"
 
-#: ../src/menu.c:68
+#: ../src/menu.c:69
 msgid "/File/_Open..."
 msgstr "/ફાઈલ/ખોલો (_O)..."
 
-#: ../src/menu.c:70
+#: ../src/menu.c:72
+#, fuzzy
+msgid "/File/Open _Recent"
+msgstr "/ફાઈલ/ખોલો (_O)..."
+
+#: ../src/menu.c:77
 msgid "/File/_Save"
 msgstr "/ફાઈલ/સંગ્રહો (_S)"
 
-#: ../src/menu.c:72
+#: ../src/menu.c:79
 msgid "/File/Save _As..."
 msgstr "/ફાઈલ/આ રીતે સંગ્રહો (_A)..."
 
-#: ../src/menu.c:74
+#: ../src/menu.c:83
 msgid "/File/_Print..."
 msgstr "/ફાઈલ/છાપો (_P)..."
 
-#: ../src/menu.c:78
+#: ../src/menu.c:87
 msgid "/File/_Quit"
 msgstr "/ફાઈલ/બહાર નીકળો (_Q)"
 
-#: ../src/menu.c:80
+#: ../src/menu.c:89
 msgid "/_Edit"
 msgstr "/ફેરફાર (_E)"
 
-#: ../src/menu.c:82
+#: ../src/menu.c:91
 msgid "/Edit/_Undo"
 msgstr "/ફેરફાર/છેલ્લી ક્રિયા રદ કરો (_U)"
 
-#: ../src/menu.c:84
+#: ../src/menu.c:93
 msgid "/Edit/_Redo"
 msgstr "/ફેરફાર/રદ કરેલી ક્રિયા ફરી કરો (_R)"
 
-#: ../src/menu.c:88
+#: ../src/menu.c:97
 msgid "/Edit/Cu_t"
 msgstr "/ફેરફાર/કાપો (_t)"
 
-#: ../src/menu.c:90
+#: ../src/menu.c:99
 msgid "/Edit/_Copy"
 msgstr "/ફેરફાર/નકલ કરો (_C)"
 
-#: ../src/menu.c:92
+#: ../src/menu.c:101
 msgid "/Edit/_Paste"
 msgstr "/ફેરફાર/ચોંટાડો (_P)"
 
-#: ../src/menu.c:94
+#: ../src/menu.c:103
 msgid "/Edit/_Delete"
 msgstr "/ફેરફાર/કાઢી નાંખો (_D)"
 
-#: ../src/menu.c:98
+#: ../src/menu.c:107
 msgid "/Edit/Select _All"
 msgstr "/ફેરફાર/બધું પસંદ કરો (_A)"
 
-#: ../src/menu.c:100
+#: ../src/menu.c:109
 msgid "/_Search"
 msgstr "/શોધ (_S)"
 
-#: ../src/menu.c:102
+#: ../src/menu.c:111
 msgid "/Search/_Find..."
 msgstr "/શોધ/શોધો (_F)..."
 
-#: ../src/menu.c:104
+#: ../src/menu.c:113
 msgid "/Search/Find _Next"
 msgstr "/શોધ/આગળનું શોધો (_N)"
 
-#: ../src/menu.c:106
+#: ../src/menu.c:115
 msgid "/Search/Find _Previous"
 msgstr "/શોધ/પહેલાંનું શોધો (_P)"
 
-#: ../src/menu.c:108
+#: ../src/menu.c:117
 msgid "/Search/_Replace..."
 msgstr "/શોધ/બદલો (_R)..."
 
-#: ../src/menu.c:112
+#: ../src/menu.c:121
 msgid "/Search/_Jump To..."
 msgstr "/શોધ/પર કૂદો (_J)..."
 
-#: ../src/menu.c:114
+#: ../src/menu.c:123
 msgid "/_Options"
 msgstr "/વિકલ્પો (_O)"
 
-#: ../src/menu.c:116
+#: ../src/menu.c:125
 msgid "/Options/_Font..."
 msgstr "/વિકલ્પો/ફોન્ટ (_F)..."
 
-#: ../src/menu.c:118
+#: ../src/menu.c:127
 msgid "/Options/_Word Wrap"
 msgstr "/વિકલ્પો/શબ્દ લપેટો (_W)"
 
-#: ../src/menu.c:120
+#: ../src/menu.c:129
 msgid "/Options/_Line Numbers"
 msgstr "/વિકલ્પો/લીટી નંબરો (_L)"
 
-#: ../src/menu.c:124
+#: ../src/menu.c:133
 msgid "/Options/_Auto Indent"
 msgstr "/વિકલ્પો/આપોઆપ હાંસિયો (_A)"
 
-#: ../src/menu.c:126
+#: ../src/menu.c:135
 msgid "/_Help"
 msgstr "/મદદ (_H)"
 
-#: ../src/menu.c:128
+#: ../src/menu.c:137
 msgid "/Help/_About"
 msgstr "/મદદ/વિશે (_A)"
 
@@ -248,11 +253,11 @@ msgstr "ખોલો"
 msgid "Save As"
 msgstr "આ રીતે સંગ્રહો"
 
-#: ../src/selector.c:345
+#: ../src/selector.c:347
 msgid "Ch_aracter Coding: "
 msgstr "અક્ષર સંગ્રહપદ્ધતિ (_a): "
 
-#: ../src/selector.c:401
+#: ../src/selector.c:403
 #, c-format
 msgid "'%s' already exists. Overwrite?"
 msgstr "'%s' પહેલાથી જ હાજર છે. શું ફરીથી લખવું છે?"

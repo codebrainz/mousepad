@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mousepad 0.2.10\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-11-09 15:30+0200\n"
+"POT-Creation-Date: 2007-01-20 12:34+0100\n"
 "PO-Revision-Date: 2006-11-09 15:34+0200\n"
 "Last-Translator: Jari Rahkonen <jari.rahkonen@pp1.inet.fi>\n"
 "Language-Team: Finnish <translation-team-fi@lists.sourceforge.net>\n"
@@ -29,7 +29,7 @@ msgstr "Muunnos merkistöön \"%s\" ei onnistu"
 msgid "Can't open pipe to process"
 msgstr "Prosessin avaaminen ei onnistu"
 
-#: ../src/callback.c:399
+#: ../src/callback.c:397
 msgid "A text editor for Xfce"
 msgstr "Tekstieditori Xfce:lle"
 
