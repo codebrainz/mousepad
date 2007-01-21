@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: mousepad 0.2.12\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2007-01-20 12:34+0100\n"
-"PO-Revision-Date: 2007-01-14 20:01+0100\n"
+"PO-Revision-Date: 2007-01-21 02:07+0100\n"
 "Last-Translator: Maximilian Schleiss <maxschleiss@bluewin.ch>\n"
 "Language-Team: French <xfce-i18n@xfce.org>\n"
 "MIME-Version: 1.0\n"
@@ -21,7 +21,8 @@ msgstr ""
 msgid "Save changes to '%s'?"
 msgstr "Enregistrer les changements pour '%s' ?"
 
-#: ../src/callback.c:213 ../src/file.c:174
+#: ../src/callback.c:213
+#: ../src/file.c:174
 #, c-format
 msgid "Can't convert codeset to '%s'"
 msgstr "Impossible de convertir le jeu de caractères '%s'"
@@ -68,9 +69,8 @@ msgid "/File/_Open..."
 msgstr "/Fichier/_Ouvrir..."
 
 #: ../src/menu.c:72
-#, fuzzy
 msgid "/File/Open _Recent"
-msgstr "/Fichier/_Ouvrir..."
+msgstr "/Fichier/Fichier _récent..."
 
 #: ../src/menu.c:77
 msgid "/File/_Save"
@@ -189,11 +189,13 @@ msgstr "%d occurences remplacées."
 msgid "Find"
 msgstr "Trouver"
 
-#: ../src/search.c:200 ../src/search.c:265
+#: ../src/search.c:200
+#: ../src/search.c:265
 msgid "Fi_nd what: "
 msgstr "_Rechercher :"
 
-#: ../src/search.c:219 ../src/search.c:292
+#: ../src/search.c:219
+#: ../src/search.c:292
 msgid "_Match case"
 msgstr "Respecter la _casse"
 
@@ -224,7 +226,7 @@ msgstr "Numéro de _ligne : "
 #: ../src/selector.c:103
 #, c-format
 msgid "Current Locale (%s)"
-msgstr "Locale courante (%s)"
+msgstr "Locale actuelle (%s)"
 
 #: ../src/selector.c:147
 msgid "Other Codeset"
@@ -241,7 +243,7 @@ msgstr "'%s' n'est pas supporté"
 
 #: ../src/selector.c:271
 msgid "Auto Detect"
-msgstr "Détection Automatique"
+msgstr "Détection automatique"
 
 #: ../src/selector.c:325
 msgid "Open"
@@ -258,14 +260,12 @@ msgstr "Jeu de _caractères : "
 #: ../src/selector.c:403
 #, c-format
 msgid "'%s' already exists. Overwrite?"
-msgstr "Le fichier '%s' existe déjà. Voulez-vous l'écraser?"
+msgstr "Le fichier '%s' existe déjà. Voulez-vous l'écraser ?"
 
 #. add the label with the root warning
 #: ../src/window.c:110
 msgid "Warning, you are using the root account, you may harm your system."
-msgstr ""
-"Attention, vous êtes sous le compte root, vous risquez d'endommager votre "
-"système."
+msgstr "Attention, vous êtes sous le compte root, vous risquez d'endommager votre système."
 
 #: ../src/window.c:169
 msgid "Untitled"
@@ -282,3 +282,4 @@ msgstr "Un éditeur de texte tout simple"
 #: ../mousepad.desktop.in.h:3
 msgid "Text Editor"
 msgstr "Éditeur de texte"
+

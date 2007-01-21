@@ -2,14 +2,14 @@
 # Copyright (C) 2005-2006 Erik Harrison.
 # This file is distributed under the same license as the Mousepad package.
 # Michal Wrobel <wrobel@task.gda.pl>, 2004.
-# Szymon Kałasz <szymon_maestro@gazeta.pl>, 2006.
+# Szymon Kałasz <szymon_maestro@gazeta.pl>, 2007.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: mousepad 0.2.12\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2007-01-20 12:34+0100\n"
-"PO-Revision-Date: 2006-10-26 07:12+0200\n"
+"PO-Revision-Date: 2007-01-20 22:49+0200\n"
 "Last-Translator: Szymon Kałasz <szymon_maestro@gazeta.pl>\n"
 "Language-Team: Polish <translation-team-pl@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -32,7 +32,7 @@ msgstr "Nie można otworzyć rurki dla procesu"
 
 #: ../src/callback.c:397
 msgid "A text editor for Xfce"
-msgstr "Edytor tekstowy dla XFCE"
+msgstr "Edytor tekstowy dla Xfce"
 
 #: ../src/dialog.c:135
 #, c-format
@@ -68,9 +68,8 @@ msgid "/File/_Open..."
 msgstr "/Plik/_Otwórz"
 
 #: ../src/menu.c:72
-#, fuzzy
 msgid "/File/Open _Recent"
-msgstr "/Plik/_Otwórz"
+msgstr "/Plik/Ostatnio otwie_rane"
 
 #: ../src/menu.c:77
 msgid "/File/_Save"
@@ -134,7 +133,7 @@ msgstr "/Szukaj/Znajdź _następny"
 
 #: ../src/menu.c:115
 msgid "/Search/Find _Previous"
-msgstr "/Szukaj/Znajdź _poprzedni"
+msgstr "/Szukaj/Znaj_dź poprzedni"
 
 #: ../src/menu.c:117
 msgid "/Search/_Replace..."
