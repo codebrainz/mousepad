@@ -65,22 +65,43 @@ static gint load_config_file(StructData *sd)
 		return -1;
 	
 	/* version num */
-	fgets(buf, sizeof(buf), fp);
+	if (!fgets(buf, sizeof(buf), fp)) return -1;
 	num = g_strsplit(buf, "." , 3);
 	if ((atoi(num[1]) >= 1) && (atoi(num[2]) >= 0)) {
-		fgets(buf, sizeof(buf), fp);
-		sd->conf.width = atoi(buf);
-		fgets(buf, sizeof(buf), fp);
-		sd->conf.height = atoi(buf);
-		fgets(buf, sizeof(buf), fp);
+		if (!fgets(buf, sizeof(buf), fp)) return -1;
+		if (buf[0] >= '0' && buf[0] <= '9')
+			sd->conf.width = atoi(buf);
+		else
+			return -1;
+
+		if (!fgets(buf, sizeof(buf), fp)) return -1;
+		if (buf[0] >= '0' && buf[0] <= '9')
+			sd->conf.height = atoi(buf);
+		else
+			return -1;
+
+		if (!fgets(buf, sizeof(buf), fp)) return -1;
 		sd->conf.fontname = g_strdup(buf);
-		fgets(buf, sizeof(buf), fp);
-		sd->conf.wordwrap = atoi(buf);
-		fgets(buf, sizeof(buf), fp);
-		sd->conf.linenumbers = atoi(buf);
-		fgets(buf, sizeof(buf), fp);
-		sd->conf.autoindent = atoi(buf);
-		fgets(buf, sizeof(buf), fp);
+
+		if (!fgets(buf, sizeof(buf), fp)) return -1;
+		if (buf[0] >= '0' && buf[0] <= '1')
+			sd->conf.wordwrap = atoi(buf);
+		else
+			return -1;
+
+		if (!fgets(buf, sizeof(buf), fp)) return -1;
+		if (buf[0] >= '0' && buf[0] <= '1')
+			sd->conf.linenumbers = atoi(buf);
+		else
+			return -1;
+
+		if (!fgets(buf, sizeof(buf), fp)) return -1;
+		if (buf[0] >= '0' && buf[0] <= '1')
+			sd->conf.autoindent = atoi(buf);
+		else
+			return -1;
+
+		if (!fgets(buf, sizeof(buf), fp)) return -1;
 		if (strcmp(buf, "0") != 0)
 			sd->conf.charset = g_strdup(buf);
 	}
