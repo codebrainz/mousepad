@@ -1,0 +1,275 @@
+# Albanian translation of the mousepad package.
+# Copyright (C) 2005-2006 Erik Harrison.
+# This file is distributed under the same license as the mousepad package.
+# Besnik Bleta <besnik@programeshqip.org>, 2007.
+msgid ""
+msgstr ""
+"Project-Id-Version: mousepad 0.2.12\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2007-01-12 13:48+0200\n"
+"PO-Revision-Date: 2007-01-16 20:51+0200\n"
+"Last-Translator: Besnik Bleta <besnik@programeshqip.org>\n"
+"Language-Team: Albanian <translation-team-sq@lists.sourceforge.net>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+
+#: ../src/callback.c:36
+#, c-format
+msgid "Save changes to '%s'?"
+msgstr "Të ruaj ndryshimet te '%s'?"
+
+#: ../src/callback.c:184
+#: ../src/file.c:150
+#, c-format
+msgid "Can't convert codeset to '%s'"
+msgstr "S'shndërroj dot kodim gërmash në '%s'"
+
+#: ../src/callback.c:211
+msgid "Can't open pipe to process"
+msgstr "S'hap dot pipë te procesi"
+
+#: ../src/callback.c:370
+msgid "A text editor for Xfce"
+msgstr "Përpunues tekstesh për Xfce"
+
+#: ../src/dialog.c:135
+#, c-format
+msgid "About %s"
+msgstr "Rreth %s"
+
+#: ../src/file.c:163
+msgid "Can't open file to write"
+msgstr "S'hap dot kartelë për shkrim"
+
+#: ../src/file.c:168
+msgid "Can't write file"
+msgstr "S'shkruaj dot te kartela"
+
+#: ../src/font.c:49
+msgid "Font"
+msgstr "Gërma"
+
+#: ../src/menu.c:60
+msgid "/_File"
+msgstr "/_Kartelë"
+
+#: ../src/menu.c:62
+msgid "/File/_New"
+msgstr "/Kartelë/E re"
+
+#: ../src/menu.c:65
+msgid "/File/New _Window"
+msgstr "/Kartelë/_Dritare e Re"
+
+#: ../src/menu.c:68
+msgid "/File/_Open..."
+msgstr "/Kartelë/_Hap..."
+
+#: ../src/menu.c:70
+msgid "/File/_Save"
+msgstr "/Kartelë/_Ruaj"
+
+#: ../src/menu.c:72
+msgid "/File/Save _As..."
+msgstr "/Kartelë/Ruaj _Si..."
+
+#: ../src/menu.c:74
+msgid "/File/_Print..."
+msgstr "/Kartelë/_Shtyp..."
+
+#: ../src/menu.c:78
+msgid "/File/_Quit"
+msgstr "/Kartelë/_Lër"
+
+#: ../src/menu.c:80
+msgid "/_Edit"
+msgstr "/_Përpunim"
+
+#: ../src/menu.c:82
+msgid "/Edit/_Undo"
+msgstr "/Përpunim/_Zhbë"
+
+#: ../src/menu.c:84
+msgid "/Edit/_Redo"
+msgstr "/Përpunim/_Ribëj"
+
+#: ../src/menu.c:88
+msgid "/Edit/Cu_t"
+msgstr "/Përpunim/_Pri"
+
+#: ../src/menu.c:90
+msgid "/Edit/_Copy"
+msgstr "/Përpunim/_Kopjo"
+
+#: ../src/menu.c:92
+msgid "/Edit/_Paste"
+msgstr "/Përpunim/_Ngjit"
+
+#: ../src/menu.c:94
+msgid "/Edit/_Delete"
+msgstr "/Përpunim/_Fshij"
+
+#: ../src/menu.c:98
+msgid "/Edit/Select _All"
+msgstr "/Përpunim/Përzgjidhni _Tërë"
+
+#: ../src/menu.c:100
+msgid "/_Search"
+msgstr "/_Kërkim"
+
+#: ../src/menu.c:102
+msgid "/Search/_Find..."
+msgstr "/Kërkim/_Gjej..."
+
+#: ../src/menu.c:104
+msgid "/Search/Find _Next"
+msgstr "/Kërkim/Gjej _Pasues"
+
+#: ../src/menu.c:106
+msgid "/Search/Find _Previous"
+msgstr "/Kërkim/Gjej të _Mëparshmin"
+
+#: ../src/menu.c:108
+msgid "/Search/_Replace..."
+msgstr "/Kërkim/_Zëvendëso..."
+
+#: ../src/menu.c:112
+msgid "/Search/_Jump To..."
+msgstr "/Kërkim/_Hidhu Te..."
+
+#: ../src/menu.c:114
+msgid "/_Options"
+msgstr "/_Mundësi"
+
+#: ../src/menu.c:116
+msgid "/Options/_Font..."
+msgstr "/Mundësi/_Gërma..."
+
+#: ../src/menu.c:118
+msgid "/Options/_Word Wrap"
+msgstr "/Mundësi/_Mbështjellje  Fjalësh"
+
+#: ../src/menu.c:120
+msgid "/Options/_Line Numbers"
+msgstr "/Mundësi/_Numra Rreshtash"
+
+#: ../src/menu.c:124
+msgid "/Options/_Auto Indent"
+msgstr "/Mundësi/_Vetiu Më brenda"
+
+#: ../src/menu.c:126
+msgid "/_Help"
+msgstr "/_Ndihmë"
+
+#: ../src/menu.c:128
+msgid "/Help/_About"
+msgstr "/Ndihmë/_Rreth"
+
+#: ../src/search.c:73
+msgid "Search string not found"
+msgstr "Nuk u gjet varg kërkimi"
+
+#: ../src/search.c:115
+msgid "Replace?"
+msgstr "Ta zëvendësoj?"
+
+#: ../src/search.c:143
+#, c-format
+msgid "%d strings replaced"
+msgstr "%d vargje të zëvendësuara"
+
+#: ../src/search.c:188
+msgid "Find"
+msgstr "Gjej"
+
+#: ../src/search.c:200
+#: ../src/search.c:265
+msgid "Fi_nd what: "
+msgstr "Gj_ej çfarë: "
+
+#: ../src/search.c:219
+#: ../src/search.c:292
+msgid "_Match case"
+msgstr "Siç është _shkruajtur"
+
+#: ../src/search.c:253
+msgid "Replace"
+msgstr "Zëvendëso"
+
+#: ../src/search.c:280
+msgid "Re_place with: "
+msgstr "Zë_vendëso me: "
+
+#: ../src/search.c:296
+msgid "Replace _all at once"
+msgstr "Zëvendësoji të _tëra njëherësh"
+
+#: ../src/search.c:342
+msgid "Jump To"
+msgstr "Hidhu Te"
+
+#: ../src/search.c:347
+msgid "_Jump"
+msgstr "_Hidhu"
+
+#: ../src/search.c:353
+msgid "_Line number: "
+msgstr "Numër _rreshti: "
+
+#: ../src/selector.c:103
+#, c-format
+msgid "Current Locale (%s)"
+msgstr "Vendore e Çastit (%s)"
+
+#: ../src/selector.c:147
+msgid "Other Codeset"
+msgstr "Tjetër Kodim"
+
+#: ../src/selector.c:186
+msgid "Code_set:"
+msgstr "Kodim:"
+
+#: ../src/selector.c:207
+#, c-format
+msgid "'%s' is not supported"
+msgstr "'%s' nuk mbulohet"
+
+#: ../src/selector.c:271
+msgid "Auto Detect"
+msgstr "Vetëzbulo"
+
+#: ../src/selector.c:325
+msgid "Open"
+msgstr "Hap"
+
+#: ../src/selector.c:325
+msgid "Save As"
+msgstr "Ruaj Si"
+
+#: ../src/selector.c:345
+msgid "Ch_aracter Coding: "
+msgstr "Kodim Gërmash: "
+
+#: ../src/selector.c:401
+#, c-format
+msgid "'%s' already exists. Overwrite?"
+msgstr "Ka një '%s'. Ta mbishkruaj?"
+
+#: ../src/window.c:143
+msgid "Untitled"
+msgstr "Pa titull"
+
+#: ../mousepad.desktop.in.h:1
+msgid "Mousepad"
+msgstr "Mousepad"
+
+#: ../mousepad.desktop.in.h:2
+msgid "Simple text editor"
+msgstr "Përpunues i thjeshtë tekstesh"
+
+#: ../mousepad.desktop.in.h:3
+msgid "Text Editor"
+msgstr "Përpunues Tekstesh"
+
