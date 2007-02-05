@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: mousepad 0.2.12\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2007-01-20 12:34+0100\n"
-"PO-Revision-Date: 2006-11-25 10:42+0100\n"
+"PO-Revision-Date: 2007-02-05 13:07+0100\n"
 "Last-Translator: Carles Muñoz Gorriz <carlesmu@internautas.org>\n"
 "Language-Team: Catalan <xfce-i18n@xfce.org>\n"
 "MIME-Version: 1.0\n"
@@ -74,9 +74,8 @@ msgid "/File/_Open..."
 msgstr "/Fitxer/_Obre…"
 
 #: ../src/menu.c:72
-#, fuzzy
 msgid "/File/Open _Recent"
-msgstr "/Fitxer/_Obre…"
+msgstr "/Fitxer/Obre _recent…"
 
 #: ../src/menu.c:77
 msgid "/File/_Save"
