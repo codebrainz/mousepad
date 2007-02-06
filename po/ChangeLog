@@ -1,3 +1,7 @@
+2007-02-06  Stavros Giannouris <stavrosg@hellug.gr>
+
+	* el.po: Updated Greek translation.
+
 2007-02-05  Pau Rul-lan Ferragut <paurullan@bulma.net>
 
         * ca.po: Update Catalan translation
@@ -76,7 +80,7 @@
 
 	* cy.po: Add Welsh translations by Geraint Rowlands <ansbaradigeidfran@gmail.com>
 
-2006-11-11  Stavros Giannouris <stavrosg@serverhive.com>
+2006-11-11  Stavros Giannouris <stavrosg@hellug.gr>
 
 	* el.po: Greek translation update
 
@@ -225,7 +229,7 @@
 	* LINGUAS: Added a last missing language code.
 	* LINGUAS: Added missing language codes.
 
-2006-04-29  Stavros Giannouris <stavrosg@serverhive.com>
+2006-04-29  Stavros Giannouris <stavrosg@hellug.gr>
 
 	* el.po: Greek translation update.
 	* LINGUAS: Added `el'.
@@ -291,7 +295,7 @@
 
 	* ca.po: catalan little of work on catalan translations
 
-2006-04-01  Stavros Giannouris <stavrosg@serverhive.com>
+2006-04-01  Stavros Giannouris <stavrosg@hellug.gr>
 
 	* el.po: Greek translations update & polish by Stathis Kamperis
 	  <ekamperi@auth.gr>.
@@ -378,7 +382,7 @@
 
 	* ja.po: Updated Japanese translations.
 
-2005-08-06  Stavros Giannouris <StavrosG2002@freemail.gr>
+2005-08-06  Stavros Giannouris <stavrosg@hellug.gr>
 
 	* el.po: Initial addition of Greek language files for mousepad
 	  in trunk.
