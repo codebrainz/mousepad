@@ -1,0 +1,281 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: mousepad\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2007-01-20 12:34+0100\n"
+"PO-Revision-Date: 2007-02-02 10:34+0200\n"
+"Last-Translator: Mohamed Magdy <alnokta@yahoo.com>\n"
+"Language-Team: Arabeyes Translation & Documentation <admin@arabeyes.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-Language: Arabic\n"
+"X-Poedit-SourceCharset: utf-8\n"
+
+#: ../src/callback.c:37
+#, c-format
+msgid "Save changes to '%s'?"
+msgstr "حفظ التغييرات إلى '%s'?"
+
+#: ../src/callback.c:213
+#: ../src/file.c:174
+#, c-format
+msgid "Can't convert codeset to '%s'"
+msgstr "غير قادر على تحويل مجموعة المحارف إلى '%s'"
+
+#: ../src/callback.c:240
+msgid "Can't open pipe to process"
+msgstr "غير قادر على فتح أنبوب إلى العملية"
+
+#: ../src/callback.c:397
+msgid "A text editor for Xfce"
+msgstr "محرر نصوص لاكسفس"
+
+#: ../src/dialog.c:135
+#, c-format
+msgid "About %s"
+msgstr "حول %s"
+
+#: ../src/file.c:187
+msgid "Can't open file to write"
+msgstr "غير قادر على فتح الملف للكتابة"
+
+#: ../src/file.c:192
+msgid "Can't write file"
+msgstr "غير قادر على كتابة الملف"
+
+#: ../src/font.c:49
+msgid "Font"
+msgstr "الخط"
+
+#: ../src/menu.c:61
+msgid "/_File"
+msgstr "/_ملف"
+
+#: ../src/menu.c:63
+msgid "/File/_New"
+msgstr "/ملف/_جديد"
+
+#: ../src/menu.c:66
+msgid "/File/New _Window"
+msgstr "/ملف/_نافدة_جديد"
+
+#: ../src/menu.c:69
+msgid "/File/_Open..."
+msgstr "/ملف/_إفتح..."
+
+#: ../src/menu.c:72
+msgid "/File/Open _Recent"
+msgstr "/ملف/_إفتح حديث"
+
+#: ../src/menu.c:77
+msgid "/File/_Save"
+msgstr "/ملف/_احفظ"
+
+#: ../src/menu.c:79
+msgid "/File/Save _As..."
+msgstr "/ملف/احفظ _كا..."
+
+#: ../src/menu.c:83
+msgid "/File/_Print..."
+msgstr "/ملف/_اطبع..."
+
+#: ../src/menu.c:87
+msgid "/File/_Quit"
+msgstr "/ملف/_اخرج"
+
+#: ../src/menu.c:89
+msgid "/_Edit"
+msgstr "/_عدل"
+
+#: ../src/menu.c:91
+msgid "/Edit/_Undo"
+msgstr "/عدل/_استرجع"
+
+#: ../src/menu.c:93
+msgid "/Edit/_Redo"
+msgstr "/عدل/_اعد عملها"
+
+#: ../src/menu.c:97
+msgid "/Edit/Cu_t"
+msgstr "/عدل/ق_ص"
+
+#: ../src/menu.c:99
+msgid "/Edit/_Copy"
+msgstr "/عدل/_انسخ"
+
+#: ../src/menu.c:101
+msgid "/Edit/_Paste"
+msgstr "/عدل/_الصق"
+
+#: ../src/menu.c:103
+msgid "/Edit/_Delete"
+msgstr "/عدل/_احذف"
+
+#: ../src/menu.c:107
+msgid "/Edit/Select _All"
+msgstr "/عدل/اختر _الكلl"
+
+#: ../src/menu.c:109
+msgid "/_Search"
+msgstr "/_ابحث"
+
+#: ../src/menu.c:111
+msgid "/Search/_Find..."
+msgstr "/ابحث/_جد..."
+
+#: ../src/menu.c:113
+msgid "/Search/Find _Next"
+msgstr "/ابحث/جد _التالي"
+
+#: ../src/menu.c:115
+msgid "/Search/Find _Previous"
+msgstr "/ابحث/جد _السابق"
+
+#: ../src/menu.c:117
+msgid "/Search/_Replace..."
+msgstr "/ابحث/_استبدل..."
+
+#: ../src/menu.c:121
+msgid "/Search/_Jump To..."
+msgstr "/ابحث/_اقفز إلى..."
+
+#: ../src/menu.c:123
+msgid "/_Options"
+msgstr "/_خيارات"
+
+#: ../src/menu.c:125
+msgid "/Options/_Font..."
+msgstr "/خيارات/_الخط..."
+
+#: ../src/menu.c:127
+msgid "/Options/_Word Wrap"
+msgstr "/خيارات/_لف الكلمات"
+
+#: ../src/menu.c:129
+msgid "/Options/_Line Numbers"
+msgstr "/خيارات/_أرقام الأسطر"
+
+#: ../src/menu.c:133
+msgid "/Options/_Auto Indent"
+msgstr "/خيارات/_تسنين تلقائي"
+
+#: ../src/menu.c:135
+msgid "/_Help"
+msgstr "/_مساعدة"
+
+#: ../src/menu.c:137
+msgid "/Help/_About"
+msgstr "/مساعدة/_حول"
+
+#: ../src/search.c:73
+msgid "Search string not found"
+msgstr "لم توجد سلسلة البحث"
+
+#: ../src/search.c:115
+msgid "Replace?"
+msgstr "استبدال؟"
+
+#: ../src/search.c:143
+#, c-format
+msgid "%d strings replaced"
+msgstr "%d سلسلة استبدلت"
+
+#: ../src/search.c:188
+msgid "Find"
+msgstr "جد"
+
+#: ../src/search.c:200
+#: ../src/search.c:265
+msgid "Fi_nd what: "
+msgstr "ج_د ماذا: "
+
+#: ../src/search.c:219
+#: ../src/search.c:292
+msgid "_Match case"
+msgstr "_مطابق للحالة"
+
+#: ../src/search.c:253
+msgid "Replace"
+msgstr "استبدل"
+
+#: ../src/search.c:280
+msgid "Re_place with: "
+msgstr "استب_دل ب: "
+
+#: ../src/search.c:296
+msgid "Replace _all at once"
+msgstr "استبدل _الكل في نفس اللحظة"
+
+#: ../src/search.c:342
+msgid "Jump To"
+msgstr "اقفز إلى"
+
+#: ../src/search.c:347
+msgid "_Jump"
+msgstr "_اقفز"
+
+#: ../src/search.c:353
+msgid "_Line number: "
+msgstr "_رقم السطر: "
+
+#: ../src/selector.c:103
+#, c-format
+msgid "Current Locale (%s)"
+msgstr "اللغة الحالية (%s)"
+
+#: ../src/selector.c:147
+msgid "Other Codeset"
+msgstr "مجموعة محارف أخرى"
+
+#: ../src/selector.c:186
+msgid "Code_set:"
+msgstr "مجموعة_محارف:"
+
+#: ../src/selector.c:207
+#, c-format
+msgid "'%s' is not supported"
+msgstr "'%s' غير مدعوم"
+
+#: ../src/selector.c:271
+msgid "Auto Detect"
+msgstr "كشف تلقائي"
+
+#: ../src/selector.c:325
+msgid "Open"
+msgstr "افتح"
+
+#: ../src/selector.c:325
+msgid "Save As"
+msgstr "احفظ كا"
+
+#: ../src/selector.c:347
+msgid "Ch_aracter Coding: "
+msgstr "تشفير المحا_رف: "
+
+#: ../src/selector.c:403
+#, c-format
+msgid "'%s' already exists. Overwrite?"
+msgstr "'%s' موجود اصلا. اكتب فوقه?"
+
+#. add the label with the root warning
+#: ../src/window.c:110
+msgid "Warning, you are using the root account, you may harm your system."
+msgstr "تحذير، يمكنك أن تخرب النظام إذا كنت تستخدم حساب الجذر."
+
+#: ../src/window.c:169
+msgid "Untitled"
+msgstr "بدون عنوان"
+
+#: ../mousepad.desktop.in.h:1
+msgid "Mousepad"
+msgstr "ماوس باد"
+
+#: ../mousepad.desktop.in.h:2
+msgid "Simple text editor"
+msgstr "محرر نصوص بسيط"
+
+#: ../mousepad.desktop.in.h:3
+msgid "Text Editor"
+msgstr "محرر نصوص"
+
