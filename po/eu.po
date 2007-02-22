@@ -69,9 +69,8 @@ msgid "/File/_Open..."
 msgstr "/fitxategia/_Ireki"
 
 #: ../src/menu.c:72
-#, fuzzy
 msgid "/File/Open _Recent"
-msgstr "/fitxategia/_Ireki"
+msgstr "/fitxategia/_Azkenak Ireki"
 
 #: ../src/menu.c:77
 msgid "/File/_Save"
