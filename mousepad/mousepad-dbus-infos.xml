@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<node name="/org/xfce/Mousepad">
+
+  <interface name="org.xfce.Mousepad">
+    <annotation name="org.freedesktop.DBus.GLib.CSymbol" value="mousepad_dbus_service" />
+
+    <method name="LaunchFiles">
+      <arg direction="in" name="working-directory" type="s" />
+      <arg direction="in" name="filenames" type="as" />
+    </method>
+
+  </interface>
+
+</node>

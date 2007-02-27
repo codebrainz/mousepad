@@ -1,0 +1,29 @@
+Mousepad 0.3.x
+==============
+New core features:
+  - Everything is written in GObjects.
+  - Run multiple windows in one instance.
+  - Tab support.
+  - Loading multiple files at once (in new tabs). Both multiple
+    select in the open dialog and by using the command line is supported.
+  - Hidden settings
+    - Set the recent menu limit.
+  - Support for editable menu accelerators.
+  - Using MMAP for loading files.
+  - Items in the recent menu are removed when Mousepad was unable
+    to open it.
+
+
+Bug that can be closed:
+  2941 - Save button is now default response in the dialog.
+  2720 - No font is set as long the user doesn't defined any.
+  1697 - No compiler warnings.
+  2945 - Windows geometry is now properly saved.
+  2896 - Hidden option to show to full path in the window title.
+  2397 - Basic command line options.
+  2786 - The MousepadPreferences object uses XfceRc for saving the settings.
+  2784 - No crashes when there is no rc file.
+
+Bug that won't be fixed:
+  956  - Xfce About dialog. This allows us to depend on libxfcegui4 for one
+         dialog, so we're going to do that and use the Gtk about dialog.

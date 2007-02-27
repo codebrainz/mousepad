@@ -1,0 +1,27 @@
+- Interface
+  - Implement the Go menu and acceleartors.
+  - Dialog when closing multiple (modified) tabs.
+  - Statusbar (not a priority).
+  - Right-click menu for the tab label.
+  - Credits dialog.
+  - Change tabs position.
+
+- Text View
+  - Search and Replace. Maybe also text highlighting.
+  - GObject for undo/redo that is used by MousepadView.
+  - Support for encoding.
+
+- Saving and loading
+  - Save All option.
+  - Reload option. Maybe also stat the source file when switching
+    tabs and tell the user if the source was modified.
+
+- Other
+  - Implement Gtk print support.
+  - Maybe add support for gtksourceview and/or gtkspell.
+
+- Testing
+  - Profiling the startup time.
+  - Profiling loading large files (Gtk has a problem here). This also
+    locks some dialogs.
+  - Checking for memory leaks.

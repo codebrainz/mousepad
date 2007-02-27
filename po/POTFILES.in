@@ -1,0 +1,6 @@
+mousepad/main.c
+mousepad/mousepad-application.c
+mousepad/mousepad-dbus.c
+mousepad/mousepad-preferences.c
+mousepad/mousepad-textview.c
+mousepad/mousepad-window.c

@@ -1,0 +1,65 @@
+<ui>
+  <!--
+    $Id$
+
+    Copyright (c) 2007 Nick Schermer <nick@xfce.org>
+  -->
+
+  <menubar name="main-menu">
+    <menu action="file-menu">
+      <menuitem action="new-tab" />
+      <menuitem action="new-window" />
+      <separator />
+      <menuitem action="open-file" />
+      <menuitem action="recent-menu" />
+      <separator />
+      <menuitem action="save-file" />
+      <menuitem action="save-file-as" />
+      <separator />
+      <menuitem action="close-tab" />
+      <menuitem action="close-window" />
+      <menuitem action="close-all-windows" />
+    </menu>
+
+    <menu action="edit-menu">
+      <menuitem action="undo" />
+      <menuitem action="redo" />
+      <separator />
+      <menuitem action="cut" />
+      <menuitem action="copy" />
+      <menuitem action="paste" />
+      <menuitem action="delete" />
+      <separator />
+      <menuitem action="select-all" />
+    </menu>
+
+    <menu action="search-menu">
+      <menuitem action="find" />
+      <menuitem action="find-next" />
+      <menuitem action="find-previous" />
+      <menuitem action="replace" />
+      <separator />
+      <menuitem action="jump-to" />
+    </menu>
+
+    <menu action="view-menu">
+      <menuitem action="font" />
+      <separator />
+      <menuitem action="word-wrap" />
+      <menuitem action="line-numbers" />
+      <separator />
+      <menuitem action="auto-indent" />
+    </menu>
+
+    <menu action="go-menu">
+      <menuitem action="back" />
+      <menuitem action="forward" />
+      <separator />
+      <placeholder name="placeholder-go-items" />
+    </menu>
+
+    <menu action="help-menu">
+      <menuitem action="about" />
+    </menu>
+  </menubar>
+</ui>
