@@ -9,5 +9,5 @@ Icon=Mousepad
 Terminal=false
 StartupNotify=true
 Type=Application
-Categories=Application;Office;
-
+Categories=Application;Utility;TextEditor;GTK;
+MimeType=text/plain

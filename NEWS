@@ -26,4 +26,4 @@ Bug that can be closed:
 
 Bug that won't be fixed:
   956  - Xfce About dialog. This allows us to depend on libxfcegui4 for one
-         dialog, so we're going to do that and use the Gtk about dialog.
+         dialog, so we're not going to do that and use the Gtk about dialog.

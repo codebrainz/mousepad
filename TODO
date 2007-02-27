@@ -1,10 +1,10 @@
 - Interface
-  - Implement the Go menu and acceleartors.
   - Dialog when closing multiple (modified) tabs.
   - Statusbar (not a priority).
   - Right-click menu for the tab label.
-  - Credits dialog.
   - Change tabs position.
+  - Tab font color when the file is modified or readonly.
+  - Clear the recent history.
 
 - Text View
   - Search and Replace. Maybe also text highlighting.
@@ -18,7 +18,7 @@
 
 - Other
   - Implement Gtk print support.
-  - Maybe add support for gtksourceview and/or gtkspell.
+  - Maybe add support for gtksourceview and/or gtkspell (not a priority).
 
 - Testing
   - Profiling the startup time.

@@ -1,0 +1,8 @@
+2007-02-17	Nick Schermer <nick@xfce.org>
+
+	* TODO, NEWS: Update the current status of the rewrite.
+	* Mousepad.desktop.in.in: Add MimeType and improve Categories.
+
+2007-02-17	Nick Schermer <nick@xfce.org>
+
+	* Initial import of my Mousepad rewrite.
