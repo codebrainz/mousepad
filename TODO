@@ -13,6 +13,7 @@
 
 - Saving and loading
   - Save All option.
+  - Filenames and UTF-8.
   - Reload option. Maybe also stat the source file when switching
     tabs and tell the user if the source was modified.
 

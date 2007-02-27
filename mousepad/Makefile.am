@@ -13,9 +13,9 @@ INCLUDES =								\
 	$(PLATFORM_CPPFLAGS)
 
 bin_PROGRAMS = 								\
-	Mousepad
+	mousepad
 
-Mousepad_SOURCES =							\
+mousepad_SOURCES =							\
 	main.c								\
 	mousepad-application.c						\
 	mousepad-application.h						\
@@ -34,17 +34,17 @@ Mousepad_SOURCES =							\
 	mousepad-window.h						\
 	mousepad-window-ui.h
 
-Mousepad_CFLAGS =							\
+mousepad_CFLAGS =							\
 	$(EXO_CFLAGS)							\
 	$(GTHREAD_CFLAGS)						\
 	$(PLATFORM_CFLAGS)
 
-Mousepad_LDFLAGS =							\
+mousepad_LDFLAGS =							\
 	-no-undefined							\
 	$(LIBSM_LDFLAGS)						\
 	$(PLATFORM_LDFLAGS)
 
-Mousepad_LDADD =							\
+mousepad_LDADD =							\
 	$(EXO_LIBS)							\
 	$(GTHREAD_LIBS)
 
@@ -52,22 +52,17 @@ if HAVE_DBUS
 mousepad_build_sources =						\
 	mousepad-dbus-infos.h
 
-Mousepad_SOURCES +=							\
+mousepad_SOURCES +=							\
 	mousepad-dbus.c							\
 	mousepad-dbus.h
 
-Mousepad_CFLAGS +=							\
+mousepad_CFLAGS +=							\
 	-DDBUS_API_SUBJECT_TO_CHANGE					\
 	$(DBUS_CFLAGS)
 
-Mousepad_LDADD +=							\
+mousepad_LDADD +=							\
 	$(DBUS_LIBS)
 endif
-
-# install symlink to 'mousepad'
-install-data-local:
-	$(mkinstalldirs) $(DESTDIR)$(bindir)
-	-( cd $(DESTDIR)$(bindir) ; ln -sf Mousepad mousepad )
 
 if MAINTAINER_MODE
 DISTCLEANFILES =							\

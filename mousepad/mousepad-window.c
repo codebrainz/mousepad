@@ -537,7 +537,7 @@ mousepad_window_open_files (MousepadWindow  *window,
                             gchar          **filenames)
 {
   gint   n;
-  gchar *filename;
+  gchar *filename = NULL;
 
   _mousepad_return_if_fail (MOUSEPAD_IS_WINDOW (window));
   _mousepad_return_if_fail (working_directory != NULL);

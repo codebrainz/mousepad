@@ -82,12 +82,6 @@ enum
 struct _MousepadScreenClass
 {
   GtkScrolledWindowClass __parent__;
-
-  /* signals */
-  void (*selection_changed) (MousepadScreen *screen,
-                             gboolean        selected);
-  void (*modified_changed)  (MousepadScreen *screen,
-                             gboolean        modified);
 };
 
 struct _MousepadScreen
@@ -96,8 +90,10 @@ struct _MousepadScreen
 
   GtkWidget         *textview;
 
-  /* file and display name */
+  /* absolute path of the file */
   gchar             *filename;
+
+  /* name of the file used for the titles */
   gchar             *display_name;
 
   /* last document modified time */
