@@ -92,7 +92,7 @@ static void              mousepad_window_error_dialog                 (GtkWindow
                                                                        GError                 *error,
                                                                        const gchar            *message);
 static void              mousepad_window_update_actions               (MousepadWindow         *window);
-static void              mousepad_window_go_menu               (MousepadWindow         *window);
+static void              mousepad_window_go_menu                      (MousepadWindow         *window);
 static void              mousepad_window_selection_changed            (MousepadScreen         *screen,
                                                                        gboolean                selected,
                                                                        MousepadWindow         *window);
@@ -181,52 +181,52 @@ struct _MousepadWindow
 
 static const GtkActionEntry action_entries[] =
 {
-  { "file-menu", NULL, N_ ("_File"), NULL, NULL, NULL, },
-  { "new-tab", "tab-new", N_ ("New _Tab"), "<control>T", N_ ("Open a new Mousepad tab"), G_CALLBACK (mousepad_window_action_open_new_tab), },
-  { "new-window", "window-new", N_ ("_New Window"), "<control>N", N_ ("Open a new Mousepad window"), G_CALLBACK (mousepad_window_action_open_new_window), },
-  { "open-file", GTK_STOCK_OPEN, N_ ("_Open File"), NULL, N_ ("Open a new document"), G_CALLBACK (mousepad_window_action_open_file), },
-  { "recent-menu", NULL, N_ ("Open _Recent"), NULL, NULL, NULL, },
-  { "no-recent-items", NULL, N_ ("No items found"), NULL, NULL, NULL, },
-  { "clear-recent", GTK_STOCK_CLEAR, N_ ("C_lear Recent History"), NULL, NULL, G_CALLBACK (mousepad_window_action_clear_recent), },
-  { "save-file", GTK_STOCK_SAVE, N_ ("_Save"), NULL, N_ ("Save current document"), G_CALLBACK (mousepad_window_action_save_file), },
-  { "save-file-as", GTK_STOCK_SAVE_AS, N_ ("Save _As"), NULL, N_ ("Save current document as another file"), G_CALLBACK (mousepad_window_action_save_file_as), },
-  { "close-tab", GTK_STOCK_CLOSE, N_ ("C_lose Tab"), "<control>W", N_ ("Close the current Mousepad tab"), G_CALLBACK (mousepad_window_action_close_tab), },
-  { "close-window", GTK_STOCK_QUIT, N_ ("_Close Window"), "<control>Q", N_ ("Close the Mousepad window"), G_CALLBACK (mousepad_window_action_close), },
-  { "close-all-windows", NULL, N_ ("Close _All Windows"), "<control><shift>W", N_ ("Close all Mousepad windows"), G_CALLBACK (mousepad_window_action_close_all_windows), },
+  { "file-menu", NULL, N_("_File"), NULL, NULL, NULL, },
+    { "new-tab", "tab-new", N_("New _Tab"), "<control>T", N_("Create a new document"), G_CALLBACK (mousepad_window_action_open_new_tab), },
+    { "new-window", "window-new", N_("_New Window"), "<control>N", N_("Create a new document in a new window"), G_CALLBACK (mousepad_window_action_open_new_window), },
+    { "open-file", GTK_STOCK_OPEN, N_("_Open File"), NULL, N_("Open a file"), G_CALLBACK (mousepad_window_action_open_file), },
+    { "recent-menu", NULL, N_("Open _Recent"), NULL, NULL, NULL, },
+      { "no-recent-items", NULL, N_("No items found"), NULL, NULL, NULL, },
+      { "clear-recent", GTK_STOCK_CLEAR, N_("Clear _History"), NULL, N_("Clear the recently used files history"), G_CALLBACK (mousepad_window_action_clear_recent), },
+    { "save-file", GTK_STOCK_SAVE, N_("_Save"), NULL, N_("Save the current file"), G_CALLBACK (mousepad_window_action_save_file), },
+    { "save-file-as", GTK_STOCK_SAVE_AS, N_("Save _As"), NULL, N_("Save current document as another file"), G_CALLBACK (mousepad_window_action_save_file_as), },
+    { "close-tab", GTK_STOCK_CLOSE, N_("C_lose Tab"), "<control>W", N_("Close the current file"), G_CALLBACK (mousepad_window_action_close_tab), },
+    { "close-window", GTK_STOCK_QUIT, N_("_Close Window"), "<control>Q", N_("Quit the program"), G_CALLBACK (mousepad_window_action_close), },
+    { "close-all-windows", NULL, N_("Close _All Windows"), "<control><shift>W", N_("Close all Mousepad windows"), G_CALLBACK (mousepad_window_action_close_all_windows), },
 
-  { "edit-menu", NULL, N_ ("_Edit"), NULL, NULL, NULL, },
-  { "undo", GTK_STOCK_UNDO, N_ ("_Undo"), NULL, NULL, NULL, },
-  { "redo", GTK_STOCK_REDO, N_ ("_Redo"), NULL, NULL, NULL, },
-  { "cut", GTK_STOCK_CUT, N_ ("Cu_t"), NULL, NULL, G_CALLBACK (mousepad_window_action_cut), },
-  { "copy", GTK_STOCK_COPY, N_ ("_Copy"), NULL, NULL, G_CALLBACK (mousepad_window_action_copy), },
-  { "paste", GTK_STOCK_PASTE, N_ ("_Paste"), NULL, NULL, G_CALLBACK (mousepad_window_action_paste), },
-  { "delete", GTK_STOCK_DELETE, N_ ("_Delete"), NULL, NULL, G_CALLBACK (mousepad_window_action_delete), },
-  { "select-all", GTK_STOCK_SELECT_ALL, N_ ("Select _All"), NULL, NULL, G_CALLBACK (mousepad_window_action_select_all), },
+  { "edit-menu", NULL, N_("_Edit"), NULL, NULL, NULL, },
+    { "undo", GTK_STOCK_UNDO, N_("_Undo"), NULL, N_("Undo the last action"), NULL, },
+    { "redo", GTK_STOCK_REDO, N_("_Redo"), NULL, N_("Redo the last undone action"), NULL, },
+    { "cut", GTK_STOCK_CUT, N_("Cu_t"), NULL, N_("Cut the selection"), G_CALLBACK (mousepad_window_action_cut), },
+    { "copy", GTK_STOCK_COPY, N_("_Copy"), NULL, N_("Copy the selection"), G_CALLBACK (mousepad_window_action_copy), },
+    { "paste", GTK_STOCK_PASTE, N_("_Paste"), NULL, N_("Paste the clipboard"), G_CALLBACK (mousepad_window_action_paste), },
+    { "delete", GTK_STOCK_DELETE, N_("_Delete"), NULL, N_("Delete the selected text"), G_CALLBACK (mousepad_window_action_delete), },
+    { "select-all", GTK_STOCK_SELECT_ALL, N_("Select _All"), NULL, N_("Select the entire document"), G_CALLBACK (mousepad_window_action_select_all), },
 
-  { "search-menu", NULL, N_ ("_Search"), NULL, NULL, NULL, },
-  { "find", GTK_STOCK_FIND, N_ ("_Find"), NULL, NULL, NULL, },
-  { "find-next", NULL, N_ ("Find _Next"), NULL, NULL, NULL, },
-  { "find-previous", NULL, N_ ("Find _Previous"), NULL, NULL, NULL, },
-  { "replace", GTK_STOCK_FIND_AND_REPLACE, N_ ("_Replace"), NULL, NULL, NULL, },
-  { "jump-to", GTK_STOCK_JUMP_TO, N_ ("_Jump To"), NULL, NULL, G_CALLBACK (mousepad_window_action_jump_to), },
+  { "search-menu", NULL, N_("_Search"), NULL, NULL, NULL, },
+    { "find", GTK_STOCK_FIND, N_("_Find"), NULL, N_("Search for text"), NULL, },
+    { "find-next", NULL, N_("Find _Next"), NULL, N_("Search forwards for the same text"), NULL, },
+    { "find-previous", NULL, N_("Find _Previous"), NULL, N_("Search backwards for the same text"), NULL, },
+    { "replace", GTK_STOCK_FIND_AND_REPLACE, N_("_Replace"), NULL, N_("Search for and replace text"), NULL, },
+    { "jump-to", GTK_STOCK_JUMP_TO, N_("_Jump To"), NULL, N_("Go to a specific line"), G_CALLBACK (mousepad_window_action_jump_to), },
 
-  { "view-menu", NULL, N_ ("_View"), NULL, NULL, NULL, },
-  { "font", GTK_STOCK_SELECT_FONT, N_ ("_Font"), NULL, N_ ("Choose Mousepad font"), G_CALLBACK (mousepad_window_action_select_font), },
+  { "view-menu", NULL, N_("_View"), NULL, NULL, NULL, },
+    { "font", GTK_STOCK_SELECT_FONT, N_("_Font"), NULL, N_("Change the editor font"), G_CALLBACK (mousepad_window_action_select_font), },
 
-  { "go-menu", NULL, N_ ("_Go"), NULL, },
-  { "back", GTK_STOCK_GO_BACK, N_ ("Back"), NULL, N_ ("Select the previous tab"), G_CALLBACK (mousepad_window_action_prev_tab), },
-  { "forward", GTK_STOCK_GO_FORWARD, N_ ("Forward"), NULL, N_ ("Select the next tab"), G_CALLBACK (mousepad_window_action_next_tab), },
+  { "go-menu", NULL, N_("_Go"), NULL, },
+    { "back", GTK_STOCK_GO_BACK, N_("Back"), NULL, N_("Select the previous tab"), G_CALLBACK (mousepad_window_action_prev_tab), },
+    { "forward", GTK_STOCK_GO_FORWARD, N_("Forward"), NULL, N_("Select the next tab"), G_CALLBACK (mousepad_window_action_next_tab), },
 
-  { "help-menu", NULL, N_ ("_Help"), NULL, },
-  { "about", GTK_STOCK_ABOUT, N_ ("_About"), NULL,N_  ("Display information about Mousepad"), G_CALLBACK (mousepad_window_action_about), },
+  { "help-menu", NULL, N_("_Help"), NULL, },
+    { "about", GTK_STOCK_ABOUT, N_("_About"), NULL, N_("About this application"), G_CALLBACK (mousepad_window_action_about), },
 };
 
 static const GtkToggleActionEntry toggle_action_entries[] =
 {
-  { "statusbar", NULL, N_ ("_Statusbar"), NULL, NULL, NULL, FALSE, },
-  { "word-wrap", NULL, N_ ("_Word Wrap"), NULL, NULL, NULL, FALSE, },
-  { "line-numbers", NULL, N_ ("_Line Numbers"), NULL, NULL, NULL, FALSE, },
-  { "auto-indent", NULL, N_ ("_Auto Indent"), NULL, NULL, NULL, FALSE, },
+  { "statusbar", NULL, N_("_Statusbar"), NULL, N_("Change the visibility of the statusbar"), NULL, FALSE, },
+  { "word-wrap", NULL, N_("_Word Wrap"), NULL, N_("Toggle breaking lines in between words"), NULL, FALSE, },
+  { "line-numbers", NULL, N_("_Line Numbers"), NULL, N_("Change the visibility of the line numbers"), NULL, FALSE, },
+  { "auto-indent", NULL, N_("_Auto Indent"), NULL, N_("Toggle automatic line indentation"), NULL, FALSE, },
 };
 
 
@@ -402,6 +402,7 @@ mousepad_window_init (MousepadWindow *window)
                                    "tab-vborder", 0,
                                    NULL);
 
+  /* connect signals to the notebooks */
   g_signal_connect (G_OBJECT (window->notebook), "notify::page",
                     G_CALLBACK (mousepad_window_page_notified), window);
   g_signal_connect (G_OBJECT (window->notebook), "remove",

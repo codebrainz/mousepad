@@ -1,5 +1,9 @@
 2007-02-18	Nick Schermer <nick@xfce.org>
 
+	* mousepad/mousepad-window.c: Improve the menu tooltips.
+
+2007-02-18	Nick Schermer <nick@xfce.org>
+
 	* mousepad/mousepad-window.c: Prevent multiple recent- and go-menu
 	  updates when multiple items are opened or the recent history is
 	  cleared.
