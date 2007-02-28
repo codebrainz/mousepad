@@ -11,7 +11,14 @@
       <menuitem action="new-window" />
       <separator />
       <menuitem action="open-file" />
-      <menuitem action="recent-menu" />
+
+      <menu action="recent-menu">
+        <menuitem action="no-recent-items" />
+        <placeholder name="placeholder-recent-items" />
+        <separator />
+        <menuitem action="clear-recent" />
+      </menu>
+
       <separator />
       <menuitem action="save-file" />
       <menuitem action="save-file-as" />
@@ -44,6 +51,8 @@
 
     <menu action="view-menu">
       <menuitem action="font" />
+      <separator />
+      <menuitem action="statusbar" />
       <separator />
       <menuitem action="word-wrap" />
       <menuitem action="line-numbers" />

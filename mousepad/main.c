@@ -108,7 +108,6 @@ main (gint argc, gchar **argv)
       g_print ("%s %s (Xfce %s)\n\n", PACKAGE_NAME, PACKAGE_VERSION, xfce_version_string ());
       g_print ("%s\n", "Copyright (c) 2007");
       g_print ("\t%s\n\n", _("The Xfce development team. All rights reserved."));
-      g_print ("%s\n\n", _("Written by Nick Schermer <nick@xfce.org>."));
       g_print (_("Please report bugs to <%s>."), PACKAGE_BUGREPORT);
       g_print ("\n");
 

@@ -53,6 +53,7 @@ enum
   PROP_LAST_WINDOW_HEIGHT,
   PROP_LAST_WINDOW_WIDTH,
   PROP_LINE_NUMBERS,
+  PROP_STATUSBAR,
   PROP_WORD_WRAP,
   PROP_MISC_ALWAYS_SHOW_TABS,
   PROP_MISC_CYCLE_TABS,
@@ -201,6 +202,14 @@ mousepad_preferences_class_init (MousepadPreferencesClass *klass)
                                                          "line-numbers",
                                                          "line-numbers",
                                                          FALSE,
+                                                         EXO_PARAM_READWRITE));
+
+  g_object_class_install_property (gobject_class,
+                                   PROP_STATUSBAR,
+                                   g_param_spec_boolean ("statusbar",
+                                                         "statusbar",
+                                                         "statusbar",
+                                                         TRUE,
                                                          EXO_PARAM_READWRITE));
 
   g_object_class_install_property (gobject_class,

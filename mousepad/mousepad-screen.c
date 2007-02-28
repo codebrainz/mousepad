@@ -104,6 +104,7 @@ struct _MousepadScreen
 
 static guint         screen_signals[LAST_SIGNAL];
 static GObjectClass *mousepad_screen_parent_class;
+static guint         untitled_counter = 0;
 
 
 
@@ -222,7 +223,7 @@ mousepad_screen_init (MousepadScreen *screen)
 
   /* initialize the variables */
   screen->filename     = NULL;
-  screen->display_name = NULL;
+  screen->display_name = g_strdup_printf ("%s %d", _("Untitled"), ++untitled_counter);
   screen->mtime        = 0;
 
   /* setup the scolled window */
@@ -533,10 +534,8 @@ mousepad_screen_get_title (MousepadScreen *screen,
 
   if (G_UNLIKELY (show_full_path && screen->filename))
     title = screen->filename;
-  else if (screen->display_name)
-    title = screen->display_name;
   else
-    title = _("Untitled");
+    title = screen->display_name;
 
   return title;
 }

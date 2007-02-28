@@ -1,3 +1,19 @@
+2007-02-18	Nick Schermer <nick@xfce.org>
+
+	* TODO, mousepad/mousepad-window.c: Add option to the recent menu
+	  to clear the history.
+	* mousepad/mousepad-window.c: The recent items are now in the Mousepad
+	  group so it's easier to filter them when removing. The list is also
+	  sorted by the most recently used item.
+	* mousepad/mousepad-window.c: Fix problem in checking if the
+	  file was already openened.
+	* mousepad/mousepad-window.c: You can now reorder tabs.
+	* mousepad/mousepad-window.c: A tab is now inserted right from the
+	  current active tab.
+	* mousepad/mousepad-screen.c: Untitled documents now have a number like
+	  "Untitled #". The number is increased as long as the application is running.
+	* mousepad/mousepad-window.c: Added first parts of code for a statusbar.
+
 2007-02-17	Nick Schermer <nick@xfce.org>
 
 	* TODO: Remind myself to fix problems with UTF-8 filenames.
