@@ -92,7 +92,7 @@ static void              mousepad_window_error_dialog                 (GtkWindow
                                                                        GError                 *error,
                                                                        const gchar            *message);
 static void              mousepad_window_update_actions               (MousepadWindow         *window);
-static void              mousepad_window_rebuild_gomenu               (MousepadWindow         *window);
+static void              mousepad_window_go_menu               (MousepadWindow         *window);
 static void              mousepad_window_selection_changed            (MousepadScreen         *screen,
                                                                        gboolean                selected,
                                                                        MousepadWindow         *window);
@@ -232,6 +232,7 @@ static const GtkToggleActionEntry toggle_action_entries[] =
 
 
 static GObjectClass *mousepad_window_parent_class;
+static gboolean      lock_menu_updates = FALSE;
 
 
 
@@ -703,6 +704,9 @@ mousepad_window_open_files (MousepadWindow  *window,
   _mousepad_return_if_fail (filenames != NULL);
   _mousepad_return_if_fail (*filenames != NULL);
 
+  /* block menu updates */
+  lock_menu_updates = TRUE;
+
   /* walk through all the filenames */
   for (n = 0; filenames[n] != NULL; ++n)
     {
@@ -725,6 +729,13 @@ mousepad_window_open_files (MousepadWindow  *window,
       g_free (filename);
       filename = NULL;
     }
+
+  /* allow menu updates again */
+  lock_menu_updates = FALSE;
+
+  /* update the menus */
+  mousepad_window_recent_menu (window);
+  mousepad_window_go_menu (window);
 }
 
 
@@ -883,7 +894,7 @@ mousepad_window_add (MousepadWindow *window,
   GTK_WIDGET_UNSET_FLAGS (window->notebook, GTK_CAN_FOCUS);
 
   /* rebuild the go menu */
-  mousepad_window_rebuild_gomenu (window);
+  mousepad_window_go_menu (window);
 
   /* show the screen */
   gtk_widget_show (GTK_WIDGET (screen));
@@ -1004,6 +1015,10 @@ mousepad_window_recent_menu (MousepadWindow *window)
   GtkAction     *action;
   gint           n;
 
+  /* leave when we're updating multiple files */
+  if (lock_menu_updates)
+    return;
+
   /* unmerge the ui controls from the previous update */
   if (merge_id != 0)
     gtk_ui_manager_remove_ui (window->ui_manager, merge_id);
@@ -1091,6 +1106,9 @@ mousepad_window_recent_menu (MousepadWindow *window)
   g_list_free (filtered);
   g_list_foreach (items, (GFunc) gtk_recent_info_unref, NULL);
   g_list_free (items);
+
+  /* make sure the ui is up2date to avoid flickering */
+  gtk_ui_manager_ensure_update (window->ui_manager);
 }
 
 
@@ -1222,7 +1240,7 @@ mousepad_window_tab_removed (GtkNotebook    *notebook,
       GTK_WIDGET_UNSET_FLAGS (window->notebook, GTK_CAN_FOCUS);
 
       /* rebuild the go menu */
-      mousepad_window_rebuild_gomenu (window);
+      mousepad_window_go_menu (window);
 
       /* update all screen sensitive actions */
       mousepad_window_update_actions (window);
@@ -1237,15 +1255,8 @@ mousepad_window_page_reordered (GtkNotebook     *notebook,
                                 guint            page_num,
                                 MousepadWindow  *window)
 {
-  GtkWidget *item;
-
   /* update the go menu */
-  mousepad_window_rebuild_gomenu (window);
-
-  /* select the item in the menu */
-  item = g_object_get_data (G_OBJECT (page), "go-menu-item");
-  if (G_LIKELY (item != NULL))
-    gtk_toggle_action_set_active (GTK_TOGGLE_ACTION (item), TRUE);
+  mousepad_window_go_menu (window);
 }
 
 
@@ -1364,7 +1375,7 @@ mousepad_window_action_goto (GtkRadioAction *action,
 
 
 static void
-mousepad_window_rebuild_gomenu (MousepadWindow *window)
+mousepad_window_go_menu (MousepadWindow *window)
 {
   GtkWidget      *screen;
   gint            npages;
@@ -1375,6 +1386,10 @@ mousepad_window_rebuild_gomenu (MousepadWindow *window)
   GSList         *group = NULL;
   GList          *actions, *li;
   static guint    merge_id = 0;
+
+  /* leave when we're updating multiple files */
+  if (lock_menu_updates)
+    return;
 
   /* remove the old merge */
   if (merge_id != 0)
@@ -1391,6 +1406,7 @@ mousepad_window_rebuild_gomenu (MousepadWindow *window)
 
   /* walk through the notebook pages */
   npages = gtk_notebook_get_n_pages (GTK_NOTEBOOK (window->notebook));
+
   for (n = 0; n < npages; ++n)
     {
       screen = gtk_notebook_get_nth_page (GTK_NOTEBOOK (window->notebook), n);
@@ -1418,6 +1434,10 @@ mousepad_window_rebuild_gomenu (MousepadWindow *window)
       else
         /* add a menu item without accelerator */
         gtk_action_group_add_action (window->gomenu_actions, GTK_ACTION (action));
+
+      /* select this action */
+      if (gtk_notebook_get_current_page (GTK_NOTEBOOK (window->notebook)) == n)
+        gtk_toggle_action_set_active (GTK_TOGGLE_ACTION (action), TRUE);
 
       /* release the action */
       g_object_unref (G_OBJECT (action));
@@ -1486,6 +1506,9 @@ mousepad_window_action_open_file (GtkAction      *action,
       /* open the new file */
       filenames = gtk_file_chooser_get_filenames (GTK_FILE_CHOOSER (chooser));
 
+      /* block menu updates */
+      lock_menu_updates = TRUE;
+
       /* open the selected files */
       for (li = filenames; li != NULL; li = li->next)
         {
@@ -1503,6 +1526,13 @@ mousepad_window_action_open_file (GtkAction      *action,
 
       /* free the list */
       g_slist_free(filenames);
+
+      /* allow menu updates again */
+      lock_menu_updates = FALSE;
+
+      /* update the menus */
+      mousepad_window_recent_menu (window);
+      mousepad_window_go_menu (window);
     }
 
   /* destroy dialog */
@@ -1578,6 +1608,9 @@ mousepad_window_action_clear_recent (GtkAction      *action,
 
   if (gtk_dialog_run (GTK_DIALOG (dialog)) == GTK_RESPONSE_OK)
     {
+      /* avoid updating the menu */
+      lock_menu_updates = TRUE;
+
       /* get all the items in the manager */
       items = gtk_recent_manager_get_items (window->recent_manager);
 
@@ -1608,6 +1641,12 @@ mousepad_window_action_clear_recent (GtkAction      *action,
       /* cleanup */
       g_list_foreach (items, (GFunc) gtk_recent_info_unref, NULL);
       g_list_free (items);
+
+      /* allow menu updates again */
+      lock_menu_updates = FALSE;
+
+      /* update the recent menu */
+      mousepad_window_recent_menu (window);
     }
 
   /* destroy the dialog */
@@ -1734,6 +1773,9 @@ mousepad_window_action_close (GtkAction      *action,
   /* get the number of page in the notebook */
   npages = gtk_notebook_get_n_pages (GTK_NOTEBOOK (window->notebook)) - 1;
 
+  /* prevent menu updates */
+  lock_menu_updates = TRUE;
+
   /* close all the tabs, one by one. the window will close
    * when all the tabs are closed */
   for (i = npages; i >= 0; --i)
@@ -1747,7 +1789,15 @@ mousepad_window_action_close (GtkAction      *action,
 
           /* ask user what to do, break when he/she hits the cancel button */
           if (!mousepad_window_close_screen (window, MOUSEPAD_SCREEN (screen)))
-            break;
+            {
+              /* allow updates again */
+              lock_menu_updates = FALSE;
+
+              /* update the go menu */
+              mousepad_window_go_menu (window);
+
+              break;
+            }
         }
     }
 }

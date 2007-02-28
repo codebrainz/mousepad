@@ -1,5 +1,11 @@
 2007-02-18	Nick Schermer <nick@xfce.org>
 
+	* mousepad/mousepad-window.c: Prevent multiple recent- and go-menu
+	  updates when multiple items are opened or the recent history is
+	  cleared.
+
+2007-02-18	Nick Schermer <nick@xfce.org>
+
 	* TODO, mousepad/mousepad-window.c: Add option to the recent menu
 	  to clear the history.
 	* mousepad/mousepad-window.c: The recent items are now in the Mousepad
