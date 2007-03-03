@@ -25,6 +25,9 @@
 
 G_BEGIN_DECLS
 
+#define DEBUG_LINE g_print ("%d\n", __LINE__);
+
+
 /* support macros for debugging */
 #ifndef NDEBUG
 #define _mousepad_assert(expr)                  g_assert (expr)

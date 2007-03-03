@@ -22,6 +22,17 @@
 
 G_BEGIN_DECLS
 
+enum {
+  MOUSEPAD_RESPONSE_CANCEL,
+  MOUSEPAD_RESPONSE_CLEAR,
+  MOUSEPAD_RESPONSE_DONT_SAVE,
+  MOUSEPAD_RESPONSE_JUMP_TO,
+  MOUSEPAD_RESPONSE_OVERWRITE,
+  MOUSEPAD_RESPONSE_RELOAD,
+  MOUSEPAD_RESPONSE_SAVE,
+  MOUSEPAD_RESPONSE_SAVE_AS,
+};
+
 void      mousepad_dialogs_show_about    (GtkWindow    *parent);
 
 
@@ -40,8 +51,10 @@ gint      mousepad_dialogs_save_changes  (GtkWindow    *parent);
 gchar    *mousepad_dialogs_save_as       (GtkWindow    *parent,
                                           const gchar  *filename);
 
-gboolean  mousepad_dialogs_ask_overwrite (GtkWindow    *parent,
+gint      mousepad_dialogs_ask_overwrite (GtkWindow    *parent,
                                           const gchar  *filename);
+
+gint      mousepad_dialogs_ask_reload    (GtkWindow    *parent);
 
 G_END_DECLS
 

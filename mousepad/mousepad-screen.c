@@ -525,6 +525,38 @@ mousepad_screen_save_file (MousepadScreen  *screen,
 
 
 
+gboolean
+mousepad_screen_reload (MousepadScreen  *screen,
+                        GError         **error)
+{
+  GtkTextBuffer *buffer;
+  GtkTextIter    start, end;
+  gchar         *filename;
+  gboolean       succeed = FALSE;
+
+  _mousepad_return_val_if_fail (error == NULL || *error == NULL, FALSE);
+
+  /* get the buffer */
+  buffer = mousepad_screen_get_text_buffer (screen);
+
+  /* remove the content of the textview */
+  gtk_text_buffer_get_bounds (buffer, &start, &end);
+  gtk_text_buffer_delete (buffer, &start, &end);
+
+  /* we have to copy the filename, because mousepad_screen_open_file (resets) the name */
+  filename = g_strdup (screen->filename);
+
+  /* reload the document */
+  succeed = mousepad_screen_open_file (screen, filename, error);
+
+  /* cleanup */
+  g_free (filename);
+
+  return succeed;
+}
+
+
+
 const gchar *
 mousepad_screen_get_title (MousepadScreen *screen,
                            gboolean        show_full_path)

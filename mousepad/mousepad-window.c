@@ -130,6 +130,8 @@ static void              mousepad_window_action_save_file             (GtkAction
                                                                        MousepadWindow         *window);
 static void              mousepad_window_action_save_file_as          (GtkAction              *action,
                                                                        MousepadWindow         *window);
+static void              mousepad_window_action_reload                (GtkAction              *action,
+                                                                       MousepadWindow         *window);
 static void              mousepad_window_action_close_tab             (GtkAction              *action,
                                                                        MousepadWindow         *window);
 static void              mousepad_window_action_close                 (GtkAction              *action,
@@ -216,6 +218,7 @@ static const GtkActionEntry action_entries[] =
       { "clear-recent", GTK_STOCK_CLEAR, N_("Clear _History"), NULL, N_("Clear the recently used files history"), G_CALLBACK (mousepad_window_action_clear_recent), },
     { "save-file", GTK_STOCK_SAVE, N_("_Save"), NULL, N_("Save the current file"), G_CALLBACK (mousepad_window_action_save_file), },
     { "save-file-as", GTK_STOCK_SAVE_AS, N_("Save _As"), NULL, N_("Save current document as another file"), G_CALLBACK (mousepad_window_action_save_file_as), },
+    { "reload", GTK_STOCK_REFRESH, N_("Re_load"), NULL, N_("Reload this document."), G_CALLBACK (mousepad_window_action_reload), },
     { "close-tab", GTK_STOCK_CLOSE, N_("C_lose Tab"), "<control>W", N_("Close the current file"), G_CALLBACK (mousepad_window_action_close_tab), },
     { "close-window", GTK_STOCK_QUIT, N_("_Close Window"), "<control>Q", N_("Quit the program"), G_CALLBACK (mousepad_window_action_close), },
     { "close-all-windows", NULL, N_("Close _All Windows"), "<control><shift>W", N_("Close all Mousepad windows"), G_CALLBACK (mousepad_window_action_close_all_windows), },
@@ -790,6 +793,7 @@ mousepad_window_save (MousepadWindow  *window,
   GError      *error = NULL;
   const gchar *message;
   gint         mtime;
+  gint         action = MOUSEPAD_RESPONSE_OVERWRITE;
 
   /* get the current filename */
   filename = mousepad_screen_get_filename (screen);
@@ -826,15 +830,31 @@ mousepad_window_save (MousepadWindow  *window,
       mtime = mousepad_screen_get_mtime (screen);
 
       /* check if the file has been modified externally, if so ask the user if
-       * he or she wants to overwrite the file */
-      if (mousepad_file_get_externally_modified (filename, mtime) == FALSE ||
-          mousepad_dialogs_ask_overwrite (GTK_WINDOW (window), filename) == TRUE)
-        {
-          /* save the file */
-          succeed = mousepad_screen_save_file (screen, filename, &error);
+       * he or she wants to overwrite/reload or cancel the action */
+      if (G_UNLIKELY (mousepad_file_get_externally_modified (filename, mtime)))
+        action = mousepad_dialogs_ask_overwrite (GTK_WINDOW (window), filename);
 
-          /* the warning message for save */
-          message = _("Failed to save the document");
+      switch (action)
+        {
+          case MOUSEPAD_RESPONSE_OVERWRITE:
+            /* save the file */
+            succeed = mousepad_screen_save_file (screen, filename, &error);
+
+            /* the warning message for save */
+            message = _("Failed to save the document");
+            break;
+
+          case MOUSEPAD_RESPONSE_RELOAD:
+            /* reload the document */
+            succeed = mousepad_screen_reload (screen, &error);
+
+            /* the warning message for save */
+            message = _("Failed to reload the document");
+            break;
+
+          case MOUSEPAD_RESPONSE_CANCEL:
+            /* do nothing */
+            break;
         }
     }
 
@@ -942,14 +962,14 @@ mousepad_window_close_screen (MousepadWindow *window,
 
       switch (response)
         {
-          case GTK_RESPONSE_REJECT:
+          case MOUSEPAD_RESPONSE_DONT_SAVE:
             /* don't save, only destroy the screen */
             succeed = TRUE;
             break;
-          case GTK_RESPONSE_CANCEL:
+          case MOUSEPAD_RESPONSE_CANCEL:
             /* we do nothing */
             break;
-          case GTK_RESPONSE_OK:
+          case MOUSEPAD_RESPONSE_SAVE:
             succeed = mousepad_window_save (window, screen, FALSE);
             break;
         }
@@ -1649,6 +1669,50 @@ mousepad_window_action_save_file_as (GtkAction      *action,
           action = gtk_action_group_get_action (window->window_actions, "save-file");
           gtk_action_set_sensitive (action, TRUE);
         }
+    }
+}
+
+
+
+static void
+mousepad_window_action_reload (GtkAction      *action,
+                               MousepadWindow *window)
+{
+  MousepadScreen *screen;
+  GError         *error = NULL;
+  const gchar    *message;
+  gint            response = MOUSEPAD_RESPONSE_RELOAD;
+
+  screen = mousepad_window_get_active (window);
+  if (G_LIKELY (screen != NULL))
+    {
+      /* ask what to do when the document still has modifications */
+      if (mousepad_screen_get_modified (screen))
+        response = mousepad_dialogs_ask_reload (GTK_WINDOW (window));
+
+      switch (response)
+        {
+          case MOUSEPAD_RESPONSE_CANCEL:
+            /* do nothing */
+            break;
+
+          case MOUSEPAD_RESPONSE_SAVE_AS:
+            /* try to save the document, break when this went wrong, else
+             * fall-though and try to reload the document */
+            if (!mousepad_window_save (window, screen, TRUE))
+              break;
+
+          case MOUSEPAD_RESPONSE_RELOAD:
+            if (!mousepad_screen_reload (screen, &error))
+              message = _("Failed to reload the document");
+            break;
+        }
+    }
+
+  if (G_UNLIKELY (error != NULL))
+    {
+      mousepad_dialogs_show_error (GTK_WINDOW (window), error, message);
+      g_error_free (error);
     }
 }
 

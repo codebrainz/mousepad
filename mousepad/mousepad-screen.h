@@ -49,6 +49,9 @@ gboolean        mousepad_screen_save_file                (MousepadScreen  *scree
                                                           const gchar     *filename,
                                                           GError         **error);
 
+gboolean        mousepad_screen_reload                   (MousepadScreen  *screen,
+                                                          GError         **error);
+
 const gchar    *mousepad_screen_get_title                (MousepadScreen  *screen,
                                                           gboolean         show_full_path);
 

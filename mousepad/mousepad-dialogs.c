@@ -22,6 +22,7 @@
 #endif
 
 #include <mousepad/mousepad-private.h>
+#include <mousepad/mousepad-dialogs.h>
 #include <mousepad/mousepad-file.h>
 
 
@@ -117,8 +118,8 @@ mousepad_dialogs_jump_to (GtkWindow *parent,
   dialog = gtk_dialog_new_with_buttons (_("Jump To"),
                                         parent,
                                         GTK_DIALOG_MODAL | GTK_DIALOG_DESTROY_WITH_PARENT | GTK_DIALOG_NO_SEPARATOR,
-                                        GTK_STOCK_CANCEL, GTK_RESPONSE_CANCEL,
-                                        GTK_STOCK_JUMP_TO, GTK_RESPONSE_OK,
+                                        GTK_STOCK_CANCEL, MOUSEPAD_RESPONSE_CANCEL,
+                                        GTK_STOCK_JUMP_TO, MOUSEPAD_RESPONSE_JUMP_TO,
                                         NULL);
   gtk_dialog_set_default_response (GTK_DIALOG (dialog), GTK_RESPONSE_OK);
   gtk_window_set_resizable (GTK_WINDOW (dialog), FALSE);
@@ -146,7 +147,7 @@ mousepad_dialogs_jump_to (GtkWindow *parent,
   gtk_widget_show (button);
 
   /* run the dialog */
-  if (gtk_dialog_run (GTK_DIALOG (dialog)) == GTK_RESPONSE_OK)
+  if (gtk_dialog_run (GTK_DIALOG (dialog)) == MOUSEPAD_RESPONSE_JUMP_TO)
     line_number = gtk_spin_button_get_value_as_int (GTK_SPIN_BUTTON (button));
 
   /* destroy the dialog */
@@ -174,13 +175,13 @@ mousepad_dialogs_clear_recent (GtkWindow *parent)
                                               "history owned by Mousepad."));
 
   gtk_dialog_add_buttons (GTK_DIALOG (dialog),
-                          GTK_STOCK_CANCEL, GTK_RESPONSE_CANCEL,
-                          GTK_STOCK_CLEAR, GTK_RESPONSE_OK,
+                          GTK_STOCK_CANCEL, MOUSEPAD_RESPONSE_CANCEL,
+                          GTK_STOCK_CLEAR, MOUSEPAD_RESPONSE_CLEAR,
                           NULL);
-  gtk_dialog_set_default_response (GTK_DIALOG (dialog), GTK_RESPONSE_CANCEL);
+  gtk_dialog_set_default_response (GTK_DIALOG (dialog), MOUSEPAD_RESPONSE_CANCEL);
 
   /* popup the dialog */
-  if (gtk_dialog_run (GTK_DIALOG (dialog)) == GTK_RESPONSE_OK)
+  if (gtk_dialog_run (GTK_DIALOG (dialog)) == MOUSEPAD_RESPONSE_CLEAR)
     succeed = TRUE;
 
   /* destroy the dialog */
@@ -191,7 +192,7 @@ mousepad_dialogs_clear_recent (GtkWindow *parent)
 
 
 
-gboolean
+gint
 mousepad_dialogs_save_changes (GtkWindow *parent)
 {
   GtkWidget *dialog;
@@ -209,12 +210,12 @@ mousepad_dialogs_save_changes (GtkWindow *parent)
 
   gtk_dialog_add_action_widget (GTK_DIALOG (dialog),
                                 mousepad_dialogs_image_button (GTK_STOCK_DELETE, _("_Don't Save")),
-                                GTK_RESPONSE_REJECT);
+                                MOUSEPAD_RESPONSE_DONT_SAVE);
   gtk_dialog_add_buttons (GTK_DIALOG (dialog),
-                          GTK_STOCK_CANCEL, GTK_RESPONSE_CANCEL,
-                          GTK_STOCK_SAVE, GTK_RESPONSE_OK,
+                          GTK_STOCK_CANCEL, MOUSEPAD_RESPONSE_CANCEL,
+                          GTK_STOCK_SAVE, MOUSEPAD_RESPONSE_SAVE,
                           NULL);
-  gtk_dialog_set_default_response (GTK_DIALOG (dialog), GTK_RESPONSE_OK);
+  gtk_dialog_set_default_response (GTK_DIALOG (dialog), MOUSEPAD_RESPONSE_SAVE);
 
   /* run the dialog and wait for a response */
   response = gtk_dialog_run (GTK_DIALOG (dialog));
@@ -297,16 +298,15 @@ mousepad_dialogs_save_as (GtkWindow   *parent,
 
 
 
-gboolean
+gint
 mousepad_dialogs_ask_overwrite (GtkWindow   *parent,
                                 const gchar *filename)
 {
   GtkWidget *dialog;
-  gboolean   overwrite = FALSE;
+  gint       response;
 
   dialog = gtk_message_dialog_new (parent,
-                                   GTK_DIALOG_MODAL
-                                   | GTK_DIALOG_DESTROY_WITH_PARENT,
+                                   GTK_DIALOG_MODAL | GTK_DIALOG_DESTROY_WITH_PARENT,
                                    GTK_MESSAGE_QUESTION,
                                    GTK_BUTTONS_NONE,
                                    _("The file has been externally modified. Are you sure "
@@ -315,19 +315,54 @@ mousepad_dialogs_ask_overwrite (GtkWindow   *parent,
                                             _("If you save the file, the external changes "
                                               "to \"%s\" will be lost."), filename);
 
-  gtk_dialog_add_button (GTK_DIALOG (dialog), GTK_STOCK_CANCEL, GTK_RESPONSE_CANCEL);
+  gtk_dialog_add_button (GTK_DIALOG (dialog), GTK_STOCK_CANCEL, MOUSEPAD_RESPONSE_CANCEL);
   gtk_dialog_add_action_widget (GTK_DIALOG (dialog),
                                 mousepad_dialogs_image_button (GTK_STOCK_SAVE, _("_Overwrite")),
-                                GTK_RESPONSE_OK);
+                                MOUSEPAD_RESPONSE_OVERWRITE);
   gtk_dialog_add_action_widget (GTK_DIALOG (dialog),
                                 mousepad_dialogs_image_button (GTK_STOCK_REFRESH, _("_Reload")),
-                                GTK_RESPONSE_REJECT);
-  gtk_dialog_set_default_response (GTK_DIALOG (dialog), GTK_RESPONSE_CANCEL);
+                                MOUSEPAD_RESPONSE_RELOAD);
+  gtk_dialog_set_default_response (GTK_DIALOG (dialog), MOUSEPAD_RESPONSE_CANCEL);
 
-  if (gtk_dialog_run (GTK_DIALOG (dialog)) == GTK_RESPONSE_OK)
-    overwrite = TRUE;
+  /* run the dialog */
+  response = gtk_dialog_run (GTK_DIALOG (dialog));
 
+  /* destroy the dialog */
   gtk_widget_destroy (dialog);
 
-  return overwrite;
+  return response;
+}
+
+
+
+gint
+mousepad_dialogs_ask_reload (GtkWindow *parent)
+{
+  GtkWidget *dialog;
+  gint       response;
+
+  dialog = gtk_message_dialog_new (parent,
+                                   GTK_DIALOG_MODAL | GTK_DIALOG_DESTROY_WITH_PARENT,
+                                   GTK_MESSAGE_QUESTION,
+                                   GTK_BUTTONS_NONE,
+                                   _("Do you want to save your changes before reloading?"));
+  gtk_message_dialog_format_secondary_text (GTK_MESSAGE_DIALOG (dialog),
+                                            _("If you reload the file, you changes will be lost."));
+
+  gtk_dialog_add_buttons (GTK_DIALOG (dialog),
+                          GTK_STOCK_CANCEL, MOUSEPAD_RESPONSE_CANCEL,
+                          GTK_STOCK_SAVE_AS, MOUSEPAD_RESPONSE_SAVE_AS,
+                          NULL);
+  gtk_dialog_add_action_widget (GTK_DIALOG (dialog),
+                                mousepad_dialogs_image_button (GTK_STOCK_REFRESH, _("_Reload")),
+                                MOUSEPAD_RESPONSE_RELOAD);
+  gtk_dialog_set_default_response (GTK_DIALOG (dialog), MOUSEPAD_RESPONSE_CANCEL);
+
+  /* run the dialog */
+  response = gtk_dialog_run (GTK_DIALOG (dialog));
+
+  /* destroy the dialog */
+  gtk_widget_destroy (dialog);
+
+  return response;
 }

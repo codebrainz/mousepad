@@ -23,6 +23,8 @@
       <menuitem action="save-file" />
       <menuitem action="save-file-as" />
       <separator />
+      <menuitem action="reload" />
+      <separator />
       <menuitem action="close-tab" />
       <menuitem action="close-window" />
       <menuitem action="close-all-windows" />

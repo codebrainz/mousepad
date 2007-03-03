@@ -1,5 +1,12 @@
 2007-03-03	Nick Schermer <nick@xfce.org>
 
+	* mousepad/mousepad-dialogs.{c,h}: Add response actions for Mousepad so it's
+	  easier to understand what happens.
+	* mousepad/mousepad-window.c, * mousepad/mousepad-screen.{c,h}: Basic
+	  support for document reloading.
+
+2007-03-03	Nick Schermer <nick@xfce.org>
+
 	* configure.in.in, mousepad/Makefile.am: Remove the PCRE dependency.
 	  I should have removed this earier after some testing.
 
