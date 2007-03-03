@@ -38,7 +38,6 @@ mousepad_SOURCES =							\
 
 mousepad_CFLAGS =							\
 	$(EXO_CFLAGS)							\
-	$(PCRE_CFLAGS)							\
 	$(GTHREAD_CFLAGS)						\
 	$(PLATFORM_CFLAGS)
 
@@ -49,7 +48,6 @@ mousepad_LDFLAGS =							\
 
 mousepad_LDADD =							\
 	$(EXO_LIBS)							\
-	$(PCRE_LIBS)							\
 	$(GTHREAD_LIBS)
 
 if HAVE_DBUS
