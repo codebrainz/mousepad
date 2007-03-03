@@ -1,13 +1,57 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<!--
+   $Id$
+
+   Copyright (c) 2007 Nick Schermer <nick@xfce.org>
+
+   This program is free software; you can redistribute it and/or modify it
+   under the terms of the GNU General Public License as published by the Free
+   Software Foundation; either version 2 of the License, or (at your option)
+   any later version.
+
+   This program is distributed in the hope that it will be useful, but WITHOUT
+   ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+   FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for
+   more details.
+
+   You should have received a copy of the GNU General Public License along with
+   this program; if not, write to the Free Software Foundation, Inc., 59 Temple
+   Place, Suite 330, Boston, MA  02111-1307  USA
+-->
+
 <node name="/org/xfce/Mousepad">
 
+  <!--
+    org.xfce.Thunar
+
+    The Mousepad specific interface, which provides Mousepad specific methods.
+
+    This inferface is internally used by Mousepad and should not be used externally.
+  -->
   <interface name="org.xfce.Mousepad">
     <annotation name="org.freedesktop.DBus.GLib.CSymbol" value="mousepad_dbus_service" />
 
+    <!--
+      LaunchFiles (working-directory : STRING, filenames : ARRAY OF STRING : VOID
+
+      working-directory : the directory, relative to which filenames should
+                          be interpreted.
+      filenames         : an array of file names to launch. The file names may
+                          be either file:-URIs, absolute paths or paths relative
+                          to the working-directory.
+    -->
     <method name="LaunchFiles">
       <arg direction="in" name="working-directory" type="s" />
       <arg direction="in" name="filenames" type="as" />
+    </method>
+
+    <!--
+      Terminate () : VOID
+
+      Tells a running Mousepad instance to terminate immediately.
+    -->
+    <method name="Terminate">
     </method>
 
   </interface>

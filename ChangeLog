@@ -1,3 +1,18 @@
+2007-02-19	Nick Schermer <nick@xfce.org>
+
+	* mousepad/mousepad-dialogs.{c,h}: New file for the dialogs
+	  so the mousepad-window file becomes more readable.
+	* mousepad/mousepad-window.c: Split some function and reorder
+	  them a bit.
+	* mousepad/mousepad-window.c: The items in the go menu now have
+	  the filename as statusbar tooltip.
+	* mousepad/mousepad-window.c: Check if the file is externally modified
+	  before writing. If it is, ask the user what to do.
+	* mousepad/main.c, mousepad/mousepad-dbus.{c,h},
+	  mousepad/mousepad-dbus-infos.xml: Support for terminating a running
+	  mousepad instance (that is connected to dbus), using mousepad -q.
+	* mousepad/*: Add function destriptions for Erik (and others) :-).
+
 2007-02-18	Nick Schermer <nick@xfce.org>
 
 	* mousepad/mousepad-window.c: Improve the menu tooltips.

@@ -458,6 +458,7 @@ mousepad_screen_open_file (MousepadScreen  *screen,
 
 gboolean
 mousepad_screen_save_file (MousepadScreen  *screen,
+                           const gchar     *filename,
                            GError         **error)
 {
   gchar         *content;
@@ -470,7 +471,7 @@ mousepad_screen_save_file (MousepadScreen  *screen,
 
   _mousepad_return_val_if_fail (MOUSEPAD_IS_SCREEN (screen), FALSE);
   _mousepad_return_val_if_fail (error == NULL || *error == NULL, FALSE);
-  _mousepad_return_val_if_fail (screen->filename != NULL, FALSE);
+  _mousepad_return_val_if_fail (filename != NULL, FALSE);
 
   /* get the buffer */
   buffer = mousepad_screen_get_text_buffer (screen);
@@ -495,7 +496,7 @@ mousepad_screen_save_file (MousepadScreen  *screen,
 
       if (G_LIKELY (converted != NULL))
         {
-          succeed = mousepad_file_save_data (screen->filename, converted, bytes,
+          succeed = mousepad_file_save_data (filename, converted, bytes,
                                              &new_mtime, error);
 
           /* cleanup */
@@ -553,18 +554,11 @@ mousepad_screen_get_filename (MousepadScreen *screen)
 
 
 gboolean
-mousepad_screen_get_externally_modified (MousepadScreen  *screen,
-                                         GError         **error)
+mousepad_screen_get_mtime (MousepadScreen *screen)
 {
-  gboolean modified;
-
   _mousepad_return_val_if_fail (MOUSEPAD_IS_SCREEN (screen), FALSE);
-  _mousepad_return_val_if_fail (screen->filename != NULL, FALSE);
 
-  /* check if the file has been modified */
-  modified = mousepad_file_get_externally_modified (screen->filename, screen->mtime, error);
-
-  return modified;
+  return screen->mtime;
 }
 
 

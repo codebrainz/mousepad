@@ -2,6 +2,8 @@
   - Dialog when closing multiple (modified) tabs.
   - Right-click menu for the tab label.
   - Tab font color when the file is modified or readonly.
+  - Test the application with a screen reader and add Atk objects
+    where needed.
 
 - Text View
   - Search and Replace. Maybe also text highlighting.

@@ -44,6 +44,7 @@ struct _MousepadApplication
 {
   GObject  __parent__;
 
+  /* internal list of all the opened windows */
   GList   *windows;
 };
 
@@ -53,6 +54,16 @@ static GObjectClass *mousepad_application_parent_class;
 
 
 
+/**
+ * mousepad_application_get:
+ *
+ * Returns the global shared #MousepadApplication instance.
+ * This method takes a reference on the global instance
+ * for the caller, so you must call g_object_unref()
+ * on it when done.
+ *
+ * Return value: the shared #MousepadApplication instance.
+ **/
 MousepadApplication*
 mousepad_application_get (void)
 {
@@ -69,10 +80,6 @@ mousepad_application_get (void)
 
   return application;
 }
-
-
-
-static GObjectClass *mousepad_application_parent_class;
 
 
 
@@ -116,7 +123,7 @@ mousepad_application_init (MousepadApplication *application)
   gchar *path;
 
   /* check if we have a saved accel map */
-  path = xfce_resource_lookup (XFCE_RESOURCE_CONFIG, "Mousepad/accels.scm");
+  path = xfce_resource_lookup (XFCE_RESOURCE_CONFIG, PACKAGE_NAME "/accels.scm");
   if (G_LIKELY (path != NULL))
     {
       /* load the accel map */
@@ -135,7 +142,7 @@ mousepad_application_finalize (GObject *object)
   gchar               *path;
 
   /* save the current accel map */
-  path = xfce_resource_save_location (XFCE_RESOURCE_CONFIG, "Mousepad/accels.scm", TRUE);
+  path = xfce_resource_save_location (XFCE_RESOURCE_CONFIG, PACKAGE_NAME "/accels.scm", TRUE);
   if (G_LIKELY (path != NULL))
     {
       /* save the accel map */
@@ -143,6 +150,7 @@ mousepad_application_finalize (GObject *object)
       g_free (path);
     }
 
+  /* destroy the windows if they are still opened */
   for (li = application->windows; li != NULL; li = li->next)
     {
       g_signal_handlers_disconnect_by_func (G_OBJECT (li->data), G_CALLBACK (mousepad_application_window_destroyed), application);
@@ -156,6 +164,16 @@ mousepad_application_finalize (GObject *object)
 
 
 
+/**
+ * mousepad_application_get_windows:
+ * @application: A #MousepadApplication.
+ *
+ * Returns a list of #MousepadWindows currently registered by the
+ * #MousepadApplication. The returned list is owned by the caller and
+ * must be freed using g_list_free().
+ *
+ * Return value: the list of regular #MousepadWindows in @application.
+ **/
 GList*
 mousepad_application_get_windows (MousepadApplication *application)
 {
@@ -173,6 +191,14 @@ mousepad_application_get_windows (MousepadApplication *application)
 
 
 
+/**
+ * mousepad_application_has_windows:
+ * @application : a #MousepadApplication.
+ *
+ * Returns %TRUE if @application controls atleast one window.
+ *
+ * Return value: %TRUE if @application controls atleast one window.
+ **/
 gboolean
 mousepad_application_has_windows (MousepadApplication *application)
 {
@@ -183,6 +209,19 @@ mousepad_application_has_windows (MousepadApplication *application)
 
 
 
+/**
+ * mousepad_application_open_window:
+ * @application       : A #MousepadApplication.
+ * @screen            : The #GdkScreen on which to open the window or %NULL
+ *                      to open on the default screen.
+ * @working_directory : The default working directory for this window.
+ * @filenames         : A list of filenames we try to open in tabs. The file names
+ *                      can either be absolute paths, supported URIs or relative file
+ *                      names to @working_directory or %NULL for an untitled document.
+ *
+ * Opens a new Mousepad window and tries to open all the file names in tabs. If
+ * @filename is %NULL an empty Untiled documenten will be opened in the window.
+ **/
 void
 mousepad_application_open_window (MousepadApplication  *application,
                                   GdkScreen            *screen,
@@ -210,6 +249,8 @@ mousepad_application_open_window (MousepadApplication  *application,
   else
     mousepad_window_open_tab (MOUSEPAD_WINDOW (window), NULL);
 
+  /* TODO: check if there are actually some tabs in the window, if not, open an empty tab */
+
   /* connect to the "destroy" signal */
   g_signal_connect (G_OBJECT (window), "destroy",
                     G_CALLBACK (mousepad_application_window_destroyed), application);
@@ -222,6 +263,15 @@ mousepad_application_open_window (MousepadApplication  *application,
 
 
 
+/**
+ * mousepad_application_window_destroyed:
+ * @window      : The window that has been destroyed.
+ * @application : A #MousepadApplication.
+ *
+ * This function removes @window from the registed windows in @application.
+ * When there are no more windows left in @application, the application is
+ * terminated.
+ **/
 static void
 mousepad_application_window_destroyed (GtkWidget           *window,
                                        MousepadApplication *application)

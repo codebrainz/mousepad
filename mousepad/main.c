@@ -41,6 +41,7 @@ static gchar    **filenames = NULL;
 static gboolean   opt_version = FALSE;
 #ifdef HAVE_DBUS
 static gboolean   opt_disable_server = FALSE;
+static gboolean   opt_quit = FALSE;
 #endif
 
 
@@ -49,9 +50,10 @@ static gboolean   opt_disable_server = FALSE;
 static GOptionEntry option_entries[] =
 {
 #ifdef HAVE_DBUS
-  { "disable-server", '\0', 0, G_OPTION_ARG_NONE, &opt_disable_server, N_ ("Do not register with the D-BUS session message bus"), NULL, },
+  { "disable-server", '\0', 0, G_OPTION_ARG_NONE, &opt_disable_server, N_("Do not register with the D-BUS session message bus"), NULL, },
+  { "quit", 'q', 0, G_OPTION_ARG_NONE, &opt_quit, N_("Quit a running Mousepad instance"), NULL, },
 #endif
-  { "version", 'v', 0, G_OPTION_ARG_NONE, &opt_version, N_ ("Print version information and exit"), NULL, },
+  { "version", 'v', 0, G_OPTION_ARG_NONE, &opt_version, N_("Print version information and exit"), NULL, },
   { G_OPTION_REMAINING, '\0', 0, G_OPTION_ARG_FILENAME_ARRAY, &filenames, NULL, NULL },
   { NULL, },
 };
@@ -62,11 +64,12 @@ gint
 main (gint argc, gchar **argv)
 {
   MousepadApplication *application;
+  GError              *error = NULL;
+  gchar               *working_directory;
+
 #ifdef HAVE_DBUS
   MousepadDBusService *dbus_service;
 #endif
-  GError              *error = NULL;
-  gchar               *working_directory;
 
   /* translation domain */
   xfce_textdomain (GETTEXT_PACKAGE, PACKAGE_LOCALE_DIR, "UTF-8");
@@ -114,6 +117,22 @@ main (gint argc, gchar **argv)
       return EXIT_SUCCESS;
     }
 
+#ifdef HAVE_DBUS
+  /* check if we need to terminate a running Mousepad instance */
+  if (G_UNLIKELY (opt_quit))
+    {
+      /* try to terminate whatever is running */
+      if (!mousepad_dbus_client_terminate (&error))
+        {
+          g_error ("Failed to terminate a running instance: %s\n", error->message);
+          g_error_free (error);
+          return EXIT_FAILURE;
+        }
+
+      return EXIT_SUCCESS;
+    }
+#endif /* !HAVE_DBUS */
+
   /* get the current working directory */
   working_directory = g_get_current_dir ();
 
@@ -150,7 +169,7 @@ main (gint argc, gchar **argv)
   /* create a new mousepad application */
   application = mousepad_application_get ();
 
-  /* open an empty window or the files */
+  /* open an empty window (with an empty document or the files) */
   mousepad_application_open_window (application, NULL, working_directory, filenames);
 
   /* cleanup */

@@ -32,25 +32,25 @@
 
 
 
-static void            mousepad_view_class_init               (MousepadViewClass  *klass);
-static void            mousepad_view_init                     (MousepadView       *view);
-static void            mousepad_view_finalize                 (GObject            *object);
-static gboolean        mousepad_view_key_press_event          (GtkWidget          *widget,
-                                                               GdkEventKey        *event);
-static void            mousepad_view_indent_lines             (MousepadView       *view,
-                                                               GtkTextIter        *start,
-                                                               GtkTextIter        *end,
-                                                               gboolean            indent);
-static gchar          *mousepad_view_compute_indentation      (MousepadView       *view,
-                                                               GtkTextIter        *iter);
-static gint            mousepad_view_expose                   (GtkWidget          *widget,
-                                                               GdkEventExpose     *event);
-static void            mousepad_view_get_lines                (GtkTextView        *text_view,
-                                                               gint                first_y,
-                                                               gint                last_y,
-                                                               GArray            **pixels,
-                                                               GArray            **numbers,
-                                                               gint               *countp);
+static void      mousepad_view_class_init           (MousepadViewClass  *klass);
+static void      mousepad_view_init                 (MousepadView       *view);
+static void      mousepad_view_finalize             (GObject            *object);
+static gboolean  mousepad_view_key_press_event      (GtkWidget          *widget,
+                                                     GdkEventKey        *event);
+static void      mousepad_view_indent_lines         (MousepadView       *view,
+                                                     GtkTextIter        *start,
+                                                     GtkTextIter        *end,
+                                                     gboolean            indent);
+static gchar    *mousepad_view_compute_indentation  (MousepadView       *view,
+                                                     GtkTextIter        *iter);
+static gint      mousepad_view_expose               (GtkWidget          *widget,
+                                                     GdkEventExpose     *event);
+static void      mousepad_view_get_lines            (GtkTextView        *text_view,
+                                                     gint                first_y,
+                                                     gint                last_y,
+                                                     GArray            **pixels,
+                                                     GArray            **numbers,
+                                                     gint               *countp);
 
 
 
@@ -63,6 +63,7 @@ struct _MousepadView
 {
   GtkTextView  __parent__;
 
+  /* settings */
   gboolean     auto_indent;
   gboolean     line_numbers;
 };
@@ -128,6 +129,18 @@ mousepad_view_finalize (GObject *object)
 
 
 
+/**
+ * mousepad_view_key_press_event:
+ * @widget : A #GtkWidget.
+ * @event  : A #GdkEventKey
+ *
+ * This function is triggered when the user pressed a key in the
+ * #MousepadView. It checks if we need to auto indent the new line
+ * or when multiple lines are selected we (un)indent all of them.
+ *
+ * Return value: %TRUE if we handled the event, else we trigger the
+ *               parent class so Gtk can handle the event.
+ **/
 static gboolean
 mousepad_view_key_press_event (GtkWidget   *widget,
                                GdkEventKey *event)
@@ -210,6 +223,18 @@ mousepad_view_key_press_event (GtkWidget   *widget,
 
 
 
+/**
+ * mousepad_view_indent_lines:
+ * @view   : A #MousepadView
+ * @start  : The start #GtkTextIter of the selection.
+ * @end    : The end #GtkTextIter of the selection
+ * @indent : Whether we need to indent or unindent the
+ *           selected lines.
+ *
+ * This function (un)indents the selected lines. It simply walks
+ * from the start line number to the end line number and prepends
+ * or removed a tab (or the tab width in spaces).
+ **/
 static void
 mousepad_view_indent_lines (MousepadView *view,
                             GtkTextIter  *start,
@@ -309,6 +334,19 @@ mousepad_view_indent_lines (MousepadView *view,
 
 
 
+/**
+ * mousepad_view_compute_indentation:
+ * @view : A #MousepadView.
+ * @iter : The #GtkTextIter of the previous line.
+ *
+ * This function is used to get the tabs and spaces we need to
+ * append when auto indentation is enabled. If scans the line of
+ * @iter and returns a slice of the tabs and spaces before the
+ * first character or line end.
+ *
+ * Return value: A string of tabs and spaces or %NULL when the
+ *               previous line has no tabs or spaces before the text.
+ **/
 static gchar *
 mousepad_view_compute_indentation (MousepadView *view,
                                    GtkTextIter  *iter)
@@ -356,6 +394,21 @@ mousepad_view_compute_indentation (MousepadView *view,
 
 
 
+/**
+ * mousepad_view_get_lines:
+ * @text_view : A #GtkTextView
+ * @first_y   : The first y location of the visible #GtkTextView window.
+ * @last_y    : The last y location of the visible #GtkTextView window.
+ * @pixels    : Return location for the #GArray with the y location
+ *              in pixels we need to draw line numbers.
+ * @numbers   : Return location for the #GArray with all the visible
+ *              line numbers.
+ * @countp    : Return location for the number of lines visible between
+ *              @first_y and @last_y.
+ *
+ * This function returns two arrays with the lines number and there draw
+ * location of the visible text view window.
+ **/
 static void
 mousepad_view_get_lines (GtkTextView  *text_view,
                          gint          first_y,
@@ -428,6 +481,17 @@ mousepad_view_get_lines (GtkTextView  *text_view,
 
 
 
+/**
+ * mousepad_view_expose:
+ * @widget : A textview widget.
+ * @event  : A #GdkEventExpose event.
+ *
+ * This function draws the line numbers in the GTK_TEXT_WINDOW_LEFT window
+ * when it receives an expose event. At the end of the function we always
+ * return the expose_event of the parent class so Gtk can draw the text.
+ *
+ * Return value: The return value of the parent_class.
+ **/
 static gboolean
 mousepad_view_expose (GtkWidget      *widget,
                       GdkEventExpose *event)
@@ -520,6 +584,14 @@ mousepad_view_expose (GtkWidget      *widget,
 
 
 
+/**
+ * mousepad_view_set_show_line_numbers:
+ * @view    : A #MousepadView
+ * @visible : Boolean whether we show or hide the line
+ *            numbers.
+ *
+ * Whether line numbers are visible in the @view.
+ **/
 void
 mousepad_view_set_show_line_numbers (MousepadView *view,
                                      gboolean      visible)
@@ -543,6 +615,14 @@ mousepad_view_set_show_line_numbers (MousepadView *view,
 
 
 
+/**
+ * mousepad_view_set_auto_indent:
+ * @view    : A #MousepadView
+ * @visible : Boolean whether we enable or disable
+ *            auto indentation.
+ *
+ * Whether we enable auto indentation.
+ **/
 void
 mousepad_view_set_auto_indent (MousepadView *view,
                                gboolean      enable)

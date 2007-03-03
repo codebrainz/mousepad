@@ -38,13 +38,18 @@
 
 
 
-static void      mousepad_dbus_service_class_init     (MousepadDBusServiceClass  *klass);
-static void      mousepad_dbus_service_init           (MousepadDBusService       *dbus_service);
-static void      mousepad_dbus_service_finalize       (GObject                   *object);
-static gboolean  mousepad_dbus_service_launch_files   (MousepadDBusService       *dbus_service,
-                                                       const gchar               *working_directory,
-                                                       gchar                    **filenames,
-                                                       GError                   **error);
+#define MOUSEPAD_DBUS_PATH      "/org/xfce/Mousepad"
+#define MOUSEPAD_DBUS_INTERFACE "org.xfce.Mousepad"
+
+
+
+static void      mousepad_dbus_service_class_init    (MousepadDBusServiceClass  *klass);
+static void      mousepad_dbus_service_init          (MousepadDBusService       *dbus_service);
+static void      mousepad_dbus_service_finalize      (GObject                   *object);
+static gboolean  mousepad_dbus_service_launch_files  (MousepadDBusService       *dbus_service,
+                                                      const gchar               *working_directory,
+                                                      gchar                    **filenames,
+                                                      GError                   **error);
 
 
 
@@ -116,10 +121,11 @@ mousepad_dbus_service_init (MousepadDBusService *dbus_service)
   if (G_LIKELY (dbus_service->connection != NULL))
     {
       /* register the /org/xfce/TextEditor object for Mousepad */
-      dbus_g_connection_register_g_object (dbus_service->connection, "/org/xfce/Mousepad", G_OBJECT (dbus_service));
+      dbus_g_connection_register_g_object (dbus_service->connection, MOUSEPAD_DBUS_PATH, G_OBJECT (dbus_service));
 
       /* request the org.xfce.Mousepad name for Mousepad */
-      dbus_bus_request_name (dbus_g_connection_get_connection (dbus_service->connection), "org.xfce.Mousepad", DBUS_NAME_FLAG_REPLACE_EXISTING, NULL);
+      dbus_bus_request_name (dbus_g_connection_get_connection (dbus_service->connection),
+                             MOUSEPAD_DBUS_INTERFACE, DBUS_NAME_FLAG_REPLACE_EXISTING, NULL);
     }
   else
     {
@@ -152,6 +158,20 @@ mousepad_dbus_service_finalize (GObject *object)
 
 
 
+/**
+ * mousepad_dbus_service_launch_files:
+ * @dbus_service      : A #MousepadDBusService.
+ * @working_directory : The default working directory for this window.
+ * @filenames         : A list of filenames we try to open in tabs. The file names
+ *                      can either be absolute paths, supported URIs or relative file
+ *                      names to @working_directory or %NULL for an untitled document.
+ * @error             : Return location for errors, not used atm.
+ *
+ * This function is activated by DBus (service) and opens a new window in this instance of
+ * Mousepad.
+ *
+ * Return value: %TRUE on success, %FALSE if @error is set.
+ **/
 static gboolean
 mousepad_dbus_service_launch_files (MousepadDBusService  *dbus_service,
                                     const gchar          *working_directory,
@@ -164,8 +184,10 @@ mousepad_dbus_service_launch_files (MousepadDBusService  *dbus_service,
   _mousepad_return_val_if_fail (g_path_is_absolute (working_directory), FALSE);
   _mousepad_return_val_if_fail (error == NULL || *error == NULL, FALSE);
 
+  /* get the default screen */
   screen = gdk_screen_get_default ();
 
+  /* open a mousepad window */
   application = mousepad_application_get ();
   mousepad_application_open_window (application, screen, working_directory, filenames);
   g_object_unref (G_OBJECT (application));
@@ -175,18 +197,45 @@ mousepad_dbus_service_launch_files (MousepadDBusService  *dbus_service,
 
 
 
-gboolean
-mousepad_dbus_client_launch_files (gchar       **filenames,
-                                   const gchar  *working_directory,
-                                   GError      **error)
+/**
+ * mousepad_dbus_service_terminate:
+ * @dbus_service : A #MousepadDBusService.
+ * @error        : Return location for errors, not used atm.
+ *
+ * This function quits this instance of Mousepad.
+ *
+ * Return value: %TRUE on success.
+ **/
+static gboolean
+mousepad_dbus_service_terminate (MousepadDBusService  *dbus_service,
+                                 GError              **error)
+{
+  /* leave the Gtk main loop as soon as possible */
+  gtk_main_quit ();
+
+  /* we cannot fail */
+  return TRUE;
+}
+
+
+
+/**
+ * mousepad_dbus_client_send:
+ * @message : A #DBusMessage.
+ * @error   : Return location for errors or %NULL.
+ *
+ * This function sends the DBus message and should avoid
+ * code duplication in the functions below.
+ *
+ * Return value: %TRUE on succeed or %FALSE if @error is set.
+ **/
+static gboolean
+mousepad_dbus_client_send (DBusMessage  *message,
+                           GError      **error)
 {
   DBusConnection *connection;
-  DBusMessage    *message;
   DBusMessage    *result;
   DBusError       derror;
-
-  _mousepad_return_val_if_fail (g_path_is_absolute (working_directory), FALSE);
-  _mousepad_return_val_if_fail (error == NULL || *error == NULL, FALSE);
 
   dbus_error_init (&derror);
 
@@ -199,34 +248,22 @@ mousepad_dbus_client_launch_files (gchar       **filenames,
       return FALSE;
     }
 
-  /* generate the message */
-  message = dbus_message_new_method_call ("org.xfce.Mousepad", "/org/xfce/Mousepad",
-                                          "org.xfce.Mousepad", "LaunchFiles");
-  dbus_message_set_auto_start (message, FALSE);
-  dbus_message_append_args (message,
-                            DBUS_TYPE_STRING, &working_directory,
-                            DBUS_TYPE_ARRAY, DBUS_TYPE_STRING, &filenames, filenames ? g_strv_length (filenames) : 0,
-                            DBUS_TYPE_INVALID);
-
   /* send the message */
   result = dbus_connection_send_with_reply_and_block (connection, message, -1, &derror);
-
-  /* release ref */
-  dbus_message_unref (message);
 
   /* check if no reply was received */
   if (result == NULL)
     {
-#ifndef NDEBUG
-      /* set the error when debug is enabled */
-      dbus_set_g_error (error, &derror);
-#endif
+      /* check if there was just no instance running */
+      if (!dbus_error_has_name (&derror, DBUS_ERROR_NAME_HAS_NO_OWNER))
+        dbus_set_g_error (error, &derror);
+
       dbus_error_free (&derror);
       return FALSE;
     }
 
   /* but maybe we received an error */
-  if (dbus_message_get_type (result) == DBUS_MESSAGE_TYPE_ERROR)
+  if (G_UNLIKELY (dbus_message_get_type (result) == DBUS_MESSAGE_TYPE_ERROR))
     {
       dbus_set_error_from_message (&derror, result);
       dbus_set_g_error (error, &derror);
@@ -243,5 +280,90 @@ mousepad_dbus_client_launch_files (gchar       **filenames,
 
 
 
-#include <mousepad/mousepad-dbus-infos.h>
+/**
+ * mousepad_dbus_client_terminate:
+ * @error : Return location for errors or %NULL.
+ *
+ * Function called from this instance of the application and tries to invoke
+ * with an already running instance and ties to quit it.
+ * The mousepad_dbus_service_terminate function is activated in the running instance.
+ *
+ * Return value: %TRUE on success.
+ **/
+gboolean
+mousepad_dbus_client_terminate (GError **error)
+{
+  DBusMessage *message;
 
+  _mousepad_return_val_if_fail (error == NULL || *error == NULL, FALSE);
+
+  /* generate the message */
+  message = dbus_message_new_method_call (MOUSEPAD_DBUS_INTERFACE, MOUSEPAD_DBUS_PATH,
+                                          MOUSEPAD_DBUS_INTERFACE, "Terminate");
+  dbus_message_set_auto_start (message, FALSE);
+
+
+  /* send the message */
+  mousepad_dbus_client_send (message, error);
+
+  /* unref the message */
+  dbus_message_unref (message);
+
+  /* we return false if an error was set */
+  return (error != NULL);
+}
+
+
+
+/**
+ * mousepad_dbus_client_launch_files:
+ * @filenames         : A list of filenames we try to open in tabs. The file names
+ *                      can either be absolute paths, supported URIs or relative file
+ *                      names to @working_directory or %NULL for an untitled document.
+ * @working_directory : Working directory for the new Mousepad window.
+ * @error             : Return location for errors or %NULL.
+ *
+ * This function is called within this instance and tries to connect a running instance
+ * of Mousepad via DBus. The function mousepad_dbus_service_launch_files is activated in the
+ * running instance.
+ *
+ * Return value: %TRUE on success.
+ **/
+gboolean
+mousepad_dbus_client_launch_files (gchar       **filenames,
+                                   const gchar  *working_directory,
+                                   GError      **error)
+{
+  DBusMessage *message;
+  guint        length = 0;
+  gboolean     succeed;
+
+  _mousepad_return_val_if_fail (g_path_is_absolute (working_directory), FALSE);
+  _mousepad_return_val_if_fail (error == NULL || *error == NULL, FALSE);
+
+  /* get the length of the filesname string */
+  if (filenames)
+    length = g_strv_length (filenames);
+
+  /* generate the message */
+  message = dbus_message_new_method_call (MOUSEPAD_DBUS_INTERFACE, MOUSEPAD_DBUS_PATH,
+                                          MOUSEPAD_DBUS_INTERFACE, "LaunchFiles");
+  dbus_message_set_auto_start (message, FALSE);
+  dbus_message_append_args (message,
+                            DBUS_TYPE_STRING, &working_directory,
+                            DBUS_TYPE_ARRAY, DBUS_TYPE_STRING, &filenames, length,
+                            DBUS_TYPE_INVALID);
+
+  /* send the message */
+  succeed = mousepad_dbus_client_send (message, error);
+
+  /* unref the message */
+  dbus_message_unref (message);
+
+  return succeed;
+}
+
+
+
+/* include the dbus glue generated by dbus-binding-tool */
+#include <mousepad/mousepad-dbus-infos.h>

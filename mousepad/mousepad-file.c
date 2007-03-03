@@ -54,25 +54,31 @@
 #include <mousepad/mousepad-file.h>
 
 
-
+/**
+ * mousepad_file_get_externally_modified:
+ * @filename : The filename we're going to check.
+ * @mtime    : The last modification time of the document.
+ *
+ * Returns whether a file has been modified after @mtime. If
+ * no file was found it returns %FALSE.
+ *
+ * Return value: %TRUE is the file exists and has been modified.
+ **/
 gboolean
-mousepad_file_get_externally_modified (const gchar  *filename,
-                                       gint          mtime,
-                                       GError      **error)
+mousepad_file_get_externally_modified (const gchar *filename,
+                                       gint         mtime)
 {
   gint         fd;
   struct stat  statb;
   gboolean     modified = FALSE;
 
-  _mousepad_return_val_if_fail (filename != NULL, FALSE);
-  _mousepad_return_val_if_fail (error == NULL || *error == NULL, FALSE);
+  _mousepad_return_val_if_fail (filename != NULL, TRUE);
 
   /* open the file for reading */
   fd = open (filename, O_RDONLY);
   if (G_UNLIKELY (fd < 0))
     {
-      g_set_error (error, G_FILE_ERROR, G_FILE_ERROR_IO,
-                   _("Failed to open \"%s\" for reading"), filename);
+      /* files probably doesn't exists, so we can safely write */
       return FALSE;
     }
 
@@ -88,6 +94,21 @@ mousepad_file_get_externally_modified (const gchar  *filename,
 
 
 
+/**
+ * mousepad_file_save_data:
+ * @filename  : The filename of the document.
+ * @data      : The content of the editor. This string should
+ *              already been converted to the correct encoding.
+ * @bytes     : The length of @data.
+ * @new_mtime : Return location for the file's modification
+ *              time after a succesfull write.
+ * @error     : Return location for errors or %NULL.
+ *
+ * Try to save the @data to @filename. This function does not
+ * check if the document has been modified externally.
+ *
+ * Return value: %TRUE on success, %FALSE if @error is set.
+ **/
 gboolean
 mousepad_file_save_data (const gchar  *filename,
                          const gchar  *data,
@@ -188,6 +209,26 @@ failed:
 
 
 
+/**
+ * mousepad_file_read_to_buffer:
+ * @filename  : The filename of the destination file.
+ * @buffer    : A #GtkTextBuffer where we can insert the
+ *              content of @filename.
+ * @new_mtime : Return location of the file's modification time
+ *              after a succesfull read.
+ * @readonly  : Return location if we're only allowed to write
+ *              the file. %TRUE if the user is not allowed to write
+ *              to the file.
+ * @error     : Return location of errors or %NULL.
+ *
+ * This function reads the content of a file and inserts it directly
+ * in a #GtkTextBuffer. We don't return a string to avoid string duplication.
+ *
+ * If the user has support for MMAP and the size of the file is below 8MB, we
+ * use MMAP to speedup the file reading a bit.
+ *
+ * Return value: %TRUE on success, %FALSE if @error is set.
+ **/
 gboolean
 mousepad_file_read_to_buffer (const gchar    *filename,
                               GtkTextBuffer  *buffer,
@@ -280,6 +321,18 @@ failed:
 
 
 
+/**
+ * mousepad_file_is_writable:
+ * @filename : The filename to check.
+ * @error    : Return location of errors or %NULL.
+ *
+ * Check if a user is allowed to write to a file. This function
+ * is used in the save as dialog to warn the user if he or she
+ * has permissions to write (before actually closing the
+ * dialog).
+ *
+ * Return value: %TRUE is the user is allowed to write the @filename.
+ **/
 gboolean
 mousepad_file_is_writable (const gchar  *filename,
                            GError      **error)

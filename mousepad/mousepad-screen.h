@@ -46,6 +46,7 @@ gboolean        mousepad_screen_open_file                (MousepadScreen  *scree
                                                           GError         **error);
 
 gboolean        mousepad_screen_save_file                (MousepadScreen  *screen,
+                                                          const gchar     *filename,
                                                           GError         **error);
 
 const gchar    *mousepad_screen_get_title                (MousepadScreen  *screen,
@@ -53,8 +54,7 @@ const gchar    *mousepad_screen_get_title                (MousepadScreen  *scree
 
 const gchar    *mousepad_screen_get_filename             (MousepadScreen  *screen);
 
-gboolean        mousepad_screen_get_externally_modified  (MousepadScreen  *screen,
-                                                          GError         **error);
+gboolean        mousepad_screen_get_mtime                (MousepadScreen  *screen);
 
 GtkTextView    *mousepad_screen_get_text_view            (MousepadScreen  *screen);
 

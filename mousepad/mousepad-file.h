@@ -22,24 +22,23 @@
 
 G_BEGIN_DECLS
 
-gboolean   mousepad_file_get_externally_modified   (const gchar    *filename,
-                                                    gint            mtime,
-                                                    GError        **error);
+gboolean  mousepad_file_get_externally_modified  (const gchar    *filename,
+                                                  gint            mtime);
 
-gboolean   mousepad_file_save_data                 (const gchar    *filename,
-                                                    const gchar    *data,
-                                                    gsize           bytes,
-                                                    gint           *new_mtime,
-                                                    GError        **error);
+gboolean  mousepad_file_save_data                (const gchar    *filename,
+                                                  const gchar    *data,
+                                                  gsize           bytes,
+                                                  gint           *new_mtime,
+                                                  GError        **error);
 
-gboolean   mousepad_file_read_to_buffer            (const gchar    *filename,
-                                                    GtkTextBuffer  *buffer,
-                                                    gint           *new_mtime,
-                                                    gboolean       *readonly,
-                                                    GError        **error);
+gboolean  mousepad_file_read_to_buffer           (const gchar    *filename,
+                                                  GtkTextBuffer  *buffer,
+                                                  gint           *new_mtime,
+                                                  gboolean       *readonly,
+                                                  GError        **error);
 
-gboolean   mousepad_file_is_writable               (const gchar    *filename,
-                                                    GError        **error);
+gboolean  mousepad_file_is_writable              (const gchar    *filename,
+                                                  GError        **error);
 
 G_END_DECLS
 
