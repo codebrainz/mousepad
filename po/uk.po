@@ -1,15 +1,15 @@
 # Ukrainian translation to mousepad.
 # Copyright (C) 2002-2006 The Xfce development team.
 # This file is distributed under the same license as the libxfcegui4 package.
-# Maxim V. Dziumanenko <mvd@mylinux.ua>, 2006.
+# Maxim Dziumanenko <dziumanenko@gmail.com>, 2006-2007.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: mousepad 0.2.12\n"
+"Project-Id-Version: mousepad\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2007-01-20 12:34+0100\n"
-"PO-Revision-Date: 2006-04-18 21:06+0900\n"
-"Last-Translator: Maxim V. Dziumanenko <mvd@mylinux.ua>\n"
+"PO-Revision-Date: 2007-03-03 21:06+0900\n"
+"Last-Translator: Maxim Dziumanenko <dziumanenko@gmail.com>\n"
 "Language-Team: Ukrainian <translation-team-uk@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -59,18 +59,16 @@ msgid "/File/_New"
 msgstr "/Файл/_Створити"
 
 #: ../src/menu.c:66
-#, fuzzy
 msgid "/File/New _Window"
-msgstr "/Файл/_Створити"
+msgstr "/Файл/_Нове вікно"
 
 #: ../src/menu.c:69
 msgid "/File/_Open..."
 msgstr "/Файл/_Відкрити"
 
 #: ../src/menu.c:72
-#, fuzzy
 msgid "/File/Open _Recent"
-msgstr "/Файл/_Відкрити"
+msgstr "/Файл/Відкрити не_давній"
 
 #: ../src/menu.c:77
 msgid "/File/_Save"
@@ -264,6 +262,8 @@ msgstr "'%s' вже існує. Перезаписати?"
 #: ../src/window.c:110
 msgid "Warning, you are using the root account, you may harm your system."
 msgstr ""
+"Попередження, ви використовуєте обліковий запис суперкористувача, при цьому "
+"ви можете пошкодити вашу систему."
 
 #: ../src/window.c:169
 msgid "Untitled"
