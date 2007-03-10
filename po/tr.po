@@ -1,0 +1,281 @@
+# Turkish translations for Mousepad package
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the Mousepad package.
+# Turker Gulum <turker.gulum@linux.org.tr>, 2007.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Mousepad\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2007-01-20 12:34+0100\n"
+"PO-Revision-Date: 2007-03-09 10:40+0100\n"
+"Last-Translator: Türker Gülüm <turker.gulum@linux.org.tr>\n"
+"Language-Team: Turkish\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../src/callback.c:37
+#, c-format
+msgid "Save changes to '%s'?"
+msgstr "Değişiklikler '%s' dosyasına kayıt edilsin mi?"
+
+#: ../src/callback.c:213 ../src/file.c:174
+#, c-format
+msgid "Can't convert codeset to '%s'"
+msgstr "Kod tablosu '%s' tablosuna dönüştürülemedi"
+
+#: ../src/callback.c:240
+msgid "Can't open pipe to process"
+msgstr "İşlem için yer açılamıyor"
+
+#: ../src/callback.c:397
+msgid "A text editor for Xfce"
+msgstr "Xfce için bir metin editörü"
+
+#: ../src/dialog.c:135
+#, c-format
+msgid "About %s"
+msgstr "%s hakkında"
+
+#: ../src/file.c:187
+msgid "Can't open file to write"
+msgstr "Dosya yazıma uygun açılamıyor"
+
+#: ../src/file.c:192
+msgid "Can't write file"
+msgstr "Dosyaya yazılamıyor"
+
+#: ../src/font.c:49
+msgid "Font"
+msgstr "Yazı tipi"
+
+#: ../src/menu.c:61
+msgid "/_File"
+msgstr "/_Dosya"
+
+#: ../src/menu.c:63
+msgid "/File/_New"
+msgstr "/Dosya/_Yeni"
+
+#: ../src/menu.c:66
+msgid "/File/New _Window"
+msgstr "/Dosya/Yeni _Pencere"
+
+#: ../src/menu.c:69
+msgid "/File/_Open..."
+msgstr "/Dosya/_Aç..."
+
+#: ../src/menu.c:72
+msgid "/File/Open _Recent"
+msgstr "/Dosya/_Güncel Dosya Aç"
+
+#: ../src/menu.c:77
+msgid "/File/_Save"
+msgstr "/Dosya/Kaydet"
+
+#: ../src/menu.c:79
+msgid "/File/Save _As..."
+msgstr "/Dosya/Farklı Kaydet..."
+
+#: ../src/menu.c:83
+msgid "/File/_Print..."
+msgstr "/Dosya/Ya_zdır..."
+
+#: ../src/menu.c:87
+msgid "/File/_Quit"
+msgstr "/Dosya/Çıkış"
+
+#: ../src/menu.c:89
+msgid "/_Edit"
+msgstr "/Düzen"
+
+#: ../src/menu.c:91
+msgid "/Edit/_Undo"
+msgstr "/Düzen/Geri Al"
+
+#: ../src/menu.c:93
+msgid "/Edit/_Redo"
+msgstr "/Düzen/Yeniden Yap"
+
+#: ../src/menu.c:97
+msgid "/Edit/Cu_t"
+msgstr "/Düzen/Kes"
+
+#: ../src/menu.c:99
+msgid "/Edit/_Copy"
+msgstr "/Düzen/_Kopyala"
+
+#: ../src/menu.c:101
+msgid "/Edit/_Paste"
+msgstr "/Düzen/_Yapıştır"
+
+#: ../src/menu.c:103
+msgid "/Edit/_Delete"
+msgstr "/Düzen/Dil"
+
+#: ../src/menu.c:107
+msgid "/Edit/Select _All"
+msgstr "/Düzen/Hepsini _Seç"
+
+#: ../src/menu.c:109
+msgid "/_Search"
+msgstr "/Ara"
+
+#: ../src/menu.c:111
+msgid "/Search/_Find..."
+msgstr "/Ara/_Bul..."
+
+#: ../src/menu.c:113
+msgid "/Search/Find _Next"
+msgstr "/Ara/Sonraki"
+
+#: ../src/menu.c:115
+msgid "/Search/Find _Previous"
+msgstr "/Ara/Önceki"
+
+#: ../src/menu.c:117
+msgid "/Search/_Replace..."
+msgstr "/Ara/_Değiştir..."
+
+#: ../src/menu.c:121
+msgid "/Search/_Jump To..."
+msgstr "/Ara/_Zıpla..."
+
+#: ../src/menu.c:123
+msgid "/_Options"
+msgstr "/Seçenekler"
+
+#: ../src/menu.c:125
+msgid "/Options/_Font..."
+msgstr "/Seçenekler/_Yazı tipi..."
+
+#: ../src/menu.c:127
+msgid "/Options/_Word Wrap"
+msgstr "/Seçenekler/_Sözcük Kaydırma"
+
+#: ../src/menu.c:129
+msgid "/Options/_Line Numbers"
+msgstr "/Seçenekler/Satır Sayısı"
+
+#: ../src/menu.c:133
+msgid "/Options/_Auto Indent"
+msgstr "/Seçenekler/Özdevimli Girinti"
+
+#: ../src/menu.c:135
+msgid "/_Help"
+msgstr "/_Yardım"
+
+#: ../src/menu.c:137
+msgid "/Help/_About"
+msgstr "/Yardım/_Hakkinda"
+
+#: ../src/search.c:73
+msgid "Search string not found"
+msgstr "Dizge bulunamadı"
+
+#: ../src/search.c:115
+msgid "Replace?"
+msgstr "Değiştirilsin mi?"
+
+#: ../src/search.c:143
+#, c-format
+msgid "%d strings replaced"
+msgstr "%d dizgesi değiştirildi"
+
+#: ../src/search.c:188
+msgid "Find"
+msgstr "Bul"
+
+#: ../src/search.c:200 ../src/search.c:265
+msgid "Fi_nd what: "
+msgstr "Ne Bulunacak: "
+
+#: ../src/search.c:219 ../src/search.c:292
+msgid "_Match case"
+msgstr "Büyük/küçük harf duyarlı"
+
+#: ../src/search.c:253
+msgid "Replace"
+msgstr "Değiştir"
+
+#: ../src/search.c:280
+msgid "Re_place with: "
+msgstr "Değiştir:"
+
+#: ../src/search.c:296
+msgid "Replace _all at once"
+msgstr "Hepsini tek seferde değiştir"
+
+#: ../src/search.c:342
+msgid "Jump To"
+msgstr "Zıplanılacak yer"
+
+#: ../src/search.c:347
+msgid "_Jump"
+msgstr "_Zıpla"
+
+#: ../src/search.c:353
+msgid "_Line number: "
+msgstr "Satır sayısı: "
+
+#: ../src/selector.c:103
+#, c-format
+msgid "Current Locale (%s)"
+msgstr "Geçerli Yerel Ayarlar (%s)"
+
+#: ../src/selector.c:147
+msgid "Other Codeset"
+msgstr "Başka Kod Tablosu"
+
+#: ../src/selector.c:186
+msgid "Code_set:"
+msgstr "Kod Tablosu:"
+
+#: ../src/selector.c:207
+#, c-format
+msgid "'%s' is not supported"
+msgstr "'%s' desteklenmiyor"
+
+#: ../src/selector.c:271
+msgid "Auto Detect"
+msgstr "Algıla"
+
+#: ../src/selector.c:325
+msgid "Open"
+msgstr "Aç"
+
+#: ../src/selector.c:325
+msgid "Save As"
+msgstr "Farklı Kaydet"
+
+#: ../src/selector.c:347
+msgid "Ch_aracter Coding: "
+msgstr "Kod Tablosu: "
+
+#: ../src/selector.c:403
+#, c-format
+msgid "'%s' already exists. Overwrite?"
+msgstr "'%s' dosyası zaten var. Üzerine mi yazılsın?"
+
+#. add the label with the root warning
+#: ../src/window.c:110
+msgid "Warning, you are using the root account, you may harm your system."
+msgstr "Uyarı, root hesabını kullanıyorsunuz, sisteme zarar verebilirsiniz."
+
+#: ../src/window.c:169
+msgid "Untitled"
+msgstr "İsimsiz"
+
+#: ../mousepad.desktop.in.h:1
+msgid "Mousepad"
+msgstr "Mouse altlığı"
+
+#: ../mousepad.desktop.in.h:2
+msgid "Simple text editor"
+msgstr "Basit metin editörü"
+
+#: ../mousepad.desktop.in.h:3
+msgid "Text Editor"
+msgstr "Metin Editörü"
