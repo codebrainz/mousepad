@@ -1,12 +1,11 @@
 # Turkish translations for Mousepad package
-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# Copyright (C) 2005-2007 Erik Harrison.
 # This file is distributed under the same license as the Mousepad package.
 # Turker Gulum <turker.gulum@linux.org.tr>, 2007.
 #
-#, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: Mousepad\n"
+"Project-Id-Version: Mousepad 0.2.13\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2007-01-20 12:34+0100\n"
 "PO-Revision-Date: 2007-03-09 10:40+0100\n"
