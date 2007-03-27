@@ -1,3 +1,8 @@
+2007-03-27  Maximilian Schleiss <maxschleiss@bluewin.ch>
+
+	* en_GB.po: Added the British translation
+	by Jeff Bailes <thepizzaking@gmail.com>
+
 2007-03-25  Daichi Kawahata <daichi@xfce.org>
 
 	* gl.po, tr.po: Fixed header.
@@ -36,7 +41,7 @@
 
 2007-02-05  Pau Rul-lan Ferragut <paurullan@bulma.net>
 
-        * ca.po: Update Catalan translation
+	* ca.po: Update Catalan translation
 
 2007-01-24  Maximilian Schleiss <maxschleiss@bluewin.ch>
 
