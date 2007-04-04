@@ -302,16 +302,14 @@ mousepad_search_bar_find_string (MousepadSearchBar *search_bar,
 
   /* get the entry string */
   string = gtk_entry_get_text (GTK_ENTRY (search_bar->entry));
-  if (string != NULL && *string != '\0')
-    {
-      /* send the signal and wait for the result */
-      g_signal_emit (G_OBJECT (search_bar), search_bar_signals[FIND_STRING], 0,
-                     string, flags, &result);
-    }
-  else
-    {
-      result = TRUE;
-    }
+
+  /* send the signal and wait for the result */
+  g_signal_emit (G_OBJECT (search_bar), search_bar_signals[FIND_STRING], 0,
+                 string, flags, &result);
+
+  /* make sure the search entry is not red when no text was typed */
+  if (string == NULL || *string == '\0')
+    result = TRUE;
 
   /* change the entry style */
   mousepad_search_bar_nothing_found (search_bar, !result);

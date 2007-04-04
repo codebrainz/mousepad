@@ -1,6 +1,20 @@
+#
+# Sources
+#
 mousepad/main.c
 mousepad/mousepad-application.c
 mousepad/mousepad-dbus.c
+mousepad/mousepad-dialogs.c
+mousepad/mousepad-document.c
+mousepad/mousepad-exo.c
+mousepad/mousepad-file.c
 mousepad/mousepad-preferences.c
-mousepad/mousepad-textview.c
+mousepad/mousepad-search-bar.c
+mousepad/mousepad-statusbar.c
+mousepad/mousepad-view.c
 mousepad/mousepad-window.c
+
+#
+# Desktop Files
+#
+Mousepad.desktop.in.in

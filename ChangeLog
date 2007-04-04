@@ -1,9 +1,19 @@
 2007-04-04	Nick Schermer <nick@xfce.org>
+	* po/: Update the POTFILES.in file and regenerate the pot file.
+	* mousepad/mousepad-document.c: Make the scroll offset smaller, so the
+	  textview doesn't jump around while searching.
+	* mousepad/mousepad-search-bar.c: Make sure the search signal is send
+	  when the search field is empty after a backspace, so no text is selected in
+	  the buffer.
+	* Remove some leftover tabs.
+
+
+2007-04-04	Nick Schermer <nick@xfce.org>
 
 	* configure.in.in: Mousepad does not depend on exo anymore. Only
 	  when you run in maintainer-mode, exo-csource is required.
 	* mousepad/mousepad-document.*: Renamed mousepad-screen to mousepad-document.
-	* mousepad/mousepad-{search-bar,document,window).*: Added function for 
+	* mousepad/mousepad-{search-bar,document,window).*: Added function for
 	  searching, including the type-ahead search bar.
 	* mousepad/mousepad-statusbar.*: A custom statusbar suitable for displaying
 	  the tooltips, overwrite/insert and the line- and column-number.
@@ -12,8 +22,8 @@
 	* mousepad/mousepad-marshal.list: Custom marshal for sending search signals.
 	* mousepad/mousepad-types.h: Search types (a mousepad-enum-types.{c,h} is
 	  generated during build).
-	* Various performance inprovements and code cleanups.
-	
+	* Various performance improvements and code cleanups.
+
 
 2007-03-03	Nick Schermer <nick@xfce.org>
 

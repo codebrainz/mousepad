@@ -1526,16 +1526,16 @@ mousepad_window_recent_escape_underscores (const gchar *str)
       next = g_utf8_next_char (str);
 
       switch (*str)
-		    {
-			    case '_':
-				    g_string_append (result, "__");
-				    break;
-			    default:
-				    g_string_append_len (result, str, next - str);
-				    break;
-		    }
+        {
+          case '_':
+            g_string_append (result, "__");
+            break;
+          default:
+            g_string_append_len (result, str, next - str);
+            break;
+        }
 
-		  str = next;
+      str = next;
     }
 
   return g_string_free (result, FALSE);
@@ -2434,9 +2434,9 @@ void
 mousepad_gtk_set_tooltip (GtkWidget   *widget,
                           const gchar *tooltip)
 {
-	static GtkTooltips *tooltips = NULL;
+  static GtkTooltips *tooltips = NULL;
 
-	_mousepad_return_if_fail (GTK_IS_WIDGET (widget));
+  _mousepad_return_if_fail (GTK_IS_WIDGET (widget));
 
   /* allocate the shared tooltips on-demand */
   if (G_UNLIKELY (tooltips == NULL))

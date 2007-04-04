@@ -436,10 +436,10 @@ mousepad_document_toggle_overwrite (GtkTextView      *textview,
 static void
 mousepad_document_scroll_to_visible_area (MousepadDocument *document)
 {
-	/* scroll to visible area */
+  /* scroll to visible area */
   gtk_text_view_scroll_to_mark (document->textview,
                                 gtk_text_buffer_get_insert (document->buffer),
-                                0.25, FALSE, 0.0, 0.0);
+                                0.02, FALSE, 0.0, 0.0);
 }
 
 
@@ -686,11 +686,13 @@ mousepad_document_find (MousepadDocument    *document,
 
   _mousepad_return_val_if_fail (MOUSEPAD_IS_DOCUMENT (document), FALSE);
   _mousepad_return_val_if_fail (GTK_IS_TEXT_BUFFER (document->buffer), FALSE);
+  _mousepad_return_val_if_fail (string != NULL, FALSE);
 
   /* get the bounds */
   gtk_text_buffer_get_bounds (document->buffer, &doc_start, &doc_end);
   gtk_text_buffer_get_selection_bounds (document->buffer, &sel_start, &sel_end);
 
+  /* set the correct starting point for the search */
   if (flags & MOUSEPAD_SEARCH_FORWARDS)
     {
       start = sel_end;
@@ -873,9 +875,9 @@ mousepad_document_delete_selection (MousepadDocument *document)
 void
 mousepad_document_select_all (MousepadDocument *document)
 {
-	GtkTextIter start, end;
+  GtkTextIter start, end;
 
-	/* get the start and end iter */
+  /* get the start and end iter */
   gtk_text_buffer_get_bounds (document->buffer, &start, &end);
 
   /* select everything between those iters */
@@ -887,10 +889,10 @@ mousepad_document_select_all (MousepadDocument *document)
 void
 mousepad_document_focus_textview (MousepadDocument *document)
 {
-	_mousepad_return_if_fail (MOUSEPAD_IS_DOCUMENT (document));
+  _mousepad_return_if_fail (MOUSEPAD_IS_DOCUMENT (document));
 
-	/* focus the textview */
-	gtk_widget_grab_focus (GTK_WIDGET (document->textview));
+  /* focus the textview */
+  gtk_widget_grab_focus (GTK_WIDGET (document->textview));
 }
 
 
@@ -899,12 +901,12 @@ void
 mousepad_document_jump_to_line (MousepadDocument *document,
                                 gint              line_number)
 {
-	GtkTextIter iter;
+  GtkTextIter iter;
 
-	_mousepad_return_if_fail (MOUSEPAD_IS_DOCUMENT (document));
+  _mousepad_return_if_fail (MOUSEPAD_IS_DOCUMENT (document));
 
-	/* move the cursor */
-	gtk_text_buffer_get_iter_at_line (document->buffer, &iter, line_number-1);
+  /* move the cursor */
+  gtk_text_buffer_get_iter_at_line (document->buffer, &iter, line_number-1);
   gtk_text_buffer_place_cursor (document->buffer, &iter);
 
   /* make sure the cursor is in the visible area */
@@ -941,8 +943,8 @@ mousepad_document_line_numbers (MousepadDocument *document,
   *current_line = gtk_text_iter_get_line (&iter) + 1;
 
   /* get the last line number */
-	gtk_text_buffer_get_end_iter (document->buffer, &iter);
-	*last_line = gtk_text_iter_get_line (&iter) + 1;
+  gtk_text_buffer_get_end_iter (document->buffer, &iter);
+  *last_line = gtk_text_iter_get_line (&iter) + 1;
 }
 
 
