@@ -39,9 +39,12 @@ GtkWidget      *mousepad_window_new              (void);
 gboolean        mousepad_window_open_tab         (MousepadWindow  *window,
                                                   const gchar     *filename);
 
-void            mousepad_window_open_files       (MousepadWindow  *window,
+gboolean        mousepad_window_open_files       (MousepadWindow  *window,
                                                   const gchar     *working_directory,
                                                   gchar          **filenames);
+
+void            mousepad_gtk_set_tooltip         (GtkWidget       *widget,
+                                                  const gchar     *string);
 
 G_END_DECLS
 

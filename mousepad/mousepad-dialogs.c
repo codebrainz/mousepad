@@ -50,15 +50,13 @@ mousepad_dialogs_show_about (GtkWindow *parent)
 {
   static const gchar *authors[] =
   {
+    "Benedikt Meurer <benny@xfce.org>",
     "Erik Harrison <erikharrison@xfce.org>",
     "Nick Schermer <nick@xfce.org>",
-    "Benedikt Meurer <benny@xfce.org>",
     NULL,
   };
 
   /* show the dialog */
-  gtk_about_dialog_set_email_hook (exo_url_about_dialog_hook, NULL, NULL);
-  gtk_about_dialog_set_url_hook (exo_url_about_dialog_hook, NULL, NULL);
   gtk_show_about_dialog (parent,
                          "authors", authors,
                          "comments", _("Mousepad is a fast text editor for the Xfce Desktop Environment."),
@@ -69,7 +67,7 @@ mousepad_dialogs_show_about (GtkWindow *parent)
                          "name", PACKAGE_NAME,
                          "version", PACKAGE_VERSION,
                          "translator-credits", _("translator-credits"),
-                         "website", "http://www.xfce.org/projects/mousepad",
+                         "website", "http://www.xfce.org/",
                          NULL);
 }
 
@@ -162,23 +160,30 @@ gboolean
 mousepad_dialogs_clear_recent (GtkWindow *parent)
 {
   GtkWidget *dialog;
+  GtkWidget *image;
   gboolean   succeed = FALSE;
 
-  dialog = gtk_message_dialog_new (parent,
-                                   GTK_DIALOG_MODAL | GTK_DIALOG_DESTROY_WITH_PARENT,
-                                   GTK_MESSAGE_QUESTION,
-                                   GTK_BUTTONS_NONE,
-                                   _("Are you sure you want to clear\nthe Recent History?"));
+  /* the dialog icon */
+  image = gtk_image_new_from_stock (GTK_STOCK_CLEAR, GTK_ICON_SIZE_DIALOG);
+  gtk_widget_show (image);
 
-  gtk_message_dialog_format_secondary_text (GTK_MESSAGE_DIALOG (dialog),
-                                            _("This will only remove the items from the "
-                                              "history owned by Mousepad."));
+  /* create the question dialog */
+  dialog = gtk_message_dialog_new (parent, GTK_DIALOG_MODAL | GTK_DIALOG_DESTROY_WITH_PARENT,
+                                   GTK_MESSAGE_OTHER, GTK_BUTTONS_NONE,
+                                   _("Remove all entries from the document history?"));
 
   gtk_dialog_add_buttons (GTK_DIALOG (dialog),
                           GTK_STOCK_CANCEL, MOUSEPAD_RESPONSE_CANCEL,
                           GTK_STOCK_CLEAR, MOUSEPAD_RESPONSE_CLEAR,
                           NULL);
+
+  gtk_window_set_title (GTK_WINDOW (dialog), _("Clear Document History"));
   gtk_dialog_set_default_response (GTK_DIALOG (dialog), MOUSEPAD_RESPONSE_CANCEL);
+  gtk_message_dialog_set_image (GTK_MESSAGE_DIALOG (dialog), image);
+
+  gtk_message_dialog_format_secondary_text (GTK_MESSAGE_DIALOG (dialog),
+                                            _("Clearing the document history will permanently "
+                                              "remove all currently listed entries."));
 
   /* popup the dialog */
   if (gtk_dialog_run (GTK_DIALOG (dialog)) == MOUSEPAD_RESPONSE_CLEAR)
@@ -196,26 +201,33 @@ gint
 mousepad_dialogs_save_changes (GtkWindow *parent)
 {
   GtkWidget *dialog;
+  GtkWidget *image;
   gint       response;
 
+  /* the dialog icon */
+  image = gtk_image_new_from_stock (GTK_STOCK_SAVE, GTK_ICON_SIZE_DIALOG);
+  gtk_widget_show (image);
+
   /* create the question dialog */
-  dialog = gtk_message_dialog_new (parent,
-                                   GTK_DIALOG_MODAL | GTK_DIALOG_DESTROY_WITH_PARENT,
-                                   GTK_MESSAGE_QUESTION,
-                                   GTK_BUTTONS_NONE,
-                                   _("Do you want to save changes to this\n"
-                                     "document before closing?"));
-  gtk_message_dialog_format_secondary_text (GTK_MESSAGE_DIALOG (dialog),
-                                            _("If you don't save, your changes will be lost."));
+  dialog = gtk_message_dialog_new (parent, GTK_DIALOG_MODAL | GTK_DIALOG_DESTROY_WITH_PARENT,
+                                   GTK_MESSAGE_OTHER, GTK_BUTTONS_NONE,
+                                   _("Do you want to save the changes before closing?"));
 
   gtk_dialog_add_action_widget (GTK_DIALOG (dialog),
                                 mousepad_dialogs_image_button (GTK_STOCK_DELETE, _("_Don't Save")),
                                 MOUSEPAD_RESPONSE_DONT_SAVE);
+
   gtk_dialog_add_buttons (GTK_DIALOG (dialog),
                           GTK_STOCK_CANCEL, MOUSEPAD_RESPONSE_CANCEL,
                           GTK_STOCK_SAVE, MOUSEPAD_RESPONSE_SAVE,
                           NULL);
+
+  gtk_window_set_title (GTK_WINDOW (dialog), _("Save Changes"));
+  gtk_message_dialog_set_image (GTK_MESSAGE_DIALOG (dialog), image);
   gtk_dialog_set_default_response (GTK_DIALOG (dialog), MOUSEPAD_RESPONSE_SAVE);
+
+  gtk_message_dialog_format_secondary_text (GTK_MESSAGE_DIALOG (dialog),
+                                            _("If you don't save the document, all the changes will be lost."));
 
   /* run the dialog and wait for a response */
   response = gtk_dialog_run (GTK_DIALOG (dialog));
@@ -311,6 +323,7 @@ mousepad_dialogs_ask_overwrite (GtkWindow   *parent,
                                    GTK_BUTTONS_NONE,
                                    _("The file has been externally modified. Are you sure "
                                      "you want to save the file?"));
+
   gtk_message_dialog_format_secondary_text (GTK_MESSAGE_DIALOG (dialog),
                                             _("If you save the file, the external changes "
                                               "to \"%s\" will be lost."), filename);

@@ -48,11 +48,9 @@
 enum
 {
   PROP_0,
-  PROP_AUTO_INDENT,
   PROP_FONT_NAME,
   PROP_LAST_WINDOW_HEIGHT,
   PROP_LAST_WINDOW_WIDTH,
-  PROP_LINE_NUMBERS,
   PROP_STATUSBAR,
   PROP_WORD_WRAP,
   PROP_MISC_ALWAYS_SHOW_TABS,
@@ -60,7 +58,6 @@ enum
   PROP_MISC_SHOW_FULL_PATH_IN_TITLE,
   PROP_MISC_RECENT_MENU_LIMIT,
   PROP_MISC_REMEMBER_GEOMETRY,
-  PROP_MISC_TAB_CLOSE_BUTTONS,
   N_PROPERTIES,
 };
 
@@ -179,19 +176,6 @@ mousepad_preferences_class_init (MousepadPreferencesClass *klass)
     g_value_register_transform_func (G_TYPE_STRING, G_TYPE_INT, transform_string_to_int);
 
   /**
-   * MousepadPreferences:auto-indent
-   *
-   * Whether line identation is enabled.
-   **/
-  g_object_class_install_property (gobject_class,
-                                   PROP_AUTO_INDENT,
-                                   g_param_spec_boolean ("auto-indent",
-                                                         "auto-indent",
-                                                         "auto-indent",
-                                                         FALSE,
-                                                         EXO_PARAM_READWRITE));
-
-  /**
    * MousepadPreferences:font-name
    *
    * The font name and size used in the text view. If this value is
@@ -203,7 +187,20 @@ mousepad_preferences_class_init (MousepadPreferencesClass *klass)
                                                         "font-name",
                                                         "font-name",
                                                         NULL,
-                                                        EXO_PARAM_READWRITE));
+                                                        MOUSEPAD_PARAM_READWRITE));
+
+  /**
+   * MousepadPreferences:statusbar
+   *
+   * Whether to display the statusbar in the Mousepad window.
+   **/
+  g_object_class_install_property (gobject_class,
+                                   PROP_STATUSBAR,
+                                   g_param_spec_boolean ("last-statusbar-visible",
+                                                         "last-statusbar-visible",
+                                                         "last-statusbar-visible",
+                                                         TRUE,
+                                                         MOUSEPAD_PARAM_READWRITE));
 
   /**
    * MousepadPreferences:last-window-height
@@ -217,7 +214,7 @@ mousepad_preferences_class_init (MousepadPreferencesClass *klass)
                                                      "last-window-height",
                                                      "last-window-height",
                                                      1, G_MAXINT, 480,
-                                                     EXO_PARAM_READWRITE));
+                                                     MOUSEPAD_PARAM_READWRITE));
 
   /**
    * MousepadPreferences:last-window-width
@@ -231,33 +228,7 @@ mousepad_preferences_class_init (MousepadPreferencesClass *klass)
                                                      "last-window-width",
                                                      "last-window-width",
                                                      1, G_MAXINT, 640,
-                                                     EXO_PARAM_READWRITE));
-
-  /**
-   * MousepadPreferences:line-numbers
-   *
-   * Whether line numbers are visible in the text view.
-   **/
-  g_object_class_install_property (gobject_class,
-                                   PROP_LINE_NUMBERS,
-                                   g_param_spec_boolean ("line-numbers",
-                                                         "line-numbers",
-                                                         "line-numbers",
-                                                         FALSE,
-                                                         EXO_PARAM_READWRITE));
-
-  /**
-   * MousepadPreferences:statusbar
-   *
-   * Whether to display the statusbar in the Mousepad window.
-   **/
-  g_object_class_install_property (gobject_class,
-                                   PROP_STATUSBAR,
-                                   g_param_spec_boolean ("statusbar",
-                                                         "statusbar",
-                                                         "statusbar",
-                                                         TRUE,
-                                                         EXO_PARAM_READWRITE));
+                                                     MOUSEPAD_PARAM_READWRITE));
 
   /**
    * MousepadPreferences:word-wrap
@@ -270,7 +241,7 @@ mousepad_preferences_class_init (MousepadPreferencesClass *klass)
                                                          "word-wrap",
                                                          "word-wrap",
                                                          FALSE,
-                                                         EXO_PARAM_READWRITE));
+                                                         MOUSEPAD_PARAM_READWRITE));
 
   /**
    * MousepadPreferences:misc-always-show-tabs
@@ -284,7 +255,7 @@ mousepad_preferences_class_init (MousepadPreferencesClass *klass)
                                                          "misc-always-show-tabs",
                                                          "misc-always-show-tabs",
                                                          FALSE,
-                                                         EXO_PARAM_READWRITE));
+                                                         MOUSEPAD_PARAM_READWRITE));
 
   /**
    * MousepadPreferences:misc-cycle-tabs
@@ -297,7 +268,7 @@ mousepad_preferences_class_init (MousepadPreferencesClass *klass)
                                                          "misc-cycle-tabs",
                                                          "misc-cycle-tabs",
                                                          FALSE,
-                                                         EXO_PARAM_READWRITE));
+                                                         MOUSEPAD_PARAM_READWRITE));
 
   /**
    * MousepadPreferences:misc-show-full-path-in-title
@@ -310,7 +281,7 @@ mousepad_preferences_class_init (MousepadPreferencesClass *klass)
                                                          "misc-show-full-path-in-title",
                                                          "misc-show-full-path-in-title",
                                                          FALSE,
-                                                         EXO_PARAM_READWRITE));
+                                                         MOUSEPAD_PARAM_READWRITE));
 
   /**
    * MousepadPreferences:misc-recent-menu-limit
@@ -323,7 +294,7 @@ mousepad_preferences_class_init (MousepadPreferencesClass *klass)
                                                      "misc-recent-menu-limit",
                                                      "misc-recent-menu-limit",
                                                      1, G_MAXINT, 10,
-                                                     EXO_PARAM_READWRITE));
+                                                     MOUSEPAD_PARAM_READWRITE));
 
   /**
    * MousepadPreferences:misc-remember-geometry
@@ -340,20 +311,7 @@ mousepad_preferences_class_init (MousepadPreferencesClass *klass)
                                                          "misc-remember-geometry",
                                                          "misc-remember-geometry",
                                                          TRUE,
-                                                         EXO_PARAM_READWRITE));
-
-  /**
-   * MousepadPreferences:misc-tab-close-buttons
-   *
-   * Whether the close buttons are visible in the tabs.
-   **/
-  g_object_class_install_property (gobject_class,
-                                   PROP_MISC_TAB_CLOSE_BUTTONS,
-                                   g_param_spec_boolean ("misc-tab-close-buttons",
-                                                         "misc-tab-close-buttons",
-                                                         "misc-tab-close-buttons",
-                                                         TRUE,
-                                                         EXO_PARAM_READWRITE));
+                                                         MOUSEPAD_PARAM_READWRITE));
 }
 
 

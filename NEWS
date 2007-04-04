@@ -3,6 +3,7 @@ Mousepad 0.3.x
 New core features:
   - Everything is written in GObjects.
   - Run multiple windows in one instance.
+  - Type-ahead find feature like Firefox.
   - Tab support.
   - Loading multiple files at once (in new tabs). Both multiple
     select in the open dialog and by using the command line is supported.

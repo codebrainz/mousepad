@@ -253,9 +253,19 @@ mousepad_file_read_to_buffer (const gchar    *filename,
   fd = open (filename, O_RDONLY);
   if (G_UNLIKELY (fd < 0))
     {
-      g_set_error (error, G_FILE_ERROR, g_file_error_from_errno (errno),
-                   _("Failed to open \"%s\" for reading"), filename);
-      return FALSE;
+      /* the file does not exists, so probably the user ran 'mousepad newfile' from the command line */
+      if (G_LIKELY (errno == ENOENT))
+        {
+          /* we can write the new file */
+          *readonly = FALSE;
+          return TRUE;
+        }
+      else
+        {
+          g_set_error (error, G_FILE_ERROR, g_file_error_from_errno (errno),
+                       _("Failed to open \"%s\" for reading"), filename);
+          return FALSE;
+        }
     }
 
   /* read the file information */

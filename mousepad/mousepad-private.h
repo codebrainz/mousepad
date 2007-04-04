@@ -21,11 +21,31 @@
 #ifndef __MOUSEPAD_PRIVATE_H__
 #define __MOUSEPAD_PRIVATE_H__
 
-#include <exo/exo.h>
+#include <gtk/gtk.h>
+#include <libxfce4util/libxfce4util.h>
 
 G_BEGIN_DECLS
 
-#define DEBUG_LINE g_print ("%d\n", __LINE__);
+/* test timers */
+#define TIMER_START \
+  GTimer *__FUNCTION__timer = g_timer_new();
+
+#define TIMER_SPLIT \
+  g_print ("%s (%d): %f\n", __FUNCTION__, __LINE__, g_timer_elapsed (__FUNCTION__timer, NULL));
+
+#define TIMER_STOP \
+  g_print ("%s (%d): %f\n", __FUNCTION__, __LINE__, g_timer_elapsed (__FUNCTION__timer, NULL)); \
+  g_timer_destroy (__FUNCTION__timer);
+
+
+/* optimize the properties */
+#define MOUSEPAD_PARAM_READWRITE (G_PARAM_READWRITE | G_PARAM_STATIC_NAME | G_PARAM_STATIC_NICK | G_PARAM_STATIC_BLURB)
+
+
+
+/* support for canonical strings */
+#define I_(string) (g_intern_static_string ((string)))
+
 
 
 /* support macros for debugging */
@@ -45,24 +65,9 @@ G_BEGIN_DECLS
 
 /* avoid trivial g_value_get_*() function calls */
 #ifdef NDEBUG
-#define g_value_get_boolean(v)  (((const GValue *) (v))->data[0].v_int)
-#define g_value_get_char(v)     (((const GValue *) (v))->data[0].v_int)
-#define g_value_get_uchar(v)    (((const GValue *) (v))->data[0].v_uint)
-#define g_value_get_int(v)      (((const GValue *) (v))->data[0].v_int)
-#define g_value_get_uint(v)     (((const GValue *) (v))->data[0].v_uint)
-#define g_value_get_long(v)     (((const GValue *) (v))->data[0].v_long)
-#define g_value_get_ulong(v)    (((const GValue *) (v))->data[0].v_ulong)
-#define g_value_get_int64(v)    (((const GValue *) (v))->data[0].v_int64)
-#define g_value_get_uint64(v)   (((const GValue *) (v))->data[0].v_uint64)
-#define g_value_get_enum(v)     (((const GValue *) (v))->data[0].v_long)
-#define g_value_get_flags(v)    (((const GValue *) (v))->data[0].v_ulong)
-#define g_value_get_float(v)    (((const GValue *) (v))->data[0].v_float)
-#define g_value_get_double(v)   (((const GValue *) (v))->data[0].v_double)
-#define g_value_get_string(v)   (((const GValue *) (v))->data[0].v_pointer)
-#define g_value_get_param(v)    (((const GValue *) (v))->data[0].v_pointer)
-#define g_value_get_boxed(v)    (((const GValue *) (v))->data[0].v_pointer)
-#define g_value_get_pointer(v)  (((const GValue *) (v))->data[0].v_pointer)
-#define g_value_get_object(v)   (((const GValue *) (v))->data[0].v_pointer)
+#define g_value_get_string(v)  (((const GValue *) (v))->data[0].v_pointer)
+#define g_value_get_boxed(v)   (((const GValue *) (v))->data[0].v_pointer)
+#define g_value_get_pointer(v) (((const GValue *) (v))->data[0].v_pointer)
 #endif
 
 

@@ -55,10 +55,11 @@
       <menuitem action="font" />
       <separator />
       <menuitem action="statusbar" />
-      <separator />
+    </menu>
+
+    <menu action="document-menu">
       <menuitem action="word-wrap" />
       <menuitem action="line-numbers" />
-      <separator />
       <menuitem action="auto-indent" />
     </menu>
 
@@ -73,4 +74,13 @@
       <menuitem action="about" />
     </menu>
   </menubar>
+
+  <popup action="tab-menu">
+    <menuitem action="save-file" />
+    <menuitem action="save-file-as" />
+    <separator />
+    <menuitem action="reload" />
+    <separator />
+    <menuitem action="close-tab" />
+  </popup>
 </ui>

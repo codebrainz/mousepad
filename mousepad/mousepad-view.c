@@ -64,8 +64,8 @@ struct _MousepadView
   GtkTextView  __parent__;
 
   /* settings */
-  gboolean     auto_indent;
-  gboolean     line_numbers;
+  guint        auto_indent : 1;
+  guint        line_numbers : 1;
 };
 
 

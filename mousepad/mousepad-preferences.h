@@ -20,8 +20,6 @@
 #ifndef __MOUSEPAD_PREFERENCIES_H__
 #define __MOUSEPAD_PREFERENCIES_H__
 
-#include <exo/exo.h>
-
 G_BEGIN_DECLS
 
 #define MOUSEPAD_TYPE_PREFERENCES             (mousepad_preferences_get_type ())

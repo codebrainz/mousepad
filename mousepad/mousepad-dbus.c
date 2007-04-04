@@ -33,8 +33,9 @@
 #include <dbus/dbus-glib.h>
 #include <dbus/dbus.h>
 
-#include <mousepad/mousepad-dbus.h>
 #include <mousepad/mousepad-private.h>
+#include <mousepad/mousepad-dbus.h>
+#include <mousepad/mousepad-application.h>
 
 
 

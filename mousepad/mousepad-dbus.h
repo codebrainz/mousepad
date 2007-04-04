@@ -23,8 +23,6 @@
 typedef struct _MousepadDBusServiceClass MousepadDBusServiceClass;
 typedef struct _MousepadDBusService      MousepadDBusService;
 
-#include <mousepad/mousepad-application.h>
-
 #define MOUSEPAD_TYPE_DBUS_SERVICE            (mousepad_dbus_service_get_type ())
 #define MOUSEPAD_DBUS_SERVICE(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), MOUSEPAD_TYPE_DBUS_SERVICE, MousepadDBusService))
 #define MOUSEPAD_DBUS_SERVICE_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), MOUSEPAD_TYPE_DBUS_SERVICE, MousepadDBusServiceClass))

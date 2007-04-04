@@ -229,6 +229,7 @@ mousepad_application_open_window (MousepadApplication  *application,
                                   gchar               **filenames)
 {
   GtkWidget *window;
+  gboolean   succeed;
 
   _mousepad_return_if_fail (MOUSEPAD_IS_APPLICATION (application));
   _mousepad_return_if_fail (screen == NULL || GDK_IS_SCREEN (screen));
@@ -245,11 +246,18 @@ mousepad_application_open_window (MousepadApplication  *application,
 
   /* open the filenames or an empty tab */
   if (filenames != NULL && *filenames != NULL)
-    mousepad_window_open_files (MOUSEPAD_WINDOW (window), working_directory, filenames);
-  else
-    mousepad_window_open_tab (MOUSEPAD_WINDOW (window), NULL);
+    {
+      /* try to open the files */
+      succeed = mousepad_window_open_files (MOUSEPAD_WINDOW (window), working_directory, filenames);
 
-  /* TODO: check if there are actually some tabs in the window, if not, open an empty tab */
+      /* if we failed, open an empty tab */
+      if (G_UNLIKELY (succeed == FALSE))
+        mousepad_window_open_tab (MOUSEPAD_WINDOW (window), NULL);
+    }
+  else
+    {
+      mousepad_window_open_tab (MOUSEPAD_WINDOW (window), NULL);
+    }
 
   /* connect to the "destroy" signal */
   g_signal_connect (G_OBJECT (window), "destroy",

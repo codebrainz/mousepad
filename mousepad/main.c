@@ -83,7 +83,7 @@ main (gint argc, gchar **argv)
 #endif
 
   /* initialize the GThread system */
-  if (!g_thread_supported ())
+  if (G_LIKELY (!g_thread_supported ()))
     g_thread_init (NULL);
 
   /* initialize Gtk+ */

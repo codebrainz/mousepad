@@ -7,6 +7,7 @@ dnl
 dnl ***************************
 dnl *** Version information ***
 dnl ***************************
+m4_define([mousepad_version_api], [1])
 m4_define([mousepad_version_major], [0])
 m4_define([mousepad_version_minor], [3])
 m4_define([mousepad_version_micro], [0])
@@ -59,9 +60,11 @@ AC_PROG_LIBTOOL()
 dnl **************************************
 dnl *** Substitute version information ***
 dnl **************************************
+MOUSEPAD_VERSION_API=mousepad_version_api()
 MOUSEPAD_VERSION_MAJOR=mousepad_version_major()
 MOUSEPAD_VERSION_MINOR=mousepad_version_minor()
 MOUSEPAD_VERSION_MICRO=mousepad_version_micro()
+AC_SUBST([MOUSEPAD_VERSION_API])
 AC_SUBST([MOUSEPAD_VERSION_MAJOR])
 AC_SUBST([MOUSEPAD_VERSION_MINOR])
 AC_SUBST([MOUSEPAD_VERSION_MICRO])
@@ -86,16 +89,11 @@ XDT_I18N([@LINGUAS@])
 dnl ***********************************
 dnl *** Check for required packages ***
 dnl ***********************************
-XDT_CHECK_PACKAGE([EXO], [exo-0.3], [0.3.2])
 XDT_CHECK_PACKAGE([GLIB], [glib-2.0], [2.12.0])
+XDT_CHECK_PACKAGE([GMODULE], [gmodule-2.0], [2.12.0])
 XDT_CHECK_PACKAGE([GTHREAD], [gthread-2.0], [2.12.0])
 XDT_CHECK_PACKAGE([GTK], [gtk+-2.0], [2.10.0])
 XDT_CHECK_PACKAGE([LIBXFCE4UTIL], [libxfce4util-1.0], [4.4.0])
-
-dnl ********************************************
-dnl *** Check for session management support ***
-dnl ********************************************
-XDT_CHECK_LIBSM()
 
 dnl **********************************
 dnl *** Optional support for D-BUS ***

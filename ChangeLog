@@ -1,3 +1,20 @@
+2007-04-04	Nick Schermer <nick@xfce.org>
+
+	* configure.in.in: Mousepad does not depend on exo anymore. Only
+	  when you run in maintainer-mode, exo-csource is required.
+	* mousepad/mousepad-document.*: Renamed mousepad-screen to mousepad-document.
+	* mousepad/mousepad-{search-bar,document,window).*: Added function for 
+	  searching, including the type-ahead search bar.
+	* mousepad/mousepad-statusbar.*: A custom statusbar suitable for displaying
+	  the tooltips, overwrite/insert and the line- and column-number.
+	* mousepad/mousepad-exo.*: The exo-bindings so we don't depend on exo anymore,
+	  although I want to get rid of all of them.
+	* mousepad/mousepad-marshal.list: Custom marshal for sending search signals.
+	* mousepad/mousepad-types.h: Search types (a mousepad-enum-types.{c,h} is
+	  generated during build).
+	* Various performance inprovements and code cleanups.
+	
+
 2007-03-03	Nick Schermer <nick@xfce.org>
 
 	* mousepad/mousepad-dialogs.{c,h}: Add response actions for Mousepad so it's
