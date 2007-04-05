@@ -25,7 +25,6 @@
 #include <gdk/gdkkeysyms.h>
 
 #include <mousepad/mousepad-private.h>
-#include <mousepad/mousepad-exo.h>
 #include <mousepad/mousepad-marshal.h>
 #include <mousepad/mousepad-types.h>
 #include <mousepad/mousepad-enum-types.h>
@@ -269,7 +268,6 @@ mousepad_search_bar_init (MousepadSearchBar *search_bar)
 
   menuitem = gtk_check_menu_item_new_with_mnemonic (_("Mat_ch Case"));
   gtk_tool_item_set_proxy_menu_item (item, "case-sensitive", menuitem);
-  exo_mutual_binding_new (G_OBJECT (check), "active", G_OBJECT (menuitem), "active");
   gtk_widget_show (menuitem);
 }
 

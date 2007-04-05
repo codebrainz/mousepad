@@ -70,14 +70,6 @@ G_BEGIN_DECLS
 #define g_value_get_pointer(v) (((const GValue *) (v))->data[0].v_pointer)
 #endif
 
-
-
-/* don't use the invalid property warning since testing in debug builds is enough */
-#ifndef G_ENABLE_DEBUG
-#undef G_OBJECT_WARN_INVALID_PROPERTY_ID
-#define G_OBJECT_WARN_INVALID_PROPERTY_ID(object, property_id, pspec) G_STMT_START{ (void)0; }G_STMT_END
-#endif
-
 G_END_DECLS
 
 #endif /* !__MOUSEPAD_PRIVATE_H__ */

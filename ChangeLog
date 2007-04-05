@@ -1,4 +1,16 @@
+2007-04-05	Nick Schermer <nick@xfce.org>
+
+	* mousepad/mousepad-document.c: Remove unused properties.
+	* mousepad/mousepad-{exo,window,preoperties,search-bar}: Remove the
+	  exo bindings, mousepad only depends on Gtk and libxfce4util.
+	* mousepad/mousepad-csource.pl: Perl script to generate the menu code.
+	  This script also strips the code between the xml blocks, so a minimal
+	  amount of text is added to the binary (ie. it produces better code then
+	  exo-csource).
+
+
 2007-04-04	Nick Schermer <nick@xfce.org>
+
 	* po/: Update the POTFILES.in file and regenerate the pot file.
 	* mousepad/mousepad-document.c: Make the scroll offset smaller, so the
 	  textview doesn't jump around while searching.

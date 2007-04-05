@@ -33,7 +33,6 @@
 
 #include <mousepad/mousepad-private.h>
 #include <mousepad/mousepad-types.h>
-#include <mousepad/mousepad-exo.h>
 #include <mousepad/mousepad-document.h>
 #include <mousepad/mousepad-file.h>
 #include <mousepad/mousepad-marshal.h>
@@ -48,14 +47,6 @@
 
 static void mousepad_document_class_init              (MousepadDocumentClass  *klass);
 static void mousepad_document_init                    (MousepadDocument       *document);
-static void mousepad_document_get_property            (GObject                *object,
-                                                       guint                   prop_id,
-                                                       GValue                 *value,
-                                                       GParamSpec             *pspec);
-static void mousepad_document_set_property            (GObject                *object,
-                                                       guint                   prop_id,
-                                                       const GValue           *value,
-                                                       GParamSpec             *pspec);
 static void mousepad_document_finalize                (GObject                *object);
 static void mousepad_document_modified_changed        (GtkTextBuffer          *buffer,
                                                        MousepadDocument       *document);
@@ -69,23 +60,13 @@ static void mousepad_document_toggle_overwrite        (GtkTextView            *t
                                                        GParamSpec             *pspec,
                                                        MousepadDocument       *document);
 static void mousepad_document_scroll_to_visible_area  (MousepadDocument       *document);
-static void mousepad_document_set_font                (MousepadDocument       *document,
-                                                       const gchar            *font_name);
-static void mousepad_document_tab_set_tooltip         (MousepadDocument       *document,
+static void mousepad_document_update_tab              (MousepadDocument       *document,
                                                        GParamSpec             *pspec,
                                                        GtkWidget              *ebox);
 static void mousepad_document_tab_button_clicked      (GtkWidget              *widget,
                                                        MousepadDocument       *document);
 
 
-
-enum
-{
-  PROP_0,
-  PROP_FILENAME,
-  PROP_FONT_NAME,
-  PROP_TITLE,
-};
 
 enum
 {
@@ -112,6 +93,9 @@ struct _MousepadDocument
 
   /* the highlight tag */
   GtkTextTag        *tag;
+
+  /* the tab label */
+  GtkWidget         *label;
 
   /* absolute path of the file */
   gchar             *filename;
@@ -173,32 +157,6 @@ mousepad_document_class_init (MousepadDocumentClass *klass)
 
   gobject_class = G_OBJECT_CLASS (klass);
   gobject_class->finalize = mousepad_document_finalize;
-  gobject_class->get_property = mousepad_document_get_property;
-  gobject_class->set_property = mousepad_document_set_property;
-
-  g_object_class_install_property (gobject_class,
-                                   PROP_FILENAME,
-                                   g_param_spec_string ("filename",
-                                                        "filename",
-                                                        "filename",
-                                                        NULL,
-                                                        MOUSEPAD_PARAM_READWRITE));
-
-  g_object_class_install_property (gobject_class,
-                                   PROP_FONT_NAME,
-                                   g_param_spec_string ("font-name",
-                                                        "font-name",
-                                                        "font-name",
-                                                        NULL,
-                                                        MOUSEPAD_PARAM_READWRITE));
-
-  g_object_class_install_property (gobject_class,
-                                   PROP_TITLE,
-                                   g_param_spec_string ("title",
-                                                        "title",
-                                                        "title",
-                                                        NULL,
-                                                        MOUSEPAD_PARAM_READWRITE));
 
   document_signals[CLOSE_TAB] =
     g_signal_new (I_("close-tab"),
@@ -277,54 +235,6 @@ mousepad_document_init (MousepadDocument *document)
                     G_CALLBACK (mousepad_document_notify_cursor_position), document);
   g_signal_connect (G_OBJECT (document->textview), "notify::overwrite",
                     G_CALLBACK (mousepad_document_toggle_overwrite), document);
-}
-
-
-
-static void
-mousepad_document_get_property (GObject    *object,
-                                guint       prop_id,
-                                GValue     *value,
-                                GParamSpec *pspec)
-{
-  MousepadDocument *document = MOUSEPAD_DOCUMENT (object);
-
-  switch (prop_id)
-    {
-      case PROP_FILENAME:
-        g_value_set_static_string (value, mousepad_document_get_filename (document));
-        break;
-
-      case PROP_TITLE:
-        g_value_set_static_string (value, mousepad_document_get_title (document, FALSE));
-        break;
-
-      default:
-        G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
-        break;
-    }
-}
-
-
-
-static void
-mousepad_document_set_property (GObject      *object,
-                                guint         prop_id,
-                                const GValue *value,
-                                GParamSpec   *pspec)
-{
-  MousepadDocument *document = MOUSEPAD_DOCUMENT (object);
-
-  switch (prop_id)
-    {
-      case PROP_FONT_NAME:
-        mousepad_document_set_font (document, g_value_get_string (value));
-        break;
-
-      default:
-        G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
-        break;
-    }
 }
 
 
@@ -552,9 +462,6 @@ mousepad_document_set_filename (MousepadDocument *document,
   /* create the new names */
   document->filename = g_strdup (filename);
   document->display_name = g_filename_display_basename (filename);
-
-  /* tell the listeners */
-  g_object_notify (G_OBJECT (document), "title");
 }
 
 
@@ -603,7 +510,7 @@ mousepad_document_set_word_wrap (MousepadDocument *document,
 
 
 
-static void
+void
 mousepad_document_set_font (MousepadDocument *document,
                             const gchar      *font_name)
 {
@@ -1011,7 +918,7 @@ GtkWidget *
 mousepad_document_get_tab_label (MousepadDocument *document)
 {
   GtkWidget *hbox;
-  GtkWidget *label, *ebox;
+  GtkWidget *ebox;
   GtkWidget *button, *image;
 
   /* create the box */
@@ -1022,17 +929,18 @@ mousepad_document_get_tab_label (MousepadDocument *document)
   ebox = g_object_new (GTK_TYPE_EVENT_BOX, "border-width", 2, NULL);
   gtk_box_pack_start (GTK_BOX (hbox), ebox, TRUE, TRUE, 0);
   gtk_widget_show (ebox);
-  mousepad_document_tab_set_tooltip (document, NULL, ebox);
-  g_signal_connect (G_OBJECT (document), "notify::title",
-                    G_CALLBACK (mousepad_document_tab_set_tooltip), ebox);
 
   /* create the label */
-  label = g_object_new (GTK_TYPE_LABEL,
-                        "selectable", FALSE,
-                        "xalign", 0.0, NULL);
-  gtk_container_add (GTK_CONTAINER (ebox), label);
-  exo_binding_new (G_OBJECT (document), "title", G_OBJECT (label), "label");
-  gtk_widget_show (label);
+  document->label = g_object_new (GTK_TYPE_LABEL,
+                                 "selectable", FALSE,
+                                 "xalign", 0.0, NULL);
+  gtk_container_add (GTK_CONTAINER (ebox), document->label);
+  gtk_widget_show (document->label);
+
+  /* update the tab and add signal to the ebox for a title update */
+  mousepad_document_update_tab (document, NULL, ebox);
+  g_signal_connect (G_OBJECT (document), "notify::title",
+                    G_CALLBACK (mousepad_document_update_tab), ebox);
 
   /* create the button */
   button = g_object_new (GTK_TYPE_BUTTON,
@@ -1058,10 +966,15 @@ mousepad_document_get_tab_label (MousepadDocument *document)
 
 
 static void
-mousepad_document_tab_set_tooltip (MousepadDocument *document,
-                                   GParamSpec       *pspec,
-                                   GtkWidget        *ebox)
+mousepad_document_update_tab (MousepadDocument *document,
+                              GParamSpec       *pspec,
+                              GtkWidget        *ebox)
 {
+  /* set the tab label */
+  gtk_label_set_text (GTK_LABEL (document->label),
+                      mousepad_document_get_title (document, FALSE));
+
+  /* set the tab tooltip */
   mousepad_gtk_set_tooltip (ebox, document->filename);
 }
 

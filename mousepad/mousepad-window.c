@@ -35,7 +35,6 @@
 #include <mousepad/mousepad-private.h>
 #include <mousepad/mousepad-types.h>
 #include <mousepad/mousepad-application.h>
-#include <mousepad/mousepad-exo.h>
 #include <mousepad/mousepad-document.h>
 #include <mousepad/mousepad-dialogs.h>
 #include <mousepad/mousepad-preferences.h>
@@ -726,6 +725,7 @@ mousepad_window_open_tab (MousepadWindow *window,
   GError      *error = NULL;
   gboolean     succeed = TRUE;
   gint         npages = 0, i;
+  gchar       *font_name;
   const gchar *opened_filename;
 
   /* get the number of page in the notebook */
@@ -743,7 +743,7 @@ mousepad_window_open_tab (MousepadWindow *window,
           opened_filename = mousepad_document_get_filename (MOUSEPAD_DOCUMENT (document));
 
           /* see if the file is already opened */
-          if (opened_filename && strcmp (filename, opened_filename))
+          if (opened_filename && strcmp (filename, opened_filename) == 0)
             {
               /* switch to the tab */
               gtk_notebook_set_current_page (GTK_NOTEBOOK (window->notebook), i);
@@ -765,6 +765,11 @@ mousepad_window_open_tab (MousepadWindow *window,
     {
       /* add the document to the notebook and connect some signals */
       mousepad_window_add (window, MOUSEPAD_DOCUMENT (document));
+
+      /* set the textview font */
+      g_object_get (G_OBJECT (window->preferences), "font-name", &font_name, NULL);
+      mousepad_document_set_font (MOUSEPAD_DOCUMENT (document), font_name);
+      g_free (font_name);
     }
   else
     {
@@ -873,6 +878,9 @@ mousepad_window_save (MousepadWindow   *window,
 
               /* add the new document to the recent menu */
               mousepad_window_recent_add (window, new_filename);
+
+              /* update the go menu */
+              mousepad_window_update_gomenu (window);
             }
 
           /* cleanup */
@@ -934,9 +942,6 @@ mousepad_window_add (MousepadWindow   *window,
 
   _mousepad_return_if_fail (MOUSEPAD_IS_WINDOW (window));
   _mousepad_return_if_fail (MOUSEPAD_IS_DOCUMENT (document));
-
-  /* conect an exo binding to set the widget font */
-  exo_binding_new (G_OBJECT (window->preferences), "font-name", G_OBJECT (document), "font-name");
 
   /* create the tab label */
   label = mousepad_document_get_tab_label (document);
@@ -1376,6 +1381,8 @@ mousepad_window_update_gomenu_idle (gpointer user_data)
   gint            npages;
   gint            n;
   gchar           name[15];
+  const gchar    *title;
+  const gchar    *tooltip;
   gchar           accelerator[7];
   GtkRadioAction *action;
   GSList         *group = NULL;
@@ -1407,10 +1414,12 @@ mousepad_window_update_gomenu_idle (gpointer user_data)
       /* create a new action name */
       g_snprintf (name, sizeof (name), "document-%d", n);
 
+      /* get the name and file name */
+      title = mousepad_document_get_title (MOUSEPAD_DOCUMENT (document), FALSE);
+      tooltip = mousepad_document_get_title (MOUSEPAD_DOCUMENT (document), TRUE);
+
       /* create the radio action */
-      action = gtk_radio_action_new (name, NULL, NULL, NULL, n);
-      exo_binding_new (G_OBJECT (document), "title", G_OBJECT (action), "label");
-      exo_binding_new (G_OBJECT (document), "filename", G_OBJECT (action), "tooltip");
+      action = gtk_radio_action_new (name, title, tooltip, NULL, n);
       gtk_radio_action_set_group (action, group);
       group = gtk_radio_action_get_group (action);
       g_signal_connect (G_OBJECT (action), "activate",
@@ -2223,12 +2232,14 @@ mousepad_window_action_select_font (GtkAction      *action,
                                     MousepadWindow *window)
 {
   GtkWidget *dialog;
+  GtkWidget *document;
   gchar     *font_name;
+  guint      npages, i;
 
   dialog = gtk_font_selection_dialog_new (_("Choose Mousepad Font"));
   gtk_window_set_transient_for (GTK_WINDOW (dialog), GTK_WINDOW (window));
 
-  /* set the current font */
+  /* get the current font */
   g_object_get (G_OBJECT (window->preferences), "font-name", &font_name, NULL);
 
   if (G_LIKELY (font_name))
@@ -2243,6 +2254,17 @@ mousepad_window_action_select_font (GtkAction      *action,
       /* send the new font to the preferences */
       font_name = gtk_font_selection_dialog_get_font_name (GTK_FONT_SELECTION_DIALOG (dialog));
       g_object_set (G_OBJECT (window->preferences), "font-name", font_name, NULL);
+
+      /* send the new font to all tabs in this window */
+      npages = gtk_notebook_get_n_pages (GTK_NOTEBOOK (window->notebook));
+      for (i = 0; i < npages; i++)
+        {
+          document = gtk_notebook_get_nth_page (GTK_NOTEBOOK (window->notebook), i);
+          if (G_LIKELY (document != NULL))
+            mousepad_document_set_font (MOUSEPAD_DOCUMENT (document), font_name);
+        }
+
+      /* cleanup */
       g_free (font_name);
     }
 

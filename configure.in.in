@@ -51,6 +51,7 @@ AC_PROG_CC()
 AC_PROG_LD()
 AC_PROG_INSTALL()
 AC_PROG_INTLTOOL()
+AC_CHECK_PROGS([PERL], [perl5 perl])
 
 dnl **************************
 dnl *** Initialize libtool ***

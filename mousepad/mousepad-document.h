@@ -48,6 +48,9 @@ gboolean        mousepad_document_save_file                (MousepadDocument    
 void            mousepad_document_set_filename             (MousepadDocument    *document,
                                                             const gchar         *filename);
 
+void            mousepad_document_set_font                 (MousepadDocument    *document,
+                                                            const gchar         *font_name);
+
 void            mousepad_document_set_auto_indent          (MousepadDocument    *document,
                                                             gboolean             auto_indent);
 
