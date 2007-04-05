@@ -4,15 +4,15 @@
 # This file is distributed under the same license as the Mousepad package.
 #
 # David Rosal <davidrr@users.sourceforge.net>, 2004.
-# Pau Rul·lan Ferragut <paurullan@bulma.net>, 2005, 2006.
+# Pau Rul·lan Ferragut <paurullan@bulma.net>, 2005, 2006, 2007
 # Carles Muñoz Gorriz <carlesmu@internautas.org>, 2006.
 msgid ""
 msgstr ""
 "Project-Id-Version: mousepad 0.2.12\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2007-01-20 12:34+0100\n"
-"PO-Revision-Date: 2007-02-05 13:07+0100\n"
-"Last-Translator: Carles Muñoz Gorriz <carlesmu@internautas.org>\n"
+"PO-Revision-Date: 2007-04-05 13:17+0200\n"
+"Last-Translator: Pau Rul·lan Ferragut <paurullan@bulma.net>\n"
 "Language-Team: Catalan <xfce-i18n@xfce.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -71,7 +71,7 @@ msgstr "/Fitxer/Nova _Finesta"
 
 #: ../src/menu.c:69
 msgid "/File/_Open..."
-msgstr "/Fitxer/_Obre…"
+msgstr "/Fitxer/_Obre"
 
 #: ../src/menu.c:72
 msgid "/File/Open _Recent"
@@ -87,7 +87,7 @@ msgstr "/Fitxer/_Anomena i desa"
 
 #: ../src/menu.c:83
 msgid "/File/_Print..."
-msgstr "/Fitxer/Im_primeix…"
+msgstr "/Fitxer/Im_primeix"
 
 #: ../src/menu.c:87
 msgid "/File/_Quit"
@@ -131,7 +131,7 @@ msgstr "/_Cerca"
 
 #: ../src/menu.c:111
 msgid "/Search/_Find..."
-msgstr "/Cerca/_Cercar…"
+msgstr "/Cerca/_Cercar"
 
 #: ../src/menu.c:113
 msgid "/Search/Find _Next"
@@ -147,7 +147,7 @@ msgstr "/Cerca/_Substitueix"
 
 #: ../src/menu.c:121
 msgid "/Search/_Jump To..."
-msgstr "/Cerca/Vés a la _línia…"
+msgstr "/Cerca/Vés a la _línia"
 
 #: ../src/menu.c:123
 msgid "/_Options"
