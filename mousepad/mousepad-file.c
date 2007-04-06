@@ -246,18 +246,16 @@ mousepad_file_read_to_buffer (const gchar    *filename,
   _mousepad_return_val_if_fail (error == NULL || *error == NULL, FALSE);
   _mousepad_return_val_if_fail (filename != NULL, FALSE);
 
-  /* get the start point in the buffer */
-  gtk_text_buffer_get_start_iter (buffer, &start_iter);
-
   /* open the file for reading */
   fd = open (filename, O_RDONLY);
   if (G_UNLIKELY (fd < 0))
     {
-      /* the file does not exists, so probably the user ran 'mousepad newfile' from the command line */
+      /* the file does not exists, so probably the user ran 'mousepad <new-file-name>' from the command line */
       if (G_LIKELY (errno == ENOENT))
         {
           /* we can write the new file */
           *readonly = FALSE;
+
           return TRUE;
         }
       else
@@ -282,6 +280,9 @@ mousepad_file_read_to_buffer (const gchar    *filename,
 
   /* check if we're allowed to write the file */
   *readonly = !((statb.st_mode & 00222) != 0 && access (filename, W_OK) == 0);
+
+  /* get the start point in the buffer */
+  gtk_text_buffer_get_start_iter (buffer, &start_iter);
 
 #ifdef HAVE_MMAP
   /* try mmap() for files not larger than 8MB */

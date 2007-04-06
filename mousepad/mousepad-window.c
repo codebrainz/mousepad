@@ -107,9 +107,6 @@ static gboolean          mousepad_window_tab_popup                    (GtkNotebo
                                                                        MousepadWindow         *window);
 
 /* document signals */
-static void              mousepad_window_notify_title                 (MousepadDocument       *document,
-                                                                       GParamSpec             *pspec,
-                                                                       MousepadWindow         *window);
 static void              mousepad_window_modified_changed             (MousepadDocument       *document,
                                                                        MousepadWindow         *window);
 static void              mousepad_window_cursor_changed               (MousepadDocument       *document,
@@ -877,6 +874,9 @@ mousepad_window_save (MousepadWindow   *window,
               /* set the filename */
               mousepad_document_set_filename (document, new_filename);
 
+              /* update the window title */
+              mousepad_window_set_title (window, document);
+
               /* add the new document to the recent menu */
               mousepad_window_recent_add (window, new_filename);
 
@@ -953,7 +953,6 @@ mousepad_window_add (MousepadWindow   *window,
   g_signal_connect (G_OBJECT (document), "modified-changed", G_CALLBACK (mousepad_window_modified_changed), window);
   g_signal_connect (G_OBJECT (document), "cursor-changed", G_CALLBACK (mousepad_window_cursor_changed), window);
   g_signal_connect (G_OBJECT (document), "overwrite-changed", G_CALLBACK (mousepad_window_overwrite_changed), window);
-  g_signal_connect (G_OBJECT (document), "notify::title", G_CALLBACK (mousepad_window_notify_title), window);
 
   /* insert the page right from the active tab */
   page = gtk_notebook_get_current_page (GTK_NOTEBOOK (window->notebook));
@@ -1234,16 +1233,6 @@ mousepad_window_tab_popup (GtkNotebook    *notebook,
  * Document Signals Functions
  **/
 static void
-mousepad_window_notify_title (MousepadDocument *document,
-                              GParamSpec       *pspec,
-                              MousepadWindow   *window)
-{
-  mousepad_window_set_title (window, document);
-}
-
-
-
-static void
 mousepad_window_modified_changed (MousepadDocument *document,
                                   MousepadWindow   *window)
 {
@@ -1265,7 +1254,7 @@ mousepad_window_cursor_changed (MousepadDocument *document,
   _mousepad_return_if_fail (MOUSEPAD_IS_DOCUMENT (document));
 
   /* set the new statusbar position */
-  if (G_LIKELY (window->statusbar))
+  if (window->statusbar)
     mousepad_statusbar_set_cursor_position (MOUSEPAD_STATUSBAR (window->statusbar), line, column);
 }
 
@@ -1280,7 +1269,7 @@ mousepad_window_overwrite_changed (MousepadDocument *document,
   _mousepad_return_if_fail (MOUSEPAD_IS_DOCUMENT (document));
 
   /* set the new overwrite mode in the statusbar */
-  if (G_LIKELY (window->statusbar))
+  if (window->statusbar)
     mousepad_statusbar_set_overwrite (MOUSEPAD_STATUSBAR (window->statusbar), overwrite);
 }
 
@@ -1735,7 +1724,7 @@ mousepad_window_recent_clear (MousepadWindow *window)
   if (G_UNLIKELY (error != NULL))
     {
       mousepad_dialogs_show_error (GTK_WINDOW (window), error,
-                                   _("Failed to remove an item from the recent history"));
+                                   _("Failed to remove an item from the document history"));
       g_error_free (error);
     }
 }
@@ -1839,6 +1828,7 @@ mousepad_window_action_open_recent (GtkAction      *action,
                                     MousepadWindow *window)
 {
   const gchar   *uri;
+  GError        *error = NULL;
   gchar         *filename;
   gboolean       succeed = FALSE;
   GtkRecentInfo *info;
@@ -1856,10 +1846,21 @@ mousepad_window_action_open_recent (GtkAction      *action,
 
       if (G_LIKELY (filename != NULL))
         {
-          /* open a new tab */
-          succeed = mousepad_window_open_tab (window, filename);
+          /* open the file in a new tab if it exists */
+          if (g_file_test (filename, G_FILE_TEST_EXISTS))
+            succeed = mousepad_window_open_tab (window, filename);
+          else
+            {
+              /* create a warning */
+              g_set_error (&error,  G_FILE_ERROR, G_FILE_ERROR_IO,
+                           _("Failed to open \"%s\" for reading. It will be removed from the document history"), filename);
 
-          /* update the recent history */
+              /* show the warning and cleanup */
+              mousepad_dialogs_show_error (GTK_WINDOW (window), error, _("Failed to open file"));
+              g_error_free (error);
+            }
+
+          /* update the document history */
           if (G_LIKELY (succeed))
             /* update the recent manager count and time */
             gtk_recent_manager_add_item (window->recent_manager, uri);
@@ -1885,7 +1886,7 @@ mousepad_window_action_clear_recent (GtkAction      *action,
       /* avoid updating the menu */
       lock_menu_updates = TRUE;
 
-      /* clear the recent history */
+      /* clear the document history */
       mousepad_window_recent_clear (window);
 
       /* allow menu updates again */

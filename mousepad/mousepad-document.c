@@ -70,9 +70,7 @@ static gboolean  mousepad_document_iter_search             (const GtkTextIter   
                                                             GtkTextIter            *match_end,
                                                             const GtkTextIter      *limit,
                                                             gboolean                forward_search);
-static void      mousepad_document_update_tab              (MousepadDocument       *document,
-                                                            GParamSpec             *pspec,
-                                                            GtkWidget              *ebox);
+static void      mousepad_document_update_tab              (MousepadDocument       *document);
 static void      mousepad_document_tab_button_clicked      (GtkWidget              *widget,
                                                             MousepadDocument       *document);
 
@@ -104,7 +102,8 @@ struct _MousepadDocument
   /* the highlight tag */
   GtkTextTag        *tag;
 
-  /* the tab label */
+  /* the tab label and ebox */
+  GtkWidget         *ebox;
   GtkWidget         *label;
 
   /* absolute path of the file */
@@ -472,6 +471,9 @@ mousepad_document_set_filename (MousepadDocument *document,
   /* create the new names */
   document->filename = g_strdup (filename);
   document->display_name = g_filename_display_basename (filename);
+
+  /* update the tab label and tooltip */
+  mousepad_document_update_tab (document);
 }
 
 
@@ -1034,7 +1036,6 @@ GtkWidget *
 mousepad_document_get_tab_label (MousepadDocument *document)
 {
   GtkWidget *hbox;
-  GtkWidget *ebox;
   GtkWidget *button, *image;
 
   /* create the box */
@@ -1042,21 +1043,19 @@ mousepad_document_get_tab_label (MousepadDocument *document)
   gtk_widget_show (hbox);
 
   /* the ebox */
-  ebox = g_object_new (GTK_TYPE_EVENT_BOX, "border-width", 2, NULL);
-  gtk_box_pack_start (GTK_BOX (hbox), ebox, TRUE, TRUE, 0);
-  gtk_widget_show (ebox);
+  document->ebox = g_object_new (GTK_TYPE_EVENT_BOX, "border-width", 2, NULL);
+  gtk_box_pack_start (GTK_BOX (hbox), document->ebox, TRUE, TRUE, 0);
+  gtk_widget_show (document->ebox);
 
   /* create the label */
   document->label = g_object_new (GTK_TYPE_LABEL,
                                  "selectable", FALSE,
                                  "xalign", 0.0, NULL);
-  gtk_container_add (GTK_CONTAINER (ebox), document->label);
+  gtk_container_add (GTK_CONTAINER (document->ebox), document->label);
   gtk_widget_show (document->label);
 
   /* update the tab and add signal to the ebox for a title update */
-  mousepad_document_update_tab (document, NULL, ebox);
-  g_signal_connect (G_OBJECT (document), "notify::title",
-                    G_CALLBACK (mousepad_document_update_tab), ebox);
+  mousepad_document_update_tab (document);
 
   /* create the button */
   button = g_object_new (GTK_TYPE_BUTTON,
@@ -1082,16 +1081,14 @@ mousepad_document_get_tab_label (MousepadDocument *document)
 
 
 static void
-mousepad_document_update_tab (MousepadDocument *document,
-                              GParamSpec       *pspec,
-                              GtkWidget        *ebox)
+mousepad_document_update_tab (MousepadDocument *document)
 {
   /* set the tab label */
   gtk_label_set_text (GTK_LABEL (document->label),
                       mousepad_document_get_title (document, FALSE));
 
   /* set the tab tooltip */
-  mousepad_gtk_set_tooltip (ebox, document->filename);
+  mousepad_gtk_set_tooltip (document->ebox, document->filename);
 }
 
 

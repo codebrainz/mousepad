@@ -1,4 +1,10 @@
 2007-04-06	Nick Schermer <nick@xfce.org>
+	* mousepad/mousepad-window.c: Fix opening recent files that do not exist.
+	* mousepad/mousepad-window.c, mousepad/mousepad-document.c: Update the window
+	  title correctly and remove the unused notify::title signals.
+
+
+2007-04-06	Nick Schermer <nick@xfce.org>
 	* mousepad/mousepad-document.c: Because we don't use invisible characters in
 	  the text buffer, I was able to write a custom iter search function that can
 	  search in both directions, can be case insensitive, no string duplications
