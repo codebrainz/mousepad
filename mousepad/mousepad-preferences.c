@@ -49,9 +49,11 @@ enum
 {
   PROP_0,
   PROP_FONT_NAME,
+  PROP_LAST_MATCH_CASE,
+  PROP_LAST_STATUSBAR_VISIBLE,
   PROP_LAST_WINDOW_HEIGHT,
   PROP_LAST_WINDOW_WIDTH,
-  PROP_STATUSBAR,
+  PROP_LAST_WRAP_AROUND,
   PROP_WORD_WRAP,
   PROP_MISC_ALWAYS_SHOW_TABS,
   PROP_MISC_CYCLE_TABS,
@@ -190,12 +192,25 @@ mousepad_preferences_class_init (MousepadPreferencesClass *klass)
                                                         MOUSEPAD_PARAM_READWRITE));
 
   /**
-   * MousepadPreferences:statusbar
+   * MousepadPreferences:last-match-case
+   *
+   * Whether to enable match case in the search bar.
+   **/
+  g_object_class_install_property (gobject_class,
+                                   PROP_LAST_MATCH_CASE,
+                                   g_param_spec_boolean ("last-match-case",
+                                                         "last-match-case",
+                                                         "last-match-case",
+                                                         FALSE,
+                                                         MOUSEPAD_PARAM_READWRITE));
+
+  /**
+   * MousepadPreferences:last-statusbar-visible
    *
    * Whether to display the statusbar in the Mousepad window.
    **/
   g_object_class_install_property (gobject_class,
-                                   PROP_STATUSBAR,
+                                   PROP_LAST_STATUSBAR_VISIBLE,
                                    g_param_spec_boolean ("last-statusbar-visible",
                                                          "last-statusbar-visible",
                                                          "last-statusbar-visible",
@@ -229,6 +244,19 @@ mousepad_preferences_class_init (MousepadPreferencesClass *klass)
                                                      "last-window-width",
                                                      1, G_MAXINT, 640,
                                                      MOUSEPAD_PARAM_READWRITE));
+
+  /**
+   * MousepadPreferences:last-wrap-around
+   *
+   * Whether to enable wrap around in the search bar.
+   **/
+  g_object_class_install_property (gobject_class,
+                                   PROP_LAST_WRAP_AROUND,
+                                   g_param_spec_boolean ("last-wrap-around",
+                                                         "last-wrap-around",
+                                                         "last-wrap-around",
+                                                         TRUE,
+                                                         MOUSEPAD_PARAM_READWRITE));
 
   /**
    * MousepadPreferences:word-wrap

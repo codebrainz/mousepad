@@ -37,6 +37,8 @@ G_BEGIN_DECLS
   g_print ("%s (%d): %f\n", __FUNCTION__, __LINE__, g_timer_elapsed (__FUNCTION__timer, NULL)); \
   g_timer_destroy (__FUNCTION__timer);
 
+#define PRINT_LINE g_print ("%d\n", __LINE__);
+
 
 /* optimize the properties */
 #define MOUSEPAD_PARAM_READWRITE (G_PARAM_READWRITE | G_PARAM_STATIC_NAME | G_PARAM_STATIC_NICK | G_PARAM_STATIC_BLURB)

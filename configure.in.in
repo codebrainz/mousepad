@@ -73,7 +73,7 @@ AC_SUBST([MOUSEPAD_VERSION_MICRO])
 dnl **********************************
 dnl *** Check for standard headers ***
 dnl **********************************
-AC_CHECK_HEADERS([errno.h fcntl.h memory.h stdlib.h string.h \
+AC_CHECK_HEADERS([ctype.h errno.h fcntl.h memory.h stdlib.h string.h \
                   sys/mman.h sys/types.h sys/stat.h time.h unistd.h])
 
 dnl ************************************

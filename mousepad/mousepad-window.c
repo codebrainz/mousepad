@@ -441,6 +441,7 @@ mousepad_window_init (MousepadWindow *window)
   accel_group = gtk_ui_manager_get_accel_group (window->ui_manager);
   gtk_window_add_accel_group (GTK_WINDOW (window), accel_group);
 
+  /* create the main table */
   window->table = gtk_table_new (6, 1, FALSE);
   gtk_container_add (GTK_CONTAINER (window), window->table);
   gtk_widget_show (window->table);

@@ -1,3 +1,13 @@
+2007-04-06	Nick Schermer <nick@xfce.org>
+	* mousepad/mousepad-document.c: Because we don't use invisible characters in
+	  the text buffer, I was able to write a custom iter search function that can
+	  search in both directions, can be case insensitive, no string duplications
+	  and above all: is over 10x faster then the gtk version. This gives a nice
+	  performance boost to the highlight function.
+	* mousepad/mousepad-search-bar.c: Connected the last signals and added a
+	  wrap around option to the search bar.
+
+
 2007-04-05	Nick Schermer <nick@xfce.org>
 
 	* mousepad/mousepad-document.c: Remove unused properties.

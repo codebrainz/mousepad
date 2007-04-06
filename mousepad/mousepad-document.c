@@ -30,6 +30,9 @@
 #ifdef HAVE_TIME_H
 #include <time.h>
 #endif
+#ifdef HAVE_CTYPE_H
+#include <ctype.h>
+#endif
 
 #include <mousepad/mousepad-private.h>
 #include <mousepad/mousepad-types.h>
@@ -45,26 +48,33 @@
 
 
 
-static void mousepad_document_class_init              (MousepadDocumentClass  *klass);
-static void mousepad_document_init                    (MousepadDocument       *document);
-static void mousepad_document_finalize                (GObject                *object);
-static void mousepad_document_modified_changed        (GtkTextBuffer          *buffer,
-                                                       MousepadDocument       *document);
-static void mousepad_document_notify_has_selection    (GtkTextBuffer          *buffer,
-                                                       GParamSpec             *pspec,
-                                                       MousepadDocument       *document);
-static void mousepad_document_notify_cursor_position  (GtkTextBuffer          *buffer,
-                                                       GParamSpec             *pspec,
-                                                       MousepadDocument       *document);
-static void mousepad_document_toggle_overwrite        (GtkTextView            *textview,
-                                                       GParamSpec             *pspec,
-                                                       MousepadDocument       *document);
-static void mousepad_document_scroll_to_visible_area  (MousepadDocument       *document);
-static void mousepad_document_update_tab              (MousepadDocument       *document,
-                                                       GParamSpec             *pspec,
-                                                       GtkWidget              *ebox);
-static void mousepad_document_tab_button_clicked      (GtkWidget              *widget,
-                                                       MousepadDocument       *document);
+static void      mousepad_document_class_init              (MousepadDocumentClass  *klass);
+static void      mousepad_document_init                    (MousepadDocument       *document);
+static void      mousepad_document_finalize                (GObject                *object);
+static void      mousepad_document_modified_changed        (GtkTextBuffer          *buffer,
+                                                            MousepadDocument       *document);
+static void      mousepad_document_notify_has_selection    (GtkTextBuffer          *buffer,
+                                                            GParamSpec             *pspec,
+                                                            MousepadDocument       *document);
+static void      mousepad_document_notify_cursor_position  (GtkTextBuffer          *buffer,
+                                                            GParamSpec             *pspec,
+                                                            MousepadDocument       *document);
+static void      mousepad_document_toggle_overwrite        (GtkTextView            *textview,
+                                                            GParamSpec             *pspec,
+                                                            MousepadDocument       *document);
+static void      mousepad_document_scroll_to_visible_area  (MousepadDocument       *document);
+static gboolean  mousepad_document_iter_search             (const GtkTextIter      *start,
+                                                            const gchar            *str,
+                                                            MousepadSearchFlags     flags,
+                                                            GtkTextIter            *match_start,
+                                                            GtkTextIter            *match_end,
+                                                            const GtkTextIter      *limit,
+                                                            gboolean                forward_search);
+static void      mousepad_document_update_tab              (MousepadDocument       *document,
+                                                            GParamSpec             *pspec,
+                                                            GtkWidget              *ebox);
+static void      mousepad_document_tab_button_clicked      (GtkWidget              *widget,
+                                                            MousepadDocument       *document);
 
 
 
@@ -579,21 +589,114 @@ mousepad_document_open_file (MousepadDocument  *document,
 
 
 
+
+static gboolean
+mousepad_document_iter_search (const GtkTextIter   *start,
+                               const gchar         *str,
+                               MousepadSearchFlags  flags,
+                               GtkTextIter         *match_start,
+                               GtkTextIter         *match_end,
+                               const GtkTextIter   *limit,
+                               gboolean             search_forward)
+{
+  GtkTextIter iter, begin;
+  gunichar    iter_char, str_char;
+  gboolean    succeed = FALSE;
+  gboolean    continue_search;
+  guint       str_offset = 0;
+
+  _mousepad_return_val_if_fail (start != NULL, FALSE);
+  _mousepad_return_val_if_fail (limit != NULL, FALSE);
+
+  /* set the start iter */
+  iter = *start;
+
+  /* walk from the start to the end iter */
+  do
+    {
+      /* break when we hit the search limit */
+      if (G_UNLIKELY (gtk_text_iter_equal (&iter, limit)))
+        break;
+
+      /* get the characters we're going to compare */
+      iter_char = gtk_text_iter_get_char (&iter);
+      str_char  = g_utf8_get_char (str);
+
+      /* convert the characters to lower case if needed */
+      if (flags & MOUSEPAD_SEARCH_CASE_INSENSITIVE)
+        {
+          iter_char = tolower (iter_char);
+          str_char  = tolower (str_char);
+        }
+
+      /* compare the two characters */
+      if (iter_char == str_char)
+        {
+          /* first character matched, set the begin iter */
+          if (str_offset == 0)
+            begin = iter;
+
+          /* get the next character and increase the offset counter */
+          str = g_utf8_next_char (str);
+          str_offset++;
+
+          /* we've hit the end of the search string, so we had a full match */
+          if (G_UNLIKELY (*str == '\0'))
+            {
+              /* forward one character */
+              if (G_LIKELY (search_forward))
+                gtk_text_iter_forward_char (&iter);
+              else
+                gtk_text_iter_forward_char (&begin);
+
+              /* set the start and end iters */
+              *match_start = begin;
+              *match_end   = iter;
+
+              /* return true and break the loop */
+              succeed = TRUE;
+              break;
+            }
+        }
+      else if (G_UNLIKELY (str_offset > 0))
+        {
+          /* go back to the first character in the string */
+          for (;str_offset > 0; str_offset--)
+            str = g_utf8_prev_char (str);
+
+          /* reset the iter */
+          iter = begin;
+        }
+
+      /* jump to next iter in the buffer */
+      if (G_LIKELY (search_forward))
+        continue_search = gtk_text_iter_forward_char (&iter);
+      else
+        continue_search = gtk_text_iter_backward_char (&iter);
+    }
+  while (G_LIKELY (continue_search));
+
+  return succeed;
+}
+
+
+
 gboolean
 mousepad_document_find (MousepadDocument    *document,
                         const gchar         *string,
                         MousepadSearchFlags  flags)
 {
-  gboolean    found;
-  gboolean    already_wrapped = FALSE;
-  GtkTextIter doc_start, doc_end;
-  GtkTextIter sel_start, sel_end;
-  GtkTextIter match_start, match_end;
-  GtkTextIter start, end;
+  gboolean     found;
+  gboolean     already_wrapped = FALSE;
+  gchar       *reversed = NULL;
+  GtkTextIter  doc_start, doc_end;
+  GtkTextIter  sel_start, sel_end;
+  GtkTextIter  match_start, match_end;
+  GtkTextIter  start, end;
 
   _mousepad_return_val_if_fail (MOUSEPAD_IS_DOCUMENT (document), FALSE);
   _mousepad_return_val_if_fail (GTK_IS_TEXT_BUFFER (document->buffer), FALSE);
-  _mousepad_return_val_if_fail (string != NULL, FALSE);
+  _mousepad_return_val_if_fail (string && g_utf8_validate (string, -1, NULL), FALSE);
 
   /* get the bounds */
   gtk_text_buffer_get_bounds (document->buffer, &doc_start, &doc_end);
@@ -609,6 +712,9 @@ mousepad_document_find (MousepadDocument    *document,
     {
       start = sel_start;
       end   = doc_start;
+
+      /* reverse the search string */
+      reversed = g_utf8_strreverse (string, -1);
     }
   else /* type-ahead */
     {
@@ -619,9 +725,9 @@ mousepad_document_find (MousepadDocument    *document,
 search:
   /* try to find the next occurence of the string */
   if (flags & MOUSEPAD_SEARCH_BACKWARDS)
-    found = gtk_text_iter_backward_search (&start, string, DEFAULT_SEARCH_FLAGS, &match_start, &match_end, &end);
+    found = mousepad_document_iter_search (&start, reversed, flags, &match_start, &match_end, &end, FALSE);
   else
-    found = gtk_text_iter_forward_search (&start, string, DEFAULT_SEARCH_FLAGS, &match_start, &match_end, &end);
+    found = mousepad_document_iter_search (&start, string, flags, &match_start, &match_end, &end, TRUE);
 
   /* select the occurence */
   if (found)
@@ -636,7 +742,7 @@ search:
       mousepad_document_scroll_to_visible_area (document);
     }
   /* wrap around */
-  else if (already_wrapped == FALSE)
+  else if (flags & MOUSEPAD_SEARCH_WRAP_AROUND && already_wrapped == FALSE)
     {
       /* set the new start and end iter */
       if (flags & MOUSEPAD_SEARCH_BACKWARDS)
@@ -656,6 +762,14 @@ search:
       /* search again */
       goto search;
     }
+  else if (flags & MOUSEPAD_SEARCH_WRAP_AROUND)
+    {
+      /* nothing found, we already did the wrap, so just place the cursor where we started */
+      gtk_text_buffer_place_cursor (document->buffer, &sel_start);
+    }
+
+  /* cleanup */
+  g_free (reversed);
 
   return found;
 }
@@ -684,6 +798,7 @@ mousepad_document_highlight_all (MousepadDocument    *document,
 
   _mousepad_return_if_fail (MOUSEPAD_IS_DOCUMENT (document));
   _mousepad_return_if_fail (GTK_IS_TEXT_BUFFER (document->buffer));
+  _mousepad_return_if_fail (string ? g_utf8_validate (string, -1, NULL) : TRUE);
 
   /* get the document bounds */
   gtk_text_buffer_get_bounds (document->buffer, &doc_start, &doc_end);
@@ -699,19 +814,20 @@ mousepad_document_highlight_all (MousepadDocument    *document,
 
       /* highlight all the occurences of the strings */
       do
-      {
-        /* search for the next occurence of the string */
-        found = gtk_text_iter_forward_search (&iter, string, DEFAULT_SEARCH_FLAGS, &match_start, &match_end, NULL);
+        {
+          /* search for the next occurence of the string */
+          found = mousepad_document_iter_search (&iter, string, flags, &match_start, &match_end, &doc_end, TRUE);
 
-        if (G_LIKELY (found))
-          {
-             /* highlight the found occurence */
-             gtk_text_buffer_apply_tag (document->buffer, document->tag, &match_start, &match_end);
+          if (G_LIKELY (found))
+            {
+              /* highlight the found occurence */
+              gtk_text_buffer_apply_tag (document->buffer, document->tag, &match_start, &match_end);
 
-             /* jump to the end of the highlighted string and continue searching */
-             iter = match_end;
-          }
-      } while (found);
+              /* jump to the end of the highlighted string and continue searching */
+              iter = match_end;
+            }
+        }
+      while (found);
     }
 }
 
