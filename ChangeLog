@@ -1,4 +1,13 @@
 2007-04-06	Nick Schermer <nick@xfce.org>
+	* mousepad/mousepad-document.c: Fix segfault from previous commit.
+	* mousepad/mousepad-document.c: Fix bug in searching backwards, we have to
+	  jump one iter backwards before searching, because we start with the
+	  character right from the first iter. Also removed the equal check because
+	  it's not needed and only causing problems with backwards searching on the
+	  first character in the buffer.
+
+
+2007-04-06	Nick Schermer <nick@xfce.org>
 	* mousepad/mousepad-window.c: Fix opening recent files that do not exist.
 	* mousepad/mousepad-window.c, mousepad/mousepad-document.c: Update the window
 	  title correctly and remove the unused notify::title signals.

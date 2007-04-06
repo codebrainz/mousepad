@@ -68,7 +68,6 @@ static gboolean  mousepad_document_iter_search             (const GtkTextIter   
                                                             MousepadSearchFlags     flags,
                                                             GtkTextIter            *match_start,
                                                             GtkTextIter            *match_end,
-                                                            const GtkTextIter      *limit,
                                                             gboolean                forward_search);
 static void      mousepad_document_update_tab              (MousepadDocument       *document);
 static void      mousepad_document_tab_button_clicked      (GtkWidget              *widget,
@@ -473,7 +472,8 @@ mousepad_document_set_filename (MousepadDocument *document,
   document->display_name = g_filename_display_basename (filename);
 
   /* update the tab label and tooltip */
-  mousepad_document_update_tab (document);
+  if (document->ebox && document->label)
+    mousepad_document_update_tab (document);
 }
 
 
@@ -598,7 +598,6 @@ mousepad_document_iter_search (const GtkTextIter   *start,
                                MousepadSearchFlags  flags,
                                GtkTextIter         *match_start,
                                GtkTextIter         *match_end,
-                               const GtkTextIter   *limit,
                                gboolean             search_forward)
 {
   GtkTextIter iter, begin;
@@ -608,7 +607,6 @@ mousepad_document_iter_search (const GtkTextIter   *start,
   guint       str_offset = 0;
 
   _mousepad_return_val_if_fail (start != NULL, FALSE);
-  _mousepad_return_val_if_fail (limit != NULL, FALSE);
 
   /* set the start iter */
   iter = *start;
@@ -616,10 +614,6 @@ mousepad_document_iter_search (const GtkTextIter   *start,
   /* walk from the start to the end iter */
   do
     {
-      /* break when we hit the search limit */
-      if (G_UNLIKELY (gtk_text_iter_equal (&iter, limit)))
-        break;
-
       /* get the characters we're going to compare */
       iter_char = gtk_text_iter_get_char (&iter);
       str_char  = g_utf8_get_char (str);
@@ -694,7 +688,7 @@ mousepad_document_find (MousepadDocument    *document,
   GtkTextIter  doc_start, doc_end;
   GtkTextIter  sel_start, sel_end;
   GtkTextIter  match_start, match_end;
-  GtkTextIter  start, end;
+  GtkTextIter  start;
 
   _mousepad_return_val_if_fail (MOUSEPAD_IS_DOCUMENT (document), FALSE);
   _mousepad_return_val_if_fail (GTK_IS_TEXT_BUFFER (document->buffer), FALSE);
@@ -708,28 +702,27 @@ mousepad_document_find (MousepadDocument    *document,
   if (flags & MOUSEPAD_SEARCH_FORWARDS)
     {
       start = sel_end;
-      end   = doc_end;
     }
-  else if (flags & MOUSEPAD_SEARCH_BACKWARDS)
+  else
     {
       start = sel_start;
-      end   = doc_start;
 
-      /* reverse the search string */
-      reversed = g_utf8_strreverse (string, -1);
-    }
-  else /* type-ahead */
-    {
-      start = sel_start;
-      end   = doc_end;
+      if (flags & MOUSEPAD_SEARCH_BACKWARDS)
+        {
+          /* the character is right of the iter, go one iter backwards */
+          gtk_text_iter_backward_char (&start);
+
+          /* reverse the search string */
+          reversed = g_utf8_strreverse (string, -1);
+        }
     }
 
 search:
   /* try to find the next occurence of the string */
   if (flags & MOUSEPAD_SEARCH_BACKWARDS)
-    found = mousepad_document_iter_search (&start, reversed, flags, &match_start, &match_end, &end, FALSE);
+    found = mousepad_document_iter_search (&start, reversed, flags, &match_start, &match_end, FALSE);
   else
-    found = mousepad_document_iter_search (&start, string, flags, &match_start, &match_end, &end, TRUE);
+    found = mousepad_document_iter_search (&start, string, flags, &match_start, &match_end, TRUE);
 
   /* select the occurence */
   if (found)
@@ -748,15 +741,9 @@ search:
     {
       /* set the new start and end iter */
       if (flags & MOUSEPAD_SEARCH_BACKWARDS)
-        {
-          end   = start;
-          start = doc_end;
-        }
+        start = doc_end;
       else
-        {
-          end   = start;
-          start = doc_start;
-        }
+        start = doc_start;
 
       /* set we did the wrap, so we don't end up in a loop */
       already_wrapped = TRUE;
@@ -818,7 +805,7 @@ mousepad_document_highlight_all (MousepadDocument    *document,
       do
         {
           /* search for the next occurence of the string */
-          found = mousepad_document_iter_search (&iter, string, flags, &match_start, &match_end, &doc_end, TRUE);
+          found = mousepad_document_iter_search (&iter, string, flags, &match_start, &match_end, TRUE);
 
           if (G_LIKELY (found))
             {
