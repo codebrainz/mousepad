@@ -2,15 +2,16 @@
 # Copyright (C) 2005-2007 Erik Harrison.
 # This file is distributed under the same license as the Mousepad package.
 # Turker Gulum <turker.gulum@linux.org.tr>, 2007.
+# Eren Türkay <turkay.eren@gmail.com>, 2007
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: Mousepad 0.2.13\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2007-01-20 12:34+0100\n"
-"PO-Revision-Date: 2007-03-09 10:40+0100\n"
-"Last-Translator: Türker Gülüm <turker.gulum@linux.org.tr>\n"
-"Language-Team: Turkish\n"
+"PO-Revision-Date: 2007-04-06 18:48+0100\n"
+"Last-Translator: Eren Türkay <turkay.eren@gmail.com>\n"
+"Language-Team: Turkish <turkce@pardus.org.tr>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -239,7 +240,7 @@ msgstr "'%s' desteklenmiyor"
 
 #: ../src/selector.c:271
 msgid "Auto Detect"
-msgstr "Algıla"
+msgstr "Otomatik Algıla"
 
 #: ../src/selector.c:325
 msgid "Open"
