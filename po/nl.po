@@ -68,9 +68,8 @@ msgid "/File/_Open..."
 msgstr "/Bestand/_Open..."
 
 #: ../src/menu.c:72
-#, fuzzy
 msgid "/File/Open _Recent"
-msgstr "/Bestand/_Open..."
+msgstr "/Bestand/_Recent geopend..."
 
 #: ../src/menu.c:77
 msgid "/File/_Save"
