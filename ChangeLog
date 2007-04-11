@@ -1,3 +1,13 @@
+2007-04-xx	Nick Schermer <nick@xfce.org>
+	* mousepad/mousepad-{document,window,statusbar}: You can now click the OVR
+	  text in the statusbar to toggle the overwrite mode.
+	* mousepad/mousepad-{document,window,undo}: Initial version of an undo
+	  manager. This is not finished yet, but it's a start.
+	* mousepad/Makefile.am, mousepad/mousepad-csource.pl: Remove my perl script
+	  because it has some problems. Use exo-csource instead.
+	* Remove some empty object functions.
+
+
 2007-04-06	Nick Schermer <nick@xfce.org>
 	* mousepad/mousepad-document.c: Fix segfault from previous commit.
 	* mousepad/mousepad-document.c: Fix bug in searching backwards, we have to

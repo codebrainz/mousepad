@@ -85,6 +85,8 @@ static gboolean          mousepad_window_close_document               (MousepadW
                                                                        MousepadDocument       *document);
 static void              mousepad_window_set_title                    (MousepadWindow         *window,
                                                                        MousepadDocument       *document);
+static void              mousepad_window_toggle_overwrite             (MousepadWindow         *window,
+                                                                       gboolean                overwrite);
 
 /* notebook signals */
 static void              mousepad_window_page_notified                (GtkNotebook            *notebook,
@@ -119,6 +121,10 @@ static void              mousepad_window_overwrite_changed            (MousepadD
 static void              mousepad_window_selection_changed            (MousepadDocument       *document,
                                                                        gboolean                selected,
                                                                        MousepadWindow         *window);
+static void              mousepad_window_can_undo                     (MousepadWindow         *window,
+                                                                       gboolean                can_undo);
+static void              mousepad_window_can_redo                     (MousepadWindow         *window,
+                                                                       gboolean                can_redo);
 
 /* menu updaters */
 static void              mousepad_window_update_actions               (MousepadWindow         *window);
@@ -152,6 +158,8 @@ static void              mousepad_window_action_save_file_as          (GtkAction
                                                                        MousepadWindow         *window);
 static void              mousepad_window_action_reload                (GtkAction              *action,
                                                                        MousepadWindow         *window);
+static void              mousepad_window_action_print                 (GtkAction              *action,
+                                                                       MousepadWindow         *window);
 static void              mousepad_window_action_close_tab             (GtkAction              *action,
                                                                        MousepadWindow         *window);
 static void              mousepad_window_action_close                 (GtkAction              *action,
@@ -159,6 +167,10 @@ static void              mousepad_window_action_close                 (GtkAction
 static void              mousepad_window_action_close_all_windows     (GtkAction              *action,
                                                                        MousepadWindow         *window);
 static void              mousepad_window_action_open_new_tab          (GtkAction              *action,
+                                                                       MousepadWindow         *window);
+static void              mousepad_window_action_undo                  (GtkAction              *action,
+                                                                       MousepadWindow         *window);
+static void              mousepad_window_action_redo                  (GtkAction              *action,
                                                                        MousepadWindow         *window);
 static void              mousepad_window_action_cut                   (GtkAction              *action,
                                                                        MousepadWindow         *window);
@@ -267,13 +279,14 @@ static const GtkActionEntry action_entries[] =
     { "save-file", GTK_STOCK_SAVE, N_("_Save"), NULL, N_("Save the current file"), G_CALLBACK (mousepad_window_action_save_file), },
     { "save-file-as", GTK_STOCK_SAVE_AS, N_("Save _As"), NULL, N_("Save current document as another file"), G_CALLBACK (mousepad_window_action_save_file_as), },
     { "reload", GTK_STOCK_REFRESH, N_("Re_load"), NULL, N_("Reload this document."), G_CALLBACK (mousepad_window_action_reload), },
+    { "print-document", GTK_STOCK_PRINT, N_("_Print"), "<control>P", N_("Prin the current page"), G_CALLBACK (mousepad_window_action_print), },
     { "close-tab", GTK_STOCK_CLOSE, N_("C_lose Tab"), "<control>W", N_("Close the current file"), G_CALLBACK (mousepad_window_action_close_tab), },
     { "close-window", GTK_STOCK_QUIT, N_("_Close Window"), "<control>Q", N_("Quit the program"), G_CALLBACK (mousepad_window_action_close), },
     { "close-all-windows", NULL, N_("Close _All Windows"), "<control><shift>W", N_("Close all Mousepad windows"), G_CALLBACK (mousepad_window_action_close_all_windows), },
 
   { "edit-menu", NULL, N_("_Edit"), NULL, NULL, NULL, },
-    { "undo", GTK_STOCK_UNDO, N_("_Undo"), NULL, N_("Undo the last action"), NULL, },
-    { "redo", GTK_STOCK_REDO, N_("_Redo"), NULL, N_("Redo the last undone action"), NULL, },
+    { "undo", GTK_STOCK_UNDO, N_("_Undo"), "<control>Z", N_("Undo the last action"), G_CALLBACK (mousepad_window_action_undo), },
+    { "redo", GTK_STOCK_REDO, N_("_Redo"), "<control>Y", N_("Redo the last undone action"), G_CALLBACK (mousepad_window_action_redo), },
     { "cut", GTK_STOCK_CUT, N_("Cu_t"), NULL, N_("Cut the selection"), G_CALLBACK (mousepad_window_action_cut), },
     { "copy", GTK_STOCK_COPY, N_("_Copy"), NULL, N_("Copy the selection"), G_CALLBACK (mousepad_window_action_copy), },
     { "paste", GTK_STOCK_PASTE, N_("_Paste"), NULL, N_("Paste the clipboard"), G_CALLBACK (mousepad_window_action_paste), },
@@ -953,6 +966,8 @@ mousepad_window_add (MousepadWindow   *window,
   g_signal_connect (G_OBJECT (document), "modified-changed", G_CALLBACK (mousepad_window_modified_changed), window);
   g_signal_connect (G_OBJECT (document), "cursor-changed", G_CALLBACK (mousepad_window_cursor_changed), window);
   g_signal_connect (G_OBJECT (document), "overwrite-changed", G_CALLBACK (mousepad_window_overwrite_changed), window);
+  g_signal_connect_swapped (G_OBJECT (document), "can-undo", G_CALLBACK (mousepad_window_can_undo), window);
+  g_signal_connect_swapped (G_OBJECT (document), "can-redo", G_CALLBACK (mousepad_window_can_redo), window);
 
   /* insert the page right from the active tab */
   page = gtk_notebook_get_current_page (GTK_NOTEBOOK (window->notebook));
@@ -1073,6 +1088,18 @@ mousepad_window_set_title (MousepadWindow   *window,
 
   /* cleanup */
   g_free (string);
+}
+
+
+
+static void
+mousepad_window_toggle_overwrite (MousepadWindow *window,
+                                  gboolean        overwrite)
+{
+  _mousepad_return_if_fail (MOUSEPAD_IS_WINDOW (window));
+
+  if (G_LIKELY (window->active))
+    mousepad_document_set_overwrite (window->active, overwrite);
 }
 
 
@@ -1294,6 +1321,30 @@ mousepad_window_selection_changed (MousepadDocument *document,
 
 
 
+static void
+mousepad_window_can_undo (MousepadWindow *window,
+                          gboolean        can_undo)
+{
+  GtkAction *action;
+
+  action = gtk_action_group_get_action (window->window_actions, "undo");
+  gtk_action_set_sensitive (action, can_undo);
+}
+
+
+
+static void
+mousepad_window_can_redo (MousepadWindow *window,
+                          gboolean        can_redo)
+{
+  GtkAction *action;
+
+  action = gtk_action_group_get_action (window->window_actions, "redo");
+  gtk_action_set_sensitive (action, can_redo);
+}
+
+
+
 /**
  * Menu Update Functions
  **/
@@ -1348,6 +1399,10 @@ mousepad_window_update_actions (MousepadWindow *window)
       active = mousepad_document_get_auto_indent (document);
       action = gtk_action_group_get_action (window->window_actions, "auto-indent");
       gtk_toggle_action_set_active (GTK_TOGGLE_ACTION (action), active);
+
+      /* set the sensitivity of the undo and redo actions */
+      mousepad_window_can_undo (window, mousepad_document_get_can_undo (document));
+      mousepad_window_can_redo (window, mousepad_document_get_can_redo (document));
 
       /* set the sensitivity of the selection actions */
       has_selection = mousepad_document_get_has_selection (document);
@@ -1981,6 +2036,15 @@ mousepad_window_action_reload (GtkAction      *action,
 
 
 static void
+mousepad_window_action_print (GtkAction      *action,
+                              MousepadWindow *window)
+{
+
+}
+
+
+
+static void
 mousepad_window_action_close_tab (GtkAction      *action,
                                   MousepadWindow *window)
 {
@@ -2051,6 +2115,26 @@ mousepad_window_action_close_all_windows (GtkAction      *action,
     mousepad_window_action_close (NULL, MOUSEPAD_WINDOW (li->data));
 
   g_list_free (windows);
+}
+
+
+
+static void
+mousepad_window_action_undo (GtkAction      *action,
+                             MousepadWindow *window)
+{
+  if (G_LIKELY (window->active != NULL))
+    mousepad_document_undo (window->active);
+}
+
+
+
+static void
+mousepad_window_action_redo (GtkAction      *action,
+                             MousepadWindow *window)
+{
+  if (G_LIKELY (window->active != NULL))
+    mousepad_document_redo (window->active);
 }
 
 
@@ -2299,6 +2383,10 @@ mousepad_window_action_statusbar (GtkToggleAction *action,
       window->statusbar = mousepad_statusbar_new ();
       gtk_table_attach (GTK_TABLE (window->table), window->statusbar, 0, 1, 5, 6, GTK_EXPAND | GTK_FILL, GTK_FILL, 0, 0);
       gtk_widget_show (window->statusbar);
+
+      /* overwrite toggle signal */
+      g_signal_connect_swapped (G_OBJECT (window->statusbar), "enable-overwrite",
+                                G_CALLBACK (mousepad_window_toggle_overwrite), window);
 
       /* set the statsbar text */
       document = window->active;

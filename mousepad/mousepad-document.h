@@ -57,6 +57,9 @@ void            mousepad_document_set_auto_indent          (MousepadDocument    
 void            mousepad_document_set_line_numbers         (MousepadDocument    *document,
                                                             gboolean             line_numbers);
 
+void            mousepad_document_set_overwrite            (MousepadDocument    *document,
+                                                            gboolean             overwrite);
+
 void            mousepad_document_set_word_wrap            (MousepadDocument    *document,
                                                             gboolean             word_wrap);
 
@@ -97,6 +100,10 @@ void            mousepad_document_line_numbers             (MousepadDocument    
 
 gboolean        mousepad_document_get_externally_modified  (MousepadDocument    *document);
 
+gboolean        mousepad_document_get_can_undo             (MousepadDocument    *document);
+
+gboolean        mousepad_document_get_can_redo             (MousepadDocument    *document);
+
 const gchar    *mousepad_document_get_filename             (MousepadDocument    *document);
 
 gboolean        mousepad_document_get_has_selection        (MousepadDocument    *document);
@@ -115,6 +122,10 @@ gboolean        mousepad_document_get_word_wrap            (MousepadDocument    
 gboolean        mousepad_document_get_line_numbers         (MousepadDocument    *document);
 
 gboolean        mousepad_document_get_auto_indent          (MousepadDocument    *document);
+
+void            mousepad_document_undo                     (MousepadDocument    *document);
+
+void            mousepad_document_redo                     (MousepadDocument    *document);
 
 G_END_DECLS
 

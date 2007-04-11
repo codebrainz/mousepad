@@ -445,9 +445,12 @@ mousepad_search_bar_match_case_toggled (GtkWidget         *button,
   /* save the setting */
   g_object_set (G_OBJECT (search_bar->preferences), "last-match-case", active, NULL);
 
-  /* invoke the highlight function to update the buffer */
-  search_bar->highlight_id = g_idle_add_full (G_PRIORITY_LOW, mousepad_search_bar_highlight_timeout,
-                                              search_bar, mousepad_search_bar_highlight_timeout_destroy);
+  if (search_bar->highlight_all)
+    {
+      /* invoke the highlight function to update the buffer */
+      search_bar->highlight_id = g_idle_add_full (G_PRIORITY_LOW, mousepad_search_bar_highlight_timeout,
+                                                  search_bar, mousepad_search_bar_highlight_timeout_destroy);
+    }
 }
 
 

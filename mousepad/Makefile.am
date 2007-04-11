@@ -46,13 +46,15 @@ mousepad_SOURCES =								\
 	mousepad-statusbar.h							\
 	mousepad-view.c								\
 	mousepad-view.h								\
+	mousepad-undo.c								\
+	mousepad-undo.h								\
 	mousepad-window.c							\
 	mousepad-window.h							\
 	mousepad-window-ui.h
 
 mousepad_CFLAGS =								\
 	$(GTK_CFLAGS)								\
-	$(LIBXFCE4UTIL_CFLAGS) \
+	$(LIBXFCE4UTIL_CFLAGS)							\
 	$(GMODULE_CFLAGS)							\
 	$(GTHREAD_CFLAGS)							\
 	$(PLATFORM_CFLAGS)
@@ -63,7 +65,7 @@ mousepad_LDFLAGS =								\
 
 mousepad_LDADD =								\
 	$(GTK_LIBS)								\
-	$(LIBXFCE4UTIL_LIBS) \
+	$(LIBXFCE4UTIL_LIBS)							\
 	$(GMODULE_LIBS)								\
 	$(GTHREAD_LIBS)
 
@@ -81,6 +83,14 @@ mousepad_CFLAGS +=								\
 
 mousepad_LDADD +=								\
 	$(DBUS_LIBS)
+endif
+
+if HAVE_GTK_UNIX_PRINT
+mousepad_CFLAGS +=								\
+	$(GTK_UNIX_PRINT_CFLAGS)
+
+mousepad_LDADD +=								\
+	$(GTK_UNIX_PRINT_LIBS)
 endif
 
 if MAINTAINER_MODE
@@ -106,7 +116,7 @@ mousepad-dbus-infos.h: $(srcdir)/mousepad-dbus-infos.xml Makefile
 endif
 
 mousepad-window-ui.h: Makefile $(srcdir)/mousepad-window-ui.xml
-	$(PERL) $(srcdir)/mousepad-csource.pl mousepad_window_ui < $(srcdir)/mousepad-window-ui.xml > mousepad-window-ui.h
+	exo-csource --static --name=mousepad_window_ui $(srcdir)/mousepad-window-ui.xml > mousepad-window-ui.h
 
 mousepad-enum-types.h: stamp-mousepad-enum-types.h
 	@true
@@ -150,7 +160,6 @@ mousepad-marshal.c: mousepad-marshal.list Makefile
 endif
 
 EXTRA_DIST =									\
-	mousepad-csource.pl							\
 	mousepad-dbus-infos.xml							\
 	mousepad-marshal.list							\
 	mousepad-window-ui.xml

@@ -33,8 +33,6 @@
 
 
 static void      mousepad_view_class_init           (MousepadViewClass  *klass);
-static void      mousepad_view_init                 (MousepadView       *view);
-static void      mousepad_view_finalize             (GObject            *object);
 static gboolean  mousepad_view_key_press_event      (GtkWidget          *widget,
                                                      GdkEventKey        *event);
 static void      mousepad_view_indent_lines         (MousepadView       *view,
@@ -86,7 +84,7 @@ mousepad_view_get_type (void)
                                             sizeof (MousepadViewClass),
                                             (GClassInitFunc) mousepad_view_class_init,
                                             sizeof (MousepadView),
-                                            (GInstanceInitFunc) mousepad_view_init,
+                                            NULL,
                                             0);
     }
 
@@ -98,33 +96,13 @@ mousepad_view_get_type (void)
 static void
 mousepad_view_class_init (MousepadViewClass *klass)
 {
-  GObjectClass   *gobject_class;
   GtkWidgetClass *widget_class;
 
   mousepad_view_parent_class = g_type_class_peek_parent (klass);
 
-  gobject_class = G_OBJECT_CLASS (klass);
-  gobject_class->finalize = mousepad_view_finalize;
-
   widget_class = GTK_WIDGET_CLASS (klass);
   widget_class->key_press_event = mousepad_view_key_press_event;
   widget_class->expose_event = mousepad_view_expose;
-}
-
-
-
-static void
-mousepad_view_init (MousepadView *view)
-{
-  /* empty */
-}
-
-
-
-static void
-mousepad_view_finalize (GObject *object)
-{
-  (*G_OBJECT_CLASS (mousepad_view_parent_class)->finalize) (object);
 }
 
 

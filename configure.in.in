@@ -110,6 +110,12 @@ XDT_CHECK_OPTIONAL_PACKAGE([LIBSTARTUP_NOTIFICATION],
                            [0.4], [startup-notification],
                            [startup notification library])
 
+dnl *******************************************************
+dnl *** Optional support for unix print support in GTK+ ***
+dnl *******************************************************
+XDT_CHECK_OPTIONAL_PACKAGE([GTK_UNIX_PRINT], [gtk+-unix-print-2.0],
+                           [2.10.0], [gtk_unix_print], [GTK+ Unix print support])
+
 dnl *************************
 dnl *** Check for gtk-doc ***
 dnl *************************
@@ -233,5 +239,10 @@ if test x"$LIBSTARTUP_NOTIFICATION_FOUND" = x"yes"; then
 echo "* Startup Notification:      yes"
 else
 echo "* Startup Notification:      no"
+fi
+if test x"$GTK_UNIX_PRINT_FOUND" = x"yes"; then
+echo "* GTK+ Unix Print Support:   yes"
+else
+echo "* GTK+ Unix Print Support:   no"
 fi
 echo

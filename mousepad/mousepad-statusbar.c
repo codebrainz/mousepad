@@ -24,9 +24,21 @@
 #include <mousepad/mousepad-private.h>
 #include <mousepad/mousepad-statusbar.h>
 
+
+
 static void              mousepad_statusbar_class_init                (MousepadStatusbarClass *klass);
 static void              mousepad_statusbar_init                      (MousepadStatusbar      *statusbar);
-static void              mousepad_statusbar_finalize                  (GObject                *object);
+static gboolean          mousepad_statusbar_overwrite_clicked         (GtkWidget              *widget,
+                                                                       GdkEventButton         *event,
+                                                                       MousepadStatusbar      *statusbar);
+
+
+
+enum
+{
+  ENABLE_OVERWRITE,
+  LAST_SIGNAL,
+};
 
 struct _MousepadStatusbarClass
 {
@@ -37,6 +49,9 @@ struct _MousepadStatusbar
 {
   GtkHBox             __parent__;
 
+  /* whether overwrite is enabled */
+  guint               overwrite_enabled : 1;
+
   /* the three statusbar labels */
   GtkWidget          *label;
   GtkWidget          *position;
@@ -45,7 +60,7 @@ struct _MousepadStatusbar
 
 
 
-static GObjectClass *mousepad_statusbar_parent_class;
+static guint statusbar_signals[LAST_SIGNAL];
 
 
 
@@ -83,10 +98,15 @@ mousepad_statusbar_class_init (MousepadStatusbarClass *klass)
 {
   GObjectClass *gobject_class;
 
-  mousepad_statusbar_parent_class = g_type_class_peek_parent (klass);
-
   gobject_class = G_OBJECT_CLASS (klass);
-  gobject_class->finalize = mousepad_statusbar_finalize;
+
+  statusbar_signals[ENABLE_OVERWRITE] =
+    g_signal_new (I_("enable-overwrite"),
+                  G_TYPE_FROM_CLASS (gobject_class),
+                  G_SIGNAL_RUN_LAST,
+                  0, NULL, NULL,
+                  g_cclosure_marshal_VOID__BOOLEAN,
+                  G_TYPE_NONE, 1, G_TYPE_BOOLEAN);
 }
 
 
@@ -94,7 +114,7 @@ mousepad_statusbar_class_init (MousepadStatusbarClass *klass)
 static void
 mousepad_statusbar_init (MousepadStatusbar *statusbar)
 {
-  GtkWidget *frame;
+  GtkWidget *frame, *ebox;
 
   /* spacing between the 3 frames */
   gtk_box_set_spacing (GTK_BOX (statusbar), 3);
@@ -108,7 +128,7 @@ mousepad_statusbar_init (MousepadStatusbar *statusbar)
   statusbar->label = gtk_label_new (NULL);
   gtk_label_set_single_line_mode (GTK_LABEL (statusbar->label), TRUE);
   gtk_misc_set_alignment (GTK_MISC (statusbar->label), 0.0, 0.5);
-  gtk_misc_set_padding (GTK_MISC (statusbar->label), 2, 2);
+  gtk_misc_set_padding (GTK_MISC (statusbar->label), 4, 2);
   gtk_label_set_ellipsize (GTK_LABEL (statusbar->label), PANGO_ELLIPSIZE_END);
   gtk_container_add (GTK_CONTAINER (frame), statusbar->label);
   gtk_widget_show (statusbar->label);
@@ -121,7 +141,7 @@ mousepad_statusbar_init (MousepadStatusbar *statusbar)
 
   statusbar->position = gtk_label_new (NULL);
   gtk_container_add (GTK_CONTAINER (frame), statusbar->position);
-  gtk_misc_set_padding (GTK_MISC (statusbar->position), 2, 2);
+  gtk_misc_set_padding (GTK_MISC (statusbar->position), 4, 2);
   gtk_widget_show (statusbar->position);
 
   /* overwrite */
@@ -130,18 +150,38 @@ mousepad_statusbar_init (MousepadStatusbar *statusbar)
   gtk_box_pack_start (GTK_BOX (statusbar), frame, FALSE, FALSE, 0);
   gtk_widget_show (frame);
 
-  statusbar->overwrite = gtk_label_new (NULL);
-  gtk_container_add (GTK_CONTAINER (frame), statusbar->overwrite);
-  gtk_misc_set_padding (GTK_MISC (statusbar->overwrite), 2, 2);
+  ebox = gtk_event_box_new ();
+  gtk_container_add (GTK_CONTAINER (frame), ebox);
+  gtk_widget_show (ebox);
+  g_signal_connect (G_OBJECT (ebox), "button-press-event",
+                    G_CALLBACK (mousepad_statusbar_overwrite_clicked), statusbar);
+
+  statusbar->overwrite = gtk_label_new (_("OVR"));
+  gtk_container_add (GTK_CONTAINER (ebox), statusbar->overwrite);
+  gtk_misc_set_padding (GTK_MISC (statusbar->overwrite), 4, 2);
   gtk_widget_show (statusbar->overwrite);
 }
 
 
 
-static void
-mousepad_statusbar_finalize (GObject *object)
+static gboolean
+mousepad_statusbar_overwrite_clicked (GtkWidget         *widget,
+                                      GdkEventButton    *event,
+                                      MousepadStatusbar *statusbar)
 {
-  (*G_OBJECT_CLASS (mousepad_statusbar_parent_class)->finalize) (object);
+  _mousepad_return_val_if_fail (MOUSEPAD_IS_STATUSBAR (statusbar), FALSE);
+
+  /* only respond on the left button click */
+  if (event->type != GDK_BUTTON_PRESS || event->button != 1)
+    return FALSE;
+
+  /* swap the startusbar state */
+  statusbar->overwrite_enabled = !statusbar->overwrite_enabled;
+
+  /* send the signal */
+  g_signal_emit (G_OBJECT (statusbar), statusbar_signals[ENABLE_OVERWRITE], 0, statusbar->overwrite_enabled);
+
+  return TRUE;
 }
 
 
@@ -180,5 +220,7 @@ mousepad_statusbar_set_overwrite (MousepadStatusbar *statusbar,
 {
   _mousepad_return_if_fail (MOUSEPAD_IS_STATUSBAR (statusbar));
 
-  gtk_label_set_text (GTK_LABEL (statusbar->overwrite), overwrite ? _("OVR") : _("INS"));
+  gtk_widget_set_sensitive (statusbar->overwrite, overwrite);
+
+  statusbar->overwrite_enabled = overwrite;
 }

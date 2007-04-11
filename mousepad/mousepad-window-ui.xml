@@ -25,6 +25,8 @@
       <separator />
       <menuitem action="reload" />
       <separator />
+      <menuitem action="print-document" />
+      <separator />
       <menuitem action="close-tab" />
       <menuitem action="close-window" />
       <menuitem action="close-all-windows" />

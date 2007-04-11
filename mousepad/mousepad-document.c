@@ -40,17 +40,20 @@
 #include <mousepad/mousepad-file.h>
 #include <mousepad/mousepad-marshal.h>
 #include <mousepad/mousepad-view.h>
+#include <mousepad/mousepad-undo.h>
 #include <mousepad/mousepad-window.h>
-
-
-
-#define DEFAULT_SEARCH_FLAGS  (GTK_TEXT_SEARCH_VISIBLE_ONLY | GTK_TEXT_SEARCH_TEXT_ONLY)
 
 
 
 static void      mousepad_document_class_init              (MousepadDocumentClass  *klass);
 static void      mousepad_document_init                    (MousepadDocument       *document);
 static void      mousepad_document_finalize                (GObject                *object);
+static void      mousepad_document_emit_can_undo           (MousepadUndo           *undo,
+                                                            gboolean                can_undo,
+                                                            MousepadDocument       *document);
+static void      mousepad_document_emit_can_redo           (MousepadUndo           *undo,
+                                                            gboolean                can_redo,
+                                                            MousepadDocument       *document);
 static void      mousepad_document_modified_changed        (GtkTextBuffer          *buffer,
                                                             MousepadDocument       *document);
 static void      mousepad_document_notify_has_selection    (GtkTextBuffer          *buffer,
@@ -74,7 +77,6 @@ static void      mousepad_document_tab_button_clicked      (GtkWidget           
                                                             MousepadDocument       *document);
 
 
-
 enum
 {
   CLOSE_TAB,
@@ -82,6 +84,8 @@ enum
   MODIFIED_CHANGED,
   CURSOR_CHANGED,
   OVERWRITE_CHANGED,
+  CAN_UNDO,
+  CAN_REDO,
   LAST_SIGNAL,
 };
 
@@ -97,6 +101,9 @@ struct _MousepadDocument
   /* text view */
   GtkTextView       *textview;
   GtkTextBuffer     *buffer;
+
+  /* the undo manager */
+  MousepadUndo      *undo;
 
   /* the highlight tag */
   GtkTextTag        *tag;
@@ -205,6 +212,22 @@ mousepad_document_class_init (MousepadDocumentClass *klass)
                   0, NULL, NULL,
                   g_cclosure_marshal_VOID__BOOLEAN,
                   G_TYPE_NONE, 1, G_TYPE_BOOLEAN);
+
+  document_signals[CAN_UNDO] =
+    g_signal_new (I_("can-undo"),
+                  G_TYPE_FROM_CLASS (gobject_class),
+                  G_SIGNAL_RUN_LAST,
+                  0, NULL, NULL,
+                  g_cclosure_marshal_VOID__BOOLEAN,
+                  G_TYPE_NONE, 1, G_TYPE_BOOLEAN);
+
+  document_signals[CAN_REDO] =
+    g_signal_new (I_("can-redo"),
+                  G_TYPE_FROM_CLASS (gobject_class),
+                  G_SIGNAL_RUN_LAST,
+                  0, NULL, NULL,
+                  g_cclosure_marshal_VOID__BOOLEAN,
+                  G_TYPE_NONE, 1, G_TYPE_BOOLEAN);
 }
 
 
@@ -226,6 +249,15 @@ mousepad_document_init (MousepadDocument *document)
   /* create a textbuffer */
   document->buffer = gtk_text_buffer_new (NULL);
 
+  /* initialize the undo manager */
+  document->undo = mousepad_undo_new (document->buffer);
+
+  /* connect signals to the undo manager */
+  g_signal_connect (G_OBJECT (document->undo), "can-undo",
+                    G_CALLBACK (mousepad_document_emit_can_undo), document);
+  g_signal_connect (G_OBJECT (document->undo), "can-redo",
+                    G_CALLBACK (mousepad_document_emit_can_redo), document);
+
   /* create the highlight tag */
   document->tag = gtk_text_buffer_create_tag (document->buffer, NULL, "background", "#ffff78", NULL);
 
@@ -243,6 +275,8 @@ mousepad_document_init (MousepadDocument *document)
                     G_CALLBACK (mousepad_document_notify_cursor_position), document);
   g_signal_connect (G_OBJECT (document->textview), "notify::overwrite",
                     G_CALLBACK (mousepad_document_toggle_overwrite), document);
+  g_signal_connect (G_OBJECT (document->textview), "populate-popup",
+                    G_CALLBACK (mousepad_undo_populate_popup), document->undo);
 }
 
 
@@ -256,10 +290,39 @@ mousepad_document_finalize (GObject *object)
   g_free (document->filename);
   g_free (document->display_name);
 
+  /* release the undo manager */
+  g_object_unref (G_OBJECT (document->undo));
+
   /* release our reference from the buffer */
   g_object_unref (G_OBJECT (document->buffer));
 
   (*G_OBJECT_CLASS (mousepad_document_parent_class)->finalize) (object);
+}
+
+
+
+static void
+mousepad_document_emit_can_undo (MousepadUndo     *undo,
+                                 gboolean          can_undo,
+                                 MousepadDocument *document)
+{
+  _mousepad_return_if_fail (MOUSEPAD_IS_DOCUMENT (document));
+
+  /* emit the signal */
+  g_signal_emit (G_OBJECT (document), document_signals[CAN_UNDO], 0, can_undo);
+}
+
+
+
+static void
+mousepad_document_emit_can_redo (MousepadUndo     *undo,
+                                 gboolean          can_redo,
+                                 MousepadDocument *document)
+{
+  _mousepad_return_if_fail (MOUSEPAD_IS_DOCUMENT (document));
+
+  /* emit the signal */
+  g_signal_emit (G_OBJECT (document), document_signals[CAN_REDO], 0, can_redo);
 }
 
 
@@ -507,6 +570,17 @@ mousepad_document_set_line_numbers (MousepadDocument *document,
 
 
 void
+mousepad_document_set_overwrite (MousepadDocument *document,
+                                 gboolean          overwrite)
+{
+  _mousepad_return_if_fail (MOUSEPAD_IS_DOCUMENT (document));
+
+  gtk_text_view_set_overwrite (document->textview, overwrite);
+}
+
+
+
+void
 mousepad_document_set_word_wrap (MousepadDocument *document,
                                  gboolean          word_wrap)
 {
@@ -557,6 +631,9 @@ mousepad_document_open_file (MousepadDocument  *document,
   /* we're going to add the file content */
   gtk_text_buffer_begin_user_action (document->buffer);
 
+  /* lock the undo manager */
+  mousepad_undo_lock (document->undo);
+
   /* insert the file content */
   if (mousepad_file_read_to_buffer (filename,
                                     document->buffer,
@@ -582,6 +659,9 @@ mousepad_document_open_file (MousepadDocument  *document,
       /* it worked out very well */
       succeed = TRUE;
     }
+
+  /* unlock the undo manager */
+  mousepad_undo_unlock (document->undo);
 
   /* and we're done */
   gtk_text_buffer_end_user_action (document->buffer);
@@ -973,6 +1053,26 @@ mousepad_document_get_externally_modified (MousepadDocument *document)
 
 
 
+gboolean
+mousepad_document_get_can_undo (MousepadDocument *document)
+{
+  _mousepad_return_val_if_fail (MOUSEPAD_IS_DOCUMENT (document), FALSE);
+
+  return mousepad_undo_can_undo (document->undo);
+}
+
+
+
+gboolean
+mousepad_document_get_can_redo (MousepadDocument *document)
+{
+  _mousepad_return_val_if_fail (MOUSEPAD_IS_DOCUMENT (document), FALSE);
+
+  return mousepad_undo_can_redo (document->undo);
+}
+
+
+
 const gchar *
 mousepad_document_get_filename (MousepadDocument *document)
 {
@@ -1144,4 +1244,32 @@ mousepad_document_get_auto_indent (MousepadDocument *document)
   _mousepad_return_val_if_fail (MOUSEPAD_IS_DOCUMENT (document), FALSE);
 
   return document->auto_indent;
+}
+
+
+
+void
+mousepad_document_undo (MousepadDocument *document)
+{
+  _mousepad_return_if_fail (MOUSEPAD_IS_DOCUMENT (document));
+
+  /* undo */
+  mousepad_undo_do_undo (document->undo);
+
+  /* scroll to visible area */
+  mousepad_document_scroll_to_visible_area (document);
+}
+
+
+
+void
+mousepad_document_redo (MousepadDocument *document)
+{
+  _mousepad_return_if_fail (MOUSEPAD_IS_DOCUMENT (document));
+
+  /* redo */
+  mousepad_undo_do_redo (document->undo);
+
+  /* scroll to visible area */
+  mousepad_document_scroll_to_visible_area (document);
 }
