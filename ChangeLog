@@ -1,4 +1,8 @@
-2007-04-xx	Nick Schermer <nick@xfce.org>
+2007-04-11	Nick Schermer <nick@xfce.org>
+	* mousepad/mousepad-statusbar.c: Destroy the tool items together with the
+	  searchbar (memory leak from valgrind).
+
+2007-04-11	Nick Schermer <nick@xfce.org>
 	* mousepad/mousepad-{document,window,statusbar}: You can now click the OVR
 	  text in the statusbar to toggle the overwrite mode.
 	* mousepad/mousepad-{document,window,undo}: Initial version of an undo

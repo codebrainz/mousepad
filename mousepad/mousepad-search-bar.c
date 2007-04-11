@@ -268,6 +268,7 @@ mousepad_search_bar_init (MousepadSearchBar *search_bar)
 
   /* highlight all */
   item = (GtkToolItem *) gtk_toggle_tool_button_new ();
+  g_signal_connect_object (G_OBJECT (search_bar), "destroy", G_CALLBACK (gtk_widget_destroy), item, G_CONNECT_SWAPPED);
   gtk_tool_button_set_icon_name (GTK_TOOL_BUTTON (item), GTK_STOCK_SELECT_ALL);
   gtk_tool_button_set_label (GTK_TOOL_BUTTON (item), _("Highlight _All"));
   gtk_tool_item_set_is_important (item, TRUE);
@@ -279,10 +280,12 @@ mousepad_search_bar_init (MousepadSearchBar *search_bar)
 
   /* check button for case sensitive, including the proxy menu item */
   item = gtk_tool_item_new ();
+  g_signal_connect_object (G_OBJECT (search_bar), "destroy", G_CALLBACK (gtk_widget_destroy), item, G_CONNECT_SWAPPED);
   gtk_toolbar_insert (GTK_TOOLBAR (search_bar), item, -1);
   gtk_widget_show (GTK_WIDGET (item));
 
   check = gtk_check_button_new_with_mnemonic (_("Mat_ch Case"));
+  g_signal_connect_object (G_OBJECT (search_bar), "destroy", G_CALLBACK (gtk_widget_destroy), item, G_CONNECT_SWAPPED);
   gtk_container_add (GTK_CONTAINER (item), check);
   gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (check), match_case);
   gtk_widget_show (check);
@@ -290,6 +293,7 @@ mousepad_search_bar_init (MousepadSearchBar *search_bar)
                     G_CALLBACK (mousepad_search_bar_match_case_toggled), search_bar);
 
   search_bar->match_case_entry = menuitem = gtk_check_menu_item_new_with_mnemonic (_("Mat_ch Case"));
+  g_signal_connect_object (G_OBJECT (search_bar), "destroy", G_CALLBACK (gtk_widget_destroy), item, G_CONNECT_SWAPPED);
   gtk_tool_item_set_proxy_menu_item (item, "case-sensitive", menuitem);
   gtk_check_menu_item_set_active (GTK_CHECK_MENU_ITEM (menuitem), match_case);
   gtk_widget_show (menuitem);
@@ -298,10 +302,12 @@ mousepad_search_bar_init (MousepadSearchBar *search_bar)
 
   /* check button for wrap around, including the proxy menu item */
   item = gtk_tool_item_new ();
+  g_signal_connect_object (G_OBJECT (search_bar), "destroy", G_CALLBACK (gtk_widget_destroy), item, G_CONNECT_SWAPPED);
   gtk_toolbar_insert (GTK_TOOLBAR (search_bar), item, -1);
   gtk_widget_show (GTK_WIDGET (item));
 
   check = gtk_check_button_new_with_mnemonic (_("W_rap Around"));
+  g_signal_connect_object (G_OBJECT (search_bar), "destroy", G_CALLBACK (gtk_widget_destroy), item, G_CONNECT_SWAPPED);
   gtk_container_add (GTK_CONTAINER (item), check);
   gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (check), wrap_around);
   gtk_widget_show (check);
@@ -309,6 +315,7 @@ mousepad_search_bar_init (MousepadSearchBar *search_bar)
                     G_CALLBACK (mousepad_search_bar_wrap_around_toggled), search_bar);
 
   search_bar->wrap_around_entry = menuitem = gtk_check_menu_item_new_with_mnemonic (_("W_rap Around"));
+  g_signal_connect_object (G_OBJECT (search_bar), "destroy", G_CALLBACK (gtk_widget_destroy), item, G_CONNECT_SWAPPED);
   gtk_tool_item_set_proxy_menu_item (item, "case-sensitive", menuitem);
   gtk_check_menu_item_set_active (GTK_CHECK_MENU_ITEM (menuitem), wrap_around);
   gtk_widget_show (menuitem);
