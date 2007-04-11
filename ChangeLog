@@ -1,4 +1,8 @@
 2007-04-11	Nick Schermer <nick@xfce.org>
+	* mousepad/mousepad-{window,view}.c: Fix some potential leaks, I'm not
+	  really sure, but it doesn't hurt...
+
+2007-04-11	Nick Schermer <nick@xfce.org>
 	* mousepad/mousepad-statusbar.c: Destroy the tool items together with the
 	  searchbar (memory leak from valgrind).
 

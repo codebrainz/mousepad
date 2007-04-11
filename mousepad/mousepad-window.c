@@ -550,6 +550,7 @@ mousepad_window_finalize (GObject *object)
   g_closure_unref (window->menu_item_selected_closure);
 
   /* release the ui manager */
+  g_signal_handlers_disconnect_matched (G_OBJECT (window->ui_manager), G_SIGNAL_MATCH_DATA, 0, 0, NULL, NULL, window);
   g_object_unref (G_OBJECT (window->ui_manager));
 
   /* release the action groups */
