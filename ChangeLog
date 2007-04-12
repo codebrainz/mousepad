@@ -1,10 +1,21 @@
+2007-04-12	Nick Schermer <nick@xfce.org>
+	* mousepad/mousepad-undo.c: Improve the behavior of the undo manager.
+	  It now merges multiple spaces, new lines are a separate undo action and
+	  when you redo some steps and then start editing again we append the redo-ed
+	  steps in reversed order with an inverted action, so you can undo every thing
+	  afterwards. This consumes a bit more memory compared to the old behavior
+	  (which simply removed every redo-ed step), but it's much more consistent.
+
+
 2007-04-11	Nick Schermer <nick@xfce.org>
 	* mousepad/mousepad-{window,view}.c: Fix some potential leaks, I'm not
 	  really sure, but it doesn't hurt...
 
+
 2007-04-11	Nick Schermer <nick@xfce.org>
 	* mousepad/mousepad-statusbar.c: Destroy the tool items together with the
 	  searchbar (memory leak from valgrind).
+
 
 2007-04-11	Nick Schermer <nick@xfce.org>
 	* mousepad/mousepad-{document,window,statusbar}: You can now click the OVR
