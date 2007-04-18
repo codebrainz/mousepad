@@ -864,7 +864,7 @@ mousepad_window_save (MousepadWindow   *window,
   const gchar *filename;
   gboolean     succeed = FALSE;
   GError      *error = NULL;
-  const gchar *message;
+  const gchar *message = NULL;
   gint         action = MOUSEPAD_RESPONSE_OVERWRITE;
 
   /* get the current filename */
@@ -1998,7 +1998,7 @@ mousepad_window_action_reload (GtkAction      *action,
 {
   MousepadDocument *document;
   GError           *error = NULL;
-  const gchar      *message;
+  const gchar      *message = NULL;
   gint              response = MOUSEPAD_RESPONSE_RELOAD;
 
   document = window->active;

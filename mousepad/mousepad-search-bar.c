@@ -503,7 +503,7 @@ mousepad_search_bar_highlight_timeout (gpointer user_data)
   MousepadSearchBar   *search_bar = MOUSEPAD_SEARCH_BAR (user_data);
   const gchar         *string = NULL;
   gboolean             dummy;
-  MousepadSearchFlags  flags;
+  MousepadSearchFlags  flags = 0;
 
   GDK_THREADS_ENTER ();
 
