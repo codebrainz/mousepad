@@ -1,26 +1,55 @@
-- Interface
-  - Dialog when closing multiple (modified) tabs.
-  - Tab font color when the file is modified or readonly.
-  - Test the application with a screen reader and add Atk objects
-    where needed.
+Interface
+=========
+- Dialog when closing multiple (modified) tabs. Maybe not needed
+  since we ask the use what to do when a modified file is closed.
+- Tab font color when the file is modified or readonly.
+- Test the application with a screen reader and add Atk objects
+  where needed.
+- Support for tab DND between windows.
+- Support for dropping uris inside the window and then open them
+  in a new tab.
+- Cleanup the menus and make they consistent. For example: we're
+  using both file and document atm. The name of the Go menu should
+  also be changed to something more descriptive.
+- You can't use the Ctrl - v/c/x buttons in the type-ahead bar
+  because they are 'registered' by the textview/ui.
+- Maybe add a document icon to the recent menu. In a perfect situation
+  we shoud detect the mime from the file and not by using the mime
+  info from GtkRecentInfo, but this is proabably too much work for
+  Mousepad.
 
-- Text View
-  - Search and Replace. Maybe also text highlighting.
-  - GObject for undo/redo that is used by MousepadView.
-  - Support for encoding.
 
-- Saving and loading
-  - Save All option.
-  - Filenames and UTF-8.
-  - Reload option. Maybe also stat the source file when switching
-    tabs and tell the user if the source was modified.
+Code
+====
+- Check for code dupplication and make sure the comments are worth
+  reading.
 
-- Other
-  - Implement Gtk print support.
-  - Maybe add support for gtksourceview and/or gtkspell (not a priority).
 
-- Testing
-  - Profiling the startup time.
-  - Profiling loading large files (Gtk has a problem here). This also
-    locks some dialogs.
-  - Checking for memory leaks.
+Text View
+=========
+- Replace dialog. This dialog should also provide a find button so
+  there is an alternative for the type-ahead feature.
+
+
+Saving and loading
+==================
+- Save All option.
+- Support for encoding. Only UTF-8 is supported atm for testing.
+- The filenames used in the title and tooltips are not UTF-8 safe.
+- Check if the file is externally modified when switching tabs.
+
+
+Other
+=====
+- Implement Gtk print support.
+- Maybe a plugin based system for syntax highlighting and GtkSpell.
+  We cannot use GtkSourceView with this implementation, because it
+  cannot attach to an existing textview (GtkSpell can).
+
+
+Testing
+=======
+- Profiling the startup time.
+- Profiling loading large files (Gtk/Pango has a problem here). This also
+  locks some dialogs.
+- Checking for memory leaks.

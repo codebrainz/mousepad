@@ -1,3 +1,12 @@
+2007-04-20	Nick Schermer <nick@xfce.org>
+	* TODO, NEWS: Update and expand both documents.
+
+
+2007-04-19	Erik Harrison <erikharrison@xfce.org>
+	* mousepad/mousepad-search-bar.c, mousepad-window.c: Fix some
+	  compiler warnings.
+
+
 2007-04-12	Nick Schermer <nick@xfce.org>
 	* mousepad/mousepad-undo.c: Improve the behavior of the undo manager.
 	  It now merges multiple spaces, new lines are a separate undo action and
