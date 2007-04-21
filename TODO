@@ -8,15 +8,20 @@ Interface
 - Support for tab DND between windows.
 - Support for dropping uris inside the window and then open them
   in a new tab.
-- Cleanup the menus and make they consistent. For example: we're
+- Cleanup the menus and make them consistent. For example: we're
   using both file and document atm. The name of the Go menu should
   also be changed to something more descriptive.
 - You can't use the Ctrl - v/c/x buttons in the type-ahead bar
   because they are 'registered' by the textview/ui.
-- Maybe add a document icon to the recent menu. In a perfect situation
-  we shoud detect the mime from the file and not by using the mime
-  info from GtkRecentInfo, but this is proabably too much work for
-  Mousepad.
+- Maybe add a document icon to the recent menu. In a perfect
+  situation we shoud detect the mime from the file and not by using
+  the mime info from GtkRecentInfo, but this is proabably too much
+  work for Mousepad.
+- Set the mime type when saving the resent file, not for us, both for
+  applications that might use the entire recent history.
+- Remove the frame borders from the statusbar (we can entirely drop
+  the frames) and add a resize grip. This way it will look like a
+  real Gtk statusbar.
 
 
 Code
@@ -36,6 +41,8 @@ Saving and loading
 - Save All option.
 - Support for encoding. Only UTF-8 is supported atm for testing.
 - The filenames used in the title and tooltips are not UTF-8 safe.
+  We also have to make sure _ characters inside a filename do not
+  result in mnemonic labels.
 - Check if the file is externally modified when switching tabs.
 
 
@@ -47,9 +54,11 @@ Other
   cannot attach to an existing textview (GtkSpell can).
 
 
-Testing
-=======
-- Profiling the startup time.
-- Profiling loading large files (Gtk/Pango has a problem here). This also
-  locks some dialogs.
+Testing and polishing
+=====================
+- Profiling the startup time. We can possibly use Frederico's trick
+  to optimize the startup time:
+  http://primates.ximian.com/~federico/news-2006-03.html#09
+- Profiling loading large files (Gtk/Pango has a problem here). This
+  also locks some dialogs.
 - Checking for memory leaks.
