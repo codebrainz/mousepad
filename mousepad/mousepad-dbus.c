@@ -180,17 +180,13 @@ mousepad_dbus_service_launch_files (MousepadDBusService  *dbus_service,
                                     GError              **error)
 {
   MousepadApplication *application;
-   GdkScreen          *screen;
 
   _mousepad_return_val_if_fail (g_path_is_absolute (working_directory), FALSE);
   _mousepad_return_val_if_fail (error == NULL || *error == NULL, FALSE);
 
-  /* get the default screen */
-  screen = gdk_screen_get_default ();
-
   /* open a mousepad window */
   application = mousepad_application_get ();
-  mousepad_application_open_window (application, screen, working_directory, filenames);
+  mousepad_application_new_window_with_files (application, NULL, working_directory, filenames);
   g_object_unref (G_OBJECT (application));
 
   return TRUE;

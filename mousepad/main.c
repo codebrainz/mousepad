@@ -170,7 +170,7 @@ main (gint argc, gchar **argv)
   application = mousepad_application_get ();
 
   /* open an empty window (with an empty document or the files) */
-  mousepad_application_open_window (application, NULL, working_directory, filenames);
+  mousepad_application_new_window_with_files (application, NULL, working_directory, filenames);
 
   /* cleanup */
   g_free (working_directory);

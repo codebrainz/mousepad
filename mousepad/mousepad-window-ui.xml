@@ -27,9 +27,10 @@
       <separator />
       <menuitem action="print-document" />
       <separator />
+      <menuitem action="detach-tab" />
       <menuitem action="close-tab" />
+      <separator />
       <menuitem action="close-window" />
-      <menuitem action="close-all-windows" />
     </menu>
 
     <menu action="edit-menu">
@@ -83,6 +84,7 @@
     <separator />
     <menuitem action="reload" />
     <separator />
+    <menuitem action="detach-tab" />
     <menuitem action="close-tab" />
   </popup>
 </ui>

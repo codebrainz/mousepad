@@ -49,12 +49,14 @@ enum
 {
   PROP_0,
   PROP_FONT_NAME,
+  PROP_LAST_AUTO_INDENT,
+  PROP_LAST_LINE_NUMBERS,
   PROP_LAST_MATCH_CASE,
   PROP_LAST_STATUSBAR_VISIBLE,
   PROP_LAST_WINDOW_HEIGHT,
   PROP_LAST_WINDOW_WIDTH,
+  PROP_LAST_WORD_WRAP,
   PROP_LAST_WRAP_AROUND,
-  PROP_WORD_WRAP,
   PROP_MISC_ALWAYS_SHOW_TABS,
   PROP_MISC_CYCLE_TABS,
   PROP_MISC_SHOW_FULL_PATH_IN_TITLE,
@@ -192,6 +194,32 @@ mousepad_preferences_class_init (MousepadPreferencesClass *klass)
                                                         MOUSEPAD_PARAM_READWRITE));
 
   /**
+   * MousepadPreferences:last-auto-indent
+   *
+   * Whether we auto indent lines
+   **/
+  g_object_class_install_property (gobject_class,
+                                   PROP_LAST_AUTO_INDENT,
+                                   g_param_spec_boolean ("last-auto-indent",
+                                                         "last-auto-indent",
+                                                         "last-auto-indent",
+                                                         FALSE,
+                                                         MOUSEPAD_PARAM_READWRITE));
+
+  /**
+   * MousepadPreferences:last-line-numbers
+   *
+   * Whether line numbers are visible
+   **/
+  g_object_class_install_property (gobject_class,
+                                   PROP_LAST_LINE_NUMBERS,
+                                   g_param_spec_boolean ("last-line-numbers",
+                                                         "last-line-numbers",
+                                                         "last-line-numbers",
+                                                         FALSE,
+                                                         MOUSEPAD_PARAM_READWRITE));
+
+  /**
    * MousepadPreferences:last-match-case
    *
    * Whether to enable match case in the search bar.
@@ -246,6 +274,19 @@ mousepad_preferences_class_init (MousepadPreferencesClass *klass)
                                                      MOUSEPAD_PARAM_READWRITE));
 
   /**
+   * MousepadPreferences:last-word-wrap
+   *
+   * Whether word wrapping is enabled.
+   **/
+  g_object_class_install_property (gobject_class,
+                                   PROP_LAST_WORD_WRAP,
+                                   g_param_spec_boolean ("last-word-wrap",
+                                                         "last-word-wrap",
+                                                         "last-word-wrap",
+                                                         FALSE,
+                                                         MOUSEPAD_PARAM_READWRITE));
+
+  /**
    * MousepadPreferences:last-wrap-around
    *
    * Whether to enable wrap around in the search bar.
@@ -256,19 +297,6 @@ mousepad_preferences_class_init (MousepadPreferencesClass *klass)
                                                          "last-wrap-around",
                                                          "last-wrap-around",
                                                          TRUE,
-                                                         MOUSEPAD_PARAM_READWRITE));
-
-  /**
-   * MousepadPreferences:word-wrap
-   *
-   * Whether word wrapping is enabled.
-   **/
-  g_object_class_install_property (gobject_class,
-                                   PROP_WORD_WRAP,
-                                   g_param_spec_boolean ("word-wrap",
-                                                         "word-wrap",
-                                                         "word-wrap",
-                                                         FALSE,
                                                          MOUSEPAD_PARAM_READWRITE));
 
   /**

@@ -22,6 +22,8 @@
 
 G_BEGIN_DECLS
 
+#include <mousepad/mousepad-types.h>
+
 typedef struct _MousepadDocumentClass MousepadDocumentClass;
 typedef struct _MousepadDocument      MousepadDocument;
 

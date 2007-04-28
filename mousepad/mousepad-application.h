@@ -32,18 +32,19 @@ typedef struct _MousepadApplication      MousepadApplication;
 #define MOUSEPAD_IS_APPLICATION_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), MOUSEPAD_TYPE_APPLICATION))
 #define MOUSEPAD_APPLICATION_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), MOUSEPAD_TYPE_APPLICATION, MousepadApplicationClass))
 
-GType                mousepad_application_get_type    (void) G_GNUC_CONST;
+GType                mousepad_application_get_type               (void) G_GNUC_CONST;
 
-MousepadApplication *mousepad_application_get         (void);
+MousepadApplication *mousepad_application_get                    (void);
 
-GList               *mousepad_application_get_windows (MousepadApplication  *application);
+gboolean             mousepad_application_has_windows            (MousepadApplication  *application);
 
-gboolean             mousepad_application_has_windows (MousepadApplication  *application);
+void                 mousepad_application_take_window            (MousepadApplication  *application,
+                                                                  GtkWindow            *window);
 
-void                 mousepad_application_open_window (MousepadApplication  *application,
-                                                       GdkScreen            *screen,
-                                                       const gchar          *working_directory,
-                                                       gchar               **filenames);
+void                 mousepad_application_new_window_with_files  (MousepadApplication  *application,
+                                                                  GdkScreen            *screen,
+                                                                  const gchar          *working_directory,
+                                                                  gchar               **filenames);
 
 G_END_DECLS
 

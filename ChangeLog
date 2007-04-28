@@ -1,3 +1,32 @@
+2007-04-28	Nick Schermer <nick@xfce.org>
+	* TODO: Removed the items I've fixed.
+	* Changelog: Break after 70 characters.
+	* mousepad/mousepad-{document,statusbar}.c: Hide the visible
+	  event box window.
+	* mousepad/mousepad-statusbar: The statusbar is now on top of
+	  the Gtk statusbar.
+	* mousepad/mousepad-window.c: Add support for dropping uris
+	  in the main window. Droping in the textview doesn't work
+	  yet.
+	* mousepad/mousepad-window.c: Add tab dnd. This required some
+	  function reordering, but in the end it was quite easy and
+	  made the code more logical. I've also changed the window
+	  behaviour: when you close all the tabs in a window, an empty
+	  window is left. This is easier for tab dnd.
+	* mousepad/mousepad-{application,window}.c: Beter handing of
+	  application windows. Also added detachable tabs.
+	* mousepad/mousepad-{properties,window}.c: The last settings
+	  of line numbers and auto indent are now stored.
+	* mousepad/mousepad-window.c: Beter locking of menu updates,
+	  this avoids some unneeded menu updates and also made the
+	  start time of Mousepad equal to Leafpad (and probably also
+	  Mosuepad 0.2.x), which is quite nice since it supports a
+	  whole bunch of extra features.
+	* mousepad/mousepad-window.c: Removed the 'close all windows'
+	  option from the menu and the code. Not need for a text
+	  editor IMHO.
+
+
 2007-04-21	Nick Schermer <nick@xfce.org>
 	* TODO: Fix some typos and add some new ideas and reminders.
 
@@ -16,109 +45,125 @@
 
 
 2007-04-12	Nick Schermer <nick@xfce.org>
-	* mousepad/mousepad-undo.c: Improve the behavior of the undo manager.
-	  It now merges multiple spaces, new lines are a separate undo action and
-	  when you redo some steps and then start editing again we append the redo-ed
-	  steps in reversed order with an inverted action, so you can undo every thing
-	  afterwards. This consumes a bit more memory compared to the old behavior
-	  (which simply removed every redo-ed step), but it's much more consistent.
+	* mousepad/mousepad-undo.c: Improve the behavior of the undo
+	  manager. It now merges multiple spaces, new lines are a
+	  separate undo action and when you redo some steps and then
+	  start editing again we append the redo-ed steps in reversed
+	  order with an inverted action, so you can undo every thing
+	  afterwards. This consumes a bit more memory compared to the
+	  old behavior (which simply removed every redo-ed step), but
+	  it's much more consistent.
 
 
 2007-04-11	Nick Schermer <nick@xfce.org>
-	* mousepad/mousepad-{window,view}.c: Fix some potential leaks, I'm not
-	  really sure, but it doesn't hurt...
+	* mousepad/mousepad-{window,view}.c: Fix some potential leaks,
+	  I'm not really sure, but it doesn't hurt...
 
 
 2007-04-11	Nick Schermer <nick@xfce.org>
-	* mousepad/mousepad-statusbar.c: Destroy the tool items together with the
-	  searchbar (memory leak from valgrind).
+	* mousepad/mousepad-statusbar.c: Destroy the tool items
+	  together with the searchbar (memory leak from valgrind).
 
 
 2007-04-11	Nick Schermer <nick@xfce.org>
-	* mousepad/mousepad-{document,window,statusbar}: You can now click the OVR
-	  text in the statusbar to toggle the overwrite mode.
-	* mousepad/mousepad-{document,window,undo}: Initial version of an undo
-	  manager. This is not finished yet, but it's a start.
-	* mousepad/Makefile.am, mousepad/mousepad-csource.pl: Remove my perl script
-	  because it has some problems. Use exo-csource instead.
+	* mousepad/mousepad-{document,window,statusbar}: You can now
+	  click the OVR text in the statusbar to toggle the overwrite
+	  mode.
+	* mousepad/mousepad-{document,window,undo}: Initial version
+	  of an undo manager. Not finished yet.
+	* mousepad/Makefile.am, mousepad/mousepad-csource.pl: Remove
+	  my perl script because it has some problems.
 	* Remove some empty object functions.
 
 
 2007-04-06	Nick Schermer <nick@xfce.org>
-	* mousepad/mousepad-document.c: Fix segfault from previous commit.
-	* mousepad/mousepad-document.c: Fix bug in searching backwards, we have to
-	  jump one iter backwards before searching, because we start with the
-	  character right from the first iter. Also removed the equal check because
-	  it's not needed and only causing problems with backwards searching on the
-	  first character in the buffer.
+	* mousepad/mousepad-document.c: Fix segfault from previous
+	  commit.
+	* mousepad/mousepad-document.c: Fix bug in searching
+	  backwards, we have to jump one iter backwards before
+	  searching, because we start with the character right from
+	  the first iter. Also removed the equal check because it's
+	  not needed and only causing problems with backwards
+	  searching on the first character in the buffer.
 
 
 2007-04-06	Nick Schermer <nick@xfce.org>
-	* mousepad/mousepad-window.c: Fix opening recent files that do not exist.
-	* mousepad/mousepad-window.c, mousepad/mousepad-document.c: Update the window
-	  title correctly and remove the unused notify::title signals.
+	* mousepad/mousepad-window.c: Fix opening recent files that
+	  do not exist.
+	* mousepad/mousepad-window.c, mousepad/mousepad-document.c:
+	  Update the window title correctly and remove the unused
+	  notify::title signals.
 
 
 2007-04-06	Nick Schermer <nick@xfce.org>
-	* mousepad/mousepad-document.c: Because we don't use invisible characters in
-	  the text buffer, I was able to write a custom iter search function that can
-	  search in both directions, can be case insensitive, no string duplications
-	  and above all: is over 10x faster then the gtk version. This gives a nice
+	* mousepad/mousepad-document.c: Because we don't use invisible
+	  characters in the text buffer, I was able to write a custom
+	  iter search function that can search in both directions, can
+	  be case insensitive, no string duplications and above all:
+	  is't over 10x faster then the gtk version. This gives a nice
 	  performance boost to the highlight function.
-	* mousepad/mousepad-search-bar.c: Connected the last signals and added a
-	  wrap around option to the search bar.
+	* mousepad/mousepad-search-bar.c: Connected the last signals
+	  and added a wrap around option to the search bar.
 
 
 2007-04-05	Nick Schermer <nick@xfce.org>
 
 	* mousepad/mousepad-document.c: Remove unused properties.
-	* mousepad/mousepad-{exo,window,preoperties,search-bar}: Remove the
-	  exo bindings, mousepad only depends on Gtk and libxfce4util.
-	* mousepad/mousepad-csource.pl: Perl script to generate the menu code.
-	  This script also strips the code between the xml blocks, so a minimal
-	  amount of text is added to the binary (ie. it produces better code then
-	  exo-csource).
+	* mousepad/mousepad-{exo,window,preoperties,search-bar}:
+	  Remove the exo bindings, mousepad only depends on Gtk and
+	  libxfce4util.
+	* mousepad/mousepad-csource.pl: Perl script to generate the
+	  menu code. This script also strips the code between the xml
+	  blocks, so a minimal amount of text is added to the binary
+	  (ie. it produces better code then exo-csource).
 
 
 2007-04-04	Nick Schermer <nick@xfce.org>
 
-	* po/: Update the POTFILES.in file and regenerate the pot file.
-	* mousepad/mousepad-document.c: Make the scroll offset smaller, so the
-	  textview doesn't jump around while searching.
-	* mousepad/mousepad-search-bar.c: Make sure the search signal is send
-	  when the search field is empty after a backspace, so no text is selected in
-	  the buffer.
+	* po/: Update the POTFILES.in file and regenerate the pot
+	  file.
+	* mousepad/mousepad-document.c: Make the scroll offset
+	  smaller, so the textview doesn't jump around while searching.
+	* mousepad/mousepad-search-bar.c: Make sure the search signal
+	  is send when the search field is empty after a backspace,
+	  so no text is selected in the buffer.
 	* Remove some leftover tabs.
 
 
 2007-04-04	Nick Schermer <nick@xfce.org>
 
-	* configure.in.in: Mousepad does not depend on exo anymore. Only
-	  when you run in maintainer-mode, exo-csource is required.
-	* mousepad/mousepad-document.*: Renamed mousepad-screen to mousepad-document.
-	* mousepad/mousepad-{search-bar,document,window).*: Added function for
-	  searching, including the type-ahead search bar.
-	* mousepad/mousepad-statusbar.*: A custom statusbar suitable for displaying
-	  the tooltips, overwrite/insert and the line- and column-number.
-	* mousepad/mousepad-exo.*: The exo-bindings so we don't depend on exo anymore,
-	  although I want to get rid of all of them.
-	* mousepad/mousepad-marshal.list: Custom marshal for sending search signals.
-	* mousepad/mousepad-types.h: Search types (a mousepad-enum-types.{c,h} is
-	  generated during build).
+	* configure.in.in: Mousepad does not depend on exo anymore.
+	  Only when you run in maintainer-mode, exo-csource is required.
+	* mousepad/mousepad-document.*: Renamed mousepad-screen to
+	  mousepad-document.
+	* mousepad/mousepad-{search-bar,document,window).*: Added
+	  function for searching, including the type-ahead search bar.
+	* mousepad/mousepad-statusbar.*: A custom statusbar suitable
+	  for displaying the tooltips, overwrite/insert and the line-
+	  and column-number.
+	* mousepad/mousepad-exo.*: The exo-bindings so we don't depend
+	  on exo anymore, although I want to get rid of all of them.
+	* mousepad/mousepad-marshal.list: Custom marshal for sending
+	  search signals.
+	* mousepad/mousepad-types.h: Search types
+	  (a mousepad-enum-types.{c,h} is generated during build).
 	* Various performance improvements and code cleanups.
 
 
 2007-03-03	Nick Schermer <nick@xfce.org>
 
-	* mousepad/mousepad-dialogs.{c,h}: Add response actions for Mousepad so it's
-	  easier to understand what happens.
-	* mousepad/mousepad-window.c, * mousepad/mousepad-screen.{c,h}: Basic
-	  support for document reloading.
+	* mousepad/mousepad-dialogs.{c,h}: Add response actions for
+	  Mousepad so it's easier to understand what happens.
+	* mousepad/mousepad-window.c, * mousepad/mousepad-screen.{c,h}:
+	  Basic support for document reloading.
+
 
 2007-03-03	Nick Schermer <nick@xfce.org>
 
-	* configure.in.in, mousepad/Makefile.am: Remove the PCRE dependency.
-	  I should have removed this earier after some testing.
+	* configure.in.in, mousepad/Makefile.am: Remove the PCRE
+	  dependency. I should have removed this earier after some
+	  testing.
+
 
 2007-03-03	Nick Schermer <nick@xfce.org>
 
@@ -126,49 +171,56 @@
 	  so the mousepad-window file becomes more readable.
 	* mousepad/mousepad-window.c: Split some function and reorder
 	  them a bit.
-	* mousepad/mousepad-window.c: The items in the go menu now have
-	  the filename as statusbar tooltip.
-	* mousepad/mousepad-window.c: Check if the file is externally modified
-	  before writing. If it is, ask the user what to do.
+	* mousepad/mousepad-window.c: The items in the go menu now
+	  have the filename as statusbar tooltip.
+	* mousepad/mousepad-window.c: Check if the file is externally
+	  modified before writing. If it is, ask the user what to do.
 	* mousepad/main.c, mousepad/mousepad-dbus.{c,h},
-	  mousepad/mousepad-dbus-infos.xml: Support for terminating a running
-	  mousepad instance (that is connected to dbus), using mousepad -q.
-	* mousepad/*: Add function destriptions for Erik (and others) :-).
+	  mousepad/mousepad-dbus-infos.xml: Support for terminating a
+	  running mousepad instance (that is connected to dbus), using
+	  mousepad -q.
+	* mousepad/*: Add function destriptions for Erik (and others).
+
 
 2007-02-18	Nick Schermer <nick@xfce.org>
 
 	* mousepad/mousepad-window.c: Improve the menu tooltips.
 
-2007-02-18	Nick Schermer <nick@xfce.org>
-
-	* mousepad/mousepad-window.c: Prevent multiple recent- and go-menu
-	  updates when multiple items are opened or the recent history is
-	  cleared.
 
 2007-02-18	Nick Schermer <nick@xfce.org>
 
-	* TODO, mousepad/mousepad-window.c: Add option to the recent menu
-	  to clear the history.
-	* mousepad/mousepad-window.c: The recent items are now in the Mousepad
-	  group so it's easier to filter them when removing. The list is also
-	  sorted by the most recently used item.
+	* mousepad/mousepad-window.c: Prevent multiple recent- and
+	  go-menu updates when multiple items are opened or the recent
+	  history is cleared.
+
+
+2007-02-18	Nick Schermer <nick@xfce.org>
+
+	* TODO, mousepad/mousepad-window.c: Add option to the recent
+	  menu to clear the history.
+	* mousepad/mousepad-window.c: The recent items are now in the
+	  Mousepad group so it's easier to filter them when removing.
+	  The list is also sorted by the most recently used item.
 	* mousepad/mousepad-window.c: Fix problem in checking if the
 	  file was already openened.
 	* mousepad/mousepad-window.c: You can now reorder tabs.
-	* mousepad/mousepad-window.c: A tab is now inserted right from the
-	  current active tab.
-	* mousepad/mousepad-screen.c: Untitled documents now have a number like
-	  "Untitled #". The number is increased as long as the application is running.
-	* mousepad/mousepad-window.c: Added first parts of code for a statusbar.
+	* mousepad/mousepad-window.c: A tab is now inserted right from
+	  the current active tab.
+	* mousepad/mousepad-screen.c: Untitled documents now have a
+	  number like "Untitled #". The number is increased as long
+	  as the application is running.
+	* mousepad/mousepad-window.c: Added first parts of code for a
+	  statusbar.
 
 2007-02-17	Nick Schermer <nick@xfce.org>
 
 	* TODO: Remind myself to fix problems with UTF-8 filenames.
 	* mousepad/mousepad-window.c: Fix crash when opening files
 	  with the command line.
-	* Mousepad.desktop.in.in, Mousepad.desktop.in.in: Mousepad executable
-	  is now lowercase again.
-	* mousepad/mousepad-screen.c: Remove unused signals from the Class.
+	* Mousepad.desktop.in.in, Mousepad.desktop.in.in: Mousepad
+	  executable is now lowercase again.
+	* mousepad/mousepad-screen.c: Remove unused signals from the
+	   Class.
 
 2007-02-17	Nick Schermer <nick@xfce.org>
 

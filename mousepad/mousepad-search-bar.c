@@ -181,11 +181,18 @@ mousepad_search_bar_class_init (MousepadSearchBarClass *klass)
   binding_set = gtk_binding_set_by_class (klass);
   gtk_binding_entry_add_signal (binding_set, GDK_Escape, 0, "hide-bar", 0);
 
-  /* style to hide the shadow around the toolbar and to add a 2px space between the label
-   * and the icon in a toolbar button */
-  gtk_rc_parse_string ("style \"mousepad-search-bar-style\"{GtkToolbar::shadow-type=GTK_SHADOW_NONE}\n"
-                       "class\"MousepadSearchBar\"style\"mousepad-search-bar-style\"\n"
-                       "style \"mousepad-button-style\"{GtkToolButton::icon-spacing=2}\n"
+  /* hide the shadow around the toolbar */
+  gtk_rc_parse_string ("style \"mousepad-search-bar-style\"\n"
+                       "  {\n"
+                       "    GtkToolbar::shadow-type = GTK_SHADOW_NONE\n"
+                       "  }\n"
+                       "class \"MousepadSearchBar\" style \"mousepad-search-bar-style\"\n"
+
+                       /* add 2px space between the toolbar buttons */
+                       "style \"mousepad-button-style\"\n"
+                       "  {\n"
+                       "    GtkToolButton::icon-spacing = 2\n"
+                       "  }\n"
                        "widget \"MousepadWindow.*.Gtk*ToolButton\" style \"mousepad-button-style\"\n");
 }
 

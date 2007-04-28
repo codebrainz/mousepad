@@ -36,15 +36,15 @@ GType       mousepad_statusbar_get_type             (void) G_GNUC_CONST;
 
 GtkWidget  *mousepad_statusbar_new                  (void);
 
-void        mousepad_statusbar_set_text             (MousepadStatusbar *statusbar,
-                                                     const gchar       *text);
-
 void        mousepad_statusbar_set_cursor_position  (MousepadStatusbar *statusbar,
                                                      gint               line,
                                                      gint               column);
 
 void        mousepad_statusbar_set_overwrite        (MousepadStatusbar *statusbar,
                                                      gboolean           overwrite);
+
+void        mousepad_statusbar_visible              (MousepadStatusbar *statusbar,
+                                                     gboolean           visible);
 
 G_END_DECLS
 

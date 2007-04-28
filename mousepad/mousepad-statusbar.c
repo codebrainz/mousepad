@@ -23,6 +23,7 @@
 
 #include <mousepad/mousepad-private.h>
 #include <mousepad/mousepad-statusbar.h>
+#include <mousepad/mousepad-window.h>
 
 
 
@@ -42,18 +43,17 @@ enum
 
 struct _MousepadStatusbarClass
 {
-  GtkHBoxClass __parent__;
+  GtkStatusbarClass __parent__;
 };
 
 struct _MousepadStatusbar
 {
-  GtkHBox             __parent__;
+  GtkStatusbar        __parent__;
 
   /* whether overwrite is enabled */
   guint               overwrite_enabled : 1;
 
-  /* the three statusbar labels */
-  GtkWidget          *label;
+  /* extra labels in the statusbar */
   GtkWidget          *position;
   GtkWidget          *overwrite;
 };
@@ -79,7 +79,7 @@ mousepad_statusbar_get_type (void)
 
   if (G_UNLIKELY (type == G_TYPE_INVALID))
     {
-      type = g_type_register_static_simple (GTK_TYPE_HBOX,
+      type = g_type_register_static_simple (GTK_TYPE_STATUSBAR,
                                             I_("MousepadStatusbar"),
                                             sizeof (MousepadStatusbarClass),
                                             (GClassInitFunc) mousepad_statusbar_class_init,
@@ -96,7 +96,7 @@ mousepad_statusbar_get_type (void)
 static void
 mousepad_statusbar_class_init (MousepadStatusbarClass *klass)
 {
-  GObjectClass *gobject_class;
+  GObjectClass   *gobject_class;
 
   gobject_class = G_OBJECT_CLASS (klass);
 
@@ -107,6 +107,13 @@ mousepad_statusbar_class_init (MousepadStatusbarClass *klass)
                   0, NULL, NULL,
                   g_cclosure_marshal_VOID__BOOLEAN,
                   G_TYPE_NONE, 1, G_TYPE_BOOLEAN);
+
+  /* don't show the statusbar frame */
+  gtk_rc_parse_string ("style \"mousepad-statusbar-style\"\n"
+                       "  {\n"
+                       "    GtkStatusbar::shadow-type = GTK_SHADOW_NONE\n"
+                       "  }\n"
+                       "class \"MousepadStatusbar\" style \"mousepad-statusbar-style\"\n");
 }
 
 
@@ -114,52 +121,26 @@ mousepad_statusbar_class_init (MousepadStatusbarClass *klass)
 static void
 mousepad_statusbar_init (MousepadStatusbar *statusbar)
 {
-  GtkWidget *frame, *ebox;
+  GtkWidget *ebox;
 
-  /* spacing between the 3 frames */
-  gtk_box_set_spacing (GTK_BOX (statusbar), 3);
-
-  /* tooltip entry */
-  frame = gtk_frame_new (NULL);
-  gtk_frame_set_shadow_type (GTK_FRAME (frame), GTK_SHADOW_ETCHED_IN);
-  gtk_box_pack_start (GTK_BOX (statusbar), frame, TRUE, TRUE, 0);
-  gtk_widget_show (frame);
-
-  statusbar->label = gtk_label_new (NULL);
-  gtk_label_set_single_line_mode (GTK_LABEL (statusbar->label), TRUE);
-  gtk_misc_set_alignment (GTK_MISC (statusbar->label), 0.0, 0.5);
-  gtk_misc_set_padding (GTK_MISC (statusbar->label), 4, 2);
-  gtk_label_set_ellipsize (GTK_LABEL (statusbar->label), PANGO_ELLIPSIZE_END);
-  gtk_container_add (GTK_CONTAINER (frame), statusbar->label);
-  gtk_widget_show (statusbar->label);
+  /* set statusbar spaceing */
+  gtk_box_set_spacing (GTK_BOX (statusbar), 8);
 
   /* line and column numbers */
-  frame = gtk_frame_new (NULL);
-  gtk_frame_set_shadow_type (GTK_FRAME (frame), GTK_SHADOW_ETCHED_IN);
-  gtk_box_pack_start (GTK_BOX (statusbar), frame, FALSE, FALSE, 0);
-  gtk_widget_show (frame);
-
   statusbar->position = gtk_label_new (NULL);
-  gtk_container_add (GTK_CONTAINER (frame), statusbar->position);
-  gtk_misc_set_padding (GTK_MISC (statusbar->position), 4, 2);
-  gtk_widget_show (statusbar->position);
+  gtk_box_pack_start (GTK_BOX (statusbar), statusbar->position, FALSE, TRUE, 0);
 
   /* overwrite */
-  frame = gtk_frame_new (NULL);
-  gtk_frame_set_shadow_type (GTK_FRAME (frame), GTK_SHADOW_ETCHED_IN);
-  gtk_box_pack_start (GTK_BOX (statusbar), frame, FALSE, FALSE, 0);
-  gtk_widget_show (frame);
-
   ebox = gtk_event_box_new ();
-  gtk_container_add (GTK_CONTAINER (frame), ebox);
+  gtk_box_pack_start (GTK_BOX (statusbar), ebox, FALSE, TRUE, 0);
+  gtk_event_box_set_visible_window (GTK_EVENT_BOX (ebox), FALSE);
   gtk_widget_show (ebox);
+  mousepad_gtk_set_tooltip (ebox, _("Toggle the overwrite mode"));
   g_signal_connect (G_OBJECT (ebox), "button-press-event",
                     G_CALLBACK (mousepad_statusbar_overwrite_clicked), statusbar);
 
   statusbar->overwrite = gtk_label_new (_("OVR"));
   gtk_container_add (GTK_CONTAINER (ebox), statusbar->overwrite);
-  gtk_misc_set_padding (GTK_MISC (statusbar->overwrite), 4, 2);
-  gtk_widget_show (statusbar->overwrite);
 }
 
 
@@ -175,25 +156,13 @@ mousepad_statusbar_overwrite_clicked (GtkWidget         *widget,
   if (event->type != GDK_BUTTON_PRESS || event->button != 1)
     return FALSE;
 
-  /* swap the startusbar state */
+  /* swap the overwrite mode */
   statusbar->overwrite_enabled = !statusbar->overwrite_enabled;
 
   /* send the signal */
   g_signal_emit (G_OBJECT (statusbar), statusbar_signals[ENABLE_OVERWRITE], 0, statusbar->overwrite_enabled);
 
   return TRUE;
-}
-
-
-
-void
-mousepad_statusbar_set_text (MousepadStatusbar *statusbar,
-                             const gchar       *text)
-{
-  _mousepad_return_if_fail (MOUSEPAD_IS_STATUSBAR (statusbar));
-
-  /* set the label text */
-  gtk_label_set_text (GTK_LABEL (statusbar->label), text);
 }
 
 
@@ -223,4 +192,24 @@ mousepad_statusbar_set_overwrite (MousepadStatusbar *statusbar,
   gtk_widget_set_sensitive (statusbar->overwrite, overwrite);
 
   statusbar->overwrite_enabled = overwrite;
+}
+
+
+
+void
+mousepad_statusbar_visible (MousepadStatusbar *statusbar,
+                            gboolean           visible)
+{
+  _mousepad_return_if_fail (MOUSEPAD_IS_STATUSBAR (statusbar));
+
+  if (visible)
+    {
+      gtk_widget_show (statusbar->position);
+      gtk_widget_show (statusbar->overwrite);
+    }
+  else
+    {
+      gtk_widget_hide (statusbar->position);
+      gtk_widget_hide (statusbar->overwrite);
+    }
 }

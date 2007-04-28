@@ -22,6 +22,8 @@
 
 G_BEGIN_DECLS
 
+#include <mousepad/mousepad-document.h>
+
 #define MOUSEPAD_TYPE_WINDOW            (mousepad_window_get_type ())
 #define MOUSEPAD_WINDOW(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), MOUSEPAD_TYPE_WINDOW, MousepadWindow))
 #define MOUSEPAD_WINDOW_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), MOUSEPAD_TYPE_WINDOW, MousepadWindowClass))
@@ -35,6 +37,9 @@ typedef struct _MousepadWindow      MousepadWindow;
 GType           mousepad_window_get_type         (void) G_GNUC_CONST;
 
 GtkWidget      *mousepad_window_new              (void);
+
+void            mousepad_window_add              (MousepadWindow   *window,
+                                                  MousepadDocument *document);
 
 gboolean        mousepad_window_open_tab         (MousepadWindow  *window,
                                                   const gchar     *filename);

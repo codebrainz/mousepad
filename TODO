@@ -13,24 +13,14 @@ Interface
 - Tab font color when the file is modified or read only.
 - Test the application with a screen reader and add Atk objects
   where needed.
-- Support for tab DND between windows.
-- Support for dropping uris inside the window and then open them
-  in a new tab.
+- Allow dropping of tabs and uri's inside the textview, menubar
+  and statusbar is already possible.
 - Cleanup the menus and make them consistent. For example: we're
   using both file and document atm. The name of the Go menu should
   also be changed to something more descriptive.
 - You can't use the Ctrl - v/c/x buttons in the type-ahead bar
   because they are 'registered' by the textview/ui.
-- Maybe add a document icon to the recent menu. In a perfect
-  situation we shoud detect the mime from the file and not by using
-  the mime info from GtkRecentInfo, but this is probably too much
-  work for Mousepad.
-- Set the mime type when saving the recent file, not for us, but for
-  applications that might use the entire recent history.
 - When hitting the enter button in the jump dialog, we should jump.
-- Remove the frame borders from the statusbar (we can entirely drop
-  the frames) and add a resize grip. This way it will look like a
-  real Gtk statusbar.
 
 
 Code

@@ -1130,7 +1130,7 @@ mousepad_document_get_tab_label (MousepadDocument *document)
   gtk_widget_show (hbox);
 
   /* the ebox */
-  document->ebox = g_object_new (GTK_TYPE_EVENT_BOX, "border-width", 2, NULL);
+  document->ebox = g_object_new (GTK_TYPE_EVENT_BOX, "border-width", 2, "visible-window", FALSE, NULL);
   gtk_box_pack_start (GTK_BOX (hbox), document->ebox, TRUE, TRUE, 0);
   gtk_widget_show (document->ebox);
 

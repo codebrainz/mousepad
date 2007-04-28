@@ -23,15 +23,25 @@
 
 #include <mousepad/mousepad-private.h>
 #include <mousepad/mousepad-application.h>
+#include <mousepad/mousepad-types.h>
+#include <mousepad/mousepad-document.h>
 #include <mousepad/mousepad-window.h>
 
 
 
-static void mousepad_application_class_init       (MousepadApplicationClass  *klass);
-static void mousepad_application_init             (MousepadApplication       *application);
-static void mousepad_application_window_destroyed (GtkWidget                 *window,
-                                                   MousepadApplication       *application);
-static void mousepad_application_finalize         (GObject                   *object);
+static void        mousepad_application_class_init                (MousepadApplicationClass  *klass);
+static void        mousepad_application_init                      (MousepadApplication       *application);
+static void        mousepad_application_finalize                  (GObject                   *object);
+static void        mousepad_application_window_destroyed          (GtkWidget                 *window,
+                                                                   MousepadApplication        *application);
+static GtkWidget  *mousepad_application_create_window             (MousepadApplication        *application);
+static void        mousepad_application_new_window_with_document  (MousepadWindow             *existing,
+                                                                   MousepadDocument           *document,
+                                                                   MousepadApplication        *application);
+static void        mousepad_application_new_window                (MousepadWindow             *existing,
+                                                                   MousepadApplication        *application);
+
+
 
 
 
@@ -45,7 +55,7 @@ struct _MousepadApplication
   GObject  __parent__;
 
   /* internal list of all the opened windows */
-  GList   *windows;
+  GSList  *windows;
 };
 
 
@@ -54,28 +64,18 @@ static GObjectClass *mousepad_application_parent_class;
 
 
 
-/**
- * mousepad_application_get:
- *
- * Returns the global shared #MousepadApplication instance.
- * This method takes a reference on the global instance
- * for the caller, so you must call g_object_unref()
- * on it when done.
- *
- * Return value: the shared #MousepadApplication instance.
- **/
 MousepadApplication*
 mousepad_application_get (void)
 {
   static MousepadApplication *application = NULL;
 
-  if (G_UNLIKELY (application == NULL))
+  if (G_LIKELY (application))
     {
-      application = g_object_new (MOUSEPAD_TYPE_APPLICATION, NULL);
+      g_object_ref (G_OBJECT (application));
     }
   else
     {
-      g_object_ref (G_OBJECT (application));
+      application = g_object_new (MOUSEPAD_TYPE_APPLICATION, NULL);
     }
 
   return application;
@@ -123,7 +123,7 @@ mousepad_application_init (MousepadApplication *application)
   gchar *path;
 
   /* check if we have a saved accel map */
-  path = xfce_resource_lookup (XFCE_RESOURCE_CONFIG, PACKAGE_NAME "/accels.scm");
+  path = xfce_resource_lookup (XFCE_RESOURCE_CONFIG, PACKAGE_NAME G_DIR_SEPARATOR_S "accels.scm");
   if (G_LIKELY (path != NULL))
     {
       /* load the accel map */
@@ -138,11 +138,11 @@ static void
 mousepad_application_finalize (GObject *object)
 {
   MousepadApplication *application = MOUSEPAD_APPLICATION (object);
-  GList               *li;
+  GSList              *li;
   gchar               *path;
 
   /* save the current accel map */
-  path = xfce_resource_save_location (XFCE_RESOURCE_CONFIG, PACKAGE_NAME "/accels.scm", TRUE);
+  path = xfce_resource_save_location (XFCE_RESOURCE_CONFIG, PACKAGE_NAME G_DIR_SEPARATOR_S "accels.scm", TRUE);
   if (G_LIKELY (path != NULL))
     {
       /* save the accel map */
@@ -157,48 +157,13 @@ mousepad_application_finalize (GObject *object)
       gtk_widget_destroy (GTK_WIDGET (li->data));
     }
 
-  g_list_free (application->windows);
+  g_slist_free (application->windows);
 
   (*G_OBJECT_CLASS (mousepad_application_parent_class)->finalize) (object);
 }
 
 
 
-/**
- * mousepad_application_get_windows:
- * @application: A #MousepadApplication.
- *
- * Returns a list of #MousepadWindows currently registered by the
- * #MousepadApplication. The returned list is owned by the caller and
- * must be freed using g_list_free().
- *
- * Return value: the list of regular #MousepadWindows in @application.
- **/
-GList*
-mousepad_application_get_windows (MousepadApplication *application)
-{
-  GList *windows = NULL;
-  GList *li;
-
-  _mousepad_return_val_if_fail (MOUSEPAD_IS_APPLICATION (application), NULL);
-
-  for (li = application->windows; li != NULL; li = li->next)
-    if (G_LIKELY (MOUSEPAD_IS_WINDOW (li->data)))
-      windows = g_list_prepend (windows, li->data);
-
-  return windows;
-}
-
-
-
-/**
- * mousepad_application_has_windows:
- * @application : a #MousepadApplication.
- *
- * Returns %TRUE if @application controls atleast one window.
- *
- * Return value: %TRUE if @application controls atleast one window.
- **/
 gboolean
 mousepad_application_has_windows (MousepadApplication *application)
 {
@@ -209,89 +174,137 @@ mousepad_application_has_windows (MousepadApplication *application)
 
 
 
-/**
- * mousepad_application_open_window:
- * @application       : A #MousepadApplication.
- * @screen            : The #GdkScreen on which to open the window or %NULL
- *                      to open on the default screen.
- * @working_directory : The default working directory for this window.
- * @filenames         : A list of filenames we try to open in tabs. The file names
- *                      can either be absolute paths, supported URIs or relative file
- *                      names to @working_directory or %NULL for an untitled document.
- *
- * Opens a new Mousepad window and tries to open all the file names in tabs. If
- * @filename is %NULL an empty Untiled documenten will be opened in the window.
- **/
-void
-mousepad_application_open_window (MousepadApplication  *application,
-                                  GdkScreen            *screen,
-                                  const gchar          *working_directory,
-                                  gchar               **filenames)
-{
-  GtkWidget *window;
-  gboolean   succeed;
-
-  _mousepad_return_if_fail (MOUSEPAD_IS_APPLICATION (application));
-  _mousepad_return_if_fail (screen == NULL || GDK_IS_SCREEN (screen));
-
-  /* create a new window */
-  window = mousepad_window_new ();
-
-  /* get the screen */
-  if (G_UNLIKELY (screen == NULL))
-    screen = gdk_screen_get_default ();
-
-  /* move to the correct screen */
-  gtk_window_set_screen (GTK_WINDOW (window), screen);
-
-  /* open the filenames or an empty tab */
-  if (filenames != NULL && *filenames != NULL)
-    {
-      /* try to open the files */
-      succeed = mousepad_window_open_files (MOUSEPAD_WINDOW (window), working_directory, filenames);
-
-      /* if we failed, open an empty tab */
-      if (G_UNLIKELY (succeed == FALSE))
-        mousepad_window_open_tab (MOUSEPAD_WINDOW (window), NULL);
-    }
-  else
-    {
-      mousepad_window_open_tab (MOUSEPAD_WINDOW (window), NULL);
-    }
-
-  /* connect to the "destroy" signal */
-  g_signal_connect (G_OBJECT (window), "destroy",
-                    G_CALLBACK (mousepad_application_window_destroyed), application);
-
-  /* add the window to our internal list */
-  application->windows = g_list_prepend (application->windows, window);
-
-  gtk_widget_show (window);
-}
-
-
-
-/**
- * mousepad_application_window_destroyed:
- * @window      : The window that has been destroyed.
- * @application : A #MousepadApplication.
- *
- * This function removes @window from the registed windows in @application.
- * When there are no more windows left in @application, the application is
- * terminated.
- **/
 static void
 mousepad_application_window_destroyed (GtkWidget           *window,
                                        MousepadApplication *application)
 {
   _mousepad_return_if_fail (GTK_IS_WINDOW (window));
   _mousepad_return_if_fail (MOUSEPAD_IS_APPLICATION (application));
-  _mousepad_return_if_fail (g_list_find (application->windows, window) != NULL);
+  _mousepad_return_if_fail (g_slist_find (application->windows, window) != NULL);
 
   /* remove the window from the list */
-  application->windows = g_list_remove (application->windows, window);
+  application->windows = g_slist_remove (application->windows, window);
 
   /* quit if there are no windows opened */
   if (application->windows == NULL)
     gtk_main_quit ();
+}
+
+
+
+void
+mousepad_application_take_window (MousepadApplication *application,
+                                  GtkWindow           *window)
+{
+  _mousepad_return_if_fail (MOUSEPAD_IS_WINDOW (window));
+  _mousepad_return_if_fail (MOUSEPAD_IS_APPLICATION (application));
+  _mousepad_return_if_fail (g_slist_find (application->windows, window) == NULL);
+
+  /* connect to the "destroy" signal */
+  g_signal_connect (G_OBJECT (window), "destroy", G_CALLBACK (mousepad_application_window_destroyed), application);
+
+  /* add the window to our internal list */
+  application->windows = g_slist_append (application->windows, window);
+}
+
+
+
+static GtkWidget *
+mousepad_application_create_window (MousepadApplication *application)
+{
+  GtkWidget *window;
+
+  /* create a new window */
+  window = mousepad_window_new ();
+
+  /* hook up the new window */
+  mousepad_application_take_window (application, GTK_WINDOW (window));
+
+  /* connect signals */
+  g_signal_connect (G_OBJECT (window), "new-window-with-document", G_CALLBACK (mousepad_application_new_window_with_document), application);
+  g_signal_connect (G_OBJECT (window), "new-window", G_CALLBACK (mousepad_application_new_window), application);
+
+  return window;
+}
+
+
+
+static void
+mousepad_application_new_window_with_document (MousepadWindow      *existing,
+                                               MousepadDocument    *document,
+                                               MousepadApplication *application)
+{
+  GtkWidget *window;
+  GdkScreen *screen;
+
+  _mousepad_return_if_fail (MOUSEPAD_IS_WINDOW (existing));
+  _mousepad_return_if_fail (document == NULL || MOUSEPAD_IS_DOCUMENT (document));
+  _mousepad_return_if_fail (MOUSEPAD_IS_APPLICATION (application));
+
+  /* create a new window (signals added and already hooked up) */
+  window = mousepad_application_create_window (application);
+
+  /* place the new window on the same screen as the existing window */
+  screen = gtk_window_get_screen (GTK_WINDOW (existing));
+  if (G_LIKELY (screen != NULL))
+    gtk_window_set_screen (GTK_WINDOW (window), screen);
+
+  /* create an empty document if no document was send */
+  if (document == NULL)
+    document = MOUSEPAD_DOCUMENT (mousepad_document_new ());
+
+  /* add the document to the new window */
+  mousepad_window_add (MOUSEPAD_WINDOW (window), document);
+
+  /* show the window */
+  gtk_widget_show (window);
+}
+
+
+
+static void
+mousepad_application_new_window (MousepadWindow      *existing,
+                                 MousepadApplication *application)
+{
+  /* trigger new document function */
+  mousepad_application_new_window_with_document (existing, NULL, application);
+}
+
+
+
+void
+mousepad_application_new_window_with_files (MousepadApplication  *application,
+                                            GdkScreen            *screen,
+                                            const gchar          *working_directory,
+                                            gchar               **filenames)
+{
+  GtkWidget        *window;
+  gboolean          succeed = FALSE;
+  MousepadDocument *document;
+
+  _mousepad_return_if_fail (MOUSEPAD_IS_APPLICATION (application));
+  _mousepad_return_if_fail (screen == NULL || GDK_IS_SCREEN (screen));
+
+  /* create a new window (signals added and already hooked up) */
+  window = mousepad_application_create_window (application);
+
+  /* place the window on the right screen */
+  gtk_window_set_screen (GTK_WINDOW (window), screen ? screen : gdk_screen_get_default ());
+
+  /* try to open the files */
+  if (working_directory && filenames && g_strv_length (filenames))
+    succeed = mousepad_window_open_files (MOUSEPAD_WINDOW (window), working_directory, filenames);
+
+  /* open an empty document */
+  if (succeed == FALSE)
+    {
+      /* create a new document */
+      document = MOUSEPAD_DOCUMENT (mousepad_document_new ());
+
+      /* add the document to the new window */
+      mousepad_window_add (MOUSEPAD_WINDOW (window), document);
+    }
+
+  /* show the window */
+  gtk_widget_show (window);
 }
