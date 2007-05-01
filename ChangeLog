@@ -1,3 +1,13 @@
+2007-05-01	Nick Schermer <nick@xfce.org>
+	* mousepad/mousepad-{document,window}.c: Allow uri and tab
+	  drops inside the textview widget.
+	* mousepad/mousepad-window.c: Hide the searchbar when all the
+	  tabs are closed and make sure nothing segfaults when no
+	  active document is found.
+	* mousepad/mousepad-window.c: Make sure the textview is
+	  focused when a new document has been added.
+
+
 2007-04-28	Nick Schermer <nick@xfce.org>
 	* TODO: Removed the items I've fixed.
 	* Changelog: Break after 70 characters.

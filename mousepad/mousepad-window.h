@@ -31,6 +31,18 @@ G_BEGIN_DECLS
 #define MOUSEPAD_IS_WINDOW_CLASS(klass) (G_TYPE_CHECK_CLASS_CAST ((klass), MOUSEPADL_TYPE_WINDOW))
 #define MOUSEPAD_WINDOW_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), MOUSEPAD_TYPE_WINDOW, MousepadWindowClass))
 
+enum
+{
+  TARGET_TEXT_URI_LIST,
+  TARGET_GTK_NOTEBOOK_TAB,
+};
+
+static const GtkTargetEntry drop_targets[] =
+{
+  { "text/uri-list", 0, TARGET_TEXT_URI_LIST },
+  { "GTK_NOTEBOOK_TAB", GTK_TARGET_SAME_APP, TARGET_GTK_NOTEBOOK_TAB },
+};
+
 typedef struct _MousepadWindowClass MousepadWindowClass;
 typedef struct _MousepadWindow      MousepadWindow;
 

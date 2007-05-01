@@ -149,8 +149,8 @@ mousepad_view_key_press_event (GtkWidget   *widget,
   buffer = gtk_text_view_get_buffer (GTK_TEXT_VIEW (widget));
 
   /* check if we have to indent when the user pressed enter */
-  if ((key == GDK_Return || key == GDK_KP_Enter) &&
-      !(event->state & GDK_SHIFT_MASK) && view->auto_indent)
+  if ((key == GDK_Return || key == GDK_KP_Enter)
+      && !(event->state & GDK_SHIFT_MASK) && view->auto_indent)
     {
       /* get the iter */
       mark = gtk_text_buffer_get_insert (buffer);
@@ -183,8 +183,8 @@ mousepad_view_key_press_event (GtkWidget   *widget,
   modifiers = gtk_accelerator_get_default_mod_mask ();
 
   /* check if the user pressed the tab button for indenting lines */
-  if ((key == GDK_Tab || key == GDK_KP_Tab || key == GDK_ISO_Left_Tab) &&
-      ((event->state & modifiers) == 0 || (event->state & modifiers) == GDK_SHIFT_MASK))
+  if ((key == GDK_Tab || key == GDK_KP_Tab || key == GDK_ISO_Left_Tab)
+      && ((event->state & modifiers) == 0 || (event->state & modifiers) == GDK_SHIFT_MASK))
         {
           /* get the selected text */
           has_selection = gtk_text_buffer_get_selection_bounds (buffer, &start, &end);

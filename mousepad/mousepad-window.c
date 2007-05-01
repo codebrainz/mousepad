@@ -51,12 +51,6 @@
 
 enum
 {
-  TARGET_TEXT_URI_LIST,
-  TARGET_GTK_NOTEBOOK_TAB,
-};
-
-enum
-{
   NEW_WINDOW,
   NEW_WINDOW_WITH_DOCUMENT,
   LAST_SIGNAL,
@@ -165,13 +159,22 @@ static void              mousepad_window_recent_clear                 (MousepadW
 
 /* dnd */
 static void              mousepad_window_drag_data_received           (GtkWidget              *widget,
-		                                                       GdkDragContext         *context,
-		                                                       gint                    x,
-		                                                       gint                    y,
-		                                                       GtkSelectionData       *selection_data,
-		                                                       guint                   info,
-		                                                       guint                   time,
-		                                                       MousepadWindow         *window);
+                                                                       GdkDragContext         *context,
+                                                                       gint                    x,
+                                                                       gint                    y,
+                                                                       GtkSelectionData       *selection_data,
+                                                                       guint                   info,
+                                                                       guint                   time,
+                                                                       MousepadWindow         *window);
+
+/* search bar */
+static void              mousepad_window_hide_search_bar              (MousepadWindow         *window);
+static gboolean          mousepad_window_find_string                  (MousepadWindow         *window,
+                                                                       const gchar            *string,
+                                                                       MousepadSearchFlags     flags);
+static gboolean          mousepad_window_highlight_all                (MousepadWindow         *window,
+                                                                       const gchar            *string,
+                                                                       MousepadSearchFlags     flags);
 
 /* actions */
 static void              mousepad_window_action_open_new_tab          (GtkAction              *action,
@@ -351,12 +354,6 @@ static const GtkToggleActionEntry toggle_action_entries[] =
   { "word-wrap", NULL, N_("_Word Wrap"), NULL, N_("Toggle breaking lines in between words"), G_CALLBACK (mousepad_window_action_word_wrap), FALSE, },
   { "line-numbers", NULL, N_("_Line Numbers"), NULL, NULL, G_CALLBACK (mousepad_window_action_line_numbers), FALSE, },
   { "auto-indent", NULL, N_("_Auto Indent"), NULL, NULL, G_CALLBACK (mousepad_window_action_auto_indent), FALSE, },
-};
-
-static const GtkTargetEntry drop_targets[] =
-{
-  { "text/uri-list", 0, TARGET_TEXT_URI_LIST },
-  { "GTK_NOTEBOOK_TAB", GTK_TARGET_SAME_APP, TARGET_GTK_NOTEBOOK_TAB },
 };
 
 
@@ -1081,6 +1078,9 @@ mousepad_window_add (MousepadWindow   *window,
   /* switch to the new tab */
   gtk_notebook_set_current_page (GTK_NOTEBOOK (window->notebook), page);
 
+  /* make sure the textview is focused in the new document */
+  mousepad_document_focus_textview (document);
+
   /* destroy the previous tab if it was not modified, untitled and the new tab is not untitled */
   if (active != NULL
       && mousepad_document_get_modified (active) == FALSE
@@ -1249,6 +1249,7 @@ mousepad_window_page_added (GtkNotebook     *notebook,
   g_signal_connect (G_OBJECT (page), "modified-changed", G_CALLBACK (mousepad_window_modified_changed), window);
   g_signal_connect (G_OBJECT (page), "cursor-changed", G_CALLBACK (mousepad_window_cursor_changed), window);
   g_signal_connect (G_OBJECT (page), "overwrite-changed", G_CALLBACK (mousepad_window_overwrite_changed), window);
+  g_signal_connect (G_OBJECT (page), "drag-data-received", G_CALLBACK (mousepad_window_drag_data_received), window);
   g_signal_connect_swapped (G_OBJECT (page), "can-undo", G_CALLBACK (mousepad_window_can_undo), window);
   g_signal_connect_swapped (G_OBJECT (page), "can-redo", G_CALLBACK (mousepad_window_can_redo), window);
 
@@ -1281,6 +1282,7 @@ mousepad_window_page_removed (GtkNotebook     *notebook,
   g_signal_handlers_disconnect_by_func (G_OBJECT (page), mousepad_window_modified_changed, window);
   g_signal_handlers_disconnect_by_func (G_OBJECT (page), mousepad_window_cursor_changed, window);
   g_signal_handlers_disconnect_by_func (G_OBJECT (page), mousepad_window_overwrite_changed, window);
+  g_signal_handlers_disconnect_by_func (G_OBJECT (page), mousepad_window_drag_data_received, window);
   g_signal_handlers_disconnect_by_func (G_OBJECT (page), mousepad_window_can_undo, window);
   g_signal_handlers_disconnect_by_func (G_OBJECT (page), mousepad_window_can_redo, window);
 
@@ -1316,9 +1318,13 @@ mousepad_window_page_removed (GtkNotebook     *notebook,
       /* hide all the actions that are not relevant without tabs */
       mousepad_window_update_sensitivity (window, FALSE);
 
-      /* the statusbar items */
+      /* hide the statusbar items */
       if (window->statusbar)
         mousepad_statusbar_visible (MOUSEPAD_STATUSBAR (window->statusbar), FALSE);
+
+      /* hide the search bar */
+      if (window->search_bar)
+        mousepad_window_hide_search_bar (window);
     }
 }
 
@@ -1963,13 +1969,13 @@ mousepad_window_recent_clear (MousepadWindow *window)
  **/
 static void
 mousepad_window_drag_data_received (GtkWidget        *widget,
-		                    GdkDragContext   *context,
-		                    gint              x,
-		                    gint              y,
-		                    GtkSelectionData *selection_data,
-		                    guint             info,
-		                    guint             time,
-		                    MousepadWindow   *window)
+                                    GdkDragContext   *context,
+                                    gint              x,
+                                    gint              y,
+                                    GtkSelectionData *selection_data,
+                                    guint             info,
+                                    guint             time,
+                                    MousepadWindow   *window)
 {
   gchar     **uris;
   GtkWidget  *notebook, **document;
@@ -1977,6 +1983,7 @@ mousepad_window_drag_data_received (GtkWidget        *widget,
   gint        i, n_pages;
 
   _mousepad_return_if_fail (MOUSEPAD_IS_WINDOW (window));
+  _mousepad_return_if_fail (GDK_IS_DRAG_CONTEXT (context));
 
   /* we only accept text/uri-list drops with format 8 and atleast one byte of data */
   if (info == TARGET_TEXT_URI_LIST && selection_data->format == 8 && selection_data->length > 0)
@@ -1990,7 +1997,7 @@ mousepad_window_drag_data_received (GtkWidget        *widget,
       /* cleanup */
       g_strfreev (uris);
 
-      /* finish the drag */
+      /* finish the drag (copy) */
       gtk_drag_finish (context, TRUE, FALSE, time);
     }
   else if (info == TARGET_GTK_NOTEBOOK_TAB)
@@ -2000,10 +2007,12 @@ mousepad_window_drag_data_received (GtkWidget        *widget,
 
       /* get the document that has been dragged */
       document = (GtkWidget **) selection_data->data;
-      g_object_ref (G_OBJECT (*document));
 
       /* check */
       _mousepad_return_if_fail (MOUSEPAD_IS_DOCUMENT (*document));
+
+      /* take a reference on the document before we remove it */
+      g_object_ref (G_OBJECT (*document));
 
       /* remove the document from the source window */
       gtk_container_remove (GTK_CONTAINER (notebook), *document);
@@ -2026,15 +2035,67 @@ mousepad_window_drag_data_received (GtkWidget        *widget,
       /* add the document to the new window */
       mousepad_window_add (window, MOUSEPAD_DOCUMENT (*document));
 
-      /* move it to the correct position */
+      /* move the tab to the correct position */
       gtk_notebook_reorder_child (GTK_NOTEBOOK (window->notebook), *document, i);
 
-      /* release out reference on the document */
+      /* release our reference on the document */
       g_object_unref (G_OBJECT (*document));
 
-      /* finish the drag */
+      /* finish the drag (move) */
       gtk_drag_finish (context, TRUE, TRUE, time);
     }
+}
+
+
+
+/**
+ * Search Bar
+ **/
+static void
+mousepad_window_hide_search_bar (MousepadWindow *window)
+{
+ _mousepad_return_if_fail (MOUSEPAD_IS_WINDOW (window));
+
+  /* hide the search bar */
+  gtk_widget_hide (window->search_bar);
+  gtk_table_set_row_spacing (GTK_TABLE (window->table), 3, 0);
+
+  /* focus the active document's text view */
+  if (G_LIKELY (window->active))
+    mousepad_document_focus_textview (window->active);
+}
+
+
+
+static gboolean
+mousepad_window_find_string (MousepadWindow      *window,
+                             const gchar         *string,
+                             MousepadSearchFlags  flags)
+{
+  gboolean found = FALSE;
+
+  _mousepad_return_val_if_fail (MOUSEPAD_IS_WINDOW (window), FALSE);
+  _mousepad_return_val_if_fail (g_utf8_validate (string, -1, NULL), FALSE);
+
+  if (G_LIKELY (window->active))
+    found = mousepad_document_find (window->active, string, flags);
+
+  return found;
+}
+
+static gboolean
+mousepad_window_highlight_all (MousepadWindow      *window,
+                               const gchar         *string,
+                               MousepadSearchFlags  flags)
+{
+  _mousepad_return_val_if_fail (MOUSEPAD_IS_WINDOW (window), FALSE);
+  _mousepad_return_val_if_fail (g_utf8_validate (string, -1, NULL), FALSE);
+
+  /* hightlight all the occurences in the active document */
+  if (G_LIKELY (window->active))
+    mousepad_document_highlight_all (window->active, string, flags);
+
+  return FALSE;
 }
 
 
@@ -2447,70 +2508,30 @@ mousepad_window_action_select_all (GtkAction      *action,
 
 
 static void
-mousepad_window_hide_search_bar (MousepadWindow *window)
-{
- _mousepad_return_if_fail (MOUSEPAD_IS_WINDOW (window));
-
-  /* hide the search bar */
-  gtk_widget_hide (window->search_bar);
-  gtk_table_set_row_spacing (GTK_TABLE (window->table), 3, 0);
-
-  /* focus the active document's text view */
-  if (G_LIKELY (window->active))
-    mousepad_document_focus_textview (window->active);
-}
-
-
-
-static gboolean
-mousepad_window_find_string (MousepadWindow      *window,
-                             const gchar         *string,
-                             MousepadSearchFlags  flags)
-{
-  gboolean found;
-
-  _mousepad_return_val_if_fail (MOUSEPAD_IS_WINDOW (window), FALSE);
-
-  found = mousepad_document_find (window->active, string, flags);
-
-  return found;
-}
-
-static gboolean
-mousepad_window_highlight_all (MousepadWindow      *window,
-                               const gchar         *string,
-                               MousepadSearchFlags  flags)
-{
-  _mousepad_return_val_if_fail (MOUSEPAD_IS_WINDOW (window), FALSE);
-
-  /* hightlight all the occurences in the active document */
-  mousepad_document_highlight_all (window->active, string, flags);
-
-  return FALSE;
-}
-
-static void
 mousepad_window_action_find (GtkAction      *action,
                              MousepadWindow *window)
 {
-  if (G_UNLIKELY (window->search_bar == NULL))
+  if (G_LIKELY (window->active))
     {
-      /* create a new toolbar */
-      window->search_bar = mousepad_search_bar_new ();
-      gtk_table_attach (GTK_TABLE (window->table), window->search_bar, 0, 1, 4, 5, GTK_EXPAND | GTK_FILL, GTK_FILL, 0, 0);
+      if (G_UNLIKELY (window->search_bar == NULL))
+        {
+          /* create a new toolbar */
+          window->search_bar = mousepad_search_bar_new ();
+          gtk_table_attach (GTK_TABLE (window->table), window->search_bar, 0, 1, 4, 5, GTK_EXPAND | GTK_FILL, GTK_FILL, 0, 0);
 
-      /* connect signals to the search bar */
-      g_signal_connect_swapped (G_OBJECT (window->search_bar), "hide-bar", G_CALLBACK (mousepad_window_hide_search_bar), window);
-      g_signal_connect_swapped (G_OBJECT (window->search_bar), "find-string", G_CALLBACK (mousepad_window_find_string), window);
-      g_signal_connect_swapped (G_OBJECT (window->search_bar), "highlight-all", G_CALLBACK (mousepad_window_highlight_all), window);
+          /* connect signals to the search bar */
+          g_signal_connect_swapped (G_OBJECT (window->search_bar), "hide-bar", G_CALLBACK (mousepad_window_hide_search_bar), window);
+          g_signal_connect_swapped (G_OBJECT (window->search_bar), "find-string", G_CALLBACK (mousepad_window_find_string), window);
+          g_signal_connect_swapped (G_OBJECT (window->search_bar), "highlight-all", G_CALLBACK (mousepad_window_highlight_all), window);
+        }
+
+      /* show the search bar and give some space to the table */
+      gtk_widget_show (window->search_bar);
+      gtk_table_set_row_spacing (GTK_TABLE (window->table), 3, WINDOW_SPACING);
+
+      /* focus the search entry */
+      mousepad_search_bar_focus (MOUSEPAD_SEARCH_BAR (window->search_bar));
     }
-
-  /* show the search bar and give some space to the table */
-  gtk_widget_show (window->search_bar);
-  gtk_table_set_row_spacing (GTK_TABLE (window->table), 3, WINDOW_SPACING);
-
-  /* focus the search entry */
-  mousepad_search_bar_focus (MOUSEPAD_SEARCH_BAR (window->search_bar));
 }
 
 
@@ -2520,7 +2541,7 @@ mousepad_window_action_find_next (GtkAction      *action,
                                   MousepadWindow *window)
 {
   /* only find the next occurence when the search bar is initialized */
-  if (G_LIKELY (window->search_bar != NULL))
+  if (G_LIKELY (window->active && window->search_bar != NULL))
     mousepad_search_bar_find_next (MOUSEPAD_SEARCH_BAR (window->search_bar));
 }
 
@@ -2531,7 +2552,7 @@ mousepad_window_action_find_previous (GtkAction      *action,
                                       MousepadWindow *window)
 {
   /* only find the previous occurence when the search bar is initialized */
-  if (G_LIKELY (window->search_bar != NULL))
+  if (G_LIKELY (window->active && window->search_bar != NULL))
     mousepad_search_bar_find_previous (MOUSEPAD_SEARCH_BAR (window->search_bar));
 }
 

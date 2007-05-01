@@ -13,8 +13,6 @@ Interface
 - Tab font color when the file is modified or read only.
 - Test the application with a screen reader and add Atk objects
   where needed.
-- Allow dropping of tabs and uri's inside the textview, menubar
-  and statusbar is already possible.
 - Cleanup the menus and make them consistent. For example: we're
   using both file and document atm. The name of the Go menu should
   also be changed to something more descriptive.
