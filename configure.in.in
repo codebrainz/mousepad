@@ -82,6 +82,23 @@ dnl ************************************
 AC_FUNC_MMAP()
 AC_CHECK_FUNCS([posix_madvise])
 
+dnl ******************************************
+dnl *** Linux/glibc specified work-arounds ***
+dnl ******************************************
+AC_MSG_CHECKING([whether we need _BSD_SOURCE and _XOPEN_SOURCE])
+AC_TRY_LINK([#include <features.h>],
+[
+  if (__GLIBC_PREREQ (2, 0));
+],
+[
+  AC_DEFINE([_XOPEN_SOURCE], [600], [Required to unbreak glibc])
+  AC_DEFINE([_BSD_SOURCE], [1], [Required to unbreak glibc])
+  AC_MSG_RESULT([yes])
+],
+[
+  AC_MSG_RESULT([no])
+])
+
 dnl ******************************
 dnl *** Check for i18n support ***
 dnl ******************************

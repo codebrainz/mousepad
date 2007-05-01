@@ -1,4 +1,8 @@
 2007-05-01	Nick Schermer <nick@xfce.org>
+	* configure.in.in: Don't break on a broken glibc.
+
+
+2007-05-01	Nick Schermer <nick@xfce.org>
 	* mousepad/mousepad-dbus-infos.xml, mousepad/mousepad-undo.c,
 	  mousepad/mousepad-view.c: Fix some typos and replace tabs.
 
