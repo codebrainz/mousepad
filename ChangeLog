@@ -1,4 +1,9 @@
 2007-05-01	Nick Schermer <nick@xfce.org>
+	* mousepad/mousepad-dbus-infos.xml, mousepad/mousepad-undo.c,
+	  mousepad/mousepad-view.c: Fix some typos and replace tabs.
+
+
+2007-05-01	Nick Schermer <nick@xfce.org>
 	* mousepad/mousepad-{document,window}.c: Allow uri and tab
 	  drops inside the textview widget.
 	* mousepad/mousepad-window.c: Hide the searchbar when all the

@@ -332,21 +332,21 @@ mousepad_undo_new_step (MousepadUndo *undo)
   if (undo->steps_position != length)
     for (i = length - 1; i >= undo->steps_position; i--)
       {
-      	/* get the existing step */
-      	existing = g_list_nth_data (undo->steps, i);
+        /* get the existing step */
+        existing = g_list_nth_data (undo->steps, i);
 
-      	/* allocate a new slice */
-      	info = g_slice_new0 (MousepadUndoInfo);
+        /* allocate a new slice */
+        info = g_slice_new0 (MousepadUndoInfo);
 
-      	/* copy the data from the existing step */
-      	info->string = g_strdup (existing->string);
-      	info->start  = existing->start;
-      	info->end    = existing->end;
+        /* copy the data from the existing step */
+        info->string = g_strdup (existing->string);
+        info->start  = existing->start;
+        info->end    = existing->end;
 
-      	/* set the inverted action */
-      	info->action = (existing->action == INSERT ? DELETE : INSERT);
+        /* set the inverted action */
+        info->action = (existing->action == INSERT ? DELETE : INSERT);
 
-      	/* append to the steps list */
+        /* append to the steps list */
         undo->steps = g_list_append (undo->steps, info);
       }
 
@@ -405,12 +405,12 @@ mousepad_undo_handle_step (const gchar        *text,
   /* only do this if there is 1 character typed / deleted */
   if (length == 1)
     {
-    	/* get the character */
-    	c = g_utf8_get_char (text);
+      /* get the character */
+      c = g_utf8_get_char (text);
 
-    	/* check if the charater is a space or a new line */
-    	char_isspace = (c == ' ' || c == '\t');
-    	char_isnewline = (c == '\n');
+      /* check if the charater is a space or a new line */
+      char_isspace = (c == ' ' || c == '\t');
+      char_isnewline = (c == '\n');
     }
 
   /* create a new step if we jump to a new line or the string contains only spaces, but the
@@ -428,7 +428,7 @@ mousepad_undo_handle_step (const gchar        *text,
   /* check if we can append (insert action) */
   if (undo->step_action == action && action == INSERT && undo->step_end == start)
     {
-    	/* append the inserted string */
+      /* append the inserted string */
       undo->step_buffer = g_string_append_len (undo->step_buffer, text, length);
 
       /* update the end position */
@@ -437,7 +437,7 @@ mousepad_undo_handle_step (const gchar        *text,
   /* check if we can prepend (delete action) */
   else if (undo->step_action == action && action == DELETE && undo->step_start == end)
     {
-    	/* prepend the deleted text */
+      /* prepend the deleted text */
       undo->step_buffer = g_string_prepend_len (undo->step_buffer, text, length);
 
       /* update the start position */
@@ -456,7 +456,7 @@ new_step:
   /* only start a new step when the char was not a space */
   if (create_new_step)
     {
-    	/* set the new info */
+      /* set the new info */
       undo->step_buffer   = g_string_append_len (undo->step_buffer, text, ABS (start - end));
       undo->step_action   = action;
       undo->step_start    = start;

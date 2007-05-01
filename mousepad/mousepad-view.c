@@ -115,7 +115,7 @@ mousepad_view_class_init (MousepadViewClass *klass)
 static void
 mousepad_view_finalize (GObject *object)
 {
-	(*G_OBJECT_CLASS (mousepad_view_parent_class)->finalize) (object);
+  (*G_OBJECT_CLASS (mousepad_view_parent_class)->finalize) (object);
 }
 
 
@@ -189,7 +189,7 @@ mousepad_view_key_press_event (GtkWidget   *widget,
           /* get the selected text */
           has_selection = gtk_text_buffer_get_selection_bounds (buffer, &start, &end);
 
-          /* Shift + Tab */
+          /* shift + tab */
           if (event->state & GDK_SHIFT_MASK)
             {
               /* unindent */
@@ -420,7 +420,7 @@ mousepad_view_get_lines (GtkTextView  *text_view,
   gtk_text_view_get_line_at_y (text_view, &iter, first_y, NULL);
 
   /* for each iter, get its location and add it to the arrays.
-   * Stop when we pass last_y */
+   * stop when we pass last_y */
   while (!gtk_text_iter_is_end (&iter))
     {
       /* get the y position of the iter */
