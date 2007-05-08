@@ -1,3 +1,8 @@
+2007-05-08	Nick Schermer <nick@xfce.org>
+	* mousepad/mousepad-window.c: Open a new tab when the notebook
+	  is double clicked. Also fix some indentation.
+
+
 2007-05-01	Nick Schermer <nick@xfce.org>
 	* configure.in.in: Don't break on a broken glibc.
 

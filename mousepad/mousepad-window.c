@@ -116,7 +116,7 @@ static void              mousepad_window_tab_popup_position           (GtkMenu  
                                                                        gint                   *y,
                                                                        gboolean               *push_in,
                                                                        gpointer                user_data);
-static gboolean          mousepad_window_tab_popup                    (GtkNotebook            *notebook,
+static gboolean          mousepad_notebook_button_press_event         (GtkNotebook            *notebook,
                                                                        GdkEventButton         *event,
                                                                        MousepadWindow         *window);
 
@@ -560,7 +560,7 @@ mousepad_window_init (MousepadWindow *window)
   g_signal_connect (G_OBJECT (window->notebook), "page-reordered", G_CALLBACK (mousepad_window_page_reordered), window);
   g_signal_connect (G_OBJECT (window->notebook), "page-added", G_CALLBACK (mousepad_window_page_added), window);
   g_signal_connect (G_OBJECT (window->notebook), "page-removed", G_CALLBACK (mousepad_window_page_removed), window);
-  g_signal_connect (G_OBJECT (window->notebook), "button-press-event", G_CALLBACK (mousepad_window_tab_popup), window);
+  g_signal_connect (G_OBJECT (window->notebook), "button-press-event", G_CALLBACK (mousepad_notebook_button_press_event), window);
 
   /* append and show the notebook */
   gtk_table_attach (GTK_TABLE (window->table), window->notebook, 0, 1, 3, 4, GTK_EXPAND | GTK_FILL, GTK_EXPAND | GTK_FILL, 0, 0);
@@ -1347,49 +1347,61 @@ mousepad_window_tab_popup_position (GtkMenu  *menu,
   *push_in = TRUE;
 }
 
+
+
 static gboolean
-mousepad_window_tab_popup (GtkNotebook    *notebook,
-                           GdkEventButton *event,
-                           MousepadWindow *window)
+mousepad_notebook_button_press_event (GtkNotebook    *notebook,
+                                      GdkEventButton *event,
+                                      MousepadWindow *window)
 {
   GtkWidget *page, *label;
   GtkWidget *menu;
   guint      page_num = 0;
   gint       x_root;
 
+  _mousepad_return_if_fail (MOUSEPAD_IS_WINDOW (window));
+
   if (event->type == GDK_BUTTON_PRESS && event->button == 3)
-  {
-    /* walk through the tabs and look for the tab under the cursor */
-    while ((page = gtk_notebook_get_nth_page (notebook, page_num)) != NULL)
-      {
-        label = gtk_notebook_get_tab_label (notebook, page);
+    {
+      /* walk through the tabs and look for the tab under the cursor */
+      while ((page = gtk_notebook_get_nth_page (notebook, page_num)) != NULL)
+        {
+          label = gtk_notebook_get_tab_label (notebook, page);
 
-        /* get the origin of the label */
-        gdk_window_get_origin (label->window, &x_root, NULL);
-        x_root = x_root + label->allocation.x;
+          /* get the origin of the label */
+          gdk_window_get_origin (label->window, &x_root, NULL);
+          x_root = x_root + label->allocation.x;
 
-        /* check if the cursor is inside this label */
-        if (event->x_root >= x_root && event->x_root <= (x_root + label->allocation.width))
-          {
-            /* switch to this tab */
-            gtk_notebook_set_current_page (notebook, page_num);
+          /* check if the cursor is inside this label */
+          if (event->x_root >= x_root && event->x_root <= (x_root + label->allocation.width))
+            {
+              /* switch to this tab */
+              gtk_notebook_set_current_page (notebook, page_num);
 
-            /* get the menu */
-            menu = gtk_ui_manager_get_widget (window->ui_manager, "/tab-menu");
+              /* get the menu */
+              menu = gtk_ui_manager_get_widget (window->ui_manager, "/tab-menu");
 
-            /* show it */
-            gtk_menu_popup (GTK_MENU (menu), NULL, NULL,
-                            mousepad_window_tab_popup_position, label,
-                            event->button, event->time);
+              /* show it */
+              gtk_menu_popup (GTK_MENU (menu), NULL, NULL,
+                              mousepad_window_tab_popup_position, label,
+                              event->button, event->time);
 
-            /* we succeed */
-            return TRUE;
-          }
+              /* we succeed */
+              return TRUE;
+            }
 
-        /* try the next tab */
-        ++page_num;
-      }
-  }
+          /* try the next tab */
+          ++page_num;
+        }
+    }
+  else if (event->type == GDK_2BUTTON_PRESS && event->button == 1)
+    {
+      /* open a new tab */
+      mousepad_window_open_tab (window, NULL);
+
+      /* we succeed */
+      return TRUE;
+    }
 
   return FALSE;
 }
