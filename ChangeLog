@@ -1,4 +1,9 @@
 2007-05-08	Nick Schermer <nick@xfce.org>
+	* mousepad/mousepad-window.c: Rename function so it matches
+	  the standard mousepad_window_* names.
+
+
+2007-05-08	Nick Schermer <nick@xfce.org>
 	* mousepad/mousepad-window.c: Open a new tab when the notebook
 	  is double clicked. Also fix some indentation.
 

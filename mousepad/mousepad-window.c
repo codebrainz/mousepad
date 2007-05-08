@@ -116,7 +116,7 @@ static void              mousepad_window_tab_popup_position           (GtkMenu  
                                                                        gint                   *y,
                                                                        gboolean               *push_in,
                                                                        gpointer                user_data);
-static gboolean          mousepad_notebook_button_press_event         (GtkNotebook            *notebook,
+static gboolean          mousepad_window_notebook_button_press_event  (GtkNotebook            *notebook,
                                                                        GdkEventButton         *event,
                                                                        MousepadWindow         *window);
 
@@ -560,7 +560,7 @@ mousepad_window_init (MousepadWindow *window)
   g_signal_connect (G_OBJECT (window->notebook), "page-reordered", G_CALLBACK (mousepad_window_page_reordered), window);
   g_signal_connect (G_OBJECT (window->notebook), "page-added", G_CALLBACK (mousepad_window_page_added), window);
   g_signal_connect (G_OBJECT (window->notebook), "page-removed", G_CALLBACK (mousepad_window_page_removed), window);
-  g_signal_connect (G_OBJECT (window->notebook), "button-press-event", G_CALLBACK (mousepad_notebook_button_press_event), window);
+  g_signal_connect (G_OBJECT (window->notebook), "button-press-event", G_CALLBACK (mousepad_window_notebook_button_press_event), window);
 
   /* append and show the notebook */
   gtk_table_attach (GTK_TABLE (window->table), window->notebook, 0, 1, 3, 4, GTK_EXPAND | GTK_FILL, GTK_EXPAND | GTK_FILL, 0, 0);
@@ -1350,9 +1350,9 @@ mousepad_window_tab_popup_position (GtkMenu  *menu,
 
 
 static gboolean
-mousepad_notebook_button_press_event (GtkNotebook    *notebook,
-                                      GdkEventButton *event,
-                                      MousepadWindow *window)
+mousepad_window_notebook_button_press_event (GtkNotebook    *notebook,
+                                             GdkEventButton *event,
+                                             MousepadWindow *window)
 {
   GtkWidget *page, *label;
   GtkWidget *menu;
