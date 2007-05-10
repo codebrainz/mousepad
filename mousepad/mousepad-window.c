@@ -1359,7 +1359,7 @@ mousepad_window_notebook_button_press_event (GtkNotebook    *notebook,
   guint      page_num = 0;
   gint       x_root;
 
-  _mousepad_return_if_fail (MOUSEPAD_IS_WINDOW (window));
+  _mousepad_return_val_if_fail (MOUSEPAD_IS_WINDOW (window), FALSE);
 
   if (event->type == GDK_BUTTON_PRESS && event->button == 3)
     {

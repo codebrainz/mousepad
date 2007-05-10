@@ -204,7 +204,7 @@ mousepad_application_take_window (MousepadApplication *application,
   g_signal_connect (G_OBJECT (window), "destroy", G_CALLBACK (mousepad_application_window_destroyed), application);
 
   /* add the window to our internal list */
-  application->windows = g_slist_append (application->windows, window);
+  application->windows = g_slist_prepend (application->windows, window);
 }
 
 

@@ -1,3 +1,17 @@
+2007-05-10	Nick Schermer <nick@xfce.org>
+	* mousepad/mousepad-undo.c: Don't store a string (or even
+	  prepend it in a GString) when the user is inserting text.
+	  This saves a whole bunch of relocations (Bug #2737). We also
+	  flush the insert buffer after a redo and don't copy strings
+	  when inverting a delete step. This should bring the memory
+	  usage of the undo manager to a minimum.
+	* TODO: Add some undo manager reminders.
+	* mousepad/mousepad-window.c: Fix compiler warning when
+	  debugging is enabled.
+	* mousepad/mousepad-application.c: Change from append to
+	  prepend.
+
+
 2007-05-08	Nick Schermer <nick@xfce.org>
 	* mousepad/mousepad-window.c: Rename function so it matches
 	  the standard mousepad_window_* names.

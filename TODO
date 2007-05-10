@@ -35,6 +35,15 @@ Text View
 - Maybe a match whole word option.
 
 
+Undo Manager
+============
+- Replace g_list_append with g_list_prepend in the undo manager. See
+  glib manual why.
+- We erase the GString in the undo manager, but this buffer will be
+  (very) large when a large bunch of text is deleted. Maybe not a big
+  problem, but we could shrink it after erasing.
+
+
 Saving and loading
 ==================
 - Save All option.

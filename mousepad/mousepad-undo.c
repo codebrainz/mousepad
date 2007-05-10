@@ -272,6 +272,10 @@ mousepad_undo_preform_step (MousepadUndo *undo,
             /* get the end iter */
             gtk_text_buffer_get_iter_at_offset (undo->buffer, &end_iter, info->end);
 
+            /* set the string */
+            if (info->string == NULL)
+              info->string = gtk_text_buffer_get_slice (undo->buffer, &start_iter, &end_iter, TRUE);
+
             /* delete the inserted text */
             gtk_text_buffer_delete (undo->buffer, &start_iter, &end_iter);
 
@@ -280,6 +284,14 @@ mousepad_undo_preform_step (MousepadUndo *undo,
           case DELETE:
             /* insert the deleted text */
             gtk_text_buffer_insert (undo->buffer, &start_iter, info->string, -1);
+
+            /* cleanup the buffer if the user did a redo step (so an inverted insert step) */
+            if (!undo_step)
+              {
+                /* free and reset */
+                g_free (info->string);
+                info->string = NULL;
+              }
 
             break;
 
@@ -295,7 +307,7 @@ mousepad_undo_preform_step (MousepadUndo *undo,
         undo->steps_position++;
     }
 
-  /* set the can_undo boolean */
+  /* whether we can undo and redo */
   undo->can_undo = (undo->steps_position > 0);
   undo->can_redo = (undo->steps_position < g_list_length (undo->steps));
 
@@ -338,10 +350,17 @@ mousepad_undo_new_step (MousepadUndo *undo)
         /* allocate a new slice */
         info = g_slice_new0 (MousepadUndoInfo);
 
-        /* copy the data from the existing step */
-        info->string = g_strdup (existing->string);
-        info->start  = existing->start;
-        info->end    = existing->end;
+        /* copy the data from the existing step, ignore delete
+         * action string since they will be inverted to insert
+         * actions*/
+        if (existing->action == INSERT)
+          info->string = g_strdup (existing->string);
+        else
+          info->string = NULL;
+
+        /* set the start and end position */
+        info->start = existing->start;
+        info->end   = existing->end;
 
         /* set the inverted action */
         info->action = (existing->action == INSERT ? DELETE : INSERT);
@@ -353,11 +372,17 @@ mousepad_undo_new_step (MousepadUndo *undo)
   /* allocate the slice */
   info = g_slice_new0 (MousepadUndoInfo);
 
-  /* set the info */
-  info->string = g_strdup (undo->step_buffer->str);
+  /* set the action, start- and end-position */
   info->action = undo->step_action;
   info->start  = undo->step_start;
   info->end    = undo->step_end;
+
+  /* only set the string if we delete text. if we insert text the
+   * string will be set before we delete it when undoing */
+  if (undo->step_action == INSERT)
+    info->string = NULL;
+  else
+    info->string = g_strdup (undo->step_buffer->str);
 
   /* append to the steps list */
   undo->steps = g_list_append (undo->steps, info);
@@ -428,10 +453,8 @@ mousepad_undo_handle_step (const gchar        *text,
   /* check if we can append (insert action) */
   if (undo->step_action == action && action == INSERT && undo->step_end == start)
     {
-      /* append the inserted string */
-      undo->step_buffer = g_string_append_len (undo->step_buffer, text, length);
-
-      /* update the end position */
+      /* update the end position. we don't have to prepend the inserted text since
+       * we don't store this when creating a new step */
       undo->step_end = end;
     }
   /* check if we can prepend (delete action) */
@@ -456,8 +479,11 @@ new_step:
   /* only start a new step when the char was not a space */
   if (create_new_step)
     {
+      /* start building a new string if we delete text */
+      if (action == DELETE)
+        undo->step_buffer = g_string_append_len (undo->step_buffer, text, length);
+
       /* set the new info */
-      undo->step_buffer   = g_string_append_len (undo->step_buffer, text, ABS (start - end));
       undo->step_action   = action;
       undo->step_start    = start;
       undo->step_end      = end;
