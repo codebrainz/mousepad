@@ -2142,9 +2142,10 @@ static void
 mousepad_window_action_open_file (GtkAction      *action,
                                   MousepadWindow *window)
 {
-  GtkWidget *chooser;
-  gchar     *filename;
-  GSList    *filenames, *li;
+  GtkWidget   *chooser;
+  gchar       *filename;
+  const gchar *active_filename;
+  GSList      *filenames, *li;
 
   /* create new chooser dialog */
   chooser = gtk_file_chooser_dialog_new (_("Open File"),
@@ -2156,6 +2157,17 @@ mousepad_window_action_open_file (GtkAction      *action,
   gtk_dialog_set_default_response (GTK_DIALOG (chooser), GTK_RESPONSE_ACCEPT);
   gtk_file_chooser_set_local_only (GTK_FILE_CHOOSER (chooser), TRUE);
   gtk_file_chooser_set_select_multiple (GTK_FILE_CHOOSER (chooser), TRUE);
+
+  /* open the folder of the currently opened file */
+  if (window->active)
+    {
+      /* get the filename of the active document */
+      active_filename = mousepad_document_get_filename (window->active);
+
+      /* set the current filename, if there is one */
+      if (active_filename)
+        gtk_file_chooser_set_filename (GTK_FILE_CHOOSER (chooser), active_filename);
+    }
 
   /* run the dialog */
   if (G_LIKELY (gtk_dialog_run (GTK_DIALOG (chooser)) == GTK_RESPONSE_ACCEPT))
