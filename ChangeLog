@@ -1,4 +1,10 @@
 2007-05-12	Nick Schermer <nick@xfce.org>
+	* mousepad/mousepad-window.c: Add extra tests if the file
+	  really exists, because Gtk file dialogs hang if the
+	  file does not exists.
+
+
+2007-05-12	Nick Schermer <nick@xfce.org>
 	* mousepad/mousepad-window.c: Jump to active file when
 	  opening a new document.
 

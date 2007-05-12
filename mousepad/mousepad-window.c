@@ -32,6 +32,8 @@
 #include <unistd.h>
 #endif
 
+#include <glib/gstdio.h>
+
 #include <mousepad/mousepad-private.h>
 #include <mousepad/mousepad-types.h>
 #include <mousepad/mousepad-application.h>
@@ -927,6 +929,10 @@ mousepad_window_save (MousepadWindow   *window,
 
   /* get the current filename */
   filename = mousepad_document_get_filename (document);
+  
+  /* check if the file really exists */
+  if (g_file_test (filename, G_FILE_TEST_EXISTS) == FALSE)
+    filename = NULL;
 
   if (force_save_as || filename == NULL)
     {
@@ -2165,7 +2171,7 @@ mousepad_window_action_open_file (GtkAction      *action,
       active_filename = mousepad_document_get_filename (window->active);
 
       /* set the current filename, if there is one */
-      if (active_filename)
+      if (active_filename && g_file_test (active_filename, G_FILE_TEST_EXISTS))
         gtk_file_chooser_set_filename (GTK_FILE_CHOOSER (chooser), active_filename);
     }
 
