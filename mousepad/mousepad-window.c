@@ -213,6 +213,8 @@ static void              mousepad_window_action_copy                  (GtkAction
                                                                        MousepadWindow         *window);
 static void              mousepad_window_action_paste                 (GtkAction              *action,
                                                                        MousepadWindow         *window);
+static void              mousepad_window_action_paste_column          (GtkAction              *action,
+                                                                       MousepadWindow         *window);
 static void              mousepad_window_action_delete                (GtkAction              *action,
                                                                        MousepadWindow         *window);
 static void              mousepad_window_action_select_all            (GtkAction              *action,
@@ -313,41 +315,42 @@ static const GtkActionEntry action_entries[] =
     { "recent-menu", NULL, N_("Open _Recent"), NULL, NULL, NULL, },
       { "no-recent-items", NULL, N_("No items found"), NULL, NULL, NULL, },
       { "clear-recent", GTK_STOCK_CLEAR, N_("Clear _History"), NULL, N_("Clear the recently used files history"), G_CALLBACK (mousepad_window_action_clear_recent), },
-    { "save-file", GTK_STOCK_SAVE, N_("_Save"), NULL, N_("Save the current file"), G_CALLBACK (mousepad_window_action_save_file), },
-    { "save-file-as", GTK_STOCK_SAVE_AS, N_("Save _As"), NULL, N_("Save current document as another file"), G_CALLBACK (mousepad_window_action_save_file_as), },
+    { "save-file", GTK_STOCK_SAVE, NULL, NULL, N_("Save the current file"), G_CALLBACK (mousepad_window_action_save_file), },
+    { "save-file-as", GTK_STOCK_SAVE_AS, NULL, NULL, N_("Save current document as another file"), G_CALLBACK (mousepad_window_action_save_file_as), },
     { "reload", GTK_STOCK_REFRESH, N_("Re_load"), NULL, N_("Reload this document."), G_CALLBACK (mousepad_window_action_reload), },
-    { "print-document", GTK_STOCK_PRINT, N_("_Print"), "<control>P", N_("Prin the current page"), G_CALLBACK (mousepad_window_action_print), },
+    { "print-document", GTK_STOCK_PRINT, NULL, "<control>P", N_("Prin the current page"), G_CALLBACK (mousepad_window_action_print), },
     { "detach-tab", NULL, N_("_Detach Tab"), "<control>D", N_("Move the current document to a new window"), G_CALLBACK (mousepad_window_action_detach), },
     { "close-tab", GTK_STOCK_CLOSE, N_("C_lose Tab"), "<control>W", N_("Close the current file"), G_CALLBACK (mousepad_window_action_close_tab), },
     { "close-window", GTK_STOCK_QUIT, N_("_Close Window"), "<control>Q", N_("Quit the program"), G_CALLBACK (mousepad_window_action_close), },
 
   { "edit-menu", NULL, N_("_Edit"), NULL, NULL, NULL, },
-    { "undo", GTK_STOCK_UNDO, N_("_Undo"), "<control>Z", N_("Undo the last action"), G_CALLBACK (mousepad_window_action_undo), },
-    { "redo", GTK_STOCK_REDO, N_("_Redo"), "<control>Y", N_("Redo the last undone action"), G_CALLBACK (mousepad_window_action_redo), },
-    { "cut", GTK_STOCK_CUT, N_("Cu_t"), NULL, N_("Cut the selection"), G_CALLBACK (mousepad_window_action_cut), },
-    { "copy", GTK_STOCK_COPY, N_("_Copy"), NULL, N_("Copy the selection"), G_CALLBACK (mousepad_window_action_copy), },
-    { "paste", GTK_STOCK_PASTE, N_("_Paste"), NULL, N_("Paste the clipboard"), G_CALLBACK (mousepad_window_action_paste), },
-    { "delete", GTK_STOCK_DELETE, N_("_Delete"), NULL, N_("Delete the selected text"), G_CALLBACK (mousepad_window_action_delete), },
-    { "select-all", GTK_STOCK_SELECT_ALL, N_("Select _All"), NULL, N_("Select the entire document"), G_CALLBACK (mousepad_window_action_select_all), },
+    { "undo", GTK_STOCK_UNDO, NULL, "<control>Z", N_("Undo the last action"), G_CALLBACK (mousepad_window_action_undo), },
+    { "redo", GTK_STOCK_REDO, NULL, "<control>Y", N_("Redo the last undone action"), G_CALLBACK (mousepad_window_action_redo), },
+    { "cut", GTK_STOCK_CUT, NULL, NULL, N_("Cut the selection"), G_CALLBACK (mousepad_window_action_cut), },
+    { "copy", GTK_STOCK_COPY, NULL, NULL, N_("Copy the selection"), G_CALLBACK (mousepad_window_action_copy), },
+    { "paste", GTK_STOCK_PASTE, NULL, NULL, N_("Paste the clipboard"), G_CALLBACK (mousepad_window_action_paste), },
+    { "paste-column", NULL, N_("Paste _Column"), NULL, N_("Paste the clipboard text in a clumn"), G_CALLBACK (mousepad_window_action_paste_column), },
+    { "delete", GTK_STOCK_DELETE, NULL, NULL, N_("Delete the selected text"), G_CALLBACK (mousepad_window_action_delete), },
+    { "select-all", GTK_STOCK_SELECT_ALL, NULL, NULL, N_("Select the entire document"), G_CALLBACK (mousepad_window_action_select_all), },
 
   { "search-menu", NULL, N_("_Search"), NULL, NULL, NULL, },
-    { "find", GTK_STOCK_FIND, N_("_Find"), NULL, N_("Search for text"), G_CALLBACK (mousepad_window_action_find), },
+    { "find", GTK_STOCK_FIND, NULL, NULL, N_("Search for text"), G_CALLBACK (mousepad_window_action_find), },
     { "find-next", NULL, N_("Find _Next"), NULL, N_("Search forwards for the same text"), G_CALLBACK (mousepad_window_action_find_next), },
     { "find-previous", NULL, N_("Find _Previous"), NULL, N_("Search backwards for the same text"), G_CALLBACK (mousepad_window_action_find_previous), },
-    { "replace", GTK_STOCK_FIND_AND_REPLACE, N_("_Replace"), NULL, N_("Search for and replace text"), G_CALLBACK (mousepad_window_action_replace), },
-    { "jump-to", GTK_STOCK_JUMP_TO, N_("_Jump To"), NULL, N_("Go to a specific line"), G_CALLBACK (mousepad_window_action_jump_to), },
+    { "replace", GTK_STOCK_FIND_AND_REPLACE, NULL, NULL, N_("Search for and replace text"), G_CALLBACK (mousepad_window_action_replace), },
+    { "jump-to", GTK_STOCK_JUMP_TO, NULL, NULL, N_("Go to a specific line"), G_CALLBACK (mousepad_window_action_jump_to), },
 
   { "view-menu", NULL, N_("_View"), NULL, NULL, NULL, },
-    { "font", GTK_STOCK_SELECT_FONT, N_("_Font"), NULL, N_("Change the editor font"), G_CALLBACK (mousepad_window_action_select_font), },
+    { "font", GTK_STOCK_SELECT_FONT, NULL, NULL, N_("Change the editor font"), G_CALLBACK (mousepad_window_action_select_font), },
 
   { "document-menu", NULL, N_("_Document"), NULL, NULL, NULL, },
 
   { "go-menu", NULL, N_("_Go"), NULL, },
-    { "back", GTK_STOCK_GO_BACK, N_("Back"), NULL, N_("Select the previous tab"), G_CALLBACK (mousepad_window_action_prev_tab), },
-    { "forward", GTK_STOCK_GO_FORWARD, N_("Forward"), NULL, N_("Select the next tab"), G_CALLBACK (mousepad_window_action_next_tab), },
+    { "back", GTK_STOCK_GO_BACK, NULL, NULL, N_("Select the previous tab"), G_CALLBACK (mousepad_window_action_prev_tab), },
+    { "forward", GTK_STOCK_GO_FORWARD, NULL, NULL, N_("Select the next tab"), G_CALLBACK (mousepad_window_action_next_tab), },
 
   { "help-menu", NULL, N_("_Help"), NULL, },
-    { "about", GTK_STOCK_ABOUT, N_("_About"), NULL, N_("About this application"), G_CALLBACK (mousepad_window_action_about), },
+    { "about", GTK_STOCK_ABOUT, NULL, NULL, N_("About this application"), G_CALLBACK (mousepad_window_action_about), },
 };
 
 static const GtkToggleActionEntry toggle_action_entries[] =
@@ -929,7 +932,7 @@ mousepad_window_save (MousepadWindow   *window,
 
   /* get the current filename */
   filename = mousepad_document_get_filename (document);
-  
+
   /* check if the file really exists */
   if (g_file_test (filename, G_FILE_TEST_EXISTS) == FALSE)
     filename = NULL;
@@ -1612,7 +1615,7 @@ static gboolean
 mousepad_window_update_gomenu_idle (gpointer user_data)
 {
   GtkWidget      *document;
-  MousepadWindow *window = MOUSEPAD_WINDOW (user_data);
+  MousepadWindow *window;
   gint            npages;
   gint            n;
   gchar           name[15];
@@ -1623,7 +1626,12 @@ mousepad_window_update_gomenu_idle (gpointer user_data)
   GSList         *group = NULL;
   GList          *actions, *li;
 
+  _mousepad_return_val_if_fail (MOUSEPAD_IS_WINDOW (user_data), FALSE);
+
   GDK_THREADS_ENTER ();
+
+  /* get the window */
+  window = MOUSEPAD_WINDOW (user_data);
 
   /* prevent menu updates */
   lock_menu_updates++;
@@ -1704,6 +1712,8 @@ mousepad_window_update_gomenu_idle (gpointer user_data)
 static void
 mousepad_window_update_gomenu_idle_destroy (gpointer user_data)
 {
+  _mousepad_return_if_fail (MOUSEPAD_IS_WINDOW (user_data));
+
   MOUSEPAD_WINDOW (user_data)->update_go_menu_id = 0;
 }
 
@@ -1712,6 +1722,8 @@ mousepad_window_update_gomenu_idle_destroy (gpointer user_data)
 static void
 mousepad_window_update_gomenu (MousepadWindow *window)
 {
+  _mousepad_return_if_fail (MOUSEPAD_IS_WINDOW (window));
+
   /* leave when we're updating multiple files or there is this an idle function pending */
   if (lock_menu_updates && window->update_go_menu_id != 0)
     return;
@@ -2513,6 +2525,16 @@ mousepad_window_action_paste (GtkAction      *action,
 {
   if (G_LIKELY (window->active != NULL))
     mousepad_document_paste_clipboard (window->active);
+}
+
+
+
+static void
+mousepad_window_action_paste_column (GtkAction      *action,
+                                     MousepadWindow *window)
+{
+  if (G_LIKELY (window->active != NULL))
+    mousepad_document_paste_column_clipboard (window->active);
 }
 
 

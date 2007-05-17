@@ -19,6 +19,9 @@ Interface
 - You can't use the Ctrl - v/c/x buttons in the type-ahead bar
   because they are 'registered' by the textview/ui.
 - When hitting the enter button in the jump dialog, we should jump.
+- Replace dialog. This dialog should also provide a find button so
+  there is an alternative for the type-ahead feature.
+- Maybe a match whole word option.
 
 
 Code
@@ -30,9 +33,7 @@ Code
 
 Text View
 =========
-- Replace dialog. This dialog should also provide a find button so
-  there is an alternative for the type-ahead feature.
-- Maybe a match whole word option.
+- Tabs as spaces option.
 
 
 Undo Manager
@@ -42,6 +43,8 @@ Undo Manager
 - We erase the GString in the undo manager, but this buffer will be
   (very) large when a large bunch of text is deleted. Maybe not a big
   problem, but we could shrink it after erasing.
+- Let the undo manager handle multiple steps (mostly for vertical
+  selection cut/delete).
 
 
 Saving and loading

@@ -1,3 +1,28 @@
+2007-05-xx	Nick Schermer <nick@xfce.org>
+	* mousepad/mousepad-view.c: Cleanup the line number code.
+	  This version is a bit faster and removed a bunch of code.
+	* mousepad/mousepad-view.c: Cleanup the indentation code. You
+	  can also increase the (vertical) selected text with Shift +
+	  Space and decrease with Shift + Backspace. I though this
+	  might be useful for developers.
+	* mousepad/mousepad-view.c: Vertical selection using the mouse
+	  and Ctrl + Shift. Keyboard vertical selection is not possible
+	  because that adds too much code for (hardly) nothing. You can
+	  (un-)indent the block with Tab, Shift + Tab and the 2 new
+	  space (in/de)crease commands above.
+	* mousepad/mousepad-view.c: Draw a vertical line to separate
+	  the line numbers from the text, this looks beter with light
+	  themes (IMHO).
+	* mousepad/mousepad-window.c: Add 'paste column' option to
+	  paste the clipboard text in a column under the cursor.
+	* mousepad/mousepad-window.c: Set stock menu names to NULL so
+	  Gtk fills the default (translated) name,  makes your binary
+	  smaller and translators happy.
+	* mousepad/mousepad-{search-bar,document}.c: Fix segfault with
+	  empty string in the search bar and highlighting enabled.
+	* TODO: Add items.
+
+
 2007-05-12	Nick Schermer <nick@xfce.org>
 	* mousepad/mousepad-window.c: Add extra tests if the file
 	  really exists, because Gtk file dialogs hang if the

@@ -907,7 +907,7 @@ mousepad_document_highlight_all (MousepadDocument    *document,
   gtk_text_buffer_remove_tag (document->buffer, document->tag, &doc_start, &doc_end);
 
   /* highlight the new string */
-  if (G_LIKELY (string != NULL))
+  if (G_LIKELY (string != NULL && *string != '\0'))
     {
       /* set the iter to the beginning of the document */
       iter = doc_start;
@@ -937,12 +937,16 @@ void
 mousepad_document_cut_selection (MousepadDocument *document)
 {
   GtkClipboard *clipboard;
+  MousepadView *view = MOUSEPAD_VIEW (document->textview);
 
   /* get the clipboard */
   clipboard = gtk_widget_get_clipboard (GTK_WIDGET (document->textview), GDK_SELECTION_CLIPBOARD);
 
   /* cut the text */
-  gtk_text_buffer_cut_clipboard (document->buffer, clipboard, gtk_text_view_get_editable (document->textview));
+  if (mousepad_view_get_vertical_selection (view))
+    mousepad_view_cut_clipboard (view, clipboard);
+  else
+    gtk_text_buffer_cut_clipboard (document->buffer, clipboard, gtk_text_view_get_editable (document->textview));
 
   /* make sure the cursor is in the visible area */
   mousepad_document_scroll_to_visible_area (document);
@@ -950,18 +954,20 @@ mousepad_document_cut_selection (MousepadDocument *document)
 
 
 
-
-
 void
 mousepad_document_copy_selection (MousepadDocument *document)
 {
   GtkClipboard *clipboard;
+  MousepadView *view = MOUSEPAD_VIEW (document->textview);
 
   /* get the clipboard */
   clipboard = gtk_widget_get_clipboard (GTK_WIDGET (document->textview), GDK_SELECTION_CLIPBOARD);
 
   /* copy the selected text */
-  gtk_text_buffer_copy_clipboard (document->buffer, clipboard);
+  if (mousepad_view_get_vertical_selection (view))
+    mousepad_view_copy_clipboard (view, clipboard);
+  else
+    gtk_text_buffer_copy_clipboard (document->buffer, clipboard);
 }
 
 
@@ -984,10 +990,33 @@ mousepad_document_paste_clipboard (MousepadDocument *document)
 
 
 void
+mousepad_document_paste_column_clipboard (MousepadDocument *document)
+{
+  GtkClipboard *clipboard;
+  MousepadView *view = MOUSEPAD_VIEW (document->textview);
+
+  /* get the clipboard */
+  clipboard = gtk_widget_get_clipboard (GTK_WIDGET (document->textview), GDK_SELECTION_CLIPBOARD);
+
+  /* past the clipboard text in a column */
+  mousepad_view_paste_column_clipboard (view, clipboard);
+
+  /* make sure the cursor is in the visible area */
+  mousepad_document_scroll_to_visible_area (document);
+}
+
+
+
+void
 mousepad_document_delete_selection (MousepadDocument *document)
 {
+  MousepadView *view = MOUSEPAD_VIEW (document->textview);
+
   /* delete the selected text */
-  gtk_text_buffer_delete_selection (document->buffer, TRUE, gtk_text_view_get_editable (document->textview));
+  if (mousepad_view_get_vertical_selection (view))
+    mousepad_view_delete_selection (view);
+  else
+    gtk_text_buffer_delete_selection (document->buffer, TRUE, gtk_text_view_get_editable (document->textview));
 
   /* make sure the cursor is in the visible area */
   mousepad_document_scroll_to_visible_area (document);

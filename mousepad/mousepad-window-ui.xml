@@ -40,6 +40,7 @@
       <menuitem action="cut" />
       <menuitem action="copy" />
       <menuitem action="paste" />
+      <menuitem action="paste-column" />
       <menuitem action="delete" />
       <separator />
       <menuitem action="select-all" />

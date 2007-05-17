@@ -34,6 +34,19 @@ typedef struct _MousepadView      MousepadView;
 
 GType           mousepad_view_get_type                  (void) G_GNUC_CONST;
 
+gboolean        mousepad_view_get_vertical_selection    (MousepadView *view);
+
+void            mousepad_view_cut_clipboard             (MousepadView *view,
+                                                         GtkClipboard *clipboard);
+
+void            mousepad_view_copy_clipboard            (MousepadView *view,
+                                                         GtkClipboard *clipboard);
+
+void            mousepad_view_paste_column_clipboard    (MousepadView *view,
+                                                         GtkClipboard *clipboard);
+
+void            mousepad_view_delete_selection          (MousepadView *view);
+
 void            mousepad_view_set_show_line_numbers     (MousepadView *view,
                                                          gboolean      visible);
 

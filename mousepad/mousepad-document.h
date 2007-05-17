@@ -85,6 +85,8 @@ void            mousepad_document_copy_selection           (MousepadDocument    
 
 void            mousepad_document_paste_clipboard          (MousepadDocument    *document);
 
+void            mousepad_document_paste_column_clipboard   (MousepadDocument    *document);
+
 void            mousepad_document_delete_selection         (MousepadDocument    *document);
 
 void            mousepad_document_select_all               (MousepadDocument    *document);

@@ -33,10 +33,10 @@ G_BEGIN_DECLS
   GTimer *__FUNCTION__timer = g_timer_new();
 
 #define TIMER_SPLIT \
-  g_print ("%s (%d): %f\n", __FUNCTION__, __LINE__, g_timer_elapsed (__FUNCTION__timer, NULL));
+  g_print ("%s (%s:%d): %.2f ms\n", __FUNCTION__, __FILE__, __LINE__, g_timer_elapsed (__FUNCTION__timer, NULL) * 1000);
 
 #define TIMER_STOP \
-  g_print ("%s (%d): %f\n", __FUNCTION__, __LINE__, g_timer_elapsed (__FUNCTION__timer, NULL)); \
+  TIMER_SPLIT \
   g_timer_destroy (__FUNCTION__timer);
 
 #define PRINT_LINE g_print ("%d\n", __LINE__);

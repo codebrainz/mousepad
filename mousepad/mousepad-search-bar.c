@@ -518,14 +518,11 @@ mousepad_search_bar_highlight_timeout (gpointer user_data)
   if (!search_bar->match_case)
     flags |= MOUSEPAD_SEARCH_CASE_INSENSITIVE;
 
-  /* get the string if highlighting is enabled */
+  /* set the entry string or a 0 string to remove the highlight */
   if (search_bar->highlight_all)
-    {
-      /* get the entry string */
-      string = gtk_entry_get_text (GTK_ENTRY (search_bar->entry));
-      if (string == NULL || *string == '\0')
-        string = NULL;
-    }
+    string = gtk_entry_get_text (GTK_ENTRY (search_bar->entry));
+  else
+    string = "\0";
 
   /* send the signal and wait for the result */
   g_signal_emit (G_OBJECT (search_bar), search_bar_signals[HIGHLIGHT_ALL], 0,
