@@ -1,4 +1,9 @@
 2007-05-20	Nick Schermer <nick@xfce.org>
+	* mousepad/Makefile.am: Use the new exo-csource
+	  --strip-comments and --strip-content arguments.
+
+
+2007-05-20	Nick Schermer <nick@xfce.org>
 	* mousepad/mousepad-view.c: Initialize variables, so gcc is
 	  happy.
 	* README: Add some lines.

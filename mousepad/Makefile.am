@@ -116,7 +116,7 @@ mousepad-dbus-infos.h: $(srcdir)/mousepad-dbus-infos.xml Makefile
 endif
 
 mousepad-window-ui.h: Makefile $(srcdir)/mousepad-window-ui.xml
-	exo-csource --static --name=mousepad_window_ui $(srcdir)/mousepad-window-ui.xml > mousepad-window-ui.h
+	exo-csource --strip-comments --strip-content --static --name=mousepad_window_ui $(srcdir)/mousepad-window-ui.xml > mousepad-window-ui.h
 
 mousepad-enum-types.h: stamp-mousepad-enum-types.h
 	@true
