@@ -1,4 +1,9 @@
 2007-05-20	Nick Schermer <nick@xfce.org>
+	* mousepad/mousepad-{preferences,search-bar,document}.c,
+	  mousepad/mousepad-types.h: Add match whole word option.
+
+
+2007-05-20	Nick Schermer <nick@xfce.org>
 	* mousepad/Makefile.am: Use the new exo-csource
 	  --strip-comments and --strip-content arguments.
 

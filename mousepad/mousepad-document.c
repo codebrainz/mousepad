@@ -750,11 +750,28 @@ mousepad_document_iter_search (const GtkTextIter   *start,
           /* we've hit the end of the search string, so we had a full match */
           if (G_UNLIKELY (*str == '\0'))
             {
-              /* forward one character */
               if (G_LIKELY (search_forward))
-                gtk_text_iter_forward_char (&iter);
+                {
+                  /* forward one character */
+                  gtk_text_iter_forward_char (&iter);
+
+                  /* check if we match a whole word */
+                  if (flags & MOUSEPAD_SEARCH_WHOLE_WORD
+                      && !(gtk_text_iter_starts_word (&begin)
+                           && gtk_text_iter_ends_word (&iter)))
+                    goto reset_match;
+                }
               else
-                gtk_text_iter_forward_char (&begin);
+                {
+                  /* 'backward' one character */
+                  gtk_text_iter_forward_char (&begin);
+
+                  /* check if we match a whole word */
+                  if (flags & MOUSEPAD_SEARCH_WHOLE_WORD
+                      && !(gtk_text_iter_starts_word (&iter)
+                           && gtk_text_iter_ends_word (&begin)))
+                    goto reset_match;
+                }
 
               /* set the start and end iters */
               *match_start = begin;
@@ -767,6 +784,7 @@ mousepad_document_iter_search (const GtkTextIter   *start,
         }
       else if (G_UNLIKELY (str_offset > 0))
         {
+          reset_match:
           /* go back to the first character in the string */
           for (;str_offset > 0; str_offset--)
             str = g_utf8_prev_char (str);

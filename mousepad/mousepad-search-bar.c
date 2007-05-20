@@ -53,8 +53,12 @@ static void      mousepad_search_bar_match_case_toggled         (GtkWidget      
                                                                  MousepadSearchBar       *search_bar);
 static void      mousepad_search_bar_wrap_around_toggled        (GtkWidget               *button,
                                                                  MousepadSearchBar       *search_bar);
+static void      mousepad_search_bar_match_whole_word_toggled   (GtkWidget               *button,
+                                                                 MousepadSearchBar       *search_bar);
 static void      mousepad_search_bar_menuitem_toggled           (GtkCheckMenuItem        *item,
                                                                  GtkToggleButton         *button);
+static void      mousepad_search_bar_highlight_idle             (MousepadSearchBar       *search_bar,
+                                                                 gboolean                 forced);
 static gboolean  mousepad_search_bar_highlight_timeout          (gpointer                 user_data);
 static void      mousepad_search_bar_highlight_timeout_destroy  (gpointer                 user_data);
 static void      mousepad_search_bar_nothing_found              (MousepadSearchBar       *search_bar,
@@ -87,6 +91,7 @@ struct _MousepadSearchBar
   /* menu entries */
   GtkWidget           *match_case_entry;
   GtkWidget           *wrap_around_entry;
+  GtkWidget           *match_whole_word_entry;
 
   /* if something was found */
   guint                nothing_found : 1;
@@ -95,6 +100,7 @@ struct _MousepadSearchBar
   guint                highlight_all : 1;
   guint                match_case : 1;
   guint                wrap_around : 1;
+  guint                match_whole_word : 1;
 
   /* timeout for highlighting while typing */
   guint                highlight_id;
@@ -203,7 +209,7 @@ mousepad_search_bar_init (MousepadSearchBar *search_bar)
 {
   GtkWidget   *label, *image, *check, *menuitem;
   GtkToolItem *item;
-  gboolean     match_case, wrap_around;
+  gboolean     match_case, wrap_around, match_whole_word;
 
   /* preferences */
   search_bar->preferences = mousepad_preferences_get ();
@@ -212,6 +218,7 @@ mousepad_search_bar_init (MousepadSearchBar *search_bar)
   g_object_get (G_OBJECT (search_bar->preferences),
                 "last-match-case", &match_case,
                 "last-wrap-around", &wrap_around,
+                "last-match-whole-word", &match_whole_word,
                 NULL);
 
   /* init variables */
@@ -219,6 +226,7 @@ mousepad_search_bar_init (MousepadSearchBar *search_bar)
   search_bar->highlight_id = 0;
   search_bar->match_case = match_case;
   search_bar->wrap_around = wrap_around;
+  search_bar->match_whole_word = match_whole_word;
 
   /* the close button */
   item = gtk_tool_button_new_from_stock (GTK_STOCK_CLOSE);
@@ -328,6 +336,28 @@ mousepad_search_bar_init (MousepadSearchBar *search_bar)
   gtk_widget_show (menuitem);
   g_signal_connect (G_OBJECT (menuitem), "toggled",
                     G_CALLBACK (mousepad_search_bar_menuitem_toggled), check);
+
+  /* check button for match whole word, including the proxy menu item */
+  item = gtk_tool_item_new ();
+  g_signal_connect_object (G_OBJECT (search_bar), "destroy", G_CALLBACK (gtk_widget_destroy), item, G_CONNECT_SWAPPED);
+  gtk_toolbar_insert (GTK_TOOLBAR (search_bar), item, -1);
+  gtk_widget_show (GTK_WIDGET (item));
+
+  check = gtk_check_button_new_with_mnemonic (_("Match _Whole Word"));
+  g_signal_connect_object (G_OBJECT (search_bar), "destroy", G_CALLBACK (gtk_widget_destroy), item, G_CONNECT_SWAPPED);
+  gtk_container_add (GTK_CONTAINER (item), check);
+  gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (check), match_whole_word);
+  gtk_widget_show (check);
+  g_signal_connect (G_OBJECT (check), "toggled",
+                    G_CALLBACK (mousepad_search_bar_match_whole_word_toggled), search_bar);
+
+  search_bar->match_whole_word_entry = menuitem = gtk_check_menu_item_new_with_mnemonic (_("Match _Whole Word"));
+  g_signal_connect_object (G_OBJECT (search_bar), "destroy", G_CALLBACK (gtk_widget_destroy), item, G_CONNECT_SWAPPED);
+  gtk_tool_item_set_proxy_menu_item (item, "case-sensitive", menuitem);
+  gtk_check_menu_item_set_active (GTK_CHECK_MENU_ITEM (menuitem), match_whole_word);
+  gtk_widget_show (menuitem);
+  g_signal_connect (G_OBJECT (menuitem), "toggled",
+                    G_CALLBACK (mousepad_search_bar_menuitem_toggled), check);
 }
 
 
@@ -363,6 +393,10 @@ mousepad_search_bar_find_string (MousepadSearchBar *search_bar,
   /* wrap around flag */
   if (search_bar->wrap_around)
     flags |= MOUSEPAD_SEARCH_WRAP_AROUND;
+
+  /* wrap around flag */
+  if (search_bar->match_whole_word)
+    flags |= MOUSEPAD_SEARCH_WHOLE_WORD;
 
   /* get the entry string */
   string = gtk_entry_get_text (GTK_ENTRY (search_bar->entry));
@@ -400,13 +434,8 @@ mousepad_search_bar_entry_changed (GtkWidget         *entry,
   if (search_bar->highlight_id != 0)
     g_source_remove (search_bar->highlight_id);
 
-  if (search_bar->highlight_all)
-    {
-      /* start a new highlight timeout */
-      search_bar->highlight_id = g_timeout_add_full (G_PRIORITY_LOW, HIGHTLIGHT_TIMEOUT,
-                                                           mousepad_search_bar_highlight_timeout, search_bar,
-                                                           mousepad_search_bar_highlight_timeout_destroy);
-    }
+  /* re-run the highlight */
+  mousepad_search_bar_highlight_idle (search_bar, FALSE);
 
   /* find */
   mousepad_search_bar_find_string (search_bar, 0);
@@ -432,9 +461,8 @@ mousepad_search_bar_highlight_toggled (GtkWidget         *button,
   /* save the state */
   search_bar->highlight_all = active;
 
-  /* invoke the highlight function to update the buffer */
-  search_bar->highlight_id = g_idle_add_full (G_PRIORITY_LOW, mousepad_search_bar_highlight_timeout,
-                                              search_bar, mousepad_search_bar_highlight_timeout_destroy);
+  /* re-run the highlight */
+  mousepad_search_bar_highlight_idle (search_bar, TRUE);
 }
 
 
@@ -459,12 +487,8 @@ mousepad_search_bar_match_case_toggled (GtkWidget         *button,
   /* save the setting */
   g_object_set (G_OBJECT (search_bar->preferences), "last-match-case", active, NULL);
 
-  if (search_bar->highlight_all)
-    {
-      /* invoke the highlight function to update the buffer */
-      search_bar->highlight_id = g_idle_add_full (G_PRIORITY_LOW, mousepad_search_bar_highlight_timeout,
-                                                  search_bar, mousepad_search_bar_highlight_timeout_destroy);
-    }
+  /* re-run the highlight */
+  mousepad_search_bar_highlight_idle (search_bar, FALSE);
 }
 
 
@@ -493,6 +517,32 @@ mousepad_search_bar_wrap_around_toggled (GtkWidget         *button,
 
 
 static void
+mousepad_search_bar_match_whole_word_toggled (GtkWidget         *button,
+                                              MousepadSearchBar *search_bar)
+{
+  gboolean active;
+
+  _mousepad_return_if_fail (MOUSEPAD_IS_SEARCH_BAR (search_bar));
+
+  /* get the state of the toggle button */
+  active = gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (button));
+
+  /* set the state of the menu item */
+  gtk_check_menu_item_set_active (GTK_CHECK_MENU_ITEM (search_bar->match_whole_word_entry), active);
+
+  /* save the state */
+  search_bar->match_whole_word = active;
+
+  /* save the setting */
+  g_object_set (G_OBJECT (search_bar->preferences), "last-match-whole-word", active, NULL);
+
+  /* re-run the highlight */
+  mousepad_search_bar_highlight_idle (search_bar, FALSE);
+}
+
+
+
+static void
 mousepad_search_bar_menuitem_toggled (GtkCheckMenuItem *item,
                                       GtkToggleButton  *button)
 {
@@ -500,6 +550,20 @@ mousepad_search_bar_menuitem_toggled (GtkCheckMenuItem *item,
 
   active = gtk_check_menu_item_get_active (item);
   gtk_toggle_button_set_active (button, active);
+}
+
+
+
+static void
+mousepad_search_bar_highlight_idle (MousepadSearchBar *search_bar,
+                                    gboolean           forced)
+{
+  if ((forced || search_bar->highlight_all) && search_bar->highlight_id == 0)
+    {
+      /* invoke the highlight function to update the buffer */
+      search_bar->highlight_id = g_idle_add_full (G_PRIORITY_LOW, mousepad_search_bar_highlight_timeout,
+                                                  search_bar, mousepad_search_bar_highlight_timeout_destroy);
+    }
 }
 
 
@@ -517,6 +581,10 @@ mousepad_search_bar_highlight_timeout (gpointer user_data)
   /* append the insensitive case flag if needed */
   if (!search_bar->match_case)
     flags |= MOUSEPAD_SEARCH_CASE_INSENSITIVE;
+
+  /* wrap around flag */
+  if (search_bar->match_whole_word)
+    flags |= MOUSEPAD_SEARCH_WHOLE_WORD;
 
   /* set the entry string or a 0 string to remove the highlight */
   if (search_bar->highlight_all)

@@ -52,6 +52,7 @@ enum
   PROP_LAST_AUTO_INDENT,
   PROP_LAST_LINE_NUMBERS,
   PROP_LAST_MATCH_CASE,
+  PROP_LAST_MATCH_WHOLE_WORD,
   PROP_LAST_STATUSBAR_VISIBLE,
   PROP_LAST_WINDOW_HEIGHT,
   PROP_LAST_WINDOW_WIDTH,
@@ -229,6 +230,19 @@ mousepad_preferences_class_init (MousepadPreferencesClass *klass)
                                    g_param_spec_boolean ("last-match-case",
                                                          "last-match-case",
                                                          "last-match-case",
+                                                         FALSE,
+                                                         MOUSEPAD_PARAM_READWRITE));
+
+    /**
+   * MousepadPreferences:last-match-whole-word
+   *
+   * Whether to enable match case in the search bar.
+   **/
+  g_object_class_install_property (gobject_class,
+                                   PROP_LAST_MATCH_WHOLE_WORD,
+                                   g_param_spec_boolean ("last-match-whole-word",
+                                                         "last-match-whole-word",
+                                                         "last-match-whole-word",
                                                          FALSE,
                                                          MOUSEPAD_PARAM_READWRITE));
 
@@ -432,7 +446,10 @@ mousepad_preferences_set_property (GObject      *object,
 
   dst = preferences->values + prop_id;
   if (G_UNLIKELY (!G_IS_VALUE (dst)))
-    g_value_init (dst, pspec->value_type);
+    {
+      g_value_init (dst, pspec->value_type);
+      g_param_value_set_default (pspec, dst);
+    }
 
   if (g_param_values_cmp (pspec, value, dst) != 0)
     {

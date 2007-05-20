@@ -28,6 +28,7 @@ typedef enum
   MOUSEPAD_SEARCH_WRAP_AROUND      = 1 << 2,
   MOUSEPAD_SEARCH_FORWARDS         = 1 << 3,
   MOUSEPAD_SEARCH_BACKWARDS        = 1 << 4,
+  MOUSEPAD_SEARCH_WHOLE_WORD       = 1 << 5,
 } MousepadSearchFlags;
 
 G_END_DECLS
