@@ -329,7 +329,7 @@ static const GtkActionEntry action_entries[] =
     { "cut", GTK_STOCK_CUT, NULL, NULL, N_("Cut the selection"), G_CALLBACK (mousepad_window_action_cut), },
     { "copy", GTK_STOCK_COPY, NULL, NULL, N_("Copy the selection"), G_CALLBACK (mousepad_window_action_copy), },
     { "paste", GTK_STOCK_PASTE, NULL, NULL, N_("Paste the clipboard"), G_CALLBACK (mousepad_window_action_paste), },
-    { "paste-column", NULL, N_("Paste _Column"), NULL, N_("Paste the clipboard text in a clumn"), G_CALLBACK (mousepad_window_action_paste_column), },
+    { "paste-column", GTK_STOCK_PASTE, N_("Paste _Column"), "<control><shift>V", N_("Paste the clipboard text in a clumn"), G_CALLBACK (mousepad_window_action_paste_column), },
     { "delete", GTK_STOCK_DELETE, NULL, NULL, N_("Delete the selected text"), G_CALLBACK (mousepad_window_action_delete), },
     { "select-all", GTK_STOCK_SELECT_ALL, NULL, NULL, N_("Select the entire document"), G_CALLBACK (mousepad_window_action_select_all), },
 

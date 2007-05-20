@@ -1,4 +1,12 @@
-2007-05-xx	Nick Schermer <nick@xfce.org>
+2007-05-20	Nick Schermer <nick@xfce.org>
+	* mousepad/mousepad-view.c: Initialize variables, so gcc is
+	  happy.
+	* README: Add some lines.
+	* mousepad/mousepad-window.c: Ctrl + Shift + v is the shortcut
+	  to paste in a column.
+
+
+2007-05-17	Nick Schermer <nick@xfce.org>
 	* mousepad/mousepad-view.c: Cleanup the line number code.
 	  This version is a bit faster and removed a bunch of code.
 	* mousepad/mousepad-view.c: Cleanup the indentation code. You

@@ -876,9 +876,9 @@ mousepad_view_handle_clipboard (MousepadView *view,
                                 GtkClipboard *clipboard,
                                 gboolean      remove)
 {
-  GString       *string;
+  GString       *string = NULL;
   gint           i;
-  gint           ln, previous_ln;
+  gint           ln, previous_ln = 0;
   gchar         *slice;
   GtkTextBuffer *buffer;
   GtkTextMark   *mark_start, *mark_end;
