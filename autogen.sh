@@ -2,9 +2,6 @@
 #
 # $Id$
 #
-# Copyright (c) 2007
-#         The Xfce development team. All rights reserved.
-#
 
 (type xdt-autogen) >/dev/null 2>&1 || {
   cat >&2 <<EOF

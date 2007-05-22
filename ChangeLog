@@ -1,3 +1,7 @@
+2007-05-22	Nick Schermer <nick@xfce.org
+	* *.*: Remove copyright lines.
+
+
 2007-05-20	Nick Schermer <nick@xfce.org>
 	* mousepad/mousepad-{preferences,search-bar,document}.c,
 	  mousepad/mousepad-types.h: Add match whole word option.
