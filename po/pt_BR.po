@@ -1,19 +1,19 @@
-# Brazilian Portuguese translations for Mousepad package.
-# Copyright (C) 2005-2006 Erik Harrison.
-# This file is distributed under the same license as the Mousepad package.
+# Brazilian Portuguese translation of the mousepad package.
+# Copyright (C) 2005-2007 Erik Harrison.
+# This file is distributed under the same license as the mousepad package.
 # Tomas Schertel <tschertel@gmail.com>, 2005.
 # Adriano Winter Bess <awbess@gmail.com>, 2005,2006.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: mousepad 0.2.12\n"
+"Project-Id-Version: mousepad 0.2.13\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2007-01-20 12:34+0100\n"
-"PO-Revision-Date: 2006-12-28 14:35-0200\n"
-"Last-Translator: Adriano Winter Bess <awbess@gmail.com>\n"
+"PO-Revision-Date: 2007-06-07 14:49-0300\n"
+"Last-Translator: Pablo Lerina <pabloalr@gmail.com>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
 #: ../src/callback.c:37
@@ -21,7 +21,8 @@ msgstr ""
 msgid "Save changes to '%s'?"
 msgstr "Salvar alterações em '%s'?"
 
-#: ../src/callback.c:213 ../src/file.c:174
+#: ../src/callback.c:213
+#: ../src/file.c:174
 #, c-format
 msgid "Can't convert codeset to '%s'"
 msgstr "Não é possível converter a codificação para '%s'"
@@ -68,9 +69,8 @@ msgid "/File/_Open..."
 msgstr "/Arquivo/_Abrir..."
 
 #: ../src/menu.c:72
-#, fuzzy
 msgid "/File/Open _Recent"
-msgstr "/Arquivo/_Abrir..."
+msgstr "/Arquivo/Abrir _Recente"
 
 #: ../src/menu.c:77
 msgid "/File/_Save"
@@ -130,7 +130,7 @@ msgstr "/Pesquisar/_Procurar..."
 
 #: ../src/menu.c:113
 msgid "/Search/Find _Next"
-msgstr "/Pesquisar/Procurar _Próxima"
+msgstr "/Pesquisar/Procurar P_róxima"
 
 #: ../src/menu.c:115
 msgid "/Search/Find _Previous"
@@ -189,11 +189,13 @@ msgstr "%d expressões substituídas"
 msgid "Find"
 msgstr "Procurar"
 
-#: ../src/search.c:200 ../src/search.c:265
+#: ../src/search.c:200
+#: ../src/search.c:265
 msgid "Fi_nd what: "
 msgstr "_Procurar por:"
 
-#: ../src/search.c:219 ../src/search.c:292
+#: ../src/search.c:219
+#: ../src/search.c:292
 msgid "_Match case"
 msgstr "Diferenciar _maiúsculas e minúsculas"
 
@@ -263,9 +265,7 @@ msgstr "'%s' já existe. Sobrescrever?"
 #. add the label with the root warning
 #: ../src/window.c:110
 msgid "Warning, you are using the root account, you may harm your system."
-msgstr ""
-"Cuidado, você está usando a conta de adminstrador, você pode danificar seu "
-"sistema."
+msgstr "Cuidado, você está usando a conta de adminstrador, você pode danificar seu sistema."
 
 #: ../src/window.c:169
 msgid "Untitled"
@@ -282,3 +282,4 @@ msgstr "Editor de texto simples"
 #: ../mousepad.desktop.in.h:3
 msgid "Text Editor"
 msgstr "Editor de Texto"
+
