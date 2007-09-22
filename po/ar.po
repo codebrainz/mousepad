@@ -3,11 +3,11 @@ msgstr ""
 "Project-Id-Version: mousepad\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2007-01-20 12:34+0100\n"
-"PO-Revision-Date: 2007-02-02 10:34+0200\n"
-"Last-Translator: Mohamed Magdy <alnokta@yahoo.com>\n"
+"PO-Revision-Date: 2007-09-22 04:13+0200\n"
+"Last-Translator: Mohamed Magdy <mohamed.m.k@gmail.com>\n"
 "Language-Team: Arabeyes Translation & Documentation <admin@arabeyes.org>\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Poedit-Language: Arabic\n"
 "X-Poedit-SourceCharset: utf-8\n"
@@ -15,9 +15,10 @@ msgstr ""
 #: ../src/callback.c:37
 #, c-format
 msgid "Save changes to '%s'?"
-msgstr "حفظ التغييرات إلى '%s'?"
+msgstr "احفظ التغييرات إلى '%s'?"
 
-#: ../src/callback.c:213 ../src/file.c:174
+#: ../src/callback.c:213
+#: ../src/file.c:174
 #, c-format
 msgid "Can't convert codeset to '%s'"
 msgstr "غير قادر على تحويل مجموعة المحارف إلى '%s'"
@@ -28,7 +29,7 @@ msgstr "غير قادر على فتح أنبوب إلى العملية"
 
 #: ../src/callback.c:397
 msgid "A text editor for Xfce"
-msgstr "محرر نصوص لاكسفس"
+msgstr "محرر نصوص لإكسفس"
 
 #: ../src/dialog.c:135
 #, c-format
@@ -184,11 +185,13 @@ msgstr "%d سلسلة استبدلت"
 msgid "Find"
 msgstr "جد"
 
-#: ../src/search.c:200 ../src/search.c:265
+#: ../src/search.c:200
+#: ../src/search.c:265
 msgid "Fi_nd what: "
 msgstr "ج_د ماذا: "
 
-#: ../src/search.c:219 ../src/search.c:292
+#: ../src/search.c:219
+#: ../src/search.c:292
 msgid "_Match case"
 msgstr "_مطابق للحالة"
 
@@ -262,11 +265,11 @@ msgstr "تحذير، يمكنك أن تخرب النظام إذا كنت تست�
 
 #: ../src/window.c:169
 msgid "Untitled"
-msgstr "بدون عنوان"
+msgstr "بدون‌عنوان"
 
 #: ../mousepad.desktop.in.h:1
 msgid "Mousepad"
-msgstr "ماوس باد"
+msgstr "ماوس‌باد"
 
 #: ../mousepad.desktop.in.h:2
 msgid "Simple text editor"
@@ -275,3 +278,4 @@ msgstr "محرر نصوص بسيط"
 #: ../mousepad.desktop.in.h:3
 msgid "Text Editor"
 msgstr "محرر نصوص"
+
