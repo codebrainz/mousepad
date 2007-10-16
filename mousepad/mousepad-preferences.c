@@ -45,20 +45,31 @@
 enum
 {
   PROP_0,
-  PROP_FONT_NAME,
-  PROP_LAST_AUTO_INDENT,
-  PROP_LAST_LINE_NUMBERS,
-  PROP_LAST_MATCH_CASE,
-  PROP_LAST_MATCH_WHOLE_WORD,
-  PROP_LAST_STATUSBAR_VISIBLE,
-  PROP_LAST_WINDOW_HEIGHT,
-  PROP_LAST_WINDOW_WIDTH,
-  PROP_LAST_WORD_WRAP,
-  PROP_LAST_WRAP_AROUND,
+
+  /* search preferences */
+  PROP_SEARCH_DIRECTION,
+  PROP_SEARCH_MATCH_CASE,
+  PROP_SEARCH_MATCH_WHOLE_WORD,
+  PROP_SEARCH_REPLACE_ALL_LOCATION,
+
+  /* textview preferences */
+  PROP_VIEW_AUTO_INDENT,
+  PROP_VIEW_FONT_NAME,
+  PROP_VIEW_LINE_NUMBERS,
+  PROP_VIEW_TAB_WIDTH,
+  PROP_VIEW_TABS_AS_SPACES,
+  PROP_VIEW_WORD_WRAP,
+
+  /* window preferences */
+  PROP_WINDOW_HEIGHT,
+  PROP_WINDOW_WIDTH,
+  PROP_WINDOW_STATUSBAR_VISIBLE,
+
+  /* hidden settings */
   PROP_MISC_ALWAYS_SHOW_TABS,
   PROP_MISC_CYCLE_TABS,
-  PROP_MISC_SHOW_FULL_PATH_IN_TITLE,
-  PROP_MISC_RECENT_MENU_LIMIT,
+  PROP_MISC_PATH_IN_TITLE,
+  PROP_MISC_RECENT_MENU_ITEMS,
   PROP_MISC_REMEMBER_GEOMETRY,
   N_PROPERTIES,
 };
@@ -78,8 +89,11 @@ static void     mousepad_preferences_set_property       (GObject                
                                                          guint                     prop_id,
                                                          const GValue             *value,
                                                          GParamSpec               *pspec);
-static void     mousepad_preferences_queue_store        (MousepadPreferences      *preferences);
-static gboolean mousepad_preferences_load               (MousepadPreferences      *preferences);
+#ifndef NDEBUG
+static void     mousepad_preferences_check_option_name  (GParamSpec               *pspec);
+#endif
+static void     mousepad_preferences_load               (MousepadPreferences      *preferences);
+static void     mousepad_preferences_store              (MousepadPreferences      *preferences);
 static gboolean mousepad_preferences_store_idle         (gpointer                  user_data);
 static void     mousepad_preferences_store_idle_destroy (gpointer                  user_data);
 
@@ -92,7 +106,7 @@ struct _MousepadPreferences
 {
   GObject  __parent__;
 
-  /* all the properties stored in the Object */
+  /* all the properties stored in the object */
   GValue   values[N_PROPERTIES];
 
   /* idle save timer id */
@@ -172,211 +186,166 @@ mousepad_preferences_class_init (MousepadPreferencesClass *klass)
   gobject_class->set_property = mousepad_preferences_set_property;
 
   /* register transformation functions */
-  if (!g_value_type_transformable (G_TYPE_STRING, G_TYPE_BOOLEAN))
+  if (G_LIKELY (g_value_type_transformable (G_TYPE_STRING, G_TYPE_BOOLEAN) == FALSE))
     g_value_register_transform_func (G_TYPE_STRING, G_TYPE_BOOLEAN, transform_string_to_boolean);
-  if (!g_value_type_transformable (G_TYPE_STRING, G_TYPE_INT))
+  if (G_LIKELY (g_value_type_transformable (G_TYPE_STRING, G_TYPE_INT) == FALSE))
     g_value_register_transform_func (G_TYPE_STRING, G_TYPE_INT, transform_string_to_int);
 
   /**
-   * MousepadPreferences:font-name
-   *
-   * The font name and size used in the text view. If this value is
-   * %NULL, the system font will be used.
+   * Search Preferences
    **/
   g_object_class_install_property (gobject_class,
-                                   PROP_FONT_NAME,
-                                   g_param_spec_string ("font-name",
-                                                        "font-name",
-                                                        "font-name",
+                                   PROP_SEARCH_DIRECTION,
+                                   g_param_spec_int ("search-direction",
+                                                     "SearchDirection",
+                                                     NULL,
+                                                     0, 2, 1,
+                                                     MOUSEPAD_PARAM_READWRITE));
+
+  g_object_class_install_property (gobject_class,
+                                   PROP_SEARCH_MATCH_CASE,
+                                   g_param_spec_boolean ("search-match-case",
+                                                         "SearchMatchCase",
+                                                         NULL,
+                                                         FALSE,
+                                                         MOUSEPAD_PARAM_READWRITE));
+
+  g_object_class_install_property (gobject_class,
+                                   PROP_SEARCH_MATCH_WHOLE_WORD,
+                                   g_param_spec_boolean ("search-match-whole-word",
+                                                         "SearchMatchWholeWord",
+                                                         NULL,
+                                                         FALSE,
+                                                         MOUSEPAD_PARAM_READWRITE));
+
+  g_object_class_install_property (gobject_class,
+                                   PROP_SEARCH_REPLACE_ALL_LOCATION,
+                                   g_param_spec_int ("search-replace-all-location",
+                                                     "SearchReplaceAllLocation",
+                                                     NULL,
+                                                     0, 2, 1,
+                                                     MOUSEPAD_PARAM_READWRITE));
+
+  /**
+   * Textview Preferences
+   **/
+  g_object_class_install_property (gobject_class,
+                                   PROP_VIEW_AUTO_INDENT,
+                                   g_param_spec_boolean ("view-auto-indent",
+                                                         "ViewAutoIndent",
+                                                         NULL,
+                                                         FALSE,
+                                                         MOUSEPAD_PARAM_READWRITE));
+
+  g_object_class_install_property (gobject_class,
+                                   PROP_VIEW_FONT_NAME,
+                                   g_param_spec_string ("view-font-name",
+                                                        "ViewFontName",
+                                                        NULL,
                                                         NULL,
                                                         MOUSEPAD_PARAM_READWRITE));
 
-  /**
-   * MousepadPreferences:last-auto-indent
-   *
-   * Whether we auto indent lines
-   **/
   g_object_class_install_property (gobject_class,
-                                   PROP_LAST_AUTO_INDENT,
-                                   g_param_spec_boolean ("last-auto-indent",
-                                                         "last-auto-indent",
-                                                         "last-auto-indent",
+                                   PROP_VIEW_LINE_NUMBERS,
+                                   g_param_spec_boolean ("view-line-numbers",
+                                                         "ViewLineNumbers",
+                                                         NULL,
                                                          FALSE,
                                                          MOUSEPAD_PARAM_READWRITE));
 
-  /**
-   * MousepadPreferences:last-line-numbers
-   *
-   * Whether line numbers are visible
-   **/
   g_object_class_install_property (gobject_class,
-                                   PROP_LAST_LINE_NUMBERS,
-                                   g_param_spec_boolean ("last-line-numbers",
-                                                         "last-line-numbers",
-                                                         "last-line-numbers",
+                                   PROP_VIEW_TAB_WIDTH,
+                                   g_param_spec_int ("view-tab-width",
+                                                     "ViewTabWidth",
+                                                     NULL,
+                                                     1, 32, 8,
+                                                     MOUSEPAD_PARAM_READWRITE));
+
+  g_object_class_install_property (gobject_class,
+                                   PROP_VIEW_TABS_AS_SPACES,
+                                   g_param_spec_boolean ("view-insert-spaces",
+                                                         "ViewInsertSpaces",
+                                                         NULL,
                                                          FALSE,
                                                          MOUSEPAD_PARAM_READWRITE));
 
-  /**
-   * MousepadPreferences:last-match-case
-   *
-   * Whether to enable match case in the search bar.
-   **/
   g_object_class_install_property (gobject_class,
-                                   PROP_LAST_MATCH_CASE,
-                                   g_param_spec_boolean ("last-match-case",
-                                                         "last-match-case",
-                                                         "last-match-case",
+                                   PROP_VIEW_WORD_WRAP,
+                                   g_param_spec_boolean ("view-word-wrap",
+                                                         "ViewWordWrap",
+                                                         NULL,
                                                          FALSE,
                                                          MOUSEPAD_PARAM_READWRITE));
 
-    /**
-   * MousepadPreferences:last-match-whole-word
-   *
-   * Whether to enable match case in the search bar.
-   **/
-  g_object_class_install_property (gobject_class,
-                                   PROP_LAST_MATCH_WHOLE_WORD,
-                                   g_param_spec_boolean ("last-match-whole-word",
-                                                         "last-match-whole-word",
-                                                         "last-match-whole-word",
-                                                         FALSE,
-                                                         MOUSEPAD_PARAM_READWRITE));
 
   /**
-   * MousepadPreferences:last-statusbar-visible
-   *
-   * Whether to display the statusbar in the Mousepad window.
+   * Window Preferences
    **/
   g_object_class_install_property (gobject_class,
-                                   PROP_LAST_STATUSBAR_VISIBLE,
-                                   g_param_spec_boolean ("last-statusbar-visible",
-                                                         "last-statusbar-visible",
-                                                         "last-statusbar-visible",
-                                                         TRUE,
-                                                         MOUSEPAD_PARAM_READWRITE));
-
-  /**
-   * MousepadPreferences:last-window-height
-   *
-   * The last known height of a #MousepadWindow, which will be used as
-   * default height for newly created windows.
-   **/
-  g_object_class_install_property (gobject_class,
-                                   PROP_LAST_WINDOW_HEIGHT,
-                                   g_param_spec_int ("last-window-height",
-                                                     "last-window-height",
-                                                     "last-window-height",
+                                   PROP_WINDOW_HEIGHT,
+                                   g_param_spec_int ("window-height",
+                                                     "WindowHeight",
+                                                     NULL,
                                                      1, G_MAXINT, 480,
                                                      MOUSEPAD_PARAM_READWRITE));
 
-  /**
-   * MousepadPreferences:last-window-width
-   *
-   * The last known width of a #MousepadWindow, which will be used as
-   * default width for newly created windows.
-   **/
   g_object_class_install_property (gobject_class,
-                                   PROP_LAST_WINDOW_WIDTH,
-                                   g_param_spec_int ("last-window-width",
-                                                     "last-window-width",
-                                                     "last-window-width",
+                                   PROP_WINDOW_WIDTH,
+                                   g_param_spec_int ("window-width",
+                                                     "WindowWidth",
+                                                     NULL,
                                                      1, G_MAXINT, 640,
                                                      MOUSEPAD_PARAM_READWRITE));
 
-  /**
-   * MousepadPreferences:last-word-wrap
-   *
-   * Whether word wrapping is enabled.
-   **/
   g_object_class_install_property (gobject_class,
-                                   PROP_LAST_WORD_WRAP,
-                                   g_param_spec_boolean ("last-word-wrap",
-                                                         "last-word-wrap",
-                                                         "last-word-wrap",
-                                                         FALSE,
-                                                         MOUSEPAD_PARAM_READWRITE));
-
-  /**
-   * MousepadPreferences:last-wrap-around
-   *
-   * Whether to enable wrap around in the search bar.
-   **/
-  g_object_class_install_property (gobject_class,
-                                   PROP_LAST_WRAP_AROUND,
-                                   g_param_spec_boolean ("last-wrap-around",
-                                                         "last-wrap-around",
-                                                         "last-wrap-around",
+                                   PROP_WINDOW_STATUSBAR_VISIBLE,
+                                   g_param_spec_boolean ("window-statusbar-visible",
+                                                         "WindowStatusbarVisible",
+                                                         NULL,
                                                          TRUE,
                                                          MOUSEPAD_PARAM_READWRITE));
 
+
   /**
-   * MousepadPreferences:misc-always-show-tabs
-   *
-   * Whether tabs are always visible. By default the tabs are hidden
-   * when there is only 1 screen opened.
+   * Hidden Preferences
    **/
   g_object_class_install_property (gobject_class,
                                    PROP_MISC_ALWAYS_SHOW_TABS,
                                    g_param_spec_boolean ("misc-always-show-tabs",
-                                                         "misc-always-show-tabs",
-                                                         "misc-always-show-tabs",
+                                                         "MiscAlwaysShowTabs",
+                                                         NULL,
                                                          FALSE,
                                                          MOUSEPAD_PARAM_READWRITE));
 
-  /**
-   * MousepadPreferences:misc-cycle-tabs
-   *
-   * Whether to cycle tabs with the back and forward buttons in the go menu.
-   **/
   g_object_class_install_property (gobject_class,
                                    PROP_MISC_CYCLE_TABS,
                                    g_param_spec_boolean ("misc-cycle-tabs",
-                                                         "misc-cycle-tabs",
-                                                         "misc-cycle-tabs",
+                                                         "MiscCycleTabs",
+                                                         NULL,
                                                          FALSE,
                                                          MOUSEPAD_PARAM_READWRITE));
 
-  /**
-   * MousepadPreferences:misc-show-full-path-in-title
-   *
-   * Whether to show the full file name path in the window title.
-   **/
   g_object_class_install_property (gobject_class,
-                                   PROP_MISC_SHOW_FULL_PATH_IN_TITLE,
-                                   g_param_spec_boolean ("misc-show-full-path-in-title",
-                                                         "misc-show-full-path-in-title",
-                                                         "misc-show-full-path-in-title",
+                                   PROP_MISC_PATH_IN_TITLE,
+                                   g_param_spec_boolean ("misc-path-in-title",
+                                                         "MiscPathInTitle",
+                                                         NULL,
                                                          FALSE,
                                                          MOUSEPAD_PARAM_READWRITE));
 
-  /**
-   * MousepadPreferences:misc-recent-menu-limit
-   *
-   * The number of items in the recent menu,
-   **/
   g_object_class_install_property (gobject_class,
-                                   PROP_MISC_RECENT_MENU_LIMIT,
-                                   g_param_spec_int ("misc-recent-menu-limit",
-                                                     "misc-recent-menu-limit",
-                                                     "misc-recent-menu-limit",
+                                   PROP_MISC_RECENT_MENU_ITEMS,
+                                   g_param_spec_int ("misc-recent-menu-items",
+                                                     "MiscRecentMenuItems",
+                                                     NULL,
                                                      1, G_MAXINT, 10,
                                                      MOUSEPAD_PARAM_READWRITE));
 
-  /**
-   * MousepadPreferences:misc-remember-geometry
-   *
-   * Whether Mousepad should remember the size of windows and apply this
-   * to newly created windows. If %TRUE the width and height are
-   * saved to "last-window-width" and "last-window-height". If
-   * %FALSE the user may specify the start size in "last-window-with"
-   * and "last-window-height".
-   **/
   g_object_class_install_property (gobject_class,
                                    PROP_MISC_REMEMBER_GEOMETRY,
                                    g_param_spec_boolean ("misc-remember-geometry",
-                                                         "misc-remember-geometry",
-                                                         "misc-remember-geometry",
+                                                         "MiscRememberGeometry",
+                                                         NULL,
                                                          TRUE,
                                                          MOUSEPAD_PARAM_READWRITE));
 }
@@ -401,7 +370,7 @@ mousepad_preferences_finalize (GObject *object)
   /* flush preferences */
   if (G_UNLIKELY (preferences->store_idle_id != 0))
     {
-      mousepad_preferences_store_idle (preferences);
+      mousepad_preferences_store (preferences);
       g_source_remove (preferences->store_idle_id);
     }
   /* release the property values */
@@ -424,6 +393,7 @@ mousepad_preferences_get_property (GObject    *object,
   GValue              *src;
 
   src = preferences->values + prop_id;
+
   if (G_IS_VALUE (src))
     g_value_copy (src, value);
   else
@@ -442,6 +412,7 @@ mousepad_preferences_set_property (GObject      *object,
   GValue              *dst;
 
   dst = preferences->values + prop_id;
+
   if (G_UNLIKELY (!G_IS_VALUE (dst)))
     {
       g_value_init (dst, pspec->value_type);
@@ -451,57 +422,68 @@ mousepad_preferences_set_property (GObject      *object,
   if (g_param_values_cmp (pspec, value, dst) != 0)
     {
       g_value_copy (value, dst);
-      mousepad_preferences_queue_store (preferences);
+
+      mousepad_preferences_store (preferences);
     }
 }
 
 
 
+#ifndef NDEBUG
 static void
-mousepad_preferences_queue_store (MousepadPreferences *preferences)
-{
-  if (preferences->store_idle_id == 0)
-    {
-      preferences->store_idle_id = g_idle_add_full (G_PRIORITY_LOW, mousepad_preferences_store_idle,
-                                                    preferences, mousepad_preferences_store_idle_destroy);
-    }
-}
-
-
-
-static gchar*
-property_name_to_option_name (const gchar *property_name)
+mousepad_preferences_check_option_name (GParamSpec *pspec)
 {
   const gchar *s;
+  const gchar *name, *nick;
   gboolean     upper = TRUE;
   gchar       *option;
   gchar       *t;
 
-  option = g_new (gchar, strlen (property_name) + 1);
-  for (s = property_name, t = option; *s != '\0'; ++s)
+  /* get property name and nick */
+  name = g_param_spec_get_name (pspec);
+  nick = g_param_spec_get_nick (pspec);
+
+  if (G_UNLIKELY (nick == NULL))
     {
-      if (*s == '-')
-        {
-          upper = TRUE;
-        }
-      else if (upper)
-        {
-          *t++ = g_ascii_toupper (*s);
-          upper = FALSE;
-        }
-      else
-        {
-          *t++ = *s;
-        }
+      g_warning ("The nick name of %s is NULL", name);
     }
-  *t = '\0';
+  else
+    {
+      /* allocate string for option name */
+      option = g_new (gchar, strlen (name) + 1);
 
-  return option;
+      /* convert name */
+      for (s = name, t = option; *s != '\0'; ++s)
+        {
+          if (*s == '-')
+            {
+              upper = TRUE;
+            }
+          else if (upper)
+            {
+              *t++ = g_ascii_toupper (*s);
+              upper = FALSE;
+            }
+          else
+            {
+              *t++ = *s;
+            }
+        }
+      *t = '\0';
+
+      /* compare the strings */
+      if (G_UNLIKELY (!option || strcmp (option, nick) != 0))
+        g_warning ("The option name (%s) and nick name (%s) of property \"%s\" do not match", option, nick, name);
+
+      /* cleanup */
+      g_free (option);
+    }
 }
+#endif
 
 
 
-static gboolean
+static void
 mousepad_preferences_load (MousepadPreferences *preferences)
 {
   const gchar  *string;
@@ -510,43 +492,54 @@ mousepad_preferences_load (MousepadPreferences *preferences)
   XfceRc       *rc;
   GValue        dst = { 0, };
   GValue        src = { 0, };
-  gchar        *option;
   guint         nspecs;
   guint         n;
 
+  /* try to open the config file */
   rc = xfce_rc_config_open (XFCE_RESOURCE_CONFIG, "Mousepad/mousepadrc", TRUE);
   if (G_UNLIKELY (rc == NULL))
     {
-      g_warning ("Failed to load the preferences. Unable to open \"~/.config/Mousepad/mousepadrc\"");
-      return FALSE;
+      g_warning (_("Failed to load the preferences."));
+
+      return;
     }
 
+  /* freeze notification signals */
   g_object_freeze_notify (G_OBJECT (preferences));
 
+  /* set group */
   xfce_rc_set_group (rc, "Configuration");
 
+  /* get all the properties in the class */
   specs = g_object_class_list_properties (G_OBJECT_GET_CLASS (preferences), &nspecs);
 
   for (n = 0; n < nspecs; ++n)
     {
       spec = specs[n];
 
-      option = property_name_to_option_name (spec->name);
-      string = xfce_rc_read_entry (rc, option, NULL);
-      g_free (option);
+#ifndef NDEBUG
+      /* check nick name with generated option name */
+      mousepad_preferences_check_option_name (spec);
+#endif
+
+      /* read the entry */
+      string = xfce_rc_read_entry (rc, spec->_nick, NULL);
 
       if (G_UNLIKELY (string == NULL))
         continue;
 
+      /* create gvalue with the string as value */
       g_value_init (&src, G_TYPE_STRING);
       g_value_set_static_string (&src, string);
 
       if (spec->value_type == G_TYPE_STRING)
         {
+          /* they have the same type, so set the property */
           g_object_set_property (G_OBJECT (preferences), spec->name, &src);
         }
       else if (g_value_type_transformable (G_TYPE_STRING, spec->value_type))
         {
+          /* transform the type */
           g_value_init (&dst, spec->value_type);
           if (g_value_transform (&src, &dst))
             g_object_set_property (G_OBJECT (preferences), spec->name, &dst);
@@ -557,15 +550,30 @@ mousepad_preferences_load (MousepadPreferences *preferences)
           g_warning ("Failed to load property \"%s\"", spec->name);
         }
 
+      /* cleanup */
       g_value_unset (&src);
     }
+
+  /* cleanup the specs */
   g_free (specs);
 
+  /* close the rc file */
   xfce_rc_close (rc);
 
+  /* allow notifications again */
   g_object_thaw_notify (G_OBJECT (preferences));
+}
 
-  return FALSE;
+
+
+static void
+mousepad_preferences_store (MousepadPreferences *preferences)
+{
+  if (preferences->store_idle_id == 0)
+    {
+      preferences->store_idle_id = g_idle_add_full (G_PRIORITY_LOW, (GSourceFunc) mousepad_preferences_store_idle,
+                                                    preferences, mousepad_preferences_store_idle_destroy);
+    }
 }
 
 
@@ -580,55 +588,56 @@ mousepad_preferences_store_idle (gpointer user_data)
   XfceRc              *rc;
   GValue               dst = { 0, };
   GValue               src = { 0, };
-  gchar               *option;
   guint                nspecs;
   guint                n;
 
+  /* open the config file */
   rc = xfce_rc_config_open (XFCE_RESOURCE_CONFIG, "Mousepad/mousepadrc", FALSE);
   if (G_UNLIKELY (rc == NULL))
     {
-      g_warning ("Failed to store the preferences. Unable to open \"~/.config/Mousepad/mousepadrc\"");
+      g_warning (_("Failed to store the preferences."));
       return FALSE;
     }
 
+  /* set the group */
   xfce_rc_set_group (rc, "Configuration");
 
+  /* get the list of properties in the class */
   specs = g_object_class_list_properties (G_OBJECT_GET_CLASS (preferences), &nspecs);
 
   for (n = 0; n < nspecs; ++n)
     {
       spec = specs[n];
 
+      /* init a string value */
       g_value_init (&dst, G_TYPE_STRING);
 
       if (spec->value_type == G_TYPE_STRING)
         {
+          /* set the string value */
           g_object_get_property (G_OBJECT (preferences), spec->name, &dst);
         }
       else
         {
+          /* property contains another type, transform it first */
           g_value_init (&src, spec->value_type);
           g_object_get_property (G_OBJECT (preferences), spec->name, &src);
           g_value_transform (&src, &dst);
           g_value_unset (&src);
         }
 
-      /* determine the option name for the spec */
-      option = property_name_to_option_name (spec->name);
-
       /* store the setting */
       string = g_value_get_string (&dst);
       if (G_LIKELY (string != NULL))
-        xfce_rc_write_entry (rc, option, string);
+        xfce_rc_write_entry (rc, spec->_nick, string);
 
       /* cleanup */
       g_value_unset (&dst);
-      g_free (option);
     }
 
   /* cleanup */
-  xfce_rc_close (rc);
   g_free (specs);
+  xfce_rc_close (rc);
 
   return FALSE;
 }
@@ -661,8 +670,7 @@ mousepad_preferences_get (void)
   if (G_UNLIKELY (preferences == NULL))
     {
       preferences = g_object_new (MOUSEPAD_TYPE_PREFERENCES, NULL);
-      g_object_add_weak_pointer (G_OBJECT (preferences),
-                                 (gpointer) &preferences);
+      g_object_add_weak_pointer (G_OBJECT (preferences), (gpointer) &preferences);
     }
   else
     {

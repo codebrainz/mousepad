@@ -41,9 +41,6 @@ void        mousepad_statusbar_set_cursor_position  (MousepadStatusbar *statusba
 void        mousepad_statusbar_set_overwrite        (MousepadStatusbar *statusbar,
                                                      gboolean           overwrite);
 
-void        mousepad_statusbar_visible              (MousepadStatusbar *statusbar,
-                                                     gboolean           visible);
-
 G_END_DECLS
 
 #endif /* !__MOUSEPAD_STATUSBAR_H__ */

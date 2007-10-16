@@ -20,23 +20,61 @@
 
 G_BEGIN_DECLS
 
-gboolean  mousepad_file_get_externally_modified  (const gchar    *filename,
-                                                  gint            mtime);
+typedef struct _MousepadFileClass  MousepadFileClass;
+typedef struct _MousepadFile       MousepadFile;
+typedef enum   _MousepadLineEnding MousepadLineEnding;
 
-gboolean  mousepad_file_save_data                (const gchar    *filename,
-                                                  const gchar    *data,
-                                                  gsize           bytes,
-                                                  gint           *new_mtime,
-                                                  GError        **error);
+#define MOUSEPAD_TYPE_FILE            (mousepad_file_get_type ())
+#define MOUSEPAD_FILE(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), MOUSEPAD_TYPE_FILE, MousepadFile))
+#define MOUSEPAD_FILE_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), MOUSEPAD_TYPE_FILE, MousepadFileClass))
+#define MOUSEPAD_IS_FILE(obj)         (G_TYPE_CHECK_INSTANCE_TYPE ((obj), MOUSEPAD_TYPE_FILE))
+#define MOUSEPAD_IS_FILE_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), MOUSEPAD_TYPE_FILE))
+#define MOUSEPAD_FILE_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), MOUSEPAD_TYPE_FILE, MousepadFileClass))
 
-gboolean  mousepad_file_read_to_buffer           (const gchar    *filename,
-                                                  GtkTextBuffer  *buffer,
-                                                  gint           *new_mtime,
-                                                  gboolean       *readonly,
-                                                  GError        **error);
+enum _MousepadLineEnding
+{
+  MOUSEPAD_LINE_END_NONE,
+  MOUSEPAD_LINE_END_UNIX,
+  MOUSEPAD_LINE_END_WIN32,
+  MOUSEPAD_LINE_END_MAC
+};
 
-gboolean  mousepad_file_is_writable              (const gchar    *filename,
-                                                  GError        **error);
+GType               mousepad_file_get_type                 (void) G_GNUC_CONST;
+
+MousepadFile       *mousepad_file_new                      (GtkTextBuffer       *buffer);
+
+void                mousepad_file_set_filename             (MousepadFile        *file,
+                                                            const gchar         *filename);
+
+const gchar        *mousepad_file_get_filename             (MousepadFile        *file);
+
+gchar              *mousepad_file_get_uri                  (MousepadFile        *file);
+
+void                mousepad_file_set_encoding             (MousepadFile        *file,
+                                                            const gchar         *encoding);
+
+const gchar        *mousepad_file_get_encoding             (MousepadFile        *file);
+
+void                mousepad_file_set_line_ending          (MousepadFile        *file,
+                                                            MousepadLineEnding   line_ending);
+
+MousepadLineEnding  mousepad_file_get_line_ending          (MousepadFile        *file);
+
+gboolean            mousepad_file_open                     (MousepadFile        *file,
+                                                            GError             **error);
+
+gboolean            mousepad_file_save                     (MousepadFile        *file,
+                                                            GError             **error);
+
+gboolean            mousepad_file_reload                   (MousepadFile        *file,
+                                                            GError             **error);
+
+gboolean            mousepad_file_get_externally_modified  (MousepadFile        *file,
+                                                            GError             **error);
+
+gint                mousepad_file_test_encoding            (MousepadFile        *file,
+                                                            const gchar         *encoding,
+                                                            GError             **error);
 
 G_END_DECLS
 

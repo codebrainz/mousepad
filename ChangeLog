@@ -1,3 +1,40 @@
+2007-10-16      Nick Schermer <nick@xfce.org>
+	* mousepad/mousepad-dialogs.c: Set the correct default return
+	  in the jump dialog.
+	* mousepad/mousepad-replace-{dialog,window,preferences}.{c,h}:
+	  Implement the new replace dialog.
+	* Remove options from the type-ahead bar, it was too bloated
+	  and those options are now available in the replace dialog.
+	* mousepad/mousepad-document.c: The MousepadDocument now holds
+	  utf-8 valid names, the MousepadFile the real filename.
+	* mousepad/mousepad-window.c: Full tab dnd (detach) with
+	  Gtk+ 2.12.
+	* mousepad/mousepad-encoding-dialog.{c,h}: Add a encoding dialog.
+	  This dialog should help users to find the right encoding for a
+	  document.
+	* mousepad/mousepad-print.{c,h}: Initial version of a basic 
+	  printing support. Needs some big improvement tho.
+	* mousepad/mousepad-statusbar: Fix issues with some theme engines
+	  that paint a line above the statusbar (instead of a frame).
+	* mousepad/mousepad-window.c: A window is now destoyed when it 
+	  contains no tabs, previously this caused some segfaults with the
+	  tab dnd code, but this is all fixed now.
+	* mousepad/mousepad-preferences.c: The option names are now stored
+	  in the nick name of the pspec. With debug build this name is
+	  compared with the option name from spec name to check for typos.
+	* mousepad/mousepad-view.c: Options for 'insert tab as spaces' and
+	  settings the tab size. This also needed a rewrite of the
+	  indentation code, which ended up much cleaner.
+	* mousepad/mousepad-view.c: Big speed improvements in the vertical
+	  selction code.
+	* mousepad/mousepad-view.c: Cleanups in the clipboard code and move
+	  code from mousepad-document to mousepad-view.
+	* mousepad/mousepad-{window,search-bar}.c: Handle clipboard actions
+	  properly when the search bar is focused.
+	* A lot of code cleanups, bug fixes, polishing and stuff I can't
+	  remember after 5 months ;).
+
+
 2007-05-22	Nick Schermer <nick@xfce.org
 	* *.*: Remove copyright lines.
 

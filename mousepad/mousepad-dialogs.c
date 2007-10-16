@@ -21,25 +21,7 @@
 
 #include <mousepad/mousepad-private.h>
 #include <mousepad/mousepad-dialogs.h>
-#include <mousepad/mousepad-file.h>
-
-
-
-static GtkWidget *
-mousepad_dialogs_image_button (const gchar *stock_id,
-                               const gchar *label)
-{
-  GtkWidget *button, *image;
-
-  image = gtk_image_new_from_stock (stock_id, GTK_ICON_SIZE_BUTTON);
-  gtk_widget_show (image);
-
-  button = gtk_button_new_with_mnemonic (label);
-  gtk_button_set_image (GTK_BUTTON (button), image);
-  gtk_widget_show (button);
-
-  return button;
-}
+#include <mousepad/mousepad-util.h>
 
 
 
@@ -48,9 +30,8 @@ mousepad_dialogs_show_about (GtkWindow *parent)
 {
   static const gchar *authors[] =
   {
-    "Benedikt Meurer <benny@xfce.org>",
-    "Erik Harrison <erikharrison@xfce.org>",
     "Nick Schermer <nick@xfce.org>",
+    "Erik Harrison <erikharrison@xfce.org>",
     NULL,
   };
 
@@ -58,7 +39,6 @@ mousepad_dialogs_show_about (GtkWindow *parent)
   gtk_show_about_dialog (parent,
                          "authors", authors,
                          "comments", _("Mousepad is a fast text editor for the Xfce Desktop Environment."),
-                         "copyright", _("Copyright \302\251 2004-2007 Xfce Development Team"),
                          "destroy-with-parent", TRUE,
                          "license", XFCE_LICENSE_GPL,
                          "logo-icon-name", PACKAGE_NAME,
@@ -117,7 +97,7 @@ mousepad_dialogs_jump_to (GtkWindow *parent,
                                         GTK_STOCK_CANCEL, MOUSEPAD_RESPONSE_CANCEL,
                                         GTK_STOCK_JUMP_TO, MOUSEPAD_RESPONSE_JUMP_TO,
                                         NULL);
-  gtk_dialog_set_default_response (GTK_DIALOG (dialog), GTK_RESPONSE_OK);
+  gtk_dialog_set_default_response (GTK_DIALOG (dialog), MOUSEPAD_RESPONSE_JUMP_TO);
   gtk_window_set_resizable (GTK_WINDOW (dialog), FALSE);
 
   hbox = gtk_hbox_new (FALSE, 8);
@@ -161,27 +141,24 @@ mousepad_dialogs_clear_recent (GtkWindow *parent)
   GtkWidget *image;
   gboolean   succeed = FALSE;
 
-  /* the dialog icon */
-  image = gtk_image_new_from_stock (GTK_STOCK_CLEAR, GTK_ICON_SIZE_DIALOG);
-  gtk_widget_show (image);
-
   /* create the question dialog */
   dialog = gtk_message_dialog_new (parent, GTK_DIALOG_MODAL | GTK_DIALOG_DESTROY_WITH_PARENT,
                                    GTK_MESSAGE_OTHER, GTK_BUTTONS_NONE,
-                                   _("Remove all entries from the document history?"));
-
+                                   _("Remove all entries from the documents history?"));
   gtk_dialog_add_buttons (GTK_DIALOG (dialog),
                           GTK_STOCK_CANCEL, MOUSEPAD_RESPONSE_CANCEL,
                           GTK_STOCK_CLEAR, MOUSEPAD_RESPONSE_CLEAR,
                           NULL);
-
-  gtk_window_set_title (GTK_WINDOW (dialog), _("Clear Document History"));
+  gtk_window_set_title (GTK_WINDOW (dialog), _("Clear Documents History"));
   gtk_dialog_set_default_response (GTK_DIALOG (dialog), MOUSEPAD_RESPONSE_CANCEL);
-  gtk_message_dialog_set_image (GTK_MESSAGE_DIALOG (dialog), image);
-
   gtk_message_dialog_format_secondary_text (GTK_MESSAGE_DIALOG (dialog),
-                                            _("Clearing the document history will permanently "
+                                            _("Clearing the documents history will permanently "
                                               "remove all currently listed entries."));
+
+  /* the dialog icon */
+  image = gtk_image_new_from_stock (GTK_STOCK_CLEAR, GTK_ICON_SIZE_DIALOG);
+  gtk_message_dialog_set_image (GTK_MESSAGE_DIALOG (dialog), image);
+  gtk_widget_show (image);
 
   /* popup the dialog */
   if (gtk_dialog_run (GTK_DIALOG (dialog)) == MOUSEPAD_RESPONSE_CLEAR)
@@ -212,7 +189,7 @@ mousepad_dialogs_save_changes (GtkWindow *parent)
                                    _("Do you want to save the changes before closing?"));
 
   gtk_dialog_add_action_widget (GTK_DIALOG (dialog),
-                                mousepad_dialogs_image_button (GTK_STOCK_DELETE, _("_Don't Save")),
+                                mousepad_util_image_button (GTK_STOCK_DELETE, _("_Don't Save")),
                                 MOUSEPAD_RESPONSE_DONT_SAVE);
 
   gtk_dialog_add_buttons (GTK_DIALOG (dialog),
@@ -238,76 +215,6 @@ mousepad_dialogs_save_changes (GtkWindow *parent)
 
 
 
-static GtkFileChooserConfirmation
-mousepad_dialogs_save_as_callback (GtkFileChooser *dialog)
-{
-  gchar                      *filename;
-  GError                     *error = NULL;
-  GtkFileChooserConfirmation  result;
-
-  /* get the filename */
-  filename = gtk_file_chooser_get_filename (dialog);
-
-  if (mousepad_file_is_writable (filename, &error))
-    {
-      /* show the normal confirmation dialog */
-      result = GTK_FILE_CHOOSER_CONFIRMATION_CONFIRM;
-    }
-  else
-    {
-      /* tell the user he cannot write to this file */
-      mousepad_dialogs_show_error (GTK_WINDOW (dialog), error, _("Permission denied"));
-      g_error_free (error);
-
-      /* the user doesn't have permission to write to the file */
-      result = GTK_FILE_CHOOSER_CONFIRMATION_SELECT_AGAIN;
-    }
-
-  /* cleanup */
-  g_free (filename);
-
-  return result;
-}
-
-
-
-gchar *
-mousepad_dialogs_save_as (GtkWindow   *parent,
-                          const gchar *filename)
-{
-  gchar     *new_filename = NULL;
-  GtkWidget *dialog;
-
-  dialog = gtk_file_chooser_dialog_new (_("Save As"),
-                                        parent,
-                                        GTK_FILE_CHOOSER_ACTION_SAVE,
-                                        GTK_STOCK_CANCEL, GTK_RESPONSE_CANCEL,
-                                        GTK_STOCK_SAVE, GTK_RESPONSE_OK,
-                                        NULL);
-  gtk_file_chooser_set_local_only (GTK_FILE_CHOOSER (dialog), TRUE);
-  gtk_file_chooser_set_do_overwrite_confirmation (GTK_FILE_CHOOSER (dialog), TRUE);
-  gtk_dialog_set_default_response (GTK_DIALOG (dialog), GTK_RESPONSE_OK);
-
-  /* we check if the user is allowed to write to the file */
-  g_signal_connect (G_OBJECT (dialog), "confirm-overwrite",
-                    G_CALLBACK (mousepad_dialogs_save_as_callback), NULL);
-
-  /* set the current filename */
-  if (filename != NULL)
-    gtk_file_chooser_set_filename (GTK_FILE_CHOOSER (dialog), filename);
-
-  /* run the dialog */
-  if (gtk_dialog_run (GTK_DIALOG (dialog)) == GTK_RESPONSE_OK)
-    new_filename = gtk_file_chooser_get_filename (GTK_FILE_CHOOSER (dialog));
-
-  /* destroy the dialog */
-  gtk_widget_destroy (dialog);
-
-  return new_filename;
-}
-
-
-
 gint
 mousepad_dialogs_ask_overwrite (GtkWindow   *parent,
                                 const gchar *filename)
@@ -328,10 +235,10 @@ mousepad_dialogs_ask_overwrite (GtkWindow   *parent,
 
   gtk_dialog_add_button (GTK_DIALOG (dialog), GTK_STOCK_CANCEL, MOUSEPAD_RESPONSE_CANCEL);
   gtk_dialog_add_action_widget (GTK_DIALOG (dialog),
-                                mousepad_dialogs_image_button (GTK_STOCK_SAVE, _("_Overwrite")),
+                                mousepad_util_image_button (GTK_STOCK_SAVE, _("_Overwrite")),
                                 MOUSEPAD_RESPONSE_OVERWRITE);
   gtk_dialog_add_action_widget (GTK_DIALOG (dialog),
-                                mousepad_dialogs_image_button (GTK_STOCK_REFRESH, _("_Reload")),
+                                mousepad_util_image_button (GTK_STOCK_REFRESH, _("_Reload")),
                                 MOUSEPAD_RESPONSE_RELOAD);
   gtk_dialog_set_default_response (GTK_DIALOG (dialog), MOUSEPAD_RESPONSE_CANCEL);
 
@@ -365,7 +272,7 @@ mousepad_dialogs_ask_reload (GtkWindow *parent)
                           GTK_STOCK_SAVE_AS, MOUSEPAD_RESPONSE_SAVE_AS,
                           NULL);
   gtk_dialog_add_action_widget (GTK_DIALOG (dialog),
-                                mousepad_dialogs_image_button (GTK_STOCK_REFRESH, _("_Reload")),
+                                mousepad_util_image_button (GTK_STOCK_REFRESH, _("_Reload")),
                                 MOUSEPAD_RESPONSE_RELOAD);
   gtk_dialog_set_default_response (GTK_DIALOG (dialog), MOUSEPAD_RESPONSE_CANCEL);
 

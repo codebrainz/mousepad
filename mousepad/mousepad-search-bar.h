@@ -30,15 +30,17 @@ G_BEGIN_DECLS
 typedef struct _MousepadSearchBarClass MousepadSearchBarClass;
 typedef struct _MousepadSearchBar      MousepadSearchBar;
 
-GType           mousepad_search_bar_get_type       (void) G_GNUC_CONST;
+GType           mousepad_search_bar_get_type        (void) G_GNUC_CONST;
 
-GtkWidget      *mousepad_search_bar_new            (void);
+GtkWidget      *mousepad_search_bar_new             (void);
 
-void            mousepad_search_bar_focus          (MousepadSearchBar *search_bar);
+GtkEditable    *mousepad_search_bar_entry           (MousepadSearchBar *bar);
 
-void            mousepad_search_bar_find_next      (MousepadSearchBar *search_bar);
+void            mousepad_search_bar_focus           (MousepadSearchBar *bar);
 
-void            mousepad_search_bar_find_previous  (MousepadSearchBar *search_bar);
+void            mousepad_search_bar_find_next       (MousepadSearchBar *bar);
+
+void            mousepad_search_bar_find_previous   (MousepadSearchBar *bar);
 
 G_END_DECLS
 

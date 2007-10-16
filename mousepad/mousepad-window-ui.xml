@@ -77,6 +77,7 @@
       <menuitem action="word-wrap" />
       <menuitem action="line-numbers" />
       <menuitem action="auto-indent" />
+      <menuitem action="insert-spaces" />
     </menu>
 
     <menu action="go-menu">

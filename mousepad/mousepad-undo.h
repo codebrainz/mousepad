@@ -34,17 +34,19 @@ GType          mousepad_undo_get_type        (void) G_GNUC_CONST;
 
 MousepadUndo  *mousepad_undo_new             (GtkTextBuffer *buffer);
 
+void           mousepad_undo_clear           (MousepadUndo  *undo);
+
 void           mousepad_undo_lock            (MousepadUndo  *undo);
 
 void           mousepad_undo_unlock          (MousepadUndo  *undo);
 
-void           mousepad_undo_do_undo         (MousepadUndo  *undo);
-
-void           mousepad_undo_do_redo         (MousepadUndo  *undo);
-
 gboolean       mousepad_undo_can_undo        (MousepadUndo  *undo);
 
 gboolean       mousepad_undo_can_redo        (MousepadUndo  *undo);
+
+void           mousepad_undo_do_undo         (MousepadUndo  *undo);
+
+void           mousepad_undo_do_redo         (MousepadUndo  *undo);
 
 void           mousepad_undo_populate_popup  (GtkTextView   *textview,
                                               GtkMenu       *menu,

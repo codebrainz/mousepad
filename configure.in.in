@@ -69,31 +69,8 @@ AC_SUBST([MOUSEPAD_VERSION_MICRO])
 dnl **********************************
 dnl *** Check for standard headers ***
 dnl **********************************
-AC_CHECK_HEADERS([ctype.h errno.h fcntl.h memory.h stdlib.h string.h \
-                  sys/mman.h sys/types.h sys/stat.h time.h unistd.h])
-
-dnl ************************************
-dnl *** Check for standard functions ***
-dnl ************************************
-AC_FUNC_MMAP()
-AC_CHECK_FUNCS([posix_madvise])
-
-dnl ******************************************
-dnl *** Linux/glibc specified work-arounds ***
-dnl ******************************************
-AC_MSG_CHECKING([whether we need _BSD_SOURCE and _XOPEN_SOURCE])
-AC_TRY_LINK([#include <features.h>],
-[
-  if (__GLIBC_PREREQ (2, 0));
-],
-[
-  AC_DEFINE([_XOPEN_SOURCE], [600], [Required to unbreak glibc])
-  AC_DEFINE([_BSD_SOURCE], [1], [Required to unbreak glibc])
-  AC_MSG_RESULT([yes])
-],
-[
-  AC_MSG_RESULT([no])
-])
+AC_CHECK_HEADERS([errno.h fcntl.h memory.h math.h stdlib.h string.h \
+                  sys/types.h sys/stat.h time.h unistd.h])
 
 dnl ******************************
 dnl *** Check for i18n support ***

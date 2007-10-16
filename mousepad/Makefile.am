@@ -10,22 +10,17 @@ INCLUDES =									\
 	-DG_LOG_DOMAIN=\"Mousepad\"						\
 	-DLIBEXECDIR=\"$(libexecdir)\"						\
 	-DPACKAGE_LOCALE_DIR=\"$(localedir)\"					\
+	-DG_DISABLE_DEPRECATED							\
 	$(PLATFORM_CPPFLAGS)
 
 bin_PROGRAMS = 									\
 	mousepad
 
-mousepad_headers = 								\
-	mousepad-types.h
-
 mousepad_built_sources =							\
-	mousepad-enum-types.c							\
-	mousepad-enum-types.h							\
 	mousepad-marshal.c							\
 	mousepad-marshal.h
 
 mousepad_SOURCES =								\
-	$(mousepad_headers)							\
 	$(mousepad_built_sources)						\
 	$(mousepad_dbus_sources)						\
 	main.c									\
@@ -35,11 +30,17 @@ mousepad_SOURCES =								\
 	mousepad-dialogs.h							\
 	mousepad-document.c							\
 	mousepad-document.h							\
+	mousepad-encoding-dialog.c						\
+	mousepad-encoding-dialog.h						\
 	mousepad-file.c								\
 	mousepad-file.h								\
 	mousepad-preferences.c							\
 	mousepad-preferences.h							\
+	mousepad-print.c							\
+	mousepad-print.h							\
 	mousepad-private.h							\
+	mousepad-replace-dialog.c						\
+	mousepad-replace-dialog.h						\
 	mousepad-search-bar.c							\
 	mousepad-search-bar.h							\
 	mousepad-statusbar.c							\
@@ -48,6 +49,8 @@ mousepad_SOURCES =								\
 	mousepad-view.h								\
 	mousepad-undo.c								\
 	mousepad-undo.h								\
+	mousepad-util.c								\
+	mousepad-util.h								\
 	mousepad-window.c							\
 	mousepad-window.h							\
 	mousepad-window-ui.h
@@ -96,14 +99,11 @@ endif
 if MAINTAINER_MODE
 CLEANFILES =									\
 	xgen-mmc								\
-	xgen-mmh								\
-	xgen-metc								\
-	xgen-meth
+	xgen-mmh
 
 DISTCLEANFILES =								\
 	$(mousepad_built_sources)                                       	\
 	stamp-mousepad-marshal.h						\
-	stamp-mousepad-enum-types.h						\
 	mousepad-window-ui.h
 
 BUILT_SOURCES =									\
@@ -118,31 +118,9 @@ endif
 mousepad-window-ui.h: Makefile $(srcdir)/mousepad-window-ui.xml
 	exo-csource --strip-comments --strip-content --static --name=mousepad_window_ui $(srcdir)/mousepad-window-ui.xml > mousepad-window-ui.h
 
-mousepad-enum-types.h: stamp-mousepad-enum-types.h
-	@true
-stamp-mousepad-enum-types.h: $(mousepad_headers) Makefile
-	( cd $(srcdir) && glib-mkenums \
-		--fhead "#ifndef __MOUSEPAD_ENUM_TYPES_H__\n#define __MOUSEPAD_ENUM_TYPES_H__\n#include <glib-object.h>\nG_BEGIN_DECLS\n" \
-		--fprod "/* enumerations from \"@filename@\" */\n" \
-		--vhead "GType @enum_name@_get_type (void) G_GNUC_CONST;\n#define MOUSEPAD_TYPE_@ENUMSHORT@ (@enum_name@_get_type())\n" \
-		--ftail "G_END_DECLS\n\n#endif /* !__MOUSEPAD_ENUM_TYPES_H__ */" \
-		$(mousepad_headers) ) >> xgen-meth \
-	&& ( cmp -s xgen-meth mousepad-enum-types.h || cp xgen-meth mousepad-enum-types.h ) \
-	&& rm -f xgen-meth \
-	&& echo timestamp > $(@F)
-mousepad-enum-types.c: $(mousepad_headers) Makefile
-	( cd $(srcdir) && glib-mkenums \
-		--fhead "#include <mousepad/mousepad-enum-types.h>\n#include <mousepad/mousepad-types.h>" \
-		--fprod "\n/* enumerations from \"@filename@\" */" \
-		--vhead "GType\n@enum_name@_get_type (void)\n{\n\tstatic GType type = 0;\n\tif (type == 0) {\n\tstatic const G@Type@Value values[] = {"\
-		--vprod "\t{ @VALUENAME@, \"@VALUENAME@\", \"@valuenick@\" }," \
-		--vtail "\t{ 0, NULL, NULL }\n\t};\n\ttype = g_@type@_register_static (\"@EnumName@\", values);\n  }\n\treturn type;\n}\n" \
-		$(mousepad_headers) ) >> xgen-metc \
-	&& cp xgen-metc mousepad-enum-types.c \
-	&& rm -f xgen-metc
-
 mousepad-marshal.h: stamp-mousepad-marshal.h
 	@true
+
 stamp-mousepad-marshal.h: mousepad-marshal.list Makefile
 	( cd $(srcdir) && glib-genmarshal \
 		--prefix=_mousepad_marshal \

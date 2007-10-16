@@ -21,8 +21,8 @@
 
 #include <mousepad/mousepad-private.h>
 #include <mousepad/mousepad-application.h>
-#include <mousepad/mousepad-types.h>
 #include <mousepad/mousepad-document.h>
+#include <mousepad/mousepad-replace-dialog.h>
 #include <mousepad/mousepad-window.h>
 
 
@@ -35,6 +35,8 @@ static void        mousepad_application_window_destroyed          (GtkWidget    
 static GtkWidget  *mousepad_application_create_window             (MousepadApplication        *application);
 static void        mousepad_application_new_window_with_document  (MousepadWindow             *existing,
                                                                    MousepadDocument           *document,
+                                                                   gint                        x,
+                                                                   gint                        y,
                                                                    MousepadApplication        *application);
 static void        mousepad_application_new_window                (MousepadWindow             *existing,
                                                                    MousepadApplication        *application);
@@ -126,6 +128,8 @@ mousepad_application_init (MousepadApplication *application)
     {
       /* load the accel map */
       gtk_accel_map_load (path);
+
+      /* cleanup */
       g_free (path);
     }
 }
@@ -139,12 +143,19 @@ mousepad_application_finalize (GObject *object)
   GSList              *li;
   gchar               *path;
 
+  /* flush the history items of the replace dialog
+   * this is a bit of an ugly place, but cleaning on a window close
+   * isn't a good option eighter */
+  mousepad_replace_dialog_history_clean ();
+
   /* save the current accel map */
   path = xfce_resource_save_location (XFCE_RESOURCE_CONFIG, PACKAGE_NAME G_DIR_SEPARATOR_S "accels.scm", TRUE);
   if (G_LIKELY (path != NULL))
     {
       /* save the accel map */
       gtk_accel_map_save (path);
+
+      /* cleanup */
       g_free (path);
     }
 
@@ -155,6 +166,7 @@ mousepad_application_finalize (GObject *object)
       gtk_widget_destroy (GTK_WIDGET (li->data));
     }
 
+  /* cleanup the list of windows */
   g_slist_free (application->windows);
 
   (*G_OBJECT_CLASS (mousepad_application_parent_class)->finalize) (object);
@@ -230,6 +242,8 @@ mousepad_application_create_window (MousepadApplication *application)
 static void
 mousepad_application_new_window_with_document (MousepadWindow      *existing,
                                                MousepadDocument    *document,
+                                               gint                 x,
+                                               gint                 y,
                                                MousepadApplication *application)
 {
   GtkWidget *window;
@@ -247,9 +261,13 @@ mousepad_application_new_window_with_document (MousepadWindow      *existing,
   if (G_LIKELY (screen != NULL))
     gtk_window_set_screen (GTK_WINDOW (window), screen);
 
+  /* move the window on valid cooridinates */
+  if (x > -1 && y > -1)
+    gtk_window_move (GTK_WINDOW (window), x, y);
+
   /* create an empty document if no document was send */
   if (document == NULL)
-    document = MOUSEPAD_DOCUMENT (mousepad_document_new ());
+    document = mousepad_document_new ();
 
   /* add the document to the new window */
   mousepad_window_add (MOUSEPAD_WINDOW (window), document);
@@ -265,7 +283,7 @@ mousepad_application_new_window (MousepadWindow      *existing,
                                  MousepadApplication *application)
 {
   /* trigger new document function */
-  mousepad_application_new_window_with_document (existing, NULL, application);
+  mousepad_application_new_window_with_document (existing, NULL, -1, -1, application);
 }
 
 
@@ -297,7 +315,7 @@ mousepad_application_new_window_with_files (MousepadApplication  *application,
   if (succeed == FALSE)
     {
       /* create a new document */
-      document = MOUSEPAD_DOCUMENT (mousepad_document_new ());
+      document = mousepad_document_new ();
 
       /* add the document to the new window */
       mousepad_window_add (MOUSEPAD_WINDOW (window), document);

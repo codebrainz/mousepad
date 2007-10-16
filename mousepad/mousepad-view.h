@@ -32,24 +32,40 @@ typedef struct _MousepadView      MousepadView;
 
 GType           mousepad_view_get_type                  (void) G_GNUC_CONST;
 
-gboolean        mousepad_view_get_vertical_selection    (MousepadView *view);
+void            mousepad_view_put_cursor_on_screen      (MousepadView      *view);
 
-void            mousepad_view_cut_clipboard             (MousepadView *view,
-                                                         GtkClipboard *clipboard);
+void            mousepad_view_clipboard_cut             (MousepadView      *view);
 
-void            mousepad_view_copy_clipboard            (MousepadView *view,
-                                                         GtkClipboard *clipboard);
+void            mousepad_view_clipboard_copy            (MousepadView      *view);
 
-void            mousepad_view_paste_column_clipboard    (MousepadView *view,
-                                                         GtkClipboard *clipboard);
+void            mousepad_view_clipboard_paste           (MousepadView      *view,
+                                                         gboolean           paste_as_column);
 
-void            mousepad_view_delete_selection          (MousepadView *view);
+void            mousepad_view_delete_selection          (MousepadView      *view);
 
-void            mousepad_view_set_show_line_numbers     (MousepadView *view,
-                                                         gboolean      visible);
+void            mousepad_view_select_all                (MousepadView      *view);
 
-void            mousepad_view_set_auto_indent           (MousepadView *view,
-                                                         gboolean      enable);
+void            mousepad_view_set_line_numbers          (MousepadView      *view,
+                                                         gboolean           line_numbers);
+
+void            mousepad_view_set_auto_indent           (MousepadView      *view,
+                                                         gboolean           auto_indent);
+
+void            mousepad_view_set_tab_width             (MousepadView      *view,
+                                                         gint               tab_width);
+
+void            mousepad_view_set_insert_spaces         (MousepadView      *view,
+                                                         gboolean           insert_spaces);
+
+gboolean        mousepad_view_get_has_selection         (MousepadView      *view);
+
+gboolean        mousepad_view_get_line_numbers          (MousepadView      *view);
+
+gboolean        mousepad_view_get_auto_indent           (MousepadView      *view);
+
+gint            mousepad_view_get_tab_width             (MousepadView      *view);
+
+gboolean        mousepad_view_get_insert_spaces         (MousepadView      *view);
 
 G_END_DECLS
 

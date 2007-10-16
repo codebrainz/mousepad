@@ -1,27 +1,30 @@
 0.3.0
 =====
-- A complete rewrite of Mousepad. The code is now written in GOjects 
-  where possible so we have a solid base for further development.
-- Run multiple windows in one instance. We also invoke a running
-  instance with DBus (optional), this is needed for tab DND between
-  windows.
-- Support for multiple tabs in one window.
-- Load multiple files at once from both the open dialog and the command
-  line.
-- Type-ahead find and highlight feature like Firefox.
-- Support for editable menu accelerators.
-- Reimplemented recent file support. You can cleanup the Mousepad history
-  and a file is removed from the history when Mousepad was unable to open
-  it.
-- Various hidden settings.
-- Statusbar with cursor location and whether overwrite is actived.
-- Mousepad depends on GTK+ 2.10.
-- Save button is now default response in the dialog (Bug #2941).
-- No font is set as long the user has not defined any (Bug #2720).
-- No compiler warnings (Bug #1697).
-- Windows geometry is now properly saved (Bug #2945).
-- Hidden option to show to full path in the window title (Bug #2896).
-- Basic command line options (Bug #2397).
-- The MousepadPreferences object uses XfceRc for saving the 
-  settings (Bug #2786).
-- No crashes when there is no rc file (Bug #2784).
+Highlights:
+    - A complete rewrite of Mousepad. The code is now written in GOjects
+      where possible so we have a solid base for further development.
+    - Run multiple windows in one instance. We also invoke a running
+      instance with DBus (optional), this is needed for tab DND between
+      windows.
+    - Support for multiple tabs in one window.
+    - Load multiple files at once from both the open dialog and the command
+      line.
+    - Type-ahead find and highlight feature like Firefox.
+    - Support for editable menu accelerators.
+    - Reimplemented recent file support. You can cleanup the Mousepad history
+      and a file is removed from the history when Mousepad was unable to open
+      it.
+    - Various hidden settings.
+    - Statusbar with cursor location and whether overwrite is actived.
+    - Mousepad depends on GTK+ 2.10.
+
+Bug fixes:
+    - Save button is now default response in the dialog (Bug #2941).
+    - No font is set as long the user has not defined any (Bug #2720).
+    - No compiler warnings (Bug #1697).
+    - Windows geometry is now properly saved (Bug #2945).
+    - Hidden option to show the full path in the window title (Bug #2896).
+    - Basic command line options (Bug #2397).
+    - The MousepadPreferences object uses XfceRc for saving the
+      settings (Bug #2786).
+    - No segfault when there is no rc file (Bug #2784).

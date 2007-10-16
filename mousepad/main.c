@@ -64,7 +64,6 @@ main (gint argc, gchar **argv)
   MousepadApplication *application;
   GError              *error = NULL;
   gchar               *working_directory;
-
 #ifdef HAVE_DBUS
   MousepadDBusService *dbus_service;
 #endif
@@ -80,24 +79,24 @@ main (gint argc, gchar **argv)
   g_log_set_always_fatal (G_LOG_LEVEL_CRITICAL | G_LOG_LEVEL_WARNING);
 #endif
 
-  /* initialize the GThread system */
+  /* initialize the gthread system */
   if (G_LIKELY (!g_thread_supported ()))
     g_thread_init (NULL);
 
-  /* initialize Gtk+ */
+  /* initialize gtk+ */
   if (!gtk_init_with_args (&argc, &argv, _("[FILES...]"), option_entries, GETTEXT_PACKAGE, &error))
     {
       /* check if we have an error message */
       if (G_LIKELY (error == NULL))
         {
-          /* no error message, the GUI initialization failed */
+          /* no error message, the gui initialization failed */
           g_error ("%s", _("Failed to open display."));
         }
       else
         {
-           /* print the error message */
-           g_error ("%s", error->message);
-           g_error_free (error);
+          /* print the error message */
+          g_error ("%s", error->message);
+          g_error_free (error);
         }
 
       return EXIT_FAILURE;
