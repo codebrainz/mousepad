@@ -1,4 +1,4 @@
-/* $Id: mousepad-print.h 25747 2007-05-22 19:50:01Z nick $ */
+/* $Id$ */
 /*
  * This program is free software; you can redistribute it and/or modify it
  * under the terms of the GNU General Public License as published by the Free
