@@ -1,11 +1,16 @@
 2007-10-17      Nick Schermer <nick@xfce.org>
-    * mousepad/mousepad-window.c: Decrease the menu lock when a window
-      is closed and disconnect the recent manager handler (this is a
-      bug since 2.12 because the manager is a floating object).
+	* mousepad/mousepad-window.c: Cleanup some code and get rid of the
+	  multiple action groups.
 
 
 2007-10-17      Nick Schermer <nick@xfce.org>
-    * mousepad/mousepad-{window,util}.c: Fix compiler warnings.
+	* mousepad/mousepad-window.c: Decrease the menu lock when a window
+	  is closed and disconnect the recent manager handler (this is a
+	  bug since 2.12 because the manager is a floating object).
+
+
+2007-10-17      Nick Schermer <nick@xfce.org>
+	* mousepad/mousepad-{window,util}.c: Fix compiler warnings.
 
 
 2007-10-16      Nick Schermer <nick@xfce.org>
@@ -22,11 +27,11 @@
 	* mousepad/mousepad-encoding-dialog.{c,h}: Add a encoding dialog.
 	  This dialog should help users to find the right encoding for a
 	  document.
-	* mousepad/mousepad-print.{c,h}: Initial version of a basic 
+	* mousepad/mousepad-print.{c,h}: Initial version of a basic
 	  printing support. Needs some big improvement tho.
 	* mousepad/mousepad-statusbar: Fix issues with some theme engines
 	  that paint a line above the statusbar (instead of a frame).
-	* mousepad/mousepad-window.c: A window is now destoyed when it 
+	* mousepad/mousepad-window.c: A window is now destoyed when it
 	  contains no tabs, previously this caused some segfaults with the
 	  tab dnd code, but this is all fixed now.
 	* mousepad/mousepad-preferences.c: The option names are now stored

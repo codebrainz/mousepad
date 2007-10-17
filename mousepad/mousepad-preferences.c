@@ -571,7 +571,7 @@ mousepad_preferences_store (MousepadPreferences *preferences)
 {
   if (preferences->store_idle_id == 0)
     {
-      preferences->store_idle_id = g_idle_add_full (G_PRIORITY_LOW, (GSourceFunc) mousepad_preferences_store_idle,
+      preferences->store_idle_id = g_idle_add_full (G_PRIORITY_LOW, mousepad_preferences_store_idle,
                                                     preferences, mousepad_preferences_store_idle_destroy);
     }
 }
