@@ -487,14 +487,14 @@ mousepad_util_search (GtkTextBuffer       *buffer,
   mark_start = gtk_text_buffer_create_mark (buffer, NULL, &start, TRUE);
   mark_iter  = gtk_text_buffer_create_mark (buffer, NULL, &iter, TRUE);
   mark_end   = gtk_text_buffer_create_mark (buffer, NULL, &end, TRUE);
+  
+  /* some to make the code easier to read */
+  search_backwards = ((flags & MOUSEPAD_SEARCH_FLAGS_DIR_BACKWARD) != 0);
+  wrap_around = ((flags & MOUSEPAD_SEARCH_FLAGS_WRAP_AROUND) != 0 && !gtk_text_iter_equal (&start, &iter));
 
   /* if we're not really searching anything, reset the cursor */
   if (string == NULL || *string == '\0')
     goto reset_cursor;
-
-  /* some to make the code easier to read */
-  search_backwards = (flags & MOUSEPAD_SEARCH_FLAGS_DIR_BACKWARD) != 0;
-  wrap_around = (flags & MOUSEPAD_SEARCH_FLAGS_WRAP_AROUND) != 0 && !gtk_text_iter_equal (&start, &iter);
 
   if (search_backwards)
     {

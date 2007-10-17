@@ -1,3 +1,7 @@
+2007-10-17      Nick Schermer <nick@xfce.org>
+    * mousepad/mousepad-{window,util}.c: Fix compiler warnings.
+
+
 2007-10-16      Nick Schermer <nick@xfce.org>
 	* mousepad/mousepad-dialogs.c: Set the correct default return
 	  in the jump dialog.

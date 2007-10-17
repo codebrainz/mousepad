@@ -1020,6 +1020,9 @@ mousepad_window_add (MousepadWindow   *window,
 
   /* create the tab label */
   label = mousepad_document_get_tab_label (document);
+  
+  /* get active page */
+  page = gtk_notebook_get_current_page (GTK_NOTEBOOK (window->notebook));
 
   /* insert the page right of the active tab */
   page = gtk_notebook_insert_page (GTK_NOTEBOOK (window->notebook), GTK_WIDGET (document), label, page + 1);
