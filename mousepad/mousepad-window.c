@@ -511,8 +511,7 @@ mousepad_window_init (MousepadWindow *window)
   window->recent_manager = gtk_recent_manager_get_default ();
   window->recent_actions = gtk_action_group_new ("RecentActions");
   gtk_ui_manager_insert_action_group (window->ui_manager, window->recent_actions, -1);
-  g_signal_connect_swapped (G_OBJECT (window->recent_manager), "changed",
-                            G_CALLBACK (mousepad_window_recent_menu), window);
+  g_signal_connect_swapped (G_OBJECT (window->recent_manager), "changed", G_CALLBACK (mousepad_window_recent_menu), window);
 
   /* create the recent menu */
   mousepad_window_recent_menu (window);
@@ -610,6 +609,9 @@ static void
 mousepad_window_dispose (GObject *object)
 {
   MousepadWindow *window = MOUSEPAD_WINDOW (object);
+  
+  /* disconnect recent manager signal */
+  g_signal_handlers_disconnect_by_func (G_OBJECT (window->recent_manager), mousepad_window_recent_menu, window);
 
   /* destroy the save geometry timer source */
   if (G_UNLIKELY (window->save_geometry_timer_id != 0))
@@ -1923,12 +1925,14 @@ mousepad_window_recent_menu_idle_destroy (gpointer user_data)
 static void
 mousepad_window_recent_menu (MousepadWindow *window)
 {
+  _mousepad_return_if_fail (MOUSEPAD_IS_WINDOW (window));
+  
   /* leave when we're updating multiple files or there is this an idle function pending */
-  if (lock_menu_updates && window->update_recent_menu_id != 0)
+  if (lock_menu_updates > 0 || window->update_recent_menu_id != 0)
     return;
 
   /* schedule a recent menu update */
-  window->update_recent_menu_id = g_idle_add_full (G_PRIORITY_LOW, (GSourceFunc) mousepad_window_recent_menu_idle,
+  window->update_recent_menu_id = g_idle_add_full (G_PRIORITY_LOW, mousepad_window_recent_menu_idle,
                                                    window, mousepad_window_recent_menu_idle_destroy);
 }
 
@@ -2539,18 +2543,18 @@ mousepad_window_action_close (GtkAction      *action,
 
           /* ask user what to do, break when he/she hits the cancel button */
           if (!mousepad_window_close_document (window, MOUSEPAD_DOCUMENT (document)))
-            {
-              /* allow updates again */
-              lock_menu_updates--;
-
+            {        
               /* update the go menu */
               mousepad_window_update_gomenu (window);
 
-              /* leave the close function */
-              return;
+              /* leave the loop */
+              break;
             }
         }
     }
+    
+  /* allow updates again */
+  lock_menu_updates--;
 
   /* window will close it self when it contains to tabs */
 }

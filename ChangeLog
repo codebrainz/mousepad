@@ -1,4 +1,10 @@
 2007-10-17      Nick Schermer <nick@xfce.org>
+    * mousepad/mousepad-window.c: Decrease the menu lock when a window
+      is closed and disconnect the recent manager handler (this is a
+      bug since 2.12 because the manager is a floating object).
+
+
+2007-10-17      Nick Schermer <nick@xfce.org>
     * mousepad/mousepad-{window,util}.c: Fix compiler warnings.
 
 
