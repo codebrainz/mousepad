@@ -173,6 +173,32 @@ mousepad_util_get_real_line_offset (const GtkTextIter *iter,
 
 
 
+gboolean
+mousepad_util_forward_iter_to_text (GtkTextIter       *iter,
+                                    const GtkTextIter *limit)
+{
+  gunichar c;
+
+  do
+    {
+      /* get the iter character */
+      c = gtk_text_iter_get_char (iter);
+
+      /* break if the character is not a space */
+      if (!g_unichar_isspace (c) || c == '\n' || c == '\r')
+        break;
+
+      /* break when we reached the limit iter */
+      if (limit && gtk_text_iter_equal (iter, limit))
+        return FALSE;
+    }
+  while (gtk_text_iter_forward_char (iter));
+
+  return TRUE;
+}
+
+
+
 GType
 mousepad_util_search_flags_get_type (void)
 {
@@ -487,7 +513,7 @@ mousepad_util_search (GtkTextBuffer       *buffer,
   mark_start = gtk_text_buffer_create_mark (buffer, NULL, &start, TRUE);
   mark_iter  = gtk_text_buffer_create_mark (buffer, NULL, &iter, TRUE);
   mark_end   = gtk_text_buffer_create_mark (buffer, NULL, &end, TRUE);
-  
+
   /* some to make the code easier to read */
   search_backwards = ((flags & MOUSEPAD_SEARCH_FLAGS_DIR_BACKWARD) != 0);
   wrap_around = ((flags & MOUSEPAD_SEARCH_FLAGS_WRAP_AROUND) != 0 && !gtk_text_iter_equal (&start, &iter));

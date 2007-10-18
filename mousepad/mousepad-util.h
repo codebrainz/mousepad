@@ -75,6 +75,9 @@ void       mousepad_util_set_tooltip            (GtkWidget           *widget,
 gint       mousepad_util_get_real_line_offset   (const GtkTextIter   *iter,
                                                  gint                 tab_width);
 
+gboolean   mousepad_util_forward_iter_to_text   (GtkTextIter         *iter,
+                                                 const GtkTextIter   *limit);
+
 GType      mousepad_util_search_flags_get_type  (void) G_GNUC_CONST;
 
 gint       mousepad_util_highlight              (GtkTextBuffer       *buffer,

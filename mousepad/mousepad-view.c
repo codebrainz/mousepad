@@ -339,7 +339,7 @@ mousepad_view_key_press_event (GtkWidget   *widget,
   MousepadView  *view = MOUSEPAD_VIEW (widget);
   GtkTextBuffer *buffer;
   GtkTextIter    iter;
-  GtkTextMark   *mark;
+  GtkTextMark   *cursor;
   guint          modifiers;
   gchar         *string;
 
@@ -357,8 +357,8 @@ mousepad_view_key_press_event (GtkWidget   *widget,
         if (!(event->state & GDK_SHIFT_MASK) && view->auto_indent)
           {
             /* get the iter position of the cursor */
-            mark = gtk_text_buffer_get_insert (buffer);
-            gtk_text_buffer_get_iter_at_mark (buffer, &iter, mark);
+            cursor = gtk_text_buffer_get_insert (buffer);
+            gtk_text_buffer_get_iter_at_mark (buffer, &iter, cursor);
 
             /* get the string of tabs and spaces we're going to indent */
             string = mousepad_view_indentation_string (buffer, &iter);
@@ -387,6 +387,57 @@ mousepad_view_key_press_event (GtkWidget   *widget,
           }
         break;
 
+      case GDK_End:
+      case GDK_KP_End:
+        if (modifiers & GDK_CONTROL_MASK)
+          {
+            /* get the end iter */
+            gtk_text_buffer_get_end_iter (buffer, &iter);
+
+            /* get the cursor mark */
+            cursor = gtk_text_buffer_get_insert (buffer);
+
+            goto move_cursor;
+          }
+        break;
+
+      case GDK_Home:
+      case GDK_KP_Home:
+        /* get the cursor mark */
+        cursor = gtk_text_buffer_get_insert (buffer);
+
+        /* when control is pressed, we jump to the start of the document */
+        if (modifiers & GDK_CONTROL_MASK)
+          {
+            /* get the start iter */
+            gtk_text_buffer_get_start_iter (buffer, &iter);
+
+            goto move_cursor;
+          }
+
+        /* get the iter position of the cursor */
+        gtk_text_buffer_get_iter_at_mark (buffer, &iter, cursor);
+
+        /* if the cursor starts a line, try to move it in front of the text */
+        if (gtk_text_iter_starts_line (&iter)
+            && mousepad_util_forward_iter_to_text (&iter, NULL))
+          {
+             /* label for the ctrl home/end events */
+             move_cursor:
+
+             /* move the cursor */
+             if (modifiers & GDK_SHIFT_MASK)
+               gtk_text_buffer_move_mark (buffer, cursor, &iter);
+             else
+               gtk_text_buffer_place_cursor (buffer, &iter);
+
+             /* make sure the cursor is visible for the user */
+             mousepad_view_put_cursor_on_screen (view);
+
+             return TRUE;
+          }
+        break;
+
       case GDK_Tab:
       case GDK_KP_Tab:
       case GDK_ISO_Left_Tab:
@@ -400,13 +451,11 @@ mousepad_view_key_press_event (GtkWidget   *widget,
         else if (view->insert_spaces)
           {
             /* get the iter position of the cursor */
-            mark = gtk_text_buffer_get_insert (buffer);
-            gtk_text_buffer_get_iter_at_mark (buffer, &iter, mark);
+            cursor = gtk_text_buffer_get_insert (buffer);
+            gtk_text_buffer_get_iter_at_mark (buffer, &iter, cursor);
 
             /* insert spaces */
             mousepad_view_increase_indent_iter (view, &iter, TRUE);
-
-            /* TODO cursor position? */
 
             return TRUE;
           }
@@ -911,7 +960,6 @@ mousepad_view_indentation_string (GtkTextBuffer     *buffer,
 {
   GtkTextIter start, end;
   gint        line;
-  gunichar    c;
 
   /* get the line of the iter */
   line = gtk_text_iter_get_line (iter);
@@ -922,20 +970,8 @@ mousepad_view_indentation_string (GtkTextBuffer     *buffer,
   /* set the end iter */
   end = start;
 
-  /* forward to text */
-  do
-    {
-      /* get the iter character */
-      c = gtk_text_iter_get_char (&end);
-
-      /* break if the character is not a space or equal to the iter */
-      if (!g_unichar_isspace (c) || gtk_text_iter_equal (&end, iter))
-        break;
-    }
-  while (gtk_text_iter_forward_char (&end));
-
-  /* return NULL if the iters are the same */
-  if (gtk_text_iter_equal (&start, &end))
+  /* forward until we hit text */
+  if (mousepad_util_forward_iter_to_text (&end, iter) == FALSE)
     return NULL;
 
   /* return the text between the iters */

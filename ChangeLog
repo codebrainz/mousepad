@@ -1,19 +1,29 @@
-2007-10-17      Nick Schermer <nick@xfce.org>
+2007-10-18	Nick Schermer <nick@xfce.org>
+	* mousepad/mousepad-utils.{c,h}: Add iter function to move the iter
+	  in front of text. Code used from one of the indentation functions.
+	* mousepad/mousepad-view.c: Add code for a smart home button: when
+	  the cursor starts a line and the home button is pressed, it will
+	  move to the start of the text.
+	* mousepad/mousepad-view.c: Key bindings Ctrl + {Home,End} to jump
+	  to the start and end of a document.
+
+
+2007-10-17	Nick Schermer <nick@xfce.org>
 	* mousepad/mousepad-window.c: Cleanup some code and get rid of the
 	  multiple action groups.
 
 
-2007-10-17      Nick Schermer <nick@xfce.org>
+2007-10-17	Nick Schermer <nick@xfce.org>
 	* mousepad/mousepad-window.c: Decrease the menu lock when a window
 	  is closed and disconnect the recent manager handler (this is a
 	  bug since 2.12 because the manager is a floating object).
 
 
-2007-10-17      Nick Schermer <nick@xfce.org>
+2007-10-17	Nick Schermer <nick@xfce.org>
 	* mousepad/mousepad-{window,util}.c: Fix compiler warnings.
 
 
-2007-10-16      Nick Schermer <nick@xfce.org>
+2007-10-16	Nick Schermer <nick@xfce.org>
 	* mousepad/mousepad-dialogs.c: Set the correct default return
 	  in the jump dialog.
 	* mousepad/mousepad-replace-{dialog,window,preferences}.{c,h}:
