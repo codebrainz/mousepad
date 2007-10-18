@@ -51,10 +51,6 @@ GtkWidget      *mousepad_window_new              (void);
 void            mousepad_window_add              (MousepadWindow   *window,
                                                   MousepadDocument *document);
 
-gboolean        mousepad_window_open_tab         (MousepadWindow  *window,
-                                                  const gchar     *filename,
-                                                  const gchar     *encoding);
-
 gboolean        mousepad_window_open_files       (MousepadWindow  *window,
                                                   const gchar     *working_directory,
                                                   gchar          **filenames);

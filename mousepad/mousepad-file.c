@@ -142,7 +142,7 @@ mousepad_file_init (MousepadFile *file)
   file->filename    = NULL;
   file->encoding    = NULL;
   file->line_ending = MOUSEPAD_LINE_END_NONE;
-  file->readonly    = FALSE;
+  file->readonly    = TRUE;
   file->mtime       = 0;
 }
 
@@ -241,6 +241,16 @@ mousepad_file_get_encoding (MousepadFile *file)
   _mousepad_return_val_if_fail (MOUSEPAD_IS_FILE (file), NULL);
 
   return file->encoding ? file->encoding : "UTF-8";
+}
+
+
+
+gboolean
+mousepad_file_get_read_only (MousepadFile *file)
+{
+  _mousepad_return_val_if_fail (MOUSEPAD_IS_FILE (file), FALSE);
+
+  return file->filename ? file->readonly : FALSE;
 }
 
 

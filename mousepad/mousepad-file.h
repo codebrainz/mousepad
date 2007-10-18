@@ -55,6 +55,8 @@ void                mousepad_file_set_encoding             (MousepadFile        
 
 const gchar        *mousepad_file_get_encoding             (MousepadFile        *file);
 
+gboolean            mousepad_file_get_read_only            (MousepadFile        *file);
+
 void                mousepad_file_set_line_ending          (MousepadFile        *file,
                                                             MousepadLineEnding   line_ending);
 

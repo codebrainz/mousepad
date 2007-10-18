@@ -525,17 +525,6 @@ mousepad_document_line_numbers (MousepadDocument *document,
 
 
 
-gboolean
-mousepad_document_get_readonly (MousepadDocument *document)
-{
-  _mousepad_return_val_if_fail (MOUSEPAD_IS_DOCUMENT (document), FALSE);
-  _mousepad_return_val_if_fail (GTK_IS_TEXT_VIEW (document->textview), FALSE);
-
-  return !gtk_text_view_get_editable (GTK_TEXT_VIEW (document->textview));
-}
-
-
-
 GtkWidget *
 mousepad_document_get_tab_label (MousepadDocument *document)
 {

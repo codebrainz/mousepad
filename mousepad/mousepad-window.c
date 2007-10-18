@@ -92,6 +92,9 @@ static gboolean          mousepad_window_save_geometry_timer          (gpointer 
 static void              mousepad_window_save_geometry_timer_destroy  (gpointer                user_data);
 
 /* window functions */
+static gboolean          mousepad_window_open_file                    (MousepadWindow         *window,
+                                                                       const gchar            *filename,
+                                                                       const gchar            *encoding);
 static gboolean          mousepad_window_close_document               (MousepadWindow         *window,
                                                                        MousepadDocument       *document);
 static void              mousepad_window_set_title                    (MousepadWindow         *window);
@@ -815,10 +818,10 @@ mousepad_window_save_geometry_timer_destroy (gpointer user_data)
 /**
  * Mousepad Window Functions
  **/
-gboolean
-mousepad_window_open_tab (MousepadWindow *window,
-                          const gchar    *filename,
-                          const gchar    *encoding)
+static gboolean
+mousepad_window_open_file (MousepadWindow *window,
+                           const gchar    *filename,
+                           const gchar    *encoding)
 {
   MousepadDocument *document;
   GError           *error = NULL;
@@ -974,7 +977,7 @@ mousepad_window_open_files (MousepadWindow  *window,
         }
 
       /* open a new tab with the file */
-      mousepad_window_open_tab (window, filename ? filename : filenames[n], NULL);
+      mousepad_window_open_file (window, filename ? filename : filenames[n], NULL);
 
       /* cleanup */
       g_free (filename);
@@ -1113,7 +1116,7 @@ mousepad_window_set_title (MousepadWindow *window)
     title = mousepad_document_get_basename (document);
 
   /* build the title */
-  if (G_UNLIKELY (mousepad_document_get_readonly (document)))
+  if (G_UNLIKELY (mousepad_file_get_read_only (document->file)))
     string = g_strdup_printf ("%s [%s] - %s", title, _("Read Only"), PACKAGE_NAME);
   else
     string = g_strdup_printf ("%s%s - %s", gtk_text_buffer_get_modified (document->buffer) ? "*" : "", title, PACKAGE_NAME);
@@ -1355,7 +1358,7 @@ mousepad_window_notebook_button_press_event (GtkNotebook    *notebook,
   else if (event->type == GDK_2BUTTON_PRESS && event->button == 1)
     {
       /* open a new tab */
-      mousepad_window_open_tab (window, NULL, NULL);
+      mousepad_window_open_file (window, NULL, NULL);
 
       /* we succeed */
       return TRUE;
@@ -1533,7 +1536,7 @@ mousepad_window_update_actions (MousepadWindow *window)
 
       /* set the reload, detach and save sensitivity */
       action = gtk_action_group_get_action (window->action_group, "save-file");
-      gtk_action_set_sensitive (action, !mousepad_document_get_readonly (document));
+      gtk_action_set_sensitive (action, !mousepad_file_get_read_only (document->file));
 
       action = gtk_action_group_get_action (window->action_group, "detach-tab");
       gtk_action_set_sensitive (action, (n_pages > 1));
@@ -2150,7 +2153,7 @@ static void
 mousepad_window_action_open_new_tab (GtkAction      *action,
                                      MousepadWindow *window)
 {
-  mousepad_window_open_tab (window, NULL, NULL);
+  mousepad_window_open_file (window, NULL, NULL);
 }
 
 
@@ -2215,7 +2218,7 @@ mousepad_window_action_open_file (GtkAction      *action,
           filename = li->data;
 
           /* open the file in a new tab */
-          mousepad_window_open_tab (window, filename, NULL);
+          mousepad_window_open_file (window, filename, NULL);
 
           /* cleanup */
           g_free (filename);
@@ -2274,7 +2277,7 @@ mousepad_window_action_open_recent (GtkAction      *action,
               if (G_LIKELY (description && strlen (description) > offset))
                 encoding = description + offset;
 
-              succeed = mousepad_window_open_tab (window, filename, encoding);
+              succeed = mousepad_window_open_file (window, filename, encoding);
             }
           else
             {

@@ -1,4 +1,12 @@
 2007-10-18	Nick Schermer <nick@xfce.org>
+	* mousepad/mousepad-view.c: Respect input methods and don't insert
+	  text when the textview is not editable.
+	* mousepad/mousepad-{file,document,window}.c: Properly handle
+	  read-only files. A file is now always readonly unless proven
+	  otherwise.
+
+
+2007-10-18	Nick Schermer <nick@xfce.org>
 	* mousepad/mousepad-utils.{c,h}: Add iter function to move the iter
 	  in front of text. Code used from one of the indentation functions.
 	* mousepad/mousepad-view.c: Add code for a smart home button: when

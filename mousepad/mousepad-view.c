@@ -342,6 +342,8 @@ mousepad_view_key_press_event (GtkWidget   *widget,
   GtkTextMark   *cursor;
   guint          modifiers;
   gchar         *string;
+  gboolean       im_handled;
+  gboolean       is_editable;
 
   /* get the modifiers state */
   modifiers = event->state & gtk_accelerator_get_default_mod_mask ();
@@ -349,12 +351,15 @@ mousepad_view_key_press_event (GtkWidget   *widget,
   /* get the textview buffer */
   buffer = mousepad_view_get_buffer (view);
 
+  /* whether the textview is editable */
+  is_editable = GTK_TEXT_VIEW (view)->editable;
+
   /* handle the key event */
   switch (event->keyval)
     {
       case GDK_Return:
       case GDK_KP_Enter:
-        if (!(event->state & GDK_SHIFT_MASK) && view->auto_indent)
+        if (!(event->state & GDK_SHIFT_MASK) && view->auto_indent && is_editable)
           {
             /* get the iter position of the cursor */
             cursor = gtk_text_buffer_get_insert (buffer);
@@ -365,24 +370,31 @@ mousepad_view_key_press_event (GtkWidget   *widget,
 
             if (string != NULL)
               {
-                /* begin a user action */
-                gtk_text_buffer_begin_user_action (buffer);
+                /* check if the input method emitted this event */
+                im_handled = gtk_im_context_filter_keypress (GTK_TEXT_VIEW (view)->im_context, event);
 
-                /* insert the indent characters */
-                gtk_text_buffer_insert (buffer, &iter, "\n", 1);
-                gtk_text_buffer_insert (buffer, &iter, string, -1);
+                /* check if we're allowed to handle this event */
+                if (G_LIKELY (im_handled == FALSE))
+                  {
+                    /* begin a user action */
+                    gtk_text_buffer_begin_user_action (buffer);
 
-                /* end user action */
-                gtk_text_buffer_end_user_action (buffer);
+                    /* insert the indent characters */
+                    gtk_text_buffer_insert (buffer, &iter, "\n", 1);
+                    gtk_text_buffer_insert (buffer, &iter, string, -1);
+
+                    /* end user action */
+                    gtk_text_buffer_end_user_action (buffer);
+
+                    /* make sure the new string is visible for the user */
+                    mousepad_view_put_cursor_on_screen (view);
+                  }
 
                 /* cleanup */
                 g_free (string);
 
-                /* make sure the new string is visible for the user */
-                mousepad_view_put_cursor_on_screen (view);
-
-                /* we've inserted the new line, nothing to do for gtk */
-                return TRUE;
+                /* return */
+                return (im_handled == FALSE);
               }
           }
         break;
@@ -441,14 +453,14 @@ mousepad_view_key_press_event (GtkWidget   *widget,
       case GDK_Tab:
       case GDK_KP_Tab:
       case GDK_ISO_Left_Tab:
-        if (mousepad_view_get_has_selection (view))
+        if (mousepad_view_get_has_selection (view) && is_editable)
           {
             /* indent the selection */
             mousepad_view_indent_selection (view, (modifiers != GDK_SHIFT_MASK), TRUE);
 
             return TRUE;
           }
-        else if (view->insert_spaces)
+        else if (view->insert_spaces && is_editable)
           {
             /* get the iter position of the cursor */
             cursor = gtk_text_buffer_get_insert (buffer);
@@ -463,7 +475,7 @@ mousepad_view_key_press_event (GtkWidget   *widget,
       case GDK_BackSpace:
       case GDK_space:
         /* indent on Space unindent on Backspace or Tab */
-        if (modifiers == GDK_SHIFT_MASK && mousepad_view_get_has_selection (view))
+        if (modifiers == GDK_SHIFT_MASK && mousepad_view_get_has_selection (view) && is_editable)
           {
             /* indent the selection */
             mousepad_view_indent_selection (view, (event->keyval == GDK_space), FALSE);

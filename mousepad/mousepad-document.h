@@ -85,8 +85,6 @@ void              mousepad_document_line_numbers             (MousepadDocument  
                                                               gint                  *current_line,
                                                               gint                  *last_line);
 
-gboolean          mousepad_document_get_readonly             (MousepadDocument      *document);
-
 GtkWidget        *mousepad_document_get_tab_label            (MousepadDocument      *document);
 
 const gchar      *mousepad_document_get_basename             (MousepadDocument      *document);
