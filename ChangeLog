@@ -1,4 +1,12 @@
 2007-10-21	Nick Schermer <nick@xfce.org>
+	* mousepad/mousepad-window.c: Make the recent manager a singleton
+	  in the application, this is also done in gtk 2.12. We also
+	  initialize the recent manager when needed, since it's quite
+	  expensive to create one. This should improve the startup speed
+	  a bit.
+
+
+2007-10-21	Nick Schermer <nick@xfce.org>
 	* docs/: Import basic manual files.
 	* configure.in.in, mousepad/Makefile.am: Don't search for startup-
 	  notification and gtk-unix-print. We don't use this in the code.

@@ -162,6 +162,7 @@ static void              mousepad_window_recent_add                   (MousepadW
 static gchar            *mousepad_window_recent_escape_underscores    (const gchar            *str);
 static gint              mousepad_window_recent_sort                  (GtkRecentInfo          *a,
                                                                        GtkRecentInfo          *b);
+static void              mousepad_window_recent_manager_init          (MousepadWindow         *window);
 static gboolean          mousepad_window_recent_menu_idle             (gpointer                user_data);
 static void              mousepad_window_recent_menu_idle_destroy     (gpointer                user_data);
 static void              mousepad_window_recent_menu                  (MousepadWindow         *window);
@@ -288,9 +289,6 @@ struct _MousepadWindow
   guint                gomenu_merge_id;
   guint                recent_merge_id;
 
-  /* recent items manager */
-  GtkRecentManager    *recent_manager;
-
   /* main window widgets */
   GtkWidget           *table;
   GtkWidget           *notebook;
@@ -367,9 +365,10 @@ static const GtkToggleActionEntry toggle_action_entries[] =
 
 
 
-static GObjectClass *mousepad_window_parent_class;
-static guint         window_signals[LAST_SIGNAL];
-static gint          lock_menu_updates = 0;
+static GObjectClass     *mousepad_window_parent_class;
+static guint             window_signals[LAST_SIGNAL];
+static gint              lock_menu_updates = 0;
+static GtkRecentManager *recent_manager = NULL;
 
 
 GtkWidget *
@@ -508,11 +507,7 @@ mousepad_window_init (MousepadWindow *window)
   gtk_ui_manager_insert_action_group (window->ui_manager, window->action_group, 0);
   gtk_ui_manager_add_ui_from_string (window->ui_manager, mousepad_window_ui, mousepad_window_ui_length, NULL);
 
-  /* create the recent manager */
-  window->recent_manager = gtk_recent_manager_get_default ();
-  g_signal_connect_swapped (G_OBJECT (window->recent_manager), "changed", G_CALLBACK (mousepad_window_recent_menu), window);
-
-  /* create the recent menu */
+  /* create the recent menu (idle) */
   mousepad_window_recent_menu (window);
 
   /* set accel group for the window */
@@ -606,7 +601,8 @@ mousepad_window_dispose (GObject *object)
   MousepadWindow *window = MOUSEPAD_WINDOW (object);
 
   /* disconnect recent manager signal */
-  g_signal_handlers_disconnect_by_func (G_OBJECT (window->recent_manager), mousepad_window_recent_menu, window);
+  if (G_LIKELY (recent_manager))
+    g_signal_handlers_disconnect_by_func (G_OBJECT (recent_manager), mousepad_window_recent_menu, window);
 
   /* destroy the save geometry timer source */
   if (G_UNLIKELY (window->save_geometry_timer_id != 0))
@@ -1742,8 +1738,11 @@ mousepad_window_recent_add (MousepadWindow *window,
 
   if (G_LIKELY (uri != NULL))
     {
+      /* make sure the recent manager is initialized */
+      mousepad_window_recent_manager_init (window);
+
       /* add the new recent info to the recent manager */
-      gtk_recent_manager_add_full (window->recent_manager, uri, &info);
+      gtk_recent_manager_add_full (recent_manager, uri, &info);
 
       /* cleanup */
       g_free (uri);
@@ -1798,6 +1797,22 @@ mousepad_window_recent_sort (GtkRecentInfo *a,
 
 
 
+static void
+mousepad_window_recent_manager_init (MousepadWindow *window)
+{
+  /* set recent manager if not already done */
+  if (G_UNLIKELY (recent_manager == NULL))
+    {
+      /* get the default manager */
+      recent_manager = gtk_recent_manager_get_default ();
+
+      /* connect changed signal */
+      g_signal_connect_swapped (G_OBJECT (recent_manager), "changed", G_CALLBACK (mousepad_window_recent_menu), window);
+    }
+}
+
+
+
 static gboolean
 mousepad_window_recent_menu_idle (gpointer user_data)
 {
@@ -1829,8 +1844,11 @@ mousepad_window_recent_menu_idle (gpointer user_data)
   /* create a new merge id */
   window->recent_merge_id = gtk_ui_manager_new_merge_id (window->ui_manager);
 
+  /* make sure the recent manager is initialized */
+  mousepad_window_recent_manager_init (window);
+
   /* get all the items in the manager */
-  items = gtk_recent_manager_get_items (window->recent_manager);
+  items = gtk_recent_manager_get_items (recent_manager);
 
   /* walk through the items in the manager and pick the ones that or in the mousepad group */
   for (li = items; li != NULL; li = li->next)
@@ -1946,8 +1964,11 @@ mousepad_window_recent_clear (MousepadWindow *window)
   GError        *error = NULL;
   GtkRecentInfo *info;
 
+  /* make sure the recent manager is initialized */
+  mousepad_window_recent_manager_init (window);
+
   /* get all the items in the manager */
-  items = gtk_recent_manager_get_items (window->recent_manager);
+  items = gtk_recent_manager_get_items (recent_manager);
 
   /* walk through the items */
   for (li = items; li != NULL; li = li->next)
@@ -1962,7 +1983,7 @@ mousepad_window_recent_clear (MousepadWindow *window)
       uri = gtk_recent_info_get_uri (info);
 
       /* try to remove it, if it fails, break the loop to avoid multiple errors */
-      if (G_UNLIKELY (gtk_recent_manager_remove_item (window->recent_manager, uri, &error) == FALSE))
+      if (G_UNLIKELY (gtk_recent_manager_remove_item (recent_manager, uri, &error) == FALSE))
         break;
      }
 
@@ -2295,9 +2316,9 @@ mousepad_window_action_open_recent (GtkAction      *action,
 
           /* update the document history */
           if (G_LIKELY (succeed))
-            gtk_recent_manager_add_item (window->recent_manager, uri);
+            gtk_recent_manager_add_item (recent_manager, uri);
           else
-            gtk_recent_manager_remove_item (window->recent_manager, uri, NULL);
+            gtk_recent_manager_remove_item (recent_manager, uri, NULL);
         }
     }
 }
