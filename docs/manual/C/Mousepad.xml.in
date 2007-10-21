@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN"
+    "http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd" [
+  <!ENTITY date "OCtober 2007">
+  <!ENTITY version "@PACKAGE_VERSION@">
+  <!ENTITY application "@PACKAGE_NAME@">
+]>
+<article id="index" lang="en">
+
+  <!-- Header -->
+  <articleinfo>
+    <title>Mousepad Text Editor</title>
+
+    <pubdate>&date;</pubdate>
+
+    <copyright>
+      <year>2007</year>
+      <holder>Nick Schermer</holder>
+    </copyright>
+
+    <legalnotice id="legalnotice">
+      <para>
+        Permission is granted to copy, distribute and/or modify this document
+        under the terms of the GNU Free Documentation License, Version 1.1 or
+        any later version published by the Free Software Foundation; with no
+        Invariant Sections, with no Front-Cover Texts, and with no Back-Cover
+        Texts. The complete license text is available from the <ulink
+        type="http" url="http://www.gnu.org/">Free Software Foundation</ulink>.
+      </para>
+    </legalnotice>
+
+    <authorgroup>
+      <author>
+        <firstname>Nick</firstname>
+        <surname>Schermer</surname>
+        <affiliation>
+          <orgname>Xfce Development Team</orgname>
+          <address><email>nick@xfce.org</email></address>
+        </affiliation>
+      </author>
+    </authorgroup>
+
+    <releaseinfo>
+      This manual describes version &version; of &application;.
+    </releaseinfo>
+  </articleinfo>
+
+  <sect1 id="intro">
+    <title>Introduction to &application;</title>
+
+    <para>
+      Mousepad is the default text editor for the Xfce Desktop Environment. It has been design to be a
+      lightweight editor you would use for basic file editing. Therefore Mousepad starts quickly, but
+      also has features like editing multiple documents, vertical selection, type-ahead search, full tab
+      drag and drop and much more.
+    </para>
+
+    <para>
+      Mousepad started as a fork of Leafpad to provide printing support using Xfprint, but as of version
+      0.3 is has been completely rewritten to add support for tabs and DBus. Although the rewrite added
+      a lot of new features, it is still as fast as the Leafpad based fork and therefore fits perfectly
+      in the Xfce philosophy.
+    </para>
+  </sect1>
+
+  <sect1 id="the-mousepad-window">
+    <title>The Mousepad Window</title>
+
+    <para>
+    </para>
+
+    <sect2 id="editing-multiple-documents">
+      <title>Editing Multiple Documents</title>
+
+      <para>
+        By defaul the window hides the tab labels unless more then one document has been opened. If you have
+        more then one document opened, you can switch between then by clicking on the tab, use the
+        <guimenuitem>go</guimenuitem> menu or press the key combination <keycap>Alt</keycap> with the tab number.
+      </para>
+
+      <para>
+        When you have multiple files opened in one window, you detach a document by choosing
+        <menuchoice><guimenu>File</guimenu><guimenuitem>Detach Tab</guimenuitem></menuchoice> or press
+        <keycombo><keycap>Ctrl</keycap><keycap>D</keycap></keycombo>. When Mousepad is compiled with Gtk+ 2.12,
+        it is also possible to drag a tab and drop it on another location on the screen.
+      </para>
+    </sect2>
+  </sect1>
+</article>
+<!--
+	vim:set ts=2 sw=2 et ai encoding=UTF-8:
+-->

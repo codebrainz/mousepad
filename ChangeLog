@@ -1,3 +1,9 @@
+2007-10-21	Nick Schermer <nick@xfce.org>
+	* docs/: Import basic manual files.
+	* configure.in.in, mousepad/Makefile.am: Don't search for startup-
+	  notification and gtk-unix-print. We don't use this in the code.
+
+
 2007-10-18	Nick Schermer <nick@xfce.org>
 	* mousepad/mousepad-view.c: Respect input methods and don't insert
 	  text when the textview is not editable.

@@ -3,7 +3,8 @@
 SUBDIRS =									\
 	icons									\
 	mousepad                                                        	\
-	po
+	po                                                                      \
+	docs
 
 distclean-local:
 	rm -rf *.spec *.cache *~
@@ -35,6 +36,6 @@ DISTCLEANFILES =								\
 	$(desktop_DATA)
 
 DISTCHECK_CONFIGURE_FLAGS =							\
-	--enable-gtk-doc
+	--enable-xsltproc
 
 # vi:set ts=8 sw=8 noet ai nocindent syntax=automake:

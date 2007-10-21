@@ -88,14 +88,6 @@ mousepad_LDADD +=								\
 	$(DBUS_LIBS)
 endif
 
-if HAVE_GTK_UNIX_PRINT
-mousepad_CFLAGS +=								\
-	$(GTK_UNIX_PRINT_CFLAGS)
-
-mousepad_LDADD +=								\
-	$(GTK_UNIX_PRINT_LIBS)
-endif
-
 if MAINTAINER_MODE
 CLEANFILES =									\
 	xgen-mmc								\
