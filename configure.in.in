@@ -154,6 +154,9 @@ else
   dnl Disable object cast checks
   PLATFORM_CPPFLAGS="$PLATFORM_CPPFLAGS -DG_DISABLE_CAST_CHECKS"
 
+  dnl Make sure optimization is enabled in glib macros
+  PLATFORM_CPPFLAGS="$PLATFORM_CPPFLAGS -D__OPTIMIZE__"
+
   dnl Disable all checks for --enable-debug=no
   if test x"$enable_debug" = x"no"; then
     PLATFORM_CPPFLAGS="$PLATFORM_CPPFLAGS -DG_DISABLE_ASSERT -DG_DISABLE_CHECKS"

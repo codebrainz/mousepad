@@ -1,4 +1,9 @@
 2007-10-22	Nick Schermer <nick@xfce.org>
+	* configure.in.in: Make sure __OPTIMIZE__ is enable in normal builds.
+	* mousepad/mousepad-private.h: Tune G_LIKELY macros for pure boolean.
+
+
+2007-10-22	Nick Schermer <nick@xfce.org>
 	* mousepad/mousepad-window.c: Idea of the previous commit was good,
 	  but the implementation wasn't. Fix that.
 

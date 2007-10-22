@@ -72,6 +72,18 @@ G_BEGIN_DECLS
 #define g_value_get_object(v)   (((const GValue *) (v))->data[0].v_pointer)
 #endif
 
+/* properly set guess branch probability for pure booleans */
+#undef G_LIKELY
+#undef G_UNLIKELY
+
+#if defined(NDEBUG) && defined(__GNUC__) && (__GNUC__ > 2)
+#define G_LIKELY(expr) (__builtin_expect (!!(expr), 1))
+#define G_UNLIKELY(expr) (__builtin_expect (!!(expr), 0))
+#else
+#define G_LIKELY(expr) (expr)
+#define G_UNLIKELY(expr) (expr)
+#endif
+
 G_END_DECLS
 
 #endif /* !__MOUSEPAD_PRIVATE_H__ */
