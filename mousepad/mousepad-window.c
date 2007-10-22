@@ -284,6 +284,9 @@ struct _MousepadWindow
   /* action group */
   GtkActionGroup      *action_group;
 
+  /* recent manager */
+  GtkRecentManager    *recent_manager;
+
   /* UI manager */
   GtkUIManager        *ui_manager;
   guint                gomenu_merge_id;
@@ -365,10 +368,10 @@ static const GtkToggleActionEntry toggle_action_entries[] =
 
 
 
-static GObjectClass     *mousepad_window_parent_class;
-static guint             window_signals[LAST_SIGNAL];
-static gint              lock_menu_updates = 0;
-static GtkRecentManager *recent_manager = NULL;
+static GObjectClass *mousepad_window_parent_class;
+static guint         window_signals[LAST_SIGNAL];
+static gint          lock_menu_updates = 0;
+
 
 
 GtkWidget *
@@ -467,6 +470,7 @@ mousepad_window_init (MousepadWindow *window)
   window->statusbar = NULL;
   window->replace_dialog = NULL;
   window->active = NULL;
+  window->recent_manager = NULL;
 
   /* add the preferences to the window */
   window->preferences = mousepad_preferences_get ();
@@ -601,8 +605,8 @@ mousepad_window_dispose (GObject *object)
   MousepadWindow *window = MOUSEPAD_WINDOW (object);
 
   /* disconnect recent manager signal */
-  if (G_LIKELY (recent_manager))
-    g_signal_handlers_disconnect_by_func (G_OBJECT (recent_manager), mousepad_window_recent_menu, window);
+  if (G_LIKELY (window->recent_manager))
+    g_signal_handlers_disconnect_by_func (G_OBJECT (window->recent_manager), mousepad_window_recent_menu, window);
 
   /* destroy the save geometry timer source */
   if (G_UNLIKELY (window->save_geometry_timer_id != 0))
@@ -1742,7 +1746,7 @@ mousepad_window_recent_add (MousepadWindow *window,
       mousepad_window_recent_manager_init (window);
 
       /* add the new recent info to the recent manager */
-      gtk_recent_manager_add_full (recent_manager, uri, &info);
+      gtk_recent_manager_add_full (window->recent_manager, uri, &info);
 
       /* cleanup */
       g_free (uri);
@@ -1801,13 +1805,13 @@ static void
 mousepad_window_recent_manager_init (MousepadWindow *window)
 {
   /* set recent manager if not already done */
-  if (G_UNLIKELY (recent_manager == NULL))
+  if (G_UNLIKELY (window->recent_manager == NULL))
     {
       /* get the default manager */
-      recent_manager = gtk_recent_manager_get_default ();
+      window->recent_manager = gtk_recent_manager_get_default ();
 
       /* connect changed signal */
-      g_signal_connect_swapped (G_OBJECT (recent_manager), "changed", G_CALLBACK (mousepad_window_recent_menu), window);
+      g_signal_connect_swapped (G_OBJECT (window->recent_manager), "changed", G_CALLBACK (mousepad_window_recent_menu), window);
     }
 }
 
@@ -1848,7 +1852,7 @@ mousepad_window_recent_menu_idle (gpointer user_data)
   mousepad_window_recent_manager_init (window);
 
   /* get all the items in the manager */
-  items = gtk_recent_manager_get_items (recent_manager);
+  items = gtk_recent_manager_get_items (window->recent_manager);
 
   /* walk through the items in the manager and pick the ones that or in the mousepad group */
   for (li = items; li != NULL; li = li->next)
@@ -1968,7 +1972,7 @@ mousepad_window_recent_clear (MousepadWindow *window)
   mousepad_window_recent_manager_init (window);
 
   /* get all the items in the manager */
-  items = gtk_recent_manager_get_items (recent_manager);
+  items = gtk_recent_manager_get_items (window->recent_manager);
 
   /* walk through the items */
   for (li = items; li != NULL; li = li->next)
@@ -1983,7 +1987,7 @@ mousepad_window_recent_clear (MousepadWindow *window)
       uri = gtk_recent_info_get_uri (info);
 
       /* try to remove it, if it fails, break the loop to avoid multiple errors */
-      if (G_UNLIKELY (gtk_recent_manager_remove_item (recent_manager, uri, &error) == FALSE))
+      if (G_UNLIKELY (gtk_recent_manager_remove_item (window->recent_manager, uri, &error) == FALSE))
         break;
      }
 
@@ -2316,9 +2320,9 @@ mousepad_window_action_open_recent (GtkAction      *action,
 
           /* update the document history */
           if (G_LIKELY (succeed))
-            gtk_recent_manager_add_item (recent_manager, uri);
+            gtk_recent_manager_add_item (window->recent_manager, uri);
           else
-            gtk_recent_manager_remove_item (recent_manager, uri, NULL);
+            gtk_recent_manager_remove_item (window->recent_manager, uri, NULL);
         }
     }
 }

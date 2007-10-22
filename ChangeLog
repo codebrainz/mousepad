@@ -1,3 +1,8 @@
+2007-10-22	Nick Schermer <nick@xfce.org>
+	* mousepad/mousepad-window.c: Idea of the previous commit was good,
+	  but the implementation wasn't. Fix that.
+
+
 2007-10-21	Nick Schermer <nick@xfce.org>
 	* mousepad/mousepad-window.c: Make the recent manager a singleton
 	  in the application, this is also done in gtk 2.12. We also
