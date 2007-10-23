@@ -28,6 +28,7 @@ enum {
   MOUSEPAD_RESPONSE_DONT_SAVE,
   MOUSEPAD_RESPONSE_FIND,
   MOUSEPAD_RESPONSE_JUMP_TO,
+  MOUSEPAD_RESPONSE_OK,
   MOUSEPAD_RESPONSE_OVERWRITE,
   MOUSEPAD_RESPONSE_RELOAD,
   MOUSEPAD_RESPONSE_REPLACE,
@@ -36,28 +37,30 @@ enum {
   MOUSEPAD_RESPONSE_CHECK_ENTRY
 };
 
-GtkWidget *mousepad_dialogs_image_button (const gchar *stock_id,
-                                          const gchar *label);
+GtkWidget *mousepad_dialogs_image_button   (const gchar  *stock_id,
+                                            const gchar  *label);
 
-void       mousepad_dialogs_show_about    (GtkWindow    *parent);
+void       mousepad_dialogs_show_about     (GtkWindow    *parent);
 
+void       mousepad_dialogs_show_error     (GtkWindow    *parent,
+                                            const GError *error,
+                                            const gchar  *message);
 
-void       mousepad_dialogs_show_error    (GtkWindow    *parent,
-                                           const GError *error,
-                                           const gchar  *message);
+gint       mousepad_dialogs_other_tab_size (GtkWindow    *parent,
+                                            gint          active_size);
 
-gint       mousepad_dialogs_jump_to       (GtkWindow    *parent,
-                                           gint          current_line,
-                                           gint          last_line);
+gint       mousepad_dialogs_go_to_line     (GtkWindow    *parent,
+                                            gint          current_line,
+                                            gint          last_line);
 
-gboolean   mousepad_dialogs_clear_recent  (GtkWindow    *parent);
+gboolean   mousepad_dialogs_clear_recent   (GtkWindow    *parent);
 
-gint       mousepad_dialogs_save_changes  (GtkWindow    *parent);
+gint       mousepad_dialogs_save_changes   (GtkWindow    *parent);
 
-gint       mousepad_dialogs_ask_overwrite (GtkWindow    *parent,
-                                           const gchar  *filename);
+gint       mousepad_dialogs_ask_overwrite  (GtkWindow    *parent,
+                                            const gchar  *filename);
 
-gint       mousepad_dialogs_ask_reload    (GtkWindow    *parent);
+gint       mousepad_dialogs_ask_reload     (GtkWindow    *parent);
 
 G_END_DECLS
 

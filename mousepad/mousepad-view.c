@@ -103,7 +103,7 @@ struct _MousepadView
   guint        auto_indent : 1;
   guint        line_numbers : 1;
   guint        insert_spaces : 1;
-  guint        tab_width;
+  guint        tab_size;
 };
 
 
@@ -161,7 +161,7 @@ mousepad_view_init (MousepadView *view)
   view->auto_indent = FALSE;
   view->line_numbers = FALSE;
   view->insert_spaces = FALSE;
-  view->tab_width = 8;
+  view->tab_size = 8;
 
   /* initialize vertical selection */
   view->marks = NULL;
@@ -326,7 +326,7 @@ mousepad_view_style_set (GtkWidget *widget,
                                               NULL);
 
       /* update the tab stops */
-      mousepad_view_set_tab_width (view, view->tab_width);
+      mousepad_view_set_tab_size (view, view->tab_size);
     }
 }
 
@@ -791,15 +791,15 @@ mousepad_view_increase_indent_iter (MousepadView *view,
   if (view->insert_spaces && tab)
     {
       /* get the offset */
-      offset = mousepad_util_get_real_line_offset (iter, view->tab_width);
+      offset = mousepad_util_get_real_line_offset (iter, view->tab_size);
 
       /* calculate the length to inline with a tab */
-      inline_len = offset % view->tab_width;
+      inline_len = offset % view->tab_size;
 
       if (inline_len == 0)
-        length = view->tab_width;
+        length = view->tab_size;
       else
-        length = view->tab_width - inline_len;
+        length = view->tab_size - inline_len;
 
       /* create spaces string */
       string = g_strnfill (length, ' ');
@@ -835,7 +835,7 @@ mousepad_view_decrease_indent_iter (MousepadView *view,
   if (gtk_text_iter_starts_line (iter))
     {
        /* set number of columns */
-       columns = tab ? view->tab_width : 1;
+       columns = tab ? view->tab_size : 1;
 
        /* walk until we've removed enough columns */
        while (columns > 0)
@@ -844,7 +844,7 @@ mousepad_view_decrease_indent_iter (MousepadView *view,
            c = gtk_text_iter_get_char (&end);
 
            if (c == '\t')
-             columns -= view->tab_width;
+             columns -= view->tab_size;
            else if (c == ' ')
              columns--;
            else
@@ -865,7 +865,7 @@ mousepad_view_decrease_indent_iter (MousepadView *view,
           c = gtk_text_iter_get_char (iter);
 
           if (c == '\t')
-            columns -= view->tab_width;
+            columns -= view->tab_size;
           else if (c == ' ')
              columns--;
            else
@@ -1377,8 +1377,8 @@ mousepad_view_set_auto_indent (MousepadView *view,
 
 
 void
-mousepad_view_set_tab_width (MousepadView *view,
-                             gint          tab_width)
+mousepad_view_set_tab_size (MousepadView *view,
+                             gint          tab_size)
 {
   PangoTabArray *tab_array;
   gint           layout_width;
@@ -1387,10 +1387,10 @@ mousepad_view_set_tab_width (MousepadView *view,
   _mousepad_return_if_fail (GTK_IS_TEXT_VIEW (view));
 
   /* set the value */
-  view->tab_width = tab_width;
+  view->tab_size = tab_size;
 
   /* get the pixel width of the tab size */
-  layout_width = mousepad_view_calculate_layout_width (GTK_WIDGET (view), view->tab_width, ' ');
+  layout_width = mousepad_view_calculate_layout_width (GTK_WIDGET (view), view->tab_size, ' ');
 
   if (G_LIKELY (layout_width != -1))
     {
@@ -1461,11 +1461,11 @@ mousepad_view_get_auto_indent (MousepadView *view)
 
 
 gint
-mousepad_view_get_tab_width (MousepadView *view)
+mousepad_view_get_tab_size (MousepadView *view)
 {
   _mousepad_return_val_if_fail (MOUSEPAD_IS_VIEW (view), -1);
 
-  return view->tab_width;
+  return view->tab_size;
 }
 
 

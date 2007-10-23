@@ -151,7 +151,7 @@ mousepad_util_set_tooltip (GtkWidget   *widget,
 
 gint
 mousepad_util_get_real_line_offset (const GtkTextIter *iter,
-                                    gint               tab_width)
+                                    gint               tab_size)
 {
   gint        offset = 0;
   GtkTextIter needle = *iter;
@@ -161,7 +161,7 @@ mousepad_util_get_real_line_offset (const GtkTextIter *iter,
   while (!gtk_text_iter_equal (&needle, iter))
     {
       if (gtk_text_iter_get_char (&needle) == '\t')
-        offset += (tab_width - (offset % tab_width));
+        offset += (tab_size - (offset % tab_size));
       else
         offset++;
 

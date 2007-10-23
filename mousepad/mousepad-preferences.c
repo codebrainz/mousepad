@@ -68,6 +68,7 @@ enum
   /* hidden settings */
   PROP_MISC_ALWAYS_SHOW_TABS,
   PROP_MISC_CYCLE_TABS,
+  PROP_MISC_DEFAULT_TAB_SIZES,
   PROP_MISC_PATH_IN_TITLE,
   PROP_MISC_RECENT_MENU_ITEMS,
   PROP_MISC_REMEMBER_GEOMETRY,
@@ -255,8 +256,8 @@ mousepad_preferences_class_init (MousepadPreferencesClass *klass)
 
   g_object_class_install_property (gobject_class,
                                    PROP_VIEW_TAB_WIDTH,
-                                   g_param_spec_int ("view-tab-width",
-                                                     "ViewTabWidth",
+                                   g_param_spec_int ("view-tab-size",
+                                                     "ViewTabSize",
                                                      NULL,
                                                      1, 32, 8,
                                                      MOUSEPAD_PARAM_READWRITE));
@@ -324,6 +325,14 @@ mousepad_preferences_class_init (MousepadPreferencesClass *klass)
                                                          NULL,
                                                          FALSE,
                                                          MOUSEPAD_PARAM_READWRITE));
+
+  g_object_class_install_property (gobject_class,
+                                   PROP_MISC_DEFAULT_TAB_SIZES,
+                                   g_param_spec_string ("misc-default-tab-sizes",
+                                                        "MiscDefaultTabSizes",
+                                                        NULL,
+                                                        "2,3,4,8",
+                                                        MOUSEPAD_PARAM_READWRITE));
 
   g_object_class_install_property (gobject_class,
                                    PROP_MISC_PATH_IN_TITLE,

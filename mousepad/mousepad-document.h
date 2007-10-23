@@ -76,7 +76,7 @@ void              mousepad_document_set_word_wrap            (MousepadDocument  
 
 void              mousepad_document_focus_textview           (MousepadDocument      *document);
 
-void              mousepad_document_jump_to_line             (MousepadDocument      *document,
+void              mousepad_document_go_to_line               (MousepadDocument      *document,
                                                               gint                   line_number);
 
 void              mousepad_document_send_statusbar_signals   (MousepadDocument      *document);

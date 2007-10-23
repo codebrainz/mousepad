@@ -51,8 +51,8 @@ void            mousepad_view_set_line_numbers          (MousepadView      *view
 void            mousepad_view_set_auto_indent           (MousepadView      *view,
                                                          gboolean           auto_indent);
 
-void            mousepad_view_set_tab_width             (MousepadView      *view,
-                                                         gint               tab_width);
+void            mousepad_view_set_tab_size              (MousepadView      *view,
+                                                         gint               tab_size);
 
 void            mousepad_view_set_insert_spaces         (MousepadView      *view,
                                                          gboolean           insert_spaces);
@@ -63,7 +63,7 @@ gboolean        mousepad_view_get_line_numbers          (MousepadView      *view
 
 gboolean        mousepad_view_get_auto_indent           (MousepadView      *view);
 
-gint            mousepad_view_get_tab_width             (MousepadView      *view);
+gint            mousepad_view_get_tab_size              (MousepadView      *view);
 
 gboolean        mousepad_view_get_insert_spaces         (MousepadView      *view);
 

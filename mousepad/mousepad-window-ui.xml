@@ -63,8 +63,6 @@
       <menuitem action="find-next" />
       <menuitem action="find-previous" />
       <menuitem action="replace" />
-      <separator />
-      <menuitem action="jump-to" />
     </menu>
 
     <menu action="view-menu">
@@ -74,20 +72,29 @@
     </menu>
 
     <menu action="document-menu">
-      <menuitem action="word-wrap" />
       <menuitem action="line-numbers" />
+      <separator />
       <menuitem action="auto-indent" />
-      <menuitem action="insert-spaces" />
+      <menuitem action="word-wrap" />
+      <separator />
+      <menu action="tab-size-menu">
+        <placeholder name="placeholder-tab-sizes" />
+        <separator />
+        <menuitem action="insert-spaces" />
+      </menu>
     </menu>
 
-    <menu action="go-menu">
+    <menu action="navigation-menu">
       <menuitem action="back" />
       <menuitem action="forward" />
       <separator />
-      <placeholder name="placeholder-go-items" />
+      <placeholder name="placeholder-documents" />
+      <separator />
+      <menuitem action="go-to-line" />
     </menu>
 
     <menu action="help-menu">
+      <menuitem action="contents" />
       <menuitem action="about" />
     </menu>
   </menubar>

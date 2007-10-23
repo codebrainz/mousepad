@@ -1,6 +1,17 @@
+2007-10-23	Nick Schermer <nick@xfce.org>
+	* configure.in.in, po/POTFILES.in: Fix dist-check. Thank to Brian
+	  for the hint.
+	* mousepad/mousepad-{dialogs,window}.c: Implement tab size menu. You
+	  can set the default tab sizes in the rc file (MiscDefaultTabSizes).
+	* mousepad/mousepad-window{-ui.xml,.c}: Reorder menus a bit. Go menu
+	  is now called 'Navigation' and the 'go to line' item is added to this
+	  menu. The document menu contains the tab size menu from now on.
+	* Rename some functions and vars to more suitable names.
+
+
 2007-10-22	Nick Schermer <nick@xfce.org>
-	* configure.in.in: Make sure __OPTIMIZE__ is enable in normal builds.
-	* mousepad/mousepad-private.h: Tune G_LIKELY macros for pure boolean.
+	* configure.in.in: Make sure __OPTIMIZE__ is enabled in normal builds.
+	* mousepad/mousepad-private.h: Tune G_LIKELY macros for pure booleans.
 
 
 2007-10-22	Nick Schermer <nick@xfce.org>

@@ -189,7 +189,7 @@ mousepad_document_init (MousepadDocument *document)
   GtkTargetList       *target_list;
   gboolean             word_wrap, auto_indent, line_numbers, insert_spaces;
   gchar               *font_name;
-  gint                 tab_width;
+  gint                 tab_size;
   MousepadPreferences *preferences;
 
   /* private structure */
@@ -238,7 +238,7 @@ mousepad_document_init (MousepadDocument *document)
                 "view-line-numbers", &line_numbers,
                 "view-auto-indent", &auto_indent,
                 "view-font-name", &font_name,
-                "view-tab-width", &tab_width,
+                "view-tab-size", &tab_size,
                 "view-insert-spaces", &insert_spaces,
                 NULL);
 
@@ -250,7 +250,7 @@ mousepad_document_init (MousepadDocument *document)
   mousepad_document_set_font (document, font_name);
   mousepad_view_set_line_numbers (document->textview, line_numbers);
   mousepad_view_set_auto_indent (document->textview, auto_indent);
-  mousepad_view_set_tab_width (document->textview, tab_width);
+  mousepad_view_set_tab_size (document->textview, tab_size);
   mousepad_view_set_insert_spaces (document->textview, insert_spaces);
 
   /* cleanup */
@@ -314,7 +314,7 @@ mousepad_document_notify_cursor_position (GtkTextBuffer    *buffer,
 {
   GtkTextIter iter;
   guint       line, column = 0;
-  gint        tab_width;
+  gint        tab_size;
 
   _mousepad_return_if_fail (GTK_IS_TEXT_BUFFER (buffer));
   _mousepad_return_if_fail (MOUSEPAD_IS_DOCUMENT (document));
@@ -325,11 +325,11 @@ mousepad_document_notify_cursor_position (GtkTextBuffer    *buffer,
   /* get the current line number */
   line = gtk_text_iter_get_line (&iter) + 1;
 
-  /* get the tab width */
-  tab_width = mousepad_view_get_tab_width (document->textview);
+  /* get the tab size */
+  tab_size = mousepad_view_get_tab_size (document->textview);
 
   /* get the column */
-  column = mousepad_util_get_real_line_offset (&iter, tab_width) + 1;
+  column = mousepad_util_get_real_line_offset (&iter, tab_size) + 1;
 
   /* emit the signal */
   g_signal_emit (G_OBJECT (document), document_signals[CURSOR_CHANGED], 0, line, column);
@@ -472,8 +472,8 @@ mousepad_document_focus_textview (MousepadDocument *document)
 
 
 void
-mousepad_document_jump_to_line (MousepadDocument *document,
-                                gint              line_number)
+mousepad_document_go_to_line (MousepadDocument *document,
+                              gint              line_number)
 {
   GtkTextIter iter;
 

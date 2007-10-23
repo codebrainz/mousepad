@@ -79,9 +79,46 @@ mousepad_dialogs_show_error (GtkWindow    *parent,
 
 
 gint
-mousepad_dialogs_jump_to (GtkWindow *parent,
-                          gint       current_line,
-                          gint       last_line)
+mousepad_dialogs_other_tab_size (GtkWindow *parent,
+                                 gint      active_size)
+{
+  GtkWidget *dialog;
+  GtkWidget *scale;
+
+  /* build dialog */
+  dialog = gtk_dialog_new_with_buttons (_("Select Tab Size"),
+                                        parent,
+                                        GTK_DIALOG_MODAL | GTK_DIALOG_DESTROY_WITH_PARENT | GTK_DIALOG_NO_SEPARATOR,
+                                        GTK_STOCK_CANCEL, MOUSEPAD_RESPONSE_CANCEL,
+                                        GTK_STOCK_OK, MOUSEPAD_RESPONSE_OK,
+                                        NULL);
+  gtk_dialog_set_default_response (GTK_DIALOG (dialog), MOUSEPAD_RESPONSE_OK);
+
+  /* create scale widget */
+  scale = gtk_hscale_new_with_range (1, 32, 1);
+  gtk_range_set_value (GTK_RANGE (scale), active_size);
+  gtk_scale_set_digits (GTK_SCALE (scale), 0);
+  gtk_scale_set_draw_value (GTK_SCALE (scale), TRUE);
+  gtk_scale_set_value_pos (GTK_SCALE (scale), GTK_POS_TOP);
+  gtk_box_pack_start (GTK_BOX (GTK_DIALOG (dialog)->vbox), scale, TRUE, TRUE, 0);
+  gtk_widget_show (scale);
+
+  /* run the dialog */
+  if (gtk_dialog_run (GTK_DIALOG (dialog)) == MOUSEPAD_RESPONSE_OK)
+    active_size = gtk_range_get_value (GTK_RANGE (scale));
+
+  /* destroy the dialog */
+  gtk_widget_destroy (dialog);
+
+  return active_size;
+}
+
+
+
+gint
+mousepad_dialogs_go_to_line (GtkWindow *parent,
+                             gint       current_line,
+                             gint       last_line)
 {
   GtkWidget     *dialog;
   GtkWidget     *hbox;
@@ -91,7 +128,7 @@ mousepad_dialogs_jump_to (GtkWindow *parent,
   gint           line_number = 0;
 
   /* build the dialog */
-  dialog = gtk_dialog_new_with_buttons (_("Jump To"),
+  dialog = gtk_dialog_new_with_buttons (_("Go To Line"),
                                         parent,
                                         GTK_DIALOG_MODAL | GTK_DIALOG_DESTROY_WITH_PARENT | GTK_DIALOG_NO_SEPARATOR,
                                         GTK_STOCK_CANCEL, MOUSEPAD_RESPONSE_CANCEL,

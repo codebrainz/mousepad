@@ -21,7 +21,7 @@ dnl *** Initialize autoconf ***
 dnl ***************************
 AC_COPYRIGHT([Copyright (c) 2007
         The Xfce development team. All rights reserved.])
-AC_INIT([Mousepad], [mousepad_version()], [http://bugzilla.xfce.org/], [mousepad])
+AC_INIT([Mousepad], [mousepad_version], [http://bugzilla.xfce.org/], [mousepad])
 AC_PREREQ([2.50])
 AC_CANONICAL_TARGET()
 AC_REVISION([$Id$])

@@ -73,7 +73,7 @@ void       mousepad_util_set_tooltip            (GtkWidget           *widget,
                                                  const gchar         *string);
 
 gint       mousepad_util_get_real_line_offset   (const GtkTextIter   *iter,
-                                                 gint                 tab_width);
+                                                 gint                 tab_size);
 
 gboolean   mousepad_util_forward_iter_to_text   (GtkTextIter         *iter,
                                                  const GtkTextIter   *limit);
