@@ -24,7 +24,7 @@ dnl *** Initialize autoconf ***
 dnl ***************************
 AC_COPYRIGHT([Copyright (c) 2005-2007
         Erik Harrison <erikharrison@gmail.com>])
-AC_INIT([Mousepad], [mp_version()], [erikharrison@gmail.com])
+AC_INIT([Mousepad], [mp_version], [erikharrison@gmail.com])
 AC_PREREQ([2.50])
 AC_REVISION([$Id$])
 
