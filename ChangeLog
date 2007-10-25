@@ -1,4 +1,8 @@
 2007-10-25	Nick Schermer <nick@xfce.org>
+	* mousepad/mousepad-view.c: Redraw selection on theme change.
+
+
+2007-10-25	Nick Schermer <nick@xfce.org>
 	* mousepad/mousepad-view.c: Reimplemented multi-selection. It is also
 	  possible to do multi editing (typing in all the selections), select
 	  random words in the document (they will be copied to the clipboard as

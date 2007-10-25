@@ -343,6 +343,10 @@ mousepad_view_style_set (GtkWidget *widget,
 
       /* update the tab size */
       mousepad_view_set_tab_size (view, view->tab_size);
+
+      /* redraw selection */
+      if (view->flags != 0)
+        mousepad_view_selection_draw (view, !MOUSEPAD_HAS_FLAG (view->flags, HAS_CONTENT), FALSE);
     }
 }
 
