@@ -29,6 +29,7 @@ G_BEGIN_DECLS
 
 typedef struct _MousepadViewClass MousepadViewClass;
 typedef struct _MousepadView      MousepadView;
+typedef enum   _MousepadViewFlags MousepadViewFlags;
 
 GType           mousepad_view_get_type                  (void) G_GNUC_CONST;
 

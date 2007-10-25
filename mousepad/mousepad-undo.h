@@ -48,10 +48,6 @@ void           mousepad_undo_do_undo         (MousepadUndo  *undo);
 
 void           mousepad_undo_do_redo         (MousepadUndo  *undo);
 
-void           mousepad_undo_populate_popup  (GtkTextView   *textview,
-                                              GtkMenu       *menu,
-                                              MousepadUndo  *undo);
-
 G_END_DECLS
 
 #endif /* !__MOUSEPAD_UNDO_H__ */

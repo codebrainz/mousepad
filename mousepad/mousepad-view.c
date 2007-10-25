@@ -31,51 +31,62 @@
 
 
 
-/* we can assume there is a buffer for this view */
-#define mousepad_view_get_buffer(view) (GTK_TEXT_VIEW (view)->buffer)
+#define mousepad_view_get_buffer(view)      (GTK_TEXT_VIEW (view)->buffer)
+#define MOUSEPAD_VIEW_RECT_WIDTH            (3)
 
 
 
-static void      mousepad_view_class_init                         (MousepadViewClass  *klass);
-static void      mousepad_view_init                               (MousepadView       *view);
-static void      mousepad_view_finalize                           (GObject            *object);
-static void      mousepad_view_style_set                          (GtkWidget          *widget,
-                                                                   GtkStyle           *previous_style);
-static gint      mousepad_view_expose                             (GtkWidget          *widget,
-                                                                   GdkEventExpose     *event);
-static gboolean  mousepad_view_key_press_event                    (GtkWidget          *widget,
-                                                                   GdkEventKey        *event);
-static gboolean  mousepad_view_button_press_event                 (GtkWidget          *widget,
-                                                                   GdkEventButton     *event);
-static gboolean  mousepad_view_button_release_event               (GtkWidget          *widget,
-                                                                   GdkEventButton     *event);
-static void      mousepad_view_vertical_selection_handle          (MousepadView       *view,
-                                                                   gboolean            prepend_marks);
-static gboolean  mousepad_view_vertical_selection_finish          (MousepadView       *view);
-static void      mousepad_view_vertical_selection_free_marks      (MousepadView       *view);
-static void      mousepad_view_vertical_selection_clear           (MousepadView       *view);
-static gboolean  mousepad_view_vertical_selection_timeout         (gpointer            user_data);
-static void      mousepad_view_vertical_selection_timeout_destroy (gpointer            user_data);
-static void      mousepad_view_increase_indent_iter               (MousepadView       *view,
-                                                                   GtkTextIter        *iter,
-                                                                   gboolean            tab);
-static void      mousepad_view_decrease_indent_iter               (MousepadView       *view,
-                                                                   GtkTextIter        *iter,
-                                                                   gboolean            tab);
-static void      mousepad_view_indent_selection                   (MousepadView       *view,
-                                                                   gboolean            increase,
-                                                                   gboolean            tab);
+static void      mousepad_view_class_init                    (MousepadViewClass  *klass);
+static void      mousepad_view_init                          (MousepadView       *view);
+static void      mousepad_view_finalize                      (GObject            *object);
+static void      mousepad_view_style_set                     (GtkWidget          *widget,
+                                                              GtkStyle           *previous_style);
+static gint      mousepad_view_expose                        (GtkWidget          *widget,
+                                                              GdkEventExpose     *event);
+static gboolean  mousepad_view_key_press_event               (GtkWidget          *widget,
+                                                              GdkEventKey        *event);
+static gboolean  mousepad_view_button_press_event            (GtkWidget          *widget,
+                                                              GdkEventButton     *event);
+static gboolean  mousepad_view_button_release_event          (GtkWidget          *widget,
+                                                              GdkEventButton     *event);
+static void      mousepad_view_selection_key_press_event     (MousepadView       *view,
+                                                              GdkEventKey        *event,
+                                                              guint               modifiers);
+static void      mousepad_view_selection_delete_content      (MousepadView       *view);
+static void      mousepad_view_selection_destroy             (MousepadView       *view);
+static void      mousepad_view_selection_add_word            (MousepadView       *view);
+static void      mousepad_view_selection_cleanup_equal_marks (MousepadView       *view);
+static void      mousepad_view_selection_add_marks           (MousepadView       *view,
+                                                              GtkTextIter        *start_iter,
+                                                              GtkTextIter        *end_iter);
+static void      mousepad_view_selection_draw                (MousepadView       *view,
+                                                              gboolean            draw_rectangles,
+                                                              gboolean            add_marks);
+static void      mousepad_view_selection_emit_has_selection  (MousepadView       *view,
+                                                              gboolean            has_content);
+static gboolean  mousepad_view_selection_timeout             (gpointer            user_data);
+static void      mousepad_view_selection_timeout_destroy     (gpointer            user_data);
+static void      mousepad_view_indent_increase               (MousepadView       *view,
+                                                              GtkTextIter        *iter);
+static void      mousepad_view_indent_decrease               (MousepadView       *view,
+                                                              GtkTextIter        *iter);
+static void      mousepad_view_indent_selection              (MousepadView       *view,
+                                                              gboolean            increase);
+static gchar    *mousepad_view_indent_string                 (GtkTextBuffer      *buffer,
+                                                              const GtkTextIter  *iter);
+static gint      mousepad_view_calculate_layout_width        (GtkWidget          *widget,
+                                                              gsize               length,
+                                                              gchar               fill_char);
 
-static gchar    *mousepad_view_indentation_string                 (GtkTextBuffer      *buffer,
-                                                                   const GtkTextIter  *iter);
-static gint      mousepad_view_calculate_layout_width             (GtkWidget          *widget,
-                                                                   gsize               length,
-                                                                   gchar               fill_char);
-static void      mousepad_view_clipboard                          (MousepadView       *view,
-                                                                   GtkClipboard       *clipboard,
-                                                                   gboolean            remove);
 
-
+enum _MousepadViewFlags
+{
+  HAS_SELECTION = 1 << 0, /* if there are marks in the selection list */
+  EDITING_MODE  = 1 << 1, /* users can type in the selection */
+  HAS_CONTENT   = 1 << 2, /* selection contains content */
+  DRAGGING      = 1 << 3, /* still dragging */
+  MULTIPLE      = 1 << 4  /* whether this is an multiple selection */
+};
 
 struct _MousepadViewClass
 {
@@ -86,24 +97,29 @@ struct _MousepadView
 {
   GtkTextView  __parent__;
 
-  /* coordinates for the vertical selection */
-  gint         vertical_start_x, vertical_start_y;
-  gint         vertical_end_x, vertical_end_y;
+  /* current status */
+  MousepadViewFlags   flags;
 
-  /* pointer array with all the vertical selection marks */
-  GSList      *marks;
+  /* the selection style tag */
+  GtkTextTag         *selection_tag;
 
-  /* vertical selection timeout id */
-  guint        vertical_timeout_id;
+  /* list with all the selection marks */
+  GSList             *marks;
 
-  /* the selection tag */
-  GtkTextTag  *tag;
+  /* selection timeout id */
+  guint               selection_timeout_id;
+
+  /* coordinates for the selection */
+  gint                selection_start_x;
+  gint                selection_start_y;
+  gint                selection_end_x;
+  gint                selection_end_y;
 
   /* settings */
-  guint        auto_indent : 1;
-  guint        line_numbers : 1;
-  guint        insert_spaces : 1;
-  guint        tab_size;
+  guint               auto_indent : 1;
+  guint               line_numbers : 1;
+  guint               insert_spaces : 1;
+  guint               tab_size;
 };
 
 
@@ -163,14 +179,11 @@ mousepad_view_init (MousepadView *view)
   view->insert_spaces = FALSE;
   view->tab_size = 8;
 
-  /* initialize vertical selection */
+  /* initialize selection variables */
+  view->selection_timeout_id = 0;
+  view->flags = 0;
+  view->selection_tag = NULL;
   view->marks = NULL;
-  view->tag = NULL;
-  view->vertical_start_x = -1;
-  view->vertical_start_y = -1;
-  view->vertical_end_x = -1;
-  view->vertical_end_y = -1;
-  view->vertical_timeout_id = 0;
 }
 
 
@@ -180,11 +193,11 @@ mousepad_view_finalize (GObject *object)
 {
   MousepadView *view = MOUSEPAD_VIEW (object);
 
-  /* stop a pending vertical selection timeout */
-  if (G_UNLIKELY (view->vertical_timeout_id != 0))
-    g_source_remove (view->vertical_timeout_id);
+  /* stop a running selection timeout */
+  if (G_UNLIKELY (view->selection_timeout_id != 0))
+    g_source_remove (view->selection_timeout_id);
 
-  /* free the marks list (we're not owning a ref on the marks) */
+  /* free the selection marks list */
   if (G_UNLIKELY (view->marks != NULL))
     g_slist_free (view->marks);
 
@@ -197,24 +210,27 @@ static gboolean
 mousepad_view_expose (GtkWidget      *widget,
                       GdkEventExpose *event)
 {
-  GdkWindow   *window;
-  GtkTextView *text_view = GTK_TEXT_VIEW (widget);
-  gint         y_top, y_offset, y_bottom;
-  gint         y, height;
-  gint         line_number = 0, line_count;
-  GtkTextIter  iter;
-  gint         width;
-  PangoLayout *layout;
-  gchar        str[8]; /* maximum of 10e6 lines */
+  GtkTextView  *textview = GTK_TEXT_VIEW (widget);
+  MousepadView *view = MOUSEPAD_VIEW (widget);
+  gint          y_top, y_offset, y_bottom;
+  gint          y, height;
+  gint          line_number = 0, line_count;
+  GtkTextIter   iter;
+  gint          width;
+  PangoLayout  *layout;
+  gchar         str[8]; /* maximum of 10e6 lines */
 
-  /* get the left window */
-  window = gtk_text_view_get_window (text_view, GTK_TEXT_WINDOW_LEFT);
-
-  /* check if the event if for the left window */
-  if (event->window == window)
+  if (view->flags != 0
+      && MOUSEPAD_HAS_FLAG (view->flags, HAS_CONTENT) == FALSE
+      && event->window == gtk_text_view_get_window (textview, GTK_TEXT_WINDOW_TEXT))
+    {
+      /* redraw the retangles for the vertical selection */
+      mousepad_view_selection_draw (view, TRUE, FALSE);
+    }
+  else if (event->window == gtk_text_view_get_window (textview, GTK_TEXT_WINDOW_LEFT))
     {
       /* get the real start position */
-      gtk_text_view_window_to_buffer_coords (text_view, GTK_TEXT_WINDOW_LEFT,
+      gtk_text_view_window_to_buffer_coords (textview, GTK_TEXT_WINDOW_LEFT,
                                              0, event->area.y, NULL, &y_top);
 
       /* get the bottom position */
@@ -224,10 +240,10 @@ mousepad_view_expose (GtkWidget      *widget,
       y_offset = event->area.y - y_top;
 
       /* get the start iter */
-      gtk_text_view_get_line_at_y (text_view, &iter, y_top, NULL);
+      gtk_text_view_get_line_at_y (textview, &iter, y_top, NULL);
 
       /* get the number of lines in the buffer */
-      line_count = gtk_text_buffer_get_line_count (text_view->buffer);
+      line_count = gtk_text_buffer_get_line_count (textview->buffer);
 
       /* string with the 'last' line number */
       g_snprintf (str, sizeof (str), "%d", MAX (99, line_count));
@@ -239,10 +255,10 @@ mousepad_view_expose (GtkWidget      *widget,
       pango_layout_set_alignment (layout, PANGO_ALIGN_RIGHT);
 
       /* set the width of the left window border */
-      gtk_text_view_set_border_window_size (text_view, GTK_TEXT_WINDOW_LEFT, width + 8);
+      gtk_text_view_set_border_window_size (textview, GTK_TEXT_WINDOW_LEFT, width + 8);
 
       /* draw a vertical line to separate the numbers and text */
-      gtk_paint_vline (widget->style, window,
+      gtk_paint_vline (widget->style, event->window,
                        GTK_WIDGET_STATE (widget),
                        NULL, widget, NULL,
                        event->area.y,
@@ -253,7 +269,7 @@ mousepad_view_expose (GtkWidget      *widget,
       while (line_number < line_count)
         {
           /* get the y position and the height of the iter */
-          gtk_text_view_get_line_yrange (text_view, &iter, &y, &height);
+          gtk_text_view_get_line_yrange (textview, &iter, &y, &height);
 
           /* include the buffer offset */
           y += y_offset;
@@ -268,7 +284,7 @@ mousepad_view_expose (GtkWidget      *widget,
           pango_layout_set_text (layout, str, strlen (str));
 
           /* draw the layout on the left window */
-          gtk_paint_layout (widget->style, window,
+          gtk_paint_layout (widget->style, event->window,
                             GTK_WIDGET_STATE (widget),
                             FALSE, NULL, widget, NULL,
                             width + 2, y, layout);
@@ -313,19 +329,19 @@ mousepad_view_style_set (GtkWidget *widget,
       buffer = mousepad_view_get_buffer (view);
 
       /* remove previous selection tag */
-      if (G_UNLIKELY (view->tag))
+      if (G_UNLIKELY (view->selection_tag))
         {
           gtk_text_buffer_get_bounds (buffer, &start, &end);
-          gtk_text_buffer_remove_tag (buffer, view->tag, &start, &end);
+          gtk_text_buffer_remove_tag (buffer, view->selection_tag, &start, &end);
         }
 
       /* create the new selection tag */
-      view->tag = gtk_text_buffer_create_tag (buffer, NULL,
-                                              "background-gdk", &style->base[GTK_STATE_SELECTED],
-                                              "foreground-gdk", &style->text[GTK_STATE_SELECTED],
-                                              NULL);
+      view->selection_tag = gtk_text_buffer_create_tag (buffer, NULL,
+                                                        "background-gdk", &style->base[GTK_STATE_SELECTED],
+                                                        "foreground-gdk", &style->text[GTK_STATE_SELECTED],
+                                                        NULL);
 
-      /* update the tab stops */
+      /* update the tab size */
       mousepad_view_set_tab_size (view, view->tab_size);
     }
 }
@@ -366,7 +382,7 @@ mousepad_view_key_press_event (GtkWidget   *widget,
             gtk_text_buffer_get_iter_at_mark (buffer, &iter, cursor);
 
             /* get the string of tabs and spaces we're going to indent */
-            string = mousepad_view_indentation_string (buffer, &iter);
+            string = mousepad_view_indent_string (buffer, &iter);
 
             if (string != NULL)
               {
@@ -437,7 +453,7 @@ mousepad_view_key_press_event (GtkWidget   *widget,
              /* label for the ctrl home/end events */
              move_cursor:
 
-             /* move the cursor */
+             /* move (select) or set (jump) cursor */
              if (modifiers & GDK_SHIFT_MASK)
                gtk_text_buffer_move_mark (buffer, cursor, &iter);
              else
@@ -450,44 +466,68 @@ mousepad_view_key_press_event (GtkWidget   *widget,
           }
         break;
 
+      case GDK_Delete:
+      case GDK_KP_Delete:
+      case GDK_BackSpace:
+        if (view->flags != 0)
+          {
+            goto selection_key_press;
+          }
+        break;
+
       case GDK_Tab:
       case GDK_KP_Tab:
       case GDK_ISO_Left_Tab:
-        if (mousepad_view_get_has_selection (view) && is_editable)
+        if (G_LIKELY (is_editable))
           {
-            /* indent the selection */
-            mousepad_view_indent_selection (view, (modifiers != GDK_SHIFT_MASK), TRUE);
+            if (view->flags != 0)
+              {
+                goto selection_key_press;
+              }
+            else if (mousepad_view_get_has_selection (view))
+              {
+                /* indent the selection */
+                mousepad_view_indent_selection (view, (modifiers & GDK_SHIFT_MASK));
 
-            return TRUE;
+                return TRUE;
+              }
+            else if (view->insert_spaces)
+              {
+                /* get the iter position of the cursor */
+                cursor = gtk_text_buffer_get_insert (buffer);
+                gtk_text_buffer_get_iter_at_mark (buffer, &iter, cursor);
+
+                /* begin user action */
+                gtk_text_buffer_begin_user_action (buffer);
+
+                /* insert spaces */
+                mousepad_view_indent_increase (view, &iter);
+
+                /* end user action */
+                gtk_text_buffer_end_user_action (buffer);
+
+                return TRUE;
+              }
           }
-        else if (view->insert_spaces && is_editable)
+        break;
+
+      default:
+        if (view->flags != 0 && event->length > 0)
           {
-            /* get the iter position of the cursor */
-            cursor = gtk_text_buffer_get_insert (buffer);
-            gtk_text_buffer_get_iter_at_mark (buffer, &iter, cursor);
+            /* label for tab and backspace */
+            selection_key_press:
 
-            /* insert spaces */
-            mousepad_view_increase_indent_iter (view, &iter, TRUE);
-
-            return TRUE;
-          }
-
-      case GDK_BackSpace:
-      case GDK_space:
-        /* indent on Space unindent on Backspace or Tab */
-        if (modifiers == GDK_SHIFT_MASK && mousepad_view_get_has_selection (view) && is_editable)
-          {
-            /* indent the selection */
-            mousepad_view_indent_selection (view, (event->keyval == GDK_space), FALSE);
+            /* handle a key press event for a selection */
+            mousepad_view_selection_key_press_event (view, event, modifiers);
 
             return TRUE;
           }
         break;
     }
 
-  /* reset the vertical selection */
-  if (G_UNLIKELY (view->marks != NULL && !event->is_modifier))
-    mousepad_view_vertical_selection_clear (view);
+  /* remove the selection when no valid key combination has been pressed */
+  if (G_UNLIKELY (view->flags != 0 && event->is_modifier == FALSE))
+    mousepad_view_selection_destroy (view);
 
   return (*GTK_WIDGET_CLASS (mousepad_view_parent_class)->key_press_event) (widget, event);
 }
@@ -499,32 +539,47 @@ mousepad_view_button_press_event (GtkWidget      *widget,
                                   GdkEventButton *event)
 {
   MousepadView *view = MOUSEPAD_VIEW (widget);
-  GtkTextView  *textview;
+  GtkTextView  *textview = GTK_TEXT_VIEW (widget);;
 
-  /* cleanup vertical selection */
-  if (G_UNLIKELY (view->marks != NULL))
-    mousepad_view_vertical_selection_clear (view);
-
-  /* Shift + Ctrl + Button 1 are pressed */
-  if (G_UNLIKELY (event->type == GDK_BUTTON_PRESS
-                  && event->button == 1
-                  && (event->state & GDK_CONTROL_MASK)
-                  && (event->state & GDK_SHIFT_MASK)
-                  && event->x >= 0
-                  && event->y >= 0))
+  /* work with vertical selection while ctrl is pressed */
+  if (event->state & GDK_CONTROL_MASK
+      && event->x >= 0
+      && event->y >= 0
+      && event->button == 1)
     {
-      /* get the textview */
-      textview = GTK_TEXT_VIEW (widget);
-
       /* set the vertical selection start position, inclusing textview offset */
-      view->vertical_start_x = event->x + textview->xoffset;
-      view->vertical_start_y = event->y + textview->yoffset;
+      view->selection_start_x = event->x + textview->xoffset;
+      view->selection_start_y = event->y + textview->yoffset;
 
-      /* start a vertical selection timeout */
-      view->vertical_timeout_id = g_timeout_add_full (G_PRIORITY_LOW, 50, mousepad_view_vertical_selection_timeout,
-                                                      view, mousepad_view_vertical_selection_timeout_destroy);
+      if (event->type == GDK_BUTTON_PRESS)
+        {
+          /* whether this is going to be a multiple selection */
+          if (view->flags != 0)
+            MOUSEPAD_SET_FLAG (view->flags, MULTIPLE);
+
+          /* enable dragging */
+          MOUSEPAD_SET_FLAG (view->flags, DRAGGING);
+
+          /* start a vertical selection timeout */
+          view->selection_timeout_id = g_timeout_add_full (G_PRIORITY_LOW, 50, mousepad_view_selection_timeout,
+                                                           view, mousepad_view_selection_timeout_destroy);
+        }
+      else if (event->type == GDK_2BUTTON_PRESS)
+        {
+          /* whether this is going to be a multiple selection */
+          if (view->flags != 0)
+            MOUSEPAD_SET_FLAG (view->flags, MULTIPLE);
+
+          /* add the word under the cursor to the selection */
+          mousepad_view_selection_add_word (view);
+        }
 
       return TRUE;
+    }
+  else if (view->flags != 0 && event->button != 3)
+    {
+      /* no drag started or continued */
+      mousepad_view_selection_destroy (view);
     }
 
   return (*GTK_WIDGET_CLASS (mousepad_view_parent_class)->button_press_event) (widget, event);
@@ -537,18 +592,22 @@ mousepad_view_button_release_event (GtkWidget      *widget,
                                     GdkEventButton *event)
 {
   MousepadView  *view = MOUSEPAD_VIEW (widget);
-
-  _mousepad_return_val_if_fail (view->marks == NULL, TRUE);
+  gboolean       has_content;
 
   /* end of a vertical selection */
-  if (G_UNLIKELY (view->vertical_start_x != -1 && event->button == 1))
+  if (G_UNLIKELY (view->selection_timeout_id != 0))
     {
       /* stop the timeout */
-      g_source_remove (view->vertical_timeout_id);
+      g_source_remove (view->selection_timeout_id);
 
-      /* create the marks list and emit has-selection signal */
-      if (G_LIKELY (mousepad_view_vertical_selection_finish (view)))
-        return TRUE;
+      /* check if the selection has any content */
+      has_content = MOUSEPAD_HAS_FLAG (view->flags, HAS_CONTENT);
+
+      /* prepend the selected marks */
+      mousepad_view_selection_draw (view, !has_content, TRUE);
+
+      /* remove the dragging flag */
+      MOUSEPAD_UNSET_FLAG (view->flags, DRAGGING);
     }
 
   return (*GTK_WIDGET_CLASS (mousepad_view_parent_class)->button_release_event) (widget, event);
@@ -557,201 +616,583 @@ mousepad_view_button_release_event (GtkWidget      *widget,
 
 
 /**
- * Vertical Selection Functions
+ * Selection Functions
  **/
 static void
-mousepad_view_vertical_selection_handle (MousepadView *view,
-                                         gboolean      prepend_marks)
+mousepad_view_selection_key_press_event (MousepadView *view,
+                                         GdkEventKey  *event,
+                                         guint         modifiers)
+{
+  GtkTextIter    start, end;
+  GSList        *li;
+  GtkTextBuffer *buffer;
+  gboolean       has_content = FALSE;
+
+  _mousepad_return_if_fail (view->marks != NULL);
+
+  /* get buffer */
+  buffer = mousepad_view_get_buffer (view);
+
+  /* begin user action */
+  gtk_text_buffer_begin_user_action (buffer);
+
+  /* delete the content when the selection has content, we're not
+   * in editing more or the delete key is pressed */
+  if (MOUSEPAD_HAS_FLAG (view->flags, HAS_CONTENT))
+    {
+      if (!MOUSEPAD_HAS_FLAG (view->flags, EDITING_MODE)
+         || (event->keyval == GDK_Delete || event->keyval == GDK_KP_Delete))
+        {
+          mousepad_view_selection_delete_content (view);
+        }
+    }
+
+  /* enter editing mode */
+  MOUSEPAD_SET_FLAG (view->flags, EDITING_MODE);
+
+  for (li = view->marks; li != NULL; li = li->next)
+    {
+      /* get end iter */
+      gtk_text_buffer_get_iter_at_mark (buffer, &end, li->next->data);
+
+      /* handle the events */
+      switch (event->keyval)
+        {
+          case GDK_Tab:
+          case GDK_KP_Tab:
+          case GDK_ISO_Left_Tab:
+            /* insert a (soft) tab */
+            mousepad_view_indent_increase (view, &end);
+            break;
+
+          case GDK_BackSpace:
+            /* get start iter */
+            gtk_text_buffer_get_iter_at_mark (buffer, &start, li->data);
+
+            /* only backspace when there is text inside the selection or ctrl is pressed */
+            if (!gtk_text_iter_equal (&start, &end) || modifiers == GDK_CONTROL_MASK)
+              {
+                gtk_text_buffer_backspace (buffer, &end, FALSE, TRUE);
+              }
+            break;
+
+          default:
+            /* insert the typed string */
+            gtk_text_buffer_insert (buffer, &end, event->string, event->length);
+            break;
+        }
+
+      /* get the start iter */
+      gtk_text_buffer_get_iter_at_mark (buffer, &start, li->data);
+
+      if (!gtk_text_iter_equal (&start, &end))
+        {
+          /* select the text */
+          gtk_text_buffer_apply_tag (buffer, view->selection_tag, &start, &end);
+
+          /* we have some selected text */
+          has_content = TRUE;
+        }
+
+      /* go to next element in the list */
+      li = li->next;
+    }
+
+  /* end user action */
+  gtk_text_buffer_end_user_action (buffer);
+
+  /* update selection status */
+  mousepad_view_selection_emit_has_selection (view, has_content);
+}
+
+
+
+static void
+mousepad_view_selection_delete_content (MousepadView *view)
 {
   GtkTextBuffer *buffer;
-  GtkTextView   *textview = GTK_TEXT_VIEW (view);
   GtkTextIter    start_iter, end_iter;
-  gint           y, y_begin, y_height, y_end;
-  GtkTextMark   *start_mark, *end_mark;
+  GSList        *li;
+
+  _mousepad_return_if_fail (view->marks != NULL);
+  _mousepad_return_if_fail (MOUSEPAD_HAS_FLAG (view->flags, HAS_CONTENT));
+  _mousepad_return_if_fail (view->marks == NULL || g_slist_length (view->marks) % 2 == 0);
 
   /* get the buffer */
   buffer = mousepad_view_get_buffer (view);
 
-  /* remove the old _selection_ tags */
-  gtk_text_buffer_get_bounds (buffer, &start_iter, &end_iter);
-  gtk_text_buffer_remove_tag (buffer, view->tag, &start_iter, &end_iter);
+  /* begin user action */
+  gtk_text_buffer_begin_user_action (buffer);
 
-  /* get the start and end iter */
-  gtk_text_view_get_iter_at_location (textview, &start_iter, 0, view->vertical_start_y);
-  gtk_text_view_get_iter_at_location (textview, &end_iter, 0, view->vertical_end_y);
-
-  /* make sure the start iter is before the end iter */
-  gtk_text_iter_order (&start_iter, &end_iter);
-
-  /* get the y coordinates we're going to walk */
-  gtk_text_view_get_line_yrange (textview, &start_iter, &y_begin, &y_height);
-  gtk_text_view_get_line_yrange (textview, &end_iter, &y_end, NULL);
-
-  /* make sure atleast one line is selected */
-  y_end += y_height;
-
-  /* walk */
-  for (y = y_begin; y < y_end; y += y_height)
+  /* remove everything between the marks */
+  for (li = view->marks; li != NULL; li = li->next)
     {
-      /* get the start and end iter in the line */
-      gtk_text_view_get_iter_at_location (textview, &start_iter, view->vertical_start_x, y);
-      gtk_text_view_get_iter_at_location (textview, &end_iter, view->vertical_end_x, y);
+      /* get end iter */
+      gtk_text_buffer_get_iter_at_mark (buffer, &start_iter, li->data);
 
-      /* continue when the iters are the same */
-      if (G_UNLIKELY (gtk_text_iter_equal (&start_iter, &end_iter)))
-        continue;
+      /* next element */
+      li = li->next;
 
-      /* apply tag */
-      gtk_text_buffer_apply_tag (buffer, view->tag, &start_iter, &end_iter);
+      /* get start iter */
+      gtk_text_buffer_get_iter_at_mark (buffer, &end_iter, li->data);
 
-      /* prepend to list */
-      if (G_UNLIKELY (prepend_marks))
+      /* delete */
+      gtk_text_buffer_delete (buffer, &start_iter, &end_iter);
+    }
+
+  /* end user action */
+  gtk_text_buffer_end_user_action (buffer);
+
+  /* update selection status */
+  mousepad_view_selection_emit_has_selection (view, FALSE);
+}
+
+
+
+static void
+mousepad_view_selection_destroy (MousepadView *view)
+{
+  GtkTextBuffer *buffer;
+  GSList        *li;
+  GtkTextIter    start_iter, end_iter;
+
+  _mousepad_return_if_fail (view->marks != NULL);
+  _mousepad_return_if_fail (view->flags != 0);
+
+  /* get the buffer */
+  buffer = mousepad_view_get_buffer (view);
+
+  /* remove the selection tags */
+  gtk_text_buffer_get_bounds (buffer, &start_iter, &end_iter);
+  gtk_text_buffer_remove_tag (buffer, view->selection_tag, &start_iter, &end_iter);
+
+  /* remove all the selection marks */
+  if (G_LIKELY (view->marks))
+    {
+      /* delete marks from the buffer */
+      for (li = view->marks; li != NULL; li = li->next)
+        gtk_text_buffer_delete_mark (buffer, li->data);
+
+      /* free the list */
+      g_slist_free (view->marks);
+
+      /* null */
+      view->marks = NULL;
+    }
+
+  /* reset status */
+  view->flags = 0;
+
+  /* update selection status */
+  mousepad_view_selection_emit_has_selection (view, FALSE);
+}
+
+
+
+static void
+mousepad_view_selection_add_word (MousepadView *view)
+{
+  GtkTextBuffer *buffer;
+  GtkTextIter    start_iter, end_iter;
+
+  /* get buffer */
+  buffer = mousepad_view_get_buffer (view);
+
+  /* get the iter at the start coordinate */
+  gtk_text_view_get_iter_at_location (GTK_TEXT_VIEW (view), &start_iter, view->selection_start_x, view->selection_start_y);
+
+  /* move the iter to the start of the word */
+  while (!gtk_text_iter_starts_word (&start_iter))
+    if (!gtk_text_iter_backward_char (&start_iter))
+      break;
+
+  /* set end iter */
+  end_iter = start_iter;
+
+  /* walk forward to end of the word */
+  while (!gtk_text_iter_ends_word (&end_iter))
+    if (!gtk_text_iter_forward_char (&end_iter))
+      break;
+
+  /* add the section when the iters are not equal */
+  if (!gtk_text_iter_equal (&start_iter, &end_iter))
+    {
+      /* add to the list */
+      mousepad_view_selection_add_marks (view, &start_iter, &end_iter);
+
+      /* redraw */
+      mousepad_view_selection_draw (view, FALSE, FALSE);
+    }
+}
+
+
+
+static void
+mousepad_view_selection_cleanup_equal_marks (MousepadView *view)
+{
+  GtkTextBuffer *buffer;
+  GtkTextIter    start_iter, end_iter;
+  GSList        *li, *lnext;
+
+  _mousepad_return_if_fail (view->marks == NULL || g_slist_length (view->marks) % 2 == 0);
+
+  /* get buffer */
+  buffer = mousepad_view_get_buffer (view);
+
+  for (li = view->marks; li != NULL; li = lnext)
+    {
+      /* get iters */
+      gtk_text_buffer_get_iter_at_mark (buffer, &start_iter, li->data);
+      gtk_text_buffer_get_iter_at_mark (buffer, &end_iter, li->next->data);
+
+      /* get next element */
+      lnext = li->next->next;
+
+      if (gtk_text_iter_equal (&start_iter, &end_iter))
         {
-          /* make sure the iters are correctly sorted */
-          gtk_text_iter_order (&start_iter, &end_iter);
+          gtk_text_buffer_delete_mark (buffer, li->next->data);
+          view->marks = g_slist_delete_link (view->marks, li->next);
 
-          /* append start mark to the list */
-          start_mark = gtk_text_buffer_create_mark (buffer, NULL, &start_iter, FALSE);
-          view->marks = g_slist_prepend (view->marks, start_mark);
-
-          /* append end mark to the list */
-          end_mark = gtk_text_buffer_create_mark (buffer, NULL, &end_iter, FALSE);
-          view->marks = g_slist_prepend (view->marks, end_mark);
+          gtk_text_buffer_delete_mark (buffer, li->data);
+          view->marks = g_slist_delete_link (view->marks, li);
         }
     }
 }
 
 
 
-static gboolean
-mousepad_view_vertical_selection_finish (MousepadView *view)
+static void
+mousepad_view_selection_add_marks (MousepadView *view,
+                                   GtkTextIter  *start_iter,
+                                   GtkTextIter  *end_iter)
+{
+  GtkTextBuffer *buffer;
+  GtkTextIter    iter;
+  GtkTextMark   *start_mark, *end_mark;
+  GSList        *li, *lnext;
+  gboolean       is_start = FALSE;
+  gboolean       handled_start = FALSE;
+  gint           compare;
+
+  _mousepad_return_if_fail (view->marks == NULL || g_slist_length (view->marks) % 2 == 0);
+
+  /* make sure the iters are correctly sorted */
+  gtk_text_iter_order (start_iter, end_iter);
+
+  /* get buffer */
+  buffer = mousepad_view_get_buffer (view);
+
+  /* create marks */
+  start_mark = gtk_text_buffer_create_mark (buffer, NULL, start_iter, TRUE);
+  end_mark = gtk_text_buffer_create_mark (buffer, NULL, end_iter, FALSE);
+
+  for (li = view->marks; li != NULL; li = lnext)
+    {
+      /* type of mark */
+      is_start = !is_start;
+
+      /* determine next element in the list */
+      lnext = li->next;
+
+      /* get the iter of a mark in the list */
+      gtk_text_buffer_get_iter_at_mark (buffer, &iter, li->data);
+
+      /* search the insert position of the start mark */
+      if (!handled_start)
+        {
+          /* compare iters */
+          compare = gtk_text_iter_compare (&iter, start_iter);
+
+          if (compare >= 0)
+            {
+              if (compare == 0 && gtk_text_iter_equal (start_iter, end_iter))
+                {
+                  /* zerro width insert on top of an existing mark, skip those */
+                  gtk_text_buffer_delete_mark (buffer, start_mark);
+                  gtk_text_buffer_delete_mark (buffer, end_mark);
+
+                  break;
+                }
+              else if (is_start)
+                {
+                  /* inserted before a start mark */
+                  view->marks = g_slist_insert_before (view->marks, li, start_mark);
+                }
+              else
+                {
+                  /* inserted after a start mark, remove the new one */
+                  gtk_text_buffer_delete_mark (buffer, start_mark);
+                }
+
+              /* we've handled the start mark */
+              handled_start = TRUE;
+            }
+        }
+
+      /* handle the end mark */
+      if (handled_start)
+        {
+          /* check if the iter can be merged inside our selection */
+          if (gtk_text_iter_compare (&iter, end_iter) < 0)
+            {
+              /* delete the existing mark from the buffer */
+              gtk_text_buffer_delete_mark (buffer, li->data);
+
+              /* delete item from the list */
+              view->marks = g_slist_delete_link (view->marks, li);
+            }
+          else
+            {
+              /* handle the end mark */
+              if (is_start)
+                view->marks = g_slist_insert_before (view->marks, li, end_mark);
+              else
+                gtk_text_buffer_delete_mark (buffer, end_mark);
+
+              break;
+            }
+        }
+    }
+
+  /* reached end of list */
+  if (li == NULL)
+    {
+      /* still not start mark added, append it to the list */
+      if (!handled_start)
+        view->marks = g_slist_append (view->marks, start_mark);
+
+      /* append end mark */
+      view->marks = g_slist_append (view->marks, end_mark);
+    }
+}
+
+
+
+static void
+mousepad_view_selection_draw (MousepadView *view,
+                              gboolean      draw_rectangles,
+                              gboolean      add_marks)
+{
+  GtkTextBuffer *buffer;
+  GtkTextView   *textview = GTK_TEXT_VIEW (view);
+  GtkTextIter    start_iter, end_iter;
+  gint           y, y_begin, y_height, y_end;
+  gboolean       has_content = FALSE;
+  GdkRectangle   rect;
+  GdkWindow     *window;
+  GSList        *li;
+
+  _mousepad_return_if_fail (view->marks == NULL || g_slist_length (view->marks) % 2 == 0);
+
+  /* get the buffer */
+  buffer = mousepad_view_get_buffer (view);
+
+  /* get the drawable window */
+  window = gtk_text_view_get_window (textview, GTK_TEXT_WINDOW_TEXT);
+
+  if (MOUSEPAD_HAS_FLAG (view->flags, HAS_CONTENT))
+    {
+      /* remove the old tags */
+      gtk_text_buffer_get_bounds (buffer, &start_iter, &end_iter);
+      gtk_text_buffer_remove_tag (buffer, view->selection_tag, &start_iter, &end_iter);
+    }
+  else
+    {
+      /* invalidate the window so no retangles are left */
+      gtk_widget_queue_draw (GTK_WIDGET (view));
+    }
+
+  /* if the selection already contains marks, show them first */
+  for (li = view->marks; li != NULL; li = li->next)
+    {
+      /* get the end iter */
+      gtk_text_buffer_get_iter_at_mark (buffer, &start_iter, li->data);
+
+      /* next element in the list */
+      li = li->next;
+
+      if (draw_rectangles)
+        {
+          /* get the iter location and size */
+          gtk_text_view_get_iter_location (textview, &start_iter, &rect);
+
+          /* draw a thin retangle in front of the iter */
+          gdk_draw_rectangle (GDK_DRAWABLE (window),
+                              GTK_WIDGET (view)->style->base_gc[GTK_STATE_SELECTED],
+                              TRUE, rect.x - textview->xoffset, rect.y - textview->yoffset,
+                              MOUSEPAD_VIEW_RECT_WIDTH, rect.height);
+        }
+      else
+        {
+          /* get the start iter */
+          gtk_text_buffer_get_iter_at_mark (buffer, &end_iter, li->data);
+
+          /* check if the iters are not equal */
+          if (!gtk_text_iter_equal (&start_iter, &end_iter))
+            {
+              /* apply tag */
+              gtk_text_buffer_apply_tag (buffer, view->selection_tag, &start_iter, &end_iter);
+
+              /* this selection has atleast some content */
+              has_content = TRUE;
+            }
+        }
+    }
+
+  /* when we're still dragging, show the selection in the area */
+  if (MOUSEPAD_HAS_FLAG (view->flags, DRAGGING))
+    {
+      /* get the start and end iter */
+      gtk_text_view_get_iter_at_location (textview, &start_iter, 0, view->selection_start_y);
+      gtk_text_view_get_iter_at_location (textview, &end_iter, 0, view->selection_end_y);
+
+      /* make sure the start iter is before the end iter */
+      gtk_text_iter_order (&start_iter, &end_iter);
+
+      /* get the y coordinates we're going to walk */
+      gtk_text_view_get_line_yrange (textview, &start_iter, &y_begin, &y_height);
+      gtk_text_view_get_line_yrange (textview, &end_iter, &y_end, NULL);
+
+      /* make sure atleast one line is selected */
+      y_end += y_height;
+
+      /* walk the lines inside the selection area */
+      for (y = y_begin; y < y_end; y += y_height)
+        {
+          /* get the start and end iter in the line */
+          gtk_text_view_get_iter_at_location (textview, &start_iter, view->selection_start_x, y);
+          gtk_text_view_get_iter_at_location (textview, &end_iter, view->selection_end_x, y);
+
+          if (draw_rectangles)
+            {
+              /* get the iter location and size */
+              gtk_text_view_get_iter_location (textview, &end_iter, &rect);
+
+              /* draw a thin retangle in front of the iter */
+              gdk_draw_rectangle (GDK_DRAWABLE (window),
+                                  GTK_WIDGET (view)->style->base_gc[GTK_STATE_SELECTED],
+                                  TRUE, rect.x - textview->xoffset, rect.y - textview->yoffset,
+                                  MOUSEPAD_VIEW_RECT_WIDTH, rect.height);
+            }
+          else if (!gtk_text_iter_equal (&start_iter, &end_iter))
+            {
+              /* apply tag */
+              gtk_text_buffer_apply_tag (buffer, view->selection_tag, &start_iter, &end_iter);
+
+              /* this selection has atleast some content */
+              has_content = TRUE;
+            }
+          else
+            {
+              /* when both of the conditions above were not met, we'll
+               * never added them to the marks list */
+              continue;
+            }
+
+          /* prepend to list */
+          if (add_marks)
+            {
+              /* add the marks */
+              mousepad_view_selection_add_marks (view, &start_iter, &end_iter);
+            }
+        }
+    }
+
+  /* update status when marks have been added */
+  if (add_marks && has_content && MOUSEPAD_HAS_FLAG (view->flags, MULTIPLE))
+    mousepad_view_selection_cleanup_equal_marks (view);
+
+  /* there is something in the list, prevent 0 flag */
+  if (view->marks != NULL)
+    MOUSEPAD_SET_FLAG (view->flags, HAS_SELECTION);
+
+  /* update selection status */
+  mousepad_view_selection_emit_has_selection (view, has_content);
+}
+
+
+
+static void
+mousepad_view_selection_emit_has_selection (MousepadView *view,
+                                            gboolean      has_content)
 {
   GtkTextBuffer *buffer;
 
-  /* cleanup the marks list */
-  if (view->marks)
-    mousepad_view_vertical_selection_free_marks (view);
+  /* jump when there is not selection */
+  if (view->flags == 0)
+    goto emit_has_selection;
 
-  /* update the highlight an prepend the marks */
-  mousepad_view_vertical_selection_handle (view, TRUE);
-
-  if (G_LIKELY (view->marks != NULL))
+  /* check if we need to emit */
+  if (has_content != MOUSEPAD_HAS_FLAG (view->flags, HAS_CONTENT))
     {
-      /* reverse the list after rebuilding */
-      view->marks = g_slist_reverse (view->marks);
+      /* update flag */
+      if (has_content)
+        MOUSEPAD_SET_FLAG (view->flags, HAS_CONTENT);
+      else
+        MOUSEPAD_UNSET_FLAG (view->flags, HAS_CONTENT);
+
+      /* label */
+      emit_has_selection:
 
       /* get the buffer */
       buffer = mousepad_view_get_buffer (view);
 
-      /* notify the has-selection signal */
-      buffer->has_selection = TRUE;
+      buffer->has_selection = has_content;
       g_object_notify (G_OBJECT (buffer), "has-selection");
-
-      return TRUE;
     }
-
-  return FALSE;
-}
-
-
-
-static void
-mousepad_view_vertical_selection_free_marks (MousepadView *view)
-{
-  GSList        *li;
-  GtkTextBuffer *buffer;
-
-  /* get the buffer */
-  buffer = mousepad_view_get_buffer (view);
-
-  /* remove all the marks */
-  for (li = view->marks; li != NULL; li = li->next)
-    gtk_text_buffer_delete_mark (buffer, li->data);
-
-  /* free the list */
-  g_slist_free (view->marks);
-
-  /* null */
-  view->marks = NULL;
-}
-
-
-static void
-mousepad_view_vertical_selection_clear (MousepadView *view)
-{
-  GtkTextBuffer *buffer;
-  GtkTextIter    start, end;
-
-  _mousepad_return_if_fail (view->marks != NULL);
-
-  /* get the buffer */
-  buffer = mousepad_view_get_buffer (view);
-
-  /* no selection */
-  buffer->has_selection = FALSE;
-  g_object_notify (G_OBJECT (buffer), "has-selection");
-
-  /* remove the selections */
-  gtk_text_buffer_get_bounds (buffer, &start, &end);
-  gtk_text_buffer_remove_tag (buffer, view->tag, &start, &end);
-
-  /* reset the coordinates */
-  view->vertical_start_x = view->vertical_start_y =
-  view->vertical_end_x = view->vertical_end_y = -1;
-
-  /* cleanup marks */
-  mousepad_view_vertical_selection_free_marks (view);
 }
 
 
 
 static gboolean
-mousepad_view_vertical_selection_timeout (gpointer user_data)
+mousepad_view_selection_timeout (gpointer user_data)
 {
   MousepadView  *view = MOUSEPAD_VIEW (user_data);
   GtkTextView   *textview = GTK_TEXT_VIEW (view);
-  gint           vertical_start_x, vertical_start_y;
-  gint           vertical_end_x, vertical_end_y;
+  gint           pointer_x, pointer_y;
+  gint           selection_start_x, selection_start_y;
   GtkTextBuffer *buffer;
   GtkTextIter    iter;
+
+  _mousepad_return_val_if_fail (MOUSEPAD_HAS_FLAG (view->flags, DRAGGING), FALSE);
 
   GDK_THREADS_ENTER ();
 
   /* get the cursor coordinate */
   gdk_window_get_pointer (gtk_text_view_get_window (textview, GTK_TEXT_WINDOW_TEXT),
-                          &vertical_end_x, &vertical_end_y, NULL);
+                          &pointer_x, &pointer_y, NULL);
 
-  /* convert to positive values and buffer coordinates */
-  vertical_end_x = MAX (vertical_end_x, 0) + textview->xoffset;
-  vertical_end_y = MAX (vertical_end_y, 0) + textview->yoffset;
+  /* convert to positive values and add buffer offset */
+  pointer_x = MAX (pointer_x, 0) + textview->xoffset;
+  pointer_y = MAX (pointer_y, 0) + textview->yoffset;
 
   /* only update the selection when the cursor moved */
-  if (view->vertical_end_x != vertical_end_x || view->vertical_end_y != vertical_end_y)
+  if (view->selection_end_x != pointer_x || view->selection_end_y != pointer_y)
     {
       /* update the end coordinates */
-      view->vertical_end_x = vertical_end_x;
-      view->vertical_end_y = vertical_end_y;
+      view->selection_end_x = pointer_x;
+      view->selection_end_y = pointer_y;
 
       /* backup start coordinates */
-      vertical_start_x = view->vertical_start_x;
-      vertical_start_y = view->vertical_start_y;
+      selection_start_x = view->selection_start_x;
+      selection_start_y = view->selection_start_y;
 
-      /* during the timeout, we're only interested in the visible selection */
-      view->vertical_start_x = MAX (view->vertical_start_x, textview->xoffset);
-      view->vertical_start_y = MAX (view->vertical_start_y, textview->yoffset);
+      /* only draw the visible selection during timeout */
+      view->selection_start_x = MAX (view->selection_start_x, textview->xoffset);
+      view->selection_start_y = MAX (view->selection_start_y, textview->yoffset);
 
-      /* update the selection */
-      mousepad_view_vertical_selection_handle (view, FALSE);
+      /* show the selection */
+      mousepad_view_selection_draw (view, FALSE, FALSE);
 
       /* restore the start coordinates */
-      view->vertical_start_x = vertical_start_x;
-      view->vertical_start_y = vertical_start_y;
+      view->selection_start_x = selection_start_x;
+      view->selection_start_y = selection_start_y;
 
       /* get the text buffer */
       buffer = mousepad_view_get_buffer (view);
 
       /* put the cursor under the mouse pointer */
-      gtk_text_view_get_iter_at_location (textview, &iter, vertical_end_x, vertical_end_y);
+      gtk_text_view_get_iter_at_location (textview, &iter, pointer_x, pointer_y);
       gtk_text_buffer_place_cursor (buffer, &iter);
 
       /* put cursor on screen */
@@ -767,19 +1208,76 @@ mousepad_view_vertical_selection_timeout (gpointer user_data)
 
 
 static void
-mousepad_view_vertical_selection_timeout_destroy (gpointer user_data)
+mousepad_view_selection_timeout_destroy (gpointer user_data)
 {
-  MOUSEPAD_VIEW (user_data)->vertical_timeout_id = 0;
+  MOUSEPAD_VIEW (user_data)->selection_timeout_id = 0;
 }
+
+
+
+static void
+mousepad_view_selection_clipboard (MousepadView *view,
+                                   GtkClipboard *clipboard)
+{
+  GString       *string;
+  GtkTextBuffer *buffer;
+  gint           line, previous_line = -1;
+  gchar         *slice;
+  GtkTextIter    start_iter, end_iter;
+  GSList        *li;
+
+  _mousepad_return_if_fail (view->marks == NULL || g_slist_length (view->marks) % 2 == 0);
+
+  /* create string with some size so we don't have to realloc a zillon times */
+  string = g_string_sized_new (1024);
+
+  /* get the buffer */
+  buffer = mousepad_view_get_buffer (view);
+
+  for (li = view->marks; li != NULL; li = li->next)
+    {
+      /* get the iters */
+      gtk_text_buffer_get_iter_at_mark (buffer, &start_iter, li->data);
+      li = li->next;
+      gtk_text_buffer_get_iter_at_mark (buffer, &end_iter, li->data);
+
+      /* get the line number */
+      line = gtk_text_iter_get_line (&start_iter);
+
+      /* fix the number of new lines between the parts */
+      if (previous_line == -1)
+        previous_line = line;
+      else if (!MOUSEPAD_HAS_FLAG (view->flags, MULTIPLE))
+        for (; previous_line < line; previous_line++)
+          string = g_string_append_c (string, '\n');
+      else
+        string = g_string_append_c (string, '\n');
+
+      /* get the text slice */
+      slice = gtk_text_buffer_get_slice (buffer, &start_iter, &end_iter, TRUE);
+
+      /* append the slice to the string */
+      string = g_string_append (string, slice);
+
+      /* cleanup */
+      g_free (slice);
+    }
+
+  /* set the clipboard text */
+  gtk_clipboard_set_text (clipboard, string->str, string->len);
+
+  /* free the string */
+  g_string_free (string, TRUE);
+}
+
 
 
 /**
  * Indentation Functions
  **/
 static void
-mousepad_view_increase_indent_iter (MousepadView *view,
-                                    GtkTextIter  *iter,
-                                    gboolean      tab)
+mousepad_view_indent_increase (MousepadView *view,
+                               GtkTextIter  *iter)
 {
   gchar         *string;
   gint           offset, length, inline_len;
@@ -788,7 +1286,7 @@ mousepad_view_increase_indent_iter (MousepadView *view,
   /* get the buffer */
   buffer = mousepad_view_get_buffer (view);
 
-  if (view->insert_spaces && tab)
+  if (view->insert_spaces)
     {
       /* get the offset */
       offset = mousepad_util_get_real_line_offset (iter, view->tab_size);
@@ -813,67 +1311,39 @@ mousepad_view_increase_indent_iter (MousepadView *view,
   else
     {
       /* insert a tab or a space */
-      gtk_text_buffer_insert (buffer, iter, tab ? "\t" : " ", -1);
+      gtk_text_buffer_insert (buffer, iter, "\t", -1);
     }
 }
 
 
 
 static void
-mousepad_view_decrease_indent_iter (MousepadView *view,
-                                    GtkTextIter  *iter,
-                                    gboolean      tab)
+mousepad_view_indent_decrease (MousepadView *view,
+                               GtkTextIter  *iter)
 {
   GtkTextBuffer *buffer;
   GtkTextIter    start, end;
-  gint           columns = 1;
+  gint           columns = view->tab_size;
   gunichar       c;
 
   /* set iters */
   start = end = *iter;
 
-  if (gtk_text_iter_starts_line (iter))
+  /* walk until we've removed enough columns */
+  while (columns > 0)
     {
-       /* set number of columns */
-       columns = tab ? view->tab_size : 1;
+      /* get the character */
+      c = gtk_text_iter_get_char (&end);
 
-       /* walk until we've removed enough columns */
-       while (columns > 0)
-         {
-           /* get the character */
-           c = gtk_text_iter_get_char (&end);
+      if (c == '\t')
+        columns -= view->tab_size;
+      else if (c == ' ')
+        columns--;
+      else
+        break;
 
-           if (c == '\t')
-             columns -= view->tab_size;
-           else if (c == ' ')
-             columns--;
-           else
-             break;
-
-           /* go to the next character */
-           gtk_text_iter_forward_char (&end);
-         }
-    }
-  else
-    {
-      /* walk backwards until we've removed enough columns */
-      while (columns > 0
-             && !gtk_text_iter_starts_line (iter)
-             && gtk_text_iter_backward_char (iter))
-        {
-          /* get character */
-          c = gtk_text_iter_get_char (iter);
-
-          if (c == '\t')
-            columns -= view->tab_size;
-          else if (c == ' ')
-             columns--;
-           else
-             break;
-
-          /* update the start iter */
-          start = *iter;
-        }
+      /* go to the next character */
+      gtk_text_iter_forward_char (&end);
     }
 
   /* unindent the selection when the iters are not equal */
@@ -891,52 +1361,28 @@ mousepad_view_decrease_indent_iter (MousepadView *view,
 
 static void
 mousepad_view_indent_selection (MousepadView *view,
-                                gboolean      increase,
-                                gboolean      tab)
+                                gboolean      increase)
 {
   GtkTextBuffer *buffer;
   GtkTextIter    start_iter, end_iter;
-  GSList        *li;
   gint           start_line, end_line;
   gint           i;
 
   /* get the textview buffer */
   buffer = mousepad_view_get_buffer (view);
 
-  /* begin a user action */
-  gtk_text_buffer_begin_user_action (buffer);
-
-  if (view->marks != NULL)
+  if (gtk_text_buffer_get_selection_bounds (buffer, &start_iter, &end_iter))
     {
-      for (li = view->marks; li != NULL; li = li->next)
-        {
-          /* get the iter */
-          gtk_text_buffer_get_iter_at_mark (buffer, &start_iter, li->data);
+      /* begin a user action */
+      gtk_text_buffer_begin_user_action (buffer);
 
-          /* only indent when the iter does not start a line */
-          if (!gtk_text_iter_starts_line (&start_iter))
-            {
-              /* increase or decrease the indentation */
-              if (increase)
-                mousepad_view_increase_indent_iter (view, &start_iter, tab);
-              else
-                mousepad_view_decrease_indent_iter (view, &start_iter, tab);
-            }
-
-          /* skip end mark in the list (always pairs of two) */
-          li = li->next;
-        }
-    }
-  else if (gtk_text_buffer_get_selection_bounds (buffer, &start_iter, &end_iter))
-    {
       /* get start and end line */
       start_line = gtk_text_iter_get_line (&start_iter);
       end_line = gtk_text_iter_get_line (&end_iter);
 
       /* only change indentation when an entire line is selected or multiple lines */
       if (start_line != end_line
-          || (gtk_text_iter_starts_line (&start_iter)
-              && gtk_text_iter_ends_line (&end_iter)))
+          || (gtk_text_iter_starts_line (&start_iter) && gtk_text_iter_ends_line (&end_iter)))
         {
           /* change indentation of each line */
           for (i = start_line; i <= end_line; i++)
@@ -950,25 +1396,25 @@ mousepad_view_indent_selection (MousepadView *view,
 
               /* increase or decrease the indentation */
               if (increase)
-                mousepad_view_increase_indent_iter (view, &start_iter, tab);
+                mousepad_view_indent_increase (view, &start_iter);
               else
-                mousepad_view_decrease_indent_iter (view, &start_iter, tab);
+                mousepad_view_indent_decrease (view, &start_iter);
             }
         }
+
+      /* end user action */
+      gtk_text_buffer_end_user_action (buffer);
+
+      /* put cursor on screen */
+      mousepad_view_put_cursor_on_screen (view);
     }
-
-  /* end user action */
-  gtk_text_buffer_end_user_action (buffer);
-
-  /* put cursor on screen */
-  mousepad_view_put_cursor_on_screen (view);
 }
 
 
 
 static gchar *
-mousepad_view_indentation_string (GtkTextBuffer     *buffer,
-                                  const GtkTextIter *iter)
+mousepad_view_indent_string (GtkTextBuffer     *buffer,
+                             const GtkTextIter *iter)
 {
   GtkTextIter start, end;
   gint        line;
@@ -1027,89 +1473,6 @@ mousepad_view_calculate_layout_width (GtkWidget *widget,
 
 
 
-static void
-mousepad_view_clipboard (MousepadView *view,
-                         GtkClipboard *clipboard,
-                         gboolean      remove)
-{
-  GString       *string = NULL;
-  GSList        *li;
-  gint           ln, previous_ln = -1;
-  gchar         *slice;
-  GtkTextBuffer *buffer;
-  GtkTextMark   *mark_start, *mark_end;
-  GtkTextIter    iter_start, iter_end;
-
-  /* get the buffer */
-  buffer = mousepad_view_get_buffer (view);
-
-  /* create a new string */
-  if (clipboard)
-    string = g_string_new (NULL);
-
-  /* begin user action */
-  gtk_text_buffer_begin_user_action (buffer);
-
-  /* walk through the marks */
-  for (li = view->marks; li != NULL; li = li->next)
-    {
-      /* get the start mark */
-      mark_start = li->data;
-
-      /* jump to next item in the list */
-      li = li->next;
-
-      /* get end mark */
-      mark_end = li->data;
-
-      /* and their iter positions */
-      gtk_text_buffer_get_iter_at_mark (buffer, &iter_start, mark_start);
-      gtk_text_buffer_get_iter_at_mark (buffer, &iter_end, mark_end);
-
-      /* only handle the selection when there is clipbaord */
-      if (clipboard)
-        {
-          /* the line number of the iter */
-          ln = gtk_text_iter_get_line (&iter_start);
-
-          /* fix the number of new lines between the parts */
-          if (previous_ln == -1)
-            previous_ln = ln;
-          else
-            for (; previous_ln < ln; previous_ln++)
-              string = g_string_append_c (string, '\n');
-
-          /* get the text slice */
-          slice = gtk_text_buffer_get_slice (buffer, &iter_start, &iter_end, TRUE);
-
-          /* append the slice to the string */
-          string = g_string_append (string, slice);
-
-          /* cleanup */
-          g_free (slice);
-        }
-
-      /* delete the text between the iters if requested */
-      if (remove)
-        gtk_text_buffer_delete (buffer, &iter_start, &iter_end);
-    }
-
-  /* end user action */
-  gtk_text_buffer_end_user_action (buffer);
-
-  /* set the clipboard text */
-  if (G_LIKELY (clipboard))
-    {
-      /* set the clipboard text */
-      gtk_clipboard_set_text (clipboard, string->str, string->len);
-
-      /* free the string */
-      g_string_free (string, TRUE);
-    }
-}
-
-
-
 void
 mousepad_view_put_cursor_on_screen (MousepadView *view)
 {
@@ -1140,13 +1503,16 @@ mousepad_view_clipboard_cut (MousepadView *view)
   /* get the clipboard */
   clipboard = gtk_widget_get_clipboard (GTK_WIDGET (view), GDK_SELECTION_CLIPBOARD);
 
-  if (view->marks)
+  if (view->flags != 0)
     {
-      /* call the clipboard function with remove bool */
-      mousepad_view_clipboard (view, clipboard, TRUE);
+      /* copy to clipboard */
+      mousepad_view_selection_clipboard (view, clipboard);
 
       /* cleanup the vertical selection */
-      mousepad_view_vertical_selection_clear (view);
+      mousepad_view_selection_delete_content (view);
+
+      /* destroy selection */
+      mousepad_view_selection_destroy (view);
     }
   else
     {
@@ -1175,10 +1541,11 @@ mousepad_view_clipboard_copy (MousepadView *view)
   /* get the clipboard */
   clipboard = gtk_widget_get_clipboard (GTK_WIDGET (view), GDK_SELECTION_CLIPBOARD);
 
-  if (view->marks)
+
+  if (view->flags != 0)
     {
-      /* call the clipboard function */
-      mousepad_view_clipboard (view, clipboard, FALSE);
+      /* copy selection to clipboard */
+      mousepad_view_selection_clipboard (view, clipboard);
     }
   else
     {
@@ -1294,13 +1661,13 @@ mousepad_view_delete_selection (MousepadView *view)
   _mousepad_return_if_fail (MOUSEPAD_IS_VIEW (view));
   _mousepad_return_if_fail (mousepad_view_get_has_selection (view));
 
-  if (view->marks)
+  if (view->flags != 0)
     {
-      /* remove the text in the vertical selection */
-      mousepad_view_clipboard (view, NULL, TRUE);
+      /* remove the text in our selection */
+      mousepad_view_selection_delete_content (view);
 
       /* cleanup the vertical selection */
-      mousepad_view_vertical_selection_clear (view);
+      mousepad_view_selection_destroy (view);
     }
   else
     {
@@ -1325,9 +1692,9 @@ mousepad_view_select_all (MousepadView *view)
 
   _mousepad_return_if_fail (MOUSEPAD_IS_VIEW (view));
 
-  /* cleanup vertical selection */
-  if (view->marks)
-    mousepad_view_vertical_selection_clear (view);
+  /* cleanup our selection */
+  if (view->flags != 0)
+    mousepad_view_selection_destroy (view);
 
   /* get buffer */
   buffer = mousepad_view_get_buffer (view);
@@ -1428,7 +1795,7 @@ mousepad_view_get_has_selection (MousepadView *view)
   _mousepad_return_val_if_fail (MOUSEPAD_IS_VIEW (view), FALSE);
 
   /* we have a vertical selection */
-  if (view->marks != NULL)
+  if (view->flags != 0)
     return TRUE;
 
   /* get the text buffer */

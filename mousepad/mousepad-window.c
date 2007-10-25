@@ -156,6 +156,11 @@ static void              mousepad_window_can_redo                     (MousepadW
 /* menu functions */
 static void              mousepad_window_menu_tab_sizes               (MousepadWindow         *window);
 static void              mousepad_window_menu_tab_sizes_update        (MousepadWindow         *window);
+static void              mousepad_window_menu_textview_deactivate     (GtkWidget              *menu,
+                                                                       GtkTextView            *textview);
+static void              mousepad_window_menu_textview_popup          (GtkTextView            *textview,
+                                                                       GtkMenu                *old_menu,
+                                                                       MousepadWindow         *window);
 static void              mousepad_window_update_actions               (MousepadWindow         *window);
 static gboolean          mousepad_window_update_gomenu_idle           (gpointer                user_data);
 static void              mousepad_window_update_gomenu_idle_destroy   (gpointer                user_data);
@@ -1226,6 +1231,7 @@ mousepad_window_notebook_added (GtkNotebook     *notebook,
   g_signal_connect_swapped (G_OBJECT (document->undo), "can-undo", G_CALLBACK (mousepad_window_can_undo), window);
   g_signal_connect_swapped (G_OBJECT (document->undo), "can-redo", G_CALLBACK (mousepad_window_can_redo), window);
   g_signal_connect_swapped (G_OBJECT (document->buffer), "modified-changed", G_CALLBACK (mousepad_window_modified_changed), window);
+  g_signal_connect (G_OBJECT (document->textview), "populate-popup", G_CALLBACK (mousepad_window_menu_textview_popup), window);
 
   /* get the number of pages */
   npages = gtk_notebook_get_n_pages (GTK_NOTEBOOK (window->notebook));
@@ -1271,6 +1277,7 @@ mousepad_window_notebook_removed (GtkNotebook     *notebook,
   g_signal_handlers_disconnect_by_func (G_OBJECT (document->undo), mousepad_window_can_undo, window);
   g_signal_handlers_disconnect_by_func (G_OBJECT (document->undo), mousepad_window_can_redo, window);
   g_signal_handlers_disconnect_by_func (G_OBJECT (document->buffer), mousepad_window_modified_changed, window);
+  g_signal_handlers_disconnect_by_func (G_OBJECT (document->textview), mousepad_window_menu_textview_popup, window);
 
   /* unset the go menu item (part of the old window) */
   g_object_set_data (G_OBJECT (page), I_("navigation-menu-action"), NULL);
@@ -1640,6 +1647,52 @@ mousepad_window_menu_tab_sizes_update (MousepadWindow  *window)
   lock_menu_updates--;
 }
 
+
+
+static void
+mousepad_window_menu_textview_deactivate (GtkWidget   *menu,
+                                          GtkTextView *textview)
+{
+  _mousepad_return_if_fail (GTK_IS_TEXT_VIEW (textview));
+  _mousepad_return_if_fail (textview->popup_menu == menu);
+
+  /* disconnect this signal */
+  g_signal_handlers_disconnect_by_func (G_OBJECT (menu), mousepad_window_menu_textview_deactivate, textview);
+
+  /* unset the popup menu since your menu is owned by the ui manager */
+  GTK_TEXT_VIEW (textview)->popup_menu = NULL;
+}
+
+
+
+static void
+mousepad_window_menu_textview_popup (GtkTextView    *textview,
+                                     GtkMenu        *old_menu,
+                                     MousepadWindow *window)
+{
+  GtkWidget *menu;
+
+  _mousepad_return_if_fail (GTK_WIDGET (old_menu) == textview->popup_menu);
+  _mousepad_return_if_fail (GTK_IS_TEXT_VIEW (textview));
+  _mousepad_return_if_fail (MOUSEPAD_IS_WINDOW (window));
+  _mousepad_return_if_fail (MOUSEPAD_IS_DOCUMENT (window->active));
+  _mousepad_return_if_fail (GTK_IS_MENU (textview->popup_menu));
+
+  /* destroy origional menu */
+  gtk_widget_destroy (textview->popup_menu);
+
+  /* get the textview menu */
+  menu = gtk_ui_manager_get_widget (window->ui_manager, "/textview-menu");
+
+  /* connect signal */
+  g_signal_connect (G_OBJECT (menu), "deactivate", G_CALLBACK (mousepad_window_menu_textview_deactivate), textview);
+
+  /* set screen */
+  gtk_menu_set_screen (GTK_MENU (menu), gtk_widget_get_screen (GTK_WIDGET (textview)));
+
+  /* set ours */
+  textview->popup_menu = menu;
+}
 
 
 

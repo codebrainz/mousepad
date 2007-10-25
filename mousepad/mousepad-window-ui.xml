@@ -108,4 +108,17 @@
     <menuitem action="detach-tab" />
     <menuitem action="close-tab" />
   </popup>
+
+  <popup action="textview-menu">
+    <menuitem action="undo" />
+    <menuitem action="redo" />
+    <separator />
+    <menuitem action="cut" />
+    <menuitem action="copy" />
+    <menuitem action="paste" />
+    <menuitem action="paste-column" />
+    <menuitem action="delete" />
+    <separator />
+    <menuitem action="select-all" />
+  </popup>
 </ui>

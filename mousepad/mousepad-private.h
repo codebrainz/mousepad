@@ -25,6 +25,11 @@
 
 G_BEGIN_DECLS
 
+/* handling flags */
+#define MOUSEPAD_SET_FLAG(flags,flag)   G_STMT_START{ ((flags) |= (flag)); }G_STMT_END
+#define MOUSEPAD_UNSET_FLAG(flags,flag) G_STMT_START{ ((flags) &= ~(flag)); }G_STMT_END
+#define MOUSEPAD_HAS_FLAG(flags,flag)   (((flags) & (flag)) != 0)
+
 /* for personal testing */
 #define TIMER_START  GTimer *__FUNCTION__timer = g_timer_new();
 #define TIMER_SPLIT  g_print ("%s (%s:%d): %.2f ms\n", __FUNCTION__, __FILE__, __LINE__, g_timer_elapsed (__FUNCTION__timer, NULL) * 1000);

@@ -1,3 +1,18 @@
+2007-10-25	Nick Schermer <nick@xfce.org>
+	* mousepad/mousepad-view.c: Reimplemented multi-selection. It is also
+	  possible to do multi editing (typing in all the selections), select
+	  random words in the document (they will be copied to the clipboard as
+	  a list of words) and multi insert (create a drag without content or
+	  drag at the end of lines). Multiple selection will also be merged
+	  when possible. This proably has some rough edges, but it works pretty
+	  good. Keyboard multi drags will be added later.
+	* docs/manual/C/Mousepad.xml.in: Add a bit of info about multiple- and
+	  column-selections, but I'm not very good at this.
+	* mousepad/mousepad-{window.c,window-ui.xml}: Use our edit menu on right
+	  click, so copy/paste/delete works with multi selections. Also saves a
+	  bit of code since it integrates with the ui-manager.
+
+
 2007-10-23	Nick Schermer <nick@xfce.org>
 	* configure.in.in, po/POTFILES.in: Fix dist-check. Thank to Brian
 	  for the hint.

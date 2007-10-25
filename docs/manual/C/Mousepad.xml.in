@@ -63,7 +63,7 @@
     </para>
   </sect1>
 
-  <sect1 id="the-mousepad-window">
+  <sect1 id="mousepad-window">
     <title>The Mousepad Window</title>
 
     <para>
@@ -85,6 +85,30 @@
         it is also possible to drag a tab and drop it on another location on the screen.
       </para>
     </sect2>
+  </sect1>
+
+  <sect1 id="multi-selection">
+    <title>Multi Editing</title>
+
+    <para>
+      Mousepad supports multiple- and column-selections. You can start a column selection by pressing the <keycap>Ctrl</keycap>
+      key and starting a drag with your mouse. To add single words to the selection press <keycap>Ctrl</keycap> and double-click
+      a word with the mouse pointer. As long as you press <keycap>Ctrl</keycap> you can add content to the selection.
+    </para>
+
+    <para>
+      When you've created a multi-selection, it is possible to cut or copy this to the clipboard. When you start typing after a
+      multi-selection, the selected content will be removed and the typed characters will appear in each selected part.
+    </para>
+
+    <para>
+      It is also possible to use this for multi typing. When you press <keycap>Ctrl</keycap> and drag at the end of a couple of lines
+      you will see blue retangles appear at the end of the lines. When you start typing the characters will be added to each selected
+      line. You can add as much of these insert points as you want as long you don't select a whole character.
+
+      Another useful key combination with multi typing is <keycombo><keycap>Ctrl</keycap><keycap>Backspace</keycap></keycombo>, this will
+      also remove character left or the insert point, while <keycap>Backspace</keycap> only removes characters inside the selection.
+    </para>
   </sect1>
 </article>
 <!--

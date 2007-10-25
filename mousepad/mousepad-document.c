@@ -260,7 +260,6 @@ mousepad_document_init (MousepadDocument *document)
   g_signal_connect (G_OBJECT (document->buffer), "notify::has-selection", G_CALLBACK (mousepad_document_notify_has_selection), document);
   g_signal_connect (G_OBJECT (document->buffer), "notify::cursor-position", G_CALLBACK (mousepad_document_notify_cursor_position), document);
   g_signal_connect (G_OBJECT (document->textview), "notify::overwrite", G_CALLBACK (mousepad_document_toggle_overwrite), document);
-  g_signal_connect (G_OBJECT (document->textview), "populate-popup", G_CALLBACK (mousepad_undo_populate_popup), document->undo);
   g_signal_connect (G_OBJECT (document->textview), "drag-data-received", G_CALLBACK (mousepad_document_drag_data_received), document);
 }
 
