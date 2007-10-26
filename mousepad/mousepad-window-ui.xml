@@ -56,6 +56,8 @@
       <menuitem action="delete" />
       <separator />
       <menuitem action="select-all" />
+      <separator />
+      <menuitem action="transpose" />
     </menu>
 
     <menu action="search-menu">

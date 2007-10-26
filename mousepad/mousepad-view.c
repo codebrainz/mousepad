@@ -77,6 +77,15 @@ static gchar    *mousepad_view_indent_string                 (GtkTextBuffer     
 static gint      mousepad_view_calculate_layout_width        (GtkWidget          *widget,
                                                               gsize               length,
                                                               gchar               fill_char);
+static void      mousepad_view_transpose_range               (GtkTextBuffer       *buffer,
+                                                              GtkTextIter         *start_iter,
+                                                              GtkTextIter         *end_iter);
+static void      mousepad_view_transpose_lines               (GtkTextBuffer       *buffer,
+                                                              GtkTextIter         *start_iter,
+                                                              GtkTextIter         *end_iter);
+static void      mousepad_view_transpose_words               (GtkTextBuffer       *buffer,
+                                                              GtkTextIter         *iter);
+
 
 
 enum _MousepadViewFlags
@@ -1232,8 +1241,8 @@ mousepad_view_selection_clipboard (MousepadView *view,
 
   _mousepad_return_if_fail (view->marks == NULL || g_slist_length (view->marks) % 2 == 0);
 
-  /* create string with some size so we don't have to realloc a zillon times */
-  string = g_string_sized_new (1024);
+  /* create new string */
+  string = g_string_new (NULL);
 
   /* get the buffer */
   buffer = mousepad_view_get_buffer (view);
@@ -1491,6 +1500,243 @@ mousepad_view_put_cursor_on_screen (MousepadView *view)
   gtk_text_view_scroll_to_mark (GTK_TEXT_VIEW (view),
                                 gtk_text_buffer_get_insert (buffer),
                                 0.02, FALSE, 0.0, 0.0);
+}
+
+
+
+static void
+mousepad_view_transpose_range (GtkTextBuffer *buffer,
+                               GtkTextIter   *start_iter,
+                               GtkTextIter   *end_iter)
+{
+  gchar *string, *reversed;
+  gint   offset;
+
+  /* store start iter line offset */
+  offset = gtk_text_iter_get_offset (start_iter);
+
+  /* get selected text */
+  string = gtk_text_buffer_get_slice (buffer, start_iter, end_iter, FALSE);
+
+  /* reverse the string */
+  reversed = g_utf8_strreverse (string, -1);
+
+  /* cleanup */
+  g_free (string);
+
+  /* delete the text between the iters */
+  gtk_text_buffer_delete (buffer, start_iter, end_iter);
+
+  /* insert the reversed string */
+  gtk_text_buffer_insert (buffer, end_iter, reversed, -1);
+
+  /* cleanup */
+  g_free (reversed);
+
+  /* restore start iter */
+  gtk_text_buffer_get_iter_at_offset (buffer, start_iter, offset);
+}
+
+
+
+static void
+mousepad_view_transpose_lines (GtkTextBuffer *buffer,
+                               GtkTextIter   *start_iter,
+                               GtkTextIter   *end_iter)
+{
+  GString *string;
+  gint     start_line, end_line;
+  gint     i;
+  gchar   *slice;
+
+  /* make sure the order is ok */
+  gtk_text_iter_order (start_iter, end_iter);
+
+  /* get the line numbers */
+  start_line = gtk_text_iter_get_line (start_iter);
+  end_line = gtk_text_iter_get_line (end_iter);
+
+  /* new string */
+  string = g_string_new (NULL);
+
+  /* add the lines in reversed order to the string */
+  for (i = start_line; i <= end_line; i++)
+    {
+      /* get start iter */
+      gtk_text_buffer_get_iter_at_line (buffer, start_iter, i);
+
+      /* set end iter */
+      *end_iter = *start_iter;
+
+      /* only prepend when the iters won't be equal */
+      if (!gtk_text_iter_ends_line (end_iter))
+        {
+          /* move the iter to the end of this line */
+          gtk_text_iter_forward_to_line_end (end_iter);
+
+          /* prepend line */
+          slice = gtk_text_buffer_get_slice (buffer, start_iter, end_iter, FALSE);
+          string = g_string_prepend (string, slice);
+          g_free (slice);
+        }
+
+      /* prepend new line */
+      if (i < end_line)
+        string = g_string_prepend_c (string, '\n');
+    }
+
+  /* get start iter again */
+  gtk_text_buffer_get_iter_at_line (buffer, start_iter, start_line);
+
+  /* delete selection */
+  gtk_text_buffer_delete (buffer, start_iter, end_iter);
+
+  /* insert reversed lines */
+  gtk_text_buffer_insert (buffer, end_iter, string->str, string->len);
+
+  /* cleanup */
+  g_string_free (string, TRUE);
+
+  /* restore start iter */
+  gtk_text_buffer_get_iter_at_line (buffer, start_iter, start_line);
+}
+
+
+
+static void
+mousepad_view_transpose_words (GtkTextBuffer *buffer,
+                               GtkTextIter   *iter)
+{
+  GtkTextIter  start_one, end_one, end_two;
+  gchar       *word_left, *word_right, *word_space;
+
+  /* move the iter to the start of first word */
+  gtk_text_iter_backward_word_start (iter);
+  start_one = *iter;
+  if (!gtk_text_iter_starts_word (iter))
+    return;
+
+  /* move to end of first word */
+  gtk_text_iter_forward_word_end (iter);
+  end_one = *iter;
+  if (!gtk_text_iter_ends_word (iter))
+    return;
+
+  /* move to end of second word */
+  gtk_text_iter_forward_word_end (iter);
+  end_two = *iter;
+  if (!gtk_text_iter_ends_word (iter))
+    return;
+
+  /* move to start of second word */
+  gtk_text_iter_backward_word_start (iter);
+  if (!gtk_text_iter_starts_word (iter))
+    return;
+
+  /* only do this on the same line */
+  if (gtk_text_iter_get_line (&start_one) != gtk_text_iter_get_line (&end_two))
+    return;
+
+  /* get the three parts */
+  word_left = gtk_text_buffer_get_slice (buffer, &start_one, &end_one, FALSE);
+  word_space = gtk_text_buffer_get_slice (buffer, &end_one, iter, FALSE);
+  word_right = gtk_text_buffer_get_slice (buffer, iter, &end_two, FALSE);
+
+  /* build string */
+  gtk_text_buffer_delete (buffer, &start_one, &end_two);
+  *iter = end_two;
+
+  /* insert right word */
+  gtk_text_buffer_insert (buffer, iter, word_right, -1);
+  g_free (word_right);
+
+  /* insert space */
+  gtk_text_buffer_insert (buffer, iter, word_space, -1);
+  g_free (word_space);
+
+  /* insert left word */
+  gtk_text_buffer_insert (buffer, iter, word_left, -1);
+  g_free (word_left);
+
+  /* return valid iter */
+  gtk_text_iter_backward_word_start (iter);
+
+  /* place cursor */
+  gtk_text_buffer_place_cursor (buffer, iter);
+}
+
+
+
+void
+mousepad_view_transpose (MousepadView *view)
+{
+  GtkTextBuffer *buffer;
+  GtkTextIter    sel_start, sel_end;
+
+  _mousepad_return_if_fail (MOUSEPAD_IS_VIEW (view));
+
+  /* get buffer */
+  buffer = mousepad_view_get_buffer (view);
+
+  /* begin user action */
+  gtk_text_buffer_begin_user_action (buffer);
+
+  if (view->flags != 0)
+    {
+
+    }
+  else if (gtk_text_buffer_get_selection_bounds (buffer, &sel_start, &sel_end))
+    {
+      /* if the selection is not on the same line, include the whole lines */
+      if (gtk_text_iter_get_line (&sel_start) == gtk_text_iter_get_line (&sel_end))
+        {
+          /* reverse selection */
+          mousepad_view_transpose_range (buffer, &sel_start, &sel_end);
+        }
+      else
+        {
+          /* reverse lines */
+          mousepad_view_transpose_lines (buffer, &sel_start, &sel_end);
+        }
+
+      /* restore selection */
+      gtk_text_buffer_select_range (buffer, &sel_start, &sel_end);
+    }
+  else
+    {
+      /* get cursor iter */
+      gtk_text_buffer_get_iter_at_mark (buffer, &sel_start, gtk_text_buffer_get_insert (buffer));
+
+      /* set end iter */
+      sel_end = sel_start;
+
+      if (gtk_text_iter_starts_line (&sel_start))
+        {
+          /* swap this line with the line above */
+          if (gtk_text_iter_backward_line (&sel_end))
+            mousepad_view_transpose_lines (buffer, &sel_start, &sel_end);
+        }
+      else if (gtk_text_iter_ends_line (&sel_start))
+        {
+          /* swap this line with the line below */
+          if (gtk_text_iter_forward_line (&sel_end))
+            mousepad_view_transpose_lines (buffer, &sel_start, &sel_end);
+        }
+      else if (gtk_text_iter_inside_word (&sel_start) && !gtk_text_iter_starts_word (&sel_start))
+        {
+          /* reverse the characters before and after the cursor */
+          if (gtk_text_iter_backward_char (&sel_start) && gtk_text_iter_forward_char (&sel_end))
+            mousepad_view_transpose_range (buffer, &sel_start, &sel_end);
+        }
+      else
+        {
+          /* swap the words left and right of the cursor */
+          mousepad_view_transpose_words (buffer, &sel_start);
+        }
+    }
+
+  /* end user action */
+  gtk_text_buffer_end_user_action (buffer);
 }
 
 

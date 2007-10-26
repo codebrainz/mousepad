@@ -232,6 +232,8 @@ static void              mousepad_window_action_delete                (GtkAction
                                                                        MousepadWindow         *window);
 static void              mousepad_window_action_select_all            (GtkAction              *action,
                                                                        MousepadWindow         *window);
+static void              mousepad_window_action_transpose             (GtkAction              *action,
+                                                                       MousepadWindow         *window);
 static void              mousepad_window_action_find                  (GtkAction              *action,
                                                                        MousepadWindow         *window);
 static void              mousepad_window_action_find_next             (GtkAction              *action,
@@ -350,6 +352,7 @@ static const GtkActionEntry action_entries[] =
     { "paste-column", GTK_STOCK_PASTE, N_("Paste _Column"), "<control><shift>V", N_("Paste the clipboard text in a clumn"), G_CALLBACK (mousepad_window_action_paste_column), },
     { "delete", GTK_STOCK_DELETE, NULL, NULL, N_("Delete the selected text"), G_CALLBACK (mousepad_window_action_delete), },
     { "select-all", GTK_STOCK_SELECT_ALL, NULL, NULL, N_("Select the entire document"), G_CALLBACK (mousepad_window_action_select_all), },
+    { "transpose", NULL, N_("_Transpose"), NULL, N_("Reverse the order of something"), G_CALLBACK (mousepad_window_action_transpose), },
 
   { "search-menu", NULL, N_("_Search"), NULL, NULL, NULL, },
     { "find", GTK_STOCK_FIND, NULL, NULL, N_("Search for text"), G_CALLBACK (mousepad_window_action_find), },
@@ -2914,11 +2917,20 @@ static void
 mousepad_window_action_select_all (GtkAction      *action,
                                    MousepadWindow *window)
 {
-  MousepadDocument *document = window->active;
+  _mousepad_return_if_fail (MOUSEPAD_IS_DOCUMENT (window->active));
 
-  _mousepad_return_if_fail (MOUSEPAD_IS_DOCUMENT (document));
+  mousepad_view_select_all (window->active->textview);
+}
 
-  mousepad_view_select_all (document->textview);
+
+
+static void
+mousepad_window_action_transpose (GtkAction      *action,
+                                  MousepadWindow *window)
+{
+  _mousepad_return_if_fail (MOUSEPAD_IS_DOCUMENT (window->active));
+
+  mousepad_view_transpose (window->active->textview);
 }
 
 
@@ -3298,20 +3310,18 @@ static void
 mousepad_window_action_go_to_line (GtkAction      *action,
                                    MousepadWindow *window)
 {
-  MousepadDocument *document = window->active;
-  gint              current_line, last_line, line;
+  gint current_line, last_line, line;
 
-  if (G_LIKELY (document))
-    {
-      /* get the current and last line number */
-      mousepad_document_line_numbers (document, &current_line, &last_line);
+  _mousepad_return_if_fail (MOUSEPAD_IS_DOCUMENT (window->active));
 
-      /* run the jump to dialog and wait for the response */
-      line = mousepad_dialogs_go_to_line (GTK_WINDOW (window), current_line, last_line);
+  /* get the current and last line number */
+  mousepad_document_line_numbers (window->active, &current_line, &last_line);
 
-      if (G_LIKELY (line > 0))
-        mousepad_document_go_to_line (document, line);
-    }
+  /* run the jump to dialog and wait for the response */
+  line = mousepad_dialogs_go_to_line (GTK_WINDOW (window), current_line, last_line);
+
+  if (G_LIKELY (line > 0))
+    mousepad_document_go_to_line (window->active, line);
 }
 
 

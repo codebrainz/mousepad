@@ -35,6 +35,8 @@ GType           mousepad_view_get_type                  (void) G_GNUC_CONST;
 
 void            mousepad_view_put_cursor_on_screen      (MousepadView      *view);
 
+void            mousepad_view_transpose                 (MousepadView      *view);
+
 void            mousepad_view_clipboard_cut             (MousepadView      *view);
 
 void            mousepad_view_clipboard_copy            (MousepadView      *view);

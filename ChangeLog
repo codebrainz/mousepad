@@ -1,4 +1,16 @@
 2007-10-26	Nick Schermer <nick@xfce.org>
+	* mousepad/mousepad-view.c: Implement transpose:
+	   - Selection on one line: Inverse selected text.
+	   - Multiple lines selected: Invert seleted lines.
+	   - Cursor is inside a word: Swap chars on each side of the cursor.
+	   - Cursor is outside a word: Swap word left and right of the cursor.
+	   - Cursor at the start of a line: Swap line with the line above.
+	   - Cursor at the end of a line: Swap line with the line below.
+	Will add support for multi- and column-selections later. Thanks to
+	Textmate for this great idea.
+
+
+2007-10-26	Nick Schermer <nick@xfce.org>
 	* MousepadHelp.in, mousepad/mousepad-{dialogs,window}.{c,h}:
 	  Add support for the help file.
 	* Mousepad.spec.in: Add spec file.
