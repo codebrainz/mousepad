@@ -1,3 +1,9 @@
+2007-10-26	Nick Schermer <nick@xfce.org>
+	* MousepadHelp.in, mousepad/mousepad-{dialogs,window}.{c,h}:
+	  Add support for the help file.
+	* Mousepad.spec.in: Add spec file.
+
+
 2007-10-25	Nick Schermer <nick@xfce.org>
 	* mousepad/mousepad-view.c: Redraw selection on theme change.
 

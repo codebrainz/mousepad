@@ -3320,7 +3320,7 @@ static void
 mousepad_window_action_contents (GtkAction      *action,
                                  MousepadWindow *window)
 {
-
+  mousepad_dialogs_show_help (GTK_WINDOW (window), NULL, NULL);
 }
 
 

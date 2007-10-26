@@ -78,6 +78,57 @@ mousepad_dialogs_show_error (GtkWindow    *parent,
 
 
 
+void
+mousepad_dialogs_show_help (GtkWindow   *parent,
+                            const gchar *page,
+                            const gchar *offset)
+{
+  GdkScreen *screen;
+  GError    *error = NULL;
+  gchar     *command;
+  gchar     *tmp;
+
+  /* get screen */
+  if (G_LIKELY (parent))
+    screen = gtk_widget_get_screen (GTK_WIDGET (parent));
+  else
+    screen = gdk_screen_get_default ();
+
+  /* generate the command for the documentation browser */
+  command = g_strdup (LIBEXECDIR "/MousepadHelp");
+
+  /* check if a page is given */
+  if (G_UNLIKELY (page != NULL))
+    {
+      /* append page as second parameter */
+      tmp = g_strconcat (command, " ", page, NULL);
+      g_free (command);
+      command = tmp;
+
+      /* check if an offset is given */
+      if (G_UNLIKELY (offset != NULL))
+        {
+          /* append offset as third parameter */
+          tmp = g_strconcat (command, " ", offset, NULL);
+          g_free (command);
+          command = tmp;
+        }
+    }
+
+  /* try to run the documentation browser */
+  if (!gdk_spawn_command_line_on_screen (screen, command, &error))
+    {
+      /* display an error message to the user */
+      mousepad_dialogs_show_error (parent, error, _("Failed to open the documentation browser"));
+      g_error_free (error);
+    }
+
+  /* cleanup */
+  g_free (command);
+}
+
+
+
 gint
 mousepad_dialogs_other_tab_size (GtkWindow *parent,
                                  gint      active_size)
