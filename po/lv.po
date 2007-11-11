@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: mousepad 0.2.12\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2007-01-20 12:34+0100\n"
-"PO-Revision-Date: 2007-09-23 16:39+0300\n"
+"PO-Revision-Date: 2007-10-28 14:53+0300\n"
 "Last-Translator: Rihards Priedītis <rprieditis@inbox.lv>\n"
 "Language-Team: Latvian <rprieditis@inbox.lv>\n"
 "MIME-Version: 1.0\n"
@@ -24,7 +24,7 @@ msgstr "Saglabāt izmaiņas failā '%s'?"
 #: ../src/file.c:174
 #, c-format
 msgid "Can't convert codeset to '%s'"
-msgstr "Kodējumu nevar pārvērst uz '%s'"
+msgstr "Nevar kodējumu pārvērst uz '%s'"
 
 #: ../src/callback.c:240
 msgid "Can't open pipe to process"
