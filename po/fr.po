@@ -277,7 +277,7 @@ msgstr "Mousepad"
 
 #: ../mousepad.desktop.in.h:2
 msgid "Simple text editor"
-msgstr "Un éditeur de texte tout simple"
+msgstr "Un éditeur de texte simple"
 
 #: ../mousepad.desktop.in.h:3
 msgid "Text Editor"
