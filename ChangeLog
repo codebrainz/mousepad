@@ -1,4 +1,11 @@
 2007-11-29	Nick Schermer <nick@xfce.org>
+	* mousepad/mousepad-window.c: Use a box for packing the window elements.
+	  A table was not really needed, and boxes are a bit faster in calculating
+	  child sizes.
+	* mousepad/mousepad-window.c: Remove unused variable.
+
+
+2007-11-29	Nick Schermer <nick@xfce.org>
 	* mousepad/mousepad-print.c: Use bold attribute for labels, so there
 	  is no html in the strings.
 

@@ -50,7 +50,7 @@
 
 
 
-#define WINDOW_SPACING 3
+#define PADDING (2)
 
 #if GTK_CHECK_VERSION (2,12,0)
 static gpointer NOTEBOOK_GROUP = "Mousepad";
@@ -307,9 +307,8 @@ struct _MousepadWindow
   guint                recent_merge_id;
 
   /* main window widgets */
-  GtkWidget           *table;
+  GtkWidget           *box;
   GtkWidget           *notebook;
-  GtkWidget           *container;
   GtkWidget           *search_bar;
   GtkWidget           *statusbar;
   GtkWidget           *replace_dialog;
@@ -539,12 +538,12 @@ mousepad_window_init (MousepadWindow *window)
   gtk_window_add_accel_group (GTK_WINDOW (window), accel_group);
 
   /* create the main table */
-  window->table = gtk_table_new (6, 1, FALSE);
-  gtk_container_add (GTK_CONTAINER (window), window->table);
-  gtk_widget_show (window->table);
+  window->box = gtk_vbox_new (FALSE, 0);
+  gtk_container_add (GTK_CONTAINER (window), window->box);
+  gtk_widget_show (window->box);
 
   menubar = gtk_ui_manager_get_widget (window->ui_manager, "/main-menu");
-  gtk_table_attach (GTK_TABLE (window->table), menubar, 0, 1, 0, 1, GTK_EXPAND | GTK_FILL, GTK_FILL, 0, 0);
+  gtk_box_pack_start (GTK_BOX (window->box), menubar, FALSE, FALSE, 0);
   gtk_widget_show (menubar);
 
   /* check if we need to add the root warning */
@@ -562,7 +561,7 @@ mousepad_window_init (MousepadWindow *window)
       /* add the box for the root warning */
       ebox = gtk_event_box_new ();
       gtk_widget_set_name (ebox, "root-warning");
-      gtk_table_attach (GTK_TABLE (window->table), ebox, 0, 1, 1, 2, GTK_EXPAND | GTK_FILL, GTK_FILL, 0, 0);
+      gtk_box_pack_start (GTK_BOX (window->box), ebox, FALSE, FALSE, 0);
       gtk_widget_show (ebox);
 
       /* add the label with the root warning */
@@ -572,7 +571,7 @@ mousepad_window_init (MousepadWindow *window)
       gtk_widget_show (label);
 
       separator = gtk_hseparator_new ();
-      gtk_table_attach (GTK_TABLE (window->table), separator, 0, 1, 2, 3, GTK_EXPAND | GTK_FILL, GTK_FILL, 0, 0);
+      gtk_box_pack_start (GTK_BOX (window->box), separator, FALSE, FALSE, 0);
       gtk_widget_show (separator);
     }
 
@@ -604,8 +603,7 @@ mousepad_window_init (MousepadWindow *window)
 #endif
 
   /* append and show the notebook */
-  gtk_table_attach (GTK_TABLE (window->table), window->notebook, 0, 1, 3, 4, GTK_EXPAND | GTK_FILL, GTK_EXPAND | GTK_FILL, 0, 0);
-  gtk_table_set_row_spacing (GTK_TABLE (window->table), 2, WINDOW_SPACING);
+  gtk_box_pack_start (GTK_BOX (window->box), window->notebook, TRUE, TRUE, PADDING);
   gtk_widget_show (window->notebook);
 
   /* check if we should display the statusbar by default */
@@ -2350,7 +2348,6 @@ mousepad_window_hide_search_bar (MousepadWindow *window)
 
   /* hide the search bar */
   gtk_widget_hide (window->search_bar);
-  gtk_table_set_row_spacing (GTK_TABLE (window->table), 3, 0);
 
   /* focus the active document's text view */
   if (G_LIKELY (window->active))
@@ -2933,18 +2930,17 @@ mousepad_window_action_find (GtkAction      *action,
 {
   if (window->search_bar == NULL)
     {
-      /* create a new toolbar */
+      /* create a new toolbar and pack it into the box */
       window->search_bar = mousepad_search_bar_new ();
-      gtk_table_attach (GTK_TABLE (window->table), window->search_bar, 0, 1, 4, 5, GTK_EXPAND | GTK_FILL, GTK_FILL, 0, 0);
+      gtk_box_pack_start (GTK_BOX (window->box), window->search_bar, FALSE, FALSE, PADDING);
 
       /* connect signals */
       g_signal_connect_swapped (G_OBJECT (window->search_bar), "hide-bar", G_CALLBACK (mousepad_window_hide_search_bar), window);
       g_signal_connect_swapped (G_OBJECT (window->search_bar), "search", G_CALLBACK (mousepad_window_search), window);
     }
 
-  /* show the search bar and give some space to the table */
+  /* show the search bar */
   gtk_widget_show (window->search_bar);
-  gtk_table_set_row_spacing (GTK_TABLE (window->table), 3, WINDOW_SPACING);
 
   /* focus the search entry */
   mousepad_search_bar_focus (MOUSEPAD_SEARCH_BAR (window->search_bar));
@@ -3087,7 +3083,7 @@ mousepad_window_action_statusbar (GtkToggleAction *action,
     {
       /* setup a new statusbar */
       window->statusbar = mousepad_statusbar_new ();
-      gtk_table_attach (GTK_TABLE (window->table), window->statusbar, 0, 1, 5, 6, GTK_EXPAND | GTK_FILL, GTK_FILL, 0, 0);
+      gtk_box_pack_end (GTK_BOX (window->box), window->statusbar, FALSE, FALSE, 0);
       gtk_widget_show (window->statusbar);
 
       /* overwrite toggle signal */
@@ -3098,9 +3094,6 @@ mousepad_window_action_statusbar (GtkToggleAction *action,
       if (window->active)
         mousepad_document_send_statusbar_signals (window->active);
     }
-
-  /* set the spacing above the statusbar */
-  gtk_table_set_row_spacing (GTK_TABLE (window->table), 4, show_statusbar ? WINDOW_SPACING : 0);
 
   /* remember the setting */
   g_object_set (G_OBJECT (window->preferences), "window-statusbar-visible", show_statusbar, NULL);
