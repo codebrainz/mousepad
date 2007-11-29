@@ -32,31 +32,32 @@
 
 
 
-static void       mousepad_print_class_init            (MousepadPrintClass      *klass);
-static void       mousepad_print_init                  (MousepadPrint           *print);
-static void       mousepad_print_finalize              (GObject                 *object);
-static void       mousepad_print_settings_load         (GtkPrintOperation       *operation);
-static void       mousepad_print_settings_save_foreach (const gchar             *key,
-                                                        const gchar             *value,
-                                                        gpointer                 user_data);
-static void       mousepad_print_settings_save         (GtkPrintOperation       *operation);
-static void       mousepad_print_begin_print           (GtkPrintOperation       *operation,
-                                                        GtkPrintContext         *context);
-static void       mousepad_print_draw_page             (GtkPrintOperation       *operation,
-                                                        GtkPrintContext         *context,
-                                                        gint                     page_nr);
-static void       mousepad_print_end_print             (GtkPrintOperation       *operation,
-                                                        GtkPrintContext         *context);
-static void       mousepad_print_page_setup_dialog     (GtkWidget               *button,
-                                                        GtkPrintOperation       *operation);
-static void       mousepad_print_button_toggled        (GtkWidget               *button,
-                                                        MousepadPrint           *print);
-static void       mousepad_print_button_font_set       (GtkFontButton           *button,
-                                                        MousepadPrint           *print);
-static GtkWidget *mousepad_print_create_custom_widget  (GtkPrintOperation       *operation);
-static void       mousepad_print_status_changed        (GtkPrintOperation       *operation);
-static void       mousepad_print_done                  (GtkPrintOperation       *operation,
-                                                        GtkPrintOperationResult  result);
+static void           mousepad_print_class_init            (MousepadPrintClass      *klass);
+static void           mousepad_print_init                  (MousepadPrint           *print);
+static void           mousepad_print_finalize              (GObject                 *object);
+static void           mousepad_print_settings_load         (GtkPrintOperation       *operation);
+static void           mousepad_print_settings_save_foreach (const gchar             *key,
+                                                            const gchar             *value,
+                                                            gpointer                 user_data);
+static void           mousepad_print_settings_save         (GtkPrintOperation       *operation);
+static void           mousepad_print_begin_print           (GtkPrintOperation       *operation,
+                                                            GtkPrintContext         *context);
+static void           mousepad_print_draw_page             (GtkPrintOperation       *operation,
+                                                            GtkPrintContext         *context,
+                                                            gint                     page_nr);
+static void           mousepad_print_end_print             (GtkPrintOperation       *operation,
+                                                            GtkPrintContext         *context);
+static void           mousepad_print_page_setup_dialog     (GtkWidget               *button,
+                                                            GtkPrintOperation       *operation);
+static void           mousepad_print_button_toggled        (GtkWidget               *button,
+                                                            MousepadPrint           *print);
+static void           mousepad_print_button_font_set       (GtkFontButton           *button,
+                                                            MousepadPrint           *print);
+static PangoAttrList *mousepad_print_attr_list_bold        (void);
+static GtkWidget     *mousepad_print_create_custom_widget  (GtkPrintOperation       *operation);
+static void           mousepad_print_status_changed        (GtkPrintOperation       *operation);
+static void           mousepad_print_done                  (GtkPrintOperation       *operation,
+                                                            GtkPrintOperationResult  result);
 
 
 
@@ -691,6 +692,31 @@ mousepad_print_button_font_set (GtkFontButton *button,
 
 
 
+static PangoAttrList *
+mousepad_print_attr_list_bold (void)
+{
+  static PangoAttrList *attr_list = NULL;
+  PangoAttribute       *attr;
+
+  if (G_UNLIKELY (attr_list == NULL))
+    {
+      /* create new attributes list */
+      attr_list = pango_attr_list_new ();
+
+      /* create attribute */
+      attr = pango_attr_weight_new (PANGO_WEIGHT_BOLD);
+      attr->start_index = 0;
+      attr->end_index = -1;
+
+      /* insert bold element */
+      pango_attr_list_insert (attr_list, attr);
+    }
+
+  return attr_list;
+}
+
+
+
 static GtkWidget *
 mousepad_print_create_custom_widget (GtkPrintOperation *operation)
 {
@@ -709,9 +735,9 @@ mousepad_print_create_custom_widget (GtkPrintOperation *operation)
   gtk_box_pack_start (GTK_BOX (vbox), frame, FALSE, FALSE, 0);
   gtk_widget_show (frame);
 
-  label = gtk_label_new (_("<b>Page Setup</b>"));
+  label = gtk_label_new (_("Page Setup"));
+  gtk_label_set_attributes (GTK_LABEL (label), mousepad_print_attr_list_bold ());
   gtk_frame_set_label_widget (GTK_FRAME (frame), label);
-  gtk_label_set_use_markup (GTK_LABEL (label), TRUE);
   gtk_widget_show (label);
 
   alignment = gtk_alignment_new (0.0, 0.5, 0.0, 1.0);
@@ -729,9 +755,9 @@ mousepad_print_create_custom_widget (GtkPrintOperation *operation)
   gtk_box_pack_start (GTK_BOX (vbox), frame, FALSE, FALSE, 0);
   gtk_widget_show (frame);
 
-  label = gtk_label_new (_("<b>Appearance</b>"));
+  label = gtk_label_new (_("Appearance"));
+  gtk_label_set_attributes (GTK_LABEL (label), mousepad_print_attr_list_bold ());
   gtk_frame_set_label_widget (GTK_FRAME (frame), label);
-  gtk_label_set_use_markup (GTK_LABEL (label), TRUE);
   gtk_widget_show (label);
 
   alignment = gtk_alignment_new (0.5, 0.5, 1.0, 1.0);
@@ -766,9 +792,9 @@ mousepad_print_create_custom_widget (GtkPrintOperation *operation)
   gtk_box_pack_start (GTK_BOX (vbox), frame, FALSE, FALSE, 0);
   gtk_widget_show (frame);
 
-  label = gtk_label_new (_("<b>Font</b>"));
+  label = gtk_label_new (_("Font"));
+  gtk_label_set_attributes (GTK_LABEL (label), mousepad_print_attr_list_bold ());
   gtk_frame_set_label_widget (GTK_FRAME (frame), label);
-  gtk_label_set_use_markup (GTK_LABEL (label), TRUE);
   gtk_widget_show (label);
 
   alignment = gtk_alignment_new (0.0, 0.5, 0.0, 1.0);
