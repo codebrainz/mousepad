@@ -1,3 +1,24 @@
+2007-11-29	Nick Schermer <nick@xfce.org>
+	* mousepad/mousepad-utils.c: Add functions that extent the default
+	  Gtk word start/end function. Use them in the search functions,
+	  transpose and double click selection.
+	* mousepad/mousepad-view.c: Implement transpose for multi selections.
+	* mousepad/mousepad-view.c: Improve word swap function.
+	* docs/manual/C/Mousepad.xml.in: Other layout of the help file. Content
+	  will follow.
+	* mousepad/mousepad-{document,window,view}.c: Show the selection length
+	  in the statusbar. Also merged two signals and a couple of functions.
+	* mousepad/mousepad-window.c: Change default keybinding of new document
+	  (Ctrl+N) and new window (Shift+Ctrl+N). Assign Ctrl+T to transpose.
+	* mousepad/mousepad-window.c: Update the window title after saving a
+	  file with a new name.
+	* mousepad/mousepad-file.c: Set readonly to FALSE when starting with
+	  a non-existing filename in the argument.
+	* mousepad/mousepad-print.c: Improve the print backend. Settings are
+	  now saved. You can set the paper type, toggle options for line
+	  numbers, wrap and page heading and use a custom font.
+
+
 2007-10-26	Nick Schermer <nick@xfce.org>
 	* mousepad/mousepad-view.c: Implement transpose:
 	   - Selection on one line: Inverse selected text.

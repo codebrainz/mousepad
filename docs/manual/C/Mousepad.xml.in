@@ -7,7 +7,6 @@
 ]>
 <article id="index" lang="en">
 
-  <!-- Header -->
   <articleinfo>
     <title>Mousepad Text Editor</title>
 
@@ -45,70 +44,334 @@
     </releaseinfo>
   </articleinfo>
 
-  <sect1 id="intro">
-    <title>Introduction to &application;</title>
+  <sect1 id="preface">
+    <title>Preface</title>
 
-    <para>
-      Mousepad is the default text editor for the Xfce Desktop Environment. It has been design to be a
-      lightweight editor you would use for basic file editing. Therefore Mousepad starts quickly, but
-      also has features like editing multiple documents, vertical selection, type-ahead search, full tab
-      drag and drop and much more.
-    </para>
-
-    <para>
-      Mousepad started as a fork of Leafpad to provide printing support using Xfprint, but as of version
-      0.3 is has been completely rewritten to add support for tabs and DBus. Although the rewrite added
-      a lot of new features, it is still as fast as the Leafpad based fork and therefore fits perfectly
-      in the Xfce philosophy.
-    </para>
-  </sect1>
-
-  <sect1 id="mousepad-window">
-    <title>The Mousepad Window</title>
-
-    <para>
-    </para>
-
-    <sect2 id="editing-multiple-documents">
-      <title>Editing Multiple Documents</title>
+    <sect2 id="introduction">
+      <title>Introduction</title>
 
       <para>
-        By defaul the window hides the tab labels unless more then one document has been opened. If you have
-        more then one document opened, you can switch between then by clicking on the tab, use the
-        <guimenuitem>go</guimenuitem> menu or press the key combination <keycap>Alt</keycap> with the tab number.
+        &application; is the default text editor for the Xfce Desktop Environment. It has been design to be a
+        lightweight editor you would use for basic file editing. Therefore &application; starts quickly, but
+        also has features like editing multiple documents, vertical selection, type-ahead search, full tab
+        drag and drop and much more.
       </para>
 
       <para>
-        When you have multiple files opened in one window, you detach a document by choosing
-        <menuchoice><guimenu>File</guimenu><guimenuitem>Detach Tab</guimenuitem></menuchoice> or press
-        <keycombo><keycap>Ctrl</keycap><keycap>D</keycap></keycombo>. When Mousepad is compiled with Gtk+ 2.12,
-        it is also possible to drag a tab and drop it on another location on the screen.
+        &application; started as a fork of Leafpad to provide printing support using Xfprint, but as of version
+        0.3 is has been completely rewritten to add support for tabs and DBus. Although the rewrite added
+        a lot of new features, it is still as fast as the Leafpad based fork and therefore fits perfectly
+        in the Xfce philosophy.
       </para>
+    </sect2>
+
+    <sect2 id="terminology">
+      <title>Terminology</title>
+
+      <para>
+        There might be a couple of words in this manual that could be the source of misunderstanding. The table
+        below will clarify those words.
+      </para>
+
+      <table frame="all">
+        <title>Terminology</title>
+        <tgroup cols='2'>
+          <thead>
+            <row>
+              <entry>Term</entry>
+              <entry>Explanation</entry>
+            </row>
+          </thead>
+          <tbody>
+            <row>
+              <entry>Caret</entry>
+              <entry>The text insertion point.</entry>
+            </row>
+            <row>
+              <entry>Cursor</entry>
+              <entry>Mouse pointer.</entry>
+            </row>
+            <row>
+              <entry>Document</entry>
+              <entry>A file loaded in &application;.</entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </table>
     </sect2>
   </sect1>
 
-  <sect1 id="multi-selection">
-    <title>Multi Editing</title>
+  <sect1 id="mousepad">
+    <title>Working With &application;</title>
+
+    <sect2 id="window">
+      <title>Main Window</title>
+
+      <sect3 id="menu-bar">
+        <title>Menu Bar</title>
+      </sect3>
+
+      <sect3 id="statusbar">
+        <title>Statsbar</title>
+      </sect3>
+    </sect2>
+
+    <sect2 id="navigation">
+      <title>Navigation</title>
+
+      <sect3 id="go-to-line">
+        <title>Go To Line</title>
+      </sect3>
+    </sect2>
+
+    <sect2 id="ordering-documents">
+      <title>Ordering Documents</title>
+    </sect2>
+
+    <sect2 id="documents">
+      <title>Documents</title>
+
+      <sect3 id="new-documents">
+        <title>Creating New Documents</title>
+      </sect3>
+
+      <sect3 id="opening-documents">
+        <title>Opening Documents</title>
+      </sect3>
+
+      <sect3 id="recent-documents">
+        <title>Recent Documents</title>
+      </sect3>
+    </sect2>
+  </sect1>
+
+  <sect1 id="text">
+    <title>Working With Text</title>
+
+    <sect2 id="keyboard-shortcuts">
+      <title>Keyboard Shortcuts</title>
+    </sect2>
+
+    <sect2 id="auto-indent">
+      <title>Auto Indent</title>
+    </sect2>
+
+    <sect2 id="selections">
+      <title>Selecting Text</title>
+
+      <sect3 id="multi-and-column-selections">
+        <title>Multi- And Column-Selections</title>
+      </sect3>
+
+      <sect3 id="indentation">
+        <title>Indentation</title>
+      </sect3>
+    </sect2>
+
+    <sect2 id="clipboard">
+      <title>Copy, Cut and Paste From The Clipboard</title>
+    </sect2>
+
+    <sect2 id="search-and-replace">
+      <title>Search And Replace</title>
+    </sect2>
+
+    <sect2 id="tabs">
+      <title>Tabs</title>
+
+      <sect3 id="insert-spaces">
+        <title>Insert Spaces</title>
+      </sect3>
+    </sect2>
+
+    <sect2 id="transpose">
+      <title>Transpose</title>
+    </sect2>
+
+    <sect2 id="printing">
+      <title>Printing</title>
+    </sect2>
+  </sect1>
+
+  <sect1 id="faq">
+    <title>Frequently Asked Questions</title>
 
     <para>
-      Mousepad supports multiple- and column-selections. You can start a column selection by pressing the <keycap>Ctrl</keycap>
-      key and starting a drag with your mouse. To add single words to the selection press <keycap>Ctrl</keycap> and double-click
-      a word with the mouse pointer. As long as you press <keycap>Ctrl</keycap> you can add content to the selection.
+      The intent of this section is to collect the quite numerous frequently asked
+      questions that relate to working with &application;. If you know of a question that
+      is missing from this page, please <ulink type="http"
+      url="http://bugzilla.xfce.org/enter_bug.cgi?product=Mousepad&amp;format=guided">
+      file a request</ulink>.
     </para>
 
-    <para>
-      When you've created a multi-selection, it is possible to cut or copy this to the clipboard. When you start typing after a
-      multi-selection, the selected content will be removed and the typed characters will appear in each selected part.
-    </para>
+    <sect3 id="faq-hidden-settings">
+      <title>Does &application; has hidden settings?</title>
 
-    <para>
-      It is also possible to use this for multi typing. When you press <keycap>Ctrl</keycap> and drag at the end of a couple of lines
-      you will see blue retangles appear at the end of the lines. When you start typing the characters will be added to each selected
-      line. You can add as much of these insert points as you want as long you don't select a whole character.
+      <para>
+        Yes, some of the settings in the mousepadrc file are not configurable from
+        the interface and can only be modified by hand. To find the mousepadrc file
+        see <xref linkend="faq-mousepadrc" />. It is not recommended to change the
+        rc file using &application;, since it might be overwritten when you
+        close the window after editing. You must also restart &application; to
+        apply the settings. The hidden settings, starting with <varname>Misc</varname>,
+        are explained in the list below:
+      </para>
 
-      Another useful key combination with multi typing is <keycombo><keycap>Ctrl</keycap><keycap>Backspace</keycap></keycombo>, this will
-      also remove character left or the insert point, while <keycap>Backspace</keycap> only removes characters inside the selection.
-    </para>
+      <variablelist>
+        <varlistentry>
+          <term><varname>MiscAlwaysShowTabs</varname></term>
+          <listitem>
+            <para>
+              If <literal>TRUE</literal> the tab headers will always be displayed even if only a single
+              document tab is open. This option is useful if you want to drag-and-drop the last tab to
+              another window. See <xref linkend="ordering-documents" />.
+            </para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term><varname>MiscCycleTabs</varname></term>
+          <listitem>
+            <para>
+              This option controls whether you can circulate through document tabs. That is, whether
+              you are able to go from the last tab to the first tab using the <menuchoice>
+              <guimenu>Navigation</guimenu><guimenuitem>Forward</guimenuitem></menuchoice> entry
+              (or the associated keyboard shortcut), and from the first tab to the last tab using the
+              <menuchoice><guimenu>Navigation</guimenu><guimenuitem>Back</guimenuitem></menuchoice> entry.
+              The option can be either <literal>TRUE</literal> or <literal>FALSE</literal> (default).
+            </para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term><varname>MiscPathInTitle</varname></term>
+          <listitem>
+            <para>
+              This option controls whether the full document path is displayed in the window title.
+              By default, <literal>FALSE</literal>, only the filename is shown. The option can be either
+              <literal>TRUE</literal> or <literal>FALSE</literal>.
+            </para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term><varname>MiscRecentMenuItems</varname></term>
+          <listitem>
+            <para>
+              This option controls the maximum number of items shown in the
+              <menuchoice><guimenu>File</guimenu><guimenuitem>Open Recent</guimenuitem>
+              </menuchoice> menu. When you set the value to <literal>0</literal>, so
+              entire menu will be hidden. The integer can be in a range of <literal>0</literal>
+              ..<literal>4096</literal>.
+            </para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term><varname>MiscRememberGeometry</varname></term>
+          <listitem>
+            <para>
+              Whether &application; should remember the size of windows and apply that size to
+              new windows. If <literal>TRUE</literal> (default) the width and height are saved
+              to <varname>WindowWidth</varname> and <varname>WindowHeight</varname>. If
+              <literal>FALSE</literal> the user may specify the start size in
+              <varname>WindowWidth</varname> and <varname>WindowHeight</varname>.
+            </para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term><varname>MiscDefaultTabSizes</varname></term>
+          <listitem>
+            <para>
+              This is the default list of tab sizes displayed in the <menuchoice>
+              <guimenu>Document</guimenu><guimenuitem>Tab Size</guimenuitem></menuchoice>
+              menu. Each size must be in a range of <literal>1</literal>..<literal>32</literal>.
+              By defaul the value is <literal>2,3,4,8</literal>.
+            </para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+    </sect3>
+
+    <sect3 id="faq-mousepadrc">
+      <title>Where does &application; store its preferences?</title>
+
+      <para>
+        &application; stores the user configurable preferences (and hidden settings) in
+        an <filename>.ini</filename> file, which is located at
+        <filename>$XDG_CONFIG_HOME/&application;/mousepadrc</filename>. If you make changes
+        to this file, make sure you restart &application;. It's also not recommended to
+        use &application; to edito this file, since it might overwrite it after you've
+        changed the file.
+      </para>
+    </sect3>
+
+    <sect3 id="faq-assign-keyboard-shortcuts">
+      <title>How do I assign different keyboard shortcuts?</title>
+
+      <para>
+        If you want to rebind a shortcut, &application; supports the standard GTK+ way
+        of changing shortcuts: simply hover over the menu option with the mouse
+        pointer and press the keyboard shortcut you want to rebind it to.
+      </para>
+
+      <para>
+        To delete a keyboard assignment, press the <keycap>Backspace</keycap> key
+        while you are on the menu entry.
+      </para>
+
+      <para>
+        If the shortcut doesn't change, then you need to enable the feature in
+        GTK+. This can be achieved in 3 ways:
+      </para>
+
+      <itemizedlist>
+        <listitem>
+          <para>
+            If you are running Xfce 4.3 or above then you can enable <guilabel>Editable
+            menu accelerators</guilabel> in the <guilabel>User Interface Preferences</guilabel>
+            dialog.
+          </para>
+        </listitem>
+
+        <listitem>
+          <para>
+            If you are running GNOME then you can enable <guilabel>Editable menu
+            accelerators</guilabel> in the <guilabel>Menu and Toolbars</guilabel> control
+            center dialog.
+          </para>
+        </listitem>
+
+        <listitem>
+          <para>
+            Otherwise put the following in your <filename>~/.gtkrc-2.0</filename> file
+            (create the file if it doesn't exist):<screen>gtk-can-change-accels=1</screen>
+          </para>
+        </listitem>
+      </itemizedlist>
+    </sect3>
+
+    <sect3 id="faq-store-keyboard-shortcuts">
+      <title>Where does &application; store the keyboard shortcuts?</title>
+
+      <para>
+        The custom keyboard shortcuts are stored in the standard GTK+ accel map format in a
+        file located at <filename>$XDG_CONFIG_HOME/&application;/accels.scm</filename>. Lines starting
+        with <literal>;</literal> are comments. See the GTK+ documentation for details about the
+        file format.
+      </para>
+
+      <para>
+        If you are a packager or a system administrator and want to provide a system wide default
+        for the keyboard shortcuts, that is different from the default shortcuts in &application;, you
+        can create a file <filename>&application;/accels.scm</filename> in one of the <envar>$XDG_CONFIG_DIRS</envar>.
+        For example, if <filename role="directory">/etc/xdg</filename> is part of <envar>$XDG_CONFIG_DIRS</envar>
+        (the default for most Linux distributions), you can install system wide defaults to
+        <filename>/etc/xdg/&application;/accels.scm</filename>. &application; will then load shortcuts from
+        this file on first startup.
+      </para>
+    </sect3>
   </sect1>
 </article>
 <!--

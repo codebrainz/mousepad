@@ -36,7 +36,8 @@ GtkWidget  *mousepad_statusbar_new                  (void);
 
 void        mousepad_statusbar_set_cursor_position  (MousepadStatusbar *statusbar,
                                                      gint               line,
-                                                     gint               column);
+                                                     gint               column,
+                                                     gint               selection);
 
 void        mousepad_statusbar_set_overwrite        (MousepadStatusbar *statusbar,
                                                      gboolean           overwrite);

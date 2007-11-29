@@ -47,9 +47,6 @@
 static void      mousepad_document_class_init              (MousepadDocumentClass  *klass);
 static void      mousepad_document_init                    (MousepadDocument       *document);
 static void      mousepad_document_finalize                (GObject                *object);
-static void      mousepad_document_notify_has_selection    (GtkTextBuffer          *buffer,
-                                                            GParamSpec             *pspec,
-                                                            MousepadDocument       *document);
 static void      mousepad_document_notify_cursor_position  (GtkTextBuffer          *buffer,
                                                             GParamSpec             *pspec,
                                                             MousepadDocument       *document);
@@ -73,7 +70,6 @@ static void      mousepad_document_tab_button_clicked      (GtkWidget           
 enum
 {
   CLOSE_TAB,
-  SELECTION_CHANGED,
   CURSOR_CHANGED,
   OVERWRITE_CHANGED,
   LAST_SIGNAL,
@@ -156,21 +152,13 @@ mousepad_document_class_init (MousepadDocumentClass *klass)
                   g_cclosure_marshal_VOID__VOID,
                   G_TYPE_NONE, 0);
 
-  document_signals[SELECTION_CHANGED] =
-    g_signal_new (I_("selection-changed"),
-                  G_TYPE_FROM_CLASS (gobject_class),
-                  G_SIGNAL_NO_HOOKS,
-                  0, NULL, NULL,
-                  g_cclosure_marshal_VOID__BOOLEAN,
-                  G_TYPE_NONE, 1, G_TYPE_BOOLEAN);
-
   document_signals[CURSOR_CHANGED] =
     g_signal_new (I_("cursor-changed"),
                   G_TYPE_FROM_CLASS (gobject_class),
                   G_SIGNAL_NO_HOOKS,
                   0, NULL, NULL,
-                  _mousepad_marshal_VOID__UINT_UINT,
-                  G_TYPE_NONE, 2, G_TYPE_UINT, G_TYPE_UINT);
+                  _mousepad_marshal_VOID__INT_INT_INT,
+                  G_TYPE_NONE, 3, G_TYPE_INT, G_TYPE_INT, G_TYPE_INT);
 
   document_signals[OVERWRITE_CHANGED] =
     g_signal_new (I_("overwrite-changed"),
@@ -257,7 +245,6 @@ mousepad_document_init (MousepadDocument *document)
   g_free (font_name);
 
   /* attach signals to the text view and buffer */
-  g_signal_connect (G_OBJECT (document->buffer), "notify::has-selection", G_CALLBACK (mousepad_document_notify_has_selection), document);
   g_signal_connect (G_OBJECT (document->buffer), "notify::cursor-position", G_CALLBACK (mousepad_document_notify_cursor_position), document);
   g_signal_connect (G_OBJECT (document->textview), "notify::overwrite", G_CALLBACK (mousepad_document_toggle_overwrite), document);
   g_signal_connect (G_OBJECT (document->textview), "drag-data-received", G_CALLBACK (mousepad_document_drag_data_received), document);
@@ -287,24 +274,6 @@ mousepad_document_finalize (GObject *object)
 }
 
 
-static void
-mousepad_document_notify_has_selection (GtkTextBuffer    *buffer,
-                                        GParamSpec       *pspec,
-                                        MousepadDocument *document)
-{
-  gboolean has_selection;
-
-  _mousepad_return_if_fail (GTK_IS_TEXT_BUFFER (buffer));
-  _mousepad_return_if_fail (MOUSEPAD_IS_DOCUMENT (document));
-
-  /* check if we have selected text or not */
-  has_selection = mousepad_view_get_has_selection (document->textview);
-
-  /* emit the signal */
-  g_signal_emit (G_OBJECT (document), document_signals[SELECTION_CHANGED], 0, has_selection);
-}
-
-
 
 static void
 mousepad_document_notify_cursor_position (GtkTextBuffer    *buffer,
@@ -312,7 +281,7 @@ mousepad_document_notify_cursor_position (GtkTextBuffer    *buffer,
                                           MousepadDocument *document)
 {
   GtkTextIter iter;
-  guint       line, column = 0;
+  guint       line, column, selection;
   gint        tab_size;
 
   _mousepad_return_if_fail (GTK_IS_TEXT_BUFFER (buffer));
@@ -330,8 +299,11 @@ mousepad_document_notify_cursor_position (GtkTextBuffer    *buffer,
   /* get the column */
   column = mousepad_util_get_real_line_offset (&iter, tab_size) + 1;
 
+  /* get length of the selection */
+  selection = mousepad_view_get_selection_length (document->textview);
+
   /* emit the signal */
-  g_signal_emit (G_OBJECT (document), document_signals[CURSOR_CHANGED], 0, line, column);
+  g_signal_emit (G_OBJECT (document), document_signals[CURSOR_CHANGED], 0, line, column, selection);
 }
 
 
@@ -611,37 +583,4 @@ mousepad_document_get_word_wrap (MousepadDocument *document)
   _mousepad_return_val_if_fail (MOUSEPAD_IS_DOCUMENT (document), FALSE);
 
   return document->priv->word_wrap;
-}
-
-
-
-void
-mousepad_document_get_font_information (MousepadDocument      *document,
-                                        PangoFontDescription **font_desc,
-                                        gint                  *font_height)
-{
-  PangoContext         *context;
-  PangoFontMetrics     *metrics;
-  PangoFontDescription *font;
-
-  /* get the textview context */
-  context = gtk_widget_get_pango_context (GTK_WIDGET (document->textview));
-
-  /* get the font description */
-  font = pango_context_get_font_description (context);
-
-  if (font_desc)
-    *font_desc = font;
-
-  if (G_LIKELY (font_height))
-    {
-      /* get metric information about the font */
-      metrics = pango_context_get_metrics (context, font, pango_context_get_language (context));
-
-      /* calculate the real font height */
-      *font_height = (pango_font_metrics_get_ascent (metrics) + pango_font_metrics_get_descent (metrics)) / PANGO_SCALE;
-
-      /* release the metrics */
-      pango_font_metrics_unref (metrics);
-    }
 }

@@ -38,6 +38,7 @@
 #include <glib-object.h>
 
 #include <mousepad/mousepad-private.h>
+#include <mousepad/mousepad-util.h>
 #include <mousepad/mousepad-preferences.h>
 
 
@@ -442,11 +443,8 @@ mousepad_preferences_set_property (GObject      *object,
 static void
 mousepad_preferences_check_option_name (GParamSpec *pspec)
 {
-  const gchar *s;
   const gchar *name, *nick;
-  gboolean     upper = TRUE;
   gchar       *option;
-  gchar       *t;
 
   /* get property name and nick */
   name = g_param_spec_get_name (pspec);
@@ -458,27 +456,8 @@ mousepad_preferences_check_option_name (GParamSpec *pspec)
     }
   else
     {
-      /* allocate string for option name */
-      option = g_new (gchar, strlen (name) + 1);
-
-      /* convert name */
-      for (s = name, t = option; *s != '\0'; ++s)
-        {
-          if (*s == '-')
-            {
-              upper = TRUE;
-            }
-          else if (upper)
-            {
-              *t++ = g_ascii_toupper (*s);
-              upper = FALSE;
-            }
-          else
-            {
-              *t++ = *s;
-            }
-        }
-      *t = '\0';
+      /* get option name */
+      option = mousepad_util_config_name (name);
 
       /* compare the strings */
       if (G_UNLIKELY (!option || strcmp (option, nick) != 0))
@@ -505,7 +484,7 @@ mousepad_preferences_load (MousepadPreferences *preferences)
   guint         n;
 
   /* try to open the config file */
-  rc = xfce_rc_config_open (XFCE_RESOURCE_CONFIG, "Mousepad/mousepadrc", TRUE);
+  rc = xfce_rc_config_open (XFCE_RESOURCE_CONFIG, MOUSEPAD_PREFERENCES_REL_PATH, TRUE);
   if (G_UNLIKELY (rc == NULL))
     {
       g_warning (_("Failed to load the preferences."));
@@ -601,7 +580,7 @@ mousepad_preferences_store_idle (gpointer user_data)
   guint                n;
 
   /* open the config file */
-  rc = xfce_rc_config_open (XFCE_RESOURCE_CONFIG, "Mousepad/mousepadrc", FALSE);
+  rc = xfce_rc_config_open (XFCE_RESOURCE_CONFIG, MOUSEPAD_PREFERENCES_REL_PATH, FALSE);
   if (G_UNLIKELY (rc == NULL))
     {
       g_warning (_("Failed to store the preferences."));

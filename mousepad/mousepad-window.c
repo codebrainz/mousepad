@@ -139,14 +139,12 @@ static GtkNotebook      *mousepad_window_notebook_create_window       (GtkNotebo
 /* document signals */
 static void              mousepad_window_modified_changed             (MousepadWindow         *window);
 static void              mousepad_window_cursor_changed               (MousepadDocument       *document,
-                                                                       guint                   line,
-                                                                       guint                   column,
+                                                                       gint                    line,
+                                                                       gint                    column,
+                                                                       gint                    selection,
                                                                        MousepadWindow         *window);
 static void              mousepad_window_overwrite_changed            (MousepadDocument       *document,
                                                                        gboolean                overwrite,
-                                                                       MousepadWindow         *window);
-static void              mousepad_window_selection_changed            (MousepadDocument       *document,
-                                                                       gboolean                selected,
                                                                        MousepadWindow         *window);
 static void              mousepad_window_can_undo                     (MousepadWindow         *window,
                                                                        gboolean                can_undo);
@@ -329,8 +327,8 @@ struct _MousepadWindow
 static const GtkActionEntry action_entries[] =
 {
   { "file-menu", NULL, N_("_File"), NULL, NULL, NULL, },
-    { "new-tab", "tab-new", N_("New Documen_t"), "<control>T", N_("Create a new document"), G_CALLBACK (mousepad_window_action_open_new_tab), },
-    { "new-window", "window-new", N_("_New Window"), "<control>N", N_("Create a new document in a new window"), G_CALLBACK (mousepad_window_action_open_new_window), },
+    { "new-tab", "tab-new", N_("New Documen_t"), "<control>N", N_("Create a new document"), G_CALLBACK (mousepad_window_action_open_new_tab), },
+    { "new-window", "window-new", N_("_New Window"), "<shift><control>N", N_("Create a new document in a new window"), G_CALLBACK (mousepad_window_action_open_new_window), },
     { "open-file", GTK_STOCK_OPEN, N_("_Open File"), NULL, N_("Open a file"), G_CALLBACK (mousepad_window_action_open_file), },
     { "recent-menu", NULL, N_("Open _Recent"), NULL, NULL, NULL, },
       { "no-recent-items", NULL, N_("No items found"), NULL, NULL, NULL, },
@@ -352,7 +350,7 @@ static const GtkActionEntry action_entries[] =
     { "paste-column", GTK_STOCK_PASTE, N_("Paste _Column"), "<control><shift>V", N_("Paste the clipboard text in a clumn"), G_CALLBACK (mousepad_window_action_paste_column), },
     { "delete", GTK_STOCK_DELETE, NULL, NULL, N_("Delete the selected text"), G_CALLBACK (mousepad_window_action_delete), },
     { "select-all", GTK_STOCK_SELECT_ALL, NULL, NULL, N_("Select the entire document"), G_CALLBACK (mousepad_window_action_select_all), },
-    { "transpose", NULL, N_("_Transpose"), NULL, N_("Reverse the order of something"), G_CALLBACK (mousepad_window_action_transpose), },
+    { "transpose", NULL, N_("_Transpose"), "<control>T", N_("Reverse the order of something"), G_CALLBACK (mousepad_window_action_transpose), },
 
   { "search-menu", NULL, N_("_Search"), NULL, NULL, NULL, },
     { "find", GTK_STOCK_FIND, NULL, NULL, N_("Search for text"), G_CALLBACK (mousepad_window_action_find), },
@@ -1227,7 +1225,6 @@ mousepad_window_notebook_added (GtkNotebook     *notebook,
 
   /* connect signals to the document for this window */
   g_signal_connect (G_OBJECT (page), "close-tab", G_CALLBACK (mousepad_window_button_close_tab), window);
-  g_signal_connect (G_OBJECT (page), "selection-changed", G_CALLBACK (mousepad_window_selection_changed), window);
   g_signal_connect (G_OBJECT (page), "cursor-changed", G_CALLBACK (mousepad_window_cursor_changed), window);
   g_signal_connect (G_OBJECT (page), "overwrite-changed", G_CALLBACK (mousepad_window_overwrite_changed), window);
   g_signal_connect (G_OBJECT (page), "drag-data-received", G_CALLBACK (mousepad_window_drag_data_received), window);
@@ -1273,7 +1270,6 @@ mousepad_window_notebook_removed (GtkNotebook     *notebook,
 
   /* disconnect the old document signals */
   g_signal_handlers_disconnect_by_func (G_OBJECT (page), mousepad_window_button_close_tab, window);
-  g_signal_handlers_disconnect_by_func (G_OBJECT (page), mousepad_window_selection_changed, window);
   g_signal_handlers_disconnect_by_func (G_OBJECT (page), mousepad_window_cursor_changed, window);
   g_signal_handlers_disconnect_by_func (G_OBJECT (page), mousepad_window_overwrite_changed, window);
   g_signal_handlers_disconnect_by_func (G_OBJECT (page), mousepad_window_drag_data_received, window);
@@ -1446,16 +1442,33 @@ mousepad_window_modified_changed (MousepadWindow   *window)
 
 static void
 mousepad_window_cursor_changed (MousepadDocument *document,
-                                guint             line,
-                                guint             column,
+                                gint              line,
+                                gint              column,
+                                gint              selection,
                                 MousepadWindow   *window)
 {
+  GtkAction *action;
+  gboolean   has_selection;
+
   _mousepad_return_if_fail (MOUSEPAD_IS_WINDOW (window));
   _mousepad_return_if_fail (MOUSEPAD_IS_DOCUMENT (document));
 
-  /* set the new statusbar position */
+  /* set the new statusbar cursor position and selection length */
   if (window->statusbar)
-    mousepad_statusbar_set_cursor_position (MOUSEPAD_STATUSBAR (window->statusbar), line, column);
+    mousepad_statusbar_set_cursor_position (MOUSEPAD_STATUSBAR (window->statusbar), line, column, selection);
+
+  /* whether we have a selection */
+  has_selection = (selection > 0);
+
+  /* update actions */
+  action = gtk_action_group_get_action (window->action_group, "cut");
+  gtk_action_set_sensitive (action, has_selection);
+
+  action = gtk_action_group_get_action (window->action_group, "copy");
+  gtk_action_set_sensitive (action, has_selection);
+
+  action = gtk_action_group_get_action (window->action_group, "delete");
+  gtk_action_set_sensitive (action, has_selection);
 }
 
 
@@ -1471,25 +1484,6 @@ mousepad_window_overwrite_changed (MousepadDocument *document,
   /* set the new overwrite mode in the statusbar */
   if (window->statusbar)
     mousepad_statusbar_set_overwrite (MOUSEPAD_STATUSBAR (window->statusbar), overwrite);
-}
-
-
-
-static void
-mousepad_window_selection_changed (MousepadDocument *document,
-                                   gboolean          selected,
-                                   MousepadWindow   *window)
-{
-  GtkAction *action;
-
-  action = gtk_action_group_get_action (window->action_group, "cut");
-  gtk_action_set_sensitive (action, selected);
-
-  action = gtk_action_group_get_action (window->action_group, "copy");
-  gtk_action_set_sensitive (action, selected);
-
-  action = gtk_action_group_get_action (window->action_group, "delete");
-  gtk_action_set_sensitive (action, selected);
 }
 
 
@@ -1708,7 +1702,6 @@ mousepad_window_update_actions (MousepadWindow *window)
   gboolean          cycle_tabs;
   gint              n_pages;
   gint              page_num;
-  gboolean          has_selection;
   gboolean          active;
 
   _mousepad_return_if_fail (MOUSEPAD_IS_WINDOW (window));
@@ -1768,10 +1761,6 @@ mousepad_window_update_actions (MousepadWindow *window)
       /* set the sensitivity of the undo and redo actions */
       mousepad_window_can_undo (window, mousepad_undo_can_undo (document->undo));
       mousepad_window_can_redo (window, mousepad_undo_can_redo (document->undo));
-
-      /* set the sensitivity of the selection actions */
-      has_selection = mousepad_view_get_has_selection (document->textview);
-      mousepad_window_selection_changed (document, has_selection, window);
 
       /* active this tab in the go menu */
       action = g_object_get_data (G_OBJECT (document), I_("navigation-menu-action"));
@@ -2578,6 +2567,9 @@ mousepad_window_action_save_file (GtkAction      *action,
         {
           /* save the document */
           succeed = mousepad_file_save (document->file, &error);
+
+          /* update the window title */
+          mousepad_window_set_title (window);
 
           if (G_UNLIKELY (succeed == FALSE))
             {

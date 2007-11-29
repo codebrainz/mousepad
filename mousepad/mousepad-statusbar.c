@@ -113,7 +113,7 @@ mousepad_statusbar_class_init (MousepadStatusbarClass *klass)
 static void
 mousepad_statusbar_init (MousepadStatusbar *statusbar)
 {
-  GtkWidget    *ebox, *box;
+  GtkWidget    *ebox, *box, *separator;
   GtkStatusbar *bar = GTK_STATUSBAR (statusbar);
 
   /* init statusbar */
@@ -130,10 +130,20 @@ mousepad_statusbar_init (MousepadStatusbar *statusbar)
   gtk_box_pack_start (GTK_BOX (box), bar->label, TRUE, TRUE, 0);
   g_object_unref (G_OBJECT (bar->label));
 
+  /* separator */
+  separator = gtk_vseparator_new ();
+  gtk_box_pack_start (GTK_BOX (box), separator, FALSE, FALSE, 0);
+  gtk_widget_show (separator);
+
   /* line and column numbers */
   statusbar->position = gtk_label_new (NULL);
   gtk_box_pack_start (GTK_BOX (box), statusbar->position, FALSE, TRUE, 0);
   gtk_widget_show (statusbar->position);
+
+  /* separator */
+  separator = gtk_vseparator_new ();
+  gtk_box_pack_start (GTK_BOX (box), separator, FALSE, FALSE, 0);
+  gtk_widget_show (separator);
 
   /* overwrite event box */
   ebox = gtk_event_box_new ();
@@ -176,14 +186,18 @@ mousepad_statusbar_overwrite_clicked (GtkWidget         *widget,
 void
 mousepad_statusbar_set_cursor_position (MousepadStatusbar *statusbar,
                                         gint               line,
-                                        gint               column)
+                                        gint               column,
+                                        gint               selection)
 {
   gchar string[64];
 
   _mousepad_return_if_fail (MOUSEPAD_IS_STATUSBAR (statusbar));
 
   /* create printable string */
-  g_snprintf (string, sizeof (string), _("Line %d Col %d"), line, column);
+  if (G_UNLIKELY (selection > 0))
+    g_snprintf (string, sizeof (string), _("Line: %d Column: %d Selection: %d"), line, column, selection);
+  else
+    g_snprintf (string, sizeof (string), _("Line: %d Column: %d"), line, column);
 
   /* set label */
   gtk_label_set_text (GTK_LABEL (statusbar->position), string);

@@ -294,9 +294,13 @@ mousepad_file_open (MousepadFile  *file,
   _mousepad_return_val_if_fail (error == NULL || *error == NULL, FALSE);
   _mousepad_return_val_if_fail (file->filename != NULL, FALSE);
 
-  /* check if the file exists */
+  /* check if the file exists, if not, it's a filename from the command line */
   if (g_file_test (file->filename, G_FILE_TEST_EXISTS) == FALSE)
-    return TRUE;
+    {
+      file->readonly = FALSE;
+      
+      return TRUE;
+    }
 
   /* open the channel */
   channel = g_io_channel_new_file (file->filename, "r", error);

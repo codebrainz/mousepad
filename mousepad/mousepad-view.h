@@ -60,7 +60,7 @@ void            mousepad_view_set_tab_size              (MousepadView      *view
 void            mousepad_view_set_insert_spaces         (MousepadView      *view,
                                                          gboolean           insert_spaces);
 
-gboolean        mousepad_view_get_has_selection         (MousepadView      *view);
+gint            mousepad_view_get_selection_length      (MousepadView      *view);
 
 gboolean        mousepad_view_get_line_numbers          (MousepadView      *view);
 

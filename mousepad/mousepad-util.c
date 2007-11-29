@@ -19,8 +19,228 @@
 #include <config.h>
 #endif
 
+#ifdef HAVE_STRING_H
+#include <string.h>
+#endif
+
 #include <mousepad/mousepad-private.h>
 #include <mousepad/mousepad-util.h>
+
+
+
+static inline gboolean
+mousepad_util_iter_word_characters (const GtkTextIter *iter)
+{
+  gunichar c;
+
+  /* get the characters */
+  c = gtk_text_iter_get_char (iter);
+
+  /* character we'd like to see in a word */
+  if (g_unichar_isalnum (c) || c == '_')
+    return TRUE;
+
+  return FALSE;
+}
+
+
+
+gboolean
+mousepad_util_iter_starts_word (const GtkTextIter *iter)
+{
+  GtkTextIter prev;
+
+  /* normal gtk word start */
+  if (!gtk_text_iter_starts_word (iter))
+    return FALSE;
+
+  /* init iter for previous char */
+  prev = *iter;
+
+  /* return true when we could not step backwards (start of buffer) */
+  if (!gtk_text_iter_backward_char (&prev))
+    return TRUE;
+
+  /* check if the previous char also belongs to the word */
+  if (mousepad_util_iter_word_characters (&prev))
+    return FALSE;
+
+  return TRUE;
+}
+
+
+
+gboolean
+mousepad_util_iter_ends_word (const GtkTextIter *iter)
+{
+  if (!gtk_text_iter_ends_word (iter))
+    return FALSE;
+
+  /* check if it's a character we'd like to see in a word */
+  if (mousepad_util_iter_word_characters (iter))
+    return FALSE;
+
+  return TRUE;
+}
+
+
+
+gboolean
+mousepad_util_iter_inside_word (const GtkTextIter *iter)
+{
+  GtkTextIter prev;
+
+  /* not inside a word when at beginning or end of a word */
+  if (mousepad_util_iter_starts_word (iter) || mousepad_util_iter_ends_word (iter))
+    return FALSE;
+
+  /* normal gtk function */
+  if (gtk_text_iter_inside_word (iter))
+    return TRUE;
+
+  /* check if the character is a word char */
+  if (!mousepad_util_iter_word_characters (iter))
+    return FALSE;
+
+  /* initialize previous iter */
+  prev = *iter;
+
+  /* get one character backwards */
+  if (!gtk_text_iter_backward_char (&prev))
+    return FALSE;
+
+  return mousepad_util_iter_word_characters (&prev);
+}
+
+
+
+gboolean
+mousepad_util_iter_forward_word_end (GtkTextIter *iter)
+{
+  if (mousepad_util_iter_ends_word (iter))
+    return TRUE;
+
+  while (gtk_text_iter_forward_char (iter))
+    if (mousepad_util_iter_ends_word (iter))
+      return TRUE;
+
+  return mousepad_util_iter_ends_word (iter);
+}
+
+
+
+gboolean
+mousepad_util_iter_backward_word_start (GtkTextIter *iter)
+{
+  /* return true if the iter already starts a word */
+  if (mousepad_util_iter_starts_word (iter))
+    return TRUE;
+
+  /* move backwards until we find a word start */
+  while (gtk_text_iter_backward_char (iter))
+    if (mousepad_util_iter_starts_word (iter))
+      return TRUE;
+
+  /* while stops when we hit the first char in the buffer */
+  return mousepad_util_iter_starts_word (iter);
+}
+
+
+
+gboolean
+mousepad_util_iter_forward_text_start (GtkTextIter *iter)
+{
+  _mousepad_return_val_if_fail (!mousepad_util_iter_inside_word (iter), FALSE);
+
+  /* keep until we hit text or a line end */
+  while (g_unichar_isspace (gtk_text_iter_get_char (iter)))
+    if (gtk_text_iter_ends_line (iter) || !gtk_text_iter_forward_char (iter))
+      break;
+
+  return TRUE;
+}
+
+
+
+gboolean
+mousepad_util_iter_backward_text_start (GtkTextIter *iter)
+{
+  GtkTextIter prev = *iter;
+
+  _mousepad_return_val_if_fail (!mousepad_util_iter_inside_word (iter), FALSE);
+
+  while (!gtk_text_iter_starts_line (&prev) && gtk_text_iter_backward_char (&prev))
+    {
+      if (g_unichar_isspace (gtk_text_iter_get_char (&prev)))
+        *iter = prev;
+      else
+        break;
+    }
+
+  return TRUE;
+}
+
+
+
+gchar *
+mousepad_util_config_name (const gchar *name)
+{
+  const gchar *s;
+  gchar       *config, *t;
+  gboolean     upper = TRUE;
+
+  /* allocate string */
+  config = g_new (gchar, strlen (name) + 1);
+
+  /* convert name */
+  for (s = name, t = config; *s != '\0'; ++s)
+    {
+      if (*s == '-')
+        {
+          upper = TRUE;
+        }
+      else if (upper)
+        {
+          *t++ = g_ascii_toupper (*s);
+          upper = FALSE;
+        }
+      else
+        {
+          *t++ = g_ascii_tolower (*s);
+        }
+    }
+
+  /* zerro terminate string */
+  *t = '\0';
+
+  return config;
+}
+
+
+
+gchar *
+mousepad_util_key_name (const gchar *name)
+{
+  const gchar *s;
+  gchar       *key, *t;
+
+  /* allocate string (max of 9 extra - chars) */
+  key = g_new (gchar, strlen (name) + 10);
+
+  /* convert name */
+  for (s = name, t = key; *s != '\0'; ++s)
+    {
+      if (g_ascii_isupper (*s) && s != name)
+        *t++ = '-';
+
+      *t++ = g_ascii_tolower (*s);
+    }
+
+  /* zerro terminate string */
+  *t = '\0';
+
+  return key;
+}
 
 
 
@@ -291,7 +511,7 @@ mousepad_util_search_iter (const GtkTextIter   *start,
                   gtk_text_iter_forward_char (&iter);
 
                   /* check if we match a whole word */
-                  if (whole_word && !(gtk_text_iter_starts_word (&begin) && gtk_text_iter_ends_word (&iter)))
+                  if (whole_word && !(mousepad_util_iter_starts_word (&begin) && mousepad_util_iter_ends_word (&iter)))
                     goto reset_and_continue_searching;
                 }
               else
@@ -300,7 +520,7 @@ mousepad_util_search_iter (const GtkTextIter   *start,
                   gtk_text_iter_forward_char (&begin);
 
                   /* check if we match a whole word */
-                  if (whole_word && !(gtk_text_iter_starts_word (&iter) && gtk_text_iter_ends_word (&begin)))
+                  if (whole_word && !(mousepad_util_iter_starts_word (&iter) && mousepad_util_iter_ends_word (&begin)))
                     goto reset_and_continue_searching;
                 }
 

@@ -56,39 +56,55 @@ enum _MousepadSearchFlags
   MOUSEPAD_SEARCH_FLAGS_ACTION_REPLACE    = 1 << 17, /* replace the match */
 };
 
+gboolean   mousepad_util_iter_starts_word         (const GtkTextIter   *iter);
 
+gboolean   mousepad_util_iter_ends_word           (const GtkTextIter   *iter);
 
-GtkWidget *mousepad_util_image_button           (const gchar         *stock_id,
-                                                 const gchar         *label);
+gboolean   mousepad_util_iter_inside_word         (const GtkTextIter   *iter);
 
-void       mousepad_util_entry_error            (GtkWidget           *widget,
-                                                 gboolean             error);
+gboolean   mousepad_util_iter_forward_word_end    (GtkTextIter         *iter);
 
-void       mousepad_util_dialog_header          (GtkDialog           *dialog,
-                                                 const gchar         *title,
-                                                 const gchar         *subtitle,
-                                                 const gchar         *icon);
+gboolean   mousepad_util_iter_backward_word_start (GtkTextIter         *iter);
 
-void       mousepad_util_set_tooltip            (GtkWidget           *widget,
-                                                 const gchar         *string);
+gboolean   mousepad_util_iter_forward_text_start  (GtkTextIter         *iter);
 
-gint       mousepad_util_get_real_line_offset   (const GtkTextIter   *iter,
-                                                 gint                 tab_size);
+gboolean   mousepad_util_iter_backward_text_start (GtkTextIter         *iter);
 
-gboolean   mousepad_util_forward_iter_to_text   (GtkTextIter         *iter,
-                                                 const GtkTextIter   *limit);
+gchar     *mousepad_util_config_name              (const gchar         *name);
 
-GType      mousepad_util_search_flags_get_type  (void) G_GNUC_CONST;
+gchar     *mousepad_util_key_name                 (const gchar         *name);
 
-gint       mousepad_util_highlight              (GtkTextBuffer       *buffer,
-                                                 GtkTextTag          *tag,
-                                                 const gchar         *string,
-                                                 MousepadSearchFlags  flags);
+GtkWidget *mousepad_util_image_button             (const gchar         *stock_id,
+                                                   const gchar         *label);
 
-gint       mousepad_util_search                 (GtkTextBuffer       *buffer,
-                                                 const gchar         *string,
-                                                 const gchar         *replace,
-                                                 MousepadSearchFlags  flags);
+void       mousepad_util_entry_error              (GtkWidget           *widget,
+                                                   gboolean             error);
+
+void       mousepad_util_dialog_header            (GtkDialog           *dialog,
+                                                   const gchar         *title,
+                                                   const gchar         *subtitle,
+                                                   const gchar         *icon);
+
+void       mousepad_util_set_tooltip              (GtkWidget           *widget,
+                                                   const gchar         *string);
+
+gint       mousepad_util_get_real_line_offset     (const GtkTextIter   *iter,
+                                                   gint                 tab_size);
+
+gboolean   mousepad_util_forward_iter_to_text     (GtkTextIter         *iter,
+                                                   const GtkTextIter   *limit);
+
+GType      mousepad_util_search_flags_get_type    (void) G_GNUC_CONST;
+
+gint       mousepad_util_highlight                (GtkTextBuffer       *buffer,
+                                                   GtkTextTag          *tag,
+                                                   const gchar         *string,
+                                                   MousepadSearchFlags  flags);
+
+gint       mousepad_util_search                   (GtkTextBuffer       *buffer,
+                                                   const gchar         *string,
+                                                   const gchar         *replace,
+                                                   MousepadSearchFlags  flags);
 
 G_END_DECLS
 

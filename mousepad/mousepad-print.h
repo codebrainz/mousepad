@@ -30,14 +30,14 @@ typedef struct _MousepadPrint      MousepadPrint;
 #define MOUSEPAD_IS_PRINT_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), MOUSEPAD_TYPE_PRINT))
 #define MOUSEPAD_PRINT_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), MOUSEPAD_TYPE_PRINT, MousepadPrintClass))
 
-GType          mousepad_print_get_type (void) G_GNUC_CONST;
+GType          mousepad_print_get_type             (void) G_GNUC_CONST;
 
-MousepadPrint *mousepad_print_new (void);
+MousepadPrint *mousepad_print_new                  (void);
 
-gboolean mousepad_print_document_interactive (MousepadPrint     *print,
-                                     MousepadDocument  *document,
-                                     GtkWindow         *parent,
-                                     GError           **error);
+gboolean       mousepad_print_document_interactive (MousepadPrint     *print,
+                                                    MousepadDocument  *document,
+                                                    GtkWindow         *parent,
+                                                    GError           **error);
 
 G_END_DECLS
 

@@ -93,10 +93,6 @@ const gchar      *mousepad_document_get_filename             (MousepadDocument  
 
 gboolean          mousepad_document_get_word_wrap            (MousepadDocument      *document);
 
-void              mousepad_document_get_font_information     (MousepadDocument      *document,
-                                                              PangoFontDescription **font_desc,
-                                                              gint                  *font_height);
-
 G_END_DECLS
 
 #endif /* !__MOUSEPAD_DOCUMENT_H__ */
