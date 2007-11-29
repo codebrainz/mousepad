@@ -499,8 +499,9 @@ mousepad_document_line_numbers (MousepadDocument *document,
 GtkWidget *
 mousepad_document_get_tab_label (MousepadDocument *document)
 {
-  GtkWidget *hbox;
-  GtkWidget *button, *image;
+  GtkWidget  *hbox;
+  GtkWidget  *button, *image;
+  GtkRcStyle *style;
 
   /* create the box */
   hbox = gtk_hbox_new (FALSE, 0);
@@ -518,12 +519,18 @@ mousepad_document_get_tab_label (MousepadDocument *document)
   gtk_widget_show (document->priv->label);
 
   /* create the button */
-  button = g_object_new (GTK_TYPE_BUTTON,
-                         "relief", GTK_RELIEF_NONE,
-                         "focus-on-click", FALSE,
-                         "border-width", 0,
-                         "can-default", FALSE,
-                         "can-focus", FALSE, NULL);
+  button = gtk_button_new ();
+  gtk_button_set_focus_on_click (GTK_BUTTON (button), FALSE);
+  gtk_button_set_relief (GTK_BUTTON (button), GTK_RELIEF_NONE);
+  GTK_WIDGET_UNSET_FLAGS (button, GTK_CAN_DEFAULT | GTK_CAN_FOCUS);
+
+  /* make button a bit smaller */
+  style = gtk_rc_style_new ();
+  style->xthickness = style->ythickness = 0;
+  gtk_widget_modify_style (button, style);
+  gtk_rc_style_unref (style);
+
+  /* pack button, add signal and tooltip */
   mousepad_util_set_tooltip (button, _("Close this tab"));
   gtk_box_pack_start (GTK_BOX (hbox), button, FALSE, FALSE, 0);
   g_signal_connect (G_OBJECT (button), "clicked", G_CALLBACK (mousepad_document_tab_button_clicked), document);
