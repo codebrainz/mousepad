@@ -34,13 +34,19 @@ G_BEGIN_DECLS
 #define TIMER_START  GTimer *__FUNCTION__timer = g_timer_new();
 #define TIMER_SPLIT  g_print ("%s (%s:%d): %.2f ms\n", __FUNCTION__, __FILE__, __LINE__, g_timer_elapsed (__FUNCTION__timer, NULL) * 1000);
 #define TIMER_STOP   TIMER_SPLIT g_timer_destroy (__FUNCTION__timer);
-#define PRINT_LINE   g_print ("%d\n", __LINE__);
+#define PRINT_LINE   g_print ("%d (%s)\n", __LINE__, __FUNCTION__);
 
 /* optimize the properties */
 #define MOUSEPAD_PARAM_READWRITE (G_PARAM_READWRITE | G_PARAM_STATIC_NAME | G_PARAM_STATIC_NICK | G_PARAM_STATIC_BLURB)
 
-/* support for canonical strings */
-#define I_(string) (g_intern_static_string ((string)))
+/* support for canonical strings and quarks */
+#define I_(string)  (g_intern_static_string (string))
+#define QU_(string) (g_quark_from_static_string (string))
+
+/* convienient function for setting object data */
+#define mousepad_object_set_data(object,key,data)              (g_object_set_qdata ((object), QU_(key), (data)))
+#define mousepad_object_set_data_full(object,key,data,destroy) (g_object_set_qdata_full ((object), QU_(key), (data), (GDestroyNotify) (destroy)))
+#define mousepad_object_get_data(object,key)                   (g_object_get_qdata ((object), QU_(key)))
 
 /* support macros for debugging */
 #ifndef NDEBUG
@@ -82,8 +88,8 @@ G_BEGIN_DECLS
 #undef G_UNLIKELY
 
 #if defined(NDEBUG) && defined(__GNUC__) && (__GNUC__ > 2)
-#define G_LIKELY(expr) (__builtin_expect (!!(expr), 1))
-#define G_UNLIKELY(expr) (__builtin_expect (!!(expr), 0))
+#define G_LIKELY(expr) (__builtin_expect (!!(expr), TRUE))
+#define G_UNLIKELY(expr) (__builtin_expect (!!(expr), FALSE))
 #else
 #define G_LIKELY(expr) (expr)
 #define G_UNLIKELY(expr) (expr)

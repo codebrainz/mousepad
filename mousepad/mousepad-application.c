@@ -64,25 +64,6 @@ static GObjectClass *mousepad_application_parent_class;
 
 
 
-MousepadApplication*
-mousepad_application_get (void)
-{
-  static MousepadApplication *application = NULL;
-
-  if (G_LIKELY (application))
-    {
-      g_object_ref (G_OBJECT (application));
-    }
-  else
-    {
-      application = g_object_new (MOUSEPAD_TYPE_APPLICATION, NULL);
-    }
-
-  return application;
-}
-
-
-
 GType
 mousepad_application_get_type (void)
 {
@@ -170,6 +151,26 @@ mousepad_application_finalize (GObject *object)
   g_slist_free (application->windows);
 
   (*G_OBJECT_CLASS (mousepad_application_parent_class)->finalize) (object);
+}
+
+
+
+MousepadApplication*
+mousepad_application_get (void)
+{
+  static MousepadApplication *application = NULL;
+
+  if (G_UNLIKELY (application == NULL))
+    {
+      application = g_object_new (MOUSEPAD_TYPE_APPLICATION, NULL);
+      g_object_add_weak_pointer (G_OBJECT (application), (gpointer) &application);
+    }
+  else
+    {
+      g_object_ref (G_OBJECT (application));
+    }
+
+  return application;
 }
 
 

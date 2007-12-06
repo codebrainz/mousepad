@@ -19,29 +19,28 @@
 
   <menubar name="main-menu">
     <menu action="file-menu">
-      <menuitem action="new-tab" />
+      <menuitem action="new" />
       <menuitem action="new-window" />
+      <menuitem action="template-menu" />
       <separator />
-      <menuitem action="open-file" />
-
+      <menuitem action="open" />
       <menu action="recent-menu">
         <menuitem action="no-recent-items" />
         <placeholder name="placeholder-recent-items" />
         <separator />
         <menuitem action="clear-recent" />
       </menu>
-
       <separator />
-      <menuitem action="save-file" />
-      <menuitem action="save-file-as" />
+      <menuitem action="save" />
+      <menuitem action="save-as" />
+      <menuitem action="save-all" />
+      <menuitem action="revert" />
       <separator />
-      <menuitem action="reload" />
+      <menuitem action="print" />
       <separator />
-      <menuitem action="print-document" />
+      <menuitem action="detach" />
       <separator />
-      <menuitem action="detach-tab" />
-      <menuitem action="close-tab" />
-      <separator />
+      <menuitem action="close" />
       <menuitem action="close-window" />
     </menu>
 
@@ -52,15 +51,15 @@
       <menuitem action="cut" />
       <menuitem action="copy" />
       <menuitem action="paste" />
-      <menuitem action="paste-column" />
+      <menu action="paste-menu">
+        <menuitem action="paste-history" />
+        <menuitem action="paste-column" />
+      </menu>
       <menuitem action="delete" />
       <separator />
       <menuitem action="select-all" />
+      <menuitem action="change-selection" />
       <separator />
-      <menuitem action="transpose" />
-    </menu>
-
-    <menu action="search-menu">
       <menuitem action="find" />
       <menuitem action="find-next" />
       <menuitem action="find-previous" />
@@ -73,16 +72,46 @@
       <menuitem action="statusbar" />
     </menu>
 
+    <menu action="text-menu">
+      <menu action="convert-menu">
+        <menuitem action="lowercase" />
+        <menuitem action="uppercase" />
+        <menuitem action="titlecase" />
+        <menuitem action="opposite-case" />
+        <separator />
+        <menuitem action="tabs-to-spaces" />
+        <menuitem action="spaces-to-tabs" />
+        <separator />
+        <menuitem action="strip-trailing" />
+        <separator />
+        <menuitem action="transpose" />
+      </menu>
+      <menu action="move-menu">
+        <menuitem action="line-up" />
+        <menuitem action="line-down" />
+      </menu>
+      <separator />
+      <menuitem action="duplicate" />
+      <separator />
+      <menuitem action="increase-indent" />
+      <menuitem action="decrease-indent" />
+    </menu>
+
     <menu action="document-menu">
       <menuitem action="line-numbers" />
-      <separator />
-      <menuitem action="auto-indent" />
       <menuitem action="word-wrap" />
       <separator />
+      <menuitem action="auto-indent" />
+      <separator />
       <menu action="tab-size-menu">
-        <placeholder name="placeholder-tab-sizes" />
+        <placeholder name="placeholder-tab-items" />
         <separator />
         <menuitem action="insert-spaces" />
+      </menu>
+      <menu action="eol-menu">
+        <menuitem action="unix" />
+        <menuitem action="mac" />
+        <menuitem action="dos" />
       </menu>
     </menu>
 
@@ -90,9 +119,9 @@
       <menuitem action="back" />
       <menuitem action="forward" />
       <separator />
-      <placeholder name="placeholder-documents" />
+      <placeholder name="placeholder-file-items" />
       <separator />
-      <menuitem action="go-to-line" />
+      <menuitem action="go-to" />
     </menu>
 
     <menu action="help-menu">
@@ -102,13 +131,13 @@
   </menubar>
 
   <popup action="tab-menu">
-    <menuitem action="save-file" />
-    <menuitem action="save-file-as" />
+    <menuitem action="save" />
+    <menuitem action="save-as" />
     <separator />
-    <menuitem action="reload" />
+    <menuitem action="revert" />
     <separator />
-    <menuitem action="detach-tab" />
-    <menuitem action="close-tab" />
+    <menuitem action="detach" />
+    <menuitem action="close" />
   </popup>
 
   <popup action="textview-menu">
@@ -118,8 +147,6 @@
     <menuitem action="cut" />
     <menuitem action="copy" />
     <menuitem action="paste" />
-    <menuitem action="paste-column" />
-    <menuitem action="delete" />
     <separator />
     <menuitem action="select-all" />
   </popup>

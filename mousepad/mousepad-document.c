@@ -50,7 +50,10 @@ static void      mousepad_document_finalize                (GObject             
 static void      mousepad_document_notify_cursor_position  (GtkTextBuffer          *buffer,
                                                             GParamSpec             *pspec,
                                                             MousepadDocument       *document);
-static void      mousepad_document_toggle_overwrite        (GtkTextView            *textview,
+static void      mousepad_document_notify_has_selection    (GtkTextBuffer          *buffer,
+                                                            GParamSpec             *pspec,
+                                                            MousepadDocument       *document);
+static void      mousepad_document_notify_overwrite        (GtkTextView            *textview,
                                                             GParamSpec             *pspec,
                                                             MousepadDocument       *document);
 static void      mousepad_document_drag_data_received      (GtkWidget              *widget,
@@ -63,6 +66,7 @@ static void      mousepad_document_drag_data_received      (GtkWidget           
                                                             MousepadDocument       *document);
 static void      mousepad_document_filename_changed        (MousepadDocument       *document,
                                                             const gchar            *filename);
+static void      mousepad_document_label_color             (MousepadDocument       *document);
 static void      mousepad_document_tab_button_clicked      (GtkWidget              *widget,
                                                             MousepadDocument       *document);
 
@@ -71,8 +75,9 @@ enum
 {
   CLOSE_TAB,
   CURSOR_CHANGED,
+  SELECTION_CHANGED,
   OVERWRITE_CHANGED,
-  LAST_SIGNAL,
+  LAST_SIGNAL
 };
 
 struct _MousepadDocumentClass
@@ -160,6 +165,14 @@ mousepad_document_class_init (MousepadDocumentClass *klass)
                   _mousepad_marshal_VOID__INT_INT_INT,
                   G_TYPE_NONE, 3, G_TYPE_INT, G_TYPE_INT, G_TYPE_INT);
 
+  document_signals[SELECTION_CHANGED] =
+    g_signal_new (I_("selection-changed"),
+                  G_TYPE_FROM_CLASS (gobject_class),
+                  G_SIGNAL_NO_HOOKS,
+                  0, NULL, NULL,
+                  g_cclosure_marshal_VOID__INT,
+                  G_TYPE_NONE, 1, G_TYPE_INT);
+
   document_signals[OVERWRITE_CHANGED] =
     g_signal_new (I_("overwrite-changed"),
                   G_TYPE_FROM_CLASS (gobject_class),
@@ -186,6 +199,7 @@ mousepad_document_init (MousepadDocument *document)
   /* initialize the variables */
   document->priv->utf8_filename = NULL;
   document->priv->utf8_basename = NULL;
+  document->priv->label = NULL;
 
   /* setup the scolled window */
   gtk_scrolled_window_set_policy (GTK_SCROLLED_WINDOW (document), GTK_POLICY_AUTOMATIC, GTK_POLICY_AUTOMATIC);
@@ -246,7 +260,9 @@ mousepad_document_init (MousepadDocument *document)
 
   /* attach signals to the text view and buffer */
   g_signal_connect (G_OBJECT (document->buffer), "notify::cursor-position", G_CALLBACK (mousepad_document_notify_cursor_position), document);
-  g_signal_connect (G_OBJECT (document->textview), "notify::overwrite", G_CALLBACK (mousepad_document_toggle_overwrite), document);
+  g_signal_connect (G_OBJECT (document->buffer), "notify::has-selection", G_CALLBACK (mousepad_document_notify_has_selection), document);
+  g_signal_connect_swapped (G_OBJECT (document->buffer), "modified-changed", G_CALLBACK (mousepad_document_label_color), document);
+  g_signal_connect (G_OBJECT (document->textview), "notify::overwrite", G_CALLBACK (mousepad_document_notify_overwrite), document);
   g_signal_connect (G_OBJECT (document->textview), "drag-data-received", G_CALLBACK (mousepad_document_drag_data_received), document);
 }
 
@@ -281,7 +297,7 @@ mousepad_document_notify_cursor_position (GtkTextBuffer    *buffer,
                                           MousepadDocument *document)
 {
   GtkTextIter iter;
-  guint       line, column, selection;
+  gint        line, column, selection;
   gint        tab_size;
 
   _mousepad_return_if_fail (GTK_IS_TEXT_BUFFER (buffer));
@@ -297,10 +313,10 @@ mousepad_document_notify_cursor_position (GtkTextBuffer    *buffer,
   tab_size = mousepad_view_get_tab_size (document->textview);
 
   /* get the column */
-  column = mousepad_util_get_real_line_offset (&iter, tab_size) + 1;
+  column = mousepad_util_get_real_line_offset (&iter, tab_size);
 
   /* get length of the selection */
-  selection = mousepad_view_get_selection_length (document->textview);
+  selection = mousepad_view_get_selection_length (document->textview, NULL);
 
   /* emit the signal */
   g_signal_emit (G_OBJECT (document), document_signals[CURSOR_CHANGED], 0, line, column, selection);
@@ -309,7 +325,35 @@ mousepad_document_notify_cursor_position (GtkTextBuffer    *buffer,
 
 
 static void
-mousepad_document_toggle_overwrite (GtkTextView      *textview,
+mousepad_document_notify_has_selection (GtkTextBuffer    *buffer,
+                                        GParamSpec       *pspec,
+                                        MousepadDocument *document)
+{
+  gint     selection;
+  gboolean is_column_selection;
+
+  _mousepad_return_if_fail (GTK_IS_TEXT_BUFFER (buffer));
+  _mousepad_return_if_fail (MOUSEPAD_IS_DOCUMENT (document));
+
+  /* get length of the selection */
+  selection = mousepad_view_get_selection_length (document->textview, &is_column_selection);
+
+  /* don't send large numbers */
+  if (selection > 1)
+    selection = 1;
+
+  /* if it's a column selection with content */
+  if (selection == 1 && is_column_selection)
+    selection = 2;
+
+  /* emit the signal */
+  g_signal_emit (G_OBJECT (document), document_signals[SELECTION_CHANGED], 0, selection);
+}
+
+
+
+static void
+mousepad_document_notify_overwrite (GtkTextView      *textview,
                                     GParamSpec       *pspec,
                                     MousepadDocument *document)
 {
@@ -379,7 +423,35 @@ mousepad_document_filename_changed (MousepadDocument *document,
 
           /* set the tab tooltip */
           mousepad_util_set_tooltip (document->priv->ebox, utf8_filename);
+
+          /* update label color */
+          mousepad_document_label_color (document);
         }
+    }
+}
+
+
+
+static void
+mousepad_document_label_color (MousepadDocument *document)
+{
+  const GdkColor green = {0, 0x0000, 0x9999, 0x0000};
+  const GdkColor red   = {0, 0xffff, 0x0000, 0x0000};
+  gboolean       readonly, modified;
+
+  _mousepad_return_if_fail (MOUSEPAD_IS_DOCUMENT (document));
+  _mousepad_return_if_fail (GTK_IS_TEXT_BUFFER (document->buffer));
+  _mousepad_return_if_fail (MOUSEPAD_IS_FILE (document->file));
+
+  if (document->priv->label)
+    {
+      /* get states */
+      readonly = mousepad_file_get_read_only (document->file);
+      modified = gtk_text_buffer_get_modified (document->buffer);
+
+      /* update colors */
+      gtk_widget_modify_fg (document->priv->label, GTK_STATE_NORMAL, modified ? &red : (readonly ? &green : NULL));
+      gtk_widget_modify_fg (document->priv->label, GTK_STATE_ACTIVE, modified ? &red : (readonly ? &green : NULL));
     }
 }
 
@@ -443,26 +515,7 @@ mousepad_document_focus_textview (MousepadDocument *document)
 
 
 void
-mousepad_document_go_to_line (MousepadDocument *document,
-                              gint              line_number)
-{
-  GtkTextIter iter;
-
-  _mousepad_return_if_fail (MOUSEPAD_IS_DOCUMENT (document));
-  _mousepad_return_if_fail (GTK_IS_TEXT_BUFFER (document->buffer));
-
-  /* move the cursor */
-  gtk_text_buffer_get_iter_at_line (document->buffer, &iter, line_number - 1);
-  gtk_text_buffer_place_cursor (document->buffer, &iter);
-
-  /* make sure the cursor is in the visible area */
-  mousepad_view_put_cursor_on_screen (document->textview);
-}
-
-
-
-void
-mousepad_document_send_statusbar_signals (MousepadDocument *document)
+mousepad_document_send_signals (MousepadDocument *document)
 {
   _mousepad_return_if_fail (MOUSEPAD_IS_DOCUMENT (document));
 
@@ -470,28 +523,10 @@ mousepad_document_send_statusbar_signals (MousepadDocument *document)
   mousepad_document_notify_cursor_position (document->buffer, NULL, document);
 
   /* re-send the overwrite signal */
-  mousepad_document_toggle_overwrite (GTK_TEXT_VIEW (document->textview), NULL, document);
-}
+  mousepad_document_notify_overwrite (GTK_TEXT_VIEW (document->textview), NULL, document);
 
-
-
-void
-mousepad_document_line_numbers (MousepadDocument *document,
-                                gint             *current_line,
-                                gint             *last_line)
-{
-  GtkTextIter iter;
-
-  _mousepad_return_if_fail (MOUSEPAD_IS_DOCUMENT (document));
-  _mousepad_return_if_fail (GTK_IS_TEXT_BUFFER (document->buffer));
-
-  /* get the current line number */
-  gtk_text_buffer_get_iter_at_mark (document->buffer, &iter, gtk_text_buffer_get_insert (document->buffer));
-  *current_line = gtk_text_iter_get_line (&iter) + 1;
-
-  /* get the last line number */
-  gtk_text_buffer_get_end_iter (document->buffer, &iter);
-  *last_line = gtk_text_iter_get_line (&iter) + 1;
+  /* re-send the selection status */
+  mousepad_document_notify_has_selection (document->buffer, NULL, document);
 }
 
 
@@ -517,6 +552,9 @@ mousepad_document_get_tab_label (MousepadDocument *document)
   document->priv->label = gtk_label_new (mousepad_document_get_basename (document));
   gtk_container_add (GTK_CONTAINER (document->priv->ebox), document->priv->label);
   gtk_widget_show (document->priv->label);
+
+  /* set label color */
+  mousepad_document_label_color (document);
 
   /* create the button */
   button = gtk_button_new ();

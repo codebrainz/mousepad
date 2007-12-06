@@ -61,37 +61,30 @@ struct _MousepadDocument
   GtkTextTag              *tag;
 };
 
-GType             mousepad_document_get_type                 (void) G_GNUC_CONST;
+GType             mousepad_document_get_type       (void) G_GNUC_CONST;
 
-MousepadDocument *mousepad_document_new                      (void);
+MousepadDocument *mousepad_document_new            (void);
 
-void              mousepad_document_set_font                 (MousepadDocument      *document,
-                                                              const gchar           *font_name);
+void              mousepad_document_set_font       (MousepadDocument *document,
+                                                    const gchar      *font_name);
 
-void              mousepad_document_set_overwrite            (MousepadDocument      *document,
-                                                              gboolean               overwrite);
+void              mousepad_document_set_overwrite  (MousepadDocument *document,
+                                                    gboolean          overwrite);
 
-void              mousepad_document_set_word_wrap            (MousepadDocument      *document,
-                                                              gboolean               word_wrap);
+void              mousepad_document_set_word_wrap  (MousepadDocument *document,
+                                                    gboolean          word_wrap);
 
-void              mousepad_document_focus_textview           (MousepadDocument      *document);
+void              mousepad_document_focus_textview (MousepadDocument *document);
 
-void              mousepad_document_go_to_line               (MousepadDocument      *document,
-                                                              gint                   line_number);
+void              mousepad_document_send_signals   (MousepadDocument *document);
 
-void              mousepad_document_send_statusbar_signals   (MousepadDocument      *document);
+GtkWidget        *mousepad_document_get_tab_label  (MousepadDocument *document);
 
-void              mousepad_document_line_numbers             (MousepadDocument      *document,
-                                                              gint                  *current_line,
-                                                              gint                  *last_line);
+const gchar      *mousepad_document_get_basename   (MousepadDocument *document);
 
-GtkWidget        *mousepad_document_get_tab_label            (MousepadDocument      *document);
+const gchar      *mousepad_document_get_filename   (MousepadDocument *document);
 
-const gchar      *mousepad_document_get_basename             (MousepadDocument      *document);
-
-const gchar      *mousepad_document_get_filename             (MousepadDocument      *document);
-
-gboolean          mousepad_document_get_word_wrap            (MousepadDocument      *document);
+gboolean          mousepad_document_get_word_wrap  (MousepadDocument *document);
 
 G_END_DECLS
 

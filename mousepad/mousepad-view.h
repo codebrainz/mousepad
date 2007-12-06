@@ -31,9 +31,35 @@ typedef struct _MousepadViewClass MousepadViewClass;
 typedef struct _MousepadView      MousepadView;
 typedef enum   _MousepadViewFlags MousepadViewFlags;
 
+enum
+{
+  LOWERCASE,
+  UPPERCASE,
+  TITLECASE,
+  OPPOSITE_CASE
+};
+
+enum
+{
+  SPACES_TO_TABS,
+  TABS_TO_SPACES
+};
+
+enum
+{
+  MOVE_LINE_UP,
+  MOVE_LINE_DOWN
+};
+
+enum
+{
+  INCREASE_INDENT,
+  DECREASE_INDENT
+};
+
 GType           mousepad_view_get_type                  (void) G_GNUC_CONST;
 
-void            mousepad_view_put_cursor_on_screen      (MousepadView      *view);
+void            mousepad_view_scroll_to_cursor          (MousepadView      *view);
 
 void            mousepad_view_transpose                 (MousepadView      *view);
 
@@ -42,11 +68,30 @@ void            mousepad_view_clipboard_cut             (MousepadView      *view
 void            mousepad_view_clipboard_copy            (MousepadView      *view);
 
 void            mousepad_view_clipboard_paste           (MousepadView      *view,
+                                                         const gchar       *string,
                                                          gboolean           paste_as_column);
 
 void            mousepad_view_delete_selection          (MousepadView      *view);
 
 void            mousepad_view_select_all                (MousepadView      *view);
+
+void            mousepad_view_change_selection          (MousepadView      *view);
+
+void            mousepad_view_convert_selection_case    (MousepadView      *view,
+                                                         gint               type);
+
+void            mousepad_view_convert_spaces_and_tabs   (MousepadView      *view,
+                                                         gint               type);
+
+void            mousepad_view_strip_trailing_spaces     (MousepadView      *view);
+
+void            mousepad_view_move_selection            (MousepadView      *view,
+                                                         gint               type);
+
+void            mousepad_view_duplicate                 (MousepadView      *view);
+
+void            mousepad_view_indent                    (MousepadView      *view,
+                                                         gint               type);
 
 void            mousepad_view_set_line_numbers          (MousepadView      *view,
                                                          gboolean           line_numbers);
@@ -60,7 +105,8 @@ void            mousepad_view_set_tab_size              (MousepadView      *view
 void            mousepad_view_set_insert_spaces         (MousepadView      *view,
                                                          gboolean           insert_spaces);
 
-gint            mousepad_view_get_selection_length      (MousepadView      *view);
+gint            mousepad_view_get_selection_length      (MousepadView      *view,
+                                                         gboolean          *is_column_selection);
 
 gboolean        mousepad_view_get_line_numbers          (MousepadView      *view);
 
@@ -69,6 +115,7 @@ gboolean        mousepad_view_get_auto_indent           (MousepadView      *view
 gint            mousepad_view_get_tab_size              (MousepadView      *view);
 
 gboolean        mousepad_view_get_insert_spaces         (MousepadView      *view);
+
 
 G_END_DECLS
 

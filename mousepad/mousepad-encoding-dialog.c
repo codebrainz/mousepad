@@ -354,7 +354,7 @@ mousepad_encoding_dialog_test_encodings_idle (gpointer user_data)
       /* get the first model iter, if there is one */
       if (gtk_tree_model_get_iter_first (GTK_TREE_MODEL (dialog->store), &needle))
         {
-          while (TRUE)
+          for (;;)
             {
               /* get the column value */
               gtk_tree_model_get (GTK_TREE_MODEL (dialog->store), &needle, COLUMN_UNPRINTABLE, &value, -1);

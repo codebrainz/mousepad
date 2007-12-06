@@ -45,15 +45,15 @@ static gboolean   opt_quit = FALSE;
 
 
 /* command line options */
-static GOptionEntry option_entries[] =
+static const GOptionEntry option_entries[] =
 {
 #ifdef HAVE_DBUS
-  { "disable-server", '\0', 0, G_OPTION_ARG_NONE, &opt_disable_server, N_("Do not register with the D-BUS session message bus"), NULL, },
-  { "quit", 'q', 0, G_OPTION_ARG_NONE, &opt_quit, N_("Quit a running Mousepad instance"), NULL, },
+  { "disable-server", '\0', 0, G_OPTION_ARG_NONE, &opt_disable_server, N_("Do not register with the D-BUS session message bus"), NULL },
+  { "quit", 'q', 0, G_OPTION_ARG_NONE, &opt_quit, N_("Quit a running Mousepad instance"), NULL },
 #endif
-  { "version", 'v', 0, G_OPTION_ARG_NONE, &opt_version, N_("Print version information and exit"), NULL, },
+  { "version", 'v', 0, G_OPTION_ARG_NONE, &opt_version, N_("Print version information and exit"), NULL },
   { G_OPTION_REMAINING, '\0', 0, G_OPTION_ARG_FILENAME_ARRAY, &filenames, NULL, NULL },
-  { NULL, },
+  { NULL },
 };
 
 
@@ -84,7 +84,7 @@ main (gint argc, gchar **argv)
     g_thread_init (NULL);
 
   /* initialize gtk+ */
-  if (!gtk_init_with_args (&argc, &argv, _("[FILES...]"), option_entries, GETTEXT_PACKAGE, &error))
+  if (!gtk_init_with_args (&argc, &argv, _("[FILES...]"), (GOptionEntry *) option_entries, GETTEXT_PACKAGE, &error))
     {
       /* check if we have an error message */
       if (G_LIKELY (error == NULL))

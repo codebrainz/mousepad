@@ -34,7 +34,7 @@
 
 
 #define MAX_ENCODING_CHECK_CHARS       (10000)
-#define MOUSEPAD_GET_LINE_END_CHARS(a) ((a) == MOUSEPAD_LINE_END_WIN32 ? "\r\n\0" : ((a) == MOUSEPAD_LINE_END_MAC ? "\r\0" : "\n\0"))
+#define MOUSEPAD_GET_LINE_END_CHARS(a) ((a) == MOUSEPAD_LINE_END_DOS ? "\r\n\0" : ((a) == MOUSEPAD_LINE_END_MAC ? "\r\0" : "\n\0"))
 
 
 enum
@@ -298,7 +298,7 @@ mousepad_file_open (MousepadFile  *file,
   if (g_file_test (file->filename, G_FILE_TEST_EXISTS) == FALSE)
     {
       file->readonly = FALSE;
-      
+
       return TRUE;
     }
 
@@ -324,7 +324,7 @@ mousepad_file_open (MousepadFile  *file,
       gtk_text_buffer_get_start_iter (file->buffer, &end);
 
       /* read the content of the file */
-      while (TRUE)
+      for (;;)
         {
           /* read the line */
           status = g_io_channel_read_line (channel, &string, &length, &terminator_pos, error);
@@ -347,7 +347,7 @@ mousepad_file_open (MousepadFile  *file,
                   else if (strcmp (line_term, "\r") == 0)
                     file->line_ending = MOUSEPAD_LINE_END_MAC;
                   else if (strcmp (line_term, "\r\n") == 0)
-                    file->line_ending = MOUSEPAD_LINE_END_WIN32;
+                    file->line_ending = MOUSEPAD_LINE_END_DOS;
                   else
                     g_warning (_("Unknown line ending detected (%s)"), line_term);
                 }

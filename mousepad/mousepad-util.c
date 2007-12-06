@@ -244,6 +244,130 @@ mousepad_util_key_name (const gchar *name)
 
 
 
+gchar *
+mousepad_util_utf8_strcapital (const gchar *str)
+{
+  gunichar     c;
+  const gchar *p;
+  gchar       *buf;
+  GString     *result;
+  gboolean     upper = TRUE;
+
+  _mousepad_return_val_if_fail (g_utf8_validate (str, -1, NULL), NULL);
+
+  /* create a new string */
+  result = g_string_sized_new (strlen (str));
+
+  /* walk though the string */
+  for (p = str; *p != '\0'; p = g_utf8_next_char (p))
+    {
+      /* get the unicode char */
+      c = g_utf8_get_char (p);
+
+      /* only change the case of alpha chars */
+      if (g_unichar_isalpha (c))
+        {
+          /* check case */
+          if (upper ? g_unichar_isupper (c) : g_unichar_islower (c))
+            {
+              /* currect case is already correct */
+              g_string_append_unichar (result, c);
+            }
+          else
+            {
+              /* convert the case of the char and append it */
+              buf = upper ? g_utf8_strup (p, 1) : g_utf8_strdown (p, 1);
+              g_string_append (result, buf);
+              g_free (buf);
+            }
+
+          /* next char must be lowercase */
+          upper = FALSE;
+        }
+      else
+        {
+          /* append the char */
+          g_string_append_unichar (result, c);
+
+          /* next alpha char uppercase after a space */
+          upper = g_unichar_isspace (c);
+        }
+    }
+
+  /* return the result */
+  return g_string_free (result, FALSE);
+}
+
+
+
+gchar *
+mousepad_util_utf8_stropposite (const gchar *str)
+{
+  gunichar     c;
+  const gchar *p;
+  gchar       *buf;
+  GString     *result;
+
+  _mousepad_return_val_if_fail (g_utf8_validate (str, -1, NULL), NULL);
+
+  /* create a new string */
+  result = g_string_sized_new (strlen (str));
+
+  /* walk though the string */
+  for (p = str; *p != '\0'; p = g_utf8_next_char (p))
+    {
+      /* get the unicode char */
+      c = g_utf8_get_char (p);
+
+      /* only change the case of alpha chars */
+      if (g_unichar_isalpha (c))
+        {
+          /* get the opposite case of the char */
+          if (g_unichar_isupper (c))
+            buf = g_utf8_strdown (p, 1);
+          else
+            buf = g_utf8_strup (p, 1);
+
+          /* append to the buffer */
+          g_string_append (result, buf);
+          g_free (buf);
+        }
+      else
+        {
+          /* append the char */
+          g_string_append_unichar (result, c);
+        }
+    }
+
+  /* return the result */
+  return g_string_free (result, FALSE);
+}
+
+
+
+gchar *
+mousepad_util_escape_underscores (const gchar *str)
+{
+  GString     *result;
+  const gchar *s;
+
+  /* allocate a new string */
+  result = g_string_sized_new (strlen (str));
+
+  /* escape all underscores */
+  for (s = str; *s != '\0'; ++s)
+    {
+      if (G_UNLIKELY (*s == '_'))
+        g_string_append (result, "__");
+      else
+        g_string_append_c (result, *s);
+    }
+
+  return g_string_free (result, FALSE);
+}
+
+
+
 GtkWidget *
 mousepad_util_image_button (const gchar *stock_id,
                             const gchar *label)
@@ -273,7 +397,7 @@ mousepad_util_entry_error (GtkWidget *widget,
   _mousepad_return_if_fail (GTK_IS_WIDGET (widget));
 
   /* get the current error state */
-  pointer = g_object_get_data (G_OBJECT (widget), I_("error-state"));
+  pointer = mousepad_object_get_data (G_OBJECT (widget), "error-state");
 
   /* only change the state when really needed to avoid multiple widget calls */
   if (GPOINTER_TO_INT (pointer) != error)
@@ -283,7 +407,7 @@ mousepad_util_entry_error (GtkWidget *widget,
       gtk_widget_modify_text (widget, GTK_STATE_NORMAL, error ? &white : NULL);
 
       /* set the new state */
-      g_object_set_data (G_OBJECT (widget), I_("error-state"), GINT_TO_POINTER (error));
+      mousepad_object_set_data (G_OBJECT (widget), "error-state", GINT_TO_POINTER (error));
     }
 }
 
@@ -376,15 +500,19 @@ mousepad_util_get_real_line_offset (const GtkTextIter *iter,
   gint        offset = 0;
   GtkTextIter needle = *iter;
 
+  /* move the needle to the start of the line */
   gtk_text_iter_set_line_offset (&needle, 0);
 
+  /* forward the needle until we hit the iter */
   while (!gtk_text_iter_equal (&needle, iter))
     {
+      /* append the real tab offset or 1 */
       if (gtk_text_iter_get_char (&needle) == '\t')
         offset += (tab_size - (offset % tab_size));
       else
         offset++;
 
+      /* next char */
       gtk_text_iter_forward_char (&needle);
     }
 
@@ -469,7 +597,7 @@ mousepad_util_search_iter (const GtkTextIter   *start,
   iter = *start;
 
   /* walk from the start to the end iter */
-  do
+  for (;;)
     {
       /* break when we reach the limit iter */
       if (G_UNLIKELY (gtk_text_iter_equal (&iter, limit)))
@@ -555,7 +683,6 @@ mousepad_util_search_iter (const GtkTextIter   *start,
           || (search_backwards && !gtk_text_iter_backward_char (&iter)))
         break;
     }
-  while (TRUE);
 
   return succeed;
 }

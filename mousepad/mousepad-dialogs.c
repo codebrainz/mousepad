@@ -42,7 +42,11 @@ mousepad_dialogs_show_about (GtkWindow *parent)
                          "destroy-with-parent", TRUE,
                          "license", XFCE_LICENSE_GPL,
                          "logo-icon-name", PACKAGE_NAME,
+#if GTK_CHECK_VERSION (2,12,0)
+                         "program-name", PACKAGE_NAME,
+#else
                          "name", PACKAGE_NAME,
+#endif
                          "version", PACKAGE_VERSION,
                          "translator-credits", _("translator-credits"),
                          "website", "http://www.xfce.org/",
@@ -166,20 +170,59 @@ mousepad_dialogs_other_tab_size (GtkWindow *parent,
 
 
 
-gint
-mousepad_dialogs_go_to_line (GtkWindow *parent,
-                             gint       current_line,
-                             gint       last_line)
+static void
+mousepad_dialogs_go_to_line_changed (GtkSpinButton *line_spin,
+                                     GtkSpinButton *col_spin)
 {
-  GtkWidget     *dialog;
-  GtkWidget     *hbox;
-  GtkWidget     *label;
-  GtkWidget     *button;
-  GtkAdjustment *adjustment;
-  gint           line_number = 0;
+  GtkTextBuffer *buffer;
+  GtkTextIter    iter;
+
+  _mousepad_return_if_fail (GTK_IS_SPIN_BUTTON (line_spin));
+  _mousepad_return_if_fail (GTK_IS_SPIN_BUTTON (col_spin));
+
+  /* get the text buffer */
+  buffer = mousepad_object_get_data (G_OBJECT (col_spin), "buffer");
+
+  /* debug check */
+  _mousepad_return_if_fail (GTK_IS_TEXT_BUFFER (buffer));
+
+  /* get iter at line */
+  gtk_text_buffer_get_iter_at_line (buffer, &iter, gtk_spin_button_get_value_as_int (line_spin) - 1);
+
+  /* move the iter to the end of the line if needed */
+  if (!gtk_text_iter_ends_line (&iter))
+    gtk_text_iter_forward_to_line_end (&iter);
+
+  /* update column spin button range */
+  gtk_spin_button_set_range (col_spin, 0, gtk_text_iter_get_line_offset (&iter));
+}
+
+
+
+gboolean
+mousepad_dialogs_go_to (GtkWindow     *parent,
+                        GtkTextBuffer *buffer)
+{
+  GtkWidget    *dialog;
+  GtkWidget    *vbox;
+  GtkWidget    *hbox;
+  GtkWidget    *label;
+  GtkWidget    *line_spin;
+  GtkWidget    *col_spin;
+  GtkSizeGroup *size_group;
+  GtkTextIter   iter;
+  gint          line, column, lines;
+  gint          response;
+
+  /* get cursor iter */
+  gtk_text_buffer_get_iter_at_mark (buffer, &iter, gtk_text_buffer_get_insert (buffer));
+  line = gtk_text_iter_get_line (&iter) + 1;
+
+  /* get number of lines */
+  lines = gtk_text_buffer_get_line_count (buffer);
 
   /* build the dialog */
-  dialog = gtk_dialog_new_with_buttons (_("Go To Line"),
+  dialog = gtk_dialog_new_with_buttons (_("Go To"),
                                         parent,
                                         GTK_DIALOG_MODAL | GTK_DIALOG_DESTROY_WITH_PARENT | GTK_DIALOG_NO_SEPARATOR,
                                         GTK_STOCK_CANCEL, MOUSEPAD_RESPONSE_CANCEL,
@@ -188,36 +231,82 @@ mousepad_dialogs_go_to_line (GtkWindow *parent,
   gtk_dialog_set_default_response (GTK_DIALOG (dialog), MOUSEPAD_RESPONSE_JUMP_TO);
   gtk_window_set_resizable (GTK_WINDOW (dialog), FALSE);
 
-  hbox = gtk_hbox_new (FALSE, 8);
-  gtk_box_pack_start (GTK_BOX (GTK_DIALOG (dialog)->vbox), hbox, FALSE, FALSE, 0);
-  gtk_container_set_border_width (GTK_CONTAINER (hbox), 8);
+  vbox = gtk_vbox_new (FALSE, 6);
+  gtk_box_pack_start (GTK_BOX (GTK_DIALOG (dialog)->vbox), vbox, TRUE, TRUE, 0);
+  gtk_container_set_border_width (GTK_CONTAINER (vbox), 6);
+  gtk_widget_show (vbox);
+
+  /* create size group */
+  size_group = gtk_size_group_new (GTK_SIZE_GROUP_HORIZONTAL);
+
+  /* line number box */
+  hbox = gtk_hbox_new (FALSE, 12);
+  gtk_box_pack_start (GTK_BOX (vbox), hbox, TRUE, TRUE, 0);
   gtk_widget_show (hbox);
 
   label = gtk_label_new_with_mnemonic (_("_Line number:"));
-  gtk_box_pack_start (GTK_BOX (hbox), label, FALSE, FALSE, 0);
+  gtk_box_pack_start (GTK_BOX (hbox), label, TRUE, TRUE, 0);
+  gtk_size_group_add_widget (size_group, label);
+  gtk_misc_set_alignment (GTK_MISC (label), 0, 0.5);
   gtk_widget_show (label);
 
-  /* the spin button adjustment */
-  adjustment = (GtkAdjustment *) gtk_adjustment_new (current_line, 1, last_line, 1, 10, 0);
+  line_spin = gtk_spin_button_new_with_range (1, lines, 1);
+  gtk_entry_set_activates_default (GTK_ENTRY (line_spin), TRUE);
+  gtk_box_pack_start (GTK_BOX (hbox), line_spin, FALSE, FALSE, 0);
+  gtk_label_set_mnemonic_widget (GTK_LABEL (label), line_spin);
+  gtk_spin_button_set_snap_to_ticks (GTK_SPIN_BUTTON (line_spin), TRUE);
+  gtk_entry_set_width_chars (GTK_ENTRY (line_spin), 8);
+  gtk_widget_show (line_spin);
 
-  /* the spin button */
-  button = gtk_spin_button_new (adjustment, 1, 0);
-  gtk_spin_button_set_numeric (GTK_SPIN_BUTTON (button), TRUE);
-  gtk_spin_button_set_snap_to_ticks (GTK_SPIN_BUTTON (button), TRUE);
-  gtk_entry_set_width_chars (GTK_ENTRY (button), 8);
-  gtk_entry_set_activates_default (GTK_ENTRY (button), TRUE);
-  gtk_label_set_mnemonic_widget (GTK_LABEL(label), button);
-  gtk_box_pack_start (GTK_BOX (hbox), button, FALSE, FALSE, 0);
-  gtk_widget_show (button);
+  /* column box */
+  hbox = gtk_hbox_new (FALSE, 12);
+  gtk_box_pack_start (GTK_BOX (vbox), hbox, TRUE, TRUE, 0);
+  gtk_widget_show (hbox);
+
+  label = gtk_label_new_with_mnemonic (_("C_olumn number:"));
+  gtk_box_pack_start (GTK_BOX (hbox), label, TRUE, TRUE, 0);
+  gtk_size_group_add_widget (size_group, label);
+  gtk_misc_set_alignment (GTK_MISC (label), 0, 0.5);
+  gtk_widget_show (label);
+
+  col_spin = gtk_spin_button_new_with_range (0, 0, 1);
+  gtk_entry_set_activates_default (GTK_ENTRY (col_spin), TRUE);
+  mousepad_object_set_data (G_OBJECT (col_spin), "buffer", buffer);
+  gtk_box_pack_start (GTK_BOX (hbox), col_spin, FALSE, FALSE, 0);
+  gtk_label_set_mnemonic_widget (GTK_LABEL (label), col_spin);
+  gtk_spin_button_set_snap_to_ticks (GTK_SPIN_BUTTON (col_spin), TRUE);
+  gtk_entry_set_width_chars (GTK_ENTRY (col_spin), 8);
+  gtk_widget_show (col_spin);
+
+  /* signal to monitor column number */
+  g_signal_connect (G_OBJECT (line_spin), "value-changed", G_CALLBACK (mousepad_dialogs_go_to_line_changed), col_spin);
+  gtk_spin_button_set_value (GTK_SPIN_BUTTON (line_spin), line);
 
   /* run the dialog */
-  if (gtk_dialog_run (GTK_DIALOG (dialog)) == MOUSEPAD_RESPONSE_JUMP_TO)
-    line_number = gtk_spin_button_get_value_as_int (GTK_SPIN_BUTTON (button));
+  response = gtk_dialog_run (GTK_DIALOG (dialog));
+  if (response == MOUSEPAD_RESPONSE_JUMP_TO)
+    {
+      /* hide the dialog */
+      gtk_widget_hide (dialog);
+
+      /* get new position */
+      line = gtk_spin_button_get_value_as_int (GTK_SPIN_BUTTON (line_spin)) - 1;
+      column = gtk_spin_button_get_value_as_int (GTK_SPIN_BUTTON (col_spin));
+
+      /* get iter */
+      gtk_text_buffer_get_iter_at_line_offset (buffer, &iter, line, column);
+
+      /* get cursor position */
+      gtk_text_buffer_place_cursor (buffer, &iter);
+    }
+
+  /* release size group */
+  g_object_unref (G_OBJECT (size_group));
 
   /* destroy the dialog */
   gtk_widget_destroy (dialog);
 
-  return line_number;
+  return (response == MOUSEPAD_RESPONSE_JUMP_TO);
 }
 
 
@@ -304,65 +393,23 @@ mousepad_dialogs_save_changes (GtkWindow *parent)
 
 
 gint
-mousepad_dialogs_ask_overwrite (GtkWindow   *parent,
-                                const gchar *filename)
+mousepad_dialogs_revert (GtkWindow *parent)
 {
   GtkWidget *dialog;
   gint       response;
 
+  /* setup the question dialog */
   dialog = gtk_message_dialog_new (parent,
                                    GTK_DIALOG_MODAL | GTK_DIALOG_DESTROY_WITH_PARENT,
-                                   GTK_MESSAGE_QUESTION,
-                                   GTK_BUTTONS_NONE,
-                                   _("The file has been externally modified. Are you sure "
-                                     "you want to save the file?"));
-
-  gtk_message_dialog_format_secondary_text (GTK_MESSAGE_DIALOG (dialog),
-                                            _("If you save the file, the external changes "
-                                              "to \"%s\" will be lost."), filename);
-
-  gtk_dialog_add_button (GTK_DIALOG (dialog), GTK_STOCK_CANCEL, MOUSEPAD_RESPONSE_CANCEL);
-  gtk_dialog_add_action_widget (GTK_DIALOG (dialog),
-                                mousepad_util_image_button (GTK_STOCK_SAVE, _("_Overwrite")),
-                                MOUSEPAD_RESPONSE_OVERWRITE);
-  gtk_dialog_add_action_widget (GTK_DIALOG (dialog),
-                                mousepad_util_image_button (GTK_STOCK_REFRESH, _("_Reload")),
-                                MOUSEPAD_RESPONSE_RELOAD);
-  gtk_dialog_set_default_response (GTK_DIALOG (dialog), MOUSEPAD_RESPONSE_CANCEL);
-
-  /* run the dialog */
-  response = gtk_dialog_run (GTK_DIALOG (dialog));
-
-  /* destroy the dialog */
-  gtk_widget_destroy (dialog);
-
-  return response;
-}
-
-
-
-gint
-mousepad_dialogs_ask_reload (GtkWindow *parent)
-{
-  GtkWidget *dialog;
-  gint       response;
-
-  dialog = gtk_message_dialog_new (parent,
-                                   GTK_DIALOG_MODAL | GTK_DIALOG_DESTROY_WITH_PARENT,
-                                   GTK_MESSAGE_QUESTION,
-                                   GTK_BUTTONS_NONE,
+                                   GTK_MESSAGE_QUESTION, GTK_BUTTONS_NONE,
                                    _("Do you want to save your changes before reloading?"));
   gtk_message_dialog_format_secondary_text (GTK_MESSAGE_DIALOG (dialog),
-                                            _("If you reload the file, you changes will be lost."));
-
+                                   _("If you revert the file, all unsaved changes will be lost."));
   gtk_dialog_add_buttons (GTK_DIALOG (dialog),
                           GTK_STOCK_CANCEL, MOUSEPAD_RESPONSE_CANCEL,
                           GTK_STOCK_SAVE_AS, MOUSEPAD_RESPONSE_SAVE_AS,
+                          GTK_STOCK_REVERT_TO_SAVED, MOUSEPAD_RESPONSE_REVERT,
                           NULL);
-  gtk_dialog_add_action_widget (GTK_DIALOG (dialog),
-                                mousepad_util_image_button (GTK_STOCK_REFRESH, _("_Reload")),
-                                MOUSEPAD_RESPONSE_RELOAD);
-  gtk_dialog_set_default_response (GTK_DIALOG (dialog), MOUSEPAD_RESPONSE_CANCEL);
 
   /* run the dialog */
   response = gtk_dialog_run (GTK_DIALOG (dialog));

@@ -1,113 +1,222 @@
+2007-xx-xx	Nick Schermer <nick@xfce.org>
+
+	* mousepad/mousepad-document.c: Fix column number in statusbar.
+	  First column is 0 and not 1.
+	* mousepad/mousepad-dialogs.c: Improve the go to dialog. You can now
+	  set the column number too.
+	* mousepad/mousepad-window{.c,-ui.xml}: Improve the menu layout big
+	  time. Make mnemonics consistent right now. A couple of name,
+	  tooltip and keybindings changes. Internal names make more sense
+	  now.
+	* mousepad/mousepad-{window,view}.c Add option to paste from
+	  history. The history holds the last 9 history cut/copied items
+	  from Mousepad.
+	* mousepad/mousepad-window.c: New from template menu. Works the
+	  same as the implementation in Thunar. Menu is generated the first
+	  time the file menu is shown. Same for the recent menu.
+	* mousepad/mousepad-{window,view}.c: Add option to toggle between
+	  column and normal selections. Put it in View -> Change to Column
+	  Selection. To make this work properly I've removed multi
+	  selection. Code got much easier and a couple of complex functions
+	  were dropped.
+	* mousepad/mousepad-window{.c,-ui.xml}: Put search menu items in
+	  the edit menu, since you will most likely access them from
+	  keybindings most of the time.
+	* mousepad/mousepad-window.c: Cleanuped up a lot of functions.
+	* mousepad/mousepad-window.c: Check if files exists when generating
+	  the recent menu, remove it when it was not found. Also unref the
+	  action after adding it to the action group, fixes an ugly memory
+	  leak, since the recent info isn't released eighter.
+	* mousepad/mousepad-util.c: Add faster function to escape
+	  underscores in the recent menu. Drop the previous function used
+	  for this.
+	* mousepad/mousepad-private.h: Add macros around g_object_(get/set)
+	  _qdata and use them instead of the existing g_object_(get/set)
+	  _data functions.
+	* mousepad/mousepad-view.c: Fix indent with (shift) tab.
+	* mousepad/mousepad-view.c: Improve line number drawing. Only
+	  redraw the line numbers in the expose area and some other changes
+	  to reduce the amount of redraws and iter calls.
+	* mousepad/mousepad-view.c: Use the IM to type in multi selections,
+	  the previous way was deprecated and this fixes a couple of weird
+	  issues.
+	* mousepad/mousepad-view.c: Show realtime selection size in column
+	  selections.
+	* mousepad/mousepad-{document,view,window}.c: Put selection change
+	  in a separate signal to avoid multiple update the the action
+	  group.
+	* mousepad/mousepad-view.c: Avoid a lot of statusbar updates and
+	  column selection redraws during dragging by comparing the old and
+	  new cursor position. On the other hand, the 'only draw the visible
+	  area during drag' trick has been partly removed to properly
+	  display the selection length during a column draw that covers
+	  more then the window height.
+	* mousepad/mousepad-{util,view}.c: Add functions to change the case
+	  of a selection.
+	* mousepad/mousepad-view.c: Add function to replace tabs with spaces
+	  and vice versa. The replacements are inlined, so you don't see
+	  visual changes in the document. Actions are not usable during
+	  column selections.
+	* mousepad/mousepad-window.c: Make the arrow buttons in the notebook
+	  work.
+	* mousepad/mousepad-window.c: Close document on middle click on the
+	  tab, this is a stupid feature, but since everyone requests it on
+	  apps with tabs: add it to save a bugzilla report.
+	* mousepad/mousepad-{window,view}.c: Add actions to increase or
+	  decrease the indentation of line(s) using the menu or keybindings.
+	* mousepad/mousepad-{window,view}.c: Add an action to duplicate a
+	  line or selection. Only work for normal selections or no
+	  selection.
+	* mousepad/mousepad-{window,view}.c: Add an action to move the
+	  selected lines up and down. Not implemented for column selections
+	  (yet). Menu actions are insensitive when there is no regual
+	  selection.
+	* mousepad/mousepad-{window,view}.c: Add option to strip trailing
+	  spaces and tabs.
+	* mousepad/mousepad-window.c: Add a file to the recent history
+	  after saving it under another name.
+	* mousepad/mousepad-window{.c,-ui.xml}: Add line ending type in the
+	  document menu.
+	* mousepad/mousepad-window.c: Avoid one menu update when adding or
+	  removing a new document to the window.
+	* mousepad/mousepad-document.c: Change tab label color when the
+	  document is modified or readonly.
+	* ChangeLog: Properly break lines.
+
+
 2007-11-29	Nick Schermer <nick@xfce.org>
+
 	* mousepad/mousepad-document.c: Make tab close button a bit smaller.
 
 
 2007-11-29	Nick Schermer <nick@xfce.org>
-	* mousepad/mousepad-window.c: Use a box for packing the window elements.
-	  A table was not really needed, and boxes are a bit faster in calculating
-	  child sizes.
+
+	* mousepad/mousepad-window.c: Use a box for packing the window
+	  elements. A table was not really needed, and boxes are a bit
+	  faster in calculating child sizes.
 	* mousepad/mousepad-window.c: Remove unused variable.
 
 
 2007-11-29	Nick Schermer <nick@xfce.org>
-	* mousepad/mousepad-print.c: Use bold attribute for labels, so there
-	  is no html in the strings.
+
+	* mousepad/mousepad-print.c: Use bold attribute for labels, so
+	  there is no html in the strings.
 
 
 2007-11-29	Nick Schermer <nick@xfce.org>
+
 	* mousepad/mousepad-utils.c: Add functions that extent the default
 	  Gtk word start/end function. Use them in the search functions,
 	  transpose and double click selection.
-	* mousepad/mousepad-view.c: Implement transpose for multi selections.
+	* mousepad/mousepad-view.c: Implement transpose for multi
+	  selections.
 	* mousepad/mousepad-view.c: Improve word swap function.
-	* docs/manual/C/Mousepad.xml.in: Other layout of the help file. Content
-	  will follow.
-	* mousepad/mousepad-{document,window,view}.c: Show the selection length
-	  in the statusbar. Also merged two signals and a couple of functions.
-	* mousepad/mousepad-window.c: Change default keybinding of new document
-	  (Ctrl+N) and new window (Shift+Ctrl+N). Assign Ctrl+T to transpose.
-	* mousepad/mousepad-window.c: Update the window title after saving a
-	  file with a new name.
-	* mousepad/mousepad-file.c: Set readonly to FALSE when starting with
-	  a non-existing filename in the argument.
+	* docs/manual/C/Mousepad.xml.in: Other layout of the help file.
+	  Content will follow.
+	* mousepad/mousepad-{document,window,view}.c: Show the selection
+	  length in the statusbar. Also merged two signals and a couple of
+	  functions.
+	* mousepad/mousepad-window.c: Change default keybinding of new
+	  document (Ctrl+N) and new window (Shift+Ctrl+N). Assign Ctrl+T to
+	  transpose.
+	* mousepad/mousepad-window.c: Update the window title after saving
+	  a file with a new name.
+	* mousepad/mousepad-file.c: Set readonly to FALSE when starting
+	  with a non-existing filename in the argument.
 	* mousepad/mousepad-print.c: Improve the print backend. Settings are
 	  now saved. You can set the paper type, toggle options for line
 	  numbers, wrap and page heading and use a custom font.
 
 
 2007-10-26	Nick Schermer <nick@xfce.org>
-	* mousepad/mousepad-view.c: Implement transpose:
-	   - Selection on one line: Inverse selected text.
-	   - Multiple lines selected: Invert seleted lines.
-	   - Cursor is inside a word: Swap chars on each side of the cursor.
-	   - Cursor is outside a word: Swap word left and right of the cursor.
-	   - Cursor at the start of a line: Swap line with the line above.
-	   - Cursor at the end of a line: Swap line with the line below.
-	Will add support for multi- and column-selections later. Thanks to
-	Textmate for this great idea.
+
+	* mousepad/mousepad-view.c: Implement transpose:  - Selection on one
+	  line: Inverse selected text.
+	  - Multiple lines selected: Invert seleted lines.
+	  - Cursor is inside a word: Swap chars on each side of the cursor.
+	  - Cursor is outside a word: Swap word left and right of the
+	    cursor.
+	  - Cursor at the start of a line: Swap line with the line above.
+	  - Cursor at the end of a line: Swap line with the line below.
+	  Will add support for multi- and column-selections later. Thanks to
+	  Textmate for this great idea.
 
 
 2007-10-26	Nick Schermer <nick@xfce.org>
-	* MousepadHelp.in, mousepad/mousepad-{dialogs,window}.{c,h}:
-	  Add support for the help file.
+
+	* MousepadHelp.in, mousepad/mousepad-{dialogs,window}.{c,h}: Add
+	  support for the help file.
 	* Mousepad.spec.in: Add spec file.
 
 
 2007-10-25	Nick Schermer <nick@xfce.org>
+
 	* mousepad/mousepad-view.c: Redraw selection on theme change.
 
 
 2007-10-25	Nick Schermer <nick@xfce.org>
-	* mousepad/mousepad-view.c: Reimplemented multi-selection. It is also
-	  possible to do multi editing (typing in all the selections), select
-	  random words in the document (they will be copied to the clipboard as
-	  a list of words) and multi insert (create a drag without content or
-	  drag at the end of lines). Multiple selection will also be merged
-	  when possible. This proably has some rough edges, but it works pretty
-	  good. Keyboard multi drags will be added later.
-	* docs/manual/C/Mousepad.xml.in: Add a bit of info about multiple- and
-	  column-selections, but I'm not very good at this.
-	* mousepad/mousepad-{window.c,window-ui.xml}: Use our edit menu on right
-	  click, so copy/paste/delete works with multi selections. Also saves a
-	  bit of code since it integrates with the ui-manager.
+
+	* mousepad/mousepad-view.c: Reimplemented multi-selection. It is
+	  also possible to do multi editing (typing in all the selections),
+	  select random words in the document (they will be copied to the
+	  clipboard as a list of words) and multi insert (create a drag
+	  without content or drag at the end of lines). Multiple selection
+	  will also be merged when possible. This proably has some rough
+	  edges, but it works pretty good. Keyboard multi drags will be
+	  added later.
+	* docs/manual/C/Mousepad.xml.in: Add a bit of info about multiple-
+	  and column-selections, but I'm not very good at this.
+	* mousepad/mousepad-{window.c,window-ui.xml}: Use our edit menu on
+	  right click, so copy/paste/delete works with multi selections.
+	  Also saves a bit of code since it integrates with the ui-manager.
 
 
 2007-10-23	Nick Schermer <nick@xfce.org>
+
 	* configure.in.in, po/POTFILES.in: Fix dist-check. Thank to Brian
 	  for the hint.
-	* mousepad/mousepad-{dialogs,window}.c: Implement tab size menu. You
-	  can set the default tab sizes in the rc file (MiscDefaultTabSizes).
-	* mousepad/mousepad-window{-ui.xml,.c}: Reorder menus a bit. Go menu
-	  is now called 'Navigation' and the 'go to line' item is added to this
-	  menu. The document menu contains the tab size menu from now on.
+	* mousepad/mousepad-{dialogs,window}.c: Implement tab size menu.
+	  You can set the default tab sizes in the rc file
+	  (MiscDefaultTabSizes).
+	* mousepad/mousepad-window{-ui.xml,.c}: Reorder menus a bit. Go
+	  menu is now called 'Navigation' and the 'go to line' item is
+	  added to this menu. The document menu contains the tab size menu
+	  from now on.
 	* Rename some functions and vars to more suitable names.
 
 
 2007-10-22	Nick Schermer <nick@xfce.org>
-	* configure.in.in: Make sure __OPTIMIZE__ is enabled in normal builds.
-	* mousepad/mousepad-private.h: Tune G_LIKELY macros for pure booleans.
+
+	* configure.in.in: Make sure __OPTIMIZE__ is enabled in normal
+	  builds.
+	* mousepad/mousepad-private.h: Tune G_LIKELY macros for pure
+	  booleans.
 
 
 2007-10-22	Nick Schermer <nick@xfce.org>
+
 	* mousepad/mousepad-window.c: Idea of the previous commit was good,
 	  but the implementation wasn't. Fix that.
 
 
 2007-10-21	Nick Schermer <nick@xfce.org>
+
 	* mousepad/mousepad-window.c: Make the recent manager a singleton
 	  in the application, this is also done in gtk 2.12. We also
 	  initialize the recent manager when needed, since it's quite
-	  expensive to create one. This should improve the startup speed
-	  a bit.
+	  expensive to create one. This should improve the startup speed a
+	  bit.
 
 
 2007-10-21	Nick Schermer <nick@xfce.org>
+
 	* docs/: Import basic manual files.
 	* configure.in.in, mousepad/Makefile.am: Don't search for startup-
 	  notification and gtk-unix-print. We don't use this in the code.
 
 
 2007-10-18	Nick Schermer <nick@xfce.org>
+
 	* mousepad/mousepad-view.c: Respect input methods and don't insert
 	  text when the textview is not editable.
 	* mousepad/mousepad-{file,document,window}.c: Properly handle
@@ -116,6 +225,7 @@
 
 
 2007-10-18	Nick Schermer <nick@xfce.org>
+
 	* mousepad/mousepad-utils.{c,h}: Add iter function to move the iter
 	  in front of text. Code used from one of the indentation functions.
 	* mousepad/mousepad-view.c: Add code for a smart home button: when
@@ -126,31 +236,34 @@
 
 
 2007-10-17	Nick Schermer <nick@xfce.org>
+
 	* mousepad/mousepad-window.c: Cleanup some code and get rid of the
 	  multiple action groups.
 
 
 2007-10-17	Nick Schermer <nick@xfce.org>
+
 	* mousepad/mousepad-window.c: Decrease the menu lock when a window
-	  is closed and disconnect the recent manager handler (this is a
-	  bug since 2.12 because the manager is a floating object).
+	  is closed and disconnect the recent manager handler (this is a bug
+	  since 2.12 because the manager is a floating object).
 
 
 2007-10-17	Nick Schermer <nick@xfce.org>
+
 	* mousepad/mousepad-{window,util}.c: Fix compiler warnings.
 
 
 2007-10-16	Nick Schermer <nick@xfce.org>
-	* mousepad/mousepad-dialogs.c: Set the correct default return
-	  in the jump dialog.
+
+	* mousepad/mousepad-dialogs.c: Set the correct default return in
+	  the jump dialog.
 	* mousepad/mousepad-replace-{dialog,window,preferences}.{c,h}:
 	  Implement the new replace dialog.
-	* Remove options from the type-ahead bar, it was too bloated
-	  and those options are now available in the replace dialog.
-	* mousepad/mousepad-document.c: The MousepadDocument now holds
-	  utf-8 valid names, the MousepadFile the real filename.
-	* mousepad/mousepad-window.c: Full tab dnd (detach) with
-	  Gtk+ 2.12.
+	* Remove options from the type-ahead bar, it was too bloated and
+	  those options are now available in the replace dialog.
+	* mousepad/mousepad-document.c: The MousepadDocument now holds utf-8
+	  valid names, the MousepadFile the real filename.
+	* mousepad/mousepad-window.c: Full tab dnd (detach) with Gtk+ 2.12.
 	* mousepad/mousepad-encoding-dialog.{c,h}: Add a encoding dialog.
 	  This dialog should help users to find the right encoding for a
 	  document.
@@ -177,288 +290,299 @@
 	  remember after 5 months ;).
 
 
-2007-05-22	Nick Schermer <nick@xfce.org
+2007-05-22	Nick Schermer <nick@xfce.org>
+
 	* *.*: Remove copyright lines.
 
 
 2007-05-20	Nick Schermer <nick@xfce.org>
-	* mousepad/mousepad-{preferences,search-bar,document}.c,
-	  mousepad/mousepad-types.h: Add match whole word option.
+
+	* mousepad/mousepad-{preferences,search-bar,document}.c, mousepad/
+	  mousepad-types.h: Add match whole word option.
 
 
 2007-05-20	Nick Schermer <nick@xfce.org>
-	* mousepad/Makefile.am: Use the new exo-csource
-	  --strip-comments and --strip-content arguments.
+
+	* mousepad/Makefile.am: Use the new exo-csource --strip-comments
+	  and --strip-content arguments.
 
 
 2007-05-20	Nick Schermer <nick@xfce.org>
-	* mousepad/mousepad-view.c: Initialize variables, so gcc is
-	  happy.
+
+	* mousepad/mousepad-view.c: Initialize variables, so gcc is happy.
 	* README: Add some lines.
-	* mousepad/mousepad-window.c: Ctrl + Shift + v is the shortcut
-	  to paste in a column.
+	* mousepad/mousepad-window.c: Ctrl + Shift + v is the shortcut to
+	  paste in a column.
 
 
 2007-05-17	Nick Schermer <nick@xfce.org>
-	* mousepad/mousepad-view.c: Cleanup the line number code.
-	  This version is a bit faster and removed a bunch of code.
-	* mousepad/mousepad-view.c: Cleanup the indentation code. You
-	  can also increase the (vertical) selected text with Shift +
-	  Space and decrease with Shift + Backspace. I though this
-	  might be useful for developers.
-	* mousepad/mousepad-view.c: Vertical selection using the mouse
-	  and Ctrl + Shift. Keyboard vertical selection is not possible
-	  because that adds too much code for (hardly) nothing. You can
-	  (un-)indent the block with Tab, Shift + Tab and the 2 new
-	  space (in/de)crease commands above.
-	* mousepad/mousepad-view.c: Draw a vertical line to separate
-	  the line numbers from the text, this looks beter with light
-	  themes (IMHO).
-	* mousepad/mousepad-window.c: Add 'paste column' option to
-	  paste the clipboard text in a column under the cursor.
-	* mousepad/mousepad-window.c: Set stock menu names to NULL so
-	  Gtk fills the default (translated) name,  makes your binary
-	  smaller and translators happy.
-	* mousepad/mousepad-{search-bar,document}.c: Fix segfault with
-	  empty string in the search bar and highlighting enabled.
+
+	* mousepad/mousepad-view.c: Cleanup the line number code. This
+	  version is a bit faster and removed a bunch of code.
+	* mousepad/mousepad-view.c: Cleanup the indentation code. You can
+	  also increase the (vertical) selected text with Shift + Space and
+	  decrease with Shift + Backspace. I though this might be useful for
+	  developers.
+	* mousepad/mousepad-view.c: Vertical selection using the mouse and
+	  Ctrl + Shift. Keyboard vertical selection is not possible because
+	  that adds too much code for (hardly) nothing. You can (un-)indent
+	  the block with Tab, Shift + Tab and the 2 new space (in/de)crease
+	  commands above.
+	* mousepad/mousepad-view.c: Draw a vertical line to separate the
+	  line numbers from the text, this looks beter with light themes.
+	* mousepad/mousepad-window.c: Add 'paste column' option to paste
+	  the clipboard text in a column under the cursor.
+	* mousepad/mousepad-window.c: Set stock menu names to NULL so Gtk
+	  fills the default (translated) name,  makes your binary smaller
+	  and translators happy.
+	* mousepad/mousepad-{search-bar,document}.c: Fix segfault with empty
+	  string in the search bar and highlighting enabled.
 	* TODO: Add items.
 
 
 2007-05-12	Nick Schermer <nick@xfce.org>
-	* mousepad/mousepad-window.c: Add extra tests if the file
-	  really exists, because Gtk file dialogs hang if the
-	  file does not exists.
+
+	* mousepad/mousepad-window.c: Add extra tests if the file really
+	  exists, because Gtk file dialogs hang if the file does not exists.
 
 
 2007-05-12	Nick Schermer <nick@xfce.org>
-	* mousepad/mousepad-window.c: Jump to active file when
-	  opening a new document.
+
+	* mousepad/mousepad-window.c: Jump to active file when opening a new
+	  document.
 
 
 2007-05-10	Nick Schermer <nick@xfce.org>
-	* mousepad/mousepad-undo.c: Don't store a string (or even
-	  prepend it in a GString) when the user is inserting text.
-	  This saves a whole bunch of relocations (Bug #2737). We also
-	  flush the insert buffer after a redo and don't copy strings
-	  when inverting a delete step. This should bring the memory
-	  usage of the undo manager to a minimum.
+
+	* mousepad/mousepad-undo.c: Don't store a string (or even prepend it
+	  in a GString) when the user is inserting text. This saves a whole
+	  bunch of relocations (Bug #2737). We also flush the insert buffer
+	  after a redo and don't copy strings when inverting a delete step.
+	  This should bring the memory usage of the undo manager to a
+	  minimum.
 	* TODO: Add some undo manager reminders.
-	* mousepad/mousepad-window.c: Fix compiler warning when
-	  debugging is enabled.
-	* mousepad/mousepad-application.c: Change from append to
-	  prepend.
+	* mousepad/mousepad-window.c: Fix compiler warning when debugging is
+	  enabled.
+	* mousepad/mousepad-application.c: Change from append to prepend.
 
 
 2007-05-08	Nick Schermer <nick@xfce.org>
-	* mousepad/mousepad-window.c: Rename function so it matches
-	  the standard mousepad_window_* names.
+
+	* mousepad/mousepad-window.c: Rename function so it matches the
+	  standard mousepad_window_* names.
 
 
 2007-05-08	Nick Schermer <nick@xfce.org>
-	* mousepad/mousepad-window.c: Open a new tab when the notebook
-	  is double clicked. Also fix some indentation.
+
+	* mousepad/mousepad-window.c: Open a new tab when the notebook is
+	  double clicked. Also fix some indentation.
 
 
 2007-05-01	Nick Schermer <nick@xfce.org>
+
 	* configure.in.in: Don't break on a broken glibc.
 
 
 2007-05-01	Nick Schermer <nick@xfce.org>
+
 	* mousepad/mousepad-dbus-infos.xml, mousepad/mousepad-undo.c,
 	  mousepad/mousepad-view.c: Fix some typos and replace tabs.
 
 
 2007-05-01	Nick Schermer <nick@xfce.org>
-	* mousepad/mousepad-{document,window}.c: Allow uri and tab
-	  drops inside the textview widget.
-	* mousepad/mousepad-window.c: Hide the searchbar when all the
-	  tabs are closed and make sure nothing segfaults when no
-	  active document is found.
-	* mousepad/mousepad-window.c: Make sure the textview is
-	  focused when a new document has been added.
+
+	* mousepad/mousepad-{document,window}.c: Allow uri and tab drops
+	  inside the textview widget.
+	* mousepad/mousepad-window.c: Hide the searchbar when all the tabs
+	  are closed and make sure nothing segfaults when no active document
+	  is found.
+	* mousepad/mousepad-window.c: Make sure the textview is focused when
+	  a new document has been added.
 
 
 2007-04-28	Nick Schermer <nick@xfce.org>
+
 	* TODO: Removed the items I've fixed.
 	* Changelog: Break after 70 characters.
-	* mousepad/mousepad-{document,statusbar}.c: Hide the visible
-	  event box window.
-	* mousepad/mousepad-statusbar: The statusbar is now on top of
-	  the Gtk statusbar.
-	* mousepad/mousepad-window.c: Add support for dropping uris
-	  in the main window. Droping in the textview doesn't work
-	  yet.
+	* mousepad/mousepad-{document,statusbar}.c: Hide the visible event
+	  box window.
+	* mousepad/mousepad-statusbar: The statusbar is now on top of the
+	  Gtk statusbar.
+	* mousepad/mousepad-window.c: Add support for dropping uris in the
+	  main window. Droping in the textview doesn't work yet.
 	* mousepad/mousepad-window.c: Add tab dnd. This required some
-	  function reordering, but in the end it was quite easy and
-	  made the code more logical. I've also changed the window
-	  behaviour: when you close all the tabs in a window, an empty
-	  window is left. This is easier for tab dnd.
+	  function reordering, but in the end it was quite easy and made the
+	  code more logical. I've also changed the window behaviour: when
+	  you close all the tabs in a window, an empty window is left. This
+	  is easier for tab dnd.
 	* mousepad/mousepad-{application,window}.c: Beter handing of
 	  application windows. Also added detachable tabs.
-	* mousepad/mousepad-{properties,window}.c: The last settings
-	  of line numbers and auto indent are now stored.
-	* mousepad/mousepad-window.c: Beter locking of menu updates,
-	  this avoids some unneeded menu updates and also made the
-	  start time of Mousepad equal to Leafpad (and probably also
-	  Mosuepad 0.2.x), which is quite nice since it supports a
-	  whole bunch of extra features.
-	* mousepad/mousepad-window.c: Removed the 'close all windows'
-	  option from the menu and the code. Not need for a text
-	  editor IMHO.
+	* mousepad/mousepad-{properties,window}.c: The last settings of line
+	  numbers and auto indent are now stored.
+	* mousepad/mousepad-window.c: Beter locking of menu updates, this
+	  avoids some unneeded menu updates and also made the start time of
+	  Mousepad equal to Leafpad (and probably also Mosuepad 0.2.x),
+	  which is quite nice since it supports a whole bunch of extra
+	  features.
+	* mousepad/mousepad-window.c: Removed the 'close all windows' option
+	  from the menu and the code. Not need for a text editor IMHO.
 
 
 2007-04-21	Nick Schermer <nick@xfce.org>
+
 	* TODO: Fix some typos and add some new ideas and reminders.
 
 
 2007-04-20	Nick Schermer <nick@xfce.org>
+
 	* TODO: Add some stuff.
 
 
 2007-04-20	Nick Schermer <nick@xfce.org>
+
 	* TODO, NEWS: Update and expand both documents.
 
 
 2007-04-19	Erik Harrison <erikharrison@xfce.org>
+
 	* mousepad/mousepad-search-bar.c, mousepad-window.c: Fix some
 	  compiler warnings.
 
 
 2007-04-12	Nick Schermer <nick@xfce.org>
+
 	* mousepad/mousepad-undo.c: Improve the behavior of the undo
-	  manager. It now merges multiple spaces, new lines are a
-	  separate undo action and when you redo some steps and then
-	  start editing again we append the redo-ed steps in reversed
-	  order with an inverted action, so you can undo every thing
-	  afterwards. This consumes a bit more memory compared to the
-	  old behavior (which simply removed every redo-ed step), but
-	  it's much more consistent.
+	  manager. It now merges multiple spaces, new lines are a separate
+	  undo action and when you redo some steps and then start editing
+	  again we append the redo-ed steps in reversed order with an
+	  inverted action, so you can undo every thing afterwards. This
+	  consumes a bit more memory compared to the old behavior (which
+	  simply removed every redo-ed step), but it's much more consistent.
 
 
 2007-04-11	Nick Schermer <nick@xfce.org>
-	* mousepad/mousepad-{window,view}.c: Fix some potential leaks,
-	  I'm not really sure, but it doesn't hurt...
+
+	* mousepad/mousepad-{window,view}.c: Fix some potential leaks, I'm
+	  not really sure, but it doesn't hurt...
 
 
 2007-04-11	Nick Schermer <nick@xfce.org>
-	* mousepad/mousepad-statusbar.c: Destroy the tool items
-	  together with the searchbar (memory leak from valgrind).
+
+	* mousepad/mousepad-statusbar.c: Destroy the tool items together
+	  with the searchbar (memory leak from valgrind).
 
 
 2007-04-11	Nick Schermer <nick@xfce.org>
-	* mousepad/mousepad-{document,window,statusbar}: You can now
-	  click the OVR text in the statusbar to toggle the overwrite
-	  mode.
-	* mousepad/mousepad-{document,window,undo}: Initial version
-	  of an undo manager. Not finished yet.
-	* mousepad/Makefile.am, mousepad/mousepad-csource.pl: Remove
-	  my perl script because it has some problems.
+
+	* mousepad/mousepad-{document,window,statusbar}: You can now click
+	  the OVR text in the statusbar to toggle the overwrite mode.
+	* mousepad/mousepad-{document,window,undo}: Initial version of an
+	  undo manager. Not finished yet.
+	* mousepad/Makefile.am, mousepad/mousepad-csource.pl: Remove my perl
+	  script because it has some problems.
 	* Remove some empty object functions.
 
 
 2007-04-06	Nick Schermer <nick@xfce.org>
-	* mousepad/mousepad-document.c: Fix segfault from previous
-	  commit.
-	* mousepad/mousepad-document.c: Fix bug in searching
-	  backwards, we have to jump one iter backwards before
-	  searching, because we start with the character right from
-	  the first iter. Also removed the equal check because it's
-	  not needed and only causing problems with backwards
-	  searching on the first character in the buffer.
+
+	* mousepad/mousepad-document.c: Fix segfault from previous commit.
+	* mousepad/mousepad-document.c: Fix bug in searching backwards, we
+	  have to jump one iter backwards before searching, because we start
+	  with the character right from the first iter. Also removed the
+	  equal check because it's not needed and only causing problems with
+	  backwards searching on the first character in the buffer.
 
 
 2007-04-06	Nick Schermer <nick@xfce.org>
-	* mousepad/mousepad-window.c: Fix opening recent files that
-	  do not exist.
-	* mousepad/mousepad-window.c, mousepad/mousepad-document.c:
-	  Update the window title correctly and remove the unused
-	  notify::title signals.
+
+	* mousepad/mousepad-window.c: Fix opening recent files that do not
+	  exist.
+	* mousepad/mousepad-window.c, mousepad/mousepad-document.c: Update
+	  the window title correctly and remove the unused notify::title
+	  signals.
 
 
 2007-04-06	Nick Schermer <nick@xfce.org>
+
 	* mousepad/mousepad-document.c: Because we don't use invisible
-	  characters in the text buffer, I was able to write a custom
-	  iter search function that can search in both directions, can
-	  be case insensitive, no string duplications and above all:
-	  is't over 10x faster then the gtk version. This gives a nice
-	  performance boost to the highlight function.
-	* mousepad/mousepad-search-bar.c: Connected the last signals
-	  and added a wrap around option to the search bar.
+	  characters in the text buffer, I was able to write a custom iter
+	  search function that can search in both directions, can be case
+	  insensitive, no string duplications and above all: is't over 10x
+	  faster then the gtk version. This gives a nice performance boost
+	  to the highlight function.
+	* mousepad/mousepad-search-bar.c: Connected the last signals and
+	  added a wrap around option to the search bar.
 
 
 2007-04-05	Nick Schermer <nick@xfce.org>
 
 	* mousepad/mousepad-document.c: Remove unused properties.
-	* mousepad/mousepad-{exo,window,preoperties,search-bar}:
-	  Remove the exo bindings, mousepad only depends on Gtk and
-	  libxfce4util.
-	* mousepad/mousepad-csource.pl: Perl script to generate the
-	  menu code. This script also strips the code between the xml
-	  blocks, so a minimal amount of text is added to the binary
-	  (ie. it produces better code then exo-csource).
+	* mousepad/mousepad-{exo,window,preoperties,search-bar}: Remove the
+	  exo bindings, mousepad only depends on Gtk and libxfce4util.
+	* mousepad/mousepad-csource.pl: Perl script to generate the menu
+	  code. This script also strips the code between the xml blocks, so
+	  a minimal amount of text is added to the binary (ie. it produces
+	  better code then exo-csource).
 
 
 2007-04-04	Nick Schermer <nick@xfce.org>
 
-	* po/: Update the POTFILES.in file and regenerate the pot
-	  file.
-	* mousepad/mousepad-document.c: Make the scroll offset
-	  smaller, so the textview doesn't jump around while searching.
-	* mousepad/mousepad-search-bar.c: Make sure the search signal
-	  is send when the search field is empty after a backspace,
-	  so no text is selected in the buffer.
+	* po/: Update the POTFILES.in file and regenerate the pot file.
+	* mousepad/mousepad-document.c: Make the scroll offset smaller, so
+	  the textview doesn't jump around while searching.
+	* mousepad/mousepad-search-bar.c: Make sure the search signal is
+	  send when the search field is empty after a backspace, so no text
+	  is selected in the buffer.
 	* Remove some leftover tabs.
 
 
 2007-04-04	Nick Schermer <nick@xfce.org>
 
-	* configure.in.in: Mousepad does not depend on exo anymore.
-	  Only when you run in maintainer-mode, exo-csource is required.
+	* configure.in.in: Mousepad does not depend on exo anymore. Only
+	  when you run in maintainer-mode, exo-csource is required.
 	* mousepad/mousepad-document.*: Renamed mousepad-screen to
 	  mousepad-document.
-	* mousepad/mousepad-{search-bar,document,window).*: Added
-	  function for searching, including the type-ahead search bar.
-	* mousepad/mousepad-statusbar.*: A custom statusbar suitable
-	  for displaying the tooltips, overwrite/insert and the line-
-	  and column-number.
-	* mousepad/mousepad-exo.*: The exo-bindings so we don't depend
-	  on exo anymore, although I want to get rid of all of them.
-	* mousepad/mousepad-marshal.list: Custom marshal for sending
-	  search signals.
-	* mousepad/mousepad-types.h: Search types
-	  (a mousepad-enum-types.{c,h} is generated during build).
+	* mousepad/mousepad-{search-bar,document,window).*: Added function
+	  for searching, including the type-ahead search bar.
+	* mousepad/mousepad-statusbar.*: A custom statusbar suitable for
+	  displaying the tooltips, overwrite/insert and the line- and
+	  column-number.
+	* mousepad/mousepad-exo.*: The exo-bindings so we don't depend on
+	  exo anymore, although I want to get rid of all of them.
+	* mousepad/mousepad-marshal.list: Custom marshal for sending search
+	  signals.
+	* mousepad/mousepad-types.h: Search types (a
+	  mousepad-enum-types.{c,h} is generated during build).
 	* Various performance improvements and code cleanups.
 
 
 2007-03-03	Nick Schermer <nick@xfce.org>
 
-	* mousepad/mousepad-dialogs.{c,h}: Add response actions for
-	  Mousepad so it's easier to understand what happens.
+	* mousepad/mousepad-dialogs.{c,h}: Add response actions for Mousepad
+	  so it's easier to understand what happens.
 	* mousepad/mousepad-window.c, * mousepad/mousepad-screen.{c,h}:
 	  Basic support for document reloading.
 
 
 2007-03-03	Nick Schermer <nick@xfce.org>
 
-	* configure.in.in, mousepad/Makefile.am: Remove the PCRE
-	  dependency. I should have removed this earier after some
-	  testing.
+	* configure.in.in, mousepad/Makefile.am: Remove the PCRE dependency.
+	  I should have removed this earier after some testing.
 
 
 2007-03-03	Nick Schermer <nick@xfce.org>
 
-	* mousepad/mousepad-dialogs.{c,h}: New file for the dialogs
-	  so the mousepad-window file becomes more readable.
-	* mousepad/mousepad-window.c: Split some function and reorder
-	  them a bit.
-	* mousepad/mousepad-window.c: The items in the go menu now
-	  have the filename as statusbar tooltip.
+	* mousepad/mousepad-dialogs.{c,h}: New file for the dialogs so the
+	  mousepad-window file becomes more readable.
+	* mousepad/mousepad-window.c: Split some function and reorder them
+	  a bit.
+	* mousepad/mousepad-window.c: The items in the go menu now have the
+	  filename as statusbar tooltip.
 	* mousepad/mousepad-window.c: Check if the file is externally
 	  modified before writing. If it is, ask the user what to do.
-	* mousepad/main.c, mousepad/mousepad-dbus.{c,h},
-	  mousepad/mousepad-dbus-infos.xml: Support for terminating a
-	  running mousepad instance (that is connected to dbus), using
-	  mousepad -q.
+	* mousepad/main.c, mousepad/mousepad-dbus.{c,h}, mousepad/mousepad-
+	  dbus-infos.xml: Support for terminating a running mousepad
+	  instance (that is connected to dbus), using mousepad -q.
 	* mousepad/*: Add function destriptions for Erik (and others).
 
 
@@ -469,38 +593,37 @@
 
 2007-02-18	Nick Schermer <nick@xfce.org>
 
-	* mousepad/mousepad-window.c: Prevent multiple recent- and
-	  go-menu updates when multiple items are opened or the recent
-	  history is cleared.
+	* mousepad/mousepad-window.c: Prevent multiple recent- and go-menu
+	  updates when multiple items are opened or the recent history is
+	  cleared.
 
 
 2007-02-18	Nick Schermer <nick@xfce.org>
 
-	* TODO, mousepad/mousepad-window.c: Add option to the recent
-	  menu to clear the history.
+	* TODO, mousepad/mousepad-window.c: Add option to the recent menu
+	  to clear the history.
 	* mousepad/mousepad-window.c: The recent items are now in the
-	  Mousepad group so it's easier to filter them when removing.
-	  The list is also sorted by the most recently used item.
-	* mousepad/mousepad-window.c: Fix problem in checking if the
-	  file was already openened.
+	  Mousepad group so it's easier to filter them when removing. The
+	  list is also sorted by the most recently used item.
+	* mousepad/mousepad-window.c: Fix problem in checking if the file
+	  was already openened.
 	* mousepad/mousepad-window.c: You can now reorder tabs.
-	* mousepad/mousepad-window.c: A tab is now inserted right from
-	  the current active tab.
-	* mousepad/mousepad-screen.c: Untitled documents now have a
-	  number like "Untitled #". The number is increased as long
-	  as the application is running.
+	* mousepad/mousepad-window.c: A tab is now inserted right from the
+	  current active tab.
+	* mousepad/mousepad-screen.c: Untitled documents now have a number
+	  like "Untitled #". The number is increased as long as the
+	  application is running.
 	* mousepad/mousepad-window.c: Added first parts of code for a
 	  statusbar.
 
 2007-02-17	Nick Schermer <nick@xfce.org>
 
 	* TODO: Remind myself to fix problems with UTF-8 filenames.
-	* mousepad/mousepad-window.c: Fix crash when opening files
-	  with the command line.
+	* mousepad/mousepad-window.c: Fix crash when opening files with the
+	  command line.
 	* Mousepad.desktop.in.in, Mousepad.desktop.in.in: Mousepad
 	  executable is now lowercase again.
-	* mousepad/mousepad-screen.c: Remove unused signals from the
-	   Class.
+	* mousepad/mousepad-screen.c: Remove unused signals from the  Class.
 
 2007-02-17	Nick Schermer <nick@xfce.org>
 

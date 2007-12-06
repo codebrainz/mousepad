@@ -35,8 +35,8 @@ enum _MousepadLineEnding
 {
   MOUSEPAD_LINE_END_NONE,
   MOUSEPAD_LINE_END_UNIX,
-  MOUSEPAD_LINE_END_WIN32,
-  MOUSEPAD_LINE_END_MAC
+  MOUSEPAD_LINE_END_MAC,
+  MOUSEPAD_LINE_END_DOS
 };
 
 GType               mousepad_file_get_type                 (void) G_GNUC_CONST;

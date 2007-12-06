@@ -74,6 +74,12 @@ gchar     *mousepad_util_config_name              (const gchar         *name);
 
 gchar     *mousepad_util_key_name                 (const gchar         *name);
 
+gchar     *mousepad_util_utf8_strcapital          (const gchar         *str);
+
+gchar     *mousepad_util_utf8_stropposite         (const gchar         *str);
+
+gchar     *mousepad_util_escape_underscores       (const gchar         *str);
+
 GtkWidget *mousepad_util_image_button             (const gchar         *stock_id,
                                                    const gchar         *label);
 
