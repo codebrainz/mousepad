@@ -1,4 +1,10 @@
-2007-xx-xx	Nick Schermer <nick@xfce.org>
+2007-12-07	Nick Schermer <nick@xfce.org>
+
+	* mousepad/mousepad-search-bar.c: Fix red entry when toggling the
+	  highlight button.
+
+
+2007-12-06	Nick Schermer <nick@xfce.org>
 
 	* mousepad/mousepad-document.c: Fix column number in statusbar.
 	  First column is 0 and not 1.

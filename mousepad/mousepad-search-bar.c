@@ -322,12 +322,16 @@ mousepad_search_bar_find_string (MousepadSearchBar   *bar,
   /* emit signal */
   g_signal_emit (G_OBJECT (bar), search_bar_signals[SEARCH], 0, flags, string, NULL, &nmatches);
 
-  /* make sure the search entry is not red when no text was typed */
-  if (string == NULL || *string == '\0')
-    nmatches = 1;
+  /* do nothing with the error entry when highlight when trigged with highlight */
+  if ((flags & MOUSEPAD_SEARCH_FLAGS_ACTION_HIGHTLIGHT) == 0)
+    {
+      /* make sure the search entry is not red when no text was typed */
+      if (string == NULL || *string == '\0')
+        nmatches = 1;
 
-  /* change the entry style */
-  mousepad_util_entry_error (bar->entry, nmatches < 1);
+      /* change the entry style */
+      mousepad_util_entry_error (bar->entry, nmatches < 1);
+    }
 }
 
 
@@ -357,8 +361,7 @@ mousepad_search_bar_entry_changed (GtkWidget         *entry,
   mousepad_search_bar_find_string (bar, flags);
 
   /* schedule a new highlight */
-  if (bar->highlight_all)
-    mousepad_search_bar_highlight_schedule (bar);
+  mousepad_search_bar_highlight_schedule (bar);
 }
 
 
@@ -367,13 +370,31 @@ static void
 mousepad_search_bar_highlight_toggled (GtkWidget         *button,
                                        MousepadSearchBar *bar)
 {
+  MousepadSearchFlags flags;
+
   _mousepad_return_if_fail (MOUSEPAD_IS_SEARCH_BAR (bar));
 
   /* set the new state */
   bar->highlight_all = gtk_toggle_tool_button_get_active (GTK_TOGGLE_TOOL_BUTTON (button));
 
-  /* reschedule the highlight */
-  mousepad_search_bar_highlight_schedule (bar);
+  if (bar->highlight_all)
+    {
+      /* reschedule the highlight */
+      mousepad_search_bar_highlight_schedule (bar);
+    }
+  else
+    {
+      /* stop timeout */
+      if (bar->highlight_id != 0)
+        g_source_remove (bar->highlight_id);
+
+      /* set search flags */
+      flags = MOUSEPAD_SEARCH_FLAGS_ACTION_HIGHTLIGHT
+              | MOUSEPAD_SEARCH_FLAGS_ACTION_CLEANUP;
+
+      /* emit signal to cleanup the highlight */
+      mousepad_search_bar_find_string (bar, flags);
+    }
 }
 
 
@@ -402,8 +423,7 @@ mousepad_search_bar_match_case_toggled (GtkWidget         *button,
   mousepad_search_bar_entry_changed (NULL, bar);
 
   /* schedule a new hightlight */
-  if (bar->highlight_all)
-    mousepad_search_bar_highlight_schedule (bar);
+  mousepad_search_bar_highlight_schedule (bar);
 }
 
 
@@ -434,8 +454,11 @@ mousepad_search_bar_highlight_schedule (MousepadSearchBar *bar)
     g_source_remove (bar->highlight_id);
 
   /* schedule a new timeout */
-  bar->highlight_id = g_timeout_add_full (G_PRIORITY_LOW, HIGHTLIGHT_TIMEOUT, mousepad_search_bar_highlight_timeout,
-                                          bar, mousepad_search_bar_highlight_timeout_destroy);
+  if (bar->highlight_all)
+    {
+      bar->highlight_id = g_timeout_add_full (G_PRIORITY_LOW, HIGHTLIGHT_TIMEOUT, mousepad_search_bar_highlight_timeout,
+                                              bar, mousepad_search_bar_highlight_timeout_destroy);
+    }
 }
 
 
@@ -461,11 +484,7 @@ mousepad_search_bar_highlight_timeout (gpointer user_data)
           | MOUSEPAD_SEARCH_FLAGS_ITER_AREA_START
           | MOUSEPAD_SEARCH_FLAGS_ACTION_HIGHTLIGHT;
 
-  /* only clear when there is no text */
-  if (!bar->highlight_all)
-    flags |= MOUSEPAD_SEARCH_FLAGS_ACTION_CLEANUP;
-
-  /* hightlight */
+  /* emit signal */
   mousepad_search_bar_find_string (bar, flags);
 
   GDK_THREADS_LEAVE ();
@@ -496,8 +515,7 @@ mousepad_search_bar_focus (MousepadSearchBar *bar)
   gtk_widget_grab_focus (bar->entry);
 
   /* update the highlight */
-  if (bar->highlight_all)
-    mousepad_search_bar_highlight_schedule (bar);
+  mousepad_search_bar_highlight_schedule (bar);
 }
 
 
