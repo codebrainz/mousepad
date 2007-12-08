@@ -350,36 +350,41 @@ mousepad_dialogs_clear_recent (GtkWindow *parent)
 
 
 gint
-mousepad_dialogs_save_changes (GtkWindow *parent)
+mousepad_dialogs_save_changes (GtkWindow *parent,
+                               gboolean   readonly)
 {
   GtkWidget *dialog;
   GtkWidget *image;
   gint       response;
 
-  /* the dialog icon */
-  image = gtk_image_new_from_stock (GTK_STOCK_SAVE, GTK_ICON_SIZE_DIALOG);
-  gtk_widget_show (image);
-
   /* create the question dialog */
   dialog = gtk_message_dialog_new (parent, GTK_DIALOG_MODAL | GTK_DIALOG_DESTROY_WITH_PARENT,
                                    GTK_MESSAGE_OTHER, GTK_BUTTONS_NONE,
                                    _("Do you want to save the changes before closing?"));
-
-  gtk_dialog_add_action_widget (GTK_DIALOG (dialog),
-                                mousepad_util_image_button (GTK_STOCK_DELETE, _("_Don't Save")),
-                                MOUSEPAD_RESPONSE_DONT_SAVE);
-
-  gtk_dialog_add_buttons (GTK_DIALOG (dialog),
-                          GTK_STOCK_CANCEL, MOUSEPAD_RESPONSE_CANCEL,
-                          GTK_STOCK_SAVE, MOUSEPAD_RESPONSE_SAVE,
-                          NULL);
-
   gtk_window_set_title (GTK_WINDOW (dialog), _("Save Changes"));
-  gtk_message_dialog_set_image (GTK_MESSAGE_DIALOG (dialog), image);
-  gtk_dialog_set_default_response (GTK_DIALOG (dialog), MOUSEPAD_RESPONSE_SAVE);
+  gtk_dialog_add_action_widget (GTK_DIALOG (dialog), mousepad_util_image_button (GTK_STOCK_DELETE, _("_Don't Save")), MOUSEPAD_RESPONSE_DONT_SAVE);
+  gtk_dialog_add_buttons (GTK_DIALOG (dialog), GTK_STOCK_CANCEL, MOUSEPAD_RESPONSE_CANCEL, NULL);
 
-  gtk_message_dialog_format_secondary_text (GTK_MESSAGE_DIALOG (dialog),
-                                            _("If you don't save the document, all the changes will be lost."));
+  /* we show the save as button instead of save for readonly document */
+  if (G_UNLIKELY (readonly))
+    {
+      image = gtk_image_new_from_stock (GTK_STOCK_SAVE_AS, GTK_ICON_SIZE_DIALOG);
+      gtk_dialog_add_buttons (GTK_DIALOG (dialog), GTK_STOCK_SAVE_AS, MOUSEPAD_RESPONSE_SAVE_AS, NULL);
+      gtk_dialog_set_default_response (GTK_DIALOG (dialog), MOUSEPAD_RESPONSE_SAVE_AS);
+    }
+  else
+    {
+      image = gtk_image_new_from_stock (GTK_STOCK_SAVE, GTK_ICON_SIZE_DIALOG);
+      gtk_dialog_add_buttons (GTK_DIALOG (dialog), GTK_STOCK_SAVE, MOUSEPAD_RESPONSE_SAVE, NULL);
+      gtk_dialog_set_default_response (GTK_DIALOG (dialog), MOUSEPAD_RESPONSE_SAVE);
+    }
+
+  /* the dialog icon */
+  gtk_message_dialog_set_image (GTK_MESSAGE_DIALOG (dialog), image);
+  gtk_widget_show (image);
+
+  /* secondary text */
+  gtk_message_dialog_format_secondary_text (GTK_MESSAGE_DIALOG (dialog), _("If you don't save the document, all the changes will be lost."));
 
   /* run the dialog and wait for a response */
   response = gtk_dialog_run (GTK_DIALOG (dialog));

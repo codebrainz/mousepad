@@ -1177,6 +1177,7 @@ mousepad_window_close_document (MousepadWindow   *window,
 {
   gboolean succeed = FALSE;
   gint     response;
+  gboolean readonly;
 
   _mousepad_return_val_if_fail (MOUSEPAD_IS_WINDOW (window), FALSE);
   _mousepad_return_val_if_fail (MOUSEPAD_IS_DOCUMENT (document), FALSE);
@@ -1184,8 +1185,11 @@ mousepad_window_close_document (MousepadWindow   *window,
   /* check if the document has been modified */
   if (gtk_text_buffer_get_modified (document->buffer))
     {
+      /* whether the file is readonly */
+      readonly = mousepad_file_get_read_only (document->file);
+
       /* run save changes dialog */
-      response = mousepad_dialogs_save_changes (GTK_WINDOW (window));
+      response = mousepad_dialogs_save_changes (GTK_WINDOW (window), readonly);
 
       switch (response)
         {
@@ -1200,6 +1204,10 @@ mousepad_window_close_document (MousepadWindow   *window,
 
           case MOUSEPAD_RESPONSE_SAVE:
             succeed = mousepad_window_action_save (NULL, window);
+            break;
+
+          case MOUSEPAD_RESPONSE_SAVE_AS:
+            succeed = mousepad_window_action_save_as (NULL, window);
             break;
         }
     }
@@ -3371,7 +3379,8 @@ mousepad_window_action_save_all (GtkAction      *action,
       if (!gtk_text_buffer_get_modified (MOUSEPAD_DOCUMENT (document)->buffer))
         continue;
 
-      if (mousepad_file_get_filename (MOUSEPAD_DOCUMENT (document)->file) == NULL)
+      if (mousepad_file_get_filename (MOUSEPAD_DOCUMENT (document)->file) == NULL ||
+          mousepad_file_get_read_only ((MOUSEPAD_DOCUMENT (document)->file)))
         {
           /* add the document to a queue to bother the user later */
           unnamed = g_slist_prepend (unnamed, document);

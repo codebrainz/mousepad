@@ -58,7 +58,8 @@ gboolean   mousepad_dialogs_go_to          (GtkWindow     *parent,
 
 gboolean   mousepad_dialogs_clear_recent   (GtkWindow     *parent);
 
-gint       mousepad_dialogs_save_changes   (GtkWindow     *parent);
+gint       mousepad_dialogs_save_changes   (GtkWindow     *parent,
+                                            gboolean       readonly);
 
 gint       mousepad_dialogs_revert         (GtkWindow     *parent);
 
