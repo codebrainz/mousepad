@@ -152,7 +152,7 @@ mousepad_search_bar_class_init (MousepadSearchBarClass *klass)
   search_bar_signals[SEARCH] =
     g_signal_new (I_("search"),
                   G_TYPE_FROM_CLASS (gobject_class),
-                  G_SIGNAL_NO_HOOKS ,
+                  G_SIGNAL_NO_HOOKS,
                   0, NULL, NULL,
                   _mousepad_marshal_INT__FLAGS_STRING_STRING,
                   G_TYPE_INT, 3,
@@ -513,6 +513,9 @@ mousepad_search_bar_focus (MousepadSearchBar *bar)
 
   /* focus the entry field */
   gtk_widget_grab_focus (bar->entry);
+
+  /* trigger search function */
+  mousepad_search_bar_entry_changed (NULL, bar);
 
   /* update the highlight */
   mousepad_search_bar_highlight_schedule (bar);

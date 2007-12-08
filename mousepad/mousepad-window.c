@@ -2654,19 +2654,24 @@ mousepad_window_search (MousepadWindow      *window,
 static void
 mousepad_window_hide_search_bar (MousepadWindow *window)
 {
+  MousepadSearchFlags flags;
+
   _mousepad_return_if_fail (MOUSEPAD_IS_WINDOW (window));
+  _mousepad_return_if_fail (MOUSEPAD_IS_DOCUMENT (window->active));
   _mousepad_return_if_fail (MOUSEPAD_IS_SEARCH_BAR (window->search_bar));
 
+  /* setup flags */
+  flags = MOUSEPAD_SEARCH_FLAGS_ACTION_HIGHTLIGHT
+          | MOUSEPAD_SEARCH_FLAGS_ACTION_CLEANUP;
+
   /* remove the highlight */
-  //mousepad_search_bar_reset_highlight (MOUSEPAD_SEARCH_BAR (window->search_bar));
-  /* TODO */
+  mousepad_window_search (window, flags, NULL, NULL);
 
   /* hide the search bar */
   gtk_widget_hide (window->search_bar);
 
   /* focus the active document's text view */
-  if (G_LIKELY (window->active))
-    mousepad_document_focus_textview (window->active);
+  mousepad_document_focus_textview (window->active);
 }
 
 

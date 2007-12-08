@@ -1,3 +1,9 @@
+2007-12-08	Nick Schermer <nick@xfce.org>
+
+	* mousepad/mousepad-{search-bar,window}.c: Remove highlight when
+	  hiding the search bar. Search ahead when opening the search bar.
+
+
 2007-12-07	Nick Schermer <nick@xfce.org>
 
 	* mousepad/mousepad-search-bar.c: Fix red entry when toggling the
