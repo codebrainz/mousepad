@@ -1,4 +1,9 @@
-2007-12-08	Nick Schermer <nick@xfce.org>
+2007-12-10	Nick Schermer <nick@xfce.org>
+
+	* mousepad/mousepad-undo.c: Remove testing messages.
+
+
+2007-12-10	Nick Schermer <nick@xfce.org>
 
 	* mousepad/mousepad-window.c: Use the switch-page signal instead
 	  of a notify on the page property.

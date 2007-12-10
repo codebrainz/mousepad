@@ -497,8 +497,6 @@ mousepad_undo_cache_to_step (MousepadUndo *undo)
       /* reset the cache */
       mousepad_undo_cache_reset (undo);
     }
-
-  g_message ("%d steps", undo->n_steps);
 }
 
 
@@ -814,9 +812,6 @@ mousepad_undo_save_point (MousepadUndo *undo)
 
   /* store the current needle position */
   undo->saved = undo->needle;
-
-  /* TODO remove */
-  g_message ("store save point");
 }
 
 
