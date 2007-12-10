@@ -40,6 +40,8 @@ void           mousepad_undo_lock            (MousepadUndo  *undo);
 
 void           mousepad_undo_unlock          (MousepadUndo  *undo);
 
+void           mousepad_undo_save_point      (MousepadUndo  *undo);
+
 gboolean       mousepad_undo_can_undo        (MousepadUndo  *undo);
 
 gboolean       mousepad_undo_can_redo        (MousepadUndo  *undo);

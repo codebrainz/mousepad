@@ -11,6 +11,8 @@ INCLUDES =									\
 	-DLIBEXECDIR=\"$(libexecdir)\"						\
 	-DPACKAGE_LOCALE_DIR=\"$(localedir)\"					\
 	-DG_DISABLE_DEPRECATED							\
+	-DGTK_DISABLE_DEPRECATED						\
+	-DGDK_DISABLE_DEPRECATED						\
 	$(PLATFORM_CPPFLAGS)
 
 bin_PROGRAMS = 									\

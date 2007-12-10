@@ -95,6 +95,13 @@ G_BEGIN_DECLS
 #define G_UNLIKELY(expr) (expr)
 #endif
 
+/* tooltip api */
+#if GTK_CHECK_VERSION (2,12,0)
+#define mousepad_widget_set_tooltip_text(widget,text) (gtk_widget_set_tooltip_text (widget, text))
+#else
+#define mousepad_widget_set_tooltip_text(widget,text) (mousepad_util_set_tooltip (widget, text))
+#endif
+
 G_END_DECLS
 
 #endif /* !__MOUSEPAD_PRIVATE_H__ */

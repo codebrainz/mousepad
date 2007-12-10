@@ -1,5 +1,25 @@
 2007-12-08	Nick Schermer <nick@xfce.org>
 
+	* mousepad/mousepad-window.c: Use the switch-page signal instead
+	  of a notify on the page property.
+	* mousepad/mousepad-*: Remove deprecated tooltip api when compiled
+	  with Gtk+ >= 2.12.
+	* mousepad/mousepad-replace-dialog.c: Connect tab switch signal for
+	  updating the dialog status when switching tabs.
+	* mousepad/mousepad-undo.c: Fix issues with the undo manager. It
+	  now works with a points system (chars: 1pt, space/tab: 10pts,
+	  new line: 25pts). A step contains 30pts, whole words and spaces
+	  are merged. This way the undo steps feel more consistent.
+	  Properly keep the number of visible undo steps < 100.
+	  Store document save point in the undo manager, when you undo to
+	  this points the document will not be modified, but the history
+	  is not erased either when saving.
+	* mousepad/Makefile.am: Add DGTK_DISABLE_DEPRECATED and
+	  DGDK_DISABLE_DEPRECATED.
+
+
+2007-12-08	Nick Schermer <nick@xfce.org>
+
 	* mousepad/mousepad-{dialog,window}.c: Show save as button in
 	  question dialog for readonly documents. Also add the modified
 	  readonly documents to the save-as queue when running save all.

@@ -104,8 +104,9 @@ static gboolean          mousepad_window_close_document               (MousepadW
 static void              mousepad_window_set_title                    (MousepadWindow         *window);
 
 /* notebook signals */
-static void              mousepad_window_notebook_notified            (GtkNotebook            *notebook,
-                                                                       GParamSpec             *pspec,
+static void              mousepad_window_notebook_switch_page         (GtkNotebook            *notebook,
+                                                                       GtkNotebookPage        *page,
+                                                                       guint                   page_num,
                                                                        MousepadWindow         *window);
 static void              mousepad_window_notebook_reordered           (GtkNotebook            *notebook,
                                                                        GtkWidget              *page,
@@ -689,7 +690,7 @@ mousepad_window_init (MousepadWindow *window)
 #endif
 
   /* connect signals to the notebooks */
-  g_signal_connect (G_OBJECT (window->notebook), "notify::page", G_CALLBACK (mousepad_window_notebook_notified), window);
+  g_signal_connect (G_OBJECT (window->notebook), "switch-page", G_CALLBACK (mousepad_window_notebook_switch_page), window);
   g_signal_connect (G_OBJECT (window->notebook), "page-reordered", G_CALLBACK (mousepad_window_notebook_reordered), window);
   g_signal_connect (G_OBJECT (window->notebook), "page-added", G_CALLBACK (mousepad_window_notebook_added), window);
   g_signal_connect (G_OBJECT (window->notebook), "page-removed", G_CALLBACK (mousepad_window_notebook_removed), window);
@@ -710,6 +711,7 @@ mousepad_window_init (MousepadWindow *window)
   /* allow drops in the window */
   gtk_drag_dest_set (GTK_WIDGET (window), GTK_DEST_DEFAULT_MOTION | GTK_DEST_DEFAULT_DROP, drop_targets, G_N_ELEMENTS (drop_targets), GDK_ACTION_COPY | GDK_ACTION_MOVE);
   g_signal_connect (G_OBJECT (window), "drag-data-received", G_CALLBACK (mousepad_window_drag_data_received), window);
+
 }
 
 
@@ -1136,6 +1138,9 @@ mousepad_window_add (MousepadWindow   *window,
   _mousepad_return_if_fail (MOUSEPAD_IS_DOCUMENT (document));
   _mousepad_return_if_fail (GTK_IS_NOTEBOOK (window->notebook));
 
+  /* get the active tab before we switch to the new one */
+  prev_active = window->active;
+
   /* create the tab label */
   label = mousepad_document_get_tab_label (document);
 
@@ -1152,21 +1157,21 @@ mousepad_window_add (MousepadWindow   *window,
   /* show the document */
   gtk_widget_show (GTK_WIDGET (document));
 
-  /* get the active tab before we switch to the new one */
-  prev_active = window->active;
+  /* don't bother about this when there was no previous active page (startup) */
+  if (G_LIKELY (prev_active != NULL))
+    {
+      /* switch to the new tab */
+      gtk_notebook_set_current_page (GTK_NOTEBOOK (window->notebook), page);
 
-  /* switch to the new tab */
-  gtk_notebook_set_current_page (GTK_NOTEBOOK (window->notebook), page);
+      /* destroy the previous tab if it was not modified, untitled and the new tab is not untitled */
+      if (gtk_text_buffer_get_modified (prev_active->buffer) == FALSE
+          && mousepad_file_get_filename (prev_active->file) == NULL
+          && mousepad_file_get_filename (document->file) != NULL)
+        gtk_widget_destroy (GTK_WIDGET (prev_active));
+    }
 
   /* make sure the textview is focused in the new document */
   mousepad_document_focus_textview (document);
-
-  /* destroy the previous tab if it was not modified, untitled and the new tab is not untitled */
-  if (prev_active != NULL
-      && gtk_text_buffer_get_modified (prev_active->buffer) == FALSE
-      && mousepad_file_get_filename (prev_active->file) == NULL
-      && mousepad_file_get_filename (document->file) != NULL)
-    gtk_widget_destroy (GTK_WIDGET (prev_active));
 }
 
 
@@ -1265,31 +1270,34 @@ mousepad_window_set_title (MousepadWindow *window)
  * Notebook Signal Functions
  **/
 static void
-mousepad_window_notebook_notified (GtkNotebook    *notebook,
-                                   GParamSpec     *pspec,
-                                   MousepadWindow *window)
+mousepad_window_notebook_switch_page (GtkNotebook     *notebook,
+                                      GtkNotebookPage *page,
+                                      guint            page_num,
+                                      MousepadWindow  *window)
 {
-  gint page_num;
+  MousepadDocument *document;
 
   _mousepad_return_if_fail (MOUSEPAD_IS_WINDOW (window));
-
-  /* get the current page */
-  page_num = gtk_notebook_get_current_page (notebook);
+  _mousepad_return_if_fail (GTK_IS_NOTEBOOK (notebook));
 
   /* get the new active document */
-  if (G_LIKELY (page_num != -1))
-    window->active = MOUSEPAD_DOCUMENT (gtk_notebook_get_nth_page (notebook, page_num));
-  else
-    g_assert_not_reached ();
+  document = MOUSEPAD_DOCUMENT (gtk_notebook_get_nth_page (notebook, page_num));
 
-  /* set the window title */
-  mousepad_window_set_title (window);
+  /* only update when really changed */
+  if (G_LIKELY (window->active != document))
+    {
+      /* set new active document */
+      window->active = document;
 
-  /* update the menu actions */
-  mousepad_window_update_actions (window);
+      /* set the window title */
+      mousepad_window_set_title (window);
 
-  /* update the statusbar */
-  mousepad_document_send_signals (window->active);
+      /* update the menu actions */
+      mousepad_window_update_actions (window);
+
+      /* update the statusbar */
+      mousepad_document_send_signals (window->active);
+    }
 }
 
 
@@ -3278,7 +3286,12 @@ mousepad_window_action_save (GtkAction      *action,
       /* update the window title */
       mousepad_window_set_title (window);
 
-      if (G_UNLIKELY (succeed == FALSE))
+      if (G_LIKELY (succeed))
+        {
+          /* store the save state in the undo manager */
+          mousepad_undo_save_point (document->undo);
+        }
+      else
         {
           /* show the error */
           mousepad_dialogs_show_error (GTK_WINDOW (window), error, _("Failed to save the document"));
@@ -3390,9 +3403,16 @@ mousepad_window_action_save_all (GtkAction      *action,
           /* try to save the file */
           succeed = mousepad_file_save (MOUSEPAD_DOCUMENT (document)->file, &error);
 
-          /* break on problems */
-          if (G_UNLIKELY (succeed == FALSE))
-            break;
+          if (G_LIKELY (succeed))
+            {
+              /* store save state */
+              mousepad_undo_save_point (MOUSEPAD_DOCUMENT (document)->undo);
+            }
+          else
+            {
+              /* break on problems */
+              break;
+            }
         }
     }
 
@@ -3854,18 +3874,29 @@ mousepad_window_action_find_previous (GtkAction      *action,
 }
 
 
+static void
+mousepad_window_action_replace_switch_page (MousepadWindow *window)
+{
+  _mousepad_return_if_fail (MOUSEPAD_IS_WINDOW (window));
+  _mousepad_return_if_fail (MOUSEPAD_IS_REPLACE_DIALOG (window->replace_dialog));
+  _mousepad_return_if_fail (MOUSEPAD_IS_DOCUMENT (window->active));
+
+  /* page switched */
+  mousepad_replace_dialog_page_switched (MOUSEPAD_REPLACE_DIALOG (window->replace_dialog));
+}
+
 
 static void
 mousepad_window_action_replace_destroy (MousepadWindow *window)
 {
   _mousepad_return_if_fail (MOUSEPAD_IS_WINDOW (window));
 
-  /* TODO disconnect tab switch signal */
+  /* disconnect tab switch signal */
+  g_signal_handlers_disconnect_by_func (G_OBJECT (window->notebook), mousepad_window_action_replace_switch_page, window);
 
   /* reset the dialog variable */
   window->replace_dialog = NULL;
 }
-
 
 
 static void
@@ -3888,13 +3919,12 @@ mousepad_window_action_replace (GtkAction      *action,
       /* connect signals */
       g_signal_connect_swapped (G_OBJECT (window->replace_dialog), "destroy", G_CALLBACK (mousepad_window_action_replace_destroy), window);
       g_signal_connect_swapped (G_OBJECT (window->replace_dialog), "search", G_CALLBACK (mousepad_window_search), window);
-
-      /* TODO tab switch update signal */
+      g_signal_connect_swapped (G_OBJECT (window->notebook), "switch-page", G_CALLBACK (mousepad_window_action_replace_switch_page), window);
     }
   else
     {
       /* focus the existing dialog */
-      gtk_widget_grab_focus (window->replace_dialog);
+      gtk_window_present (GTK_WINDOW (window->replace_dialog));
     }
 }
 

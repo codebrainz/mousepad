@@ -355,7 +355,7 @@ mousepad_replace_dialog_response (GtkWidget *widget,
   MousepadReplaceDialog *dialog = MOUSEPAD_REPLACE_DIALOG (widget);
   gint                   matches;
   const gchar           *search_str, *replace_str;
-  gchar                 *hits_str;
+  gchar                 *message;
 
   /* close dialog */
   if (response_id == MOUSEPAD_RESPONSE_CLOSE)
@@ -456,15 +456,19 @@ mousepad_replace_dialog_response (GtkWidget *widget,
   /* emit the signal */
   g_signal_emit (G_OBJECT (dialog), dialog_signals[SEARCH], 0, flags, search_str, replace_str, &matches);
 
-  /* set search widget result */
+  /* reset counter */
+  if (response_id == MOUSEPAD_RESPONSE_REPLACE && dialog->replace_all)
+    matches = 0;
+
+  /* update entry color */
   mousepad_util_entry_error (dialog->search_entry, matches == 0);
 
-  /* update hits counter */
+  /* update counter */
   if (dialog->replace_all)
     {
-      hits_str = g_strdup_printf ("%d %s", matches, matches == 1 ? _("occurence") : _("occurences"));
-      gtk_label_set_markup (GTK_LABEL (dialog->hits_label), hits_str);
-      g_free (hits_str);
+      message = g_strdup_printf (ngettext ("%d occurence", "%d occurences", matches), matches);
+      gtk_label_set_markup (GTK_LABEL (dialog->hits_label), message);
+      g_free (message);
     }
 }
 
@@ -634,6 +638,14 @@ mousepad_replace_dialog_history_insert_text (const gchar *text)
 
 
 
+GtkWidget *
+mousepad_replace_dialog_new (void)
+{
+  return g_object_new (MOUSEPAD_TYPE_REPLACE_DIALOG, NULL);
+}
+
+
+
 void
 mousepad_replace_dialog_history_clean (void)
 {
@@ -658,8 +670,8 @@ mousepad_replace_dialog_history_clean (void)
 
 
 
-GtkWidget *
-mousepad_replace_dialog_new (void)
+void
+mousepad_replace_dialog_page_switched (MousepadReplaceDialog *dialog)
 {
-  return g_object_new (MOUSEPAD_TYPE_REPLACE_DIALOG, NULL);
+  mousepad_replace_dialog_changed (dialog);
 }

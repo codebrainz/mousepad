@@ -422,7 +422,7 @@ mousepad_document_filename_changed (MousepadDocument *document,
           gtk_label_set_text (GTK_LABEL (document->priv->label), utf8_basename);
 
           /* set the tab tooltip */
-          mousepad_util_set_tooltip (document->priv->ebox, utf8_filename);
+          mousepad_widget_set_tooltip_text (document->priv->ebox, utf8_filename);
 
           /* update label color */
           mousepad_document_label_color (document);
@@ -545,7 +545,7 @@ mousepad_document_get_tab_label (MousepadDocument *document)
   /* the ebox */
   document->priv->ebox = g_object_new (GTK_TYPE_EVENT_BOX, "border-width", 2, "visible-window", FALSE, NULL);
   gtk_box_pack_start (GTK_BOX (hbox), document->priv->ebox, TRUE, TRUE, 0);
-  mousepad_util_set_tooltip (document->priv->ebox, document->priv->utf8_filename);
+  mousepad_widget_set_tooltip_text (document->priv->ebox, document->priv->utf8_filename);
   gtk_widget_show (document->priv->ebox);
 
   /* create the label */
@@ -566,10 +566,10 @@ mousepad_document_get_tab_label (MousepadDocument *document)
   style = gtk_rc_style_new ();
   style->xthickness = style->ythickness = 0;
   gtk_widget_modify_style (button, style);
-  gtk_rc_style_unref (style);
+  g_object_unref (G_OBJECT (style));
 
   /* pack button, add signal and tooltip */
-  mousepad_util_set_tooltip (button, _("Close this tab"));
+  mousepad_widget_set_tooltip_text (button, _("Close this tab"));
   gtk_box_pack_start (GTK_BOX (hbox), button, FALSE, FALSE, 0);
   g_signal_connect (G_OBJECT (button), "clicked", G_CALLBACK (mousepad_document_tab_button_clicked), document);
   gtk_widget_show (button);

@@ -473,7 +473,7 @@ mousepad_util_dialog_header (GtkDialog   *dialog,
 }
 
 
-
+#if !GTK_CHECK_VERSION (2,12,0)
 void
 mousepad_util_set_tooltip (GtkWidget   *widget,
                            const gchar *string)
@@ -490,7 +490,7 @@ mousepad_util_set_tooltip (GtkWidget   *widget,
   /* setup the tooltip for the widget */
   gtk_tooltips_set_tip (tooltips, widget, string, NULL);
 }
-
+#endif
 
 
 gint

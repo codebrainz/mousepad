@@ -23,7 +23,15 @@
 #include <mousepad/mousepad-undo.h>
 
 
-#define DEFAULT_CACHE_SIZE (50)
+/* global */
+#define MOUSEPAD_UNDO_MAX_STEPS         (100) /* maximum number of undo steps */
+#define MOUSEPAD_UNDO_BUFFER_SIZE       (40)  /* buffer size */
+
+/* points system */
+#define MOUSEPAD_UNDO_POINTS            (30)  /* maximum points in a step */
+#define MOUSEPAD_UNDO_POINTS_CHAR       (1)   /* points for a character */
+#define MOUSEPAD_UNDO_POINTS_WORD_BREAK (10)  /* points for a word break */
+#define MOUSEPAD_UNDO_POINTS_NEW_LINE   (25)  /* points for a new line */
 
 
 
@@ -33,31 +41,34 @@ typedef enum   _MousepadUndoAction MousepadUndoAction;
 
 
 
-static void mousepad_undo_class_init         (MousepadUndoClass  *klass);
-static void mousepad_undo_init               (MousepadUndo       *undo);
-static void mousepad_undo_finalize           (GObject            *object);
-static void mousepad_undo_emit_signals       (MousepadUndo       *undo);
-static void mousepad_undo_step_free          (MousepadUndoStep   *step,
-                                              MousepadUndo       *undo);
-static void mousepad_undo_step_perform       (MousepadUndo       *undo,
-                                              gboolean            redo);
-static void mousepad_undo_cache_to_step      (MousepadUndo       *undo);
-static void mousepad_undo_cache_reset_needle (MousepadUndo       *undo);
-static void mousepad_undo_cache_update       (MousepadUndo       *undo,
-                                              MousepadUndoAction  action,
-                                              gint                start,
-                                              gint                end,
-                                              const gchar        *text);
-static void mousepad_undo_buffer_insert      (GtkTextBuffer      *buffer,
-                                              GtkTextIter        *pos,
-                                              const gchar        *text,
-                                              gint                length,
-                                              MousepadUndo       *undo);
-static void mousepad_undo_buffer_delete      (GtkTextBuffer      *buffer,
-                                              GtkTextIter        *start_iter,
-                                              GtkTextIter        *end_iter,
-                                              MousepadUndo       *undo);
-
+static void mousepad_undo_class_init               (MousepadUndoClass  *klass);
+static void mousepad_undo_init                     (MousepadUndo       *undo);
+static void mousepad_undo_finalize                 (GObject            *object);
+static void mousepad_undo_emit_signals             (MousepadUndo       *undo);
+static void mousepad_undo_step_free                (MousepadUndoStep   *step);
+static void mousepad_undo_step                     (MousepadUndo       *undo,
+                                                    gboolean            redo);
+static void mousepad_undo_cache_reset              (MousepadUndo       *undo);
+static void mousepad_undo_clear_oldest_step        (MousepadUndo       *undo);
+static void mousepad_undo_cache_to_step            (MousepadUndo       *undo);
+static void mousepad_undo_needle_reset             (MousepadUndo       *undo);
+static void mousepad_undo_buffer_changed           (MousepadUndo       *undo,
+                                                    MousepadUndoAction  action,
+                                                    const gchar        *text,
+                                                    gint                length,
+                                                    gint                start_offset,
+                                                    gint                end_offset);
+static void mousepad_undo_buffer_insert            (GtkTextBuffer      *buffer,
+                                                    GtkTextIter        *pos,
+                                                    const gchar        *text,
+                                                    gint                length,
+                                                    MousepadUndo       *undo);
+static void mousepad_undo_buffer_delete            (GtkTextBuffer      *buffer,
+                                                    GtkTextIter        *start_iter,
+                                                    GtkTextIter        *end_iter,
+                                                    MousepadUndo       *undo);
+static void mousepad_undo_buffer_begin_user_action (GtkTextBuffer      *buffer,
+                                                    MousepadUndo       *undo);
 
 
 enum
@@ -74,27 +85,8 @@ struct _MousepadUndoClass
 
 enum _MousepadUndoAction
 {
-  INSERT,  /* insert action */
-  DELETE,  /* delete action */
-};
-
-struct _MousepadUndoCache
-{
-  /* string to cache inserted or deleted character */
-  GString            *string;
-
-  /* current cached action */
-  MousepadUndoAction  action;
-
-  /* cache start and end positions */
-  gint                start;
-  gint                end;
-
-  /* whether the last character was a word breaking character */
-  guint               is_space : 1;
-
-  /* whether the changes in the cache are part of a group */
-  guint               in_group : 1;
+  INSERT, /* insert action */
+  DELETE, /* delete action */
 };
 
 struct _MousepadUndo
@@ -102,26 +94,48 @@ struct _MousepadUndo
   GObject __parent__;
 
   /* the text buffer we're monitoring */
-  GtkTextBuffer     *buffer;
+  GtkTextBuffer      *buffer;
 
   /* whether the undo manager is locked */
-  gint               locked;
+  gint                locked;
 
-  /* whether we should put multiple changes into one action */
-  gint               grouping;
+  /* whether multiple changes are merged */
+  gint                grouping;
 
   /* whether we can undo or redo */
-  guint              can_undo : 1;
-  guint              can_redo : 1;
+  guint               can_undo : 1;
+  guint               can_redo : 1;
 
   /* list containing the steps */
-  GList             *steps;
+  GList              *steps;
+
+  /* number of steps */
+  gint                n_steps;
 
   /* steps list pointer when undoing */
-  GList             *needle;
+  GList              *needle;
 
-  /* internal cache */
-  MousepadUndoCache  cache;
+  /* element in the last when saving */
+  GList              *saved;
+
+  /* string holding the deleted characters */
+  GString            *cache;
+
+  /* start and end positions of the cache */
+  gint                cache_start;
+  gint                cache_end;
+
+  /* if the last character in the cache is a space */
+  guint               cache_is_space : 1;
+
+  /* if the changes in the cache are part of a group */
+  guint               cache_in_group : 1;
+
+  /* current action in the cache */
+  MousepadUndoAction  cache_action;
+
+  /* number of points assigned to the cache */
+  gint                cache_points;
 };
 
 struct _MousepadUndoStep
@@ -129,8 +143,8 @@ struct _MousepadUndoStep
   /* step action */
   MousepadUndoAction  action;
 
-  /* pointer to the string or another entry in the list */
-  gpointer            data;
+  /* deleted string */
+  gchar              *data;
 
   /* start and end positions */
   gint                start;
@@ -203,17 +217,16 @@ mousepad_undo_init (MousepadUndo *undo)
   /* initialize */
   undo->locked = 0;
   undo->grouping = 0;
+  undo->n_steps = 0;
   undo->can_undo = FALSE;
   undo->can_redo = FALSE;
   undo->steps = NULL;
   undo->needle = NULL;
+  undo->saved = NULL;
 
   /* initialize the cache */
-  undo->cache.string = NULL;
-  undo->cache.start = -1;
-  undo->cache.end = -1;
-  undo->cache.is_space = FALSE;
-  undo->cache.in_group = FALSE;
+  undo->cache = NULL;
+  mousepad_undo_cache_reset (undo);
 }
 
 
@@ -243,7 +256,7 @@ mousepad_undo_emit_signals (MousepadUndo *undo)
   gboolean can_undo, can_redo;
 
   /* detect if we can undo or redo */
-  can_undo = (undo->needle != NULL);
+  can_undo = (undo->needle != NULL || undo->cache_start != undo->cache_end);
   can_redo = (undo->needle == NULL || g_list_previous (undo->needle) != NULL);
 
   /* emit signals if needed */
@@ -263,13 +276,8 @@ mousepad_undo_emit_signals (MousepadUndo *undo)
 
 
 static void
-mousepad_undo_step_free (MousepadUndoStep *step,
-                         MousepadUndo     *undo)
+mousepad_undo_step_free (MousepadUndoStep *step)
 {
-  /* remove from the list */
-  if (G_LIKELY (undo))
-    undo->steps = g_list_remove (undo->steps, step);
-
   /* free the string */
   g_free (step->data);
 
@@ -280,15 +288,15 @@ mousepad_undo_step_free (MousepadUndoStep *step,
 
 
 static void
-mousepad_undo_step_perform (MousepadUndo *undo,
-                            gboolean      redo)
+mousepad_undo_step (MousepadUndo *undo,
+                    gboolean      redo)
 {
   MousepadUndoStep   *step;
   MousepadUndoAction  action;
-  GList              *li;
   GtkTextIter         start_iter, end_iter;
+  GList              *li;
 
-  /* lock for updates */
+  /* lock */
   mousepad_undo_lock (undo);
 
   /* flush the cache */
@@ -306,63 +314,64 @@ mousepad_undo_step_perform (MousepadUndo *undo,
   /* freeze buffer notifications */
   g_object_freeze_notify (G_OBJECT (undo->buffer));
 
-  for (li = undo->needle; li != NULL; li = redo ? li->prev : li->next)
+  for (li = undo->needle; li != NULL; li = (redo ? li->prev : li->next))
     {
-      /* get the step data */
+      /* get the step */
       step = li->data;
 
-      if (G_LIKELY (step))
+      /* get the action */
+      action = step->action;
+
+      /* invert the action if needed */
+      if (redo)
+        action = (action == INSERT ? DELETE : INSERT);
+
+      /* get the start iter */
+      gtk_text_buffer_get_iter_at_offset (undo->buffer, &start_iter, step->start);
+
+      switch (action)
         {
-          /* get the action */
-          action = step->action;
+          case INSERT:
+            /* debug check */
+            _mousepad_return_if_fail (step->data == NULL);
 
-          /* invert the action if we redo  */
-          if (redo)
-            action = (action == INSERT ? DELETE : INSERT);
+            /* get the end iter */
+            gtk_text_buffer_get_iter_at_offset (undo->buffer, &end_iter, step->end);
 
-          /* get the start iter position */
-          gtk_text_buffer_get_iter_at_offset (undo->buffer, &start_iter, step->start);
+            /* set the deleted for redo */
+            step->data = gtk_text_buffer_get_slice (undo->buffer, &start_iter, &end_iter, TRUE);
 
-          switch (action)
-            {
-              case INSERT:
-                /* get the end iter */
-                gtk_text_buffer_get_iter_at_offset (undo->buffer, &end_iter, step->end);
+            /* delete the inserted text */
+            gtk_text_buffer_delete (undo->buffer, &start_iter, &end_iter);
+            break;
 
-                /* set the string we're going to remove for redo */
-                if (step->data == NULL)
-                  step->data = gtk_text_buffer_get_slice (undo->buffer, &start_iter, &end_iter, TRUE);
+          case DELETE:
+            /* debug check */
+            _mousepad_return_if_fail (step->data != NULL);
 
-                /* delete the inserted text */
-                gtk_text_buffer_delete (undo->buffer, &start_iter, &end_iter);
-                break;
+            /* insert the deleted text */
+            gtk_text_buffer_insert (undo->buffer, &start_iter, step->data, -1);
 
-              case DELETE:
-                _mousepad_return_if_fail (step->data != NULL);
+            /* and cleanup */
+            g_free (step->data);
+            step->data = NULL;
+            break;
 
-                /* insert the deleted text */
-                gtk_text_buffer_insert (undo->buffer, &start_iter, (gchar *)step->data, -1);
-                break;
-
-              default:
-                _mousepad_assert_not_reached ();
-                break;
-            }
-
-          /* set the cursor, we scroll to the cursor in mousepad-document */
-          gtk_text_buffer_place_cursor (undo->buffer, &start_iter);
+          default:
+            _mousepad_assert_not_reached ();
+            break;
         }
 
+      /* get the previous item when we redo */
       if (redo)
         {
-          /* get the previous step to see if it's part of a group */
           if (g_list_previous (li) != NULL)
             step = g_list_previous (li)->data;
           else
             step = NULL;
         }
 
-      /* as long as the step is part of a group, we continue */
+      /* break when the step is not part of a group */
       if (step == NULL || step->in_group == FALSE)
         break;
     }
@@ -370,17 +379,75 @@ mousepad_undo_step_perform (MousepadUndo *undo,
   /* thawn buffer notifications */
   g_object_thaw_notify (G_OBJECT (undo->buffer));
 
-  /* set the needle element */
+  /* set the needle */
   if (redo)
     undo->needle = li;
   else
     undo->needle = g_list_next (li);
 
+  /* check if we've somehow reached the save point */
+  gtk_text_buffer_set_modified (undo->buffer, undo->needle != undo->saved);
+
   /* emit undo and redo signals */
   mousepad_undo_emit_signals (undo);
 
-  /* release the lock */
+  /* unlock */
   mousepad_undo_unlock (undo);
+}
+
+
+
+static void
+mousepad_undo_clear_oldest_step (MousepadUndo *undo)
+{
+  GList            *li, *lprev;
+  MousepadUndoStep *step;
+  gint              to_remove;
+
+  _mousepad_return_if_fail (undo->n_steps > MOUSEPAD_UNDO_MAX_STEPS);
+
+  /* number of steps to remove */
+  to_remove = undo->n_steps - MOUSEPAD_UNDO_MAX_STEPS;
+
+  /* get end of steps list and remove the entire group */
+  for (li = g_list_last (undo->steps); li != NULL; li = lprev)
+    {
+      step = li->data;
+
+      /* update counters */
+      if (step->in_group == FALSE)
+        {
+          if (to_remove == 0)
+            break;
+
+          /* update counter */
+          to_remove--;
+          undo->n_steps--;
+        }
+
+      /* cleanup */
+      mousepad_undo_step_free (step);
+
+      /* previous step */
+      lprev = li->prev;
+
+      /* remove from list */
+      undo->steps = g_list_delete_link (undo->steps, li);
+    }
+}
+
+
+
+static void
+mousepad_undo_cache_reset (MousepadUndo *undo)
+{
+  _mousepad_return_if_fail (undo->cache == NULL);
+
+  /* reset variables */
+  undo->cache_start = undo->cache_end = -1;
+  undo->cache_in_group = FALSE;
+  undo->cache_is_space = FALSE;
+  undo->cache_points = 0;
 }
 
 
@@ -390,171 +457,189 @@ mousepad_undo_cache_to_step (MousepadUndo *undo)
 {
   MousepadUndoStep *step;
 
-  /* leave when the cache is empty */
-  if (undo->cache.start == undo->cache.end)
-    return;
-
-  /* allocate slice */
-  step = g_slice_new0 (MousepadUndoStep);
-
-  /* set step data */
-  step->action = undo->cache.action;
-  step->start = undo->cache.start;
-  step->end = undo->cache.end;
-  step->in_group = undo->cache.in_group;
-
-  if (step->action == DELETE)
+  /* only add when the cache contains changes */
+  if (G_LIKELY (undo->cache_start != undo->cache_end))
     {
-      /* set the step string and allocate a new one */
-      step->data = g_string_free (undo->cache.string, FALSE);
-      undo->cache.string = NULL;
-    }
-  else
-    {
-      /* set the data to null on insert actions */
-      step->data = NULL;
-    }
+      /* make sure the needle has been reset */
+      _mousepad_return_if_fail (undo->needle == undo->steps);
 
-  /* prepend the new step */
-  undo->steps = g_list_prepend (undo->steps, step);
+      /* allocate slice */
+      step = g_slice_new0 (MousepadUndoStep);
 
-  /* reset the needle */
-  undo->needle = undo->steps;
+      /* set data */
+      step->action = undo->cache_action;
+      step->start = undo->cache_start;
+      step->end = undo->cache_end;
+      step->in_group = undo->cache_in_group;
 
-  /* reset the cache */
-  undo->cache.start = undo->cache.end = -1;
-  undo->cache.is_space = FALSE;
-  undo->cache.in_group = FALSE;
-}
+      /* increase real step counter */
+      if (step->in_group == FALSE)
+        if (++undo->n_steps > MOUSEPAD_UNDO_MAX_STEPS)
+          mousepad_undo_clear_oldest_step (undo);
 
-
-
-static void
-mousepad_undo_cache_reset_needle (MousepadUndo *undo)
-{
-  gint   i;
-
-  /* make sure the needle is the start of the list */
-  if (undo->needle != undo->steps)
-    {
-      /* walk from the start to the needle and remove them */
-      for (i = g_list_position (undo->steps, undo->needle); i > 0; i--)
-        mousepad_undo_step_free (g_list_first (undo->steps)->data, undo);
-
-      /* check needle */
-      _mousepad_return_if_fail (undo->needle == undo->needle);
-    }
-}
-
-
-
-static void
-mousepad_undo_cache_update (MousepadUndo       *undo,
-                            MousepadUndoAction  action,
-                            gint                start,
-                            gint                end,
-                            const gchar        *text)
-{
-  gint   length;
-  guchar c;
-
-  /* length of the text */
-  length = ABS (end - start);
-
-  /* initialize the cache, if not already done */
-  if (undo->cache.string == NULL && action == DELETE)
-    undo->cache.string = g_string_sized_new (DEFAULT_CACHE_SIZE);
-
-  /* check if we should start a new step before handling this one */
-  if (undo->grouping == 0)
-    {
-      if (undo->cache.in_group == TRUE)
+      if (step->action == DELETE)
         {
-          /* force a new step if the new step is not part of a group and the
-           * content in the cache is */
-          goto force_new_step;
-        }
-      else if (length == 1)
-        {
-          /* get the character */
-          c = g_utf8_get_char (text);
+          /* free cache and set the data */
+          step->data = g_string_free (undo->cache, FALSE);
 
-          /* detect if the character is a word breaking char */
-          if (g_unichar_isspace (c))
-            {
-              /* the char is a word breaker. we don't care if the previous
-               * one was one too, because we merge multiple spaces/tabs/newlines
-               * into one step */
-              undo->cache.is_space = TRUE;
-            }
-          else if (undo->cache.is_space)
-            {
-              /* the new character is not a work breaking char, but the
-               * previous one was, force a new step */
-              goto force_new_step;
-            }
+          /* null the cache */
+          undo->cache = NULL;
         }
       else
         {
-          /* grouping is not enabled and multiple chars are inseted or
-           * deleted, force a new step */
-          goto force_new_step;
+          /* null the data */
+          step->data = NULL;
+        }
+
+      /* prepend the new step */
+      undo->needle = undo->steps = g_list_prepend (undo->steps, step);
+
+      /* reset the cache */
+      mousepad_undo_cache_reset (undo);
+    }
+
+  g_message ("%d steps", undo->n_steps);
+}
+
+
+
+static void
+mousepad_undo_needle_reset (MousepadUndo *undo)
+{
+  MousepadUndoStep *step;
+
+  /* remove steps from the list until we reach the needle */
+  while (undo->steps != undo->needle)
+    {
+      step = undo->steps->data;
+
+      /* decrease real step counter */
+      if (step->in_group == FALSE)
+        undo->n_steps--;
+
+      /* free the step data */
+      mousepad_undo_step_free (step);
+
+      /* delete the element from the list */
+      undo->steps = g_list_delete_link (undo->steps, undo->steps);
+    }
+
+  /* debug check */
+  _mousepad_return_if_fail (undo->needle == undo->steps);
+}
+
+
+
+static void
+mousepad_undo_buffer_changed (MousepadUndo       *undo,
+                              MousepadUndoAction  action,
+                              const gchar        *text,
+                              gint                length,
+                              gint                start_offset,
+                              gint                end_offset)
+{
+  gunichar c;
+  gboolean is_space, is_newline;
+
+  /* when grouping is 0 we going to detect if it's needed to create a
+   * new step (existing data in buffer, points, etc). when grouping is
+   * > 0 it means we're already inside a group and thus merge as much
+   * as possible. */
+  if (undo->grouping == 0)
+    {
+      if (length > 1 || undo->cache_in_group)
+        {
+          /* the buffer contains still data from a grouped step or more then one
+           * character has been changed. in this case we always create a new step */
+          goto create_new_step;
+        }
+      else /* single char changed */
+        {
+          /* get the changed character */
+          c = g_utf8_get_char (text);
+
+          /* if the character is a space */
+          is_space = g_unichar_isspace (c);
+
+          /* when the maximum number of points has been passed and the
+           * last charater in the buffer differs from the new one, we
+           * force a new step */
+          if (undo->cache_points > MOUSEPAD_UNDO_POINTS
+              && undo->cache_is_space != is_space)
+            {
+              goto create_new_step;
+            }
+
+          /* set the new last character type */
+          undo->cache_is_space = is_space;
+
+          /* if the changed character is a new line */
+          is_newline = (c == '\n' || c == '\r');
+
+          /* update the point statistics */
+          if (is_newline)
+            undo->cache_points += MOUSEPAD_UNDO_POINTS_NEW_LINE;
+          else if (is_space)
+            undo->cache_points += MOUSEPAD_UNDO_POINTS_WORD_BREAK;
+          else
+            undo->cache_points += MOUSEPAD_UNDO_POINTS_CHAR;
         }
     }
 
-  /* handle the buffer change and try to append it to the cache */
-  if (undo->cache.action == action
+  /* try to merge the new change with the buffer. if this is not possible
+   * new put the cache in a new step and insert the last change in the buffer */
+  if (undo->cache_action == action
       && action == INSERT
-      && undo->cache.end == start)
+      && undo->cache_end == start_offset)
     {
-      /* we can append with the previous insert change, update end postion */
-      undo->cache.end = end;
+      /* we can merge with the previous insert */
+      undo->cache_end = end_offset;
     }
-  else if (undo->cache.action == action
+  else if (undo->cache_action == action
            && action == DELETE
-           && undo->cache.start == end)
+           && undo->cache_start == end_offset)
     {
-      /* we can append with the previous delete change, update */
-      undo->cache.start = start;
+      /* we can merge with the previous delete */
+      undo->cache_start = start_offset;
+
+      /* label */
+      prepend_deleted_text:
+
+      /* create a new cache if needed */
+      if (undo->cache == NULL)
+        undo->cache = g_string_sized_new (MOUSEPAD_UNDO_BUFFER_SIZE);
 
       /* prepend removed characters */
-      undo->cache.string = g_string_prepend_len (undo->cache.string, text, length);
+      undo->cache = g_string_prepend_len (undo->cache, text, length);
     }
   else
     {
       /* label */
-      force_new_step:
+      create_new_step:
 
-      /* reset the needle */
-      mousepad_undo_cache_reset_needle (undo);
+      /* reset the needle of the steps list */
+      mousepad_undo_needle_reset (undo);
 
-      /* we cannot cache with the previous change, put the cache into a step */
+      /* put the cache in a new step */
       mousepad_undo_cache_to_step (undo);
 
-      /* start a new cache */
-      undo->cache.action = action;
-      undo->cache.start = start;
-      undo->cache.end = end;
-      undo->cache.in_group = (undo->grouping > 0);
+      /* set the new cache variables */
+      undo->cache_start = start_offset;
+      undo->cache_end = end_offset;
+      undo->cache_action = action;
+      undo->cache_is_space = FALSE;
+      undo->cache_in_group = (undo->grouping > 0);
 
+      /* prepend deleted text */
       if (action == DELETE)
-        {
-          undo->cache.string = g_string_sized_new (DEFAULT_CACHE_SIZE);
-          undo->cache.string = g_string_prepend_len (undo->cache.string, text, length);
-        }
+        goto prepend_deleted_text;
     }
 
   /* increase the grouping counter */
   undo->grouping++;
 
-  /* stuff has been added to the cache, so we can undo now */
-  if (undo->can_undo != TRUE)
-    {
-      undo->can_undo = TRUE;
-
-      /* emit the can-undo signal */
-      g_signal_emit (G_OBJECT (undo), undo_signals[CAN_UNDO], 0, undo->can_undo);
-    }
+  /* emit signals */
+  mousepad_undo_emit_signals (undo);
 }
 
 
@@ -566,21 +651,22 @@ mousepad_undo_buffer_insert (GtkTextBuffer *buffer,
                              gint           length,
                              MousepadUndo  *undo)
 {
-  gint start, end;
+  gint start_pos, end_pos;
 
   _mousepad_return_if_fail (GTK_IS_TEXT_BUFFER (buffer));
   _mousepad_return_if_fail (buffer == undo->buffer);
 
   /* leave when locked */
-  if (G_UNLIKELY (undo->locked > 0))
-    return;
+  if (G_LIKELY (undo->locked == 0))
+    {
+      /* buffer positions */
+      start_pos = gtk_text_iter_get_offset (pos);
+      end_pos = start_pos + length;
 
-  /* buffer positions */
-  start = gtk_text_iter_get_offset (pos);
-  end = start + length;
-
-  /* update the cache */
-  mousepad_undo_cache_update (undo, INSERT, start, end, text);
+      /* handle the change */
+      mousepad_undo_buffer_changed (undo, INSERT, text,
+                                    length, start_pos, end_pos);
+    }
 }
 
 
@@ -592,28 +678,32 @@ mousepad_undo_buffer_delete (GtkTextBuffer *buffer,
                              MousepadUndo  *undo)
 {
   gchar *text;
-  gint   start, end;
+  gint   start_pos, end_pos;
 
   _mousepad_return_if_fail (GTK_IS_TEXT_BUFFER (buffer));
   _mousepad_return_if_fail (buffer == undo->buffer);
 
-  /* leave when locked */
-  if (G_UNLIKELY (undo->locked > 0))
-    return;
+  /* no nothing when locked */
+  if (G_LIKELY (undo->locked == 0))
+    {
+      /* get the removed string */
+      text = gtk_text_buffer_get_slice (buffer, start_iter, end_iter, FALSE);
 
-  /* get the removed string */
-  text = gtk_text_buffer_get_slice (buffer, start_iter, end_iter, FALSE);
+      /* buffer positions */
+      start_pos = gtk_text_iter_get_offset (start_iter);
+      end_pos = gtk_text_iter_get_offset (end_iter);
 
-  /* buffer positions */
-  start = gtk_text_iter_get_offset (start_iter);
-  end = gtk_text_iter_get_offset (end_iter);
+      /* handle the change */
+      mousepad_undo_buffer_changed (undo, DELETE, text,
+                                    ABS (start_pos - end_pos),
+                                    start_pos, end_pos);
 
-  /* update the cache */
-  mousepad_undo_cache_update (undo, DELETE, start, end, text);
-
-  /* cleanup */
-  g_free (text);
+      /* cleanup */
+      g_free (text);
+    }
 }
+
+
 
 static void
 mousepad_undo_buffer_begin_user_action (GtkTextBuffer *buffer,
@@ -622,13 +712,14 @@ mousepad_undo_buffer_begin_user_action (GtkTextBuffer *buffer,
   _mousepad_return_if_fail (GTK_IS_TEXT_BUFFER (buffer));
   _mousepad_return_if_fail (buffer == undo->buffer);
 
-  /* leave when locked */
-  if (G_UNLIKELY (undo->locked > 0))
-    return;
-
-  /* reset the grouping couter */
-  undo->grouping = 0;
+  /* only reset the group counter when not locked */
+  if (G_LIKELY (undo->locked == 0))
+    {
+      /* reset the grouping counter */
+      undo->grouping = 0;
+    }
 }
+
 
 
 MousepadUndo *
@@ -665,19 +756,21 @@ mousepad_undo_clear (MousepadUndo *undo)
   mousepad_undo_lock (undo);
 
   /* clear cache string */
-  if (G_LIKELY (undo->cache.string))
-    g_string_free (undo->cache.string, TRUE);
+  if (G_LIKELY (undo->cache))
+    g_string_free (undo->cache, TRUE);
 
   /* cleanup the undo steps */
   for (li = undo->steps; li != NULL; li = li->next)
-    mousepad_undo_step_free (li->data, undo);
+    mousepad_undo_step_free (li->data);
 
   /* free the list */
   g_list_free (undo->steps);
 
   /* null */
-  undo->steps = undo->needle = NULL;
-  undo->cache.string = NULL;
+  undo->steps = undo->needle = undo->saved = NULL;
+  undo->cache = NULL;
+  undo->n_steps = 0;
+  mousepad_undo_cache_reset (undo);
 
   /* release lock */
   mousepad_undo_unlock (undo);
@@ -704,6 +797,26 @@ mousepad_undo_unlock (MousepadUndo *undo)
 
   /* decrease the lock count */
   undo->locked--;
+}
+
+
+
+void
+mousepad_undo_save_point (MousepadUndo *undo)
+{
+  _mousepad_return_if_fail (MOUSEPAD_IS_UNDO (undo));
+
+  /* reset the needle */
+  mousepad_undo_needle_reset (undo);
+
+  /* make sure the buffer is flushed */
+  mousepad_undo_cache_to_step (undo);
+
+  /* store the current needle position */
+  undo->saved = undo->needle;
+
+  /* TODO remove */
+  g_message ("store save point");
 }
 
 
@@ -735,7 +848,7 @@ mousepad_undo_do_undo (MousepadUndo *undo)
   _mousepad_return_if_fail (mousepad_undo_can_undo (undo));
 
   /* undo the last step */
-  mousepad_undo_step_perform (undo, FALSE);
+  mousepad_undo_step (undo, FALSE);
 }
 
 
@@ -747,5 +860,5 @@ mousepad_undo_do_redo (MousepadUndo *undo)
   _mousepad_return_if_fail (mousepad_undo_can_redo (undo));
 
   /* redo the last undo-ed step */
-  mousepad_undo_step_perform (undo, TRUE);
+  mousepad_undo_step (undo, TRUE);
 }
