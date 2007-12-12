@@ -1,3 +1,10 @@
+2007-12-12	Nick Schermer <nick@xfce.org>
+
+	* mousepad/mousepad-window.c: Try to find the file encoding in the
+	  recent history, when opening a document that didn't pass the
+	  UTF-8 check.
+
+
 2007-12-10	Nick Schermer <nick@xfce.org>
 
 	* mousepad/mousepad-undo.c: Remove testing messages.

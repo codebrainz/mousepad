@@ -184,6 +184,7 @@ static void              mousepad_window_recent_manager_init          (MousepadW
 static gboolean          mousepad_window_recent_menu_idle             (gpointer                user_data);
 static void              mousepad_window_recent_menu_idle_destroy     (gpointer                user_data);
 static void              mousepad_window_recent_menu                  (MousepadWindow         *window);
+static const gchar      *mousepad_window_recent_get_encoding          (GtkRecentInfo          *info);
 static void              mousepad_window_recent_clear                 (MousepadWindow         *window);
 
 /* dnd */
@@ -957,9 +958,12 @@ mousepad_window_open_file (MousepadWindow *window,
   gboolean          succeed = FALSE;
   gint              npages = 0, i;
   gint              response;
-  const gchar      *new_encoding;
   const gchar      *opened_filename;
+  const gchar      *new_encoding;
   GtkWidget        *dialog;
+  gboolean          encoding_from_recent = FALSE;
+  gchar            *uri;
+  GtkRecentInfo    *info;
 
   _mousepad_return_val_if_fail (MOUSEPAD_IS_WINDOW (window), FALSE);
   _mousepad_return_val_if_fail (filename != NULL && *filename != '\0', FALSE);
@@ -1023,6 +1027,43 @@ mousepad_window_open_file (MousepadWindow *window,
       /* clear the error */
       g_clear_error (&error);
 
+      /* try to lookup the encoding from the recent history */
+      if (encoding_from_recent == FALSE)
+        {
+          /* don't try this again */
+          encoding_from_recent = TRUE;
+
+          /* build uri */
+          uri = g_filename_to_uri (filename, NULL, NULL);
+          if (G_LIKELY (uri != NULL))
+            {
+              /* try to lookup the recent item */
+              info = gtk_recent_manager_lookup_item (window->recent_manager, uri, NULL);
+
+              /* cleanup */
+              g_free (uri);
+
+              if (info)
+                {
+                  /* try to find the encoding */
+                  new_encoding = mousepad_window_recent_get_encoding (info);
+
+                  /* release */
+                  gtk_recent_info_unref (info);
+
+                  /* try again if the encoding looks usefull, else
+                   * fall-trough and open encoding dialog */
+                  if (G_LIKELY (new_encoding != NULL))
+                    {
+                      /* set encoding */
+                      mousepad_file_set_encoding (document->file, new_encoding);
+
+                      goto try_open_again;
+                    }
+                }
+            }
+        }
+
       /* run the encoding dialog */
       dialog = mousepad_encoding_dialog_new (GTK_WINDOW (window), document->file);
 
@@ -1031,10 +1072,10 @@ mousepad_window_open_file (MousepadWindow *window,
 
       if (response == GTK_RESPONSE_OK)
         {
-          /* get the selected encoding */
+          /* set the new encoding */
           new_encoding = mousepad_encoding_dialog_get_encoding (MOUSEPAD_ENCODING_DIALOG (dialog));
 
-          /* set the document encoding */
+          /* set encoding */
           mousepad_file_set_encoding (document->file, new_encoding);
         }
 
@@ -2475,6 +2516,30 @@ mousepad_window_recent_menu (MousepadWindow *window)
 
 
 
+static const gchar *
+mousepad_window_recent_get_encoding (GtkRecentInfo *info)
+{
+  const gchar *description;
+  const gchar *encoding = NULL;
+  gint         offset;
+
+  /* get the description */
+  description = gtk_recent_info_get_description (info);
+  if (G_LIKELY (description))
+    {
+      /* get the offset length: 'Encoding: ' */
+      offset = strlen (_("Encoding")) + 2;
+
+      /* check if the encoding string looks valid, if so, set it */
+      if (G_LIKELY (strlen (description) > offset))
+        encoding = description + offset;
+    }
+
+  return encoding;
+}
+
+
+
 static void
 mousepad_window_recent_clear (MousepadWindow *window)
 {
@@ -3169,10 +3234,9 @@ static void
 mousepad_window_action_open_recent (GtkAction      *action,
                                     MousepadWindow *window)
 {
-  const gchar   *uri, *description;
-  const gchar   *encoding = NULL;
+  const gchar   *uri;
+  const gchar   *encoding;
   GError        *error = NULL;
-  gint           offset;
   gchar         *filename;
   gboolean       succeed = FALSE;
   GtkRecentInfo *info;
@@ -3196,17 +3260,8 @@ mousepad_window_action_open_recent (GtkAction      *action,
           /* open the file in a new tab if it exists */
           if (g_file_test (filename, G_FILE_TEST_EXISTS))
             {
-              /* check if we set the encoding in the recent description */
-              description = gtk_recent_info_get_description (info);
-              if (G_LIKELY (description))
-                {
-                  /* get the offset length */
-                  offset = strlen (_("Encoding")) + 2;
-
-                  /* check if the encoding string looks valid and set it */
-                  if (G_LIKELY (strlen (description) > offset))
-                    encoding = description + offset;
-                }
+              /* try to get the encoding from the recent description */
+              encoding = mousepad_window_recent_get_encoding (info);
 
               /* try to open the file */
               succeed = mousepad_window_open_file (window, filename, encoding);
