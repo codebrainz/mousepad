@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: mousepad 0.2.12\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2007-01-20 12:34+0100\n"
-"PO-Revision-Date: 2007-06-07 14:46+0100\n"
+"PO-Revision-Date: 2007-11-28 17:41+0100\n"
 "Last-Translator: Nuno Miguel <nunis@netcabo.pt>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -20,7 +20,8 @@ msgstr ""
 msgid "Save changes to '%s'?"
 msgstr "Gravar alterações em '%s'?"
 
-#: ../src/callback.c:213 ../src/file.c:174
+#: ../src/callback.c:213
+#: ../src/file.c:174
 #, c-format
 msgid "Can't convert codeset to '%s'"
 msgstr "Não é possível converter a codificação para '%s'"
@@ -68,7 +69,7 @@ msgstr "/Ficheiro/_Abrir..."
 
 #: ../src/menu.c:72
 msgid "/File/Open _Recent"
-msgstr "/Ficheiro/_Abrir..."
+msgstr "/Ficheiro/Abrir _Recente"
 
 #: ../src/menu.c:77
 msgid "/File/_Save"
@@ -80,11 +81,11 @@ msgstr "/Ficheiro/Gravar _Como..."
 
 #: ../src/menu.c:83
 msgid "/File/_Print..."
-msgstr "/Ficheiro/_Imprimir..."
+msgstr "/Ficheiro/Im_primir..."
 
 #: ../src/menu.c:87
 msgid "/File/_Quit"
-msgstr "/Ficheiro/Sai_r"
+msgstr "/Ficheiro/_Sair"
 
 #: ../src/menu.c:89
 msgid "/_Edit"
@@ -92,7 +93,7 @@ msgstr "/_Editar"
 
 #: ../src/menu.c:91
 msgid "/Edit/_Undo"
-msgstr "/Editar/_Desfazer"
+msgstr "/Editar/Desfa_zer"
 
 #: ../src/menu.c:93
 msgid "/Edit/_Redo"
@@ -100,11 +101,11 @@ msgstr "/Editar/_Refazer"
 
 #: ../src/menu.c:97
 msgid "/Edit/Cu_t"
-msgstr "/Editar/_Cortar"
+msgstr "/Editar/Cor_tar"
 
 #: ../src/menu.c:99
 msgid "/Edit/_Copy"
-msgstr "/Editar/Co_piar"
+msgstr "/Editar/_Copiar"
 
 #: ../src/menu.c:101
 msgid "/Edit/_Paste"
@@ -120,7 +121,7 @@ msgstr "/Editar/Seleccionar _Tudo"
 
 #: ../src/menu.c:109
 msgid "/_Search"
-msgstr "/_Pesquisar"
+msgstr "/Pesq_uisar"
 
 #: ../src/menu.c:111
 msgid "/Search/_Find..."
@@ -128,11 +129,11 @@ msgstr "/Pesquisar/_Procurar..."
 
 #: ../src/menu.c:113
 msgid "/Search/Find _Next"
-msgstr "/Pesquisar/Procurar _Próxima"
+msgstr "/Pesquisar/Procurar P_róxima"
 
 #: ../src/menu.c:115
 msgid "/Search/Find _Previous"
-msgstr "/Pesquisar/Procurar _Anterior"
+msgstr "/Pesquisar/Procurar A_nterior"
 
 #: ../src/menu.c:117
 msgid "/Search/_Replace..."
@@ -152,7 +153,7 @@ msgstr "/Opções/_Fonte..."
 
 #: ../src/menu.c:127
 msgid "/Options/_Word Wrap"
-msgstr "/Opções/_Quebra de Palavra"
+msgstr "/Opções/_Mudança de linha automática"
 
 #: ../src/menu.c:129
 msgid "/Options/_Line Numbers"
@@ -164,7 +165,7 @@ msgstr "/Opções/Identação _Automática"
 
 #: ../src/menu.c:135
 msgid "/_Help"
-msgstr "/A_juda"
+msgstr "/_Ajuda"
 
 #: ../src/menu.c:137
 msgid "/Help/_About"
@@ -187,13 +188,15 @@ msgstr "%d expressões substituídas"
 msgid "Find"
 msgstr "Procurar"
 
-#: ../src/search.c:200 ../src/search.c:265
+#: ../src/search.c:200
+#: ../src/search.c:265
 msgid "Fi_nd what: "
-msgstr "_Procurar por:"
+msgstr "P_rocurar por:"
 
-#: ../src/search.c:219 ../src/search.c:292
+#: ../src/search.c:219
+#: ../src/search.c:292
 msgid "_Match case"
-msgstr "Diferenciar _maiúsculas e minúsculas"
+msgstr "_Distinguir capitalização"
 
 #: ../src/search.c:253
 msgid "Replace"
@@ -201,7 +204,7 @@ msgstr "Substituir"
 
 #: ../src/search.c:280
 msgid "Re_place with: "
-msgstr "_Substituir por:"
+msgstr "Su_bstituir por:"
 
 #: ../src/search.c:296
 msgid "Replace _all at once"
@@ -230,7 +233,7 @@ msgstr "Outra Codificação"
 
 #: ../src/selector.c:186
 msgid "Code_set:"
-msgstr "Codif_ição:"
+msgstr "Codif_icação:"
 
 #: ../src/selector.c:207
 #, c-format
@@ -278,3 +281,4 @@ msgstr "Editor de texto simples"
 #: ../mousepad.desktop.in.h:3
 msgid "Text Editor"
 msgstr "Editor de Texto"
+

@@ -1,8 +1,13 @@
-2007-11-17	Mike Massonnet <mmassonnet@xfce.org>
+2007-12-23  Jean-François Wauthy <pollux@xfce.org>
+
+	* pt_PT.po: Updated Portuguese translations by Nuno Miguel
+	<nunis@netcabo.pt>
+
+2007-11-17  Mike Massonnet <mmassonnet@xfce.org>
 
 	* fr.po: Rename the name in the desktop entry files with consistency
 
-2007-11-15	Mike Massonnet <mmassonnet@xfce.org>
+2007-11-15  Mike Massonnet <mmassonnet@xfce.org>
 
 	* ur.po, LINGUAS: Add Urdu translation by ﻢﺤﻣﺩ ﻊﻠﻳ ﺎﻠﻤﻜﻳ
 	makki.ma@gmail.com
