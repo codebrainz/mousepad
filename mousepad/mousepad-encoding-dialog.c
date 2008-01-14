@@ -173,37 +173,14 @@ static const gchar *encodings[] =
 
 
 
-static GObjectClass *mousepad_encoding_dialog_parent_class;
-
-
-
-GType
-mousepad_encoding_dialog_get_type (void)
-{
-  static GType type = G_TYPE_INVALID;
-
-  if (G_UNLIKELY (type == G_TYPE_INVALID))
-    {
-      type = g_type_register_static_simple (GTK_TYPE_DIALOG,
-                                            I_("MousepadEncodingDialog"),
-                                            sizeof (MousepadEncodingDialogClass),
-                                            (GClassInitFunc) mousepad_encoding_dialog_class_init,
-                                            sizeof (MousepadEncodingDialog),
-                                            (GInstanceInitFunc) mousepad_encoding_dialog_init,
-                                            0);
-    }
-
-  return type;
-}
+G_DEFINE_TYPE (MousepadEncodingDialog, mousepad_encoding_dialog, GTK_TYPE_DIALOG);
 
 
 
 static void
 mousepad_encoding_dialog_class_init (MousepadEncodingDialogClass *klass)
 {
-  GObjectClass   *gobject_class;
-
-  mousepad_encoding_dialog_parent_class = g_type_class_peek_parent (klass);
+  GObjectClass *gobject_class;
 
   gobject_class = G_OBJECT_CLASS (klass);
   gobject_class->finalize = mousepad_encoding_dialog_finalize;

@@ -131,28 +131,7 @@ struct _MousepadView
 
 
 
-static GObjectClass *mousepad_view_parent_class;
-
-
-
-GType
-mousepad_view_get_type (void)
-{
-  static GType type = G_TYPE_INVALID;
-
-  if (G_UNLIKELY (type == G_TYPE_INVALID))
-    {
-      type = g_type_register_static_simple (GTK_TYPE_TEXT_VIEW,
-                                            I_("MousepadView"),
-                                            sizeof (MousepadViewClass),
-                                            (GClassInitFunc) mousepad_view_class_init,
-                                            sizeof (MousepadView),
-                                            (GInstanceInitFunc) mousepad_view_init,
-                                            0);
-    }
-
-  return type;
-}
+G_DEFINE_TYPE (MousepadView, mousepad_view, GTK_TYPE_TEXT_VIEW);
 
 
 
@@ -161,8 +140,6 @@ mousepad_view_class_init (MousepadViewClass *klass)
 {
   GObjectClass   *gobject_class;
   GtkWidgetClass *widget_class;
-
-  mousepad_view_parent_class = g_type_class_peek_parent (klass);
 
   gobject_class = G_OBJECT_CLASS (klass);
   gobject_class->finalize = mousepad_view_finalize;

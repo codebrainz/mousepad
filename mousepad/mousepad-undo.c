@@ -156,30 +156,11 @@ struct _MousepadUndoStep
 
 
 
-static GObjectClass *mousepad_undo_parent_class;
-static guint         undo_signals[LAST_SIGNAL];
+static guint undo_signals[LAST_SIGNAL];
 
 
 
-GType
-mousepad_undo_get_type (void)
-{
-  static GType type = G_TYPE_INVALID;
-
-  if (G_UNLIKELY (type == G_TYPE_INVALID))
-    {
-      type = g_type_register_static_simple (G_TYPE_OBJECT,
-                                            I_("MousepadUndo"),
-                                            sizeof (MousepadUndoClass),
-                                            (GClassInitFunc) mousepad_undo_class_init,
-                                            sizeof (MousepadUndo),
-                                            (GInstanceInitFunc) mousepad_undo_init,
-                                            0);
-    }
-
-  return type;
-}
-
+G_DEFINE_TYPE (MousepadUndo, mousepad_undo, G_TYPE_OBJECT);
 
 
 static void
@@ -187,15 +168,13 @@ mousepad_undo_class_init (MousepadUndoClass *klass)
 {
   GObjectClass *gobject_class;
 
-  mousepad_undo_parent_class = g_type_class_peek_parent (klass);
-
   gobject_class = G_OBJECT_CLASS (klass);
   gobject_class->finalize = mousepad_undo_finalize;
 
   undo_signals[CAN_UNDO] =
     g_signal_new (I_("can-undo"),
                   G_TYPE_FROM_CLASS (gobject_class),
-                  G_SIGNAL_NO_HOOKS,
+                  G_SIGNAL_RUN_LAST,
                   0, NULL, NULL,
                   g_cclosure_marshal_VOID__BOOLEAN,
                   G_TYPE_NONE, 1, G_TYPE_BOOLEAN);
@@ -203,7 +182,7 @@ mousepad_undo_class_init (MousepadUndoClass *klass)
   undo_signals[CAN_REDO] =
     g_signal_new (I_("can-redo"),
                   G_TYPE_FROM_CLASS (gobject_class),
-                  G_SIGNAL_NO_HOOKS,
+                  G_SIGNAL_RUN_LAST,
                   0, NULL, NULL,
                   g_cclosure_marshal_VOID__BOOLEAN,
                   G_TYPE_NONE, 1, G_TYPE_BOOLEAN);

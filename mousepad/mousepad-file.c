@@ -39,7 +39,7 @@
 
 enum
 {
-  EXTERNALLY_MODIFIED,
+  /* EXTERNALLY_MODIFIED, */
   FILENAME_CHANGED,
   LAST_SIGNAL
 };
@@ -80,29 +80,11 @@ static void  mousepad_file_finalize         (GObject            *object);
 
 
 
-static GObjectClass *mousepad_file_parent_class;
-static guint         file_signals[LAST_SIGNAL];
+static guint file_signals[LAST_SIGNAL];
 
 
 
-GType
-mousepad_file_get_type (void)
-{
-  static GType type = G_TYPE_INVALID;
-
-  if (G_UNLIKELY (type == G_TYPE_INVALID))
-    {
-      type = g_type_register_static_simple (G_TYPE_OBJECT,
-                                            I_("MousepadFile"),
-                                            sizeof (MousepadFileClass),
-                                            (GClassInitFunc) mousepad_file_class_init,
-                                            sizeof (MousepadFile),
-                                            (GInstanceInitFunc) mousepad_file_init,
-                                            0);
-    }
-
-  return type;
-}
+G_DEFINE_TYPE (MousepadFile, mousepad_file, G_TYPE_OBJECT);
 
 
 
@@ -111,23 +93,24 @@ mousepad_file_class_init (MousepadFileClass *klass)
 {
   GObjectClass *gobject_class;
 
-  mousepad_file_parent_class = g_type_class_peek_parent (klass);
-
   gobject_class = G_OBJECT_CLASS (klass);
   gobject_class->finalize = mousepad_file_finalize;
 
+#if 0
+  /* TODO implement this signal */
   file_signals[EXTERNALLY_MODIFIED] =
     g_signal_new (I_("externally-modified"),
                   G_TYPE_FROM_CLASS (gobject_class),
-                  G_SIGNAL_NO_HOOKS,
+                  G_SIGNAL_RUN_LAST,
                   0, NULL, NULL,
                   g_cclosure_marshal_VOID__BOOLEAN,
                   G_TYPE_NONE, 1, G_TYPE_BOOLEAN);
+#endif
 
   file_signals[FILENAME_CHANGED] =
     g_signal_new (I_("filename-changed"),
                   G_TYPE_FROM_CLASS (gobject_class),
-                  G_SIGNAL_NO_HOOKS,
+                  G_SIGNAL_RUN_LAST,
                   0, NULL, NULL,
                   g_cclosure_marshal_VOID__STRING,
                   G_TYPE_NONE, 1, G_TYPE_STRING);

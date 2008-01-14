@@ -65,28 +65,7 @@ struct _MousepadDBusService
 
 
 
-static GObjectClass *mousepad_dbus_service_parent_class;
-
-
-
-GType
-mousepad_dbus_service_get_type (void)
-{
-  static GType type = G_TYPE_INVALID;
-
-  if (G_UNLIKELY (type == G_TYPE_INVALID))
-    {
-      type = g_type_register_static_simple (G_TYPE_OBJECT,
-                                            I_("MousepadDBusService"),
-                                            sizeof (MousepadDBusServiceClass),
-                                            (GClassInitFunc) mousepad_dbus_service_class_init,
-                                            sizeof (MousepadDBusService),
-                                            (GInstanceInitFunc) mousepad_dbus_service_init,
-                                            0);
-    }
-
-  return type;
-}
+G_DEFINE_TYPE (MousepadDBusService, mousepad_dbus_service, G_TYPE_OBJECT);
 
 
 
@@ -95,9 +74,6 @@ mousepad_dbus_service_class_init (MousepadDBusServiceClass *klass)
 {
   extern const DBusGObjectInfo  dbus_glib_mousepad_dbus_service_object_info;
   GObjectClass                 *gobject_class;
-
-  /* determine the parent type class */
-  mousepad_dbus_service_parent_class = g_type_class_peek_parent (klass);
 
   gobject_class = G_OBJECT_CLASS (klass);
   gobject_class->finalize = mousepad_dbus_service_finalize;

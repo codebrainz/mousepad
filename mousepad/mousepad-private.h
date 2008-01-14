@@ -31,10 +31,10 @@ G_BEGIN_DECLS
 #define MOUSEPAD_HAS_FLAG(flags,flag)   (((flags) & (flag)) != 0)
 
 /* for personal testing */
-#define TIMER_START  GTimer *__FUNCTION__timer = g_timer_new();
-#define TIMER_SPLIT  g_print ("%s (%s:%d): %.2f ms\n", __FUNCTION__, __FILE__, __LINE__, g_timer_elapsed (__FUNCTION__timer, NULL) * 1000);
-#define TIMER_STOP   TIMER_SPLIT g_timer_destroy (__FUNCTION__timer);
-#define PRINT_LINE   g_print ("%d (%s)\n", __LINE__, __FUNCTION__);
+#define TIMER_START    GTimer *__FUNCTION__timer = g_timer_new();
+#define TIMER_SPLIT    g_print ("%s: %.2f ms\n", G_STRLOC, g_timer_elapsed (__FUNCTION__timer, NULL) * 1000);
+#define TIMER_STOP     TIMER_SPLIT g_timer_destroy (__FUNCTION__timer);
+#define PRINT_LOCATION g_print ("%s\n", G_STRLOC);
 
 /* optimize the properties */
 #define MOUSEPAD_PARAM_READWRITE (G_PARAM_READWRITE | G_PARAM_STATIC_NAME | G_PARAM_STATIC_NICK | G_PARAM_STATIC_BLURB)

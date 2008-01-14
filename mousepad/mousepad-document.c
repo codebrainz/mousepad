@@ -103,8 +103,7 @@ struct _MousepadDocumentPrivate
 
 
 
-static GObjectClass *mousepad_document_parent_class;
-static guint         document_signals[LAST_SIGNAL];
+static guint document_signals[LAST_SIGNAL];
 
 
 
@@ -116,24 +115,7 @@ mousepad_document_new (void)
 
 
 
-GType
-mousepad_document_get_type (void)
-{
-  static GType type = G_TYPE_INVALID;
-
-  if (G_UNLIKELY (type == G_TYPE_INVALID))
-    {
-      type = g_type_register_static_simple (GTK_TYPE_SCROLLED_WINDOW,
-                                            I_("MousepadDocument"),
-                                            sizeof (MousepadDocumentClass),
-                                            (GClassInitFunc) mousepad_document_class_init,
-                                            sizeof (MousepadDocument),
-                                            (GInstanceInitFunc) mousepad_document_init,
-                                            0);
-    }
-
-  return type;
-}
+G_DEFINE_TYPE (MousepadDocument, mousepad_document, GTK_TYPE_SCROLLED_WINDOW);
 
 
 
@@ -144,15 +126,13 @@ mousepad_document_class_init (MousepadDocumentClass *klass)
 
   g_type_class_add_private (klass, sizeof (MousepadDocumentPrivate));
 
-  mousepad_document_parent_class = g_type_class_peek_parent (klass);
-
   gobject_class = G_OBJECT_CLASS (klass);
   gobject_class->finalize = mousepad_document_finalize;
 
   document_signals[CLOSE_TAB] =
     g_signal_new (I_("close-tab"),
                   G_TYPE_FROM_CLASS (gobject_class),
-                  G_SIGNAL_NO_HOOKS,
+                  G_SIGNAL_RUN_LAST,
                   0, NULL, NULL,
                   g_cclosure_marshal_VOID__VOID,
                   G_TYPE_NONE, 0);
@@ -160,7 +140,7 @@ mousepad_document_class_init (MousepadDocumentClass *klass)
   document_signals[CURSOR_CHANGED] =
     g_signal_new (I_("cursor-changed"),
                   G_TYPE_FROM_CLASS (gobject_class),
-                  G_SIGNAL_NO_HOOKS,
+                  G_SIGNAL_RUN_LAST,
                   0, NULL, NULL,
                   _mousepad_marshal_VOID__INT_INT_INT,
                   G_TYPE_NONE, 3, G_TYPE_INT, G_TYPE_INT, G_TYPE_INT);
@@ -168,7 +148,7 @@ mousepad_document_class_init (MousepadDocumentClass *klass)
   document_signals[SELECTION_CHANGED] =
     g_signal_new (I_("selection-changed"),
                   G_TYPE_FROM_CLASS (gobject_class),
-                  G_SIGNAL_NO_HOOKS,
+                  G_SIGNAL_RUN_LAST,
                   0, NULL, NULL,
                   g_cclosure_marshal_VOID__INT,
                   G_TYPE_NONE, 1, G_TYPE_INT);
@@ -176,7 +156,7 @@ mousepad_document_class_init (MousepadDocumentClass *klass)
   document_signals[OVERWRITE_CHANGED] =
     g_signal_new (I_("overwrite-changed"),
                   G_TYPE_FROM_CLASS (gobject_class),
-                  G_SIGNAL_NO_HOOKS,
+                  G_SIGNAL_RUN_LAST,
                   0, NULL, NULL,
                   g_cclosure_marshal_VOID__BOOLEAN,
                   G_TYPE_NONE, 1, G_TYPE_BOOLEAN);

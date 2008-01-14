@@ -117,9 +117,6 @@ struct _MousepadPreferences
 
 
 
-static GObjectClass *mousepad_preferences_parent_class;
-
-
 /**
  * transform_string_to_boolean:
  * @const GValue : String #GValue.
@@ -153,24 +150,7 @@ transform_string_to_int (const GValue *src,
 
 
 
-GType
-mousepad_preferences_get_type (void)
-{
-  static GType type = G_TYPE_INVALID;
-
-  if (G_UNLIKELY (type == G_TYPE_INVALID))
-    {
-      type = g_type_register_static_simple (G_TYPE_OBJECT,
-                                            I_("MousepadPreferences"),
-                                            sizeof (MousepadPreferencesClass),
-                                            (GClassInitFunc) mousepad_preferences_class_init,
-                                            sizeof (MousepadPreferences),
-                                            (GInstanceInitFunc) mousepad_preferences_init,
-                                            0);
-    }
-
-  return type;
-}
+G_DEFINE_TYPE (MousepadPreferences, mousepad_preferences, G_TYPE_OBJECT);
 
 
 
@@ -178,9 +158,6 @@ static void
 mousepad_preferences_class_init (MousepadPreferencesClass *klass)
 {
   GObjectClass *gobject_class;
-
-  /* determine the parent type class */
-  mousepad_preferences_parent_class = g_type_class_peek_parent (klass);
 
   gobject_class = G_OBJECT_CLASS (klass);
   gobject_class->finalize = mousepad_preferences_finalize;

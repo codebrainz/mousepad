@@ -100,28 +100,7 @@ struct _MousepadPrint
 
 
 
-static GObjectClass *mousepad_print_parent_class;
-
-
-
-GType
-mousepad_print_get_type (void)
-{
-  static GType type = G_TYPE_INVALID;
-
-  if (G_UNLIKELY (type == G_TYPE_INVALID))
-    {
-      type = g_type_register_static_simple (GTK_TYPE_PRINT_OPERATION,
-                                            I_("MousepadPrint"),
-                                            sizeof (MousepadPrintClass),
-                                            (GClassInitFunc) mousepad_print_class_init,
-                                            sizeof (MousepadPrint),
-                                            (GInstanceInitFunc) mousepad_print_init,
-                                            0);
-    }
-
-  return type;
-}
+G_DEFINE_TYPE (MousepadPrint, mousepad_print, GTK_TYPE_PRINT_OPERATION);
 
 
 
@@ -130,8 +109,6 @@ mousepad_print_class_init (MousepadPrintClass *klass)
 {
   GObjectClass           *gobject_class;
   GtkPrintOperationClass *gtkprintoperation_class;
-
-  mousepad_print_parent_class = g_type_class_peek_parent (klass);
 
   gobject_class = G_OBJECT_CLASS (klass);
   gobject_class->finalize = mousepad_print_finalize;

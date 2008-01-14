@@ -63,6 +63,10 @@ static guint statusbar_signals[LAST_SIGNAL];
 
 
 
+G_DEFINE_TYPE (MousepadStatusbar, mousepad_statusbar, GTK_TYPE_STATUSBAR);
+
+
+
 GtkWidget *
 mousepad_statusbar_new (void)
 {
@@ -71,38 +75,17 @@ mousepad_statusbar_new (void)
 
 
 
-GType
-mousepad_statusbar_get_type (void)
-{
-  static GType type = G_TYPE_INVALID;
-
-  if (G_UNLIKELY (type == G_TYPE_INVALID))
-    {
-      type = g_type_register_static_simple (GTK_TYPE_STATUSBAR,
-                                            I_("MousepadStatusbar"),
-                                            sizeof (MousepadStatusbarClass),
-                                            (GClassInitFunc) mousepad_statusbar_class_init,
-                                            sizeof (MousepadStatusbar),
-                                            (GInstanceInitFunc) mousepad_statusbar_init,
-                                            0);
-    }
-
-  return type;
-}
-
-
-
 static void
 mousepad_statusbar_class_init (MousepadStatusbarClass *klass)
 {
-  GObjectClass   *gobject_class;
+  GObjectClass *gobject_class;
 
   gobject_class = G_OBJECT_CLASS (klass);
 
   statusbar_signals[ENABLE_OVERWRITE] =
     g_signal_new (I_("enable-overwrite"),
                   G_TYPE_FROM_CLASS (gobject_class),
-                  G_SIGNAL_NO_HOOKS,
+                  G_SIGNAL_RUN_LAST,
                   0, NULL, NULL,
                   g_cclosure_marshal_VOID__BOOLEAN,
                   G_TYPE_NONE, 1, G_TYPE_BOOLEAN);

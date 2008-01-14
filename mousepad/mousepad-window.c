@@ -63,7 +63,6 @@ enum
 {
   NEW_WINDOW,
   NEW_WINDOW_WITH_DOCUMENT,
-  HAS_DOCUMENTS,
   LAST_SIGNAL,
 };
 
@@ -398,7 +397,7 @@ static const GtkActionEntry action_entries[] =
     { "save-as", GTK_STOCK_SAVE_AS, N_("Save _As..."), "<shift><control>S", N_("Save current document as another file"), G_CALLBACK (mousepad_window_action_save_as), },
     { "save-all", NULL, N_("Save A_ll"), NULL, N_("Save all document in this window"), G_CALLBACK (mousepad_window_action_save_all), },
     { "revert", GTK_STOCK_REVERT_TO_SAVED, N_("Re_vert"), NULL, N_("Revert to the saved version of the file"), G_CALLBACK (mousepad_window_action_revert), },
-    { "print", GTK_STOCK_PRINT, N_("_Print..."), "<control>P", N_("Prin the current document"), G_CALLBACK (mousepad_window_action_print), },
+    { "print", GTK_STOCK_PRINT, N_("_Print..."), "<control>P", N_("Print the current document"), G_CALLBACK (mousepad_window_action_print), },
     { "detach", NULL, N_("_Detach Tab"), "<control>D", N_("Move the current document to a new window"), G_CALLBACK (mousepad_window_action_detach), },
     { "close", GTK_STOCK_CLOSE, N_("Close _Tab"), "<control>W", N_("Close the current document"), G_CALLBACK (mousepad_window_action_close), },
     { "close-window", GTK_STOCK_QUIT, N_("_Close Window"), "<control>Q", N_("Close this window"), G_CALLBACK (mousepad_window_action_close_window), },
@@ -437,8 +436,8 @@ static const GtkActionEntry action_entries[] =
       { "line-up", NULL, N_("Line _Up"), NULL, N_("Move the selection one line up"), G_CALLBACK (mousepad_window_action_move_line_up), },
       { "line-down", NULL, N_("Line _Down"), NULL, N_("Move the selection one line down"), G_CALLBACK (mousepad_window_action_move_line_down), },
     { "duplicate", NULL, N_("D_uplicate Line / Selection"), NULL, N_("Duplicate the current line or selection"), G_CALLBACK (mousepad_window_action_duplicate), },
-    { "increase-indent", GTK_STOCK_INDENT, N_("_Increase Indent"), NULL, N_("Increase indent of selection or line"), G_CALLBACK (mousepad_window_action_increase_indent), },
-    { "decrease-indent", GTK_STOCK_UNINDENT, N_("_Decrease Indent"), NULL, N_("Decrease indent of selection or line"), G_CALLBACK (mousepad_window_action_decrease_indent), },
+    { "increase-indent", GTK_STOCK_INDENT, N_("_Increase Indent"), NULL, N_("Increase the indentation of the selection or current line"), G_CALLBACK (mousepad_window_action_increase_indent), },
+    { "decrease-indent", GTK_STOCK_UNINDENT, N_("_Decrease Indent"), NULL, N_("Decrease the indentation of the selection or current line"), G_CALLBACK (mousepad_window_action_decrease_indent), },
 
   { "document-menu", NULL, N_("_Document"), NULL, NULL, NULL, },
     { "tab-size-menu", NULL, N_("Tab _Size"), NULL, NULL, NULL, },
@@ -473,11 +472,14 @@ static const GtkRadioActionEntry radio_action_entries[] =
 
 
 /* global variables */
-static GObjectClass *mousepad_window_parent_class;
-static guint         window_signals[LAST_SIGNAL];
-static gint          lock_menu_updates = 0;
-static GSList       *clipboard_history = NULL;
-static guint         clipboard_history_ref_count = 0;
+static guint   window_signals[LAST_SIGNAL];
+static gint    lock_menu_updates = 0;
+static GSList *clipboard_history = NULL;
+static guint   clipboard_history_ref_count = 0;
+
+
+
+G_DEFINE_TYPE (MousepadWindow, mousepad_window, GTK_TYPE_WINDOW);
 
 
 
@@ -489,34 +491,11 @@ mousepad_window_new (void)
 
 
 
-GType
-mousepad_window_get_type (void)
-{
-  static GType type = G_TYPE_INVALID;
-
-  if (G_UNLIKELY (type == G_TYPE_INVALID))
-    {
-      type = g_type_register_static_simple (GTK_TYPE_WINDOW,
-                                            I_("MousepadWindow"),
-                                            sizeof (MousepadWindowClass),
-                                            (GClassInitFunc) mousepad_window_class_init,
-                                            sizeof (MousepadWindow),
-                                            (GInstanceInitFunc) mousepad_window_init,
-                                            0);
-    }
-
-  return type;
-}
-
-
-
 static void
 mousepad_window_class_init (MousepadWindowClass *klass)
 {
   GObjectClass   *gobject_class;
   GtkWidgetClass *gtkwidget_class;
-
-  mousepad_window_parent_class = g_type_class_peek_parent (klass);
 
   gobject_class = G_OBJECT_CLASS (klass);
   gobject_class->dispose = mousepad_window_dispose;
@@ -528,7 +507,7 @@ mousepad_window_class_init (MousepadWindowClass *klass)
   window_signals[NEW_WINDOW] =
     g_signal_new (I_("new-window"),
                   G_TYPE_FROM_CLASS (gobject_class),
-                  G_SIGNAL_NO_HOOKS,
+                  G_SIGNAL_RUN_LAST,
                   0, NULL, NULL,
                   g_cclosure_marshal_VOID__VOID,
                   G_TYPE_NONE, 0);
@@ -536,21 +515,12 @@ mousepad_window_class_init (MousepadWindowClass *klass)
   window_signals[NEW_WINDOW_WITH_DOCUMENT] =
     g_signal_new (I_("new-window-with-document"),
                   G_TYPE_FROM_CLASS (gobject_class),
-                  G_SIGNAL_NO_HOOKS,
+                  G_SIGNAL_RUN_LAST,
                   0, NULL, NULL,
                   _mousepad_marshal_VOID__OBJECT_INT_INT,
                   G_TYPE_NONE, 3,
                   G_TYPE_OBJECT,
                   G_TYPE_INT, G_TYPE_INT);
-
-  window_signals[HAS_DOCUMENTS] =
-    g_signal_new (I_("has-documents"),
-                  G_TYPE_FROM_CLASS (gobject_class),
-                  G_SIGNAL_NO_HOOKS,
-                  0, NULL, NULL,
-                  g_cclosure_marshal_VOID__BOOLEAN,
-                  G_TYPE_NONE, 1,
-                  G_TYPE_BOOLEAN);
 }
 
 
@@ -996,6 +966,9 @@ mousepad_window_open_file (MousepadWindow *window,
 
   /* new document */
   document = mousepad_document_new ();
+
+  /* make sure it's not a floating object */
+  g_object_ref_sink (G_OBJECT (document));
 
   /* set the filename */
   mousepad_file_set_filename (document->file, filename);
@@ -1751,6 +1724,8 @@ mousepad_window_menu_templates_fill (MousepadWindow *window,
             dirs_list = g_slist_insert_sorted (dirs_list, absolute_path, (GCompareFunc) strcmp);
           else if (g_file_test (absolute_path, G_FILE_TEST_IS_REGULAR))
             files_list = g_slist_insert_sorted (files_list, absolute_path, (GCompareFunc) strcmp);
+          else
+            g_free (absolute_path);
         }
 
       /* close the directory */
@@ -2617,7 +2592,7 @@ mousepad_window_drag_data_received (GtkWidget        *widget,
       working_directory = g_get_current_dir ();
 
       /* open the files */
-      mousepad_window_open_files (window, NULL, uris);
+      mousepad_window_open_files (window, working_directory, uris);
 
       /* cleanup */
       g_free (working_directory);

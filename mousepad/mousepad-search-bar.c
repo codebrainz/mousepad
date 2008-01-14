@@ -92,8 +92,7 @@ struct _MousepadSearchBar
 
 
 
-static GObjectClass *mousepad_search_bar_parent_class;
-static guint         search_bar_signals[LAST_SIGNAL];
+static guint search_bar_signals[LAST_SIGNAL];
 
 
 
@@ -108,24 +107,7 @@ mousepad_search_bar_new (void)
 
 
 
-GType
-mousepad_search_bar_get_type (void)
-{
-  static GType type = G_TYPE_INVALID;
-
-  if (G_UNLIKELY (type == G_TYPE_INVALID))
-    {
-      type = g_type_register_static_simple (GTK_TYPE_TOOLBAR,
-                                            I_("MousepadSearchBar"),
-                                            sizeof (MousepadSearchBarClass),
-                                            (GClassInitFunc) mousepad_search_bar_class_init,
-                                            sizeof (MousepadSearchBar),
-                                            (GInstanceInitFunc) mousepad_search_bar_init,
-                                            0);
-    }
-
-  return type;
-}
+G_DEFINE_TYPE (MousepadSearchBar, mousepad_search_bar, GTK_TYPE_TOOLBAR);
 
 
 
@@ -135,8 +117,6 @@ mousepad_search_bar_class_init (MousepadSearchBarClass *klass)
   GObjectClass  *gobject_class;
   GtkBindingSet *binding_set;
 
-  mousepad_search_bar_parent_class = g_type_class_peek_parent (klass);
-
   gobject_class = G_OBJECT_CLASS (klass);
   gobject_class->finalize = mousepad_search_bar_finalize;
 
@@ -144,7 +124,7 @@ mousepad_search_bar_class_init (MousepadSearchBarClass *klass)
   search_bar_signals[HIDE_BAR] =
     g_signal_new (I_("hide-bar"),
                   G_TYPE_FROM_CLASS (gobject_class),
-                  G_SIGNAL_NO_HOOKS | G_SIGNAL_ACTION,
+                  G_SIGNAL_RUN_LAST | G_SIGNAL_ACTION,
                   0, NULL, NULL,
                   g_cclosure_marshal_VOID__VOID,
                   G_TYPE_NONE, 0);
@@ -152,7 +132,7 @@ mousepad_search_bar_class_init (MousepadSearchBarClass *klass)
   search_bar_signals[SEARCH] =
     g_signal_new (I_("search"),
                   G_TYPE_FROM_CLASS (gobject_class),
-                  G_SIGNAL_NO_HOOKS,
+                  G_SIGNAL_RUN_LAST,
                   0, NULL, NULL,
                   _mousepad_marshal_INT__FLAGS_STRING_STRING,
                   G_TYPE_INT, 3,

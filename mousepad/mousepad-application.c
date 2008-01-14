@@ -43,8 +43,6 @@ static void        mousepad_application_new_window                (MousepadWindo
 
 
 
-
-
 struct _MousepadApplicationClass
 {
   GObjectClass __parent__;
@@ -60,28 +58,7 @@ struct _MousepadApplication
 
 
 
-static GObjectClass *mousepad_application_parent_class;
-
-
-
-GType
-mousepad_application_get_type (void)
-{
-  static GType type = G_TYPE_INVALID;
-
-  if (G_UNLIKELY (type == G_TYPE_INVALID))
-    {
-      type = g_type_register_static_simple (G_TYPE_OBJECT,
-                                            I_("MousepadApplication"),
-                                            sizeof (MousepadApplicationClass),
-                                            (GClassInitFunc) mousepad_application_class_init,
-                                            sizeof (MousepadApplication),
-                                            (GInstanceInitFunc) mousepad_application_init,
-                                            0);
-    }
-
-  return type;
-}
+G_DEFINE_TYPE (MousepadApplication, mousepad_application, G_TYPE_OBJECT);
 
 
 
@@ -89,8 +66,6 @@ static void
 mousepad_application_class_init (MousepadApplicationClass *klass)
 {
   GObjectClass *gobject_class;
-
-  mousepad_application_parent_class = g_type_class_peek_parent (klass);
 
   gobject_class = G_OBJECT_CLASS (klass);
   gobject_class->finalize = mousepad_application_finalize;
