@@ -550,19 +550,22 @@ mousepad_window_init (MousepadWindow *window)
   window->active = NULL;
   window->recent_manager = NULL;
 
+  /* setup window */
+  gtk_window_set_icon_name (GTK_WINDOW (window), "accessories-text-editor");
+
   /* increase clipboard history ref count */
   clipboard_history_ref_count++;
 
   /* add the preferences to the window */
   window->preferences = mousepad_preferences_get ();
 
+  /* signal for handling the window delete event */
+  g_signal_connect (G_OBJECT (window), "delete-event", G_CALLBACK (mousepad_window_delete_event), NULL);
+
   /* allocate a closure for the menu_item_selected() callback */
   window->menu_item_selected_closure = g_cclosure_new_object (G_CALLBACK (mousepad_window_menu_item_selected), G_OBJECT (window));
   g_closure_ref (window->menu_item_selected_closure);
   g_closure_sink (window->menu_item_selected_closure);
-
-  /* signal for handling the window delete event */
-  g_signal_connect (G_OBJECT (window), "delete-event", G_CALLBACK (mousepad_window_delete_event), NULL);
 
   /* allocate a closure for the menu_item_deselected() callback */
   window->menu_item_deselected_closure = g_cclosure_new_object (G_CALLBACK (mousepad_window_menu_item_deselected), G_OBJECT (window));
@@ -1818,7 +1821,7 @@ mousepad_window_menu_templates (GtkWidget      *item,
   mousepad_window_recent_menu (window);
 
   /* get the templates path */
-  templates_path = xfce_get_homefile ("Templates", NULL);
+  templates_path = g_build_filename (g_get_home_dir (), "Templates", NULL);
 
   /* check if the directory exists */
   if (g_file_test (templates_path, G_FILE_TEST_IS_DIR))

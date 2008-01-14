@@ -122,8 +122,7 @@ struct _MousepadPreferences
  * @const GValue : String #GValue.
  * @GValue       : Return location for a #GValue boolean.
  *
- * Converts a string into a boolean. This is used when
- * converting the XfceRc values.
+ * Converts a string into a boolean.
  **/
 static void
 transform_string_to_boolean (const GValue *src,
@@ -357,8 +356,8 @@ mousepad_preferences_finalize (GObject *object)
   /* flush preferences */
   if (G_UNLIKELY (preferences->store_idle_id != 0))
     {
-      mousepad_preferences_store (preferences);
       g_source_remove (preferences->store_idle_id);
+      mousepad_preferences_store (preferences);
     }
   /* release the property values */
   for (n = 1; n < N_PROPERTIES; ++n)
@@ -451,82 +450,88 @@ mousepad_preferences_check_option_name (GParamSpec *pspec)
 static void
 mousepad_preferences_load (MousepadPreferences *preferences)
 {
-  const gchar  *string;
-  GParamSpec  **specs;
-  GParamSpec   *spec;
-  XfceRc       *rc;
-  GValue        dst = { 0, };
-  GValue        src = { 0, };
-  guint         nspecs;
-  guint         n;
+  gchar       *string;
+  GParamSpec **pspecs;
+  GParamSpec  *pspec;
+  GKeyFile    *keyfile;
+  gchar       *filename;
+  GValue       dst = { 0, };
+  GValue       src = { 0, };
+  guint        nspecs;
+  guint        n;
 
-  /* try to open the config file */
-  rc = xfce_rc_config_open (XFCE_RESOURCE_CONFIG, MOUSEPAD_PREFERENCES_REL_PATH, TRUE);
-  if (G_UNLIKELY (rc == NULL))
+  /* get the save location */
+  filename = mousepad_util_get_save_location (MOUSEPAD_RC_RELPATH, FALSE);
+
+  /* leave when there if no file found */
+  if (G_UNLIKELY (filename == NULL))
+    return;
+
+  /* create a new key file */
+  keyfile = g_key_file_new ();
+
+  /* open the config file */
+  if (G_LIKELY (g_key_file_load_from_file (keyfile, filename, G_KEY_FILE_NONE, NULL)))
     {
-      g_warning (_("Failed to load the preferences."));
+      /* freeze notification signals */
+      g_object_freeze_notify (G_OBJECT (preferences));
 
-      return;
-    }
+      /* get all the properties in the class */
+      pspecs = g_object_class_list_properties (G_OBJECT_GET_CLASS (preferences), &nspecs);
 
-  /* freeze notification signals */
-  g_object_freeze_notify (G_OBJECT (preferences));
-
-  /* set group */
-  xfce_rc_set_group (rc, "Configuration");
-
-  /* get all the properties in the class */
-  specs = g_object_class_list_properties (G_OBJECT_GET_CLASS (preferences), &nspecs);
-
-  for (n = 0; n < nspecs; ++n)
-    {
-      spec = specs[n];
+      for (n = 0; n < nspecs; n++)
+        {
+          pspec = pspecs[n];
 
 #ifndef NDEBUG
-      /* check nick name with generated option name */
-      mousepad_preferences_check_option_name (spec);
+          /* check nick name with generated option name */
+          mousepad_preferences_check_option_name (pspec);
 #endif
 
-      /* read the entry */
-      string = xfce_rc_read_entry (rc, spec->_nick, NULL);
+          /* read the propert value */
+          string = g_key_file_get_string (keyfile, "Configuration", pspec->_nick, NULL);
 
-      if (G_UNLIKELY (string == NULL))
-        continue;
+          if (G_UNLIKELY (string == NULL))
+            continue;
 
-      /* create gvalue with the string as value */
-      g_value_init (&src, G_TYPE_STRING);
-      g_value_set_static_string (&src, string);
+          /* create gvalue with the string as value */
+          g_value_init (&src, G_TYPE_STRING);
+          g_value_take_string (&src, string);
 
-      if (spec->value_type == G_TYPE_STRING)
-        {
-          /* they have the same type, so set the property */
-          g_object_set_property (G_OBJECT (preferences), spec->name, &src);
+          if (pspec->value_type == G_TYPE_STRING)
+            {
+              /* they have the same type, so set the property */
+              g_object_set_property (G_OBJECT (preferences), pspec->name, &src);
+            }
+          else if (g_value_type_transformable (G_TYPE_STRING, pspec->value_type))
+            {
+              /* transform the type */
+              g_value_init (&dst, pspec->value_type);
+              if (g_value_transform (&src, &dst))
+                g_object_set_property (G_OBJECT (preferences), pspec->name, &dst);
+              g_value_unset (&dst);
+            }
+          else
+            {
+              g_warning ("Failed to load property \"%s\"", pspec->name);
+            }
+
+          /* cleanup */
+          g_value_unset (&src);
         }
-      else if (g_value_type_transformable (G_TYPE_STRING, spec->value_type))
-        {
-          /* transform the type */
-          g_value_init (&dst, spec->value_type);
-          if (g_value_transform (&src, &dst))
-            g_object_set_property (G_OBJECT (preferences), spec->name, &dst);
-          g_value_unset (&dst);
-        }
-      else
-        {
-          g_warning ("Failed to load property \"%s\"", spec->name);
-        }
 
-      /* cleanup */
-      g_value_unset (&src);
+      /* cleanup the specs */
+      g_free (pspecs);
+
+      /* allow notifications again */
+      g_object_thaw_notify (G_OBJECT (preferences));
     }
 
-  /* cleanup the specs */
-  g_free (specs);
+  /* free the key file */
+  g_key_file_free (keyfile);
 
-  /* close the rc file */
-  xfce_rc_close (rc);
-
-  /* allow notifications again */
-  g_object_thaw_notify (G_OBJECT (preferences));
+  /* cleanup filename */
+  g_free (filename);
 }
 
 
@@ -546,63 +551,76 @@ mousepad_preferences_store (MousepadPreferences *preferences)
 static gboolean
 mousepad_preferences_store_idle (gpointer user_data)
 {
-  MousepadPreferences *preferences = MOUSEPAD_PREFERENCES (user_data);
-  const gchar         *string;
-  GParamSpec         **specs;
-  GParamSpec          *spec;
-  XfceRc              *rc;
-  GValue               dst = { 0, };
-  GValue               src = { 0, };
-  guint                nspecs;
-  guint                n;
+  MousepadPreferences  *preferences = MOUSEPAD_PREFERENCES (user_data);
+  const gchar          *string;
+  GParamSpec          **pspecs;
+  GParamSpec           *pspec;
+  GKeyFile             *keyfile;
+  gchar                *filename;
+  GValue                dst = { 0, };
+  GValue                src = { 0, };
+  guint                 nspecs;
+  guint                 n;
 
-  /* open the config file */
-  rc = xfce_rc_config_open (XFCE_RESOURCE_CONFIG, MOUSEPAD_PREFERENCES_REL_PATH, FALSE);
-  if (G_UNLIKELY (rc == NULL))
-    {
-      g_warning (_("Failed to store the preferences."));
-      return FALSE;
-    }
+  /* get the config filename */
+  filename = mousepad_util_get_save_location (MOUSEPAD_RC_RELPATH, TRUE);
 
-  /* set the group */
-  xfce_rc_set_group (rc, "Configuration");
+  /* leave when no filename is returned */
+  if (G_UNLIKELY (filename == NULL))
+    return FALSE;
+
+  /* create an empty key file */
+  keyfile = g_key_file_new ();
+
+  /* try to load the file contents, no worries if this fails */
+  g_key_file_load_from_file (keyfile, filename, G_KEY_FILE_NONE, NULL);
 
   /* get the list of properties in the class */
-  specs = g_object_class_list_properties (G_OBJECT_GET_CLASS (preferences), &nspecs);
+  pspecs = g_object_class_list_properties (G_OBJECT_GET_CLASS (preferences), &nspecs);
 
   for (n = 0; n < nspecs; ++n)
     {
-      spec = specs[n];
+      pspec = pspecs[n];
 
       /* init a string value */
       g_value_init (&dst, G_TYPE_STRING);
 
-      if (spec->value_type == G_TYPE_STRING)
+      if (pspec->value_type == G_TYPE_STRING)
         {
           /* set the string value */
-          g_object_get_property (G_OBJECT (preferences), spec->name, &dst);
+          g_object_get_property (G_OBJECT (preferences), pspec->name, &dst);
         }
       else
         {
           /* property contains another type, transform it first */
-          g_value_init (&src, spec->value_type);
-          g_object_get_property (G_OBJECT (preferences), spec->name, &src);
+          g_value_init (&src, pspec->value_type);
+          g_object_get_property (G_OBJECT (preferences), pspec->name, &src);
           g_value_transform (&src, &dst);
           g_value_unset (&src);
         }
 
-      /* store the setting */
+      /* get the string from the value */
       string = g_value_get_string (&dst);
+
+      /* store the value */
       if (G_LIKELY (string != NULL))
-        xfce_rc_write_entry (rc, spec->_nick, string);
+        g_key_file_set_string (keyfile, "Configuration", pspec->_nick, string);
 
       /* cleanup */
       g_value_unset (&dst);
     }
 
+  /* cleanup the specs */
+  g_free (pspecs);
+
+  /* save the keyfile */
+  mousepad_util_save_key_file (keyfile, filename);
+
+  /* close the key file */
+  g_key_file_free (keyfile);
+
   /* cleanup */
-  g_free (specs);
-  xfce_rc_close (rc);
+  g_free (filename);
 
   return FALSE;
 }

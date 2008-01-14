@@ -159,12 +159,13 @@ static void
 mousepad_print_settings_load (GtkPrintOperation *operation)
 {
   MousepadPrint         *print = MOUSEPAD_PRINT (operation);
-  XfceRc                *rc;
+  GKeyFile              *keyfile;
+  gchar                 *filename;
   GtkPrintSettings      *settings = NULL;
   gchar                **keys;
   gint                   i;
   gchar                 *key;
-  const gchar           *value;
+  gchar                 *value;
   GtkPageSetup          *page_setup;
   GtkPaperSize          *paper_size;
   PangoContext          *context;
@@ -173,13 +174,18 @@ mousepad_print_settings_load (GtkPrintOperation *operation)
   _mousepad_return_if_fail (MOUSEPAD_IS_DOCUMENT (print->document));
   _mousepad_return_if_fail (GTK_IS_WIDGET (print->document->textview));
 
-  /* open the config file */
-  rc = xfce_rc_config_open (XFCE_RESOURCE_CONFIG, MOUSEPAD_PREFERENCES_REL_PATH, TRUE);
+  /* get the config file filename */
+  filename = mousepad_util_get_save_location (MOUSEPAD_RC_RELPATH, FALSE);
+  if (G_UNLIKELY (filename == NULL))
+    return;
 
-  if (G_LIKELY (rc != NULL))
+  /* create a new keyfile */
+  keyfile = g_key_file_new ();
+
+  if (G_LIKELY (g_key_file_load_from_file (keyfile, filename, G_KEY_FILE_NONE, NULL)))
     {
       /* get all the keys from the config file */
-      keys = xfce_rc_get_entries (rc, "Print Settings");
+      keys = g_key_file_get_keys (keyfile, "Print Settings", NULL, NULL);
 
       if (G_LIKELY (keys))
         {
@@ -190,7 +196,7 @@ mousepad_print_settings_load (GtkPrintOperation *operation)
           for (i = 0; keys[i] != NULL; i++)
             {
               /* read the value from the config file */
-              value = xfce_rc_read_entry (rc, keys[i], NULL);
+              value = g_key_file_get_string (keyfile, "Print Settings", keys[i], NULL);
 
               /* set the value */
               if (G_LIKELY (value))
@@ -198,16 +204,20 @@ mousepad_print_settings_load (GtkPrintOperation *operation)
                   key = mousepad_util_key_name (keys[i]);
                   gtk_print_settings_set (settings, key, value);
                   g_free (key);
+                  g_free (value);
                 }
             }
 
           /* cleanup */
           g_strfreev (keys);
         }
-
-      /* close */
-      xfce_rc_close (rc);
     }
+
+  /* free the key file */
+  g_key_file_free (keyfile);
+
+  /* cleanup */
+  g_free (filename);
 
   if (G_LIKELY (settings))
     {
@@ -267,14 +277,14 @@ mousepad_print_settings_save_foreach (const gchar *key,
                                       const gchar *value,
                                       gpointer     user_data)
 {
-  XfceRc *rc = (XfceRc *) user_data;
-  gchar  *config;
+  GKeyFile *keyfile = user_data;
+  gchar    *config;
 
   /* save the setting */
   if (G_LIKELY (key && value))
     {
       config = mousepad_util_config_name (key);
-      xfce_rc_write_entry (rc, config, value);
+      g_key_file_set_string (keyfile, "Print Settings", config, value);
       g_free (config);
     }
 }
@@ -285,19 +295,21 @@ static void
 mousepad_print_settings_save (GtkPrintOperation *operation)
 {
   MousepadPrint    *print = MOUSEPAD_PRINT (operation);
-  XfceRc           *rc;
+  GKeyFile         *keyfile;
+  gchar            *filename;
   GtkPrintSettings *settings;
   GtkPageSetup     *page_setup;
   GtkPaperSize     *paper_size;
 
-  /* open the config file */
-  rc = xfce_rc_config_open (XFCE_RESOURCE_CONFIG, MOUSEPAD_PREFERENCES_REL_PATH, FALSE);
+  /* get the save location */
+  filename = mousepad_util_get_save_location (MOUSEPAD_RC_RELPATH, TRUE);
 
-  if (G_LIKELY (rc != NULL))
+  /* create a new keyfile */
+  keyfile = g_key_file_new ();
+
+  /* load the existing settings */
+  if (G_LIKELY (g_key_file_load_from_file (keyfile, filename, G_KEY_FILE_NONE, NULL)))
     {
-      /* set print settings group */
-      xfce_rc_set_group (rc, "Print Settings");
-
       /* get the print settings */
       settings = gtk_print_operation_get_print_settings (operation);
 
@@ -336,12 +348,16 @@ mousepad_print_settings_save (GtkPrintOperation *operation)
           gtk_print_settings_set (settings, "font-name", print->font_name);
 
           /* store all the print settings */
-          gtk_print_settings_foreach (settings, mousepad_print_settings_save_foreach, rc);
-        }
+          gtk_print_settings_foreach (settings, mousepad_print_settings_save_foreach, keyfile);
 
-      /* close */
-      xfce_rc_close (rc);
+          /* save the contents */
+          mousepad_util_save_key_file (keyfile, filename);
+        }
     }
+
+  /* cleanup */
+  g_key_file_free (keyfile);
+  g_free (filename);
 }
 
 

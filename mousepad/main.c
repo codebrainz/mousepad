@@ -25,6 +25,9 @@
 #ifdef HAVE_STDLIB_H
 #include <stdlib.h>
 #endif
+#ifdef HAVE_LIBINTL_H
+#include <libintl.h>
+#endif
 
 #include <mousepad/mousepad-private.h>
 #include <mousepad/mousepad-application.h>
@@ -68,8 +71,11 @@ main (gint argc, gchar **argv)
   MousepadDBusService *dbus_service;
 #endif
 
-  /* translation domain */
-  xfce_textdomain (GETTEXT_PACKAGE, PACKAGE_LOCALE_DIR, "UTF-8");
+  /* bind the text domain to the locale directory */
+  bindtextdomain (GETTEXT_PACKAGE, PACKAGE_LOCALE_DIR);
+
+  /* set the package textdomain */
+  textdomain (GETTEXT_PACKAGE);
 
   /* default application name */
   g_set_application_name (_("Mousepad"));
@@ -105,7 +111,7 @@ main (gint argc, gchar **argv)
   /* check if we should print version information */
   if (G_UNLIKELY (opt_version))
     {
-      g_print ("%s %s (Xfce %s)\n\n", PACKAGE_NAME, PACKAGE_VERSION, xfce_version_string ());
+      g_print ("%s %s\n\n", PACKAGE_NAME, PACKAGE_VERSION);
       g_print ("%s\n", "Copyright (c) 2007");
       g_print ("\t%s\n\n", _("The Xfce development team. All rights reserved."));
       g_print (_("Please report bugs to <%s>."), PACKAGE_BUGREPORT);

@@ -4,6 +4,11 @@ iconsdir = $(datadir)/icons/hicolor/24x24/apps
 icons_DATA =								\
 	Mousepad.png
 
+# install symlink
+install-data-local:
+	$(mkinstalldirs) $(DESTDIR)$(iconsdir)
+	-( cd $(DESTDIR)$(iconsdir) ; ln -sf Mousepad.png accessories-text-editor.png )
+
 EXTRA_DIST =								\
 	$(icons_DATA)
 

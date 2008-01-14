@@ -76,17 +76,17 @@ mousepad_application_class_init (MousepadApplicationClass *klass)
 static void
 mousepad_application_init (MousepadApplication *application)
 {
-  gchar *path;
+  gchar *filename;
 
   /* check if we have a saved accel map */
-  path = xfce_resource_lookup (XFCE_RESOURCE_CONFIG, PACKAGE_NAME G_DIR_SEPARATOR_S "accels.scm");
-  if (G_LIKELY (path != NULL))
+  filename = mousepad_util_get_save_location (MOUSEPAD_ACCELS_RELPATH, FALSE);
+  if (G_LIKELY (filename != NULL))
     {
       /* load the accel map */
-      gtk_accel_map_load (path);
+      gtk_accel_map_load (filename);
 
       /* cleanup */
-      g_free (path);
+      g_free (filename);
     }
 }
 
@@ -97,7 +97,7 @@ mousepad_application_finalize (GObject *object)
 {
   MousepadApplication *application = MOUSEPAD_APPLICATION (object);
   GSList              *li;
-  gchar               *path;
+  gchar               *filename;
 
   /* flush the history items of the replace dialog
    * this is a bit of an ugly place, but cleaning on a window close
@@ -105,14 +105,14 @@ mousepad_application_finalize (GObject *object)
   mousepad_replace_dialog_history_clean ();
 
   /* save the current accel map */
-  path = xfce_resource_save_location (XFCE_RESOURCE_CONFIG, PACKAGE_NAME G_DIR_SEPARATOR_S "accels.scm", TRUE);
-  if (G_LIKELY (path != NULL))
+  filename = mousepad_util_get_save_location (MOUSEPAD_ACCELS_RELPATH, TRUE);
+  if (G_LIKELY (filename != NULL))
     {
       /* save the accel map */
-      gtk_accel_map_save (path);
+      gtk_accel_map_save (filename);
 
       /* cleanup */
-      g_free (path);
+      g_free (filename);
     }
 
   /* destroy the windows if they are still opened */

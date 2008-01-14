@@ -27,8 +27,6 @@ G_BEGIN_DECLS
 #define MOUSEPAD_IS_PREFERENCES_CLASS(klass)  (G_TYPE_CHECK_CLASS_TYPE ((klass), MOUSEPAD_TYPE_PREFERENCES))
 #define MOUSEPAD_PREFERENCES_GET_CLASS(obj)   (G_TYPE_INSTANCE_GET_CLASS ((obj), MOUSEPAD_TYPE_PREFERENCES, MousepadPreferencesClass))
 
-#define MOUSEPAD_PREFERENCES_REL_PATH         ("Mousepad" G_DIR_SEPARATOR_S "mousepadrc")
-
 typedef struct _MousepadPreferencesClass MousepadPreferencesClass;
 typedef struct _MousepadPreferences      MousepadPreferences;
 

@@ -102,6 +102,12 @@ gint       mousepad_util_get_real_line_offset     (const GtkTextIter   *iter,
 gboolean   mousepad_util_forward_iter_to_text     (GtkTextIter         *iter,
                                                    const GtkTextIter   *limit);
 
+gchar     *mousepad_util_get_save_location        (const gchar         *relpath,
+                                                   gboolean             create_parents);
+
+void       mousepad_util_save_key_file            (GKeyFile            *keyfile,
+                                                   const gchar         *filename);
+
 GType      mousepad_util_search_flags_get_type    (void) G_GNUC_CONST;
 
 gint       mousepad_util_highlight                (GtkTextBuffer       *buffer,

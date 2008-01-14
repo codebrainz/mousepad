@@ -59,7 +59,6 @@ mousepad_SOURCES =								\
 
 mousepad_CFLAGS =								\
 	$(GTK_CFLAGS)								\
-	$(LIBXFCE4UTIL_CFLAGS)							\
 	$(GMODULE_CFLAGS)							\
 	$(GTHREAD_CFLAGS)							\
 	$(PLATFORM_CFLAGS)
@@ -70,7 +69,6 @@ mousepad_LDFLAGS =								\
 
 mousepad_LDADD =								\
 	$(GTK_LIBS)								\
-	$(LIBXFCE4UTIL_LIBS)							\
 	$(GMODULE_LIBS)								\
 	$(GTHREAD_LIBS)
 

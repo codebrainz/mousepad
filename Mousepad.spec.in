@@ -8,9 +8,7 @@ Source0:	%{name}-%{version}.tar.gz
 Group:		Applications/X11
 BuildRoot:	%{_tmppath}/%{name}-root
 Requires:	gtk2 >= @GTK_REQUIRED_VERSION@
-Requires:	libxfce4util >= @LIBXFCE4UTIL_REQUIRED_VERSION@
 BuildRequires:	gtk2-devel >= @GTK_REQUIRED_VERSION@
-BuildRequires:	libxfce4util-devel >= @LIBXFCE4UTIL_REQUIRED_VERSION@
 
 %description
 Mousepad is a simple text editor for the Xfce Desktop Environment.
