@@ -3302,6 +3302,8 @@ mousepad_window_action_save (GtkAction      *action,
   MousepadDocument *document = window->active;
   GError           *error = NULL;
   gboolean          succeed = FALSE;
+  gboolean          modified;
+  gint              response;
 
   _mousepad_return_val_if_fail (MOUSEPAD_IS_WINDOW (window), FALSE);
   _mousepad_return_val_if_fail (MOUSEPAD_IS_DOCUMENT (window->active), FALSE);
@@ -3309,23 +3311,55 @@ mousepad_window_action_save (GtkAction      *action,
   if (mousepad_file_get_filename (document->file) == NULL)
     {
       /* file has no filename yet, open the save as dialog */
-      mousepad_window_action_save_as (NULL, window);
+      succeed = mousepad_window_action_save_as (NULL, window);
     }
   else
     {
-      /* save the document */
-      succeed = mousepad_file_save (document->file, &error);
+      /* check whether the file is externally modified */
+      modified = mousepad_file_get_externally_modified (document->file, &error);
+      if (G_UNLIKELY (error != NULL))
+        goto showerror;
 
-      /* update the window title */
-      mousepad_window_set_title (window);
-
-      if (G_LIKELY (succeed))
+      if (modified)
         {
-          /* store the save state in the undo manager */
-          mousepad_undo_save_point (document->undo);
+          /* ask the user what to do */
+          response = mousepad_dialogs_externally_modified (GTK_WINDOW (window));
         }
       else
         {
+          /* save */
+          response = MOUSEPAD_RESPONSE_SAVE;
+        }
+
+      switch (response)
+        {
+          case MOUSEPAD_RESPONSE_CANCEL:
+            /* do nothing */
+            return FALSE;
+
+          case MOUSEPAD_RESPONSE_SAVE_AS:
+            /* run save as dialog */
+            succeed = mousepad_window_action_save_as (NULL, window);
+            break;
+
+          case MOUSEPAD_RESPONSE_SAVE:
+            /* save the document */
+            succeed = mousepad_file_save (document->file, &error);
+            break;
+        }
+
+      if (G_LIKELY (succeed))
+        {
+          /* update the window title */
+          mousepad_window_set_title (window);
+
+          /* store the save state in the undo manager */
+          mousepad_undo_save_point (document->undo);
+        }
+      else if (error != NULL)
+        {
+          showerror:
+
           /* show the error */
           mousepad_dialogs_show_error (GTK_WINDOW (window), error, _("Failed to save the document"));
           g_error_free (error);
@@ -3399,12 +3433,12 @@ static void
 mousepad_window_action_save_all (GtkAction      *action,
                                  MousepadWindow *window)
 {
-  guint      i, current;
-  gint       page_num;
-  GtkWidget *document;
-  GSList    *li, *unnamed = NULL;
-  gboolean   succeed = TRUE;
-  GError    *error = NULL;
+  guint             i, current;
+  gint              page_num;
+  MousepadDocument *document;
+  GSList           *li, *documents = NULL;
+  gboolean          succeed = TRUE;
+  GError           *error = NULL;
 
   _mousepad_return_if_fail (MOUSEPAD_IS_WINDOW (window));
   _mousepad_return_if_fail (MOUSEPAD_IS_DOCUMENT (window->active));
@@ -3416,36 +3450,33 @@ mousepad_window_action_save_all (GtkAction      *action,
   for (i = 0; i < gtk_notebook_get_n_pages (GTK_NOTEBOOK (window->notebook)); i++)
     {
       /* get the document */
-      document = gtk_notebook_get_nth_page (GTK_NOTEBOOK (window->notebook), i);
+      document = MOUSEPAD_DOCUMENT (gtk_notebook_get_nth_page (GTK_NOTEBOOK (window->notebook), i));
 
       /* debug check */
       _mousepad_return_if_fail (MOUSEPAD_IS_DOCUMENT (document));
 
       /* continue if the document is not modified */
-      if (!gtk_text_buffer_get_modified (MOUSEPAD_DOCUMENT (document)->buffer))
+      if (!gtk_text_buffer_get_modified (document->buffer))
         continue;
 
-      if (mousepad_file_get_filename (MOUSEPAD_DOCUMENT (document)->file) == NULL ||
-          mousepad_file_get_read_only ((MOUSEPAD_DOCUMENT (document)->file)))
+      /* we try to quickly save files, without bothering the user */
+      if (mousepad_file_get_filename (document->file) != NULL
+          && mousepad_file_get_read_only (document->file) == FALSE
+          && mousepad_file_get_externally_modified (document->file, NULL) == FALSE)
         {
-          /* add the document to a queue to bother the user later */
-          unnamed = g_slist_prepend (unnamed, document);
+          /* try to quickly save the file */
+          succeed = mousepad_file_save (document->file, &error);
+
+          /* store save state, break on problems */
+          if (G_LIKELY (succeed))
+            mousepad_undo_save_point (document->undo);
+          else
+            break;
         }
       else
         {
-          /* try to save the file */
-          succeed = mousepad_file_save (MOUSEPAD_DOCUMENT (document)->file, &error);
-
-          if (G_LIKELY (succeed))
-            {
-              /* store save state */
-              mousepad_undo_save_point (MOUSEPAD_DOCUMENT (document)->undo);
-            }
-          else
-            {
-              /* break on problems */
-              break;
-            }
+          /* add the document to a queue to bother the user later */
+          documents = g_slist_prepend (documents, document);
         }
     }
 
@@ -3456,13 +3487,18 @@ mousepad_window_action_save_all (GtkAction      *action,
 
       /* show the error */
       mousepad_dialogs_show_error (GTK_WINDOW (window), error, _("Failed to save the document"));
-      g_error_free (error);
+
+      /* free error */
+      if (error != NULL)
+        g_error_free (error);
     }
   else
     {
       /* open a save as dialog for all the unnamed files */
-      for (li = unnamed; li != NULL; li = li->next)
+      for (li = documents; li != NULL; li = li->next)
         {
+          document = MOUSEPAD_DOCUMENT (li->data);
+
           /* get the documents page number */
           page_num = gtk_notebook_page_num (GTK_NOTEBOOK (window->notebook), GTK_WIDGET (li->data));
 
@@ -3471,9 +3507,17 @@ mousepad_window_action_save_all (GtkAction      *action,
               /* focus the tab we're going to save */
               gtk_notebook_set_current_page (GTK_NOTEBOOK (window->notebook), page_num);
 
-              /* trigger the save as function, break when something went wrong */
-              if (!mousepad_window_action_save_as (NULL, window))
-                break;
+              if (mousepad_file_get_filename (document->file) == NULL
+                  || mousepad_file_get_read_only (document->file))
+                {
+                  /* trigger the save as function */
+                  mousepad_window_action_save_as (NULL, window);
+                }
+              else
+                {
+                  /* trigger the save function (externally modified document) */
+                  mousepad_window_action_save (NULL, window);
+                }
             }
         }
 
@@ -3483,7 +3527,7 @@ mousepad_window_action_save_all (GtkAction      *action,
     }
 
   /* cleanup */
-  g_slist_free (unnamed);
+  g_slist_free (documents);
 }
 
 

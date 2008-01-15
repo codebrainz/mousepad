@@ -362,7 +362,7 @@ mousepad_dialogs_save_changes (GtkWindow *parent,
                                    _("Do you want to save the changes before closing?"));
   gtk_window_set_title (GTK_WINDOW (dialog), _("Save Changes"));
   gtk_dialog_add_action_widget (GTK_DIALOG (dialog), mousepad_util_image_button (GTK_STOCK_DELETE, _("_Don't Save")), MOUSEPAD_RESPONSE_DONT_SAVE);
-  gtk_dialog_add_buttons (GTK_DIALOG (dialog), GTK_STOCK_CANCEL, MOUSEPAD_RESPONSE_CANCEL, NULL);
+  gtk_dialog_add_button (GTK_DIALOG (dialog), GTK_STOCK_CANCEL, MOUSEPAD_RESPONSE_CANCEL);
 
   /* we show the save as button instead of save for readonly document */
   if (G_UNLIKELY (readonly))
@@ -386,6 +386,35 @@ mousepad_dialogs_save_changes (GtkWindow *parent,
   gtk_message_dialog_format_secondary_text (GTK_MESSAGE_DIALOG (dialog), _("If you don't save the document, all the changes will be lost."));
 
   /* run the dialog and wait for a response */
+  response = gtk_dialog_run (GTK_DIALOG (dialog));
+
+  /* destroy the dialog */
+  gtk_widget_destroy (dialog);
+
+  return response;
+}
+
+
+
+gint
+mousepad_dialogs_externally_modified (GtkWindow *parent)
+{
+  GtkWidget *dialog;
+  gint       response;
+
+  /* create the question dialog */
+  dialog = gtk_message_dialog_new (parent, GTK_DIALOG_MODAL | GTK_DIALOG_DESTROY_WITH_PARENT,
+                                   GTK_MESSAGE_WARNING, GTK_BUTTONS_NONE,
+                                   _("The document has been externally modified. Do you want to continue saving?"));
+  gtk_window_set_title (GTK_WINDOW (dialog), _("Externally Modified"));
+  gtk_message_dialog_format_secondary_text (GTK_MESSAGE_DIALOG (dialog), _("If you don't save the document, all the external changes will be lost."));
+  gtk_dialog_add_buttons (GTK_DIALOG (dialog),
+                          GTK_STOCK_CANCEL, MOUSEPAD_RESPONSE_CANCEL,
+                          GTK_STOCK_SAVE_AS, MOUSEPAD_RESPONSE_SAVE_AS,
+                          GTK_STOCK_SAVE, MOUSEPAD_RESPONSE_SAVE, NULL);
+  gtk_dialog_set_default_response (GTK_DIALOG (dialog), MOUSEPAD_RESPONSE_CANCEL);
+
+  /* run the dialog */
   response = gtk_dialog_run (GTK_DIALOG (dialog));
 
   /* destroy the dialog */

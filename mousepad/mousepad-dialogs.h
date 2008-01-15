@@ -37,31 +37,33 @@ enum {
   MOUSEPAD_RESPONSE_CHECK_ENTRY
 };
 
-GtkWidget *mousepad_dialogs_image_button   (const gchar   *stock_id,
-                                            const gchar   *label);
+GtkWidget *mousepad_dialogs_image_button        (const gchar   *stock_id,
+                                                 const gchar   *label);
 
-void       mousepad_dialogs_show_about     (GtkWindow     *parent);
+void       mousepad_dialogs_show_about          (GtkWindow     *parent);
 
-void       mousepad_dialogs_show_error     (GtkWindow     *parent,
-                                            const GError  *error,
-                                            const gchar   *message);
+void       mousepad_dialogs_show_error          (GtkWindow     *parent,
+                                                 const GError  *error,
+                                                 const gchar   *message);
 
-void       mousepad_dialogs_show_help      (GtkWindow     *parent,
-                                            const gchar   *page,
-                                            const gchar   *offset);
+void       mousepad_dialogs_show_help           (GtkWindow     *parent,
+                                                 const gchar   *page,
+                                                 const gchar   *offset);
 
-gint       mousepad_dialogs_other_tab_size (GtkWindow     *parent,
-                                            gint           active_size);
+gint       mousepad_dialogs_other_tab_size      (GtkWindow     *parent,
+                                                 gint           active_size);
 
-gboolean   mousepad_dialogs_go_to          (GtkWindow     *parent,
-                                            GtkTextBuffer *buffer;);
+gboolean   mousepad_dialogs_go_to               (GtkWindow     *parent,
+                                                 GtkTextBuffer *buffer;);
 
-gboolean   mousepad_dialogs_clear_recent   (GtkWindow     *parent);
+gboolean   mousepad_dialogs_clear_recent        (GtkWindow     *parent);
 
-gint       mousepad_dialogs_save_changes   (GtkWindow     *parent,
-                                            gboolean       readonly);
+gint       mousepad_dialogs_save_changes        (GtkWindow     *parent,
+                                                 gboolean       readonly);
 
-gint       mousepad_dialogs_revert         (GtkWindow     *parent);
+gint       mousepad_dialogs_externally_modified (GtkWindow     *parent);
+
+gint       mousepad_dialogs_revert              (GtkWindow     *parent);
 
 G_END_DECLS
 

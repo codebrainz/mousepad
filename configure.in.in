@@ -3,13 +3,13 @@ dnl $Id$
 dnl ***************************
 dnl *** Version information ***
 dnl ***************************
-m4_define([mousepad_version_api], [1])
 m4_define([mousepad_version_major], [0])
 m4_define([mousepad_version_minor], [3])
 m4_define([mousepad_version_micro], [0])
+m4_define([mousepad_version_nano], [])
 m4_define([mousepad_version_build], [r@REVISION@])
 m4_define([mousepad_version_tag], [svn])
-m4_define([mousepad_version], [mousepad_version_major().mousepad_version_minor().mousepad_version_micro()ifelse(mousepad_version_tag(), [svn], [mousepad_version_tag()-mousepad_version_build()], [mousepad_version_tag()])])
+m4_define([mousepad_version], [mousepad_version_major().mousepad_version_minor().mousepad_version_micro()ifelse(mousepad_version_nano(), [], [], [.mousepad_version_nano()])ifelse(mousepad_version_tag(), [svn], [mousepad_version_tag()-mousepad_version_build()], [])])
 
 dnl *******************************************
 dnl *** Debugging support for SVN snapshots ***
@@ -19,7 +19,7 @@ m4_define([mousepad_debug_default], [ifelse(mousepad_version_tag(), [svn], [yes]
 dnl ***************************
 dnl *** Initialize autoconf ***
 dnl ***************************
-AC_COPYRIGHT([Copyright (c) 2007
+AC_COPYRIGHT([Copyright (c) 2007-2008
         The Xfce development team. All rights reserved.])
 AC_INIT([Mousepad], [mousepad_version], [http://bugzilla.xfce.org/], [mousepad])
 AC_PREREQ([2.50])
@@ -57,14 +57,14 @@ AC_PROG_LIBTOOL()
 dnl **************************************
 dnl *** Substitute version information ***
 dnl **************************************
-MOUSEPAD_VERSION_API=mousepad_version_api()
 MOUSEPAD_VERSION_MAJOR=mousepad_version_major()
 MOUSEPAD_VERSION_MINOR=mousepad_version_minor()
 MOUSEPAD_VERSION_MICRO=mousepad_version_micro()
-AC_SUBST([MOUSEPAD_VERSION_API])
+MOUSEPAD_VERSION_NANO=mousepad_version_nano()
 AC_SUBST([MOUSEPAD_VERSION_MAJOR])
 AC_SUBST([MOUSEPAD_VERSION_MINOR])
 AC_SUBST([MOUSEPAD_VERSION_MICRO])
+AC_SUBST([MOUSEPAD_VERSION_NANO])
 
 dnl **********************************
 dnl *** Check for standard headers ***

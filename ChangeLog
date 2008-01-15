@@ -1,3 +1,36 @@
+2008-01-15	Nick Schermer <nick@xfce.org>
+
+	* TODO: Update
+	* mousepad/mousepad-{dialogs,window,file}.c: Check for external
+	  file modifications before saving.
+	* ChangeLog: Update.
+	* configure.in.in: Remove api version and add support for a nano
+	  version.
+
+
+2008-01-14	Nick Schermer <nick@xfce.org>
+
+	* configure.in.in, mousepad/mousepad-{preferences,print,window}.c,
+	  mousepad/main.c: Drop libxfce4util as a dependency by using
+	  GKeyFile. Binary size increased with only 1K and most likely more
+	  people will use Mousepad when it's a Gtk+ only application.
+	* mousepad/mousepad-{window,dialogs}.c, Mousepad.desktop.in.in: Use
+	  accessories-text-editor as icon name.
+	* icons/{16x16,24x24,scalable}/Makefile.am: Install symlinks from
+	  Mousepad.{png,svg} to ccessories-text-editor.{png,svg}.
+
+
+2008-01-14	Nick Schermer <nick@xfce.org>
+
+	* mousepad/mousepad-*.c: Use G_DEFINE_TYPE for initializing objects.
+	* mousepad/mousepad-*.c: Properly set the emission stage for
+	  all signals.
+	* mousepad/mousepad-*: Cleanup some unneeded code.
+	* mousepad/mousepad-window.c: Fix assert when dropping a file in
+	  the editor window.
+	* mousepad/mousepad-window.c: Fix 2 small typos in the menu tooltips.
+
+
 2007-12-12	Nick Schermer <nick@xfce.org>
 
 	* mousepad/mousepad-window.c: Try to find the file encoding in the

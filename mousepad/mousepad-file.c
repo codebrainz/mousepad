@@ -369,9 +369,15 @@ mousepad_file_open (MousepadFile  *file,
       /* set the cursor to the beginning of the document */
       gtk_text_buffer_place_cursor (file->buffer, &start);
 
-      /* check if we're allowed to write to the file */
-      if (G_LIKELY (g_lstat (file->filename, &statb) == 0) && access (file->filename, W_OK) == 0)
-        file->readonly = !((statb.st_mode & 00222) != 0);
+      /* get file status */
+      if (G_LIKELY (g_lstat (file->filename, &statb) == 0));
+        {
+          /* store the readonly mode */
+          file->readonly = !((statb.st_mode & S_IWUSR) != 0);
+
+          /* store the file modification time */
+          file->mtime = statb.st_mtime;
+        }
 
       failed:
 
@@ -543,10 +549,10 @@ mousepad_file_get_externally_modified (MousepadFile  *file,
                                        GError       **error)
 {
   struct stat statb;
-  gboolean    modified = FALSE;
+  gboolean    modified = TRUE;
 
   _mousepad_return_val_if_fail (MOUSEPAD_IS_FILE (file), FALSE);
-  _mousepad_return_val_if_fail (file->filename == NULL, FALSE);
+  _mousepad_return_val_if_fail (file->filename != NULL, FALSE);
   _mousepad_return_val_if_fail (error == NULL || *error == NULL, FALSE);
 
   if (G_LIKELY (g_lstat (file->filename, &statb) == 0))
@@ -554,7 +560,7 @@ mousepad_file_get_externally_modified (MousepadFile  *file,
       /* check if our modification time differs from the current one */
       modified = (file->mtime > 0 && statb.st_mtime != file->mtime);
     }
-  else
+  else if (error != NULL)
     {
       /* failed to stat the file */
       g_set_error (error, G_FILE_ERROR, G_FILE_ERROR_FAILED,
