@@ -1420,6 +1420,9 @@ mousepad_window_notebook_removed (GtkNotebook     *notebook,
 
       /* update the go menu */
       mousepad_window_update_gomenu (window);
+
+      /* update action entries */
+      mousepad_window_update_actions (window);
     }
 }
 

@@ -1,5 +1,12 @@
 2008-01-15	Nick Schermer <nick@xfce.org>
 
+	* mousepad/mousepad-window.c: Update menu actions after a document
+	  is closed, so the detach action becomes insensitive when there
+	  is only one document openened.
+
+
+2008-01-15	Nick Schermer <nick@xfce.org>
+
 	* TODO: Update
 	* mousepad/mousepad-{dialogs,window,file}.c: Check for external
 	  file modifications before saving.
