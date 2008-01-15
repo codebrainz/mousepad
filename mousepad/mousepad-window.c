@@ -1813,8 +1813,9 @@ static void
 mousepad_window_menu_templates (GtkWidget      *item,
                                 MousepadWindow *window)
 {
-  GtkWidget *submenu;
-  gchar     *templates_path;
+  GtkWidget   *submenu;
+  const gchar *homedir;
+  gchar       *templates_path;
 
   _mousepad_return_if_fail (MOUSEPAD_IS_WINDOW (window));
   _mousepad_return_if_fail (GTK_IS_MENU_ITEM (item));
@@ -1823,8 +1824,13 @@ mousepad_window_menu_templates (GtkWidget      *item,
   /* schedule the idle build of the recent menu */
   mousepad_window_recent_menu (window);
 
+  /* get the home directory */
+  homedir = g_getenv ("HOME");
+  if (G_UNLIKELY (homedir == NULL))
+    homedir = g_get_home_dir ();
+
   /* get the templates path */
-  templates_path = g_build_filename (g_get_home_dir (), "Templates", NULL);
+  templates_path = g_build_filename (homedir, "Templates", NULL);
 
   /* check if the directory exists */
   if (g_file_test (templates_path, G_FILE_TEST_IS_DIR))
@@ -1884,34 +1890,27 @@ mousepad_window_menu_tab_sizes (MousepadWindow *window)
   for (i = 0; tab_sizes[i] != NULL; i++)
     {
       /* convert the string to a number */
-      size = strtol (tab_sizes[i], NULL, 10);
+      size = CLAMP (atoi (tab_sizes[i]), 1, 32);
 
-      /* keep this in sync with the property limits */
-      if (G_LIKELY (size > 0))
-        {
-          /* keep this in sync with the properties */
-          size = CLAMP (size, 1, 32);
+      /* create action name */
+      name = g_strdup_printf ("tab-size_%d", size);
 
-          /* create action name */
-          name = g_strdup_printf ("tab-size_%d", size);
+      action = gtk_radio_action_new (name, name + 8, NULL, NULL, size);
+      gtk_radio_action_set_group (action, group);
+      group = gtk_radio_action_get_group (action);
+      g_signal_connect (G_OBJECT (action), "activate", G_CALLBACK (mousepad_window_action_tab_size), window);
+      gtk_action_group_add_action_with_accel (window->action_group, GTK_ACTION (action), "");
 
-          action = gtk_radio_action_new (name, name + 8, NULL, NULL, size);
-          gtk_radio_action_set_group (action, group);
-          group = gtk_radio_action_get_group (action);
-          g_signal_connect (G_OBJECT (action), "activate", G_CALLBACK (mousepad_window_action_tab_size), window);
-          gtk_action_group_add_action_with_accel (window->action_group, GTK_ACTION (action), "");
+      /* release the action */
+      g_object_unref (G_OBJECT (action));
 
-          /* release the action */
-          g_object_unref (G_OBJECT (action));
+      /* add the action to the go menu */
+      gtk_ui_manager_add_ui (window->ui_manager, merge_id,
+                             "/main-menu/document-menu/tab-size-menu/placeholder-tab-items",
+                             name, name, GTK_UI_MANAGER_MENUITEM, FALSE);
 
-          /* add the action to the go menu */
-          gtk_ui_manager_add_ui (window->ui_manager, merge_id,
-                                 "/main-menu/document-menu/tab-size-menu/placeholder-tab-items",
-                                 name, name, GTK_UI_MANAGER_MENUITEM, FALSE);
-
-          /* cleanup */
-          g_free (name);
-        }
+      /* cleanup */
+      g_free (name);
     }
 
   /* cleanup the array */

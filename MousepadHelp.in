@@ -21,7 +21,9 @@
 #
 
 HELPDIR="@datadir@/doc/Mousepad/html"
+APPLICATIONS="exo-open firefox epiphany opera galeon mozilla konqueror dillo"
 
+# try to find a language
 if test -n "$LC_ALL"; then
   LC=$LC_ALL
 elif test -n "$LANG"; then
@@ -30,22 +32,66 @@ else
   LC="C"
 fi
 
+# set the document or use index.html
 if test -n "$1"; then
   HELPFILE="$1.html"
 else
   HELPFILE="index.html"
 fi
 
+# test if the file exists, fallback on the C language or the C/index.html file
 if test -r "$HELPDIR/$LC/$HELPFILE"; then
-  URL="$HELPDIR/$LC/$HELPFILE"
+  URL="file://$HELPDIR/$LC/$HELPFILE"
 elif test -r "$HELPDIR/`echo $LC | sed 's/\(..\)_.*/\1/'`/$HELPFILE"; then
-  URL="$HELPDIR/`echo $LC | sed 's/\(..\)_.*/\1/'`/$HELPFILE"
+  URL="file://$HELPDIR/`echo $LC | sed 's/\(..\)_.*/\1/'`/$HELPFILE"
 else
-  URL="$HELPDIR/C/index.html"
+  URL="file://$HELPDIR/C/index.html"
 fi
 
+# jump to a section if provided
 [ -n "$2" ] && URL="$URL#$2"
 
-exec exo-open --launch WebBrowser "file://$URL"
+# find a suitable browser to launch if no BROWSER variable is set
+if [ "x$BROWSER" = "x" ]; then
+  for i in $APPLICATIONS; do
+    # find the application in the path
+    testapp=$(which $i 2>/dev/null)
+    if test -f "$testapp"; then
+      # use the application and break
+      BROWSER=$i
+      break
+    fi
+  done
+fi
+
+# tell the use if no suitable browser was found
+if [ "x$BROWSER" = "x" ]; then
+  # print warning and leave
+  echo "MousepadHelp: Could not find a browser to use. Please set the BROWSER variable."
+  exit 1
+fi
+
+# run the browser
+case $BROWSER in
+  exo-open)
+    $BROWSER --launch WebBrowser $URL
+  ;;
+  opera*)
+    $BROWSER -remote openURL\($URL,new-window\) || $BROWSER $URL
+  ;;
+  firefox*)
+    $BROWSER -a firefox -remote openurl\($URL,new-window\) || $BROWSER $URL
+  ;;
+  communicator*|netscape|mozilla*|phoenix*|firebird*)
+    $BROWSER -remote openurl\($URL,new-window\) || $BROWSER $URL
+  ;;
+  *)
+    $BROWSER $URL;
+  ;;
+esac
+
+# leave
+exit 0
 
 # vim:set ts=2 sw=2 et ai:
+

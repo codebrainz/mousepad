@@ -41,6 +41,8 @@
 #include <mousepad/mousepad-util.h>
 #include <mousepad/mousepad-preferences.h>
 
+#define GROUP_NAME "Configuration"
+
 
 
 enum
@@ -76,10 +78,8 @@ enum
   N_PROPERTIES,
 };
 
-static void     transform_string_to_boolean             (const GValue             *src,
-                                                         GValue                   *dst);
-static void     transform_string_to_int                 (const GValue             *src,
-                                                         GValue                   *dst);
+
+
 static void     mousepad_preferences_class_init         (MousepadPreferencesClass *klass);
 static void     mousepad_preferences_init               (MousepadPreferences      *preferences);
 static void     mousepad_preferences_finalize           (GObject                  *object);
@@ -117,38 +117,6 @@ struct _MousepadPreferences
 
 
 
-/**
- * transform_string_to_boolean:
- * @const GValue : String #GValue.
- * @GValue       : Return location for a #GValue boolean.
- *
- * Converts a string into a boolean.
- **/
-static void
-transform_string_to_boolean (const GValue *src,
-                             GValue       *dst)
-{
-  g_value_set_boolean (dst, strcmp (g_value_get_string (src), "FALSE") != 0);
-}
-
-
-
-/**
- * transform_string_to_int:
- * @const GValue : String #GValue.
- * @GValue       : Return location for a #GValue integer.
- *
- * Converts a string into a number.
- **/
-static void
-transform_string_to_int (const GValue *src,
-                         GValue       *dst)
-{
-  g_value_set_int (dst, (gint) strtol (g_value_get_string (src), NULL, 10));
-}
-
-
-
 G_DEFINE_TYPE (MousepadPreferences, mousepad_preferences, G_TYPE_OBJECT);
 
 
@@ -162,12 +130,6 @@ mousepad_preferences_class_init (MousepadPreferencesClass *klass)
   gobject_class->finalize = mousepad_preferences_finalize;
   gobject_class->get_property = mousepad_preferences_get_property;
   gobject_class->set_property = mousepad_preferences_set_property;
-
-  /* register transformation functions */
-  if (G_LIKELY (g_value_type_transformable (G_TYPE_STRING, G_TYPE_BOOLEAN) == FALSE))
-    g_value_register_transform_func (G_TYPE_STRING, G_TYPE_BOOLEAN, transform_string_to_boolean);
-  if (G_LIKELY (g_value_type_transformable (G_TYPE_STRING, G_TYPE_INT) == FALSE))
-    g_value_register_transform_func (G_TYPE_STRING, G_TYPE_INT, transform_string_to_int);
 
   /**
    * Search Preferences
@@ -376,11 +338,9 @@ mousepad_preferences_get_property (GObject    *object,
                                    GParamSpec *pspec)
 {
   MousepadPreferences *preferences = MOUSEPAD_PREFERENCES (object);
-  GValue              *src;
+  GValue              *src = preferences->values + prop_id;
 
-  src = preferences->values + prop_id;
-
-  if (G_IS_VALUE (src))
+  if (G_LIKELY (G_IS_VALUE (src)))
     g_value_copy (src, value);
   else
     g_param_value_set_default (pspec, value);
@@ -395,20 +355,22 @@ mousepad_preferences_set_property (GObject      *object,
                                    GParamSpec   *pspec)
 {
   MousepadPreferences *preferences = MOUSEPAD_PREFERENCES (object);
-  GValue              *dst;
+  GValue              *dst = preferences->values + prop_id;
 
-  dst = preferences->values + prop_id;
-
-  if (G_UNLIKELY (!G_IS_VALUE (dst)))
+  /* initialize value if needed */
+  if (G_UNLIKELY (G_IS_VALUE (dst) == FALSE))
     {
       g_value_init (dst, pspec->value_type);
       g_param_value_set_default (pspec, dst);
     }
 
+  /* compare the values */
   if (g_param_values_cmp (pspec, value, dst) != 0)
     {
+      /* copy the new value */
       g_value_copy (value, dst);
 
+      /* queue a store */
       mousepad_preferences_store (preferences);
     }
 }
@@ -437,7 +399,7 @@ mousepad_preferences_check_option_name (GParamSpec *pspec)
 
       /* compare the strings */
       if (G_UNLIKELY (!option || strcmp (option, nick) != 0))
-        g_warning ("The option name (%s) and nick name (%s) of property \"%s\" do not match", option, nick, name);
+        g_warning ("The option name (%s) and nick name (%s) of property %s do not match", option, nick, name);
 
       /* cleanup */
       g_free (option);
@@ -450,20 +412,19 @@ mousepad_preferences_check_option_name (GParamSpec *pspec)
 static void
 mousepad_preferences_load (MousepadPreferences *preferences)
 {
-  gchar       *string;
-  GParamSpec **pspecs;
-  GParamSpec  *pspec;
-  GKeyFile    *keyfile;
-  gchar       *filename;
-  GValue       dst = { 0, };
-  GValue       src = { 0, };
-  guint        nspecs;
-  guint        n;
+  gchar          *string;
+  GParamSpec    **pspecs;
+  GParamSpec     *pspec;
+  GParamSpecInt  *ispec;
+  GKeyFile       *keyfile;
+  gchar          *filename;
+  GValue         *dst;
+  guint           nspecs;
+  guint           n;
+  gint            integer;
 
-  /* get the save location */
+  /* get the save location, leave when there if no file found */
   filename = mousepad_util_get_save_location (MOUSEPAD_RC_RELPATH, FALSE);
-
-  /* leave when there if no file found */
   if (G_UNLIKELY (filename == NULL))
     return;
 
@@ -481,43 +442,60 @@ mousepad_preferences_load (MousepadPreferences *preferences)
 
       for (n = 0; n < nspecs; n++)
         {
+          /* get the pspec */
           pspec = pspecs[n];
+
+          /* get the pspec destination value and initialize it */
+          dst = preferences->values + (n + 1);
+          g_value_init (dst, pspec->value_type);
 
 #ifndef NDEBUG
           /* check nick name with generated option name */
           mousepad_preferences_check_option_name (pspec);
 #endif
 
-          /* read the propert value */
-          string = g_key_file_get_string (keyfile, "Configuration", pspec->_nick, NULL);
-
-          if (G_UNLIKELY (string == NULL))
-            continue;
-
-          /* create gvalue with the string as value */
-          g_value_init (&src, G_TYPE_STRING);
-          g_value_take_string (&src, string);
+          /* read the propert value from the key file */
+          string = g_key_file_get_value (keyfile, GROUP_NAME, g_param_spec_get_nick (pspec), NULL);
+          if (G_UNLIKELY (string == NULL || *string == '\0'))
+            goto setdefault;
 
           if (pspec->value_type == G_TYPE_STRING)
             {
-              /* they have the same type, so set the property */
-              g_object_set_property (G_OBJECT (preferences), pspec->name, &src);
+              /* set string as the value */
+              g_value_take_string (dst, string);
+
+              /* don't free the string */
+              string = NULL;
             }
-          else if (g_value_type_transformable (G_TYPE_STRING, pspec->value_type))
+          else if (pspec->value_type == G_TYPE_INT)
             {
-              /* transform the type */
-              g_value_init (&dst, pspec->value_type);
-              if (g_value_transform (&src, &dst))
-                g_object_set_property (G_OBJECT (preferences), pspec->name, &dst);
-              g_value_unset (&dst);
+              /* get integer spec */
+              ispec = G_PARAM_SPEC_INT (pspec);
+
+              /* get the value and clamp it */
+              integer = CLAMP (atoi (string), ispec->minimum, ispec->maximum);
+
+              /* set the integer */
+              g_value_set_int (dst, integer);
+            }
+          else if (pspec->value_type == G_TYPE_BOOLEAN)
+            {
+              /* set the boolean */
+              g_value_set_boolean (dst, (strcmp (string, "false") != 0));
             }
           else
             {
+              /* print warning */
               g_warning ("Failed to load property \"%s\"", pspec->name);
+
+              setdefault:
+
+              /* set default */
+              g_param_value_set_default (pspec, dst);
             }
 
           /* cleanup */
-          g_value_unset (&src);
+          g_free (string);
         }
 
       /* cleanup the specs */
@@ -552,15 +530,14 @@ static gboolean
 mousepad_preferences_store_idle (gpointer user_data)
 {
   MousepadPreferences  *preferences = MOUSEPAD_PREFERENCES (user_data);
-  const gchar          *string;
   GParamSpec          **pspecs;
   GParamSpec           *pspec;
   GKeyFile             *keyfile;
   gchar                *filename;
-  GValue                dst = { 0, };
-  GValue                src = { 0, };
+  GValue               *value;
   guint                 nspecs;
   guint                 n;
+  const gchar          *nick;
 
   /* get the config filename */
   filename = mousepad_util_get_save_location (MOUSEPAD_RC_RELPATH, TRUE);
@@ -578,36 +555,41 @@ mousepad_preferences_store_idle (gpointer user_data)
   /* get the list of properties in the class */
   pspecs = g_object_class_list_properties (G_OBJECT_GET_CLASS (preferences), &nspecs);
 
-  for (n = 0; n < nspecs; ++n)
+  for (n = 0; n < nspecs; n++)
     {
+      /* get the pspec */
       pspec = pspecs[n];
 
-      /* init a string value */
-      g_value_init (&dst, G_TYPE_STRING);
+      /* get the value */
+      value = preferences->values + (n + 1);
+
+      /* continue if the value is not initialized */
+      if (G_UNLIKELY (G_IS_VALUE (value) == FALSE))
+        continue;
+
+      /* get nick name */
+      nick = g_param_spec_get_nick (pspec);
 
       if (pspec->value_type == G_TYPE_STRING)
         {
-          /* set the string value */
-          g_object_get_property (G_OBJECT (preferences), pspec->name, &dst);
+          /* store the string */
+          if (g_value_get_string (value) != NULL)
+            g_key_file_set_value (keyfile, GROUP_NAME, nick, g_value_get_string (value));
+        }
+      else if (pspec->value_type == G_TYPE_INT)
+        {
+          /* store the interger */
+          g_key_file_set_integer (keyfile, GROUP_NAME, nick, g_value_get_int (value));
+        }
+      else if (pspec->value_type == G_TYPE_BOOLEAN)
+        {
+          /* store the boolean */
+          g_key_file_set_boolean (keyfile, GROUP_NAME, nick, g_value_get_boolean (value));
         }
       else
         {
-          /* property contains another type, transform it first */
-          g_value_init (&src, pspec->value_type);
-          g_object_get_property (G_OBJECT (preferences), pspec->name, &src);
-          g_value_transform (&src, &dst);
-          g_value_unset (&src);
+          g_warning ("Failed to save property \"%s\"", pspec->name);
         }
-
-      /* get the string from the value */
-      string = g_value_get_string (&dst);
-
-      /* store the value */
-      if (G_LIKELY (string != NULL))
-        g_key_file_set_string (keyfile, "Configuration", pspec->_nick, string);
-
-      /* cleanup */
-      g_value_unset (&dst);
     }
 
   /* cleanup the specs */

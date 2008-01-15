@@ -58,8 +58,8 @@ mousepad_SOURCES =								\
 	mousepad-window-ui.h
 
 mousepad_CFLAGS =								\
+	$(GLIB_CFLAGS)								\
 	$(GTK_CFLAGS)								\
-	$(GMODULE_CFLAGS)							\
 	$(GTHREAD_CFLAGS)							\
 	$(PLATFORM_CFLAGS)
 
@@ -68,8 +68,8 @@ mousepad_LDFLAGS =								\
 	$(PLATFORM_LDFLAGS)
 
 mousepad_LDADD =								\
+	$(GLIB_LIBS)								\
 	$(GTK_LIBS)								\
-	$(GMODULE_LIBS)								\
 	$(GTHREAD_LIBS)
 
 if HAVE_DBUS

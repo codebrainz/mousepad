@@ -527,7 +527,7 @@ mousepad_file_reload (MousepadFile  *file,
     {
       /* set an error */
       g_set_error (error, G_FILE_ERROR, G_FILE_ERROR_NOENT,
-                   _("The file \"%s\" you've tried to reload does not exist anymore"), file->filename);
+                   _("The file \"%s\" you tried to reload does not exist anymore"), file->filename);
 
       return FALSE;
     }

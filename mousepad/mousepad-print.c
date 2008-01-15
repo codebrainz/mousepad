@@ -196,7 +196,7 @@ mousepad_print_settings_load (GtkPrintOperation *operation)
           for (i = 0; keys[i] != NULL; i++)
             {
               /* read the value from the config file */
-              value = g_key_file_get_string (keyfile, "Print Settings", keys[i], NULL);
+              value = g_key_file_get_value (keyfile, "Print Settings", keys[i], NULL);
 
               /* set the value */
               if (G_LIKELY (value))
@@ -284,7 +284,7 @@ mousepad_print_settings_save_foreach (const gchar *key,
   if (G_LIKELY (key && value))
     {
       config = mousepad_util_config_name (key);
-      g_key_file_set_string (keyfile, "Print Settings", config, value);
+      g_key_file_set_value (keyfile, "Print Settings", config, value);
       g_free (config);
     }
 }

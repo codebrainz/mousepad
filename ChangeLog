@@ -1,5 +1,23 @@
 2008-01-15	Nick Schermer <nick@xfce.org>
 
+	* configure.in.in, mousepad/Makefile.am: Remove gmodule from the
+	  library list, is not used. Add glib to make sure it's linked.
+	* mousepad/mousepad-window.c: Use the HOME environment variable
+	  to search for the templates path, fallback on g_get_homedir.
+	* MousepadHelp.in: Improve script to find other browsers too,
+	  instead of only using exo-open.
+	* mousepad/mousepad-preferences: Improve the performace of loading
+	  and saving a bit. Loading now directly writes to the internal
+	  value array. Could be a bit tricky, we'll see.
+	* mousepad/mousepad-{preferences,print}.c: Use g_key_file_{get,
+	  set}_value instead of g_key_file_{get,set}_string, should be a
+	  bit faster.
+	* mousepad/mousepad-window.c: Be more secure when loading tab sizes.
+	* po/mousepad.pot: Update.
+
+
+2008-01-15	Nick Schermer <nick@xfce.org>
+
 	* mousepad/mousepad-window.c: Update menu actions after a document
 	  is closed, so the detach action becomes insensitive when there
 	  is only one document openened.
