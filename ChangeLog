@@ -1,3 +1,7 @@
+2008-02-13  Nick Schermer <nick@xfce.org>
+
+  * src/menu.c, NEWS: Sort items by most recently used.
+
 2007-01-20	Benedikt Meurer <benny@xfce.org>
 
 	* configure.in.in: Post-release version bump.

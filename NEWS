@@ -1,3 +1,5 @@
+- Sort recently used items by most recently used.
+
 0.2.12
 ======
 - Add support for the new recently-used database, using the GtkRecent
