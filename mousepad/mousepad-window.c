@@ -415,8 +415,8 @@ static const GtkActionEntry action_entries[] =
     { "select-all", GTK_STOCK_SELECT_ALL, NULL, NULL, N_("Select the text in the entire document"), G_CALLBACK (mousepad_window_action_select_all), },
     { "change-selection", NULL, N_("Change the selection"), NULL, N_("Change a normal selection into a column selection and vice versa"), G_CALLBACK (mousepad_window_action_change_selection), },
     { "find", GTK_STOCK_FIND, NULL, NULL, N_("Search for text"), G_CALLBACK (mousepad_window_action_find), },
-    { "find-next", NULL, N_("Find _Next"), NULL, N_("Search forwards for the same text"), G_CALLBACK (mousepad_window_action_find_next), },
-    { "find-previous", NULL, N_("Find _Previous"), NULL, N_("Search backwards for the same text"), G_CALLBACK (mousepad_window_action_find_previous), },
+    { "find-next", NULL, N_("Find _Next"), "F3", N_("Search forwards for the same text"), G_CALLBACK (mousepad_window_action_find_next), },
+    { "find-previous", NULL, N_("Find _Previous"), "<shift>F3", N_("Search backwards for the same text"), G_CALLBACK (mousepad_window_action_find_previous), },
     { "replace", GTK_STOCK_FIND_AND_REPLACE, N_("Find and Rep_lace..."), NULL, N_("Search for and replace text"), G_CALLBACK (mousepad_window_action_replace), },
 
   { "view-menu", NULL, N_("_View"), NULL, NULL, NULL, },

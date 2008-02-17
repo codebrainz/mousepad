@@ -1,3 +1,11 @@
+2008-02-17	Nick Schermer <nick@xfce.org>
+
+	* mousepad/mousepad-search-bar.c: Select the text in the search
+	  entry when focussing the search bar (Ctrl+F).
+	* mousepad/mousepad-window.c: Set default keybindings of Find Next
+	  and Find Previous to F3 and Shft+F3.
+
+
 2008-01-15	Nick Schermer <nick@xfce.org>
 
 	* configure.in.in, mousepad/Makefile.am: Remove gmodule from the

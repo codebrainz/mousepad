@@ -499,6 +499,9 @@ mousepad_search_bar_focus (MousepadSearchBar *bar)
 
   /* update the highlight */
   mousepad_search_bar_highlight_schedule (bar);
+  
+  /* select the entire entry */
+  gtk_editable_select_region (GTK_EDITABLE (bar->entry), 0, -1);
 }
 
 
