@@ -242,6 +242,7 @@ mousepad_document_init (MousepadDocument *document)
   g_signal_connect (G_OBJECT (document->buffer), "notify::cursor-position", G_CALLBACK (mousepad_document_notify_cursor_position), document);
   g_signal_connect (G_OBJECT (document->buffer), "notify::has-selection", G_CALLBACK (mousepad_document_notify_has_selection), document);
   g_signal_connect_swapped (G_OBJECT (document->buffer), "modified-changed", G_CALLBACK (mousepad_document_label_color), document);
+  g_signal_connect_swapped (G_OBJECT (document->file), "readonly-changed", G_CALLBACK (mousepad_document_label_color), document);
   g_signal_connect (G_OBJECT (document->textview), "notify::overwrite", G_CALLBACK (mousepad_document_notify_overwrite), document);
   g_signal_connect (G_OBJECT (document->textview), "drag-data-received", G_CALLBACK (mousepad_document_drag_data_received), document);
 }
@@ -415,9 +416,9 @@ mousepad_document_filename_changed (MousepadDocument *document,
 static void
 mousepad_document_label_color (MousepadDocument *document)
 {
-  const GdkColor green = {0, 0x0000, 0x9999, 0x0000};
-  const GdkColor red   = {0, 0xffff, 0x0000, 0x0000};
-  gboolean       readonly, modified;
+  GdkColor  green = {0, 0x0000, 0x9999, 0x0000};
+  GdkColor  red   = {0, 0xffff, 0x0000, 0x0000};
+  GdkColor *color;
 
   _mousepad_return_if_fail (MOUSEPAD_IS_DOCUMENT (document));
   _mousepad_return_if_fail (GTK_IS_TEXT_BUFFER (document->buffer));
@@ -425,13 +426,17 @@ mousepad_document_label_color (MousepadDocument *document)
 
   if (document->priv->label)
     {
-      /* get states */
-      readonly = mousepad_file_get_read_only (document->file);
-      modified = gtk_text_buffer_get_modified (document->buffer);
-
+      /* label color */
+      if (gtk_text_buffer_get_modified (document->buffer))
+        color = &green;
+      else if (mousepad_file_get_read_only (document->file))
+        color = &red;
+      else
+        color = NULL;
+       
       /* update colors */
-      gtk_widget_modify_fg (document->priv->label, GTK_STATE_NORMAL, modified ? &red : (readonly ? &green : NULL));
-      gtk_widget_modify_fg (document->priv->label, GTK_STATE_ACTIVE, modified ? &red : (readonly ? &green : NULL));
+      gtk_widget_modify_fg (document->priv->label, GTK_STATE_NORMAL, color);
+      gtk_widget_modify_fg (document->priv->label, GTK_STATE_ACTIVE, color);
     }
 }
 

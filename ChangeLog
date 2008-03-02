@@ -1,3 +1,15 @@
+2008-03-02	Nick Schermer <nick@xfce.org>
+
+	* mousepad/mousepad-file.c: Don't set an error and return false on
+	  externally modified when the file does not exist. This fixes
+	  an error when saving a new file.
+	* mousepad/mousepad-file.c: Emit signal when the readonly status 
+	  changes.
+	* mousepad/mousepad-document.c: Use the readonly signal to update
+	  the label color. This fixes a readonly-colored label when saving
+	  a new file.
+
+
 2008-02-17	Nick Schermer <nick@xfce.org>
 
 	* mousepad/mousepad-search-bar.c: Select the text in the search

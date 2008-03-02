@@ -25,6 +25,9 @@
 #ifdef HAVE_STRING_H
 #include <string.h>
 #endif
+#ifdef HAVE_ERRNO_H
+#include <errno.h>
+#endif
 
 #include <glib.h>
 #include <glib/gstdio.h>
@@ -41,6 +44,7 @@ enum
 {
   /* EXTERNALLY_MODIFIED, */
   FILENAME_CHANGED,
+  READONLY_CHANGED,
   LAST_SIGNAL
 };
 
@@ -77,6 +81,8 @@ struct _MousepadFile
 static void  mousepad_file_class_init       (MousepadFileClass  *klass);
 static void  mousepad_file_init             (MousepadFile       *file);
 static void  mousepad_file_finalize         (GObject            *object);
+static void  mousepad_file_set_readonly     (MousepadFile       *file,
+                                             gboolean            readonly);
 
 
 
@@ -107,6 +113,14 @@ mousepad_file_class_init (MousepadFileClass *klass)
                   G_TYPE_NONE, 1, G_TYPE_BOOLEAN);
 #endif
 
+  file_signals[READONLY_CHANGED] =
+    g_signal_new (I_("readonly-changed"),
+                  G_TYPE_FROM_CLASS (gobject_class),
+                  G_SIGNAL_RUN_LAST,
+                  0, NULL, NULL,
+                  g_cclosure_marshal_VOID__BOOLEAN,
+                  G_TYPE_NONE, 1, G_TYPE_BOOLEAN);
+  
   file_signals[FILENAME_CHANGED] =
     g_signal_new (I_("filename-changed"),
                   G_TYPE_FROM_CLASS (gobject_class),
@@ -144,6 +158,24 @@ mousepad_file_finalize (GObject *object)
   g_object_unref (G_OBJECT (file->buffer));
 
   (*G_OBJECT_CLASS (mousepad_file_parent_class)->finalize) (object);
+}
+
+
+
+static void
+mousepad_file_set_readonly (MousepadFile *file,
+                            gboolean      readonly)
+{
+  _mousepad_return_if_fail (MOUSEPAD_IS_FILE (file));
+  
+  if (G_LIKELY (file->readonly != readonly))
+    {
+      /* store new value */
+      file->readonly = readonly;
+      
+      /* emit signal */
+      g_signal_emit (G_OBJECT (file), file_signals[READONLY_CHANGED], 0, readonly);
+    }  
 }
 
 
@@ -280,7 +312,8 @@ mousepad_file_open (MousepadFile  *file,
   /* check if the file exists, if not, it's a filename from the command line */
   if (g_file_test (file->filename, G_FILE_TEST_EXISTS) == FALSE)
     {
-      file->readonly = FALSE;
+      /* update readonly status */
+      mousepad_file_set_readonly (file, FALSE);
 
       return TRUE;
     }
@@ -373,7 +406,7 @@ mousepad_file_open (MousepadFile  *file,
       if (G_LIKELY (g_lstat (file->filename, &statb) == 0));
         {
           /* store the readonly mode */
-          file->readonly = !((statb.st_mode & S_IWUSR) != 0);
+          mousepad_file_set_readonly (file, !((statb.st_mode & S_IWUSR) != 0));
 
           /* store the file modification time */
           file->mtime = statb.st_mtime;
@@ -494,7 +527,7 @@ mousepad_file_save (MousepadFile  *file,
       gtk_text_buffer_set_modified (file->buffer, FALSE);
 
       /* we saved succesfully */
-      file->readonly = FALSE;
+      mousepad_file_set_readonly (file, FALSE);
 
       failed:
 
@@ -549,25 +582,28 @@ mousepad_file_get_externally_modified (MousepadFile  *file,
                                        GError       **error)
 {
   struct stat statb;
-  gboolean    modified = TRUE;
+  GFileError  error_code;
 
-  _mousepad_return_val_if_fail (MOUSEPAD_IS_FILE (file), FALSE);
-  _mousepad_return_val_if_fail (file->filename != NULL, FALSE);
+  _mousepad_return_val_if_fail (MOUSEPAD_IS_FILE (file), TRUE);
+  _mousepad_return_val_if_fail (file->filename != NULL, TRUE);
   _mousepad_return_val_if_fail (error == NULL || *error == NULL, FALSE);
 
+  /* check if our modification time differs from the current one */
   if (G_LIKELY (g_lstat (file->filename, &statb) == 0))
-    {
-      /* check if our modification time differs from the current one */
-      modified = (file->mtime > 0 && statb.st_mtime != file->mtime);
-    }
-  else if (error != NULL)
-    {
-      /* failed to stat the file */
-      g_set_error (error, G_FILE_ERROR, G_FILE_ERROR_FAILED,
-                   _("Failed to read the status of \"%s\""), file->filename);
-    }
+    return (file->mtime > 0 && statb.st_mtime != file->mtime);
+    
+  /* get the error code */
+  error_code = g_file_error_from_errno (errno);
+  
+  /* file does not exists, nothing wrong with that */
+  if (G_LIKELY (error_code == G_FILE_ERROR_NOENT))
+    return FALSE;
 
-  return modified;
+  /* set an error */
+  if (error != NULL)
+    g_set_error (error, G_FILE_ERROR, error_code, _("Failed to read the status of \"%s\""), file->filename);
+
+  return TRUE;
 }
 
 
