@@ -1,3 +1,9 @@
+2008-03-10	Nick Schermer <nick@xfce.org>
+
+	* mousepad/mousepad-document.c: Swap the colors of readonly and
+	  modified tabs. Red is modified and green readonly.
+
+
 2008-03-02	Nick Schermer <nick@xfce.org>
 
 	* mousepad/mousepad-file.c: Don't set an error and return false on

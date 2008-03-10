@@ -428,9 +428,9 @@ mousepad_document_label_color (MousepadDocument *document)
     {
       /* label color */
       if (gtk_text_buffer_get_modified (document->buffer))
-        color = &green;
-      else if (mousepad_file_get_read_only (document->file))
         color = &red;
+      else if (mousepad_file_get_read_only (document->file))
+        color = &green;
       else
         color = NULL;
        
