@@ -1,19 +1,23 @@
+# translation of lv.po to Latvian
 # Latvian translation of Mousepad.
 # Copyright (C) 2005-2007 Erik Harrison.
 # This file is distributed under the same license as the Mousepad package.
-# Rihards Prieditis <rprieditis@inbox.lv>, 2007.
 #
+# Rihards Prieditis <rprieditis@inbox.lv>, 2007.
+# Rihards Prieditis <RPrieditis@gmail.com>, 2008.
 msgid ""
 msgstr ""
-"Project-Id-Version: mousepad 0.2.12\n"
+"Project-Id-Version: lv\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2007-01-20 12:34+0100\n"
-"PO-Revision-Date: 2007-10-28 14:53+0300\n"
-"Last-Translator: Rihards Priedītis <rprieditis@inbox.lv>\n"
-"Language-Team: Latvian <rprieditis@inbox.lv>\n"
+"PO-Revision-Date: 2008-04-06 17:54+0300\n"
+"Last-Translator: Rihards Prieditis <RPrieditis@gmail.com>\n"
+"Language-Team: Latvian <RPrieditis@gmail.com>\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=utf-8\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"X-Generator: KBabel 1.11.4\n"
+"Plural-Forms:  nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n != 0 ? 1 : 2);\n"
 
 #: ../src/callback.c:37
 #, c-format
@@ -61,7 +65,7 @@ msgstr "/Fails/_Jauns"
 
 #: ../src/menu.c:66
 msgid "/File/New _Window"
-msgstr "/Fails/Jauns _Logs"
+msgstr "/Fails/Jauns _logs"
 
 #: ../src/menu.c:69
 msgid "/File/_Open..."
@@ -69,7 +73,7 @@ msgstr "/Fails/_Atvērt..."
 
 #: ../src/menu.c:72
 msgid "/File/Open _Recent"
-msgstr "/Fails/Atvērt _Nesenos"
+msgstr "/Fails/Atvērt _nesenos"
 
 #: ../src/menu.c:77
 msgid "/File/_Save"
@@ -77,7 +81,7 @@ msgstr "/Fails/_Saglabāt"
 
 #: ../src/menu.c:79
 msgid "/File/Save _As..."
-msgstr "/Fails/Saglabāt _Kā..."
+msgstr "/Fails/Saglabāt _kā..."
 
 #: ../src/menu.c:83
 msgid "/File/_Print..."
@@ -97,7 +101,7 @@ msgstr "/Rediģēt/_Atsaukt"
 
 #: ../src/menu.c:93
 msgid "/Edit/_Redo"
-msgstr "/Rediģēt/A_tcelt Atsaukšanu"
+msgstr "/Rediģēt/A_tcelt atsaukšanu"
 
 #: ../src/menu.c:97
 msgid "/Edit/Cu_t"
@@ -117,7 +121,7 @@ msgstr "/Rediģēt/_Dzēst"
 
 #: ../src/menu.c:107
 msgid "/Edit/Select _All"
-msgstr "/Rediģēt/Iekrāsot _Visu"
+msgstr "/Rediģēt/Iekrāsot _visu"
 
 #: ../src/menu.c:109
 msgid "/_Search"
@@ -129,11 +133,11 @@ msgstr "/Meklēt/_Atrast..."
 
 #: ../src/menu.c:113
 msgid "/Search/Find _Next"
-msgstr "/Meklēt/Atrast _Nākamo"
+msgstr "/Meklēt/Atrast _nākamo"
 
 #: ../src/menu.c:115
 msgid "/Search/Find _Previous"
-msgstr "/Meklēt/Atrast _Iepriekšējo"
+msgstr "/Meklēt/Atrast _iepriekšējo"
 
 #: ../src/menu.c:117
 msgid "/Search/_Replace..."
@@ -141,7 +145,7 @@ msgstr "/Meklēt/Ai_zstāt..."
 
 #: ../src/menu.c:121
 msgid "/Search/_Jump To..."
-msgstr "/Meklēt/_Doties Uz..."
+msgstr "/Meklēt/_Doties uz..."
 
 #: ../src/menu.c:123
 msgid "/_Options"
@@ -153,15 +157,15 @@ msgstr "/Uzstādījumi/_Fonts..."
 
 #: ../src/menu.c:127
 msgid "/Options/_Word Wrap"
-msgstr "/Uzstādījumi/_Vārdu Aplaušana"
+msgstr "/Uzstādījumi/_Vārdu aplaušana"
 
 #: ../src/menu.c:129
 msgid "/Options/_Line Numbers"
-msgstr "/Uzstādījumi/_Rindu Numerācija"
+msgstr "/Uzstādījumi/_Rindu numerācija"
 
 #: ../src/menu.c:133
 msgid "/Options/_Auto Indent"
-msgstr "/Uzstādījumi/_Automātiska Atkāpe"
+msgstr "/Uzstādījumi/_Automātiska atkāpe"
 
 #: ../src/menu.c:135
 msgid "/_Help"
@@ -191,7 +195,7 @@ msgstr "Atrast"
 #: ../src/search.c:200
 #: ../src/search.c:265
 msgid "Fi_nd what: "
-msgstr "_Ko atrast:"
+msgstr "_Ko atrast: "
 
 #: ../src/search.c:219
 #: ../src/search.c:292
@@ -204,7 +208,7 @@ msgstr "Aizstāt"
 
 #: ../src/search.c:280
 msgid "Re_place with: "
-msgstr "Ai_zstāt ar:"
+msgstr "Ai_zstāt ar: "
 
 #: ../src/search.c:296
 msgid "Replace _all at once"
@@ -212,7 +216,7 @@ msgstr "Aizstāt _visu"
 
 #: ../src/search.c:342
 msgid "Jump To"
-msgstr "Doties Uz"
+msgstr "Doties uz"
 
 #: ../src/search.c:347
 msgid "_Jump"
@@ -220,16 +224,16 @@ msgstr "_Doties"
 
 #: ../src/search.c:353
 msgid "_Line number: "
-msgstr "R_indu:"
+msgstr "R_indas numurs:"
 
 #: ../src/selector.c:103
 #, c-format
 msgid "Current Locale (%s)"
-msgstr "Pašreizējā Lokalizācija (%s)"
+msgstr "Pašreizējā lokalizācija (%s)"
 
 #: ../src/selector.c:147
 msgid "Other Codeset"
-msgstr "Cits Kodējums"
+msgstr "Cits kodējums"
 
 #: ../src/selector.c:186
 msgid "Code_set:"
@@ -242,7 +246,7 @@ msgstr "'%s' netiek atbalstīts"
 
 #: ../src/selector.c:271
 msgid "Auto Detect"
-msgstr "Automātiski Noteikt"
+msgstr "Automātiski noteikt"
 
 #: ../src/selector.c:325
 msgid "Open"
@@ -250,11 +254,11 @@ msgstr "Atvērt"
 
 #: ../src/selector.c:325
 msgid "Save As"
-msgstr "Saglabāt Kā"
+msgstr "Saglabāt kā"
 
 #: ../src/selector.c:347
 msgid "Ch_aracter Coding: "
-msgstr "_Rakstzīmju Kodējums:"
+msgstr "_Rakstzīmju kodējums:"
 
 #: ../src/selector.c:403
 #, c-format
@@ -264,7 +268,7 @@ msgstr "'%s' jau eksistē. Pārrakstīt?"
 #. add the label with the root warning
 #: ../src/window.c:110
 msgid "Warning, you are using the root account, you may harm your system."
-msgstr "Uzmanību, Jūs izmantojat superlietotāja kontu, Jūs varat kaitēt savai sistēmai."
+msgstr "Uzmanību, jūs izmantojat superlietotāja kontu, jūs varat kaitēt savai sistēmai."
 
 #: ../src/window.c:169
 msgid "Untitled"
@@ -280,5 +284,5 @@ msgstr "Vienkāršs teksta redaktors"
 
 #: ../mousepad.desktop.in.h:3
 msgid "Text Editor"
-msgstr "Teksta Redaktors"
+msgstr "Teksta redaktors"
 
