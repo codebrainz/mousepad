@@ -5,14 +5,15 @@
 # This file is distributed under the same license as the Mousepad package.
 # Tarot Osuji <tarot@sdf.lonestar.org>, 2004.
 # Daichi Kawahata <daichi@xfce.org>, 2005.
+# Nobuhiro Iwamatsu <iwamatsu@nigauri.org>, 2008.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: mousepad 0.2.12\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2007-01-20 12:34+0100\n"
-"PO-Revision-Date: 2006-04-23 16:34+0900\n"
-"Last-Translator: Daichi Kawahata <daichi@xfce.org>\n"
+"PO-Revision-Date: 2008-05-13 23:29+0900\n"
+"Last-Translator: Nobuhiro Iwamatsu <iwamatsu@nigauri.org>\n"
 "Language-Team: Japanese <xfce-users-jp@ml.fdiary.net>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -23,7 +24,8 @@ msgstr ""
 msgid "Save changes to '%s'?"
 msgstr "'%s' の変更を保存しますか？"
 
-#: ../src/callback.c:213 ../src/file.c:174
+#: ../src/callback.c:213
+#: ../src/file.c:174
 #, c-format
 msgid "Can't convert codeset to '%s'"
 msgstr "文字コードを '%s' に変換できませんでした"
@@ -62,18 +64,16 @@ msgid "/File/_New"
 msgstr "/ファイル/新規(_N)"
 
 #: ../src/menu.c:66
-#, fuzzy
 msgid "/File/New _Window"
-msgstr "/ファイル/新規(_N)"
+msgstr "/ファイル/新しいウィンドウ(_W)"
 
 #: ../src/menu.c:69
 msgid "/File/_Open..."
 msgstr "/ファイル/開く(_O)..."
 
 #: ../src/menu.c:72
-#, fuzzy
 msgid "/File/Open _Recent"
-msgstr "/ファイル/開く(_O)..."
+msgstr "/ファイル/最近利用したファイルを開く(_R)"
 
 #: ../src/menu.c:77
 msgid "/File/_Save"
@@ -192,11 +192,13 @@ msgstr "%d 個の文字列を置き換えました"
 msgid "Find"
 msgstr "文字列を検索します"
 
-#: ../src/search.c:200 ../src/search.c:265
+#: ../src/search.c:200
+#: ../src/search.c:265
 msgid "Fi_nd what: "
 msgstr "検索する文字列(_N): "
 
-#: ../src/search.c:219 ../src/search.c:292
+#: ../src/search.c:219
+#: ../src/search.c:292
 msgid "_Match case"
 msgstr "大文字と小文字を区別する(_M)"
 
@@ -266,7 +268,7 @@ msgstr "'%s' は既に存在します。上書きしますか？"
 #. add the label with the root warning
 #: ../src/window.c:110
 msgid "Warning, you are using the root account, you may harm your system."
-msgstr ""
+msgstr "警告: あなたは root アカウントを使っており、システムに悪影響を及ぼすことができます。"
 
 #: ../src/window.c:169
 msgid "Untitled"
@@ -283,3 +285,4 @@ msgstr "シンプルなテキストエディター"
 #: ../mousepad.desktop.in.h:3
 msgid "Text Editor"
 msgstr "テキストエディター"
+
