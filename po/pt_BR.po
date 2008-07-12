@@ -3,15 +3,16 @@
 # This file is distributed under the same license as the mousepad package.
 # Tomas Schertel <tschertel@gmail.com>, 2005.
 # Adriano Winter Bess <awbess@gmail.com>, 2005,2006.
+# Fábio Nogueira <deb-user-ba@ubuntu.com>, 2008.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: mousepad 0.2.13\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2007-01-20 12:34+0100\n"
-"PO-Revision-Date: 2007-06-07 14:49-0300\n"
-"Last-Translator: Pablo Lerina <pabloalr@gmail.com>\n"
-"Language-Team: \n"
+"PO-Revision-Date: 2008-07-12 12:12-0300\n"
+"Last-Translator: Fábio Nogueira <deb-user-ba@ubuntu.com>\n"
+"Language-Team: Brazilian Portuguese <ldp-br@bazar2.conectiva.com.br>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -19,7 +20,7 @@ msgstr ""
 #: ../src/callback.c:37
 #, c-format
 msgid "Save changes to '%s'?"
-msgstr "Salvar alterações em '%s'?"
+msgstr "Salvar alterações em \"%s\"?"
 
 #: ../src/callback.c:213
 #: ../src/file.c:174
@@ -62,7 +63,7 @@ msgstr "/Arquivo/_Novo"
 
 #: ../src/menu.c:66
 msgid "/File/New _Window"
-msgstr "/Arquivo/Nova _Janela"
+msgstr "/Arquivo/Nova _janela"
 
 #: ../src/menu.c:69
 msgid "/File/_Open..."
@@ -70,7 +71,7 @@ msgstr "/Arquivo/_Abrir..."
 
 #: ../src/menu.c:72
 msgid "/File/Open _Recent"
-msgstr "/Arquivo/Abrir _Recente"
+msgstr "/Arquivo/Abrir recen_te"
 
 #: ../src/menu.c:77
 msgid "/File/_Save"
@@ -78,7 +79,7 @@ msgstr "/Arquivo/_Salvar"
 
 #: ../src/menu.c:79
 msgid "/File/Save _As..."
-msgstr "/Arquivo/Salvar _Como..."
+msgstr "/Arquivo/Salvar _como..."
 
 #: ../src/menu.c:83
 msgid "/File/_Print..."
@@ -118,7 +119,7 @@ msgstr "/Editar/_Apagar"
 
 #: ../src/menu.c:107
 msgid "/Edit/Select _All"
-msgstr "/Editar/Selecionar _Tudo"
+msgstr "/Editar/Selecionar _tudo"
 
 #: ../src/menu.c:109
 msgid "/_Search"
@@ -130,11 +131,11 @@ msgstr "/Pesquisar/_Procurar..."
 
 #: ../src/menu.c:113
 msgid "/Search/Find _Next"
-msgstr "/Pesquisar/Procurar P_róxima"
+msgstr "/Pesquisar/Procurar p_róxima"
 
 #: ../src/menu.c:115
 msgid "/Search/Find _Previous"
-msgstr "/Pesquisar/Procurar _Anterior"
+msgstr "/Pesquisar/Procurar _anterior"
 
 #: ../src/menu.c:117
 msgid "/Search/_Replace..."
@@ -142,7 +143,7 @@ msgstr "/Pesquisar/_Substituir..."
 
 #: ../src/menu.c:121
 msgid "/Search/_Jump To..."
-msgstr "/Pesquisar/P_ular Para..."
+msgstr "/Pesquisar/P_ular para..."
 
 #: ../src/menu.c:123
 msgid "/_Options"
@@ -154,15 +155,15 @@ msgstr "/Opções/_Fonte..."
 
 #: ../src/menu.c:127
 msgid "/Options/_Word Wrap"
-msgstr "/Opções/_Quebra de Palavra"
+msgstr "/Opções/_Quebra de palavra"
 
 #: ../src/menu.c:129
 msgid "/Options/_Line Numbers"
-msgstr "/Opções/Números das _Linhas"
+msgstr "/Opções/Números das _linhas"
 
 #: ../src/menu.c:133
 msgid "/Options/_Auto Indent"
-msgstr "/Opções/Identação _Automática"
+msgstr "/Opções/Identação _automática"
 
 #: ../src/menu.c:135
 msgid "/_Help"
@@ -226,11 +227,11 @@ msgstr "Número da _linha: "
 #: ../src/selector.c:103
 #, c-format
 msgid "Current Locale (%s)"
-msgstr "Localidade Atual (%s)"
+msgstr "Localidade atual (%s)"
 
 #: ../src/selector.c:147
 msgid "Other Codeset"
-msgstr "Outra Codificação"
+msgstr "Outra codificação"
 
 #: ../src/selector.c:186
 msgid "Code_set:"
@@ -243,7 +244,7 @@ msgstr "'%s' não é suportado"
 
 #: ../src/selector.c:271
 msgid "Auto Detect"
-msgstr "Detectar Automaticamente"
+msgstr "Detectar automaticamente"
 
 #: ../src/selector.c:325
 msgid "Open"
@@ -251,11 +252,11 @@ msgstr "Abrir"
 
 #: ../src/selector.c:325
 msgid "Save As"
-msgstr "Salvar Como"
+msgstr "Salvar como"
 
 #: ../src/selector.c:347
 msgid "Ch_aracter Coding: "
-msgstr "Codificação dos C_aracteres: "
+msgstr "Codificação dos c_aracteres: "
 
 #: ../src/selector.c:403
 #, c-format
@@ -269,7 +270,7 @@ msgstr "Cuidado, você está usando a conta de adminstrador, você pode danifica
 
 #: ../src/window.c:169
 msgid "Untitled"
-msgstr "Sem Nome"
+msgstr "Sem nome"
 
 #: ../mousepad.desktop.in.h:1
 msgid "Mousepad"
@@ -281,5 +282,5 @@ msgstr "Editor de texto simples"
 
 #: ../mousepad.desktop.in.h:3
 msgid "Text Editor"
-msgstr "Editor de Texto"
+msgstr "Editor de texto"
 
