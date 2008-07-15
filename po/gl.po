@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: mousepad 0.2.12\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2007-01-20 12:34+0100\n"
-"PO-Revision-Date: 2006-08-18 00:52+0000\n"
+"PO-Revision-Date: 2008-06-28 12:58+0100\n"
 "Last-Translator: Leandro Regueiro <leandro DOT regueiro AT gmail DOT com>\n"
 "Language-Team: Galician <proxecto@trasno.net>\n"
 "MIME-Version: 1.0\n"
@@ -23,9 +23,10 @@ msgstr ""
 #: ../src/callback.c:37
 #, c-format
 msgid "Save changes to '%s'?"
-msgstr ""
+msgstr "Desexa gardar os cambios en '%s'?"
 
-#: ../src/callback.c:213 ../src/file.c:174
+#: ../src/callback.c:213
+#: ../src/file.c:174
 #, c-format
 msgid "Can't convert codeset to '%s'"
 msgstr ""
@@ -45,15 +46,15 @@ msgstr "Acerca de %s"
 
 #: ../src/file.c:187
 msgid "Can't open file to write"
-msgstr ""
+msgstr "Non se puido abrir o ficheiro para escribir"
 
 #: ../src/file.c:192
 msgid "Can't write file"
-msgstr ""
+msgstr "Non se puido escribir o ficheiro"
 
 #: ../src/font.c:49
 msgid "Font"
-msgstr ""
+msgstr "Tipo de letra"
 
 #: ../src/menu.c:61
 msgid "/_File"
@@ -64,18 +65,16 @@ msgid "/File/_New"
 msgstr "/Ficheiro/_Novo"
 
 #: ../src/menu.c:66
-#, fuzzy
 msgid "/File/New _Window"
-msgstr "/Ficheiro/_Novo"
+msgstr "/Ficheiro/Nova _ventá"
 
 #: ../src/menu.c:69
 msgid "/File/_Open..."
 msgstr "/Ficheiro/_Abrir..."
 
 #: ../src/menu.c:72
-#, fuzzy
 msgid "/File/Open _Recent"
-msgstr "/Ficheiro/_Abrir..."
+msgstr "/Ficheiro/Abrir _recente"
 
 #: ../src/menu.c:77
 msgid "/File/_Save"
@@ -83,7 +82,7 @@ msgstr "/Ficheiro/_Gardar"
 
 #: ../src/menu.c:79
 msgid "/File/Save _As..."
-msgstr ""
+msgstr "/Fiicheiro/Gardar _coma..."
 
 #: ../src/menu.c:83
 msgid "/File/_Print..."
@@ -95,7 +94,7 @@ msgstr "/Ficheiro/_Saír"
 
 #: ../src/menu.c:89
 msgid "/_Edit"
-msgstr "/Editar"
+msgstr "/_Editar"
 
 #: ../src/menu.c:91
 msgid "/Edit/_Undo"
@@ -119,35 +118,37 @@ msgstr "/Editar/_Pegar"
 
 #: ../src/menu.c:103
 msgid "/Edit/_Delete"
-msgstr ""
+msgstr "/Editar/_Eliminar"
 
 #: ../src/menu.c:107
 msgid "/Edit/Select _All"
-msgstr ""
+msgstr "/Editar/Seleccionar _todo"
 
 #: ../src/menu.c:109
 msgid "/_Search"
-msgstr ""
+msgstr "/_Buscar"
 
 #: ../src/menu.c:111
 msgid "/Search/_Find..."
-msgstr ""
+msgstr "/Buscar/_Buscar..."
 
 #: ../src/menu.c:113
+#, fuzzy
 msgid "/Search/Find _Next"
-msgstr ""
+msgstr "/Buscar/Buscar _anterior"
 
 #: ../src/menu.c:115
+#, fuzzy
 msgid "/Search/Find _Previous"
-msgstr ""
+msgstr "/Buscar/Buscar _anterior"
 
 #: ../src/menu.c:117
 msgid "/Search/_Replace..."
-msgstr ""
+msgstr "/Buscar/_Substituír..."
 
 #: ../src/menu.c:121
 msgid "/Search/_Jump To..."
-msgstr ""
+msgstr "/Buscar/Ir á _liña..."
 
 #: ../src/menu.c:123
 msgid "/_Options"
@@ -155,7 +156,7 @@ msgstr "/_Opcións"
 
 #: ../src/menu.c:125
 msgid "/Options/_Font..."
-msgstr ""
+msgstr "/Opcións/_Tipo de letra..."
 
 #: ../src/menu.c:127
 msgid "/Options/_Word Wrap"
@@ -163,11 +164,11 @@ msgstr ""
 
 #: ../src/menu.c:129
 msgid "/Options/_Line Numbers"
-msgstr ""
+msgstr "/Opcións/_Números de liña"
 
 #: ../src/menu.c:133
 msgid "/Options/_Auto Indent"
-msgstr ""
+msgstr "/Opcións/_Sangría automática"
 
 #: ../src/menu.c:135
 msgid "/_Help"
@@ -179,7 +180,7 @@ msgstr "/Axuda/_Acerca de"
 
 #: ../src/search.c:73
 msgid "Search string not found"
-msgstr ""
+msgstr "Non se atopou a cadea de busca"
 
 #: ../src/search.c:115
 msgid "Replace?"
@@ -188,17 +189,20 @@ msgstr "Substituir?"
 #: ../src/search.c:143
 #, c-format
 msgid "%d strings replaced"
-msgstr "substituironse %d cadeas"
+msgstr "substituíronse %d cadeas"
 
 #: ../src/search.c:188
 msgid "Find"
 msgstr "Buscar"
 
-#: ../src/search.c:200 ../src/search.c:265
+#: ../src/search.c:200
+#: ../src/search.c:265
 msgid "Fi_nd what: "
-msgstr ""
+msgstr "_Buscar: "
 
-#: ../src/search.c:219 ../src/search.c:292
+# Coincidencia exacta
+#: ../src/search.c:219
+#: ../src/search.c:292
 msgid "_Match case"
 msgstr ""
 
@@ -208,19 +212,19 @@ msgstr "Substituir"
 
 #: ../src/search.c:280
 msgid "Re_place with: "
-msgstr ""
+msgstr "_Substituír con: "
 
 #: ../src/search.c:296
 msgid "Replace _all at once"
-msgstr ""
+msgstr "Substituír _todo dunha vez"
 
 #: ../src/search.c:342
 msgid "Jump To"
-msgstr ""
+msgstr "Ir á liña"
 
 #: ../src/search.c:347
 msgid "_Jump"
-msgstr ""
+msgstr "Ir á _liña"
 
 #: ../src/search.c:353
 msgid "_Line number: "
@@ -242,11 +246,11 @@ msgstr ""
 #: ../src/selector.c:207
 #, c-format
 msgid "'%s' is not supported"
-msgstr ""
+msgstr "'%s' non está soportado"
 
 #: ../src/selector.c:271
 msgid "Auto Detect"
-msgstr ""
+msgstr "Detectar automaticamente"
 
 #: ../src/selector.c:325
 msgid "Open"
@@ -268,20 +272,21 @@ msgstr "'%s' xa existe. Desexa sobrescribilo?"
 #. add the label with the root warning
 #: ../src/window.c:110
 msgid "Warning, you are using the root account, you may harm your system."
-msgstr ""
+msgstr "Advertencia, está usando a conta de root, podería danar o sistema."
 
 #: ../src/window.c:169
 msgid "Untitled"
-msgstr ""
+msgstr "Sen nome"
 
 #: ../mousepad.desktop.in.h:1
 msgid "Mousepad"
-msgstr ""
+msgstr "Mousepad"
 
 #: ../mousepad.desktop.in.h:2
 msgid "Simple text editor"
-msgstr ""
+msgstr "Editor de texto sinxelo"
 
 #: ../mousepad.desktop.in.h:3
 msgid "Text Editor"
-msgstr ""
+msgstr "Editor de Texto"
+
