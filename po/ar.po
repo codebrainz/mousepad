@@ -7,7 +7,7 @@ msgstr ""
 "Last-Translator: Mohamed Magdy <mohamed.m.k@gmail.com>\n"
 "Language-Team: Arabeyes Translation & Documentation <admin@arabeyes.org>\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=utf-8\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Poedit-Language: Arabic\n"
 "X-Poedit-SourceCharset: utf-8\n"
@@ -17,8 +17,7 @@ msgstr ""
 msgid "Save changes to '%s'?"
 msgstr "احفظ التغييرات إلى '%s'?"
 
-#: ../src/callback.c:213
-#: ../src/file.c:174
+#: ../src/callback.c:213 ../src/file.c:174
 #, c-format
 msgid "Can't convert codeset to '%s'"
 msgstr "غير قادر على تحويل مجموعة المحارف إلى '%s'"
@@ -185,13 +184,11 @@ msgstr "%d سلسلة استبدلت"
 msgid "Find"
 msgstr "جد"
 
-#: ../src/search.c:200
-#: ../src/search.c:265
+#: ../src/search.c:200 ../src/search.c:265
 msgid "Fi_nd what: "
 msgstr "ج_د ماذا: "
 
-#: ../src/search.c:219
-#: ../src/search.c:292
+#: ../src/search.c:219 ../src/search.c:292
 msgid "_Match case"
 msgstr "_مطابق للحالة"
 
@@ -278,4 +275,3 @@ msgstr "محرر نصوص بسيط"
 #: ../mousepad.desktop.in.h:3
 msgid "Text Editor"
 msgstr "محرر نصوص"
-
