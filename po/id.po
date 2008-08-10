@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: mousepad 0.2.13\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2007-01-20 12:34+0100\n"
-"PO-Revision-Date: 2008-04-26 11:53+0700\n"
+"PO-Revision-Date: 2008-07-23 17:55+0700\n"
 "Last-Translator: Andhika Padmawan <andhika.padmawan@gmail.com>\n"
 "Language-Team: Indonesian <id@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -53,23 +53,23 @@ msgstr "Fonta"
 
 #: ../src/menu.c:61
 msgid "/_File"
-msgstr "/Berkas (_F)"
+msgstr "/_Berkas"
 
 #: ../src/menu.c:63
 msgid "/File/_New"
-msgstr "/Berkas/Baru (_N)"
+msgstr "/Berkas/_Baru"
 
 #: ../src/menu.c:66
 msgid "/File/New _Window"
-msgstr "/Berkas/Jendela Baru (_W)"
+msgstr "/Berkas/_Jendela Baru"
 
 #: ../src/menu.c:69
 msgid "/File/_Open..."
-msgstr "/Berkas/Buka... (_O)"
+msgstr "/Berkas/_Buka..."
 
 #: ../src/menu.c:72
 msgid "/File/Open _Recent"
-msgstr "/Berkas/Buka Terkini (_R)"
+msgstr "/Berkas/Buka _Terkini"
 
 #: ../src/menu.c:77
 msgid "/File/_Save"
@@ -77,27 +77,27 @@ msgstr "/Berkas/_Simpan"
 
 #: ../src/menu.c:79
 msgid "/File/Save _As..."
-msgstr "/Berkas/Simpan Sebagai... (_A)"
+msgstr "/Berkas/Simpan Se_bagai..."
 
 #: ../src/menu.c:83
 msgid "/File/_Print..."
-msgstr "/Berkas/Cetak... (_P)"
+msgstr "/Berkas/_Cetak..."
 
 #: ../src/menu.c:87
 msgid "/File/_Quit"
-msgstr "/Berkas/Keluar (_Q)"
+msgstr "/Berkas/_Keluar"
 
 #: ../src/menu.c:89
 msgid "/_Edit"
-msgstr "/Sunting (_E)"
+msgstr "/_Sunting"
 
 #: ../src/menu.c:91
 msgid "/Edit/_Undo"
-msgstr "/Sunting/Tak Jadi (_U)"
+msgstr "/Sunting/_Tak Jadi"
 
 #: ../src/menu.c:93
 msgid "/Edit/_Redo"
-msgstr "/Sunting/Jadi Lagi (_R)"
+msgstr "/Sunting/Jadi _Lagi"
 
 #: ../src/menu.c:97
 msgid "/Edit/Cu_t"
@@ -105,43 +105,43 @@ msgstr "/Sunting/Po_tong"
 
 #: ../src/menu.c:99
 msgid "/Edit/_Copy"
-msgstr "/Sunting/Salin (_C)"
+msgstr "/Sunting/_Salin"
 
 #: ../src/menu.c:101
 msgid "/Edit/_Paste"
-msgstr "/Sunting/Rekat (_P)"
+msgstr "/Sunting/_Rekat"
 
 #: ../src/menu.c:103
 msgid "/Edit/_Delete"
-msgstr "/Sunting/Hapus (_D)"
+msgstr "/Sunting/_Hapus"
 
 #: ../src/menu.c:107
 msgid "/Edit/Select _All"
-msgstr "/Sunting/Pilih Semua (_A)"
+msgstr "/Sunting/_Pilih Semua"
 
 #: ../src/menu.c:109
 msgid "/_Search"
-msgstr "/Telusur (_S)"
+msgstr "/_Telusur"
 
 #: ../src/menu.c:111
 msgid "/Search/_Find..."
-msgstr "/Telusur/Cari... (_F)"
+msgstr "/Telusur/_Cari..."
 
 #: ../src/menu.c:113
 msgid "/Search/Find _Next"
-msgstr "/Telusur/Cari Selanjutnya (_N)"
+msgstr "/Telusur/Cari Selan_jutnya"
 
 #: ../src/menu.c:115
 msgid "/Search/Find _Previous"
-msgstr "/Telusur/Cari Berikutnya (_P)"
+msgstr "/Telusur/Cari _Sebelumnya"
 
 #: ../src/menu.c:117
 msgid "/Search/_Replace..."
-msgstr "/Telusur/Ganti... (_R)"
+msgstr "/Telusur/_Ganti..."
 
 #: ../src/menu.c:121
 msgid "/Search/_Jump To..."
-msgstr "/Telusur/Lompat Ke... (_J)"
+msgstr "/Telusur/_Lompat Ke..."
 
 #: ../src/menu.c:123
 msgid "/_Options"
@@ -153,23 +153,23 @@ msgstr "/Opsi/_Fonta..."
 
 #: ../src/menu.c:127
 msgid "/Options/_Word Wrap"
-msgstr "/Opsi/Pas Kata (_W)"
+msgstr "/Opsi/_Pas Kata"
 
 #: ../src/menu.c:129
 msgid "/Options/_Line Numbers"
-msgstr "/Opsi/Nomor Baris (_L)"
+msgstr "/Opsi/_Nomor Baris"
 
 #: ../src/menu.c:133
 msgid "/Options/_Auto Indent"
-msgstr "/Opsi/Inden Otomatis (_A)"
+msgstr "/Opsi/Inden _Otomatis"
 
 #: ../src/menu.c:135
 msgid "/_Help"
-msgstr "/Bantuan (_H)"
+msgstr "/B_antuan"
 
 #: ../src/menu.c:137
 msgid "/Help/_About"
-msgstr "/Bantuan/Tentang (_A)"
+msgstr "/Bantuan/_Tentang"
 
 #: ../src/search.c:73
 msgid "Search string not found"
@@ -191,12 +191,12 @@ msgstr "Cari"
 #: ../src/search.c:200
 #: ../src/search.c:265
 msgid "Fi_nd what: "
-msgstr "Cari apa: (_n)"
+msgstr "Ca_ri apa: "
 
 #: ../src/search.c:219
 #: ../src/search.c:292
 msgid "_Match case"
-msgstr "Cocokkan huruf (_M)"
+msgstr "_Cocokkan huruf"
 
 #: ../src/search.c:253
 msgid "Replace"
@@ -204,7 +204,7 @@ msgstr "Ganti"
 
 #: ../src/search.c:280
 msgid "Re_place with: "
-msgstr "Ganti dengan: (_p)"
+msgstr "Ga_nti dengan: "
 
 #: ../src/search.c:296
 msgid "Replace _all at once"
@@ -216,11 +216,11 @@ msgstr "Lompat Ke"
 
 #: ../src/search.c:347
 msgid "_Jump"
-msgstr "Lompat (_J)"
+msgstr "_Lompat"
 
 #: ../src/search.c:353
 msgid "_Line number: "
-msgstr "Nomor baris: (_L)"
+msgstr "_Nomor baris: "
 
 #: ../src/selector.c:103
 #, c-format
