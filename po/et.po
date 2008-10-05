@@ -1,56 +1,57 @@
-# Estonian translation of xfce4.
-# Copyright (C) 2006 THE xfce4'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the xfce4 package.
-# Peeter Vois <Peeter.Vois@mail.ee>, 2006.
-# 
-# 
+# Translation of mousepad package into Estonian.
+# Copyright (C) 2006-2008 The Xfce Development Team.
+# This file is distributed under the same license as the mousepad package.
+# Peeter Vois <peeter.vois@proekspert.ee>, 2006.
+# Kristjan Siimson <epost@ksiimson.se>, 2008.
 # 
 msgid ""
 msgstr ""
-"Project-Id-Version: mousepad 0.2.12\n"
+"Project-Id-Version: mousepad 0.2.13\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2007-01-20 12:34+0100\n"
-"PO-Revision-Date: 2006-04-24 07:55+0300\n"
-"Last-Translator: Peeter Vois <Peeter.Vois@mail.ee>\n"
+"PO-Revision-Date: 2008-09-29 06:03-0700\n"
+"Last-Translator: Kristjan Siimson <epost@ksiimson.se>\n"
 "Language-Team: Estonian <et@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Narro 0.9.2 on http://tolge.pingviin.org\n"
 
 #: ../src/callback.c:37
 #, c-format
 msgid "Save changes to '%s'?"
-msgstr "Kas salvestan muudatused '%s'-i ?"
+msgstr "Salvestada muudatused faili '%s'?"
 
 #: ../src/callback.c:213 ../src/file.c:174
 #, c-format
 msgid "Can't convert codeset to '%s'"
-msgstr "Kodeeringu muundamine '%s'-le läks nässu"
+msgstr "Kodeeringut ei saa teisendada: '%s'"
 
 #: ../src/callback.c:240
 msgid "Can't open pipe to process"
-msgstr "Protsessi juurde toru avamine läks nässu"
+msgstr "Protsessile ei saa toru avada"
 
 #: ../src/callback.c:397
 msgid "A text editor for Xfce"
-msgstr "Teksti redaktor Xfce jaoks"
+msgstr "Xfce tekstitoimetaja"
 
 #: ../src/dialog.c:135
 #, c-format
 msgid "About %s"
-msgstr "Info %s-i kohta"
+msgstr "%s teave"
 
 #: ../src/file.c:187
 msgid "Can't open file to write"
-msgstr "Faili avamine kirjutamiseks läks nässu"
+msgstr "Faili ei saa kirjutamiseks avada"
 
 #: ../src/file.c:192
 msgid "Can't write file"
-msgstr "Faili kirjutamine läks nässu"
+msgstr "Faili ei saa kirjutada"
 
 #: ../src/font.c:49
 msgid "Font"
-msgstr "Kirjatüüp"
+msgstr "Font"
 
 #: ../src/menu.c:61
 msgid "/_File"
@@ -61,66 +62,64 @@ msgid "/File/_New"
 msgstr "/Fail/_Uus"
 
 #: ../src/menu.c:66
-#, fuzzy
 msgid "/File/New _Window"
-msgstr "/Fail/_Uus"
+msgstr "/Fail/_Uus aken"
 
 #: ../src/menu.c:69
 msgid "/File/_Open..."
-msgstr "/Fail/_Ava"
+msgstr "_/Fail/Avada..."
 
 #: ../src/menu.c:72
-#, fuzzy
 msgid "/File/Open _Recent"
-msgstr "/Fail/_Ava"
+msgstr "_/Fail/Avada hiljutine"
 
 #: ../src/menu.c:77
 msgid "/File/_Save"
-msgstr "/Fail/_Salvesta"
+msgstr "/Fail/_Salvestada"
 
 #: ../src/menu.c:79
 msgid "/File/Save _As..."
-msgstr "/Fail/Salvesta _kui ..."
+msgstr "/F_ail/Salvestada kui ..."
 
 #: ../src/menu.c:83
 msgid "/File/_Print..."
-msgstr "/Fail/_Print..."
+msgstr "_/Fail/Trükkida..."
 
 #: ../src/menu.c:87
 msgid "/File/_Quit"
-msgstr "/Fail/_Välja"
+msgstr "_/Fail/Lõpetada"
 
 #: ../src/menu.c:89
 msgid "/_Edit"
-msgstr "/_Redaktor"
+msgstr "/Toim_etada"
 
 #: ../src/menu.c:91
 msgid "/Edit/_Undo"
-msgstr "/Redaktor/T_ühista"
+msgstr "/Toimetada/Tagasi _võtta"
 
 #: ../src/menu.c:93
 msgid "/Edit/_Redo"
-msgstr "/Redaktor/_Taasta"
+msgstr "/Toime_tada/Uuesti teha"
 
 #: ../src/menu.c:97
 msgid "/Edit/Cu_t"
-msgstr "/Redaktor/_Lõika"
+msgstr "/Toimetada/_Lõigata"
 
 #: ../src/menu.c:99
 msgid "/Edit/_Copy"
-msgstr "/Redaktor/K_operri"
+msgstr "/Toimetada/_Kopeerida"
 
 #: ../src/menu.c:101
 msgid "/Edit/_Paste"
-msgstr "/Redaktor/K_leebi"
+msgstr "/Toimetada/_Asetada"
 
 #: ../src/menu.c:103
 msgid "/Edit/_Delete"
-msgstr "/Redaktor/_Kustuta"
+msgstr "/Toimeta_da/Kustutada"
 
 #: ../src/menu.c:107
 msgid "/Edit/Select _All"
-msgstr "/Redaktor/Vali _Kõik"
+msgstr "/Toimet_ada/Valida kõik välja"
 
 #: ../src/menu.c:109
 msgid "/_Search"
@@ -128,43 +127,43 @@ msgstr "/_Otsing"
 
 #: ../src/menu.c:111
 msgid "/Search/_Find..."
-msgstr "/Otsing/_Leia..."
+msgstr "_/Otsing/Leida..."
 
 #: ../src/menu.c:113
 msgid "/Search/Find _Next"
-msgstr "/Otsing/Leia _Järgmine"
+msgstr "/Otsi_ng/Leida järgmine"
 
 #: ../src/menu.c:115
 msgid "/Search/Find _Previous"
-msgstr "/Otsing/Leia _Eelmine"
+msgstr "_/Otsing/Leida eelmine"
 
 #: ../src/menu.c:117
 msgid "/Search/_Replace..."
-msgstr "/Otsing/_Asenda..."
+msgstr "_/Otsing/Asendada..."
 
 #: ../src/menu.c:121
 msgid "/Search/_Jump To..."
-msgstr "/Otsing/_Hüppa..."
+msgstr "_/Otsing/Hüpata..."
 
 #: ../src/menu.c:123
 msgid "/_Options"
-msgstr "/_Seaded"
+msgstr "_/Valikud"
 
 #: ../src/menu.c:125
 msgid "/Options/_Font..."
-msgstr "/Seaded/_Kirjakuju..."
+msgstr "/Valikud/_Font..."
 
 #: ../src/menu.c:127
 msgid "/Options/_Word Wrap"
-msgstr "/Seaded/_Sõna murdmine"
+msgstr "_/Valikud/Ridade murdmine"
 
 #: ../src/menu.c:129
 msgid "/Options/_Line Numbers"
-msgstr "/Seaded/_Rea numbrid"
+msgstr "/Va_likud/Ridade nummerdamine"
 
 #: ../src/menu.c:133
 msgid "/Options/_Auto Indent"
-msgstr "/Seaded/_Automaatne ääristamine"
+msgstr "/Valikud/_Automaatne taandamine"
 
 #: ../src/menu.c:135
 msgid "/_Help"
@@ -172,56 +171,56 @@ msgstr "/_Abi"
 
 #: ../src/menu.c:137
 msgid "/Help/_About"
-msgstr "/Abi/_Sellest"
+msgstr "/_Abi/Teave/"
 
 #: ../src/search.c:73
 msgid "Search string not found"
-msgstr "Otsitavat sõna ei leitud"
+msgstr "Otsitavat sõne ei leitud"
 
 #: ../src/search.c:115
 msgid "Replace?"
-msgstr "Kas asendan?"
+msgstr "Asendada?"
 
 #: ../src/search.c:143
 #, c-format
 msgid "%d strings replaced"
-msgstr "muudetud sai %d sõna"
+msgstr "asendatud %d sõne"
 
 #: ../src/search.c:188
 msgid "Find"
-msgstr "Otsi"
+msgstr "Leida"
 
 #: ../src/search.c:200 ../src/search.c:265
 msgid "Fi_nd what: "
-msgstr "_Mida otsida: "
+msgstr "_Mida leida: "
 
 #: ../src/search.c:219 ../src/search.c:292
 msgid "_Match case"
-msgstr "Suur ja väiketähed loevad"
+msgstr "_Eristada tähesuurust"
 
 #: ../src/search.c:253
 msgid "Replace"
-msgstr "Asenda"
+msgstr "Asendada"
 
 #: ../src/search.c:280
 msgid "Re_place with: "
-msgstr "Asendus:"
+msgstr "Asen_dus:"
 
 #: ../src/search.c:296
 msgid "Replace _all at once"
-msgstr "Asenda kõik korraga"
+msgstr "_Asendada kõik korraga"
 
 #: ../src/search.c:342
 msgid "Jump To"
-msgstr "Hüppa reale"
+msgstr "Hüpata reale"
 
 #: ../src/search.c:347
 msgid "_Jump"
-msgstr "_Hüppa"
+msgstr "_Hüpata"
 
 #: ../src/search.c:353
 msgid "_Line number: "
-msgstr "_Rea number:"
+msgstr "_Reanumber:"
 
 #: ../src/selector.c:103
 #, c-format
@@ -230,11 +229,11 @@ msgstr "Praegune lokaal (%s)"
 
 #: ../src/selector.c:147
 msgid "Other Codeset"
-msgstr "Muu kood"
+msgstr "Muu kodeering"
 
 #: ../src/selector.c:186
 msgid "Code_set:"
-msgstr "Koodid:"
+msgstr "_Kodeering:"
 
 #: ../src/selector.c:207
 #, c-format
@@ -243,42 +242,43 @@ msgstr "'%s' ei ole toetatud"
 
 #: ../src/selector.c:271
 msgid "Auto Detect"
-msgstr "Määra automaatselt"
+msgstr "Automaatne tuvastamine"
 
 #: ../src/selector.c:325
 msgid "Open"
-msgstr "Ava"
+msgstr "Avada"
 
 #: ../src/selector.c:325
 msgid "Save As"
-msgstr "Salvesta kui"
+msgstr "Salvestada kui"
 
 #: ../src/selector.c:347
 msgid "Ch_aracter Coding: "
-msgstr "Sü_mbolite kodeering"
+msgstr "_Märgikodeering:"
 
 #: ../src/selector.c:403
 #, c-format
 msgid "'%s' already exists. Overwrite?"
-msgstr "'%s' on juba olemas, kas kirjutan üle?"
+msgstr "'%s' on juba olemas. Kirjutada üle?"
 
 #. add the label with the root warning
 #: ../src/window.c:110
 msgid "Warning, you are using the root account, you may harm your system."
-msgstr ""
+msgstr "Hoiatus, olete root kasutaja õigustes ja võite oma süsteemi kahjustada."
 
 #: ../src/window.c:169
 msgid "Untitled"
-msgstr "Nimetu"
+msgstr "Pealkirjastamata"
 
 #: ../mousepad.desktop.in.h:1
 msgid "Mousepad"
-msgstr "Mousepad"
+msgstr "Hoiatus, olete root kasutaja õigustes ja võite oma süsteemi kahjustada."
 
 #: ../mousepad.desktop.in.h:2
 msgid "Simple text editor"
-msgstr "Lihtne teksti redaktor"
+msgstr "Lihtne tekstitoimetaja"
 
 #: ../mousepad.desktop.in.h:3
 msgid "Text Editor"
-msgstr "Teksti redaktor"
+msgstr "Tekstitoimetaja"
+
