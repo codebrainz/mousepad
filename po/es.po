@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: mousepad 0.2.12\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2007-01-20 12:34+0100\n"
-"PO-Revision-Date: 2008-09-20 21:00+0100\n"
+"PO-Revision-Date: 2008-11-02 13:17+0100\n"
 "Last-Translator: Abel Martín <abel.martin.ruiz@gmail.com>\n"
 "Language-Team: Spanish/Spain <es@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -130,7 +130,7 @@ msgstr "/Buscar/_Buscar..."
 
 #: ../src/menu.c:113
 msgid "/Search/Find _Next"
-msgstr "/Buscar/Buscar _Siguiente"
+msgstr "/Buscar/Buscar _siguiente"
 
 #: ../src/menu.c:115
 msgid "/Search/Find _Previous"
@@ -197,7 +197,7 @@ msgstr "_Buscar: "
 #: ../src/search.c:219
 #: ../src/search.c:292
 msgid "_Match case"
-msgstr "Coi_ncidir con capitalización"
+msgstr "Coi_ncidir con mayúsculas y minúsculas"
 
 #: ../src/search.c:253
 msgid "Replace"
@@ -230,7 +230,7 @@ msgstr "Locale Actual (%s)"
 
 #: ../src/selector.c:147
 msgid "Other Codeset"
-msgstr "Otro Conjunto de Códigos"
+msgstr "Otro conjunto de códigos"
 
 #: ../src/selector.c:186
 msgid "Code_set:"
@@ -251,11 +251,11 @@ msgstr "Abrir"
 
 #: ../src/selector.c:325
 msgid "Save As"
-msgstr "Guardar Como"
+msgstr "Guardar como"
 
 #: ../src/selector.c:347
 msgid "Ch_aracter Coding: "
-msgstr "Codificación de C_aracteres: "
+msgstr "Codificación de c_aracteres: "
 
 #: ../src/selector.c:403
 #, c-format
@@ -281,5 +281,5 @@ msgstr "Editor de texto simple"
 
 #: ../mousepad.desktop.in.h:3
 msgid "Text Editor"
-msgstr "Editor de Texto"
+msgstr "Editor de texto"
 
