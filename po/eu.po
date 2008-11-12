@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: mousepad 0.2.12\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2007-01-20 12:34+0100\n"
-"PO-Revision-Date: 2008-11-06 13:13+0200\n"
+"PO-Revision-Date: 2008-11-09 15:51+0200\n"
 "Last-Translator: Piarres Beobide <pi@beobide.net>\n"
 "Language-Team: librezale <librezale@librezale.org>\n"
 "Language: eu\n"
@@ -64,7 +64,7 @@ msgstr "/Fitxategia/_Berria"
 
 #: ../src/menu.c:66
 msgid "/File/New _Window"
-msgstr "/Fitxategia/_Leiho Berria"
+msgstr "/Fitxategia/_Leiho berria"
 
 #: ../src/menu.c:69
 msgid "/File/_Open..."
@@ -72,15 +72,15 @@ msgstr "/fitxategia/_Ireki"
 
 #: ../src/menu.c:72
 msgid "/File/Open _Recent"
-msgstr "/fitxategia/_Azkenak Ireki"
+msgstr "/fitxategia/_Azkenak ireki"
 
 #: ../src/menu.c:77
 msgid "/File/_Save"
-msgstr "/Fitxategia_Gorde"
+msgstr "/_Gorde fitxategia"
 
 #: ../src/menu.c:79
 msgid "/File/Save _As..."
-msgstr "/Fitxategia/Gorde _Honela"
+msgstr "/Fitxategia/Gorde _honela"
 
 #: ../src/menu.c:83
 msgid "/File/_Print..."
@@ -120,7 +120,7 @@ msgstr "/Editatu/_Ezabatu"
 
 #: ../src/menu.c:107
 msgid "/Edit/Select _All"
-msgstr "/Editatu/Dena _Hautatu"
+msgstr "/Editatu/_Hautatu dena"
 
 #: ../src/menu.c:109
 msgid "/_Search"
@@ -132,11 +132,11 @@ msgstr "/Bilaketa/_Bilatu..."
 
 #: ../src/menu.c:113
 msgid "/Search/Find _Next"
-msgstr "/Bilaketa/Bilatu _Hurrengoa"
+msgstr "/Bilaketa/Bilatu _hurrengoa"
 
 #: ../src/menu.c:115
 msgid "/Search/Find _Previous"
-msgstr "/Bilaketa/Bilatu _Aurrekoa"
+msgstr "/Bilaketa/Bilatu _aurrekoa"
 
 #: ../src/menu.c:117
 msgid "/Search/_Replace..."
@@ -156,15 +156,16 @@ msgstr "/Aukerak/_Letra-tipoa..."
 
 #: ../src/menu.c:127
 msgid "/Options/_Word Wrap"
-msgstr "/Aukerak/_Itzulbira "
+msgstr "/Aukerak/_Itzulbira"
 
 #: ../src/menu.c:129
 msgid "/Options/_Line Numbers"
-msgstr "/Aukerak/_Lerro Zenbakiak"
+msgstr "/Aukerak/_Lerro zenbakiak"
 
 #: ../src/menu.c:133
+#, fuzzy
 msgid "/Options/_Auto Indent"
-msgstr "/Aukerak/_Auto Kontaktu"
+msgstr "/Aukerak/_Auto kontaktu"
 
 #: ../src/menu.c:135
 msgid "/_Help"
@@ -243,7 +244,7 @@ msgstr "'%s' ez da onartzen"
 
 #: ../src/selector.c:271
 msgid "Auto Detect"
-msgstr "Auto Atzeman"
+msgstr "Auto-atzeman"
 
 #: ../src/selector.c:325
 msgid "Open"
@@ -255,7 +256,7 @@ msgstr "Gorde honela"
 
 #: ../src/selector.c:347
 msgid "Ch_aracter Coding: "
-msgstr "K_araketere Kodeketa"
+msgstr "K_araketere kodeketa: "
 
 #: ../src/selector.c:403
 #, c-format
@@ -278,8 +279,8 @@ msgstr "Mousepad"
 
 #: ../mousepad.desktop.in.h:2
 msgid "Simple text editor"
-msgstr "Testu Editore Sinplea"
+msgstr "Testu editore soila"
 
 #: ../mousepad.desktop.in.h:3
 msgid "Text Editor"
-msgstr "Testu Editorea"
+msgstr "Testu editorea"
