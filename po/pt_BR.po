@@ -3,7 +3,7 @@
 # This file is distributed under the same license as the mousepad package.
 # Tomas Schertel <tschertel@gmail.com>, 2005.
 # Adriano Winter Bess <awbess@gmail.com>, 2005,2006.
-# Fábio Nogueira <deb-user-ba@ubuntu.com>, 2008.
+# FÃ¡bio Nogueira <deb-user-ba@ubuntu.com>, 2008.
 #
 msgid ""
 msgstr ""
@@ -11,7 +11,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2007-01-20 12:34+0100\n"
 "PO-Revision-Date: 2008-07-12 12:12-0300\n"
-"Last-Translator: Fábio Nogueira <deb-user-ba@ubuntu.com>\n"
+"Last-Translator: FÃ¡bio Nogueira <deb-user-ba@ubuntu.com>\n"
 "Language-Team: Brazilian Portuguese <ldp-br@bazar2.conectiva.com.br>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
@@ -20,17 +20,17 @@ msgstr ""
 #: ../src/callback.c:37
 #, c-format
 msgid "Save changes to '%s'?"
-msgstr "Salvar alterações em \"%s\"?"
+msgstr "Salvar alteraÃ§Ãµes em \"%s\"?"
 
 #: ../src/callback.c:213
 #: ../src/file.c:174
 #, c-format
 msgid "Can't convert codeset to '%s'"
-msgstr "Não é possível converter a codificação para '%s'"
+msgstr "NÃ£o Ã© possÃ­vel converter a codificaÃ§Ã£o para '%s'"
 
 #: ../src/callback.c:240
 msgid "Can't open pipe to process"
-msgstr "Não é possível abrir canal para o processo"
+msgstr "NÃ£o Ã© possÃ­vel abrir canal para o processo"
 
 #: ../src/callback.c:397
 msgid "A text editor for Xfce"
@@ -43,11 +43,11 @@ msgstr "Sobre %s"
 
 #: ../src/file.c:187
 msgid "Can't open file to write"
-msgstr "Não é possível abrir o arquivo para escrita"
+msgstr "NÃ£o Ã© possÃ­vel abrir o arquivo para escrita"
 
 #: ../src/file.c:192
 msgid "Can't write file"
-msgstr "Não é possível escrever o arquivo"
+msgstr "NÃ£o Ã© possÃ­vel escrever o arquivo"
 
 #: ../src/font.c:49
 msgid "Font"
@@ -131,7 +131,7 @@ msgstr "/Pesquisar/_Procurar..."
 
 #: ../src/menu.c:113
 msgid "/Search/Find _Next"
-msgstr "/Pesquisar/Procurar p_róxima"
+msgstr "/Pesquisar/Procurar p_rÃ³xima"
 
 #: ../src/menu.c:115
 msgid "/Search/Find _Previous"
@@ -147,23 +147,23 @@ msgstr "/Pesquisar/P_ular para..."
 
 #: ../src/menu.c:123
 msgid "/_Options"
-msgstr "/_Opções"
+msgstr "/_OpÃ§Ãµes"
 
 #: ../src/menu.c:125
 msgid "/Options/_Font..."
-msgstr "/Opções/_Fonte..."
+msgstr "/OpÃ§Ãµes/_Fonte..."
 
 #: ../src/menu.c:127
 msgid "/Options/_Word Wrap"
-msgstr "/Opções/_Quebra de palavra"
+msgstr "/OpÃ§Ãµes/_Quebra de palavra"
 
 #: ../src/menu.c:129
 msgid "/Options/_Line Numbers"
-msgstr "/Opções/Números das _linhas"
+msgstr "/OpÃ§Ãµes/NÃºmeros das _linhas"
 
 #: ../src/menu.c:133
 msgid "/Options/_Auto Indent"
-msgstr "/Opções/Identação _automática"
+msgstr "/OpÃ§Ãµes/IdentaÃ§Ã£o _automÃ¡tica"
 
 #: ../src/menu.c:135
 msgid "/_Help"
@@ -175,7 +175,7 @@ msgstr "/Ajuda/_Sobre"
 
 #: ../src/search.c:73
 msgid "Search string not found"
-msgstr "Expressão procurada não encontrada"
+msgstr "ExpressÃ£o procurada nÃ£o encontrada"
 
 #: ../src/search.c:115
 msgid "Replace?"
@@ -184,7 +184,7 @@ msgstr "Substituir?"
 #: ../src/search.c:143
 #, c-format
 msgid "%d strings replaced"
-msgstr "%d expressões substituídas"
+msgstr "%d expressÃµes substituÃ­das"
 
 #: ../src/search.c:188
 msgid "Find"
@@ -198,7 +198,7 @@ msgstr "_Procurar por:"
 #: ../src/search.c:219
 #: ../src/search.c:292
 msgid "_Match case"
-msgstr "Diferenciar _maiúsculas e minúsculas"
+msgstr "Diferenciar _maiÃºsculas e minÃºsculas"
 
 #: ../src/search.c:253
 msgid "Replace"
@@ -222,7 +222,7 @@ msgstr "_Pular"
 
 #: ../src/search.c:353
 msgid "_Line number: "
-msgstr "Número da _linha: "
+msgstr "NÃºmero da _linha: "
 
 #: ../src/selector.c:103
 #, c-format
@@ -231,16 +231,16 @@ msgstr "Localidade atual (%s)"
 
 #: ../src/selector.c:147
 msgid "Other Codeset"
-msgstr "Outra codificação"
+msgstr "Outra codificaÃ§Ã£o"
 
 #: ../src/selector.c:186
 msgid "Code_set:"
-msgstr "Codif_ição:"
+msgstr "Codif_iÃ§Ã£o:"
 
 #: ../src/selector.c:207
 #, c-format
 msgid "'%s' is not supported"
-msgstr "'%s' não é suportado"
+msgstr "'%s' nÃ£o Ã© suportado"
 
 #: ../src/selector.c:271
 msgid "Auto Detect"
@@ -256,17 +256,17 @@ msgstr "Salvar como"
 
 #: ../src/selector.c:347
 msgid "Ch_aracter Coding: "
-msgstr "Codificação dos c_aracteres: "
+msgstr "CodificaÃ§Ã£o dos c_aracteres: "
 
 #: ../src/selector.c:403
 #, c-format
 msgid "'%s' already exists. Overwrite?"
-msgstr "'%s' já existe. Sobrescrever?"
+msgstr "'%s' jÃ¡ existe. Sobrescrever?"
 
 #. add the label with the root warning
 #: ../src/window.c:110
 msgid "Warning, you are using the root account, you may harm your system."
-msgstr "Cuidado, você está usando a conta de adminstrador, você pode danificar seu sistema."
+msgstr "Cuidado, vocÃª estÃ¡ usando a conta de adminstrador, vocÃª pode danificar seu sistema."
 
 #: ../src/window.c:169
 msgid "Untitled"
