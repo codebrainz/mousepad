@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: mousepad 0.2.12\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2007-01-20 12:34+0100\n"
-"PO-Revision-Date: 2008-11-02 13:17+0100\n"
+"PO-Revision-Date: 2008-11-16 12:13+0100\n"
 "Last-Translator: Abel Martín <abel.martin.ruiz@gmail.com>\n"
 "Language-Team: Spanish/Spain <es@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -50,7 +50,7 @@ msgstr "No se puede escribir en el archivo"
 
 #: ../src/font.c:49
 msgid "Font"
-msgstr "Tipografía"
+msgstr "Tipo de letra"
 
 #: ../src/menu.c:61
 msgid "/_File"
@@ -150,7 +150,7 @@ msgstr "/_Opciones"
 
 #: ../src/menu.c:125
 msgid "/Options/_Font..."
-msgstr "/Opciones/Tipogra_fía..."
+msgstr "/Opciones/_Tipo de letra..."
 
 #: ../src/menu.c:127
 msgid "/Options/_Word Wrap"
@@ -226,7 +226,7 @@ msgstr "Número de _línea: "
 #: ../src/selector.c:103
 #, c-format
 msgid "Current Locale (%s)"
-msgstr "Locale Actual (%s)"
+msgstr "Locale actual (%s)"
 
 #: ../src/selector.c:147
 msgid "Other Codeset"
@@ -265,7 +265,7 @@ msgstr "'%s' ya existe. ¿Sobrescribir?"
 #. add the label with the root warning
 #: ../src/window.c:110
 msgid "Warning, you are using the root account, you may harm your system."
-msgstr "Advertencia. Está usando la cuenta de root. Puede dañar su sistema."
+msgstr "Atención. Está usando la cuenta de root. Puede dañar su sistema."
 
 #: ../src/window.c:169
 msgid "Untitled"
