@@ -1,0 +1,283 @@
+# Norwegian Bokmal translations for Mousepad package.
+# Copyright (C) 2008 THE Mousepad'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the Mousepad package.
+# Terje Uriansrud <terje@uriansrud.net>, 2008.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Mousepad 0.2.13svn-r28763\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2008-11-20 20:27+0100\n"
+"PO-Revision-Date: 2008-11-20 20:27+0100\n"
+"Last-Translator: Terje Uriansrud <terje@uriansrud.net>\n"
+"Language-Team: Norwegian Bokmal\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: ../src/callback.c:37
+#, c-format
+msgid "Save changes to '%s'?"
+msgstr "Lagre endringer til '%s'?"
+
+#: ../src/callback.c:213 ../src/file.c:174
+#, c-format
+msgid "Can't convert codeset to '%s'"
+msgstr "Kan ikke konvertere kodesett til '%s'"
+
+#: ../src/callback.c:240
+msgid "Can't open pipe to process"
+msgstr "Kan ikke åpne kanal til prosess"
+
+#: ../src/callback.c:397
+msgid "A text editor for Xfce"
+msgstr "Tekstredigerer for Xfce"
+
+#: ../src/dialog.c:135
+#, c-format
+msgid "About %s"
+msgstr "Om %s"
+
+#: ../src/file.c:187
+msgid "Can't open file to write"
+msgstr "Kan ikke åpne fil som skal lagres"
+
+#: ../src/file.c:192
+msgid "Can't write file"
+msgstr "Kan ikke skrive til fil"
+
+#: ../src/font.c:49
+msgid "Font"
+msgstr "Skrift"
+
+#: ../src/menu.c:61
+msgid "/_File"
+msgstr "/_Fil"
+
+#: ../src/menu.c:63
+msgid "/File/_New"
+msgstr "/Fil/_Ny"
+
+#: ../src/menu.c:66
+msgid "/File/New _Window"
+msgstr "/Fil/Nytt _vindu"
+
+#: ../src/menu.c:69
+msgid "/File/_Open..."
+msgstr "/Fil/Å_pne ..."
+
+#: ../src/menu.c:72
+msgid "/File/Open _Recent"
+msgstr "/Fil/Nylig _brukt"
+
+#: ../src/menu.c:77
+msgid "/File/_Save"
+msgstr "/Fil/_Lagre"
+
+#: ../src/menu.c:79
+msgid "/File/Save _As..."
+msgstr "/Fil/Lagre so_m ..."
+
+#: ../src/menu.c:83
+msgid "/File/_Print..."
+msgstr "/Fil/Sk_riv ut ..."
+
+#: ../src/menu.c:87
+msgid "/File/_Quit"
+msgstr "/Fil/_Avslutt"
+
+#: ../src/menu.c:89
+msgid "/_Edit"
+msgstr "/_Rediger"
+
+#: ../src/menu.c:91
+msgid "/Edit/_Undo"
+msgstr "/Rediger/_Angre"
+
+#: ../src/menu.c:93
+msgid "/Edit/_Redo"
+msgstr "/Rediger/_Gjør om"
+
+#: ../src/menu.c:97
+msgid "/Edit/Cu_t"
+msgstr "/Rediger/_Klipp ut"
+
+#: ../src/menu.c:99
+msgid "/Edit/_Copy"
+msgstr "/Rediger/Ko_pier"
+
+#: ../src/menu.c:101
+msgid "/Edit/_Paste"
+msgstr "/Rediger/_Lim inn"
+
+#: ../src/menu.c:103
+msgid "/Edit/_Delete"
+msgstr "/Rediger/_Slett"
+
+#: ../src/menu.c:107
+msgid "/Edit/Select _All"
+msgstr "/Rediger/_Velg alt"
+
+#: ../src/menu.c:109
+msgid "/_Search"
+msgstr "/_Søk"
+
+#: ../src/menu.c:111
+msgid "/Search/_Find..."
+msgstr "/Søk/_Søk ..."
+
+#: ../src/menu.c:113
+msgid "/Search/Find _Next"
+msgstr "/Søk/Finn _neste"
+
+#: ../src/menu.c:115
+msgid "/Search/Find _Previous"
+msgstr "/Søk/Finn fo_rrige"
+
+#: ../src/menu.c:117
+msgid "/Search/_Replace..."
+msgstr "/Søk/_Erstatt ..."
+
+#: ../src/menu.c:121
+msgid "/Search/_Jump To..."
+msgstr "/Søk/Gå _til ..."
+
+#: ../src/menu.c:123
+msgid "/_Options"
+msgstr "/_Innstillinger"
+
+#: ../src/menu.c:125
+msgid "/Options/_Font..."
+msgstr "/Innstillinger/_Skrift"
+
+#: ../src/menu.c:127
+msgid "/Options/_Word Wrap"
+msgstr "/Innstillinger/_Fleksibel linjebryting"
+
+#: ../src/menu.c:129
+msgid "/Options/_Line Numbers"
+msgstr "/Innstillinger/Vis _linjenummer"
+
+#: ../src/menu.c:133
+msgid "/Options/_Auto Indent"
+msgstr "/Innstillinger/Automatisk _innrykk"
+
+#: ../src/menu.c:135
+msgid "/_Help"
+msgstr "/_Hjelp"
+
+#: ../src/menu.c:137
+msgid "/Help/_About"
+msgstr "/Hjelp/_Om"
+
+#: ../src/search.c:73
+msgid "Search string not found"
+msgstr "Søkestrengen ble ikke funnet"
+
+#: ../src/search.c:115
+msgid "Replace?"
+msgstr "Erstatt?"
+
+#: ../src/search.c:143
+#, c-format
+msgid "%d strings replaced"
+msgstr "%d forekomster erstattet"
+
+#: ../src/search.c:188
+msgid "Find"
+msgstr "Finn"
+
+#: ../src/search.c:200 ../src/search.c:265
+msgid "Fi_nd what: "
+msgstr "_Søk etter"
+
+#: ../src/search.c:219 ../src/search.c:292
+msgid "_Match case"
+msgstr "Skill mellom store og _små"
+
+#: ../src/search.c:253
+msgid "Replace"
+msgstr "Erstatt"
+
+#: ../src/search.c:280
+msgid "Re_place with: "
+msgstr "_Erstatt med:"
+
+#: ../src/search.c:296
+msgid "Replace _all at once"
+msgstr "Erstatt _alle på en gang"
+
+#: ../src/search.c:342
+msgid "Jump To"
+msgstr "Gå til"
+
+#: ../src/search.c:347
+msgid "_Jump"
+msgstr "_Gå til"
+
+#: ../src/search.c:353
+msgid "_Line number: "
+msgstr "_Linjenummer"
+
+#: ../src/selector.c:103
+#, c-format
+msgid "Current Locale (%s)"
+msgstr "Nåværende lokale (%s)"
+
+#: ../src/selector.c:147
+msgid "Other Codeset"
+msgstr "Andre tegnsett"
+
+#: ../src/selector.c:186
+msgid "Code_set:"
+msgstr "Tegn_sett"
+
+#: ../src/selector.c:207
+#, c-format
+msgid "'%s' is not supported"
+msgstr "'%s' er ikke støttet"
+
+#: ../src/selector.c:271
+msgid "Auto Detect"
+msgstr "Automatisk gjenkjenning"
+
+#: ../src/selector.c:325
+msgid "Open"
+msgstr "Åpne"
+
+#: ../src/selector.c:325
+msgid "Save As"
+msgstr "Lagre som"
+
+#: ../src/selector.c:347
+msgid "Ch_aracter Coding: "
+msgstr "_Tegnkoding"
+
+#: ../src/selector.c:403
+#, c-format
+msgid "'%s' already exists. Overwrite?"
+msgstr "'%s' eksisterer. Overskrive?"
+
+#. add the label with the root warning
+#: ../src/window.c:110
+msgid "Warning, you are using the root account, you may harm your system."
+msgstr ""
+"Advarsel, du benytter root brukeren. Dette er en risiko for systemet "
+"ditt."
+
+#: ../src/window.c:169
+msgid "Untitled"
+msgstr "Uten tittel"
+
+#: ../mousepad.desktop.in.h:1
+msgid "Mousepad"
+msgstr "Mousepad"
+
+#: ../mousepad.desktop.in.h:2
+msgid "Simple text editor"
+msgstr "Enkel tekstredigerer"
+
+#: ../mousepad.desktop.in.h:3
+msgid "Text Editor"
+msgstr "Tekstredigerer"
