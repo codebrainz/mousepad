@@ -1,7 +1,14 @@
+<<<<<<< .mine
+2008-11-25  Maximilian Schleiss <maximilian@xfce.org>
+
+	* es.po: Spanish translation update (Abel Martín)
+
+=======
 2008-11-25 Lars Nielsen <lars@mit-web.dk>
 
 	* da.po: Update danish translation
 
+>>>>>>> .r28913
 2008-11-23  Maximilian Schleiss <maximilian@xfce.org>
 
 	* nb.po: Norwegian Bokmal translation update (Terje Uriansrud)
