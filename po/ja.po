@@ -11,9 +11,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mousepad 0.2.12\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-01-20 12:34+0100\n"
-"PO-Revision-Date: 2008-05-13 23:29+0900\n"
-"Last-Translator: Nobuhiro Iwamatsu <iwamatsu@nigauri.org>\n"
+"POT-Creation-Date: 2008-11-24 15:11+0900\n"
+"PO-Revision-Date: 2008-11-24 15:23+0900\n"
+"Last-Translator: Masato Hashimoto <cabezon.hashimoto@gmail.com>\n"
 "Language-Team: Japanese <xfce-users-jp@ml.fdiary.net>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -22,7 +22,7 @@ msgstr ""
 #: ../src/callback.c:37
 #, c-format
 msgid "Save changes to '%s'?"
-msgstr "'%s' の変更を保存しますか？"
+msgstr "'%s' の変更を保存しますか?"
 
 #: ../src/callback.c:213
 #: ../src/file.c:174
@@ -73,7 +73,7 @@ msgstr "/ファイル/開く(_O)..."
 
 #: ../src/menu.c:72
 msgid "/File/Open _Recent"
-msgstr "/ファイル/最近利用したファイルを開く(_R)"
+msgstr "/ファイル/最近開いたファイル(_R)"
 
 #: ../src/menu.c:77
 msgid "/File/_Save"
@@ -81,7 +81,7 @@ msgstr "/ファイル/保存(_S)"
 
 #: ../src/menu.c:79
 msgid "/File/Save _As..."
-msgstr "/ファイル/別名で保存(_A)..."
+msgstr "/ファイル/名前を付けて保存(_A)..."
 
 #: ../src/menu.c:83
 msgid "/File/_Print..."
@@ -145,7 +145,7 @@ msgstr "/検索/置換(_R)..."
 
 #: ../src/menu.c:121
 msgid "/Search/_Jump To..."
-msgstr "/検索/行へ移動(_J)..."
+msgstr "/検索/指定行へ移動(_J)..."
 
 #: ../src/menu.c:123
 msgid "/_Options"
@@ -181,7 +181,7 @@ msgstr "検索文字列が見つかりません"
 
 #: ../src/search.c:115
 msgid "Replace?"
-msgstr "置き換えますか？"
+msgstr "置き換えますか?"
 
 #: ../src/search.c:143
 #, c-format
@@ -250,11 +250,11 @@ msgstr "文字コードを自動検出する"
 
 #: ../src/selector.c:325
 msgid "Open"
-msgstr "開くファイルを選択して下さい"
+msgstr "ファイルを開く"
 
 #: ../src/selector.c:325
 msgid "Save As"
-msgstr "別名で保存"
+msgstr "名前を付けて保存"
 
 #: ../src/selector.c:347
 msgid "Ch_aracter Coding: "
@@ -263,12 +263,12 @@ msgstr "文字コード(_A): "
 #: ../src/selector.c:403
 #, c-format
 msgid "'%s' already exists. Overwrite?"
-msgstr "'%s' は既に存在します。上書きしますか？"
+msgstr "'%s' はすでに存在します。上書きしますか？"
 
 #. add the label with the root warning
 #: ../src/window.c:110
 msgid "Warning, you are using the root account, you may harm your system."
-msgstr "警告: あなたは root アカウントを使っており、システムに悪影響を及ぼすことができます。"
+msgstr "警告: あなたは root アカウントを使用しており、システムに悪影響を及ぼすことができます。"
 
 #: ../src/window.c:169
 msgid "Untitled"
@@ -280,9 +280,9 @@ msgstr "マウスパッド"
 
 #: ../mousepad.desktop.in.h:2
 msgid "Simple text editor"
-msgstr "シンプルなテキストエディター"
+msgstr "シンプルなテキストエディタ"
 
 #: ../mousepad.desktop.in.h:3
 msgid "Text Editor"
-msgstr "テキストエディター"
+msgstr "テキストエディタ"
 
