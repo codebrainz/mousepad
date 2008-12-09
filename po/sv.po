@@ -1,35 +1,37 @@
 # Swedish translation of Mousepad text editor.
-# Copyright (C) 2005-2006 Erik Harrison.
+# Copyright (C) 2005-2008 Erik Harrison.
 # This file is distributed under the same license as the Mousepad package.
 # Isak Savo <iso01001@student.mdh.se>, 2004.
-# Daniel Nylander <po@danielnylander.se>, 2006.
+# Daniel Nylander <po@danielnylander.se>, 2006, 2008.
 # Alexander Toresson <alexander.toresson@gmail.com>, 2006.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: mousepad 0.2.12\n"
+"Project-Id-Version: mousepad\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-01-20 12:34+0100\n"
-"PO-Revision-Date: 2006-10-10 19:09+0100\n"
-"Last-Translator: Alexander Toresson <alexander.toresson@gmail.com>\n"
-"Language-Team: Swedish <sv@li.org>\n"
+"POT-Creation-Date: 2008-12-08 20:47+0100\n"
+"PO-Revision-Date: 2008-12-09 20:45+0100\n"
+"Last-Translator: Daniel Nylander <po@danielnylander.se>\n"
+"Language-Team: Swedish <tp-sv@listor.tp-sv.se>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
 
 #: ../src/callback.c:37
 #, c-format
 msgid "Save changes to '%s'?"
-msgstr "Spara ändringar för \"%s\"?"
+msgstr "Spara ändringar till \"%s\"?"
 
-#: ../src/callback.c:213 ../src/file.c:174
+#: ../src/callback.c:213
+#: ../src/file.c:174
 #, c-format
 msgid "Can't convert codeset to '%s'"
 msgstr "Kan inte konvertera kodning till \"%s\""
 
 #: ../src/callback.c:240
 msgid "Can't open pipe to process"
-msgstr "Kan inte öppna rör för att behandla"
+msgstr "Kan inte öppna rör till process"
 
 #: ../src/callback.c:397
 msgid "A text editor for Xfce"
@@ -46,7 +48,7 @@ msgstr "Kan inte öppna fil att skriva till"
 
 #: ../src/file.c:192
 msgid "Can't write file"
-msgstr "Kan inte skriva till fil"
+msgstr "Kan inte skriva fil"
 
 #: ../src/font.c:49
 msgid "Font"
@@ -62,7 +64,7 @@ msgstr "/Arkiv/_Ny"
 
 #: ../src/menu.c:66
 msgid "/File/New _Window"
-msgstr "/Arkiv/_Nytt fönster"
+msgstr "/Arkiv/Nytt _fönster"
 
 #: ../src/menu.c:69
 msgid "/File/_Open..."
@@ -70,7 +72,7 @@ msgstr "/Arkiv/_Öppna..."
 
 #: ../src/menu.c:72
 msgid "/File/Open _Recent"
-msgstr "/Arkiv/Öppna _senast använda..."
+msgstr "/Arkiv/Öppna _tidigare"
 
 #: ../src/menu.c:77
 msgid "/File/_Save"
@@ -82,15 +84,15 @@ msgstr "/Arkiv/S_para som..."
 
 #: ../src/menu.c:83
 msgid "/File/_Print..."
-msgstr "/Arkiv/_Skriv ut..."
+msgstr "/Arkiv/Skriv _ut..."
 
 #: ../src/menu.c:87
 msgid "/File/_Quit"
-msgstr "Arkiv/_Avsluta"
+msgstr "Arkiv/A_vsluta"
 
 #: ../src/menu.c:89
 msgid "/_Edit"
-msgstr "/_Redigera"
+msgstr "/R_edigera"
 
 #: ../src/menu.c:91
 msgid "/Edit/_Undo"
@@ -106,7 +108,7 @@ msgstr "/Redigera/Klipp _ut"
 
 #: ../src/menu.c:99
 msgid "/Edit/_Copy"
-msgstr "/Redigera/K_opiera"
+msgstr "/Redigera/_Kopiera"
 
 #: ../src/menu.c:101
 msgid "/Edit/_Paste"
@@ -142,27 +144,27 @@ msgstr "/Sök/_Ersätt..."
 
 #: ../src/menu.c:121
 msgid "/Search/_Jump To..."
-msgstr "/Sök/_Hoppa till rad..."
+msgstr "/Sök/_Hoppa till..."
 
 #: ../src/menu.c:123
 msgid "/_Options"
-msgstr "/_Alternativ"
+msgstr "/A_lternativ"
 
 #: ../src/menu.c:125
 msgid "/Options/_Font..."
-msgstr "/Inställningar/_Typsnitt..."
+msgstr "/Alternativ/_Typsnitt..."
 
 #: ../src/menu.c:127
 msgid "/Options/_Word Wrap"
-msgstr "/Inställningar/_Dela långa rader"
+msgstr "/Alternativ/_Dela långa rader"
 
 #: ../src/menu.c:129
 msgid "/Options/_Line Numbers"
-msgstr "/Inställningar/Rad_nummer"
+msgstr "/Alternativ/Rad_nummer"
 
 #: ../src/menu.c:133
 msgid "/Options/_Auto Indent"
-msgstr "/Inställningar/Automatisk _indentering"
+msgstr "/Alternativ/Automatisk _indentering"
 
 #: ../src/menu.c:135
 msgid "/_Help"
@@ -183,17 +185,19 @@ msgstr "Ersätt?"
 #: ../src/search.c:143
 #, c-format
 msgid "%d strings replaced"
-msgstr "%d strängar ersättes"
+msgstr "%d strängar ersattes"
 
 #: ../src/search.c:188
 msgid "Find"
 msgstr "Sök"
 
-#: ../src/search.c:200 ../src/search.c:265
+#: ../src/search.c:200
+#: ../src/search.c:265
 msgid "Fi_nd what: "
-msgstr "S_öksträng: "
+msgstr "S_ök efter: "
 
-#: ../src/search.c:219 ../src/search.c:292
+#: ../src/search.c:219
+#: ../src/search.c:292
 msgid "_Match case"
 msgstr "Matcha _gemener/VERSALER"
 
@@ -207,11 +211,11 @@ msgstr "Ersätt _med: "
 
 #: ../src/search.c:296
 msgid "Replace _all at once"
-msgstr "_Ersätt alla på en gång"
+msgstr "Ersätt _alla på en gång"
 
 #: ../src/search.c:342
 msgid "Jump To"
-msgstr "Hoppa till rad"
+msgstr "Hoppa till"
 
 #: ../src/search.c:347
 msgid "_Jump"
@@ -225,7 +229,7 @@ msgstr "_Radnummer: "
 #: ../src/selector.c:103
 #, c-format
 msgid "Current Locale (%s)"
-msgstr "Aktuell teckenkodning (%s)"
+msgstr "Aktuell lokalanpassning (%s)"
 
 #: ../src/selector.c:147
 msgid "Other Codeset"
@@ -238,11 +242,11 @@ msgstr "_Teckenkodning:"
 #: ../src/selector.c:207
 #, c-format
 msgid "'%s' is not supported"
-msgstr "'%s' stöds inte"
+msgstr "\"%s\" stöds inte"
 
 #: ../src/selector.c:271
 msgid "Auto Detect"
-msgstr "Automatisk"
+msgstr "Upptäck automatiskt"
 
 #: ../src/selector.c:325
 msgid "Open"
@@ -264,9 +268,7 @@ msgstr "\"%s\" finns redan. Vill du skriva över den?"
 #. add the label with the root warning
 #: ../src/window.c:110
 msgid "Warning, you are using the root account, you may harm your system."
-msgstr ""
-"Varning! Du använder administratörskontot, det finns en möjlighet att du "
-"skadar ditt system."
+msgstr "Varning! Du använder root-kontot. Det finns en möjlighet att du skadar ditt system."
 
 #: ../src/window.c:169
 msgid "Untitled"
@@ -274,7 +276,7 @@ msgstr "Namnlös"
 
 #: ../mousepad.desktop.in.h:1
 msgid "Mousepad"
-msgstr ""
+msgstr "Mousepad"
 
 #: ../mousepad.desktop.in.h:2
 msgid "Simple text editor"
@@ -283,3 +285,4 @@ msgstr "Enkel textredigerare"
 #: ../mousepad.desktop.in.h:3
 msgid "Text Editor"
 msgstr "Textredigerare"
+
