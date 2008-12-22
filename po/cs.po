@@ -2,14 +2,14 @@
 # Copyright (C) 2005-2006 Erik Harrison.
 # This file is distributed under the same license as the Mousepad package.
 # Petr Vysloužil <evyslouz@volny.cz>, 2004.
-# Michal Várady <miko.vaji@gmail.com>, 2006.
+# Michal Várady <miko.vaji@gmail.com>, 2006-2008.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: mousepad 0.2.12\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2007-01-20 12:34+0100\n"
-"PO-Revision-Date: 2007-01-20 13:04+0100\n"
+"PO-Revision-Date: 2008-12-22 21:12+0100\n"
 "Last-Translator: Michal Várady <miko.vaji@gmail.com>\n"
 "Language-Team: Czech <translation-team-cs@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -28,11 +28,11 @@ msgstr "Uložit změny v souboru '%s'?"
 #: ../src/file.c:174
 #, c-format
 msgid "Can't convert codeset to '%s'"
-msgstr "Nemohu převést znakovou sadu na '%s'"
+msgstr "Nelze převést znakovou sadu na '%s'"
 
 #: ../src/callback.c:240
 msgid "Can't open pipe to process"
-msgstr "Nemohu otevřít rouru pro zpracování"
+msgstr "Nelze otevřít rouru pro zpracování"
 
 #: ../src/callback.c:397
 msgid "A text editor for Xfce"
@@ -121,7 +121,7 @@ msgstr "/Úpravy/_Odstranit"
 
 #: ../src/menu.c:107
 msgid "/Edit/Select _All"
-msgstr "/Úpravy/Oz_načit vše"
+msgstr "/Úpravy/Vy_brat vše"
 
 #: ../src/menu.c:109
 msgid "/_Search"
@@ -129,23 +129,23 @@ msgstr "/_Hledat"
 
 #: ../src/menu.c:111
 msgid "/Search/_Find..."
-msgstr "/Hledat/_Hledat"
+msgstr "/Hledat/_Najít..."
 
 #: ../src/menu.c:113
 msgid "/Search/Find _Next"
-msgstr "/Hledat/Hledat _následující"
+msgstr "/Hledat/Najít _další"
 
 #: ../src/menu.c:115
 msgid "/Search/Find _Previous"
-msgstr "/Hledat/Hledat _předchozí"
+msgstr "/Hledat/Najít _předchozí"
 
 #: ../src/menu.c:117
 msgid "/Search/_Replace..."
-msgstr "/Hledat/Nah_radit"
+msgstr "/Hledat/Nah_radit..."
 
 #: ../src/menu.c:121
 msgid "/Search/_Jump To..."
-msgstr "/Hledat/Př_ejít na"
+msgstr "/Hledat/Př_ejít na..."
 
 #: ../src/menu.c:123
 msgid "/_Options"
@@ -153,7 +153,7 @@ msgstr "/_Nástroje"
 
 #: ../src/menu.c:125
 msgid "/Options/_Font..."
-msgstr "/_Nástroje/_Písmo"
+msgstr "/_Nástroje/_Písmo..."
 
 #: ../src/menu.c:127
 msgid "/Options/_Word Wrap"
@@ -186,16 +186,16 @@ msgstr "Nahradit?"
 #: ../src/search.c:143
 #, c-format
 msgid "%d strings replaced"
-msgstr "Nahrazeno '%d' řetězců"
+msgstr "Nahrazeno %d řetězců"
 
 #: ../src/search.c:188
 msgid "Find"
-msgstr "Hledat"
+msgstr "Najít"
 
 #: ../src/search.c:200
 #: ../src/search.c:265
 msgid "Fi_nd what: "
-msgstr "H_ledat:"
+msgstr "N_ajít:"
 
 #: ../src/search.c:219
 #: ../src/search.c:292
@@ -208,7 +208,7 @@ msgstr "Nahradit"
 
 #: ../src/search.c:280
 msgid "Re_place with: "
-msgstr "Nahra_dit čím:"
+msgstr "Nahra_dit:"
 
 #: ../src/search.c:296
 msgid "Replace _all at once"
@@ -216,7 +216,7 @@ msgstr "Nahradit vš_e"
 
 #: ../src/search.c:342
 msgid "Jump To"
-msgstr "Jit na _řádek"
+msgstr "Přejit na řádek"
 
 #: ../src/search.c:347
 msgid "_Jump"
@@ -268,7 +268,7 @@ msgstr "'%s' již existuje. Přepsat?"
 #. add the label with the root warning
 #: ../src/window.c:110
 msgid "Warning, you are using the root account, you may harm your system."
-msgstr "Varování: Používáte-li účet správce (root), můžete poškodit Váš systém."
+msgstr "Varování: Používáte-li účet správce (root), můžete poškodit systém."
 
 #: ../src/window.c:169
 msgid "Untitled"
