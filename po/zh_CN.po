@@ -3,14 +3,15 @@
 # This file is distributed under the same license as the Mousepad package.
 # Carlos Z.F. Liu <carlos_liu@yahoo.com>, 2004.
 # Jick Nan <jick.nan@gmail.com>, 2006.
+# Hunt Xu <huntxu@live.cn>,2008.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: mousepad 0.2.12\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2007-01-20 12:34+0100\n"
-"PO-Revision-Date: 2006-04-20 21:27+0800\n"
-"Last-Translator: Jick Nan <jick.nan@gmail.com>\n"
+"PO-Revision-Date: 2008-12-17 02:23+0800\n"
+"Last-Translator: Hunt Xu <huntxu@live.cn>\n"
 "Language-Team: Simplified Chinese <i18n-translation@lists.linux.net.cn>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -21,7 +22,8 @@ msgstr ""
 msgid "Save changes to '%s'?"
 msgstr "将更改保存到“%s”吗？"
 
-#: ../src/callback.c:213 ../src/file.c:174
+#: ../src/callback.c:213
+#: ../src/file.c:174
 #, c-format
 msgid "Can't convert codeset to '%s'"
 msgstr "无法将编码转换到“%s”"
@@ -60,18 +62,16 @@ msgid "/File/_New"
 msgstr "/文件(F)/新建(_N)"
 
 #: ../src/menu.c:66
-#, fuzzy
 msgid "/File/New _Window"
-msgstr "/文件(F)/新建(_N)"
+msgstr "/文件(F)/新建(_W)"
 
 #: ../src/menu.c:69
 msgid "/File/_Open..."
 msgstr "/文件(F)/打开(_O)..."
 
 #: ../src/menu.c:72
-#, fuzzy
 msgid "/File/Open _Recent"
-msgstr "/文件(F)/打开(_O)..."
+msgstr "/文件(F)/打开最近使用的文档(_R)"
 
 #: ../src/menu.c:77
 msgid "/File/_Save"
@@ -190,11 +190,13 @@ msgstr "替换了 %d 个字符串"
 msgid "Find"
 msgstr "查找"
 
-#: ../src/search.c:200 ../src/search.c:265
+#: ../src/search.c:200
+#: ../src/search.c:265
 msgid "Fi_nd what: "
 msgstr "查找(_N)："
 
-#: ../src/search.c:219 ../src/search.c:292
+#: ../src/search.c:219
+#: ../src/search.c:292
 msgid "_Match case"
 msgstr "区分大小写(_M)"
 
@@ -264,7 +266,7 @@ msgstr "文件“%s”已经存在。覆盖它吗？"
 #. add the label with the root warning
 #: ../src/window.c:110
 msgid "Warning, you are using the root account, you may harm your system."
-msgstr ""
+msgstr "警告：您正在使用root账户，操作不当可能损害您的系统。"
 
 #: ../src/window.c:169
 msgid "Untitled"
@@ -281,3 +283,4 @@ msgstr "简易文字编辑器"
 #: ../mousepad.desktop.in.h:3
 msgid "Text Editor"
 msgstr "文字编辑器"
+
