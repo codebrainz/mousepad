@@ -40,7 +40,7 @@ void run_dialog_message(GtkWidget *window, GtkMessageType type, gchar *message, 
 		GTK_DIALOG_DESTROY_WITH_PARENT,
 		type,
 		GTK_BUTTONS_NONE,
-		str);
+		"%s", str);
 	gtk_window_set_resizable(GTK_WINDOW(dialog), FALSE);
 	gtk_dialog_add_buttons(GTK_DIALOG(dialog),
 		GTK_STOCK_OK, GTK_RESPONSE_CANCEL, NULL);
@@ -65,7 +65,7 @@ GtkWidget *create_dialog_message_question(GtkWidget *window, gchar *message, ...
 		GTK_DIALOG_DESTROY_WITH_PARENT,
 		GTK_MESSAGE_QUESTION,
 		GTK_BUTTONS_NONE,
-		str);
+		"%s", str);
 	gtk_window_set_resizable(GTK_WINDOW(dialog), FALSE);
 	gtk_dialog_add_buttons(GTK_DIALOG(dialog),
 		GTK_STOCK_CANCEL, GTK_RESPONSE_CANCEL,
