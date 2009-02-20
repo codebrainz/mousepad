@@ -2,35 +2,33 @@
 # Copyright (C) 2005-2006 Erik Harrison.
 # This file is distributed under the same license as the Mousepad package.
 # Alessio D'Ascanio <g3ntaro@gmail.com>, 2004.
+# Fabio Riga <usul@aruba.it>, 2007-2009.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: mousepad 0.2.12\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2007-01-20 12:34+0100\n"
-"PO-Revision-Date: 2005-10-20 12:08+0100\n"
-"Last-Translator: Alex Dupre <ale@FreeBSD.org>\n"
-"Language-Team: Italian <tp@lists.linux.it>\n"
+"PO-Revision-Date: 2009-02-06 00:24+0100\n"
+"Last-Translator: Fabio Riga <usul@aruba.it>\n"
+"Language-Team: Italian <xfce-it-translators@googlegroup.com>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Poedit-Language: Italian\n"
-"X-Poedit-Country: ITALY\n"
-"X-Poedit-SourceCharset: utf-8\n"
 
 #: ../src/callback.c:37
 #, c-format
 msgid "Save changes to '%s'?"
-msgstr "Salvare le modifiche a '%s'?"
+msgstr "Salvare le modifiche a \"%s\"?"
 
 #: ../src/callback.c:213 ../src/file.c:174
 #, c-format
 msgid "Can't convert codeset to '%s'"
-msgstr "Impossibile convertire nel set di caratteri '%s'"
+msgstr "Impossibile convertire la codifica in \"%s\""
 
 #: ../src/callback.c:240
 msgid "Can't open pipe to process"
-msgstr ""
+msgstr "Impossibile processare la pipe"
 
 #: ../src/callback.c:397
 msgid "A text editor for Xfce"
@@ -43,7 +41,7 @@ msgstr "Informazioni su %s"
 
 #: ../src/file.c:187
 msgid "Can't open file to write"
-msgstr "impossibile scrivere sul file"
+msgstr "Impossibile aprile il file in scrittura"
 
 #: ../src/file.c:192
 msgid "Can't write file"
@@ -62,18 +60,16 @@ msgid "/File/_New"
 msgstr "/File/_Nuovo"
 
 #: ../src/menu.c:66
-#, fuzzy
 msgid "/File/New _Window"
-msgstr "/File/_Nuovo"
+msgstr "/File/Nuova _finestra"
 
 #: ../src/menu.c:69
 msgid "/File/_Open..."
 msgstr "/File/_Apri..."
 
 #: ../src/menu.c:72
-#, fuzzy
 msgid "/File/Open _Recent"
-msgstr "/File/_Apri..."
+msgstr "/File/Apri _recenti"
 
 #: ../src/menu.c:77
 msgid "/File/_Save"
@@ -81,7 +77,7 @@ msgstr "/File/_Salva"
 
 #: ../src/menu.c:79
 msgid "/File/Save _As..."
-msgstr "/File/Sa_lva come..."
+msgstr "/File/Sa_lva con nome..."
 
 #: ../src/menu.c:83
 msgid "/File/_Print..."
@@ -97,7 +93,7 @@ msgstr "/_Modifica"
 
 #: ../src/menu.c:91
 msgid "/Edit/_Undo"
-msgstr "/Modifica/Ann_ulla"
+msgstr "/Modifica/_Annulla"
 
 #: ../src/menu.c:93
 msgid "/Edit/_Redo"
@@ -129,23 +125,23 @@ msgstr "/_Cerca"
 
 #: ../src/menu.c:111
 msgid "/Search/_Find..."
-msgstr "/Cerca/_Trova..."
+msgstr "/Cerca/Tr_ova..."
 
 #: ../src/menu.c:113
 msgid "/Search/Find _Next"
-msgstr "/"
+msgstr "/Cerca/Trova successi_vo"
 
 #: ../src/menu.c:115
 msgid "/Search/Find _Previous"
-msgstr "/Cerca/Trova _Precedente"
+msgstr "/Cerca/Trova pr_ecedente"
 
 #: ../src/menu.c:117
 msgid "/Search/_Replace..."
-msgstr "Trova/_Sostituisci..."
+msgstr "/Cerca/Sostit_uisci..."
 
 #: ../src/menu.c:121
 msgid "/Search/_Jump To..."
-msgstr "/Cerca/Salta a _Riga..."
+msgstr "/Cerca/Salta a _riga..."
 
 #: ../src/menu.c:123
 msgid "/_Options"
@@ -153,19 +149,19 @@ msgstr "/_Opzioni"
 
 #: ../src/menu.c:125
 msgid "/Options/_Font..."
-msgstr "/Opzioni/_Font..."
+msgstr "/Opzioni/_Tipo di carattere..."
 
 #: ../src/menu.c:127
 msgid "/Options/_Word Wrap"
-msgstr "/Opzioni/A capo automatico"
+msgstr "/Opzioni/A capo _automatico"
 
 #: ../src/menu.c:129
 msgid "/Options/_Line Numbers"
-msgstr "/Opzioni/Visualizza numeri di _linea"
+msgstr "/Opzioni/Numeri di _riga"
 
 #: ../src/menu.c:133
 msgid "/Options/_Auto Indent"
-msgstr "/Opzioni/Indenta _automaticamente"
+msgstr "/Opzioni/Rientro a_utomatico"
 
 #: ../src/menu.c:135
 msgid "/_Help"
@@ -181,7 +177,7 @@ msgstr "Stringa non trovata"
 
 #: ../src/search.c:115
 msgid "Replace?"
-msgstr "Sostituire? "
+msgstr "Sostituire?"
 
 #: ../src/search.c:143
 #, c-format
@@ -194,11 +190,11 @@ msgstr "Trova"
 
 #: ../src/search.c:200 ../src/search.c:265
 msgid "Fi_nd what: "
-msgstr "Cercare: "
+msgstr "_Trova: "
 
 #: ../src/search.c:219 ../src/search.c:292
 msgid "_Match case"
-msgstr "Distingui MAIUSCOLE/minuscole"
+msgstr "_Distingui MAIUSCOLE/minuscole"
 
 #: ../src/search.c:253
 msgid "Replace"
@@ -206,28 +202,28 @@ msgstr "Sostituisci"
 
 #: ../src/search.c:280
 msgid "Re_place with: "
-msgstr "Sostituisci con: "
+msgstr "_Sostituisci con: "
 
 #: ../src/search.c:296
 msgid "Replace _all at once"
-msgstr "Sostituisci _Tutti"
+msgstr "Sostituisci _tutti in una volta"
 
 #: ../src/search.c:342
 msgid "Jump To"
-msgstr "_Salta a"
+msgstr "Salta a"
 
 #: ../src/search.c:347
 msgid "_Jump"
-msgstr "_Vai"
+msgstr "_Salta"
 
 #: ../src/search.c:353
 msgid "_Line number: "
-msgstr "_Numero di riga: "
+msgstr "Numero di _riga: "
 
 #: ../src/selector.c:103
 #, c-format
 msgid "Current Locale (%s)"
-msgstr "Localizzazione Corrente (%s)"
+msgstr "Localizzazione corrente (%s)"
 
 #: ../src/selector.c:147
 msgid "Other Codeset"
@@ -235,12 +231,12 @@ msgstr "Altra Codifica"
 
 #: ../src/selector.c:186
 msgid "Code_set:"
-msgstr "Codifica:"
+msgstr "_Codifica:"
 
 #: ../src/selector.c:207
 #, c-format
 msgid "'%s' is not supported"
-msgstr "'%s' non è supportato"
+msgstr "\"%s\" non è supportato"
 
 #: ../src/selector.c:271
 msgid "Auto Detect"
@@ -256,17 +252,17 @@ msgstr "Salva con nome"
 
 #: ../src/selector.c:347
 msgid "Ch_aracter Coding: "
-msgstr "_Codifica: "
+msgstr "_Codifica caratteri: "
 
 #: ../src/selector.c:403
 #, c-format
 msgid "'%s' already exists. Overwrite?"
-msgstr "'%s' esiste già. Sovrascrivere?"
+msgstr "\"%s\" esiste già. Sovrascrivere?"
 
 #. add the label with the root warning
 #: ../src/window.c:110
 msgid "Warning, you are using the root account, you may harm your system."
-msgstr ""
+msgstr "Attenzione, usando l'utente root si potrebbe danneggiare il sistema."
 
 #: ../src/window.c:169
 msgid "Untitled"
@@ -274,13 +270,12 @@ msgstr "Senza titolo"
 
 #: ../mousepad.desktop.in.h:1
 msgid "Mousepad"
-msgstr ""
+msgstr "Mousepad"
 
 #: ../mousepad.desktop.in.h:2
 msgid "Simple text editor"
-msgstr "Semplice editor testuale"
+msgstr "Semplice editor di testo"
 
 #: ../mousepad.desktop.in.h:3
-#, fuzzy
 msgid "Text Editor"
-msgstr "Semplice editor testuale"
+msgstr "editor di testo"

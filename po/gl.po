@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: mousepad 0.2.12\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2007-01-20 12:34+0100\n"
-"PO-Revision-Date: 2008-06-28 12:58+0100\n"
+"PO-Revision-Date: 2009-02-11 17:38+0100\n"
 "Last-Translator: Leandro Regueiro <leandro DOT regueiro AT gmail DOT com>\n"
 "Language-Team: Galician <proxecto@trasno.net>\n"
 "MIME-Version: 1.0\n"
@@ -27,9 +27,9 @@ msgstr "Desexa gardar os cambios en '%s'?"
 
 #: ../src/callback.c:213
 #: ../src/file.c:174
-#, c-format
+#, fuzzy, c-format
 msgid "Can't convert codeset to '%s'"
-msgstr ""
+msgstr "Converter textos en camiños"
 
 #: ../src/callback.c:240
 msgid "Can't open pipe to process"
@@ -135,12 +135,12 @@ msgstr "/Buscar/_Buscar..."
 #: ../src/menu.c:113
 #, fuzzy
 msgid "/Search/Find _Next"
-msgstr "/Buscar/Buscar _anterior"
+msgstr "Non hai ningún zoom posterior."
 
 #: ../src/menu.c:115
 #, fuzzy
 msgid "/Search/Find _Previous"
-msgstr "/Buscar/Buscar _anterior"
+msgstr "Non hai ningún zoom anterior."
 
 #: ../src/menu.c:117
 msgid "/Search/_Replace..."
@@ -159,8 +159,12 @@ msgid "/Options/_Font..."
 msgstr "/Opcións/_Tipo de letra..."
 
 #: ../src/menu.c:127
+#, fuzzy
 msgid "/Options/_Word Wrap"
 msgstr ""
+"[OPCIÓNS...] [FICHEIRO...]\n"
+"\n"
+"Opcións dispoñibles:"
 
 #: ../src/menu.c:129
 msgid "/Options/_Line Numbers"
@@ -203,8 +207,9 @@ msgstr "_Buscar: "
 # Coincidencia exacta
 #: ../src/search.c:219
 #: ../src/search.c:292
+#, fuzzy
 msgid "_Match case"
-msgstr ""
+msgstr "Atopouse <b>%d</b> obxecto (de <b>%d</b>), coincidencia %s."
 
 #: ../src/search.c:253
 msgid "Replace"
@@ -231,17 +236,19 @@ msgid "_Line number: "
 msgstr "Número de _liña: "
 
 #: ../src/selector.c:103
-#, c-format
+#, fuzzy, c-format
 msgid "Current Locale (%s)"
-msgstr ""
+msgstr "tips-locale:gl"
 
 #: ../src/selector.c:147
+#, fuzzy
 msgid "Other Codeset"
-msgstr ""
+msgstr "Outras opcións"
 
 #: ../src/selector.c:186
+#, fuzzy
 msgid "Code_set:"
-msgstr ""
+msgstr "Establecer o atributo"
 
 #: ../src/selector.c:207
 #, c-format
@@ -261,8 +268,9 @@ msgid "Save As"
 msgstr "Gardar Coma"
 
 #: ../src/selector.c:347
+#, fuzzy
 msgid "Ch_aracter Coding: "
-msgstr ""
+msgstr "Aleatorio, canle independente"
 
 #: ../src/selector.c:403
 #, c-format
