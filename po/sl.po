@@ -1,0 +1,290 @@
+# Slovenian translations for PACKAGE package
+# Slovenski prevodi paketa PACKAGE.
+# Copyright (C) 2008 THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# Alan Pepelko <alan.pepelko@gmail.com>, 2008.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Mousepad 0.2.13\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2007-01-20 12:34+0100\n"
+"PO-Revision-Date: 2009-02-13 11:07+0100\n"
+"Last-Translator: Alan Pepelko <alan.pepelko@gmail.com>\n"
+"Language-Team: Slovenian <translation-team-sl@lists.sourceforge.net>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=4; plural=(n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || n%100==4 ? 2 : 3);\n"
+"X-Poedit-KeywordsList: \n"
+"X-Poedit-SourceCharset: utf-8\n"
+"X-Poedit-Language: Slovenian\n"
+"X-Poedit-Country: SLOVENIA\n"
+
+#: ../src/callback.c:37
+#, c-format
+msgid "Save changes to '%s'?"
+msgstr "Želite shraniti spremembe v '%s'?"
+
+#: ../src/callback.c:213
+#: ../src/file.c:174
+#, c-format
+msgid "Can't convert codeset to '%s'"
+msgstr "Ni mogoče pretvoriti nabora znakov v '%s'"
+
+#: ../src/callback.c:240
+msgid "Can't open pipe to process"
+msgstr "Ni mogoče odpreti datoteke"
+
+#: ../src/callback.c:397
+msgid "A text editor for Xfce"
+msgstr "Urejevalnik besedil za Xfce"
+
+#: ../src/dialog.c:135
+#, c-format
+msgid "About %s"
+msgstr "O %s"
+
+#: ../src/file.c:187
+msgid "Can't open file to write"
+msgstr "Ni mogoče odpreti datoteke"
+
+#: ../src/file.c:192
+msgid "Can't write file"
+msgstr "Ni mogoče zapisati datoteke"
+
+#: ../src/font.c:49
+msgid "Font"
+msgstr "Pisava"
+
+#: ../src/menu.c:61
+msgid "/_File"
+msgstr "/_Datoteka"
+
+#: ../src/menu.c:63
+msgid "/File/_New"
+msgstr "/Datoteka/_Nova"
+
+#: ../src/menu.c:66
+msgid "/File/New _Window"
+msgstr "/Datoteka/Novo o_kno"
+
+#: ../src/menu.c:69
+msgid "/File/_Open..."
+msgstr "/Datoteka/_Odpri ..."
+
+#: ../src/menu.c:72
+msgid "/File/Open _Recent"
+msgstr "/Datoteka/O_dpri nedavne"
+
+#: ../src/menu.c:77
+msgid "/File/_Save"
+msgstr "/Datoteka/_Shrani"
+
+#: ../src/menu.c:79
+msgid "/File/Save _As..."
+msgstr "/Datoteka/Shrani _kot ..."
+
+#: ../src/menu.c:83
+msgid "/File/_Print..."
+msgstr "/Datoteka/Na_tisni ..."
+
+#: ../src/menu.c:87
+msgid "/File/_Quit"
+msgstr "/Datoteka/Iz_hod"
+
+#: ../src/menu.c:89
+msgid "/_Edit"
+msgstr "/_Uredi"
+
+#: ../src/menu.c:91
+msgid "/Edit/_Undo"
+msgstr "/Uredi/R_azveljavi"
+
+#: ../src/menu.c:93
+msgid "/Edit/_Redo"
+msgstr "/Uredi/_Uveljavi"
+
+#: ../src/menu.c:97
+msgid "/Edit/Cu_t"
+msgstr "/Uredi/Iz_reži"
+
+#: ../src/menu.c:99
+msgid "/Edit/_Copy"
+msgstr "/Uredi/_Kopiraj"
+
+#: ../src/menu.c:101
+msgid "/Edit/_Paste"
+msgstr "/Uredi/_Prilepi"
+
+#: ../src/menu.c:103
+msgid "/Edit/_Delete"
+msgstr "/Uredi/Poči_sti"
+
+#: ../src/menu.c:107
+msgid "/Edit/Select _All"
+msgstr "/Uredi/Iz_beri vse"
+
+#: ../src/menu.c:109
+msgid "/_Search"
+msgstr "/_Išči"
+
+#: ../src/menu.c:111
+msgid "/Search/_Find..."
+msgstr "/Išči/_Najdi ..."
+
+#: ../src/menu.c:113
+msgid "/Search/Find _Next"
+msgstr "/Išči/Najdi na_slednji"
+
+#: ../src/menu.c:115
+msgid "/Search/Find _Previous"
+msgstr "/Išči/Najdi _prejšnji"
+
+#: ../src/menu.c:117
+msgid "/Search/_Replace..."
+msgstr "/Išči/_Zamenjaj ..."
+
+#: ../src/menu.c:121
+msgid "/Search/_Jump To..."
+msgstr "/Iskanje/Poj_di na..."
+
+#: ../src/menu.c:123
+msgid "/_Options"
+msgstr "/_Možnosti"
+
+#: ../src/menu.c:125
+msgid "/Options/_Font..."
+msgstr "/Možnosti/_Pisava ..."
+
+#: ../src/menu.c:127
+msgid "/Options/_Word Wrap"
+msgstr "/Možnosti/Prelom _besedila"
+
+#: ../src/menu.c:129
+msgid "/Options/_Line Numbers"
+msgstr "/Možnosti/_Številke vrstic"
+
+#: ../src/menu.c:133
+msgid "/Options/_Auto Indent"
+msgstr "/Možnosti/_Zamik prve vrstice"
+
+#: ../src/menu.c:135
+msgid "/_Help"
+msgstr "/_Pomoč"
+
+#: ../src/menu.c:137
+msgid "/Help/_About"
+msgstr "/Pomoč/_O"
+
+#: ../src/search.c:73
+msgid "Search string not found"
+msgstr "Iskanega niza ni mogoče najti"
+
+#: ../src/search.c:115
+msgid "Replace?"
+msgstr "Želite zamenjati?"
+
+#: ../src/search.c:143
+#, c-format
+msgid "%d strings replaced"
+msgstr "%d nizov zamenjanih"
+
+#: ../src/search.c:188
+msgid "Find"
+msgstr "Najdi"
+
+#: ../src/search.c:200
+#: ../src/search.c:265
+msgid "Fi_nd what: "
+msgstr "_Najdi kaj:"
+
+#: ../src/search.c:219
+#: ../src/search.c:292
+msgid "_Match case"
+msgstr "_Upoštevaj velikost črk"
+
+#: ../src/search.c:253
+msgid "Replace"
+msgstr "Zamenjaj"
+
+#: ../src/search.c:280
+msgid "Re_place with: "
+msgstr "Zamenjaj _z:"
+
+#: ../src/search.c:296
+msgid "Replace _all at once"
+msgstr "Zamenjaj _vse naenkrat"
+
+#: ../src/search.c:342
+msgid "Jump To"
+msgstr "Pojdi na"
+
+#: ../src/search.c:347
+msgid "_Jump"
+msgstr "Po_jdi"
+
+#: ../src/search.c:353
+msgid "_Line number: "
+msgstr "Števi_lka vrstice:"
+
+#: ../src/selector.c:103
+#, c-format
+msgid "Current Locale (%s)"
+msgstr "Trenutni locale (%s)"
+
+#: ../src/selector.c:147
+msgid "Other Codeset"
+msgstr "Drug nabor znakov"
+
+#: ../src/selector.c:186
+msgid "Code_set:"
+msgstr "Nabor _znakov:"
+
+#: ../src/selector.c:207
+#, c-format
+msgid "'%s' is not supported"
+msgstr "'%s' ni podprt"
+
+#: ../src/selector.c:271
+msgid "Auto Detect"
+msgstr "Samozaznaj"
+
+#: ../src/selector.c:325
+msgid "Open"
+msgstr "Odpri"
+
+#: ../src/selector.c:325
+msgid "Save As"
+msgstr "Shrani kot"
+
+#: ../src/selector.c:347
+msgid "Ch_aracter Coding: "
+msgstr "_Kodiranje besedila:"
+
+#: ../src/selector.c:403
+#, c-format
+msgid "'%s' already exists. Overwrite?"
+msgstr "Datoteka '%s' že obstaja. Jo želite prepisati?"
+
+#. add the label with the root warning
+#: ../src/window.c:110
+msgid "Warning, you are using the root account, you may harm your system."
+msgstr "Pozor! Ker uporabljate administratorski račun (root), lahko poškodujete vaš sistem."
+
+#: ../src/window.c:169
+msgid "Untitled"
+msgstr "Brez naslova"
+
+#: ../mousepad.desktop.in.h:1
+msgid "Mousepad"
+msgstr "Mousepad"
+
+#: ../mousepad.desktop.in.h:2
+msgid "Simple text editor"
+msgstr "Preprost urejevalnik besedil"
+
+#: ../mousepad.desktop.in.h:3
+msgid "Text Editor"
+msgstr "Urejevalnik besedil"
+
