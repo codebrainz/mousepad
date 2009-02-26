@@ -4,7 +4,7 @@
 # Besnik Bleta <besnik@programeshqip.org>, 2007.
 msgid ""
 msgstr ""
-"Project-Id-Version: mousepad 0.2.12\n"
+"Project-Id-Version: mousepad 0.2.16\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2007-01-12 13:48+0200\n"
 "PO-Revision-Date: 2008-11-04 22:23+0200\n"
