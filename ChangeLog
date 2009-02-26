@@ -1,6 +1,11 @@
+2009-02-26  Jannis Pohlmann <jannis@xfce.org>
+
+	* == Released 0.2.14 ==
+	* NEWS, configure.in.in: Bump version.
+
 2008-02-13  Nick Schermer <nick@xfce.org>
 
-  * src/menu.c, NEWS: Sort items by most recently used.
+	* src/menu.c, NEWS: Sort items by most recently used.
 
 2007-01-20	Benedikt Meurer <benny@xfce.org>
 
