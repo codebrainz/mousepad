@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: mousepad 0.2.14\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2007-01-20 12:34+0100\n"
-"PO-Revision-Date: 2009-01-30 15:12+0100\n"
+"PO-Revision-Date: 2009-02-24 20:30+0100\n"
 "Last-Translator: Piotr Sokół <piotr.sokol@10g.pl>\n"
 "Language-Team: Polish\n"
 "MIME-Version: 1.0\n"
@@ -30,7 +30,7 @@ msgstr "Nie można przekonwertować strony kodowej do „%s”"
 
 #: ../src/callback.c:240
 msgid "Can't open pipe to process"
-msgstr "Nie można otworzyć rurki dla procesu"
+msgstr "Nie można otworzyć rurki do procesu"
 
 #: ../src/callback.c:397
 msgid "A text editor for Xfce"
@@ -55,127 +55,127 @@ msgstr "Czcionka"
 
 #: ../src/menu.c:61
 msgid "/_File"
-msgstr "/_Plik"
+msgstr "_Plik"
 
 #: ../src/menu.c:63
 msgid "/File/_New"
-msgstr "/Plik/_Nowy"
+msgstr "_Nowy"
 
 #: ../src/menu.c:66
 msgid "/File/New _Window"
-msgstr "/Plik/No_we okno"
+msgstr "No_we okno"
 
 #: ../src/menu.c:69
 msgid "/File/_Open..."
-msgstr "/Plik/_Otwórz..."
+msgstr "_Otwórz..."
 
 #: ../src/menu.c:72
 msgid "/File/Open _Recent"
-msgstr "/Plik/Ostatnio otwa_rte"
+msgstr "Ostatnio otwa_rte"
 
 #: ../src/menu.c:77
 msgid "/File/_Save"
-msgstr "/Plik/Z_apisz"
+msgstr "Z_apisz"
 
 #: ../src/menu.c:79
 msgid "/File/Save _As..."
-msgstr "/Plik/Zapi_sz jako..."
+msgstr "Zapi_sz jako..."
 
 #: ../src/menu.c:83
 msgid "/File/_Print..."
-msgstr "/Plik/_Drukuj..."
+msgstr "_Drukuj..."
 
 #: ../src/menu.c:87
 msgid "/File/_Quit"
-msgstr "/Plik/Za_kończ"
+msgstr "Za_kończ"
 
 #: ../src/menu.c:89
 msgid "/_Edit"
-msgstr "/_Edycja"
+msgstr "_Edycja"
 
 #: ../src/menu.c:91
 msgid "/Edit/_Undo"
-msgstr "/Edycja/_Cofnij"
+msgstr "_Cofnij"
 
 #: ../src/menu.c:93
 msgid "/Edit/_Redo"
-msgstr "/Edycja/_Powtórz"
+msgstr "_Powtórz"
 
 #: ../src/menu.c:97
 msgid "/Edit/Cu_t"
-msgstr "/Edycja/_Wytnij"
+msgstr "_Wytnij"
 
 #: ../src/menu.c:99
 msgid "/Edit/_Copy"
-msgstr "/Edycja/S_kopiuj"
+msgstr "S_kopiuj"
 
 #: ../src/menu.c:101
 msgid "/Edit/_Paste"
-msgstr "/Edycja/Wk_lej"
+msgstr "Wk_lej"
 
 #: ../src/menu.c:103
 msgid "/Edit/_Delete"
-msgstr "/Edycja/_Usuń"
+msgstr "_Usuń"
 
 #: ../src/menu.c:107
 msgid "/Edit/Select _All"
-msgstr "/Edycja/Zaznacz _wszystko"
+msgstr "Zaznacz _wszystko"
 
 #: ../src/menu.c:109
 msgid "/_Search"
-msgstr "/_Widok"
+msgstr "_Widok"
 
 #: ../src/menu.c:111
 msgid "/Search/_Find..."
-msgstr "/Widok/_Znajdź..."
+msgstr "_Znajdź..."
 
 #: ../src/menu.c:113
 msgid "/Search/Find _Next"
-msgstr "/Widok/Znajdź _następny"
+msgstr "Znajdź _następny"
 
 #: ../src/menu.c:115
 msgid "/Search/Find _Previous"
-msgstr "/Widok/Znaj_dź poprzedni"
+msgstr "Znaj_dź poprzedni"
 
 #: ../src/menu.c:117
 msgid "/Search/_Replace..."
-msgstr "/Widok/Z_astąp..."
+msgstr "Z_astąp..."
 
 #: ../src/menu.c:121
 msgid "/Search/_Jump To..."
-msgstr "/Widok/_Przejdź do..."
+msgstr "_Przejdź do..."
 
 #: ../src/menu.c:123
 msgid "/_Options"
-msgstr "/_Opcje"
+msgstr "_Opcje"
 
 #: ../src/menu.c:125
 msgid "/Options/_Font..."
-msgstr "/Opcje/_Czcionka..."
+msgstr "_Czcionka..."
 
 #: ../src/menu.c:127
 msgid "/Options/_Word Wrap"
-msgstr "/Opcje/_Zawijanie wierszy"
+msgstr "_Zawijanie wierszy"
 
 #: ../src/menu.c:129
 msgid "/Options/_Line Numbers"
-msgstr "/Opcje/_Numerowanie wierszy"
+msgstr "_Numerowanie wierszy"
 
 #: ../src/menu.c:133
 msgid "/Options/_Auto Indent"
-msgstr "/Opcje/_Automatyczne wcięcia"
+msgstr "_Automatyczne wcięcia"
 
 #: ../src/menu.c:135
 msgid "/_Help"
-msgstr "/Pomo_c"
+msgstr "Pomo_c"
 
 #: ../src/menu.c:137
 msgid "/Help/_About"
-msgstr "/Pomoc/_O programie"
+msgstr "_O programie"
 
 #: ../src/search.c:73
 msgid "Search string not found"
-msgstr "Szukany ciąg znaków nie został znaleziony"
+msgstr "Wyszukiwany ciąg znaków nie został znaleziony"
 
 #: ../src/search.c:115
 msgid "Replace?"
@@ -188,12 +188,12 @@ msgstr "zastąpiono %d ciągów"
 
 #: ../src/search.c:188
 msgid "Find"
-msgstr "Znajdowanie"
+msgstr "Wyszukiwanie"
 
 #: ../src/search.c:200
 #: ../src/search.c:265
 msgid "Fi_nd what: "
-msgstr "_Znajdź: "
+msgstr "_Tekst: "
 
 #: ../src/search.c:219
 #: ../src/search.c:292
@@ -206,7 +206,7 @@ msgstr "Zastępowanie"
 
 #: ../src/search.c:280
 msgid "Re_place with: "
-msgstr "Z_astąp na: "
+msgstr "Z_astąpienie na: "
 
 #: ../src/search.c:296
 msgid "Replace _all at once"
@@ -261,7 +261,7 @@ msgstr "_Strona kodowa: "
 #: ../src/selector.c:403
 #, c-format
 msgid "'%s' already exists. Overwrite?"
-msgstr "Plik „%s” już istnieje. Zastąpić go?"
+msgstr "Plik „%s” już istnieje. Nadpisać go?"
 
 #. add the label with the root warning
 #: ../src/window.c:110

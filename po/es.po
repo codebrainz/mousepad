@@ -2,14 +2,14 @@
 # Copyright (C) 2005-2006 Erik Harrison.
 # This file is distributed under the same license as the Mousepad package.
 # Lucas Vieites <lucas@asixinformatica.com>, 2004.
-# Abel Martín <abel.martin.ruiz@gmail.com>, 2008
+# Abel Martín <abel.martin.ruiz@gmail.com>, 2008-2009
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: mousepad 0.2.16\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2007-01-20 12:34+0100\n"
-"PO-Revision-Date: 2008-11-16 12:13+0100\n"
+"PO-Revision-Date: 2009-02-24 13:39+0100\n"
 "Last-Translator: Abel Martín <abel.martin.ruiz@gmail.com>\n"
 "Language-Team: Spanish/ES <xfce-i18n@xfce.org>\n"
 "MIME-Version: 1.0\n"
@@ -19,7 +19,7 @@ msgstr ""
 #: ../src/callback.c:37
 #, c-format
 msgid "Save changes to '%s'?"
-msgstr "¿Guardar cambios a '%s'?"
+msgstr "¿Guardar cambios en '%s'?"
 
 #: ../src/callback.c:213
 #: ../src/file.c:174
@@ -183,7 +183,7 @@ msgstr "¿Reemplazar?"
 #: ../src/search.c:143
 #, c-format
 msgid "%d strings replaced"
-msgstr "Se han reemplazado %d cadenas"
+msgstr "Se han sustituido %d cadenas"
 
 #: ../src/search.c:188
 msgid "Find"
@@ -197,7 +197,7 @@ msgstr "_Buscar: "
 #: ../src/search.c:219
 #: ../src/search.c:292
 msgid "_Match case"
-msgstr "Coi_ncidir con mayúsculas y minúsculas"
+msgstr "Coi_ncidencia de mayúsculas y minúsculas"
 
 #: ../src/search.c:253
 msgid "Replace"
@@ -209,7 +209,7 @@ msgstr "Reem_plazar con: "
 
 #: ../src/search.c:296
 msgid "Replace _all at once"
-msgstr "Reemplaz_ar todos"
+msgstr "Reemplazar _todos"
 
 #: ../src/search.c:342
 msgid "Jump To"
@@ -265,7 +265,7 @@ msgstr "'%s' ya existe. ¿Sobrescribir?"
 #. add the label with the root warning
 #: ../src/window.c:110
 msgid "Warning, you are using the root account, you may harm your system."
-msgstr "Atención. Está usando la cuenta de root. Puede dañar su sistema."
+msgstr "Atención: está usando la cuenta de root. Podría dañar su sistema."
 
 #: ../src/window.c:169
 msgid "Untitled"
