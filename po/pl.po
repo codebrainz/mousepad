@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: mousepad 0.2.14\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2007-01-20 12:34+0100\n"
-"PO-Revision-Date: 2009-02-24 20:30+0100\n"
+"PO-Revision-Date: 2009-03-07 17:44+0100\n"
 "Last-Translator: Piotr Sokół <piotr.sokol@10g.pl>\n"
 "Language-Team: Polish\n"
 "MIME-Version: 1.0\n"
@@ -123,7 +123,7 @@ msgstr "Zaznacz _wszystko"
 
 #: ../src/menu.c:109
 msgid "/_Search"
-msgstr "_Widok"
+msgstr "_Wyszukiwanie"
 
 #: ../src/menu.c:111
 msgid "/Search/_Find..."
