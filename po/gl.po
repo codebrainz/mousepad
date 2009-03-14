@@ -1,8 +1,8 @@
 # Galician translation of mousepad
-# Copyright (C) 2006, 2008 Leandro Regueiro
+# Copyright (C) 2006, 2008, 2009 Leandro Regueiro
 # This file is distributed under the same license as the xfce package.
 #
-# Leandro Regueiro <leandro.regueiro@gmail.com>, 2006, 2008.
+# Leandro Regueiro <leandro.regueiro@gmail.com>, 2006, 2008, 2009.
 #
 # Proxecto Trasno - Adaptación do software libre á lingua galega:  Se desexas
 # colaborar connosco, podes atopar máis información en <http://trasno.net>
@@ -10,9 +10,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: mousepad 0.2.16\n"
-"Report-Msgid-Bugs-To: \n"
+"Report-Msgid-Bugs-To: xfce-i18n@xfce.org\n"
 "POT-Creation-Date: 2007-01-20 12:34+0100\n"
-"PO-Revision-Date: 2009-02-11 17:38+0100\n"
+"PO-Revision-Date: 2009-03-07 23:57+0100\n"
 "Last-Translator: Leandro Regueiro <leandro DOT regueiro AT gmail DOT com>\n"
 "Language-Team: Galician <proxecto@trasno.net>\n"
 "MIME-Version: 1.0\n"
@@ -29,7 +29,7 @@ msgstr "Desexa gardar os cambios en '%s'?"
 #: ../src/file.c:174
 #, fuzzy, c-format
 msgid "Can't convert codeset to '%s'"
-msgstr "Converter textos en camiños"
+msgstr "Non se pode converter o modo de emerxencia '%s' na codificación de caracteres '%s'"
 
 #: ../src/callback.c:240
 msgid "Can't open pipe to process"
@@ -133,14 +133,12 @@ msgid "/Search/_Find..."
 msgstr "/Buscar/_Buscar..."
 
 #: ../src/menu.c:113
-#, fuzzy
 msgid "/Search/Find _Next"
-msgstr "Non hai ningún zoom posterior."
+msgstr "/Buscar/Buscar _seguinte"
 
 #: ../src/menu.c:115
-#, fuzzy
 msgid "/Search/Find _Previous"
-msgstr "Non hai ningún zoom anterior."
+msgstr "/Buscar/Buscar _anterior"
 
 #: ../src/menu.c:117
 msgid "/Search/_Replace..."
@@ -159,12 +157,8 @@ msgid "/Options/_Font..."
 msgstr "/Opcións/_Tipo de letra..."
 
 #: ../src/menu.c:127
-#, fuzzy
 msgid "/Options/_Word Wrap"
-msgstr ""
-"[OPCIÓNS...] [FICHEIRO...]\n"
-"\n"
-"Opcións dispoñibles:"
+msgstr "/Opcións/_Axuste de palabra"
 
 #: ../src/menu.c:129
 msgid "/Options/_Line Numbers"
@@ -209,7 +203,7 @@ msgstr "_Buscar: "
 #: ../src/search.c:292
 #, fuzzy
 msgid "_Match case"
-msgstr "Atopouse <b>%d</b> obxecto (de <b>%d</b>), coincidencia %s."
+msgstr "_Diferenciar maiúsculas de minúsculas"
 
 #: ../src/search.c:253
 msgid "Replace"
@@ -236,9 +230,9 @@ msgid "_Line number: "
 msgstr "Número de _liña: "
 
 #: ../src/selector.c:103
-#, fuzzy, c-format
+#, c-format
 msgid "Current Locale (%s)"
-msgstr "tips-locale:gl"
+msgstr "Configuración rexional actual (%s)"
 
 #: ../src/selector.c:147
 #, fuzzy
@@ -268,9 +262,8 @@ msgid "Save As"
 msgstr "Gardar Coma"
 
 #: ../src/selector.c:347
-#, fuzzy
 msgid "Ch_aracter Coding: "
-msgstr "Aleatorio, canle independente"
+msgstr "Codificación de c_aracteres:"
 
 #: ../src/selector.c:403
 #, c-format
