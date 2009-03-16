@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: mousepad 0.2.14\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2007-01-20 12:34+0100\n"
-"PO-Revision-Date: 2009-03-07 17:44+0100\n"
+"PO-Revision-Date: 2009-03-12 14:28+0100\n"
 "Last-Translator: Piotr Sokół <piotr.sokol@10g.pl>\n"
 "Language-Team: Polish\n"
 "MIME-Version: 1.0\n"
@@ -198,7 +198,7 @@ msgstr "_Tekst: "
 #: ../src/search.c:219
 #: ../src/search.c:292
 msgid "_Match case"
-msgstr "_Uwzględnianie wielkości liter"
+msgstr "Uwzględnianie _wielkości liter"
 
 #: ../src/search.c:253
 msgid "Replace"
@@ -266,7 +266,7 @@ msgstr "Plik „%s” już istnieje. Nadpisać go?"
 #. add the label with the root warning
 #: ../src/window.c:110
 msgid "Warning, you are using the root account, you may harm your system."
-msgstr "Uwaga: używane konto należy do użytkowanika root. Istnieje możliwość uszkodzenia systemu."
+msgstr "Uwaga: używane konto należy do użytkowanika root. Istnieje niebezpieczeństwo uszkodzenia systemu."
 
 #: ../src/window.c:169
 msgid "Untitled"
