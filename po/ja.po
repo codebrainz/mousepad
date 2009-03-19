@@ -11,8 +11,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mousepad 0.2.16\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-11-24 15:11+0900\n"
-"PO-Revision-Date: 2008-11-24 15:23+0900\n"
+"POT-Creation-Date: 2007-01-20 12:34+0100\n"
+"PO-Revision-Date: 2008-12-10 14:46+0900\n"
 "Last-Translator: Masato Hashimoto <cabezon.hashimoto@gmail.com>\n"
 "Language-Team: Japanese <xfce-users-jp@ml.fdiary.net>\n"
 "MIME-Version: 1.0\n"
@@ -24,8 +24,7 @@ msgstr ""
 msgid "Save changes to '%s'?"
 msgstr "'%s' の変更を保存しますか?"
 
-#: ../src/callback.c:213
-#: ../src/file.c:174
+#: ../src/callback.c:213 ../src/file.c:174
 #, c-format
 msgid "Can't convert codeset to '%s'"
 msgstr "文字コードを '%s' に変換できませんでした"
@@ -192,13 +191,11 @@ msgstr "%d 個の文字列を置き換えました"
 msgid "Find"
 msgstr "文字列を検索します"
 
-#: ../src/search.c:200
-#: ../src/search.c:265
+#: ../src/search.c:200 ../src/search.c:265
 msgid "Fi_nd what: "
 msgstr "検索する文字列(_N): "
 
-#: ../src/search.c:219
-#: ../src/search.c:292
+#: ../src/search.c:219 ../src/search.c:292
 msgid "_Match case"
 msgstr "大文字と小文字を区別する(_M)"
 
@@ -263,12 +260,14 @@ msgstr "文字コード(_A): "
 #: ../src/selector.c:403
 #, c-format
 msgid "'%s' already exists. Overwrite?"
-msgstr "'%s' はすでに存在します。上書きしますか？"
+msgstr "'%s' はすでに存在します。上書きしますか?"
 
 #. add the label with the root warning
 #: ../src/window.c:110
 msgid "Warning, you are using the root account, you may harm your system."
-msgstr "警告: あなたは root アカウントを使用しており、システムに悪影響を及ぼすことができます。"
+msgstr ""
+"警告: あなたは root アカウントを使用しており、システムに悪影響を及ぼすことが"
+"できます。"
 
 #: ../src/window.c:169
 msgid "Untitled"
@@ -285,4 +284,3 @@ msgstr "シンプルなテキストエディタ"
 #: ../mousepad.desktop.in.h:3
 msgid "Text Editor"
 msgstr "テキストエディタ"
-
