@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: mousepad 0.2.16\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2007-01-20 12:34+0100\n"
-"PO-Revision-Date: 2007-01-20 15:57+0100\n"
+"PO-Revision-Date: 2009-05-26 07:22+0100\n"
 "Last-Translator: SZERVÁC Attila <sas@321.hu>\n"
 "Language-Team: Hungarian <translation-team-hu@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -171,7 +171,7 @@ msgstr "/Beállítások/_Automatikus behúzás"
 
 #: ../src/menu.c:135
 msgid "/_Help"
-msgstr "_Súgó"
+msgstr "/_Súgó"
 
 #: ../src/menu.c:137
 msgid "/Help/_About"
