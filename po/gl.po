@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: mousepad 0.2.16\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2007-01-20 12:34+0100\n"
-"PO-Revision-Date: 2009-04-19 01:20+0100\n"
+"PO-Revision-Date: 2009-05-02 16:28+0100\n"
 "Last-Translator: Leandro Regueiro <leandro.regueiro@gmail.com>\n"
 "Language-Team: Galician <proxecto@trasno.net>\n"
 "MIME-Version: 1.0\n"
@@ -33,7 +33,7 @@ msgstr "Non se puido converter a codificación de caracteres a '%s'"
 
 #: ../src/callback.c:240
 msgid "Can't open pipe to process"
-msgstr ""
+msgstr "Non se puido abrir unha canalización para o proceso"
 
 #: ../src/callback.c:397
 msgid "A text editor for Xfce"
