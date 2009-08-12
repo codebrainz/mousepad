@@ -1,4 +1,3 @@
-/* $Id$ */
 /*
  * This program is free software; you can redistribute it and/or modify it
  * under the terms of the GNU General Public License as published by the Free
@@ -25,6 +24,15 @@
 
 G_BEGIN_DECLS
 
+/* errors inside mousepad */
+enum
+{
+  ERROR_READING_FAILED     = -1,
+  ERROR_CONVERTING_FAILED  = -2,
+  ERROR_NOT_UTF8_VALID     = -3,
+  ERROR_FILE_STATUS_FAILED = -4
+};
+
 /* config file locations */
 #define MOUSEPAD_RC_RELPATH     ("Mousepad" G_DIR_SEPARATOR_S "mousepadrc")
 #define MOUSEPAD_ACCELS_RELPATH ("Mousepad" G_DIR_SEPARATOR_S "accels.scm")
@@ -45,24 +53,25 @@ G_BEGIN_DECLS
 
 /* support for canonical strings and quarks */
 #define I_(string)  (g_intern_static_string (string))
-#define QU_(string) (g_quark_from_static_string (string))
 
 /* convienient function for setting object data */
-#define mousepad_object_set_data(object,key,data)              (g_object_set_qdata ((object), QU_(key), (data)))
-#define mousepad_object_set_data_full(object,key,data,destroy) (g_object_set_qdata_full ((object), QU_(key), (data), (GDestroyNotify) (destroy)))
-#define mousepad_object_get_data(object,key)                   (g_object_get_qdata ((object), QU_(key)))
+#define mousepad_object_set_data(object,key,data)              (g_object_set_qdata ((object), \
+                                                                g_quark_from_static_string (key), (data)))
+#define mousepad_object_set_data_full(object,key,data,destroy) (g_object_set_qdata_full ((object), \
+                                                                g_quark_from_static_string (key), (data), (GDestroyNotify) (destroy)))
+#define mousepad_object_get_data(object,key)                   (g_object_get_qdata ((object), g_quark_try_string (key)))
 
 /* support macros for debugging */
 #ifndef NDEBUG
-#define _mousepad_assert(expr)                  g_assert (expr)
-#define _mousepad_assert_not_reached()          g_assert_not_reached ()
-#define _mousepad_return_if_fail(expr)          g_return_if_fail (expr)
-#define _mousepad_return_val_if_fail(expr, val) g_return_val_if_fail (expr, (val))
+#define mousepad_assert(expr)                  g_assert (expr)
+#define mousepad_assert_not_reached()          g_assert_not_reached ()
+#define mousepad_return_if_fail(expr)          g_return_if_fail (expr)
+#define mousepad_return_val_if_fail(expr, val) g_return_val_if_fail (expr, (val))
 #else
-#define _mousepad_assert(expr)                  G_STMT_START{ (void)0; }G_STMT_END
-#define _mousepad_assert_not_reached()          G_STMT_START{ (void)0; }G_STMT_END
-#define _mousepad_return_if_fail(expr)          G_STMT_START{ (void)0; }G_STMT_END
-#define _mousepad_return_val_if_fail(expr, val) G_STMT_START{ (void)0; }G_STMT_END
+#define mousepad_assert(expr)                  G_STMT_START{ (void)0; }G_STMT_END
+#define mousepad_assert_not_reached()          G_STMT_START{ (void)0; }G_STMT_END
+#define mousepad_return_if_fail(expr)          G_STMT_START{ (void)0; }G_STMT_END
+#define mousepad_return_val_if_fail(expr, val) G_STMT_START{ (void)0; }G_STMT_END
 #endif
 
 /* avoid trivial g_value_get_*() function calls */

@@ -1,4 +1,3 @@
-/* $Id$ */
 /*
  * This program is free software; you can redistribute it and/or modify it
  * under the terms of the GNU General Public License as published by the Free
@@ -54,7 +53,7 @@ gint       mousepad_dialogs_other_tab_size      (GtkWindow     *parent,
                                                  gint           active_size);
 
 gboolean   mousepad_dialogs_go_to               (GtkWindow     *parent,
-                                                 GtkTextBuffer *buffer;);
+                                                 GtkTextBuffer *buffer);
 
 gboolean   mousepad_dialogs_clear_recent        (GtkWindow     *parent);
 

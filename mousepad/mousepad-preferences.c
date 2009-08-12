@@ -1,4 +1,3 @@
-/* $Id$ */
 /*
  * This program is free software; you can redistribute it and/or modify it
  * under the terms of the GNU General Public License as published by the Free
@@ -75,13 +74,11 @@ enum
   PROP_MISC_PATH_IN_TITLE,
   PROP_MISC_RECENT_MENU_ITEMS,
   PROP_MISC_REMEMBER_GEOMETRY,
-  N_PROPERTIES,
+  N_PROPERTIES
 };
 
 
 
-static void     mousepad_preferences_class_init         (MousepadPreferencesClass *klass);
-static void     mousepad_preferences_init               (MousepadPreferences      *preferences);
 static void     mousepad_preferences_finalize           (GObject                  *object);
 static void     mousepad_preferences_get_property       (GObject                  *object,
                                                          guint                     prop_id,
@@ -286,7 +283,7 @@ mousepad_preferences_class_init (MousepadPreferencesClass *klass)
                                    g_param_spec_int ("misc-recent-menu-items",
                                                      "MiscRecentMenuItems",
                                                      NULL,
-                                                     1, G_MAXINT, 10,
+                                                     1, 100, 10,
                                                      MOUSEPAD_PARAM_READWRITE));
 
   g_object_class_install_property (gobject_class,

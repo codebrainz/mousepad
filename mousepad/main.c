@@ -1,4 +1,3 @@
-/* $Id$ */
 /*
  * This program is free software; you can redistribute it and/or modify it
  * under the terms of the GNU General Public License as published by the Free
@@ -56,7 +55,7 @@ static const GOptionEntry option_entries[] =
 #endif
   { "version", 'v', 0, G_OPTION_ARG_NONE, &opt_version, N_("Print version information and exit"), NULL },
   { G_OPTION_REMAINING, '\0', 0, G_OPTION_ARG_FILENAME_ARRAY, &filenames, NULL, NULL },
-  { NULL },
+  { NULL }
 };
 
 
@@ -90,7 +89,7 @@ main (gint argc, gchar **argv)
     g_thread_init (NULL);
 
   /* initialize gtk+ */
-  if (!gtk_init_with_args (&argc, &argv, _("[FILES...]"), (GOptionEntry *) option_entries, GETTEXT_PACKAGE, &error))
+  if (!gtk_init_with_args (&argc, &argv, _("[FILES...]"), (GOptionEntry *) option_entries, (gchar *) GETTEXT_PACKAGE, &error))
     {
       /* check if we have an error message */
       if (G_LIKELY (error == NULL))

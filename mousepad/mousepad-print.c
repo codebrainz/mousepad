@@ -1,4 +1,3 @@
-/* $Id$ */
 /*
  * This program is free software; you can redistribute it and/or modify it
  * under the terms of the GNU General Public License as published by the Free
@@ -32,8 +31,6 @@
 
 
 
-static void           mousepad_print_class_init            (MousepadPrintClass      *klass);
-static void           mousepad_print_init                  (MousepadPrint           *print);
 static void           mousepad_print_finalize              (GObject                 *object);
 static void           mousepad_print_settings_load         (GtkPrintOperation       *operation);
 static void           mousepad_print_settings_save_foreach (const gchar             *key,
@@ -171,8 +168,8 @@ mousepad_print_settings_load (GtkPrintOperation *operation)
   PangoContext          *context;
   PangoFontDescription  *font_desc;
 
-  _mousepad_return_if_fail (MOUSEPAD_IS_DOCUMENT (print->document));
-  _mousepad_return_if_fail (GTK_IS_WIDGET (print->document->textview));
+  mousepad_return_if_fail (MOUSEPAD_IS_DOCUMENT (print->document));
+  mousepad_return_if_fail (GTK_IS_WIDGET (print->document->textview));
 
   /* get the config file filename */
   filename = mousepad_util_get_save_location (MOUSEPAD_RC_RELPATH, FALSE);
@@ -843,11 +840,11 @@ mousepad_print_document_interactive (MousepadPrint     *print,
 {
   GtkPrintOperationResult result;
 
-  _mousepad_return_val_if_fail (MOUSEPAD_IS_PRINT (print), FALSE);
-  _mousepad_return_val_if_fail (GTK_IS_PRINT_OPERATION (print), FALSE);
-  _mousepad_return_val_if_fail (MOUSEPAD_IS_DOCUMENT (document), FALSE);
-  _mousepad_return_val_if_fail (GTK_IS_WINDOW (parent), FALSE);
-  _mousepad_return_val_if_fail (error == NULL || *error == NULL, FALSE);
+  mousepad_return_val_if_fail (MOUSEPAD_IS_PRINT (print), FALSE);
+  mousepad_return_val_if_fail (GTK_IS_PRINT_OPERATION (print), FALSE);
+  mousepad_return_val_if_fail (MOUSEPAD_IS_DOCUMENT (document), FALSE);
+  mousepad_return_val_if_fail (GTK_IS_WINDOW (parent), FALSE);
+  mousepad_return_val_if_fail (error == NULL || *error == NULL, FALSE);
 
   /* set the document */
   print->document = document;

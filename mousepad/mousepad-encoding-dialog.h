@@ -1,4 +1,3 @@
-/* $Id$ */
 /*
  * This program is free software; you can redistribute it and/or modify it
  * under the terms of the GNU General Public License as published by the Free
@@ -20,6 +19,8 @@
 
 G_BEGIN_DECLS
 
+#include <mousepad/mousepad-encoding.h>
+
 #define MOUSEPAD_TYPE_ENCODING_DIALOG            (mousepad_encoding_dialog_get_type ())
 #define MOUSEPAD_ENCODING_DIALOG(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), MOUSEPAD_TYPE_ENCODING_DIALOG, MousepadEncodingDialog))
 #define MOUSEPAD_ENCODING_DIALOG_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), MOUSEPAD_TYPE_ENCODING_DIALOG, MousepadEncodingDialogClass))
@@ -30,12 +31,14 @@ G_BEGIN_DECLS
 typedef struct _MousepadEncodingDialogClass MousepadEncodingDialogClass;
 typedef struct _MousepadEncodingDialog      MousepadEncodingDialog;
 
-GType        mousepad_encoding_dialog_get_type     (void) G_GNUC_CONST;
+GType             mousepad_encoding_dialog_get_type            (void) G_GNUC_CONST;
 
-GtkWidget   *mousepad_encoding_dialog_new          (GtkWindow              *parent,
-                                                    MousepadFile           *file);
+GtkWidget        *mousepad_encoding_dialog_new                 (GtkWindow              *parent,
+                                                                MousepadFile           *file);
 
-const gchar *mousepad_encoding_dialog_get_encoding (MousepadEncodingDialog *dialog);
+MousepadEncoding  mousepad_encoding_dialog_get_encoding        (MousepadEncodingDialog *dialog);
+
+const gchar      *mousepad_encoding_dialog_get_encoding_custom (MousepadEncodingDialog *dialog);
 
 G_END_DECLS
 

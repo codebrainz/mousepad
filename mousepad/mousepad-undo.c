@@ -1,4 +1,3 @@
-/* $Id$ */
 /*
  * This program is free software; you can redistribute it and/or modify it
  * under the terms of the GNU General Public License as published by the Free
@@ -41,8 +40,6 @@ typedef enum   _MousepadUndoAction MousepadUndoAction;
 
 
 
-static void mousepad_undo_class_init               (MousepadUndoClass  *klass);
-static void mousepad_undo_init                     (MousepadUndo       *undo);
 static void mousepad_undo_finalize                 (GObject            *object);
 static void mousepad_undo_emit_signals             (MousepadUndo       *undo);
 static void mousepad_undo_step_free                (MousepadUndoStep   *step);
@@ -312,7 +309,7 @@ mousepad_undo_step (MousepadUndo *undo,
         {
           case INSERT:
             /* debug check */
-            _mousepad_return_if_fail (step->data == NULL);
+            mousepad_return_if_fail (step->data == NULL);
 
             /* get the end iter */
             gtk_text_buffer_get_iter_at_offset (undo->buffer, &end_iter, step->end);
@@ -326,7 +323,7 @@ mousepad_undo_step (MousepadUndo *undo,
 
           case DELETE:
             /* debug check */
-            _mousepad_return_if_fail (step->data != NULL);
+            mousepad_return_if_fail (step->data != NULL);
 
             /* insert the deleted text */
             gtk_text_buffer_insert (undo->buffer, &start_iter, step->data, -1);
@@ -337,7 +334,7 @@ mousepad_undo_step (MousepadUndo *undo,
             break;
 
           default:
-            _mousepad_assert_not_reached ();
+            mousepad_assert_not_reached ();
             break;
         }
 
@@ -383,7 +380,7 @@ mousepad_undo_clear_oldest_step (MousepadUndo *undo)
   MousepadUndoStep *step;
   gint              to_remove;
 
-  _mousepad_return_if_fail (undo->n_steps > MOUSEPAD_UNDO_MAX_STEPS);
+  mousepad_return_if_fail (undo->n_steps > MOUSEPAD_UNDO_MAX_STEPS);
 
   /* number of steps to remove */
   to_remove = undo->n_steps - MOUSEPAD_UNDO_MAX_STEPS;
@@ -420,7 +417,7 @@ mousepad_undo_clear_oldest_step (MousepadUndo *undo)
 static void
 mousepad_undo_cache_reset (MousepadUndo *undo)
 {
-  _mousepad_return_if_fail (undo->cache == NULL);
+  mousepad_return_if_fail (undo->cache == NULL);
 
   /* reset variables */
   undo->cache_start = undo->cache_end = -1;
@@ -440,7 +437,7 @@ mousepad_undo_cache_to_step (MousepadUndo *undo)
   if (G_LIKELY (undo->cache_start != undo->cache_end))
     {
       /* make sure the needle has been reset */
-      _mousepad_return_if_fail (undo->needle == undo->steps);
+      mousepad_return_if_fail (undo->needle == undo->steps);
 
       /* allocate slice */
       step = g_slice_new0 (MousepadUndoStep);
@@ -502,7 +499,7 @@ mousepad_undo_needle_reset (MousepadUndo *undo)
     }
 
   /* debug check */
-  _mousepad_return_if_fail (undo->needle == undo->steps);
+  mousepad_return_if_fail (undo->needle == undo->steps);
 }
 
 
@@ -630,8 +627,8 @@ mousepad_undo_buffer_insert (GtkTextBuffer *buffer,
 {
   gint start_pos, end_pos;
 
-  _mousepad_return_if_fail (GTK_IS_TEXT_BUFFER (buffer));
-  _mousepad_return_if_fail (buffer == undo->buffer);
+  mousepad_return_if_fail (GTK_IS_TEXT_BUFFER (buffer));
+  mousepad_return_if_fail (buffer == undo->buffer);
 
   /* leave when locked */
   if (G_LIKELY (undo->locked == 0))
@@ -657,8 +654,8 @@ mousepad_undo_buffer_delete (GtkTextBuffer *buffer,
   gchar *text;
   gint   start_pos, end_pos;
 
-  _mousepad_return_if_fail (GTK_IS_TEXT_BUFFER (buffer));
-  _mousepad_return_if_fail (buffer == undo->buffer);
+  mousepad_return_if_fail (GTK_IS_TEXT_BUFFER (buffer));
+  mousepad_return_if_fail (buffer == undo->buffer);
 
   /* no nothing when locked */
   if (G_LIKELY (undo->locked == 0))
@@ -686,8 +683,8 @@ static void
 mousepad_undo_buffer_begin_user_action (GtkTextBuffer *buffer,
                                         MousepadUndo  *undo)
 {
-  _mousepad_return_if_fail (GTK_IS_TEXT_BUFFER (buffer));
-  _mousepad_return_if_fail (buffer == undo->buffer);
+  mousepad_return_if_fail (GTK_IS_TEXT_BUFFER (buffer));
+  mousepad_return_if_fail (buffer == undo->buffer);
 
   /* only reset the group counter when not locked */
   if (G_LIKELY (undo->locked == 0))
@@ -704,7 +701,7 @@ mousepad_undo_new (GtkTextBuffer *buffer)
 {
   MousepadUndo *undo;
 
-  _mousepad_return_val_if_fail (GTK_IS_TEXT_BUFFER (buffer), NULL);
+  mousepad_return_val_if_fail (GTK_IS_TEXT_BUFFER (buffer), NULL);
 
   /* create the undo object */
   undo = g_object_new (MOUSEPAD_TYPE_UNDO, NULL);
@@ -727,7 +724,7 @@ mousepad_undo_clear (MousepadUndo *undo)
 {
   GList *li;
 
-  _mousepad_return_if_fail (MOUSEPAD_IS_UNDO (undo));
+  mousepad_return_if_fail (MOUSEPAD_IS_UNDO (undo));
 
   /* lock to avoid updates */
   mousepad_undo_lock (undo);
@@ -758,7 +755,7 @@ mousepad_undo_clear (MousepadUndo *undo)
 void
 mousepad_undo_lock (MousepadUndo *undo)
 {
-  _mousepad_return_if_fail (MOUSEPAD_IS_UNDO (undo));
+  mousepad_return_if_fail (MOUSEPAD_IS_UNDO (undo));
 
   /* increase the lock count */
   undo->locked++;
@@ -769,8 +766,8 @@ mousepad_undo_lock (MousepadUndo *undo)
 void
 mousepad_undo_unlock (MousepadUndo *undo)
 {
-  _mousepad_return_if_fail (MOUSEPAD_IS_UNDO (undo));
-  _mousepad_return_if_fail (undo->locked > 0);
+  mousepad_return_if_fail (MOUSEPAD_IS_UNDO (undo));
+  mousepad_return_if_fail (undo->locked > 0);
 
   /* decrease the lock count */
   undo->locked--;
@@ -781,7 +778,7 @@ mousepad_undo_unlock (MousepadUndo *undo)
 void
 mousepad_undo_save_point (MousepadUndo *undo)
 {
-  _mousepad_return_if_fail (MOUSEPAD_IS_UNDO (undo));
+  mousepad_return_if_fail (MOUSEPAD_IS_UNDO (undo));
 
   /* reset the needle */
   mousepad_undo_needle_reset (undo);
@@ -798,7 +795,7 @@ mousepad_undo_save_point (MousepadUndo *undo)
 gboolean
 mousepad_undo_can_undo (MousepadUndo *undo)
 {
-  _mousepad_return_val_if_fail (MOUSEPAD_IS_UNDO (undo), FALSE);
+  mousepad_return_val_if_fail (MOUSEPAD_IS_UNDO (undo), FALSE);
 
   return undo->can_undo;
 }
@@ -808,7 +805,7 @@ mousepad_undo_can_undo (MousepadUndo *undo)
 gboolean
 mousepad_undo_can_redo (MousepadUndo *undo)
 {
-  _mousepad_return_val_if_fail (MOUSEPAD_IS_UNDO (undo), FALSE);
+  mousepad_return_val_if_fail (MOUSEPAD_IS_UNDO (undo), FALSE);
 
   return undo->can_redo;
 }
@@ -818,8 +815,8 @@ mousepad_undo_can_redo (MousepadUndo *undo)
 void
 mousepad_undo_do_undo (MousepadUndo *undo)
 {
-  _mousepad_return_if_fail (MOUSEPAD_IS_UNDO (undo));
-  _mousepad_return_if_fail (mousepad_undo_can_undo (undo));
+  mousepad_return_if_fail (MOUSEPAD_IS_UNDO (undo));
+  mousepad_return_if_fail (mousepad_undo_can_undo (undo));
 
   /* undo the last step */
   mousepad_undo_step (undo, FALSE);
@@ -830,8 +827,8 @@ mousepad_undo_do_undo (MousepadUndo *undo)
 void
 mousepad_undo_do_redo (MousepadUndo *undo)
 {
-  _mousepad_return_if_fail (MOUSEPAD_IS_UNDO (undo));
-  _mousepad_return_if_fail (mousepad_undo_can_redo (undo));
+  mousepad_return_if_fail (MOUSEPAD_IS_UNDO (undo));
+  mousepad_return_if_fail (mousepad_undo_can_redo (undo));
 
   /* redo the last undo-ed step */
   mousepad_undo_step (undo, TRUE);

@@ -1,4 +1,3 @@
-/* $Id$ */
 /*
  * This program is free software; you can redistribute it and/or modify it
  * under the terms of the GNU General Public License as published by the Free
@@ -37,8 +36,6 @@
 
 
 
-static void      mousepad_search_bar_class_init                 (MousepadSearchBarClass  *klass);
-static void      mousepad_search_bar_init                       (MousepadSearchBar       *bar);
 static void      mousepad_search_bar_finalize                   (GObject                 *object);
 static void      mousepad_search_bar_find_string                (MousepadSearchBar       *bar,
                                                                  MousepadSearchFlags   flags);
@@ -61,7 +58,7 @@ enum
 {
   HIDE_BAR,
   SEARCH,
-  LAST_SIGNAL,
+  LAST_SIGNAL
 };
 
 struct _MousepadSearchBarClass
@@ -319,7 +316,7 @@ mousepad_search_bar_find_string (MousepadSearchBar   *bar,
 static void
 mousepad_search_bar_hide_clicked (MousepadSearchBar *bar)
 {
-  _mousepad_return_if_fail (MOUSEPAD_IS_SEARCH_BAR (bar));
+  mousepad_return_if_fail (MOUSEPAD_IS_SEARCH_BAR (bar));
 
   /* emit the signal */
   g_signal_emit (G_OBJECT (bar), search_bar_signals[HIDE_BAR], 0);
@@ -352,7 +349,7 @@ mousepad_search_bar_highlight_toggled (GtkWidget         *button,
 {
   MousepadSearchFlags flags;
 
-  _mousepad_return_if_fail (MOUSEPAD_IS_SEARCH_BAR (bar));
+  mousepad_return_if_fail (MOUSEPAD_IS_SEARCH_BAR (bar));
 
   /* set the new state */
   bar->highlight_all = gtk_toggle_tool_button_get_active (GTK_TOGGLE_TOOL_BUTTON (button));
@@ -385,7 +382,7 @@ mousepad_search_bar_match_case_toggled (GtkWidget         *button,
 {
   gboolean active;
 
-  _mousepad_return_if_fail (MOUSEPAD_IS_SEARCH_BAR (bar));
+  mousepad_return_if_fail (MOUSEPAD_IS_SEARCH_BAR (bar));
 
   /* get the state of the toggle button */
   active = gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (button));
@@ -414,8 +411,8 @@ mousepad_search_bar_menuitem_toggled (GtkCheckMenuItem *item,
 {
   gboolean active;
 
-  _mousepad_return_if_fail (GTK_IS_CHECK_MENU_ITEM (item));
-  _mousepad_return_if_fail (GTK_IS_TOGGLE_BUTTON (button));
+  mousepad_return_if_fail (GTK_IS_CHECK_MENU_ITEM (item));
+  mousepad_return_if_fail (GTK_IS_TOGGLE_BUTTON (button));
 
   /* toggle the menubar item, he/she will send the signal */
   active = gtk_check_menu_item_get_active (item);
@@ -427,7 +424,7 @@ mousepad_search_bar_menuitem_toggled (GtkCheckMenuItem *item,
 static void
 mousepad_search_bar_highlight_schedule (MousepadSearchBar *bar)
 {
-  _mousepad_return_if_fail (MOUSEPAD_IS_SEARCH_BAR (bar));
+  mousepad_return_if_fail (MOUSEPAD_IS_SEARCH_BAR (bar));
 
   /* stop a pending timeout */
   if (bar->highlight_id != 0)
@@ -489,7 +486,7 @@ mousepad_search_bar_entry (MousepadSearchBar *bar)
 void
 mousepad_search_bar_focus (MousepadSearchBar *bar)
 {
-  _mousepad_return_if_fail (MOUSEPAD_IS_SEARCH_BAR (bar));
+  mousepad_return_if_fail (MOUSEPAD_IS_SEARCH_BAR (bar));
 
   /* focus the entry field */
   gtk_widget_grab_focus (bar->entry);
@@ -499,7 +496,7 @@ mousepad_search_bar_focus (MousepadSearchBar *bar)
 
   /* update the highlight */
   mousepad_search_bar_highlight_schedule (bar);
-  
+
   /* select the entire entry */
   gtk_editable_select_region (GTK_EDITABLE (bar->entry), 0, -1);
 }
@@ -511,7 +508,7 @@ mousepad_search_bar_find_next (MousepadSearchBar *bar)
 {
   MousepadSearchFlags flags;
 
-  _mousepad_return_if_fail (MOUSEPAD_IS_SEARCH_BAR (bar));
+  mousepad_return_if_fail (MOUSEPAD_IS_SEARCH_BAR (bar));
 
   /* set search flags */
   flags = MOUSEPAD_SEARCH_FLAGS_ITER_SEL_END
@@ -528,7 +525,7 @@ mousepad_search_bar_find_previous (MousepadSearchBar *bar)
 {
   MousepadSearchFlags flags;
 
-  _mousepad_return_if_fail (MOUSEPAD_IS_SEARCH_BAR (bar));
+  mousepad_return_if_fail (MOUSEPAD_IS_SEARCH_BAR (bar));
 
   /* set search flags */
   flags = MOUSEPAD_SEARCH_FLAGS_ITER_SEL_START

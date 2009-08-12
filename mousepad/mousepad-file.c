@@ -1,4 +1,3 @@
-/* $Id$ */
 /*
  * This program is free software; you can redistribute it and/or modify it
  * under the terms of the GNU General Public License as published by the Free
@@ -19,8 +18,17 @@
 #include <config.h>
 #endif
 
+#ifdef HAVE_SYS_TYPES_H
+#include <sys/types.h>
+#endif
+#ifdef HAVE_SYS_STAT_H
+#include <sys/stat.h>
+#endif
 #ifdef HAVE_UNISTD_H
 #include <unistd.h>
+#endif
+#ifdef HAVE_FCNTL_H
+#include <fcntl.h>
 #endif
 #ifdef HAVE_STRING_H
 #include <string.h>
@@ -35,9 +43,6 @@
 #include <mousepad/mousepad-private.h>
 #include <mousepad/mousepad-file.h>
 
-
-#define MAX_ENCODING_CHECK_CHARS       (10000)
-#define MOUSEPAD_GET_LINE_END_CHARS(a) ((a) == MOUSEPAD_LINE_END_DOS ? "\r\n\0" : ((a) == MOUSEPAD_LINE_END_MAC ? "\r\0" : "\n\0"))
 
 
 enum
@@ -64,7 +69,7 @@ struct _MousepadFile
   gchar              *filename;
 
   /* encoding of the file */
-  gchar              *encoding;
+  MousepadEncoding    encoding;
 
   /* line ending of the file */
   MousepadLineEnding  line_ending;
@@ -74,12 +79,13 @@ struct _MousepadFile
 
   /* if file is read-only */
   guint               readonly : 1;
+
+  /* whether we write the bom at the start of the file */
+  guint               write_bom : 1;
 };
 
 
 
-static void  mousepad_file_class_init       (MousepadFileClass  *klass);
-static void  mousepad_file_init             (MousepadFile       *file);
 static void  mousepad_file_finalize         (GObject            *object);
 static void  mousepad_file_set_readonly     (MousepadFile       *file,
                                              gboolean            readonly);
@@ -120,7 +126,7 @@ mousepad_file_class_init (MousepadFileClass *klass)
                   0, NULL, NULL,
                   g_cclosure_marshal_VOID__BOOLEAN,
                   G_TYPE_NONE, 1, G_TYPE_BOOLEAN);
-  
+
   file_signals[FILENAME_CHANGED] =
     g_signal_new (I_("filename-changed"),
                   G_TYPE_FROM_CLASS (gobject_class),
@@ -137,10 +143,15 @@ mousepad_file_init (MousepadFile *file)
 {
   /* initialize */
   file->filename    = NULL;
-  file->encoding    = NULL;
-  file->line_ending = MOUSEPAD_LINE_END_NONE;
+  file->encoding    = MOUSEPAD_ENCODING_UTF_8;
+#ifdef G_OS_WIN32
+  file->line_ending = MOUSEPAD_EOL_DOS;
+#else
+  file->line_ending = MOUSEPAD_EOL_UNIX;
+#endif
   file->readonly    = TRUE;
   file->mtime       = 0;
+  file->write_bom   = FALSE;
 }
 
 
@@ -152,7 +163,6 @@ mousepad_file_finalize (GObject *object)
 
   /* cleanup */
   g_free (file->filename);
-  g_free (file->encoding);
 
   /* release the reference from the buffer */
   g_object_unref (G_OBJECT (file->buffer));
@@ -166,16 +176,85 @@ static void
 mousepad_file_set_readonly (MousepadFile *file,
                             gboolean      readonly)
 {
-  _mousepad_return_if_fail (MOUSEPAD_IS_FILE (file));
-  
+  mousepad_return_if_fail (MOUSEPAD_IS_FILE (file));
+
   if (G_LIKELY (file->readonly != readonly))
     {
       /* store new value */
       file->readonly = readonly;
-      
+
       /* emit signal */
       g_signal_emit (G_OBJECT (file), file_signals[READONLY_CHANGED], 0, readonly);
-    }  
+    }
+}
+
+
+
+static MousepadEncoding
+mousepad_file_encoding_read_bom (const gchar *contents,
+                                 gsize        length,
+                                 gsize       *bom_length)
+{
+  const guchar     *bom = (const guchar *) contents;
+  MousepadEncoding  encoding = MOUSEPAD_ENCODING_NONE;
+  gsize             bytes = 0;
+
+  mousepad_return_val_if_fail (contents != NULL && length > 0, MOUSEPAD_ENCODING_NONE);
+  mousepad_return_val_if_fail (contents != NULL && length > 0, MOUSEPAD_ENCODING_NONE);
+
+  switch (bom[0])
+    {
+      case 0xef:
+        if (length >= 3 && bom[1] == 0xbb && bom[2] == 0xbf)
+          {
+            bytes = 3;
+            encoding = MOUSEPAD_ENCODING_UTF_8;
+          }
+        break;
+
+      case 0x00:
+        if (length >= 4 && bom[1] == 0x00 && bom[2] == 0xfe && bom[3] == 0xff)
+          {
+            bytes = 4;
+            encoding = MOUSEPAD_ENCODING_UTF_32BE;
+          }
+        break;
+
+      case 0xff:
+        if (length >= 4 && bom[1] == 0xfe && bom[2] == 0x00 && bom[3] == 0x00)
+          {
+            bytes = 4;
+            encoding = MOUSEPAD_ENCODING_UTF_32LE;
+          }
+        else if (length >= 2 && bom[1] == 0xfe)
+          {
+            bytes = 2;
+            encoding = MOUSEPAD_ENCODING_UTF_16LE;
+          }
+        break;
+
+      case 0x2b:
+        if (length >= 4 && (bom[0] == 0x2b && bom[1] == 0x2f && bom[2] == 0x76) &&
+            (bom[3] == 0x38 || bom[3] == 0x39 || bom[3] == 0x2b || bom[3] == 0x2f))
+          {
+            bytes = 4;
+            encoding = MOUSEPAD_ENCODING_UTF_7;
+          }
+        break;
+
+      case 0xfe:
+        if (length >= 2 && bom[1] == 0xff)
+          {
+            bytes = 2;
+            encoding = MOUSEPAD_ENCODING_UTF_16BE;
+          }
+        break;
+    }
+
+  if (bom_length)
+    *bom_length = bytes;
+
+  return encoding;
 }
 
 
@@ -185,7 +264,7 @@ mousepad_file_new (GtkTextBuffer *buffer)
 {
   MousepadFile *file;
 
-  _mousepad_return_val_if_fail (GTK_IS_TEXT_BUFFER (buffer), NULL);
+  mousepad_return_val_if_fail (GTK_IS_TEXT_BUFFER (buffer), NULL);
 
   file = g_object_new (MOUSEPAD_TYPE_FILE, NULL);
 
@@ -201,7 +280,7 @@ void
 mousepad_file_set_filename (MousepadFile *file,
                             const gchar  *filename)
 {
-  _mousepad_return_if_fail (MOUSEPAD_IS_FILE (file));
+  mousepad_return_if_fail (MOUSEPAD_IS_FILE (file));
 
   /* free the old filename */
   g_free (file->filename);
@@ -218,7 +297,7 @@ mousepad_file_set_filename (MousepadFile *file,
 const gchar *
 mousepad_file_get_filename (MousepadFile *file)
 {
-  _mousepad_return_val_if_fail (MOUSEPAD_IS_FILE (file), NULL);
+  mousepad_return_val_if_fail (MOUSEPAD_IS_FILE (file), NULL);
 
   return file->filename;
 }
@@ -228,7 +307,7 @@ mousepad_file_get_filename (MousepadFile *file)
 gchar *
 mousepad_file_get_uri (MousepadFile *file)
 {
-  _mousepad_return_val_if_fail (MOUSEPAD_IS_FILE (file), NULL);
+  mousepad_return_val_if_fail (MOUSEPAD_IS_FILE (file), NULL);
 
   return g_filename_to_uri (file->filename, NULL, NULL);
 }
@@ -236,26 +315,23 @@ mousepad_file_get_uri (MousepadFile *file)
 
 
 void
-mousepad_file_set_encoding (MousepadFile *file,
-                            const gchar  *encoding)
+mousepad_file_set_encoding (MousepadFile     *file,
+                            MousepadEncoding  encoding)
 {
-  _mousepad_return_if_fail (MOUSEPAD_IS_FILE (file));
-
-  /* cleanup */
-  g_free (file->encoding);
+  mousepad_return_if_fail (MOUSEPAD_IS_FILE (file));
 
   /* set new encoding */
-  file->encoding = g_strdup (encoding);
+  file->encoding = encoding;
 }
 
 
 
-const gchar *
+MousepadEncoding
 mousepad_file_get_encoding (MousepadFile *file)
 {
-  _mousepad_return_val_if_fail (MOUSEPAD_IS_FILE (file), NULL);
+  mousepad_return_val_if_fail (MOUSEPAD_IS_FILE (file), MOUSEPAD_ENCODING_NONE);
 
-  return file->encoding ? file->encoding : "UTF-8";
+  return file->encoding;
 }
 
 
@@ -263,9 +339,37 @@ mousepad_file_get_encoding (MousepadFile *file)
 gboolean
 mousepad_file_get_read_only (MousepadFile *file)
 {
-  _mousepad_return_val_if_fail (MOUSEPAD_IS_FILE (file), FALSE);
+  mousepad_return_val_if_fail (MOUSEPAD_IS_FILE (file), FALSE);
 
   return file->filename ? file->readonly : FALSE;
+}
+
+
+
+void
+mousepad_file_set_write_bom (MousepadFile *file,
+                             gboolean      write_bom)
+{
+  mousepad_return_if_fail (MOUSEPAD_IS_FILE (file));
+  mousepad_return_if_fail (mousepad_encoding_is_unicode (file->encoding));
+
+  /* set new value */
+  file->write_bom = write_bom;
+}
+
+
+
+gboolean
+mousepad_file_get_write_bom (MousepadFile *file,
+                             gboolean     *sensitive)
+{
+  mousepad_return_val_if_fail (MOUSEPAD_IS_FILE (file), FALSE);
+
+  /* return if we can write a bom */
+  if (G_LIKELY (sensitive))
+    *sensitive = mousepad_encoding_is_unicode (file->encoding);
+
+  return file->write_bom;
 }
 
 
@@ -274,7 +378,7 @@ void
 mousepad_file_set_line_ending (MousepadFile       *file,
                                MousepadLineEnding  line_ending)
 {
-  _mousepad_return_if_fail (MOUSEPAD_IS_FILE (file));
+  mousepad_return_if_fail (MOUSEPAD_IS_FILE (file));
 
   file->line_ending = line_ending;
 }
@@ -284,157 +388,227 @@ mousepad_file_set_line_ending (MousepadFile       *file,
 MousepadLineEnding
 mousepad_file_get_line_ending (MousepadFile *file)
 {
-  _mousepad_return_val_if_fail (MOUSEPAD_IS_FILE (file), MOUSEPAD_LINE_END_NONE);
-
   return file->line_ending;
 }
 
 
 
-gboolean
+gint
 mousepad_file_open (MousepadFile  *file,
+                    const gchar   *template_filename,
                     GError       **error)
 {
-  GIOChannel  *channel;
-  GIOStatus    status;
-  gsize        length, terminator_pos;
-  gboolean     succeed = FALSE;
-  gchar       *string;
-  const gchar *line_term;
-  GtkTextIter  start, end;
-  struct stat  statb;
+  GMappedFile      *mapped_file;
+  const gchar      *filename;
+  gint              retval = ERROR_READING_FAILED;
+  gsize             length, written;
+  gsize             bom_length;
+  const gchar      *contents;
+  gchar            *encoded = NULL;
+  const gchar      *charset;
+  GtkTextIter       start_iter, end_iter;
+  struct stat       statb;
+  const gchar      *end, *n, *m;
+  MousepadEncoding  bom_encoding;
 
-  _mousepad_return_val_if_fail (MOUSEPAD_IS_FILE (file), FALSE);
-  _mousepad_return_val_if_fail (GTK_IS_TEXT_BUFFER (file->buffer), FALSE);
-  _mousepad_return_val_if_fail (error == NULL || *error == NULL, FALSE);
-  _mousepad_return_val_if_fail (file->filename != NULL, FALSE);
+  mousepad_return_val_if_fail (MOUSEPAD_IS_FILE (file), FALSE);
+  mousepad_return_val_if_fail (GTK_IS_TEXT_BUFFER (file->buffer), FALSE);
+  mousepad_return_val_if_fail (error == NULL || *error == NULL, FALSE);
+  mousepad_return_val_if_fail (file->filename != NULL || template_filename != NULL, FALSE);
+
+  /* get the filename */
+  if (G_UNLIKELY (template_filename != NULL))
+    filename = template_filename;
+  else
+    filename = file->filename;
 
   /* check if the file exists, if not, it's a filename from the command line */
-  if (g_file_test (file->filename, G_FILE_TEST_EXISTS) == FALSE)
+  if (g_file_test (filename, G_FILE_TEST_EXISTS) == FALSE)
     {
       /* update readonly status */
       mousepad_file_set_readonly (file, FALSE);
 
-      return TRUE;
+      return 0;
     }
 
-  /* open the channel */
-  channel = g_io_channel_new_file (file->filename, "r", error);
+  /* try to open the file */
+  mapped_file = g_mapped_file_new (filename, FALSE, error);
 
-  if (G_LIKELY (channel))
+  if (G_LIKELY (mapped_file))
     {
-      /* freeze notifications */
-      g_object_freeze_notify (G_OBJECT (file->buffer));
+      /* get the mapped file contents and length */
+      contents = g_mapped_file_get_contents (mapped_file);
+      length = g_mapped_file_get_length (mapped_file);
 
-      /* set the encoding of the channel */
-      if (file->encoding != NULL)
+      if (G_LIKELY (contents != NULL && length > 0))
         {
-          /* set the encoding */
-          status = g_io_channel_set_encoding (channel, file->encoding, error);
-
-          if (G_UNLIKELY (status != G_IO_STATUS_NORMAL))
-            goto failed;
-        }
-
-      /* get the iter at the beginning of the document */
-      gtk_text_buffer_get_start_iter (file->buffer, &end);
-
-      /* read the content of the file */
-      for (;;)
-        {
-          /* read the line */
-          status = g_io_channel_read_line (channel, &string, &length, &terminator_pos, error);
-
-          /* leave on problems */
-          if (G_UNLIKELY (status != G_IO_STATUS_NORMAL && status != G_IO_STATUS_EOF))
-            goto failed;
-
-          if (G_LIKELY (string))
+          /* detect if there is a bom with the encoding type */
+          bom_encoding = mousepad_file_encoding_read_bom (contents, length, &bom_length);
+          if (G_UNLIKELY (bom_encoding != MOUSEPAD_ENCODING_NONE))
             {
-              /* detect the line ending of the file */
-              if (length != terminator_pos
-                  && file->line_ending == MOUSEPAD_LINE_END_NONE)
-                {
-                  /* get the characters */
-                  line_term = string + terminator_pos;
+              /* we've found a valid bom at the start of the contents */
+              file->write_bom = TRUE;
 
-                  if (strcmp (line_term, "\n") == 0)
-                    file->line_ending = MOUSEPAD_LINE_END_UNIX;
-                  else if (strcmp (line_term, "\r") == 0)
-                    file->line_ending = MOUSEPAD_LINE_END_MAC;
-                  else if (strcmp (line_term, "\r\n") == 0)
-                    file->line_ending = MOUSEPAD_LINE_END_DOS;
-                  else
-                    g_warning (_("Unknown line ending detected (%s)"), line_term);
-                }
+              /* advance the contents offset and decrease length */
+              contents += bom_length;
+              length -= bom_length;
 
-              /* make sure the string utf-8 valid */
-              if (G_UNLIKELY (g_utf8_validate (string, length, NULL) == FALSE))
+              /* set the detected encoding */
+              file->encoding = bom_encoding;
+            }
+
+          /* handle encoding and check for utf-8 valid text */
+          if (G_LIKELY (file->encoding == MOUSEPAD_ENCODING_UTF_8))
+            {
+              validate:
+
+              /* glib uses a faster validator when the string is nul-terminated */
+              if (G_LIKELY (length > 0 && contents[length] == '\0'))
+                length = -1;
+
+              /* leave when the contents is not utf-8 valid */
+              if (g_utf8_validate (contents, length, &end) == FALSE)
                 {
+                  /* set return value */
+                  retval = ERROR_NOT_UTF8_VALID;
+
                   /* set an error */
-                  g_set_error (error, G_CONVERT_ERROR, G_CONVERT_ERROR_FAILED,
-                               _("Converted string is not UTF-8 valid"));
+                  g_set_error (error, G_CONVERT_ERROR, G_CONVERT_ERROR_ILLEGAL_SEQUENCE,
+                               _("Invalid byte sequence in conversion input"));
 
-                  /* free string */
-                  g_free (string);
+                  goto failed;
+                }
+            }
+          else
+            {
+              /* get the encoding charset */
+              charset = mousepad_encoding_get_charset (file->encoding);
+
+              /* convert the contents */
+              encoded = g_convert (contents, length, "UTF-8", charset, NULL, &written, error);
+
+              /* check if the string is utf-8 valid */
+              if (G_UNLIKELY (encoded == NULL))
+                {
+                  /* set return value */
+                  retval = ERROR_CONVERTING_FAILED;
 
                   goto failed;
                 }
 
-              /* insert the string in the buffer */
-              gtk_text_buffer_insert (file->buffer, &end, string, length);
+              /* set new values */
+              contents = encoded;
+              length = written;
 
-              /* cleanup */
-              g_free (string);
+              /* validate the converted content */
+              goto validate;
             }
 
-          /* break when we've reached the end of the file */
-          if (G_UNLIKELY (status == G_IO_STATUS_EOF))
-            break;
+          /* detect the line ending, based on the first eol we match */
+          for (n = contents; n < end; n = g_utf8_next_char (n))
+            {
+              if (G_LIKELY (*n == '\n'))
+                {
+                  /* set unix line ending */
+                  file->line_ending = MOUSEPAD_EOL_UNIX;
+
+                  break;
+                }
+              else if (*n == '\r')
+                {
+                  /* get next character */
+                  n = g_utf8_next_char (n);
+
+                  /* set dos or mac line ending */
+                  file->line_ending = (*n == '\n') ? MOUSEPAD_EOL_DOS : MOUSEPAD_EOL_MAC;
+
+                  break;
+                }
+            }
+
+          /* get the iter at the beginning of the document */
+          gtk_text_buffer_get_start_iter (file->buffer, &start_iter);
+
+          /* insert the file contents in the buffer (for documents with cr line ending) */
+          for (n = m = contents; n < end; n = g_utf8_next_char (n))
+            {
+              if (G_UNLIKELY (*n == '\r'))
+                {
+                  /* insert the text in the buffer */
+                  if (G_LIKELY (n - m > 0))
+                    gtk_text_buffer_insert (file->buffer, &start_iter, m, n - m);
+
+                  /* advance the offset */
+                  m = g_utf8_next_char (n);
+
+                  /* insert a new line when the document is not cr+lf */
+                  if (*m != '\n')
+                    gtk_text_buffer_insert (file->buffer, &start_iter, "\n", 1);
+                }
+            }
+
+          /* insert the remaining part, or everything for lf line ending */
+          if (G_LIKELY (n - m > 0))
+            gtk_text_buffer_insert (file->buffer, &start_iter, m, n - m);
+
+          /* get the start iter */
+          gtk_text_buffer_get_start_iter (file->buffer, &start_iter);
+
+          /* set the cursor to the beginning of the document */
+          gtk_text_buffer_place_cursor (file->buffer, &start_iter);
         }
 
-      /* done */
-      succeed = TRUE;
+      /* assume everything when file */
+      retval = 0;
 
-      /* get the start iter */
-      gtk_text_buffer_get_start_iter (file->buffer, &start);
-
-      /* set the cursor to the beginning of the document */
-      gtk_text_buffer_place_cursor (file->buffer, &start);
-
-      /* get file status */
-      if (G_LIKELY (g_lstat (file->filename, &statb) == 0));
+      /* store the file status */
+      if (G_LIKELY (filename != template_filename))
         {
-          /* store the readonly mode */
-          mousepad_file_set_readonly (file, !((statb.st_mode & S_IWUSR) != 0));
+          if (G_LIKELY (g_stat (file->filename, &statb) == 0))
+            {
+              /* whether the file is readonly (ie. not writable by the user) */
+              mousepad_file_set_readonly (file, !((statb.st_mode & S_IWUSR) != 0));
 
-          /* store the file modification time */
-          file->mtime = statb.st_mtime;
+              /* store the file modification time */
+              file->mtime = statb.st_mtime;
+            }
+          else
+            {
+              /* set return value */
+              retval = ERROR_FILE_STATUS_FAILED;
+            }
+        }
+      else
+        {
+          /* this is a new document with content from a template */
+          file->mtime = 0;
+          mousepad_file_set_readonly (file, FALSE);
         }
 
       failed:
 
-      /* empty the buffer if we did not succeed */
-      if (G_UNLIKELY (succeed == FALSE))
+      /* make sure the buffer is empty if we did not succeed */
+      if (G_UNLIKELY (retval != 0))
         {
-          gtk_text_buffer_get_bounds (file->buffer, &start, &end);
-          gtk_text_buffer_delete (file->buffer, &start, &end);
+          gtk_text_buffer_get_bounds (file->buffer, &start_iter, &end_iter);
+          gtk_text_buffer_delete (file->buffer, &start_iter, &end_iter);
         }
+
+      /* cleanup */
+      g_free (encoded);
+
+      /* close the mapped file */
+#if GLIB_CHECK_VERSION (2, 21, 0)
+      g_mapped_file_unref (mapped_file);
+#else
+      g_mapped_file_free (mapped_file);
+#endif
 
       /* this does not count as a modified buffer */
       gtk_text_buffer_set_modified (file->buffer, FALSE);
-
-      /* thawn notifications */
-      g_object_thaw_notify (G_OBJECT (file->buffer));
-
-      /* close the channel and flush the write buffer */
-      g_io_channel_shutdown (channel, TRUE, NULL);
-
-      /* release the channel */
-      g_io_channel_unref (channel);
     }
 
-  return succeed;
+  return retval;
 }
 
 
@@ -443,99 +617,155 @@ gboolean
 mousepad_file_save (MousepadFile  *file,
                     GError       **error)
 {
-  GIOChannel  *channel;
-  GIOStatus    status;
-  gboolean     succeed = FALSE;
-  gchar       *slice;
-  const gchar *line_term;
-  GtkTextIter  start, end;
-  struct stat  statb;
+  gint          fd;
+  gboolean      succeed = FALSE;
+  gchar        *contents, *p;
+  gchar        *encoded;
+  const gchar  *charset;
+  GtkTextIter   start_iter, end_iter;
+  gint          l, m, length;
+  gsize         written;
+  struct stat   statb;
+  gchar       **chunks;
 
-  _mousepad_return_val_if_fail (MOUSEPAD_IS_FILE (file), FALSE);
-  _mousepad_return_val_if_fail (GTK_IS_TEXT_BUFFER (file->buffer), FALSE);
-  _mousepad_return_val_if_fail (error == NULL || *error == NULL, FALSE);
-  _mousepad_return_val_if_fail (file->filename != NULL, FALSE);
+  mousepad_return_val_if_fail (MOUSEPAD_IS_FILE (file), FALSE);
+  mousepad_return_val_if_fail (GTK_IS_TEXT_BUFFER (file->buffer), FALSE);
+  mousepad_return_val_if_fail (error == NULL || *error == NULL, FALSE);
+  mousepad_return_val_if_fail (file->filename != NULL, FALSE);
 
-  /* open the channel. the file is created or truncated */
-  channel = g_io_channel_new_file (file->filename, "w", error);
-
-  if (G_LIKELY (channel))
+  /* open the file */
+  fd = g_open (file->filename, O_WRONLY | O_CREAT | O_TRUNC, 0666);
+  if (G_LIKELY (fd != -1))
     {
-      /* set the encoding of the channel */
-      if (file->encoding != NULL)
+      /* get the buffer bounds */
+      gtk_text_buffer_get_bounds (file->buffer, &start_iter, &end_iter);
+
+      /* get the buffer contents */
+      contents = gtk_text_buffer_get_slice (file->buffer, &start_iter, &end_iter, TRUE);
+
+      if (G_LIKELY (contents))
         {
-          /* set the encoding */
-          status = g_io_channel_set_encoding (channel, file->encoding, error);
+          /* get the content length */
+          length = strlen (contents);
 
-          if (G_UNLIKELY (status != G_IO_STATUS_NORMAL))
-            goto failed;
-        }
-
-      /* get the line ending characters we're going to use */
-      line_term = MOUSEPAD_GET_LINE_END_CHARS (file->line_ending);
-
-      /* get the start iter of the buffer */
-      gtk_text_buffer_get_start_iter (file->buffer, &start);
-
-      /* walk the buffer */
-      do
-        {
-          /* set the end iter */
-          end = start;
-
-          /* insert the text if this line is not empty */
-          if (gtk_text_iter_ends_line (&start) == FALSE)
+          /* handle line endings */
+          if (file->line_ending == MOUSEPAD_EOL_MAC)
             {
-              /* move to the end of the line */
-              gtk_text_iter_forward_to_line_end (&end);
-
-              /* get the test slice */
-              slice = gtk_text_buffer_get_slice (file->buffer, &start, &end, TRUE);
-
-              /* write the file content */
-              status = g_io_channel_write_chars (channel, slice, -1, NULL, error);
+              /* replace the unix with a mac line ending */
+              for (p = contents; *p != '\0'; p++)
+                if (G_UNLIKELY (*p == '\n'))
+                  *p = '\r';
+            }
+          else if (file->line_ending == MOUSEPAD_EOL_DOS)
+            {
+              /* split the contents into chunks */
+              chunks = g_strsplit (contents, "\n", -1);
 
               /* cleanup */
-              g_free (slice);
+              g_free (contents);
 
-              /* leave when an error occured */
-              if (G_UNLIKELY (status != G_IO_STATUS_NORMAL))
-                goto failed;
+              /* join the chunks with dos line endings in between */
+              contents = g_strjoinv ("\r\n", chunks);
+
+              /* cleanup */
+              g_strfreev (chunks);
+
+              /* new contents length */
+              length = strlen (contents);
             }
 
-          /* insert a new line if we haven't reached the end of the buffer */
-          if (gtk_text_iter_is_end (&end) == FALSE)
+          /* add and utf-8 bom at the start of the contents if needed */
+          if (file->write_bom && mousepad_encoding_is_unicode (file->encoding))
             {
-              /* insert the new line */
-              status = g_io_channel_write_chars (channel, line_term, -1, NULL, error);
+              /* realloc the contents string */
+              contents = g_realloc (contents, length + 4);
 
-              /* leave when an error occured */
-              if (G_UNLIKELY (status != G_IO_STATUS_NORMAL))
-                goto failed;
+              /* move the existing contents 3 bytes */
+              g_memmove (contents + 3, contents, length + 1);
+
+              /* write an utf-8 bom at the start of the contents */
+              contents[0] = (guchar) 0xef;
+              contents[1] = (guchar) 0xbb;
+              contents[2] = (guchar) 0xbf;
+
+              /* increase the length */
+              length += 3;
             }
+
+          /* convert to the encoding if set */
+          if (G_UNLIKELY (file->encoding != MOUSEPAD_ENCODING_UTF_8))
+            {
+              /* get the charset */
+              charset = mousepad_encoding_get_charset (file->encoding);
+              if (G_UNLIKELY (charset == NULL))
+                goto failed;
+
+              /* convert the content to the user encoding */
+              encoded = g_convert (contents, length, charset, "UTF-8", NULL, &written, error);
+
+              /* return if nothing was encoded */
+              if (G_UNLIKELY (encoded == NULL))
+                goto failed;
+
+              /* cleanup */
+              g_free (contents);
+
+              /* set the new contents */
+              contents = encoded;
+              length = written;
+            }
+
+          /* write the buffer to the file */
+          for (m = 0; m < length;)
+            {
+              /* write */
+              l = write (fd, contents + m, length - m);
+
+              if (G_UNLIKELY (l < 0))
+                {
+                  /* just try again on EAGAIN/EINTR */
+                  if (G_LIKELY (errno != EAGAIN && errno != EINTR))
+                    {
+                      /* set an error */
+                      g_set_error (error, G_FILE_ERROR, g_file_error_from_errno (errno), "%s", g_strerror (errno));
+
+                      /* bail out */
+                      goto failed;
+                    }
+                }
+              else
+                {
+                  /* advance the offset */
+                  m += l;
+                }
+            }
+
+          /* set the new modification time */
+          if (G_LIKELY (fstat (fd, &statb) == 0))
+            file->mtime = statb.st_mtime;
+
+          /* everything has been saved */
+          gtk_text_buffer_set_modified (file->buffer, FALSE);
+
+          /* we saved succesfully */
+          mousepad_file_set_readonly (file, FALSE);
+
+          /* everything went file */
+          succeed = TRUE;
+
+          failed:
+
+          /* cleanup */
+          g_free (contents);
+
+          /* close the file */
+          close (fd);
         }
-      while (gtk_text_iter_forward_line (&start));
-
-      /* everything seems to be ok */
-      succeed = TRUE;
-
-      /* set the new modification time */
-      if (G_LIKELY (g_lstat (file->filename, &statb) == 0))
-        file->mtime = statb.st_mtime;
-
-      /* everything has been saved */
-      gtk_text_buffer_set_modified (file->buffer, FALSE);
-
-      /* we saved succesfully */
-      mousepad_file_set_readonly (file, FALSE);
-
-      failed:
-
-      /* close the channel and flush the write buffer */
-      g_io_channel_shutdown (channel, TRUE, error);
-
-      /* release the channel */
-      g_io_channel_unref (channel);
+    }
+  else
+    {
+      /* set an error */
+      g_set_error (error, G_FILE_ERROR, g_file_error_from_errno (errno), "%s", g_strerror (errno));
     }
 
   return succeed;
@@ -550,10 +780,10 @@ mousepad_file_reload (MousepadFile  *file,
   GtkTextIter start, end;
   gboolean    succeed = FALSE;
 
-  _mousepad_return_val_if_fail (MOUSEPAD_IS_FILE (file), FALSE);
-  _mousepad_return_val_if_fail (GTK_IS_TEXT_BUFFER (file->buffer), FALSE);
-  _mousepad_return_val_if_fail (error == NULL || *error == NULL, FALSE);
-  _mousepad_return_val_if_fail (file->filename != NULL, FALSE);
+  mousepad_return_val_if_fail (MOUSEPAD_IS_FILE (file), FALSE);
+  mousepad_return_val_if_fail (GTK_IS_TEXT_BUFFER (file->buffer), FALSE);
+  mousepad_return_val_if_fail (error == NULL || *error == NULL, FALSE);
+  mousepad_return_val_if_fail (file->filename != NULL, FALSE);
 
   /* simple test if the file has not been removed */
   if (G_UNLIKELY (g_file_test (file->filename, G_FILE_TEST_EXISTS) == FALSE))
@@ -570,7 +800,7 @@ mousepad_file_reload (MousepadFile  *file,
   gtk_text_buffer_delete (file->buffer, &start, &end);
 
   /* reload the file */
-  succeed = mousepad_file_open (file, error);
+  succeed = mousepad_file_open (file, NULL, error);
 
   return succeed;
 }
@@ -584,17 +814,17 @@ mousepad_file_get_externally_modified (MousepadFile  *file,
   struct stat statb;
   GFileError  error_code;
 
-  _mousepad_return_val_if_fail (MOUSEPAD_IS_FILE (file), TRUE);
-  _mousepad_return_val_if_fail (file->filename != NULL, TRUE);
-  _mousepad_return_val_if_fail (error == NULL || *error == NULL, FALSE);
+  mousepad_return_val_if_fail (MOUSEPAD_IS_FILE (file), TRUE);
+  mousepad_return_val_if_fail (file->filename != NULL, TRUE);
+  mousepad_return_val_if_fail (error == NULL || *error == NULL, FALSE);
 
   /* check if our modification time differs from the current one */
-  if (G_LIKELY (g_lstat (file->filename, &statb) == 0))
+  if (G_LIKELY (g_stat (file->filename, &statb) == 0))
     return (file->mtime > 0 && statb.st_mtime != file->mtime);
-    
+
   /* get the error code */
   error_code = g_file_error_from_errno (errno);
-  
+
   /* file does not exists, nothing wrong with that */
   if (G_LIKELY (error_code == G_FILE_ERROR_NOENT))
     return FALSE;
@@ -604,81 +834,4 @@ mousepad_file_get_externally_modified (MousepadFile  *file,
     g_set_error (error, G_FILE_ERROR, error_code, _("Failed to read the status of \"%s\""), file->filename);
 
   return TRUE;
-}
-
-
-
-gint
-mousepad_file_test_encoding (MousepadFile  *file,
-                             const gchar   *encoding,
-                             GError       **error)
-{
-  GIOChannel  *channel;
-  GIOStatus    status;
-  gunichar     c;
-  gint         unprintable = -1;
-  gint         counter = 0;
-
-  _mousepad_return_val_if_fail (MOUSEPAD_IS_FILE (file), -1);
-  _mousepad_return_val_if_fail (GTK_IS_TEXT_BUFFER (file->buffer), -1);
-  _mousepad_return_val_if_fail (error == NULL || *error == NULL, -1);
-  _mousepad_return_val_if_fail (file->filename != NULL, -1);
-  _mousepad_return_val_if_fail (encoding != NULL, -1);
-
-  /* check if the file exists */
-  if (g_file_test (file->filename, G_FILE_TEST_EXISTS) == FALSE)
-    return -1;
-
-  /* open the channel */
-  channel = g_io_channel_new_file (file->filename, "r", error);
-
-  if (G_LIKELY (channel))
-    {
-      /* set the encoding of the channel */
-      status = g_io_channel_set_encoding (channel, encoding, error);
-
-      if (G_UNLIKELY (status != G_IO_STATUS_NORMAL))
-        goto failed;
-
-      /* set the counter */
-      unprintable = 0;
-
-      /* read the characters in the file and break on large files */
-      while (G_UNLIKELY (counter < MAX_ENCODING_CHECK_CHARS))
-        {
-          /* read a character */
-          status = g_io_channel_read_unichar (channel, &c, error);
-
-          /* leave on problems */
-          if (G_UNLIKELY (status != G_IO_STATUS_NORMAL && status != G_IO_STATUS_EOF))
-            {
-              /* reset counter */
-              unprintable = -1;
-
-              goto failed;
-            }
-
-          /* check if the character is unprintable, but not a soft hyphen */
-          if (G_UNLIKELY (g_unichar_isprint (c) == FALSE
-                          && g_unichar_break_type (c) != G_UNICODE_BREAK_AFTER))
-            unprintable++;
-
-          /* break when we've reached the end of the file */
-          if (G_UNLIKELY (status == G_IO_STATUS_EOF))
-            break;
-
-          /* increase counter */
-          counter++;
-        }
-
-      failed:
-
-      /* close the channel and flush the write buffer */
-      g_io_channel_shutdown (channel, TRUE, NULL);
-
-      /* release the channel */
-      g_io_channel_unref (channel);
-    }
-
-  return unprintable;
 }

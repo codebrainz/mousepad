@@ -1,4 +1,3 @@
-/* $Id$ */
 /*
  * This program is free software; you can redistribute it and/or modify it
  * under the terms of the GNU General Public License as published by the Free
@@ -32,13 +31,13 @@ G_BEGIN_DECLS
 enum
 {
   TARGET_TEXT_URI_LIST,
-  TARGET_GTK_NOTEBOOK_TAB,
+  TARGET_GTK_NOTEBOOK_TAB
 };
 
 static const GtkTargetEntry drop_targets[] =
 {
-  { "text/uri-list", 0, TARGET_TEXT_URI_LIST },
-  { "GTK_NOTEBOOK_TAB", GTK_TARGET_SAME_APP, TARGET_GTK_NOTEBOOK_TAB },
+  { (gchar *) "text/uri-list", 0, TARGET_TEXT_URI_LIST },
+  { (gchar *) "GTK_NOTEBOOK_TAB", GTK_TARGET_SAME_APP, TARGET_GTK_NOTEBOOK_TAB }
 };
 
 typedef struct _MousepadWindowClass MousepadWindowClass;

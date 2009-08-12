@@ -1,4 +1,3 @@
-/* $Id$ */
 /*
  * This program is free software; you can redistribute it and/or modify it
  * under the terms of the GNU General Public License as published by the Free
@@ -20,6 +19,8 @@
 
 G_BEGIN_DECLS
 
+#include <mousepad/mousepad-encoding.h>
+
 typedef struct _MousepadFileClass  MousepadFileClass;
 typedef struct _MousepadFile       MousepadFile;
 typedef enum   _MousepadLineEnding MousepadLineEnding;
@@ -33,10 +34,9 @@ typedef enum   _MousepadLineEnding MousepadLineEnding;
 
 enum _MousepadLineEnding
 {
-  MOUSEPAD_LINE_END_NONE,
-  MOUSEPAD_LINE_END_UNIX,
-  MOUSEPAD_LINE_END_MAC,
-  MOUSEPAD_LINE_END_DOS
+  MOUSEPAD_EOL_UNIX,
+  MOUSEPAD_EOL_MAC,
+  MOUSEPAD_EOL_DOS
 };
 
 GType               mousepad_file_get_type                 (void) G_GNUC_CONST;
@@ -51,18 +51,25 @@ const gchar        *mousepad_file_get_filename             (MousepadFile        
 gchar              *mousepad_file_get_uri                  (MousepadFile        *file);
 
 void                mousepad_file_set_encoding             (MousepadFile        *file,
-                                                            const gchar         *encoding);
+                                                            MousepadEncoding     encoding);
 
-const gchar        *mousepad_file_get_encoding             (MousepadFile        *file);
+MousepadEncoding    mousepad_file_get_encoding             (MousepadFile        *file);
 
 gboolean            mousepad_file_get_read_only            (MousepadFile        *file);
+
+void                mousepad_file_set_write_bom            (MousepadFile        *file,
+                                                            gboolean             write_bom);
+
+gboolean            mousepad_file_get_write_bom            (MousepadFile        *file,
+                                                            gboolean            *sensitive);
 
 void                mousepad_file_set_line_ending          (MousepadFile        *file,
                                                             MousepadLineEnding   line_ending);
 
 MousepadLineEnding  mousepad_file_get_line_ending          (MousepadFile        *file);
 
-gboolean            mousepad_file_open                     (MousepadFile        *file,
+gint                mousepad_file_open                     (MousepadFile        *file,
+                                                            const gchar         *template_filename,
                                                             GError             **error);
 
 gboolean            mousepad_file_save                     (MousepadFile        *file,
@@ -73,11 +80,6 @@ gboolean            mousepad_file_reload                   (MousepadFile        
 
 gboolean            mousepad_file_get_externally_modified  (MousepadFile        *file,
                                                             GError             **error);
-
-gint                mousepad_file_test_encoding            (MousepadFile        *file,
-                                                            const gchar         *encoding,
-                                                            GError             **error);
-
 G_END_DECLS
 
 #endif /* !__MOUSEPAD_FILE_H__ */

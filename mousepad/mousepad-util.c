@@ -1,4 +1,3 @@
-/* $Id$ */
 /*
  * This program is free software; you can redistribute it and/or modify it
  * under the terms of the GNU General Public License as published by the Free
@@ -28,7 +27,7 @@
 
 
 
-static inline gboolean
+static gboolean
 mousepad_util_iter_word_characters (const GtkTextIter *iter)
 {
   gunichar c;
@@ -150,7 +149,7 @@ mousepad_util_iter_backward_word_start (GtkTextIter *iter)
 gboolean
 mousepad_util_iter_forward_text_start (GtkTextIter *iter)
 {
-  _mousepad_return_val_if_fail (!mousepad_util_iter_inside_word (iter), FALSE);
+  mousepad_return_val_if_fail (!mousepad_util_iter_inside_word (iter), FALSE);
 
   /* keep until we hit text or a line end */
   while (g_unichar_isspace (gtk_text_iter_get_char (iter)))
@@ -167,7 +166,7 @@ mousepad_util_iter_backward_text_start (GtkTextIter *iter)
 {
   GtkTextIter prev = *iter;
 
-  _mousepad_return_val_if_fail (!mousepad_util_iter_inside_word (iter), FALSE);
+  mousepad_return_val_if_fail (!mousepad_util_iter_inside_word (iter), FALSE);
 
   while (!gtk_text_iter_starts_line (&prev) && gtk_text_iter_backward_char (&prev))
     {
@@ -253,7 +252,7 @@ mousepad_util_utf8_strcapital (const gchar *str)
   GString     *result;
   gboolean     upper = TRUE;
 
-  _mousepad_return_val_if_fail (g_utf8_validate (str, -1, NULL), NULL);
+  mousepad_return_val_if_fail (g_utf8_validate (str, -1, NULL), NULL);
 
   /* create a new string */
   result = g_string_sized_new (strlen (str));
@@ -308,7 +307,7 @@ mousepad_util_utf8_stropposite (const gchar *str)
   gchar       *buf;
   GString     *result;
 
-  _mousepad_return_val_if_fail (g_utf8_validate (str, -1, NULL), NULL);
+  mousepad_return_val_if_fail (g_utf8_validate (str, -1, NULL), NULL);
 
   /* create a new string */
   result = g_string_sized_new (strlen (str));
@@ -394,7 +393,7 @@ mousepad_util_entry_error (GtkWidget *widget,
   const GdkColor white = {0, 0xffff, 0xffff, 0xffff};
   gpointer       pointer;
 
-  _mousepad_return_if_fail (GTK_IS_WIDGET (widget));
+  mousepad_return_if_fail (GTK_IS_WIDGET (widget));
 
   /* get the current error state */
   pointer = mousepad_object_get_data (G_OBJECT (widget), "error-state");
@@ -480,8 +479,8 @@ mousepad_util_set_tooltip (GtkWidget   *widget,
 {
   static GtkTooltips *tooltips = NULL;
 
-  _mousepad_return_if_fail (GTK_IS_WIDGET (widget));
-  _mousepad_return_if_fail (string ? g_utf8_validate (string, -1, NULL) : TRUE);
+  mousepad_return_if_fail (GTK_IS_WIDGET (widget));
+  mousepad_return_if_fail (string ? g_utf8_validate (string, -1, NULL) : TRUE);
 
   /* allocate the shared tooltips on-demand */
   if (G_UNLIKELY (tooltips == NULL))
@@ -553,13 +552,13 @@ mousepad_util_get_save_location (const gchar *relpath,
 {
   gchar *filename, *dirname;
 
-  _mousepad_return_val_if_fail (g_get_user_config_dir () != NULL, NULL);
+  mousepad_return_val_if_fail (g_get_user_config_dir () != NULL, NULL);
 
   /* create the full filename */
   filename = g_build_filename (g_get_user_config_dir (), relpath, NULL);
 
   /* test if the file exists */
-  if (G_UNLIKELY (g_file_test (filename, G_FILE_TEST_IS_REGULAR) == FALSE))
+  if (G_UNLIKELY (g_file_test (filename, G_FILE_TEST_EXISTS) == FALSE))
     {
       if (create_parents)
         {
@@ -631,18 +630,18 @@ mousepad_util_save_key_file (GKeyFile    *keyfile,
 GType
 mousepad_util_search_flags_get_type (void)
 {
-	static GType type = G_TYPE_NONE;
+  static GType type = G_TYPE_NONE;
 
-	if (G_UNLIKELY (type == G_TYPE_NONE))
-	  {
-	    /* use empty values table */
-	    static const GFlagsValue values[] =
-	    {
+  if (G_UNLIKELY (type == G_TYPE_NONE))
+    {
+      /* use empty values table */
+      static const GFlagsValue values[] =
+      {
           { 0, NULL, NULL }
-	    };
+      };
 
-	    /* register the type */
-	    type = g_flags_register_static (I_("MousepadSearchFlags"), values);
+      /* register the type */
+      type = g_flags_register_static (I_("MousepadSearchFlags"), values);
       }
 
   return type;
@@ -665,9 +664,9 @@ mousepad_util_search_iter (const GtkTextIter   *start,
   gboolean     match_case, search_backwards, whole_word;
   guint        needle_offset = 0;
 
-  _mousepad_return_val_if_fail (start != NULL, FALSE);
-  _mousepad_return_val_if_fail (string != NULL, FALSE);
-  _mousepad_return_val_if_fail (limit != NULL, FALSE);
+  mousepad_return_val_if_fail (start != NULL, FALSE);
+  mousepad_return_val_if_fail (string != NULL, FALSE);
+  mousepad_return_val_if_fail (limit != NULL, FALSE);
 
   /* search properties */
   match_case       = (flags & MOUSEPAD_SEARCH_FLAGS_MATCH_CASE) != 0;
@@ -809,12 +808,12 @@ mousepad_util_search_get_iters (GtkTextBuffer       *buffer,
       else if (flags & (MOUSEPAD_SEARCH_FLAGS_ITER_AREA_END | MOUSEPAD_SEARCH_FLAGS_ITER_SEL_END))
         *iter = sel_end;
       else
-        _mousepad_assert_not_reached ();
+        mousepad_assert_not_reached ();
     }
   else
     {
       /* this should never happen */
-      _mousepad_assert_not_reached ();
+      mousepad_assert_not_reached ();
     }
 
   /* invert the start and end iter on backwards searching */
@@ -840,10 +839,10 @@ mousepad_util_highlight (GtkTextBuffer       *buffer,
   gboolean    found, cached = FALSE;
   gint        counter = 0;
 
-  _mousepad_return_val_if_fail (GTK_IS_TEXT_BUFFER (buffer), -1);
-  _mousepad_return_val_if_fail (GTK_IS_TEXT_TAG (tag), -1);
-  _mousepad_return_val_if_fail (string == NULL || g_utf8_validate (string, -1, NULL), -1);
-  _mousepad_return_val_if_fail ((flags & MOUSEPAD_SEARCH_FLAGS_DIR_BACKWARD) == 0, -1);
+  mousepad_return_val_if_fail (GTK_IS_TEXT_BUFFER (buffer), -1);
+  mousepad_return_val_if_fail (GTK_IS_TEXT_TAG (tag), -1);
+  mousepad_return_val_if_fail (string == NULL || g_utf8_validate (string, -1, NULL), -1);
+  mousepad_return_val_if_fail ((flags & MOUSEPAD_SEARCH_FLAGS_DIR_BACKWARD) == 0, -1);
 
   /* get the buffer bounds */
   gtk_text_buffer_get_bounds (buffer, &start, &end);
@@ -926,10 +925,10 @@ mousepad_util_search (GtkTextBuffer       *buffer,
   GtkTextIter  match_start, match_end;
   GtkTextMark *mark_start, *mark_iter, *mark_end, *mark_replace;
 
-  _mousepad_return_val_if_fail (GTK_IS_TEXT_BUFFER (buffer), -1);
-  _mousepad_return_val_if_fail (string && g_utf8_validate (string, -1, NULL), -1);
-  _mousepad_return_val_if_fail (replace == NULL || g_utf8_validate (replace, -1, NULL), -1);
-  _mousepad_return_val_if_fail ((flags & MOUSEPAD_SEARCH_FLAGS_ACTION_HIGHTLIGHT) == 0, -1);
+  mousepad_return_val_if_fail (GTK_IS_TEXT_BUFFER (buffer), -1);
+  mousepad_return_val_if_fail (string && g_utf8_validate (string, -1, NULL), -1);
+  mousepad_return_val_if_fail (replace == NULL || g_utf8_validate (replace, -1, NULL), -1);
+  mousepad_return_val_if_fail ((flags & MOUSEPAD_SEARCH_FLAGS_ACTION_HIGHTLIGHT) == 0, -1);
 
   /* freeze buffer notifications */
   g_object_freeze_notify (G_OBJECT (buffer));
@@ -976,7 +975,7 @@ mousepad_util_search (GtkTextBuffer       *buffer,
               gtk_text_buffer_select_range (buffer, &match_start, &match_end);
             }
           else if (flags & MOUSEPAD_SEARCH_FLAGS_ACTION_REPLACE)
-	        {
+          {
               /* create text mark */
               mark_replace = gtk_text_buffer_create_mark (buffer, NULL, &match_start, search_backwards);
 
@@ -1003,8 +1002,8 @@ mousepad_util_search (GtkTextBuffer       *buffer,
 
               /* search again */
               search_again = TRUE;
-	        }
-	      else if (flags & MOUSEPAD_SEARCH_FLAGS_ACTION_NONE)
+          }
+        else if (flags & MOUSEPAD_SEARCH_FLAGS_ACTION_NONE)
             {
               /* keep searching when requested */
               if (flags & MOUSEPAD_SEARCH_FLAGS_ENTIRE_AREA)
@@ -1013,10 +1012,10 @@ mousepad_util_search (GtkTextBuffer       *buffer,
               /* move iter */
               iter = match_end;
             }
-	      else
-	        {
+        else
+          {
               /* no valid action was defined */
-              _mousepad_assert_not_reached ();
+              mousepad_assert_not_reached ();
             }
 
           /* increase the counter */

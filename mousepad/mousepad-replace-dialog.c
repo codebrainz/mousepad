@@ -1,4 +1,3 @@
-/* $Id$ */
 /*
  * This program is free software; you can redistribute it and/or modify it
  * under the terms of the GNU General Public License as published by the Free
@@ -33,8 +32,6 @@
 
 
 
-static void                 mousepad_replace_dialog_class_init              (MousepadReplaceDialogClass *klass);
-static void                 mousepad_replace_dialog_init                    (MousepadReplaceDialog      *dialog);
 static void                 mousepad_replace_dialog_unrealize               (GtkWidget                  *widget);
 static void                 mousepad_replace_dialog_finalize                (GObject                    *object);
 static void                 mousepad_replace_dialog_response                (GtkWidget                  *widget,
@@ -299,8 +296,8 @@ mousepad_replace_dialog_unrealize (GtkWidget *widget)
   MousepadReplaceDialog *dialog = MOUSEPAD_REPLACE_DIALOG (widget);
   const gchar           *text;
 
-  _mousepad_return_if_fail (GTK_IS_ENTRY (dialog->replace_entry));
-  _mousepad_return_if_fail (GTK_IS_ENTRY (dialog->search_entry));
+  mousepad_return_if_fail (GTK_IS_ENTRY (dialog->replace_entry));
+  mousepad_return_if_fail (GTK_IS_ENTRY (dialog->search_entry));
 
   text = gtk_entry_get_text (GTK_ENTRY (dialog->search_entry));
   mousepad_replace_dialog_history_insert_text (text);
@@ -588,7 +585,7 @@ mousepad_replace_dialog_history_combo_box (GtkComboBox *combo_box)
 {
   GSList *li;
 
-  _mousepad_return_if_fail (GTK_IS_COMBO_BOX (combo_box));
+  mousepad_return_if_fail (GTK_IS_COMBO_BOX (combo_box));
 
   /* append the items from the history to the combobox */
   for (li = history_list; li != NULL; li = li->next)

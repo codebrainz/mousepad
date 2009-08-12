@@ -1,4 +1,3 @@
-/* $Id$ */
 /*
  * This program is free software; you can redistribute it and/or modify it
  * under the terms of the GNU General Public License as published by the Free
@@ -26,8 +25,6 @@
 
 
 
-static void              mousepad_statusbar_class_init                (MousepadStatusbarClass *klass);
-static void              mousepad_statusbar_init                      (MousepadStatusbar      *statusbar);
 static gboolean          mousepad_statusbar_overwrite_clicked         (GtkWidget              *widget,
                                                                        GdkEventButton         *event,
                                                                        MousepadStatusbar      *statusbar);
@@ -149,7 +146,7 @@ mousepad_statusbar_overwrite_clicked (GtkWidget         *widget,
                                       GdkEventButton    *event,
                                       MousepadStatusbar *statusbar)
 {
-  _mousepad_return_val_if_fail (MOUSEPAD_IS_STATUSBAR (statusbar), FALSE);
+  mousepad_return_val_if_fail (MOUSEPAD_IS_STATUSBAR (statusbar), FALSE);
 
   /* only respond on the left button click */
   if (event->type != GDK_BUTTON_PRESS || event->button != 1)
@@ -174,7 +171,7 @@ mousepad_statusbar_set_cursor_position (MousepadStatusbar *statusbar,
 {
   gchar string[64];
 
-  _mousepad_return_if_fail (MOUSEPAD_IS_STATUSBAR (statusbar));
+  mousepad_return_if_fail (MOUSEPAD_IS_STATUSBAR (statusbar));
 
   /* create printable string */
   if (G_UNLIKELY (selection > 0))
@@ -192,7 +189,7 @@ void
 mousepad_statusbar_set_overwrite (MousepadStatusbar *statusbar,
                                   gboolean           overwrite)
 {
-  _mousepad_return_if_fail (MOUSEPAD_IS_STATUSBAR (statusbar));
+  mousepad_return_if_fail (MOUSEPAD_IS_STATUSBAR (statusbar));
 
   gtk_widget_set_sensitive (statusbar->overwrite, overwrite);
 

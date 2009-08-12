@@ -1,3 +1,12 @@
+2008-03-xx	Nick Schermer <nick@xfce.org
+
+	* mousepad/mousepad-file.c: Use GMappedFile (mmap) for opening a
+	  document. Also improve the line ending detection and avoid
+	  a lot of gtk_text_buffer_insert() calls when opening unix or
+	  mac line-ended files.
+	* Some internal renaming.
+
+
 2008-03-10	Nick Schermer <nick@xfce.org>
 
 	* mousepad/mousepad-document.c: Swap the colors of readonly and

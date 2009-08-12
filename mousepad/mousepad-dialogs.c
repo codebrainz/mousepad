@@ -1,4 +1,3 @@
-/* $Id$ */
 /*
  * This program is free software; you can redistribute it and/or modify it
  * under the terms of the GNU General Public License as published by the Free
@@ -32,7 +31,7 @@ mousepad_dialogs_show_about (GtkWindow *parent)
   {
     "Nick Schermer <nick@xfce.org>",
     "Erik Harrison <erikharrison@xfce.org>",
-    NULL,
+    NULL
   };
 
   /* show the dialog */
@@ -176,14 +175,14 @@ mousepad_dialogs_go_to_line_changed (GtkSpinButton *line_spin,
   GtkTextBuffer *buffer;
   GtkTextIter    iter;
 
-  _mousepad_return_if_fail (GTK_IS_SPIN_BUTTON (line_spin));
-  _mousepad_return_if_fail (GTK_IS_SPIN_BUTTON (col_spin));
+  mousepad_return_if_fail (GTK_IS_SPIN_BUTTON (line_spin));
+  mousepad_return_if_fail (GTK_IS_SPIN_BUTTON (col_spin));
 
   /* get the text buffer */
   buffer = mousepad_object_get_data (G_OBJECT (col_spin), "buffer");
 
   /* debug check */
-  _mousepad_return_if_fail (GTK_IS_TEXT_BUFFER (buffer));
+  mousepad_return_if_fail (GTK_IS_TEXT_BUFFER (buffer));
 
   /* get iter at line */
   gtk_text_buffer_get_iter_at_line (buffer, &iter, gtk_spin_button_get_value_as_int (line_spin) - 1);

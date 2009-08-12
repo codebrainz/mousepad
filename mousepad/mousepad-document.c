@@ -1,4 +1,3 @@
-/* $Id$ */
 /*
  * This program is free software; you can redistribute it and/or modify it
  * under the terms of the GNU General Public License as published by the Free
@@ -44,8 +43,6 @@
 
 
 
-static void      mousepad_document_class_init              (MousepadDocumentClass  *klass);
-static void      mousepad_document_init                    (MousepadDocument       *document);
 static void      mousepad_document_finalize                (GObject                *object);
 static void      mousepad_document_notify_cursor_position  (GtkTextBuffer          *buffer,
                                                             GParamSpec             *pspec,
@@ -62,7 +59,7 @@ static void      mousepad_document_drag_data_received      (GtkWidget           
                                                             gint                    y,
                                                             GtkSelectionData       *selection_data,
                                                             guint                   info,
-                                                            guint                   time,
+                                                            guint                   drag_time,
                                                             MousepadDocument       *document);
 static void      mousepad_document_filename_changed        (MousepadDocument       *document,
                                                             const gchar            *filename);
@@ -281,8 +278,8 @@ mousepad_document_notify_cursor_position (GtkTextBuffer    *buffer,
   gint        line, column, selection;
   gint        tab_size;
 
-  _mousepad_return_if_fail (GTK_IS_TEXT_BUFFER (buffer));
-  _mousepad_return_if_fail (MOUSEPAD_IS_DOCUMENT (document));
+  mousepad_return_if_fail (GTK_IS_TEXT_BUFFER (buffer));
+  mousepad_return_if_fail (MOUSEPAD_IS_DOCUMENT (document));
 
   /* get the current iter position */
   gtk_text_buffer_get_iter_at_mark (buffer, &iter, gtk_text_buffer_get_insert (buffer));
@@ -313,8 +310,8 @@ mousepad_document_notify_has_selection (GtkTextBuffer    *buffer,
   gint     selection;
   gboolean is_column_selection;
 
-  _mousepad_return_if_fail (GTK_IS_TEXT_BUFFER (buffer));
-  _mousepad_return_if_fail (MOUSEPAD_IS_DOCUMENT (document));
+  mousepad_return_if_fail (GTK_IS_TEXT_BUFFER (buffer));
+  mousepad_return_if_fail (MOUSEPAD_IS_DOCUMENT (document));
 
   /* get length of the selection */
   selection = mousepad_view_get_selection_length (document->textview, &is_column_selection);
@@ -340,8 +337,8 @@ mousepad_document_notify_overwrite (GtkTextView      *textview,
 {
   gboolean overwrite;
 
-  _mousepad_return_if_fail (MOUSEPAD_IS_DOCUMENT (document));
-  _mousepad_return_if_fail (GTK_IS_TEXT_VIEW (textview));
+  mousepad_return_if_fail (MOUSEPAD_IS_DOCUMENT (document));
+  mousepad_return_if_fail (GTK_IS_TEXT_VIEW (textview));
 
   /* whether overwrite is enabled */
   overwrite = gtk_text_view_get_overwrite (textview);
@@ -359,14 +356,14 @@ mousepad_document_drag_data_received (GtkWidget        *widget,
                                       gint              y,
                                       GtkSelectionData *selection_data,
                                       guint             info,
-                                      guint             time,
+                                      guint             drag_time,
                                       MousepadDocument *document)
 {
-  _mousepad_return_if_fail (MOUSEPAD_IS_DOCUMENT (document));
+  mousepad_return_if_fail (MOUSEPAD_IS_DOCUMENT (document));
 
   /* emit the drag-data-received signal from the document when a tab or uri has been dropped */
   if (info == TARGET_TEXT_URI_LIST || info == TARGET_GTK_NOTEBOOK_TAB)
-    g_signal_emit_by_name (G_OBJECT (document), "drag-data-received", context, x, y, selection_data, info, time);
+    g_signal_emit_by_name (G_OBJECT (document), "drag-data-received", context, x, y, selection_data, info, drag_time);
 }
 
 
@@ -377,8 +374,8 @@ mousepad_document_filename_changed (MousepadDocument *document,
 {
   gchar *utf8_filename, *utf8_basename;
 
-  _mousepad_return_if_fail (MOUSEPAD_IS_DOCUMENT (document));
-  _mousepad_return_if_fail (filename != NULL);
+  mousepad_return_if_fail (MOUSEPAD_IS_DOCUMENT (document));
+  mousepad_return_if_fail (filename != NULL);
 
   /* convert the title into a utf-8 valid version for display */
   utf8_filename = g_filename_to_utf8 (filename, -1, NULL, NULL, NULL);
@@ -420,9 +417,9 @@ mousepad_document_label_color (MousepadDocument *document)
   GdkColor  red   = {0, 0xffff, 0x0000, 0x0000};
   GdkColor *color;
 
-  _mousepad_return_if_fail (MOUSEPAD_IS_DOCUMENT (document));
-  _mousepad_return_if_fail (GTK_IS_TEXT_BUFFER (document->buffer));
-  _mousepad_return_if_fail (MOUSEPAD_IS_FILE (document->file));
+  mousepad_return_if_fail (MOUSEPAD_IS_DOCUMENT (document));
+  mousepad_return_if_fail (GTK_IS_TEXT_BUFFER (document->buffer));
+  mousepad_return_if_fail (MOUSEPAD_IS_FILE (document->file));
 
   if (document->priv->label)
     {
@@ -433,7 +430,7 @@ mousepad_document_label_color (MousepadDocument *document)
         color = &green;
       else
         color = NULL;
-       
+
       /* update colors */
       gtk_widget_modify_fg (document->priv->label, GTK_STATE_NORMAL, color);
       gtk_widget_modify_fg (document->priv->label, GTK_STATE_ACTIVE, color);
@@ -446,7 +443,7 @@ void
 mousepad_document_set_overwrite (MousepadDocument *document,
                                  gboolean          overwrite)
 {
-  _mousepad_return_if_fail (MOUSEPAD_IS_DOCUMENT (document));
+  mousepad_return_if_fail (MOUSEPAD_IS_DOCUMENT (document));
 
   gtk_text_view_set_overwrite (GTK_TEXT_VIEW (document->textview), overwrite);
 }
@@ -457,7 +454,7 @@ void
 mousepad_document_set_word_wrap (MousepadDocument *document,
                                  gboolean          word_wrap)
 {
-  _mousepad_return_if_fail (MOUSEPAD_IS_DOCUMENT (document));
+  mousepad_return_if_fail (MOUSEPAD_IS_DOCUMENT (document));
 
   /* store the setting */
   document->priv->word_wrap = word_wrap;
@@ -475,7 +472,7 @@ mousepad_document_set_font (MousepadDocument *document,
 {
   PangoFontDescription *font_desc;
 
-  _mousepad_return_if_fail (MOUSEPAD_IS_DOCUMENT (document));
+  mousepad_return_if_fail (MOUSEPAD_IS_DOCUMENT (document));
 
   if (G_LIKELY (font_name))
     {
@@ -491,7 +488,7 @@ mousepad_document_set_font (MousepadDocument *document,
 void
 mousepad_document_focus_textview (MousepadDocument *document)
 {
-  _mousepad_return_if_fail (MOUSEPAD_IS_DOCUMENT (document));
+  mousepad_return_if_fail (MOUSEPAD_IS_DOCUMENT (document));
 
   /* focus the textview */
   gtk_widget_grab_focus (GTK_WIDGET (document->textview));
@@ -502,7 +499,7 @@ mousepad_document_focus_textview (MousepadDocument *document)
 void
 mousepad_document_send_signals (MousepadDocument *document)
 {
-  _mousepad_return_if_fail (MOUSEPAD_IS_DOCUMENT (document));
+  mousepad_return_if_fail (MOUSEPAD_IS_DOCUMENT (document));
 
   /* re-send the cursor changed signal */
   mousepad_document_notify_cursor_position (document->buffer, NULL, document);
@@ -583,7 +580,7 @@ mousepad_document_get_basename (MousepadDocument *document)
 {
   static gint untitled_counter = 0;
 
-  _mousepad_return_val_if_fail (MOUSEPAD_IS_DOCUMENT (document), NULL);
+  mousepad_return_val_if_fail (MOUSEPAD_IS_DOCUMENT (document), NULL);
 
   /* check if there is a filename set */
   if (document->priv->utf8_basename == NULL)
@@ -600,7 +597,7 @@ mousepad_document_get_basename (MousepadDocument *document)
 const gchar *
 mousepad_document_get_filename (MousepadDocument *document)
 {
-  _mousepad_return_val_if_fail (MOUSEPAD_IS_DOCUMENT (document), NULL);
+  mousepad_return_val_if_fail (MOUSEPAD_IS_DOCUMENT (document), NULL);
 
   return document->priv->utf8_filename;
 }
@@ -610,7 +607,7 @@ mousepad_document_get_filename (MousepadDocument *document)
 gboolean
 mousepad_document_get_word_wrap (MousepadDocument *document)
 {
-  _mousepad_return_val_if_fail (MOUSEPAD_IS_DOCUMENT (document), FALSE);
+  mousepad_return_val_if_fail (MOUSEPAD_IS_DOCUMENT (document), FALSE);
 
   return document->priv->word_wrap;
 }
