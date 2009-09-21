@@ -3,6 +3,7 @@
 # This file is distributed under the same license as the Mousepad package.
 # Artem Vakhitov <temcat@mail.ru>, 2004.
 # Sergey Fedoseev <fedoseev.sergey@gmail.com>, 2006.
+# Denis Koryavov <dkoryavov@yandex.ru>, 2009.
 #
 msgid ""
 msgstr ""
@@ -68,9 +69,8 @@ msgid "/File/_Open..."
 msgstr "/Файл/_Открыть..."
 
 #: ../src/menu.c:72
-#, fuzzy
 msgid "/File/Open _Recent"
-msgstr "/Файл/_Открыть..."
+msgstr "/Файл/_Последние файлы"
 
 #: ../src/menu.c:77
 msgid "/File/_Save"
