@@ -1,7 +1,7 @@
 # European Portuguese translations for Mousepad package.
 # Copyright (C) 2005-2006 Erik Harrison.
 # This file is distributed under the same license as the Mousepad package.
-# Nuno Miguel <nunis@netcabo.pt>, 2007
+# Nuno Miguel <nunis@netcabo.pt>, 2007, 2008, 2009
 #
 msgid ""
 msgstr ""
@@ -20,8 +20,7 @@ msgstr ""
 msgid "Save changes to '%s'?"
 msgstr "Gravar alterações em '%s'?"
 
-#: ../src/callback.c:213
-#: ../src/file.c:174
+#: ../src/callback.c:213 ../src/file.c:174
 #, c-format
 msgid "Can't convert codeset to '%s'"
 msgstr "Não é possível converter a codificação para '%s'"
@@ -188,13 +187,11 @@ msgstr "%d expressões substituídas"
 msgid "Find"
 msgstr "Procurar"
 
-#: ../src/search.c:200
-#: ../src/search.c:265
+#: ../src/search.c:200 ../src/search.c:265
 msgid "Fi_nd what: "
 msgstr "P_rocurar por:"
 
-#: ../src/search.c:219
-#: ../src/search.c:292
+#: ../src/search.c:219 ../src/search.c:292
 msgid "_Match case"
 msgstr "_Distinguir capitalização"
 
@@ -225,7 +222,7 @@ msgstr "Número da _linha: "
 #: ../src/selector.c:103
 #, c-format
 msgid "Current Locale (%s)"
-msgstr "Localidade Actual (%s)"
+msgstr "Codificação Actual (%s)"
 
 #: ../src/selector.c:147
 msgid "Other Codeset"
@@ -281,4 +278,3 @@ msgstr "Editor de texto simples"
 #: ../mousepad.desktop.in.h:3
 msgid "Text Editor"
 msgstr "Editor de Texto"
-
