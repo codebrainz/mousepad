@@ -1,8 +1,8 @@
 # Galician translation of mousepad
-# Copyright (C) 2006, 2008, 2009 Leandro Regueiro
+# Copyright (C) 2006, 2008, 2009, 2010 Leandro Regueiro
 # This file is distributed under the same license as the xfce package.
 #
-# Leandro Regueiro <leandro.regueiro@gmail.com>, 2006, 2008, 2009.
+# Leandro Regueiro <leandro.regueiro@gmail.com>, 2006, 2008, 2009, 2010.
 #
 # Proxecto Trasno - Adaptación do software libre á lingua galega:  Se desexas
 # colaborar connosco, podes atopar máis información en <http://trasno.net>
@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: mousepad 0.2.16\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2007-01-20 12:34+0100\n"
-"PO-Revision-Date: 2009-08-19 12:35+0100\n"
+"PO-Revision-Date: 2010-01-06 12:31+0100\n"
 "Last-Translator: Leandro Regueiro <leandro.regueiro@gmail.com>\n"
 "Language-Team: Galician <proxecto@trasno.net>\n"
 "MIME-Version: 1.0\n"
@@ -66,7 +66,7 @@ msgstr "/Ficheiro/_Novo"
 
 #: ../src/menu.c:66
 msgid "/File/New _Window"
-msgstr "/Ficheiro/Nova _ventá"
+msgstr "/Ficheiro/Nova _fiestra"
 
 #: ../src/menu.c:69
 msgid "/File/_Open..."
