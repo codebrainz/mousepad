@@ -445,7 +445,11 @@ mousepad_print_begin_print (GtkPrintOperation *operation,
   for (i = 0; i < pango_layout_get_line_count (print->layout); i++)
     {
       /* get the line */
+#if PANGO_VERSION_CHECK (1, 16, 0)
       line = pango_layout_get_line_readonly (print->layout, i);
+#else
+      line = pango_layout_get_line (print->layout, i);
+#endif
 
       /* if we don't wrap lines, skip the lines that don't start a paragraph */
       if (print->text_wrapping == FALSE && line->is_paragraph_start == FALSE)
@@ -559,7 +563,11 @@ mousepad_print_draw_page (GtkPrintOperation *operation,
   for (i = start, y = print->y_offset; i < end; i++)
     {
       /* get the line */
+#if PANGO_VERSION_CHECK (1, 16, 0)
       line = pango_layout_get_line_readonly (print->layout, i);
+#else
+      line = pango_layout_get_line (print->layout, i);
+#endif
 
       /* if we don't wrap lines, skip the lines that don't start a paragraph */
       if (print->text_wrapping == FALSE && line->is_paragraph_start == FALSE)
@@ -596,7 +604,11 @@ mousepad_print_draw_page (GtkPrintOperation *operation,
           cairo_move_to (cr, 0, y);
 
           /* pick the first line and draw it on the cairo context */
-          line = pango_layout_get_line_readonly (layout, 0);
+#if PANGO_VERSION_CHECK (1, 16, 0)
+          line = pango_layout_get_line_readonly (print->layout, 0);
+#else
+          line = pango_layout_get_line (print->layout, 0);
+#endif
           pango_cairo_show_layout_line (cr, line);
         }
     }
