@@ -98,17 +98,17 @@ BUILT_SOURCES = \
 
 if HAVE_DBUS
 mousepad-dbus-infos.h: mousepad-dbus-infos.xml Makefile
-	dbus-binding-tool --prefix=mousepad_dbus_service --mode=glib-server $< > $@
+	$(AM_V_GEN) dbus-binding-tool --prefix=mousepad_dbus_service --mode=glib-server $< > $@
 endif
 
 mousepad-window-ui.h: mousepad-window-ui.xml Makefile
-	exo-csource --strip-comments --strip-content --static --name=mousepad_window_ui $< > $@
+	$(AM_V_GEN) exo-csource --strip-comments --strip-content --static --name=mousepad_window_ui $< > $@
 
 mousepad-marshal.h: mousepad-marshal.list Makefile
-	glib-genmarshal --header --prefix=_mousepad_marshal $< > $@
+	$(AM_V_GEN) glib-genmarshal --header --prefix=_mousepad_marshal $< > $@
 
 mousepad-marshal.c: mousepad-marshal.list Makefile
-	echo "#include <mousepad/mousepad-marshal.h>" > $@ \
+	$(AM_V_GEN) echo "#include <mousepad/mousepad-marshal.h>" > $@ \
 	&& glib-genmarshal --body --prefix=_mousepad_marshal $< >> $@
 endif
 
