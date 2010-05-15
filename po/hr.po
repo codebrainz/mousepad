@@ -1,0 +1,282 @@
+# Croatian translations for PACKAGE package.
+# Copyright (C) 2010 THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+#  Ivica Kolić<ikoli@yahoo.com>, 2010.
+#   <>, 2010.
+msgid ""
+msgstr ""
+"Project-Id-Version:  mousepad 0.2.16\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2007-01-20 12:34+0100\n"
+"PO-Revision-Date: 2010-05-16 00:11+0200\n"
+"Last-Translator:   <>\n"
+"Language-Team: Croatian <>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%"
+"10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+
+#: ../src/callback.c:37
+#, c-format
+msgid "Save changes to '%s'?"
+msgstr "Spremi promjene u  '%s'?"
+
+#: ../src/callback.c:213 ../src/file.c:174
+#, c-format
+msgid "Can't convert codeset to '%s'"
+msgstr ""
+
+#: ../src/callback.c:240
+msgid "Can't open pipe to process"
+msgstr ""
+
+#: ../src/callback.c:397
+msgid "A text editor for Xfce"
+msgstr ""
+
+#: ../src/dialog.c:135
+#, c-format
+msgid "About %s"
+msgstr "O programu  %s"
+
+#: ../src/file.c:187
+msgid "Can't open file to write"
+msgstr ""
+
+#: ../src/file.c:192
+msgid "Can't write file"
+msgstr ""
+
+#: ../src/font.c:49
+msgid "Font"
+msgstr ""
+
+#: ../src/menu.c:61
+msgid "/_File"
+msgstr "/_Datoteka"
+
+#: ../src/menu.c:63
+msgid "/File/_New"
+msgstr "/Datoteka/_Nova"
+
+#: ../src/menu.c:66
+msgid "/File/New _Window"
+msgstr "/Datoteka/Novi _Prozor"
+
+#: ../src/menu.c:69
+msgid "/File/_Open..."
+msgstr "/Datoteka/_Otvori"
+
+#: ../src/menu.c:72
+msgid "/File/Open _Recent"
+msgstr ""
+
+#: ../src/menu.c:77
+msgid "/File/_Save"
+msgstr "/Datoteka/_Spremi"
+
+#: ../src/menu.c:79
+msgid "/File/Save _As..."
+msgstr "/Datoteka/Spremi _kao"
+
+#: ../src/menu.c:83
+msgid "/File/_Print..."
+msgstr "/Datoteka/_Ispis"
+
+#: ../src/menu.c:87
+msgid "/File/_Quit"
+msgstr "/Datoteka/_Izlaz"
+
+#: ../src/menu.c:89
+msgid "/_Edit"
+msgstr "/_Uredi"
+
+#: ../src/menu.c:91
+msgid "/Edit/_Undo"
+msgstr ""
+
+#: ../src/menu.c:93
+msgid "/Edit/_Redo"
+msgstr ""
+
+#: ../src/menu.c:97
+msgid "/Edit/Cu_t"
+msgstr "/Uredi/Izrež_i"
+
+#: ../src/menu.c:99
+msgid "/Edit/_Copy"
+msgstr "/Uredi/_Kopiraj"
+
+#: ../src/menu.c:101
+msgid "/Edit/_Paste"
+msgstr "/Uredi/_Zalijepi"
+
+#: ../src/menu.c:103
+msgid "/Edit/_Delete"
+msgstr "/Uredi/_Obriši"
+
+#: ../src/menu.c:107
+msgid "/Edit/Select _All"
+msgstr "/Datoteka/Označi _sve"
+
+#: ../src/menu.c:109
+msgid "/_Search"
+msgstr "/_Traži"
+
+#: ../src/menu.c:111
+msgid "/Search/_Find..."
+msgstr "/Traži/_Nađi"
+
+#: ../src/menu.c:113
+msgid "/Search/Find _Next"
+msgstr "/Traži/Nađi _slijedeće"
+
+#: ../src/menu.c:115
+msgid "/Search/Find _Previous"
+msgstr "/Traži/Nađi _prethodno"
+
+#: ../src/menu.c:117
+msgid "/Search/_Replace..."
+msgstr "/Traži/_Zamijeni"
+
+#: ../src/menu.c:121
+msgid "/Search/_Jump To..."
+msgstr "/Traži/_Skoči na"
+
+#: ../src/menu.c:123
+msgid "/_Options"
+msgstr "/_Opcije"
+
+#: ../src/menu.c:125
+msgid "/Options/_Font..."
+msgstr "/Opcije/_Font"
+
+#: ../src/menu.c:127
+msgid "/Options/_Word Wrap"
+msgstr ""
+
+#: ../src/menu.c:129
+msgid "/Options/_Line Numbers"
+msgstr "/Opcije/_Brojevi redaka"
+
+#: ../src/menu.c:133
+msgid "/Options/_Auto Indent"
+msgstr ""
+
+#: ../src/menu.c:135
+msgid "/_Help"
+msgstr "/_Pomoć"
+
+#: ../src/menu.c:137
+msgid "/Help/_About"
+msgstr "/Pomoć/_O programu"
+
+#: ../src/search.c:73
+msgid "Search string not found"
+msgstr ""
+
+#: ../src/search.c:115
+msgid "Replace?"
+msgstr "Zamijeniti?"
+
+#: ../src/search.c:143
+#, c-format
+msgid "%d strings replaced"
+msgstr ""
+
+#: ../src/search.c:188
+msgid "Find"
+msgstr "Nađi"
+
+#: ../src/search.c:200 ../src/search.c:265
+msgid "Fi_nd what: "
+msgstr ""
+
+#: ../src/search.c:219 ../src/search.c:292
+msgid "_Match case"
+msgstr ""
+
+#: ../src/search.c:253
+msgid "Replace"
+msgstr "Zamijeni"
+
+#: ../src/search.c:280
+msgid "Re_place with: "
+msgstr ""
+
+#: ../src/search.c:296
+msgid "Replace _all at once"
+msgstr "Zamijeni _sve odjednom"
+
+#: ../src/search.c:342
+msgid "Jump To"
+msgstr "Skoči na"
+
+#: ../src/search.c:347
+msgid "_Jump"
+msgstr "_Skoči"
+
+#: ../src/search.c:353
+msgid "_Line number: "
+msgstr ""
+
+#: ../src/selector.c:103
+#, c-format
+msgid "Current Locale (%s)"
+msgstr ""
+
+#: ../src/selector.c:147
+msgid "Other Codeset"
+msgstr ""
+
+#: ../src/selector.c:186
+msgid "Code_set:"
+msgstr ""
+
+#: ../src/selector.c:207
+#, c-format
+msgid "'%s' is not supported"
+msgstr ""
+
+#: ../src/selector.c:271
+msgid "Auto Detect"
+msgstr ""
+
+#: ../src/selector.c:325
+msgid "Open"
+msgstr "Otvori"
+
+#: ../src/selector.c:325
+msgid "Save As"
+msgstr "Spremi kao"
+
+#: ../src/selector.c:347
+msgid "Ch_aracter Coding: "
+msgstr ""
+
+#: ../src/selector.c:403
+#, c-format
+msgid "'%s' already exists. Overwrite?"
+msgstr ""
+
+#. add the label with the root warning
+#: ../src/window.c:110
+msgid "Warning, you are using the root account, you may harm your system."
+msgstr ""
+
+#: ../src/window.c:169
+msgid "Untitled"
+msgstr "Nenaslovljeno"
+
+#: ../mousepad.desktop.in.h:1
+msgid "Mousepad"
+msgstr ""
+
+#: ../mousepad.desktop.in.h:2
+msgid "Simple text editor"
+msgstr ""
+
+#: ../mousepad.desktop.in.h:3
+msgid "Text Editor"
+msgstr ""
