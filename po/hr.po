@@ -175,11 +175,12 @@ msgstr ""
 
 #: ../src/search.c:73
 msgid "Search string not found"
-msgstr ""
+msgstr "Traženi string nije pronađen"
 
 #: ../src/search.c:115
+#, fuzzy
 msgid "Replace?"
-msgstr ""
+msgstr "Zamijeniti?"
 
 #: ../src/search.c:143
 #, c-format
@@ -188,7 +189,7 @@ msgstr ""
 
 #: ../src/search.c:188
 msgid "Find"
-msgstr ""
+msgstr "Traži"
 
 #: ../src/search.c:200 ../src/search.c:265
 msgid "Fi_nd what: "
@@ -200,7 +201,7 @@ msgstr ""
 
 #: ../src/search.c:253
 msgid "Replace"
-msgstr ""
+msgstr "Zamijeni"
 
 #: ../src/search.c:280
 msgid "Re_place with: "
@@ -246,11 +247,12 @@ msgstr ""
 
 #: ../src/selector.c:325
 msgid "Open"
-msgstr ""
+msgstr "Otvori"
 
 #: ../src/selector.c:325
+#, fuzzy
 msgid "Save As"
-msgstr ""
+msgstr "Spremi kao"
 
 #: ../src/selector.c:347
 msgid "Ch_aracter Coding: "
@@ -259,12 +261,13 @@ msgstr ""
 #: ../src/selector.c:403
 #, c-format
 msgid "'%s' already exists. Overwrite?"
-msgstr ""
+msgstr "'%s' već postoji. Prepiši?"
 
 #. add the label with the root warning
 #: ../src/window.c:110
+#, fuzzy
 msgid "Warning, you are using the root account, you may harm your system."
-msgstr ""
+msgstr "Upozorenje, koristite root račun, možete oštetiti vaš sustav."
 
 #: ../src/window.c:169
 msgid "Untitled"
@@ -276,8 +279,8 @@ msgstr ""
 
 #: ../mousepad.desktop.in.h:2
 msgid "Simple text editor"
-msgstr ""
+msgstr "Jednostavan tekst uređivač"
 
 #: ../mousepad.desktop.in.h:3
 msgid "Text Editor"
-msgstr ""
+msgstr "Uređivač tekstualnih datoteka"
