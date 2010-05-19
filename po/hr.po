@@ -2,7 +2,7 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mousepad\n"
@@ -18,10 +18,9 @@ msgstr ""
 #: ../src/callback.c:37
 #, c-format
 msgid "Save changes to '%s'?"
-msgstr ""
+msgstr "Spremi promjene '%s'"
 
-#: ../src/callback.c:213
-#: ../src/file.c:174
+#: ../src/callback.c:213 ../src/file.c:174
 #, c-format
 msgid "Can't convert codeset to '%s'"
 msgstr ""
@@ -31,25 +30,28 @@ msgid "Can't open pipe to process"
 msgstr ""
 
 #: ../src/callback.c:397
+#, fuzzy
 msgid "A text editor for Xfce"
-msgstr ""
+msgstr "Uređivač teksta za Xfce"
 
 #: ../src/dialog.c:135
-#, c-format
+#, c-format, fuzzy
 msgid "About %s"
-msgstr ""
+msgstr "O% s"
 
 #: ../src/file.c:187
+#, fuzzy
 msgid "Can't open file to write"
-msgstr ""
+msgstr "Ne mogu otvoriti datoteku za pisanje"
 
 #: ../src/file.c:192
+#, fuzzy
 msgid "Can't write file"
-msgstr ""
+msgstr "Ne mogu zapisati u datoteku"
 
 #: ../src/font.c:49
 msgid "Font"
-msgstr ""
+msgstr "Font"
 
 #: ../src/menu.c:61
 msgid "/_File"
@@ -188,13 +190,11 @@ msgstr ""
 msgid "Find"
 msgstr ""
 
-#: ../src/search.c:200
-#: ../src/search.c:265
+#: ../src/search.c:200 ../src/search.c:265
 msgid "Fi_nd what: "
 msgstr ""
 
-#: ../src/search.c:219
-#: ../src/search.c:292
+#: ../src/search.c:219 ../src/search.c:292
 msgid "_Match case"
 msgstr ""
 
@@ -281,4 +281,3 @@ msgstr ""
 #: ../mousepad.desktop.in.h:3
 msgid "Text Editor"
 msgstr ""
-
