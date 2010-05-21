@@ -1,0 +1,282 @@
+# $Id$
+#
+# Uyghur translations for Mousepad package.
+# Copyright (C) 2005-2006 Erik Harrison.
+# This file is distributed under the same license as the Mousepad package.
+# Gheyret T.Kenji <gheyret@gmail.com>, 2010.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: mousepad 0.2.16\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2007-01-20 12:34+0100\n"
+"PO-Revision-Date: 2008-12-10 14:46+0900\n"
+"Last-Translator: Gheyret T.Kenji <gheyret@gmail.com>\n"
+"Language-Team: Uyghur Computer Science Association <UKIJ@yahoogroups.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../src/callback.c:37
+#, c-format
+msgid "Save changes to '%s'?"
+msgstr ""
+
+#: ../src/callback.c:213 ../src/file.c:174
+#, c-format
+msgid "Can't convert codeset to '%s'"
+msgstr ""
+
+#: ../src/callback.c:240
+msgid "Can't open pipe to process"
+msgstr ""
+
+#: ../src/callback.c:397
+msgid "A text editor for Xfce"
+msgstr ""
+
+#: ../src/dialog.c:135
+#, c-format
+msgid "About %s"
+msgstr ""
+
+#: ../src/file.c:187
+msgid "Can't open file to write"
+msgstr ""
+
+#: ../src/file.c:192
+msgid "Can't write file"
+msgstr ""
+
+#: ../src/font.c:49
+msgid "Font"
+msgstr "فونت"
+
+#: ../src/menu.c:61
+msgid "/_File"
+msgstr ""
+
+#: ../src/menu.c:63
+msgid "/File/_New"
+msgstr ""
+
+#: ../src/menu.c:66
+msgid "/File/New _Window"
+msgstr ""
+
+#: ../src/menu.c:69
+msgid "/File/_Open..."
+msgstr ""
+
+#: ../src/menu.c:72
+msgid "/File/Open _Recent"
+msgstr ""
+
+#: ../src/menu.c:77
+msgid "/File/_Save"
+msgstr ""
+
+#: ../src/menu.c:79
+msgid "/File/Save _As..."
+msgstr ""
+
+#: ../src/menu.c:83
+msgid "/File/_Print..."
+msgstr ""
+
+#: ../src/menu.c:87
+msgid "/File/_Quit"
+msgstr ""
+
+#: ../src/menu.c:89
+msgid "/_Edit"
+msgstr ""
+
+#: ../src/menu.c:91
+msgid "/Edit/_Undo"
+msgstr ""
+
+#: ../src/menu.c:93
+msgid "/Edit/_Redo"
+msgstr ""
+
+#: ../src/menu.c:97
+msgid "/Edit/Cu_t"
+msgstr ""
+
+#: ../src/menu.c:99
+msgid "/Edit/_Copy"
+msgstr ""
+
+#: ../src/menu.c:101
+msgid "/Edit/_Paste"
+msgstr ""
+
+#: ../src/menu.c:103
+msgid "/Edit/_Delete"
+msgstr ""
+
+#: ../src/menu.c:107
+msgid "/Edit/Select _All"
+msgstr ""
+
+#: ../src/menu.c:109
+msgid "/_Search"
+msgstr ""
+
+#: ../src/menu.c:111
+msgid "/Search/_Find..."
+msgstr ""
+
+#: ../src/menu.c:113
+msgid "/Search/Find _Next"
+msgstr ""
+
+#: ../src/menu.c:115
+msgid "/Search/Find _Previous"
+msgstr ""
+
+#: ../src/menu.c:117
+msgid "/Search/_Replace..."
+msgstr ""
+
+#: ../src/menu.c:121
+msgid "/Search/_Jump To..."
+msgstr ""
+
+#: ../src/menu.c:123
+msgid "/_Options"
+msgstr ""
+
+#: ../src/menu.c:125
+msgid "/Options/_Font..."
+msgstr ""
+
+#: ../src/menu.c:127
+msgid "/Options/_Word Wrap"
+msgstr ""
+
+#: ../src/menu.c:129
+msgid "/Options/_Line Numbers"
+msgstr ""
+
+#: ../src/menu.c:133
+msgid "/Options/_Auto Indent"
+msgstr ""
+
+#: ../src/menu.c:135
+msgid "/_Help"
+msgstr ""
+
+#: ../src/menu.c:137
+msgid "/Help/_About"
+msgstr ""
+
+#: ../src/search.c:73
+msgid "Search string not found"
+msgstr ""
+
+#: ../src/search.c:115
+msgid "Replace?"
+msgstr ""
+
+#: ../src/search.c:143
+#, c-format
+msgid "%d strings replaced"
+msgstr ""
+
+#: ../src/search.c:188
+msgid "Find"
+msgstr ""
+
+#: ../src/search.c:200 ../src/search.c:265
+msgid "Fi_nd what: "
+msgstr ""
+
+#: ../src/search.c:219 ../src/search.c:292
+msgid "_Match case"
+msgstr ""
+
+#: ../src/search.c:253
+msgid "Replace"
+msgstr "ئالماشتۇرۇش"
+
+#: ../src/search.c:280
+msgid "Re_place with: "
+msgstr ""
+
+#: ../src/search.c:296
+msgid "Replace _all at once"
+msgstr ""
+
+#: ../src/search.c:342
+msgid "Jump To"
+msgstr ""
+
+#: ../src/search.c:347
+msgid "_Jump"
+msgstr ""
+
+#: ../src/search.c:353
+msgid "_Line number: "
+msgstr ""
+
+#: ../src/selector.c:103
+#, c-format
+msgid "Current Locale (%s)"
+msgstr ""
+
+#: ../src/selector.c:147
+msgid "Other Codeset"
+msgstr ""
+
+#: ../src/selector.c:186
+msgid "Code_set:"
+msgstr ""
+
+#: ../src/selector.c:207
+#, c-format
+msgid "'%s' is not supported"
+msgstr ""
+
+#: ../src/selector.c:271
+msgid "Auto Detect"
+msgstr ""
+
+#: ../src/selector.c:325
+msgid "Open"
+msgstr ""
+
+#: ../src/selector.c:325
+msgid "Save As"
+msgstr ""
+
+#: ../src/selector.c:347
+msgid "Ch_aracter Coding: "
+msgstr ""
+
+#: ../src/selector.c:403
+#, c-format
+msgid "'%s' already exists. Overwrite?"
+msgstr ""
+
+#. add the label with the root warning
+#: ../src/window.c:110
+msgid "Warning, you are using the root account, you may harm your system."
+msgstr "دىققەت: root ھوقۇقىدا مەشغۇلات قىلىۋاتىسىز. بەك دىققەت قىلىڭ، سىستېمىنى بۇزۇپ قويۇشىڭىز مۇمكىن"
+
+#: ../src/window.c:169
+msgid "Untitled"
+msgstr ""
+
+#: ../mousepad.desktop.in.h:1
+msgid "Mousepad"
+msgstr ""
+
+#: ../mousepad.desktop.in.h:2
+msgid "Simple text editor"
+msgstr ""
+
+#: ../mousepad.desktop.in.h:3
+msgid "Text Editor"
+msgstr ""
