@@ -1,14 +1,14 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-# 
+# Ivica Kolić <ikoli@yahoo.com>, YEAR.
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: Mousepad\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2007-01-20 12:34+0100\n"
-"PO-Revision-Date: 2010-05-19 16:26+0100\n"
+"PO-Revision-Date: 2010-05-23 19:03+0200\n"
 "Last-Translator: Petar <petar.koretic@gmail.com>\n"
 "Language-Team: Croatian <petar.koretic@gmail.com>\n"
 "MIME-Version: 1.0\n"
@@ -35,9 +35,9 @@ msgid "A text editor for Xfce"
 msgstr "Uređivač teksta za Xfce"
 
 #: ../src/dialog.c:135
-#, c-format, fuzzy
+#, c-format
 msgid "About %s"
-msgstr "O% s"
+msgstr "O programu % s"
 
 #: ../src/file.c:187
 #, fuzzy
@@ -55,19 +55,19 @@ msgstr "Font"
 
 #: ../src/menu.c:61
 msgid "/_File"
-msgstr ""
+msgstr "/_Datoteka"
 
 #: ../src/menu.c:63
 msgid "/File/_New"
-msgstr ""
+msgstr "/Datoteka/_Nova"
 
 #: ../src/menu.c:66
 msgid "/File/New _Window"
-msgstr ""
+msgstr "/Datoteka/Novi _prozor"
 
 #: ../src/menu.c:69
 msgid "/File/_Open..."
-msgstr ""
+msgstr "/Datoteka/_Otvori"
 
 #: ../src/menu.c:72
 msgid "/File/Open _Recent"
@@ -75,15 +75,15 @@ msgstr ""
 
 #: ../src/menu.c:77
 msgid "/File/_Save"
-msgstr ""
+msgstr "/Datoteka/_Spremi"
 
 #: ../src/menu.c:79
 msgid "/File/Save _As..."
-msgstr ""
+msgstr "/Datoteka/Spremi_kao"
 
 #: ../src/menu.c:83
 msgid "/File/_Print..."
-msgstr ""
+msgstr "/Datoteka/_Ispis"
 
 #: ../src/menu.c:87
 msgid "/File/_Quit"
@@ -91,7 +91,7 @@ msgstr ""
 
 #: ../src/menu.c:89
 msgid "/_Edit"
-msgstr ""
+msgstr "/_Uredi"
 
 #: ../src/menu.c:91
 msgid "/Edit/_Undo"
@@ -103,55 +103,55 @@ msgstr ""
 
 #: ../src/menu.c:97
 msgid "/Edit/Cu_t"
-msgstr ""
+msgstr "/Uredi/Izrež_i"
 
 #: ../src/menu.c:99
 msgid "/Edit/_Copy"
-msgstr ""
+msgstr "/Uredi/_Kopiraj"
 
 #: ../src/menu.c:101
 msgid "/Edit/_Paste"
-msgstr ""
+msgstr "/Uredi/_Zalijepi"
 
 #: ../src/menu.c:103
 msgid "/Edit/_Delete"
-msgstr ""
+msgstr "/Uredi/_Izbriši"
 
 #: ../src/menu.c:107
 msgid "/Edit/Select _All"
-msgstr ""
+msgstr "/Uredi/Označi _sve"
 
 #: ../src/menu.c:109
 msgid "/_Search"
-msgstr ""
+msgstr "/_Traži"
 
 #: ../src/menu.c:111
 msgid "/Search/_Find..."
-msgstr ""
+msgstr "/Traži/_Nađi"
 
 #: ../src/menu.c:113
 msgid "/Search/Find _Next"
-msgstr ""
+msgstr "/Traži/Nađi _Slijedeći"
 
 #: ../src/menu.c:115
 msgid "/Search/Find _Previous"
-msgstr ""
+msgstr "/Traži/Nađi _Prethodni"
 
 #: ../src/menu.c:117
 msgid "/Search/_Replace..."
-msgstr ""
+msgstr "/Traži/_Zamijeni"
 
 #: ../src/menu.c:121
 msgid "/Search/_Jump To..."
-msgstr ""
+msgstr "/Traži/_Skoči na"
 
 #: ../src/menu.c:123
 msgid "/_Options"
-msgstr ""
+msgstr "/_Opcije"
 
 #: ../src/menu.c:125
 msgid "/Options/_Font..."
-msgstr ""
+msgstr "/Opcije/_Font"
 
 #: ../src/menu.c:127
 msgid "/Options/_Word Wrap"
@@ -159,7 +159,7 @@ msgstr ""
 
 #: ../src/menu.c:129
 msgid "/Options/_Line Numbers"
-msgstr ""
+msgstr "/Opcije/_Broj retka"
 
 #: ../src/menu.c:133
 msgid "/Options/_Auto Indent"
@@ -167,18 +167,17 @@ msgstr ""
 
 #: ../src/menu.c:135
 msgid "/_Help"
-msgstr ""
+msgstr "/_Pomoć"
 
 #: ../src/menu.c:137
 msgid "/Help/_About"
-msgstr ""
+msgstr "/Pomoć/_O programu"
 
 #: ../src/search.c:73
 msgid "Search string not found"
 msgstr "Traženi string nije pronađen"
 
 #: ../src/search.c:115
-#, fuzzy
 msgid "Replace?"
 msgstr "Zamijeniti?"
 
@@ -189,7 +188,7 @@ msgstr ""
 
 #: ../src/search.c:188
 msgid "Find"
-msgstr "Traži"
+msgstr "Nađi"
 
 #: ../src/search.c:200 ../src/search.c:265
 msgid "Fi_nd what: "
@@ -205,23 +204,23 @@ msgstr "Zamijeni"
 
 #: ../src/search.c:280
 msgid "Re_place with: "
-msgstr ""
+msgstr "Za_mijeni pomoću"
 
 #: ../src/search.c:296
 msgid "Replace _all at once"
-msgstr ""
+msgstr "Zamijeni _sve odjednom"
 
 #: ../src/search.c:342
 msgid "Jump To"
-msgstr ""
+msgstr "Skoči na"
 
 #: ../src/search.c:347
 msgid "_Jump"
-msgstr ""
+msgstr "_Skoči"
 
 #: ../src/search.c:353
 msgid "_Line number: "
-msgstr ""
+msgstr "_Broj retka"
 
 #: ../src/selector.c:103
 #, c-format
@@ -250,7 +249,6 @@ msgid "Open"
 msgstr "Otvori"
 
 #: ../src/selector.c:325
-#, fuzzy
 msgid "Save As"
 msgstr "Spremi kao"
 
@@ -275,7 +273,7 @@ msgstr ""
 
 #: ../mousepad.desktop.in.h:1
 msgid "Mousepad"
-msgstr ""
+msgstr "Mousepad"
 
 #: ../mousepad.desktop.in.h:2
 msgid "Simple text editor"
