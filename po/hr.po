@@ -2,7 +2,7 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # Ivica Kolić <ikoli@yahoo.com>, YEAR.
-#
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mousepad\n"
@@ -30,7 +30,6 @@ msgid "Can't open pipe to process"
 msgstr ""
 
 #: ../src/callback.c:397
-#, fuzzy
 msgid "A text editor for Xfce"
 msgstr "Uređivač teksta za Xfce"
 
@@ -40,12 +39,10 @@ msgid "About %s"
 msgstr "O programu % s"
 
 #: ../src/file.c:187
-#, fuzzy
 msgid "Can't open file to write"
 msgstr "Ne mogu otvoriti datoteku za pisanje"
 
 #: ../src/file.c:192
-#, fuzzy
 msgid "Can't write file"
 msgstr "Ne mogu zapisati u datoteku"
 
@@ -71,7 +68,7 @@ msgstr "/Datoteka/_Otvori"
 
 #: ../src/menu.c:72
 msgid "/File/Open _Recent"
-msgstr ""
+msgstr "/ Datoteka / Otvori _nedavno"
 
 #: ../src/menu.c:77
 msgid "/File/_Save"
@@ -87,7 +84,7 @@ msgstr "/Datoteka/_Ispis"
 
 #: ../src/menu.c:87
 msgid "/File/_Quit"
-msgstr ""
+msgstr "/ Datoteka /_Isključi"
 
 #: ../src/menu.c:89
 msgid "/_Edit"
@@ -95,11 +92,11 @@ msgstr "/_Uredi"
 
 #: ../src/menu.c:91
 msgid "/Edit/_Undo"
-msgstr ""
+msgstr "/ Uredi / _poništi"
 
 #: ../src/menu.c:93
 msgid "/Edit/_Redo"
-msgstr ""
+msgstr "/ Uredi / _vrati"
 
 #: ../src/menu.c:97
 msgid "/Edit/Cu_t"
@@ -192,7 +189,7 @@ msgstr "Nađi"
 
 #: ../src/search.c:200 ../src/search.c:265
 msgid "Fi_nd what: "
-msgstr ""
+msgstr "Na_đi što:"
 
 #: ../src/search.c:219 ../src/search.c:292
 msgid "_Match case"
@@ -225,7 +222,7 @@ msgstr "_Broj retka"
 #: ../src/selector.c:103
 #, c-format
 msgid "Current Locale (%s)"
-msgstr ""
+msgstr "Trenutni jezik (% s)"
 
 #: ../src/selector.c:147
 msgid "Other Codeset"
@@ -238,7 +235,7 @@ msgstr ""
 #: ../src/selector.c:207
 #, c-format
 msgid "'%s' is not supported"
-msgstr ""
+msgstr "'% S' nije podržan"
 
 #: ../src/selector.c:271
 msgid "Auto Detect"
@@ -263,13 +260,12 @@ msgstr "'%s' već postoji. Prepiši?"
 
 #. add the label with the root warning
 #: ../src/window.c:110
-#, fuzzy
 msgid "Warning, you are using the root account, you may harm your system."
-msgstr "Upozorenje, koristite root račun, možete oštetiti vaš sustav."
+msgstr "Upozorenje, koristite korjenski račun, možete oštetiti vaš sustav."
 
 #: ../src/window.c:169
 msgid "Untitled"
-msgstr ""
+msgstr "Nenaslovljeno"
 
 #: ../mousepad.desktop.in.h:1
 msgid "Mousepad"
