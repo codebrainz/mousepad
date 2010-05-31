@@ -1,8 +1,8 @@
-# SOME DESCRIPTIVE TITLE.
+# Croatian translation for Mousepad.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the PACKAGE package.
+# This file is distributed under the same license as the Mousepad package.
 # Ivica Kolić <ikoli@yahoo.com>, YEAR.
-# 
+# Petar <petar.koretic@gmail.com>
 msgid ""
 msgstr ""
 "Project-Id-Version: Mousepad\n"
@@ -10,7 +10,7 @@ msgstr ""
 "POT-Creation-Date: 2007-01-20 12:34+0100\n"
 "PO-Revision-Date: 2010-05-23 19:03+0200\n"
 "Last-Translator: Petar <petar.koretic@gmail.com>\n"
-"Language-Team: Croatian <petar.koretic@gmail.com>\n"
+"Language-Team: Croatian hr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
