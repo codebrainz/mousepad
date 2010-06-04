@@ -4,7 +4,7 @@
 # Artem Vakhitov <temcat@mail.ru>, 2004.
 # Sergey Fedoseev <fedoseev.sergey@gmail.com>, 2006.
 # Denis Koryavov <dkoryavov@yandex.ru>, 2009.
-#
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: mousepad 0.2.16\n"
@@ -70,7 +70,7 @@ msgstr "/Файл/_Открыть..."
 
 #: ../src/menu.c:72
 msgid "/File/Open _Recent"
-msgstr "/Файл/_Последние файлы"
+msgstr "/Файл/Пос_ледние файлы"
 
 #: ../src/menu.c:77
 msgid "/File/_Save"
@@ -183,7 +183,7 @@ msgstr "Заменить?"
 #: ../src/search.c:143
 #, c-format
 msgid "%d strings replaced"
-msgstr "%d строк заменено"
+msgstr "Заменено  строк: %d"
 
 #: ../src/search.c:188
 msgid "Find"
@@ -237,7 +237,7 @@ msgstr "_Кодировка:"
 #: ../src/selector.c:207
 #, c-format
 msgid "'%s' is not supported"
-msgstr "'%s' не поддерживается"
+msgstr "Кодировка '%s' не поддерживается"
 
 #: ../src/selector.c:271
 msgid "Auto Detect"
@@ -263,9 +263,7 @@ msgstr "'%s' уже существует. Переписать?"
 #. add the label with the root warning
 #: ../src/window.c:110
 msgid "Warning, you are using the root account, you may harm your system."
-msgstr ""
-"Внимание, вы используете учетную запись суперпользователя, при этом вы "
-"можете повредить вашу систему."
+msgstr "Внимание, вы используете учетную запись суперпользователя, вы можете повредить вашу систему."
 
 #: ../src/window.c:169
 msgid "Untitled"
