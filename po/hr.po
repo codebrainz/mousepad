@@ -251,7 +251,7 @@ msgstr "Spremi kao"
 
 #: ../src/selector.c:347
 msgid "Ch_aracter Coding: "
-msgstr ""
+msgstr "Ko_diranje znakova"
 
 #: ../src/selector.c:403
 #, c-format
