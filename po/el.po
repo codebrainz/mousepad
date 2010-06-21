@@ -3,7 +3,7 @@
 # This file is distributed under the same license as the Mousepad package.
 # Stavros Giannouris <stavrosg@hellug.gr>, 2005, 2007.
 # Stathis Kamperis <ekamperi@auth.gr>, 2006.
-#
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: mousepad 0.2.16\n"
@@ -21,7 +21,7 @@ msgstr ""
 #: ../src/callback.c:37
 #, c-format
 msgid "Save changes to '%s'?"
-msgstr "Αποθήκευση αλλαγών στο '%s' ;"
+msgstr "Αποθήκευση αλλαγών στο '%s';"
 
 #: ../src/callback.c:213 ../src/file.c:174
 #, c-format
@@ -123,7 +123,7 @@ msgstr "/Επεξεργασία/Επιλογή _όλων"
 
 #: ../src/menu.c:109
 msgid "/_Search"
-msgstr "/Ανα_ζήτηση:"
+msgstr "/Ανα_ζήτηση"
 
 #: ../src/menu.c:111
 msgid "/Search/_Find..."
@@ -238,7 +238,7 @@ msgstr "Σετ χαρακτήρων:"
 #: ../src/selector.c:207
 #, c-format
 msgid "'%s' is not supported"
-msgstr "το '%s' δεν υποστηρίζεται"
+msgstr "Το '%s' δεν υποστηρίζεται"
 
 #: ../src/selector.c:271
 msgid "Auto Detect"
@@ -264,9 +264,7 @@ msgstr "Το '%s' υπάρχει ήδη. Αντικατάσταση;"
 #. add the label with the root warning
 #: ../src/window.c:110
 msgid "Warning, you are using the root account, you may harm your system."
-msgstr ""
-"Προσοχή, χρησιμοποιείτε τον λογαριασμό υπερχρήστη, και είναι δυνατό να "
-"κάνετε ζημιά στο σύστημά σας."
+msgstr "Προσοχή, χρησιμοποιείτε τον λογαριασμό υπερχρήστη, και είναι δυνατό να κάνετε ζημιά στο σύστημά σας."
 
 #: ../src/window.c:169
 msgid "Untitled"
