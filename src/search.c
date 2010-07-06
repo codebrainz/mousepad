@@ -78,7 +78,7 @@ gboolean document_search_real(StructData *sd, gint direction)
 static gint document_replace_real(StructData *sd)
 {
 	GtkTextIter iter, match_start, match_end;
-	GtkTextMark *mark_init = NULL;
+	GtkTextMark *mark_init = NULL, *mark_start, *mark_end;
 	gboolean res;
 	gint num = 0;
 	GtkWidget *q_dialog = NULL;
@@ -113,6 +113,11 @@ static gint document_replace_real(StructData *sd)
 				if (num == 0 && q_dialog == NULL)
 					q_dialog = create_dialog_message_question(
 						gtk_widget_get_toplevel(sd->mainwin->textview), _("Replace?"));
+
+				gtk_text_buffer_get_selection_bounds(textbuffer, &match_start, &match_end);
+				mark_start = gtk_text_buffer_create_mark(textbuffer, NULL, &match_start, FALSE);
+				mark_end = gtk_text_buffer_create_mark(textbuffer, NULL, &match_end, FALSE);
+
 				switch (gtk_dialog_run(GTK_DIALOG(q_dialog))) {
 				case GTK_RESPONSE_CANCEL:
 					res = 0;
@@ -122,6 +127,11 @@ static gint document_replace_real(StructData *sd)
 				case GTK_RESPONSE_NO:
 					continue;
 				}
+
+				gtk_text_buffer_get_iter_at_mark(textbuffer, &match_start, mark_start);
+				gtk_text_buffer_get_iter_at_mark(textbuffer, &match_end, mark_end);
+				gtk_text_buffer_move_mark_by_name(textbuffer, "selection_bound", &match_start);
+				gtk_text_buffer_move_mark_by_name(textbuffer, "insert", &match_end);
 			}
 			gtk_text_buffer_delete_selection(textbuffer, TRUE, TRUE);
 			undo_set_sequency(TRUE);
