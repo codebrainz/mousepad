@@ -97,7 +97,7 @@ mousepad_dialogs_show_help (GtkWindow   *parent,
     screen = gdk_screen_get_default ();
 
   /* generate the command for the documentation browser */
-  command = g_strdup (LIBEXECDIR "/MousepadHelp");
+  command = g_strdup (LIBDIR G_DIR_SEPARATOR_S "xfce4" G_DIR_SEPARATOR_S "mousepad" G_DIR_SEPARATOR_S "MousepadHelp");
 
   /* check if a page is given */
   if (G_UNLIKELY (page != NULL))

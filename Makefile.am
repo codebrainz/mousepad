@@ -11,7 +11,8 @@ rpm: dist
 	rpmbuild -ta $(PACKAGE)-$(VERSION).tar.gz
 	@rm -f $(PACKAGE)-$(VERSION).tar.gz
 
-libexec_SCRIPTS =								\
+mousepad_scriptsdir = $(libdir)/xfce4/mousepad
+mousepad_scripts_SCRIPTS =							\
 	MousepadHelp
 
 MousepadHelp: MousepadHelp.in Makefile

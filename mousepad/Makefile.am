@@ -4,9 +4,7 @@ INCLUDES = \
 	-DBINDIR=\"$(bindir)\" \
 	-DDATADIR=\"$(datadir)\" \
 	-DLIBDIR=\"$(libdir)\" \
-	-DLIBEXECDIR=\"$(libexecdir)\" \
 	-DG_LOG_DOMAIN=\"Mousepad\" \
-	-DLIBEXECDIR=\"$(libexecdir)\" \
 	-DPACKAGE_LOCALE_DIR=\"$(localedir)\" \
 	-DGDK_PIXBUF_DISABLE_SINGLE_INCLUDES \
 	-DGTK_DISABLE_SINGLE_INCLUDES \
