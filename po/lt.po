@@ -2,7 +2,7 @@
 # Copyright (C) 2005-2006 Erik Harrison.
 # This file is distributed under the same license as the Mousepad package.
 # Lech Jankovski <godgard@gmail.com>, 2004.
-#
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: mousepad 0.2.16\n"
@@ -15,8 +15,8 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Poedit-Language: Lithuanian\n"
-"X-Poedit-Country: LITHUANIA\n"
 "X-Poedit-SourceCharset: utf-8\n"
+"X-Poedit-Country: LITHUANIA\n"
 
 #: ../src/callback.c:37
 #, c-format
@@ -70,9 +70,8 @@ msgid "/File/_Open..."
 msgstr "/Failas/_Atidaryti..."
 
 #: ../src/menu.c:72
-#, fuzzy
 msgid "/File/Open _Recent"
-msgstr "/Failas/_Atidaryti..."
+msgstr "/Failas/_Vėliausi"
 
 #: ../src/menu.c:77
 msgid "/File/_Save"
@@ -265,9 +264,7 @@ msgstr "'%s' jau egzistuoja. Perrašyti?"
 #. add the label with the root warning
 #: ../src/window.c:110
 msgid "Warning, you are using the root account, you may harm your system."
-msgstr ""
-"Atsargiai, Jūs naudojatės administratoriaus paskyra, dėl to galite pakenkti "
-"sistemai."
+msgstr "Atsargiai, Jūs naudojatės administratoriaus paskyra, dėl to galite pakenkti sistemai."
 
 #: ../src/window.c:169
 msgid "Untitled"
