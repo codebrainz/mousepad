@@ -83,7 +83,7 @@ msgstr "/Failas/Išsaugoti _kaip..."
 
 #: ../src/menu.c:83
 msgid "/File/_Print..."
-msgstr "/Failas/_Atidaryti..."
+msgstr "/Failas/_Spausdinti..."
 
 #: ../src/menu.c:87
 msgid "/File/_Quit"
