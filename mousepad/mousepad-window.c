@@ -820,9 +820,7 @@ mousepad_window_menu_item_selected (GtkWidget      *menu_item,
 {
   GtkAction *action;
   gchar     *tooltip;
-  gint       id;
 
-  /* we can only display tooltips if we have a statusbar */
   if (G_LIKELY (window->statusbar != NULL))
     {
       /* get the action from the menu item */
@@ -838,11 +836,7 @@ mousepad_window_menu_item_selected (GtkWidget      *menu_item,
 
           if (G_LIKELY (tooltip != NULL))
             {
-              /* show the tooltip */
-              id = gtk_statusbar_get_context_id (GTK_STATUSBAR (window->statusbar), "tooltip");
-              gtk_statusbar_push (GTK_STATUSBAR (window->statusbar), id, tooltip);
-
-              /* cleanup */
+              mousepad_statusbar_set_tooltip (MOUSEPAD_STATUSBAR (window->statusbar), tooltip);
               g_free (tooltip);
             }
         }
@@ -855,15 +849,8 @@ static void
 mousepad_window_menu_item_deselected (GtkWidget      *menu_item,
                                       MousepadWindow *window)
 {
-  gint id;
-
-  /* we can only undisplay tooltips if we have a statusbar */
   if (G_LIKELY (window->statusbar != NULL))
-    {
-      /* drop the last tooltip from the statusbar */
-      id = gtk_statusbar_get_context_id (GTK_STATUSBAR (window->statusbar), "tooltip");
-      gtk_statusbar_pop (GTK_STATUSBAR (window->statusbar), id);
-    }
+    mousepad_statusbar_set_tooltip (MOUSEPAD_STATUSBAR (window->statusbar), NULL);
 }
 
 
