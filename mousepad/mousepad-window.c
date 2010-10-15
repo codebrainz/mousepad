@@ -2380,7 +2380,7 @@ mousepad_window_recent_menu_idle (gpointer user_data)
   g_object_get (G_OBJECT (window->preferences), "misc-recent-menu-items", &n, NULL);
 
   /* append the items to the menu */
-  for (li = filtered; n > 0 && li != NULL; li = li->next)
+  for (li = filtered, i = 1; n > 0 && li != NULL; li = li->next)
     {
       info = li->data;
 
@@ -2392,7 +2392,7 @@ mousepad_window_recent_menu_idle (gpointer user_data)
       if (filename && g_file_test (filename, G_FILE_TEST_EXISTS))
         {
           /* create the action name */
-          g_snprintf (name, sizeof (name), "recent-info-%d", n);
+          g_snprintf (name, sizeof (name), "recent-info-%d", i);
 
           /* get the name of the item and escape the underscores */
           display_name = gtk_recent_info_get_display_name (info);
@@ -2425,8 +2425,9 @@ mousepad_window_recent_menu_idle (gpointer user_data)
                                  "/main-menu/file-menu/recent-menu/placeholder-recent-items",
                                  name, name, GTK_UI_MANAGER_MENUITEM, FALSE);
 
-          /* decrease counter */
+          /* update couters */
           n--;
+          i++;
         }
       else
         {
