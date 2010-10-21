@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: mousepad 0.2.16\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2007-01-20 12:34+0100\n"
-"PO-Revision-Date: 2010-01-06 12:31+0100\n"
+"PO-Revision-Date: 2010-10-20 09:33+0100\n"
 "Last-Translator: Leandro Regueiro <leandro.regueiro@gmail.com>\n"
 "Language-Team: Galician <proxecto@trasno.net>\n"
 "MIME-Version: 1.0\n"
@@ -66,7 +66,7 @@ msgstr "/Ficheiro/_Novo"
 
 #: ../src/menu.c:66
 msgid "/File/New _Window"
-msgstr "/Ficheiro/Nova _fiestra"
+msgstr "/Ficheiro/Nova _xanela"
 
 #: ../src/menu.c:69
 msgid "/File/_Open..."
@@ -82,7 +82,7 @@ msgstr "/Ficheiro/_Gardar"
 
 #: ../src/menu.c:79
 msgid "/File/Save _As..."
-msgstr "/Fiicheiro/Gardar _coma..."
+msgstr "/Fiicheiro/Gardar _como..."
 
 #: ../src/menu.c:83
 msgid "/File/_Print..."
@@ -257,7 +257,7 @@ msgstr "Abrir"
 
 #: ../src/selector.c:325
 msgid "Save As"
-msgstr "Gardar Coma"
+msgstr "Gardar como"
 
 #: ../src/selector.c:347
 msgid "Ch_aracter Coding: "
@@ -287,5 +287,5 @@ msgstr "Editor de texto sinxelo"
 
 #: ../mousepad.desktop.in.h:3
 msgid "Text Editor"
-msgstr "Editor de Texto"
+msgstr "Editor de texto"
 
