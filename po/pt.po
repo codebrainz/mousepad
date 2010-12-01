@@ -2,7 +2,7 @@
 # Copyright (C) 2005-2006 Erik Harrison.
 # This file is distributed under the same license as the Mousepad package.
 # Nuno Miguel <nunis@netcabo.pt>, 2007, 2008, 2009
-#
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: mousepad 0.2.16\n"
@@ -18,12 +18,12 @@ msgstr ""
 #: ../src/callback.c:37
 #, c-format
 msgid "Save changes to '%s'?"
-msgstr "Gravar alterações em '%s'?"
+msgstr "Gravar alterações em \"%s\"?"
 
 #: ../src/callback.c:213 ../src/file.c:174
 #, c-format
 msgid "Can't convert codeset to '%s'"
-msgstr "Não é possível converter a codificação para '%s'"
+msgstr "Não é possível converter a codificação para \"%s\""
 
 #: ../src/callback.c:240
 msgid "Can't open pipe to process"
@@ -60,7 +60,7 @@ msgstr "/Ficheiro/_Novo"
 
 #: ../src/menu.c:66
 msgid "/File/New _Window"
-msgstr "/Ficheiro/Nova _Janela"
+msgstr "/Ficheiro/Nova _janela"
 
 #: ../src/menu.c:69
 msgid "/File/_Open..."
@@ -68,7 +68,7 @@ msgstr "/Ficheiro/_Abrir..."
 
 #: ../src/menu.c:72
 msgid "/File/Open _Recent"
-msgstr "/Ficheiro/Abrir _Recente"
+msgstr "/Ficheiro/Abrir _recente"
 
 #: ../src/menu.c:77
 msgid "/File/_Save"
@@ -76,7 +76,7 @@ msgstr "/Ficheiro/_Gravar"
 
 #: ../src/menu.c:79
 msgid "/File/Save _As..."
-msgstr "/Ficheiro/Gravar _Como..."
+msgstr "/Ficheiro/Gravar _como..."
 
 #: ../src/menu.c:83
 msgid "/File/_Print..."
@@ -116,7 +116,7 @@ msgstr "/Editar/_Apagar"
 
 #: ../src/menu.c:107
 msgid "/Edit/Select _All"
-msgstr "/Editar/Seleccionar _Tudo"
+msgstr "/Editar/Seleccionar _tudo"
 
 #: ../src/menu.c:109
 msgid "/_Search"
@@ -128,11 +128,11 @@ msgstr "/Pesquisar/_Procurar..."
 
 #: ../src/menu.c:113
 msgid "/Search/Find _Next"
-msgstr "/Pesquisar/Procurar P_róxima"
+msgstr "/Pesquisar/Procurar p_róxima"
 
 #: ../src/menu.c:115
 msgid "/Search/Find _Previous"
-msgstr "/Pesquisar/Procurar A_nterior"
+msgstr "/Pesquisar/Procurar a_nterior"
 
 #: ../src/menu.c:117
 msgid "/Search/_Replace..."
@@ -140,7 +140,7 @@ msgstr "/Pesquisar/_Substituir..."
 
 #: ../src/menu.c:121
 msgid "/Search/_Jump To..."
-msgstr "/Pesquisar/S_altar Para..."
+msgstr "/Pesquisar/S_altar para..."
 
 #: ../src/menu.c:123
 msgid "/_Options"
@@ -156,11 +156,11 @@ msgstr "/Opções/_Mudança de linha automática"
 
 #: ../src/menu.c:129
 msgid "/Options/_Line Numbers"
-msgstr "/Opções/Números das _Linhas"
+msgstr "/Opções/Números de _linha"
 
 #: ../src/menu.c:133
 msgid "/Options/_Auto Indent"
-msgstr "/Opções/Identação _Automática"
+msgstr "/Opções/Avanço _automático"
 
 #: ../src/menu.c:135
 msgid "/_Help"
@@ -222,11 +222,11 @@ msgstr "Número da _linha: "
 #: ../src/selector.c:103
 #, c-format
 msgid "Current Locale (%s)"
-msgstr "Codificação Actual (%s)"
+msgstr "Codificação actual (%s)"
 
 #: ../src/selector.c:147
 msgid "Other Codeset"
-msgstr "Outra Codificação"
+msgstr "Outra codificação"
 
 #: ../src/selector.c:186
 msgid "Code_set:"
@@ -235,11 +235,11 @@ msgstr "Codif_icação:"
 #: ../src/selector.c:207
 #, c-format
 msgid "'%s' is not supported"
-msgstr "'%s' não é suportado"
+msgstr "\"%s\" não é suportado"
 
 #: ../src/selector.c:271
 msgid "Auto Detect"
-msgstr "Detectar Automaticamente"
+msgstr "Setecção automática"
 
 #: ../src/selector.c:325
 msgid "Open"
@@ -247,25 +247,25 @@ msgstr "Abrir"
 
 #: ../src/selector.c:325
 msgid "Save As"
-msgstr "Gravar Como"
+msgstr "Gravar como"
 
 #: ../src/selector.c:347
 msgid "Ch_aracter Coding: "
-msgstr "Codificação dos C_aracteres: "
+msgstr "Codificação dos c_aracteres: "
 
 #: ../src/selector.c:403
 #, c-format
 msgid "'%s' already exists. Overwrite?"
-msgstr "'%s' já existe. Substituir?"
+msgstr "\"%s\" já existe. Substituir?"
 
 #. add the label with the root warning
 #: ../src/window.c:110
 msgid "Warning, you are using the root account, you may harm your system."
-msgstr "Cuidado, está a usar a conta de root, pode danificar o sistema."
+msgstr "Cuidado, está a usar a conta de \"root\", pode danificar o sistema."
 
 #: ../src/window.c:169
 msgid "Untitled"
-msgstr "Sem Nome"
+msgstr "Sem nome"
 
 #: ../mousepad.desktop.in.h:1
 msgid "Mousepad"
@@ -277,4 +277,4 @@ msgstr "Editor de texto simples"
 
 #: ../mousepad.desktop.in.h:3
 msgid "Text Editor"
-msgstr "Editor de Texto"
+msgstr "Editor de texto"
