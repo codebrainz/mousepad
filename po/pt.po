@@ -239,7 +239,7 @@ msgstr "\"%s\" não é suportado"
 
 #: ../src/selector.c:271
 msgid "Auto Detect"
-msgstr "Setecção automática"
+msgstr "Detecção automática"
 
 #: ../src/selector.c:325
 msgid "Open"
