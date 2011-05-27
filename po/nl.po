@@ -1,14 +1,15 @@
-# Dutch translations for Mousepad package.
-# Copyright (C) 2006 THE Mousepad'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the Mousepad package.
+# Dutch translations for the mousepad package.
+# Copyright (C) The Xfce development team.
+# This file is distributed under the same license as the mousepad package.
 # Stephan Arts <psybsd@gmail.com>, 2006.
+# Pjotr, 2011.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: mousepad 0.2.16\n"
+"Project-Id-Version: mousepad\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2007-01-20 12:34+0100\n"
-"PO-Revision-Date: 2006-09-02 18:17+0200\n"
+"PO-Revision-Date: 2011-05-27 15:17+0200\n"
 "Last-Translator: Pjotr\n"
 "Language-Team: Dutch <vertaling@vrijschrift.org>\n"
 "MIME-Version: 1.0\n"
@@ -274,7 +275,7 @@ msgstr "Muisblok"
 
 #: ../mousepad.desktop.in.h:2
 msgid "Simple text editor"
-msgstr "Simpele tekstverwerker"
+msgstr "Eenvoudige tekstverwerker"
 
 #: ../mousepad.desktop.in.h:3
 msgid "Text Editor"
