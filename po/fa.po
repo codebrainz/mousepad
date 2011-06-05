@@ -1,6 +1,6 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Mehdi Esmaeelpour, 2011.
 msgid ""
 msgstr ""
@@ -13,8 +13,8 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 1.1\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Lokalize 1.1\n"
 
 #: ../src/callback.c:37
 #, c-format
@@ -173,24 +173,24 @@ msgstr "/راهنمایی/_درباره"
 
 #: ../src/search.c:73
 msgid "Search string not found"
-msgstr ""
+msgstr "رشته مورد جستجو یافت نشد"
 
 #: ../src/search.c:115
 msgid "Replace?"
-msgstr ""
+msgstr "جایگزین؟"
 
 #: ../src/search.c:143
 #, c-format
 msgid "%d strings replaced"
-msgstr ""
+msgstr "رشته های %d جایگزین شد"
 
 #: ../src/search.c:188
 msgid "Find"
-msgstr ""
+msgstr "پیداکردن"
 
 #: ../src/search.c:200 ../src/search.c:265
 msgid "Fi_nd what: "
-msgstr ""
+msgstr "پی_دا کردن چی:"
 
 #: ../src/search.c:219 ../src/search.c:292
 msgid "_Match case"
@@ -198,27 +198,27 @@ msgstr ""
 
 #: ../src/search.c:253
 msgid "Replace"
-msgstr ""
+msgstr "جایگزینی"
 
 #: ../src/search.c:280
 msgid "Re_place with: "
-msgstr ""
+msgstr "جا_یگزینی با:"
 
 #: ../src/search.c:296
 msgid "Replace _all at once"
-msgstr ""
+msgstr "جایگزینی _همه یکباره"
 
 #: ../src/search.c:342
 msgid "Jump To"
-msgstr ""
+msgstr "پرش به"
 
 #: ../src/search.c:347
 msgid "_Jump"
-msgstr ""
+msgstr "_پرش"
 
 #: ../src/search.c:353
 msgid "_Line number: "
-msgstr ""
+msgstr "_شماره خط:"
 
 #: ../src/selector.c:103
 #, c-format
@@ -240,15 +240,15 @@ msgstr ""
 
 #: ../src/selector.c:271
 msgid "Auto Detect"
-msgstr ""
+msgstr "شناسایی خودکار"
 
 #: ../src/selector.c:325
 msgid "Open"
-msgstr ""
+msgstr "باز"
 
 #: ../src/selector.c:325
 msgid "Save As"
-msgstr ""
+msgstr "ذخیره در"
 
 #: ../src/selector.c:347
 msgid "Ch_aracter Coding: "
@@ -266,7 +266,7 @@ msgstr ""
 
 #: ../src/window.c:169
 msgid "Untitled"
-msgstr ""
+msgstr "بدون عنوان"
 
 #: ../mousepad.desktop.in.h:1
 msgid "Mousepad"
@@ -279,4 +279,3 @@ msgstr ""
 #: ../mousepad.desktop.in.h:3
 msgid "Text Editor"
 msgstr ""
-
