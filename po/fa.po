@@ -1,13 +1,13 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Mehdi Esmaeelpour, 2011.
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2007-01-20 12:34+0100\n"
-"PO-Revision-Date: 2011-06-05 17:57+0430\n"
+"PO-Revision-Date: 2011-06-05 18:18+0430\n"
 "Last-Translator: Mehdi Esmaeelpour\n"
 "Language-Team: American English <kde-i18n-doc@kde.org>\n"
 "MIME-Version: 1.0\n"
@@ -109,7 +109,7 @@ msgstr "/ویرایش/_کپی"
 
 #: ../src/menu.c:101
 msgid "/Edit/_Paste"
-msgstr ""
+msgstr "/ویرایش/_Paste"
 
 #: ../src/menu.c:103
 msgid "/Edit/_Delete"
@@ -194,7 +194,7 @@ msgstr "پی_دا کردن چی:"
 
 #: ../src/search.c:219 ../src/search.c:292
 msgid "_Match case"
-msgstr ""
+msgstr "تطابق مورد"
 
 #: ../src/search.c:253
 msgid "Replace"
@@ -223,7 +223,7 @@ msgstr "_شماره خط:"
 #: ../src/selector.c:103
 #, c-format
 msgid "Current Locale (%s)"
-msgstr ""
+msgstr "محل جاری (%s)"
 
 #: ../src/selector.c:147
 msgid "Other Codeset"
@@ -236,7 +236,7 @@ msgstr ""
 #: ../src/selector.c:207
 #, c-format
 msgid "'%s' is not supported"
-msgstr ""
+msgstr "'%s' پشتیبانی نمی شود"
 
 #: ../src/selector.c:271
 msgid "Auto Detect"
@@ -252,17 +252,19 @@ msgstr "ذخیره در"
 
 #: ../src/selector.c:347
 msgid "Ch_aracter Coding: "
-msgstr ""
+msgstr "Ch_aracter Coding: "
 
 #: ../src/selector.c:403
 #, c-format
 msgid "'%s' already exists. Overwrite?"
-msgstr ""
+msgstr "'%s' هم اکنون موجوداست. رونویسی?"
 
 #. add the label with the root warning
 #: ../src/window.c:110
 msgid "Warning, you are using the root account, you may harm your system."
 msgstr ""
+"اخطار،شماازحساب کاربری ریشه استفاده می کنید،ممکن است به سیستم آسیب "
+"برسانید"
 
 #: ../src/window.c:169
 msgid "Untitled"
@@ -270,12 +272,13 @@ msgstr "بدون عنوان"
 
 #: ../mousepad.desktop.in.h:1
 msgid "Mousepad"
-msgstr ""
+msgstr "موس پد"
 
 #: ../mousepad.desktop.in.h:2
 msgid "Simple text editor"
-msgstr ""
+msgstr "ویرایشگر متن ساده"
 
 #: ../mousepad.desktop.in.h:3
 msgid "Text Editor"
-msgstr ""
+msgstr "ویرایشگرمتن"
+
