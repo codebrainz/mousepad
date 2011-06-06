@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2007-01-20 12:34+0100\n"
-"PO-Revision-Date: 2011-06-05 18:18+0430\n"
+"PO-Revision-Date: 2011-06-06 21:09+0430\n"
 "Last-Translator: Mehdi Esmaeelpour\n"
 "Language-Team: American English <kde-i18n-doc@kde.org>\n"
 "MIME-Version: 1.0\n"
@@ -28,7 +28,7 @@ msgstr "نمی تواند کدهارابه '%s' تبدیل کند"
 
 #: ../src/callback.c:240
 msgid "Can't open pipe to process"
-msgstr ""
+msgstr "نمی تواندلوله رابرای فرایند بازکند"
 
 #: ../src/callback.c:397
 msgid "A text editor for Xfce"
@@ -109,7 +109,7 @@ msgstr "/ویرایش/_کپی"
 
 #: ../src/menu.c:101
 msgid "/Edit/_Paste"
-msgstr "/ویرایش/_Paste"
+msgstr "/ویرایش/_چسباندن"
 
 #: ../src/menu.c:103
 msgid "/Edit/_Delete"
@@ -153,7 +153,7 @@ msgstr "/اختیارات/_فونت..."
 
 #: ../src/menu.c:127
 msgid "/Options/_Word Wrap"
-msgstr "/اختیارات/_Word Wrap"
+msgstr "/اختیارات/_سطربندی کلمه"
 
 #: ../src/menu.c:129
 msgid "/Options/_Line Numbers"
@@ -227,11 +227,11 @@ msgstr "محل جاری (%s)"
 
 #: ../src/selector.c:147
 msgid "Other Codeset"
-msgstr ""
+msgstr "مجموعه-کد دیگر"
 
 #: ../src/selector.c:186
 msgid "Code_set:"
-msgstr ""
+msgstr "مجموعه ـ کد:"
 
 #: ../src/selector.c:207
 #, c-format
@@ -252,7 +252,7 @@ msgstr "ذخیره در"
 
 #: ../src/selector.c:347
 msgid "Ch_aracter Coding: "
-msgstr "Ch_aracter Coding: "
+msgstr "رمزـگذاری نویسه: "
 
 #: ../src/selector.c:403
 #, c-format
@@ -281,4 +281,5 @@ msgstr "ویرایشگر متن ساده"
 #: ../mousepad.desktop.in.h:3
 msgid "Text Editor"
 msgstr "ویرایشگرمتن"
+
 
