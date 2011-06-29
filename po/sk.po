@@ -3,14 +3,15 @@
 # This file is distributed under the same license as the Mousepad package.
 # Roman Moravcik <roman.moravcik@gmail.com>, 2005.
 # Stefan Miklosovic <miklosovic@gmail.com>, 2008.
+# Tomáš Vadina <kyberdev@gmail.com>, 2011.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: mousepad 0.2.16\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2007-01-20 12:34+0100\n"
-"PO-Revision-Date: 2008-05-15 19:22+0200\n"
-"Last-Translator: stewe <(null)>\n"
+"PO-Revision-Date: 2011-06-29 14:57+0100\n"
+"Last-Translator: Tomáš Vadina <kyberdev@gmail.com>\n"
 "Language-Team: English <en@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -21,7 +22,8 @@ msgstr ""
 msgid "Save changes to '%s'?"
 msgstr "Uložiť zmeny do '%s'?"
 
-#: ../src/callback.c:213 ../src/file.c:174
+#: ../src/callback.c:213
+#: ../src/file.c:174
 #, c-format
 msgid "Can't convert codeset to '%s'"
 msgstr "Nemôžem konvertovať znakovú sadu do '%s'"
@@ -32,12 +34,12 @@ msgstr "Nemôžem otvoriť rúru k procesu"
 
 #: ../src/callback.c:397
 msgid "A text editor for Xfce"
-msgstr "Textový editor pre XFCE"
+msgstr "Textový editor pre Xfce"
 
 #: ../src/dialog.c:135
 #, c-format
 msgid "About %s"
-msgstr "O %s"
+msgstr "O programe %s"
 
 #: ../src/file.c:187
 msgid "Can't open file to write"
@@ -117,7 +119,7 @@ msgstr "/Upraviť/V_ymazať"
 
 #: ../src/menu.c:107
 msgid "/Edit/Select _All"
-msgstr "/Upraviť/Vybr_ať všetko"
+msgstr "/Upraviť/Ozn_ačiť všetko"
 
 #: ../src/menu.c:109
 msgid "/_Search"
@@ -145,23 +147,23 @@ msgstr "/Hľadať/_Skočiť na..."
 
 #: ../src/menu.c:123
 msgid "/_Options"
-msgstr "/P_redvoľby"
+msgstr "/M_ožnosti"
 
 #: ../src/menu.c:125
 msgid "/Options/_Font..."
-msgstr "/Predvoľby/_Písmo..."
+msgstr "/Možnosti/_Písmo..."
 
 #: ../src/menu.c:127
 msgid "/Options/_Word Wrap"
-msgstr "/Predvoľby/_Zalomiť text"
+msgstr "/Možnosti/_Zalomiť text"
 
 #: ../src/menu.c:129
 msgid "/Options/_Line Numbers"
-msgstr "/Predvoľby/Zobraziť čís_la riadkov"
+msgstr "/Možnosti/Zobraziť čís_la riadkov"
 
 #: ../src/menu.c:133
 msgid "/Options/_Auto Indent"
-msgstr "/Predvoľby/_Automatické odsadenie"
+msgstr "/Možnosti/_Automatické odsadenie"
 
 #: ../src/menu.c:135
 msgid "/_Help"
@@ -188,11 +190,13 @@ msgstr "reťazec %d nahradený"
 msgid "Find"
 msgstr "Nájsť"
 
-#: ../src/search.c:200 ../src/search.c:265
+#: ../src/search.c:200
+#: ../src/search.c:265
 msgid "Fi_nd what: "
 msgstr "_Hľadať: "
 
-#: ../src/search.c:219 ../src/search.c:292
+#: ../src/search.c:219
+#: ../src/search.c:292
 msgid "_Match case"
 msgstr "Rozlišovať malé a veľké pís_mená"
 
@@ -262,8 +266,7 @@ msgstr "Súbor '%s' už existuje. Chcete ho prepísať?"
 #. add the label with the root warning
 #: ../src/window.c:110
 msgid "Warning, you are using the root account, you may harm your system."
-msgstr ""
-"Upozornenie, používate administrátorské práva, môžete poškodiť váš systém."
+msgstr "Upozornenie, používate administrátorské práva, môžete poškodiť váš systém."
 
 #: ../src/window.c:169
 msgid "Untitled"
@@ -280,3 +283,4 @@ msgstr "Jednoduchý textový editor"
 #: ../mousepad.desktop.in.h:3
 msgid "Text Editor"
 msgstr "Textový editor"
+
