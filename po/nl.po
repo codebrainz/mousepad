@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: mousepad\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2007-01-20 12:34+0100\n"
-"PO-Revision-Date: 2011-06-16 12:16+0200\n"
+"PO-Revision-Date: 2011-07-19 12:16+0200\n"
 "Last-Translator: Pjotr\n"
 "Language-Team: Dutch (Flemish)\n"
 "MIME-Version: 1.0\n"
@@ -34,7 +34,7 @@ msgstr "Kan geen pijp naar proces openen"
 
 #: ../src/callback.c:397
 msgid "A text editor for Xfce"
-msgstr "Een tekstverwerker voor Xfce"
+msgstr "Een tekstbewerker voor Xfce"
 
 #: ../src/dialog.c:135
 #, c-format
@@ -276,8 +276,8 @@ msgstr "Muisblok"
 
 #: ../mousepad.desktop.in.h:2
 msgid "Simple text editor"
-msgstr "Eenvoudige tekstverwerker"
+msgstr "Eenvoudige tekstbewerker"
 
 #: ../mousepad.desktop.in.h:3
 msgid "Text Editor"
-msgstr "Tekstverwerker"
+msgstr "Tekstbewerker"
