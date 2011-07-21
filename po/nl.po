@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: mousepad\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2007-01-20 12:34+0100\n"
-"PO-Revision-Date: 2011-07-19 12:16+0200\n"
+"PO-Revision-Date: 2011-07-20 12:16+0200\n"
 "Last-Translator: Pjotr\n"
 "Language-Team: Dutch (Flemish)\n"
 "MIME-Version: 1.0\n"
@@ -26,7 +26,7 @@ msgstr "Wijzigingen opslaan naar '%s'?"
 #: ../src/callback.c:213 ../src/file.c:174
 #, c-format
 msgid "Can't convert codeset to '%s'"
-msgstr "Kan codeset niet omzetten naar '%s'"
+msgstr "Kan tekencodering niet omzetten naar '%s'"
 
 #: ../src/callback.c:240
 msgid "Can't open pipe to process"
@@ -83,7 +83,7 @@ msgstr "/Bestand/Opslaan _als..."
 
 #: ../src/menu.c:83
 msgid "/File/_Print..."
-msgstr "/Bestand/_Afdrukken..."
+msgstr "/Bestand/Af_drukken..."
 
 #: ../src/menu.c:87
 msgid "/File/_Quit"
@@ -107,7 +107,7 @@ msgstr "/Bewerken/K_nippen"
 
 #: ../src/menu.c:99
 msgid "/Edit/_Copy"
-msgstr "/Bewerken/_Kopieren"
+msgstr "/Bewerken/_Kopiëren"
 
 #: ../src/menu.c:101
 msgid "/Edit/_Paste"
@@ -204,7 +204,7 @@ msgstr "Vervangen"
 
 #: ../src/search.c:280
 msgid "Re_place with: "
-msgstr "Ve_rvangen met:"
+msgstr "Ve_rvangen door:"
 
 #: ../src/search.c:296
 msgid "Replace _all at once"
@@ -229,11 +229,11 @@ msgstr "Huidige Taalomgeving (%s)"
 
 #: ../src/selector.c:147
 msgid "Other Codeset"
-msgstr "Andere Codeset"
+msgstr "Andere Tekencodering"
 
 #: ../src/selector.c:186
 msgid "Code_set:"
-msgstr "Code_set:"
+msgstr "_Tekencodering:"
 
 #: ../src/selector.c:207
 #, c-format
