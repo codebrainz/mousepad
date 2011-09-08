@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: mousepad\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2007-01-20 12:34+0100\n"
-"PO-Revision-Date: 2011-07-20 12:16+0200\n"
+"PO-Revision-Date: 2011-09-08 12:16+0200\n"
 "Last-Translator: Pjotr\n"
 "Language-Team: Dutch (Flemish)\n"
 "MIME-Version: 1.0\n"
@@ -63,7 +63,7 @@ msgstr "/Bestand/_Nieuw"
 
 #: ../src/menu.c:66
 msgid "/File/New _Window"
-msgstr "/Bestand/Nieuw _Venster"
+msgstr "/Bestand/Nieuw _venster"
 
 #: ../src/menu.c:69
 msgid "/File/_Open..."
@@ -212,7 +212,7 @@ msgstr "Vervang _alles ineens"
 
 #: ../src/search.c:342
 msgid "Jump To"
-msgstr "Spring Naar"
+msgstr "Spring naar"
 
 #: ../src/search.c:347
 msgid "_Jump"
@@ -225,11 +225,11 @@ msgstr "_Regelnummer: "
 #: ../src/selector.c:103
 #, c-format
 msgid "Current Locale (%s)"
-msgstr "Huidige Taalomgeving (%s)"
+msgstr "Huidige taalomgeving (%s)"
 
 #: ../src/selector.c:147
 msgid "Other Codeset"
-msgstr "Andere Tekencodering"
+msgstr "Andere tekencodering"
 
 #: ../src/selector.c:186
 msgid "Code_set:"
@@ -250,7 +250,7 @@ msgstr "Openen"
 
 #: ../src/selector.c:325
 msgid "Save As"
-msgstr "Opslaan Als"
+msgstr "Opslaan als"
 
 #: ../src/selector.c:347
 msgid "Ch_aracter Coding: "
