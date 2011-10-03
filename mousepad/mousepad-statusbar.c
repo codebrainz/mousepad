@@ -93,8 +93,9 @@ mousepad_statusbar_class_init (MousepadStatusbarClass *klass)
 static void
 mousepad_statusbar_init (MousepadStatusbar *statusbar)
 {
-  GtkWidget    *ebox, *box, *separator;
+  GtkWidget    *ebox, *box, *separator, *label;
   GtkStatusbar *bar = GTK_STATUSBAR (statusbar);
+  GList *frame;
 
   /* init statusbar */
   gtk_statusbar_set_has_resize_grip (bar, TRUE);
@@ -104,11 +105,15 @@ mousepad_statusbar_init (MousepadStatusbar *statusbar)
   gtk_widget_show (box);
 
   /* reorder the gtk statusbar */
-  g_object_ref (G_OBJECT (bar->label));
-  gtk_container_remove (GTK_CONTAINER (bar->frame), bar->label);
-  gtk_container_add (GTK_CONTAINER (bar->frame), box);
-  gtk_box_pack_start (GTK_BOX (box), bar->label, TRUE, TRUE, 0);
-  g_object_unref (G_OBJECT (bar->label));
+  frame = gtk_container_get_children (GTK_CONTAINER (bar));
+  gtk_frame_set_shadow_type (GTK_FRAME (frame->data), GTK_SHADOW_NONE);
+  label = gtk_bin_get_child (GTK_BIN (frame->data));
+  g_object_ref (label);
+  gtk_container_remove (GTK_CONTAINER (frame->data), label);
+  gtk_container_add (GTK_CONTAINER (frame->data), box);
+  gtk_box_pack_start (GTK_BOX (box), label, TRUE, TRUE, 0);
+  g_object_unref (label);
+  g_list_free (frame);
 
   /* separator */
   separator = gtk_vseparator_new ();
