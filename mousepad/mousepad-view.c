@@ -91,12 +91,12 @@ static void      mousepad_view_transpose_words               (GtkTextBuffer     
 
 struct _MousepadViewClass
 {
-  GtkTextViewClass __parent__;
+  GtkSourceViewClass __parent__;
 };
 
 struct _MousepadView
 {
-  GtkTextView  __parent__;
+  GtkSourceView  __parent__;
 
   /* the selection style tag */
   GtkTextTag         *selection_tag;
@@ -128,7 +128,7 @@ struct _MousepadView
 
 
 
-G_DEFINE_TYPE (MousepadView, mousepad_view, GTK_TYPE_TEXT_VIEW);
+G_DEFINE_TYPE (MousepadView, mousepad_view, GTK_TYPE_SOURCE_VIEW);
 
 
 
