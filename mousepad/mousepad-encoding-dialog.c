@@ -213,9 +213,6 @@ mousepad_encoding_dialog_init (MousepadEncodingDialog *dialog)
   mousepad_view_set_line_numbers (dialog->document->textview, FALSE);
   mousepad_document_set_word_wrap (dialog->document, FALSE);
   gtk_widget_show (GTK_WIDGET (dialog->document));
-
-  /* lock undo manager forever */
-  mousepad_undo_lock (dialog->document->undo);
 }
 
 

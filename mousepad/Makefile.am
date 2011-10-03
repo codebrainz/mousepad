@@ -46,8 +46,6 @@ mousepad_SOURCES = \
 	mousepad-statusbar.h \
 	mousepad-view.c \
 	mousepad-view.h \
-	mousepad-undo.c \
-	mousepad-undo.h \
 	mousepad-util.c \
 	mousepad-util.h \
 	mousepad-window.c \

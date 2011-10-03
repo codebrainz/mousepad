@@ -21,7 +21,6 @@ G_BEGIN_DECLS
 
 #include <mousepad/mousepad-util.h>
 #include <mousepad/mousepad-file.h>
-#include <mousepad/mousepad-undo.h>
 #include <mousepad/mousepad-view.h>
 
 typedef struct _MousepadDocumentPrivate MousepadDocumentPrivate;
@@ -46,9 +45,6 @@ struct _MousepadDocument
 
   /* file */
   MousepadFile            *file;
-
-  /* undo manager */
-  MousepadUndo            *undo;
 
   /* text buffer */
   GtkTextBuffer           *buffer;

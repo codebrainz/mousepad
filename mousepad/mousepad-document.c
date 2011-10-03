@@ -33,7 +33,6 @@
 #include <mousepad/mousepad-document.h>
 #include <mousepad/mousepad-marshal.h>
 #include <mousepad/mousepad-view.h>
-#include <mousepad/mousepad-undo.h>
 #include <mousepad/mousepad-preferences.h>
 #include <mousepad/mousepad-window.h>
 
@@ -185,16 +184,13 @@ mousepad_document_init (MousepadDocument *document)
   gtk_scrolled_window_set_vadjustment (GTK_SCROLLED_WINDOW (document), NULL);
 
   /* create a textbuffer */
-  document->buffer = gtk_text_buffer_new (NULL);
+  document->buffer = GTK_TEXT_BUFFER (gtk_source_buffer_new (NULL));
 
   /* initialize the file */
   document->file = mousepad_file_new (document->buffer);
 
   /* connect signals to the file */
   g_signal_connect_swapped (G_OBJECT (document->file), "filename-changed", G_CALLBACK (mousepad_document_filename_changed), document);
-
-  /* initialize the undo manager */
-  document->undo = mousepad_undo_new (document->buffer);
 
   /* create the highlight tag */
   document->tag = gtk_text_buffer_create_tag (document->buffer, NULL, "background", "#ffff78", NULL);
@@ -254,9 +250,6 @@ mousepad_document_finalize (GObject *object)
   /* cleanup */
   g_free (document->priv->utf8_filename);
   g_free (document->priv->utf8_basename);
-
-  /* release the undo manager */
-  g_object_unref (G_OBJECT (document->undo));
 
   /* release the file */
   g_object_unref (G_OBJECT (document->file));

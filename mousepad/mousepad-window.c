@@ -148,9 +148,11 @@ static void              mousepad_window_overwrite_changed            (MousepadD
                                                                        gboolean                overwrite,
                                                                        MousepadWindow         *window);
 static void              mousepad_window_can_undo                     (MousepadWindow         *window,
-                                                                       gboolean                can_undo);
+                                                                       GParamSpec             *unused,
+                                                                       GObject                *buffer);
 static void              mousepad_window_can_redo                     (MousepadWindow         *window,
-                                                                       gboolean                can_redo);
+                                                                       GParamSpec             *unused,
+                                                                       GObject                *buffer);
 
 /* menu functions */
 static void              mousepad_window_menu_templates_fill          (MousepadWindow         *window,
@@ -985,13 +987,13 @@ mousepad_window_open_file (MousepadWindow   *window,
   retry:
 
   /* lock the undo manager */
-  mousepad_undo_lock (document->undo);
+  gtk_source_buffer_begin_not_undoable_action (GTK_SOURCE_BUFFER (document->buffer));
 
   /* read the content into the buffer */
   result = mousepad_file_open (document->file, NULL, &error);
 
   /* release the lock */
-  mousepad_undo_unlock (document->undo);
+  gtk_source_buffer_end_not_undoable_action (GTK_SOURCE_BUFFER (document->buffer));
 
   switch (result)
     {
@@ -1353,8 +1355,8 @@ mousepad_window_notebook_added (GtkNotebook     *notebook,
   g_signal_connect (G_OBJECT (page), "selection-changed", G_CALLBACK (mousepad_window_selection_changed), window);
   g_signal_connect (G_OBJECT (page), "overwrite-changed", G_CALLBACK (mousepad_window_overwrite_changed), window);
   g_signal_connect (G_OBJECT (page), "drag-data-received", G_CALLBACK (mousepad_window_drag_data_received), window);
-  g_signal_connect_swapped (G_OBJECT (document->undo), "can-undo", G_CALLBACK (mousepad_window_can_undo), window);
-  g_signal_connect_swapped (G_OBJECT (document->undo), "can-redo", G_CALLBACK (mousepad_window_can_redo), window);
+  g_signal_connect_swapped (G_OBJECT (document->buffer), "notify::can-undo", G_CALLBACK (mousepad_window_can_undo), window);
+  g_signal_connect_swapped (G_OBJECT (document->buffer), "notify::can-redo", G_CALLBACK (mousepad_window_can_redo), window);
   g_signal_connect_swapped (G_OBJECT (document->buffer), "modified-changed", G_CALLBACK (mousepad_window_modified_changed), window);
   g_signal_connect (G_OBJECT (document->textview), "populate-popup", G_CALLBACK (mousepad_window_menu_textview_popup), window);
 
@@ -1393,8 +1395,8 @@ mousepad_window_notebook_removed (GtkNotebook     *notebook,
   g_signal_handlers_disconnect_by_func (G_OBJECT (page), mousepad_window_selection_changed, window);
   g_signal_handlers_disconnect_by_func (G_OBJECT (page), mousepad_window_overwrite_changed, window);
   g_signal_handlers_disconnect_by_func (G_OBJECT (page), mousepad_window_drag_data_received, window);
-  g_signal_handlers_disconnect_by_func (G_OBJECT (document->undo), mousepad_window_can_undo, window);
-  g_signal_handlers_disconnect_by_func (G_OBJECT (document->undo), mousepad_window_can_redo, window);
+  g_signal_handlers_disconnect_by_func (G_OBJECT (document->buffer), mousepad_window_can_undo, window);
+  g_signal_handlers_disconnect_by_func (G_OBJECT (document->buffer), mousepad_window_can_redo, window);
   g_signal_handlers_disconnect_by_func (G_OBJECT (document->buffer), mousepad_window_modified_changed, window);
   g_signal_handlers_disconnect_by_func (G_OBJECT (document->textview), mousepad_window_menu_textview_popup, window);
 
@@ -1663,9 +1665,13 @@ mousepad_window_overwrite_changed (MousepadDocument *document,
 
 static void
 mousepad_window_can_undo (MousepadWindow *window,
-                          gboolean        can_undo)
+                          GParamSpec     *unused,
+                          GObject        *buffer)
 {
   GtkAction *action;
+  gboolean   can_undo;
+  
+  can_undo = gtk_source_buffer_can_undo (GTK_SOURCE_BUFFER (buffer));
 
   action = gtk_action_group_get_action (window->action_group, "undo");
   gtk_action_set_sensitive (action, can_undo);
@@ -1675,9 +1681,13 @@ mousepad_window_can_undo (MousepadWindow *window,
 
 static void
 mousepad_window_can_redo (MousepadWindow *window,
-                          gboolean        can_redo)
+                          GParamSpec     *unused,
+                          GObject        *buffer)
 {
   GtkAction *action;
+  gboolean   can_redo;
+  
+  can_redo = gtk_source_buffer_can_redo (GTK_SOURCE_BUFFER (buffer));
 
   action = gtk_action_group_get_action (window->action_group, "redo");
   gtk_action_set_sensitive (action, can_redo);
@@ -2118,8 +2128,8 @@ mousepad_window_update_actions (MousepadWindow *window)
       gtk_toggle_action_set_active (GTK_TOGGLE_ACTION (action), active);
 
       /* set the sensitivity of the undo and redo actions */
-      mousepad_window_can_undo (window, mousepad_undo_can_undo (document->undo));
-      mousepad_window_can_redo (window, mousepad_undo_can_redo (document->undo));
+      mousepad_window_can_undo (window, NULL, G_OBJECT (document->buffer));
+      mousepad_window_can_redo (window, NULL, G_OBJECT (document->buffer));
 
       /* active this tab in the go menu */
       action = mousepad_object_get_data (G_OBJECT (document), "navigation-menu-action");
@@ -3095,13 +3105,13 @@ mousepad_window_action_new_from_template (GtkMenuItem    *item,
       g_object_ref_sink (G_OBJECT (document));
 
       /* lock the undo manager */
-      mousepad_undo_lock (document->undo);
+      gtk_source_buffer_begin_not_undoable_action (GTK_SOURCE_BUFFER (document->buffer));
 
       /* try to load the template into the buffer */
       result = mousepad_file_open (document->file, filename, &error);
 
       /* release the lock */
-      mousepad_undo_unlock (document->undo);
+      gtk_source_buffer_end_not_undoable_action (GTK_SOURCE_BUFFER (document->buffer));
 
       /* handle the result */
       if (G_LIKELY (result == 0))
@@ -3375,9 +3385,6 @@ mousepad_window_action_save (GtkAction      *action,
         {
           /* update the window title */
           mousepad_window_set_title (window);
-
-          /* store the save state in the undo manager */
-          mousepad_undo_save_point (document->undo);
         }
       else if (error != NULL)
         {
@@ -3490,10 +3497,8 @@ mousepad_window_action_save_all (GtkAction      *action,
           /* try to quickly save the file */
           succeed = mousepad_file_save (document->file, &error);
 
-          /* store save state, break on problems */
-          if (G_LIKELY (succeed))
-            mousepad_undo_save_point (document->undo);
-          else
+          /* break on problems */
+          if (G_UNLIKELY (!succeed))
             break;
         }
       else
@@ -3590,16 +3595,13 @@ mousepad_window_action_revert (GtkAction      *action,
     }
 
   /* lock the undo manager */
-  mousepad_undo_lock (document->undo);
-
-  /* clear the undo history */
-  mousepad_undo_clear (document->undo);
+  gtk_source_buffer_begin_not_undoable_action (GTK_SOURCE_BUFFER (document->buffer));
 
   /* reload the file */
   succeed = mousepad_file_reload (document->file, &error);
 
   /* release the lock */
-  mousepad_undo_unlock (document->undo);
+  gtk_source_buffer_end_not_undoable_action (GTK_SOURCE_BUFFER (document->buffer));
 
   if (G_UNLIKELY (succeed == FALSE))
     {
@@ -3743,7 +3745,7 @@ mousepad_window_action_undo (GtkAction      *action,
   mousepad_return_if_fail (MOUSEPAD_IS_DOCUMENT (window->active));
 
   /* undo */
-  mousepad_undo_do_undo (window->active->undo);
+  gtk_source_buffer_undo (GTK_SOURCE_BUFFER (window->active->buffer));
 
   /* scroll to visible area */
   mousepad_view_scroll_to_cursor (window->active->textview);
@@ -3759,7 +3761,7 @@ mousepad_window_action_redo (GtkAction      *action,
   mousepad_return_if_fail (MOUSEPAD_IS_DOCUMENT (window->active));
 
   /* redo */
-  mousepad_undo_do_redo (window->active->undo);
+  gtk_source_buffer_redo (GTK_SOURCE_BUFFER (window->active->buffer));
 
   /* scroll to visible area */
   mousepad_view_scroll_to_cursor (window->active->textview);
