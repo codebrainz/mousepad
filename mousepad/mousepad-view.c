@@ -69,9 +69,6 @@ static void      mousepad_view_indent_decrease               (MousepadView      
 static void      mousepad_view_indent_selection              (MousepadView       *view,
                                                               gboolean            increase,
                                                               gboolean            force);
-static gint      mousepad_view_calculate_layout_width        (GtkWidget          *widget,
-                                                              gsize               length,
-                                                              gchar               fill_char);
 static void      mousepad_view_transpose_multi_selection     (GtkTextBuffer       *buffer,
                                                               MousepadView        *view);
 static void      mousepad_view_transpose_range               (GtkTextBuffer       *buffer,
@@ -114,9 +111,6 @@ struct _MousepadView
 
   /* if the selection is in editing mode */
   guint               selection_editing : 1;
-
-  /* settings */
-  guint               tab_size;
 };
 
 
@@ -147,9 +141,6 @@ mousepad_view_class_init (MousepadViewClass *klass)
 static void
 mousepad_view_init (MousepadView *view)
 {
-  /* initialize settings */
-  view->tab_size = 8;
-
   /* initialize selection variables */
   view->selection_timeout_id = 0;
   view->selection_tag = NULL;
@@ -239,9 +230,6 @@ mousepad_view_style_set (GtkWidget *widget,
                                                         "background-gdk", &style->base[GTK_STATE_SELECTED],
                                                         "foreground-gdk", &style->text[GTK_STATE_SELECTED],
                                                         NULL);
-
-      /* update the tab size */
-      mousepad_view_set_tab_size (view, view->tab_size);
 
       /* redraw selection */
       if (view->selection_marks != NULL)
@@ -987,24 +975,25 @@ mousepad_view_indent_increase (MousepadView *view,
                                GtkTextIter  *iter)
 {
   gchar         *string;
-  gint           offset, length, inline_len;
+  gint           offset, length, inline_len, tab_size;
   GtkTextBuffer *buffer;
 
   /* get the buffer */
   buffer = mousepad_view_get_buffer (view);
+  tab_size = gtk_source_view_get_tab_width (GTK_SOURCE_VIEW (view));
 
   if (gtk_source_view_get_insert_spaces_instead_of_tabs (GTK_SOURCE_VIEW (view)))
     {
       /* get the offset */
-      offset = mousepad_util_get_real_line_offset (iter, view->tab_size);
+      offset = mousepad_util_get_real_line_offset (iter, tab_size);
 
       /* calculate the length to inline with a tab */
-      inline_len = offset % view->tab_size;
+      inline_len = offset % tab_size;
 
       if (inline_len == 0)
-        length = view->tab_size;
+        length = tab_size;
       else
-        length = view->tab_size - inline_len;
+        length = tab_size - inline_len;
 
       /* create spaces string */
       string = g_strnfill (length, ' ');
@@ -1030,11 +1019,14 @@ mousepad_view_indent_decrease (MousepadView *view,
 {
   GtkTextBuffer *buffer;
   GtkTextIter    start, end;
-  gint           columns = view->tab_size;
+  gint           columns, tab_size;
   gunichar       c;
 
   /* set iters */
   start = end = *iter;
+  
+  tab_size = gtk_source_view_get_tab_width (GTK_SOURCE_VIEW (view));
+  columns = tab_size;
 
   /* walk until we've removed enough columns */
   while (columns > 0)
@@ -1043,7 +1035,7 @@ mousepad_view_indent_decrease (MousepadView *view,
       c = gtk_text_iter_get_char (&end);
 
       if (c == '\t')
-        columns -= view->tab_size;
+        columns -= tab_size;
       else if (c == ' ')
         columns--;
       else
@@ -1117,42 +1109,6 @@ mousepad_view_indent_selection (MousepadView *view,
       mousepad_view_scroll_to_cursor (view);
     }
 }
-
-
-
-static gint
-mousepad_view_calculate_layout_width (GtkWidget *widget,
-                                      gsize      length,
-                                      gchar      fill_char)
-{
-  PangoLayout *layout;
-  gchar       *string;
-  gint         width = -1;
-
-  mousepad_return_val_if_fail (GTK_IS_WIDGET (widget), -1);
-  mousepad_return_val_if_fail (length > 0, -1);
-
-  /* create character string */
-  string = g_strnfill (length, fill_char);
-
-  /* create pango layout from widget */
-  layout = gtk_widget_create_pango_layout (widget, string);
-
-  /* cleanup */
-  g_free (string);
-
-  if (G_LIKELY (layout))
-    {
-      /* get the layout size */
-      pango_layout_get_pixel_size (layout, &width, NULL);
-
-      /* release layout */
-      g_object_unref (G_OBJECT (layout));
-    }
-
-  return width;
-}
-
 
 
 void
@@ -1922,7 +1878,7 @@ mousepad_view_convert_spaces_and_tabs (MousepadView *view,
   buffer = mousepad_view_get_buffer (view);
 
   /* get the tab size */
-  tab_size = view->tab_size;
+  tab_size = gtk_source_view_get_tab_width (GTK_SOURCE_VIEW (view));
 
   /* get the start and end iter */
   if (gtk_text_buffer_get_selection_bounds (buffer, &start_iter, &end_iter))
@@ -2349,30 +2305,10 @@ void
 mousepad_view_set_tab_size (MousepadView *view,
                              gint          tab_size)
 {
-  PangoTabArray *tab_array;
-  gint           layout_width;
-
   mousepad_return_if_fail (MOUSEPAD_IS_VIEW (view));
   mousepad_return_if_fail (GTK_IS_TEXT_VIEW (view));
 
-  /* set the value */
-  view->tab_size = tab_size;
-
-  /* get the pixel width of the tab size */
-  layout_width = mousepad_view_calculate_layout_width (GTK_WIDGET (view), view->tab_size, ' ');
-
-  if (G_LIKELY (layout_width != -1))
-    {
-      /* create the pango tab array */
-      tab_array = pango_tab_array_new (1, TRUE);
-      pango_tab_array_set_tab (tab_array, 0, PANGO_TAB_LEFT, layout_width);
-
-      /* set the textview tab array */
-      gtk_text_view_set_tabs (GTK_TEXT_VIEW (view), tab_array);
-
-      /* cleanup */
-      pango_tab_array_free (tab_array);
-    }
+  gtk_source_view_set_tab_width (GTK_SOURCE_VIEW (view), tab_size);
 }
 
 
@@ -2452,7 +2388,7 @@ mousepad_view_get_tab_size (MousepadView *view)
 {
   mousepad_return_val_if_fail (MOUSEPAD_IS_VIEW (view), -1);
 
-  return view->tab_size;
+  return gtk_source_view_get_tab_width (GTK_SOURCE_VIEW (view));
 }
 
 
