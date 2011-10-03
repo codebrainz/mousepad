@@ -30,8 +30,6 @@
 
 
 
-#define LINE_NUMBER_MARGIN             (10)
-#define LINE_NUMBER_OFFSET             (4)
 #define mousepad_view_get_buffer(view) (GTK_TEXT_VIEW (view)->buffer)
 
 
@@ -121,7 +119,6 @@ struct _MousepadView
 
   /* settings */
   guint               auto_indent : 1;
-  guint               line_numbers : 1;
   guint               insert_spaces : 1;
   guint               tab_size;
 };
@@ -156,7 +153,6 @@ mousepad_view_init (MousepadView *view)
 {
   /* initialize settings */
   view->auto_indent = FALSE;
-  view->line_numbers = FALSE;
   view->insert_spaces = FALSE;
   view->tab_size = 8;
 
@@ -201,13 +197,6 @@ mousepad_view_expose (GtkWidget      *widget,
 {
   GtkTextView  *textview = GTK_TEXT_VIEW (widget);
   MousepadView *view = MOUSEPAD_VIEW (widget);
-  gint          y_start, y_offset, y_finish;
-  gint          y_iter, height;
-  gint          line_number, line_count;
-  GtkTextIter   iter;
-  gint          width, border_width;
-  PangoLayout  *layout;
-  gchar         str[8]; /* maximum of 10e6 lines */
 
   if (G_UNLIKELY (view->selection_length == -1
       && (view->selection_marks != NULL || view->selection_end_x != -1)
@@ -215,90 +204,6 @@ mousepad_view_expose (GtkWidget      *widget,
     {
       /* redraw the cursor lines for the vertical selection */
       mousepad_view_selection_draw (view, FALSE);
-    }
-  else if (event->window == gtk_text_view_get_window (textview, GTK_TEXT_WINDOW_LEFT))
-    {
-      /* get the real start position */
-      gtk_text_view_window_to_buffer_coords (textview, GTK_TEXT_WINDOW_LEFT,
-                                             0, event->area.y, NULL, &y_start);
-
-      /* get the left window y offset (this is *NOT* the textview offset!) */
-      y_offset = event->area.y - y_start;
-
-      /* get the bottom position */
-      y_finish = y_start + event->area.height;
-
-      /* get the start iter and its line number */
-      gtk_text_view_get_line_at_y (textview, &iter, y_start, NULL);
-      line_number = gtk_text_iter_get_line (&iter);
-
-      /* get the number of lines in the buffer */
-      line_count = gtk_text_buffer_get_line_count (textview->buffer);
-
-      /* string with the 'last' line number */
-      g_snprintf (str, sizeof (str), "%d", MAX (99, line_count));
-
-      /* create the pango layout */
-      layout = gtk_widget_create_pango_layout (widget, str);
-      pango_layout_get_pixel_size (layout, &width, NULL);
-
-      /* border width */
-      border_width = width + LINE_NUMBER_MARGIN;
-
-      /* check if we need to set the border size again */
-      if (G_UNLIKELY (gtk_text_view_get_border_window_size (textview, GTK_TEXT_WINDOW_LEFT) != border_width))
-        {
-          /* set the new border size */
-          gtk_text_view_set_border_window_size (textview, GTK_TEXT_WINDOW_LEFT, border_width);
-
-          /* leave, we'll redraw on the next expose event */
-          goto bail_out;
-        }
-
-      /* finish the pango layout */
-      pango_layout_set_width (layout, width);
-      pango_layout_set_alignment (layout, PANGO_ALIGN_RIGHT);
-
-      /* draw a vertical line to separate the numbers and text */
-      gtk_paint_vline (widget->style, event->window,
-                       GTK_WIDGET_STATE (widget),
-                       NULL, widget, NULL,
-                       event->area.y,
-                       event->area.y + event->area.height,
-                       border_width - 2);
-
-      /* walk through the lines until we hit the last line */
-      for (; line_number < line_count; line_number++)
-        {
-          /* get the y position and the height of the iter */
-          gtk_text_view_get_line_yrange (textview, &iter, &y_iter, &height);
-
-          /* create the number */
-          g_snprintf (str, sizeof (str), "%d", line_number + 1);
-
-          /* create the pange layout */
-          pango_layout_set_text (layout, str, -1);
-
-          /* draw the layout on the left window */
-          gtk_paint_layout (widget->style, event->window,
-                            GTK_WIDGET_STATE (widget),
-                            FALSE, NULL, widget, NULL,
-                            width + LINE_NUMBER_OFFSET,
-                            y_iter + y_offset, layout);
-
-          /* stop when we reached the end of the expose area */
-          if (y_iter + height >= y_finish)
-            break;
-
-          /* jump to the next line */
-          gtk_text_iter_forward_line (&iter);
-        }
-
-      /* label for leaving after setting the left border size */
-      bail_out:
-
-      /* release the pango layout */
-      g_object_unref (G_OBJECT (layout));
     }
 
   /* gtk can draw the text now */
@@ -2537,17 +2442,8 @@ mousepad_view_set_line_numbers (MousepadView *view,
                                 gboolean      line_numbers)
 {
   mousepad_return_if_fail (MOUSEPAD_IS_VIEW (view));
-
-  if (view->line_numbers != line_numbers)
-    {
-      /* set the boolean */
-      view->line_numbers = line_numbers;
-
-      /* set the left border size */
-      gtk_text_view_set_border_window_size (GTK_TEXT_VIEW (view),
-                                            GTK_TEXT_WINDOW_LEFT,
-                                            line_numbers ? 20 : 0);
-    }
+  
+  gtk_source_view_set_show_line_numbers (GTK_SOURCE_VIEW (view), line_numbers);
 }
 
 
@@ -2652,7 +2548,7 @@ mousepad_view_get_line_numbers (MousepadView *view)
 {
   mousepad_return_val_if_fail (MOUSEPAD_IS_VIEW (view), FALSE);
 
-  return view->line_numbers;
+  return gtk_source_view_get_show_line_numbers (GTK_SOURCE_VIEW (view));
 }
 
 
