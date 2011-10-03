@@ -69,8 +69,6 @@ static void      mousepad_view_indent_decrease               (MousepadView      
 static void      mousepad_view_indent_selection              (MousepadView       *view,
                                                               gboolean            increase,
                                                               gboolean            force);
-static gchar    *mousepad_view_indent_string                 (GtkTextBuffer      *buffer,
-                                                              const GtkTextIter  *iter);
 static gint      mousepad_view_calculate_layout_width        (GtkWidget          *widget,
                                                               gsize               length,
                                                               gchar               fill_char);
@@ -118,7 +116,6 @@ struct _MousepadView
   guint               selection_editing : 1;
 
   /* settings */
-  guint               auto_indent : 1;
   guint               insert_spaces : 1;
   guint               tab_size;
 };
@@ -152,7 +149,6 @@ static void
 mousepad_view_init (MousepadView *view)
 {
   /* initialize settings */
-  view->auto_indent = FALSE;
   view->insert_spaces = FALSE;
   view->tab_size = 8;
 
@@ -266,7 +262,6 @@ mousepad_view_key_press_event (GtkWidget   *widget,
   GtkTextIter    iter;
   GtkTextMark   *cursor;
   guint          modifiers;
-  gchar         *string;
   gboolean       im_handled;
   gboolean       is_editable;
 
@@ -282,48 +277,6 @@ mousepad_view_key_press_event (GtkWidget   *widget,
   /* handle the key event */
   switch (event->keyval)
     {
-      case GDK_Return:
-      case GDK_KP_Enter:
-        if (!(event->state & GDK_SHIFT_MASK) && view->auto_indent && is_editable)
-          {
-            /* get the iter position of the cursor */
-            cursor = gtk_text_buffer_get_insert (buffer);
-            gtk_text_buffer_get_iter_at_mark (buffer, &iter, cursor);
-
-            /* get the string of tabs and spaces we're going to indent */
-            string = mousepad_view_indent_string (buffer, &iter);
-
-            if (string != NULL)
-              {
-                /* check if the input method emitted this event */
-                im_handled = gtk_im_context_filter_keypress (GTK_TEXT_VIEW (view)->im_context, event);
-
-                /* check if we're allowed to handle this event */
-                if (G_LIKELY (im_handled == FALSE))
-                  {
-                    /* begin a user action */
-                    gtk_text_buffer_begin_user_action (buffer);
-
-                    /* insert the indent characters */
-                    gtk_text_buffer_insert (buffer, &iter, "\n", 1);
-                    gtk_text_buffer_insert (buffer, &iter, string, -1);
-
-                    /* end user action */
-                    gtk_text_buffer_end_user_action (buffer);
-
-                    /* make sure the new string is visible for the user */
-                    mousepad_view_scroll_to_cursor (view);
-                  }
-
-                /* cleanup */
-                g_free (string);
-
-                /* return */
-                return (im_handled == FALSE);
-              }
-          }
-        break;
-
       case GDK_End:
       case GDK_KP_End:
         if (modifiers & GDK_CONTROL_MASK)
@@ -1204,32 +1157,6 @@ mousepad_view_indent_selection (MousepadView *view,
       /* put cursor on screen */
       mousepad_view_scroll_to_cursor (view);
     }
-}
-
-
-
-static gchar *
-mousepad_view_indent_string (GtkTextBuffer     *buffer,
-                             const GtkTextIter *iter)
-{
-  GtkTextIter start, end;
-  gint        line;
-
-  /* get the line of the iter */
-  line = gtk_text_iter_get_line (iter);
-
-  /* get the iter of the beginning of this line */
-  gtk_text_buffer_get_iter_at_line (buffer, &start, line);
-
-  /* set the end iter */
-  end = start;
-
-  /* forward until we hit text */
-  if (mousepad_util_forward_iter_to_text (&end, iter) == FALSE)
-    return NULL;
-
-  /* return the text between the iters */
-  return gtk_text_iter_get_slice (&start, &end);
 }
 
 
@@ -2454,8 +2381,7 @@ mousepad_view_set_auto_indent (MousepadView *view,
 {
   mousepad_return_if_fail (MOUSEPAD_IS_VIEW (view));
 
-  /* set the boolean */
-  view->auto_indent = auto_indent;
+  gtk_source_view_set_auto_indent (GTK_SOURCE_VIEW (view), auto_indent);
 }
 
 
@@ -2558,7 +2484,7 @@ mousepad_view_get_auto_indent (MousepadView *view)
 {
   mousepad_return_val_if_fail (MOUSEPAD_IS_VIEW (view), FALSE);
 
-  return view->auto_indent;
+  return gtk_source_view_get_auto_indent (GTK_SOURCE_VIEW (view));
 }
 
 
