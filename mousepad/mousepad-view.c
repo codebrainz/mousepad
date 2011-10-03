@@ -116,7 +116,6 @@ struct _MousepadView
   guint               selection_editing : 1;
 
   /* settings */
-  guint               insert_spaces : 1;
   guint               tab_size;
 };
 
@@ -149,7 +148,6 @@ static void
 mousepad_view_init (MousepadView *view)
 {
   /* initialize settings */
-  view->insert_spaces = FALSE;
   view->tab_size = 8;
 
   /* initialize selection variables */
@@ -349,45 +347,6 @@ mousepad_view_key_press_event (GtkWidget   *widget,
             mousepad_view_selection_key_press_event (view, NULL, GDK_BackSpace, modifiers);
 
             return TRUE;
-          }
-        break;
-
-      case GDK_Tab:
-      case GDK_KP_Tab:
-      case GDK_ISO_Left_Tab:
-        if (G_LIKELY (is_editable))
-          {
-            if (view->selection_marks != NULL)
-              {
-                /* insert a tab in the selection */
-                mousepad_view_selection_key_press_event (view, NULL, GDK_Tab, modifiers);
-
-                return TRUE;
-              }
-            else if (gtk_text_buffer_get_selection_bounds (buffer, NULL, NULL))
-              {
-                /* indent the selection */
-                mousepad_view_indent_selection (view, !(modifiers & GDK_SHIFT_MASK), FALSE);
-
-                return TRUE;
-              }
-            else if (view->insert_spaces)
-              {
-                /* get the iter position of the cursor */
-                cursor = gtk_text_buffer_get_insert (buffer);
-                gtk_text_buffer_get_iter_at_mark (buffer, &iter, cursor);
-
-                /* begin user action */
-                gtk_text_buffer_begin_user_action (buffer);
-
-                /* insert spaces */
-                mousepad_view_indent_increase (view, &iter);
-
-                /* end user action */
-                gtk_text_buffer_end_user_action (buffer);
-
-                return TRUE;
-              }
           }
         break;
 
@@ -1034,7 +993,7 @@ mousepad_view_indent_increase (MousepadView *view,
   /* get the buffer */
   buffer = mousepad_view_get_buffer (view);
 
-  if (view->insert_spaces)
+  if (gtk_source_view_get_insert_spaces_instead_of_tabs (GTK_SOURCE_VIEW (view)))
     {
       /* get the offset */
       offset = mousepad_util_get_real_line_offset (iter, view->tab_size);
@@ -2424,8 +2383,7 @@ mousepad_view_set_insert_spaces (MousepadView *view,
 {
   mousepad_return_if_fail (MOUSEPAD_IS_VIEW (view));
 
-  /* set boolean */
-  view->insert_spaces = insert_spaces;
+  gtk_source_view_set_insert_spaces_instead_of_tabs (GTK_SOURCE_VIEW (view), insert_spaces);
 }
 
 
@@ -2504,5 +2462,5 @@ mousepad_view_get_insert_spaces (MousepadView *view)
 {
   mousepad_return_val_if_fail (MOUSEPAD_IS_VIEW (view), FALSE);
 
-  return view->insert_spaces;
+  return gtk_source_view_get_insert_spaces_instead_of_tabs (GTK_SOURCE_VIEW (view));
 }
