@@ -3087,8 +3087,8 @@ mousepad_window_color_schemes_compare_by_name (gconstpointer a,
   
   name_a = gtk_source_style_scheme_get_name (GTK_SOURCE_STYLE_SCHEME (a));
   name_b = gtk_source_style_scheme_get_name (GTK_SOURCE_STYLE_SCHEME (b));
-  
-  return g_strcmp0 (name_a, name_b);
+
+  return g_utf8_collate (name_a, name_b);
 }
 
 
