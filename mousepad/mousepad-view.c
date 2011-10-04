@@ -1024,7 +1024,7 @@ mousepad_view_indent_decrease (MousepadView *view,
 
   /* set iters */
   start = end = *iter;
-  
+
   tab_size = gtk_source_view_get_tab_width (GTK_SOURCE_VIEW (view));
   columns = tab_size;
 
@@ -2284,7 +2284,7 @@ mousepad_view_set_line_numbers (MousepadView *view,
                                 gboolean      line_numbers)
 {
   mousepad_return_if_fail (MOUSEPAD_IS_VIEW (view));
-  
+
   gtk_source_view_set_show_line_numbers (GTK_SOURCE_VIEW (view), line_numbers);
 }
 

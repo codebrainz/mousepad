@@ -214,7 +214,7 @@ mousepad_preferences_class_init (MousepadPreferencesClass *klass)
                                                          NULL,
                                                          FALSE,
                                                          MOUSEPAD_PARAM_READWRITE));
-  
+
   g_object_class_install_property (gobject_class,
                                    PROP_VIEW_COLOR_SCHEME,
                                    g_param_spec_string ("view-color-scheme",

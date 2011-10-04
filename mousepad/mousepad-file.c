@@ -393,13 +393,13 @@ mousepad_file_get_line_ending (MousepadFile *file)
 
 
 
-void 
+void
 mousepad_file_set_language (MousepadFile      *file,
                             GtkSourceLanguage *language)
 {
   mousepad_return_if_fail (MOUSEPAD_IS_FILE (file));
   mousepad_return_if_fail (GTK_IS_SOURCE_BUFFER (file->buffer));
-  
+
   gtk_source_buffer_set_language (GTK_SOURCE_BUFFER (file->buffer), language);
 }
 
@@ -410,7 +410,7 @@ mousepad_file_get_language (MousepadFile *file)
 {
   mousepad_return_val_if_fail (MOUSEPAD_IS_FILE (file), NULL);
   mousepad_return_val_if_fail (GTK_IS_SOURCE_BUFFER (file->buffer), NULL);
-  
+
   return gtk_source_buffer_get_language (GTK_SOURCE_BUFFER (file->buffer));
 }
 
@@ -421,16 +421,16 @@ mousepad_file_set_language_id (MousepadFile *file,
                                const gchar  *language_id)
 {
   GtkSourceLanguage *lang;
-  
+
   mousepad_return_if_fail (MOUSEPAD_IS_FILE (file));
   mousepad_return_if_fail (GTK_IS_SOURCE_BUFFER (file->buffer));
-  
+
   if (G_UNLIKELY (language_id == NULL))
     {
       gtk_source_buffer_set_language (GTK_SOURCE_BUFFER (file->buffer), NULL);
       return;
     }
-  
+
   lang = gtk_source_language_manager_get_language (gtk_source_language_manager_get_default (), language_id);
   mousepad_file_set_language (file, lang);
 }
@@ -441,7 +441,7 @@ const gchar *
 mousepad_file_get_language_id (MousepadFile *file)
 {
   GtkSourceLanguage *lang;
-  
+
   lang = mousepad_file_get_language (file);
   return (lang != NULL) ? gtk_source_language_get_id (lang) : NULL;
 }
@@ -462,11 +462,11 @@ mousepad_file_guess_language (MousepadFile *file)
       content_type = NULL;
     }
 
-  language = gtk_source_language_manager_guess_language (gtk_source_language_manager_get_default (), 
-                                                         file->filename, 
+  language = gtk_source_language_manager_guess_language (gtk_source_language_manager_get_default (),
+                                                         file->filename,
                                                          content_type);
   g_free (content_type);
-  
+
   return language;
 }
 

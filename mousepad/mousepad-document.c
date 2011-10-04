@@ -160,7 +160,7 @@ mousepad_document_class_init (MousepadDocumentClass *klass)
                   0, NULL, NULL,
                   g_cclosure_marshal_VOID__BOOLEAN,
                   G_TYPE_NONE, 1, G_TYPE_BOOLEAN);
-  
+
   document_signals[LANGUAGE_CHANGED] =
     g_signal_new (I_("language-changed"),
                   G_TYPE_FROM_CLASS (gobject_class),
@@ -241,7 +241,7 @@ mousepad_document_init (MousepadDocument *document)
   mousepad_view_set_auto_indent (document->textview, auto_indent);
   mousepad_view_set_tab_size (document->textview, tab_size);
   mousepad_view_set_insert_spaces (document->textview, insert_spaces);
-  
+
   if (g_strcmp0 (color_scheme, "none") != 0)
     scheme =  gtk_source_style_scheme_manager_get_scheme (gtk_source_style_scheme_manager_get_default (), color_scheme);
   gtk_source_buffer_set_highlight_syntax (GTK_SOURCE_BUFFER (document->buffer), (scheme != NULL));
@@ -369,13 +369,13 @@ mousepad_document_notify_language (GtkSourceBuffer  *buffer,
                                    MousepadDocument *document)
 {
   GtkSourceLanguage *language;
-  
+
   mousepad_return_if_fail (MOUSEPAD_IS_DOCUMENT (document));
   mousepad_return_if_fail (GTK_IS_SOURCE_BUFFER (buffer));
-  
+
   /* the new language */
   language = gtk_source_buffer_get_language (buffer);
-  
+
   /* emit the signal */
   g_signal_emit (G_OBJECT (document), document_signals[LANGUAGE_CHANGED], 0, language);
 }
@@ -542,7 +542,7 @@ mousepad_document_send_signals (MousepadDocument *document)
 
   /* re-send the selection status */
   mousepad_document_notify_has_selection (document->buffer, NULL, document);
-  
+
   /* re-send the language signal */
   mousepad_document_notify_language (GTK_SOURCE_BUFFER (document->buffer), NULL, document);
 }

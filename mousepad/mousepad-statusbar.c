@@ -120,7 +120,7 @@ mousepad_statusbar_init (MousepadStatusbar *statusbar)
   separator = gtk_vseparator_new ();
   gtk_box_pack_start (GTK_BOX (box), separator, FALSE, FALSE, 0);
   gtk_widget_show (separator);
-  
+
   /* language/filetype */
   statusbar->language = gtk_label_new (_("Filetype: None"));
   gtk_box_pack_start (GTK_BOX (box), statusbar->language, FALSE, TRUE, 0);
@@ -184,9 +184,9 @@ mousepad_statusbar_set_language (MousepadStatusbar *statusbar,
                                  GtkSourceLanguage *language)
 {
   gchar *label;
-  
+
   mousepad_return_if_fail (MOUSEPAD_IS_STATUSBAR (statusbar));
-  
+
   if (language == NULL)
       gtk_label_set_text (GTK_LABEL (statusbar->language), _("Filetype: None"));
   else
