@@ -152,6 +152,9 @@ static void              mousepad_window_selection_changed            (MousepadD
 static void              mousepad_window_overwrite_changed            (MousepadDocument       *document,
                                                                        gboolean                overwrite,
                                                                        MousepadWindow         *window);
+static void              mousepad_window_language_changed             (MousepadDocument       *document,
+                                                                       GtkSourceLanguage      *language,
+                                                                       MousepadWindow         *window);
 static void              mousepad_window_can_undo                     (MousepadWindow         *window,
                                                                        GParamSpec             *unused,
                                                                        GObject                *buffer);
@@ -1307,7 +1310,6 @@ mousepad_window_notebook_switch_page (GtkNotebook     *notebook,
                                       MousepadWindow  *window)
 {
   MousepadDocument  *document;
-  GtkSourceLanguage *language;
 
   mousepad_return_if_fail (MOUSEPAD_IS_WINDOW (window));
   mousepad_return_if_fail (GTK_IS_NOTEBOOK (notebook));
@@ -1329,11 +1331,6 @@ mousepad_window_notebook_switch_page (GtkNotebook     *notebook,
 
       /* update the statusbar */
       mousepad_document_send_signals (window->active);
-      
-      /* set the filetype in the status bar 
-       * FIXME: this doesn't belong here */
-      language = gtk_source_buffer_get_language (GTK_SOURCE_BUFFER (window->active->buffer));
-      mousepad_statusbar_set_language (MOUSEPAD_STATUSBAR (window->statusbar), language);
     }
 }
 
@@ -1372,6 +1369,7 @@ mousepad_window_notebook_added (GtkNotebook     *notebook,
   g_signal_connect (G_OBJECT (page), "cursor-changed", G_CALLBACK (mousepad_window_cursor_changed), window);
   g_signal_connect (G_OBJECT (page), "selection-changed", G_CALLBACK (mousepad_window_selection_changed), window);
   g_signal_connect (G_OBJECT (page), "overwrite-changed", G_CALLBACK (mousepad_window_overwrite_changed), window);
+  g_signal_connect (G_OBJECT (page), "language-changed", G_CALLBACK (mousepad_window_language_changed), window);
   g_signal_connect (G_OBJECT (page), "drag-data-received", G_CALLBACK (mousepad_window_drag_data_received), window);
   g_signal_connect_swapped (G_OBJECT (document->buffer), "notify::can-undo", G_CALLBACK (mousepad_window_can_undo), window);
   g_signal_connect_swapped (G_OBJECT (document->buffer), "notify::can-redo", G_CALLBACK (mousepad_window_can_redo), window);
@@ -1412,6 +1410,7 @@ mousepad_window_notebook_removed (GtkNotebook     *notebook,
   g_signal_handlers_disconnect_by_func (G_OBJECT (page), mousepad_window_cursor_changed, window);
   g_signal_handlers_disconnect_by_func (G_OBJECT (page), mousepad_window_selection_changed, window);
   g_signal_handlers_disconnect_by_func (G_OBJECT (page), mousepad_window_overwrite_changed, window);
+  g_signal_handlers_disconnect_by_func (G_OBJECT (page), mousepad_window_language_changed, window);
   g_signal_handlers_disconnect_by_func (G_OBJECT (page), mousepad_window_drag_data_received, window);
   g_signal_handlers_disconnect_by_func (G_OBJECT (document->buffer), mousepad_window_can_undo, window);
   g_signal_handlers_disconnect_by_func (G_OBJECT (document->buffer), mousepad_window_can_redo, window);
@@ -1677,6 +1676,18 @@ mousepad_window_overwrite_changed (MousepadDocument *document,
   /* set the new overwrite mode in the statusbar */
   if (window->statusbar)
     mousepad_statusbar_set_overwrite (MOUSEPAD_STATUSBAR (window->statusbar), overwrite);
+}
+
+
+
+static void
+mousepad_window_language_changed (MousepadDocument  *document,
+                                  GtkSourceLanguage *language,
+                                  MousepadWindow    *window)
+{
+  /* set the filetype in the statusbar */
+  if (window->statusbar)
+    mousepad_statusbar_set_language (MOUSEPAD_STATUSBAR (window->statusbar), language);
 }
 
 

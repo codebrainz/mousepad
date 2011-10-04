@@ -52,6 +52,9 @@ static void      mousepad_document_notify_has_selection    (GtkTextBuffer       
 static void      mousepad_document_notify_overwrite        (GtkTextView            *textview,
                                                             GParamSpec             *pspec,
                                                             MousepadDocument       *document);
+static void      mousepad_document_notify_language         (GtkSourceBuffer        *buffer,
+                                                            GParamSpec             *pspec,
+                                                            MousepadDocument       *document);
 static void      mousepad_document_drag_data_received      (GtkWidget              *widget,
                                                             GdkDragContext         *context,
                                                             gint                    x,
@@ -73,6 +76,7 @@ enum
   CURSOR_CHANGED,
   SELECTION_CHANGED,
   OVERWRITE_CHANGED,
+  LANGUAGE_CHANGED,
   LAST_SIGNAL
 };
 
@@ -156,6 +160,14 @@ mousepad_document_class_init (MousepadDocumentClass *klass)
                   0, NULL, NULL,
                   g_cclosure_marshal_VOID__BOOLEAN,
                   G_TYPE_NONE, 1, G_TYPE_BOOLEAN);
+  
+  document_signals[LANGUAGE_CHANGED] =
+    g_signal_new (I_("language-changed"),
+                  G_TYPE_FROM_CLASS (gobject_class),
+                  G_SIGNAL_RUN_LAST,
+                  0, NULL, NULL,
+                  g_cclosure_marshal_VOID__OBJECT,
+                  G_TYPE_NONE, 1, GTK_TYPE_SOURCE_LANGUAGE);
 }
 
 
@@ -246,6 +258,7 @@ mousepad_document_init (MousepadDocument *document)
   g_signal_connect_swapped (G_OBJECT (document->file), "readonly-changed", G_CALLBACK (mousepad_document_label_color), document);
   g_signal_connect (G_OBJECT (document->textview), "notify::overwrite", G_CALLBACK (mousepad_document_notify_overwrite), document);
   g_signal_connect (G_OBJECT (document->textview), "drag-data-received", G_CALLBACK (mousepad_document_drag_data_received), document);
+  g_signal_connect (G_OBJECT (document->buffer), "notify::language", G_CALLBACK (mousepad_document_notify_language), document);
 }
 
 
@@ -346,6 +359,25 @@ mousepad_document_notify_overwrite (GtkTextView      *textview,
 
   /* emit the signal */
   g_signal_emit (G_OBJECT (document), document_signals[OVERWRITE_CHANGED], 0, overwrite);
+}
+
+
+
+static void
+mousepad_document_notify_language (GtkSourceBuffer  *buffer,
+                                   GParamSpec       *pspec,
+                                   MousepadDocument *document)
+{
+  GtkSourceLanguage *language;
+  
+  mousepad_return_if_fail (MOUSEPAD_IS_DOCUMENT (document));
+  mousepad_return_if_fail (GTK_IS_SOURCE_BUFFER (buffer));
+  
+  /* the new language */
+  language = gtk_source_buffer_get_language (buffer);
+  
+  /* emit the signal */
+  g_signal_emit (G_OBJECT (document), document_signals[LANGUAGE_CHANGED], 0, language);
 }
 
 
@@ -510,6 +542,9 @@ mousepad_document_send_signals (MousepadDocument *document)
 
   /* re-send the selection status */
   mousepad_document_notify_has_selection (document->buffer, NULL, document);
+  
+  /* re-send the language signal */
+  mousepad_document_notify_language (GTK_SOURCE_BUFFER (document->buffer), NULL, document);
 }
 
 
