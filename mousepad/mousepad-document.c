@@ -163,11 +163,12 @@ mousepad_document_class_init (MousepadDocumentClass *klass)
 static void
 mousepad_document_init (MousepadDocument *document)
 {
-  GtkTargetList       *target_list;
-  gboolean             word_wrap, auto_indent, line_numbers, insert_spaces;
-  gchar               *font_name;
-  gint                 tab_size;
-  MousepadPreferences *preferences;
+  GtkTargetList        *target_list;
+  gboolean              word_wrap, auto_indent, line_numbers, insert_spaces;
+  gchar                *font_name, *color_scheme;
+  gint                  tab_size;
+  GtkSourceStyleScheme *scheme = NULL;
+  MousepadPreferences  *preferences;
 
   /* private structure */
   document->priv = MOUSEPAD_DOCUMENT_GET_PRIVATE (document);
@@ -215,6 +216,7 @@ mousepad_document_init (MousepadDocument *document)
                 "view-font-name", &font_name,
                 "view-tab-size", &tab_size,
                 "view-insert-spaces", &insert_spaces,
+                "view-color-scheme", &color_scheme,
                 NULL);
 
   /* release the preferences */
@@ -227,9 +229,15 @@ mousepad_document_init (MousepadDocument *document)
   mousepad_view_set_auto_indent (document->textview, auto_indent);
   mousepad_view_set_tab_size (document->textview, tab_size);
   mousepad_view_set_insert_spaces (document->textview, insert_spaces);
+  
+  if (g_strcmp0 (color_scheme, "none") != 0)
+    scheme =  gtk_source_style_scheme_manager_get_scheme (gtk_source_style_scheme_manager_get_default (), color_scheme);
+  gtk_source_buffer_set_highlight_syntax (GTK_SOURCE_BUFFER (document->buffer), (scheme != NULL));
+  gtk_source_buffer_set_style_scheme (GTK_SOURCE_BUFFER (document->buffer), scheme);
 
   /* cleanup */
   g_free (font_name);
+  g_free (color_scheme);
 
   /* attach signals to the text view and buffer */
   g_signal_connect (G_OBJECT (document->buffer), "notify::cursor-position", G_CALLBACK (mousepad_document_notify_cursor_position), document);

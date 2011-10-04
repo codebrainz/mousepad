@@ -98,6 +98,11 @@ static gboolean          mousepad_window_close_document               (MousepadW
                                                                        MousepadDocument       *document);
 static void              mousepad_window_set_title                    (MousepadWindow         *window);
 
+/* color scheme functions */
+static gint              mousepad_window_color_schemes_compare_by_name(gconstpointer a, 
+                                                                       gconstpointer b);
+static GList            *mousepad_window_color_schemes_sorted_by_name (void);
+
 /* notebook signals */
 static void              mousepad_window_notebook_switch_page         (GtkNotebook            *notebook,
                                                                        GtkNotebookPage        *page,
@@ -171,6 +176,7 @@ static void              mousepad_window_update_actions               (MousepadW
 static gboolean          mousepad_window_update_gomenu_idle           (gpointer                user_data);
 static void              mousepad_window_update_gomenu_idle_destroy   (gpointer                user_data);
 static void              mousepad_window_update_gomenu                (MousepadWindow         *window);
+static void              mousepad_window_menu_color_schemes           (MousepadWindow         *window);
 
 /* recent functions */
 static void              mousepad_window_recent_add                   (MousepadWindow         *window,
@@ -316,6 +322,8 @@ static void              mousepad_window_action_auto_indent           (GtkToggle
                                                                        MousepadWindow         *window);
 static void              mousepad_window_action_tab_size              (GtkToggleAction        *action,
                                                                        MousepadWindow         *window);
+static void              mousepad_window_action_color_scheme          (GtkToggleAction        *action,
+                                                                       MousepadWindow         *window);
 static void              mousepad_window_action_insert_spaces         (GtkToggleAction        *action,
                                                                        MousepadWindow         *window);
 static void              mousepad_window_action_line_ending           (GtkRadioAction         *action,
@@ -421,6 +429,7 @@ static const GtkActionEntry action_entries[] =
 
   { "view-menu", NULL, N_("_View"), NULL, NULL, NULL, },
     { "font", GTK_STOCK_SELECT_FONT, N_("Select F_ont..."), NULL, N_("Change the editor font"), G_CALLBACK (mousepad_window_action_select_font), },
+    { "color-scheme-menu", NULL, N_("_Color Scheme"), NULL, NULL, NULL, },
 
   { "text-menu", NULL, N_("_Text"), NULL, NULL, NULL, },
     { "convert-menu", NULL, N_("_Convert"), NULL, NULL, NULL, },
@@ -604,6 +613,9 @@ mousepad_window_init (MousepadWindow *window)
 
   /* add tab size menu */
   mousepad_window_menu_tab_sizes (window);
+  
+  /* add color schemes menu */
+  mousepad_window_menu_color_schemes (window);
 
   /* set accel group for the window */
   accel_group = gtk_ui_manager_get_accel_group (window->ui_manager);
@@ -3043,6 +3055,130 @@ mousepad_window_delete_event (MousepadWindow *window,
 
 
 /**
+ * Colour scheme functions
+ */
+static gint
+mousepad_window_color_schemes_compare_by_name (gconstpointer a, 
+                                               gconstpointer b)
+{
+  const gchar *name_a, *name_b;
+  
+  if (G_UNLIKELY (!a))
+    return -(a != b);
+  if (G_UNLIKELY (!b))
+    return a != b;
+  
+  name_a = gtk_source_style_scheme_get_name (GTK_SOURCE_STYLE_SCHEME (a));
+  name_b = gtk_source_style_scheme_get_name (GTK_SOURCE_STYLE_SCHEME (b));
+  
+  return g_strcmp0 (name_a, name_b);
+}
+
+
+
+static GList *
+mousepad_window_color_schemes_sorted_by_name (void)
+{
+  GList                       *list = NULL;
+  const gchar * const         *schemes;
+  GtkSourceStyleScheme        *scheme;
+  
+  schemes = gtk_source_style_scheme_manager_get_scheme_ids (
+              gtk_source_style_scheme_manager_get_default ());
+  
+  while (*schemes)
+    {
+      scheme = gtk_source_style_scheme_manager_get_scheme (
+                gtk_source_style_scheme_manager_get_default (), *schemes);
+      list = g_list_prepend (list, scheme);
+      schemes++;
+    }
+  
+  return g_list_sort (list, mousepad_window_color_schemes_compare_by_name);
+}
+
+
+
+static void 
+mousepad_window_menu_color_schemes (MousepadWindow *window)
+{
+  GtkRadioAction       *action;
+  GSList               *group = NULL;
+  GList                *schemes, *iter;
+  gint                  merge_id;
+  gchar                *name;
+
+  /* lock menu updates */
+  lock_menu_updates++;
+
+  /* get list of schemes */
+  schemes = mousepad_window_color_schemes_sorted_by_name ();
+
+  /* create merge id */
+  merge_id = gtk_ui_manager_new_merge_id (window->ui_manager);
+
+  /* create a "none" action */
+  action = gtk_radio_action_new ("color-scheme-none", 
+                                 _("None"), 
+                                 _("Turn off color schemes"), 
+                                 NULL, 
+                                 g_str_hash ("none"));
+  gtk_radio_action_set_group (action, group);
+  group = gtk_radio_action_get_group (action);
+  g_signal_connect (G_OBJECT (action), "activate", G_CALLBACK (mousepad_window_action_color_scheme), window);
+  gtk_action_group_add_action_with_accel (window->action_group, GTK_ACTION (action), "");
+
+  /* release the action */
+  g_object_unref (G_OBJECT (action));
+
+  /* add the action to the go menu */
+  gtk_ui_manager_add_ui (window->ui_manager, merge_id,
+                         "/main-menu/view-menu/color-scheme-menu/placeholder-color-scheme-items",
+                         "color-scheme-none", "color-scheme-none", GTK_UI_MANAGER_MENUITEM, FALSE);
+  
+  /* add a separator */
+  gtk_ui_manager_add_ui (window->ui_manager, merge_id,
+                         "/main-menu/view-menu/color-scheme-menu/placeholder-color-scheme-items",
+                         "color-scheme-separator", NULL, GTK_UI_MANAGER_SEPARATOR, FALSE);
+
+  /* add the color schemes to the menu */
+  for (iter = schemes; iter != NULL; iter = g_list_next (iter))
+    {
+      /* create action name */
+      name = g_strdup_printf ("color-scheme_%s", gtk_source_style_scheme_get_id (iter->data));
+
+      action = gtk_radio_action_new (name, 
+                                     gtk_source_style_scheme_get_name (iter->data), 
+                                     gtk_source_style_scheme_get_description (iter->data), 
+                                     NULL, 
+                                     g_str_hash (gtk_source_style_scheme_get_id (iter->data)));
+      gtk_radio_action_set_group (action, group);
+      group = gtk_radio_action_get_group (action);
+      g_signal_connect (G_OBJECT (action), "activate", G_CALLBACK (mousepad_window_action_color_scheme), window);
+      gtk_action_group_add_action_with_accel (window->action_group, GTK_ACTION (action), "");
+
+      /* release the action */
+      g_object_unref (G_OBJECT (action));
+
+      /* add the action to the go menu */
+      gtk_ui_manager_add_ui (window->ui_manager, merge_id,
+                             "/main-menu/view-menu/color-scheme-menu/placeholder-color-scheme-items",
+                             name, name, GTK_UI_MANAGER_MENUITEM, FALSE);
+
+      /* cleanup */
+      g_free (name);
+    }
+
+  /* cleanup the list */
+  g_list_free (schemes);
+
+  /* unlock */
+  lock_menu_updates--;
+}
+
+
+
+/**
  * Menu Actions
  *
  * All those function should be sorted by the menu structure so it's
@@ -4452,6 +4588,66 @@ mousepad_window_action_tab_size (GtkToggleAction *action,
 
       /* update menu */
       mousepad_window_menu_tab_sizes_update (window);
+    }
+}
+
+
+
+static void
+mousepad_window_action_color_scheme (GtkToggleAction *action,
+                                     MousepadWindow  *window)
+{
+  gint                  page_num = 0;
+  guint                 scheme_id_hash;
+  GtkWidget            *page;
+  GtkTextBuffer        *buffer;
+  GtkSourceStyleScheme *scheme = NULL;
+  MousepadDocument     *document;
+  GList                *schemes, *iter;
+
+  mousepad_return_if_fail (MOUSEPAD_IS_WINDOW (window));
+
+  /* leave when menu updates are locked */
+  if (lock_menu_updates == 0 && gtk_toggle_action_get_active (action))
+    {
+      mousepad_return_if_fail (MOUSEPAD_IS_DOCUMENT (window->active));
+
+      /* get the color scheme id hashed */
+      scheme_id_hash = (guint) gtk_radio_action_get_current_value (GTK_RADIO_ACTION (action));
+      
+      if (scheme_id_hash != g_str_hash ("none"))
+        {
+          /* lookup the scheme from the id hash */
+          schemes = mousepad_window_color_schemes_sorted_by_name ();
+          for (iter = schemes; iter != NULL; iter = g_list_next (iter))
+            {
+              if (scheme_id_hash == g_str_hash (gtk_source_style_scheme_get_id (iter->data)))
+                {
+                  scheme = iter->data;
+                  break;
+                }
+            }
+          g_list_free (schemes);
+        }
+
+      /* store as last used value */
+      g_object_set (G_OBJECT (window->preferences), 
+                    "view-color-scheme", 
+                    (scheme != NULL) ? gtk_source_style_scheme_get_id (scheme) : "none", 
+                    NULL);
+
+      /* apply colour scheme to all open textviews */
+      while ((page = gtk_notebook_get_nth_page (GTK_NOTEBOOK (window->notebook), page_num)))
+        {
+          if (G_LIKELY (MOUSEPAD_IS_DOCUMENT (page)))
+            {
+              document = MOUSEPAD_DOCUMENT (page);
+              buffer = gtk_text_view_get_buffer (GTK_TEXT_VIEW (document->textview));
+              gtk_source_buffer_set_highlight_syntax (GTK_SOURCE_BUFFER (buffer), (scheme != NULL));
+              gtk_source_buffer_set_style_scheme (GTK_SOURCE_BUFFER (buffer), scheme);
+            }
+            page_num++;
+        }
     }
 }
 

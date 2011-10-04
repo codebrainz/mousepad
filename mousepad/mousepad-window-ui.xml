@@ -68,6 +68,10 @@
       <menuitem action="font" />
       <separator />
       <menuitem action="statusbar" />
+      <separator />
+      <menu action="color-scheme-menu">
+        <placeholder name="placeholder-color-scheme-items" />
+      </menu>
     </menu>
 
     <menu action="text-menu">
