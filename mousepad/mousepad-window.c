@@ -1306,7 +1306,8 @@ mousepad_window_notebook_switch_page (GtkNotebook     *notebook,
                                       guint            page_num,
                                       MousepadWindow  *window)
 {
-  MousepadDocument *document;
+  MousepadDocument  *document;
+  GtkSourceLanguage *language;
 
   mousepad_return_if_fail (MOUSEPAD_IS_WINDOW (window));
   mousepad_return_if_fail (GTK_IS_NOTEBOOK (notebook));
@@ -1328,6 +1329,11 @@ mousepad_window_notebook_switch_page (GtkNotebook     *notebook,
 
       /* update the statusbar */
       mousepad_document_send_signals (window->active);
+      
+      /* set the filetype in the status bar 
+       * FIXME: this doesn't belong here */
+      language = gtk_source_buffer_get_language (GTK_SOURCE_BUFFER (window->active->buffer));
+      mousepad_statusbar_set_language (MOUSEPAD_STATUSBAR (window->statusbar), language);
     }
 }
 

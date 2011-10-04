@@ -50,6 +50,7 @@ struct _MousepadStatusbar
   guint               overwrite_enabled : 1;
 
   /* extra labels in the statusbar */
+  GtkWidget          *language;
   GtkWidget          *position;
   GtkWidget          *overwrite;
 };
@@ -119,6 +120,16 @@ mousepad_statusbar_init (MousepadStatusbar *statusbar)
   separator = gtk_vseparator_new ();
   gtk_box_pack_start (GTK_BOX (box), separator, FALSE, FALSE, 0);
   gtk_widget_show (separator);
+  
+  /* language/filetype */
+  statusbar->language = gtk_label_new (_("Filetype: None"));
+  gtk_box_pack_start (GTK_BOX (box), statusbar->language, FALSE, TRUE, 0);
+  gtk_widget_show (statusbar->language);
+
+  /* separator */
+  separator = gtk_vseparator_new ();
+  gtk_box_pack_start (GTK_BOX (box), separator, FALSE, FALSE, 0);
+  gtk_widget_show (separator);
 
   /* line and column numbers */
   statusbar->position = gtk_label_new (NULL);
@@ -164,6 +175,26 @@ mousepad_statusbar_overwrite_clicked (GtkWidget         *widget,
   g_signal_emit (G_OBJECT (statusbar), statusbar_signals[ENABLE_OVERWRITE], 0, statusbar->overwrite_enabled);
 
   return TRUE;
+}
+
+
+
+void
+mousepad_statusbar_set_language (MousepadStatusbar *statusbar,
+                                 GtkSourceLanguage *language)
+{
+  gchar *label;
+  
+  mousepad_return_if_fail (MOUSEPAD_IS_STATUSBAR (statusbar));
+  
+  if (language == NULL)
+      gtk_label_set_text (GTK_LABEL (statusbar->language), _("Filetype: None"));
+  else
+    {
+      label = g_strdup_printf (_("Filetype: %s"), gtk_source_language_get_name (language));
+      gtk_label_set_text (GTK_LABEL (statusbar->language), label);
+      g_free (label);
+    }
 }
 
 
