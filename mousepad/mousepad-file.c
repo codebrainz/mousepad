@@ -393,6 +393,85 @@ mousepad_file_get_line_ending (MousepadFile *file)
 
 
 
+void 
+mousepad_file_set_language (MousepadFile      *file,
+                            GtkSourceLanguage *language)
+{
+  mousepad_return_if_fail (MOUSEPAD_IS_FILE (file));
+  mousepad_return_if_fail (GTK_IS_SOURCE_BUFFER (file->buffer));
+  
+  gtk_source_buffer_set_language (GTK_SOURCE_BUFFER (file->buffer), language);
+}
+
+
+
+GtkSourceLanguage *
+mousepad_file_get_language (MousepadFile *file)
+{
+  mousepad_return_val_if_fail (MOUSEPAD_IS_FILE (file), NULL);
+  mousepad_return_val_if_fail (GTK_IS_SOURCE_BUFFER (file->buffer), NULL);
+  
+  return gtk_source_buffer_get_language (GTK_SOURCE_BUFFER (file->buffer));
+}
+
+
+
+void
+mousepad_file_set_language_id (MousepadFile *file,
+                               const gchar  *language_id)
+{
+  GtkSourceLanguage *lang;
+  
+  mousepad_return_if_fail (MOUSEPAD_IS_FILE (file));
+  mousepad_return_if_fail (GTK_IS_SOURCE_BUFFER (file->buffer));
+  
+  if (G_UNLIKELY (language_id == NULL))
+    {
+      gtk_source_buffer_set_language (GTK_SOURCE_BUFFER (file->buffer), NULL);
+      return;
+    }
+  
+  lang = gtk_source_language_manager_get_language (gtk_source_language_manager_get_default (), language_id);
+  mousepad_file_set_language (file, lang);
+}
+
+
+
+const gchar *
+mousepad_file_get_language_id (MousepadFile *file)
+{
+  GtkSourceLanguage *lang;
+  
+  lang = mousepad_file_get_language (file);
+  return (lang != NULL) ? gtk_source_language_get_id (lang) : NULL;
+}
+
+
+
+GtkSourceLanguage *
+mousepad_file_guess_language (MousepadFile *file)
+{
+  gchar             *content_type;
+  gboolean           result_uncertain;
+  GtkSourceLanguage *language = NULL;
+
+  content_type = g_content_type_guess (file->filename, NULL, 0, &result_uncertain);
+  if (result_uncertain)
+    {
+      g_free (content_type);
+      content_type = NULL;
+    }
+
+  language = gtk_source_language_manager_guess_language (gtk_source_language_manager_get_default (), 
+                                                         file->filename, 
+                                                         content_type);
+  g_free (content_type);
+  
+  return language;
+}
+
+
+
 gint
 mousepad_file_open (MousepadFile  *file,
                     const gchar   *template_filename,
@@ -603,6 +682,9 @@ mousepad_file_open (MousepadFile  *file,
 #else
       g_mapped_file_free (mapped_file);
 #endif
+
+      /* guess and set the file's filetype/language */
+      mousepad_file_set_language (file, mousepad_file_guess_language (file));
 
       /* this does not count as a modified buffer */
       gtk_text_buffer_set_modified (file->buffer, FALSE);

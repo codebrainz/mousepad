@@ -68,6 +68,18 @@ void                mousepad_file_set_line_ending          (MousepadFile        
 
 MousepadLineEnding  mousepad_file_get_line_ending          (MousepadFile        *file);
 
+void                mousepad_file_set_language             (MousepadFile        *file,
+                                                            GtkSourceLanguage   *language);
+
+GtkSourceLanguage  *mousepad_file_get_language             (MousepadFile        *file);
+
+void                mousepad_file_set_language_id          (MousepadFile        *file,
+                                                            const gchar         *language_id);
+
+const gchar        *mousepad_file_get_language_id          (MousepadFile        *file);
+
+GtkSourceLanguage  *mousepad_file_guess_language           (MousepadFile        *file);
+
 gint                mousepad_file_open                     (MousepadFile        *file,
                                                             const gchar         *template_filename,
                                                             GError             **error);
