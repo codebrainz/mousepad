@@ -3080,10 +3080,13 @@ mousepad_window_menu_color_schemes (MousepadWindow *window)
   GSList               *group = NULL;
   GList                *schemes, *iter;
   gint                  merge_id;
-  gchar                *name;
+  gchar                *name, *selected_color_scheme;
 
   /* lock menu updates */
   lock_menu_updates++;
+
+  /* get the previously saved colour scheme name */
+  g_object_get (window->preferences, "view-color-scheme", &selected_color_scheme, NULL);
 
   /* get list of schemes */
   schemes = mousepad_util_color_schemes_get_sorted ();
@@ -3130,6 +3133,10 @@ mousepad_window_menu_color_schemes (MousepadWindow *window)
       group = gtk_radio_action_get_group (action);
       g_signal_connect (G_OBJECT (action), "activate", G_CALLBACK (mousepad_window_action_color_scheme), window);
       gtk_action_group_add_action_with_accel (window->action_group, GTK_ACTION (action), "");
+
+      /* activate the radio button if it was the last saved colour scheme */
+      if (g_strcmp0 (gtk_source_style_scheme_get_id (iter->data), selected_color_scheme) == 0)
+          gtk_toggle_action_set_active (GTK_TOGGLE_ACTION (action), TRUE);
 
       /* release the action */
       g_object_unref (G_OBJECT (action));
