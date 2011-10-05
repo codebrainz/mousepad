@@ -117,6 +117,10 @@
         <menuitem action="mac" />
         <menuitem action="dos" />
       </menu>
+      <separator />
+      <menu action="language-menu">
+        <placeholder name="placeholder-language-section-items" />
+      </menu>
     </menu>
 
     <menu action="navigation-menu">
