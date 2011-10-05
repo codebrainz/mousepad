@@ -1066,3 +1066,132 @@ mousepad_util_search (GtkTextBuffer       *buffer,
 
   return counter;
 }
+
+
+
+/**
+ * Colour scheme functions
+ */
+gint
+mousepad_util_color_schemes_name_compare (gconstpointer a,
+                                          gconstpointer b)
+{
+  const gchar *name_a, *name_b;
+
+  if (G_UNLIKELY (!a))
+    return -(a != b);
+  if (G_UNLIKELY (!b))
+    return a != b;
+
+  name_a = gtk_source_style_scheme_get_name (GTK_SOURCE_STYLE_SCHEME (a));
+  name_b = gtk_source_style_scheme_get_name (GTK_SOURCE_STYLE_SCHEME (b));
+
+  return g_utf8_collate (name_a, name_b);
+}
+
+
+
+GList *
+mousepad_util_color_schemes_get_sorted (void)
+{
+  GList                *list = NULL;
+  const gchar * const  *schemes;
+  GtkSourceStyleScheme *scheme;
+
+  schemes = gtk_source_style_scheme_manager_get_scheme_ids (
+              gtk_source_style_scheme_manager_get_default ());
+
+  while (*schemes)
+    {
+      scheme = gtk_source_style_scheme_manager_get_scheme (
+                gtk_source_style_scheme_manager_get_default (), *schemes);
+      list = g_list_prepend (list, scheme);
+      schemes++;
+    }
+
+  return g_list_sort (list, mousepad_util_color_schemes_name_compare);
+}
+
+
+
+/**
+ * Language/filetype functions
+ */
+gint
+mousepad_util_languages_name_compare (gconstpointer a,
+                                      gconstpointer b)
+{
+  const gchar *name_a, *name_b;
+
+  if (G_UNLIKELY (!GTK_IS_SOURCE_LANGUAGE (a)))
+    return -(a != b);
+  if (G_UNLIKELY (!GTK_IS_SOURCE_LANGUAGE (b)))
+    return a != b;
+
+  name_a = gtk_source_language_get_name (GTK_SOURCE_LANGUAGE (a));
+  name_b = gtk_source_language_get_name (GTK_SOURCE_LANGUAGE (b));
+
+  return g_utf8_collate (name_a, name_b);
+}
+
+
+
+GSList *
+mousepad_util_language_sections_get_sorted (void)
+{
+  GSList                   *list = NULL;
+  const gchar *const       *languages;
+  GtkSourceLanguage        *language;
+  GtkSourceLanguageManager *manager;
+
+  manager = gtk_source_language_manager_get_default ();
+  languages = gtk_source_language_manager_get_language_ids (manager);
+
+  while (*languages)
+    {
+      language = gtk_source_language_manager_get_language (manager, *languages);
+      if (G_LIKELY (GTK_IS_SOURCE_LANGUAGE (language)))
+        {
+          /* ensure no duplicates in list */
+          if (!g_slist_find_custom (list,
+                                    gtk_source_language_get_section (language),
+                                    (GCompareFunc)g_strcmp0))
+            {
+              list = g_slist_prepend (list, (gchar *)gtk_source_language_get_section (language));
+            }
+        }
+      languages++;
+    }
+
+  return g_slist_sort (list, (GCompareFunc)g_strcmp0);
+}
+
+
+
+GSList *
+mousepad_util_languages_get_sorted_for_section (const gchar *section)
+{
+  GSList                   *list = NULL;
+  const gchar *const       *languages;
+  GtkSourceLanguage        *language;
+  GtkSourceLanguageManager *manager;
+
+  mousepad_return_val_if_fail (section != NULL, NULL);
+
+  manager = gtk_source_language_manager_get_default ();
+  languages = gtk_source_language_manager_get_language_ids (manager);
+
+  while (*languages)
+    {
+      language = gtk_source_language_manager_get_language (manager, *languages);
+      if (G_LIKELY (GTK_IS_SOURCE_LANGUAGE (language)))
+        {
+          /* only get languages in the specified section */
+          if (g_strcmp0 (gtk_source_language_get_section (language), section) == 0)
+            list = g_slist_prepend (list, language);
+        }
+      languages++;
+    }
+
+  return g_slist_sort(list, (GCompareFunc)mousepad_util_languages_name_compare);
+}
