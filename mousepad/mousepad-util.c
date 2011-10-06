@@ -1091,10 +1091,10 @@ mousepad_util_color_schemes_name_compare (gconstpointer a,
 
 
 
-GList *
+GSList *
 mousepad_util_color_schemes_get_sorted (void)
 {
-  GList                *list = NULL;
+  GSList               *list = NULL;
   const gchar * const  *schemes;
   GtkSourceStyleScheme *scheme;
 
@@ -1105,11 +1105,11 @@ mousepad_util_color_schemes_get_sorted (void)
     {
       scheme = gtk_source_style_scheme_manager_get_scheme (
                 gtk_source_style_scheme_manager_get_default (), *schemes);
-      list = g_list_prepend (list, scheme);
+      list = g_slist_prepend (list, scheme);
       schemes++;
     }
 
-  return g_list_sort (list, mousepad_util_color_schemes_name_compare);
+  return g_slist_sort (list, mousepad_util_color_schemes_name_compare);
 }
 
 

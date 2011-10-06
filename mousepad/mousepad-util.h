@@ -121,10 +121,14 @@ gint       mousepad_util_search                           (GtkTextBuffer       *
 
 gint       mousepad_util_color_schemes_name_compare       (gconstpointer        a,
                                                            gconstpointer        b);
-GList     *mousepad_util_color_schemes_get_sorted         (void);
+
+GSList    *mousepad_util_color_schemes_get_sorted         (void);
+
 gint       mousepad_util_languages_name_compare           (gconstpointer        a,
                                                            gconstpointer        b);
+
 GSList    *mousepad_util_language_sections_get_sorted     (void);
+
 GSList    *mousepad_util_languages_get_sorted_for_section (const gchar         *section);
 
 G_END_DECLS

@@ -3077,10 +3077,9 @@ static void
 mousepad_window_menu_color_schemes (MousepadWindow *window)
 {
   GtkRadioAction       *action;
-  GSList               *group = NULL;
-  GList                *schemes, *iter;
+  GSList               *group = NULL, *schemes, *iter;
   gint                  merge_id;
-  gchar                *name, *selected_color_scheme;
+  gchar                *name, *selected_color_scheme = NULL;
 
   /* lock menu updates */
   lock_menu_updates++;
@@ -3119,11 +3118,12 @@ mousepad_window_menu_color_schemes (MousepadWindow *window)
                          "color-scheme-separator", NULL, GTK_UI_MANAGER_SEPARATOR, FALSE);
 
   /* add the color schemes to the menu */
-  for (iter = schemes; iter != NULL; iter = g_list_next (iter))
+  for (iter = schemes; iter != NULL; iter = g_slist_next (iter))
     {
       /* create action name */
       name = g_strdup_printf ("color-scheme_%s", gtk_source_style_scheme_get_id (iter->data));
 
+      /* create action for colour scheme */
       action = gtk_radio_action_new (name,
                                      gtk_source_style_scheme_get_name (iter->data),
                                      gtk_source_style_scheme_get_description (iter->data),
@@ -3151,7 +3151,7 @@ mousepad_window_menu_color_schemes (MousepadWindow *window)
     }
 
   /* cleanup the list */
-  g_list_free (schemes);
+  g_slist_free (schemes);
 
   /* unlock */
   lock_menu_updates--;
@@ -4413,7 +4413,7 @@ mousepad_window_action_color_scheme (GtkToggleAction *action,
   GtkTextBuffer        *buffer;
   GtkSourceStyleScheme *scheme = NULL;
   MousepadDocument     *document;
-  GList                *schemes, *iter;
+  GSList               *schemes, *iter;
 
   mousepad_return_if_fail (MOUSEPAD_IS_WINDOW (window));
 
@@ -4429,7 +4429,7 @@ mousepad_window_action_color_scheme (GtkToggleAction *action,
         {
           /* lookup the scheme from the id hash */
           schemes = mousepad_util_color_schemes_get_sorted ();
-          for (iter = schemes; iter != NULL; iter = g_list_next (iter))
+          for (iter = schemes; iter != NULL; iter = g_slist_next (iter))
             {
               if (scheme_id_hash == g_str_hash (gtk_source_style_scheme_get_id (iter->data)))
                 {
@@ -4437,7 +4437,7 @@ mousepad_window_action_color_scheme (GtkToggleAction *action,
                   break;
                 }
             }
-          g_list_free (schemes);
+          g_slist_free (schemes);
         }
 
       /* store as last used value */
