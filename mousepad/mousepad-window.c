@@ -2144,9 +2144,9 @@ mousepad_window_update_gomenu_idle (gpointer user_data)
   const gchar      *title;
   const gchar      *tooltip;
   gchar             accelerator[7];
-  GtkAction        *action;
   GtkRadioAction   *radio_action;
   GSList           *group = NULL;
+  GList            *actions, *iter;
 
   mousepad_return_val_if_fail (MOUSEPAD_IS_WINDOW (user_data), FALSE);
 
@@ -2164,14 +2164,14 @@ mousepad_window_update_gomenu_idle (gpointer user_data)
       gtk_ui_manager_remove_ui (window->ui_manager, window->gomenu_merge_id);
 
       /* drop all the old recent items from the menu */
-      for (n = 0; n < 100 /* arbitrary */; n++)
+      actions = gtk_action_group_list_actions (window->action_group);
+      for (iter = actions; iter != NULL; iter = g_list_next (iter))
         {
-          g_snprintf (name, sizeof (name), "mousepad-tab-%d", n);
-          action = gtk_action_group_get_action (window->action_group, name);
-          if (G_UNLIKELY (action == NULL))
-            break;
-          gtk_action_group_remove_action (window->action_group, action);
+          /* match only actions starting with "mousepad-tab-" */
+          if (g_str_has_prefix (gtk_action_get_name (iter->data), "mousepad-tab-"))
+            gtk_action_group_remove_action (window->action_group, iter->data);
         }
+      g_list_free (actions);
     }
 
   /* create a new merge id */
