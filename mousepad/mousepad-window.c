@@ -1687,6 +1687,34 @@ mousepad_window_language_changed (MousepadDocument  *document,
                                   GtkSourceLanguage *language,
                                   MousepadWindow    *window)
 {
+  gchar     *path;
+  GtkWidget *item;
+
+  if (!GTK_IS_SOURCE_LANGUAGE (language))
+    goto set_none;
+
+  path = g_strdup_printf ("/main-menu/document-menu/language-menu/"
+                          "placeholder-language-section-items/"
+                          "language-section-%s/language-%s",
+                          gtk_source_language_get_section (language),
+                          gtk_source_language_get_id (language));
+  item = gtk_ui_manager_get_widget (window->ui_manager, path);
+  g_free (path);
+
+  /* activate the appropriate menu item for the new language */
+  if (GTK_IS_CHECK_MENU_ITEM (item))
+    {
+      gtk_check_menu_item_set_active (GTK_CHECK_MENU_ITEM (item), TRUE);
+      goto set_statusbar;
+    }
+
+set_none:
+  item = gtk_ui_manager_get_widget (window->ui_manager,
+                                        "/main-menu/document-menu/language-menu/language-none");
+  if (GTK_IS_CHECK_MENU_ITEM (item))
+    gtk_check_menu_item_set_active (GTK_CHECK_MENU_ITEM (item), TRUE);
+
+set_statusbar:
   /* set the filetype in the statusbar */
   if (window->statusbar)
     mousepad_statusbar_set_language (MOUSEPAD_STATUSBAR (window->statusbar), language);
@@ -4835,6 +4863,14 @@ mousepad_window_action_language (GtkToggleAction *action,
   GtkSourceBuffer          *buffer;
 
   lang_hash = (guint) gtk_radio_action_get_current_value (GTK_RADIO_ACTION (action));
+  buffer = GTK_SOURCE_BUFFER (gtk_text_view_get_buffer (GTK_TEXT_VIEW (window->active->textview)));
+
+  if (lang_hash == g_str_hash ("none"))
+    {
+      gtk_source_buffer_set_language (buffer, NULL);
+      return;
+    }
+
   manager = gtk_source_language_manager_get_default ();
   lang_id = gtk_source_language_manager_get_language_ids (manager);
 
@@ -4843,7 +4879,6 @@ mousepad_window_action_language (GtkToggleAction *action,
       if (g_str_hash (*lang_id) == lang_hash)
         {
           language = gtk_source_language_manager_get_language (manager, *lang_id);
-          buffer = GTK_SOURCE_BUFFER (gtk_text_view_get_buffer (GTK_TEXT_VIEW (window->active->textview)));
           gtk_source_buffer_set_language (buffer, language);
           break;
         }
