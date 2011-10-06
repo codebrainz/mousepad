@@ -1078,9 +1078,9 @@ mousepad_util_color_schemes_name_compare (gconstpointer a,
 {
   const gchar *name_a, *name_b;
 
-  if (G_UNLIKELY (!a))
+  if (G_UNLIKELY (!GTK_IS_SOURCE_STYLE_SCHEME (a)))
     return -(a != b);
-  if (G_UNLIKELY (!b))
+  if (G_UNLIKELY (!GTK_IS_SOURCE_STYLE_SCHEME (b)))
     return a != b;
 
   name_a = gtk_source_style_scheme_get_name (GTK_SOURCE_STYLE_SCHEME (a));
@@ -1092,7 +1092,7 @@ mousepad_util_color_schemes_name_compare (gconstpointer a,
 
 
 GSList *
-mousepad_util_color_schemes_get_sorted (void)
+mousepad_util_color_schemes_get (void)
 {
   GSList               *list = NULL;
   const gchar * const  *schemes;
@@ -1109,7 +1109,16 @@ mousepad_util_color_schemes_get_sorted (void)
       schemes++;
     }
 
-  return g_slist_sort (list, mousepad_util_color_schemes_name_compare);
+  return list;
+}
+
+
+
+GSList *
+mousepad_util_color_schemes_get_sorted (void)
+{
+  return g_slist_sort (mousepad_util_color_schemes_get (),
+                       mousepad_util_color_schemes_name_compare);
 }
 
 

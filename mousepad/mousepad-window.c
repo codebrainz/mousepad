@@ -4428,7 +4428,7 @@ mousepad_window_action_color_scheme (GtkToggleAction *action,
       if (scheme_id_hash != g_str_hash ("none"))
         {
           /* lookup the scheme from the id hash */
-          schemes = mousepad_util_color_schemes_get_sorted ();
+          schemes = mousepad_util_color_schemes_get ();
           for (iter = schemes; iter != NULL; iter = g_slist_next (iter))
             {
               if (scheme_id_hash == g_str_hash (gtk_source_style_scheme_get_id (iter->data)))
