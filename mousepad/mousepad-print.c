@@ -228,17 +228,17 @@ mousepad_print_settings_load (GtkPrintOperation *operation)
       /* restore print settings */
       g_object_set (print->compositor,
                     "print-header",
-                    gtk_print_settings_get_bool (settings, "print-page-headers"),
+                    gtk_print_settings_get_bool (settings, "print-header"),
 #if 0
                     "print-footer",
-                    gtk_print_settings_get_bool (settings, "print-page-footers"),
+                    gtk_print_settings_get_bool (settings, "print-footer"),
 #endif
                     "print-line-numbers",
                     gtk_print_settings_get_bool (settings, "print-line-numbers"),
                     "wrap-mode",
                     gtk_print_settings_get_bool (settings, "text-wrapping") ? GTK_WRAP_WORD : GTK_WRAP_NONE,
                     "highlight-syntax",
-                    gtk_print_settings_get_bool (settings, "syntax-highlighting"),
+                    gtk_print_settings_get_bool (settings, "highlight-syntax"),
                     NULL);
 
       /* font-name setting sets the header, footer, line numbers and body fonts */
@@ -344,11 +344,11 @@ mousepad_print_settings_save (GtkPrintOperation *operation)
 
           /* set print settings */
           gtk_print_settings_set_bool (settings,
-                                       "print-page-headers",
+                                       "print-header",
                                        gtk_source_print_compositor_get_print_header (print->compositor));
 #if 0
           gtk_print_settings_set_bool (settings,
-                                       "print-page-footers",
+                                       "print-footer",
                                        gtk_source_print_compositor_get_print_footer (print->compositor));
 #endif
           gtk_print_settings_set_bool (settings,
@@ -360,7 +360,7 @@ mousepad_print_settings_save (GtkPrintOperation *operation)
                                        gtk_source_print_compositor_get_wrap_mode (print->compositor) == GTK_WRAP_NONE ? FALSE : TRUE);
 
           gtk_print_settings_set_bool (settings,
-                                       "syntax-highlighting",
+                                       "highlight-syntax",
                                        gtk_source_print_compositor_get_highlight_syntax (print->compositor));
 
           gtk_print_settings_set (settings,
