@@ -450,9 +450,9 @@ static const GtkActionEntry action_entries[] =
     { "decrease-indent", GTK_STOCK_UNINDENT, N_("_Decrease Indent"), NULL, N_("Decrease the indentation of the selection or current line"), G_CALLBACK (mousepad_window_action_decrease_indent), },
 
   { "document-menu", NULL, N_("_Document"), NULL, NULL, NULL, },
-    { "tab-size-menu", NULL, N_("Tab _Size"), NULL, NULL, NULL, },
-    { "eol-menu", NULL, N_("Line E_nding"), NULL, NULL, NULL, },
     { "language-menu", NULL, N_("_Filetype"), NULL, NULL, NULL, },
+    { "eol-menu", NULL, N_("Line E_nding"), NULL, NULL, NULL, },
+    { "tab-size-menu", NULL, N_("Tab _Size"), NULL, NULL, NULL, },
 
   { "navigation-menu", NULL, N_("_Navigation"), NULL, },
     { "back", GTK_STOCK_GO_BACK, N_("_Previous Tab"), "<control>Page_Up", N_("Select the previous tab"), G_CALLBACK (mousepad_window_action_prev_tab), },
@@ -466,12 +466,12 @@ static const GtkActionEntry action_entries[] =
 
 static const GtkToggleActionEntry toggle_action_entries[] =
 {
-  { "statusbar", NULL, N_("St_atusbar"), NULL, N_("Change the visibility of the statusbar"), G_CALLBACK (mousepad_window_action_statusbar), FALSE, },
   { "line-numbers", NULL, N_("Line N_umbers"), NULL, N_("Show line numbers"), G_CALLBACK (mousepad_window_action_line_numbers), FALSE, },
+  { "statusbar", NULL, N_("St_atusbar"), NULL, N_("Change the visibility of the statusbar"), G_CALLBACK (mousepad_window_action_statusbar), FALSE, },
   { "auto-indent", NULL, N_("_Auto Indent"), NULL, N_("Auto indent a new line"), G_CALLBACK (mousepad_window_action_auto_indent), FALSE, },
+  { "insert-spaces", NULL, N_("Insert _Spaces"), NULL, N_("Insert spaces when the tab button is pressed"), G_CALLBACK (mousepad_window_action_insert_spaces), FALSE, },
   { "word-wrap", NULL, N_("_Word Wrap"), NULL, N_("Toggle breaking lines in between words"), G_CALLBACK (mousepad_window_action_word_wrap), FALSE, },
-  { "write-bom", NULL, N_("Write Unicode _BOM"), NULL, N_("Store the byte-order mark in the file"), G_CALLBACK (mousepad_window_action_write_bom), FALSE, },
-  { "insert-spaces", NULL, N_("Insert _Spaces"), NULL, N_("Insert spaces when the tab button is pressed"), G_CALLBACK (mousepad_window_action_insert_spaces), FALSE, }
+  { "write-bom", NULL, N_("Write Unicode _BOM"), NULL, N_("Store the byte-order mark in the file"), G_CALLBACK (mousepad_window_action_write_bom), FALSE, }
 };
 
 static const GtkRadioActionEntry radio_action_entries[] =
