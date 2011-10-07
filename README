@@ -23,6 +23,7 @@ Mousepad depends on the following packages:
 
  - Gtk+ 2.10.0 or above
  - Libxfce4util 4.4.0 or above
+ - GtkSourceView 2.2.2 or above
 
 The following packages are optional:
 
