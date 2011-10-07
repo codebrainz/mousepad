@@ -236,10 +236,10 @@ mousepad_statusbar_filetype_clicked (GtkWidget         *widget,
       gtk_menu_popup (menu, NULL, NULL, NULL, NULL, event->button, event->time);
     }
   else
-  {
-    /* since the menu wasn't shown, just destroy it straight-away */
-    gtk_widget_destroy (GTK_WIDGET (menu));
-  }
+    {
+      /* since the menu wasn't shown, just destroy it straight-away */
+      gtk_widget_destroy (GTK_WIDGET (menu));
+    }
 
   return TRUE;
 }
