@@ -102,9 +102,6 @@
 
     <menu action="document-menu">
       <menuitem action="auto-indent" />
-      <menu action="language-menu">
-        <placeholder name="placeholder-language-section-items" />
-      </menu>
       <menu action="eol-menu">
         <menuitem action="unix" />
         <menuitem action="mac" />
@@ -118,6 +115,10 @@
       <menuitem action="word-wrap" />
       <separator />
       <menuitem action="write-bom" />
+      <separator />
+      <menu action="language-menu">
+        <placeholder name="placeholder-language-section-items" />
+      </menu>
     </menu>
 
     <menu action="navigation-menu">

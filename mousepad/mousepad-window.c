@@ -317,8 +317,6 @@ static void              mousepad_window_action_decrease_indent       (GtkAction
                                                                        MousepadWindow         *window);
 static void              mousepad_window_action_auto_indent           (GtkToggleAction        *action,
                                                                        MousepadWindow         *window);
-static void              mousepad_window_action_language              (GtkToggleAction        *action,
-                                                                       MousepadWindow         *window);
 static void              mousepad_window_action_line_ending           (GtkRadioAction         *action,
                                                                        GtkRadioAction         *current,
                                                                        MousepadWindow         *window);
@@ -327,6 +325,8 @@ static void              mousepad_window_action_tab_size              (GtkToggle
 static void              mousepad_window_action_word_wrap             (GtkToggleAction        *action,
                                                                        MousepadWindow         *window);
 static void              mousepad_window_action_write_bom             (GtkToggleAction        *action,
+                                                                       MousepadWindow         *window);
+static void              mousepad_window_action_language              (GtkToggleAction        *action,
                                                                        MousepadWindow         *window);
 static void              mousepad_window_action_insert_spaces         (GtkToggleAction        *action,
                                                                        MousepadWindow         *window);
@@ -450,9 +450,9 @@ static const GtkActionEntry action_entries[] =
     { "decrease-indent", GTK_STOCK_UNINDENT, N_("_Decrease Indent"), NULL, N_("Decrease the indentation of the selection or current line"), G_CALLBACK (mousepad_window_action_decrease_indent), },
 
   { "document-menu", NULL, N_("_Document"), NULL, NULL, NULL, },
-    { "language-menu", NULL, N_("_Filetype"), NULL, NULL, NULL, },
     { "eol-menu", NULL, N_("Line E_nding"), NULL, NULL, NULL, },
     { "tab-size-menu", NULL, N_("Tab _Size"), NULL, NULL, NULL, },
+    { "language-menu", NULL, N_("_Filetype"), NULL, NULL, NULL, },
 
   { "navigation-menu", NULL, N_("_Navigation"), NULL, },
     { "back", GTK_STOCK_GO_BACK, N_("_Previous Tab"), "<control>Page_Up", N_("Select the previous tab"), G_CALLBACK (mousepad_window_action_prev_tab), },
@@ -4722,42 +4722,6 @@ mousepad_window_action_auto_indent (GtkToggleAction *action,
 
 
 static void
-mousepad_window_action_language (GtkToggleAction *action,
-                                 MousepadWindow  *window)
-{
-  guint                     lang_hash;
-  const gchar *const       *lang_id;
-  GtkSourceLanguage        *language;
-  GtkSourceLanguageManager *manager;
-  GtkSourceBuffer          *buffer;
-
-  lang_hash = (guint) gtk_radio_action_get_current_value (GTK_RADIO_ACTION (action));
-  buffer = GTK_SOURCE_BUFFER (gtk_text_view_get_buffer (GTK_TEXT_VIEW (window->active->textview)));
-
-  if (lang_hash == g_str_hash ("none"))
-    {
-      gtk_source_buffer_set_language (buffer, NULL);
-      return;
-    }
-
-  manager = gtk_source_language_manager_get_default ();
-  lang_id = gtk_source_language_manager_get_language_ids (manager);
-
-  while (*lang_id)
-    {
-      if (g_str_hash (*lang_id) == lang_hash)
-        {
-          language = gtk_source_language_manager_get_language (manager, *lang_id);
-          gtk_source_buffer_set_language (buffer, language);
-          break;
-        }
-      lang_id++;
-    }
-}
-
-
-
-static void
 mousepad_window_action_line_ending (GtkRadioAction *action,
                                     GtkRadioAction *current,
                                     MousepadWindow *window)
@@ -4869,6 +4833,42 @@ mousepad_window_action_write_bom (GtkToggleAction *action,
 
       /* make buffer as modified to show the user the change is not saved */
       gtk_text_buffer_set_modified (window->active->buffer, TRUE);
+    }
+}
+
+
+
+static void
+mousepad_window_action_language (GtkToggleAction *action,
+                                 MousepadWindow  *window)
+{
+  guint                     lang_hash;
+  const gchar *const       *lang_id;
+  GtkSourceLanguage        *language;
+  GtkSourceLanguageManager *manager;
+  GtkSourceBuffer          *buffer;
+
+  lang_hash = (guint) gtk_radio_action_get_current_value (GTK_RADIO_ACTION (action));
+  buffer = GTK_SOURCE_BUFFER (gtk_text_view_get_buffer (GTK_TEXT_VIEW (window->active->textview)));
+
+  if (lang_hash == g_str_hash ("none"))
+    {
+      gtk_source_buffer_set_language (buffer, NULL);
+      return;
+    }
+
+  manager = gtk_source_language_manager_get_default ();
+  lang_id = gtk_source_language_manager_get_language_ids (manager);
+
+  while (*lang_id)
+    {
+      if (g_str_hash (*lang_id) == lang_hash)
+        {
+          language = gtk_source_language_manager_get_language (manager, *lang_id);
+          gtk_source_buffer_set_language (buffer, language);
+          break;
+        }
+      lang_id++;
     }
 }
 
