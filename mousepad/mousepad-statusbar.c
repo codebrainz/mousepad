@@ -25,15 +25,20 @@
 
 
 
-static gboolean          mousepad_statusbar_overwrite_clicked         (GtkWidget              *widget,
-                                                                       GdkEventButton         *event,
-                                                                       MousepadStatusbar      *statusbar);
+static gboolean mousepad_statusbar_overwrite_clicked (GtkWidget         *widget,
+                                                      GdkEventButton    *event,
+                                                      MousepadStatusbar *statusbar);
+
+static gboolean mousepad_statusbar_filetype_clicked  (GtkWidget         *widget,
+                                                      GdkEventButton    *event,
+                                                      MousepadStatusbar *statusbar);
 
 
 
 enum
 {
   ENABLE_OVERWRITE,
+  POPULATE_FILETYPE_POPUP,
   LAST_SIGNAL,
 };
 
@@ -87,6 +92,14 @@ mousepad_statusbar_class_init (MousepadStatusbarClass *klass)
                   0, NULL, NULL,
                   g_cclosure_marshal_VOID__BOOLEAN,
                   G_TYPE_NONE, 1, G_TYPE_BOOLEAN);
+
+  statusbar_signals[POPULATE_FILETYPE_POPUP] =
+    g_signal_new (I_("populate-filetype-popup"),
+                  G_TYPE_FROM_CLASS (gobject_class),
+                  G_SIGNAL_RUN_LAST,
+                  0, NULL, NULL,
+                  g_cclosure_marshal_VOID__OBJECT,
+                  G_TYPE_NONE, 1, GTK_TYPE_MENU);
 }
 
 
@@ -121,9 +134,17 @@ mousepad_statusbar_init (MousepadStatusbar *statusbar)
   gtk_box_pack_start (GTK_BOX (box), separator, FALSE, FALSE, 0);
   gtk_widget_show (separator);
 
+  /* language/filetype event box */
+  ebox = gtk_event_box_new ();
+  gtk_box_pack_start (GTK_BOX (box), ebox, FALSE, TRUE, 0);
+  gtk_event_box_set_visible_window (GTK_EVENT_BOX (ebox), FALSE);
+  mousepad_widget_set_tooltip_text (ebox, _("Choose a filetype"));
+  g_signal_connect (G_OBJECT (ebox), "button-press-event", G_CALLBACK (mousepad_statusbar_filetype_clicked), statusbar);
+  gtk_widget_show (ebox);
+
   /* language/filetype */
   statusbar->language = gtk_label_new (_("Filetype: None"));
-  gtk_box_pack_start (GTK_BOX (box), statusbar->language, FALSE, TRUE, 0);
+  gtk_container_add (GTK_CONTAINER (ebox), statusbar->language);
   gtk_widget_show (statusbar->language);
 
   /* separator */
@@ -173,6 +194,52 @@ mousepad_statusbar_overwrite_clicked (GtkWidget         *widget,
 
   /* send the signal */
   g_signal_emit (G_OBJECT (statusbar), statusbar_signals[ENABLE_OVERWRITE], 0, statusbar->overwrite_enabled);
+
+  return TRUE;
+}
+
+
+
+static gboolean
+mousepad_statusbar_filetype_clicked (GtkWidget         *widget,
+                                     GdkEventButton    *event,
+                                     MousepadStatusbar *statusbar)
+{
+  GtkMenu *menu;
+  GList   *children;
+  gint     n_children = 0;
+
+  mousepad_return_val_if_fail (MOUSEPAD_IS_STATUSBAR (statusbar), FALSE);
+
+  /* only respond on the left button click */
+  if (event->type != GDK_BUTTON_PRESS || event->button != 1)
+    return FALSE;
+
+  /* create the popup menu */
+  menu = GTK_MENU (gtk_menu_new ());
+
+  /* send the signal to fill the menu */
+  g_signal_emit (G_OBJECT (statusbar), statusbar_signals[POPULATE_FILETYPE_POPUP], 0, menu);
+
+  /* get the number of items in the menu */
+  children = gtk_container_get_children (GTK_CONTAINER (menu));
+  n_children = g_list_length (children);
+  g_list_free (children);
+
+  /* make sure there's at least one item in the menu */
+  if (n_children)
+    {
+      /* cleanup the menu once a selection is made or the menu is cancelled */
+      g_signal_connect (menu, "selection-done", G_CALLBACK (gtk_widget_destroy), NULL);
+
+      /* show the menu */
+      gtk_menu_popup (menu, NULL, NULL, NULL, NULL, event->button, event->time);
+    }
+  else
+  {
+    /* since the menu wasn't shown, just destroy it straight-away */
+    gtk_widget_destroy (GTK_WIDGET (menu));
+  }
 
   return TRUE;
 }

@@ -97,6 +97,11 @@ static gboolean          mousepad_window_open_file                    (MousepadW
 static gboolean          mousepad_window_close_document               (MousepadWindow         *window,
                                                                        MousepadDocument       *document);
 static void              mousepad_window_set_title                    (MousepadWindow         *window);
+static void              mousepad_window_populate_statusbar_popup     (MousepadWindow         *window,
+                                                                       GtkMenu                *menu,
+                                                                       MousepadStatusbar      *statusbar);
+static void              mousepad_window_statusbar_filetype_toggled   (GtkCheckMenuItem       *item,
+                                                                       MousepadWindow         *window);
 
 /* notebook signals */
 static void              mousepad_window_notebook_switch_page         (GtkNotebook            *notebook,
@@ -1298,6 +1303,96 @@ mousepad_window_set_title (MousepadWindow *window)
 
   /* cleanup */
   g_free (string);
+}
+
+
+
+static void
+mousepad_window_statusbar_filetype_toggled (GtkCheckMenuItem *item,
+                                            MousepadWindow   *window)
+{
+  const gchar              *language_id;
+  GtkSourceLanguage        *language;
+  GtkSourceLanguageManager *manager;
+
+  mousepad_return_if_fail (MOUSEPAD_IS_WINDOW (window));
+  mousepad_return_if_fail (MOUSEPAD_IS_DOCUMENT (window->active));
+
+  manager = gtk_source_language_manager_get_default ();
+  language_id = g_object_get_data (G_OBJECT (item), "language_id");
+
+  /* check if None was selected */
+  if (!language_id || g_strcmp0 (language_id, "none") == 0)
+    {
+      gtk_source_buffer_set_language (GTK_SOURCE_BUFFER (window->active->buffer), NULL);
+      gtk_source_buffer_set_highlight_syntax (GTK_SOURCE_BUFFER (window->active->buffer), FALSE);
+      return;
+    }
+
+  /* set to a non-None language */
+  language = gtk_source_language_manager_get_language (manager, language_id);
+  gtk_source_buffer_set_highlight_syntax (GTK_SOURCE_BUFFER (window->active->buffer), TRUE);
+  gtk_source_buffer_set_language (GTK_SOURCE_BUFFER (window->active->buffer), language);
+}
+
+
+
+static void
+mousepad_window_populate_statusbar_popup (MousepadWindow    *window,
+                                          GtkMenu           *menu,
+                                          MousepadStatusbar *statusbar)
+{
+  GSList            *group = NULL;
+  GSList            *sections, *s_iter;
+  GSList            *languages, *l_iter;
+  GtkWidget         *item;
+  GtkWidget         *submenu;
+  GtkSourceLanguage *active;
+
+  mousepad_return_if_fail (MOUSEPAD_IS_WINDOW (window));
+  mousepad_return_if_fail (MOUSEPAD_IS_DOCUMENT (window->active));
+
+  active = gtk_source_buffer_get_language (GTK_SOURCE_BUFFER (window->active->buffer));
+
+  item = gtk_radio_menu_item_new_with_label (group, _("None"));
+  group = gtk_radio_menu_item_get_group (GTK_RADIO_MENU_ITEM (item));
+  g_object_set_data (G_OBJECT (item), "language_id", "none");
+  g_signal_connect (item, "toggled", G_CALLBACK (mousepad_window_statusbar_filetype_toggled), window);
+  gtk_menu_shell_append (GTK_MENU_SHELL (menu), item);
+  gtk_widget_show (item);
+
+  if (!active)
+    gtk_check_menu_item_set_active (GTK_CHECK_MENU_ITEM (item), TRUE);
+
+  item = gtk_separator_menu_item_new ();
+  gtk_menu_shell_append (GTK_MENU_SHELL (menu), item);
+  gtk_widget_show (item);
+
+  sections = mousepad_util_language_sections_get_sorted ();
+
+  for (s_iter = sections ; s_iter != NULL; s_iter = g_slist_next (s_iter))
+    {
+      item = gtk_menu_item_new_with_label (s_iter->data);
+      gtk_widget_show (item);
+      submenu = gtk_menu_new ();
+      gtk_menu_item_set_submenu (GTK_MENU_ITEM (item), submenu);
+      gtk_widget_show (submenu);
+      gtk_menu_shell_append (GTK_MENU_SHELL (menu), item);
+
+      languages = mousepad_util_languages_get_sorted_for_section (s_iter->data);
+      for (l_iter = languages; l_iter != NULL; l_iter = g_slist_next (l_iter))
+        {
+          item = gtk_radio_menu_item_new_with_label (group, gtk_source_language_get_name (l_iter->data));
+          group = gtk_radio_menu_item_get_group (GTK_RADIO_MENU_ITEM (item));
+          g_object_set_data (G_OBJECT (item), "language_id", (gpointer) gtk_source_language_get_id (l_iter->data));
+          g_signal_connect (item, "toggled", G_CALLBACK (mousepad_window_statusbar_filetype_toggled), window);
+          gtk_menu_shell_append (GTK_MENU_SHELL (submenu), item);
+          gtk_widget_show (item);
+
+          if (active == l_iter->data)
+            gtk_check_menu_item_set_active (GTK_CHECK_MENU_ITEM (item), TRUE);
+        }
+    }
 }
 
 
@@ -4509,6 +4604,10 @@ mousepad_window_action_statusbar (GtkToggleAction *action,
       /* overwrite toggle signal */
       g_signal_connect_swapped (G_OBJECT (window->statusbar), "enable-overwrite",
                                 G_CALLBACK (mousepad_window_action_statusbar_overwrite), window);
+
+      /* populate filetype popup menu signal */
+      g_signal_connect_swapped (G_OBJECT (window->statusbar), "populate-filetype-popup",
+                                G_CALLBACK (mousepad_window_populate_statusbar_popup), window);
 
       /* update the statusbar items */
       if (window->active)
