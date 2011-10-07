@@ -74,6 +74,15 @@ struct _MousepadPrint
   GtkWidget                *widget_line_numbers;
   GtkWidget                *widget_text_wrapping;
   GtkWidget                *widget_syntax_highlighting;
+  GtkWidget                *widget_header_font;
+  GtkWidget                *widget_line_numbers_font;
+  GtkWidget                *widget_body_font;
+  GtkWidget                *widget_line_numbers_spin;
+  GtkWidget                *widget_line_numbers_hbox;
+
+  /* settings */
+  gboolean                  print_line_numbers;
+  gint                      line_number_increment;
 
   /* source view print compositor */
   GtkSourcePrintCompositor *compositor;
@@ -108,6 +117,8 @@ static void
 mousepad_print_init (MousepadPrint *print)
 {
   /* init */
+  print->print_line_numbers = FALSE;
+  print->line_number_increment = 1;
   print->compositor = NULL;
 
   /* set a custom tab label */
@@ -140,7 +151,9 @@ mousepad_print_settings_load (GtkPrintOperation *operation)
   gint                   i;
   gchar                 *key;
   gchar                 *value;
-  gchar                 *font_name = NULL;
+  gchar                 *body_font = NULL;
+  gchar                 *header_font = NULL;
+  gchar                 *line_numbers_font = NULL;
   GtkPageSetup          *page_setup;
   GtkPaperSize          *paper_size;
   PangoContext          *context;
@@ -229,46 +242,54 @@ mousepad_print_settings_load (GtkPrintOperation *operation)
       g_object_set (print->compositor,
                     "print-header",
                     gtk_print_settings_get_bool (settings, "print-header"),
-#if 0
-                    "print-footer",
-                    gtk_print_settings_get_bool (settings, "print-footer"),
-#endif
                     "print-line-numbers",
-                    gtk_print_settings_get_bool (settings, "print-line-numbers"),
+                    gtk_print_settings_get_int (settings, "line-numbers-increment"),
                     "wrap-mode",
                     gtk_print_settings_get_bool (settings, "text-wrapping") ? GTK_WRAP_WORD : GTK_WRAP_NONE,
                     "highlight-syntax",
                     gtk_print_settings_get_bool (settings, "highlight-syntax"),
                     NULL);
 
-      /* font-name setting sets the header, footer, line numbers and body fonts */
-      font_name = g_strdup (gtk_print_settings_get (settings, "font-name"));
+      print->print_line_numbers = gtk_print_settings_get_bool (settings, "print-line-numbers");
+      print->line_number_increment = gtk_print_settings_get_int (settings, "line-numbers-increment");
+
+      /* get the saved fonts, if set */
+      body_font = g_strdup (gtk_print_settings_get (settings, "body-font-name"));
+      header_font = g_strdup (gtk_print_settings_get (settings, "header-font-name"));
+      line_numbers_font = g_strdup (gtk_print_settings_get (settings, "line-numbers-font-name"));
 
       /* release reference */
       g_object_unref (G_OBJECT (settings));
     }
 
     /* if no font name is set, get the one used in the widget */
-    if (G_UNLIKELY (font_name == NULL))
+    if (G_UNLIKELY (body_font == NULL))
       {
         /* get the font description from the context and convert it into a string */
         context = gtk_widget_get_pango_context (GTK_WIDGET (print->document->textview));
         font_desc = pango_context_get_font_description (context);
-        font_name = pango_font_description_to_string (font_desc);
+        body_font = pango_font_description_to_string (font_desc);
       }
 
-    /* set the same font for all the various parts of the pages the same */
-    g_object_set (print->compositor,
-                  "body-font-name", font_name,
-                  "line-numbers-font-name", font_name,
-                  "header-font-name", font_name,
-#if 0
-                  "footer-font-name", font_name,
-#endif
-                  NULL);
+    /* set the restored body font or the one from the textview */
+    gtk_source_print_compositor_set_body_font_name (print->compositor, body_font);
+
+    /* if header font restored use it, otherwise use body font */
+    if (header_font)
+      gtk_source_print_compositor_set_header_font_name (print->compositor, header_font);
+    else
+      gtk_source_print_compositor_set_header_font_name (print->compositor, body_font);
+
+    /* if line numbers font restored use it, otherwise use body font */
+    if (line_numbers_font)
+      gtk_source_print_compositor_set_line_numbers_font_name (print->compositor, line_numbers_font);
+    else
+      gtk_source_print_compositor_set_line_numbers_font_name (print->compositor, body_font);
 
     /* cleanup */
-    g_free (font_name);
+    g_free (body_font);
+    g_free (header_font);
+    g_free (line_numbers_font);
 }
 
 
@@ -346,14 +367,14 @@ mousepad_print_settings_save (GtkPrintOperation *operation)
           gtk_print_settings_set_bool (settings,
                                        "print-header",
                                        gtk_source_print_compositor_get_print_header (print->compositor));
-#if 0
-          gtk_print_settings_set_bool (settings,
-                                       "print-footer",
-                                       gtk_source_print_compositor_get_print_footer (print->compositor));
-#endif
+
           gtk_print_settings_set_bool (settings,
                                        "print-line-numbers",
-                                       gtk_source_print_compositor_get_print_line_numbers (print->compositor));
+                                       print->print_line_numbers);
+
+          gtk_print_settings_set_int (settings,
+                                      "line-numbers-increment",
+                                      print->line_number_increment);
 
           gtk_print_settings_set_bool (settings,
                                        "text-wrapping",
@@ -364,8 +385,16 @@ mousepad_print_settings_save (GtkPrintOperation *operation)
                                        gtk_source_print_compositor_get_highlight_syntax (print->compositor));
 
           gtk_print_settings_set (settings,
-                                  "font-name",
+                                  "body-font-name",
                                   gtk_source_print_compositor_get_body_font_name (print->compositor));
+
+          gtk_print_settings_set (settings,
+                                  "header-font-name",
+                                  gtk_source_print_compositor_get_header_font_name (print->compositor));
+
+          gtk_print_settings_set (settings,
+                                  "line-numbers-font-name",
+                                  gtk_source_print_compositor_get_line_numbers_font_name (print->compositor));
 
           /* store all the print settings */
           gtk_print_settings_foreach (settings, mousepad_print_settings_save_foreach, keyfile);
@@ -469,12 +498,11 @@ mousepad_print_button_toggled (GtkWidget     *button,
   /* save the correct setting */
   if (button == print->widget_page_headers)
     gtk_source_print_compositor_set_print_header (print->compositor, active);
-#if 0
-  else if (button == print->widget_page_footers)
-    gtk_source_print_compositor_set_print_footer (print->compositor, active);
-#endif
   else if (button == print->widget_line_numbers)
-    gtk_source_print_compositor_set_print_line_numbers (print->compositor, active);
+  {
+    print->print_line_numbers = active;
+    gtk_widget_set_sensitive (print->widget_line_numbers_hbox, active);
+  }
   else if (button == print->widget_text_wrapping)
     gtk_source_print_compositor_set_wrap_mode (print->compositor, active ? GTK_WRAP_WORD : GTK_WRAP_NONE);
   else if (button == print->widget_syntax_highlighting)
@@ -487,16 +515,34 @@ static void
 mousepad_print_button_font_set (GtkFontButton *button,
                                 MousepadPrint *print)
 {
-  const gchar *font_name;
+  const gchar *font;
+  GtkWidget   *widget = GTK_WIDGET (button);
 
-  font_name = gtk_font_button_get_font_name (button);
+  font = gtk_font_button_get_font_name (button);
 
-  g_object_set (print->compositor,
-                "body-font-name", font_name,
-                "line-numbers-font-name", font_name,
-                "header-font-name", font_name,
-                "footer-font-name", font_name,
-                NULL);
+  if (widget == print->widget_body_font)
+    gtk_source_print_compositor_set_body_font_name (print->compositor, font);
+  else if (widget == print->widget_header_font)
+    gtk_source_print_compositor_set_header_font_name (print->compositor, font);
+  else if (widget == print->widget_line_numbers_font)
+    gtk_source_print_compositor_set_line_numbers_font_name (print->compositor, font);
+}
+
+
+
+static void
+mousepad_print_spin_value_changed (GtkSpinButton *button,
+                                   MousepadPrint *print)
+{
+  print->line_number_increment = gtk_spin_button_get_value_as_int (button);
+
+  if (print->line_number_increment > 0 && print->print_line_numbers)
+    {
+      gtk_source_print_compositor_set_print_line_numbers (print->compositor,
+                                                          print->line_number_increment);
+    }
+  else
+    gtk_source_print_compositor_set_print_line_numbers (print->compositor, 0);
 }
 
 
@@ -535,6 +581,8 @@ mousepad_print_create_custom_widget (GtkPrintOperation *operation)
   GtkWidget     *frame;
   GtkWidget     *alignment;
   GtkWidget     *label;
+  GtkWidget     *table;
+  GtkAdjustment *adjustment;
 
   vbox = gtk_vbox_new (FALSE, 6);
   gtk_container_set_border_width (GTK_CONTAINER (vbox), 8);
@@ -585,21 +633,43 @@ mousepad_print_create_custom_widget (GtkPrintOperation *operation)
   gtk_box_pack_start (GTK_BOX (vbox2), button, FALSE, FALSE, 0);
   gtk_widget_show (button);
 
-#if 0
-  button = print->widget_page_footers = gtk_check_button_new_with_mnemonic (_("Print page _footers"));
-  gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (button),
-                                gtk_source_print_compositor_get_print_footer (print->compositor));
-  g_signal_connect (G_OBJECT (button), "toggled", G_CALLBACK (mousepad_print_button_toggled), print);
-  gtk_box_pack_start (GTK_BOX (vbox2), button, FALSE, FALSE, 0);
-  gtk_widget_show (button);
-#endif
-
   button = print->widget_line_numbers = gtk_check_button_new_with_mnemonic (_("Print _line numbers"));
   gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (button),
-                                gtk_source_print_compositor_get_print_line_numbers (print->compositor));
+                                print->print_line_numbers);
   g_signal_connect (G_OBJECT (button), "toggled", G_CALLBACK (mousepad_print_button_toggled), print);
   gtk_box_pack_start (GTK_BOX (vbox2), button, FALSE, FALSE, 0);
   gtk_widget_show (button);
+
+  alignment = gtk_alignment_new (0.0, 0.5, 0.0, 1.0);
+  gtk_alignment_set_padding (GTK_ALIGNMENT (alignment), 0, 0, 24, 0);
+  gtk_box_pack_start (GTK_BOX (vbox2), alignment, FALSE, FALSE, 0);
+  gtk_widget_show (alignment);
+
+  print->widget_line_numbers_hbox = gtk_hbox_new (FALSE, 6);
+  gtk_widget_set_sensitive (print->widget_line_numbers_hbox, print->print_line_numbers);
+  gtk_container_add (GTK_CONTAINER (alignment), print->widget_line_numbers_hbox);
+  gtk_widget_show (print->widget_line_numbers_hbox);
+
+  label = gtk_label_new (_("Number every"));
+  gtk_misc_set_alignment (GTK_MISC (label), 0.0, 0.5);
+  gtk_box_pack_start (GTK_BOX (print->widget_line_numbers_hbox), label, FALSE, TRUE, 0);
+  gtk_widget_show (label);
+
+  adjustment = GTK_ADJUSTMENT (gtk_adjustment_new (1.0, 1.0, 100.0, 1.0, 0.0, 0.0));
+  print->widget_line_numbers_spin = gtk_spin_button_new (adjustment, 1.0, 0);
+  gtk_spin_button_set_value (GTK_SPIN_BUTTON (print->widget_line_numbers_spin),
+                             (gdouble) print->line_number_increment);
+  g_signal_connect (G_OBJECT (print->widget_line_numbers_spin),
+                    "value-changed",
+                    G_CALLBACK (mousepad_print_spin_value_changed),
+                    print);
+  gtk_box_pack_start (GTK_BOX (print->widget_line_numbers_hbox), print->widget_line_numbers_spin, FALSE, TRUE, 0);
+  gtk_widget_show (print->widget_line_numbers_spin);
+
+  label = gtk_label_new (_("line(s)"));
+  gtk_misc_set_alignment (GTK_MISC (label), 0.0, 0.5);
+  gtk_box_pack_start (GTK_BOX (print->widget_line_numbers_hbox), label, FALSE, TRUE, 0);
+  gtk_widget_show (label);
 
   button = print->widget_text_wrapping = gtk_check_button_new_with_mnemonic (_("Enable text _wrapping"));
   gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (button),
@@ -620,7 +690,7 @@ mousepad_print_create_custom_widget (GtkPrintOperation *operation)
   gtk_box_pack_start (GTK_BOX (vbox), frame, FALSE, FALSE, 0);
   gtk_widget_show (frame);
 
-  label = gtk_label_new (_("Font"));
+  label = gtk_label_new (_("Fonts"));
   gtk_label_set_attributes (GTK_LABEL (label), mousepad_print_attr_list_bold ());
   gtk_frame_set_label_widget (GTK_FRAME (frame), label);
   gtk_widget_show (label);
@@ -630,10 +700,41 @@ mousepad_print_create_custom_widget (GtkPrintOperation *operation)
   gtk_container_add (GTK_CONTAINER (frame), alignment);
   gtk_widget_show (alignment);
 
-  button = gtk_font_button_new_with_font (gtk_source_print_compositor_get_body_font_name (print->compositor));
-  gtk_container_add (GTK_CONTAINER (alignment), button);
-  g_signal_connect (G_OBJECT (button), "font-set", G_CALLBACK (mousepad_print_button_font_set), print);
-  gtk_widget_show (button);
+  table = gtk_table_new (3, 2, FALSE);
+  gtk_table_set_col_spacings (GTK_TABLE (table), 6);
+  gtk_table_set_row_spacings (GTK_TABLE (table), 6);
+  gtk_container_add (GTK_CONTAINER (alignment), table);
+  gtk_widget_show (table);
+
+  label = gtk_label_new (_("Header:"));
+  gtk_misc_set_alignment (GTK_MISC (label), 0.0, 0.5);
+  gtk_table_attach_defaults (GTK_TABLE (table), label, 0, 1, 0, 1);
+  gtk_widget_show (label);
+
+  print->widget_header_font = gtk_font_button_new_with_font (gtk_source_print_compositor_get_header_font_name (print->compositor));
+  gtk_table_attach_defaults (GTK_TABLE (table), print->widget_header_font, 1, 2, 0, 1);
+  g_signal_connect (G_OBJECT (print->widget_header_font), "font-set", G_CALLBACK (mousepad_print_button_font_set), print);
+  gtk_widget_show (print->widget_header_font);
+
+  label = gtk_label_new (_("Body:"));
+  gtk_misc_set_alignment (GTK_MISC (label), 0.0, 0.5);
+  gtk_table_attach_defaults (GTK_TABLE (table), label, 0, 1, 1, 2);
+  gtk_widget_show (label);
+
+  print->widget_body_font = gtk_font_button_new_with_font (gtk_source_print_compositor_get_body_font_name (print->compositor));
+  gtk_table_attach_defaults (GTK_TABLE (table), print->widget_body_font, 1, 2, 1, 2);
+  g_signal_connect (G_OBJECT (print->widget_body_font), "font-set", G_CALLBACK (mousepad_print_button_font_set), print);
+  gtk_widget_show (print->widget_body_font);
+
+  label = gtk_label_new (_("Line numbers:"));
+  gtk_misc_set_alignment (GTK_MISC (label), 0.0, 0.5);
+  gtk_table_attach_defaults (GTK_TABLE (table), label, 0, 1, 2, 3);
+  gtk_widget_show (label);
+
+  print->widget_line_numbers_font = gtk_font_button_new_with_font (gtk_source_print_compositor_get_line_numbers_font_name (print->compositor));
+  gtk_table_attach_defaults (GTK_TABLE (table), print->widget_line_numbers_font, 1, 2, 2, 3);
+  g_signal_connect (G_OBJECT (print->widget_line_numbers_font), "font-set", G_CALLBACK (mousepad_print_button_font_set), print);
+  gtk_widget_show (print->widget_line_numbers_font);
 
   return vbox;
 }
