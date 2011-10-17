@@ -6,14 +6,16 @@
 # Hunt Xu <huntxu@live.cn>,2008.
 # Chris K. Zhang <plutino@gmail.com>, 2009.
 # Aron Xu <aronmalache@163.com>, 2009.
+# Chipong Luo <chipong_l@yahoo.com>, 2011.
 msgid ""
 msgstr ""
 "Project-Id-Version: mousepad 0.2.16\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2007-01-20 12:34+0100\n"
 "PO-Revision-Date: 2009-06-14 02:20+0800\n"
-"Last-Translator: Aron Xu <aronmalache@163.com>\n"
+"Last-Translator: Chipong Luo <chipong_l@yahoo.com>\n"
 "Language-Team: Simplified Chinese <xfce-i18n@xfce.org>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -21,13 +23,12 @@ msgstr ""
 #: ../src/callback.c:37
 #, c-format
 msgid "Save changes to '%s'?"
-msgstr "将更改保存到“%s”吗？"
+msgstr "将更改保存至 “%s”？"
 
-#: ../src/callback.c:213
-#: ../src/file.c:174
+#: ../src/callback.c:213 ../src/file.c:174
 #, c-format
 msgid "Can't convert codeset to '%s'"
-msgstr "无法将编码转换到“%s”"
+msgstr "无法将编码转换为 ‘%s’"
 
 #: ../src/callback.c:240
 msgid "Can't open pipe to process"
@@ -64,7 +65,7 @@ msgstr "/文件/新建(_N)"
 
 #: ../src/menu.c:66
 msgid "/File/New _Window"
-msgstr "/文件/新开窗口(_W)"
+msgstr "/文件/新窗口(_W)"
 
 #: ../src/menu.c:69
 msgid "/File/_Open..."
@@ -72,7 +73,7 @@ msgstr "/文件/打开(_O)..."
 
 #: ../src/menu.c:72
 msgid "/File/Open _Recent"
-msgstr "/文件/打开最近使用的文档(_R)"
+msgstr "/文件/打开最近(_R)"
 
 #: ../src/menu.c:77
 msgid "/File/_Save"
@@ -144,7 +145,7 @@ msgstr "/搜索/替换(_R)..."
 
 #: ../src/menu.c:121
 msgid "/Search/_Jump To..."
-msgstr "/搜索/跳转到(_J)..."
+msgstr "/搜索/跳转至(_J)..."
 
 #: ../src/menu.c:123
 msgid "/_Options"
@@ -160,7 +161,7 @@ msgstr "/选项/自动换行(_W)"
 
 #: ../src/menu.c:129
 msgid "/Options/_Line Numbers"
-msgstr "/选项/显示行号(_L)"
+msgstr "/选项/行号(_L)"
 
 #: ../src/menu.c:133
 msgid "/Options/_Auto Indent"
@@ -176,11 +177,11 @@ msgstr "/帮助/关于(_A)"
 
 #: ../src/search.c:73
 msgid "Search string not found"
-msgstr "找不到搜索字串"
+msgstr "未找到搜索字符串"
 
 #: ../src/search.c:115
 msgid "Replace?"
-msgstr "替换吗？"
+msgstr "替换？"
 
 #: ../src/search.c:143
 #, c-format
@@ -191,13 +192,11 @@ msgstr "替换了 %d 个字符串"
 msgid "Find"
 msgstr "查找"
 
-#: ../src/search.c:200
-#: ../src/search.c:265
+#: ../src/search.c:200 ../src/search.c:265
 msgid "Fi_nd what: "
-msgstr "查找什么(_N)："
+msgstr "查找(_N)："
 
-#: ../src/search.c:219
-#: ../src/search.c:292
+#: ../src/search.c:219 ../src/search.c:292
 msgid "_Match case"
 msgstr "区分大小写(_M)"
 
@@ -228,7 +227,7 @@ msgstr "行号(_L)："
 #: ../src/selector.c:103
 #, c-format
 msgid "Current Locale (%s)"
-msgstr "当前区域 (%s)"
+msgstr "当前区域(%s)"
 
 #: ../src/selector.c:147
 msgid "Other Codeset"
@@ -241,7 +240,7 @@ msgstr "编码(_S)："
 #: ../src/selector.c:207
 #, c-format
 msgid "'%s' is not supported"
-msgstr "“%s”不被支持"
+msgstr "不支持 ‘%s’"
 
 #: ../src/selector.c:271
 msgid "Auto Detect"
@@ -262,12 +261,12 @@ msgstr "字符编码(_A)："
 #: ../src/selector.c:403
 #, c-format
 msgid "'%s' already exists. Overwrite?"
-msgstr "文件“%s”已经存在，要覆盖吗？"
+msgstr "‘%s’ 已经存在。覆盖？"
 
 #. add the label with the root warning
 #: ../src/window.c:110
 msgid "Warning, you are using the root account, you may harm your system."
-msgstr "警告：您正在使用root账户，操作不当可能损害您的系统。"
+msgstr "警告，您正在使用 root 账户，可能会损坏您的系统。"
 
 #: ../src/window.c:169
 msgid "Untitled"
@@ -279,9 +278,8 @@ msgstr "Mousepad"
 
 #: ../mousepad.desktop.in.h:2
 msgid "Simple text editor"
-msgstr "简易文字编辑器"
+msgstr "简单文本编辑器"
 
 #: ../mousepad.desktop.in.h:3
 msgid "Text Editor"
-msgstr "文字编辑器"
-
+msgstr "文本编辑器"
