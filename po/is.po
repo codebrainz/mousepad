@@ -20,7 +20,7 @@ msgstr ""
 #: ../src/callback.c:37
 #, c-format
 msgid "Save changes to '%s'?"
-msgstr ""
+msgstr "Vista breytingar til '%s'?"
 
 #: ../src/callback.c:213 ../src/file.c:174
 #, c-format
@@ -42,7 +42,7 @@ msgstr "Um %s"
 
 #: ../src/file.c:187
 msgid "Can't open file to write"
-msgstr ""
+msgstr "Ekki er hægt að opna skrá fyrir skrift"
 
 #: ../src/file.c:192
 msgid "Can't write file"
@@ -62,15 +62,15 @@ msgstr "/Skrá/_Ný"
 
 #: ../src/menu.c:66
 msgid "/File/New _Window"
-msgstr ""
+msgstr "/Skrá/Nýr _Gluggi"
 
 #: ../src/menu.c:69
 msgid "/File/_Open..."
-msgstr ""
+msgstr "/Skrá/_Opna..."
 
 #: ../src/menu.c:72
 msgid "/File/Open _Recent"
-msgstr ""
+msgstr "/Skrá/Opna _Nýlegt"
 
 #: ../src/menu.c:77
 msgid "/File/_Save"
@@ -78,11 +78,11 @@ msgstr "/Skrá/_Vista"
 
 #: ../src/menu.c:79
 msgid "/File/Save _As..."
-msgstr ""
+msgstr "/Skrá/Vista _Sem..."
 
 #: ../src/menu.c:83
 msgid "/File/_Print..."
-msgstr ""
+msgstr "/Skrá/_Prenta..."
 
 #: ../src/menu.c:87
 msgid "/File/_Quit"
@@ -94,55 +94,55 @@ msgstr "/_Breyta"
 
 #: ../src/menu.c:91
 msgid "/Edit/_Undo"
-msgstr ""
+msgstr "/Breyta/_Afturkalla"
 
 #: ../src/menu.c:93
 msgid "/Edit/_Redo"
-msgstr ""
+msgstr "/Breyta/_Endurtaka"
 
 #: ../src/menu.c:97
 msgid "/Edit/Cu_t"
-msgstr ""
+msgstr "/Breyta/_Klippa"
 
 #: ../src/menu.c:99
 msgid "/Edit/_Copy"
-msgstr ""
+msgstr "/Breyta/A_frita"
 
 #: ../src/menu.c:101
 msgid "/Edit/_Paste"
-msgstr ""
+msgstr "/Breyta/_Líma"
 
 #: ../src/menu.c:103
 msgid "/Edit/_Delete"
-msgstr ""
+msgstr "/Breyta/E_yða"
 
 #: ../src/menu.c:107
 msgid "/Edit/Select _All"
-msgstr ""
+msgstr "/Breyta/_Velja _Allt"
 
 #: ../src/menu.c:109
 msgid "/_Search"
-msgstr ""
+msgstr "/_Leita"
 
 #: ../src/menu.c:111
 msgid "/Search/_Find..."
-msgstr ""
+msgstr "/Leita/_Finna..."
 
 #: ../src/menu.c:113
 msgid "/Search/Find _Next"
-msgstr ""
+msgstr "/Leita/Finna _Næsta"
 
 #: ../src/menu.c:115
 msgid "/Search/Find _Previous"
-msgstr ""
+msgstr "/Leita/Finna _Fyrra"
 
 #: ../src/menu.c:117
 msgid "/Search/_Replace..."
-msgstr ""
+msgstr "/Leita/_Skipta"
 
 #: ../src/menu.c:121
 msgid "/Search/_Jump To..."
-msgstr ""
+msgstr "/Leita/_Hoppa Til..."
 
 #: ../src/menu.c:123
 msgid "/_Options"
@@ -263,7 +263,7 @@ msgstr "'%s' er þegar til. Skrifa yfir?"
 #. add the label with the root warning
 #: ../src/window.c:110
 msgid "Warning, you are using the root account, you may harm your system."
-msgstr ""
+msgstr "Viðvörun, ef þú ert að nota rótar notandann, geturu skaðað kerfið þitt."
 
 #: ../src/window.c:169
 msgid "Untitled"
