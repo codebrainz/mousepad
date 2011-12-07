@@ -25,11 +25,11 @@ msgstr "Vista breytingar til '%s'?"
 #: ../src/callback.c:213 ../src/file.c:174
 #, c-format
 msgid "Can't convert codeset to '%s'"
-msgstr ""
+msgstr "Get ekki umbreytt kóðasetti í '%s'"
 
 #: ../src/callback.c:240
 msgid "Can't open pipe to process"
-msgstr ""
+msgstr "Get ekki opnað pípu til að meðhöndla"
 
 #: ../src/callback.c:397
 msgid "A text editor for Xfce"
