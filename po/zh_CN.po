@@ -1,12 +1,14 @@
-# Simplified Chinese translation for MousePad.
-# Copyright (C) 2005-2006 Erik Harrison.
-# This file is distributed under the same license as the Mousepad package.
+# Simplified Chinese translations for
+# the mousepad package.
+# This file is distributed under the same license as
+# the mousepad package.
 # Carlos Z.F. Liu <carlos_liu@yahoo.com>, 2004.
 # Jick Nan <jick.nan@gmail.com>, 2006.
 # Hunt Xu <huntxu@live.cn>,2008.
 # Chris K. Zhang <plutino@gmail.com>, 2009.
 # Aron Xu <aronmalache@163.com>, 2009.
 # Chipong Luo <chipong_l@yahoo.com>, 2011.
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: mousepad\n"
@@ -14,8 +16,8 @@ msgstr ""
 "POT-Creation-Date: 2007-01-20 12:34+0100\n"
 "PO-Revision-Date: 2009-06-14 02:20+0800\n"
 "Last-Translator: Chipong Luo <chipong_l@yahoo.com>\n"
-"Language-Team: Chinese (simplified) <xfce-i18n@xfce.org>\n"
-"Language: \n"
+"Language-Team: Chinese (Simplified) <xfce-i18n@xfce.org>\n"
+"Language: zh_CN\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
