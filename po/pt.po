@@ -2,14 +2,14 @@
 # Copyright (C) 2005-2006 Erik Harrison.
 # This file is distributed under the same license as the Mousepad package.
 # Nuno Miguel <nunis@netcabo.pt>, 2007, 2008, 2009
-# 
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: mousepad 0.2.16\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2007-01-20 12:34+0100\n"
-"PO-Revision-Date: 2007-11-28 17:41+0100\n"
-"Last-Translator: Nuno Miguel <nunis@netcabo.pt>\n"
+"PO-Revision-Date: 2012-01-12 14:01-0000\n"
+"Last-Translator: Sérgio Marques <smarquespt@gmail.com>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -20,7 +20,8 @@ msgstr ""
 msgid "Save changes to '%s'?"
 msgstr "Gravar alterações em \"%s\"?"
 
-#: ../src/callback.c:213 ../src/file.c:174
+#: ../src/callback.c:213
+#: ../src/file.c:174
 #, c-format
 msgid "Can't convert codeset to '%s'"
 msgstr "Não é possível converter a codificação para \"%s\""
@@ -48,7 +49,7 @@ msgstr "Não é possível escrever o ficheiro"
 
 #: ../src/font.c:49
 msgid "Font"
-msgstr "Fonte"
+msgstr "Tipo de letra"
 
 #: ../src/menu.c:61
 msgid "/_File"
@@ -116,7 +117,7 @@ msgstr "/Editar/_Apagar"
 
 #: ../src/menu.c:107
 msgid "/Edit/Select _All"
-msgstr "/Editar/Seleccionar _tudo"
+msgstr "/Editar/Selecionar _tudo"
 
 #: ../src/menu.c:109
 msgid "/_Search"
@@ -128,11 +129,11 @@ msgstr "/Pesquisar/_Procurar..."
 
 #: ../src/menu.c:113
 msgid "/Search/Find _Next"
-msgstr "/Pesquisar/Procurar p_róxima"
+msgstr "/Pesquisar/Procurar segui_nte"
 
 #: ../src/menu.c:115
 msgid "/Search/Find _Previous"
-msgstr "/Pesquisar/Procurar a_nterior"
+msgstr "/Pesquisar/_Procurar anterior"
 
 #: ../src/menu.c:117
 msgid "/Search/_Replace..."
@@ -140,7 +141,7 @@ msgstr "/Pesquisar/_Substituir..."
 
 #: ../src/menu.c:121
 msgid "/Search/_Jump To..."
-msgstr "/Pesquisar/S_altar para..."
+msgstr "/Pesquisar/_Ir para..."
 
 #: ../src/menu.c:123
 msgid "/_Options"
@@ -148,11 +149,11 @@ msgstr "/_Opções"
 
 #: ../src/menu.c:125
 msgid "/Options/_Font..."
-msgstr "/Opções/_Fonte..."
+msgstr "/Opções/_Tipo de letra..."
 
 #: ../src/menu.c:127
 msgid "/Options/_Word Wrap"
-msgstr "/Opções/_Mudança de linha automática"
+msgstr "/Opções/T_ranslineação automática"
 
 #: ../src/menu.c:129
 msgid "/Options/_Line Numbers"
@@ -164,7 +165,7 @@ msgstr "/Opções/Avanço _automático"
 
 #: ../src/menu.c:135
 msgid "/_Help"
-msgstr "/_Ajuda"
+msgstr "/A_juda"
 
 #: ../src/menu.c:137
 msgid "/Help/_About"
@@ -187,11 +188,13 @@ msgstr "%d expressões substituídas"
 msgid "Find"
 msgstr "Procurar"
 
-#: ../src/search.c:200 ../src/search.c:265
+#: ../src/search.c:200
+#: ../src/search.c:265
 msgid "Fi_nd what: "
 msgstr "P_rocurar por:"
 
-#: ../src/search.c:219 ../src/search.c:292
+#: ../src/search.c:219
+#: ../src/search.c:292
 msgid "_Match case"
 msgstr "_Distinguir capitalização"
 
@@ -201,7 +204,7 @@ msgstr "Substituir"
 
 #: ../src/search.c:280
 msgid "Re_place with: "
-msgstr "Su_bstituir por:"
+msgstr "Substituir _por:"
 
 #: ../src/search.c:296
 msgid "Replace _all at once"
@@ -209,11 +212,11 @@ msgstr "Substituir _tudo"
 
 #: ../src/search.c:342
 msgid "Jump To"
-msgstr "Saltar para"
+msgstr "Ir para"
 
 #: ../src/search.c:347
 msgid "_Jump"
-msgstr "_Saltar"
+msgstr "_Ir"
 
 #: ../src/search.c:353
 msgid "_Line number: "
@@ -239,7 +242,7 @@ msgstr "\"%s\" não é suportado"
 
 #: ../src/selector.c:271
 msgid "Auto Detect"
-msgstr "Detecção automática"
+msgstr "Deteção automática"
 
 #: ../src/selector.c:325
 msgid "Open"
@@ -278,3 +281,4 @@ msgstr "Editor de texto simples"
 #: ../mousepad.desktop.in.h:3
 msgid "Text Editor"
 msgstr "Editor de texto"
+
