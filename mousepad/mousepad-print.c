@@ -469,7 +469,7 @@ mousepad_print_page_setup_dialog (GtkWidget         *button,
 
   /* get the toplevel of the button */
   toplevel = gtk_widget_get_toplevel (button);
-  if (G_UNLIKELY (!GTK_WIDGET_TOPLEVEL (toplevel)))
+  if (G_UNLIKELY (!gtk_widget_is_toplevel (toplevel)))
     toplevel = NULL;
 
   /* get the print settings */

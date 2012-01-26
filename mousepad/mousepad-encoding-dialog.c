@@ -457,7 +457,7 @@ mousepad_encoding_dialog_combo_changed (GtkComboBox            *combo,
   gint        id;
 
   /* get the selected item */
-  if (GTK_WIDGET_SENSITIVE (combo) && gtk_combo_box_get_active_iter (combo, &iter))
+  if (gtk_widget_get_sensitive (GTK_WIDGET(combo)) && gtk_combo_box_get_active_iter (combo, &iter))
     {
       /* get the id */
       gtk_tree_model_get (GTK_TREE_MODEL (dialog->store), &iter, COLUMN_ID, &id, -1);

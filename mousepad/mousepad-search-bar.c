@@ -475,7 +475,7 @@ mousepad_search_bar_highlight_timeout (gpointer user_data)
 GtkEditable *
 mousepad_search_bar_entry (MousepadSearchBar *bar)
 {
-  if (bar && GTK_WIDGET_HAS_FOCUS (bar->entry))
+  if (bar && gtk_widget_has_focus (bar->entry))
     return GTK_EDITABLE (bar->entry);
   else
     return NULL;
