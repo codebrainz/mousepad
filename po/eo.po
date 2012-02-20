@@ -3,7 +3,7 @@
 # This file is distributed under the same license as the Mousepad package.
 # Jarbas Araujo Jr. <jarbasaraujojr@yahoo.com.br>, 2006.
 # Sylvain Vedrenne <gnu_sylvain@xfce.org>, 2006.
-#
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: mousepad 0.2.16\n"
@@ -15,6 +15,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: \n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: ../src/callback.c:37
@@ -69,9 +70,8 @@ msgid "/File/_Open..."
 msgstr "/Dosiero/_Malfermi..."
 
 #: ../src/menu.c:72
-#, fuzzy
 msgid "/File/Open _Recent"
-msgstr "/Dosiero/_Malfermi..."
+msgstr "/Dosiero/Malfermi _lastajn"
 
 #: ../src/menu.c:77
 msgid "/File/_Save"
@@ -264,7 +264,7 @@ msgstr "'%s' jam ekzistas. Ĉu anstataŭskribi?"
 #. add the label with the root warning
 #: ../src/window.c:110
 msgid "Warning, you are using the root account, you may harm your system."
-msgstr ""
+msgstr "Averto: Vi uzas la konton de ĉefuzanto, tiel vi eble damaĝi vian sistemon."
 
 #: ../src/window.c:169
 msgid "Untitled"
