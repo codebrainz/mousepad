@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: mousepad 0.2.16\n"
-"Report-Msgid-Bugs-To: xfce4-users-kr-i18n <xfce4-users-kr-i18n@lists.sourceforge.net>\n"
+"Report-Msgid-Bugs-To: xfce-i18n <xfce-i18n@xfce.org>\n"
 "POT-Creation-Date: 2007-01-20 12:34+0100\n"
 "PO-Revision-Date: 2012-02-26 22:26+0900\n"
 "Last-Translator: Seong-ho, Cho <darkcircle.0426@gmail.com>\n"
@@ -71,7 +71,7 @@ msgstr "/파일/열기(_O)..."
 
 #: ../src/menu.c:72
 msgid "/File/Open _Recent"
-msgstr "/파일/최근 화일 열기(_R)"
+msgstr "/파일/최근 파일 열기(_R)"
 
 #: ../src/menu.c:77
 msgid "/File/_Save"
