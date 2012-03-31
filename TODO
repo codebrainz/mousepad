@@ -1,0 +1,43 @@
+All the items below, except those under the feature heading, must
+be fixed (or ignored when irrelevant) before the nick_0_3 branch
+can move to trunk. When the branch enters trunk, it's important
+we work towards a stable version, so we can release a 0.2.90.1
+(0.3 beta 1) version as soon as possible (if needed, independent
+from the Xfce release schedule).
+
+
+Interface
+=========
+- Test the application with a screen reader and add Atk objects
+  where needed.
+- Check the search and replace code for bugs.
+- Add option to disable the search feedback in the replace dialog
+  (highlight, count matches, type-ahead). This can slow down mousepad
+  with (multiple) large documents.
+- Transpose words works a bit odd sometimes.
+- Improve replace (all) in selection.
+
+
+Saving and loading
+==================
+- Cleanup and improve encoding support and order the encoding types.
+
+
+Other
+=====
+- We need a cool Mousepad logo.
+- Write documentation.
+- Session manager support (waiting for Gtk+ here).
+
+
+Testing and polishing
+=====================
+- Profiling loading large files (Gtk/Pango has a problem here). This
+  also locks some dialogs.
+- Checking for memory leaks.
+
+
+Feature
+=======
+- You'll never know. No promisses here...
+- GIO.

@@ -1,0 +1,95 @@
+#!/bin/sh
+#
+# Copyright (c) 2004-2006 Benedikt Meurer <benny@xfce.org>
+# Copyright (c) 2007      Nick Schermer <nick@xfce.org>
+#
+# This program is free software; you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation; either version 2 of the License, or
+# (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program; if not, write to the Free Software
+# Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
+#
+
+HELPDIR="@datadir@/doc/Mousepad/html"
+APPLICATIONS="exo-open firefox epiphany opera galeon mozilla konqueror dillo"
+
+# try to find a language
+if test -n "$LC_ALL"; then
+  LC=$LC_ALL
+elif test -n "$LANG"; then
+  LC=$LANG
+else
+  LC="C"
+fi
+
+# set the document or use index.html
+if test -n "$1"; then
+  HELPFILE="$1.html"
+else
+  HELPFILE="index.html"
+fi
+
+# test if the file exists, fallback on the C language or the C/index.html file
+if test -r "$HELPDIR/$LC/$HELPFILE"; then
+  URL="file://$HELPDIR/$LC/$HELPFILE"
+elif test -r "$HELPDIR/`echo $LC | sed 's/\(..\)_.*/\1/'`/$HELPFILE"; then
+  URL="file://$HELPDIR/`echo $LC | sed 's/\(..\)_.*/\1/'`/$HELPFILE"
+else
+  URL="file://$HELPDIR/C/index.html"
+fi
+
+# jump to a section if provided
+[ -n "$2" ] && URL="$URL#$2"
+
+# find a suitable browser to launch if no BROWSER variable is set
+if [ "x$BROWSER" = "x" ]; then
+  for i in $APPLICATIONS; do
+    # find the application in the path
+    testapp=$(which $i 2>/dev/null)
+    if test -f "$testapp"; then
+      # use the application and break
+      BROWSER=$i
+      break
+    fi
+  done
+fi
+
+# tell the use if no suitable browser was found
+if [ "x$BROWSER" = "x" ]; then
+  # print warning and leave
+  echo "MousepadHelp: Could not find a browser to use. Please set the BROWSER variable."
+  exit 1
+fi
+
+# run the browser
+case $BROWSER in
+  exo-open)
+    $BROWSER --launch WebBrowser $URL
+  ;;
+  opera*)
+    $BROWSER -remote openURL\($URL,new-window\) || $BROWSER $URL
+  ;;
+  firefox*)
+    $BROWSER -a firefox -remote openurl\($URL,new-window\) || $BROWSER $URL
+  ;;
+  communicator*|netscape|mozilla*|phoenix*|firebird*)
+    $BROWSER -remote openurl\($URL,new-window\) || $BROWSER $URL
+  ;;
+  *)
+    $BROWSER $URL;
+  ;;
+esac
+
+# leave
+exit 0
+
+# vim:set ts=2 sw=2 et ai:
+

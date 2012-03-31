@@ -1,0 +1,27 @@
+#
+# Sources
+#
+mousepad/main.c
+mousepad/mousepad-application.c
+mousepad/mousepad-dbus.c
+mousepad/mousepad-dialogs.c
+mousepad/mousepad-document.c
+mousepad/mousepad-encoding-dialog.c
+mousepad/mousepad-encoding.c
+mousepad/mousepad-file.c
+mousepad/mousepad-preferences.c
+mousepad/mousepad-print.c
+mousepad/mousepad-replace-dialog.c
+mousepad/mousepad-search-bar.c
+mousepad/mousepad-statusbar.c
+mousepad/mousepad-undo.c
+mousepad/mousepad-util.c
+mousepad/mousepad-view.c
+mousepad/mousepad-window.c
+
+
+
+#
+# Desktop Files
+#
+Mousepad.desktop.in.in
