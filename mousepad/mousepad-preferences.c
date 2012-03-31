@@ -61,6 +61,7 @@ enum
   PROP_VIEW_TAB_WIDTH,
   PROP_VIEW_TABS_AS_SPACES,
   PROP_VIEW_WORD_WRAP,
+  PROP_VIEW_COLOR_SCHEME,
 
   /* window preferences */
   PROP_WINDOW_HEIGHT,
@@ -213,6 +214,14 @@ mousepad_preferences_class_init (MousepadPreferencesClass *klass)
                                                          NULL,
                                                          FALSE,
                                                          MOUSEPAD_PARAM_READWRITE));
+
+  g_object_class_install_property (gobject_class,
+                                   PROP_VIEW_COLOR_SCHEME,
+                                   g_param_spec_string ("view-color-scheme",
+                                                        "ViewColorScheme",
+                                                        NULL,
+                                                        "none",
+                                                        MOUSEPAD_PARAM_READWRITE));
 
 
   /**

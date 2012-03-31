@@ -30,8 +30,6 @@
 
 
 
-#define LINE_NUMBER_MARGIN             (10)
-#define LINE_NUMBER_OFFSET             (4)
 #define mousepad_view_get_buffer(view) (GTK_TEXT_VIEW (view)->buffer)
 
 
@@ -71,11 +69,6 @@ static void      mousepad_view_indent_decrease               (MousepadView      
 static void      mousepad_view_indent_selection              (MousepadView       *view,
                                                               gboolean            increase,
                                                               gboolean            force);
-static gchar    *mousepad_view_indent_string                 (GtkTextBuffer      *buffer,
-                                                              const GtkTextIter  *iter);
-static gint      mousepad_view_calculate_layout_width        (GtkWidget          *widget,
-                                                              gsize               length,
-                                                              gchar               fill_char);
 static void      mousepad_view_transpose_multi_selection     (GtkTextBuffer       *buffer,
                                                               MousepadView        *view);
 static void      mousepad_view_transpose_range               (GtkTextBuffer       *buffer,
@@ -91,12 +84,12 @@ static void      mousepad_view_transpose_words               (GtkTextBuffer     
 
 struct _MousepadViewClass
 {
-  GtkTextViewClass __parent__;
+  GtkSourceViewClass __parent__;
 };
 
 struct _MousepadView
 {
-  GtkTextView  __parent__;
+  GtkSourceView  __parent__;
 
   /* the selection style tag */
   GtkTextTag         *selection_tag;
@@ -118,17 +111,11 @@ struct _MousepadView
 
   /* if the selection is in editing mode */
   guint               selection_editing : 1;
-
-  /* settings */
-  guint               auto_indent : 1;
-  guint               line_numbers : 1;
-  guint               insert_spaces : 1;
-  guint               tab_size;
 };
 
 
 
-G_DEFINE_TYPE (MousepadView, mousepad_view, GTK_TYPE_TEXT_VIEW);
+G_DEFINE_TYPE (MousepadView, mousepad_view, GTK_TYPE_SOURCE_VIEW);
 
 
 
@@ -154,12 +141,6 @@ mousepad_view_class_init (MousepadViewClass *klass)
 static void
 mousepad_view_init (MousepadView *view)
 {
-  /* initialize settings */
-  view->auto_indent = FALSE;
-  view->line_numbers = FALSE;
-  view->insert_spaces = FALSE;
-  view->tab_size = 8;
-
   /* initialize selection variables */
   view->selection_timeout_id = 0;
   view->selection_tag = NULL;
@@ -201,13 +182,6 @@ mousepad_view_expose (GtkWidget      *widget,
 {
   GtkTextView  *textview = GTK_TEXT_VIEW (widget);
   MousepadView *view = MOUSEPAD_VIEW (widget);
-  gint          y_start, y_offset, y_finish;
-  gint          y_iter, height;
-  gint          line_number, line_count;
-  GtkTextIter   iter;
-  gint          width, border_width;
-  PangoLayout  *layout;
-  gchar         str[8]; /* maximum of 10e6 lines */
 
   if (G_UNLIKELY (view->selection_length == -1
       && (view->selection_marks != NULL || view->selection_end_x != -1)
@@ -215,90 +189,6 @@ mousepad_view_expose (GtkWidget      *widget,
     {
       /* redraw the cursor lines for the vertical selection */
       mousepad_view_selection_draw (view, FALSE);
-    }
-  else if (event->window == gtk_text_view_get_window (textview, GTK_TEXT_WINDOW_LEFT))
-    {
-      /* get the real start position */
-      gtk_text_view_window_to_buffer_coords (textview, GTK_TEXT_WINDOW_LEFT,
-                                             0, event->area.y, NULL, &y_start);
-
-      /* get the left window y offset (this is *NOT* the textview offset!) */
-      y_offset = event->area.y - y_start;
-
-      /* get the bottom position */
-      y_finish = y_start + event->area.height;
-
-      /* get the start iter and its line number */
-      gtk_text_view_get_line_at_y (textview, &iter, y_start, NULL);
-      line_number = gtk_text_iter_get_line (&iter);
-
-      /* get the number of lines in the buffer */
-      line_count = gtk_text_buffer_get_line_count (textview->buffer);
-
-      /* string with the 'last' line number */
-      g_snprintf (str, sizeof (str), "%d", MAX (99, line_count));
-
-      /* create the pango layout */
-      layout = gtk_widget_create_pango_layout (widget, str);
-      pango_layout_get_pixel_size (layout, &width, NULL);
-
-      /* border width */
-      border_width = width + LINE_NUMBER_MARGIN;
-
-      /* check if we need to set the border size again */
-      if (G_UNLIKELY (gtk_text_view_get_border_window_size (textview, GTK_TEXT_WINDOW_LEFT) != border_width))
-        {
-          /* set the new border size */
-          gtk_text_view_set_border_window_size (textview, GTK_TEXT_WINDOW_LEFT, border_width);
-
-          /* leave, we'll redraw on the next expose event */
-          goto bail_out;
-        }
-
-      /* finish the pango layout */
-      pango_layout_set_width (layout, width);
-      pango_layout_set_alignment (layout, PANGO_ALIGN_RIGHT);
-
-      /* draw a vertical line to separate the numbers and text */
-      gtk_paint_vline (widget->style, event->window,
-                       GTK_WIDGET_STATE (widget),
-                       NULL, widget, NULL,
-                       event->area.y,
-                       event->area.y + event->area.height,
-                       border_width - 2);
-
-      /* walk through the lines until we hit the last line */
-      for (; line_number < line_count; line_number++)
-        {
-          /* get the y position and the height of the iter */
-          gtk_text_view_get_line_yrange (textview, &iter, &y_iter, &height);
-
-          /* create the number */
-          g_snprintf (str, sizeof (str), "%d", line_number + 1);
-
-          /* create the pange layout */
-          pango_layout_set_text (layout, str, -1);
-
-          /* draw the layout on the left window */
-          gtk_paint_layout (widget->style, event->window,
-                            GTK_WIDGET_STATE (widget),
-                            FALSE, NULL, widget, NULL,
-                            width + LINE_NUMBER_OFFSET,
-                            y_iter + y_offset, layout);
-
-          /* stop when we reached the end of the expose area */
-          if (y_iter + height >= y_finish)
-            break;
-
-          /* jump to the next line */
-          gtk_text_iter_forward_line (&iter);
-        }
-
-      /* label for leaving after setting the left border size */
-      bail_out:
-
-      /* release the pango layout */
-      g_object_unref (G_OBJECT (layout));
     }
 
   /* gtk can draw the text now */
@@ -341,9 +231,6 @@ mousepad_view_style_set (GtkWidget *widget,
                                                         "foreground-gdk", &style->text[GTK_STATE_SELECTED],
                                                         NULL);
 
-      /* update the tab size */
-      mousepad_view_set_tab_size (view, view->tab_size);
-
       /* redraw selection */
       if (view->selection_marks != NULL)
         mousepad_view_selection_draw (view, FALSE);
@@ -361,7 +248,6 @@ mousepad_view_key_press_event (GtkWidget   *widget,
   GtkTextIter    iter;
   GtkTextMark   *cursor;
   guint          modifiers;
-  gchar         *string;
   gboolean       im_handled;
   gboolean       is_editable;
 
@@ -377,48 +263,6 @@ mousepad_view_key_press_event (GtkWidget   *widget,
   /* handle the key event */
   switch (event->keyval)
     {
-      case GDK_Return:
-      case GDK_KP_Enter:
-        if (!(event->state & GDK_SHIFT_MASK) && view->auto_indent && is_editable)
-          {
-            /* get the iter position of the cursor */
-            cursor = gtk_text_buffer_get_insert (buffer);
-            gtk_text_buffer_get_iter_at_mark (buffer, &iter, cursor);
-
-            /* get the string of tabs and spaces we're going to indent */
-            string = mousepad_view_indent_string (buffer, &iter);
-
-            if (string != NULL)
-              {
-                /* check if the input method emitted this event */
-                im_handled = gtk_im_context_filter_keypress (GTK_TEXT_VIEW (view)->im_context, event);
-
-                /* check if we're allowed to handle this event */
-                if (G_LIKELY (im_handled == FALSE))
-                  {
-                    /* begin a user action */
-                    gtk_text_buffer_begin_user_action (buffer);
-
-                    /* insert the indent characters */
-                    gtk_text_buffer_insert (buffer, &iter, "\n", 1);
-                    gtk_text_buffer_insert (buffer, &iter, string, -1);
-
-                    /* end user action */
-                    gtk_text_buffer_end_user_action (buffer);
-
-                    /* make sure the new string is visible for the user */
-                    mousepad_view_scroll_to_cursor (view);
-                  }
-
-                /* cleanup */
-                g_free (string);
-
-                /* return */
-                return (im_handled == FALSE);
-              }
-          }
-        break;
-
       case GDK_End:
       case GDK_KP_End:
         if (modifiers & GDK_CONTROL_MASK)
@@ -491,45 +335,6 @@ mousepad_view_key_press_event (GtkWidget   *widget,
             mousepad_view_selection_key_press_event (view, NULL, GDK_BackSpace, modifiers);
 
             return TRUE;
-          }
-        break;
-
-      case GDK_Tab:
-      case GDK_KP_Tab:
-      case GDK_ISO_Left_Tab:
-        if (G_LIKELY (is_editable))
-          {
-            if (view->selection_marks != NULL)
-              {
-                /* insert a tab in the selection */
-                mousepad_view_selection_key_press_event (view, NULL, GDK_Tab, modifiers);
-
-                return TRUE;
-              }
-            else if (gtk_text_buffer_get_selection_bounds (buffer, NULL, NULL))
-              {
-                /* indent the selection */
-                mousepad_view_indent_selection (view, !(modifiers & GDK_SHIFT_MASK), FALSE);
-
-                return TRUE;
-              }
-            else if (view->insert_spaces)
-              {
-                /* get the iter position of the cursor */
-                cursor = gtk_text_buffer_get_insert (buffer);
-                gtk_text_buffer_get_iter_at_mark (buffer, &iter, cursor);
-
-                /* begin user action */
-                gtk_text_buffer_begin_user_action (buffer);
-
-                /* insert spaces */
-                mousepad_view_indent_increase (view, &iter);
-
-                /* end user action */
-                gtk_text_buffer_end_user_action (buffer);
-
-                return TRUE;
-              }
           }
         break;
 
@@ -1170,24 +975,25 @@ mousepad_view_indent_increase (MousepadView *view,
                                GtkTextIter  *iter)
 {
   gchar         *string;
-  gint           offset, length, inline_len;
+  gint           offset, length, inline_len, tab_size;
   GtkTextBuffer *buffer;
 
   /* get the buffer */
   buffer = mousepad_view_get_buffer (view);
+  tab_size = gtk_source_view_get_tab_width (GTK_SOURCE_VIEW (view));
 
-  if (view->insert_spaces)
+  if (gtk_source_view_get_insert_spaces_instead_of_tabs (GTK_SOURCE_VIEW (view)))
     {
       /* get the offset */
-      offset = mousepad_util_get_real_line_offset (iter, view->tab_size);
+      offset = mousepad_util_get_real_line_offset (iter, tab_size);
 
       /* calculate the length to inline with a tab */
-      inline_len = offset % view->tab_size;
+      inline_len = offset % tab_size;
 
       if (inline_len == 0)
-        length = view->tab_size;
+        length = tab_size;
       else
-        length = view->tab_size - inline_len;
+        length = tab_size - inline_len;
 
       /* create spaces string */
       string = g_strnfill (length, ' ');
@@ -1213,11 +1019,14 @@ mousepad_view_indent_decrease (MousepadView *view,
 {
   GtkTextBuffer *buffer;
   GtkTextIter    start, end;
-  gint           columns = view->tab_size;
+  gint           columns, tab_size;
   gunichar       c;
 
   /* set iters */
   start = end = *iter;
+
+  tab_size = gtk_source_view_get_tab_width (GTK_SOURCE_VIEW (view));
+  columns = tab_size;
 
   /* walk until we've removed enough columns */
   while (columns > 0)
@@ -1226,7 +1035,7 @@ mousepad_view_indent_decrease (MousepadView *view,
       c = gtk_text_iter_get_char (&end);
 
       if (c == '\t')
-        columns -= view->tab_size;
+        columns -= tab_size;
       else if (c == ' ')
         columns--;
       else
@@ -1300,68 +1109,6 @@ mousepad_view_indent_selection (MousepadView *view,
       mousepad_view_scroll_to_cursor (view);
     }
 }
-
-
-
-static gchar *
-mousepad_view_indent_string (GtkTextBuffer     *buffer,
-                             const GtkTextIter *iter)
-{
-  GtkTextIter start, end;
-  gint        line;
-
-  /* get the line of the iter */
-  line = gtk_text_iter_get_line (iter);
-
-  /* get the iter of the beginning of this line */
-  gtk_text_buffer_get_iter_at_line (buffer, &start, line);
-
-  /* set the end iter */
-  end = start;
-
-  /* forward until we hit text */
-  if (mousepad_util_forward_iter_to_text (&end, iter) == FALSE)
-    return NULL;
-
-  /* return the text between the iters */
-  return gtk_text_iter_get_slice (&start, &end);
-}
-
-
-
-static gint
-mousepad_view_calculate_layout_width (GtkWidget *widget,
-                                      gsize      length,
-                                      gchar      fill_char)
-{
-  PangoLayout *layout;
-  gchar       *string;
-  gint         width = -1;
-
-  mousepad_return_val_if_fail (GTK_IS_WIDGET (widget), -1);
-  mousepad_return_val_if_fail (length > 0, -1);
-
-  /* create character string */
-  string = g_strnfill (length, fill_char);
-
-  /* create pango layout from widget */
-  layout = gtk_widget_create_pango_layout (widget, string);
-
-  /* cleanup */
-  g_free (string);
-
-  if (G_LIKELY (layout))
-    {
-      /* get the layout size */
-      pango_layout_get_pixel_size (layout, &width, NULL);
-
-      /* release layout */
-      g_object_unref (G_OBJECT (layout));
-    }
-
-  return width;
-}
-
 
 
 void
@@ -2131,7 +1878,7 @@ mousepad_view_convert_spaces_and_tabs (MousepadView *view,
   buffer = mousepad_view_get_buffer (view);
 
   /* get the tab size */
-  tab_size = view->tab_size;
+  tab_size = gtk_source_view_get_tab_width (GTK_SOURCE_VIEW (view));
 
   /* get the start and end iter */
   if (gtk_text_buffer_get_selection_bounds (buffer, &start_iter, &end_iter))
@@ -2538,16 +2285,7 @@ mousepad_view_set_line_numbers (MousepadView *view,
 {
   mousepad_return_if_fail (MOUSEPAD_IS_VIEW (view));
 
-  if (view->line_numbers != line_numbers)
-    {
-      /* set the boolean */
-      view->line_numbers = line_numbers;
-
-      /* set the left border size */
-      gtk_text_view_set_border_window_size (GTK_TEXT_VIEW (view),
-                                            GTK_TEXT_WINDOW_LEFT,
-                                            line_numbers ? 20 : 0);
-    }
+  gtk_source_view_set_show_line_numbers (GTK_SOURCE_VIEW (view), line_numbers);
 }
 
 
@@ -2558,8 +2296,7 @@ mousepad_view_set_auto_indent (MousepadView *view,
 {
   mousepad_return_if_fail (MOUSEPAD_IS_VIEW (view));
 
-  /* set the boolean */
-  view->auto_indent = auto_indent;
+  gtk_source_view_set_auto_indent (GTK_SOURCE_VIEW (view), auto_indent);
 }
 
 
@@ -2568,30 +2305,10 @@ void
 mousepad_view_set_tab_size (MousepadView *view,
                              gint          tab_size)
 {
-  PangoTabArray *tab_array;
-  gint           layout_width;
-
   mousepad_return_if_fail (MOUSEPAD_IS_VIEW (view));
   mousepad_return_if_fail (GTK_IS_TEXT_VIEW (view));
 
-  /* set the value */
-  view->tab_size = tab_size;
-
-  /* get the pixel width of the tab size */
-  layout_width = mousepad_view_calculate_layout_width (GTK_WIDGET (view), view->tab_size, ' ');
-
-  if (G_LIKELY (layout_width != -1))
-    {
-      /* create the pango tab array */
-      tab_array = pango_tab_array_new (1, TRUE);
-      pango_tab_array_set_tab (tab_array, 0, PANGO_TAB_LEFT, layout_width);
-
-      /* set the textview tab array */
-      gtk_text_view_set_tabs (GTK_TEXT_VIEW (view), tab_array);
-
-      /* cleanup */
-      pango_tab_array_free (tab_array);
-    }
+  gtk_source_view_set_tab_width (GTK_SOURCE_VIEW (view), tab_size);
 }
 
 
@@ -2602,8 +2319,7 @@ mousepad_view_set_insert_spaces (MousepadView *view,
 {
   mousepad_return_if_fail (MOUSEPAD_IS_VIEW (view));
 
-  /* set boolean */
-  view->insert_spaces = insert_spaces;
+  gtk_source_view_set_insert_spaces_instead_of_tabs (GTK_SOURCE_VIEW (view), insert_spaces);
 }
 
 
@@ -2652,7 +2368,7 @@ mousepad_view_get_line_numbers (MousepadView *view)
 {
   mousepad_return_val_if_fail (MOUSEPAD_IS_VIEW (view), FALSE);
 
-  return view->line_numbers;
+  return gtk_source_view_get_show_line_numbers (GTK_SOURCE_VIEW (view));
 }
 
 
@@ -2662,7 +2378,7 @@ mousepad_view_get_auto_indent (MousepadView *view)
 {
   mousepad_return_val_if_fail (MOUSEPAD_IS_VIEW (view), FALSE);
 
-  return view->auto_indent;
+  return gtk_source_view_get_auto_indent (GTK_SOURCE_VIEW (view));
 }
 
 
@@ -2672,7 +2388,7 @@ mousepad_view_get_tab_size (MousepadView *view)
 {
   mousepad_return_val_if_fail (MOUSEPAD_IS_VIEW (view), -1);
 
-  return view->tab_size;
+  return gtk_source_view_get_tab_width (GTK_SOURCE_VIEW (view));
 }
 
 
@@ -2682,5 +2398,5 @@ mousepad_view_get_insert_spaces (MousepadView *view)
 {
   mousepad_return_val_if_fail (MOUSEPAD_IS_VIEW (view), FALSE);
 
-  return view->insert_spaces;
+  return gtk_source_view_get_insert_spaces_instead_of_tabs (GTK_SOURCE_VIEW (view));
 }

@@ -67,6 +67,11 @@
     <menu action="view-menu">
       <menuitem action="font" />
       <separator />
+      <menu action="color-scheme-menu">
+        <placeholder name="placeholder-color-scheme-items" />
+      </menu>
+      <menuitem action="line-numbers" />
+      <separator />
       <menuitem action="statusbar" />
     </menu>
 
@@ -96,22 +101,23 @@
     </menu>
 
     <menu action="document-menu">
-      <menuitem action="line-numbers" />
-      <menuitem action="word-wrap" />
-      <separator />
       <menuitem action="auto-indent" />
-      <separator />
-      <menuitem action="write-bom" />
-      <separator />
+      <menu action="eol-menu">
+        <menuitem action="unix" />
+        <menuitem action="mac" />
+        <menuitem action="dos" />
+      </menu>
       <menu action="tab-size-menu">
         <placeholder name="placeholder-tab-items" />
         <separator />
         <menuitem action="insert-spaces" />
       </menu>
-      <menu action="eol-menu">
-        <menuitem action="unix" />
-        <menuitem action="mac" />
-        <menuitem action="dos" />
+      <menuitem action="word-wrap" />
+      <separator />
+      <menuitem action="write-bom" />
+      <separator />
+      <menu action="language-menu">
+        <placeholder name="placeholder-language-section-items" />
       </menu>
     </menu>
 

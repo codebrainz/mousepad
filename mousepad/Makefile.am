@@ -46,8 +46,6 @@ mousepad_SOURCES = \
 	mousepad-statusbar.h \
 	mousepad-view.c \
 	mousepad-view.h \
-	mousepad-undo.c \
-	mousepad-undo.h \
 	mousepad-util.c \
 	mousepad-util.h \
 	mousepad-window.c \
@@ -58,6 +56,7 @@ mousepad_CFLAGS = \
 	$(GLIB_CFLAGS) \
 	$(GTK_CFLAGS) \
 	$(GTHREAD_CFLAGS) \
+	$(GTKSOURCEVIEW_CFLAGS) \
 	$(PLATFORM_CFLAGS)
 
 mousepad_LDFLAGS = \
@@ -67,7 +66,8 @@ mousepad_LDFLAGS = \
 mousepad_LDADD = \
 	$(GLIB_LIBS) \
 	$(GTK_LIBS)	\
-	$(GTHREAD_LIBS)
+	$(GTHREAD_LIBS) \
+	$(GTKSOURCEVIEW_LIBS)
 
 if HAVE_DBUS
 mousepad_built_sources +=	\

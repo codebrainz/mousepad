@@ -97,6 +97,11 @@ static gboolean          mousepad_window_open_file                    (MousepadW
 static gboolean          mousepad_window_close_document               (MousepadWindow         *window,
                                                                        MousepadDocument       *document);
 static void              mousepad_window_set_title                    (MousepadWindow         *window);
+static void              mousepad_window_populate_statusbar_popup     (MousepadWindow         *window,
+                                                                       GtkMenu                *menu,
+                                                                       MousepadStatusbar      *statusbar);
+static void              mousepad_window_statusbar_filetype_toggled   (GtkCheckMenuItem       *item,
+                                                                       MousepadWindow         *window);
 
 /* notebook signals */
 static void              mousepad_window_notebook_switch_page         (GtkNotebook            *notebook,
@@ -147,10 +152,15 @@ static void              mousepad_window_selection_changed            (MousepadD
 static void              mousepad_window_overwrite_changed            (MousepadDocument       *document,
                                                                        gboolean                overwrite,
                                                                        MousepadWindow         *window);
+static void              mousepad_window_language_changed             (MousepadDocument       *document,
+                                                                       GtkSourceLanguage      *language,
+                                                                       MousepadWindow         *window);
 static void              mousepad_window_can_undo                     (MousepadWindow         *window,
-                                                                       gboolean                can_undo);
+                                                                       GParamSpec             *unused,
+                                                                       GObject                *buffer);
 static void              mousepad_window_can_redo                     (MousepadWindow         *window,
-                                                                       gboolean                can_redo);
+                                                                       GParamSpec             *unused,
+                                                                       GObject                *buffer);
 
 /* menu functions */
 static void              mousepad_window_menu_templates_fill          (MousepadWindow         *window,
@@ -169,6 +179,8 @@ static void              mousepad_window_update_actions               (MousepadW
 static gboolean          mousepad_window_update_gomenu_idle           (gpointer                user_data);
 static void              mousepad_window_update_gomenu_idle_destroy   (gpointer                user_data);
 static void              mousepad_window_update_gomenu                (MousepadWindow         *window);
+static void              mousepad_window_menu_color_schemes           (MousepadWindow         *window);
+static void              mousepad_window_menu_languages               (MousepadWindow         *window);
 
 /* recent functions */
 static void              mousepad_window_recent_add                   (MousepadWindow         *window,
@@ -274,6 +286,10 @@ static void              mousepad_window_action_replace               (GtkAction
                                                                        MousepadWindow         *window);
 static void              mousepad_window_action_select_font           (GtkAction              *action,
                                                                        MousepadWindow         *window);
+static void              mousepad_window_action_color_scheme          (GtkToggleAction        *action,
+                                                                       MousepadWindow         *window);
+static void              mousepad_window_action_line_numbers          (GtkToggleAction        *action,
+                                                                       MousepadWindow         *window);
 static void              mousepad_window_action_statusbar_overwrite   (MousepadWindow         *window,
                                                                        gboolean                overwrite);
 static void              mousepad_window_action_statusbar             (GtkToggleAction        *action,
@@ -304,20 +320,20 @@ static void              mousepad_window_action_increase_indent       (GtkAction
                                                                        MousepadWindow         *window);
 static void              mousepad_window_action_decrease_indent       (GtkAction              *action,
                                                                        MousepadWindow         *window);
-static void              mousepad_window_action_line_numbers          (GtkToggleAction        *action,
+static void              mousepad_window_action_auto_indent           (GtkToggleAction        *action,
+                                                                       MousepadWindow         *window);
+static void              mousepad_window_action_line_ending           (GtkRadioAction         *action,
+                                                                       GtkRadioAction         *current,
+                                                                       MousepadWindow         *window);
+static void              mousepad_window_action_tab_size              (GtkToggleAction        *action,
                                                                        MousepadWindow         *window);
 static void              mousepad_window_action_word_wrap             (GtkToggleAction        *action,
                                                                        MousepadWindow         *window);
 static void              mousepad_window_action_write_bom             (GtkToggleAction        *action,
                                                                        MousepadWindow         *window);
-static void              mousepad_window_action_auto_indent           (GtkToggleAction        *action,
-                                                                       MousepadWindow         *window);
-static void              mousepad_window_action_tab_size              (GtkToggleAction        *action,
+static void              mousepad_window_action_language              (GtkToggleAction        *action,
                                                                        MousepadWindow         *window);
 static void              mousepad_window_action_insert_spaces         (GtkToggleAction        *action,
-                                                                       MousepadWindow         *window);
-static void              mousepad_window_action_line_ending           (GtkRadioAction         *action,
-                                                                       GtkRadioAction         *current,
                                                                        MousepadWindow         *window);
 static void              mousepad_window_action_prev_tab              (GtkAction              *action,
                                                                        MousepadWindow         *window);
@@ -419,6 +435,7 @@ static const GtkActionEntry action_entries[] =
 
   { "view-menu", NULL, N_("_View"), NULL, NULL, NULL, },
     { "font", GTK_STOCK_SELECT_FONT, N_("Select F_ont..."), NULL, N_("Change the editor font"), G_CALLBACK (mousepad_window_action_select_font), },
+    { "color-scheme-menu", NULL, N_("_Color Scheme"), NULL, NULL, NULL, },
 
   { "text-menu", NULL, N_("_Text"), NULL, NULL, NULL, },
     { "convert-menu", NULL, N_("_Convert"), NULL, NULL, NULL, },
@@ -438,8 +455,9 @@ static const GtkActionEntry action_entries[] =
     { "decrease-indent", GTK_STOCK_UNINDENT, N_("_Decrease Indent"), NULL, N_("Decrease the indentation of the selection or current line"), G_CALLBACK (mousepad_window_action_decrease_indent), },
 
   { "document-menu", NULL, N_("_Document"), NULL, NULL, NULL, },
-    { "tab-size-menu", NULL, N_("Tab _Size"), NULL, NULL, NULL, },
     { "eol-menu", NULL, N_("Line E_nding"), NULL, NULL, NULL, },
+    { "tab-size-menu", NULL, N_("Tab _Size"), NULL, NULL, NULL, },
+    { "language-menu", NULL, N_("_Filetype"), NULL, NULL, NULL, },
 
   { "navigation-menu", NULL, N_("_Navigation"), NULL, },
     { "back", GTK_STOCK_GO_BACK, N_("_Previous Tab"), "<control>Page_Up", N_("Select the previous tab"), G_CALLBACK (mousepad_window_action_prev_tab), },
@@ -453,12 +471,12 @@ static const GtkActionEntry action_entries[] =
 
 static const GtkToggleActionEntry toggle_action_entries[] =
 {
-  { "statusbar", NULL, N_("St_atusbar"), NULL, N_("Change the visibility of the statusbar"), G_CALLBACK (mousepad_window_action_statusbar), FALSE, },
   { "line-numbers", NULL, N_("Line N_umbers"), NULL, N_("Show line numbers"), G_CALLBACK (mousepad_window_action_line_numbers), FALSE, },
+  { "statusbar", NULL, N_("St_atusbar"), NULL, N_("Change the visibility of the statusbar"), G_CALLBACK (mousepad_window_action_statusbar), FALSE, },
   { "auto-indent", NULL, N_("_Auto Indent"), NULL, N_("Auto indent a new line"), G_CALLBACK (mousepad_window_action_auto_indent), FALSE, },
+  { "insert-spaces", NULL, N_("Insert _Spaces"), NULL, N_("Insert spaces when the tab button is pressed"), G_CALLBACK (mousepad_window_action_insert_spaces), FALSE, },
   { "word-wrap", NULL, N_("_Word Wrap"), NULL, N_("Toggle breaking lines in between words"), G_CALLBACK (mousepad_window_action_word_wrap), FALSE, },
-  { "write-bom", NULL, N_("Write Unicode _BOM"), NULL, N_("Store the byte-order mark in the file"), G_CALLBACK (mousepad_window_action_write_bom), FALSE, },
-  { "insert-spaces", NULL, N_("Insert _Spaces"), NULL, N_("Insert spaces when the tab button is pressed"), G_CALLBACK (mousepad_window_action_insert_spaces), FALSE, }
+  { "write-bom", NULL, N_("Write Unicode _BOM"), NULL, N_("Store the byte-order mark in the file"), G_CALLBACK (mousepad_window_action_write_bom), FALSE, }
 };
 
 static const GtkRadioActionEntry radio_action_entries[] =
@@ -602,6 +620,12 @@ mousepad_window_init (MousepadWindow *window)
 
   /* add tab size menu */
   mousepad_window_menu_tab_sizes (window);
+
+  /* add color schemes menu */
+  mousepad_window_menu_color_schemes (window);
+
+  /* add languages/filetypes menu */
+  mousepad_window_menu_languages (window);
 
   /* set accel group for the window */
   accel_group = gtk_ui_manager_get_accel_group (window->ui_manager);
@@ -985,13 +1009,13 @@ mousepad_window_open_file (MousepadWindow   *window,
   retry:
 
   /* lock the undo manager */
-  mousepad_undo_lock (document->undo);
+  gtk_source_buffer_begin_not_undoable_action (GTK_SOURCE_BUFFER (document->buffer));
 
   /* read the content into the buffer */
   result = mousepad_file_open (document->file, NULL, &error);
 
   /* release the lock */
-  mousepad_undo_unlock (document->undo);
+  gtk_source_buffer_end_not_undoable_action (GTK_SOURCE_BUFFER (document->buffer));
 
   switch (result)
     {
@@ -1283,6 +1307,96 @@ mousepad_window_set_title (MousepadWindow *window)
 
 
 
+static void
+mousepad_window_statusbar_filetype_toggled (GtkCheckMenuItem *item,
+                                            MousepadWindow   *window)
+{
+  const gchar              *language_id;
+  GtkSourceLanguage        *language;
+  GtkSourceLanguageManager *manager;
+
+  mousepad_return_if_fail (MOUSEPAD_IS_WINDOW (window));
+  mousepad_return_if_fail (MOUSEPAD_IS_DOCUMENT (window->active));
+
+  manager = gtk_source_language_manager_get_default ();
+  language_id = g_object_get_data (G_OBJECT (item), "language_id");
+
+  /* check if None was selected */
+  if (!language_id || g_strcmp0 (language_id, "none") == 0)
+    {
+      gtk_source_buffer_set_language (GTK_SOURCE_BUFFER (window->active->buffer), NULL);
+      gtk_source_buffer_set_highlight_syntax (GTK_SOURCE_BUFFER (window->active->buffer), FALSE);
+      return;
+    }
+
+  /* set to a non-None language */
+  language = gtk_source_language_manager_get_language (manager, language_id);
+  gtk_source_buffer_set_highlight_syntax (GTK_SOURCE_BUFFER (window->active->buffer), TRUE);
+  gtk_source_buffer_set_language (GTK_SOURCE_BUFFER (window->active->buffer), language);
+}
+
+
+
+static void
+mousepad_window_populate_statusbar_popup (MousepadWindow    *window,
+                                          GtkMenu           *menu,
+                                          MousepadStatusbar *statusbar)
+{
+  GSList            *group = NULL;
+  GSList            *sections, *s_iter;
+  GSList            *languages, *l_iter;
+  GtkWidget         *item;
+  GtkWidget         *submenu;
+  GtkSourceLanguage *active;
+
+  mousepad_return_if_fail (MOUSEPAD_IS_WINDOW (window));
+  mousepad_return_if_fail (MOUSEPAD_IS_DOCUMENT (window->active));
+
+  active = gtk_source_buffer_get_language (GTK_SOURCE_BUFFER (window->active->buffer));
+
+  item = gtk_radio_menu_item_new_with_label (group, _("None"));
+  group = gtk_radio_menu_item_get_group (GTK_RADIO_MENU_ITEM (item));
+  g_object_set_data (G_OBJECT (item), "language_id", "none");
+  g_signal_connect (item, "toggled", G_CALLBACK (mousepad_window_statusbar_filetype_toggled), window);
+  gtk_menu_shell_append (GTK_MENU_SHELL (menu), item);
+  gtk_widget_show (item);
+
+  if (!active)
+    gtk_check_menu_item_set_active (GTK_CHECK_MENU_ITEM (item), TRUE);
+
+  item = gtk_separator_menu_item_new ();
+  gtk_menu_shell_append (GTK_MENU_SHELL (menu), item);
+  gtk_widget_show (item);
+
+  sections = mousepad_util_language_sections_get_sorted ();
+
+  for (s_iter = sections ; s_iter != NULL; s_iter = g_slist_next (s_iter))
+    {
+      item = gtk_menu_item_new_with_label (s_iter->data);
+      gtk_widget_show (item);
+      submenu = gtk_menu_new ();
+      gtk_menu_item_set_submenu (GTK_MENU_ITEM (item), submenu);
+      gtk_widget_show (submenu);
+      gtk_menu_shell_append (GTK_MENU_SHELL (menu), item);
+
+      languages = mousepad_util_languages_get_sorted_for_section (s_iter->data);
+      for (l_iter = languages; l_iter != NULL; l_iter = g_slist_next (l_iter))
+        {
+          item = gtk_radio_menu_item_new_with_label (group, gtk_source_language_get_name (l_iter->data));
+          group = gtk_radio_menu_item_get_group (GTK_RADIO_MENU_ITEM (item));
+          g_object_set_data (G_OBJECT (item), "language_id", (gpointer) gtk_source_language_get_id (l_iter->data));
+          g_signal_connect (item, "toggled", G_CALLBACK (mousepad_window_statusbar_filetype_toggled), window);
+          gtk_menu_shell_append (GTK_MENU_SHELL (submenu), item);
+          gtk_widget_show (item);
+
+          if (active == l_iter->data)
+            gtk_check_menu_item_set_active (GTK_CHECK_MENU_ITEM (item), TRUE);
+        }
+    }
+}
+
+
+
 /**
  * Notebook Signal Functions
  **/
@@ -1292,7 +1406,7 @@ mousepad_window_notebook_switch_page (GtkNotebook     *notebook,
                                       guint            page_num,
                                       MousepadWindow  *window)
 {
-  MousepadDocument *document;
+  MousepadDocument  *document;
 
   mousepad_return_if_fail (MOUSEPAD_IS_WINDOW (window));
   mousepad_return_if_fail (GTK_IS_NOTEBOOK (notebook));
@@ -1352,9 +1466,10 @@ mousepad_window_notebook_added (GtkNotebook     *notebook,
   g_signal_connect (G_OBJECT (page), "cursor-changed", G_CALLBACK (mousepad_window_cursor_changed), window);
   g_signal_connect (G_OBJECT (page), "selection-changed", G_CALLBACK (mousepad_window_selection_changed), window);
   g_signal_connect (G_OBJECT (page), "overwrite-changed", G_CALLBACK (mousepad_window_overwrite_changed), window);
+  g_signal_connect (G_OBJECT (page), "language-changed", G_CALLBACK (mousepad_window_language_changed), window);
   g_signal_connect (G_OBJECT (page), "drag-data-received", G_CALLBACK (mousepad_window_drag_data_received), window);
-  g_signal_connect_swapped (G_OBJECT (document->undo), "can-undo", G_CALLBACK (mousepad_window_can_undo), window);
-  g_signal_connect_swapped (G_OBJECT (document->undo), "can-redo", G_CALLBACK (mousepad_window_can_redo), window);
+  g_signal_connect_swapped (G_OBJECT (document->buffer), "notify::can-undo", G_CALLBACK (mousepad_window_can_undo), window);
+  g_signal_connect_swapped (G_OBJECT (document->buffer), "notify::can-redo", G_CALLBACK (mousepad_window_can_redo), window);
   g_signal_connect_swapped (G_OBJECT (document->buffer), "modified-changed", G_CALLBACK (mousepad_window_modified_changed), window);
   g_signal_connect (G_OBJECT (document->textview), "populate-popup", G_CALLBACK (mousepad_window_menu_textview_popup), window);
 
@@ -1392,9 +1507,10 @@ mousepad_window_notebook_removed (GtkNotebook     *notebook,
   g_signal_handlers_disconnect_by_func (G_OBJECT (page), mousepad_window_cursor_changed, window);
   g_signal_handlers_disconnect_by_func (G_OBJECT (page), mousepad_window_selection_changed, window);
   g_signal_handlers_disconnect_by_func (G_OBJECT (page), mousepad_window_overwrite_changed, window);
+  g_signal_handlers_disconnect_by_func (G_OBJECT (page), mousepad_window_language_changed, window);
   g_signal_handlers_disconnect_by_func (G_OBJECT (page), mousepad_window_drag_data_received, window);
-  g_signal_handlers_disconnect_by_func (G_OBJECT (document->undo), mousepad_window_can_undo, window);
-  g_signal_handlers_disconnect_by_func (G_OBJECT (document->undo), mousepad_window_can_redo, window);
+  g_signal_handlers_disconnect_by_func (G_OBJECT (document->buffer), mousepad_window_can_undo, window);
+  g_signal_handlers_disconnect_by_func (G_OBJECT (document->buffer), mousepad_window_can_redo, window);
   g_signal_handlers_disconnect_by_func (G_OBJECT (document->buffer), mousepad_window_modified_changed, window);
   g_signal_handlers_disconnect_by_func (G_OBJECT (document->textview), mousepad_window_menu_textview_popup, window);
 
@@ -1662,10 +1778,54 @@ mousepad_window_overwrite_changed (MousepadDocument *document,
 
 
 static void
+mousepad_window_language_changed (MousepadDocument  *document,
+                                  GtkSourceLanguage *language,
+                                  MousepadWindow    *window)
+{
+  gchar     *path;
+  GtkWidget *item;
+
+  if (!GTK_IS_SOURCE_LANGUAGE (language))
+    goto set_none;
+
+  path = g_strdup_printf ("/main-menu/document-menu/language-menu/"
+                          "placeholder-language-section-items/"
+                          "language-section-%s/language-%s",
+                          gtk_source_language_get_section (language),
+                          gtk_source_language_get_id (language));
+  item = gtk_ui_manager_get_widget (window->ui_manager, path);
+  g_free (path);
+
+  /* activate the appropriate menu item for the new language */
+  if (GTK_IS_CHECK_MENU_ITEM (item))
+    {
+      gtk_check_menu_item_set_active (GTK_CHECK_MENU_ITEM (item), TRUE);
+      goto set_statusbar;
+    }
+
+set_none:
+  item = gtk_ui_manager_get_widget (window->ui_manager,
+                                        "/main-menu/document-menu/language-menu/language-none");
+  if (GTK_IS_CHECK_MENU_ITEM (item))
+    gtk_check_menu_item_set_active (GTK_CHECK_MENU_ITEM (item), TRUE);
+
+set_statusbar:
+  /* set the filetype in the statusbar */
+  if (window->statusbar)
+    mousepad_statusbar_set_language (MOUSEPAD_STATUSBAR (window->statusbar), language);
+}
+
+
+
+static void
 mousepad_window_can_undo (MousepadWindow *window,
-                          gboolean        can_undo)
+                          GParamSpec     *unused,
+                          GObject        *buffer)
 {
   GtkAction *action;
+  gboolean   can_undo;
+
+  can_undo = gtk_source_buffer_can_undo (GTK_SOURCE_BUFFER (buffer));
 
   action = gtk_action_group_get_action (window->action_group, "undo");
   gtk_action_set_sensitive (action, can_undo);
@@ -1675,9 +1835,13 @@ mousepad_window_can_undo (MousepadWindow *window,
 
 static void
 mousepad_window_can_redo (MousepadWindow *window,
-                          gboolean        can_redo)
+                          GParamSpec     *unused,
+                          GObject        *buffer)
 {
   GtkAction *action;
+  gboolean   can_redo;
+
+  can_redo = gtk_source_buffer_can_redo (GTK_SOURCE_BUFFER (buffer));
 
   action = gtk_action_group_get_action (window->action_group, "redo");
   gtk_action_set_sensitive (action, can_redo);
@@ -2118,8 +2282,8 @@ mousepad_window_update_actions (MousepadWindow *window)
       gtk_toggle_action_set_active (GTK_TOGGLE_ACTION (action), active);
 
       /* set the sensitivity of the undo and redo actions */
-      mousepad_window_can_undo (window, mousepad_undo_can_undo (document->undo));
-      mousepad_window_can_redo (window, mousepad_undo_can_redo (document->undo));
+      mousepad_window_can_undo (window, NULL, G_OBJECT (document->buffer));
+      mousepad_window_can_redo (window, NULL, G_OBJECT (document->buffer));
 
       /* active this tab in the go menu */
       action = mousepad_object_get_data (G_OBJECT (document), "navigation-menu-action");
@@ -3032,6 +3196,229 @@ mousepad_window_delete_event (MousepadWindow *window,
 
 
 
+static void
+mousepad_window_menu_color_schemes (MousepadWindow *window)
+{
+  GtkRadioAction       *action;
+  GSList               *group = NULL, *schemes, *iter;
+  gint                  merge_id;
+  gchar                *name, *selected_color_scheme = NULL;
+
+  /* lock menu updates */
+  lock_menu_updates++;
+
+  /* get the previously saved colour scheme name */
+  g_object_get (window->preferences, "view-color-scheme", &selected_color_scheme, NULL);
+
+  /* get list of schemes */
+  schemes = mousepad_util_color_schemes_get_sorted ();
+
+  /* create merge id */
+  merge_id = gtk_ui_manager_new_merge_id (window->ui_manager);
+
+  /* create a "none" action */
+  action = gtk_radio_action_new ("color-scheme-none",
+                                 _("None"),
+                                 _("Turn off color schemes"),
+                                 NULL,
+                                 g_str_hash ("none"));
+  gtk_radio_action_set_group (action, group);
+  group = gtk_radio_action_get_group (action);
+  g_signal_connect (G_OBJECT (action), "activate", G_CALLBACK (mousepad_window_action_color_scheme), window);
+  gtk_action_group_add_action_with_accel (window->action_group, GTK_ACTION (action), "");
+
+  /* release the action */
+  g_object_unref (G_OBJECT (action));
+
+  /* add the action to the go menu */
+  gtk_ui_manager_add_ui (window->ui_manager, merge_id,
+                         "/main-menu/view-menu/color-scheme-menu/placeholder-color-scheme-items",
+                         "color-scheme-none", "color-scheme-none", GTK_UI_MANAGER_MENUITEM, FALSE);
+
+  /* add a separator */
+  gtk_ui_manager_add_ui (window->ui_manager, merge_id,
+                         "/main-menu/view-menu/color-scheme-menu/placeholder-color-scheme-items",
+                         "color-scheme-separator", NULL, GTK_UI_MANAGER_SEPARATOR, FALSE);
+
+  /* add the color schemes to the menu */
+  for (iter = schemes; iter != NULL; iter = g_slist_next (iter))
+    {
+      /* create action name */
+      name = g_strdup_printf ("color-scheme_%s", gtk_source_style_scheme_get_id (iter->data));
+
+      /* create action for colour scheme */
+      action = gtk_radio_action_new (name,
+                                     gtk_source_style_scheme_get_name (iter->data),
+                                     gtk_source_style_scheme_get_description (iter->data),
+                                     NULL,
+                                     g_str_hash (gtk_source_style_scheme_get_id (iter->data)));
+      gtk_radio_action_set_group (action, group);
+      group = gtk_radio_action_get_group (action);
+      g_signal_connect (G_OBJECT (action), "activate", G_CALLBACK (mousepad_window_action_color_scheme), window);
+      gtk_action_group_add_action_with_accel (window->action_group, GTK_ACTION (action), "");
+
+      /* activate the radio button if it was the last saved colour scheme */
+      if (g_strcmp0 (gtk_source_style_scheme_get_id (iter->data), selected_color_scheme) == 0)
+          gtk_toggle_action_set_active (GTK_TOGGLE_ACTION (action), TRUE);
+
+      /* release the action */
+      g_object_unref (G_OBJECT (action));
+
+      /* add the action to the go menu */
+      gtk_ui_manager_add_ui (window->ui_manager, merge_id,
+                             "/main-menu/view-menu/color-scheme-menu/placeholder-color-scheme-items",
+                             name, name, GTK_UI_MANAGER_MENUITEM, FALSE);
+
+      /* cleanup */
+      g_free (name);
+    }
+
+  /* cleanup the list */
+  g_slist_free (schemes);
+
+  /* unlock */
+  lock_menu_updates--;
+}
+
+
+
+static void
+mousepad_window_menu_languages (MousepadWindow *window)
+{
+  gint                  merge_id;
+  gchar                *name, *section_path;
+  gchar                 section_name[64];
+  GtkAction            *action;
+  GtkRadioAction       *radio_action;
+  GSList               *group = NULL;
+  GSList               *sections, *sect_iter, *languages, *lang_iter;
+
+  lock_menu_updates++;
+
+  merge_id = gtk_ui_manager_new_merge_id (window->ui_manager);
+
+  /* add the none language directly under the filetype */
+  radio_action = gtk_radio_action_new ("language-none",
+                                 _("None"),
+                                 _("No filetype"),
+                                 NULL,
+                                 g_str_hash ("none"));
+  gtk_radio_action_set_group (radio_action, group);
+  group = gtk_radio_action_get_group (radio_action);
+  g_signal_connect (G_OBJECT (radio_action), "activate", G_CALLBACK (mousepad_window_action_language), window);
+  gtk_action_group_add_action_with_accel (window->action_group, GTK_ACTION (radio_action), "");
+
+  /* release the action */
+  g_object_unref (G_OBJECT (radio_action));
+
+  /* add the action to the go menu */
+  gtk_ui_manager_add_ui (window->ui_manager,
+                         merge_id,
+                         "/main-menu/document-menu/language-menu/placeholder-language-section-items",
+                         "language-none",
+                         "language-none",
+                         GTK_UI_MANAGER_MENUITEM,
+                         FALSE);
+
+  /* add a separator */
+  gtk_ui_manager_add_ui (window->ui_manager,
+                         merge_id,
+                         "/main-menu/document-menu/language-menu/placeholder-language-section-items",
+                         "language-separator",
+                         NULL,
+                         GTK_UI_MANAGER_SEPARATOR,
+                         FALSE);
+
+  sections = mousepad_util_language_sections_get_sorted ();
+
+  for (sect_iter = sections; sect_iter != NULL; sect_iter = g_slist_next (sect_iter))
+    {
+      languages = mousepad_util_languages_get_sorted_for_section (sect_iter->data);
+
+      /* make sure there are langs in the section, otherwise skip it */
+      if (!languages)
+        continue;
+      else if (!g_slist_length (languages))
+        {
+          g_slist_free (languages);
+          continue;
+        }
+
+      g_snprintf (section_name, 64, "language-section-%s", (gchar *)sect_iter->data);
+
+      /* add the section directly under the gtkuimanager dynamic menu filetype */
+      action = gtk_action_new (section_name,
+                               sect_iter->data,
+                               NULL,
+                               NULL);
+      gtk_action_group_add_action_with_accel (window->action_group, GTK_ACTION (action), "");
+
+      /* release the action */
+      g_object_unref (G_OBJECT (action));
+
+      /* add a menu for each section */
+      gtk_ui_manager_add_ui (window->ui_manager,
+                             merge_id,
+                             "/main-menu/document-menu/language-menu/placeholder-language-section-items",
+                             section_name,
+                             section_name,
+                             GTK_UI_MANAGER_MENU,
+                             FALSE);
+
+      section_path = g_strdup_printf ("/main-menu/document-menu/language-menu/"
+                                      "placeholder-language-section-items/%s",
+                                      section_name);
+
+      for (lang_iter = languages; lang_iter != NULL; lang_iter = g_slist_next (lang_iter))
+        {
+          if (g_strcmp0 (sect_iter->data, gtk_source_language_get_section (lang_iter->data)) == 0)
+          {
+            /* create action name */
+            name = g_strdup_printf ("language-%s", gtk_source_language_get_id (lang_iter->data));
+
+            radio_action = gtk_radio_action_new (name,
+                                                 gtk_source_language_get_name (lang_iter->data),
+                                                 NULL,
+                                                 NULL,
+                                                 g_str_hash (gtk_source_language_get_id (lang_iter->data)));
+            gtk_radio_action_set_group (radio_action, group);
+            group = gtk_radio_action_get_group (radio_action);
+            g_signal_connect (G_OBJECT (radio_action),
+                              "activate",
+                              G_CALLBACK (mousepad_window_action_language),
+                              window);
+            gtk_action_group_add_action_with_accel (window->action_group, GTK_ACTION (radio_action), "");
+
+            /* release the action */
+            g_object_unref (G_OBJECT (radio_action));
+
+            /* add the action to the section menu */
+            gtk_ui_manager_add_ui (window->ui_manager,
+                                   merge_id,
+                                   section_path,
+                                   name,
+                                   name,
+                                   GTK_UI_MANAGER_MENUITEM,
+                                   FALSE);
+
+            /* cleanup before next language */
+            g_free (name);
+          }
+        }
+
+        /* cleanup before next section */
+        g_free (section_path);
+        g_slist_free (languages);
+    }
+
+  g_slist_free (sections);
+
+  /* unlock */
+  lock_menu_updates--;
+}
+
+
+
 /**
  * Menu Actions
  *
@@ -3095,13 +3482,13 @@ mousepad_window_action_new_from_template (GtkMenuItem    *item,
       g_object_ref_sink (G_OBJECT (document));
 
       /* lock the undo manager */
-      mousepad_undo_lock (document->undo);
+      gtk_source_buffer_begin_not_undoable_action (GTK_SOURCE_BUFFER (document->buffer));
 
       /* try to load the template into the buffer */
       result = mousepad_file_open (document->file, filename, &error);
 
       /* release the lock */
-      mousepad_undo_unlock (document->undo);
+      gtk_source_buffer_end_not_undoable_action (GTK_SOURCE_BUFFER (document->buffer));
 
       /* handle the result */
       if (G_LIKELY (result == 0))
@@ -3375,9 +3762,6 @@ mousepad_window_action_save (GtkAction      *action,
         {
           /* update the window title */
           mousepad_window_set_title (window);
-
-          /* store the save state in the undo manager */
-          mousepad_undo_save_point (document->undo);
         }
       else if (error != NULL)
         {
@@ -3490,10 +3874,8 @@ mousepad_window_action_save_all (GtkAction      *action,
           /* try to quickly save the file */
           succeed = mousepad_file_save (document->file, &error);
 
-          /* store save state, break on problems */
-          if (G_LIKELY (succeed))
-            mousepad_undo_save_point (document->undo);
-          else
+          /* break on problems */
+          if (G_UNLIKELY (!succeed))
             break;
         }
       else
@@ -3590,16 +3972,13 @@ mousepad_window_action_revert (GtkAction      *action,
     }
 
   /* lock the undo manager */
-  mousepad_undo_lock (document->undo);
-
-  /* clear the undo history */
-  mousepad_undo_clear (document->undo);
+  gtk_source_buffer_begin_not_undoable_action (GTK_SOURCE_BUFFER (document->buffer));
 
   /* reload the file */
   succeed = mousepad_file_reload (document->file, &error);
 
   /* release the lock */
-  mousepad_undo_unlock (document->undo);
+  gtk_source_buffer_end_not_undoable_action (GTK_SOURCE_BUFFER (document->buffer));
 
   if (G_UNLIKELY (succeed == FALSE))
     {
@@ -3743,7 +4122,7 @@ mousepad_window_action_undo (GtkAction      *action,
   mousepad_return_if_fail (MOUSEPAD_IS_DOCUMENT (window->active));
 
   /* undo */
-  mousepad_undo_do_undo (window->active->undo);
+  gtk_source_buffer_undo (GTK_SOURCE_BUFFER (window->active->buffer));
 
   /* scroll to visible area */
   mousepad_view_scroll_to_cursor (window->active->textview);
@@ -3759,7 +4138,7 @@ mousepad_window_action_redo (GtkAction      *action,
   mousepad_return_if_fail (MOUSEPAD_IS_DOCUMENT (window->active));
 
   /* redo */
-  mousepad_undo_do_redo (window->active->undo);
+  gtk_source_buffer_redo (GTK_SOURCE_BUFFER (window->active->buffer));
 
   /* scroll to visible area */
   mousepad_view_scroll_to_cursor (window->active->textview);
@@ -4089,6 +4468,102 @@ mousepad_window_action_select_font (GtkAction      *action,
 
 
 static void
+mousepad_window_action_color_scheme (GtkToggleAction *action,
+                                     MousepadWindow  *window)
+{
+  gint                  page_num = 0;
+  guint                 scheme_id_hash;
+  GtkWidget            *page;
+  GtkTextBuffer        *buffer;
+  GtkSourceStyleScheme *scheme = NULL;
+  MousepadDocument     *document;
+  GSList               *schemes, *iter;
+
+  mousepad_return_if_fail (MOUSEPAD_IS_WINDOW (window));
+
+  /* leave when menu updates are locked */
+  if (lock_menu_updates == 0 && gtk_toggle_action_get_active (action))
+    {
+      mousepad_return_if_fail (MOUSEPAD_IS_DOCUMENT (window->active));
+
+      /* get the color scheme id hashed */
+      scheme_id_hash = (guint) gtk_radio_action_get_current_value (GTK_RADIO_ACTION (action));
+
+      if (scheme_id_hash != g_str_hash ("none"))
+        {
+          /* lookup the scheme from the id hash */
+          schemes = mousepad_util_color_schemes_get ();
+          for (iter = schemes; iter != NULL; iter = g_slist_next (iter))
+            {
+              if (scheme_id_hash == g_str_hash (gtk_source_style_scheme_get_id (iter->data)))
+                {
+                  scheme = iter->data;
+                  break;
+                }
+            }
+          g_slist_free (schemes);
+        }
+
+      /* store as last used value */
+      g_object_set (G_OBJECT (window->preferences),
+                    "view-color-scheme",
+                    (scheme != NULL) ? gtk_source_style_scheme_get_id (scheme) : "none",
+                    NULL);
+
+      /* apply colour scheme to all open textviews */
+      while ((page = gtk_notebook_get_nth_page (GTK_NOTEBOOK (window->notebook), page_num)))
+        {
+          if (G_LIKELY (MOUSEPAD_IS_DOCUMENT (page)))
+            {
+              document = MOUSEPAD_DOCUMENT (page);
+              buffer = gtk_text_view_get_buffer (GTK_TEXT_VIEW (document->textview));
+              gtk_source_buffer_set_highlight_syntax (GTK_SOURCE_BUFFER (buffer), (scheme != NULL));
+              gtk_source_buffer_set_style_scheme (GTK_SOURCE_BUFFER (buffer), scheme);
+            }
+            page_num++;
+        }
+    }
+}
+
+
+
+static void
+mousepad_window_action_line_numbers (GtkToggleAction *action,
+                                     MousepadWindow  *window)
+{
+  gint              page_num = 0;
+  gboolean          active;
+  GtkWidget        *page;
+  MousepadDocument *document;
+
+  mousepad_return_if_fail (MOUSEPAD_IS_WINDOW (window));
+  mousepad_return_if_fail (MOUSEPAD_IS_DOCUMENT (window->active));
+
+  /* leave when menu updates are locked */
+  if (lock_menu_updates == 0)
+    {
+      /* get the current state */
+      active = gtk_toggle_action_get_active (action);
+
+      /* save as the last used line number setting */
+      g_object_set (G_OBJECT (window->preferences), "view-line-numbers", active, NULL);
+
+      /* apply line numbers setting to all open textviews */
+      while ((page = gtk_notebook_get_nth_page (GTK_NOTEBOOK (window->notebook), page_num)))
+        {
+          if (G_LIKELY (MOUSEPAD_IS_DOCUMENT (page)))
+            {
+              document = MOUSEPAD_DOCUMENT (page);
+              mousepad_view_set_line_numbers (document->textview, active);
+            }
+          page_num++;
+        }
+    }
+}
+
+
+
+static void
 mousepad_window_action_statusbar_overwrite (MousepadWindow *window,
                                             gboolean        overwrite)
 {
@@ -4129,6 +4604,10 @@ mousepad_window_action_statusbar (GtkToggleAction *action,
       /* overwrite toggle signal */
       g_signal_connect_swapped (G_OBJECT (window->statusbar), "enable-overwrite",
                                 G_CALLBACK (mousepad_window_action_statusbar_overwrite), window);
+
+      /* populate filetype popup menu signal */
+      g_signal_connect_swapped (G_OBJECT (window->statusbar), "populate-filetype-popup",
+                                G_CALLBACK (mousepad_window_populate_statusbar_popup), window);
 
       /* update the statusbar items */
       if (window->active)
@@ -4317,8 +4796,8 @@ mousepad_window_action_decrease_indent (GtkAction      *action,
 
 
 static void
-mousepad_window_action_line_numbers (GtkToggleAction *action,
-                                     MousepadWindow  *window)
+mousepad_window_action_auto_indent (GtkToggleAction *action,
+                                    MousepadWindow  *window)
 {
   gboolean active;
 
@@ -4331,11 +4810,78 @@ mousepad_window_action_line_numbers (GtkToggleAction *action,
       /* get the current state */
       active = gtk_toggle_action_get_active (action);
 
-      /* save as the last used line number setting */
-      g_object_set (G_OBJECT (window->preferences), "view-line-numbers", active, NULL);
+      /* save as the last auto indent mode */
+      g_object_set (G_OBJECT (window->preferences), "view-auto-indent", active, NULL);
 
       /* update the active document */
-      mousepad_view_set_line_numbers (window->active->textview, active);
+      mousepad_view_set_auto_indent (window->active->textview, active);
+    }
+}
+
+
+
+static void
+mousepad_window_action_line_ending (GtkRadioAction *action,
+                                    GtkRadioAction *current,
+                                    MousepadWindow *window)
+{
+  MousepadLineEnding eol;
+
+  mousepad_return_if_fail (MOUSEPAD_IS_WINDOW (window));
+  mousepad_return_if_fail (MOUSEPAD_IS_DOCUMENT (window->active));
+  mousepad_return_if_fail (MOUSEPAD_IS_FILE (window->active->file));
+  mousepad_return_if_fail (GTK_IS_TEXT_BUFFER (window->active->buffer));
+
+  /* leave when menu updates are locked */
+  if (lock_menu_updates == 0)
+    {
+      /* get selected line ending */
+      eol = gtk_radio_action_get_current_value (current);
+
+      /* set the new line ending on the file */
+      mousepad_file_set_line_ending (window->active->file, eol);
+
+      /* make buffer as modified to show the user the change is not saved */
+      gtk_text_buffer_set_modified (window->active->buffer, TRUE);
+    }
+}
+
+
+
+static void
+mousepad_window_action_tab_size (GtkToggleAction *action,
+                                 MousepadWindow  *window)
+{
+  gboolean tab_size;
+
+  mousepad_return_if_fail (MOUSEPAD_IS_WINDOW (window));
+
+  /* leave when menu updates are locked */
+  if (lock_menu_updates == 0 && gtk_toggle_action_get_active (action))
+    {
+      mousepad_return_if_fail (MOUSEPAD_IS_DOCUMENT (window->active));
+
+      /* get the tab size */
+      tab_size = gtk_radio_action_get_current_value (GTK_RADIO_ACTION (action));
+
+      /* whether the other item was clicked */
+      if (tab_size == 0)
+        {
+          /* get tab size from document */
+          tab_size = mousepad_view_get_tab_size (window->active->textview);
+
+          /* select other size in dialog */
+          tab_size = mousepad_dialogs_other_tab_size (GTK_WINDOW (window), tab_size);
+        }
+
+      /* store as last used value */
+      g_object_set (G_OBJECT (window->preferences), "view-tab-size", tab_size, NULL);
+
+      /* set the value */
+      mousepad_view_set_tab_size (window->active->textview, tab_size);
+
+      /* update menu */
+      mousepad_window_menu_tab_sizes_update (window);
     }
 }
 
@@ -4392,64 +4938,36 @@ mousepad_window_action_write_bom (GtkToggleAction *action,
 
 
 static void
-mousepad_window_action_auto_indent (GtkToggleAction *action,
-                                    MousepadWindow  *window)
-{
-  gboolean active;
-
-  mousepad_return_if_fail (MOUSEPAD_IS_WINDOW (window));
-  mousepad_return_if_fail (MOUSEPAD_IS_DOCUMENT (window->active));
-
-  /* leave when menu updates are locked */
-  if (lock_menu_updates == 0)
-    {
-      /* get the current state */
-      active = gtk_toggle_action_get_active (action);
-
-      /* save as the last auto indent mode */
-      g_object_set (G_OBJECT (window->preferences), "view-auto-indent", active, NULL);
-
-      /* update the active document */
-      mousepad_view_set_auto_indent (window->active->textview, active);
-    }
-}
-
-
-
-static void
-mousepad_window_action_tab_size (GtkToggleAction *action,
+mousepad_window_action_language (GtkToggleAction *action,
                                  MousepadWindow  *window)
 {
-  gboolean tab_size;
+  guint                     lang_hash;
+  const gchar *const       *lang_id;
+  GtkSourceLanguage        *language;
+  GtkSourceLanguageManager *manager;
+  GtkSourceBuffer          *buffer;
 
-  mousepad_return_if_fail (MOUSEPAD_IS_WINDOW (window));
+  lang_hash = (guint) gtk_radio_action_get_current_value (GTK_RADIO_ACTION (action));
+  buffer = GTK_SOURCE_BUFFER (gtk_text_view_get_buffer (GTK_TEXT_VIEW (window->active->textview)));
 
-  /* leave when menu updates are locked */
-  if (lock_menu_updates == 0 && gtk_toggle_action_get_active (action))
+  if (lang_hash == g_str_hash ("none"))
     {
-      mousepad_return_if_fail (MOUSEPAD_IS_DOCUMENT (window->active));
+      gtk_source_buffer_set_language (buffer, NULL);
+      return;
+    }
 
-      /* get the tab size */
-      tab_size = gtk_radio_action_get_current_value (GTK_RADIO_ACTION (action));
+  manager = gtk_source_language_manager_get_default ();
+  lang_id = gtk_source_language_manager_get_language_ids (manager);
 
-      /* whether the other item was clicked */
-      if (tab_size == 0)
+  while (*lang_id)
+    {
+      if (g_str_hash (*lang_id) == lang_hash)
         {
-          /* get tab size from document */
-          tab_size = mousepad_view_get_tab_size (window->active->textview);
-
-          /* select other size in dialog */
-          tab_size = mousepad_dialogs_other_tab_size (GTK_WINDOW (window), tab_size);
+          language = gtk_source_language_manager_get_language (manager, *lang_id);
+          gtk_source_buffer_set_language (buffer, language);
+          break;
         }
-
-      /* store as last used value */
-      g_object_set (G_OBJECT (window->preferences), "view-tab-size", tab_size, NULL);
-
-      /* set the value */
-      mousepad_view_set_tab_size (window->active->textview, tab_size);
-
-      /* update menu */
-      mousepad_window_menu_tab_sizes_update (window);
+      lang_id++;
     }
 }
 
@@ -4475,34 +4993,6 @@ mousepad_window_action_insert_spaces (GtkToggleAction *action,
 
       /* update the active document */
       mousepad_view_set_insert_spaces (window->active->textview, insert_spaces);
-    }
-}
-
-
-
-static void
-mousepad_window_action_line_ending (GtkRadioAction *action,
-                                    GtkRadioAction *current,
-                                    MousepadWindow *window)
-{
-  MousepadLineEnding eol;
-
-  mousepad_return_if_fail (MOUSEPAD_IS_WINDOW (window));
-  mousepad_return_if_fail (MOUSEPAD_IS_DOCUMENT (window->active));
-  mousepad_return_if_fail (MOUSEPAD_IS_FILE (window->active->file));
-  mousepad_return_if_fail (GTK_IS_TEXT_BUFFER (window->active->buffer));
-
-  /* leave when menu updates are locked */
-  if (lock_menu_updates == 0)
-    {
-      /* get selected line ending */
-      eol = gtk_radio_action_get_current_value (current);
-
-      /* set the new line ending on the file */
-      mousepad_file_set_line_ending (window->active->file, eol);
-
-      /* make buffer as modified to show the user the change is not saved */
-      gtk_text_buffer_set_modified (window->active->buffer, TRUE);
     }
 }
 

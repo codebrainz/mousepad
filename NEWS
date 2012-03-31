@@ -6,7 +6,11 @@ Highlights:
     - Run multiple windows in one instance. We also invoke a running
       instance with DBus (optional), this is needed for tab DND between
       windows.
-    - Support for multiple tabs in one window.
+    - Drag and Drop support for text inside a document, between tabs and
+      between windows.  Also supports opening a file by dragging it into
+      the window.
+    - Support for multiple tabs in one window which are both reorderable
+      and detachable.
     - Load multiple files at once from both the open dialog and the command
       line.
     - Type-ahead find and highlight feature like Firefox.
@@ -14,9 +18,11 @@ Highlights:
     - Reimplemented recent file support. You can cleanup the Mousepad history
       and a file is removed from the history when Mousepad was unable to open
       it.
+    - Syntax highlighting of many filetypes (including printing).
     - Various hidden settings.
-    - Statusbar with cursor location and whether overwrite is actived.
-    - Mousepad depends on GTK+ 2.10.
+    - Statusbar with filetype, cursor location and whether overwrite is
+      actived.
+    - Mousepad depends on GTK+ 2.20.
 
 Bug fixes:
     - Save button is now default response in the dialog (Bug #2941).
@@ -28,3 +34,9 @@ Bug fixes:
     - The MousepadPreferences object uses XfceRc for saving the
       settings (Bug #2786).
     - No segfault when there is no rc file (Bug #2784).
+    - Support syntax highlighting using GtkSourceView (Bug #3228 & #5803).
+    - Proper Drag and Drop support (Bug #2055).
+    - Fix recent files support (Bug #5635, #3850 & #7890).
+    - Use GTK+ printing (Bug #4477).
+    - Settings saved in Find (and Replace) dialogs (Bug #7246).
+    - No deprecated dependencies (Bug #7259).

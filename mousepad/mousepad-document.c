@@ -33,7 +33,6 @@
 #include <mousepad/mousepad-document.h>
 #include <mousepad/mousepad-marshal.h>
 #include <mousepad/mousepad-view.h>
-#include <mousepad/mousepad-undo.h>
 #include <mousepad/mousepad-preferences.h>
 #include <mousepad/mousepad-window.h>
 
@@ -51,6 +50,9 @@ static void      mousepad_document_notify_has_selection    (GtkTextBuffer       
                                                             GParamSpec             *pspec,
                                                             MousepadDocument       *document);
 static void      mousepad_document_notify_overwrite        (GtkTextView            *textview,
+                                                            GParamSpec             *pspec,
+                                                            MousepadDocument       *document);
+static void      mousepad_document_notify_language         (GtkSourceBuffer        *buffer,
                                                             GParamSpec             *pspec,
                                                             MousepadDocument       *document);
 static void      mousepad_document_drag_data_received      (GtkWidget              *widget,
@@ -74,6 +76,7 @@ enum
   CURSOR_CHANGED,
   SELECTION_CHANGED,
   OVERWRITE_CHANGED,
+  LANGUAGE_CHANGED,
   LAST_SIGNAL
 };
 
@@ -157,6 +160,14 @@ mousepad_document_class_init (MousepadDocumentClass *klass)
                   0, NULL, NULL,
                   g_cclosure_marshal_VOID__BOOLEAN,
                   G_TYPE_NONE, 1, G_TYPE_BOOLEAN);
+
+  document_signals[LANGUAGE_CHANGED] =
+    g_signal_new (I_("language-changed"),
+                  G_TYPE_FROM_CLASS (gobject_class),
+                  G_SIGNAL_RUN_LAST,
+                  0, NULL, NULL,
+                  g_cclosure_marshal_VOID__OBJECT,
+                  G_TYPE_NONE, 1, GTK_TYPE_SOURCE_LANGUAGE);
 }
 
 
@@ -164,11 +175,12 @@ mousepad_document_class_init (MousepadDocumentClass *klass)
 static void
 mousepad_document_init (MousepadDocument *document)
 {
-  GtkTargetList       *target_list;
-  gboolean             word_wrap, auto_indent, line_numbers, insert_spaces;
-  gchar               *font_name;
-  gint                 tab_size;
-  MousepadPreferences *preferences;
+  GtkTargetList        *target_list;
+  gboolean              word_wrap, auto_indent, line_numbers, insert_spaces;
+  gchar                *font_name, *color_scheme;
+  gint                  tab_size;
+  GtkSourceStyleScheme *scheme = NULL;
+  MousepadPreferences  *preferences;
 
   /* private structure */
   document->priv = MOUSEPAD_DOCUMENT_GET_PRIVATE (document);
@@ -185,16 +197,13 @@ mousepad_document_init (MousepadDocument *document)
   gtk_scrolled_window_set_vadjustment (GTK_SCROLLED_WINDOW (document), NULL);
 
   /* create a textbuffer */
-  document->buffer = gtk_text_buffer_new (NULL);
+  document->buffer = GTK_TEXT_BUFFER (gtk_source_buffer_new (NULL));
 
   /* initialize the file */
   document->file = mousepad_file_new (document->buffer);
 
   /* connect signals to the file */
   g_signal_connect_swapped (G_OBJECT (document->file), "filename-changed", G_CALLBACK (mousepad_document_filename_changed), document);
-
-  /* initialize the undo manager */
-  document->undo = mousepad_undo_new (document->buffer);
 
   /* create the highlight tag */
   document->tag = gtk_text_buffer_create_tag (document->buffer, NULL, "background", "#ffff78", NULL);
@@ -219,6 +228,7 @@ mousepad_document_init (MousepadDocument *document)
                 "view-font-name", &font_name,
                 "view-tab-size", &tab_size,
                 "view-insert-spaces", &insert_spaces,
+                "view-color-scheme", &color_scheme,
                 NULL);
 
   /* release the preferences */
@@ -232,8 +242,14 @@ mousepad_document_init (MousepadDocument *document)
   mousepad_view_set_tab_size (document->textview, tab_size);
   mousepad_view_set_insert_spaces (document->textview, insert_spaces);
 
+  if (g_strcmp0 (color_scheme, "none") != 0)
+    scheme =  gtk_source_style_scheme_manager_get_scheme (gtk_source_style_scheme_manager_get_default (), color_scheme);
+  gtk_source_buffer_set_highlight_syntax (GTK_SOURCE_BUFFER (document->buffer), (scheme != NULL));
+  gtk_source_buffer_set_style_scheme (GTK_SOURCE_BUFFER (document->buffer), scheme);
+
   /* cleanup */
   g_free (font_name);
+  g_free (color_scheme);
 
   /* attach signals to the text view and buffer */
   g_signal_connect (G_OBJECT (document->buffer), "notify::cursor-position", G_CALLBACK (mousepad_document_notify_cursor_position), document);
@@ -242,6 +258,7 @@ mousepad_document_init (MousepadDocument *document)
   g_signal_connect_swapped (G_OBJECT (document->file), "readonly-changed", G_CALLBACK (mousepad_document_label_color), document);
   g_signal_connect (G_OBJECT (document->textview), "notify::overwrite", G_CALLBACK (mousepad_document_notify_overwrite), document);
   g_signal_connect (G_OBJECT (document->textview), "drag-data-received", G_CALLBACK (mousepad_document_drag_data_received), document);
+  g_signal_connect (G_OBJECT (document->buffer), "notify::language", G_CALLBACK (mousepad_document_notify_language), document);
 }
 
 
@@ -254,9 +271,6 @@ mousepad_document_finalize (GObject *object)
   /* cleanup */
   g_free (document->priv->utf8_filename);
   g_free (document->priv->utf8_basename);
-
-  /* release the undo manager */
-  g_object_unref (G_OBJECT (document->undo));
 
   /* release the file */
   g_object_unref (G_OBJECT (document->file));
@@ -345,6 +359,25 @@ mousepad_document_notify_overwrite (GtkTextView      *textview,
 
   /* emit the signal */
   g_signal_emit (G_OBJECT (document), document_signals[OVERWRITE_CHANGED], 0, overwrite);
+}
+
+
+
+static void
+mousepad_document_notify_language (GtkSourceBuffer  *buffer,
+                                   GParamSpec       *pspec,
+                                   MousepadDocument *document)
+{
+  GtkSourceLanguage *language;
+
+  mousepad_return_if_fail (MOUSEPAD_IS_DOCUMENT (document));
+  mousepad_return_if_fail (GTK_IS_SOURCE_BUFFER (buffer));
+
+  /* the new language */
+  language = gtk_source_buffer_get_language (buffer);
+
+  /* emit the signal */
+  g_signal_emit (G_OBJECT (document), document_signals[LANGUAGE_CHANGED], 0, language);
 }
 
 
@@ -509,6 +542,9 @@ mousepad_document_send_signals (MousepadDocument *document)
 
   /* re-send the selection status */
   mousepad_document_notify_has_selection (document->buffer, NULL, document);
+
+  /* re-send the language signal */
+  mousepad_document_notify_language (GTK_SOURCE_BUFFER (document->buffer), NULL, document);
 }
 
 

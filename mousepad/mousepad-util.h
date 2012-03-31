@@ -55,69 +55,83 @@ enum _MousepadSearchFlags
   MOUSEPAD_SEARCH_FLAGS_ACTION_REPLACE    = 1 << 17, /* replace the match */
 };
 
-gboolean   mousepad_util_iter_starts_word         (const GtkTextIter   *iter);
+gboolean   mousepad_util_iter_starts_word                 (const GtkTextIter   *iter);
 
-gboolean   mousepad_util_iter_ends_word           (const GtkTextIter   *iter);
+gboolean   mousepad_util_iter_ends_word                   (const GtkTextIter   *iter);
 
-gboolean   mousepad_util_iter_inside_word         (const GtkTextIter   *iter);
+gboolean   mousepad_util_iter_inside_word                 (const GtkTextIter   *iter);
 
-gboolean   mousepad_util_iter_forward_word_end    (GtkTextIter         *iter);
+gboolean   mousepad_util_iter_forward_word_end            (GtkTextIter         *iter);
 
-gboolean   mousepad_util_iter_backward_word_start (GtkTextIter         *iter);
+gboolean   mousepad_util_iter_backward_word_start         (GtkTextIter         *iter);
 
-gboolean   mousepad_util_iter_forward_text_start  (GtkTextIter         *iter);
+gboolean   mousepad_util_iter_forward_text_start          (GtkTextIter         *iter);
 
-gboolean   mousepad_util_iter_backward_text_start (GtkTextIter         *iter);
+gboolean   mousepad_util_iter_backward_text_start         (GtkTextIter         *iter);
 
-gchar     *mousepad_util_config_name              (const gchar         *name);
+gchar     *mousepad_util_config_name                      (const gchar         *name);
 
-gchar     *mousepad_util_key_name                 (const gchar         *name);
+gchar     *mousepad_util_key_name                         (const gchar         *name);
 
-gchar     *mousepad_util_utf8_strcapital          (const gchar         *str);
+gchar     *mousepad_util_utf8_strcapital                  (const gchar         *str);
 
-gchar     *mousepad_util_utf8_stropposite         (const gchar         *str);
+gchar     *mousepad_util_utf8_stropposite                 (const gchar         *str);
 
-gchar     *mousepad_util_escape_underscores       (const gchar         *str);
+gchar     *mousepad_util_escape_underscores               (const gchar         *str);
 
-GtkWidget *mousepad_util_image_button             (const gchar         *stock_id,
-                                                   const gchar         *label);
+GtkWidget *mousepad_util_image_button                     (const gchar         *stock_id,
+                                                           const gchar         *label);
 
-void       mousepad_util_entry_error              (GtkWidget           *widget,
-                                                   gboolean             error);
+void       mousepad_util_entry_error                      (GtkWidget           *widget,
+                                                           gboolean             error);
 
-void       mousepad_util_dialog_header            (GtkDialog           *dialog,
-                                                   const gchar         *title,
-                                                   const gchar         *subtitle,
-                                                   const gchar         *icon);
+void       mousepad_util_dialog_header                    (GtkDialog           *dialog,
+                                                           const gchar         *title,
+                                                           const gchar         *subtitle,
+                                                           const gchar         *icon);
 
 #if !GTK_CHECK_VERSION (2,12,0)
-void       mousepad_util_set_tooltip              (GtkWidget           *widget,
-                                                   const gchar         *string);
+void       mousepad_util_set_tooltip                      (GtkWidget           *widget,
+                                                           const gchar         *string);
 #endif
 
-gint       mousepad_util_get_real_line_offset     (const GtkTextIter   *iter,
-                                                   gint                 tab_size);
+gint       mousepad_util_get_real_line_offset             (const GtkTextIter   *iter,
+                                                           gint                 tab_size);
 
-gboolean   mousepad_util_forward_iter_to_text     (GtkTextIter         *iter,
-                                                   const GtkTextIter   *limit);
+gboolean   mousepad_util_forward_iter_to_text             (GtkTextIter         *iter,
+                                                           const GtkTextIter   *limit);
 
-gchar     *mousepad_util_get_save_location        (const gchar         *relpath,
-                                                   gboolean             create_parents);
+gchar     *mousepad_util_get_save_location                (const gchar         *relpath,
+                                                           gboolean             create_parents);
 
-void       mousepad_util_save_key_file            (GKeyFile            *keyfile,
-                                                   const gchar         *filename);
+void       mousepad_util_save_key_file                    (GKeyFile            *keyfile,
+                                                           const gchar         *filename);
 
-GType      mousepad_util_search_flags_get_type    (void) G_GNUC_CONST;
+GType      mousepad_util_search_flags_get_type            (void) G_GNUC_CONST;
 
-gint       mousepad_util_highlight                (GtkTextBuffer       *buffer,
-                                                   GtkTextTag          *tag,
-                                                   const gchar         *string,
-                                                   MousepadSearchFlags  flags);
+gint       mousepad_util_highlight                        (GtkTextBuffer       *buffer,
+                                                           GtkTextTag          *tag,
+                                                           const gchar         *string,
+                                                           MousepadSearchFlags  flags);
 
-gint       mousepad_util_search                   (GtkTextBuffer       *buffer,
-                                                   const gchar         *string,
-                                                   const gchar         *replace,
-                                                   MousepadSearchFlags  flags);
+gint       mousepad_util_search                           (GtkTextBuffer       *buffer,
+                                                           const gchar         *string,
+                                                           const gchar         *replace,
+                                                           MousepadSearchFlags  flags);
+
+gint       mousepad_util_color_schemes_name_compare       (gconstpointer        a,
+                                                           gconstpointer        b);
+
+GSList    *mousepad_util_color_schemes_get                (void);
+
+GSList    *mousepad_util_color_schemes_get_sorted         (void);
+
+gint       mousepad_util_languages_name_compare           (gconstpointer        a,
+                                                           gconstpointer        b);
+
+GSList    *mousepad_util_language_sections_get_sorted     (void);
+
+GSList    *mousepad_util_languages_get_sorted_for_section (const gchar         *section);
 
 G_END_DECLS
 

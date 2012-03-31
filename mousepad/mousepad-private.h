@@ -21,6 +21,12 @@
 #include <glib-object.h>
 #include <gtk/gtk.h>
 #include <glib/gi18n.h>
+#include <gtksourceview/gtksourceview.h>
+#include <gtksourceview/gtksourcestylescheme.h>
+#include <gtksourceview/gtksourcestyleschememanager.h>
+#include <gtksourceview/gtksourcelanguage.h>
+#include <gtksourceview/gtksourcelanguagemanager.h>
+#include <gtksourceview/gtksourceprintcompositor.h>
 
 G_BEGIN_DECLS
 
