@@ -31,6 +31,7 @@ mousepad_dialogs_show_about (GtkWindow *parent)
   {
     "Nick Schermer <nick@xfce.org>",
     "Erik Harrison <erikharrison@xfce.org>",
+    "Matthew Brush <matt@xfce.org>",
     NULL
   };
 
