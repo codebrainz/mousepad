@@ -180,7 +180,7 @@ mousepad_preferences_class_init (MousepadPreferencesClass *klass)
                                    g_param_spec_string ("view-font-name",
                                                         "ViewFontName",
                                                         NULL,
-                                                        NULL,
+                                                        "Monospace",
                                                         MOUSEPAD_PARAM_READWRITE));
 
   g_object_class_install_property (gobject_class,
