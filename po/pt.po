@@ -1,15 +1,15 @@
 # European Portuguese translations for Mousepad package.
 # Copyright (C) 2005-2006 Erik Harrison.
 # This file is distributed under the same license as the Mousepad package.
-# Nuno Miguel <nunis@netcabo.pt>, 2007, 2008, 2009
+# Nuno Miguel <nunomgue@gmail.com>, 2007-2012.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: mousepad 0.2.16\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2007-01-20 12:34+0100\n"
-"PO-Revision-Date: 2012-01-12 14:01-0000\n"
-"Last-Translator: Sérgio Marques <smarquespt@gmail.com>\n"
+"PO-Revision-Date: 2012-04-13 12:47+0100\n"
+"Last-Translator: Nuno Miguel <nunomgue@gmail.com>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -18,13 +18,13 @@ msgstr ""
 #: ../src/callback.c:37
 #, c-format
 msgid "Save changes to '%s'?"
-msgstr "Gravar alterações em \"%s\"?"
+msgstr "Gravar alterações em '%s'?"
 
 #: ../src/callback.c:213
 #: ../src/file.c:174
 #, c-format
 msgid "Can't convert codeset to '%s'"
-msgstr "Não é possível converter a codificação para \"%s\""
+msgstr "Não é possível converter a codificação para '%s'"
 
 #: ../src/callback.c:240
 msgid "Can't open pipe to process"
@@ -259,7 +259,7 @@ msgstr "Codificação dos c_aracteres: "
 #: ../src/selector.c:403
 #, c-format
 msgid "'%s' already exists. Overwrite?"
-msgstr "\"%s\" já existe. Substituir?"
+msgstr "'%s' já existe. Substituir?"
 
 #. add the label with the root warning
 #: ../src/window.c:110
