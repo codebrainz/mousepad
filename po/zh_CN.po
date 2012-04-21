@@ -64,35 +64,35 @@ msgstr "/文件(_F)"
 
 #: ../src/menu.c:63
 msgid "/File/_New"
-msgstr "/文件/新建(_N)"
+msgstr "/文件(F)/新建(_N)"
 
 #: ../src/menu.c:66
 msgid "/File/New _Window"
-msgstr "/文件/新建窗口(_W)"
+msgstr "/文件(F)/新建窗口(_W)"
 
 #: ../src/menu.c:69
 msgid "/File/_Open..."
-msgstr "/文件/打开(_O)..."
+msgstr "/文件(F)/打开(_O)..."
 
 #: ../src/menu.c:72
 msgid "/File/Open _Recent"
-msgstr "/文件/打开最近的(_R)"
+msgstr "/文件(F)/打开最近的(_R)"
 
 #: ../src/menu.c:77
 msgid "/File/_Save"
-msgstr "/文件/保存(_S)"
+msgstr "/文件(F)/保存(_S)"
 
 #: ../src/menu.c:79
 msgid "/File/Save _As..."
-msgstr "/文件/另存为(_A)..."
+msgstr "/文件(F)/另存为(_A)..."
 
 #: ../src/menu.c:83
 msgid "/File/_Print..."
-msgstr "/文件/打印(_P)..."
+msgstr "/文件(F)/打印(_P)..."
 
 #: ../src/menu.c:87
 msgid "/File/_Quit"
-msgstr "/文件/退出(_Q)"
+msgstr "/文件(F)/退出(_Q)"
 
 #: ../src/menu.c:89
 msgid "/_Edit"
@@ -100,31 +100,31 @@ msgstr "/编辑(_E)"
 
 #: ../src/menu.c:91
 msgid "/Edit/_Undo"
-msgstr "/编辑/撤销(_U)"
+msgstr "/编辑(E)/撤销(_U)"
 
 #: ../src/menu.c:93
 msgid "/Edit/_Redo"
-msgstr "/编辑/重做(_R)"
+msgstr "/编辑(E)/重做(_R)"
 
 #: ../src/menu.c:97
 msgid "/Edit/Cu_t"
-msgstr "/编辑/剪切(_T)"
+msgstr "/编辑(E)/剪切(_T)"
 
 #: ../src/menu.c:99
 msgid "/Edit/_Copy"
-msgstr "/编辑/复制(_C)"
+msgstr "/编辑(E)/复制(_C)"
 
 #: ../src/menu.c:101
 msgid "/Edit/_Paste"
-msgstr "/编辑/粘贴(_P)"
+msgstr "/编辑(E)/粘贴(_P)"
 
 #: ../src/menu.c:103
 msgid "/Edit/_Delete"
-msgstr "/编辑/删除(_D)"
+msgstr "/编辑(E)/删除(_D)"
 
 #: ../src/menu.c:107
 msgid "/Edit/Select _All"
-msgstr "/编辑/全选(_A)"
+msgstr "/编辑(E)/全选(_A)"
 
 #: ../src/menu.c:109
 msgid "/_Search"
@@ -132,23 +132,23 @@ msgstr "/搜索(_S)"
 
 #: ../src/menu.c:111
 msgid "/Search/_Find..."
-msgstr "/搜索/查找(_F)..."
+msgstr "/搜索(S)/查找(_F)..."
 
 #: ../src/menu.c:113
 msgid "/Search/Find _Next"
-msgstr "/搜索/查找下一个(_N)"
+msgstr "/搜索(S)/查找下一个(_N)"
 
 #: ../src/menu.c:115
 msgid "/Search/Find _Previous"
-msgstr "/搜索/查找上一个(_P)"
+msgstr "/搜索(S)/查找上一个(_P)"
 
 #: ../src/menu.c:117
 msgid "/Search/_Replace..."
-msgstr "/搜索/替换(_R)..."
+msgstr "/搜索(S)/替换(_R)..."
 
 #: ../src/menu.c:121
 msgid "/Search/_Jump To..."
-msgstr "/搜索/跳转至(_J)..."
+msgstr "/搜索(S)/跳转至(_J)..."
 
 #: ../src/menu.c:123
 msgid "/_Options"
@@ -156,19 +156,19 @@ msgstr "/选项(_O)"
 
 #: ../src/menu.c:125
 msgid "/Options/_Font..."
-msgstr "/选项/字体(_F)..."
+msgstr "/选项(O)/字体(_F)..."
 
 #: ../src/menu.c:127
 msgid "/Options/_Word Wrap"
-msgstr "/选项/自动换行(_W)"
+msgstr "/选项(O)/自动换行(_W)"
 
 #: ../src/menu.c:129
 msgid "/Options/_Line Numbers"
-msgstr "/选项/行号(_L)"
+msgstr "/选项(O)/行号(_L)"
 
 #: ../src/menu.c:133
 msgid "/Options/_Auto Indent"
-msgstr "/选项/自动缩进(_A)"
+msgstr "/选项(O)/自动缩进(_A)"
 
 #: ../src/menu.c:135
 msgid "/_Help"
@@ -176,7 +176,7 @@ msgstr "/帮助(_H)"
 
 #: ../src/menu.c:137
 msgid "/Help/_About"
-msgstr "/帮助/关于(_A)"
+msgstr "/帮助(H)/关于(_A)"
 
 #: ../src/search.c:73
 msgid "Search string not found"
@@ -197,7 +197,7 @@ msgstr "查找"
 
 #: ../src/search.c:200 ../src/search.c:265
 msgid "Fi_nd what: "
-msgstr "查找什么(_N)："
+msgstr "查找内容(_N)："
 
 #: ../src/search.c:219 ../src/search.c:292
 msgid "_Match case"
