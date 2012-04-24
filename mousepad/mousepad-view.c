@@ -30,7 +30,7 @@
 
 
 
-#define mousepad_view_get_buffer(view) (GTK_TEXT_VIEW (view)->buffer)
+#define mousepad_view_get_buffer(view) (gtk_text_view_get_buffer (GTK_TEXT_VIEW (view)))
 
 
 
@@ -258,7 +258,7 @@ mousepad_view_key_press_event (GtkWidget   *widget,
   buffer = mousepad_view_get_buffer (view);
 
   /* whether the textview is editable */
-  is_editable = GTK_TEXT_VIEW (view)->editable;
+  is_editable = gtk_text_view_get_editable(GTK_TEXT_VIEW (view));
 
   /* handle the key event */
   switch (event->keyval)
@@ -407,9 +407,7 @@ mousepad_view_button_press_event (GtkWidget      *widget,
       && event->type == GDK_BUTTON_PRESS)
     {
       /* set the vertical selection start position, including textview offset */
-      view->selection_start_x = event->x + textview->xoffset;
-      view->selection_start_y = event->y + textview->yoffset;
-
+      gtk_text_view_window_to_buffer_coords(textview,GTK_TEXT_WINDOW_TEXT,event->x,event->y,&view->selection_start_x,&view->selection_start_y);
       /* hide cursor */
       gtk_text_view_set_cursor_visible (textview, FALSE);
 
@@ -422,9 +420,10 @@ mousepad_view_button_press_event (GtkWidget      *widget,
   else if (event->type == GDK_2BUTTON_PRESS && event->button == 1)
     {
       /* get the iter under the cursor */
+      gint x,y;
+      gtk_text_view_window_to_buffer_coords(textview,GTK_TEXT_WINDOW_TEXT,event->x,event->y,&x,&y);
       gtk_text_view_get_iter_at_location (GTK_TEXT_VIEW (view), &iter,
-                                          event->x + textview->xoffset,
-                                          event->y + textview->yoffset);
+                                          x,y);
 
       /* try to select a whole word or space */
       if (mousepad_view_selection_word_range (&iter, &start_iter, &end_iter))
@@ -734,8 +733,11 @@ mousepad_view_selection_draw (MousepadView *view,
       /* get the visible area */
       if (G_LIKELY (append == FALSE))
         {
+          gint xoffset,yoffset;
+          gtk_text_view_window_to_buffer_coords(textview,GTK_TEXT_WINDOW_TEXT,
+		                                        0,0,&xoffset,&yoffset);
           visible_start_y = MIN (y_begin, y_end);
-          visible_start_y = MAX (visible_start_y, textview->yoffset);
+          visible_start_y = MAX (visible_start_y, yoffset);
         }
 
       /* walk the lines inside the selection area */
@@ -761,12 +763,12 @@ mousepad_view_selection_draw (MousepadView *view,
               gtk_text_view_get_iter_location (textview, &end_iter, &rect);
 
               /* calculate line cooridinates */
-              line_x = rect.x - textview->xoffset;
-              line_y = rect.y - textview->yoffset;
+              gtk_text_view_buffer_to_window_coords(textview,GTK_TEXT_WINDOW_TEXT,
+                                                    rect.x,rect.y, &line_x,&line_y);
 
               /* draw a line in front of the iter */
               gdk_draw_line (GDK_DRAWABLE (window),
-                             GTK_WIDGET (view)->style->base_gc[GTK_STATE_SELECTED],
+                             gtk_widget_get_style(GTK_WIDGET (view))->base_gc[GTK_STATE_SELECTED],
                              line_x, line_y, line_x, line_y + rect.height - 1);
             }
           else if (!gtk_text_iter_equal (&start_iter, &end_iter))
@@ -816,12 +818,12 @@ mousepad_view_selection_draw (MousepadView *view,
               gtk_text_view_get_iter_location (textview, &start_iter, &rect);
 
               /* calculate line coordinates */
-              line_x = rect.x - textview->xoffset;
-              line_y = rect.y - textview->yoffset;
-
+              gtk_text_view_buffer_to_window_coords(textview,GTK_TEXT_WINDOW_TEXT,
+                                                    rect.x,rect.y, &line_x,&line_y);
+                                                    
               /* draw a line in front of the iter */
               gdk_draw_line (GDK_DRAWABLE (window),
-                             GTK_WIDGET (view)->style->base_gc[GTK_STATE_SELECTED],
+                             gtk_widget_get_style(GTK_WIDGET (view))->base_gc[GTK_STATE_SELECTED],
                              line_x, line_y, line_x, line_y + rect.height - 1);
             }
           else
@@ -863,8 +865,8 @@ mousepad_view_selection_timeout (gpointer user_data)
                           &pointer_x, &pointer_y, NULL);
 
   /* convert to positive values and add buffer offset */
-  pointer_x = MAX (pointer_x, 0) + textview->xoffset;
-  pointer_y = MAX (pointer_y, 0) + textview->yoffset;
+  gtk_text_view_window_to_buffer_coords(textview,GTK_TEXT_WINDOW_TEXT,MAX (pointer_x, 0),MAX (pointer_y, 0),
+                                        &pointer_x,&pointer_y);
 
   /* only update the selection when the cursor moved */
   if (view->selection_end_x != pointer_x || view->selection_end_y != pointer_y)
