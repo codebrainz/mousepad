@@ -142,7 +142,7 @@ mousepad_dialogs_other_tab_size (GtkWindow *parent,
   /* build dialog */
   dialog = gtk_dialog_new_with_buttons (_("Select Tab Size"),
                                         parent,
-                                        GTK_DIALOG_MODAL | GTK_DIALOG_DESTROY_WITH_PARENT | GTK_DIALOG_NO_SEPARATOR,
+                                        GTK_DIALOG_MODAL | GTK_DIALOG_DESTROY_WITH_PARENT,
                                         GTK_STOCK_CANCEL, MOUSEPAD_RESPONSE_CANCEL,
                                         GTK_STOCK_OK, MOUSEPAD_RESPONSE_OK,
                                         NULL);
@@ -223,7 +223,7 @@ mousepad_dialogs_go_to (GtkWindow     *parent,
   /* build the dialog */
   dialog = gtk_dialog_new_with_buttons (_("Go To"),
                                         parent,
-                                        GTK_DIALOG_MODAL | GTK_DIALOG_DESTROY_WITH_PARENT | GTK_DIALOG_NO_SEPARATOR,
+                                        GTK_DIALOG_MODAL | GTK_DIALOG_DESTROY_WITH_PARENT,
                                         GTK_STOCK_CANCEL, MOUSEPAD_RESPONSE_CANCEL,
                                         GTK_STOCK_JUMP_TO, MOUSEPAD_RESPONSE_JUMP_TO,
                                         NULL);
