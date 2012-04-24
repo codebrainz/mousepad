@@ -178,7 +178,7 @@ mousepad_replace_dialog_init (MousepadReplaceDialog *dialog)
 
   /* create main vertical box */
   vbox = g_object_new (GTK_TYPE_VBOX, "border-width", 6, "spacing", 4, NULL);
-  gtk_box_pack_start (GTK_BOX (GTK_DIALOG (dialog)->vbox), vbox, TRUE, TRUE, 0);
+  gtk_box_pack_start (GTK_BOX (gtk_dialog_get_content_area(GTK_DIALOG (dialog))), vbox, TRUE, TRUE, 0);
   gtk_widget_show (vbox);
 
   /* horizontal box for search string */

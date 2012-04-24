@@ -154,7 +154,7 @@ mousepad_dialogs_other_tab_size (GtkWindow *parent,
   gtk_scale_set_digits (GTK_SCALE (scale), 0);
   gtk_scale_set_draw_value (GTK_SCALE (scale), TRUE);
   gtk_scale_set_value_pos (GTK_SCALE (scale), GTK_POS_TOP);
-  gtk_box_pack_start (GTK_BOX (GTK_DIALOG (dialog)->vbox), scale, TRUE, TRUE, 0);
+  gtk_box_pack_start (GTK_BOX (gtk_dialog_get_content_area (GTK_DIALOG(dialog))), scale, TRUE, TRUE, 0);
   gtk_widget_show (scale);
 
   /* run the dialog */
@@ -231,7 +231,7 @@ mousepad_dialogs_go_to (GtkWindow     *parent,
   gtk_window_set_resizable (GTK_WINDOW (dialog), FALSE);
 
   vbox = gtk_vbox_new (FALSE, 6);
-  gtk_box_pack_start (GTK_BOX (GTK_DIALOG (dialog)->vbox), vbox, TRUE, TRUE, 0);
+  gtk_box_pack_start (GTK_BOX (gtk_dialog_get_content_area (GTK_DIALOG(dialog))), vbox, TRUE, TRUE, 0);
   gtk_container_set_border_width (GTK_CONTAINER (vbox), 6);
   gtk_widget_show (vbox);
 
