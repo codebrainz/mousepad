@@ -2,7 +2,7 @@
 # Catalan translation of Mousepad.
 # Copyright (C) 2005-2006 Erik Harrison.
 # This file is distributed under the same license as the Mousepad package.
-#
+# 
 # David Rosal <davidrr@users.sourceforge.net>, 2004.
 # Pau Rul·lan Ferragut <paurullan@bulma.net>, 2005, 2006, 2007
 # Carles Muñoz Gorriz <carlesmu@internautas.org>, 2006.
@@ -17,10 +17,11 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: ca\n"
 "Plural-Forms: Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: KBabel 1.11.2\n"
 "X-Poedit-Language: Catalan\n"
 "X-Poedit-SourceCharset: utf-8\n"
+"X-Generator: KBabel 1.11.2\n"
 
 #: ../src/callback.c:37
 #, c-format
@@ -47,7 +48,7 @@ msgstr "Quant a %s"
 
 #: ../src/file.c:187
 msgid "Can't open file to write"
-msgstr "No es pot obrir el fitxer per a escriure"
+msgstr "No es pot obrir el fitxer per escriure"
 
 #: ../src/file.c:192
 msgid "Can't write file"
@@ -67,7 +68,7 @@ msgstr "/Fitxer/_Nou"
 
 #: ../src/menu.c:66
 msgid "/File/New _Window"
-msgstr "/Fitxer/Nova _Finesta"
+msgstr "/Fitxer/Nova _finesta"
 
 #: ../src/menu.c:69
 msgid "/File/_Open..."
