@@ -854,7 +854,6 @@ mousepad_view_selection_timeout (gpointer user_data)
   MousepadView  *view = MOUSEPAD_VIEW (user_data);
   GtkTextView   *textview = GTK_TEXT_VIEW (view);
   gint           pointer_x, pointer_y;
-  gint           selection_start_x, selection_start_y;
   GtkTextBuffer *buffer;
   GtkTextIter    iter, cursor;
 
@@ -874,10 +873,6 @@ mousepad_view_selection_timeout (gpointer user_data)
       /* update the end coordinates */
       view->selection_end_x = pointer_x;
       view->selection_end_y = pointer_y;
-
-      /* backup start coordinates */
-      selection_start_x = view->selection_start_x;
-      selection_start_y = view->selection_start_y;
 
       /* get the text buffer */
       buffer = mousepad_view_get_buffer (view);
