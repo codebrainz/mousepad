@@ -1,46 +1,63 @@
-# $Id$
+SUBDIRS =									\
+	icons									\
+	mousepad                                                        	\
+	po                                                                      \
+	docs
 
-SUBDIRS =								\
-	po								\
-	src
+distclean-local:
+	rm -rf *.spec *.cache *~
 
-pixmapsdir = $(datadir)/pixmaps
-pixmaps_DATA =								\
-	mousepad.png
+rpm: dist
+	rpmbuild -ta $(PACKAGE)-$(VERSION).tar.gz
+	@rm -f $(PACKAGE)-$(VERSION).tar.gz
+
+mousepad_scriptsdir = $(libdir)/xfce4/mousepad
+mousepad_scripts_SCRIPTS =							\
+	MousepadHelp
+
+MousepadHelp: MousepadHelp.in Makefile
+	rm -f MousepadHelp.gen MousepadHelp
+	sed -e "s,\@datadir\@,$(datadir),g" 					\
+		< $(srcdir)/MousepadHelp.in					\
+		> MousepadHelp.gen
+	mv MousepadHelp.gen MousepadHelp
 
 desktopdir = $(datadir)/applications
-desktop_in_files = mousepad.desktop.in
+desktop_in_in_files = 								\
+	Mousepad.desktop.in.in
+desktop_in_files = $(desktop_in_in_files:.desktop.in.in=.desktop.in)
+%.desktop.in: %.desktop.in.in
+	sed -e "s,\@libexecdir\@,$(libexecdir),g" < $< > $@
 desktop_DATA = $(desktop_in_files:.desktop.in=.desktop)
 @INTLTOOL_DESKTOP_RULE@
 
-AUTOMAKE_OPTIONS =							\
-	1.8								\
-	dist-bzip2
+.PHONY: ChangeLog
 
-EXTRA_DIST =								\
-	intltool-extract.in						\
-	intltool-merge.in						\
-	intltool-update.in						\
-	$(desktop_in_files)						\
-	$(pixmaps_DATA)
+ChangeLog: Makefile
+	(GIT_DIR=$(top_srcdir)/.git git log > .changelog.tmp			\
+	&& mv .changelog.tmp ChangeLog; rm -f .changelog.tmp)			\
+	|| (touch ChangeLog; echo 'Git directory not found: installing possibly empty changelog.' >&2)
 
-DISTCLEANFILES =							\
-	intltool-extract						\
-	intltool-merge							\
-	intltool-update							\
+dist-hook: ChangeLog
+
+EXTRA_DIST =									\
+	MousepadHelp.in								\
+	Mousepad.spec.in							\
+	intltool-extract.in							\
+	intltool-merge.in							\
+	intltool-update.in							\
+	$(desktop_in_in_files)
+
+DISTCLEANFILES =								\
+	MousepadHelp								\
+	Mousepad.spec								\
+	intltool-extract							\
+	intltool-merge								\
+	intltool-update								\
+	$(desktop_in_files)							\
 	$(desktop_DATA)
 
-update_desktop_database = update-desktop-database $(datadir)/applications
-
-install-data-hook:
-	@-if test -z "$(DESTDIR)"; then					\
-                echo "Updating desktop database.";			\
-                $(update_desktop_database);				\
-        else								\
-                echo "*** Desktop database not updated. Remember to run:";\
-		echo "***";						\
-                echo "***   $(update_desktop_database)";		\
-		echo "***";						\
-        fi
+DISTCHECK_CONFIGURE_FLAGS =							\
+	--enable-xsltproc
 
 # vi:set ts=8 sw=8 noet ai nocindent syntax=automake:

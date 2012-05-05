@@ -1,29 +1,42 @@
-0.2.16
-======
-- Sort recently used items by most recently used.
-- Updated translations: sl, gl, it, zh_CN, pl, cs, sv, da, ja, es, nb,
--  eu, sq, de, pt_BR, id, sk, ku, lv, nl, am, si, pt_PT, fr, ur, ca, 
--  en_GB, tr, uk, ko, ar, el.
+0.3.0
+=====
+Highlights:
+    - A complete rewrite of Mousepad. The code is now written in GOjects
+      where possible so we have a solid base for further development.
+    - Run multiple windows in one instance. We also invoke a running
+      instance with DBus (optional), this is needed for tab DND between
+      windows.
+    - Drag and Drop support for text inside a document, between tabs and
+      between windows.  Also supports opening a file by dragging it into
+      the window.
+    - Support for multiple tabs in one window which are both reorderable
+      and detachable.
+    - Load multiple files at once from both the open dialog and the command
+      line.
+    - Type-ahead find and highlight feature like Firefox.
+    - Support for editable menu accelerators.
+    - Reimplemented recent file support. You can cleanup the Mousepad history
+      and a file is removed from the history when Mousepad was unable to open
+      it.
+    - Syntax highlighting of many filetypes (including printing).
+    - Various hidden settings.
+    - Statusbar with filetype, cursor location and whether overwrite is
+      actived.
+    - Mousepad depends on GTK+ 2.20.
 
-
-0.2.12
-======
-- Add support for the new recently-used database, using the GtkRecent
-  functionality available in GTK+ 2.10 and later.
-- Set default response in Open/Save dialogs (Bug #2249).
-- Merge new undo system.
-- Updated translations: Carles Muñoz Gorriz (ca), Michal Várady (cz), Benedikt
-                        Meurer (de), Stavros Giannouris (el), Piarres Beobide
-			(eu), Jari Rahkonen (fi), Maximilian Schleiss (fr),
-			ByungHyun Choi (ko), Piotr Maliński (pl), Adriano
-			Winter Bess (pt_BR), Andrey Fedoseev (ru), Alexander
-			Toresson (sv)
-- New translations: Alexander Nyakhaychyk (be), Geraint Rowlands (cy), Tome
-                    Boshevski (mk), A S Alam (pa)
-
-
-0.2.10
-======
-- Updated translations: Pau Rul-lan Ferragut (ca), ByungHyun Choi (ko),
-			Szymon Kałasz (pl), Daniel Nylander (sv)
-- New translations: Wangmo Sherpa (dz)
+Bug fixes:
+    - Save button is now default response in the dialog (Bug #2941).
+    - No font is set as long the user has not defined any (Bug #2720).
+    - No compiler warnings (Bug #1697).
+    - Windows geometry is now properly saved (Bug #2945).
+    - Hidden option to show the full path in the window title (Bug #2896).
+    - Basic command line options (Bug #2397).
+    - The MousepadPreferences object uses XfceRc for saving the
+      settings (Bug #2786).
+    - No segfault when there is no rc file (Bug #2784).
+    - Support syntax highlighting using GtkSourceView (Bug #3228 & #5803).
+    - Proper Drag and Drop support (Bug #2055).
+    - Fix recent files support (Bug #5635, #3850 & #7890).
+    - Use GTK+ printing (Bug #4477).
+    - Settings saved in Find (and Replace) dialogs (Bug #7246).
+    - No deprecated dependencies (Bug #7259).
