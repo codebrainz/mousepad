@@ -14,7 +14,6 @@ mousepad/mousepad-print.c
 mousepad/mousepad-replace-dialog.c
 mousepad/mousepad-search-bar.c
 mousepad/mousepad-statusbar.c
-mousepad/mousepad-undo.c
 mousepad/mousepad-util.c
 mousepad/mousepad-view.c
 mousepad/mousepad-window.c
