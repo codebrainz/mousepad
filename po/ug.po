@@ -27,7 +27,7 @@ msgstr ""
 
 #: ../mousepad/main.c:56
 msgid "Print version information and exit"
-msgstr ""
+msgstr "نەشر ئۇچۇرىنى كۆرسىتىپ ئاخىرلاشتۇرۇش"
 
 #. default application name
 #: ../mousepad/main.c:80 ../Mousepad.desktop.in.in.h:1
@@ -37,7 +37,7 @@ msgstr "Mousepad"
 #. initialize gtk+
 #: ../mousepad/main.c:92
 msgid "[FILES...]"
-msgstr "[FILES...]"
+msgstr "[ھۆججەتلەر...]"
 
 #. no error message, the gui initialization failed
 #: ../mousepad/main.c:98
@@ -46,12 +46,12 @@ msgstr "كۆرسەتكۈچنى ئېچىش مەغلۇپ بولدى."
 
 #: ../mousepad/main.c:115
 msgid "The Xfce development team. All rights reserved."
-msgstr ""
+msgstr "Xfce ئىجادىيەت گۇرۇپپىسى. All rights reserved."
 
 #: ../mousepad/main.c:116
 #, c-format
 msgid "Please report bugs to <%s>."
-msgstr ""
+msgstr "كەمتۈكنى <%s> غا دوكلات قىلىڭ."
 
 #: ../mousepad/mousepad-dialogs.c:41
 msgid "Mousepad is a fast text editor for the Xfce Desktop Environment."
@@ -59,12 +59,12 @@ msgstr ""
 
 #: ../mousepad/mousepad-dialogs.c:50
 msgid "translator-credits"
-msgstr "Gheyret Kenji <gheyret@gmail.com>"
+msgstr "Gheyret T.Kenji <gheyret@gmail.com>"
 
 #. display an error message to the user
 #: ../mousepad/mousepad-dialogs.c:125
 msgid "Failed to open the documentation browser"
-msgstr ""
+msgstr "پۈتۈك كۆرگۈنى ئېچىش مەغلۇپ بولدى"
 
 #. build dialog
 #: ../mousepad/mousepad-dialogs.c:143
@@ -78,7 +78,7 @@ msgstr ""
 
 #: ../mousepad/mousepad-dialogs.c:246
 msgid "_Line number:"
-msgstr ""
+msgstr "قۇر نومۇرى(_L)"
 
 #: ../mousepad/mousepad-dialogs.c:265
 msgid "C_olumn number:"
@@ -139,12 +139,12 @@ msgstr ""
 #. pack button, add signal and tooltip
 #: ../mousepad/mousepad-document.c:591
 msgid "Close this tab"
-msgstr ""
+msgstr "بۇ بەتكۈچنى تاقا"
 
 #. create an unique untitled document name
 #: ../mousepad/mousepad-document.c:626
 msgid "Untitled"
-msgstr ""
+msgstr "ماۋزۇسىز"
 
 #. create the header
 #: ../mousepad/mousepad-encoding-dialog.c:134
@@ -162,7 +162,7 @@ msgstr ""
 
 #: ../mousepad/mousepad-encoding-dialog.c:153
 msgid "System"
-msgstr ""
+msgstr "سىستېما"
 
 #: ../mousepad/mousepad-encoding-dialog.c:160
 msgid "Other:"
@@ -175,91 +175,91 @@ msgstr ""
 #. west european
 #: ../mousepad/mousepad-encoding.c:35
 msgid "Celtic"
-msgstr ""
+msgstr "كېلتىك"
 
 #: ../mousepad/mousepad-encoding.c:36 ../mousepad/mousepad-encoding.c:37
 msgid "Greek"
-msgstr ""
+msgstr "گىرېكچە"
 
 #: ../mousepad/mousepad-encoding.c:38
 msgid "Nordic"
-msgstr ""
+msgstr "شىمالىي ياۋروپا"
 
 #: ../mousepad/mousepad-encoding.c:39
 msgid "South European"
-msgstr ""
+msgstr "جەنۇبى ياۋروپا"
 
 #: ../mousepad/mousepad-encoding.c:40 ../mousepad/mousepad-encoding.c:41
 #: ../mousepad/mousepad-encoding.c:42 ../mousepad/mousepad-encoding.c:43
 msgid "Western"
-msgstr ""
+msgstr "غەربچە"
 
 #. east european
 #: ../mousepad/mousepad-encoding.c:46 ../mousepad/mousepad-encoding.c:47
 #: ../mousepad/mousepad-encoding.c:48
 msgid "Baltic"
-msgstr ""
+msgstr "بالتىق"
 
 #: ../mousepad/mousepad-encoding.c:49 ../mousepad/mousepad-encoding.c:50
 #: ../mousepad/mousepad-encoding.c:51
 msgid "Central European"
-msgstr ""
+msgstr "ئوتتۇرا ياۋروپا"
 
 #: ../mousepad/mousepad-encoding.c:52 ../mousepad/mousepad-encoding.c:53
 #: ../mousepad/mousepad-encoding.c:54 ../mousepad/mousepad-encoding.c:55
 #: ../mousepad/mousepad-encoding.c:56
 msgid "Cyrillic"
-msgstr ""
+msgstr "سلاۋيانچە"
 
 #: ../mousepad/mousepad-encoding.c:57
 msgid "Cyrillic/Russian"
-msgstr ""
+msgstr "رۇسچە/سلاۋيان"
 
 #: ../mousepad/mousepad-encoding.c:58
 msgid "Cyrillic/Ukrainian"
-msgstr ""
+msgstr "سلاۋيانچە/ئۇكرائىنچە"
 
 #: ../mousepad/mousepad-encoding.c:59
 msgid "Romanian"
-msgstr ""
+msgstr "رۇمىنىيەچە"
 
 #. middle eastern
 #: ../mousepad/mousepad-encoding.c:62 ../mousepad/mousepad-encoding.c:63
 #: ../mousepad/mousepad-encoding.c:64
 msgid "Arabic"
-msgstr ""
+msgstr "ئەرەبچە"
 
 #: ../mousepad/mousepad-encoding.c:65 ../mousepad/mousepad-encoding.c:66
 #: ../mousepad/mousepad-encoding.c:67
 msgid "Hebrew"
-msgstr ""
+msgstr "ئىبرانىچە"
 
 #: ../mousepad/mousepad-encoding.c:68
 msgid "Hebrew Visual"
-msgstr ""
+msgstr "ئىبرانىچە كۆرۈنۈشچان"
 
 #. asian
 #: ../mousepad/mousepad-encoding.c:71
 msgid "Armenian"
-msgstr ""
+msgstr "ئەرمەنچە"
 
 #: ../mousepad/mousepad-encoding.c:72
 msgid "Georgian"
-msgstr ""
+msgstr "گىرۇزىنچە"
 
 #: ../mousepad/mousepad-encoding.c:73
 msgid "Thai"
-msgstr ""
+msgstr "تايلاندچە"
 
 #: ../mousepad/mousepad-encoding.c:74 ../mousepad/mousepad-encoding.c:75
 #: ../mousepad/mousepad-encoding.c:76
 msgid "Turkish"
-msgstr ""
+msgstr "تۈركچە"
 
 #: ../mousepad/mousepad-encoding.c:77 ../mousepad/mousepad-encoding.c:78
 #: ../mousepad/mousepad-encoding.c:79
 msgid "Vietnamese"
-msgstr ""
+msgstr "ۋىيېتنامچە"
 
 #. unicode
 #: ../mousepad/mousepad-encoding.c:82 ../mousepad/mousepad-encoding.c:83
@@ -267,28 +267,28 @@ msgstr ""
 #: ../mousepad/mousepad-encoding.c:86 ../mousepad/mousepad-encoding.c:87
 #: ../mousepad/mousepad-encoding.c:88 ../mousepad/mousepad-encoding.c:89
 msgid "Unicode"
-msgstr ""
+msgstr "يۇنىكود"
 
 #. east asian
 #: ../mousepad/mousepad-encoding.c:92 ../mousepad/mousepad-encoding.c:93
 #: ../mousepad/mousepad-encoding.c:94 ../mousepad/mousepad-encoding.c:95
 msgid "Chinese Simplified"
-msgstr ""
+msgstr "ئاددىي خەنزۇچە"
 
 #: ../mousepad/mousepad-encoding.c:96 ../mousepad/mousepad-encoding.c:97
 #: ../mousepad/mousepad-encoding.c:98
 msgid "Chinese Traditional"
-msgstr ""
+msgstr "مۇرەككەپ خەنزۇچە"
 
 #: ../mousepad/mousepad-encoding.c:99 ../mousepad/mousepad-encoding.c:100
 #: ../mousepad/mousepad-encoding.c:101
 msgid "Japanese"
-msgstr ""
+msgstr "ياپونچە"
 
 #: ../mousepad/mousepad-encoding.c:102 ../mousepad/mousepad-encoding.c:103
 #: ../mousepad/mousepad-encoding.c:104 ../mousepad/mousepad-encoding.c:105
 msgid "Korean"
-msgstr ""
+msgstr "كورېيەچە"
 
 #: ../mousepad/mousepad-file.c:556
 #, c-format
@@ -320,7 +320,7 @@ msgstr ""
 
 #: ../mousepad/mousepad-print.c:615
 msgid "Appearance"
-msgstr ""
+msgstr "كۆرۈنۈشى"
 
 #: ../mousepad/mousepad-print.c:629
 msgid "Print page _headers"
@@ -365,12 +365,12 @@ msgstr ""
 #. set dialog properties
 #: ../mousepad/mousepad-replace-dialog.c:167
 msgid "Replace"
-msgstr ""
+msgstr "ئالماشتۇرۇش"
 
 #: ../mousepad/mousepad-replace-dialog.c:174
 #: ../mousepad/mousepad-replace-dialog.c:540
 msgid "_Replace"
-msgstr ""
+msgstr "ئالماشتۇر(_R)"
 
 #: ../mousepad/mousepad-replace-dialog.c:192
 msgid "_Search for:"
@@ -386,15 +386,15 @@ msgstr ""
 
 #: ../mousepad/mousepad-replace-dialog.c:242
 msgid "Up"
-msgstr ""
+msgstr "ئۈستى"
 
 #: ../mousepad/mousepad-replace-dialog.c:243
 msgid "Down"
-msgstr ""
+msgstr "ئاستى"
 
 #: ../mousepad/mousepad-replace-dialog.c:244
 msgid "Both"
-msgstr ""
+msgstr "ئىككىلىسى"
 
 #. case sensitive
 #: ../mousepad/mousepad-replace-dialog.c:253
@@ -412,7 +412,7 @@ msgstr ""
 
 #: ../mousepad/mousepad-replace-dialog.c:278
 msgid "Selection"
-msgstr ""
+msgstr "تاللانما"
 
 #: ../mousepad/mousepad-replace-dialog.c:279
 msgid "Document"
@@ -438,7 +438,7 @@ msgstr ""
 
 #: ../mousepad/mousepad-search-bar.c:208
 msgid "_Next"
-msgstr ""
+msgstr "كەينى(_N)"
 
 #: ../mousepad/mousepad-search-bar.c:219
 msgid "_Previous"
@@ -501,7 +501,7 @@ msgstr ""
 
 #: ../mousepad/mousepad-window.c:402
 msgid "_File"
-msgstr ""
+msgstr "ھۆججەت(_F)"
 
 #: ../mousepad/mousepad-window.c:403
 msgid "_New"
@@ -513,7 +513,7 @@ msgstr ""
 
 #: ../mousepad/mousepad-window.c:404
 msgid "New _Window"
-msgstr ""
+msgstr "يېڭى كۆزنەك(_W)"
 
 #: ../mousepad/mousepad-window.c:404
 msgid "Create a new document in a new window"
@@ -529,7 +529,7 @@ msgstr ""
 
 #: ../mousepad/mousepad-window.c:406
 msgid "Open a file"
-msgstr ""
+msgstr "ھۆججەت ئاچ"
 
 #: ../mousepad/mousepad-window.c:407
 msgid "Op_en Recent"
@@ -585,7 +585,7 @@ msgstr ""
 
 #: ../mousepad/mousepad-window.c:415
 msgid "_Detach Tab"
-msgstr ""
+msgstr "بەتكۈچنى ئايرىۋەت(_D)"
 
 #: ../mousepad/mousepad-window.c:415
 msgid "Move the current document to a new window"
@@ -601,15 +601,15 @@ msgstr ""
 
 #: ../mousepad/mousepad-window.c:417
 msgid "_Close Window"
-msgstr ""
+msgstr "كۆزنەك ياپ(_C)"
 
 #: ../mousepad/mousepad-window.c:417
 msgid "Close this window"
-msgstr ""
+msgstr "مەزكۇر كۆزنەكنى تاقايدۇ"
 
 #: ../mousepad/mousepad-window.c:419
 msgid "_Edit"
-msgstr ""
+msgstr "تەھرىر(_E)"
 
 #: ../mousepad/mousepad-window.c:420
 msgid "Undo the last action"
@@ -673,7 +673,7 @@ msgstr ""
 
 #: ../mousepad/mousepad-window.c:432
 msgid "Find _Next"
-msgstr ""
+msgstr "كېيىنكىسىنى ئىزدە(_N)"
 
 #: ../mousepad/mousepad-window.c:432
 msgid "Search forwards for the same text"
@@ -681,7 +681,7 @@ msgstr ""
 
 #: ../mousepad/mousepad-window.c:433
 msgid "Find _Previous"
-msgstr ""
+msgstr "ئالدىنقىنى ئىزدە(_P)"
 
 #: ../mousepad/mousepad-window.c:433
 msgid "Search backwards for the same text"
@@ -697,7 +697,7 @@ msgstr ""
 
 #: ../mousepad/mousepad-window.c:436
 msgid "_View"
-msgstr ""
+msgstr "كۆرۈنۈش(_V)"
 
 #: ../mousepad/mousepad-window.c:437
 msgid "Select F_ont..."
@@ -850,7 +850,7 @@ msgstr ""
 
 #: ../mousepad/mousepad-window.c:463
 msgid "_Previous Tab"
-msgstr ""
+msgstr "ئالدىنقى بەتكۈچ(_P)"
 
 #: ../mousepad/mousepad-window.c:463
 msgid "Select the previous tab"
@@ -858,7 +858,7 @@ msgstr ""
 
 #: ../mousepad/mousepad-window.c:464
 msgid "_Next Tab"
-msgstr ""
+msgstr "كېيىنكى بەتكۈچ(_N)"
 
 #: ../mousepad/mousepad-window.c:464
 msgid "Select the next tab"
@@ -874,11 +874,11 @@ msgstr ""
 
 #: ../mousepad/mousepad-window.c:467
 msgid "_Help"
-msgstr ""
+msgstr "ياردەم(_H)"
 
 #: ../mousepad/mousepad-window.c:468
 msgid "_Contents"
-msgstr ""
+msgstr "مۇندەرىجە(_C)"
 
 #: ../mousepad/mousepad-window.c:468
 msgid "Display the Mousepad user manual"
@@ -898,7 +898,7 @@ msgstr ""
 
 #: ../mousepad/mousepad-window.c:475
 msgid "St_atusbar"
-msgstr ""
+msgstr "ھالەت تاياقچىسى(_A)"
 
 #: ../mousepad/mousepad-window.c:475
 msgid "Change the visibility of the statusbar"
@@ -963,7 +963,7 @@ msgstr ""
 #. add the label with the root warning
 #: ../mousepad/mousepad-window.c:662
 msgid "Warning, you are using the root account, you may harm your system."
-msgstr ""
+msgstr "دىققەت: root ھوقۇقىدا مەشغۇلات قىلىۋاتىسىز. بەك دىققەت قىلىڭ، سىستېمىنى بۇزۇپ قويۇشىڭىز مۇمكىن"
 
 #. show the warning
 #: ../mousepad/mousepad-window.c:1100
@@ -977,7 +977,7 @@ msgstr ""
 #: ../mousepad/mousepad-window.c:1357 ../mousepad/mousepad-window.c:3221
 #: ../mousepad/mousepad-window.c:3302
 msgid "None"
-msgstr ""
+msgstr "يوق"
 
 #. create other action
 #: ../mousepad/mousepad-window.c:2084
@@ -988,23 +988,23 @@ msgstr ""
 #: ../mousepad/mousepad-window.c:2132
 #, c-format
 msgid "Ot_her (%d)..."
-msgstr ""
+msgstr "باشقا(_H) (%d)…"
 
 #. set action label
 #: ../mousepad/mousepad-window.c:2143
 msgid "Ot_her..."
-msgstr ""
+msgstr "باشقا(_H)…"
 
 #. build description
 #. get the offset length: 'Encoding: '
 #: ../mousepad/mousepad-window.c:2446 ../mousepad/mousepad-window.c:2677
 msgid "Charset"
-msgstr ""
+msgstr "ھەرپ توپى"
 
 #: ../mousepad/mousepad-window.c:2580
 #, c-format
 msgid "Open '%s'"
-msgstr ""
+msgstr "ئېچىۋاتقىنى ‹%s›"
 
 #: ../mousepad/mousepad-window.c:2727
 msgid "Failed to clear the recent history"
@@ -1021,7 +1021,7 @@ msgstr ""
 
 #: ../mousepad/mousepad-window.c:3303
 msgid "No filetype"
-msgstr ""
+msgstr "ھۆججەت تىپى يوق"
 
 #. set error message
 #: ../mousepad/mousepad-window.c:3510
@@ -1036,12 +1036,12 @@ msgstr ""
 #. set error message
 #: ../mousepad/mousepad-window.c:3523
 msgid "Loading the template failed"
-msgstr ""
+msgstr "قېلىپنى ئوقۇش مەغلۇپ بولدى"
 
 #. create new file chooser dialog
 #: ../mousepad/mousepad-window.c:3548
 msgid "Open File"
-msgstr ""
+msgstr "ھۆججەت ئېچىش"
 
 #: ../mousepad/mousepad-window.c:3661
 #, c-format
@@ -1053,27 +1053,27 @@ msgstr ""
 #. show the warning and cleanup
 #: ../mousepad/mousepad-window.c:3665
 msgid "Failed to open file"
-msgstr ""
+msgstr "ھۆججەت ئېچىش مەغلۇپ بولدى"
 
 #. show the error
 #: ../mousepad/mousepad-window.c:3771 ../mousepad/mousepad-window.c:3894
 msgid "Failed to save the document"
-msgstr ""
+msgstr "پۈتۈكنى ساقلاش مەغلۇپ بولدى"
 
 #. create the dialog
 #: ../mousepad/mousepad-window.c:3795
 msgid "Save As"
-msgstr ""
+msgstr "باشقا ئاتتا ساقلاش"
 
 #. show the error
 #: ../mousepad/mousepad-window.c:3986
 msgid "Failed to reload the document"
-msgstr ""
+msgstr "پۈتۈكنى قايتا يۈكلەش مەغلۇپ بولدى"
 
 #. show the error
 #: ../mousepad/mousepad-window.c:4013
 msgid "Failed to print the document"
-msgstr ""
+msgstr "پۈتۈكنى بېسىپ چىقىرىش مەغلۇپ بولدى"
 
 #: ../mousepad/mousepad-window.c:4424
 msgid "Choose Mousepad Font"
@@ -1081,8 +1081,8 @@ msgstr ""
 
 #: ../Mousepad.desktop.in.in.h:2
 msgid "Simple Text Editor"
-msgstr ""
+msgstr "ئاددىي تېكىست تەھرىرلىگۈ"
 
 #: ../Mousepad.desktop.in.in.h:3
 msgid "Text Editor"
-msgstr ""
+msgstr "تېكىست تەھرىرلىگۈ"
