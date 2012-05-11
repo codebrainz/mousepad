@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-05-05 20:09+0000\n"
-"PO-Revision-Date: 2012-05-09 11:25+0200\n"
+"PO-Revision-Date: 2012-05-11 09:28+0200\n"
 "Last-Translator: Piotr Sokół <psokol@jabster.pl>\n"
 "Language-Team: polski <>\n"
 "Language: \n"
@@ -515,11 +515,11 @@ msgstr ""
 
 #: ../mousepad/mousepad-window.c:404
 msgid "New _Window"
-msgstr ""
+msgstr "Nowe _okno"
 
 #: ../mousepad/mousepad-window.c:404
 msgid "Create a new document in a new window"
-msgstr ""
+msgstr "Tworzy nowy dokument w nowym oknie"
 
 #: ../mousepad/mousepad-window.c:405
 msgid "New From Te_mplate"
@@ -531,43 +531,43 @@ msgstr "_Otwórz..."
 
 #: ../mousepad/mousepad-window.c:406
 msgid "Open a file"
-msgstr ""
+msgstr "Otwiera plik"
 
 #: ../mousepad/mousepad-window.c:407
 msgid "Op_en Recent"
-msgstr ""
+msgstr "O_statnio otwarte"
 
 #: ../mousepad/mousepad-window.c:408
 msgid "No items found"
-msgstr ""
+msgstr "Brak elementów"
 
 #: ../mousepad/mousepad-window.c:409
 msgid "Clear _History"
-msgstr ""
+msgstr "_Wyczyść"
 
 #: ../mousepad/mousepad-window.c:409
 msgid "Clear the recently used files history"
-msgstr ""
+msgstr "Czyści listę ostatnio otwartych plików"
 
 #: ../mousepad/mousepad-window.c:410
 msgid "Save the current document"
-msgstr ""
+msgstr "Zapisuje bieżący dokument"
 
 #: ../mousepad/mousepad-window.c:411
 msgid "Save _As..."
-msgstr ""
+msgstr "Zapisz j_ako..."
 
 #: ../mousepad/mousepad-window.c:411
 msgid "Save current document as another file"
-msgstr ""
+msgstr "Zapisuje bieżący dokument w innym pliku"
 
 #: ../mousepad/mousepad-window.c:412
 msgid "Save A_ll"
-msgstr ""
+msgstr "Zapisz _wszystkie"
 
 #: ../mousepad/mousepad-window.c:412
 msgid "Save all document in this window"
-msgstr ""
+msgstr "Zapisuje wszystkie dokumenty bieżącego okna"
 
 #: ../mousepad/mousepad-window.c:413
 msgid "Re_vert"
@@ -579,11 +579,11 @@ msgstr "Przywraca ostatnią zapisaną wersję pliku"
 
 #: ../mousepad/mousepad-window.c:414
 msgid "_Print..."
-msgstr ""
+msgstr "_Wydrukuj"
 
 #: ../mousepad/mousepad-window.c:414
 msgid "Print the current document"
-msgstr ""
+msgstr "Drukuje bieżący dokument"
 
 #: ../mousepad/mousepad-window.c:415
 msgid "_Detach Tab"
@@ -591,7 +591,7 @@ msgstr ""
 
 #: ../mousepad/mousepad-window.c:415
 msgid "Move the current document to a new window"
-msgstr ""
+msgstr "Przemieszcza bieżący dokument do nowego okna"
 
 #: ../mousepad/mousepad-window.c:416
 msgid "Close _Tab"
@@ -844,7 +844,7 @@ msgstr ""
 
 #: ../mousepad/mousepad-window.c:460
 msgid "_Filetype"
-msgstr ""
+msgstr "_Typ pliku"
 
 #: ../mousepad/mousepad-window.c:462
 msgid "_Navigation"
@@ -900,7 +900,7 @@ msgstr ""
 
 #: ../mousepad/mousepad-window.c:475
 msgid "St_atusbar"
-msgstr ""
+msgstr "Pasek _stanu"
 
 #: ../mousepad/mousepad-window.c:475
 msgid "Change the visibility of the statusbar"
@@ -940,7 +940,7 @@ msgstr ""
 
 #: ../mousepad/mousepad-window.c:484
 msgid "Unix (_LF)"
-msgstr ""
+msgstr "Unix (_LF)"
 
 #: ../mousepad/mousepad-window.c:484
 msgid "Set the line ending of the document to Unix (LF)"
@@ -948,7 +948,7 @@ msgstr ""
 
 #: ../mousepad/mousepad-window.c:485
 msgid "Mac (_CR)"
-msgstr ""
+msgstr "Mac (_CR)"
 
 #: ../mousepad/mousepad-window.c:485
 msgid "Set the line ending of the document to Mac (CR)"
@@ -956,7 +956,7 @@ msgstr ""
 
 #: ../mousepad/mousepad-window.c:486
 msgid "DOS / Windows (C_R LF)"
-msgstr ""
+msgstr "DOS / Windows (C_R LF)"
 
 #: ../mousepad/mousepad-window.c:486
 msgid "Set the line ending of the document to DOS / Windows (CR LF)"
@@ -970,7 +970,7 @@ msgstr ""
 #. show the warning
 #: ../mousepad/mousepad-window.c:1100
 msgid "Failed to open the document"
-msgstr ""
+msgstr "Nie udało się otworzyć dokumentu"
 
 #: ../mousepad/mousepad-window.c:1297
 msgid "Read Only"
@@ -979,7 +979,7 @@ msgstr ""
 #: ../mousepad/mousepad-window.c:1357 ../mousepad/mousepad-window.c:3221
 #: ../mousepad/mousepad-window.c:3302
 msgid "None"
-msgstr ""
+msgstr "Brak"
 
 #. create other action
 #: ../mousepad/mousepad-window.c:2084
