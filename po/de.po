@@ -2,7 +2,7 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the mousepad package.
 # Mark Trompell <mark@foresightlinux.org>, 2012.
-#
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: mousepad 0.3.0\n"
@@ -11,10 +11,10 @@ msgstr ""
 "PO-Revision-Date: 2012-05-11 14:16+0100\n"
 "Last-Translator: Mark Trompell <mark@foresightlinux.org>\n"
 "Language-Team: German <xfce-i18n@xfce.org>\n"
-"Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: de\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Poedit-Language: German\n"
 
@@ -29,20 +29,16 @@ msgid "Quit a running Mousepad instance"
 msgstr "Einen laufenden Prozess von Mousepad beenden."
 
 #: ../mousepad/main.c:56
-#, fuzzy
 msgid "Print version information and exit"
 msgstr "Versionsinformationen anzeigen und Programm beenden."
 
 #. default application name
-#: ../mousepad/main.c:80
-#: ../Mousepad.desktop.in.in.h:1
-#, fuzzy
+#: ../mousepad/main.c:80 ../Mousepad.desktop.in.in.h:1
 msgid "Mousepad"
 msgstr "Mousepad"
 
 #. initialize gtk+
 #: ../mousepad/main.c:92
-#, fuzzy
 msgid "[FILES...]"
 msgstr "[DATEIEN...]"
 
@@ -50,27 +46,26 @@ msgstr "[DATEIEN...]"
 #: ../mousepad/main.c:98
 #, fuzzy
 msgid "Failed to open display."
-msgstr "Konnte Anzeige nicht öffnen."
+msgstr "Anzeige konnte nicht geöffnet werden."
 
 #: ../mousepad/main.c:115
-#, fuzzy
 msgid "The Xfce development team. All rights reserved."
 msgstr "Das Entwicklungsteam von Xfce. Alle Rechte vorbehalten."
 
 #: ../mousepad/main.c:116
-#, fuzzy, c-format
+#, c-format
 msgid "Please report bugs to <%s>."
 msgstr "Bitte melden Sie Fehler an <%s>."
 
 #: ../mousepad/mousepad-dialogs.c:41
-#, fuzzy
 msgid "Mousepad is a fast text editor for the Xfce Desktop Environment."
-msgstr "Mousepad ist ein schneller Texteditor für das Xfce Desktopumgebung"
+msgstr "Mousepad ist ein schneller Texteditor für die Xfce Arbeitsumgebung"
 
 #: ../mousepad/mousepad-dialogs.c:50
-#, fuzzy
 msgid "translator-credits"
-msgstr "Mark Trompell <mark@foresightlinux.org>"
+msgstr ""
+"Mark Trompell <mark@foresightlinux.org>\r\n"
+"Christoph Wickert <cwickert@fedoraproject.org>"
 
 #. display an error message to the user
 #: ../mousepad/mousepad-dialogs.c:125
@@ -91,19 +86,17 @@ msgid "Go To"
 msgstr "Gehe zu"
 
 #: ../mousepad/mousepad-dialogs.c:246
-#, fuzzy
 msgid "_Line number:"
-msgstr "_Zeile: "
+msgstr "Zei_le: "
 
 #: ../mousepad/mousepad-dialogs.c:265
-#, fuzzy
 msgid "C_olumn number:"
-msgstr "_Spalte"
+msgstr "_Spalte:"
 
 #: ../mousepad/mousepad-dialogs.c:323
 #, fuzzy
 msgid "Remove all entries from the documents history?"
-msgstr "Alle Einträge aus dem Verlauf entfernen."
+msgstr "Sollen alle Einträge aus dem Verlauf entfernt werden?"
 
 #: ../mousepad/mousepad-dialogs.c:328
 #, fuzzy
@@ -113,15 +106,13 @@ msgstr "Den gesamten Verlauf löschen."
 #: ../mousepad/mousepad-dialogs.c:331
 #, fuzzy
 msgid "Clearing the documents history will permanently remove all currently listed entries."
-msgstr "Das Löschen des Dokumentenverlaufs wird alle zur Zeit aufgelisteten Einträge dauerhaft löschen"
+msgstr "Das Löschen des Dokumentenverlaufs wird alle zur Zeit aufgelisteten Einträge dauerhaft löschen."
 
 #: ../mousepad/mousepad-dialogs.c:362
-#, fuzzy
 msgid "Do you want to save the changes before closing?"
-msgstr "Möchten Sie vor dem Schließen speichern?"
+msgstr "Sollen die Änderungen vor dem Schließen gespeichert werden?"
 
 #: ../mousepad/mousepad-dialogs.c:363
-#, fuzzy
 msgid "Save Changes"
 msgstr "Änderungen speichern"
 
@@ -163,13 +154,11 @@ msgstr "Wenn Sie neu laden, gehen alle ungespeicherten Änderungen verloren. Mö
 
 #. pack button, add signal and tooltip
 #: ../mousepad/mousepad-document.c:591
-#, fuzzy
 msgid "Close this tab"
 msgstr "Diesen Reiter schließen."
 
 #. create an unique untitled document name
 #: ../mousepad/mousepad-document.c:626
-#, fuzzy
 msgid "Untitled"
 msgstr "Unbenannt"
 
@@ -182,189 +171,142 @@ msgstr "Dieses Dokument ist kein gültiges UTF-8."
 #: ../mousepad/mousepad-encoding-dialog.c:135
 #, fuzzy
 msgid "Please select an encoding below."
-msgstr "Bitte wählen sie unten eine Zeichenkodierung aus."
+msgstr "Bitte wählen Sie unten eine Zeichenkodierung aus."
 
 #. encoding radio buttons
 #: ../mousepad/mousepad-encoding-dialog.c:147
-#, fuzzy
 msgid "Default (UTF-8)"
 msgstr "Standard (UTF-8)"
 
 #: ../mousepad/mousepad-encoding-dialog.c:153
-#, fuzzy
 msgid "System"
 msgstr "System"
 
 #: ../mousepad/mousepad-encoding-dialog.c:160
-#, fuzzy
 msgid "Other:"
 msgstr "Andere:"
 
 #: ../mousepad/mousepad-encoding-dialog.c:180
 #, fuzzy
 msgid "Checking encodings..."
-msgstr "Prüfe Zeichensätze..."
+msgstr "Zeichensätze werden geprüft..."
 
 #. west european
 #: ../mousepad/mousepad-encoding.c:35
-#, fuzzy
 msgid "Celtic"
 msgstr "Keltisch"
 
-#: ../mousepad/mousepad-encoding.c:36
-#: ../mousepad/mousepad-encoding.c:37
-#, fuzzy
+#: ../mousepad/mousepad-encoding.c:36 ../mousepad/mousepad-encoding.c:37
 msgid "Greek"
 msgstr "Griechisch"
 
 #: ../mousepad/mousepad-encoding.c:38
-#, fuzzy
 msgid "Nordic"
 msgstr "Nordisch"
 
 #: ../mousepad/mousepad-encoding.c:39
-#, fuzzy
 msgid "South European"
 msgstr "Südeuropäisch"
 
-#: ../mousepad/mousepad-encoding.c:40
-#: ../mousepad/mousepad-encoding.c:41
-#: ../mousepad/mousepad-encoding.c:42
-#: ../mousepad/mousepad-encoding.c:43
-#, fuzzy
+#: ../mousepad/mousepad-encoding.c:40 ../mousepad/mousepad-encoding.c:41
+#: ../mousepad/mousepad-encoding.c:42 ../mousepad/mousepad-encoding.c:43
 msgid "Western"
 msgstr "Westlich"
 
 #. east european
-#: ../mousepad/mousepad-encoding.c:46
-#: ../mousepad/mousepad-encoding.c:47
+#: ../mousepad/mousepad-encoding.c:46 ../mousepad/mousepad-encoding.c:47
 #: ../mousepad/mousepad-encoding.c:48
-#, fuzzy
 msgid "Baltic"
 msgstr "Baltisch"
 
-#: ../mousepad/mousepad-encoding.c:49
-#: ../mousepad/mousepad-encoding.c:50
+#: ../mousepad/mousepad-encoding.c:49 ../mousepad/mousepad-encoding.c:50
 #: ../mousepad/mousepad-encoding.c:51
-#, fuzzy
 msgid "Central European"
 msgstr "Mitteleuropäisch"
 
-#: ../mousepad/mousepad-encoding.c:52
-#: ../mousepad/mousepad-encoding.c:53
-#: ../mousepad/mousepad-encoding.c:54
-#: ../mousepad/mousepad-encoding.c:55
+#: ../mousepad/mousepad-encoding.c:52 ../mousepad/mousepad-encoding.c:53
+#: ../mousepad/mousepad-encoding.c:54 ../mousepad/mousepad-encoding.c:55
 #: ../mousepad/mousepad-encoding.c:56
-#, fuzzy
 msgid "Cyrillic"
 msgstr "Kyrillisch"
 
 #: ../mousepad/mousepad-encoding.c:57
-#, fuzzy
 msgid "Cyrillic/Russian"
 msgstr "Kyrillisch/Russisch"
 
 #: ../mousepad/mousepad-encoding.c:58
-#, fuzzy
 msgid "Cyrillic/Ukrainian"
 msgstr "Kyrillisch/Ukrainisch"
 
 #: ../mousepad/mousepad-encoding.c:59
-#, fuzzy
 msgid "Romanian"
 msgstr "Rumänisch"
 
 #. middle eastern
-#: ../mousepad/mousepad-encoding.c:62
-#: ../mousepad/mousepad-encoding.c:63
+#: ../mousepad/mousepad-encoding.c:62 ../mousepad/mousepad-encoding.c:63
 #: ../mousepad/mousepad-encoding.c:64
 #, fuzzy
 msgid "Arabic"
 msgstr "Arabisch"
 
-#: ../mousepad/mousepad-encoding.c:65
-#: ../mousepad/mousepad-encoding.c:66
+#: ../mousepad/mousepad-encoding.c:65 ../mousepad/mousepad-encoding.c:66
 #: ../mousepad/mousepad-encoding.c:67
-#, fuzzy
 msgid "Hebrew"
 msgstr "Hebräisch"
 
 #: ../mousepad/mousepad-encoding.c:68
-#, fuzzy
 msgid "Hebrew Visual"
 msgstr "Hebräisch visuell"
 
 #. asian
 #: ../mousepad/mousepad-encoding.c:71
-#, fuzzy
 msgid "Armenian"
 msgstr "Armenisch"
 
 #: ../mousepad/mousepad-encoding.c:72
-#, fuzzy
 msgid "Georgian"
 msgstr "Georgisch"
 
 #: ../mousepad/mousepad-encoding.c:73
-#, fuzzy
 msgid "Thai"
 msgstr "Thailändisch"
 
-#: ../mousepad/mousepad-encoding.c:74
-#: ../mousepad/mousepad-encoding.c:75
+#: ../mousepad/mousepad-encoding.c:74 ../mousepad/mousepad-encoding.c:75
 #: ../mousepad/mousepad-encoding.c:76
-#, fuzzy
 msgid "Turkish"
 msgstr "Türkisch"
 
-#: ../mousepad/mousepad-encoding.c:77
-#: ../mousepad/mousepad-encoding.c:78
+#: ../mousepad/mousepad-encoding.c:77 ../mousepad/mousepad-encoding.c:78
 #: ../mousepad/mousepad-encoding.c:79
-#, fuzzy
 msgid "Vietnamese"
 msgstr "Vietnamesisch"
 
 #. unicode
-#: ../mousepad/mousepad-encoding.c:82
-#: ../mousepad/mousepad-encoding.c:83
-#: ../mousepad/mousepad-encoding.c:84
-#: ../mousepad/mousepad-encoding.c:85
-#: ../mousepad/mousepad-encoding.c:86
-#: ../mousepad/mousepad-encoding.c:87
-#: ../mousepad/mousepad-encoding.c:88
-#: ../mousepad/mousepad-encoding.c:89
-#, fuzzy
+#: ../mousepad/mousepad-encoding.c:82 ../mousepad/mousepad-encoding.c:83
+#: ../mousepad/mousepad-encoding.c:84 ../mousepad/mousepad-encoding.c:85
+#: ../mousepad/mousepad-encoding.c:86 ../mousepad/mousepad-encoding.c:87
+#: ../mousepad/mousepad-encoding.c:88 ../mousepad/mousepad-encoding.c:89
 msgid "Unicode"
 msgstr "Unicode"
 
 #. east asian
-#: ../mousepad/mousepad-encoding.c:92
-#: ../mousepad/mousepad-encoding.c:93
-#: ../mousepad/mousepad-encoding.c:94
-#: ../mousepad/mousepad-encoding.c:95
-#, fuzzy
+#: ../mousepad/mousepad-encoding.c:92 ../mousepad/mousepad-encoding.c:93
+#: ../mousepad/mousepad-encoding.c:94 ../mousepad/mousepad-encoding.c:95
 msgid "Chinese Simplified"
 msgstr "Chinesisch, vereinfacht"
 
-#: ../mousepad/mousepad-encoding.c:96
-#: ../mousepad/mousepad-encoding.c:97
+#: ../mousepad/mousepad-encoding.c:96 ../mousepad/mousepad-encoding.c:97
 #: ../mousepad/mousepad-encoding.c:98
-#, fuzzy
 msgid "Chinese Traditional"
 msgstr "Chinesisch, traditionell"
 
-#: ../mousepad/mousepad-encoding.c:99
-#: ../mousepad/mousepad-encoding.c:100
+#: ../mousepad/mousepad-encoding.c:99 ../mousepad/mousepad-encoding.c:100
 #: ../mousepad/mousepad-encoding.c:101
-#, fuzzy
 msgid "Japanese"
 msgstr "Japanisch"
 
-#: ../mousepad/mousepad-encoding.c:102
-#: ../mousepad/mousepad-encoding.c:103
-#: ../mousepad/mousepad-encoding.c:104
-#: ../mousepad/mousepad-encoding.c:105
-#, fuzzy
+#: ../mousepad/mousepad-encoding.c:102 ../mousepad/mousepad-encoding.c:103
+#: ../mousepad/mousepad-encoding.c:104 ../mousepad/mousepad-encoding.c:105
 msgid "Korean"
 msgstr "Koreanisch"
 
@@ -379,40 +321,34 @@ msgid "The file \"%s\" you tried to reload does not exist anymore"
 msgstr "Die Datei »%s« die Sie erneut laden wollten, existiert nicht mehr."
 
 #: ../mousepad/mousepad-file.c:916
-#, fuzzy, c-format
+#, c-format
 msgid "Failed to read the status of \"%s\""
 msgstr "Status von »%s« konnte nicht gelesen werden."
 
 #. set a custom tab label
 #: ../mousepad/mousepad-print.c:125
-#, fuzzy
 msgid "Document Settings"
 msgstr "Dokumenteneinstellungen"
 
 #: ../mousepad/mousepad-print.c:595
-#, fuzzy
 msgid "Page Setup"
 msgstr "Seiteneinstellungen"
 
 #: ../mousepad/mousepad-print.c:605
-#, fuzzy
 msgid "_Adjust page size and orientation"
 msgstr "Seitengröße und _Ausrichtung festlegen"
 
 #: ../mousepad/mousepad-print.c:615
-#, fuzzy
 msgid "Appearance"
 msgstr "Erscheinungsbild"
 
 #: ../mousepad/mousepad-print.c:629
-#, fuzzy
 msgid "Print page _headers"
-msgstr "Drucke _Kopfzeilen"
+msgstr "_Kopfzeilen drucken"
 
 #: ../mousepad/mousepad-print.c:636
-#, fuzzy
 msgid "Print _line numbers"
-msgstr "Drucke _Zeilennummern"
+msgstr "_Zeilennummern drucken"
 
 #: ../mousepad/mousepad-print.c:653
 #, fuzzy
@@ -425,74 +361,61 @@ msgid "line(s)"
 msgstr ". Zeile"
 
 #: ../mousepad/mousepad-print.c:674
-#, fuzzy
 msgid "Enable text _wrapping"
-msgstr "Zeilenumbrüche nicht aktivieren"
+msgstr "Zeilenumbruch aktivieren"
 
 #: ../mousepad/mousepad-print.c:681
 #, fuzzy
 msgid "Enable _syntax highlighting"
-msgstr "Aktiviere Syntaxhervorhebung"
+msgstr "Syntaxhervorhebung aktivieren"
 
 #: ../mousepad/mousepad-print.c:693
-#, fuzzy
 msgid "Fonts"
 msgstr "Schriften"
 
 #: ../mousepad/mousepad-print.c:709
-#, fuzzy
 msgid "Header:"
 msgstr "Kopfzeile:"
 
 #: ../mousepad/mousepad-print.c:719
-#, fuzzy
 msgid "Body:"
 msgstr "Text:"
 
 #: ../mousepad/mousepad-print.c:729
-#, fuzzy
 msgid "Line numbers:"
 msgstr "Zeilennummern:"
 
 #. set dialog properties
 #: ../mousepad/mousepad-replace-dialog.c:167
-#, fuzzy
 msgid "Replace"
 msgstr "Ersetzen"
 
 #: ../mousepad/mousepad-replace-dialog.c:174
 #: ../mousepad/mousepad-replace-dialog.c:540
-#, fuzzy
 msgid "_Replace"
-msgstr "_Ersetzen"
+msgstr "E_rsetzen"
 
 #: ../mousepad/mousepad-replace-dialog.c:192
-#, fuzzy
 msgid "_Search for:"
 msgstr "_Suche nach:"
 
 #: ../mousepad/mousepad-replace-dialog.c:213
-#, fuzzy
 msgid "Replace _with:"
 msgstr "Ersetzen _durch:"
 
 #: ../mousepad/mousepad-replace-dialog.c:233
-#, fuzzy
 msgid "Search _direction:"
 msgstr "Such_richtung"
 
 #: ../mousepad/mousepad-replace-dialog.c:242
-#, fuzzy
 msgid "Up"
 msgstr "Aufwärts"
 
 #: ../mousepad/mousepad-replace-dialog.c:243
-#, fuzzy
 msgid "Down"
-msgstr "Runter"
+msgstr "Abwärts"
 
 #: ../mousepad/mousepad-replace-dialog.c:244
-#, fuzzy
 msgid "Both"
 msgstr "Beiderseitig"
 
@@ -511,20 +434,17 @@ msgstr "Nur _vollständige Wörter berücksichtigen"
 #: ../mousepad/mousepad-replace-dialog.c:271
 #, fuzzy
 msgid "Replace _all in:"
-msgstr "In _allen Ordnern"
+msgstr "In _allen Ordnern ersetzen:"
 
 #: ../mousepad/mousepad-replace-dialog.c:278
-#, fuzzy
 msgid "Selection"
 msgstr "Auswahl"
 
 #: ../mousepad/mousepad-replace-dialog.c:279
-#, fuzzy
 msgid "Document"
 msgstr "Dokument"
 
 #: ../mousepad/mousepad-replace-dialog.c:280
-#, fuzzy
 msgid "All Documents"
 msgstr "Alle Dokumente"
 
@@ -536,9 +456,8 @@ msgstr[0] "%d Auftreten"
 msgstr[1] "%d Auftreten"
 
 #: ../mousepad/mousepad-replace-dialog.c:540
-#, fuzzy
 msgid "_Replace All"
-msgstr "Alle ersetzen"
+msgstr "Alle e_rsetzen"
 
 #: ../mousepad/mousepad-search-bar.c:188
 #, fuzzy
@@ -560,20 +479,17 @@ msgstr "_Rückwärts suchen"
 msgid "Highlight _All"
 msgstr "_Alle hervorheben"
 
-#: ../mousepad/mousepad-search-bar.c:243
-#: ../mousepad/mousepad-search-bar.c:250
+#: ../mousepad/mousepad-search-bar.c:243 ../mousepad/mousepad-search-bar.c:250
 #, fuzzy
 msgid "Mat_ch Case"
 msgstr "_Groß-/Kleinschreibung beachten"
 
 #: ../mousepad/mousepad-statusbar.c:141
-#, fuzzy
 msgid "Choose a filetype"
-msgstr "Einen Dateityp auswählen"
+msgstr "Dateityp auswählen"
 
 #. language/filetype
-#: ../mousepad/mousepad-statusbar.c:146
-#: ../mousepad/mousepad-statusbar.c:258
+#: ../mousepad/mousepad-statusbar.c:146 ../mousepad/mousepad-statusbar.c:258
 #, fuzzy
 msgid "Filetype: None"
 msgstr "Dateityp: Keiner"
@@ -617,7 +533,6 @@ msgid "Failed to store the preferences to \"%s\": %s"
 msgstr "Speichern der Einstellungen nach »%s« fehlgeschlagen: %s"
 
 #: ../mousepad/mousepad-window.c:402
-#, fuzzy
 msgid "_File"
 msgstr "_Datei"
 
@@ -627,7 +542,6 @@ msgid "_New"
 msgstr "_Neu"
 
 #: ../mousepad/mousepad-window.c:403
-#, fuzzy
 msgid "Create a new document"
 msgstr "Neues Dokument erstellen"
 
@@ -637,14 +551,13 @@ msgid "New _Window"
 msgstr "Neues _Fenster"
 
 #: ../mousepad/mousepad-window.c:404
-#, fuzzy
 msgid "Create a new document in a new window"
 msgstr "Neues Dokument in neuem Fenster erstellen"
 
 #: ../mousepad/mousepad-window.c:405
 #, fuzzy
 msgid "New From Te_mplate"
-msgstr "Neu aus Vorlage"
+msgstr "Neu aus _Vorlage"
 
 #: ../mousepad/mousepad-window.c:406
 #, fuzzy
@@ -652,7 +565,6 @@ msgid "_Open..."
 msgstr "Ö_ffnen …"
 
 #: ../mousepad/mousepad-window.c:406
-#, fuzzy
 msgid "Open a file"
 msgstr "Eine Datei öffnen"
 
@@ -662,7 +574,6 @@ msgid "Op_en Recent"
 msgstr "Zuletzt geöffnet"
 
 #: ../mousepad/mousepad-window.c:408
-#, fuzzy
 msgid "No items found"
 msgstr "Keine Einträge gefunden"
 
@@ -672,12 +583,10 @@ msgid "Clear _History"
 msgstr "Verlauf sä_ubern"
 
 #: ../mousepad/mousepad-window.c:409
-#, fuzzy
 msgid "Clear the recently used files history"
-msgstr "Verlauf der zuletzt geöffneten Dateien löschen."
+msgstr "Verlauf der zuletzt geöffneten Dateien löschen"
 
 #: ../mousepad/mousepad-window.c:410
-#, fuzzy
 msgid "Save the current document"
 msgstr "Aktuelles Dokument speichern"
 
@@ -687,9 +596,8 @@ msgid "Save _As..."
 msgstr "Speichern _unter …"
 
 #: ../mousepad/mousepad-window.c:411
-#, fuzzy
 msgid "Save current document as another file"
-msgstr "Aktuelles Dokument unter anderem Namen speichern."
+msgstr "Aktuelles Dokument unter anderem Namen speichern"
 
 #: ../mousepad/mousepad-window.c:412
 #, fuzzy
@@ -697,9 +605,8 @@ msgid "Save A_ll"
 msgstr "A_lle speichern"
 
 #: ../mousepad/mousepad-window.c:412
-#, fuzzy
 msgid "Save all document in this window"
-msgstr "Alle Dokumente in diesem Fenster speichern."
+msgstr "Alle Dokumente in diesem Fenster speichern"
 
 #: ../mousepad/mousepad-window.c:413
 #, fuzzy
@@ -707,9 +614,8 @@ msgid "Re_vert"
 msgstr "_Wiederherstellen"
 
 #: ../mousepad/mousepad-window.c:413
-#, fuzzy
 msgid "Revert to the saved version of the file"
-msgstr "Auf die gespeicherte Version dieser Datei zurücksetzen."
+msgstr "Auf die gespeicherte Version dieser Datei zurücksetzen"
 
 #: ../mousepad/mousepad-window.c:414
 #, fuzzy
@@ -717,7 +623,6 @@ msgid "_Print..."
 msgstr "_Drucken..."
 
 #: ../mousepad/mousepad-window.c:414
-#, fuzzy
 msgid "Print the current document"
 msgstr "Aktuelles Dokument drucken"
 
@@ -727,9 +632,8 @@ msgid "_Detach Tab"
 msgstr "Reiter _lösen"
 
 #: ../mousepad/mousepad-window.c:415
-#, fuzzy
 msgid "Move the current document to a new window"
-msgstr "Das aktuelle Dokument in ein neues Fenster verschieben."
+msgstr "Das aktuelle Dokument in ein neues Fenster verschieben"
 
 #: ../mousepad/mousepad-window.c:416
 #, fuzzy
@@ -737,9 +641,8 @@ msgid "Close _Tab"
 msgstr "Reiter s_chließen"
 
 #: ../mousepad/mousepad-window.c:416
-#, fuzzy
 msgid "Close the current document"
-msgstr "Schließe das aktuelle Dokument."
+msgstr "Das aktuelle Dokument schließen"
 
 #: ../mousepad/mousepad-window.c:417
 #, fuzzy
@@ -759,27 +662,24 @@ msgstr "_Bearbeiten"
 #: ../mousepad/mousepad-window.c:420
 #, fuzzy
 msgid "Undo the last action"
-msgstr "Die letzte Aktion rückgängig machen."
+msgstr "Die letzten Vorgang rückgängig machen"
 
 #: ../mousepad/mousepad-window.c:421
 #, fuzzy
 msgid "Redo the last undone action"
-msgstr "Den letzten rückgängig gemachten Vorgang wiederholen."
+msgstr "Den letzten rückgängig gemachten Vorgang wiederholen"
 
 #: ../mousepad/mousepad-window.c:422
-#, fuzzy
 msgid "Cut the selection"
-msgstr "Die Auswahl ausschneiden."
+msgstr "Die Auswahl ausschneiden"
 
 #: ../mousepad/mousepad-window.c:423
-#, fuzzy
 msgid "Copy the selection"
-msgstr "Die Auswahl kopieren."
+msgstr "Die Auswahl kopieren"
 
 #: ../mousepad/mousepad-window.c:424
-#, fuzzy
 msgid "Paste the clipboard"
-msgstr "Die Zwischenablage einfügen."
+msgstr "Die Zwischenablage einfügen"
 
 #: ../mousepad/mousepad-window.c:425
 #, fuzzy
@@ -807,14 +707,13 @@ msgid "Paste the clipboard text into a column"
 msgstr "Den Inhalt der Zwischenablage in eine Spalte einfügen."
 
 #: ../mousepad/mousepad-window.c:428
-#, fuzzy
 msgid "Delete the current selection"
 msgstr "Aktuelle Auswahl löschen"
 
 #: ../mousepad/mousepad-window.c:429
 #, fuzzy
 msgid "Select the text in the entire document"
-msgstr "Text im gesamten Dokument ersetzen"
+msgstr "Text im gesamten Dokument auswählen"
 
 #: ../mousepad/mousepad-window.c:430
 #, fuzzy
@@ -857,7 +756,6 @@ msgid "Find and Rep_lace..."
 msgstr "Suchen und E_rsetzen..."
 
 #: ../mousepad/mousepad-window.c:434
-#, fuzzy
 msgid "Search for and replace text"
 msgstr "Text suchen und ersetzen"
 
@@ -882,7 +780,6 @@ msgid "_Color Scheme"
 msgstr "Farbschema"
 
 #: ../mousepad/mousepad-window.c:440
-#, fuzzy
 msgid "_Text"
 msgstr "_Text"
 
@@ -967,7 +864,6 @@ msgid "_Transpose"
 msgstr "_Vertauschen"
 
 #: ../mousepad/mousepad-window.c:449
-#, fuzzy
 msgid "Reverse the order of something"
 msgstr "Reihenfolge umkehren"
 
@@ -1208,8 +1104,7 @@ msgstr "Dokument konnte nicht geöffnet werden."
 msgid "Read Only"
 msgstr "Schreibgeschützt"
 
-#: ../mousepad/mousepad-window.c:1357
-#: ../mousepad/mousepad-window.c:3221
+#: ../mousepad/mousepad-window.c:1357 ../mousepad/mousepad-window.c:3221
 #: ../mousepad/mousepad-window.c:3302
 #, fuzzy
 msgid "None"
@@ -1235,8 +1130,7 @@ msgstr "A_ndere"
 
 #. build description
 #. get the offset length: 'Encoding: '
-#: ../mousepad/mousepad-window.c:2446
-#: ../mousepad/mousepad-window.c:2677
+#: ../mousepad/mousepad-window.c:2446 ../mousepad/mousepad-window.c:2677
 #, fuzzy
 msgid "Charset"
 msgstr "Zeichensatz"
@@ -1303,8 +1197,7 @@ msgid "Failed to open file"
 msgstr "Öffnen der Datei fehlgeschlagen"
 
 #. show the error
-#: ../mousepad/mousepad-window.c:3771
-#: ../mousepad/mousepad-window.c:3894
+#: ../mousepad/mousepad-window.c:3771 ../mousepad/mousepad-window.c:3894
 #, fuzzy
 msgid "Failed to save the document"
 msgstr "Dokument konnte nicht gespeichert werden"
@@ -1341,4 +1234,3 @@ msgstr "Einfacher Texteditor"
 #, fuzzy
 msgid "Text Editor"
 msgstr "Texteditor"
-
