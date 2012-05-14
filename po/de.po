@@ -20,7 +20,7 @@ msgstr ""
 
 #: ../mousepad/main.c:53
 msgid "Do not register with the D-BUS session message bus"
-msgstr "Nicht amm D-BUS-Sitzungsnachrichtenbus registrieren"
+msgstr "Nicht am D-BUS-Sitzungsnachrichtenbus registrieren"
 
 #: ../mousepad/main.c:54
 msgid "Quit a running Mousepad instance"
