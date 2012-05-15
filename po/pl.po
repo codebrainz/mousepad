@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-05-05 20:09+0000\n"
-"PO-Revision-Date: 2012-05-11 09:28+0200\n"
+"PO-Revision-Date: 2012-05-15 09:24+0200\n"
 "Last-Translator: Piotr Sokół <psokol@jabster.pl>\n"
 "Language-Team: polski <>\n"
 "Language: \n"
@@ -33,7 +33,7 @@ msgstr "Wypisuje informacje o wersji i kończy"
 #. default application name
 #: ../mousepad/main.c:80 ../Mousepad.desktop.in.in.h:1
 msgid "Mousepad"
-msgstr ""
+msgstr "Mousepad"
 
 #. initialize gtk+
 #: ../mousepad/main.c:92
@@ -361,37 +361,37 @@ msgstr ""
 
 #: ../mousepad/mousepad-print.c:729
 msgid "Line numbers:"
-msgstr ""
+msgstr "Numery wierszy:"
 
 #. set dialog properties
 #: ../mousepad/mousepad-replace-dialog.c:167
 msgid "Replace"
-msgstr ""
+msgstr "Zastępowanie"
 
 #: ../mousepad/mousepad-replace-dialog.c:174
 #: ../mousepad/mousepad-replace-dialog.c:540
 msgid "_Replace"
-msgstr ""
+msgstr "_Zastąp"
 
 #: ../mousepad/mousepad-replace-dialog.c:192
 msgid "_Search for:"
-msgstr ""
+msgstr "_Wyszukiwanie:"
 
 #: ../mousepad/mousepad-replace-dialog.c:213
 msgid "Replace _with:"
-msgstr ""
+msgstr "_Zastąpienie przez:"
 
 #: ../mousepad/mousepad-replace-dialog.c:233
 msgid "Search _direction:"
-msgstr ""
+msgstr "_Kierunek wyszukiwania:"
 
 #: ../mousepad/mousepad-replace-dialog.c:242
 msgid "Up"
-msgstr ""
+msgstr "W górę"
 
 #: ../mousepad/mousepad-replace-dialog.c:243
 msgid "Down"
-msgstr ""
+msgstr "W dół"
 
 #: ../mousepad/mousepad-replace-dialog.c:244
 msgid "Both"
@@ -400,7 +400,7 @@ msgstr ""
 #. case sensitive
 #: ../mousepad/mousepad-replace-dialog.c:253
 msgid "Case sensi_tive"
-msgstr ""
+msgstr "_Uwzględnianie wielkości liter"
 
 #. match whole word
 #: ../mousepad/mousepad-replace-dialog.c:260
@@ -409,19 +409,19 @@ msgstr ""
 
 #: ../mousepad/mousepad-replace-dialog.c:271
 msgid "Replace _all in:"
-msgstr ""
+msgstr "Z_akres:"
 
 #: ../mousepad/mousepad-replace-dialog.c:278
 msgid "Selection"
-msgstr ""
+msgstr "Zaznaczenie"
 
 #: ../mousepad/mousepad-replace-dialog.c:279
 msgid "Document"
-msgstr ""
+msgstr "Dokument"
 
 #: ../mousepad/mousepad-replace-dialog.c:280
 msgid "All Documents"
-msgstr ""
+msgstr "Wszystkie dokumenty"
 
 #: ../mousepad/mousepad-replace-dialog.c:445
 #, c-format
@@ -436,23 +436,23 @@ msgstr ""
 
 #: ../mousepad/mousepad-search-bar.c:188
 msgid "Fi_nd:"
-msgstr ""
+msgstr "_Wyszukiwanie:"
 
 #: ../mousepad/mousepad-search-bar.c:208
 msgid "_Next"
-msgstr ""
+msgstr "_Następne"
 
 #: ../mousepad/mousepad-search-bar.c:219
 msgid "_Previous"
-msgstr ""
+msgstr "_Poprzednie"
 
 #: ../mousepad/mousepad-search-bar.c:230
 msgid "Highlight _All"
-msgstr ""
+msgstr "Wy_różnianie"
 
 #: ../mousepad/mousepad-search-bar.c:243 ../mousepad/mousepad-search-bar.c:250
 msgid "Mat_ch Case"
-msgstr ""
+msgstr "_Uwzględnianie wielkości liter"
 
 #: ../mousepad/mousepad-statusbar.c:141
 msgid "Choose a filetype"
@@ -461,7 +461,7 @@ msgstr ""
 #. language/filetype
 #: ../mousepad/mousepad-statusbar.c:146 ../mousepad/mousepad-statusbar.c:258
 msgid "Filetype: None"
-msgstr ""
+msgstr "Typ pliku: brak"
 
 #: ../mousepad/mousepad-statusbar.c:169
 msgid "Toggle the overwrite mode"
@@ -475,7 +475,7 @@ msgstr "ZAS"
 #: ../mousepad/mousepad-statusbar.c:261
 #, c-format
 msgid "Filetype: %s"
-msgstr ""
+msgstr "Typ pliku: %s"
 
 #: ../mousepad/mousepad-statusbar.c:281
 #, c-format
@@ -587,7 +587,7 @@ msgstr "Drukuje bieżący dokument"
 
 #: ../mousepad/mousepad-window.c:415
 msgid "_Detach Tab"
-msgstr ""
+msgstr "_Odłącz kartę"
 
 #: ../mousepad/mousepad-window.c:415
 msgid "Move the current document to a new window"
@@ -884,11 +884,11 @@ msgstr "_Spis treści"
 
 #: ../mousepad/mousepad-window.c:468
 msgid "Display the Mousepad user manual"
-msgstr ""
+msgstr "Wyświetla podręcznik programu"
 
 #: ../mousepad/mousepad-window.c:469
 msgid "About this application"
-msgstr ""
+msgstr "Wyświetla informacje o programie"
 
 #: ../mousepad/mousepad-window.c:474
 msgid "Line N_umbers"
