@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: mousepad 0.2.16\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-05-17 21:17+0900\n"
-"PO-Revision-Date: 2012-05-18 00:39+0900\n"
+"PO-Revision-Date: 2012-05-18 01:28+0900\n"
 "Last-Translator: Masato Hashimoto <cabezon.hashimoto@gmail.com>\n"
 "Language-Team: Japanese <xfce-users-jp@ml.fdiary.net>\n"
 "Language: ja\n"
@@ -748,7 +748,7 @@ msgstr "頭文字のみ大文字化(_T)"
 
 #: ../mousepad/mousepad-window.c:444
 msgid "Change the case of the selection to title case"
-msgstr "選択範囲単語の頭文字を大文字に、その他を小文字に変換します"
+msgstr "選択範囲の単語の頭文字を大文字に、その他を小文字に変換します"
 
 #: ../mousepad/mousepad-window.c:445
 msgid "to _Opposite Case"
@@ -1090,7 +1090,7 @@ msgstr "Mousepad 上のフォントの選択"
 
 #: ../Mousepad.desktop.in.in.h:2
 msgid "Simple Text Editor"
-msgstr "シンプルなテキストエディター"
+msgstr "シンプルなテキストエディターです"
 
 #: ../Mousepad.desktop.in.in.h:3
 msgid "Text Editor"
