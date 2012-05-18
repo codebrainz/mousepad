@@ -337,7 +337,7 @@ msgstr "Номерувати кожні"
 
 #: ../mousepad/mousepad-print.c:669
 msgid "line(s)"
-msgstr "лініка(и)"
+msgstr "лінійка(и)"
 
 #: ../mousepad/mousepad-print.c:674
 msgid "Enable text _wrapping"
