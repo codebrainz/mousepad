@@ -304,7 +304,7 @@ msgstr ""
 #: ../mousepad/mousepad-file.c:916
 #, c-format
 msgid "Failed to read the status of \"%s\""
-msgstr ""
+msgstr "Неможливо прочитати статус \"%s\""
 
 #. set a custom tab label
 #: ../mousepad/mousepad-print.c:125
@@ -357,25 +357,25 @@ msgstr "Заголовок:"
 
 #: ../mousepad/mousepad-print.c:719
 msgid "Body:"
-msgstr ""
+msgstr "Тіло:"
 
 #: ../mousepad/mousepad-print.c:729
 msgid "Line numbers:"
-msgstr ""
+msgstr "Номері лінійок:"
 
 #. set dialog properties
 #: ../mousepad/mousepad-replace-dialog.c:167
 msgid "Replace"
-msgstr ""
+msgstr "Замінити"
 
 #: ../mousepad/mousepad-replace-dialog.c:174
 #: ../mousepad/mousepad-replace-dialog.c:540
 msgid "_Replace"
-msgstr ""
+msgstr "_Замінити"
 
 #: ../mousepad/mousepad-replace-dialog.c:192
 msgid "_Search for:"
-msgstr ""
+msgstr "_Шукати:"
 
 #: ../mousepad/mousepad-replace-dialog.c:213
 msgid "Replace _with:"
@@ -383,19 +383,19 @@ msgstr ""
 
 #: ../mousepad/mousepad-replace-dialog.c:233
 msgid "Search _direction:"
-msgstr ""
+msgstr "Напрямок _пошуку:"
 
 #: ../mousepad/mousepad-replace-dialog.c:242
 msgid "Up"
-msgstr ""
+msgstr "Вгору"
 
 #: ../mousepad/mousepad-replace-dialog.c:243
 msgid "Down"
-msgstr ""
+msgstr "Вниз"
 
 #: ../mousepad/mousepad-replace-dialog.c:244
 msgid "Both"
-msgstr ""
+msgstr "Обидва"
 
 #. case sensitive
 #: ../mousepad/mousepad-replace-dialog.c:253
@@ -409,15 +409,15 @@ msgstr ""
 
 #: ../mousepad/mousepad-replace-dialog.c:271
 msgid "Replace _all in:"
-msgstr ""
+msgstr "Замінити _все в:"
 
 #: ../mousepad/mousepad-replace-dialog.c:278
 msgid "Selection"
-msgstr ""
+msgstr "Вибір"
 
 #: ../mousepad/mousepad-replace-dialog.c:279
 msgid "Document"
-msgstr ""
+msgstr "Документ"
 
 #: ../mousepad/mousepad-replace-dialog.c:280
 msgid "All Documents"
