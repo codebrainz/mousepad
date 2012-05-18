@@ -503,15 +503,15 @@ msgstr ""
 
 #: ../mousepad/mousepad-window.c:402
 msgid "_File"
-msgstr ""
+msgstr "_Файл"
 
 #: ../mousepad/mousepad-window.c:403
 msgid "_New"
-msgstr ""
+msgstr "_Новий"
 
 #: ../mousepad/mousepad-window.c:403
 msgid "Create a new document"
-msgstr ""
+msgstr "Створити новий документ"
 
 #: ../mousepad/mousepad-window.c:404
 msgid "New _Window"
