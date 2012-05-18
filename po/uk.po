@@ -421,7 +421,7 @@ msgstr "Документ"
 
 #: ../mousepad/mousepad-replace-dialog.c:280
 msgid "All Documents"
-msgstr ""
+msgstr "Всі документи"
 
 #: ../mousepad/mousepad-replace-dialog.c:445
 #, c-format
@@ -432,19 +432,19 @@ msgstr[1] ""
 
 #: ../mousepad/mousepad-replace-dialog.c:540
 msgid "_Replace All"
-msgstr ""
+msgstr "З_амінити все"
 
 #: ../mousepad/mousepad-search-bar.c:188
 msgid "Fi_nd:"
-msgstr ""
+msgstr "З_найти:"
 
 #: ../mousepad/mousepad-search-bar.c:208
 msgid "_Next"
-msgstr ""
+msgstr "_Наступне"
 
 #: ../mousepad/mousepad-search-bar.c:219
 msgid "_Previous"
-msgstr ""
+msgstr "_Попереднє"
 
 #: ../mousepad/mousepad-search-bar.c:230
 msgid "Highlight _All"
@@ -470,12 +470,12 @@ msgstr ""
 #. overwrite label
 #: ../mousepad/mousepad-statusbar.c:174
 msgid "OVR"
-msgstr ""
+msgstr "OVR"
 
 #: ../mousepad/mousepad-statusbar.c:261
 #, c-format
 msgid "Filetype: %s"
-msgstr ""
+msgstr "Тип файлу: %s"
 
 #: ../mousepad/mousepad-statusbar.c:281
 #, c-format
