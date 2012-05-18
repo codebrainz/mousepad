@@ -188,79 +188,79 @@ msgstr "Скандінавське"
 
 #: ../mousepad/mousepad-encoding.c:39
 msgid "South European"
-msgstr ""
+msgstr "Південно-європейське"
 
 #: ../mousepad/mousepad-encoding.c:40 ../mousepad/mousepad-encoding.c:41
 #: ../mousepad/mousepad-encoding.c:42 ../mousepad/mousepad-encoding.c:43
 msgid "Western"
-msgstr ""
+msgstr "Західне"
 
 #. east european
 #: ../mousepad/mousepad-encoding.c:46 ../mousepad/mousepad-encoding.c:47
 #: ../mousepad/mousepad-encoding.c:48
 msgid "Baltic"
-msgstr ""
+msgstr "Балтійське"
 
 #: ../mousepad/mousepad-encoding.c:49 ../mousepad/mousepad-encoding.c:50
 #: ../mousepad/mousepad-encoding.c:51
 msgid "Central European"
-msgstr ""
+msgstr "Центрально-європейське"
 
 #: ../mousepad/mousepad-encoding.c:52 ../mousepad/mousepad-encoding.c:53
 #: ../mousepad/mousepad-encoding.c:54 ../mousepad/mousepad-encoding.c:55
 #: ../mousepad/mousepad-encoding.c:56
 msgid "Cyrillic"
-msgstr ""
+msgstr "Кириличне"
 
 #: ../mousepad/mousepad-encoding.c:57
 msgid "Cyrillic/Russian"
-msgstr ""
+msgstr "Кириличне/Російське"
 
 #: ../mousepad/mousepad-encoding.c:58
 msgid "Cyrillic/Ukrainian"
-msgstr ""
+msgstr "Кириличне/Українське"
 
 #: ../mousepad/mousepad-encoding.c:59
 msgid "Romanian"
-msgstr ""
+msgstr "Румунське"
 
 #. middle eastern
 #: ../mousepad/mousepad-encoding.c:62 ../mousepad/mousepad-encoding.c:63
 #: ../mousepad/mousepad-encoding.c:64
 msgid "Arabic"
-msgstr ""
+msgstr "Арабське"
 
 #: ../mousepad/mousepad-encoding.c:65 ../mousepad/mousepad-encoding.c:66
 #: ../mousepad/mousepad-encoding.c:67
 msgid "Hebrew"
-msgstr ""
+msgstr "Іврит"
 
 #: ../mousepad/mousepad-encoding.c:68
 msgid "Hebrew Visual"
-msgstr ""
+msgstr "Візуальний іврит"
 
 #. asian
 #: ../mousepad/mousepad-encoding.c:71
 msgid "Armenian"
-msgstr ""
+msgstr "Вірменське"
 
 #: ../mousepad/mousepad-encoding.c:72
 msgid "Georgian"
-msgstr ""
+msgstr "Грузинське"
 
 #: ../mousepad/mousepad-encoding.c:73
 msgid "Thai"
-msgstr ""
+msgstr "Тайське"
 
 #: ../mousepad/mousepad-encoding.c:74 ../mousepad/mousepad-encoding.c:75
 #: ../mousepad/mousepad-encoding.c:76
 msgid "Turkish"
-msgstr ""
+msgstr "Турецьке"
 
 #: ../mousepad/mousepad-encoding.c:77 ../mousepad/mousepad-encoding.c:78
 #: ../mousepad/mousepad-encoding.c:79
 msgid "Vietnamese"
-msgstr ""
+msgstr "В’єтнамське"
 
 #. unicode
 #: ../mousepad/mousepad-encoding.c:82 ../mousepad/mousepad-encoding.c:83
@@ -268,13 +268,13 @@ msgstr ""
 #: ../mousepad/mousepad-encoding.c:86 ../mousepad/mousepad-encoding.c:87
 #: ../mousepad/mousepad-encoding.c:88 ../mousepad/mousepad-encoding.c:89
 msgid "Unicode"
-msgstr ""
+msgstr "Юнікод"
 
 #. east asian
 #: ../mousepad/mousepad-encoding.c:92 ../mousepad/mousepad-encoding.c:93
 #: ../mousepad/mousepad-encoding.c:94 ../mousepad/mousepad-encoding.c:95
 msgid "Chinese Simplified"
-msgstr ""
+msgstr "Спрощене китайське"
 
 #: ../mousepad/mousepad-encoding.c:96 ../mousepad/mousepad-encoding.c:97
 #: ../mousepad/mousepad-encoding.c:98
