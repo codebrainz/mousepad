@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: mousepad 0.2.16\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-05-17 21:17+0900\n"
-"PO-Revision-Date: 2012-05-18 01:28+0900\n"
+"PO-Revision-Date: 2012-05-18 09:28+0900\n"
 "Last-Translator: Masato Hashimoto <cabezon.hashimoto@gmail.com>\n"
 "Language-Team: Japanese <xfce-users-jp@ml.fdiary.net>\n"
 "Language: ja\n"
@@ -107,11 +107,11 @@ msgstr "ドキュメント履歴をクリアすると、現在表示されてい
 
 #: ../mousepad/mousepad-dialogs.c:362
 msgid "Do you want to save the changes before closing?"
-msgstr "閉じる前に変更箇所を保存しますか?"
+msgstr "閉じる前に変更を保存しますか?"
 
 #: ../mousepad/mousepad-dialogs.c:363
 msgid "Save Changes"
-msgstr "変更箇所の保存"
+msgstr "変更の保存"
 
 #: ../mousepad/mousepad-dialogs.c:364
 msgid "_Don't Save"
@@ -137,7 +137,7 @@ msgstr ""
 
 #: ../mousepad/mousepad-dialogs.c:438
 msgid "Do you want to save your changes before reloading?"
-msgstr "再読み込み前に変更箇所を保存しますか?"
+msgstr "再読み込み前に変更を保存しますか?"
 
 #: ../mousepad/mousepad-dialogs.c:440
 msgid "If you revert the file, all unsaved changes will be lost."
@@ -156,7 +156,7 @@ msgstr "無題"
 #. create the header
 #: ../mousepad/mousepad-encoding-dialog.c:134
 msgid "The document was not UTF-8 valid"
-msgstr "この文書は正しい UTF−8 ではありません"
+msgstr "この文書は正常な UTF−8 ではありません"
 
 #: ../mousepad/mousepad-encoding-dialog.c:135
 msgid "Please select an encoding below."
@@ -243,7 +243,7 @@ msgstr "ヘブライ語"
 
 #: ../mousepad/mousepad-encoding.c:68
 msgid "Hebrew Visual"
-msgstr "ヘブライ語 視覚順"
+msgstr "ヘブライ語 (論理表記)"
 
 #. asian
 #: ../mousepad/mousepad-encoding.c:71
@@ -310,7 +310,7 @@ msgstr "再読み込みしようとしたファイル \"%s\" はもう存在し�
 #: ../mousepad/mousepad-file.c:916
 #, c-format
 msgid "Failed to read the status of \"%s\""
-msgstr "\"%s\" の状態の読込に失敗しました"
+msgstr "\"%s\" の状態の読み込みに失敗しました"
 
 #. set a custom tab label
 #: ../mousepad/mousepad-print.c:125
@@ -470,7 +470,7 @@ msgstr "ファイルタイプ: なし"
 
 #: ../mousepad/mousepad-statusbar.c:169
 msgid "Toggle the overwrite mode"
-msgstr "上書きモードを切り替えます"
+msgstr "上書きモードと挿入モードを切り替えます"
 
 #. overwrite label
 #: ../mousepad/mousepad-statusbar.c:174
@@ -789,7 +789,7 @@ msgstr "転置(_T)"
 
 #: ../mousepad/mousepad-window.c:449
 msgid "Reverse the order of something"
-msgstr "某かの順序を反転します"
+msgstr "何らかの順序を反転します"
 
 #: ../mousepad/mousepad-window.c:450
 msgid "_Move Selection"
@@ -797,7 +797,7 @@ msgstr "選択範囲の移動(_M)"
 
 #: ../mousepad/mousepad-window.c:451
 msgid "Line _Up"
-msgstr "上(_U)"
+msgstr "1 行上へ(_U)"
 
 #: ../mousepad/mousepad-window.c:451
 msgid "Move the selection one line up"
@@ -805,7 +805,7 @@ msgstr "選択範囲を 1 行上に移動します"
 
 #: ../mousepad/mousepad-window.c:452
 msgid "Line _Down"
-msgstr "下(_D)"
+msgstr "1 行下へ(_D)"
 
 #: ../mousepad/mousepad-window.c:452
 msgid "Move the selection one line down"
@@ -933,7 +933,7 @@ msgstr "行の折り返し(_W)"
 
 #: ../mousepad/mousepad-window.c:478
 msgid "Toggle breaking lines in between words"
-msgstr "単語間での行を折り返しを切り替えます"
+msgstr "単語間での行の折り返しを切り替えます"
 
 #: ../mousepad/mousepad-window.c:479
 msgid "Write Unicode _BOM"
@@ -941,7 +941,7 @@ msgstr "Unicode BOM の書き出し(_B)"
 
 #: ../mousepad/mousepad-window.c:479
 msgid "Store the byte-order mark in the file"
-msgstr "ファイルにバイトオーダーマークを格納します"
+msgstr "バイトオーダーマークをファイルに格納します"
 
 #: ../mousepad/mousepad-window.c:484
 msgid "Unix (_LF)"
