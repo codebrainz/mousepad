@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfce4-mousepad\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-05-17 18:27+0000\n"
+"POT-Creation-Date: 2012-05-18 13:12+0000\n"
 "PO-Revision-Date: 2012-05-17 18:27+0000\n"
 "Last-Translator: Yarema aka Knedlyk <yarpry@gmail.com>\n"
 "Language-Team: Ukrainian <xfce4-dev@xfce.org>\n"
@@ -52,11 +52,11 @@ msgstr "Команда розробки Xfce. Всі права застереж
 #: ../mousepad/main.c:116
 #, c-format
 msgid "Please report bugs to <%s>."
-msgstr ""
+msgstr "Будь ласка, повідомте про ваду до <%s>."
 
 #: ../mousepad/mousepad-dialogs.c:41
 msgid "Mousepad is a fast text editor for the Xfce Desktop Environment."
-msgstr ""
+msgstr "Mousepad - це швидкий текстовий редактор для серередовища робочого столу Xfce."
 
 #: ../mousepad/mousepad-dialogs.c:50
 msgid "translator-credits"
@@ -65,12 +65,12 @@ msgstr "Yarema aka Knedlyk <yupadmin@gmail.com>"
 #. display an error message to the user
 #: ../mousepad/mousepad-dialogs.c:125
 msgid "Failed to open the documentation browser"
-msgstr ""
+msgstr "Невдача при відкриванні переглядача документації"
 
 #. build dialog
 #: ../mousepad/mousepad-dialogs.c:143
 msgid "Select Tab Size"
-msgstr ""
+msgstr "Вибрати розмір вкладки"
 
 #. build the dialog
 #: ../mousepad/mousepad-dialogs.c:224
@@ -87,11 +87,11 @@ msgstr "Номе_р колонки:"
 
 #: ../mousepad/mousepad-dialogs.c:323
 msgid "Remove all entries from the documents history?"
-msgstr ""
+msgstr "Вилучити все з історії документів?"
 
 #: ../mousepad/mousepad-dialogs.c:328
 msgid "Clear Documents History"
-msgstr ""
+msgstr "Очистити історію документів"
 
 #: ../mousepad/mousepad-dialogs.c:331
 msgid ""
@@ -101,7 +101,7 @@ msgstr ""
 
 #: ../mousepad/mousepad-dialogs.c:362
 msgid "Do you want to save the changes before closing?"
-msgstr ""
+msgstr "Ви бажаєте зберегти зміни перед закриттям?"
 
 #: ../mousepad/mousepad-dialogs.c:363
 msgid "Save Changes"
@@ -114,7 +114,7 @@ msgstr "Не _зберігати"
 #. secondary text
 #: ../mousepad/mousepad-dialogs.c:386
 msgid "If you don't save the document, all the changes will be lost."
-msgstr ""
+msgstr "Якщо Ви не збережете документ, тоді зміни будуть втрачені."
 
 #: ../mousepad/mousepad-dialogs.c:408
 msgid ""
@@ -140,12 +140,12 @@ msgstr ""
 #. pack button, add signal and tooltip
 #: ../mousepad/mousepad-document.c:591
 msgid "Close this tab"
-msgstr ""
+msgstr "Закрити цю вкладку"
 
 #. create an unique untitled document name
 #: ../mousepad/mousepad-document.c:626
 msgid "Untitled"
-msgstr ""
+msgstr "Без назви"
 
 #. create the header
 #: ../mousepad/mousepad-encoding-dialog.c:134
@@ -154,37 +154,37 @@ msgstr ""
 
 #: ../mousepad/mousepad-encoding-dialog.c:135
 msgid "Please select an encoding below."
-msgstr ""
+msgstr "Будь ласка, виберіть кодування."
 
 #. encoding radio buttons
 #: ../mousepad/mousepad-encoding-dialog.c:147
 msgid "Default (UTF-8)"
-msgstr ""
+msgstr "Типово (UTF-8)"
 
 #: ../mousepad/mousepad-encoding-dialog.c:153
 msgid "System"
-msgstr ""
+msgstr "Системне"
 
 #: ../mousepad/mousepad-encoding-dialog.c:160
 msgid "Other:"
-msgstr ""
+msgstr "Інше:"
 
 #: ../mousepad/mousepad-encoding-dialog.c:180
 msgid "Checking encodings..."
-msgstr ""
+msgstr "Перевіряння кодування..."
 
 #. west european
 #: ../mousepad/mousepad-encoding.c:35
 msgid "Celtic"
-msgstr ""
+msgstr "Кельтське"
 
 #: ../mousepad/mousepad-encoding.c:36 ../mousepad/mousepad-encoding.c:37
 msgid "Greek"
-msgstr ""
+msgstr "Грецьке"
 
 #: ../mousepad/mousepad-encoding.c:38
 msgid "Nordic"
-msgstr ""
+msgstr "Скандінавське"
 
 #: ../mousepad/mousepad-encoding.c:39
 msgid "South European"
