@@ -279,17 +279,17 @@ msgstr "Спрощене китайське"
 #: ../mousepad/mousepad-encoding.c:96 ../mousepad/mousepad-encoding.c:97
 #: ../mousepad/mousepad-encoding.c:98
 msgid "Chinese Traditional"
-msgstr ""
+msgstr "Китайське традиційне"
 
 #: ../mousepad/mousepad-encoding.c:99 ../mousepad/mousepad-encoding.c:100
 #: ../mousepad/mousepad-encoding.c:101
 msgid "Japanese"
-msgstr ""
+msgstr "Японське"
 
 #: ../mousepad/mousepad-encoding.c:102 ../mousepad/mousepad-encoding.c:103
 #: ../mousepad/mousepad-encoding.c:104 ../mousepad/mousepad-encoding.c:105
 msgid "Korean"
-msgstr ""
+msgstr "Корейське"
 
 #: ../mousepad/mousepad-file.c:556
 #, c-format
@@ -309,51 +309,51 @@ msgstr ""
 #. set a custom tab label
 #: ../mousepad/mousepad-print.c:125
 msgid "Document Settings"
-msgstr ""
+msgstr "Налаштування документа"
 
 #: ../mousepad/mousepad-print.c:595
 msgid "Page Setup"
-msgstr ""
+msgstr "Налаштування сторінки"
 
 #: ../mousepad/mousepad-print.c:605
 msgid "_Adjust page size and orientation"
-msgstr ""
+msgstr "_Налаштувати розміри сторінок та орієнтацію"
 
 #: ../mousepad/mousepad-print.c:615
 msgid "Appearance"
-msgstr ""
+msgstr "Вигляд"
 
 #: ../mousepad/mousepad-print.c:629
 msgid "Print page _headers"
-msgstr ""
+msgstr "Друкувати заголовки _сторінок"
 
 #: ../mousepad/mousepad-print.c:636
 msgid "Print _line numbers"
-msgstr ""
+msgstr "Друкувати _номери лінійок"
 
 #: ../mousepad/mousepad-print.c:653
 msgid "Number every"
-msgstr ""
+msgstr "Номерувати кожні"
 
 #: ../mousepad/mousepad-print.c:669
 msgid "line(s)"
-msgstr ""
+msgstr "лініка(и)"
 
 #: ../mousepad/mousepad-print.c:674
 msgid "Enable text _wrapping"
-msgstr ""
+msgstr "Включити _перенесення тексту"
 
 #: ../mousepad/mousepad-print.c:681
 msgid "Enable _syntax highlighting"
-msgstr ""
+msgstr "Включити підкреслення _синтаксису"
 
 #: ../mousepad/mousepad-print.c:693
 msgid "Fonts"
-msgstr ""
+msgstr "Шрифти"
 
 #: ../mousepad/mousepad-print.c:709
 msgid "Header:"
-msgstr ""
+msgstr "Заголовок:"
 
 #: ../mousepad/mousepad-print.c:719
 msgid "Body:"
