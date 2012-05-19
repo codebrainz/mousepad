@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: mousepad 0.2.16\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-05-17 21:17+0900\n"
-"PO-Revision-Date: 2012-05-18 09:28+0900\n"
+"PO-Revision-Date: 2012-05-19 11:47+0900\n"
 "Last-Translator: Masato Hashimoto <cabezon.hashimoto@gmail.com>\n"
 "Language-Team: Japanese <xfce-users-jp@ml.fdiary.net>\n"
 "Language: ja\n"
@@ -339,7 +339,7 @@ msgstr "行番号を印刷する(_L)"
 
 #: ../mousepad/mousepad-print.c:653
 msgid "Number every"
-msgstr "表示間隔"
+msgstr "出力間隔"
 
 #: ../mousepad/mousepad-print.c:669
 msgid "line(s)"
@@ -415,7 +415,7 @@ msgstr "完全一致(_M)"
 
 #: ../mousepad/mousepad-replace-dialog.c:271
 msgid "Replace _all in:"
-msgstr "置換範囲(_A):"
+msgstr "一括置換(_A):"
 
 #: ../mousepad/mousepad-replace-dialog.c:278
 msgid "Selection"
@@ -427,13 +427,13 @@ msgstr "文書"
 
 #: ../mousepad/mousepad-replace-dialog.c:280
 msgid "All Documents"
-msgstr "前文書"
+msgstr "全文書"
 
 #: ../mousepad/mousepad-replace-dialog.c:445
 #, c-format
 msgid "%d occurence"
 msgid_plural "%d occurences"
-msgstr[0] "%d 個見つかりました"
+msgstr[0] "%d 個"
 
 #: ../mousepad/mousepad-replace-dialog.c:540
 msgid "_Replace All"
@@ -841,7 +841,7 @@ msgstr "文書(_D)"
 
 #: ../mousepad/mousepad-window.c:458
 msgid "Line E_nding"
-msgstr "行末(_N)"
+msgstr "改行コード(_N)"
 
 #: ../mousepad/mousepad-window.c:459
 msgid "Tab _Size"
