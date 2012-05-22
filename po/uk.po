@@ -581,47 +581,47 @@ msgstr ""
 
 #: ../mousepad/mousepad-window.c:414
 msgid "_Print..."
-msgstr ""
+msgstr "На_друкувати..."
 
 #: ../mousepad/mousepad-window.c:414
 msgid "Print the current document"
-msgstr ""
+msgstr "Надрукувати поточний документ"
 
 #: ../mousepad/mousepad-window.c:415
 msgid "_Detach Tab"
-msgstr ""
+msgstr "_Від’єднати вкладку"
 
 #: ../mousepad/mousepad-window.c:415
 msgid "Move the current document to a new window"
-msgstr ""
+msgstr "Перемістити поточний документ до нового вікна"
 
 #: ../mousepad/mousepad-window.c:416
 msgid "Close _Tab"
-msgstr ""
+msgstr "Закрити в_кладку"
 
 #: ../mousepad/mousepad-window.c:416
 msgid "Close the current document"
-msgstr ""
+msgstr "Закрити поточний документ"
 
 #: ../mousepad/mousepad-window.c:417
 msgid "_Close Window"
-msgstr ""
+msgstr "Зак_рити вікно"
 
 #: ../mousepad/mousepad-window.c:417
 msgid "Close this window"
-msgstr ""
+msgstr "Закрити це вікно"
 
 #: ../mousepad/mousepad-window.c:419
 msgid "_Edit"
-msgstr ""
+msgstr "Р_едагувати"
 
 #: ../mousepad/mousepad-window.c:420
 msgid "Undo the last action"
-msgstr ""
+msgstr "Відмінити останню дію"
 
 #: ../mousepad/mousepad-window.c:421
 msgid "Redo the last undone action"
-msgstr ""
+msgstr "Відновити останню зроблену дію"
 
 #: ../mousepad/mousepad-window.c:422
 msgid "Cut the selection"
