@@ -1008,7 +1008,7 @@ msgstr ""
 #: ../mousepad/mousepad-window.c:2580
 #, c-format
 msgid "Open '%s'"
-msgstr ""
+msgstr "Відкрити '%s'"
 
 #: ../mousepad/mousepad-window.c:2727
 msgid "Failed to clear the recent history"
@@ -1025,7 +1025,7 @@ msgstr ""
 
 #: ../mousepad/mousepad-window.c:3303
 msgid "No filetype"
-msgstr ""
+msgstr "Немає типу файла"
 
 #. set error message
 #: ../mousepad/mousepad-window.c:3510
@@ -1040,53 +1040,53 @@ msgstr ""
 #. set error message
 #: ../mousepad/mousepad-window.c:3523
 msgid "Loading the template failed"
-msgstr ""
+msgstr "Помилка завантаження шаблону"
 
 #. create new file chooser dialog
 #: ../mousepad/mousepad-window.c:3548
 msgid "Open File"
-msgstr ""
+msgstr "Відкрити файл"
 
 #: ../mousepad/mousepad-window.c:3661
 #, c-format
 msgid ""
 "Failed to open \"%s\" for reading. It will be removed from the document "
 "history"
-msgstr ""
+msgstr "Помилка відкривання \"%s\" для читання. Це буде вилучено з історії документів"
 
 #. show the warning and cleanup
 #: ../mousepad/mousepad-window.c:3665
 msgid "Failed to open file"
-msgstr ""
+msgstr "Помилка відкривання файла"
 
 #. show the error
 #: ../mousepad/mousepad-window.c:3771 ../mousepad/mousepad-window.c:3894
 msgid "Failed to save the document"
-msgstr ""
+msgstr "Помилка збереження документа"
 
 #. create the dialog
 #: ../mousepad/mousepad-window.c:3795
 msgid "Save As"
-msgstr ""
+msgstr "Зберегти як"
 
 #. show the error
 #: ../mousepad/mousepad-window.c:3986
 msgid "Failed to reload the document"
-msgstr ""
+msgstr "Помилка перезавантаження документа"
 
 #. show the error
 #: ../mousepad/mousepad-window.c:4013
 msgid "Failed to print the document"
-msgstr ""
+msgstr "Помилка друкування документа"
 
 #: ../mousepad/mousepad-window.c:4424
 msgid "Choose Mousepad Font"
-msgstr ""
+msgstr "Виберіть шрифти для Mousepad"
 
 #: ../Mousepad.desktop.in.in.h:2
 msgid "Simple Text Editor"
-msgstr ""
+msgstr "Простий текстовий редактор"
 
 #: ../Mousepad.desktop.in.in.h:3
 msgid "Text Editor"
-msgstr ""
+msgstr "Текстовий редактор"
