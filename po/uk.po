@@ -529,47 +529,47 @@ msgstr "Новий з _шаблону"
 
 #: ../mousepad/mousepad-window.c:406
 msgid "_Open..."
-msgstr ""
+msgstr "_Відкрити..."
 
 #: ../mousepad/mousepad-window.c:406
 msgid "Open a file"
-msgstr ""
+msgstr "Відкрити файл"
 
 #: ../mousepad/mousepad-window.c:407
 msgid "Op_en Recent"
-msgstr ""
+msgstr "Відкрити _недавнє"
 
 #: ../mousepad/mousepad-window.c:408
 msgid "No items found"
-msgstr ""
+msgstr "Нічого не знайдено"
 
 #: ../mousepad/mousepad-window.c:409
 msgid "Clear _History"
-msgstr ""
+msgstr "Очитстити _історію"
 
 #: ../mousepad/mousepad-window.c:409
 msgid "Clear the recently used files history"
-msgstr ""
+msgstr "Очистити історію недавно використаних файлів"
 
 #: ../mousepad/mousepad-window.c:410
 msgid "Save the current document"
-msgstr ""
+msgstr "Зберегти поточний документ"
 
 #: ../mousepad/mousepad-window.c:411
 msgid "Save _As..."
-msgstr ""
+msgstr "Зберегти _як..."
 
 #: ../mousepad/mousepad-window.c:411
 msgid "Save current document as another file"
-msgstr ""
+msgstr "Зберегти документ як інший файл"
 
 #: ../mousepad/mousepad-window.c:412
 msgid "Save A_ll"
-msgstr ""
+msgstr "Зберегти в_се"
 
 #: ../mousepad/mousepad-window.c:412
 msgid "Save all document in this window"
-msgstr ""
+msgstr "Зберегти всі документи в цьому вікні"
 
 #: ../mousepad/mousepad-window.c:413
 msgid "Re_vert"
