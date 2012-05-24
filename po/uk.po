@@ -674,7 +674,7 @@ msgstr ""
 
 #: ../mousepad/mousepad-window.c:431
 msgid "Search for text"
-msgstr ""
+msgstr "Шукати текст"
 
 #: ../mousepad/mousepad-window.c:432
 msgid "Find _Next"
@@ -694,35 +694,35 @@ msgstr ""
 
 #: ../mousepad/mousepad-window.c:434
 msgid "Find and Rep_lace..."
-msgstr ""
+msgstr "Знайти і _замінити"
 
 #: ../mousepad/mousepad-window.c:434
 msgid "Search for and replace text"
-msgstr ""
+msgstr "Шукати і замінити текст"
 
 #: ../mousepad/mousepad-window.c:436
 msgid "_View"
-msgstr ""
+msgstr "_Перегляд"
 
 #: ../mousepad/mousepad-window.c:437
 msgid "Select F_ont..."
-msgstr ""
+msgstr "Вибрати _шрифт"
 
 #: ../mousepad/mousepad-window.c:437
 msgid "Change the editor font"
-msgstr ""
+msgstr "Змінити шрифт редактора"
 
 #: ../mousepad/mousepad-window.c:438
 msgid "_Color Scheme"
-msgstr ""
+msgstr "_Схема кольору"
 
 #: ../mousepad/mousepad-window.c:440
 msgid "_Text"
-msgstr ""
+msgstr "_Текст"
 
 #: ../mousepad/mousepad-window.c:441
 msgid "_Convert"
-msgstr ""
+msgstr "_Перетворити"
 
 #: ../mousepad/mousepad-window.c:442
 msgid "to _Uppercase"
