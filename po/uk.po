@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfce4-mousepad\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-05-22 13:30+0000\n"
+"POT-Creation-Date: 2012-05-24 13:39+0000\n"
 "PO-Revision-Date: 2012-05-17 18:27+0000\n"
 "Last-Translator: Yarema aka Knedlyk <yarpry@gmail.com>\n"
 "Language-Team: Ukrainian <xfce4-dev@xfce.org>\n"
@@ -99,7 +99,7 @@ msgstr "Очистити історію документів"
 msgid ""
 "Clearing the documents history will permanently remove all currently listed "
 "entries."
-msgstr ""
+msgstr "Очищення історії документів назавжди вилучить всю записану історію документів."
 
 #: ../mousepad/mousepad-dialogs.c:362
 msgid "Do you want to save the changes before closing?"
@@ -121,7 +121,7 @@ msgstr "Якщо Ви не збережете документ, тоді змі�
 #: ../mousepad/mousepad-dialogs.c:408
 msgid ""
 "The document has been externally modified. Do you want to continue saving?"
-msgstr ""
+msgstr "Документ було змінено ззовні. Ви бажаєте продовжити записування?"
 
 #: ../mousepad/mousepad-dialogs.c:409
 msgid "Externally Modified"
@@ -129,7 +129,8 @@ msgstr "Зовнішньо змінено"
 
 #: ../mousepad/mousepad-dialogs.c:410
 msgid "If you don't save the document, all the external changes will be lost."
-msgstr "Якщо Ви не збережете документ, тоді всі зовнішні зміни будуть втрачені."
+msgstr ""
+"Якщо Ви не збережете документ, тоді всі зовнішні зміни будуть втрачені."
 
 #: ../mousepad/mousepad-dialogs.c:438
 msgid "Do you want to save your changes before reloading?"
@@ -152,7 +153,7 @@ msgstr "Без назви"
 #. create the header
 #: ../mousepad/mousepad-encoding-dialog.c:134
 msgid "The document was not UTF-8 valid"
-msgstr ""
+msgstr "Документ не є документом UTF-8"
 
 #: ../mousepad/mousepad-encoding-dialog.c:135
 msgid "Please select an encoding below."
@@ -402,7 +403,7 @@ msgstr "Обидва"
 #. case sensitive
 #: ../mousepad/mousepad-replace-dialog.c:253
 msgid "Case sensi_tive"
-msgstr ""
+msgstr "Вра_хування регістру"
 
 #. match whole word
 #: ../mousepad/mousepad-replace-dialog.c:260
@@ -625,47 +626,47 @@ msgstr "Відновити останню зроблену дію"
 
 #: ../mousepad/mousepad-window.c:422
 msgid "Cut the selection"
-msgstr ""
+msgstr "Вирізати виділення"
 
 #: ../mousepad/mousepad-window.c:423
 msgid "Copy the selection"
-msgstr ""
+msgstr "Скопіювати виділення"
 
 #: ../mousepad/mousepad-window.c:424
 msgid "Paste the clipboard"
-msgstr ""
+msgstr "Вставити в буфер обміну"
 
 #: ../mousepad/mousepad-window.c:425
 msgid "Paste _Special"
-msgstr ""
+msgstr "Спеціальна _вставка"
 
 #: ../mousepad/mousepad-window.c:426
 msgid "Paste from _History"
-msgstr ""
+msgstr "Вставка з _історії"
 
 #: ../mousepad/mousepad-window.c:426
 msgid "Paste from the clipboard history"
-msgstr ""
+msgstr "Вставка з історії буфера обміну"
 
 #: ../mousepad/mousepad-window.c:427
 msgid "Paste as _Column"
-msgstr ""
+msgstr "Вставити як _колонку"
 
 #: ../mousepad/mousepad-window.c:427
 msgid "Paste the clipboard text into a column"
-msgstr ""
+msgstr "Вставка текст з буфера обміну в колонку"
 
 #: ../mousepad/mousepad-window.c:428
 msgid "Delete the current selection"
-msgstr ""
+msgstr "Вилучити поточне виділення"
 
 #: ../mousepad/mousepad-window.c:429
 msgid "Select the text in the entire document"
-msgstr ""
+msgstr "Вибрати текст в усьому документі"
 
 #: ../mousepad/mousepad-window.c:430
 msgid "Change the selection"
-msgstr ""
+msgstr "Змінити виділення"
 
 #: ../mousepad/mousepad-window.c:430
 msgid "Change a normal selection into a column selection and vice versa"
@@ -1052,7 +1053,8 @@ msgstr "Відкрити файл"
 msgid ""
 "Failed to open \"%s\" for reading. It will be removed from the document "
 "history"
-msgstr "Помилка відкривання \"%s\" для читання. Це буде вилучено з історії документів"
+msgstr ""
+"Помилка відкривання \"%s\" для читання. Це буде вилучено з історії документів"
 
 #. show the warning and cleanup
 #: ../mousepad/mousepad-window.c:3665
