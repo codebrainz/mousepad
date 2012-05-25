@@ -680,19 +680,19 @@ msgstr "Шукати текст"
 
 #: ../mousepad/mousepad-window.c:432
 msgid "Find _Next"
-msgstr ""
+msgstr "Шукати _наступне"
 
 #: ../mousepad/mousepad-window.c:432
 msgid "Search forwards for the same text"
-msgstr ""
+msgstr "Шукати вперед той самий текст"
 
 #: ../mousepad/mousepad-window.c:433
 msgid "Find _Previous"
-msgstr ""
+msgstr "Шукати _попереднє"
 
 #: ../mousepad/mousepad-window.c:433
 msgid "Search backwards for the same text"
-msgstr ""
+msgstr "Шукати назад той самий текст"
 
 #: ../mousepad/mousepad-window.c:434
 msgid "Find and Rep_lace..."
@@ -764,7 +764,7 @@ msgstr ""
 
 #: ../mousepad/mousepad-window.c:446
 msgid "Convert all tabs to spaces in the selection or document"
-msgstr ""
+msgstr "Перетворити всю табуляцію на пробіли у вибраному або всьому документі"
 
 #: ../mousepad/mousepad-window.c:447
 msgid "_Spaces to Tabs"
