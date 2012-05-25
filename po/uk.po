@@ -760,7 +760,7 @@ msgstr ""
 
 #: ../mousepad/mousepad-window.c:446
 msgid "_Tabs to Spaces"
-msgstr ""
+msgstr "_Табуляцію до пробілів"
 
 #: ../mousepad/mousepad-window.c:446
 msgid "Convert all tabs to spaces in the selection or document"
@@ -869,23 +869,23 @@ msgstr "_Наступна вкладка"
 
 #: ../mousepad/mousepad-window.c:464
 msgid "Select the next tab"
-msgstr ""
+msgstr "Вибрати наступну вкладку"
 
 #: ../mousepad/mousepad-window.c:465
 msgid "_Go to..."
-msgstr ""
+msgstr "_Перейти до.."
 
 #: ../mousepad/mousepad-window.c:465
 msgid "Go to a specific location in the document"
-msgstr ""
+msgstr "Перейти до вибраного місця в документі"
 
 #: ../mousepad/mousepad-window.c:467
 msgid "_Help"
-msgstr ""
+msgstr "_Допомога"
 
 #: ../mousepad/mousepad-window.c:468
 msgid "_Contents"
-msgstr ""
+msgstr "_Зміст"
 
 #: ../mousepad/mousepad-window.c:468
 msgid "Display the Mousepad user manual"
