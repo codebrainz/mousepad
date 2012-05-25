@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfce4-mousepad\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-05-24 13:39+0000\n"
+"POT-Creation-Date: 2012-05-25 05:42+0000\n"
 "PO-Revision-Date: 2012-05-17 18:27+0000\n"
 "Last-Translator: Yarema aka Knedlyk <yarpry@gmail.com>\n"
 "Language-Team: Ukrainian <xfce4-dev@xfce.org>\n"
@@ -99,7 +99,9 @@ msgstr "Очистити історію документів"
 msgid ""
 "Clearing the documents history will permanently remove all currently listed "
 "entries."
-msgstr "Очищення історії документів назавжди вилучить всю записану історію документів."
+msgstr ""
+"Очищення історії документів назавжди вилучить всю записану історію "
+"документів."
 
 #: ../mousepad/mousepad-dialogs.c:362
 msgid "Do you want to save the changes before closing?"
@@ -766,104 +768,104 @@ msgstr ""
 
 #: ../mousepad/mousepad-window.c:447
 msgid "_Spaces to Tabs"
-msgstr ""
+msgstr "_Пробіли в табуляцію"
 
 #: ../mousepad/mousepad-window.c:447
 msgid ""
 "Convert all the leading spaces to tabs in the selected line(s) or document"
-msgstr ""
+msgstr "Перетворити всі прогалини в табуляцію у вибраному рядку(ах) або документі"
 
 #: ../mousepad/mousepad-window.c:448
 msgid "St_rip Trailing Spaces"
-msgstr ""
+msgstr "Забрати пробіли"
 
 #: ../mousepad/mousepad-window.c:448
 msgid "Remove all the trailing spaces from the selected line(s) or document"
-msgstr ""
+msgstr "Вилучити всі пробіл з вибраної лінійки(йок) або документу"
 
 #: ../mousepad/mousepad-window.c:449
 msgid "_Transpose"
-msgstr ""
+msgstr "_Перемістити"
 
 #: ../mousepad/mousepad-window.c:449
 msgid "Reverse the order of something"
-msgstr ""
+msgstr "Обернений порядок"
 
 #: ../mousepad/mousepad-window.c:450
 msgid "_Move Selection"
-msgstr ""
+msgstr "_Перемістити вибране"
 
 #: ../mousepad/mousepad-window.c:451
 msgid "Line _Up"
-msgstr ""
+msgstr "Рядок _вгору"
 
 #: ../mousepad/mousepad-window.c:451
 msgid "Move the selection one line up"
-msgstr ""
+msgstr "Перемістити вибране на один рядок вгору"
 
 #: ../mousepad/mousepad-window.c:452
 msgid "Line _Down"
-msgstr ""
+msgstr "Рядок в_низ"
 
 #: ../mousepad/mousepad-window.c:452
 msgid "Move the selection one line down"
-msgstr ""
+msgstr "Перемістити вибране на один рядок вниз"
 
 #: ../mousepad/mousepad-window.c:453
 msgid "D_uplicate Line / Selection"
-msgstr ""
+msgstr "Про_дублювати рядок / Вибране"
 
 #: ../mousepad/mousepad-window.c:453
 msgid "Duplicate the current line or selection"
-msgstr ""
+msgstr "Продублювати поточний рядок або вибране"
 
 #: ../mousepad/mousepad-window.c:454
 msgid "_Increase Indent"
-msgstr ""
+msgstr "З_більшити відступ"
 
 #: ../mousepad/mousepad-window.c:454
 msgid "Increase the indentation of the selection or current line"
-msgstr ""
+msgstr "Збільшити відступ вибраного або поточного рядка"
 
 #: ../mousepad/mousepad-window.c:455
 msgid "_Decrease Indent"
-msgstr ""
+msgstr "З_меншити відступ"
 
 #: ../mousepad/mousepad-window.c:455
 msgid "Decrease the indentation of the selection or current line"
-msgstr ""
+msgstr "Зменшити відступ вибраного або поточного рядка"
 
 #: ../mousepad/mousepad-window.c:457
 msgid "_Document"
-msgstr ""
+msgstr "_Документ"
 
 #: ../mousepad/mousepad-window.c:458
 msgid "Line E_nding"
-msgstr ""
+msgstr "З_акінчення рядка"
 
 #: ../mousepad/mousepad-window.c:459
 msgid "Tab _Size"
-msgstr ""
+msgstr "Розмір _вкладки"
 
 #: ../mousepad/mousepad-window.c:460
 msgid "_Filetype"
-msgstr ""
+msgstr "_Тип файла"
 
 #: ../mousepad/mousepad-window.c:462
 msgid "_Navigation"
-msgstr ""
+msgstr "_Навігація"
 
 #: ../mousepad/mousepad-window.c:463
 msgid "_Previous Tab"
-msgstr ""
+msgstr "_Попередня вкладка"
 
 #: ../mousepad/mousepad-window.c:463
 msgid "Select the previous tab"
-msgstr ""
+msgstr "Вибрати попередню вкладку"
 
 #: ../mousepad/mousepad-window.c:464
 msgid "_Next Tab"
-msgstr ""
+msgstr "_Наступна вкладка"
 
 #: ../mousepad/mousepad-window.c:464
 msgid "Select the next tab"
