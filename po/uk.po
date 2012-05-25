@@ -837,7 +837,7 @@ msgstr "Зменшити відступ вибраного або поточно
 
 #: ../mousepad/mousepad-window.c:457
 msgid "_Document"
-msgstr "_Документ"
+msgstr "Д_окумент"
 
 #: ../mousepad/mousepad-window.c:458
 msgid "Line E_nding"
