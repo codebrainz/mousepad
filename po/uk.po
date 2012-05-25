@@ -845,11 +845,11 @@ msgstr "З_акінчення рядка"
 
 #: ../mousepad/mousepad-window.c:459
 msgid "Tab _Size"
-msgstr "Розмір _вкладки"
+msgstr "Розмір _табуляції"
 
 #: ../mousepad/mousepad-window.c:460
 msgid "_Filetype"
-msgstr "_Тип файла"
+msgstr "_Тип файлу"
 
 #: ../mousepad/mousepad-window.c:462
 msgid "_Navigation"
