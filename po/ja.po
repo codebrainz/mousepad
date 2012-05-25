@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mousepad 0.2.16\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-05-17 21:17+0900\n"
-"PO-Revision-Date: 2012-05-19 11:47+0900\n"
+"POT-Creation-Date: 2012-05-24 21:57+0900\n"
+"PO-Revision-Date: 2012-05-25 21:56+0900\n"
 "Last-Translator: Masato Hashimoto <cabezon.hashimoto@gmail.com>\n"
 "Language-Team: Japanese <xfce-users-jp@ml.fdiary.net>\n"
 "Language: ja\n"
@@ -103,7 +103,9 @@ msgstr "ドキュメント履歴のクリア"
 msgid ""
 "Clearing the documents history will permanently remove all currently listed "
 "entries."
-msgstr "ドキュメント履歴をクリアすると、現在表示されているすべてのアイテムを完全に削除します。"
+msgstr ""
+"ドキュメント履歴をクリアすると、現在表示されているすべてのアイテムを完全に削"
+"除します。"
 
 #: ../mousepad/mousepad-dialogs.c:362
 msgid "Do you want to save the changes before closing?"
@@ -133,7 +135,7 @@ msgstr "外部からの変更"
 
 #: ../mousepad/mousepad-dialogs.c:410
 msgid "If you don't save the document, all the external changes will be lost."
-msgstr ""
+msgstr "保存すると、すべての外部からの変更箇所は失われます。"
 
 #: ../mousepad/mousepad-dialogs.c:438
 msgid "Do you want to save your changes before reloading?"
@@ -433,7 +435,7 @@ msgstr "全文書"
 #, c-format
 msgid "%d occurence"
 msgid_plural "%d occurences"
-msgstr[0] "%d 個"
+msgstr[0] "%d 件"
 
 #: ../mousepad/mousepad-replace-dialog.c:540
 msgid "_Replace All"
@@ -498,7 +500,9 @@ msgstr "行: %d 列: %d"
 msgid ""
 "Unable to create base directory \"%s\". Saving to file \"%s\" will be "
 "aborted."
-msgstr "ベースディレクトリ \"%s\" を作成できません。ファイル \"%s\" の保存は中止されます。"
+msgstr ""
+"ベースディレクトリ \"%s\" を作成できません。ファイル \"%s\" の保存は中止され"
+"ます。"
 
 #. print error
 #: ../mousepad/mousepad-util.c:618
@@ -1040,7 +1044,8 @@ msgstr "テンプレートは正常な UTF-8 であるべきです"
 #. set error message
 #: ../mousepad/mousepad-window.c:3518
 msgid "Reading the template failed, the menu item has been removed"
-msgstr "テンプレートの読み込みに失敗しました。メニューアイテムは除去されました。"
+msgstr ""
+"テンプレートの読み込みに失敗しました。メニューアイテムは除去されました。"
 
 #. set error message
 #: ../mousepad/mousepad-window.c:3523
@@ -1057,7 +1062,9 @@ msgstr "ファイルを開く"
 msgid ""
 "Failed to open \"%s\" for reading. It will be removed from the document "
 "history"
-msgstr "読み込むために \"%s\" を開くことに失敗しました。これはドキュメント履歴から除去されます。"
+msgstr ""
+"読み込むために \"%s\" を開くことに失敗しました。これはドキュメント履歴から除"
+"去されます。"
 
 #. show the warning and cleanup
 #: ../mousepad/mousepad-window.c:3665
