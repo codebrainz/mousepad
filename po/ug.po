@@ -2,7 +2,7 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # Gheyret Kenji <gheyret@gmail.com>, 2012.
-# 
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: mousepad\n"
@@ -963,9 +963,7 @@ msgstr ""
 #. add the label with the root warning
 #: ../mousepad/mousepad-window.c:662
 msgid "Warning, you are using the root account, you may harm your system."
-msgstr ""
-"دىققەت: root ھوقۇقىدا مەشغۇلات قىلىۋاتىسىز. بەك دىققەت قىلىڭ، سىستېمىنى "
-"بۇزۇپ قويۇشىڭىز مۇمكىن"
+msgstr "دىققەت: root ھوقۇقىدا مەشغۇلات قىلىۋاتىسىز. بەك دىققەت قىلىڭ، سىستېمىنى بۇزۇپ قويۇشىڭىز مۇمكىن"
 
 #. show the warning
 #: ../mousepad/mousepad-window.c:1100
