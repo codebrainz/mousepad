@@ -1,0 +1,273 @@
+# Serbian translation of mousepad-xfce.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the mausepad package.
+# salepetronije <salepetronije@gmail.com>, 2012.
+msgid ""
+msgstr ""
+"Project-Id-Version: 89\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2006-07-10 14:29+0200\n"
+"PO-Revision-Date: 2012-06-06 21:51+0200\n"
+"Last-Translator: salepetronije <salepetronije@gmail.com>\n"
+"Language-Team: српски <xfce-i18n@xfce.org>\n"
+"Language: sr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%"
+"10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+
+#: ../src/callback.c:36
+#, c-format
+msgid "Save changes to '%s'?"
+msgstr "Да сачувам измене у „%s“?"
+
+#: ../src/callback.c:184 ../src/file.c:150
+#, c-format
+msgid "Can't convert codeset to '%s'"
+msgstr "Не могу да претворим кодирање у „%s“"
+
+#: ../src/callback.c:211
+msgid "Can't open pipe to process"
+msgstr "Не могу да отворим спојку за обрађивање"
+
+#: ../src/callback.c:370
+msgid "A text editor for Xfce"
+msgstr "Уређивач текста за ИксФЦЕ"
+
+#: ../src/dialog.c:135
+#, c-format
+msgid "About %s"
+msgstr "О програму %s"
+
+#: ../src/file.c:163
+msgid "Can't open file to write"
+msgstr "Не могу да отворим датотеку за упис"
+
+#: ../src/file.c:168
+msgid "Can't write file"
+msgstr "Не могу да запишем датотеку"
+
+#: ../src/font.c:49
+msgid "Font"
+msgstr "Словни лик"
+
+#: ../src/menu.c:60
+msgid "/_File"
+msgstr "/_Датотека"
+
+#: ../src/menu.c:62
+msgid "/File/_New"
+msgstr "/Датотека/_Нова"
+
+#: ../src/menu.c:65
+msgid "/File/New _Window"
+msgstr "/Датотека/Нови _прозор"
+
+#: ../src/menu.c:68
+msgid "/File/_Open..."
+msgstr "/Датотека/_Отвори..."
+
+#: ../src/menu.c:70
+msgid "/File/_Save"
+msgstr "/Датотека/_Сачувај"
+
+#: ../src/menu.c:72
+msgid "/File/Save _As..."
+msgstr "/Датотека/Сачувај _као..."
+
+#: ../src/menu.c:74
+msgid "/File/_Print..."
+msgstr "/Датотека/_Штампај..."
+
+#: ../src/menu.c:78
+msgid "/File/_Quit"
+msgstr "/Датотека/_Одустани"
+
+#: ../src/menu.c:80
+msgid "/_Edit"
+msgstr "/_Уреди"
+
+#: ../src/menu.c:82
+msgid "/Edit/_Undo"
+msgstr "/Уреди/_Опозови"
+
+#: ../src/menu.c:84
+msgid "/Edit/_Redo"
+msgstr "/Уреди/_Поврати"
+
+#: ../src/menu.c:88
+msgid "/Edit/Cu_t"
+msgstr "/Уреди/_Исеци"
+
+#: ../src/menu.c:90
+msgid "/Edit/_Copy"
+msgstr "/Уреди/_Умножи"
+
+#: ../src/menu.c:92
+msgid "/Edit/_Paste"
+msgstr "/Уреди/_Налепи"
+
+#: ../src/menu.c:94
+msgid "/Edit/_Delete"
+msgstr "/Уреди/_Обриши"
+
+#: ../src/menu.c:98
+msgid "/Edit/Select _All"
+msgstr "/Уреди/Обележи _све"
+
+#: ../src/menu.c:100
+msgid "/_Search"
+msgstr "/_Тражи"
+
+#: ../src/menu.c:102
+msgid "/Search/_Find..."
+msgstr "/Тражи/_Нађи..."
+
+#: ../src/menu.c:104
+msgid "/Search/Find _Next"
+msgstr "/Тражи/Нађи _следеће"
+
+#: ../src/menu.c:106
+msgid "/Search/Find _Previous"
+msgstr "/Тражи/Нађи _претходно"
+
+#: ../src/menu.c:108
+msgid "/Search/_Replace..."
+msgstr "/Тражи/_Замени..."
+
+#: ../src/menu.c:112
+msgid "/Search/_Jump To..."
+msgstr "/Тражи/_Скочи на..."
+
+#: ../src/menu.c:114
+msgid "/_Options"
+msgstr "/_Могућности"
+
+#: ../src/menu.c:116
+msgid "/Options/_Font..."
+msgstr "/Могућности/_Словни лик..."
+
+#: ../src/menu.c:118
+msgid "/Options/_Word Wrap"
+msgstr "/Могућности/Преламање _речи"
+
+#: ../src/menu.c:120
+msgid "/Options/_Line Numbers"
+msgstr "/Могућности/Бројеви _редова"
+
+#: ../src/menu.c:124
+msgid "/Options/_Auto Indent"
+msgstr "/Могућности/_Аутоматско увлачење"
+
+#: ../src/menu.c:126
+msgid "/_Help"
+msgstr "/_Помоћ"
+
+#: ../src/menu.c:128
+msgid "/Help/_About"
+msgstr "/Помоћ/_О програму"
+
+#: ../src/search.c:73
+msgid "Search string not found"
+msgstr "Тражена ниска није пронађена"
+
+#: ../src/search.c:115
+msgid "Replace?"
+msgstr "Да заменим?"
+
+#: ../src/search.c:143
+#, c-format
+msgid "%d strings replaced"
+msgstr "Замењених ниски — %d"
+
+#: ../src/search.c:188
+msgid "Find"
+msgstr "Нађи"
+
+#: ../src/search.c:200 ../src/search.c:265
+msgid "Fi_nd what: "
+msgstr "Шта пронаћи: "
+
+#: ../src/search.c:219 ../src/search.c:292
+msgid "_Match case"
+msgstr "_Упореди величину слова"
+
+#: ../src/search.c:253
+msgid "Replace"
+msgstr "Замени"
+
+#: ../src/search.c:280
+msgid "Re_place with: "
+msgstr "За_мени са: "
+
+#: ../src/search.c:296
+msgid "Replace _all at once"
+msgstr "Замени _све одједном"
+
+#: ../src/search.c:342
+msgid "Jump To"
+msgstr "Скочи до"
+
+#: ../src/search.c:347
+msgid "_Jump"
+msgstr "_Скочи"
+
+#: ../src/search.c:353
+msgid "_Line number: "
+msgstr "Број _реда: "
+
+#: ../src/selector.c:103
+#, c-format
+msgid "Current Locale (%s)"
+msgstr "Тренутни језик (%s)"
+
+#: ../src/selector.c:147
+msgid "Other Codeset"
+msgstr "Други кодни распореди"
+
+#: ../src/selector.c:186
+msgid "Code_set:"
+msgstr "Кодни _распоред:"
+
+#: ../src/selector.c:207
+#, c-format
+msgid "'%s' is not supported"
+msgstr "„%s“ није подржан"
+
+#: ../src/selector.c:271
+msgid "Auto Detect"
+msgstr "Сам препознај"
+
+#: ../src/selector.c:325
+msgid "Open"
+msgstr "Отвори"
+
+#: ../src/selector.c:325
+msgid "Save As"
+msgstr "Сачувај као"
+
+#: ../src/selector.c:345
+msgid "Ch_aracter Coding: "
+msgstr "Кодирање зна_кова: "
+
+#: ../src/selector.c:401
+#, c-format
+msgid "'%s' already exists. Overwrite?"
+msgstr "„%s“ већ постоји. Да препишем?"
+
+#: ../src/window.c:143
+msgid "Untitled"
+msgstr "Без наслова"
+
+#: ../mousepad.desktop.in.h:1
+msgid "Mousepad"
+msgstr "Мишоловка"
+
+#: ../mousepad.desktop.in.h:2
+msgid "Simple text editor"
+msgstr "Једноставан уређивач текста"
+
+#: ../mousepad.desktop.in.h:3
+msgid "Text Editor"
+msgstr "Уређивач текста"
