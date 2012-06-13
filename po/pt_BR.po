@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Mousepad\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-06-12 23:06+0000\n"
-"PO-Revision-Date: 2012-06-13 01:39-0300\n"
+"PO-Revision-Date: 2012-06-13 02:13-0300\n"
 "Last-Translator: Rafael Ferreira <rafael.f.f1@gmail.com>\n"
 "Language-Team: Portuguese (Brazil) <xfce-i18n-br@xfce.org>\n"
 "MIME-Version: 1.0\n"
@@ -22,7 +22,7 @@ msgstr ""
 
 #: ../mousepad/main.c:53
 msgid "Do not register with the D-BUS session message bus"
-msgstr "Não registra com o barramento de mensagens de sessío D-BUS,"
+msgstr "Não registra com o barramento de mensagens de sessão D-BUS,"
 
 #: ../mousepad/main.c:54
 msgid "Quit a running Mousepad instance"
@@ -30,7 +30,7 @@ msgstr "Finaliza uma instância em execução do Mousepad"
 
 #: ../mousepad/main.c:56
 msgid "Print version information and exit"
-msgstr "Exibe informao sobre verso e sai"
+msgstr "Exibe informação sobre versão e sai"
 
 #. default application name
 #: ../mousepad/main.c:80
@@ -55,11 +55,11 @@ msgstr "O time de desenvolvimento do Xfce. Todos direitos reservados."
 #: ../mousepad/main.c:116
 #, c-format
 msgid "Please report bugs to <%s>."
-msgstr "Favor relatar erros em <%s>"
+msgstr "Por favor, relate erros em <%s>"
 
 #: ../mousepad/mousepad-dialogs.c:41
 msgid "Mousepad is a fast text editor for the Xfce Desktop Environment."
-msgstr "Mousepad  um editor rápido de texto para o Ambiente Desktop Xfce"
+msgstr "Mousepad é um editor leve de texto para o Ambiente Desktop Xfce"
 
 #: ../mousepad/mousepad-dialogs.c:50
 msgid "translator-credits"
@@ -1050,63 +1050,63 @@ msgstr "Nenhum tipo de arquivo"
 #. set error message
 #: ../mousepad/mousepad-window.c:3510
 msgid "Templates should be UTF-8 valid"
-msgstr ""
+msgstr "Modelos devem ser válidos UTF-8"
 
 #. set error message
 #: ../mousepad/mousepad-window.c:3518
 msgid "Reading the template failed, the menu item has been removed"
-msgstr ""
+msgstr "Falha na leitura do modelo. O item de menu foi removido"
 
 #. set error message
 #: ../mousepad/mousepad-window.c:3523
 msgid "Loading the template failed"
-msgstr ""
+msgstr "Falha no carregamento do modelo"
 
 #. create new file chooser dialog
 #: ../mousepad/mousepad-window.c:3548
 msgid "Open File"
-msgstr ""
+msgstr "Abrir Arquivo"
 
 #: ../mousepad/mousepad-window.c:3661
 #, c-format
 msgid "Failed to open \"%s\" for reading. It will be removed from the document history"
-msgstr ""
+msgstr "Falha na abertura de \"%s\" da leitura. Será removido do histórico de documentos"
 
 #. show the warning and cleanup
 #: ../mousepad/mousepad-window.c:3665
 msgid "Failed to open file"
-msgstr ""
+msgstr "Falha na abertura de arquivo"
 
 #. show the error
 #: ../mousepad/mousepad-window.c:3771
 #: ../mousepad/mousepad-window.c:3894
 msgid "Failed to save the document"
-msgstr ""
+msgstr "Falha no salvamento do documento"
 
 #. create the dialog
 #: ../mousepad/mousepad-window.c:3795
 msgid "Save As"
-msgstr ""
+msgstr "Salvar Como"
 
 #. show the error
 #: ../mousepad/mousepad-window.c:3986
 msgid "Failed to reload the document"
-msgstr ""
+msgstr "Falha no recarregamento do documento"
 
 #. show the error
 #: ../mousepad/mousepad-window.c:4013
 msgid "Failed to print the document"
-msgstr ""
+msgstr "Falha na impressão do documento"
 
 #: ../mousepad/mousepad-window.c:4424
 msgid "Choose Mousepad Font"
-msgstr ""
+msgstr "Escolha a Fonte do Mousepad"
 
 #: ../Mousepad.desktop.in.in.h:2
 msgid "Simple Text Editor"
-msgstr ""
+msgstr "Editor de Texto Simples"
 
 #: ../Mousepad.desktop.in.in.h:3
 msgid "Text Editor"
-msgstr ""
+msgstr "Editor de Texto"
 
