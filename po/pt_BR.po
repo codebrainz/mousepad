@@ -644,7 +644,6 @@ msgid "Paste the clipboard"
 msgstr "Cola da área de transferência"
 
 #: ../mousepad/mousepad-window.c:425
-#, fuzzy
 msgid "Paste _Special"
 msgstr "Colar _Especial"
 
@@ -957,7 +956,6 @@ msgid "Store the byte-order mark in the file"
 msgstr "Armazena marca de ordem de byte no arquivo"
 
 #: ../mousepad/mousepad-window.c:484
-#, fuzzy
 msgid "Unix (_LF)"
 msgstr "Unix (_LF)"
 
@@ -966,7 +964,6 @@ msgid "Set the line ending of the document to Unix (LF)"
 msgstr "Define o caractere de fim de linha do documento para Unix (LF)"
 
 #: ../mousepad/mousepad-window.c:485
-#, fuzzy
 msgid "Mac (_CR)"
 msgstr "Mac (_CR)"
 
@@ -975,7 +972,6 @@ msgid "Set the line ending of the document to Mac (CR)"
 msgstr "Define o caractere de fim de linha do documento para Mac (CR)"
 
 #: ../mousepad/mousepad-window.c:486
-#, fuzzy
 msgid "DOS / Windows (C_R LF)"
 msgstr "DOS / Windows (C_R LF)"
 
