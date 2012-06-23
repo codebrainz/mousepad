@@ -10,12 +10,11 @@ msgstr ""
 "PO-Revision-Date: 2012-06-23 18:47+0000\n"
 "Last-Translator: Karim Oulad Chalha <herr.linux88@gmail.com>\n"
 "Language-Team: Arabic Xfce/Lxde Translation Team\n"
-"Language: ar\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 "
-"&& n%100<=10 ? 3 : n%100>=11 ? 4 : 5;\n"
+"Language: ar\n"
+"Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 && n%100<=10 ? 3 : n%100>=11 ? 4 : 5;\n"
 "X-Generator: Virtaal 0.7.0\n"
 
 #: ../mousepad/main.c:53
@@ -24,16 +23,16 @@ msgstr ""
 
 #: ../mousepad/main.c:54
 msgid "Quit a running Mousepad instance"
-msgstr ""
+msgstr "خروج من ماوس باد يعمل في نفس الوقت"
 
 #: ../mousepad/main.c:56
 msgid "Print version information and exit"
-msgstr ""
+msgstr "طباعة معلومات الإصدار  والخروج"
 
 #. default application name
 #: ../mousepad/main.c:80 ../Mousepad.desktop.in.in.h:1
 msgid "Mousepad"
-msgstr ""
+msgstr "ماوس باد"
 
 #. initialize gtk+
 #: ../mousepad/main.c:92
@@ -70,7 +69,7 @@ msgstr ""
 #. build dialog
 #: ../mousepad/mousepad-dialogs.c:143
 msgid "Select Tab Size"
-msgstr ""
+msgstr "حدد حجم التبويب"
 
 #. build the dialog
 #: ../mousepad/mousepad-dialogs.c:224
@@ -79,11 +78,11 @@ msgstr "إذهب إلى"
 
 #: ../mousepad/mousepad-dialogs.c:246
 msgid "_Line number:"
-msgstr ""
+msgstr "رقم ال_سطر:"
 
 #: ../mousepad/mousepad-dialogs.c:265
 msgid "C_olumn number:"
-msgstr ""
+msgstr "رقم _العمود:"
 
 #: ../mousepad/mousepad-dialogs.c:323
 msgid "Remove all entries from the documents history?"
@@ -91,7 +90,7 @@ msgstr ""
 
 #: ../mousepad/mousepad-dialogs.c:328
 msgid "Clear Documents History"
-msgstr ""
+msgstr "محو تاريخ الوثائق"
 
 #: ../mousepad/mousepad-dialogs.c:331
 msgid ""
