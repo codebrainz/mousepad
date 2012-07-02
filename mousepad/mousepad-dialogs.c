@@ -407,7 +407,8 @@ mousepad_dialogs_externally_modified (GtkWindow *parent)
                                    GTK_MESSAGE_WARNING, GTK_BUTTONS_NONE,
                                    _("The document has been externally modified. Do you want to continue saving?"));
   gtk_window_set_title (GTK_WINDOW (dialog), _("Externally Modified"));
-  gtk_message_dialog_format_secondary_text (GTK_MESSAGE_DIALOG (dialog), _("If you don't save the document, all the external changes will be lost."));
+  gtk_message_dialog_format_secondary_text (GTK_MESSAGE_DIALOG (dialog),
+                                            _("If you save the document, all of the external changes will be lost."));
   gtk_dialog_add_buttons (GTK_DIALOG (dialog),
                           GTK_STOCK_CANCEL, MOUSEPAD_RESPONSE_CANCEL,
                           GTK_STOCK_SAVE_AS, MOUSEPAD_RESPONSE_SAVE_AS,
