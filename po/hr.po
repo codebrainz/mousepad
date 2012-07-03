@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mousepad\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-05-05 20:09+0000\n"
+"POT-Creation-Date: 2012-07-03 22:00+0000\n"
 "PO-Revision-Date: 2012-05-06 00:21+0100\n"
 "Last-Translator: Ivica Kolić <ikoli@yahoo.com>\n"
 "Language-Team: Croatian <ikoli@yahoo.com>\n"
@@ -96,8 +96,12 @@ msgid "Clear Documents History"
 msgstr "Očisti povijest dokumenata"
 
 #: ../mousepad/mousepad-dialogs.c:331
-msgid "Clearing the documents history will permanently remove all currently listed entries."
-msgstr "Čišćenje povijesti dokumenata će trajno ukloniti sve trenutno izlistane unose."
+msgid ""
+"Clearing the documents history will permanently remove all currently listed "
+"entries."
+msgstr ""
+"Čišćenje povijesti dokumenata će trajno ukloniti sve trenutno izlistane "
+"unose."
 
 #: ../mousepad/mousepad-dialogs.c:362
 msgid "Do you want to save the changes before closing?"
@@ -117,22 +121,23 @@ msgid "If you don't save the document, all the changes will be lost."
 msgstr "Ako ne spremite dokument sve će izmjene biti izgubljene."
 
 #: ../mousepad/mousepad-dialogs.c:408
-msgid "The document has been externally modified. Do you want to continue saving?"
+msgid ""
+"The document has been externally modified. Do you want to continue saving?"
 msgstr "Dokument je izmjenjen izvana.Želite li nastaviti sa spremanjem?"
 
 #: ../mousepad/mousepad-dialogs.c:409
 msgid "Externally Modified"
 msgstr "Izmjenjen izvana"
 
-#: ../mousepad/mousepad-dialogs.c:410
-msgid "If you don't save the document, all the external changes will be lost."
-msgstr "Ako ne spremite dokument,sve vanjske promjene će biti izgubljene."
+#: ../mousepad/mousepad-dialogs.c:411
+msgid "If you save the document, all of the external changes will be lost."
+msgstr "Ako  spremite dokument,sve vanjske promjene će biti izgubljene."
 
-#: ../mousepad/mousepad-dialogs.c:438
+#: ../mousepad/mousepad-dialogs.c:439
 msgid "Do you want to save your changes before reloading?"
 msgstr "Želite li spremiti promjene prije ponovnog učitavanja?"
 
-#: ../mousepad/mousepad-dialogs.c:440
+#: ../mousepad/mousepad-dialogs.c:441
 msgid "If you revert the file, all unsaved changes will be lost."
 msgstr ""
 
@@ -489,7 +494,9 @@ msgstr "Redak: %d Stupac: %d"
 #. show warning to the user
 #: ../mousepad/mousepad-util.c:572
 #, c-format
-msgid "Unable to create base directory \"%s\". Saving to file \"%s\" will be aborted."
+msgid ""
+"Unable to create base directory \"%s\". Saving to file \"%s\" will be "
+"aborted."
 msgstr ""
 
 #. print error
@@ -765,7 +772,8 @@ msgid "_Spaces to Tabs"
 msgstr ""
 
 #: ../mousepad/mousepad-window.c:447
-msgid "Convert all the leading spaces to tabs in the selected line(s) or document"
+msgid ""
+"Convert all the leading spaces to tabs in the selected line(s) or document"
 msgstr ""
 
 #: ../mousepad/mousepad-window.c:448
@@ -1045,8 +1053,11 @@ msgstr "Otvori datoteku"
 
 #: ../mousepad/mousepad-window.c:3661
 #, c-format
-msgid "Failed to open \"%s\" for reading. It will be removed from the document history"
-msgstr "Neuspjelo otvaranje \"%s\" za čitanje.Niti će uklonjen iz povijesti dokumenta"
+msgid ""
+"Failed to open \"%s\" for reading. It will be removed from the document "
+"history"
+msgstr ""
+"Neuspjelo otvaranje \"%s\" za čitanje.Niti će uklonjen iz povijesti dokumenta"
 
 #. show the warning and cleanup
 #: ../mousepad/mousepad-window.c:3665
