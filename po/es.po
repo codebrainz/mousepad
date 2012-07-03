@@ -2,7 +2,7 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <bazanluis20@gmail.com>, 2012.
-#
+# 
 #, fuzzy
 msgid ""
 msgstr ""
@@ -12,10 +12,10 @@ msgstr ""
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: Spanish/es <xfce-i18n@xfce.org>\n"
-"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: \n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Poedit-Language: Spanish\n"
 
@@ -29,12 +29,12 @@ msgstr ""
 
 #: ../mousepad/main.c:56
 msgid "Print version information and exit"
-msgstr ""
+msgstr "Imprimir la información de versión y salir"
 
 #. default application name
 #: ../mousepad/main.c:80 ../Mousepad.desktop.in.in.h:1
 msgid "Mousepad"
-msgstr ""
+msgstr "Mousepad"
 
 #. initialize gtk+
 #: ../mousepad/main.c:92
@@ -44,16 +44,16 @@ msgstr ""
 #. no error message, the gui initialization failed
 #: ../mousepad/main.c:98
 msgid "Failed to open display."
-msgstr ""
+msgstr "No se pudo abrir la pantalla."
 
 #: ../mousepad/main.c:115
 msgid "The Xfce development team. All rights reserved."
-msgstr ""
+msgstr "El equipo de desarrollo Xfce. Todos los derechos reservados."
 
 #: ../mousepad/main.c:116
 #, c-format
 msgid "Please report bugs to <%s>."
-msgstr ""
+msgstr "Por favor, informar los errores en <%s>."
 
 #: ../mousepad/mousepad-dialogs.c:41
 msgid "Mousepad is a fast text editor for the Xfce Desktop Environment."
@@ -71,12 +71,12 @@ msgstr ""
 #. build dialog
 #: ../mousepad/mousepad-dialogs.c:143
 msgid "Select Tab Size"
-msgstr ""
+msgstr "Seleccione Tamaño de tabulación"
 
 #. build the dialog
 #: ../mousepad/mousepad-dialogs.c:224
 msgid "Go To"
-msgstr ""
+msgstr "Ir a"
 
 #: ../mousepad/mousepad-dialogs.c:246
 msgid "_Line number:"
@@ -92,7 +92,7 @@ msgstr ""
 
 #: ../mousepad/mousepad-dialogs.c:328
 msgid "Clear Documents History"
-msgstr ""
+msgstr "Borrar Historial de Documentos"
 
 #: ../mousepad/mousepad-dialogs.c:331
 msgid ""
@@ -106,7 +106,7 @@ msgstr ""
 
 #: ../mousepad/mousepad-dialogs.c:363
 msgid "Save Changes"
-msgstr ""
+msgstr "Guardar Cambios"
 
 #: ../mousepad/mousepad-dialogs.c:364
 msgid "_Don't Save"
