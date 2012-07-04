@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mousepad\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-07-03 16:39+0000\n"
+"POT-Creation-Date: 2012-07-04 03:21+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: Spanish/es <xfce-i18n@xfce.org>\n"
@@ -21,11 +21,11 @@ msgstr ""
 
 #: ../mousepad/main.c:53
 msgid "Do not register with the D-BUS session message bus"
-msgstr ""
+msgstr "No se registro con la sesion de D-Bus"
 
 #: ../mousepad/main.c:54
 msgid "Quit a running Mousepad instance"
-msgstr ""
+msgstr "Saliendo de una instancia de mousepad n proceso"
 
 #: ../mousepad/main.c:56
 msgid "Print version information and exit"
@@ -39,7 +39,7 @@ msgstr "Mousepad"
 #. initialize gtk+
 #: ../mousepad/main.c:92
 msgid "[FILES...]"
-msgstr ""
+msgstr "[ARCHIVOS...]"
 
 #. no error message, the gui initialization failed
 #: ../mousepad/main.c:98
@@ -57,16 +57,18 @@ msgstr "Por favor, informar los errores en <%s>."
 
 #: ../mousepad/mousepad-dialogs.c:41
 msgid "Mousepad is a fast text editor for the Xfce Desktop Environment."
-msgstr ""
+msgstr "Mousepad es un editor de txto veloz para el entorno de escritorio Xfce."
 
 #: ../mousepad/mousepad-dialogs.c:50
 msgid "translator-credits"
 msgstr ""
+"Creditos de traducción\n"
+"Pablo Lezaeta <prflr88gmail.com>"
 
 #. display an error message to the user
 #: ../mousepad/mousepad-dialogs.c:125
 msgid "Failed to open the documentation browser"
-msgstr ""
+msgstr "Fallo al intentar abrir el documento"
 
 #. build dialog
 #: ../mousepad/mousepad-dialogs.c:143
@@ -80,11 +82,11 @@ msgstr "Ir a"
 
 #: ../mousepad/mousepad-dialogs.c:246
 msgid "_Line number:"
-msgstr ""
+msgstr "_Linea número:"
 
 #: ../mousepad/mousepad-dialogs.c:265
 msgid "C_olumn number:"
-msgstr ""
+msgstr "C_olumna número:"
 
 #: ../mousepad/mousepad-dialogs.c:323
 msgid "Remove all entries from the documents history?"
