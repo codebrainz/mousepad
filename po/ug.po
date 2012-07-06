@@ -46,7 +46,7 @@ msgstr "كۆرسەتكۈچنى ئېچىش مەغلۇپ بولدى."
 
 #: ../mousepad/main.c:115
 msgid "The Xfce development team. All rights reserved."
-msgstr "Xfce ئىجادىيەت گۇرۇپپىسى. All rights reserved."
+msgstr "Xfce ئىجادىيەت گۇرۇپپىسى. نەشر ھوقۇقى ئۆزىمىزگە تەۋە."
 
 #: ../mousepad/main.c:116
 #, c-format
@@ -293,7 +293,7 @@ msgstr "كورېيەچە"
 #: ../mousepad/mousepad-file.c:556
 #, c-format
 msgid "Invalid byte sequence in conversion input"
-msgstr ""
+msgstr "ئايلاندۇرۇپ كىرگۈزۈشتە ئىناۋەتسىز بايت قاتارى كۆرۈلدى"
 
 #: ../mousepad/mousepad-file.c:875
 #, c-format
@@ -303,7 +303,7 @@ msgstr "سىز قايتا يۈكلىمەكچى بولغان ھۆججەت «%s» 
 #: ../mousepad/mousepad-file.c:916
 #, c-format
 msgid "Failed to read the status of \"%s\""
-msgstr ""
+msgstr "«%s» نىڭ ھالىتىنى ئوقۇش مەغلۇپ بولدى"
 
 #. set a custom tab label
 #: ../mousepad/mousepad-print.c:125
@@ -312,7 +312,7 @@ msgstr "پۈتۈك تەڭشىكى"
 
 #: ../mousepad/mousepad-print.c:595
 msgid "Page Setup"
-msgstr "بەت بەلگىلە"
+msgstr "بەت تەڭشەش"
 
 #: ../mousepad/mousepad-print.c:605
 msgid "_Adjust page size and orientation"
@@ -332,11 +332,11 @@ msgstr "قۇر نومۇرىنى باسسۇن(_L)"
 
 #: ../mousepad/mousepad-print.c:653
 msgid "Number every"
-msgstr ""
+msgstr "ھەر نەچچە قۇردا بىر قېتىم قۇر نومۇرىنى باسىدۇ"
 
 #: ../mousepad/mousepad-print.c:669
 msgid "line(s)"
-msgstr ""
+msgstr "قۇر(لار)"
 
 #: ../mousepad/mousepad-print.c:674
 msgid "Enable text _wrapping"
@@ -442,7 +442,7 @@ msgstr "كەينى(_N)"
 
 #: ../mousepad/mousepad-search-bar.c:219
 msgid "_Previous"
-msgstr "ئالدىنقى(_P)"
+msgstr "ئالدى(_P)"
 
 #: ../mousepad/mousepad-search-bar.c:230
 msgid "Highlight _All"
@@ -459,7 +459,7 @@ msgstr "ھۆججەت تىپى"
 #. language/filetype
 #: ../mousepad/mousepad-statusbar.c:146 ../mousepad/mousepad-statusbar.c:258
 msgid "Filetype: None"
-msgstr "Filetype: يوق"
+msgstr "ھۆججەت تىپى: يوق"
 
 #: ../mousepad/mousepad-statusbar.c:169
 msgid "Toggle the overwrite mode"
@@ -473,7 +473,7 @@ msgstr "OVR"
 #: ../mousepad/mousepad-statusbar.c:261
 #, c-format
 msgid "Filetype: %s"
-msgstr "Filetype: %s"
+msgstr "ھۆججەت تىپى: %s"
 
 #: ../mousepad/mousepad-statusbar.c:281
 #, c-format
@@ -491,13 +491,13 @@ msgstr "قۇر: %d ئىستون: %d"
 msgid ""
 "Unable to create base directory \"%s\". Saving to file \"%s\" will be "
 "aborted."
-msgstr ""
+msgstr "ئاساسىي مۇندەرىجە «%s» نى قۇرغىلى بولمىدى. ھۆججەت «%s» غا ساقلاش توختىتىلدى."
 
 #. print error
 #: ../mousepad/mousepad-util.c:618
 #, c-format
 msgid "Failed to store the preferences to \"%s\": %s"
-msgstr ""
+msgstr "مايىللىقلارنى «%s» غا ساقلاش مەغلۇپ بولدى: %s"
 
 #: ../mousepad/mousepad-window.c:402
 msgid "_File"
@@ -569,11 +569,11 @@ msgstr "نۆۋەتتىكى كۆزنەكتىكى ھەممە ھۆججەتنى سا
 
 #: ../mousepad/mousepad-window.c:413
 msgid "Re_vert"
-msgstr ""
+msgstr "ئەسلىدىكىگە قايتۇر(_V)"
 
 #: ../mousepad/mousepad-window.c:413
 msgid "Revert to the saved version of the file"
-msgstr ""
+msgstr "ساقلانغان ھۆججەتكە ئەسلىگە قايتۇر"
 
 #: ../mousepad/mousepad-window.c:414
 msgid "_Print..."
@@ -613,11 +613,11 @@ msgstr "تەھرىر(_E)"
 
 #: ../mousepad/mousepad-window.c:420
 msgid "Undo the last action"
-msgstr ""
+msgstr "ئاخىرقى مەشغۇلاتتىن يېنىۋالىدۇ"
 
 #: ../mousepad/mousepad-window.c:421
 msgid "Redo the last undone action"
-msgstr ""
+msgstr "ئاخىرقى يېنىۋالغان مەشغۇلاتنى تەكرارلايدۇ"
 
 #: ../mousepad/mousepad-window.c:422
 msgid "Cut the selection"
@@ -629,27 +629,27 @@ msgstr "تاللانغاننى كۆچۈرىدۇ"
 
 #: ../mousepad/mousepad-window.c:424
 msgid "Paste the clipboard"
-msgstr ""
+msgstr "چاپلاش تاختىسىدىن چاپلا"
 
 #: ../mousepad/mousepad-window.c:425
 msgid "Paste _Special"
-msgstr ""
+msgstr "ئۆزگىچە چاپلا(_S)"
 
 #: ../mousepad/mousepad-window.c:426
 msgid "Paste from _History"
-msgstr ""
+msgstr "ئىزدىن چاپلاش(_H)"
 
 #: ../mousepad/mousepad-window.c:426
 msgid "Paste from the clipboard history"
-msgstr ""
+msgstr "چاپلاش تاختىسى ئىزىدىن چاپلايدۇ"
 
 #: ../mousepad/mousepad-window.c:427
 msgid "Paste as _Column"
-msgstr ""
+msgstr "ئىستون سۈپىتىدە چاپلا(_C)"
 
 #: ../mousepad/mousepad-window.c:427
 msgid "Paste the clipboard text into a column"
-msgstr ""
+msgstr "چاپلاش تاختىسىدىكى تېكىستنى ئىستونغا چاپلايدۇ"
 
 #: ../mousepad/mousepad-window.c:428
 msgid "Delete the current selection"
@@ -657,15 +657,15 @@ msgstr "تاللانغاننى ئۆچۈرىدۇ"
 
 #: ../mousepad/mousepad-window.c:429
 msgid "Select the text in the entire document"
-msgstr ""
+msgstr "پۈتكۈل پۈتۈكتىكى تېكىستنى تاللايدۇ"
 
 #: ../mousepad/mousepad-window.c:430
 msgid "Change the selection"
-msgstr ""
+msgstr "تاللاشنى ئۆزگەرتىدۇ"
 
 #: ../mousepad/mousepad-window.c:430
 msgid "Change a normal selection into a column selection and vice versa"
-msgstr ""
+msgstr "نورمال تاللاش ۋە ئىستون تاللاشنى ئۆزئارا ئالماشتۇرىدۇ"
 
 #: ../mousepad/mousepad-window.c:431
 msgid "Search for text"
@@ -677,7 +677,7 @@ msgstr "كېيىنكىسىنى ئىزدە(_N)"
 
 #: ../mousepad/mousepad-window.c:432
 msgid "Search forwards for the same text"
-msgstr ""
+msgstr "كەينىگە قاراپ ئوخشاش تېكىستنى ئىزدەيدۇ"
 
 #: ../mousepad/mousepad-window.c:433
 msgid "Find _Previous"
@@ -685,15 +685,15 @@ msgstr "ئالدىنقىنى ئىزدە(_P)"
 
 #: ../mousepad/mousepad-window.c:433
 msgid "Search backwards for the same text"
-msgstr ""
+msgstr "بېشىغا قاراپ ئوخشاش تېكىستنى ئىزدەيدۇ"
 
 #: ../mousepad/mousepad-window.c:434
 msgid "Find and Rep_lace..."
-msgstr ""
+msgstr "ئىزدەپ ئالماشتۇر(_L)…"
 
 #: ../mousepad/mousepad-window.c:434
 msgid "Search for and replace text"
-msgstr ""
+msgstr "تېكىستنى ئىزدەپ تېپىپ ئالماشتۇرىدۇ"
 
 #: ../mousepad/mousepad-window.c:436
 msgid "_View"
@@ -753,28 +753,28 @@ msgstr ""
 
 #: ../mousepad/mousepad-window.c:446
 msgid "_Tabs to Spaces"
-msgstr ""
+msgstr "تاقلىما ھەرپ(Tab)لەرنى بوشلۇققا"
 
 #: ../mousepad/mousepad-window.c:446
 msgid "Convert all tabs to spaces in the selection or document"
-msgstr ""
+msgstr "پۈتۈكتىكى ياكى تاللانغان رايوندىكى تاقلىما ھەرپ(Tab)لەرنى بوشلۇققا ئۆزگەرتىدۇ"
 
 #: ../mousepad/mousepad-window.c:447
 msgid "_Spaces to Tabs"
-msgstr ""
+msgstr "بوشلۇقنى تاقلىما ھەرپ(Tab)لەرگە"
 
 #: ../mousepad/mousepad-window.c:447
 msgid ""
 "Convert all the leading spaces to tabs in the selected line(s) or document"
-msgstr ""
+msgstr "پۈتكۈل پۈتۈك ياكى تاللانغان رايوندىكى قۇرلارنىڭ بەشىدىكى بوشلۇقلارنى تاقلىما ھەرپ(Tab)لەرگە ئۆزگەرتىدۇ"
 
 #: ../mousepad/mousepad-window.c:448
 msgid "St_rip Trailing Spaces"
-msgstr ""
+msgstr "ئاخىردىكى بوشلۇقلارنى يوقات(_R)"
 
 #: ../mousepad/mousepad-window.c:448
 msgid "Remove all the trailing spaces from the selected line(s) or document"
-msgstr ""
+msgstr "پۈتكۈل پۈتۈك ياكى تاللانغان رايوندىكى قۇرلارنىڭ ئاخىرىدىكى بارلىق بوشلۇقنى يوق قىلىدۇ"
 
 #: ../mousepad/mousepad-window.c:449
 msgid "_Transpose"
@@ -786,67 +786,67 @@ msgstr ""
 
 #: ../mousepad/mousepad-window.c:450
 msgid "_Move Selection"
-msgstr ""
+msgstr "تاللانغاننى يۆتكە(_M)"
 
 #: ../mousepad/mousepad-window.c:451
 msgid "Line _Up"
-msgstr ""
+msgstr "بىر قۇر ئۈستىگە(_U)"
 
 #: ../mousepad/mousepad-window.c:451
 msgid "Move the selection one line up"
-msgstr ""
+msgstr "تاللانغاننى بىر قۇر ئۈستىگە يۆتكەيدۇ"
 
 #: ../mousepad/mousepad-window.c:452
 msgid "Line _Down"
-msgstr ""
+msgstr "بىر قۇر ئاستىغا(_D)"
 
 #: ../mousepad/mousepad-window.c:452
 msgid "Move the selection one line down"
-msgstr ""
+msgstr "تاللانغاننى بىر قۇر ئاتىغا يۆتكەيدۇ"
 
 #: ../mousepad/mousepad-window.c:453
 msgid "D_uplicate Line / Selection"
-msgstr ""
+msgstr "قۇر / تاللانغاننى كۆچۈر(_U)"
 
 #: ../mousepad/mousepad-window.c:453
 msgid "Duplicate the current line or selection"
-msgstr ""
+msgstr "نۆۋەتتىكى قۇر ياكى تاللانغاننى كۆچۈرىدۇ"
 
 #: ../mousepad/mousepad-window.c:454
 msgid "_Increase Indent"
-msgstr ""
+msgstr "تېخىمۇ ئىچ قۇردىن(_I)"
 
 #: ../mousepad/mousepad-window.c:454
 msgid "Increase the indentation of the selection or current line"
-msgstr ""
+msgstr "نۆۋەتتىكى قۇر ياكى تاللانغاننى تېخىمۇ ئىچ قۇرغا ماڭدۇرىدۇ"
 
 #: ../mousepad/mousepad-window.c:455
 msgid "_Decrease Indent"
-msgstr ""
+msgstr "قۇر بېشىغىراق(_D)"
 
 #: ../mousepad/mousepad-window.c:455
 msgid "Decrease the indentation of the selection or current line"
-msgstr ""
+msgstr "نۆۋەتتىكى قۇر ياكى تاللانغاننى تېخىمۇ بەكرەك قۇر بەشى تەرەپكە يۆتكەيدۇ"
 
 #: ../mousepad/mousepad-window.c:457
 msgid "_Document"
-msgstr ""
+msgstr "پۈتۈك(_D)"
 
 #: ../mousepad/mousepad-window.c:458
 msgid "Line E_nding"
-msgstr ""
+msgstr "قۇر ئاخىرى(_N)"
 
 #: ../mousepad/mousepad-window.c:459
 msgid "Tab _Size"
-msgstr ""
+msgstr "تاقلىما ھەرپنىڭ چوڭلۇقى(_S)"
 
 #: ../mousepad/mousepad-window.c:460
 msgid "_Filetype"
-msgstr ""
+msgstr "ھۆججەت تىپى(_F)"
 
 #: ../mousepad/mousepad-window.c:462
 msgid "_Navigation"
-msgstr ""
+msgstr "يېتەكچى(_N)"
 
 #: ../mousepad/mousepad-window.c:463
 msgid "_Previous Tab"
@@ -854,7 +854,7 @@ msgstr "ئالدىنقى بەتكۈچ(_P)"
 
 #: ../mousepad/mousepad-window.c:463
 msgid "Select the previous tab"
-msgstr ""
+msgstr "ئالدىنقى بەتكۈچنى تاللايدۇ"
 
 #: ../mousepad/mousepad-window.c:464
 msgid "_Next Tab"
@@ -862,15 +862,15 @@ msgstr "كېيىنكى بەتكۈچ(_N)"
 
 #: ../mousepad/mousepad-window.c:464
 msgid "Select the next tab"
-msgstr ""
+msgstr "كېيىنكى بەتكۈچنى تاللايدۇ"
 
 #: ../mousepad/mousepad-window.c:465
 msgid "_Go to..."
-msgstr ""
+msgstr "يۆتكەل(_G)…"
 
 #: ../mousepad/mousepad-window.c:465
 msgid "Go to a specific location in the document"
-msgstr ""
+msgstr "پۈتۈكتىكى مەلۇم بىر ئورۇنغا يۆتكىلىدۇ"
 
 #: ../mousepad/mousepad-window.c:467
 msgid "_Help"
@@ -882,7 +882,7 @@ msgstr "مۇندەرىجە(_C)"
 
 #: ../mousepad/mousepad-window.c:468
 msgid "Display the Mousepad user manual"
-msgstr ""
+msgstr "ئىشلەتكۈچى قوللانمىسىنى كۆرسىتىدۇ"
 
 #: ../mousepad/mousepad-window.c:469
 msgid "About this application"
@@ -894,31 +894,31 @@ msgstr "قۇر نومۇرلىرى(_U)"
 
 #: ../mousepad/mousepad-window.c:474
 msgid "Show line numbers"
-msgstr ""
+msgstr "قۇر نومۇرلىرىنى كۆرسىتىدۇ"
 
 #: ../mousepad/mousepad-window.c:475
 msgid "St_atusbar"
-msgstr "ھالەت تاياقچىسى(_A)"
+msgstr "ھالەت بالدىقى(_A)"
 
 #: ../mousepad/mousepad-window.c:475
 msgid "Change the visibility of the statusbar"
-msgstr ""
+msgstr "ھالەت بالدىقىنى كۆرسىتىدۇ ياكى كۆرسەتمەيدۇ"
 
 #: ../mousepad/mousepad-window.c:476
 msgid "_Auto Indent"
-msgstr ""
+msgstr "ئاپتوماتىك تارتىلسۇن(_A)"
 
 #: ../mousepad/mousepad-window.c:476
 msgid "Auto indent a new line"
-msgstr ""
+msgstr "يېڭى ئاپتوماتىك ئىچ قۇردىن باشلىنىدۇ"
 
 #: ../mousepad/mousepad-window.c:477
 msgid "Insert _Spaces"
-msgstr ""
+msgstr "بوشلۇق قىستۇرۇلسۇن(_S)"
 
 #: ../mousepad/mousepad-window.c:477
 msgid "Insert spaces when the tab button is pressed"
-msgstr ""
+msgstr "تاقلاش(tab) توپچىسى بېسىلغاندا بوشلۇق بەلگىسى قىستۇرىدۇ"
 
 #: ../mousepad/mousepad-window.c:478
 msgid "_Word Wrap"
@@ -926,44 +926,44 @@ msgstr "سۆز قاتلا(_W)"
 
 #: ../mousepad/mousepad-window.c:478
 msgid "Toggle breaking lines in between words"
-msgstr ""
+msgstr "قۇرنى قاتلىغاندا سۆزنى ئاساس قىلىدۇ"
 
 #: ../mousepad/mousepad-window.c:479
 msgid "Write Unicode _BOM"
-msgstr ""
+msgstr "يۇنىكود بەلگىسى(_BOM) يازسۇن"
 
 #: ../mousepad/mousepad-window.c:479
 msgid "Store the byte-order mark in the file"
-msgstr ""
+msgstr "ھۆججەتكە يۇنىكود بەلگىسى(بايت تەرتىپى بەلگىسى) نى ساقلايدۇ"
 
 #: ../mousepad/mousepad-window.c:484
 msgid "Unix (_LF)"
-msgstr "Unix (_LF)"
+msgstr "يۇنىكىس (_LF)"
 
 #: ../mousepad/mousepad-window.c:484
 msgid "Set the line ending of the document to Unix (LF)"
-msgstr ""
+msgstr "قۇر ئاخىرلىشىش بەلگىسىگە يۇنىكىسنىڭ بەلگىسى (LF) نى ئىشلىتىدۇ"
 
 #: ../mousepad/mousepad-window.c:485
 msgid "Mac (_CR)"
-msgstr "Mac (_CR)"
+msgstr "مەك(Mac) (_CR)"
 
 #: ../mousepad/mousepad-window.c:485
 msgid "Set the line ending of the document to Mac (CR)"
-msgstr ""
+msgstr "قۇر ئاخىرلىشىش بەلگىسىگە مەك(Mac) نىڭ بەلگىسى (CR) نى ئىشلىتىدۇ"
 
 #: ../mousepad/mousepad-window.c:486
 msgid "DOS / Windows (C_R LF)"
-msgstr "DOS / Windows (C_R LF)"
+msgstr "د ئو س (DOS) / ۋىندوۋس(C_R LF)"
 
 #: ../mousepad/mousepad-window.c:486
 msgid "Set the line ending of the document to DOS / Windows (CR LF)"
-msgstr ""
+msgstr "قۇر ئاخىرلىشىش بەلگىسىگە د ئو س (DOS) / ۋىندوۋس نىڭ بەلگىسى (CR LF) نى ئىشلىتىدۇ"
 
 #. add the label with the root warning
 #: ../mousepad/mousepad-window.c:662
 msgid "Warning, you are using the root account, you may harm your system."
-msgstr "دىققەت: root ھوقۇقىدا مەشغۇلات قىلىۋاتىسىز. بەك دىققەت قىلىڭ، سىستېمىنى بۇزۇپ قويۇشىڭىز مۇمكىن"
+msgstr "دىققەت: ئالىي ئىشلەتكۈچى(root) ھوقۇقىدا مەشغۇلات قىلىۋاتىسىز. بەك دىققەت قىلىڭ، سىستېمىنى بۇزۇپ قويۇشىڭىز مۇمكىن"
 
 #. show the warning
 #: ../mousepad/mousepad-window.c:1100
@@ -982,7 +982,7 @@ msgstr "يوق"
 #. create other action
 #: ../mousepad/mousepad-window.c:2084
 msgid "Set custom tab size"
-msgstr ""
+msgstr "تاقلىما ھەرپنىڭ چوڭلۇقىنى بەلگىلە"
 
 #. create suitable label for the other menu
 #: ../mousepad/mousepad-window.c:2132
@@ -1013,11 +1013,11 @@ msgstr "يېقىنقى ئىزلارنى تازىلاش مەغلۇپ بولدى"
 #. create an item to inform the user
 #: ../mousepad/mousepad-window.c:3151
 msgid "No clipboard data"
-msgstr ""
+msgstr "چاپلاش تاختىسىدا بىر نەرسە يوق"
 
 #: ../mousepad/mousepad-window.c:3222
 msgid "Turn off color schemes"
-msgstr ""
+msgstr "رەڭلىك كۆرسىتىشنى تاقا"
 
 #: ../mousepad/mousepad-window.c:3303
 msgid "No filetype"
@@ -1026,12 +1026,12 @@ msgstr "ھۆججەت تىپى يوق"
 #. set error message
 #: ../mousepad/mousepad-window.c:3510
 msgid "Templates should be UTF-8 valid"
-msgstr ""
+msgstr "قېلىپلار چوقۇم UTF-8 دە ساقلىنىشى كېرەك"
 
 #. set error message
 #: ../mousepad/mousepad-window.c:3518
 msgid "Reading the template failed, the menu item has been removed"
-msgstr ""
+msgstr "قېلىپنى ئوقۇش مەغلۇپ بولدى، تىزىملىكتىن ئۆچۈرۈلدى"
 
 #. set error message
 #: ../mousepad/mousepad-window.c:3523
@@ -1048,7 +1048,7 @@ msgstr "ھۆججەت ئېچىش"
 msgid ""
 "Failed to open \"%s\" for reading. It will be removed from the document "
 "history"
-msgstr ""
+msgstr "ھۆججەت «%s» نى ئوقۇش مەغلۇپ بولدى. ئۇ پۈتۈك ئىزى تىزىمىدىن ئۆچۈرۈلىدۇ."
 
 #. show the warning and cleanup
 #: ../mousepad/mousepad-window.c:3665
@@ -1077,7 +1077,7 @@ msgstr "پۈتۈكنى بېسىپ چىقىرىش مەغلۇپ بولدى"
 
 #: ../mousepad/mousepad-window.c:4424
 msgid "Choose Mousepad Font"
-msgstr ""
+msgstr "خەت نۇسخىسىنى تاللاش"
 
 #: ../Mousepad.desktop.in.in.h:2
 msgid "Simple Text Editor"
