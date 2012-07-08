@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mousepad 0.2.16\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-05-05 20:09+0000\n"
-"PO-Revision-Date: 2012-05-08 12:14+0900\n"
+"POT-Creation-Date: 2012-07-08 09:00+0000\n"
+"PO-Revision-Date: 2012-07-08 22:39+0900\n"
 "Last-Translator: Seong-ho Cho <darkcircle.0426@gmail.com>\n"
 "Language-Team: xfce4-users-kr-i18n <xfce4-users-kr-i18n@lists.sourceforge.net>\n"
 "Language: ko\n"
@@ -123,15 +123,15 @@ msgstr "문서를 외부에서 수정했습니다. 계속 저장하시렵니까?
 msgid "Externally Modified"
 msgstr "되부에서 수정함"
 
-#: ../mousepad/mousepad-dialogs.c:410
-msgid "If you don't save the document, all the external changes will be lost."
-msgstr "문서를 저장하지 않으면 모든 외부 변경 내용을 잃을 것입니다."
+#: ../mousepad/mousepad-dialogs.c:411
+msgid "If you save the document, all of the external changes will be lost."
+msgstr "문서를 저장하면 외부에서 변경한 내용을 잃게 됩니다."
 
-#: ../mousepad/mousepad-dialogs.c:438
+#: ../mousepad/mousepad-dialogs.c:439
 msgid "Do you want to save your changes before reloading?"
 msgstr "다시 불러오기 전에 변경 사항을 저장하시렵니까?"
 
-#: ../mousepad/mousepad-dialogs.c:440
+#: ../mousepad/mousepad-dialogs.c:441
 msgid "If you revert the file, all unsaved changes will be lost."
 msgstr "파일을 복구하면, 저장하지 않은 모든 내용을 잃을 것입니다."
 
