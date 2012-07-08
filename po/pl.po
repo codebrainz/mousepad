@@ -5,10 +5,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: \n"
+"Project-Id-Version: mousepad 0.3\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-05-05 20:09+0000\n"
-"PO-Revision-Date: 2012-07-08 10:12+0200\n"
+"PO-Revision-Date: 2012-07-08 15:38+0200\n"
 "Last-Translator: Piotr Sokół <psokol@jabster.pl>\n"
 "Language-Team: polski <>\n"
 "Language: \n"
@@ -56,7 +56,7 @@ msgstr "Proszę zgłaszać błędy na adres <%s>."
 
 #: ../mousepad/mousepad-dialogs.c:41
 msgid "Mousepad is a fast text editor for the Xfce Desktop Environment."
-msgstr ""
+msgstr "Szybki edytor tekstu dla środowiska Xfce."
 
 #: ../mousepad/mousepad-dialogs.c:50
 msgid "translator-credits"
@@ -141,7 +141,7 @@ msgstr ""
 #. pack button, add signal and tooltip
 #: ../mousepad/mousepad-document.c:591
 msgid "Close this tab"
-msgstr ""
+msgstr "Zamyka kartę"
 
 #. create an unique untitled document name
 #: ../mousepad/mousepad-document.c:626
@@ -155,12 +155,12 @@ msgstr ""
 
 #: ../mousepad/mousepad-encoding-dialog.c:135
 msgid "Please select an encoding below."
-msgstr ""
+msgstr "Proszę wybrać kodowanie."
 
 #. encoding radio buttons
 #: ../mousepad/mousepad-encoding-dialog.c:147
 msgid "Default (UTF-8)"
-msgstr ""
+msgstr "Domyślne (UTF-8)"
 
 #: ../mousepad/mousepad-encoding-dialog.c:153
 msgid "System"
@@ -168,7 +168,7 @@ msgstr ""
 
 #: ../mousepad/mousepad-encoding-dialog.c:160
 msgid "Other:"
-msgstr ""
+msgstr "Inne:"
 
 #: ../mousepad/mousepad-encoding-dialog.c:180
 msgid "Checking encodings..."
@@ -269,7 +269,7 @@ msgstr ""
 #: ../mousepad/mousepad-encoding.c:86 ../mousepad/mousepad-encoding.c:87
 #: ../mousepad/mousepad-encoding.c:88 ../mousepad/mousepad-encoding.c:89
 msgid "Unicode"
-msgstr ""
+msgstr "Unikod"
 
 #. east asian
 #: ../mousepad/mousepad-encoding.c:92 ../mousepad/mousepad-encoding.c:93
@@ -310,15 +310,15 @@ msgstr ""
 #. set a custom tab label
 #: ../mousepad/mousepad-print.c:125
 msgid "Document Settings"
-msgstr ""
+msgstr "Dokument"
 
 #: ../mousepad/mousepad-print.c:595
 msgid "Page Setup"
-msgstr ""
+msgstr "Konfiguracja strony"
 
 #: ../mousepad/mousepad-print.c:605
 msgid "_Adjust page size and orientation"
-msgstr ""
+msgstr "_Dostosuj rozmiar i orientację strony"
 
 #: ../mousepad/mousepad-print.c:615
 msgid "Appearance"
@@ -326,11 +326,11 @@ msgstr "Wygląd"
 
 #: ../mousepad/mousepad-print.c:629
 msgid "Print page _headers"
-msgstr ""
+msgstr "Drukowanie _nagłówków stron"
 
 #: ../mousepad/mousepad-print.c:636
 msgid "Print _line numbers"
-msgstr ""
+msgstr "Drukowanie numerów _wierszy"
 
 #: ../mousepad/mousepad-print.c:653
 msgid "Number every"
@@ -342,23 +342,24 @@ msgstr ""
 
 #: ../mousepad/mousepad-print.c:674
 msgid "Enable text _wrapping"
-msgstr ""
+msgstr "_Zawijanie tekstu"
 
 #: ../mousepad/mousepad-print.c:681
 msgid "Enable _syntax highlighting"
-msgstr ""
+msgstr "Kolorowanie _składni"
 
 #: ../mousepad/mousepad-print.c:693
 msgid "Fonts"
-msgstr ""
+msgstr "Czcionki"
 
 #: ../mousepad/mousepad-print.c:709
 msgid "Header:"
-msgstr ""
+msgstr "Nagłówek:"
 
 #: ../mousepad/mousepad-print.c:719
+#, fuzzy
 msgid "Body:"
-msgstr ""
+msgstr "Zawartość:"
 
 #: ../mousepad/mousepad-print.c:729
 msgid "Line numbers:"
@@ -396,7 +397,7 @@ msgstr "W dół"
 
 #: ../mousepad/mousepad-replace-dialog.c:244
 msgid "Both"
-msgstr ""
+msgstr "W górę i dół"
 
 #. case sensitive
 #: ../mousepad/mousepad-replace-dialog.c:253
@@ -406,7 +407,7 @@ msgstr "_Uwzględnianie wielkości liter"
 #. match whole word
 #: ../mousepad/mousepad-replace-dialog.c:260
 msgid "_Match whole word"
-msgstr ""
+msgstr "_Dopasowanie całych słów"
 
 #: ../mousepad/mousepad-replace-dialog.c:271
 msgid "Replace _all in:"
@@ -712,7 +713,7 @@ msgstr "_Czcionka..."
 
 #: ../mousepad/mousepad-window.c:437
 msgid "Change the editor font"
-msgstr "Zmienia czcionkę edytora"
+msgstr "Zmienia czcionkę dokumentu"
 
 #: ../mousepad/mousepad-window.c:438
 msgid "_Color Scheme"
