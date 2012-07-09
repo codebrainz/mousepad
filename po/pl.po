@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: mousepad 0.3\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-05-05 20:09+0000\n"
-"PO-Revision-Date: 2012-07-08 15:38+0200\n"
+"PO-Revision-Date: 2012-07-09 11:07+0200\n"
 "Last-Translator: Piotr Sokół <psokol@jabster.pl>\n"
 "Language-Team: polski <>\n"
 "Language: \n"
@@ -151,11 +151,11 @@ msgstr "Bez tytułu"
 #. create the header
 #: ../mousepad/mousepad-encoding-dialog.c:134
 msgid "The document was not UTF-8 valid"
-msgstr ""
+msgstr "Kodowanie dokumentu niezgodne z UTF-8"
 
 #: ../mousepad/mousepad-encoding-dialog.c:135
 msgid "Please select an encoding below."
-msgstr "Proszę wybrać kodowanie."
+msgstr "Wybieranie kodowania"
 
 #. encoding radio buttons
 #: ../mousepad/mousepad-encoding-dialog.c:147
@@ -164,7 +164,7 @@ msgstr "Domyślne (UTF-8)"
 
 #: ../mousepad/mousepad-encoding-dialog.c:153
 msgid "System"
-msgstr ""
+msgstr "Systemowe"
 
 #: ../mousepad/mousepad-encoding-dialog.c:160
 msgid "Other:"
@@ -177,73 +177,73 @@ msgstr ""
 #. west european
 #: ../mousepad/mousepad-encoding.c:35
 msgid "Celtic"
-msgstr ""
+msgstr "Celtyckie"
 
 #: ../mousepad/mousepad-encoding.c:36 ../mousepad/mousepad-encoding.c:37
 msgid "Greek"
-msgstr ""
+msgstr "Greckie"
 
 #: ../mousepad/mousepad-encoding.c:38
 msgid "Nordic"
-msgstr ""
+msgstr "Nordyckie"
 
 #: ../mousepad/mousepad-encoding.c:39
 msgid "South European"
-msgstr ""
+msgstr "Południowoeuropejskie"
 
 #: ../mousepad/mousepad-encoding.c:40 ../mousepad/mousepad-encoding.c:41
 #: ../mousepad/mousepad-encoding.c:42 ../mousepad/mousepad-encoding.c:43
 msgid "Western"
-msgstr ""
+msgstr "Zachodnie"
 
 #. east european
 #: ../mousepad/mousepad-encoding.c:46 ../mousepad/mousepad-encoding.c:47
 #: ../mousepad/mousepad-encoding.c:48
 msgid "Baltic"
-msgstr ""
+msgstr "Bałtyckie"
 
 #: ../mousepad/mousepad-encoding.c:49 ../mousepad/mousepad-encoding.c:50
 #: ../mousepad/mousepad-encoding.c:51
 msgid "Central European"
-msgstr ""
+msgstr "Środkowoeuropejskie"
 
 #: ../mousepad/mousepad-encoding.c:52 ../mousepad/mousepad-encoding.c:53
 #: ../mousepad/mousepad-encoding.c:54 ../mousepad/mousepad-encoding.c:55
 #: ../mousepad/mousepad-encoding.c:56
 msgid "Cyrillic"
-msgstr ""
+msgstr "Cyrylica"
 
 #: ../mousepad/mousepad-encoding.c:57
 msgid "Cyrillic/Russian"
-msgstr ""
+msgstr "Cyrylica/rosyjskie"
 
 #: ../mousepad/mousepad-encoding.c:58
 msgid "Cyrillic/Ukrainian"
-msgstr ""
+msgstr "Cyrylica/ukraińskie"
 
 #: ../mousepad/mousepad-encoding.c:59
 msgid "Romanian"
-msgstr ""
+msgstr "Rumuńskie"
 
 #. middle eastern
 #: ../mousepad/mousepad-encoding.c:62 ../mousepad/mousepad-encoding.c:63
 #: ../mousepad/mousepad-encoding.c:64
 msgid "Arabic"
-msgstr ""
+msgstr "Arabskie"
 
 #: ../mousepad/mousepad-encoding.c:65 ../mousepad/mousepad-encoding.c:66
 #: ../mousepad/mousepad-encoding.c:67
 msgid "Hebrew"
-msgstr ""
+msgstr "Hebrajskie"
 
 #: ../mousepad/mousepad-encoding.c:68
 msgid "Hebrew Visual"
-msgstr ""
+msgstr "Hebrajskie wizualne"
 
 #. asian
 #: ../mousepad/mousepad-encoding.c:71
 msgid "Armenian"
-msgstr ""
+msgstr "Armeńskie"
 
 #: ../mousepad/mousepad-encoding.c:72
 msgid "Georgian"
@@ -251,17 +251,17 @@ msgstr ""
 
 #: ../mousepad/mousepad-encoding.c:73
 msgid "Thai"
-msgstr ""
+msgstr "Tajskie"
 
 #: ../mousepad/mousepad-encoding.c:74 ../mousepad/mousepad-encoding.c:75
 #: ../mousepad/mousepad-encoding.c:76
 msgid "Turkish"
-msgstr ""
+msgstr "Tureckie"
 
 #: ../mousepad/mousepad-encoding.c:77 ../mousepad/mousepad-encoding.c:78
 #: ../mousepad/mousepad-encoding.c:79
 msgid "Vietnamese"
-msgstr ""
+msgstr "Wietnamskie"
 
 #. unicode
 #: ../mousepad/mousepad-encoding.c:82 ../mousepad/mousepad-encoding.c:83
@@ -275,22 +275,22 @@ msgstr "Unikod"
 #: ../mousepad/mousepad-encoding.c:92 ../mousepad/mousepad-encoding.c:93
 #: ../mousepad/mousepad-encoding.c:94 ../mousepad/mousepad-encoding.c:95
 msgid "Chinese Simplified"
-msgstr ""
+msgstr "Chińskie uproszczone"
 
 #: ../mousepad/mousepad-encoding.c:96 ../mousepad/mousepad-encoding.c:97
 #: ../mousepad/mousepad-encoding.c:98
 msgid "Chinese Traditional"
-msgstr ""
+msgstr "Chińskie tradycyjne"
 
 #: ../mousepad/mousepad-encoding.c:99 ../mousepad/mousepad-encoding.c:100
 #: ../mousepad/mousepad-encoding.c:101
 msgid "Japanese"
-msgstr ""
+msgstr "Japońskie"
 
 #: ../mousepad/mousepad-encoding.c:102 ../mousepad/mousepad-encoding.c:103
 #: ../mousepad/mousepad-encoding.c:104 ../mousepad/mousepad-encoding.c:105
 msgid "Korean"
-msgstr ""
+msgstr "Koreańskie"
 
 #: ../mousepad/mousepad-file.c:556
 #, c-format
@@ -305,7 +305,7 @@ msgstr ""
 #: ../mousepad/mousepad-file.c:916
 #, c-format
 msgid "Failed to read the status of \"%s\""
-msgstr ""
+msgstr "Nie udało się odczytać stanu „%s”"
 
 #. set a custom tab label
 #: ../mousepad/mousepad-print.c:125
@@ -669,7 +669,7 @@ msgstr ""
 
 #: ../mousepad/mousepad-window.c:430
 msgid "Change the selection"
-msgstr ""
+msgstr "Zmień sposób zaznaczenia"
 
 #: ../mousepad/mousepad-window.c:430
 msgid "Change a normal selection into a column selection and vice versa"
@@ -697,7 +697,7 @@ msgstr ""
 
 #: ../mousepad/mousepad-window.c:434
 msgid "Find and Rep_lace..."
-msgstr ""
+msgstr "Wyszukaj i _zastąp..."
 
 #: ../mousepad/mousepad-window.c:434
 msgid "Search for and replace text"
@@ -794,27 +794,27 @@ msgstr ""
 
 #: ../mousepad/mousepad-window.c:450
 msgid "_Move Selection"
-msgstr ""
+msgstr "_Przemieszczanie zaznaczenia"
 
 #: ../mousepad/mousepad-window.c:451
 msgid "Line _Up"
-msgstr ""
+msgstr "Wiersz w gó_rę"
 
 #: ../mousepad/mousepad-window.c:451
 msgid "Move the selection one line up"
-msgstr ""
+msgstr "Przemieszcza zaznaczony tekst jeden wiersz w górę"
 
 #: ../mousepad/mousepad-window.c:452
 msgid "Line _Down"
-msgstr ""
+msgstr "Wiersz w _dół"
 
 #: ../mousepad/mousepad-window.c:452
 msgid "Move the selection one line down"
-msgstr ""
+msgstr "Przemieszcza zaznaczony tekst jeden wiersz w górę"
 
 #: ../mousepad/mousepad-window.c:453
 msgid "D_uplicate Line / Selection"
-msgstr ""
+msgstr "_Powiel wiersz lub zaznaczenie"
 
 #: ../mousepad/mousepad-window.c:453
 msgid "Duplicate the current line or selection"
@@ -822,7 +822,7 @@ msgstr ""
 
 #: ../mousepad/mousepad-window.c:454
 msgid "_Increase Indent"
-msgstr ""
+msgstr "Z_większ wcięcie"
 
 #: ../mousepad/mousepad-window.c:454
 msgid "Increase the indentation of the selection or current line"
@@ -830,7 +830,7 @@ msgstr ""
 
 #: ../mousepad/mousepad-window.c:455
 msgid "_Decrease Indent"
-msgstr ""
+msgstr "Z_mniejsz wcięcie"
 
 #: ../mousepad/mousepad-window.c:455
 msgid "Decrease the indentation of the selection or current line"
@@ -930,7 +930,7 @@ msgstr ""
 
 #: ../mousepad/mousepad-window.c:478
 msgid "_Word Wrap"
-msgstr ""
+msgstr "Zawijanie _tekstu"
 
 #: ../mousepad/mousepad-window.c:478
 msgid "Toggle breaking lines in between words"
@@ -1016,7 +1016,7 @@ msgstr ""
 
 #: ../mousepad/mousepad-window.c:2727
 msgid "Failed to clear the recent history"
-msgstr ""
+msgstr "Nie udało się wyczyścić historii"
 
 #. create an item to inform the user
 #: ../mousepad/mousepad-window.c:3151
