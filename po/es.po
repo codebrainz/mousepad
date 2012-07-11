@@ -214,57 +214,57 @@ msgstr "Europa central"
 #: ../mousepad/mousepad-encoding.c:54 ../mousepad/mousepad-encoding.c:55
 #: ../mousepad/mousepad-encoding.c:56
 msgid "Cyrillic"
-msgstr ""
+msgstr "Cirílico"
 
 #: ../mousepad/mousepad-encoding.c:57
 msgid "Cyrillic/Russian"
-msgstr ""
+msgstr "Cirílico/Ruso"
 
 #: ../mousepad/mousepad-encoding.c:58
 msgid "Cyrillic/Ukrainian"
-msgstr ""
+msgstr "Círilico/Ucraniano"
 
 #: ../mousepad/mousepad-encoding.c:59
 msgid "Romanian"
-msgstr ""
+msgstr "Rumano"
 
 #. middle eastern
 #: ../mousepad/mousepad-encoding.c:62 ../mousepad/mousepad-encoding.c:63
 #: ../mousepad/mousepad-encoding.c:64
 msgid "Arabic"
-msgstr ""
+msgstr "Árabe"
 
 #: ../mousepad/mousepad-encoding.c:65 ../mousepad/mousepad-encoding.c:66
 #: ../mousepad/mousepad-encoding.c:67
 msgid "Hebrew"
-msgstr ""
+msgstr "Hebreo"
 
 #: ../mousepad/mousepad-encoding.c:68
 msgid "Hebrew Visual"
-msgstr ""
+msgstr "Hebreo visual"
 
 #. asian
 #: ../mousepad/mousepad-encoding.c:71
 msgid "Armenian"
-msgstr ""
+msgstr "Armenio"
 
 #: ../mousepad/mousepad-encoding.c:72
 msgid "Georgian"
-msgstr ""
+msgstr "Georgiano"
 
 #: ../mousepad/mousepad-encoding.c:73
 msgid "Thai"
-msgstr ""
+msgstr "Thai"
 
 #: ../mousepad/mousepad-encoding.c:74 ../mousepad/mousepad-encoding.c:75
 #: ../mousepad/mousepad-encoding.c:76
 msgid "Turkish"
-msgstr ""
+msgstr "Turco"
 
 #: ../mousepad/mousepad-encoding.c:77 ../mousepad/mousepad-encoding.c:78
 #: ../mousepad/mousepad-encoding.c:79
 msgid "Vietnamese"
-msgstr ""
+msgstr "Vietnamita"
 
 #. unicode
 #: ../mousepad/mousepad-encoding.c:82 ../mousepad/mousepad-encoding.c:83
@@ -272,18 +272,18 @@ msgstr ""
 #: ../mousepad/mousepad-encoding.c:86 ../mousepad/mousepad-encoding.c:87
 #: ../mousepad/mousepad-encoding.c:88 ../mousepad/mousepad-encoding.c:89
 msgid "Unicode"
-msgstr ""
+msgstr "Unicode"
 
 #. east asian
 #: ../mousepad/mousepad-encoding.c:92 ../mousepad/mousepad-encoding.c:93
 #: ../mousepad/mousepad-encoding.c:94 ../mousepad/mousepad-encoding.c:95
 msgid "Chinese Simplified"
-msgstr ""
+msgstr "Chino simplificado"
 
 #: ../mousepad/mousepad-encoding.c:96 ../mousepad/mousepad-encoding.c:97
 #: ../mousepad/mousepad-encoding.c:98
 msgid "Chinese Traditional"
-msgstr ""
+msgstr "Chino tradicional"
 
 #: ../mousepad/mousepad-encoding.c:99 ../mousepad/mousepad-encoding.c:100
 #: ../mousepad/mousepad-encoding.c:101
