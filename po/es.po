@@ -288,12 +288,12 @@ msgstr "Chino tradicional"
 #: ../mousepad/mousepad-encoding.c:99 ../mousepad/mousepad-encoding.c:100
 #: ../mousepad/mousepad-encoding.c:101
 msgid "Japanese"
-msgstr ""
+msgstr "Japones"
 
 #: ../mousepad/mousepad-encoding.c:102 ../mousepad/mousepad-encoding.c:103
 #: ../mousepad/mousepad-encoding.c:104 ../mousepad/mousepad-encoding.c:105
 msgid "Korean"
-msgstr ""
+msgstr "Coreano"
 
 #: ../mousepad/mousepad-file.c:556
 #, c-format
@@ -325,7 +325,7 @@ msgstr ""
 
 #: ../mousepad/mousepad-print.c:615
 msgid "Appearance"
-msgstr ""
+msgstr "Apariencia"
 
 #: ../mousepad/mousepad-print.c:629
 msgid "Print page _headers"
@@ -341,7 +341,7 @@ msgstr ""
 
 #: ../mousepad/mousepad-print.c:669
 msgid "line(s)"
-msgstr ""
+msgstr "Linea(s)"
 
 #: ../mousepad/mousepad-print.c:674
 msgid "Enable text _wrapping"
