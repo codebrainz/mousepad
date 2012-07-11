@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mousepad\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-07-04 03:21+0000\n"
+"POT-Creation-Date: 2012-07-11 11:54+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: Spanish/es <xfce-i18n@xfce.org>\n"
@@ -57,7 +57,8 @@ msgstr "Por favor, informar los errores en <%s>."
 
 #: ../mousepad/mousepad-dialogs.c:41
 msgid "Mousepad is a fast text editor for the Xfce Desktop Environment."
-msgstr "Mousepad es un editor de txto veloz para el entorno de escritorio Xfce."
+msgstr ""
+"Mousepad es un editor de txto veloz para el entorno de escritorio Xfce."
 
 #: ../mousepad/mousepad-dialogs.c:50
 msgid "translator-credits"
@@ -112,7 +113,7 @@ msgstr "Guardar Cambios"
 
 #: ../mousepad/mousepad-dialogs.c:364
 msgid "_Don't Save"
-msgstr ""
+msgstr "_No grabar"
 
 #. secondary text
 #: ../mousepad/mousepad-dialogs.c:386
@@ -126,7 +127,7 @@ msgstr ""
 
 #: ../mousepad/mousepad-dialogs.c:409
 msgid "Externally Modified"
-msgstr ""
+msgstr "Modificado externamente"
 
 #: ../mousepad/mousepad-dialogs.c:411
 msgid "If you save the document, all of the external changes will be lost."
@@ -143,12 +144,12 @@ msgstr ""
 #. pack button, add signal and tooltip
 #: ../mousepad/mousepad-document.c:591
 msgid "Close this tab"
-msgstr ""
+msgstr "Cierra esta pestaña"
 
 #. create an unique untitled document name
 #: ../mousepad/mousepad-document.c:626
 msgid "Untitled"
-msgstr ""
+msgstr "Sin título"
 
 #. create the header
 #: ../mousepad/mousepad-encoding-dialog.c:134
@@ -162,52 +163,52 @@ msgstr ""
 #. encoding radio buttons
 #: ../mousepad/mousepad-encoding-dialog.c:147
 msgid "Default (UTF-8)"
-msgstr ""
+msgstr "(UTF-8) por defecto"
 
 #: ../mousepad/mousepad-encoding-dialog.c:153
 msgid "System"
-msgstr ""
+msgstr "Sistema"
 
 #: ../mousepad/mousepad-encoding-dialog.c:160
 msgid "Other:"
-msgstr ""
+msgstr "Otro: "
 
 #: ../mousepad/mousepad-encoding-dialog.c:180
 msgid "Checking encodings..."
-msgstr ""
+msgstr "Verificando códigos"
 
 #. west european
 #: ../mousepad/mousepad-encoding.c:35
 msgid "Celtic"
-msgstr ""
+msgstr "Celta"
 
 #: ../mousepad/mousepad-encoding.c:36 ../mousepad/mousepad-encoding.c:37
 msgid "Greek"
-msgstr ""
+msgstr "Griego"
 
 #: ../mousepad/mousepad-encoding.c:38
 msgid "Nordic"
-msgstr ""
+msgstr "Nórdico"
 
 #: ../mousepad/mousepad-encoding.c:39
 msgid "South European"
-msgstr ""
+msgstr "Europa del sur"
 
 #: ../mousepad/mousepad-encoding.c:40 ../mousepad/mousepad-encoding.c:41
 #: ../mousepad/mousepad-encoding.c:42 ../mousepad/mousepad-encoding.c:43
 msgid "Western"
-msgstr ""
+msgstr "Occidental"
 
 #. east european
 #: ../mousepad/mousepad-encoding.c:46 ../mousepad/mousepad-encoding.c:47
 #: ../mousepad/mousepad-encoding.c:48
 msgid "Baltic"
-msgstr ""
+msgstr "Báltico"
 
 #: ../mousepad/mousepad-encoding.c:49 ../mousepad/mousepad-encoding.c:50
 #: ../mousepad/mousepad-encoding.c:51
 msgid "Central European"
-msgstr ""
+msgstr "Europa central"
 
 #: ../mousepad/mousepad-encoding.c:52 ../mousepad/mousepad-encoding.c:53
 #: ../mousepad/mousepad-encoding.c:54 ../mousepad/mousepad-encoding.c:55
