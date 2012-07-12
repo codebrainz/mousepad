@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mousepad\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-06-15 09:57+0000\n"
+"POT-Creation-Date: 2012-07-12 20:00+0000\n"
 "PO-Revision-Date: 2012-06-13 02:13-0300\n"
 "Last-Translator: Rafael Ferreira <rafael.f.f1@gmail.com>\n"
 "Language-Team: Portuguese (Brazil) <xfce-i18n-br@xfce.org>\n"
@@ -132,16 +132,16 @@ msgstr "O documento foi alterado externamente. Você deseja continuar e salvar?"
 msgid "Externally Modified"
 msgstr "Modificado externamente"
 
-#: ../mousepad/mousepad-dialogs.c:410
-msgid "If you don't save the document, all the external changes will be lost."
+#: ../mousepad/mousepad-dialogs.c:411
+msgid "If you save the document, all of the external changes will be lost."
 msgstr ""
 "Se você no salvar o documento, todas alterações externas serío perdidas"
 
-#: ../mousepad/mousepad-dialogs.c:438
+#: ../mousepad/mousepad-dialogs.c:439
 msgid "Do you want to save your changes before reloading?"
 msgstr "Deseja salvar suas alterações antes de recarregar?"
 
-#: ../mousepad/mousepad-dialogs.c:440
+#: ../mousepad/mousepad-dialogs.c:441
 msgid "If you revert the file, all unsaved changes will be lost."
 msgstr "Se você rever o arquivo, todas alterações Não salvadas serío perdidas."
 
