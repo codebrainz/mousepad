@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: mousepad 0.3\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-05-05 20:09+0000\n"
-"PO-Revision-Date: 2012-07-12 12:09+0200\n"
+"PO-Revision-Date: 2012-07-15 17:27+0200\n"
 "Last-Translator: Piotr Sokół <psokol@jabster.pl>\n"
 "Language-Team: polski <>\n"
 "Language: \n"
@@ -56,7 +56,7 @@ msgstr "Proszę zgłaszać błędy na adres <%s>."
 
 #: ../mousepad/mousepad-dialogs.c:41
 msgid "Mousepad is a fast text editor for the Xfce Desktop Environment."
-msgstr "Szybki edytor tekstu dla środowiska Xfce."
+msgstr "Umożliwia szybkie edytowanie tekstu w środowisku graficznym Xfce."
 
 #: ../mousepad/mousepad-dialogs.c:50
 msgid "translator-credits"
@@ -171,8 +171,9 @@ msgid "Other:"
 msgstr "Inne:"
 
 #: ../mousepad/mousepad-encoding-dialog.c:180
+#, fuzzy
 msgid "Checking encodings..."
-msgstr ""
+msgstr "Sprawdzanieu kodowań..."
 
 #. west european
 #: ../mousepad/mousepad-encoding.c:35
@@ -293,14 +294,14 @@ msgid "Korean"
 msgstr "Koreańskie"
 
 #: ../mousepad/mousepad-file.c:556
-#, c-format
+#, fuzzy, c-format
 msgid "Invalid byte sequence in conversion input"
-msgstr ""
+msgstr "Nieprawidłowa sekwencja bajtów na wejściu"
 
 #: ../mousepad/mousepad-file.c:875
 #, c-format
 msgid "The file \"%s\" you tried to reload does not exist anymore"
-msgstr ""
+msgstr "Wczytywany ponownie plik „%s” już nie istnieje"
 
 #: ../mousepad/mousepad-file.c:916
 #, c-format
@@ -633,17 +634,14 @@ msgid "Copy the selection"
 msgstr "Kopiuje zaznaczony tekst do schowka"
 
 #: ../mousepad/mousepad-window.c:424
-#, fuzzy
 msgid "Paste the clipboard"
-msgstr "Wkleja zaznaczony tekst ze schowka"
+msgstr "Umieszcza w dokumencie tekst znajdujący się w schowku"
 
 #: ../mousepad/mousepad-window.c:425
-#, fuzzy
 msgid "Paste _Special"
-msgstr "_Zaawansowane wklejanie"
+msgstr "Wklejanie _specjalne"
 
 #: ../mousepad/mousepad-window.c:426
-#, fuzzy
 msgid "Paste from _History"
 msgstr "Z _historii"
 
@@ -653,7 +651,7 @@ msgstr ""
 
 #: ../mousepad/mousepad-window.c:427
 msgid "Paste as _Column"
-msgstr ""
+msgstr "Jako _kolumna"
 
 #: ../mousepad/mousepad-window.c:427
 msgid "Paste the clipboard text into a column"
@@ -661,11 +659,11 @@ msgstr ""
 
 #: ../mousepad/mousepad-window.c:428
 msgid "Delete the current selection"
-msgstr ""
+msgstr "Usuwa zaznaczony tekst"
 
 #: ../mousepad/mousepad-window.c:429
 msgid "Select the text in the entire document"
-msgstr ""
+msgstr "Zaznacza tekst całego dokumentu"
 
 #: ../mousepad/mousepad-window.c:430
 msgid "Change the selection"
@@ -674,10 +672,11 @@ msgstr "Zmień sposób zaznaczenia"
 #: ../mousepad/mousepad-window.c:430
 msgid "Change a normal selection into a column selection and vice versa"
 msgstr ""
+"Przełącza pomiędzy zwykłym sposobem zaznaczania tekstu a zaznaczaniem kolumn"
 
 #: ../mousepad/mousepad-window.c:431
 msgid "Search for text"
-msgstr ""
+msgstr "Wyszukuje wprowadzony tekst"
 
 #: ../mousepad/mousepad-window.c:432
 msgid "Find _Next"
@@ -760,8 +759,9 @@ msgid "Change the case of the selection opposite case"
 msgstr ""
 
 #: ../mousepad/mousepad-window.c:446
+#, fuzzy
 msgid "_Tabs to Spaces"
-msgstr ""
+msgstr "Znaki tabulatora na spacje"
 
 #: ../mousepad/mousepad-window.c:446
 msgid "Convert all tabs to spaces in the selection or document"
@@ -786,11 +786,11 @@ msgstr ""
 
 #: ../mousepad/mousepad-window.c:449
 msgid "_Transpose"
-msgstr ""
+msgstr "_Odwróć kolejność"
 
 #: ../mousepad/mousepad-window.c:449
 msgid "Reverse the order of something"
-msgstr ""
+msgstr "Odwraca kolejność wierszy lub znaków"
 
 #: ../mousepad/mousepad-window.c:450
 msgid "_Move Selection"
