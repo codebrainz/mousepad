@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mousepad\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-07-11 11:54+0000\n"
+"POT-Creation-Date: 2012-07-23 12:48+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: Spanish/es <xfce-i18n@xfce.org>\n"
@@ -91,7 +91,7 @@ msgstr "C_olumna número:"
 
 #: ../mousepad/mousepad-dialogs.c:323
 msgid "Remove all entries from the documents history?"
-msgstr ""
+msgstr "¿Remover todfas las entradas del historial?"
 
 #: ../mousepad/mousepad-dialogs.c:328
 msgid "Clear Documents History"
@@ -298,7 +298,7 @@ msgstr "Coreano"
 #: ../mousepad/mousepad-file.c:556
 #, c-format
 msgid "Invalid byte sequence in conversion input"
-msgstr ""
+msgstr "Secuencia invalida en la conversion de archivos"
 
 #: ../mousepad/mousepad-file.c:875
 #, c-format
@@ -313,11 +313,11 @@ msgstr ""
 #. set a custom tab label
 #: ../mousepad/mousepad-print.c:125
 msgid "Document Settings"
-msgstr ""
+msgstr "Configuración del documento"
 
 #: ../mousepad/mousepad-print.c:595
 msgid "Page Setup"
-msgstr ""
+msgstr "Configuración de la página"
 
 #: ../mousepad/mousepad-print.c:605
 msgid "_Adjust page size and orientation"
@@ -337,7 +337,7 @@ msgstr ""
 
 #: ../mousepad/mousepad-print.c:653
 msgid "Number every"
-msgstr ""
+msgstr "Números siempre"
 
 #: ../mousepad/mousepad-print.c:669
 msgid "line(s)"
@@ -353,19 +353,19 @@ msgstr ""
 
 #: ../mousepad/mousepad-print.c:693
 msgid "Fonts"
-msgstr ""
+msgstr "Fuente de letra"
 
 #: ../mousepad/mousepad-print.c:709
 msgid "Header:"
-msgstr ""
+msgstr "Cabezera:"
 
 #: ../mousepad/mousepad-print.c:719
 msgid "Body:"
-msgstr ""
+msgstr "Cuerpo:"
 
 #: ../mousepad/mousepad-print.c:729
 msgid "Line numbers:"
-msgstr ""
+msgstr "Número de líneas:"
 
 #. set dialog properties
 #: ../mousepad/mousepad-replace-dialog.c:167
