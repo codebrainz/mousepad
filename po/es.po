@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mousepad\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-07-23 12:48+0000\n"
+"POT-Creation-Date: 2012-07-27 23:48+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: Spanish/es <xfce-i18n@xfce.org>\n"
@@ -101,11 +101,11 @@ msgstr "Borrar Historial de Documentos"
 msgid ""
 "Clearing the documents history will permanently remove all currently listed "
 "entries."
-msgstr ""
+msgstr "El borrar el historial de los documentos se eliminará permanentemente todas las entradas que figuran actualmente."
 
 #: ../mousepad/mousepad-dialogs.c:362
 msgid "Do you want to save the changes before closing?"
-msgstr ""
+msgstr "¿Desea guardar los cambios antes de cerrar?"
 
 #: ../mousepad/mousepad-dialogs.c:363
 msgid "Save Changes"
@@ -118,12 +118,12 @@ msgstr "_No grabar"
 #. secondary text
 #: ../mousepad/mousepad-dialogs.c:386
 msgid "If you don't save the document, all the changes will be lost."
-msgstr ""
+msgstr "Si no guarda el documento los cambios se perderán."
 
 #: ../mousepad/mousepad-dialogs.c:408
 msgid ""
 "The document has been externally modified. Do you want to continue saving?"
-msgstr ""
+msgstr "El documento ha sido modificado externamente ¿Desea guardarlo igualmente?"
 
 #: ../mousepad/mousepad-dialogs.c:409
 msgid "Externally Modified"
@@ -131,15 +131,15 @@ msgstr "Modificado externamente"
 
 #: ../mousepad/mousepad-dialogs.c:411
 msgid "If you save the document, all of the external changes will be lost."
-msgstr ""
+msgstr "Si guarda el documento todos los cambios externos se perderán."
 
 #: ../mousepad/mousepad-dialogs.c:439
 msgid "Do you want to save your changes before reloading?"
-msgstr ""
+msgstr "¿Desea salvar los cambios antes de recargar?"
 
 #: ../mousepad/mousepad-dialogs.c:441
 msgid "If you revert the file, all unsaved changes will be lost."
-msgstr ""
+msgstr "Si revierte los cambios, Los cambios sin salvar se perderán"
 
 #. pack button, add signal and tooltip
 #: ../mousepad/mousepad-document.c:591
@@ -154,11 +154,11 @@ msgstr "Sin título"
 #. create the header
 #: ../mousepad/mousepad-encoding-dialog.c:134
 msgid "The document was not UTF-8 valid"
-msgstr ""
+msgstr "El documento no está codificado en UTF-8"
 
 #: ../mousepad/mousepad-encoding-dialog.c:135
 msgid "Please select an encoding below."
-msgstr ""
+msgstr "Por favor seleccióne una codificación."
 
 #. encoding radio buttons
 #: ../mousepad/mousepad-encoding-dialog.c:147
@@ -303,12 +303,12 @@ msgstr "Secuencia invalida en la conversion de archivos"
 #: ../mousepad/mousepad-file.c:875
 #, c-format
 msgid "The file \"%s\" you tried to reload does not exist anymore"
-msgstr ""
+msgstr "El archivo \"%s\" que intenta recargar no existe"
 
 #: ../mousepad/mousepad-file.c:916
 #, c-format
 msgid "Failed to read the status of \"%s\""
-msgstr ""
+msgstr "Fallo al intentar leer el estado de \"%s\"\\"
 
 #. set a custom tab label
 #: ../mousepad/mousepad-print.c:125
@@ -321,7 +321,7 @@ msgstr "Configuración de la página"
 
 #: ../mousepad/mousepad-print.c:605
 msgid "_Adjust page size and orientation"
-msgstr ""
+msgstr "_Sjuste el tamaño y orientación de la página"
 
 #: ../mousepad/mousepad-print.c:615
 msgid "Appearance"
@@ -329,11 +329,11 @@ msgstr "Apariencia"
 
 #: ../mousepad/mousepad-print.c:629
 msgid "Print page _headers"
-msgstr ""
+msgstr "Imprimir _cabezera de la página"
 
 #: ../mousepad/mousepad-print.c:636
 msgid "Print _line numbers"
-msgstr ""
+msgstr "Imprimir el número de _líneas"
 
 #: ../mousepad/mousepad-print.c:653
 msgid "Number every"
@@ -345,11 +345,11 @@ msgstr "Linea(s)"
 
 #: ../mousepad/mousepad-print.c:674
 msgid "Enable text _wrapping"
-msgstr ""
+msgstr "Habilitar el _ajuste de texto"
 
 #: ../mousepad/mousepad-print.c:681
 msgid "Enable _syntax highlighting"
-msgstr ""
+msgstr "Habilitar remarcado de _sintaxis"
 
 #: ../mousepad/mousepad-print.c:693
 msgid "Fonts"
@@ -370,41 +370,41 @@ msgstr "Número de líneas:"
 #. set dialog properties
 #: ../mousepad/mousepad-replace-dialog.c:167
 msgid "Replace"
-msgstr ""
+msgstr "Remplazar"
 
 #: ../mousepad/mousepad-replace-dialog.c:174
 #: ../mousepad/mousepad-replace-dialog.c:540
 msgid "_Replace"
-msgstr ""
+msgstr "_Remplazar"
 
 #: ../mousepad/mousepad-replace-dialog.c:192
 msgid "_Search for:"
-msgstr ""
+msgstr "_Buscar por:"
 
 #: ../mousepad/mousepad-replace-dialog.c:213
 msgid "Replace _with:"
-msgstr ""
+msgstr "Remplazar _con"
 
 #: ../mousepad/mousepad-replace-dialog.c:233
 msgid "Search _direction:"
-msgstr ""
+msgstr "Buscar _dirección:"
 
 #: ../mousepad/mousepad-replace-dialog.c:242
 msgid "Up"
-msgstr ""
+msgstr "Arriba"
 
 #: ../mousepad/mousepad-replace-dialog.c:243
 msgid "Down"
-msgstr ""
+msgstr "Abajo"
 
 #: ../mousepad/mousepad-replace-dialog.c:244
 msgid "Both"
-msgstr ""
+msgstr "Ambos"
 
 #. case sensitive
 #: ../mousepad/mousepad-replace-dialog.c:253
 msgid "Case sensi_tive"
-msgstr ""
+msgstr "Caso sen_sitivo"
 
 #. match whole word
 #: ../mousepad/mousepad-replace-dialog.c:260
