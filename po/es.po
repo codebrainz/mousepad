@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mousepad\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-07-27 23:48+0000\n"
+"POT-Creation-Date: 2012-08-03 16:18+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: Spanish/es <xfce-i18n@xfce.org>\n"
@@ -101,7 +101,9 @@ msgstr "Borrar Historial de Documentos"
 msgid ""
 "Clearing the documents history will permanently remove all currently listed "
 "entries."
-msgstr "El borrar el historial de los documentos se eliminará permanentemente todas las entradas que figuran actualmente."
+msgstr ""
+"El borrar el historial de los documentos se eliminará permanentemente todas "
+"las entradas que figuran actualmente."
 
 #: ../mousepad/mousepad-dialogs.c:362
 msgid "Do you want to save the changes before closing?"
@@ -123,7 +125,8 @@ msgstr "Si no guarda el documento los cambios se perderán."
 #: ../mousepad/mousepad-dialogs.c:408
 msgid ""
 "The document has been externally modified. Do you want to continue saving?"
-msgstr "El documento ha sido modificado externamente ¿Desea guardarlo igualmente?"
+msgstr ""
+"El documento ha sido modificado externamente ¿Desea guardarlo igualmente?"
 
 #: ../mousepad/mousepad-dialogs.c:409
 msgid "Externally Modified"
@@ -417,15 +420,15 @@ msgstr ""
 
 #: ../mousepad/mousepad-replace-dialog.c:278
 msgid "Selection"
-msgstr ""
+msgstr "Selección"
 
 #: ../mousepad/mousepad-replace-dialog.c:279
 msgid "Document"
-msgstr ""
+msgstr "Documento"
 
 #: ../mousepad/mousepad-replace-dialog.c:280
 msgid "All Documents"
-msgstr ""
+msgstr "Todos los documentos"
 
 #: ../mousepad/mousepad-replace-dialog.c:445
 #, c-format
@@ -436,19 +439,19 @@ msgstr[1] ""
 
 #: ../mousepad/mousepad-replace-dialog.c:540
 msgid "_Replace All"
-msgstr ""
+msgstr "_Remplaza todos"
 
 #: ../mousepad/mousepad-search-bar.c:188
 msgid "Fi_nd:"
-msgstr ""
+msgstr "Encuen_tra"
 
 #: ../mousepad/mousepad-search-bar.c:208
 msgid "_Next"
-msgstr ""
+msgstr "_Siguiente"
 
 #: ../mousepad/mousepad-search-bar.c:219
 msgid "_Previous"
-msgstr ""
+msgstr "_Previo"
 
 #: ../mousepad/mousepad-search-bar.c:230
 msgid "Highlight _All"
@@ -460,12 +463,12 @@ msgstr ""
 
 #: ../mousepad/mousepad-statusbar.c:141
 msgid "Choose a filetype"
-msgstr ""
+msgstr "Seleccione un tipo de archivo"
 
 #. language/filetype
 #: ../mousepad/mousepad-statusbar.c:146 ../mousepad/mousepad-statusbar.c:258
 msgid "Filetype: None"
-msgstr ""
+msgstr "Tipo de archivo: Ninguno"
 
 #: ../mousepad/mousepad-statusbar.c:169
 msgid "Toggle the overwrite mode"
@@ -479,7 +482,7 @@ msgstr ""
 #: ../mousepad/mousepad-statusbar.c:261
 #, c-format
 msgid "Filetype: %s"
-msgstr ""
+msgstr "Tipo de archivo: %s"
 
 #: ../mousepad/mousepad-statusbar.c:281
 #, c-format
@@ -489,7 +492,7 @@ msgstr ""
 #: ../mousepad/mousepad-statusbar.c:283
 #, c-format
 msgid "Line: %d Column: %d"
-msgstr ""
+msgstr "Línea: %s Columna: %s"
 
 #. show warning to the user
 #: ../mousepad/mousepad-util.c:572
@@ -515,7 +518,7 @@ msgstr ""
 
 #: ../mousepad/mousepad-window.c:403
 msgid "Create a new document"
-msgstr ""
+msgstr "Crea un nuevo documento"
 
 #: ../mousepad/mousepad-window.c:404
 msgid "New _Window"
