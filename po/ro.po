@@ -3,21 +3,20 @@
 # Copyright (C) 2007-2011 THE Mousepad's COPYRIGHT HOLDER
 # This file is distributed under the same license as the Mousepad package.
 # Mișu Moldovan <dumol@xfce.org>, 2007-2012.
-#
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mousepad 0.3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-05-06 13:01+0300\n"
+"POT-Creation-Date: 2012-08-06 13:51+0000\n"
 "PO-Revision-Date: 2012-05-17 15:28+0300\n"
 "Last-Translator: Mișu Moldovan <dumol@xfce.org>\n"
 "Language-Team: Romanian <diacritice@googlegroups.com>\n"
-"Language: ro\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : (n==0 || (n%100 > 0 && n%100 < "
-"20)) ? 1 : 2);;\n"
+"Language: ro\n"
+"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : (n==0 || (n%100 > 0 && n%100 < 20)) ? 1 : 2);;\n"
 "X-Generator: Virtaal 0.7.0\n"
 
 #: ../mousepad/main.c:53
@@ -130,16 +129,16 @@ msgstr ""
 msgid "Externally Modified"
 msgstr "Modificare externă"
 
-#: ../mousepad/mousepad-dialogs.c:410
-#, fuzzy
-msgid "If you don't save the document, all the external changes will be lost."
-msgstr "Dacă nu salvați documentul, toate modificările externe vor fi pierdute."
+#: ../mousepad/mousepad-dialogs.c:411
+msgid "If you save the document, all of the external changes will be lost."
+msgstr ""
+"Dacă nu salvați documentul, toate modificările externe vor fi pierdute."
 
-#: ../mousepad/mousepad-dialogs.c:438
+#: ../mousepad/mousepad-dialogs.c:439
 msgid "Do you want to save your changes before reloading?"
 msgstr "Doriți să vă salvați modificările înainte de reîncărcare?"
 
-#: ../mousepad/mousepad-dialogs.c:440
+#: ../mousepad/mousepad-dialogs.c:441
 msgid "If you revert the file, all unsaved changes will be lost."
 msgstr ""
 "Dacă reveniți la fișierul de pe disc, toate modificările nesalvate vor fi "
@@ -340,12 +339,10 @@ msgid "Print _line numbers"
 msgstr "Tipărește numerele _rândurilor: "
 
 #: ../mousepad/mousepad-print.c:653
-#, fuzzy
 msgid "Number every"
 msgstr "Numerotează fiecare al"
 
 #: ../mousepad/mousepad-print.c:669
-#, fuzzy
 msgid "line(s)"
 msgstr "-lea rând"
 
@@ -983,8 +980,7 @@ msgstr "Documentul va avea terminatori de rând în stil DOS / Windows (CR LF)"
 #: ../mousepad/mousepad-window.c:662
 msgid "Warning, you are using the root account, you may harm your system."
 msgstr ""
-"Atenție, folosiți contul „root”, puteți suprascrie fișiere vitale "
-"sistemului."
+"Atenție, folosiți contul „root”, puteți suprascrie fișiere vitale sistemului."
 
 #. show the warning
 #: ../mousepad/mousepad-window.c:1100
@@ -1109,4 +1105,3 @@ msgstr "Un editor simplu de text"
 #: ../Mousepad.desktop.in.in.h:3
 msgid "Text Editor"
 msgstr "Editor de text"
-
