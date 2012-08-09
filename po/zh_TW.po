@@ -179,7 +179,7 @@ msgstr ""
 
 #: ../mousepad/mousepad-encoding.c:36 ../mousepad/mousepad-encoding.c:37
 msgid "Greek"
-msgstr ""
+msgstr "希臘文"
 
 #: ../mousepad/mousepad-encoding.c:38
 msgid "Nordic"
@@ -187,23 +187,23 @@ msgstr ""
 
 #: ../mousepad/mousepad-encoding.c:39
 msgid "South European"
-msgstr ""
+msgstr "南歐語系"
 
 #: ../mousepad/mousepad-encoding.c:40 ../mousepad/mousepad-encoding.c:41
 #: ../mousepad/mousepad-encoding.c:42 ../mousepad/mousepad-encoding.c:43
 msgid "Western"
-msgstr ""
+msgstr "西歐語系"
 
 #. east european
 #: ../mousepad/mousepad-encoding.c:46 ../mousepad/mousepad-encoding.c:47
 #: ../mousepad/mousepad-encoding.c:48
 msgid "Baltic"
-msgstr ""
+msgstr "波羅的海語系"
 
 #: ../mousepad/mousepad-encoding.c:49 ../mousepad/mousepad-encoding.c:50
 #: ../mousepad/mousepad-encoding.c:51
 msgid "Central European"
-msgstr ""
+msgstr "中歐語系"
 
 #: ../mousepad/mousepad-encoding.c:52 ../mousepad/mousepad-encoding.c:53
 #: ../mousepad/mousepad-encoding.c:54 ../mousepad/mousepad-encoding.c:55
@@ -246,7 +246,7 @@ msgstr ""
 
 #: ../mousepad/mousepad-encoding.c:72
 msgid "Georgian"
-msgstr ""
+msgstr "喬治亞文"
 
 #: ../mousepad/mousepad-encoding.c:73
 msgid "Thai"
@@ -309,7 +309,7 @@ msgstr ""
 #. set a custom tab label
 #: ../mousepad/mousepad-print.c:125
 msgid "Document Settings"
-msgstr ""
+msgstr "文件設定"
 
 #: ../mousepad/mousepad-print.c:595
 msgid "Page Setup"
@@ -349,7 +349,7 @@ msgstr ""
 
 #: ../mousepad/mousepad-print.c:693
 msgid "Fonts"
-msgstr ""
+msgstr "字型"
 
 #: ../mousepad/mousepad-print.c:709
 msgid "Header:"
@@ -417,11 +417,11 @@ msgstr ""
 
 #: ../mousepad/mousepad-replace-dialog.c:279
 msgid "Document"
-msgstr ""
+msgstr "文件"
 
 #: ../mousepad/mousepad-replace-dialog.c:280
 msgid "All Documents"
-msgstr ""
+msgstr "全部文件"
 
 #: ../mousepad/mousepad-replace-dialog.c:445
 #, c-format
@@ -456,7 +456,7 @@ msgstr ""
 
 #: ../mousepad/mousepad-statusbar.c:141
 msgid "Choose a filetype"
-msgstr ""
+msgstr "選擇檔案類型"
 
 #. language/filetype
 #: ../mousepad/mousepad-statusbar.c:146 ../mousepad/mousepad-statusbar.c:258
@@ -503,7 +503,7 @@ msgstr ""
 
 #: ../mousepad/mousepad-window.c:402
 msgid "_File"
-msgstr ""
+msgstr "檔案(_F)"
 
 #: ../mousepad/mousepad-window.c:403
 msgid "_New"
@@ -527,11 +527,11 @@ msgstr ""
 
 #: ../mousepad/mousepad-window.c:406
 msgid "_Open..."
-msgstr ""
+msgstr "開啟(_O)..."
 
 #: ../mousepad/mousepad-window.c:406
 msgid "Open a file"
-msgstr ""
+msgstr "開啟檔案"
 
 #: ../mousepad/mousepad-window.c:407
 msgid "Op_en Recent"
@@ -543,7 +543,7 @@ msgstr ""
 
 #: ../mousepad/mousepad-window.c:409
 msgid "Clear _History"
-msgstr ""
+msgstr "清除歷史(_H)"
 
 #: ../mousepad/mousepad-window.c:409
 msgid "Clear the recently used files history"
@@ -563,7 +563,7 @@ msgstr ""
 
 #: ../mousepad/mousepad-window.c:412
 msgid "Save A_ll"
-msgstr ""
+msgstr "全部儲存(_L)"
 
 #: ../mousepad/mousepad-window.c:412
 msgid "Save all document in this window"
@@ -579,11 +579,11 @@ msgstr ""
 
 #: ../mousepad/mousepad-window.c:414
 msgid "_Print..."
-msgstr ""
+msgstr "列印(_P)..."
 
 #: ../mousepad/mousepad-window.c:414
 msgid "Print the current document"
-msgstr ""
+msgstr "列印目前文件"
 
 #: ../mousepad/mousepad-window.c:415
 msgid "_Detach Tab"
@@ -595,7 +595,7 @@ msgstr ""
 
 #: ../mousepad/mousepad-window.c:416
 msgid "Close _Tab"
-msgstr ""
+msgstr "關閉分頁(_T)"
 
 #: ../mousepad/mousepad-window.c:416
 msgid "Close the current document"
@@ -603,7 +603,7 @@ msgstr ""
 
 #: ../mousepad/mousepad-window.c:417
 msgid "_Close Window"
-msgstr ""
+msgstr "關閉視窗(_C)"
 
 #: ../mousepad/mousepad-window.c:417
 msgid "Close this window"
@@ -611,7 +611,7 @@ msgstr ""
 
 #: ../mousepad/mousepad-window.c:419
 msgid "_Edit"
-msgstr ""
+msgstr "編輯(_E)"
 
 #: ../mousepad/mousepad-window.c:420
 msgid "Undo the last action"
@@ -699,7 +699,7 @@ msgstr ""
 
 #: ../mousepad/mousepad-window.c:436
 msgid "_View"
-msgstr ""
+msgstr "檢視(_V)"
 
 #: ../mousepad/mousepad-window.c:437
 msgid "Select F_ont..."
@@ -715,7 +715,7 @@ msgstr ""
 
 #: ../mousepad/mousepad-window.c:440
 msgid "_Text"
-msgstr ""
+msgstr "文字(_T)"
 
 #: ../mousepad/mousepad-window.c:441
 msgid "_Convert"
@@ -832,7 +832,7 @@ msgstr ""
 
 #: ../mousepad/mousepad-window.c:457
 msgid "_Document"
-msgstr ""
+msgstr "文件(_D)"
 
 #: ../mousepad/mousepad-window.c:458
 msgid "Line E_nding"
@@ -900,7 +900,7 @@ msgstr ""
 
 #: ../mousepad/mousepad-window.c:475
 msgid "St_atusbar"
-msgstr ""
+msgstr "狀態列(_A)"
 
 #: ../mousepad/mousepad-window.c:475
 msgid "Change the visibility of the statusbar"
@@ -940,7 +940,7 @@ msgstr ""
 
 #: ../mousepad/mousepad-window.c:484
 msgid "Unix (_LF)"
-msgstr ""
+msgstr "Unix (_LF)"
 
 #: ../mousepad/mousepad-window.c:484
 msgid "Set the line ending of the document to Unix (LF)"
@@ -948,7 +948,7 @@ msgstr ""
 
 #: ../mousepad/mousepad-window.c:485
 msgid "Mac (_CR)"
-msgstr ""
+msgstr "Mac (_CR)"
 
 #: ../mousepad/mousepad-window.c:485
 msgid "Set the line ending of the document to Mac (CR)"
@@ -956,7 +956,7 @@ msgstr ""
 
 #: ../mousepad/mousepad-window.c:486
 msgid "DOS / Windows (C_R LF)"
-msgstr ""
+msgstr "DOS / Windows (C_R LF)"
 
 #: ../mousepad/mousepad-window.c:486
 msgid "Set the line ending of the document to DOS / Windows (CR LF)"
@@ -970,7 +970,7 @@ msgstr ""
 #. show the warning
 #: ../mousepad/mousepad-window.c:1100
 msgid "Failed to open the document"
-msgstr ""
+msgstr "未能開啟文件"
 
 #: ../mousepad/mousepad-window.c:1297
 msgid "Read Only"
@@ -995,7 +995,7 @@ msgstr ""
 #. set action label
 #: ../mousepad/mousepad-window.c:2143
 msgid "Ot_her..."
-msgstr ""
+msgstr "其他(_H)..."
 
 #. build description
 #. get the offset length: 'Encoding: '
@@ -1043,7 +1043,7 @@ msgstr ""
 #. create new file chooser dialog
 #: ../mousepad/mousepad-window.c:3548
 msgid "Open File"
-msgstr ""
+msgstr "開啟檔案"
 
 #: ../mousepad/mousepad-window.c:3661
 #, c-format
