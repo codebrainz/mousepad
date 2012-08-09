@@ -2,19 +2,19 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: mousepad master\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-07-11 06:33+0000\n"
+"POT-Creation-Date: 2012-08-09 11:24+0000\n"
 "PO-Revision-Date: 2012-07-11 18:28+0800\n"
 "Last-Translator: Cheng-Chia Tseng <pswo10680@gmail.com>\n"
 "Language-Team: chinese-l10n <chinese-l10n@googlegroups.com>\n"
-"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: \n"
 "Plural-Forms: nplurals=2; plural=(n>1);\n"
 
 #: ../mousepad/main.c:53
@@ -27,13 +27,12 @@ msgstr ""
 
 #: ../mousepad/main.c:56
 msgid "Print version information and exit"
-msgstr ""
+msgstr "顯示版本資訊並結束"
 
 #. default application name
-#: ../mousepad/main.c:80
-#: ../Mousepad.desktop.in.in.h:1
+#: ../mousepad/main.c:80 ../Mousepad.desktop.in.in.h:1
 msgid "Mousepad"
-msgstr ""
+msgstr "Mousepad"
 
 #. initialize gtk+
 #: ../mousepad/main.c:92
@@ -91,10 +90,12 @@ msgstr ""
 
 #: ../mousepad/mousepad-dialogs.c:328
 msgid "Clear Documents History"
-msgstr ""
+msgstr "清除文件歷史"
 
 #: ../mousepad/mousepad-dialogs.c:331
-msgid "Clearing the documents history will permanently remove all currently listed entries."
+msgid ""
+"Clearing the documents history will permanently remove all currently listed "
+"entries."
 msgstr ""
 
 #: ../mousepad/mousepad-dialogs.c:362
@@ -103,11 +104,11 @@ msgstr ""
 
 #: ../mousepad/mousepad-dialogs.c:363
 msgid "Save Changes"
-msgstr ""
+msgstr "儲存變更"
 
 #: ../mousepad/mousepad-dialogs.c:364
 msgid "_Don't Save"
-msgstr ""
+msgstr "不儲存(_D)"
 
 #. secondary text
 #: ../mousepad/mousepad-dialogs.c:386
@@ -115,7 +116,8 @@ msgid "If you don't save the document, all the changes will be lost."
 msgstr ""
 
 #: ../mousepad/mousepad-dialogs.c:408
-msgid "The document has been externally modified. Do you want to continue saving?"
+msgid ""
+"The document has been externally modified. Do you want to continue saving?"
 msgstr ""
 
 #: ../mousepad/mousepad-dialogs.c:409
@@ -137,7 +139,7 @@ msgstr ""
 #. pack button, add signal and tooltip
 #: ../mousepad/mousepad-document.c:591
 msgid "Close this tab"
-msgstr ""
+msgstr "關閉此分頁"
 
 #. create an unique untitled document name
 #: ../mousepad/mousepad-document.c:626
@@ -175,8 +177,7 @@ msgstr "正檢查編碼..."
 msgid "Celtic"
 msgstr ""
 
-#: ../mousepad/mousepad-encoding.c:36
-#: ../mousepad/mousepad-encoding.c:37
+#: ../mousepad/mousepad-encoding.c:36 ../mousepad/mousepad-encoding.c:37
 msgid "Greek"
 msgstr ""
 
@@ -188,30 +189,24 @@ msgstr ""
 msgid "South European"
 msgstr ""
 
-#: ../mousepad/mousepad-encoding.c:40
-#: ../mousepad/mousepad-encoding.c:41
-#: ../mousepad/mousepad-encoding.c:42
-#: ../mousepad/mousepad-encoding.c:43
+#: ../mousepad/mousepad-encoding.c:40 ../mousepad/mousepad-encoding.c:41
+#: ../mousepad/mousepad-encoding.c:42 ../mousepad/mousepad-encoding.c:43
 msgid "Western"
 msgstr ""
 
 #. east european
-#: ../mousepad/mousepad-encoding.c:46
-#: ../mousepad/mousepad-encoding.c:47
+#: ../mousepad/mousepad-encoding.c:46 ../mousepad/mousepad-encoding.c:47
 #: ../mousepad/mousepad-encoding.c:48
 msgid "Baltic"
 msgstr ""
 
-#: ../mousepad/mousepad-encoding.c:49
-#: ../mousepad/mousepad-encoding.c:50
+#: ../mousepad/mousepad-encoding.c:49 ../mousepad/mousepad-encoding.c:50
 #: ../mousepad/mousepad-encoding.c:51
 msgid "Central European"
 msgstr ""
 
-#: ../mousepad/mousepad-encoding.c:52
-#: ../mousepad/mousepad-encoding.c:53
-#: ../mousepad/mousepad-encoding.c:54
-#: ../mousepad/mousepad-encoding.c:55
+#: ../mousepad/mousepad-encoding.c:52 ../mousepad/mousepad-encoding.c:53
+#: ../mousepad/mousepad-encoding.c:54 ../mousepad/mousepad-encoding.c:55
 #: ../mousepad/mousepad-encoding.c:56
 msgid "Cyrillic"
 msgstr ""
@@ -229,14 +224,12 @@ msgid "Romanian"
 msgstr ""
 
 #. middle eastern
-#: ../mousepad/mousepad-encoding.c:62
-#: ../mousepad/mousepad-encoding.c:63
+#: ../mousepad/mousepad-encoding.c:62 ../mousepad/mousepad-encoding.c:63
 #: ../mousepad/mousepad-encoding.c:64
 msgid "Arabic"
 msgstr "阿拉伯文"
 
-#: ../mousepad/mousepad-encoding.c:65
-#: ../mousepad/mousepad-encoding.c:66
+#: ../mousepad/mousepad-encoding.c:65 ../mousepad/mousepad-encoding.c:66
 #: ../mousepad/mousepad-encoding.c:67
 msgid "Hebrew"
 msgstr "希伯來文"
@@ -259,54 +252,42 @@ msgstr ""
 msgid "Thai"
 msgstr "泰文"
 
-#: ../mousepad/mousepad-encoding.c:74
-#: ../mousepad/mousepad-encoding.c:75
+#: ../mousepad/mousepad-encoding.c:74 ../mousepad/mousepad-encoding.c:75
 #: ../mousepad/mousepad-encoding.c:76
 msgid "Turkish"
 msgstr "土耳其文"
 
-#: ../mousepad/mousepad-encoding.c:77
-#: ../mousepad/mousepad-encoding.c:78
+#: ../mousepad/mousepad-encoding.c:77 ../mousepad/mousepad-encoding.c:78
 #: ../mousepad/mousepad-encoding.c:79
 msgid "Vietnamese"
 msgstr "越南文"
 
 #. unicode
-#: ../mousepad/mousepad-encoding.c:82
-#: ../mousepad/mousepad-encoding.c:83
-#: ../mousepad/mousepad-encoding.c:84
-#: ../mousepad/mousepad-encoding.c:85
-#: ../mousepad/mousepad-encoding.c:86
-#: ../mousepad/mousepad-encoding.c:87
-#: ../mousepad/mousepad-encoding.c:88
-#: ../mousepad/mousepad-encoding.c:89
+#: ../mousepad/mousepad-encoding.c:82 ../mousepad/mousepad-encoding.c:83
+#: ../mousepad/mousepad-encoding.c:84 ../mousepad/mousepad-encoding.c:85
+#: ../mousepad/mousepad-encoding.c:86 ../mousepad/mousepad-encoding.c:87
+#: ../mousepad/mousepad-encoding.c:88 ../mousepad/mousepad-encoding.c:89
 msgid "Unicode"
 msgstr "統一碼"
 
 #. east asian
-#: ../mousepad/mousepad-encoding.c:92
-#: ../mousepad/mousepad-encoding.c:93
-#: ../mousepad/mousepad-encoding.c:94
-#: ../mousepad/mousepad-encoding.c:95
+#: ../mousepad/mousepad-encoding.c:92 ../mousepad/mousepad-encoding.c:93
+#: ../mousepad/mousepad-encoding.c:94 ../mousepad/mousepad-encoding.c:95
 msgid "Chinese Simplified"
 msgstr "中文簡體"
 
-#: ../mousepad/mousepad-encoding.c:96
-#: ../mousepad/mousepad-encoding.c:97
+#: ../mousepad/mousepad-encoding.c:96 ../mousepad/mousepad-encoding.c:97
 #: ../mousepad/mousepad-encoding.c:98
 msgid "Chinese Traditional"
 msgstr "中文正體"
 
-#: ../mousepad/mousepad-encoding.c:99
-#: ../mousepad/mousepad-encoding.c:100
+#: ../mousepad/mousepad-encoding.c:99 ../mousepad/mousepad-encoding.c:100
 #: ../mousepad/mousepad-encoding.c:101
 msgid "Japanese"
 msgstr "日文"
 
-#: ../mousepad/mousepad-encoding.c:102
-#: ../mousepad/mousepad-encoding.c:103
-#: ../mousepad/mousepad-encoding.c:104
-#: ../mousepad/mousepad-encoding.c:105
+#: ../mousepad/mousepad-encoding.c:102 ../mousepad/mousepad-encoding.c:103
+#: ../mousepad/mousepad-encoding.c:104 ../mousepad/mousepad-encoding.c:105
 msgid "Korean"
 msgstr "韓文"
 
@@ -469,8 +450,7 @@ msgstr ""
 msgid "Highlight _All"
 msgstr ""
 
-#: ../mousepad/mousepad-search-bar.c:243
-#: ../mousepad/mousepad-search-bar.c:250
+#: ../mousepad/mousepad-search-bar.c:243 ../mousepad/mousepad-search-bar.c:250
 msgid "Mat_ch Case"
 msgstr ""
 
@@ -479,8 +459,7 @@ msgid "Choose a filetype"
 msgstr ""
 
 #. language/filetype
-#: ../mousepad/mousepad-statusbar.c:146
-#: ../mousepad/mousepad-statusbar.c:258
+#: ../mousepad/mousepad-statusbar.c:146 ../mousepad/mousepad-statusbar.c:258
 msgid "Filetype: None"
 msgstr ""
 
@@ -511,7 +490,9 @@ msgstr ""
 #. show warning to the user
 #: ../mousepad/mousepad-util.c:572
 #, c-format
-msgid "Unable to create base directory \"%s\". Saving to file \"%s\" will be aborted."
+msgid ""
+"Unable to create base directory \"%s\". Saving to file \"%s\" will be "
+"aborted."
 msgstr ""
 
 #. print error
@@ -785,7 +766,8 @@ msgid "_Spaces to Tabs"
 msgstr ""
 
 #: ../mousepad/mousepad-window.c:447
-msgid "Convert all the leading spaces to tabs in the selected line(s) or document"
+msgid ""
+"Convert all the leading spaces to tabs in the selected line(s) or document"
 msgstr ""
 
 #: ../mousepad/mousepad-window.c:448
@@ -994,8 +976,7 @@ msgstr ""
 msgid "Read Only"
 msgstr ""
 
-#: ../mousepad/mousepad-window.c:1357
-#: ../mousepad/mousepad-window.c:3221
+#: ../mousepad/mousepad-window.c:1357 ../mousepad/mousepad-window.c:3221
 #: ../mousepad/mousepad-window.c:3302
 msgid "None"
 msgstr ""
@@ -1018,8 +999,7 @@ msgstr ""
 
 #. build description
 #. get the offset length: 'Encoding: '
-#: ../mousepad/mousepad-window.c:2446
-#: ../mousepad/mousepad-window.c:2677
+#: ../mousepad/mousepad-window.c:2446 ../mousepad/mousepad-window.c:2677
 msgid "Charset"
 msgstr ""
 
@@ -1067,7 +1047,9 @@ msgstr ""
 
 #: ../mousepad/mousepad-window.c:3661
 #, c-format
-msgid "Failed to open \"%s\" for reading. It will be removed from the document history"
+msgid ""
+"Failed to open \"%s\" for reading. It will be removed from the document "
+"history"
 msgstr ""
 
 #. show the warning and cleanup
@@ -1076,8 +1058,7 @@ msgid "Failed to open file"
 msgstr ""
 
 #. show the error
-#: ../mousepad/mousepad-window.c:3771
-#: ../mousepad/mousepad-window.c:3894
+#: ../mousepad/mousepad-window.c:3771 ../mousepad/mousepad-window.c:3894
 msgid "Failed to save the document"
 msgstr ""
 
@@ -1107,4 +1088,3 @@ msgstr ""
 #: ../Mousepad.desktop.in.in.h:3
 msgid "Text Editor"
 msgstr ""
-
