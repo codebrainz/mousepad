@@ -321,7 +321,7 @@ msgstr ""
 
 #: ../mousepad/mousepad-print.c:615
 msgid "Appearance"
-msgstr ""
+msgstr "外觀"
 
 #: ../mousepad/mousepad-print.c:629
 msgid "Print page _headers"
