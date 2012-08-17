@@ -586,11 +586,11 @@ msgstr ""
 
 #: ../mousepad/mousepad-window.c:414
 msgid "_Print..."
-msgstr ""
+msgstr "_Imprimir..."
 
 #: ../mousepad/mousepad-window.c:414
 msgid "Print the current document"
-msgstr ""
+msgstr "Imprimir el documento actual"
 
 #: ../mousepad/mousepad-window.c:415
 msgid "_Detach Tab"
@@ -602,7 +602,7 @@ msgstr ""
 
 #: ../mousepad/mousepad-window.c:416
 msgid "Close _Tab"
-msgstr ""
+msgstr "Cerrar _pestaña"
 
 #: ../mousepad/mousepad-window.c:416
 msgid "Close the current document"
@@ -610,15 +610,15 @@ msgstr ""
 
 #: ../mousepad/mousepad-window.c:417
 msgid "_Close Window"
-msgstr ""
+msgstr "_Cerrar ventana"
 
 #: ../mousepad/mousepad-window.c:417
 msgid "Close this window"
-msgstr ""
+msgstr "Cerrar esta ventana"
 
 #: ../mousepad/mousepad-window.c:419
 msgid "_Edit"
-msgstr ""
+msgstr "_Editar"
 
 #: ../mousepad/mousepad-window.c:420
 msgid "Undo the last action"
