@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mousepad\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-08-03 16:18+0000\n"
+"POT-Creation-Date: 2012-08-17 01:18+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: Spanish/es <xfce-i18n@xfce.org>\n"
@@ -416,7 +416,7 @@ msgstr ""
 
 #: ../mousepad/mousepad-replace-dialog.c:271
 msgid "Replace _all in:"
-msgstr ""
+msgstr "Remplazar _todas en:"
 
 #: ../mousepad/mousepad-replace-dialog.c:278
 msgid "Selection"
@@ -434,8 +434,8 @@ msgstr "Todos los documentos"
 #, c-format
 msgid "%d occurence"
 msgid_plural "%d occurences"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%d ocurrencia"
+msgstr[1] "%d ocurrencias"
 
 #: ../mousepad/mousepad-replace-dialog.c:540
 msgid "_Replace All"
@@ -487,7 +487,7 @@ msgstr "Tipo de archivo: %s"
 #: ../mousepad/mousepad-statusbar.c:281
 #, c-format
 msgid "Line: %d Column: %d Selection: %d"
-msgstr ""
+msgstr "Linea: %d Columna: %d Selección: %d"
 
 #: ../mousepad/mousepad-statusbar.c:283
 #, c-format
@@ -510,11 +510,11 @@ msgstr ""
 
 #: ../mousepad/mousepad-window.c:402
 msgid "_File"
-msgstr ""
+msgstr "_Archivo"
 
 #: ../mousepad/mousepad-window.c:403
 msgid "_New"
-msgstr ""
+msgstr "_Nuevo"
 
 #: ../mousepad/mousepad-window.c:403
 msgid "Create a new document"
@@ -522,7 +522,7 @@ msgstr "Crea un nuevo documento"
 
 #: ../mousepad/mousepad-window.c:404
 msgid "New _Window"
-msgstr ""
+msgstr "Nueva _Ventana"
 
 #: ../mousepad/mousepad-window.c:404
 msgid "Create a new document in a new window"
@@ -530,27 +530,27 @@ msgstr ""
 
 #: ../mousepad/mousepad-window.c:405
 msgid "New From Te_mplate"
-msgstr ""
+msgstr "Nuevo desde Plan_tilla"
 
 #: ../mousepad/mousepad-window.c:406
 msgid "_Open..."
-msgstr ""
+msgstr "_Abrir..."
 
 #: ../mousepad/mousepad-window.c:406
 msgid "Open a file"
-msgstr ""
+msgstr "Abrir archivo"
 
 #: ../mousepad/mousepad-window.c:407
 msgid "Op_en Recent"
-msgstr ""
+msgstr "A_brir reciente"
 
 #: ../mousepad/mousepad-window.c:408
 msgid "No items found"
-msgstr ""
+msgstr "No hay objetos encontrados"
 
 #: ../mousepad/mousepad-window.c:409
 msgid "Clear _History"
-msgstr ""
+msgstr "Limpiar _historial"
 
 #: ../mousepad/mousepad-window.c:409
 msgid "Clear the recently used files history"
@@ -558,11 +558,11 @@ msgstr ""
 
 #: ../mousepad/mousepad-window.c:410
 msgid "Save the current document"
-msgstr ""
+msgstr "Guardar el documento actual"
 
 #: ../mousepad/mousepad-window.c:411
 msgid "Save _As..."
-msgstr ""
+msgstr "Guardar _Como..."
 
 #: ../mousepad/mousepad-window.c:411
 msgid "Save current document as another file"
@@ -570,7 +570,7 @@ msgstr ""
 
 #: ../mousepad/mousepad-window.c:412
 msgid "Save A_ll"
-msgstr ""
+msgstr "Guardar To_do"
 
 #: ../mousepad/mousepad-window.c:412
 msgid "Save all document in this window"
