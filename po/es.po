@@ -582,7 +582,7 @@ msgstr "Des_hacer"
 
 #: ../mousepad/mousepad-window.c:413
 msgid "Revert to the saved version of the file"
-msgstr ""
+msgstr "Deshacer asta la última versión grabada"
 
 #: ../mousepad/mousepad-window.c:414
 msgid "_Print..."
@@ -606,7 +606,7 @@ msgstr "Cerrar _pestaña"
 
 #: ../mousepad/mousepad-window.c:416
 msgid "Close the current document"
-msgstr ""
+msgstr "Cierra el documento actual"
 
 #: ../mousepad/mousepad-window.c:417
 msgid "_Close Window"
@@ -622,11 +622,11 @@ msgstr "_Editar"
 
 #: ../mousepad/mousepad-window.c:420
 msgid "Undo the last action"
-msgstr ""
+msgstr "Deshace la última acción"
 
 #: ../mousepad/mousepad-window.c:421
 msgid "Redo the last undone action"
-msgstr ""
+msgstr "Borrar la última acción sin terminar"
 
 #: ../mousepad/mousepad-window.c:422
 msgid "Cut the selection"
@@ -658,11 +658,11 @@ msgstr ""
 
 #: ../mousepad/mousepad-window.c:427
 msgid "Paste the clipboard text into a column"
-msgstr ""
+msgstr "Pegar el texto del portapapeles en la columna"
 
 #: ../mousepad/mousepad-window.c:428
 msgid "Delete the current selection"
-msgstr ""
+msgstr "Borra la actual selección"
 
 #: ../mousepad/mousepad-window.c:429
 msgid "Select the text in the entire document"
@@ -670,7 +670,7 @@ msgstr ""
 
 #: ../mousepad/mousepad-window.c:430
 msgid "Change the selection"
-msgstr ""
+msgstr "Cambia la selección"
 
 #: ../mousepad/mousepad-window.c:430
 msgid "Change a normal selection into a column selection and vice versa"
@@ -678,15 +678,15 @@ msgstr ""
 
 #: ../mousepad/mousepad-window.c:431
 msgid "Search for text"
-msgstr ""
+msgstr "Buscar texto"
 
 #: ../mousepad/mousepad-window.c:432
 msgid "Find _Next"
-msgstr ""
+msgstr "Buscar _siguiente"
 
 #: ../mousepad/mousepad-window.c:432
 msgid "Search forwards for the same text"
-msgstr ""
+msgstr "Buscar hacia atras el mismo texto"
 
 #: ../mousepad/mousepad-window.c:433
 msgid "Find _Previous"
