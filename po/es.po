@@ -566,7 +566,7 @@ msgstr "Guardar _Como..."
 
 #: ../mousepad/mousepad-window.c:411
 msgid "Save current document as another file"
-msgstr ""
+msgstr "Graba el documento con otro archivo"
 
 #: ../mousepad/mousepad-window.c:412
 msgid "Save A_ll"
@@ -574,7 +574,7 @@ msgstr "Guardar To_do"
 
 #: ../mousepad/mousepad-window.c:412
 msgid "Save all document in this window"
-msgstr ""
+msgstr "Graba todos los documentos en la ventana"
 
 #: ../mousepad/mousepad-window.c:413
 msgid "Re_vert"
@@ -690,7 +690,7 @@ msgstr "Buscar hacia atras el mismo texto"
 
 #: ../mousepad/mousepad-window.c:433
 msgid "Find _Previous"
-msgstr ""
+msgstr "Busar _previo"
 
 #: ../mousepad/mousepad-window.c:433
 msgid "Search backwards for the same text"
@@ -706,27 +706,27 @@ msgstr ""
 
 #: ../mousepad/mousepad-window.c:436
 msgid "_View"
-msgstr ""
+msgstr "_Ver"
 
 #: ../mousepad/mousepad-window.c:437
 msgid "Select F_ont..."
-msgstr ""
+msgstr "Selecciona Fuen_te..."
 
 #: ../mousepad/mousepad-window.c:437
 msgid "Change the editor font"
-msgstr ""
+msgstr "Cambia la fuente del editor"
 
 #: ../mousepad/mousepad-window.c:438
 msgid "_Color Scheme"
-msgstr ""
+msgstr "Esquema de _color"
 
 #: ../mousepad/mousepad-window.c:440
 msgid "_Text"
-msgstr ""
+msgstr "_Texto"
 
 #: ../mousepad/mousepad-window.c:441
 msgid "_Convert"
-msgstr ""
+msgstr "_Conbertir"
 
 #: ../mousepad/mousepad-window.c:442
 msgid "to _Uppercase"
