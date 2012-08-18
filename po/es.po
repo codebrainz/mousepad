@@ -142,7 +142,7 @@ msgstr "¿Desea salvar los cambios antes de recargar?"
 
 #: ../mousepad/mousepad-dialogs.c:441
 msgid "If you revert the file, all unsaved changes will be lost."
-msgstr "Si revierte los cambios, Los cambios sin salvar se perderán"
+msgstr "Si deshace el archivo, Los cambios sin salvar se perderán"
 
 #. pack button, add signal and tooltip
 #: ../mousepad/mousepad-document.c:591
