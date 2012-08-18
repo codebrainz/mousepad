@@ -726,7 +726,7 @@ msgstr "_Texto"
 
 #: ../mousepad/mousepad-window.c:441
 msgid "_Convert"
-msgstr "_Conbertir"
+msgstr "_Convertir"
 
 #: ../mousepad/mousepad-window.c:442
 msgid "to _Uppercase"
