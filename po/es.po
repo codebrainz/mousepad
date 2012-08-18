@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mousepad\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-08-17 01:18+0000\n"
+"POT-Creation-Date: 2012-08-18 04:03+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: Spanish/es <xfce-i18n@xfce.org>\n"
@@ -578,7 +578,7 @@ msgstr ""
 
 #: ../mousepad/mousepad-window.c:413
 msgid "Re_vert"
-msgstr ""
+msgstr "Des_hacer"
 
 #: ../mousepad/mousepad-window.c:413
 msgid "Revert to the saved version of the file"
@@ -598,7 +598,7 @@ msgstr ""
 
 #: ../mousepad/mousepad-window.c:415
 msgid "Move the current document to a new window"
-msgstr ""
+msgstr "Mover el documento a una nueva ventana"
 
 #: ../mousepad/mousepad-window.c:416
 msgid "Close _Tab"
@@ -630,27 +630,27 @@ msgstr ""
 
 #: ../mousepad/mousepad-window.c:422
 msgid "Cut the selection"
-msgstr ""
+msgstr "Cortar la selección"
 
 #: ../mousepad/mousepad-window.c:423
 msgid "Copy the selection"
-msgstr ""
+msgstr "Copiar la selección"
 
 #: ../mousepad/mousepad-window.c:424
 msgid "Paste the clipboard"
-msgstr ""
+msgstr "Pegar el portapapeles"
 
 #: ../mousepad/mousepad-window.c:425
 msgid "Paste _Special"
-msgstr ""
+msgstr "Pegado _especial"
 
 #: ../mousepad/mousepad-window.c:426
 msgid "Paste from _History"
-msgstr ""
+msgstr "Pegar desde el _historial"
 
 #: ../mousepad/mousepad-window.c:426
 msgid "Paste from the clipboard history"
-msgstr ""
+msgstr "Pegar desde el historial del portapapeles"
 
 #: ../mousepad/mousepad-window.c:427
 msgid "Paste as _Column"
