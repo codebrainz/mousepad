@@ -1,0 +1,202 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: mousepad 0.2.16\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2007-01-20 12:34+0100\n"
+"PO-Revision-Date: 2006-04-22 14:38+0600\n"
+"Last-Translator: Sergey Fedoseev <fedoseev.sergey@gmail.com>\n"
+"Language-Team: Russian <ru@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+msgid "%d strings replaced"
+msgstr "%d строк заменено"
+
+msgid "'%s' already exists. Overwrite?"
+msgstr "'%s' уже существует. Переписать?"
+
+msgid "'%s' is not supported"
+msgstr "'%s' не поддерживается"
+
+msgid "/Edit/Cu_t"
+msgstr "/Правка/_Вырезать"
+
+msgid "/Edit/Select _All"
+msgstr "/Правка/В_ыделить все"
+
+msgid "/Edit/_Copy"
+msgstr "/Правка/_Копировать"
+
+msgid "/Edit/_Delete"
+msgstr "/Правка/У_далить"
+
+msgid "/Edit/_Paste"
+msgstr "/Правка/Вст_авить"
+
+msgid "/Edit/_Redo"
+msgstr "/Правка/Ве_рнуть"
+
+msgid "/Edit/_Undo"
+msgstr "/Правка/_Отменить"
+
+msgid "/File/New _Window"
+msgstr "/Файл/_Новое окно"
+
+msgid "/File/Save _As..."
+msgstr "/Файл/Сохранить _как..."
+
+msgid "/File/_New"
+msgstr "/Файл/_Создать"
+
+msgid "/File/_Open..."
+msgstr "/Файл/_Открыть..."
+
+msgid "/File/_Print..."
+msgstr "/Файл/_Печать..."
+
+msgid "/File/_Quit"
+msgstr "/Файл/В_ыход"
+
+msgid "/File/_Save"
+msgstr "/Файл/Со_хранить"
+
+msgid "/Help/_About"
+msgstr "/Справка/_О программе"
+
+msgid "/Options/_Auto Indent"
+msgstr "/Параметры/_Автоматический отступ"
+
+msgid "/Options/_Font..."
+msgstr "/Параметры/_Шрифт..."
+
+msgid "/Options/_Line Numbers"
+msgstr "/Параметры/Показывать _номера строк"
+
+msgid "/Options/_Word Wrap"
+msgstr "/Параметры/_Переносить слова"
+
+msgid "/Search/Find _Next"
+msgstr "/Поиск/Найти след_ующее"
+
+msgid "/Search/Find _Previous"
+msgstr "/Поиск/Найти пред_ыдущее"
+
+msgid "/Search/_Find..."
+msgstr "/Поиск/_Найти..."
+
+msgid "/Search/_Jump To..."
+msgstr "/Поиск/Перейти к _строке..."
+
+msgid "/Search/_Replace..."
+msgstr "/Поиск/За_менить..."
+
+msgid "/_Edit"
+msgstr "/_Правка"
+
+msgid "/_File"
+msgstr "/_Файл"
+
+msgid "/_Help"
+msgstr "/_Справка"
+
+msgid "/_Options"
+msgstr "/П_араметры"
+
+msgid "/_Search"
+msgstr "/П_оиск"
+
+msgid "A text editor for Xfce"
+msgstr "Текстовый редактор для Xfce"
+
+msgid "About %s"
+msgstr "О программе \"%s\""
+
+msgid "Auto Detect"
+msgstr "Автоопределение"
+
+msgid "Can't convert codeset to '%s'"
+msgstr "Не удалось преобразовать кодировку в '%s'"
+
+msgid "Can't open file to write"
+msgstr "Не удалось открыть файл для записи"
+
+msgid "Can't open pipe to process"
+msgstr "Не удалось открыть канал к процессу"
+
+msgid "Can't write file"
+msgstr "Не удалось записать файл"
+
+msgid "Ch_aracter Coding: "
+msgstr "Ко_дировка символов"
+
+msgid "Code_set:"
+msgstr "_Кодировка:"
+
+msgid "Current Locale (%s)"
+msgstr "Текущая локаль (%s)"
+
+msgid "Fi_nd what: "
+msgstr "На_йти: "
+
+msgid "Find"
+msgstr "Поиск"
+
+msgid "Font"
+msgstr "Шрифт"
+
+msgid "Jump To"
+msgstr "Переход"
+
+msgid "Mousepad"
+msgstr "Mousepad"
+
+msgid "Open"
+msgstr "Открытие файла"
+
+msgid "Other Codeset"
+msgstr "Другая кодировка"
+
+msgid "Re_place with: "
+msgstr "З_аменить на: "
+
+msgid "Replace"
+msgstr "Замена"
+
+msgid "Replace _all at once"
+msgstr "Заменить _все"
+
+msgid "Replace?"
+msgstr "Заменить?"
+
+msgid "Save As"
+msgstr "Сохранение файла"
+
+msgid "Save changes to '%s'?"
+msgstr "Сохранить изменения в '%s'?"
+
+msgid "Search string not found"
+msgstr "Искомая строка не найдена"
+
+msgid "Simple text editor"
+msgstr "Простой текстовый редактор"
+
+msgid "Text Editor"
+msgstr "Текстовый редактор"
+
+msgid "Untitled"
+msgstr "Без имени"
+
+msgid "Warning, you are using the root account, you may harm your system."
+msgstr ""
+"Внимание, вы используете учетную запись суперпользователя, при этом вы "
+"можете повредить вашу систему."
+
+msgid "_Jump"
+msgstr "_Перейти"
+
+msgid "_Line number: "
+msgstr "_Номер строки: "
+
+msgid "_Match case"
+msgstr "Учитывать _регистр"
