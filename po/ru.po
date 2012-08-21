@@ -2,201 +2,1365 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mousepad 0.2.16\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-01-20 12:34+0100\n"
-"PO-Revision-Date: 2006-04-22 14:38+0600\n"
-"Last-Translator: Sergey Fedoseev <fedoseev.sergey@gmail.com>\n"
+"POT-Creation-Date: 2012-08-21 06:57+0000\n"
+"PO-Revision-Date: 2012-08-21 15:55+0600\n"
+"Last-Translator: Urmas D. <davian818@gmail.com>\n"
 "Language-Team: Russian <ru@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-msgid "%d strings replaced"
-msgstr "%d строк заменено"
+#: ../mousepad/main.c:53
+msgid "Do not register with the D-BUS session message bus"
+msgstr "Не регистрироваться в сеансовой шине сообщений D-BUS"
 
-msgid "'%s' already exists. Overwrite?"
-msgstr "'%s' уже существует. Переписать?"
+#: ../mousepad/main.c:54
+#, fuzzy
+msgid "Quit a running Mousepad instance"
+msgstr "Не удалось обнаружить запущенный экземпляр"
 
-msgid "'%s' is not supported"
-msgstr "'%s' не поддерживается"
+#: ../mousepad/main.c:56
+#, fuzzy
+msgid "Print version information and exit"
+msgstr "Показать версию и выйти"
 
-msgid "/Edit/Cu_t"
-msgstr "/Правка/_Вырезать"
-
-msgid "/Edit/Select _All"
-msgstr "/Правка/В_ыделить все"
-
-msgid "/Edit/_Copy"
-msgstr "/Правка/_Копировать"
-
-msgid "/Edit/_Delete"
-msgstr "/Правка/У_далить"
-
-msgid "/Edit/_Paste"
-msgstr "/Правка/Вст_авить"
-
-msgid "/Edit/_Redo"
-msgstr "/Правка/Ве_рнуть"
-
-msgid "/Edit/_Undo"
-msgstr "/Правка/_Отменить"
-
-msgid "/File/New _Window"
-msgstr "/Файл/_Новое окно"
-
-msgid "/File/Save _As..."
-msgstr "/Файл/Сохранить _как..."
-
-msgid "/File/_New"
-msgstr "/Файл/_Создать"
-
-msgid "/File/_Open..."
-msgstr "/Файл/_Открыть..."
-
-msgid "/File/_Print..."
-msgstr "/Файл/_Печать..."
-
-msgid "/File/_Quit"
-msgstr "/Файл/В_ыход"
-
-msgid "/File/_Save"
-msgstr "/Файл/Со_хранить"
-
-msgid "/Help/_About"
-msgstr "/Справка/_О программе"
-
-msgid "/Options/_Auto Indent"
-msgstr "/Параметры/_Автоматический отступ"
-
-msgid "/Options/_Font..."
-msgstr "/Параметры/_Шрифт..."
-
-msgid "/Options/_Line Numbers"
-msgstr "/Параметры/Показывать _номера строк"
-
-msgid "/Options/_Word Wrap"
-msgstr "/Параметры/_Переносить слова"
-
-msgid "/Search/Find _Next"
-msgstr "/Поиск/Найти след_ующее"
-
-msgid "/Search/Find _Previous"
-msgstr "/Поиск/Найти пред_ыдущее"
-
-msgid "/Search/_Find..."
-msgstr "/Поиск/_Найти..."
-
-msgid "/Search/_Jump To..."
-msgstr "/Поиск/Перейти к _строке..."
-
-msgid "/Search/_Replace..."
-msgstr "/Поиск/За_менить..."
-
-msgid "/_Edit"
-msgstr "/_Правка"
-
-msgid "/_File"
-msgstr "/_Файл"
-
-msgid "/_Help"
-msgstr "/_Справка"
-
-msgid "/_Options"
-msgstr "/П_араметры"
-
-msgid "/_Search"
-msgstr "/П_оиск"
-
-msgid "A text editor for Xfce"
-msgstr "Текстовый редактор для Xfce"
-
-msgid "About %s"
-msgstr "О программе \"%s\""
-
-msgid "Auto Detect"
-msgstr "Автоопределение"
-
-msgid "Can't convert codeset to '%s'"
-msgstr "Не удалось преобразовать кодировку в '%s'"
-
-msgid "Can't open file to write"
-msgstr "Не удалось открыть файл для записи"
-
-msgid "Can't open pipe to process"
-msgstr "Не удалось открыть канал к процессу"
-
-msgid "Can't write file"
-msgstr "Не удалось записать файл"
-
-msgid "Ch_aracter Coding: "
-msgstr "Ко_дировка символов"
-
-msgid "Code_set:"
-msgstr "_Кодировка:"
-
-msgid "Current Locale (%s)"
-msgstr "Текущая локаль (%s)"
-
-msgid "Fi_nd what: "
-msgstr "На_йти: "
-
-msgid "Find"
-msgstr "Поиск"
-
-msgid "Font"
-msgstr "Шрифт"
-
-msgid "Jump To"
-msgstr "Переход"
-
+#. default application name
+#: ../mousepad/main.c:80
+#: ../Mousepad.desktop.in.in.h:1
 msgid "Mousepad"
 msgstr "Mousepad"
 
-msgid "Open"
-msgstr "Открытие файла"
+#. initialize gtk+
+#: ../mousepad/main.c:92
+msgid "[FILES...]"
+msgstr "[ФАЙЛЫ...]"
 
-msgid "Other Codeset"
-msgstr "Другая кодировка"
+#. no error message, the gui initialization failed
+#: ../mousepad/main.c:98
+msgid "Failed to open display."
+msgstr "Не удалось открыть дисплей."
 
-msgid "Re_place with: "
-msgstr "З_аменить на: "
+#: ../mousepad/main.c:115
+msgid "The Xfce development team. All rights reserved."
+msgstr "Команда разработчиков Xfce. Все права защищены."
 
-msgid "Replace"
-msgstr "Замена"
+#: ../mousepad/main.c:116
+#, fuzzy, c-format
+msgid "Please report bugs to <%s>."
+msgstr "О найденных ошибка сообщайте <@EMAIL@>.\n"
 
-msgid "Replace _all at once"
-msgstr "Заменить _все"
+#: ../mousepad/mousepad-dialogs.c:41
+msgid "Mousepad is a fast text editor for the Xfce Desktop Environment."
+msgstr ""
 
-msgid "Replace?"
-msgstr "Заменить?"
+#: ../mousepad/mousepad-dialogs.c:50
+msgid "translator-credits"
+msgstr "davian818@gmail.com, 2012"
 
-msgid "Save As"
-msgstr "Сохранение файла"
+#. display an error message to the user
+#: ../mousepad/mousepad-dialogs.c:125
+#, fuzzy
+msgid "Failed to open the documentation browser"
+msgstr "Не удалось инициализировать браузер mDNS: %s\n"
 
-msgid "Save changes to '%s'?"
-msgstr "Сохранить изменения в '%s'?"
+#. build dialog
+#: ../mousepad/mousepad-dialogs.c:143
+#, fuzzy
+msgid "Select Tab Size"
+msgstr "Размер сглаживания вкладки"
 
-msgid "Search string not found"
-msgstr "Искомая строка не найдена"
+#. build the dialog
+#: ../mousepad/mousepad-dialogs.c:224
+msgid "Go To"
+msgstr "Переход"
 
-msgid "Simple text editor"
-msgstr "Простой текстовый редактор"
+#: ../mousepad/mousepad-dialogs.c:246
+msgid "_Line number:"
+msgstr "_Строка:"
 
-msgid "Text Editor"
-msgstr "Текстовый редактор"
+#: ../mousepad/mousepad-dialogs.c:265
+msgid "C_olumn number:"
+msgstr "Стол_бец:"
 
+#: ../mousepad/mousepad-dialogs.c:323
+#, fuzzy
+msgid "Remove all entries from the documents history?"
+msgstr "Удалить все действия из истории"
+
+#: ../mousepad/mousepad-dialogs.c:328
+#, fuzzy
+msgid "Clear Documents History"
+msgstr "Забыть открывавшиеся документы"
+
+#: ../mousepad/mousepad-dialogs.c:331
+msgid "Clearing the documents history will permanently remove all currently listed entries."
+msgstr ""
+
+#: ../mousepad/mousepad-dialogs.c:362
+#, fuzzy
+msgid "Do you want to save the changes before closing?"
+msgstr "Каталог был изменён. Желаете сохранить изменения?"
+
+#: ../mousepad/mousepad-dialogs.c:363
+#, fuzzy
+msgid "Save Changes"
+msgstr "Сохранить изменения"
+
+#: ../mousepad/mousepad-dialogs.c:364
+#, fuzzy
+msgid "_Don't Save"
+msgstr "_Не сохранять"
+
+#. secondary text
+#: ../mousepad/mousepad-dialogs.c:386
+#, fuzzy
+msgid "If you don't save the document, all the changes will be lost."
+msgstr "Если вы не сохраните, все изменения будут безвозвратно утеряны."
+
+#: ../mousepad/mousepad-dialogs.c:408
+msgid "The document has been externally modified. Do you want to continue saving?"
+msgstr ""
+
+#: ../mousepad/mousepad-dialogs.c:409
+#, fuzzy
+msgid "Externally Modified"
+msgstr "Файл был изменён извне"
+
+#: ../mousepad/mousepad-dialogs.c:411
+#, fuzzy
+msgid "If you save the document, all of the external changes will be lost."
+msgstr "Если вы сохраните файл, все внешние изменения будут потеряны. Всё равно сохранить?"
+
+#: ../mousepad/mousepad-dialogs.c:439
+#, fuzzy
+msgid "Do you want to save your changes before reloading?"
+msgstr "Контакт был изменён. Сохранить эти изменения?"
+
+#: ../mousepad/mousepad-dialogs.c:441
+#, fuzzy
+msgid "If you revert the file, all unsaved changes will be lost."
+msgstr "Если вы перезагрузите его, все несохранённые изменения, будут потеряны. Всё равно сохранить?"
+
+#. pack button, add signal and tooltip
+#: ../mousepad/mousepad-document.c:591
+#, fuzzy
+msgid "Close this tab"
+msgstr "Закрыть эту вкладку"
+
+#. create an unique untitled document name
+#: ../mousepad/mousepad-document.c:626
 msgid "Untitled"
 msgstr "Без имени"
 
-msgid "Warning, you are using the root account, you may harm your system."
+#. create the header
+#: ../mousepad/mousepad-encoding-dialog.c:134
+#, fuzzy
+msgid "The document was not UTF-8 valid"
+msgstr "Это не корректный документ Photoshop"
+
+#: ../mousepad/mousepad-encoding-dialog.c:135
+msgid "Please select an encoding below."
+msgstr "Выберите кодировку."
+
+#. encoding radio buttons
+#: ../mousepad/mousepad-encoding-dialog.c:147
+msgid "Default (UTF-8)"
+msgstr "По умолчанию (UTF-8)"
+
+#: ../mousepad/mousepad-encoding-dialog.c:153
+msgid "System"
+msgstr "Системная"
+
+#: ../mousepad/mousepad-encoding-dialog.c:160
+#, fuzzy
+msgid "Other:"
+msgstr "Другой:"
+
+#: ../mousepad/mousepad-encoding-dialog.c:180
+#, fuzzy
+msgid "Checking encodings..."
+msgstr "_Доступные кодировки:"
+
+#. west european
+#: ../mousepad/mousepad-encoding.c:35
+#, fuzzy
+msgid "Celtic"
+msgstr "Кельтская"
+
+#: ../mousepad/mousepad-encoding.c:36
+#: ../mousepad/mousepad-encoding.c:37
+#, fuzzy
+msgid "Greek"
+msgstr "Greka"
+
+#: ../mousepad/mousepad-encoding.c:38
+#, fuzzy
+msgid "Nordic"
+msgstr "Скандинавская"
+
+#: ../mousepad/mousepad-encoding.c:39
+#, fuzzy
+msgid "South European"
+msgstr "Южно-европейская"
+
+#: ../mousepad/mousepad-encoding.c:40
+#: ../mousepad/mousepad-encoding.c:41
+#: ../mousepad/mousepad-encoding.c:42
+#: ../mousepad/mousepad-encoding.c:43
+#, fuzzy
+msgid "Western"
+msgstr "Западная"
+
+#. east european
+#: ../mousepad/mousepad-encoding.c:46
+#: ../mousepad/mousepad-encoding.c:47
+#: ../mousepad/mousepad-encoding.c:48
+#, fuzzy
+msgid "Baltic"
+msgstr "Балтийская"
+
+#: ../mousepad/mousepad-encoding.c:49
+#: ../mousepad/mousepad-encoding.c:50
+#: ../mousepad/mousepad-encoding.c:51
+#, fuzzy
+msgid "Central European"
+msgstr "Центрально-европейская"
+
+#: ../mousepad/mousepad-encoding.c:52
+#: ../mousepad/mousepad-encoding.c:53
+#: ../mousepad/mousepad-encoding.c:54
+#: ../mousepad/mousepad-encoding.c:55
+#: ../mousepad/mousepad-encoding.c:56
+#, fuzzy
+msgid "Cyrillic"
+msgstr "Кириллическая"
+
+#: ../mousepad/mousepad-encoding.c:57
+#, fuzzy
+msgid "Cyrillic/Russian"
+msgstr "Кириллическая (Россия)"
+
+#: ../mousepad/mousepad-encoding.c:58
+#, fuzzy
+msgid "Cyrillic/Ukrainian"
+msgstr "Кириллическая (Украина)"
+
+#: ../mousepad/mousepad-encoding.c:59
+#, fuzzy
+msgid "Romanian"
+msgstr "Rumana"
+
+#. middle eastern
+#: ../mousepad/mousepad-encoding.c:62
+#: ../mousepad/mousepad-encoding.c:63
+#: ../mousepad/mousepad-encoding.c:64
+#, fuzzy
+msgid "Arabic"
+msgstr "Araba"
+
+#: ../mousepad/mousepad-encoding.c:65
+#: ../mousepad/mousepad-encoding.c:66
+#: ../mousepad/mousepad-encoding.c:67
+#, fuzzy
+msgid "Hebrew"
+msgstr "Hebrea"
+
+#: ../mousepad/mousepad-encoding.c:68
+#, fuzzy
+msgid "Hebrew Visual"
+msgstr "Визуальный иврит"
+
+#. asian
+#: ../mousepad/mousepad-encoding.c:71
+#, fuzzy
+msgid "Armenian"
+msgstr "Armena"
+
+#: ../mousepad/mousepad-encoding.c:72
+#, fuzzy
+msgid "Georgian"
+msgstr "Kartvela"
+
+#: ../mousepad/mousepad-encoding.c:73
+#, fuzzy
+msgid "Thai"
+msgstr "Taja"
+
+#: ../mousepad/mousepad-encoding.c:74
+#: ../mousepad/mousepad-encoding.c:75
+#: ../mousepad/mousepad-encoding.c:76
+#, fuzzy
+msgid "Turkish"
+msgstr "Turka"
+
+#: ../mousepad/mousepad-encoding.c:77
+#: ../mousepad/mousepad-encoding.c:78
+#: ../mousepad/mousepad-encoding.c:79
+#, fuzzy
+msgid "Vietnamese"
+msgstr "Vjetnama"
+
+#. unicode
+#: ../mousepad/mousepad-encoding.c:82
+#: ../mousepad/mousepad-encoding.c:83
+#: ../mousepad/mousepad-encoding.c:84
+#: ../mousepad/mousepad-encoding.c:85
+#: ../mousepad/mousepad-encoding.c:86
+#: ../mousepad/mousepad-encoding.c:87
+#: ../mousepad/mousepad-encoding.c:88
+#: ../mousepad/mousepad-encoding.c:89
+#, fuzzy
+msgid "Unicode"
+msgstr "Юникод"
+
+#. east asian
+#: ../mousepad/mousepad-encoding.c:92
+#: ../mousepad/mousepad-encoding.c:93
+#: ../mousepad/mousepad-encoding.c:94
+#: ../mousepad/mousepad-encoding.c:95
+#, fuzzy
+msgid "Chinese Simplified"
+msgstr "Китайская упрощённая"
+
+#: ../mousepad/mousepad-encoding.c:96
+#: ../mousepad/mousepad-encoding.c:97
+#: ../mousepad/mousepad-encoding.c:98
+#, fuzzy
+msgid "Chinese Traditional"
+msgstr "Китайская традиционная"
+
+#: ../mousepad/mousepad-encoding.c:99
+#: ../mousepad/mousepad-encoding.c:100
+#: ../mousepad/mousepad-encoding.c:101
+msgid "Japanese"
+msgstr "Японская"
+
+#: ../mousepad/mousepad-encoding.c:102
+#: ../mousepad/mousepad-encoding.c:103
+#: ../mousepad/mousepad-encoding.c:104
+#: ../mousepad/mousepad-encoding.c:105
+#, fuzzy
+msgid "Korean"
+msgstr "Korea"
+
+#: ../mousepad/mousepad-file.c:556
+#, fuzzy, c-format
+msgid "Invalid byte sequence in conversion input"
+msgstr "Недопустимая последовательность байтов во входных преобразуемых данных"
+
+#: ../mousepad/mousepad-file.c:875
+#, c-format
+msgid "The file \"%s\" you tried to reload does not exist anymore"
 msgstr ""
-"Внимание, вы используете учетную запись суперпользователя, при этом вы "
-"можете повредить вашу систему."
 
-msgid "_Jump"
-msgstr "_Перейти"
+#: ../mousepad/mousepad-file.c:916
+#, fuzzy, c-format
+msgid "Failed to read the status of \"%s\""
+msgstr "Ошибка чтения файла «%s»: %s"
 
-msgid "_Line number: "
-msgstr "_Номер строки: "
+#. set a custom tab label
+#: ../mousepad/mousepad-print.c:125
+msgid "Document Settings"
+msgstr "Свойства документов"
 
-msgid "_Match case"
-msgstr "Учитывать _регистр"
+#: ../mousepad/mousepad-print.c:595
+msgid "Page Setup"
+msgstr "Параметры страницы"
+
+#: ../mousepad/mousepad-print.c:605
+#, fuzzy
+msgid "_Adjust page size and orientation"
+msgstr "Скорректировать размер и ориентацию страницы для печати"
+
+#: ../mousepad/mousepad-print.c:615
+#, fuzzy
+msgid "Appearance"
+msgstr "Вид"
+
+#: ../mousepad/mousepad-print.c:629
+#, fuzzy
+msgid "Print page _headers"
+msgstr "Печатать за_головки страницы"
+
+#: ../mousepad/mousepad-print.c:636
+#, fuzzy
+msgid "Print _line numbers"
+msgstr "Печатать номера строк"
+
+#: ../mousepad/mousepad-print.c:653
+#, fuzzy
+msgid "Number every"
+msgstr "Печатать н_омера строк каждые"
+
+#: ../mousepad/mousepad-print.c:669
+#, fuzzy
+msgid "line(s)"
+msgstr "Linio"
+
+#: ../mousepad/mousepad-print.c:674
+#, fuzzy
+msgid "Enable text _wrapping"
+msgstr "Включить режим _переноса текста"
+
+#: ../mousepad/mousepad-print.c:681
+#, fuzzy
+msgid "Enable _syntax highlighting"
+msgstr "Включить подсветку синтаксиса"
+
+#: ../mousepad/mousepad-print.c:693
+#, fuzzy
+msgid "Fonts"
+msgstr "Шрифты"
+
+#: ../mousepad/mousepad-print.c:709
+msgid "Header:"
+msgstr "Верхний колонтитул:"
+
+#: ../mousepad/mousepad-print.c:719
+#, fuzzy
+msgid "Body:"
+msgstr "_Тело:"
+
+#: ../mousepad/mousepad-print.c:729
+#, fuzzy
+msgid "Line numbers:"
+msgstr "Номера строк"
+
+#. set dialog properties
+#: ../mousepad/mousepad-replace-dialog.c:167
+msgid "Replace"
+msgstr "Замена"
+
+#: ../mousepad/mousepad-replace-dialog.c:174
+#: ../mousepad/mousepad-replace-dialog.c:540
+#, fuzzy
+msgid "_Replace"
+msgstr "_Заменить"
+
+#: ../mousepad/mousepad-replace-dialog.c:192
+#, fuzzy
+msgid "_Search for:"
+msgstr "_Искать:"
+
+#: ../mousepad/mousepad-replace-dialog.c:213
+#, fuzzy
+msgid "Replace _with:"
+msgstr "Заменить _на:"
+
+#: ../mousepad/mousepad-replace-dialog.c:233
+#, fuzzy
+msgid "Search _direction:"
+msgstr "Направление поиска"
+
+#: ../mousepad/mousepad-replace-dialog.c:242
+#, fuzzy
+msgid "Up"
+msgstr "Вверх"
+
+#: ../mousepad/mousepad-replace-dialog.c:243
+#, fuzzy
+msgid "Down"
+msgstr "Вниз"
+
+#: ../mousepad/mousepad-replace-dialog.c:244
+#, fuzzy
+msgid "Both"
+msgstr "Обе"
+
+#. case sensitive
+#: ../mousepad/mousepad-replace-dialog.c:253
+#, fuzzy
+msgid "Case sensi_tive"
+msgstr "Относительное _смещение"
+
+#. match whole word
+#: ../mousepad/mousepad-replace-dialog.c:260
+#, fuzzy
+msgid "_Match whole word"
+msgstr "Соответствие слову _целиком"
+
+#: ../mousepad/mousepad-replace-dialog.c:271
+msgid "Replace _all in:"
+msgstr "Заменить в_се:"
+
+#: ../mousepad/mousepad-replace-dialog.c:278
+msgid "Selection"
+msgstr "в выделении"
+
+#: ../mousepad/mousepad-replace-dialog.c:279
+msgid "Document"
+msgstr "в документе"
+
+#: ../mousepad/mousepad-replace-dialog.c:280
+msgid "All Documents"
+msgstr "всех документах"
+
+#: ../mousepad/mousepad-replace-dialog.c:445
+#, c-format
+msgid "%d occurence"
+msgid_plural "%d occurences"
+msgstr[0] ""
+msgstr[1] ""
+
+#: ../mousepad/mousepad-replace-dialog.c:540
+msgid "_Replace All"
+msgstr "Заменить вс_е"
+
+#: ../mousepad/mousepad-search-bar.c:188
+msgid "Fi_nd:"
+msgstr "_Найти:"
+
+#: ../mousepad/mousepad-search-bar.c:208
+#, fuzzy
+msgid "_Next"
+msgstr "_Следующая"
+
+#: ../mousepad/mousepad-search-bar.c:219
+#, fuzzy
+msgid "_Previous"
+msgstr "_Предыдущее"
+
+#: ../mousepad/mousepad-search-bar.c:230
+msgid "Highlight _All"
+msgstr "Под_светить все"
+
+#: ../mousepad/mousepad-search-bar.c:243
+#: ../mousepad/mousepad-search-bar.c:250
+#, fuzzy
+msgid "Mat_ch Case"
+msgstr "_Учитывать регистр"
+
+#: ../mousepad/mousepad-statusbar.c:141
+#, fuzzy
+msgid "Choose a filetype"
+msgstr " тип файла : %08lx (%s)\n"
+
+#. language/filetype
+#: ../mousepad/mousepad-statusbar.c:146
+#: ../mousepad/mousepad-statusbar.c:258
+msgid "Filetype: None"
+msgstr "Тип файла: нет"
+
+#: ../mousepad/mousepad-statusbar.c:169
+msgid "Toggle the overwrite mode"
+msgstr "Переключение режима замены"
+
+#. overwrite label
+#: ../mousepad/mousepad-statusbar.c:174
+msgid "OVR"
+msgstr "ЗАМ"
+
+#: ../mousepad/mousepad-statusbar.c:261
+#, c-format
+msgid "Filetype: %s"
+msgstr "Тип: %s"
+
+#: ../mousepad/mousepad-statusbar.c:281
+#, c-format
+msgid "Line: %d Column: %d Selection: %d"
+msgstr "Стр: %d Стлб: %d Выд: %d"
+
+#: ../mousepad/mousepad-statusbar.c:283
+#, fuzzy, c-format
+msgid "Line: %d Column: %d"
+msgstr "+СТРОКА,СТОЛБЕЦ"
+
+#. show warning to the user
+#: ../mousepad/mousepad-util.c:572
+#, c-format
+msgid "Unable to create base directory \"%s\". Saving to file \"%s\" will be aborted."
+msgstr ""
+
+#. print error
+#: ../mousepad/mousepad-util.c:618
+#, fuzzy, c-format
+msgid "Failed to store the preferences to \"%s\": %s"
+msgstr "Не удалось сохранить изображение: %s\n"
+
+#: ../mousepad/mousepad-window.c:402
+msgid "_File"
+msgstr "_Файл"
+
+#: ../mousepad/mousepad-window.c:403
+msgid "_New"
+msgstr "Со_здать"
+
+#: ../mousepad/mousepad-window.c:403
+msgid "Create a new document"
+msgstr "Создать новый документ"
+
+#: ../mousepad/mousepad-window.c:404
+#, fuzzy
+msgid "New _Window"
+msgstr "Соз_дать окно"
+
+#: ../mousepad/mousepad-window.c:404
+#, fuzzy
+msgid "Create a new document in a new window"
+msgstr "Создать новый документ или окно."
+
+#: ../mousepad/mousepad-window.c:405
+#, fuzzy
+msgid "New From Te_mplate"
+msgstr "Новая группа из выбранных"
+
+#: ../mousepad/mousepad-window.c:406
+msgid "_Open..."
+msgstr "_Открыть..."
+
+#: ../mousepad/mousepad-window.c:406
+msgid "Open a file"
+msgstr "Открыть файл"
+
+#: ../mousepad/mousepad-window.c:407
+#, fuzzy
+msgid "Op_en Recent"
+msgstr "Malf&ermi kopion"
+
+#: ../mousepad/mousepad-window.c:408
+#, fuzzy
+msgid "No items found"
+msgstr "Нет элементов"
+
+#: ../mousepad/mousepad-window.c:409
+#, fuzzy
+msgid "Clear _History"
+msgstr "Очистить _историю"
+
+#: ../mousepad/mousepad-window.c:409
+#, fuzzy
+msgid "Clear the recently used files history"
+msgstr "Максимальная давность использования для недавних документов, в днях"
+
+#: ../mousepad/mousepad-window.c:410
+#, fuzzy
+msgid "Save the current document"
+msgstr "Сохранить текущий документ?"
+
+#: ../mousepad/mousepad-window.c:411
+msgid "Save _As..."
+msgstr "Сохранить _как..."
+
+#: ../mousepad/mousepad-window.c:411
+#, fuzzy
+msgid "Save current document as another file"
+msgstr "Вставить другой файл в текущий"
+
+#: ../mousepad/mousepad-window.c:412
+msgid "Save A_ll"
+msgstr "Со_хранить все"
+
+#: ../mousepad/mousepad-window.c:412
+#, fuzzy
+msgid "Save all document in this window"
+msgstr "Выделить все объекты в этом окне"
+
+#: ../mousepad/mousepad-window.c:413
+msgid "Re_vert"
+msgstr "_Восстановить"
+
+#: ../mousepad/mousepad-window.c:413
+msgid "Revert to the saved version of the file"
+msgstr "Восстановить до сохранённой версии файла"
+
+#: ../mousepad/mousepad-window.c:414
+msgid "_Print..."
+msgstr "_Печать…"
+
+#: ../mousepad/mousepad-window.c:414
+#, fuzzy
+msgid "Print the current document"
+msgstr "Заменить текущий документ"
+
+#: ../mousepad/mousepad-window.c:415
+#, fuzzy
+msgid "_Detach Tab"
+msgstr "_Отсоединить вкладку"
+
+#: ../mousepad/mousepad-window.c:415
+#, fuzzy
+msgid "Move the current document to a new window"
+msgstr "Переместить текущий документ в новое окно"
+
+#: ../mousepad/mousepad-window.c:416
+#, fuzzy
+msgid "Close _Tab"
+msgstr "Закрыть вкладку"
+
+#: ../mousepad/mousepad-window.c:416
+#, fuzzy
+msgid "Close the current document"
+msgstr "Заменить текущий документ"
+
+#: ../mousepad/mousepad-window.c:417
+#, fuzzy
+msgid "_Close Window"
+msgstr "_Закрыть окно"
+
+#: ../mousepad/mousepad-window.c:417
+#, fuzzy
+msgid "Close this window"
+msgstr "Закрыть это окно"
+
+#: ../mousepad/mousepad-window.c:419
+msgid "_Edit"
+msgstr "_Правка"
+
+#: ../mousepad/mousepad-window.c:420
+#, fuzzy
+msgid "Undo the last action"
+msgstr "Отменить последнее действие"
+
+#: ../mousepad/mousepad-window.c:421
+#, fuzzy
+msgid "Redo the last undone action"
+msgstr "Вернуть отменённое действие"
+
+#: ../mousepad/mousepad-window.c:422
+#, fuzzy
+msgid "Cut the selection"
+msgstr "Вырезать выделенный текст"
+
+#: ../mousepad/mousepad-window.c:423
+#, fuzzy
+msgid "Copy the selection"
+msgstr "Копировать выделенный текст"
+
+#: ../mousepad/mousepad-window.c:424
+#, fuzzy
+msgid "Paste the clipboard"
+msgstr "Вставить из буфера обмена"
+
+#: ../mousepad/mousepad-window.c:425
+#, fuzzy
+msgid "Paste _Special"
+msgstr "URI, особые"
+
+#: ../mousepad/mousepad-window.c:426
+#, fuzzy
+msgid "Paste from _History"
+msgstr "История буфера обмена"
+
+#: ../mousepad/mousepad-window.c:426
+#, fuzzy
+msgid "Paste from the clipboard history"
+msgstr "Вставить контакты из буфера обмена"
+
+#: ../mousepad/mousepad-window.c:427
+#, fuzzy
+msgid "Paste as _Column"
+msgstr "Вставить как новое"
+
+#: ../mousepad/mousepad-window.c:427
+#, fuzzy
+msgid "Paste the clipboard text into a column"
+msgstr "Для вставки текста в терминал:"
+
+#: ../mousepad/mousepad-window.c:428
+#, fuzzy
+msgid "Delete the current selection"
+msgstr "Заменить выделенный текст"
+
+#: ../mousepad/mousepad-window.c:429
+#, fuzzy
+msgid "Select the text in the entire document"
+msgstr "Проверить правописание текста в документе"
+
+#: ../mousepad/mousepad-window.c:430
+#, fuzzy
+msgid "Change the selection"
+msgstr "Forigi la elekton"
+
+#: ../mousepad/mousepad-window.c:430
+msgid "Change a normal selection into a column selection and vice versa"
+msgstr ""
+
+#: ../mousepad/mousepad-window.c:431
+#, fuzzy
+msgid "Search for text"
+msgstr "Поиск текста"
+
+#: ../mousepad/mousepad-window.c:432
+#, fuzzy
+msgid "Find _Next"
+msgstr "Найти _следующее"
+
+#: ../mousepad/mousepad-window.c:432
+#, fuzzy
+msgid "Search forwards for the same text"
+msgstr "Обратный поиск этого же текста"
+
+#: ../mousepad/mousepad-window.c:433
+#, fuzzy
+msgid "Find _Previous"
+msgstr "Найти _предыдущее"
+
+#: ../mousepad/mousepad-window.c:433
+#, fuzzy
+msgid "Search backwards for the same text"
+msgstr "Обратный поиск того же текста"
+
+#: ../mousepad/mousepad-window.c:434
+#, fuzzy
+msgid "Find and Rep_lace..."
+msgstr "Нахождение синонимов и омонимов"
+
+#: ../mousepad/mousepad-window.c:434
+#, fuzzy
+msgid "Search for and replace text"
+msgstr "Поиск и замена текста"
+
+#: ../mousepad/mousepad-window.c:436
+msgid "_View"
+msgstr "_Вид"
+
+#: ../mousepad/mousepad-window.c:437
+msgid "Select F_ont..."
+msgstr "_Шрифт..."
+
+#: ../mousepad/mousepad-window.c:437
+#, fuzzy
+msgid "Change the editor font"
+msgstr "Выберите цвет редактора"
+
+#: ../mousepad/mousepad-window.c:438
+msgid "_Color Scheme"
+msgstr "_Цветовая схема"
+
+#: ../mousepad/mousepad-window.c:440
+msgid "_Text"
+msgstr "Т_екст"
+
+#: ../mousepad/mousepad-window.c:441
+msgid "_Convert"
+msgstr "П_реобразовать"
+
+#: ../mousepad/mousepad-window.c:442
+#, fuzzy
+msgid "to _Uppercase"
+msgstr "Буквы, в верхнем регистре"
+
+#: ../mousepad/mousepad-window.c:442
+#, fuzzy
+msgid "Change the case of the selection to uppercase"
+msgstr "Перевести выделенный текст в нижний регистр"
+
+#: ../mousepad/mousepad-window.c:443
+#, fuzzy
+msgid "to _Lowercase"
+msgstr "Буквы, в нижнем регистре"
+
+#: ../mousepad/mousepad-window.c:443
+#, fuzzy
+msgid "Change the case of the selection to lowercase"
+msgstr "Перевести выделенный текст в нижний регистр"
+
+#: ../mousepad/mousepad-window.c:444
+#, fuzzy
+msgid "to _Title Case"
+msgstr "переход по case-метке"
+
+#: ../mousepad/mousepad-window.c:444
+#, fuzzy
+msgid "Change the case of the selection to title case"
+msgstr "Перевести выделенный текст в нижний регистр"
+
+#: ../mousepad/mousepad-window.c:445
+#, fuzzy
+msgid "to _Opposite Case"
+msgstr "переход по case-метке"
+
+#: ../mousepad/mousepad-window.c:445
+msgid "Change the case of the selection opposite case"
+msgstr "Обратить регистр выделенного текста"
+
+#: ../mousepad/mousepad-window.c:446
+#, fuzzy
+msgid "_Tabs to Spaces"
+msgstr "Преобразование ввода табуляций в пробелы"
+
+#: ../mousepad/mousepad-window.c:446
+msgid "Convert all tabs to spaces in the selection or document"
+msgstr ""
+
+#: ../mousepad/mousepad-window.c:447
+#, fuzzy
+msgid "_Spaces to Tabs"
+msgstr "Преобразование ввода табуляций в пробелы"
+
+#: ../mousepad/mousepad-window.c:447
+msgid "Convert all the leading spaces to tabs in the selected line(s) or document"
+msgstr ""
+
+#: ../mousepad/mousepad-window.c:448
+#, fuzzy
+msgid "St_rip Trailing Spaces"
+msgstr "имя conffile-файла «%s» содержит в конце пробельные символы"
+
+#: ../mousepad/mousepad-window.c:448
+msgid "Remove all the trailing spaces from the selected line(s) or document"
+msgstr ""
+
+#: ../mousepad/mousepad-window.c:449
+msgid "_Transpose"
+msgstr ""
+
+#: ../mousepad/mousepad-window.c:449
+#, fuzzy
+msgid "Reverse the order of something"
+msgstr "Инвертировать порядок сортировки"
+
+#: ../mousepad/mousepad-window.c:450
+#, fuzzy
+msgid "_Move Selection"
+msgstr "Перемещение выделения"
+
+#: ../mousepad/mousepad-window.c:451
+#, fuzzy
+msgid "Line _Up"
+msgstr "Строка вверх"
+
+#: ../mousepad/mousepad-window.c:451
+#, fuzzy
+msgid "Move the selection one line up"
+msgstr "Сместиться на строку выше"
+
+#: ../mousepad/mousepad-window.c:452
+#, fuzzy
+msgid "Line _Down"
+msgstr "Строка вниз"
+
+#: ../mousepad/mousepad-window.c:452
+#, fuzzy
+msgid "Move the selection one line down"
+msgstr "Сместиться на строку ниже"
+
+#: ../mousepad/mousepad-window.c:453
+msgid "D_uplicate Line / Selection"
+msgstr "_Дубликат строки или выделения"
+
+#: ../mousepad/mousepad-window.c:453
+msgid "Duplicate the current line or selection"
+msgstr "Вставить дубликат строки или выделения"
+
+#: ../mousepad/mousepad-window.c:454
+#, fuzzy
+msgid "_Increase Indent"
+msgstr "У_величить отступ"
+
+#: ../mousepad/mousepad-window.c:454
+msgid "Increase the indentation of the selection or current line"
+msgstr ""
+
+#: ../mousepad/mousepad-window.c:455
+#, fuzzy
+msgid "_Decrease Indent"
+msgstr "У_меньшить отступ"
+
+#: ../mousepad/mousepad-window.c:455
+msgid "Decrease the indentation of the selection or current line"
+msgstr ""
+
+#: ../mousepad/mousepad-window.c:457
+#, fuzzy
+msgid "_Document"
+msgstr "_Документ"
+
+#: ../mousepad/mousepad-window.c:458
+msgid "Line E_nding"
+msgstr "_Концы строк"
+
+#: ../mousepad/mousepad-window.c:459
+#, fuzzy
+msgid "Tab _Size"
+msgstr "Шаг табуляции"
+
+#: ../mousepad/mousepad-window.c:460
+#, fuzzy
+msgid "_Filetype"
+msgstr "тип файлов %s"
+
+#: ../mousepad/mousepad-window.c:462
+#, fuzzy
+msgid "_Navigation"
+msgstr "Перемещение"
+
+#: ../mousepad/mousepad-window.c:463
+#, fuzzy
+msgid "_Previous Tab"
+msgstr "На п_редыдущую вкладку"
+
+#: ../mousepad/mousepad-window.c:463
+#, fuzzy
+msgid "Select the previous tab"
+msgstr "Активировать предыдущую вкладку"
+
+#: ../mousepad/mousepad-window.c:464
+#, fuzzy
+msgid "_Next Tab"
+msgstr "На _следующую вкладку"
+
+#: ../mousepad/mousepad-window.c:464
+#, fuzzy
+msgid "Select the next tab"
+msgstr "Активировать следующую вкладку"
+
+#: ../mousepad/mousepad-window.c:465
+msgid "_Go to..."
+msgstr "_Перейти..."
+
+#: ../mousepad/mousepad-window.c:465
+#, fuzzy
+msgid "Go to a specific location in the document"
+msgstr "Чтобы вернуться назад по истории просмотра:"
+
+#: ../mousepad/mousepad-window.c:467
+#, fuzzy
+msgid "_Help"
+msgstr "_Справка"
+
+#: ../mousepad/mousepad-window.c:468
+#, fuzzy
+msgid "_Contents"
+msgstr "_Содержание"
+
+#: ../mousepad/mousepad-window.c:468
+#, fuzzy
+msgid "Display the Mousepad user manual"
+msgstr "Ссылка на руководство пользователя"
+
+#: ../mousepad/mousepad-window.c:469
+msgid "About this application"
+msgstr "Об этой программе"
+
+#: ../mousepad/mousepad-window.c:474
+msgid "Line N_umbers"
+msgstr "_Номера строк"
+
+#: ../mousepad/mousepad-window.c:474
+#, fuzzy
+msgid "Show line numbers"
+msgstr "Показывать номера строк"
+
+#: ../mousepad/mousepad-window.c:475
+msgid "St_atusbar"
+msgstr "_Строка состояния"
+
+#: ../mousepad/mousepad-window.c:475
+#, fuzzy
+msgid "Change the visibility of the statusbar"
+msgstr "Показать/скрыть строку состояния"
+
+#: ../mousepad/mousepad-window.c:476
+msgid "_Auto Indent"
+msgstr "_Автоотступ"
+
+#: ../mousepad/mousepad-window.c:476
+#, fuzzy
+msgid "Auto indent a new line"
+msgstr "%s: строка %d: отсутствует новый пароль\n"
+
+#: ../mousepad/mousepad-window.c:477
+#, fuzzy
+msgid "Insert _Spaces"
+msgstr "Вставлять пробелы"
+
+#: ../mousepad/mousepad-window.c:477
+#, fuzzy
+msgid "Insert spaces when the tab button is pressed"
+msgstr "Время задержки повтора, когда кнопка нажата"
+
+#: ../mousepad/mousepad-window.c:478
+msgid "_Word Wrap"
+msgstr "_Перенос слов"
+
+#: ../mousepad/mousepad-window.c:478
+#, fuzzy
+msgid "Toggle breaking lines in between words"
+msgstr "Если кнопка-переключатель в «промежуточном» состоянии."
+
+#: ../mousepad/mousepad-window.c:479
+msgid "Write Unicode _BOM"
+msgstr "Встав_лять BOM Unicode"
+
+#: ../mousepad/mousepad-window.c:479
+msgid "Store the byte-order mark in the file"
+msgstr "Сохранять файлы с меткой порядка байт"
+
+#: ../mousepad/mousepad-window.c:484
+#, fuzzy
+msgid "Unix (_LF)"
+msgstr "UNIX Domain"
+
+#: ../mousepad/mousepad-window.c:484
+msgid "Set the line ending of the document to Unix (LF)"
+msgstr ""
+
+#: ../mousepad/mousepad-window.c:485
+#, fuzzy
+msgid "Mac (_CR)"
+msgstr "_Обрезать"
+
+#: ../mousepad/mousepad-window.c:485
+msgid "Set the line ending of the document to Mac (CR)"
+msgstr ""
+
+#: ../mousepad/mousepad-window.c:486
+#, fuzzy
+msgid "DOS / Windows (C_R LF)"
+msgstr "программа DOS/Windows"
+
+#: ../mousepad/mousepad-window.c:486
+msgid "Set the line ending of the document to DOS / Windows (CR LF)"
+msgstr ""
+
+#. add the label with the root warning
+#: ../mousepad/mousepad-window.c:662
+msgid "Warning, you are using the root account, you may harm your system."
+msgstr "Внимание, вы используете учетную запись суперпользователя, при этом вы можете повредить вашу систему."
+
+#. show the warning
+#: ../mousepad/mousepad-window.c:1100
+#, fuzzy
+msgid "Failed to open the document"
+msgstr "Не удалось открыть документ"
+
+#: ../mousepad/mousepad-window.c:1297
+#, fuzzy
+msgid "Read Only"
+msgstr "Только для чтения"
+
+#: ../mousepad/mousepad-window.c:1357
+#: ../mousepad/mousepad-window.c:3221
+#: ../mousepad/mousepad-window.c:3302
+#, fuzzy
+msgid "None"
+msgstr "Neniu"
+
+#. create other action
+#: ../mousepad/mousepad-window.c:2084
+#, fuzzy
+msgid "Set custom tab size"
+msgstr "Размер области перекрытия вкладок"
+
+#. create suitable label for the other menu
+#: ../mousepad/mousepad-window.c:2132
+#, fuzzy, c-format
+msgid "Ot_her (%d)..."
+msgstr "_Другое"
+
+#. set action label
+#: ../mousepad/mousepad-window.c:2143
+#, fuzzy
+msgid "Ot_her..."
+msgstr "_Другое"
+
+#. build description
+#. get the offset length: 'Encoding: '
+#: ../mousepad/mousepad-window.c:2446
+#: ../mousepad/mousepad-window.c:2677
+#, fuzzy
+msgid "Charset"
+msgstr "Кодировка:"
+
+#: ../mousepad/mousepad-window.c:2580
+#, fuzzy, c-format
+msgid "Open '%s'"
+msgstr "Открыть «%s»"
+
+#: ../mousepad/mousepad-window.c:2727
+#, fuzzy
+msgid "Failed to clear the recent history"
+msgstr "Не удалось получить последние журналы"
+
+#. create an item to inform the user
+#: ../mousepad/mousepad-window.c:3151
+#, fuzzy
+msgid "No clipboard data"
+msgstr "не подписанные данные\n"
+
+#: ../mousepad/mousepad-window.c:3222
+#, fuzzy
+msgid "Turn off color schemes"
+msgstr "Выключить расширенный вывод"
+
+#: ../mousepad/mousepad-window.c:3303
+msgid "No filetype"
+msgstr "Нет"
+
+#. set error message
+#: ../mousepad/mousepad-window.c:3510
+msgid "Templates should be UTF-8 valid"
+msgstr "Шаблоны должны быть в кодировке UTF-8."
+
+#. set error message
+#: ../mousepad/mousepad-window.c:3518
+msgid "Reading the template failed, the menu item has been removed"
+msgstr ""
+
+#. set error message
+#: ../mousepad/mousepad-window.c:3523
+#, fuzzy
+msgid "Loading the template failed"
+msgstr "не удалось загрузить модуль"
+
+#. create new file chooser dialog
+#: ../mousepad/mousepad-window.c:3548
+msgid "Open File"
+msgstr "Открыть файл"
+
+#: ../mousepad/mousepad-window.c:3661
+#, c-format
+msgid "Failed to open \"%s\" for reading. It will be removed from the document history"
+msgstr ""
+
+#. show the warning and cleanup
+#: ../mousepad/mousepad-window.c:3665
+#, fuzzy
+msgid "Failed to open file"
+msgstr "Ошибка открытия файла"
+
+#. show the error
+#: ../mousepad/mousepad-window.c:3771
+#: ../mousepad/mousepad-window.c:3894
+#, fuzzy
+msgid "Failed to save the document"
+msgstr "Не удалось сохранить документ «%s»"
+
+#. create the dialog
+#: ../mousepad/mousepad-window.c:3795
+msgid "Save As"
+msgstr "Сохранение файла"
+
+#. show the error
+#: ../mousepad/mousepad-window.c:3986
+#, fuzzy
+msgid "Failed to reload the document"
+msgstr "Не удалось обновить документ."
+
+#. show the error
+#: ../mousepad/mousepad-window.c:4013
+#, fuzzy
+msgid "Failed to print the document"
+msgstr "Не удалось напечатать документ"
+
+#: ../mousepad/mousepad-window.c:4424
+#, fuzzy
+msgid "Choose Mousepad Font"
+msgstr "Выбрать шрифт терминала"
+
+#: ../Mousepad.desktop.in.in.h:2
+msgid "Simple Text Editor"
+msgstr "Простой текстовый редактор"
+
+#: ../Mousepad.desktop.in.in.h:3
+msgid "Text Editor"
+msgstr "Текстовый редактор"
+
+#~ msgid "%d strings replaced"
+#~ msgstr "%d строк заменено"
+
+#~ msgid "'%s' already exists. Overwrite?"
+#~ msgstr "'%s' уже существует. Переписать?"
+
+#~ msgid "'%s' is not supported"
+#~ msgstr "'%s' не поддерживается"
+
+#~ msgid "/Edit/Cu_t"
+#~ msgstr "/Правка/_Вырезать"
+
+#~ msgid "/Edit/Select _All"
+#~ msgstr "/Правка/В_ыделить все"
+
+#~ msgid "/Edit/_Copy"
+#~ msgstr "/Правка/_Копировать"
+
+#~ msgid "/Edit/_Delete"
+#~ msgstr "/Правка/У_далить"
+
+#~ msgid "/Edit/_Paste"
+#~ msgstr "/Правка/Вст_авить"
+
+#~ msgid "/Edit/_Redo"
+#~ msgstr "/Правка/Ве_рнуть"
+
+#~ msgid "/Edit/_Undo"
+#~ msgstr "/Правка/_Отменить"
+
+#~ msgid "/File/_New"
+#~ msgstr "/Файл/_Создать"
+
+#~ msgid "/File/_Quit"
+#~ msgstr "/Файл/В_ыход"
+
+#~ msgid "/File/_Save"
+#~ msgstr "/Файл/Со_хранить"
+
+#~ msgid "/Help/_About"
+#~ msgstr "/Справка/_О программе"
+
+#~ msgid "/Options/_Font..."
+#~ msgstr "/Параметры/_Шрифт..."
+
+#~ msgid "/Options/_Line Numbers"
+#~ msgstr "/Параметры/Показывать _номера строк"
+
+#~ msgid "/Search/_Find..."
+#~ msgstr "/Поиск/_Найти..."
+
+#~ msgid "/Search/_Jump To..."
+#~ msgstr "/Поиск/Перейти к _строке..."
+
+#~ msgid "/Search/_Replace..."
+#~ msgstr "/Поиск/За_менить..."
+
+#~ msgid "/_Options"
+#~ msgstr "/П_араметры"
+
+#~ msgid "A text editor for Xfce"
+#~ msgstr "Текстовый редактор для Xfce"
+
+#~ msgid "About %s"
+#~ msgstr "О программе \"%s\""
+
+#~ msgid "Auto Detect"
+#~ msgstr "Автоопределение"
+
+#~ msgid "Can't convert codeset to '%s'"
+#~ msgstr "Не удалось преобразовать кодировку в '%s'"
+
+#~ msgid "Can't open file to write"
+#~ msgstr "Не удалось открыть файл для записи"
+
+#~ msgid "Can't open pipe to process"
+#~ msgstr "Не удалось открыть канал к процессу"
+
+#~ msgid "Can't write file"
+#~ msgstr "Не удалось записать файл"
+
+#~ msgid "Ch_aracter Coding: "
+#~ msgstr "Ко_дировка символов"
+
+#~ msgid "Code_set:"
+#~ msgstr "_Кодировка:"
+
+#~ msgid "Current Locale (%s)"
+#~ msgstr "Текущая локаль (%s)"
+
+#~ msgid "Fi_nd what: "
+#~ msgstr "На_йти: "
+
+#~ msgid "Jump To"
+#~ msgstr "Переход"
+
+#~ msgid "Other Codeset"
+#~ msgstr "Другая кодировка"
+
+#~ msgid "Replace?"
+#~ msgstr "Заменить?"
+
+#~ msgid "Search string not found"
+#~ msgstr "Искомая строка не найдена"
+
+#~ msgid "_Jump"
+#~ msgstr "_Перейти"
