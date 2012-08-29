@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: mousepad 0.2.16\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-08-29 07:33+0000\n"
-"PO-Revision-Date: 2012-08-29 16:00+0100\n"
+"PO-Revision-Date: 2012-08-29 17:29+0100\n"
 "Last-Translator: \n"
 "Language-Team: français <>\n"
 "Language: \n"
@@ -831,23 +831,23 @@ msgstr ""
 
 #: ../mousepad/mousepad-window.c:453
 msgid "Duplicate the current line or selection"
-msgstr ""
+msgstr "Dupliquer la ligne ou à la sélection"
 
 #: ../mousepad/mousepad-window.c:454
 msgid "_Increase Indent"
-msgstr ""
+msgstr "Augmenter le retra_it"
 
 #: ../mousepad/mousepad-window.c:454
 msgid "Increase the indentation of the selection or current line"
-msgstr ""
+msgstr "Augmenter l'indentation de la sélection ou de la ligne courante"
 
 #: ../mousepad/mousepad-window.c:455
 msgid "_Decrease Indent"
-msgstr ""
+msgstr "_Diminuer le retrait"
 
 #: ../mousepad/mousepad-window.c:455
 msgid "Decrease the indentation of the selection or current line"
-msgstr ""
+msgstr "Diminuer l'indentation de la sélection ou de la ligne courante"
 
 #: ../mousepad/mousepad-window.c:457
 msgid "_Document"
@@ -855,11 +855,11 @@ msgstr "_Document"
 
 #: ../mousepad/mousepad-window.c:458
 msgid "Line E_nding"
-msgstr ""
+msgstr "Fi_n de ligne"
 
 #: ../mousepad/mousepad-window.c:459
 msgid "Tab _Size"
-msgstr ""
+msgstr "Taille onglet"
 
 #: ../mousepad/mousepad-window.c:460
 msgid "_Filetype"
@@ -867,23 +867,23 @@ msgstr "Type de _fichier"
 
 #: ../mousepad/mousepad-window.c:462
 msgid "_Navigation"
-msgstr ""
+msgstr "_Navigation"
 
 #: ../mousepad/mousepad-window.c:463
 msgid "_Previous Tab"
-msgstr ""
+msgstr "Onglet _précédent"
 
 #: ../mousepad/mousepad-window.c:463
 msgid "Select the previous tab"
-msgstr ""
+msgstr "Sélectionner l'onglet précédent"
 
 #: ../mousepad/mousepad-window.c:464
 msgid "_Next Tab"
-msgstr ""
+msgstr "O_nglet suivant"
 
 #: ../mousepad/mousepad-window.c:464
 msgid "Select the next tab"
-msgstr ""
+msgstr "Sélectionner l'onglet suivant"
 
 #: ../mousepad/mousepad-window.c:465
 msgid "_Go to..."
@@ -891,7 +891,7 @@ msgstr "Aller à ..."
 
 #: ../mousepad/mousepad-window.c:465
 msgid "Go to a specific location in the document"
-msgstr ""
+msgstr "Aller à un endroit spécifique dans le document"
 
 #: ../mousepad/mousepad-window.c:467
 msgid "_Help"
@@ -903,7 +903,7 @@ msgstr "_Contenu"
 
 #: ../mousepad/mousepad-window.c:468
 msgid "Display the Mousepad user manual"
-msgstr ""
+msgstr "Afficher le manuel utilisateur Mousepad"
 
 #: ../mousepad/mousepad-window.c:469
 msgid "About this application"
@@ -919,11 +919,11 @@ msgstr "Voir numéros de ligne"
 
 #: ../mousepad/mousepad-window.c:475
 msgid "St_atusbar"
-msgstr ""
+msgstr "B_arre d'état"
 
 #: ../mousepad/mousepad-window.c:475
 msgid "Change the visibility of the statusbar"
-msgstr ""
+msgstr "Modification de la visibilité de la barre d'état"
 
 #: ../mousepad/mousepad-window.c:476
 msgid "_Auto Indent"
@@ -931,7 +931,7 @@ msgstr "_Auto-indentation"
 
 #: ../mousepad/mousepad-window.c:476
 msgid "Auto indent a new line"
-msgstr ""
+msgstr "Retrait automatique d'une nouvelle ligne"
 
 #: ../mousepad/mousepad-window.c:477
 msgid "Insert _Spaces"
@@ -948,15 +948,17 @@ msgstr "_Retour à la ligne"
 
 #: ../mousepad/mousepad-window.c:478
 msgid "Toggle breaking lines in between words"
-msgstr ""
+msgstr "Basculer les lignes de rupture entre les mots"
 
 #: ../mousepad/mousepad-window.c:479
+#, fuzzy
 msgid "Write Unicode _BOM"
-msgstr ""
+msgstr "Ecrire Unicode _BOM"
 
 #: ../mousepad/mousepad-window.c:479
+#, fuzzy
 msgid "Store the byte-order mark in the file"
-msgstr ""
+msgstr "Ranger la marque d'ordre octet dans le fichier"
 
 #: ../mousepad/mousepad-window.c:484
 msgid "Unix (_LF)"
@@ -990,7 +992,7 @@ msgstr "Attention, vous êtes sous le compte root, vous risquez d'endommager vot
 #. show the warning
 #: ../mousepad/mousepad-window.c:1100
 msgid "Failed to open the document"
-msgstr ""
+msgstr "Impossible d'ouvrir le document"
 
 #: ../mousepad/mousepad-window.c:1297
 msgid "Read Only"
@@ -1006,7 +1008,7 @@ msgstr "Aucun"
 #. create other action
 #: ../mousepad/mousepad-window.c:2084
 msgid "Set custom tab size"
-msgstr ""
+msgstr "Personnaliser la taille de l'onglet "
 
 #. create suitable label for the other menu
 #: ../mousepad/mousepad-window.c:2132
@@ -1033,7 +1035,7 @@ msgstr "Ouvrir « %s »"
 
 #: ../mousepad/mousepad-window.c:2727
 msgid "Failed to clear the recent history"
-msgstr ""
+msgstr "Échec à l'effacement de l'histoire récent"
 
 #. create an item to inform the user
 #: ../mousepad/mousepad-window.c:3151
@@ -1041,8 +1043,9 @@ msgid "No clipboard data"
 msgstr "Pas de donnée du presse-papiers"
 
 #: ../mousepad/mousepad-window.c:3222
+#, fuzzy
 msgid "Turn off color schemes"
-msgstr ""
+msgstr "Arréter les schèmes de couleur"
 
 #: ../mousepad/mousepad-window.c:3303
 msgid "No filetype"
@@ -1060,8 +1063,9 @@ msgstr "La lecture du modèle a échoué, l'élément menu a été supprimé"
 
 #. set error message
 #: ../mousepad/mousepad-window.c:3523
+#, fuzzy
 msgid "Loading the template failed"
-msgstr ""
+msgstr "Chargement du modèle échoué"
 
 #. create new file chooser dialog
 #: ../mousepad/mousepad-window.c:3548
@@ -1071,18 +1075,18 @@ msgstr "Ouvrir un fichier"
 #: ../mousepad/mousepad-window.c:3661
 #, c-format
 msgid "Failed to open \"%s\" for reading. It will be removed from the document history"
-msgstr "Echec à l'ouvrerture de «%s » en lecture. Il sera supprimé de l'historique du document"
+msgstr "Échec à l'ouvrerture de «%s » en lecture. Il sera supprimé de l'historique du document"
 
 #. show the warning and cleanup
 #: ../mousepad/mousepad-window.c:3665
 msgid "Failed to open file"
-msgstr "Echec à l'ouverture du fichier"
+msgstr "Échec à l'ouverture du fichier"
 
 #. show the error
 #: ../mousepad/mousepad-window.c:3771
 #: ../mousepad/mousepad-window.c:3894
 msgid "Failed to save the document"
-msgstr "Echec à l'enregistrement du document"
+msgstr "Échec à l'enregistrement du document"
 
 #. create the dialog
 #: ../mousepad/mousepad-window.c:3795
@@ -1092,12 +1096,12 @@ msgstr "Enregistrer sous"
 #. show the error
 #: ../mousepad/mousepad-window.c:3986
 msgid "Failed to reload the document"
-msgstr "Echec au rechargement du document"
+msgstr "Échec au rechargement du document"
 
 #. show the error
 #: ../mousepad/mousepad-window.c:4013
 msgid "Failed to print the document"
-msgstr "Echec à l'impression du document"
+msgstr "Échec à l'impression du document"
 
 #: ../mousepad/mousepad-window.c:4424
 msgid "Choose Mousepad Font"
