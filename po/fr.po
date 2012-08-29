@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: mousepad 0.2.16\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-08-29 07:33+0000\n"
-"PO-Revision-Date: 2012-08-29 17:29+0100\n"
+"PO-Revision-Date: 2012-08-29 23:34+0100\n"
 "Last-Translator: \n"
 "Language-Team: français <>\n"
 "Language: \n"
@@ -619,7 +619,7 @@ msgstr ""
 
 #: ../mousepad/mousepad-window.c:416
 msgid "Close the current document"
-msgstr ""
+msgstr "Fermer le document courant"
 
 #: ../mousepad/mousepad-window.c:417
 msgid "_Close Window"
@@ -627,7 +627,7 @@ msgstr "Fermer la _fenêtre"
 
 #: ../mousepad/mousepad-window.c:417
 msgid "Close this window"
-msgstr ""
+msgstr "Fermer cette fenêtre"
 
 #: ../mousepad/mousepad-window.c:419
 msgid "_Edit"
@@ -635,7 +635,7 @@ msgstr "_Éditer"
 
 #: ../mousepad/mousepad-window.c:420
 msgid "Undo the last action"
-msgstr ""
+msgstr "Annuler la dernière action"
 
 #: ../mousepad/mousepad-window.c:421
 msgid "Redo the last undone action"
@@ -643,15 +643,15 @@ msgstr ""
 
 #: ../mousepad/mousepad-window.c:422
 msgid "Cut the selection"
-msgstr ""
+msgstr "Couper la sélection"
 
 #: ../mousepad/mousepad-window.c:423
 msgid "Copy the selection"
-msgstr ""
+msgstr "Copier la sélection"
 
 #: ../mousepad/mousepad-window.c:424
 msgid "Paste the clipboard"
-msgstr ""
+msgstr "Coller le presse-papiers"
 
 #: ../mousepad/mousepad-window.c:425
 msgid "Paste _Special"
@@ -675,15 +675,15 @@ msgstr ""
 
 #: ../mousepad/mousepad-window.c:428
 msgid "Delete the current selection"
-msgstr ""
+msgstr "Supprimer la sélection en cours"
 
 #: ../mousepad/mousepad-window.c:429
 msgid "Select the text in the entire document"
-msgstr ""
+msgstr "Sélectionner le texte dans l'ensemble du document"
 
 #: ../mousepad/mousepad-window.c:430
 msgid "Change the selection"
-msgstr ""
+msgstr "Changer la sélection"
 
 #: ../mousepad/mousepad-window.c:430
 msgid "Change a normal selection into a column selection and vice versa"
@@ -719,7 +719,7 @@ msgstr ""
 
 #: ../mousepad/mousepad-window.c:436
 msgid "_View"
-msgstr ""
+msgstr "_Vue"
 
 #: ../mousepad/mousepad-window.c:437
 msgid "Select F_ont..."
@@ -735,7 +735,7 @@ msgstr ""
 
 #: ../mousepad/mousepad-window.c:440
 msgid "_Text"
-msgstr ""
+msgstr "_Texte"
 
 #: ../mousepad/mousepad-window.c:441
 msgid "_Convert"
@@ -799,35 +799,35 @@ msgstr ""
 
 #: ../mousepad/mousepad-window.c:449
 msgid "_Transpose"
-msgstr ""
+msgstr "_Transposer"
 
 #: ../mousepad/mousepad-window.c:449
 msgid "Reverse the order of something"
-msgstr ""
+msgstr "Inverser l'ordre des choses"
 
 #: ../mousepad/mousepad-window.c:450
 msgid "_Move Selection"
-msgstr ""
+msgstr "Déplacer sélection"
 
 #: ../mousepad/mousepad-window.c:451
 msgid "Line _Up"
-msgstr ""
+msgstr "Ligne du ha_ut"
 
 #: ../mousepad/mousepad-window.c:451
 msgid "Move the selection one line up"
-msgstr ""
+msgstr "Déplacer la sélection d'une ligne vers le haut"
 
 #: ../mousepad/mousepad-window.c:452
 msgid "Line _Down"
-msgstr ""
+msgstr "Ligne _du bas"
 
 #: ../mousepad/mousepad-window.c:452
 msgid "Move the selection one line down"
-msgstr ""
+msgstr "Déplacer la sélection d'une ligne vers le bas"
 
 #: ../mousepad/mousepad-window.c:453
 msgid "D_uplicate Line / Selection"
-msgstr ""
+msgstr "D_upliquer ligne / sélection"
 
 #: ../mousepad/mousepad-window.c:453
 msgid "Duplicate the current line or selection"
