@@ -711,11 +711,12 @@ msgstr "Recherche vers l'arrière pour le même texte"
 
 #: ../mousepad/mousepad-window.c:434
 msgid "Find and Rep_lace..."
-msgstr ""
+msgstr "Rechercher et remp_lacer ..."
 
 #: ../mousepad/mousepad-window.c:434
+#, fuzzy
 msgid "Search for and replace text"
-msgstr ""
+msgstr "Rechercher for et remplacer du texte"
 
 #: ../mousepad/mousepad-window.c:436
 msgid "_View"
@@ -723,15 +724,16 @@ msgstr "_Vue"
 
 #: ../mousepad/mousepad-window.c:437
 msgid "Select F_ont..."
-msgstr ""
+msgstr "Sélectionner la police ..."
 
 #: ../mousepad/mousepad-window.c:437
 msgid "Change the editor font"
-msgstr ""
+msgstr "Modifier la police de l'éditeur"
 
 #: ../mousepad/mousepad-window.c:438
+#, fuzzy
 msgid "_Color Scheme"
-msgstr ""
+msgstr "_Couleur programme"
 
 #: ../mousepad/mousepad-window.c:440
 msgid "_Text"
@@ -739,7 +741,7 @@ msgstr "_Texte"
 
 #: ../mousepad/mousepad-window.c:441
 msgid "_Convert"
-msgstr ""
+msgstr "_Convertir"
 
 #: ../mousepad/mousepad-window.c:442
 msgid "to _Uppercase"
@@ -763,7 +765,7 @@ msgstr "En casse _titre"
 
 #: ../mousepad/mousepad-window.c:444
 msgid "Change the case of the selection to title case"
-msgstr ""
+msgstr "Changer la casse de la sélection par une casse titre"
 
 #: ../mousepad/mousepad-window.c:445
 msgid "to _Opposite Case"
@@ -789,15 +791,15 @@ msgstr "E_spaces en tabulations"
 #: ../mousepad/mousepad-window.c:447
 msgid ""
 "Convert all the leading spaces to tabs in the selected line(s) or document"
-msgstr ""
+msgstr "Convertir tous les espaces de début par des tabulations dans la ligne(s) sélectionnée(s) ou du document\r\n"
 
 #: ../mousepad/mousepad-window.c:448
 msgid "St_rip Trailing Spaces"
-msgstr ""
+msgstr "Enlever les espaces de fin de ligne"
 
 #: ../mousepad/mousepad-window.c:448
 msgid "Remove all the trailing spaces from the selected line(s) or document"
-msgstr ""
+msgstr "Enlever tous les espaces à la fin de la ligne(s) sélectionnée(s) ou du document"
 
 #: ../mousepad/mousepad-window.c:449
 msgid "_Transpose"
