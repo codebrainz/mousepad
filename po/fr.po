@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: mousepad 0.2.16\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-08-29 07:33+0000\n"
-"PO-Revision-Date: 2012-08-29 23:34+0100\n"
+"PO-Revision-Date: 2012-08-30 13:36+0100\n"
 "Last-Translator: \n"
 "Language-Team: français <>\n"
 "Language: \n"
@@ -25,11 +25,11 @@ msgstr ""
 
 #: ../mousepad/main.c:54
 msgid "Quit a running Mousepad instance"
-msgstr ""
+msgstr "Quitter une instance en cours d'exécution de Mousepad"
 
 #: ../mousepad/main.c:56
 msgid "Print version information and exit"
-msgstr ""
+msgstr "Imprimer la version et sortir"
 
 #. default application name
 #: ../mousepad/main.c:80
@@ -40,7 +40,7 @@ msgstr "Mousepad"
 #. initialize gtk+
 #: ../mousepad/main.c:92
 msgid "[FILES...]"
-msgstr ""
+msgstr "[FICHIERS...]"
 
 #. no error message, the gui initialization failed
 #: ../mousepad/main.c:98
@@ -49,7 +49,7 @@ msgstr ""
 
 #: ../mousepad/main.c:115
 msgid "The Xfce development team. All rights reserved."
-msgstr ""
+msgstr "L'équipe de développement de Xfce. Tous droits réservés."
 
 #: ../mousepad/main.c:116
 #, c-format
@@ -72,7 +72,7 @@ msgstr ""
 #. build dialog
 #: ../mousepad/mousepad-dialogs.c:143
 msgid "Select Tab Size"
-msgstr ""
+msgstr "Sélectionner la taille de l'onglet "
 
 #. build the dialog
 #: ../mousepad/mousepad-dialogs.c:224
@@ -93,15 +93,15 @@ msgstr ""
 
 #: ../mousepad/mousepad-dialogs.c:328
 msgid "Clear Documents History"
-msgstr ""
+msgstr "Effacer l'historique des documents"
 
 #: ../mousepad/mousepad-dialogs.c:331
 msgid "Clearing the documents history will permanently remove all currently listed entries."
-msgstr ""
+msgstr "Effacement de l'historique des documents supprimera définitivement toutes les entrées y figurant actuellement."
 
 #: ../mousepad/mousepad-dialogs.c:362
 msgid "Do you want to save the changes before closing?"
-msgstr ""
+msgstr "Voulez-vous enregistrer les modifications avant de fermer ?"
 
 #: ../mousepad/mousepad-dialogs.c:363
 msgid "Save Changes"
@@ -109,16 +109,17 @@ msgstr "Enregistrer les changements"
 
 #: ../mousepad/mousepad-dialogs.c:364
 msgid "_Don't Save"
-msgstr ""
+msgstr "Ne pas sauvegar_der"
 
 #. secondary text
 #: ../mousepad/mousepad-dialogs.c:386
 msgid "If you don't save the document, all the changes will be lost."
-msgstr ""
+msgstr "Si vous n'enregistrez pas le document, toutes les modifications seront perdues."
 
 #: ../mousepad/mousepad-dialogs.c:408
+#, fuzzy
 msgid "The document has been externally modified. Do you want to continue saving?"
-msgstr ""
+msgstr "Le document a été modifié à l'extérieur. Voulez-vous continuer à sauver ?"
 
 #: ../mousepad/mousepad-dialogs.c:409
 msgid "Externally Modified"
@@ -139,7 +140,7 @@ msgstr ""
 #. pack button, add signal and tooltip
 #: ../mousepad/mousepad-document.c:591
 msgid "Close this tab"
-msgstr ""
+msgstr "Fermer cet onglet"
 
 #. create an unique untitled document name
 #: ../mousepad/mousepad-document.c:626
@@ -149,11 +150,11 @@ msgstr "Sans titre"
 #. create the header
 #: ../mousepad/mousepad-encoding-dialog.c:134
 msgid "The document was not UTF-8 valid"
-msgstr ""
+msgstr "Le document n'est pas en UTF-8 valide"
 
 #: ../mousepad/mousepad-encoding-dialog.c:135
 msgid "Please select an encoding below."
-msgstr ""
+msgstr "S'il vous plaît sélectionner un codage ci-dessous."
 
 #. encoding radio buttons
 #: ../mousepad/mousepad-encoding-dialog.c:147
@@ -170,7 +171,7 @@ msgstr "Autre :"
 
 #: ../mousepad/mousepad-encoding-dialog.c:180
 msgid "Checking encodings..."
-msgstr ""
+msgstr "Vérification d'encodages ..."
 
 #. west european
 #: ../mousepad/mousepad-encoding.c:35
@@ -314,7 +315,7 @@ msgstr "Coréen"
 #: ../mousepad/mousepad-file.c:556
 #, c-format
 msgid "Invalid byte sequence in conversion input"
-msgstr ""
+msgstr "Séquence d'octets invalide en entrée de conversion"
 
 #: ../mousepad/mousepad-file.c:875
 #, c-format
@@ -329,7 +330,7 @@ msgstr ""
 #. set a custom tab label
 #: ../mousepad/mousepad-print.c:125
 msgid "Document Settings"
-msgstr ""
+msgstr "Paramètres document"
 
 #: ../mousepad/mousepad-print.c:595
 msgid "Page Setup"
@@ -341,7 +342,7 @@ msgstr ""
 
 #: ../mousepad/mousepad-print.c:615
 msgid "Appearance"
-msgstr ""
+msgstr "Apparence"
 
 #: ../mousepad/mousepad-print.c:629
 msgid "Print page _headers"
@@ -406,26 +407,30 @@ msgid "Search _direction:"
 msgstr "Rechercher la _direction :"
 
 #: ../mousepad/mousepad-replace-dialog.c:242
+#, fuzzy
 msgid "Up"
-msgstr ""
+msgstr "Au-dessus"
 
 #: ../mousepad/mousepad-replace-dialog.c:243
+#, fuzzy
 msgid "Down"
-msgstr ""
+msgstr "En bas"
 
 #: ../mousepad/mousepad-replace-dialog.c:244
+#, fuzzy
 msgid "Both"
-msgstr ""
+msgstr "Les deux"
 
 #. case sensitive
 #: ../mousepad/mousepad-replace-dialog.c:253
 msgid "Case sensi_tive"
-msgstr ""
+msgstr "Sensible à la casse"
 
 #. match whole word
 #: ../mousepad/mousepad-replace-dialog.c:260
+#, fuzzy
 msgid "_Match whole word"
-msgstr ""
+msgstr "Correspond au _mot entier"
 
 #: ../mousepad/mousepad-replace-dialog.c:271
 msgid "Replace _all in:"
@@ -441,7 +446,7 @@ msgstr "Document"
 
 #: ../mousepad/mousepad-replace-dialog.c:280
 msgid "All Documents"
-msgstr ""
+msgstr "Tous les documents"
 
 #: ../mousepad/mousepad-replace-dialog.c:445
 #, c-format
@@ -460,11 +465,11 @@ msgstr "_Trouver :"
 
 #: ../mousepad/mousepad-search-bar.c:208
 msgid "_Next"
-msgstr ""
+msgstr "Suiva_nt"
 
 #: ../mousepad/mousepad-search-bar.c:219
 msgid "_Previous"
-msgstr ""
+msgstr "_Précédent"
 
 #: ../mousepad/mousepad-search-bar.c:230
 msgid "Highlight _All"
@@ -587,7 +592,7 @@ msgstr "Sauver tout"
 
 #: ../mousepad/mousepad-window.c:412
 msgid "Save all document in this window"
-msgstr ""
+msgstr "Sauver tous les documents dans cette fenêtre"
 
 #: ../mousepad/mousepad-window.c:413
 msgid "Re_vert"
@@ -603,7 +608,7 @@ msgstr "_Imprimer..."
 
 #: ../mousepad/mousepad-window.c:414
 msgid "Print the current document"
-msgstr ""
+msgstr "Imprimer le document courant"
 
 #: ../mousepad/mousepad-window.c:415
 msgid "_Detach Tab"
@@ -671,7 +676,7 @@ msgstr ""
 
 #: ../mousepad/mousepad-window.c:427
 msgid "Paste the clipboard text into a column"
-msgstr ""
+msgstr "Collez le texte du presse-papiers dans une colonne"
 
 #: ../mousepad/mousepad-window.c:428
 msgid "Delete the current selection"
@@ -687,7 +692,7 @@ msgstr "Changer la sélection"
 
 #: ../mousepad/mousepad-window.c:430
 msgid "Change a normal selection into a column selection and vice versa"
-msgstr ""
+msgstr "Modifier une sélection normale dans une sélection colonne et vice-versa"
 
 #: ../mousepad/mousepad-window.c:431
 msgid "Search for text"
@@ -699,7 +704,7 @@ msgstr "Rechercher le _suivant"
 
 #: ../mousepad/mousepad-window.c:432
 msgid "Search forwards for the same text"
-msgstr ""
+msgstr "Recherche vers l'avant pour le même texte"
 
 #: ../mousepad/mousepad-window.c:433
 msgid "Find _Previous"
@@ -707,7 +712,7 @@ msgstr "Rechercher le _précédent"
 
 #: ../mousepad/mousepad-window.c:433
 msgid "Search backwards for the same text"
-msgstr ""
+msgstr "Recherche vers l'arrière pour le même texte"
 
 #: ../mousepad/mousepad-window.c:434
 msgid "Find and Rep_lace..."
@@ -743,23 +748,23 @@ msgstr ""
 
 #: ../mousepad/mousepad-window.c:442
 msgid "to _Uppercase"
-msgstr ""
+msgstr "En majusc_ules"
 
 #: ../mousepad/mousepad-window.c:442
 msgid "Change the case of the selection to uppercase"
-msgstr ""
+msgstr "Changer la casse de la sélection en majuscules"
 
 #: ../mousepad/mousepad-window.c:443
 msgid "to _Lowercase"
-msgstr ""
+msgstr "En minuscu_les"
 
 #: ../mousepad/mousepad-window.c:443
 msgid "Change the case of the selection to lowercase"
-msgstr ""
+msgstr "Changer la casse de la sélection en minuscules"
 
 #: ../mousepad/mousepad-window.c:444
 msgid "to _Title Case"
-msgstr ""
+msgstr "En casse _titre"
 
 #: ../mousepad/mousepad-window.c:444
 msgid "Change the case of the selection to title case"
@@ -767,23 +772,23 @@ msgstr ""
 
 #: ../mousepad/mousepad-window.c:445
 msgid "to _Opposite Case"
-msgstr ""
+msgstr "En casse opposée"
 
 #: ../mousepad/mousepad-window.c:445
 msgid "Change the case of the selection opposite case"
-msgstr ""
+msgstr "Changer la casse de la sélection dans la casse opposée"
 
 #: ../mousepad/mousepad-window.c:446
 msgid "_Tabs to Spaces"
-msgstr ""
+msgstr "_Tabulations  en espaces"
 
 #: ../mousepad/mousepad-window.c:446
 msgid "Convert all tabs to spaces in the selection or document"
-msgstr ""
+msgstr "Convertir toutes les tabulations en espaces dans la sélection ou le document"
 
 #: ../mousepad/mousepad-window.c:447
 msgid "_Spaces to Tabs"
-msgstr ""
+msgstr "E_spaces en tabulations"
 
 #: ../mousepad/mousepad-window.c:447
 msgid "Convert all the leading spaces to tabs in the selected line(s) or document"
