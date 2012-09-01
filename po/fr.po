@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: mousepad 0.2.16\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-08-29 07:33+0000\n"
-"PO-Revision-Date: 2012-08-30 13:36+0100\n"
+"PO-Revision-Date: 2012-09-01 17:00+0100\n"
 "Last-Translator: \n"
 "Language-Team: français <>\n"
 "Language: \n"
@@ -496,8 +496,9 @@ msgstr ""
 
 #. overwrite label
 #: ../mousepad/mousepad-statusbar.c:174
+#, fuzzy
 msgid "OVR"
-msgstr ""
+msgstr "OVR"
 
 #: ../mousepad/mousepad-statusbar.c:261
 #, c-format
@@ -531,12 +532,13 @@ msgid "_File"
 msgstr "_Fichier"
 
 #: ../mousepad/mousepad-window.c:403
+#, fuzzy
 msgid "_New"
-msgstr ""
+msgstr "_Nouveau"
 
 #: ../mousepad/mousepad-window.c:403
 msgid "Create a new document"
-msgstr ""
+msgstr "Créez un nouveau document"
 
 #: ../mousepad/mousepad-window.c:404
 msgid "New _Window"
@@ -544,11 +546,11 @@ msgstr "Nouvelle _fenêtre"
 
 #: ../mousepad/mousepad-window.c:404
 msgid "Create a new document in a new window"
-msgstr ""
+msgstr "Créez un nouveau document dans une nouvelle fenêtre"
 
 #: ../mousepad/mousepad-window.c:405
 msgid "New From Te_mplate"
-msgstr ""
+msgstr "Nouveau à partir du _modèle"
 
 #: ../mousepad/mousepad-window.c:406
 msgid "_Open..."
@@ -556,7 +558,7 @@ msgstr "_Ouvrir..."
 
 #: ../mousepad/mousepad-window.c:406
 msgid "Open a file"
-msgstr ""
+msgstr "Ouvrir un fichier"
 
 #: ../mousepad/mousepad-window.c:407
 msgid "Op_en Recent"
@@ -564,19 +566,19 @@ msgstr "Ouvrir fichier récent"
 
 #: ../mousepad/mousepad-window.c:408
 msgid "No items found"
-msgstr ""
+msgstr "Pas d'article trouvé"
 
 #: ../mousepad/mousepad-window.c:409
 msgid "Clear _History"
-msgstr ""
+msgstr "Effacer l'historique"
 
 #: ../mousepad/mousepad-window.c:409
 msgid "Clear the recently used files history"
-msgstr ""
+msgstr "Effacer l'historique des fichiers récemment utilisés"
 
 #: ../mousepad/mousepad-window.c:410
 msgid "Save the current document"
-msgstr ""
+msgstr "Enregistrer le document actuel"
 
 #: ../mousepad/mousepad-window.c:411
 msgid "Save _As..."
@@ -584,7 +586,7 @@ msgstr "Enregistrer _sous..."
 
 #: ../mousepad/mousepad-window.c:411
 msgid "Save current document as another file"
-msgstr ""
+msgstr "Enregistrer le document actuel dans un autre fichier"
 
 #: ../mousepad/mousepad-window.c:412
 msgid "Save A_ll"
@@ -596,11 +598,11 @@ msgstr "Sauver tous les documents dans cette fenêtre"
 
 #: ../mousepad/mousepad-window.c:413
 msgid "Re_vert"
-msgstr ""
+msgstr "Re_venir"
 
 #: ../mousepad/mousepad-window.c:413
 msgid "Revert to the saved version of the file"
-msgstr ""
+msgstr "Revenir à la version enregistrée du fichier"
 
 #: ../mousepad/mousepad-window.c:414
 msgid "_Print..."
@@ -612,15 +614,15 @@ msgstr "Imprimer le document courant"
 
 #: ../mousepad/mousepad-window.c:415
 msgid "_Detach Tab"
-msgstr ""
+msgstr "_Détacher l'onglet"
 
 #: ../mousepad/mousepad-window.c:415
 msgid "Move the current document to a new window"
-msgstr ""
+msgstr "Déplacer le document actuel dans une nouvelle fenêtre"
 
 #: ../mousepad/mousepad-window.c:416
 msgid "Close _Tab"
-msgstr ""
+msgstr "Fermer l'ongle_t"
 
 #: ../mousepad/mousepad-window.c:416
 msgid "Close the current document"
@@ -644,7 +646,7 @@ msgstr "Annuler la dernière action"
 
 #: ../mousepad/mousepad-window.c:421
 msgid "Redo the last undone action"
-msgstr ""
+msgstr "Rétablir la dernière action annulée"
 
 #: ../mousepad/mousepad-window.c:422
 msgid "Cut the selection"
@@ -660,19 +662,19 @@ msgstr "Coller le presse-papiers"
 
 #: ../mousepad/mousepad-window.c:425
 msgid "Paste _Special"
-msgstr ""
+msgstr "Collage _spécial"
 
 #: ../mousepad/mousepad-window.c:426
 msgid "Paste from _History"
-msgstr ""
+msgstr "Coller depuis l'histoire"
 
 #: ../mousepad/mousepad-window.c:426
 msgid "Paste from the clipboard history"
-msgstr ""
+msgstr "Coller depuis l'histoire du presse-papiers"
 
 #: ../mousepad/mousepad-window.c:427
 msgid "Paste as _Column"
-msgstr ""
+msgstr "Coller comme _colonne"
 
 #: ../mousepad/mousepad-window.c:427
 msgid "Paste the clipboard text into a column"
@@ -716,11 +718,11 @@ msgstr "Recherche vers l'arrière pour le même texte"
 
 #: ../mousepad/mousepad-window.c:434
 msgid "Find and Rep_lace..."
-msgstr ""
+msgstr "Rechercher et remp_lacer ..."
 
 #: ../mousepad/mousepad-window.c:434
 msgid "Search for and replace text"
-msgstr ""
+msgstr "Rechercher et remplacer du texte"
 
 #: ../mousepad/mousepad-window.c:436
 msgid "_View"
@@ -728,15 +730,16 @@ msgstr "_Vue"
 
 #: ../mousepad/mousepad-window.c:437
 msgid "Select F_ont..."
-msgstr ""
+msgstr "Sélectionnez la police ..."
 
 #: ../mousepad/mousepad-window.c:437
 msgid "Change the editor font"
-msgstr ""
+msgstr "Modifier la police de l'éditeur"
 
 #: ../mousepad/mousepad-window.c:438
+#, fuzzy
 msgid "_Color Scheme"
-msgstr ""
+msgstr "Jeu de couleurs"
 
 #: ../mousepad/mousepad-window.c:440
 msgid "_Text"
@@ -744,7 +747,7 @@ msgstr "_Texte"
 
 #: ../mousepad/mousepad-window.c:441
 msgid "_Convert"
-msgstr ""
+msgstr "_CModifier la police éditeuronvertir"
 
 #: ../mousepad/mousepad-window.c:442
 msgid "to _Uppercase"
@@ -768,7 +771,7 @@ msgstr "En casse _titre"
 
 #: ../mousepad/mousepad-window.c:444
 msgid "Change the case of the selection to title case"
-msgstr ""
+msgstr "Changer la casse de la sélection en casse de titre"
 
 #: ../mousepad/mousepad-window.c:445
 msgid "to _Opposite Case"
@@ -792,15 +795,15 @@ msgstr "E_spaces en tabulations"
 
 #: ../mousepad/mousepad-window.c:447
 msgid "Convert all the leading spaces to tabs in the selected line(s) or document"
-msgstr ""
+msgstr "Convertir tous les espaces au début en tabulation dans les ligne(s) sélectionnée(s) ou du document"
 
 #: ../mousepad/mousepad-window.c:448
 msgid "St_rip Trailing Spaces"
-msgstr ""
+msgstr "Supp_rimer les espaces de fin"
 
 #: ../mousepad/mousepad-window.c:448
 msgid "Remove all the trailing spaces from the selected line(s) or document"
-msgstr ""
+msgstr "Enlever tous les espaces à la fin de la ligne sélectionnée(s) ou du document"
 
 #: ../mousepad/mousepad-window.c:449
 msgid "_Transpose"
