@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mousepad\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-08-18 04:03+0000\n"
+"POT-Creation-Date: 2012-09-01 05:06+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: Spanish/es <xfce-i18n@xfce.org>\n"
@@ -823,7 +823,7 @@ msgstr ""
 
 #: ../mousepad/mousepad-window.c:454
 msgid "_Increase Indent"
-msgstr ""
+msgstr "_Incrementar identación"
 
 #: ../mousepad/mousepad-window.c:454
 msgid "Increase the indentation of the selection or current line"
@@ -831,7 +831,7 @@ msgstr ""
 
 #: ../mousepad/mousepad-window.c:455
 msgid "_Decrease Indent"
-msgstr ""
+msgstr "_Reducir identación"
 
 #: ../mousepad/mousepad-window.c:455
 msgid "Decrease the indentation of the selection or current line"
@@ -839,7 +839,7 @@ msgstr ""
 
 #: ../mousepad/mousepad-window.c:457
 msgid "_Document"
-msgstr ""
+msgstr "_Documento"
 
 #: ../mousepad/mousepad-window.c:458
 msgid "Line E_nding"
@@ -851,23 +851,23 @@ msgstr ""
 
 #: ../mousepad/mousepad-window.c:460
 msgid "_Filetype"
-msgstr ""
+msgstr "_Tipo de archivo"
 
 #: ../mousepad/mousepad-window.c:462
 msgid "_Navigation"
-msgstr ""
+msgstr "_Navegación"
 
 #: ../mousepad/mousepad-window.c:463
 msgid "_Previous Tab"
-msgstr ""
+msgstr "_Previa peestaña"
 
 #: ../mousepad/mousepad-window.c:463
 msgid "Select the previous tab"
-msgstr ""
+msgstr "Selecciona la pestaña previa"
 
 #: ../mousepad/mousepad-window.c:464
 msgid "_Next Tab"
-msgstr ""
+msgstr "_Próxima pestaña"
 
 #: ../mousepad/mousepad-window.c:464
 msgid "Select the next tab"
@@ -875,7 +875,7 @@ msgstr ""
 
 #: ../mousepad/mousepad-window.c:465
 msgid "_Go to..."
-msgstr ""
+msgstr "_Ir a..."
 
 #: ../mousepad/mousepad-window.c:465
 msgid "Go to a specific location in the document"
@@ -883,7 +883,7 @@ msgstr ""
 
 #: ../mousepad/mousepad-window.c:467
 msgid "_Help"
-msgstr ""
+msgstr "_Ayuda"
 
 #: ../mousepad/mousepad-window.c:468
 msgid "_Contents"
@@ -899,7 +899,7 @@ msgstr ""
 
 #: ../mousepad/mousepad-window.c:474
 msgid "Line N_umbers"
-msgstr ""
+msgstr "Línea n_úmero"
 
 #: ../mousepad/mousepad-window.c:474
 msgid "Show line numbers"
@@ -915,15 +915,15 @@ msgstr ""
 
 #: ../mousepad/mousepad-window.c:476
 msgid "_Auto Indent"
-msgstr ""
+msgstr "_Auto identar"
 
 #: ../mousepad/mousepad-window.c:476
 msgid "Auto indent a new line"
-msgstr ""
+msgstr "Auto identar en nueva línea"
 
 #: ../mousepad/mousepad-window.c:477
 msgid "Insert _Spaces"
-msgstr ""
+msgstr "Insertar _espacios"
 
 #: ../mousepad/mousepad-window.c:477
 msgid "Insert spaces when the tab button is pressed"
@@ -947,7 +947,7 @@ msgstr ""
 
 #: ../mousepad/mousepad-window.c:484
 msgid "Unix (_LF)"
-msgstr ""
+msgstr "Unix (_LF)"
 
 #: ../mousepad/mousepad-window.c:484
 msgid "Set the line ending of the document to Unix (LF)"
@@ -955,7 +955,7 @@ msgstr ""
 
 #: ../mousepad/mousepad-window.c:485
 msgid "Mac (_CR)"
-msgstr ""
+msgstr "Mac/OSX (_CR)"
 
 #: ../mousepad/mousepad-window.c:485
 msgid "Set the line ending of the document to Mac (CR)"
@@ -963,7 +963,7 @@ msgstr ""
 
 #: ../mousepad/mousepad-window.c:486
 msgid "DOS / Windows (C_R LF)"
-msgstr ""
+msgstr "DOS / Windows (C_R LF)"
 
 #: ../mousepad/mousepad-window.c:486
 msgid "Set the line ending of the document to DOS / Windows (CR LF)"
@@ -981,12 +981,12 @@ msgstr ""
 
 #: ../mousepad/mousepad-window.c:1297
 msgid "Read Only"
-msgstr ""
+msgstr "Solo lectura"
 
 #: ../mousepad/mousepad-window.c:1357 ../mousepad/mousepad-window.c:3221
 #: ../mousepad/mousepad-window.c:3302
 msgid "None"
-msgstr ""
+msgstr "Nada"
 
 #. create other action
 #: ../mousepad/mousepad-window.c:2084
@@ -1013,7 +1013,7 @@ msgstr ""
 #: ../mousepad/mousepad-window.c:2580
 #, c-format
 msgid "Open '%s'"
-msgstr ""
+msgstr "Abrir '%s'"
 
 #: ../mousepad/mousepad-window.c:2727
 msgid "Failed to clear the recent history"
@@ -1022,7 +1022,7 @@ msgstr ""
 #. create an item to inform the user
 #: ../mousepad/mousepad-window.c:3151
 msgid "No clipboard data"
-msgstr ""
+msgstr "No hay datos en el portapapeles"
 
 #: ../mousepad/mousepad-window.c:3222
 msgid "Turn off color schemes"
@@ -1050,7 +1050,7 @@ msgstr ""
 #. create new file chooser dialog
 #: ../mousepad/mousepad-window.c:3548
 msgid "Open File"
-msgstr ""
+msgstr "Abrir carpeta"
 
 #: ../mousepad/mousepad-window.c:3661
 #, c-format
@@ -1072,7 +1072,7 @@ msgstr ""
 #. create the dialog
 #: ../mousepad/mousepad-window.c:3795
 msgid "Save As"
-msgstr ""
+msgstr "Guardar como"
 
 #. show the error
 #: ../mousepad/mousepad-window.c:3986
@@ -1090,8 +1090,8 @@ msgstr ""
 
 #: ../Mousepad.desktop.in.in.h:2
 msgid "Simple Text Editor"
-msgstr ""
+msgstr "Simple editor de texto"
 
 #: ../Mousepad.desktop.in.in.h:3
 msgid "Text Editor"
-msgstr ""
+msgstr "Editor de texto"
