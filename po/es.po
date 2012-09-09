@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mousepad\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-09-01 05:06+0000\n"
+"POT-Creation-Date: 2012-09-09 16:24+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: Spanish/es <xfce-i18n@xfce.org>\n"
@@ -477,7 +477,7 @@ msgstr ""
 #. overwrite label
 #: ../mousepad/mousepad-statusbar.c:174
 msgid "OVR"
-msgstr ""
+msgstr "OVR"
 
 #: ../mousepad/mousepad-statusbar.c:261
 #, c-format
@@ -799,7 +799,7 @@ msgstr ""
 
 #: ../mousepad/mousepad-window.c:451
 msgid "Line _Up"
-msgstr ""
+msgstr "Linea _arriba"
 
 #: ../mousepad/mousepad-window.c:451
 msgid "Move the selection one line up"
@@ -807,7 +807,7 @@ msgstr ""
 
 #: ../mousepad/mousepad-window.c:452
 msgid "Line _Down"
-msgstr ""
+msgstr "Linea _abajo"
 
 #: ../mousepad/mousepad-window.c:452
 msgid "Move the selection one line down"
@@ -843,11 +843,11 @@ msgstr "_Documento"
 
 #: ../mousepad/mousepad-window.c:458
 msgid "Line E_nding"
-msgstr ""
+msgstr "Linea fi_nal"
 
 #: ../mousepad/mousepad-window.c:459
 msgid "Tab _Size"
-msgstr ""
+msgstr "Tamaño de _pestaña"
 
 #: ../mousepad/mousepad-window.c:460
 msgid "_Filetype"
@@ -871,7 +871,7 @@ msgstr "_Próxima pestaña"
 
 #: ../mousepad/mousepad-window.c:464
 msgid "Select the next tab"
-msgstr ""
+msgstr "Seleccionar la pestaña siguiente"
 
 #: ../mousepad/mousepad-window.c:465
 msgid "_Go to..."
@@ -887,7 +887,7 @@ msgstr "_Ayuda"
 
 #: ../mousepad/mousepad-window.c:468
 msgid "_Contents"
-msgstr ""
+msgstr "_Contenidos"
 
 #: ../mousepad/mousepad-window.c:468
 msgid "Display the Mousepad user manual"
@@ -895,7 +895,7 @@ msgstr ""
 
 #: ../mousepad/mousepad-window.c:469
 msgid "About this application"
-msgstr ""
+msgstr "Acerca de esta aplicación"
 
 #: ../mousepad/mousepad-window.c:474
 msgid "Line N_umbers"
@@ -903,7 +903,7 @@ msgstr "Línea n_úmero"
 
 #: ../mousepad/mousepad-window.c:474
 msgid "Show line numbers"
-msgstr ""
+msgstr "Mostrar número de lineas"
 
 #: ../mousepad/mousepad-window.c:475
 msgid "St_atusbar"
@@ -972,7 +972,7 @@ msgstr ""
 #. add the label with the root warning
 #: ../mousepad/mousepad-window.c:662
 msgid "Warning, you are using the root account, you may harm your system."
-msgstr ""
+msgstr "Peligro: Usted esá usando la cuenta de administrador (Root), podríadañar su equipo"
 
 #. show the warning
 #: ../mousepad/mousepad-window.c:1100
@@ -997,12 +997,12 @@ msgstr ""
 #: ../mousepad/mousepad-window.c:2132
 #, c-format
 msgid "Ot_her (%d)..."
-msgstr ""
+msgstr "O_tro (%d)..."
 
 #. set action label
 #: ../mousepad/mousepad-window.c:2143
 msgid "Ot_her..."
-msgstr ""
+msgstr "O_tro..."
 
 #. build description
 #. get the offset length: 'Encoding: '
@@ -1030,7 +1030,7 @@ msgstr ""
 
 #: ../mousepad/mousepad-window.c:3303
 msgid "No filetype"
-msgstr ""
+msgstr "Sin tipo de archivo"
 
 #. set error message
 #: ../mousepad/mousepad-window.c:3510
@@ -1062,7 +1062,7 @@ msgstr ""
 #. show the warning and cleanup
 #: ../mousepad/mousepad-window.c:3665
 msgid "Failed to open file"
-msgstr ""
+msgstr "Fallo al abrir el archivo"
 
 #. show the error
 #: ../mousepad/mousepad-window.c:3771 ../mousepad/mousepad-window.c:3894
@@ -1082,11 +1082,11 @@ msgstr ""
 #. show the error
 #: ../mousepad/mousepad-window.c:4013
 msgid "Failed to print the document"
-msgstr ""
+msgstr "Fallo al inprimir el documento"
 
 #: ../mousepad/mousepad-window.c:4424
 msgid "Choose Mousepad Font"
-msgstr ""
+msgstr "Seleccione el tamaño de la fuente de Mousepad"
 
 #: ../Mousepad.desktop.in.in.h:2
 msgid "Simple Text Editor"
