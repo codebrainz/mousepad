@@ -795,7 +795,7 @@ msgstr ""
 
 #: ../mousepad/mousepad-window.c:450
 msgid "_Move Selection"
-msgstr ""
+msgstr "_Mover selección"
 
 #: ../mousepad/mousepad-window.c:451
 msgid "Line _Up"
@@ -815,7 +815,7 @@ msgstr ""
 
 #: ../mousepad/mousepad-window.c:453
 msgid "D_uplicate Line / Selection"
-msgstr ""
+msgstr "Du_plica linea/Selección"
 
 #: ../mousepad/mousepad-window.c:453
 msgid "Duplicate the current line or selection"
@@ -907,7 +907,7 @@ msgstr "Mostrar número de lineas"
 
 #: ../mousepad/mousepad-window.c:475
 msgid "St_atusbar"
-msgstr ""
+msgstr "Barra _de estado"
 
 #: ../mousepad/mousepad-window.c:475
 msgid "Change the visibility of the statusbar"
