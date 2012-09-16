@@ -775,23 +775,23 @@ msgstr ""
 #: ../mousepad/mousepad-window.c:447
 msgid ""
 "Convert all the leading spaces to tabs in the selected line(s) or document"
-msgstr ""
+msgstr "Convierte todos los espacios iniciales en pestañas en las línea(s) seleccionadas o documento"
 
 #: ../mousepad/mousepad-window.c:448
 msgid "St_rip Trailing Spaces"
-msgstr ""
+msgstr "Qui_tar espacios finales"
 
 #: ../mousepad/mousepad-window.c:448
 msgid "Remove all the trailing spaces from the selected line(s) or document"
-msgstr ""
+msgstr "Retire todos los espacios al final de la línea seleccionada (s) o documento"
 
 #: ../mousepad/mousepad-window.c:449
 msgid "_Transpose"
-msgstr ""
+msgstr "_Transponer"
 
 #: ../mousepad/mousepad-window.c:449
 msgid "Reverse the order of something"
-msgstr ""
+msgstr "Revierte el orden de algo"
 
 #: ../mousepad/mousepad-window.c:450
 msgid "_Move Selection"
@@ -803,7 +803,7 @@ msgstr "Linea _arriba"
 
 #: ../mousepad/mousepad-window.c:451
 msgid "Move the selection one line up"
-msgstr ""
+msgstr "Mueve lo seleccionado una línea arriba"
 
 #: ../mousepad/mousepad-window.c:452
 msgid "Line _Down"
@@ -811,7 +811,7 @@ msgstr "Linea _abajo"
 
 #: ../mousepad/mousepad-window.c:452
 msgid "Move the selection one line down"
-msgstr ""
+msgstr "Mueve lo seleccionado una linea abajo"
 
 #: ../mousepad/mousepad-window.c:453
 msgid "D_uplicate Line / Selection"
@@ -819,7 +819,7 @@ msgstr "Du_plica linea/Selección"
 
 #: ../mousepad/mousepad-window.c:453
 msgid "Duplicate the current line or selection"
-msgstr ""
+msgstr "Clona la actual línea seleccionada"
 
 #: ../mousepad/mousepad-window.c:454
 msgid "_Increase Indent"
@@ -827,7 +827,7 @@ msgstr "_Incrementar identación"
 
 #: ../mousepad/mousepad-window.c:454
 msgid "Increase the indentation of the selection or current line"
-msgstr ""
+msgstr "Incrementa la identación en la línea seleccionada actualmente"
 
 #: ../mousepad/mousepad-window.c:455
 msgid "_Decrease Indent"
@@ -835,7 +835,7 @@ msgstr "_Reducir identación"
 
 #: ../mousepad/mousepad-window.c:455
 msgid "Decrease the indentation of the selection or current line"
-msgstr ""
+msgstr "Decrementa la identación en la línea actualmente seleccionada"
 
 #: ../mousepad/mousepad-window.c:457
 msgid "_Document"
@@ -879,7 +879,7 @@ msgstr "_Ir a..."
 
 #: ../mousepad/mousepad-window.c:465
 msgid "Go to a specific location in the document"
-msgstr ""
+msgstr "Ir a un lugar específico en el documento"
 
 #: ../mousepad/mousepad-window.c:467
 msgid "_Help"
@@ -891,7 +891,7 @@ msgstr "_Contenidos"
 
 #: ../mousepad/mousepad-window.c:468
 msgid "Display the Mousepad user manual"
-msgstr ""
+msgstr "Muestra el manual de Mousepad"
 
 #: ../mousepad/mousepad-window.c:469
 msgid "About this application"
@@ -1028,7 +1028,7 @@ msgstr "No hay datos en el portapapeles"
 
 #: ../mousepad/mousepad-window.c:3222
 msgid "Turn off color schemes"
-msgstr ""
+msgstr "Deshabilitar esquemas de color"
 
 #: ../mousepad/mousepad-window.c:3303
 msgid "No filetype"
@@ -1037,7 +1037,7 @@ msgstr "Sin tipo de archivo"
 #. set error message
 #: ../mousepad/mousepad-window.c:3510
 msgid "Templates should be UTF-8 valid"
-msgstr ""
+msgstr "Plantillas debe ser UTF-8 válido"
 
 #. set error message
 #: ../mousepad/mousepad-window.c:3518
@@ -1059,7 +1059,7 @@ msgstr "Abrir carpeta"
 msgid ""
 "Failed to open \"%s\" for reading. It will be removed from the document "
 "history"
-msgstr ""
+msgstr "Fallo al abrir \"%s\" para su lectura, Este será removido del historial del documento"
 
 #. show the warning and cleanup
 #: ../mousepad/mousepad-window.c:3665
