@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mousepad\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-09-09 16:24+0000\n"
+"POT-Creation-Date: 2012-09-16 08:54+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: Spanish/es <xfce-i18n@xfce.org>\n"
@@ -972,7 +972,9 @@ msgstr ""
 #. add the label with the root warning
 #: ../mousepad/mousepad-window.c:662
 msgid "Warning, you are using the root account, you may harm your system."
-msgstr "Peligro: Usted esá usando la cuenta de administrador (Root), podríadañar su equipo"
+msgstr ""
+"Peligro: Usted esá usando la cuenta de administrador (Root), podríadañar su "
+"equipo"
 
 #. show the warning
 #: ../mousepad/mousepad-window.c:1100
@@ -1017,7 +1019,7 @@ msgstr "Abrir '%s'"
 
 #: ../mousepad/mousepad-window.c:2727
 msgid "Failed to clear the recent history"
-msgstr ""
+msgstr "Fallo al limpiar el historial"
 
 #. create an item to inform the user
 #: ../mousepad/mousepad-window.c:3151
@@ -1040,12 +1042,12 @@ msgstr ""
 #. set error message
 #: ../mousepad/mousepad-window.c:3518
 msgid "Reading the template failed, the menu item has been removed"
-msgstr ""
+msgstr "Fallo al leer plantilla, el ítem del menú ha sido removido"
 
 #. set error message
 #: ../mousepad/mousepad-window.c:3523
 msgid "Loading the template failed"
-msgstr ""
+msgstr "Fallo al cargar plantilla"
 
 #. create new file chooser dialog
 #: ../mousepad/mousepad-window.c:3548
@@ -1067,7 +1069,7 @@ msgstr "Fallo al abrir el archivo"
 #. show the error
 #: ../mousepad/mousepad-window.c:3771 ../mousepad/mousepad-window.c:3894
 msgid "Failed to save the document"
-msgstr ""
+msgstr "Fallo al salvar el documento"
 
 #. create the dialog
 #: ../mousepad/mousepad-window.c:3795
@@ -1077,7 +1079,7 @@ msgstr "Guardar como"
 #. show the error
 #: ../mousepad/mousepad-window.c:3986
 msgid "Failed to reload the document"
-msgstr ""
+msgstr "Fallo al recargar el documento"
 
 #. show the error
 #: ../mousepad/mousepad-window.c:4013
