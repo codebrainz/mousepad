@@ -86,7 +86,7 @@ msgstr "Numer _kolumny:"
 
 #: ../mousepad/mousepad-dialogs.c:323
 msgid "Remove all entries from the documents history?"
-msgstr ""
+msgstr "Usunąć wszystkie wpisy z historii dokumentów?"
 
 #: ../mousepad/mousepad-dialogs.c:328
 msgid "Clear Documents History"
