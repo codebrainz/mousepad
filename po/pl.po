@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mousepad 0.3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-09-26 15:00+0000\n"
+"POT-Creation-Date: 2012-09-26 20:21+0000\n"
 "PO-Revision-Date: 2012-07-15 17:27+0200\n"
 "Last-Translator: Piotr Sokół <psokol@jabster.pl>\n"
 "Language-Team: polski <>\n"
@@ -1013,7 +1013,7 @@ msgstr ""
 #: ../mousepad/mousepad-window.c:2580
 #, c-format
 msgid "Open '%s'"
-msgstr ""
+msgstr "Otwórz '%s'"
 
 #: ../mousepad/mousepad-window.c:2727
 msgid "Failed to clear the recent history"
@@ -1022,7 +1022,7 @@ msgstr "Nie udało się wyczyścić historii"
 #. create an item to inform the user
 #: ../mousepad/mousepad-window.c:3151
 msgid "No clipboard data"
-msgstr ""
+msgstr "Brak danych w schowku"
 
 #: ../mousepad/mousepad-window.c:3222
 msgid "Turn off color schemes"
@@ -1030,7 +1030,7 @@ msgstr ""
 
 #: ../mousepad/mousepad-window.c:3303
 msgid "No filetype"
-msgstr ""
+msgstr "Brak typu pliku"
 
 #. set error message
 #: ../mousepad/mousepad-window.c:3510
