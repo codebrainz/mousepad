@@ -526,7 +526,7 @@ msgstr "Nueva _Ventana"
 
 #: ../mousepad/mousepad-window.c:404
 msgid "Create a new document in a new window"
-msgstr ""
+msgstr "Crear un nuevo documento en una nueva ventana"
 
 #: ../mousepad/mousepad-window.c:405
 msgid "New From Te_mplate"
@@ -554,7 +554,7 @@ msgstr "Limpiar _historial"
 
 #: ../mousepad/mousepad-window.c:409
 msgid "Clear the recently used files history"
-msgstr ""
+msgstr "Borrar el historial de archivos usados ​​recientemente"
 
 #: ../mousepad/mousepad-window.c:410
 msgid "Save the current document"
@@ -666,7 +666,7 @@ msgstr "Borra la actual selección"
 
 #: ../mousepad/mousepad-window.c:429
 msgid "Select the text in the entire document"
-msgstr ""
+msgstr "Seleccione el texto en el documento"
 
 #: ../mousepad/mousepad-window.c:430
 msgid "Change the selection"
@@ -674,7 +674,7 @@ msgstr "Cambia la selección"
 
 #: ../mousepad/mousepad-window.c:430
 msgid "Change a normal selection into a column selection and vice versa"
-msgstr ""
+msgstr "Cambiar una selección normal en una selección de columnas y viceversa"
 
 #: ../mousepad/mousepad-window.c:431
 msgid "Search for text"
@@ -694,7 +694,7 @@ msgstr "Busar _previo"
 
 #: ../mousepad/mousepad-window.c:433
 msgid "Search backwards for the same text"
-msgstr ""
+msgstr "Buscar hacia atrás para el mismo texto"
 
 #: ../mousepad/mousepad-window.c:434
 msgid "Find and Rep_lace..."
