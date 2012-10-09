@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mousepad\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-09-16 08:54+0000\n"
+"POT-Creation-Date: 2012-10-09 18:39+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: Spanish/es <xfce-i18n@xfce.org>\n"
@@ -412,7 +412,7 @@ msgstr "Caso sen_sitivo"
 #. match whole word
 #: ../mousepad/mousepad-replace-dialog.c:260
 msgid "_Match whole word"
-msgstr ""
+msgstr "_Sólo palabras completas"
 
 #: ../mousepad/mousepad-replace-dialog.c:271
 msgid "Replace _all in:"
@@ -455,7 +455,7 @@ msgstr "_Previo"
 
 #: ../mousepad/mousepad-search-bar.c:230
 msgid "Highlight _All"
-msgstr ""
+msgstr "Resalte _Todo"
 
 #: ../mousepad/mousepad-search-bar.c:243 ../mousepad/mousepad-search-bar.c:250
 msgid "Mat_ch Case"
@@ -472,7 +472,7 @@ msgstr "Tipo de archivo: Ninguno"
 
 #: ../mousepad/mousepad-statusbar.c:169
 msgid "Toggle the overwrite mode"
-msgstr ""
+msgstr "Activar el modo de sobreescritura"
 
 #. overwrite label
 #: ../mousepad/mousepad-statusbar.c:174
@@ -775,7 +775,9 @@ msgstr ""
 #: ../mousepad/mousepad-window.c:447
 msgid ""
 "Convert all the leading spaces to tabs in the selected line(s) or document"
-msgstr "Convierte todos los espacios iniciales en pestañas en las línea(s) seleccionadas o documento"
+msgstr ""
+"Convierte todos los espacios iniciales en pestañas en las línea(s) "
+"seleccionadas o documento"
 
 #: ../mousepad/mousepad-window.c:448
 msgid "St_rip Trailing Spaces"
@@ -783,7 +785,8 @@ msgstr "Qui_tar espacios finales"
 
 #: ../mousepad/mousepad-window.c:448
 msgid "Remove all the trailing spaces from the selected line(s) or document"
-msgstr "Retire todos los espacios al final de la línea seleccionada (s) o documento"
+msgstr ""
+"Retire todos los espacios al final de la línea seleccionada (s) o documento"
 
 #: ../mousepad/mousepad-window.c:449
 msgid "_Transpose"
@@ -1059,7 +1062,9 @@ msgstr "Abrir carpeta"
 msgid ""
 "Failed to open \"%s\" for reading. It will be removed from the document "
 "history"
-msgstr "Fallo al abrir \"%s\" para su lectura, Este será removido del historial del documento"
+msgstr ""
+"Fallo al abrir \"%s\" para su lectura, Este será removido del historial del "
+"documento"
 
 #. show the warning and cleanup
 #: ../mousepad/mousepad-window.c:3665
