@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mousepad\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-10-10 00:00+0000\n"
+"POT-Creation-Date: 2012-10-10 10:42+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: Spanish/es <xfce-i18n@xfce.org>\n"
@@ -500,7 +500,9 @@ msgstr "Línea: %d Columna: %d"
 msgid ""
 "Unable to create base directory \"%s\". Saving to file \"%s\" will be "
 "aborted."
-msgstr "No se puede crear el directorio base «%s». Se cancelará el guardado del archivo «%s»."
+msgstr ""
+"No se puede crear el directorio base «%s». Se cancelará el guardado del "
+"archivo «%s»."
 
 #. print error
 #: ../mousepad/mousepad-util.c:618
@@ -734,7 +736,7 @@ msgstr "a _mayúsculas"
 
 #: ../mousepad/mousepad-window.c:442
 msgid "Change the case of the selection to uppercase"
-msgstr ""
+msgstr "Cambiar el tipo de sensibilidad de la selección a mayúscula"
 
 #: ../mousepad/mousepad-window.c:443
 msgid "to _Lowercase"
@@ -742,23 +744,23 @@ msgstr "a m_inúsculas"
 
 #: ../mousepad/mousepad-window.c:443
 msgid "Change the case of the selection to lowercase"
-msgstr ""
+msgstr "Cambiar el tipo de sensibilidad de la seleccionada a minúscula"
 
 #: ../mousepad/mousepad-window.c:444
 msgid "to _Title Case"
-msgstr ""
+msgstr "A la sensibilidad del _Título"
 
 #: ../mousepad/mousepad-window.c:444
 msgid "Change the case of the selection to title case"
-msgstr ""
+msgstr "Cambiar la sensibilidad de la selección a la del título"
 
 #: ../mousepad/mousepad-window.c:445
 msgid "to _Opposite Case"
-msgstr ""
+msgstr "Al tipo de sensibilidad _opuesto"
 
 #: ../mousepad/mousepad-window.c:445
 msgid "Change the case of the selection opposite case"
-msgstr ""
+msgstr "Cambiar el tipo de sensibilidad de la selección al opuesto"
 
 #: ../mousepad/mousepad-window.c:446
 msgid "_Tabs to Spaces"
@@ -766,7 +768,8 @@ msgstr "_Tabulaciones a espacios"
 
 #: ../mousepad/mousepad-window.c:446
 msgid "Convert all tabs to spaces in the selection or document"
-msgstr "Convertir todas las tabulaciones a espacios en la selección o el documento"
+msgstr ""
+"Convertir todas las tabulaciones a espacios en la selección o el documento"
 
 #: ../mousepad/mousepad-window.c:447
 msgid "_Spaces to Tabs"
