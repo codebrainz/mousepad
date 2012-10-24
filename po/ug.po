@@ -1,13 +1,13 @@
 # Uyghur translation for mousepad.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# Gheyret Kenji <gheyret@gmail.com>, 2012.
+# Gheyret Kenji <gheyret@gmail.com>, YEAR.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: mousepad\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-07-25 02:15+0000\n"
+"POT-Creation-Date: 2012-10-24 01:03+0000\n"
 "PO-Revision-Date: 2011-11-09 16:10+0900\n"
 "Last-Translator: Gheyret Kenji <gheyret@gmail.com>\n"
 "Language-Team: Uyghur Computer Science Association <UKIJ@yahoogroups.com>\n"
@@ -55,9 +55,7 @@ msgstr "كەمتۈكنى <%s> غا دوكلات قىلىڭ."
 
 #: ../mousepad/mousepad-dialogs.c:41
 msgid "Mousepad is a fast text editor for the Xfce Desktop Environment."
-msgstr ""
-"پروگرامما Mousepad بولسا Xfce ئۈستەلئۈستى سىستېمىسىدىكى چاققان تېكىست "
-"تەھرىرلىگۈدۇر."
+msgstr "پروگرامما Mousepad بولسا Xfce ئۈستەلئۈستى سىستېمىسىدىكى چاققان تېكىست تەھرىرلىگۈدۇر."
 
 #: ../mousepad/mousepad-dialogs.c:50
 msgid "translator-credits"
@@ -98,8 +96,7 @@ msgstr "پۈتۈكلەر ئىزىنى تازىلاش"
 msgid ""
 "Clearing the documents history will permanently remove all currently listed "
 "entries."
-msgstr ""
-"پۈتۈكلەر ئىزى تازىلانسا، نۆۋەتتىكى بارلىق پۈتۈكلەر تىزىمدىن يوقىلىپ كېتىدۇ."
+msgstr "پۈتۈكلەر ئىزى تازىلانسا، نۆۋەتتىكى بارلىق پۈتۈكلەر تىزىمدىن يوقىلىپ كېتىدۇ."
 
 #: ../mousepad/mousepad-dialogs.c:362
 msgid "Do you want to save the changes before closing?"
@@ -276,7 +273,7 @@ msgstr "يۇنىكود"
 #: ../mousepad/mousepad-encoding.c:92 ../mousepad/mousepad-encoding.c:93
 #: ../mousepad/mousepad-encoding.c:94 ../mousepad/mousepad-encoding.c:95
 msgid "Chinese Simplified"
-msgstr "ئاددىي خەنزۇچە"
+msgstr "ئاددىيلاشتۇرۇلغان خەنزۇچە"
 
 #: ../mousepad/mousepad-encoding.c:96 ../mousepad/mousepad-encoding.c:97
 #: ../mousepad/mousepad-encoding.c:98
@@ -351,7 +348,7 @@ msgstr "يورۇتۇشنى ئىناۋەتلىك قىلسۇن(_S)"
 
 #: ../mousepad/mousepad-print.c:693
 msgid "Fonts"
-msgstr "خەت نۇسخىلىرى"
+msgstr "خەت نۇسخىسى"
 
 #: ../mousepad/mousepad-print.c:709
 msgid "Header:"
@@ -494,8 +491,7 @@ msgstr "قۇر: %d ئىستون: %d"
 msgid ""
 "Unable to create base directory \"%s\". Saving to file \"%s\" will be "
 "aborted."
-msgstr ""
-"ئاساسىي مۇندەرىجە «%s» نى قۇرغىلى بولمىدى. ھۆججەت «%s» غا ساقلاش توختىتىلدى."
+msgstr "ئاساسىي مۇندەرىجە «%s» نى قۇرغىلى بولمىدى. ھۆججەت «%s» غا ساقلاش توختىتىلدى."
 
 #. print error
 #: ../mousepad/mousepad-util.c:618
@@ -609,7 +605,7 @@ msgstr "كۆزنەكنى ياپ(_C)"
 
 #: ../mousepad/mousepad-window.c:417
 msgid "Close this window"
-msgstr "مەزكۇر كۆزنەكنى ياپىدۇ"
+msgstr "مەزكۇر كۆزنەكنى تاقايدۇ"
 
 #: ../mousepad/mousepad-window.c:419
 msgid "_Edit"
@@ -761,8 +757,7 @@ msgstr "تاقلىما ھەرپ(Tab)لەرنى بوشلۇققا"
 
 #: ../mousepad/mousepad-window.c:446
 msgid "Convert all tabs to spaces in the selection or document"
-msgstr ""
-"پۈتۈكتىكى ياكى تاللانغان رايوندىكى تاقلىما ھەرپ(Tab)لەرنى بوشلۇققا ئۆزگەرتىدۇ"
+msgstr "پۈتۈكتىكى ياكى تاللانغان رايوندىكى تاقلىما ھەرپ(Tab)لەرنى بوشلۇققا ئۆزگەرتىدۇ"
 
 #: ../mousepad/mousepad-window.c:447
 msgid "_Spaces to Tabs"
@@ -771,9 +766,7 @@ msgstr "بوشلۇقنى تاقلىما ھەرپ(Tab)لەرگە"
 #: ../mousepad/mousepad-window.c:447
 msgid ""
 "Convert all the leading spaces to tabs in the selected line(s) or document"
-msgstr ""
-"پۈتكۈل پۈتۈك ياكى تاللانغان رايوندىكى قۇرلارنىڭ بەشىدىكى بوشلۇقلارنى تاقلىما "
-"ھەرپ(Tab)لەرگە ئۆزگەرتىدۇ"
+msgstr "پۈتكۈل پۈتۈك ياكى تاللانغان رايوندىكى قۇرلارنىڭ بەشىدىكى بوشلۇقلارنى تاقلىما ھەرپ(Tab)لەرگە ئۆزگەرتىدۇ"
 
 #: ../mousepad/mousepad-window.c:448
 msgid "St_rip Trailing Spaces"
@@ -781,9 +774,7 @@ msgstr "ئاخىردىكى بوشلۇقلارنى يوقات(_R)"
 
 #: ../mousepad/mousepad-window.c:448
 msgid "Remove all the trailing spaces from the selected line(s) or document"
-msgstr ""
-"پۈتكۈل پۈتۈك ياكى تاللانغان رايوندىكى قۇرلارنىڭ ئاخىرىدىكى بارلىق بوشلۇقنى "
-"يوق قىلىدۇ"
+msgstr "پۈتكۈل پۈتۈك ياكى تاللانغان رايوندىكى قۇرلارنىڭ ئاخىرىدىكى بارلىق بوشلۇقنى يوق قىلىدۇ"
 
 #: ../mousepad/mousepad-window.c:449
 msgid "_Transpose"
@@ -887,7 +878,7 @@ msgstr "ياردەم(_H)"
 
 #: ../mousepad/mousepad-window.c:468
 msgid "_Contents"
-msgstr "مۇندەرىجە(_C)"
+msgstr "مەزمۇن(_C)"
 
 #: ../mousepad/mousepad-window.c:468
 msgid "Display the Mousepad user manual"
@@ -967,16 +958,12 @@ msgstr "د ئو س (DOS) / ۋىندوۋس(C_R LF)"
 
 #: ../mousepad/mousepad-window.c:486
 msgid "Set the line ending of the document to DOS / Windows (CR LF)"
-msgstr ""
-"قۇر ئاخىرلىشىش بەلگىسىگە د ئو س (DOS) / ۋىندوۋس نىڭ بەلگىسى (CR LF) نى "
-"ئىشلىتىدۇ"
+msgstr "قۇر ئاخىرلىشىش بەلگىسىگە د ئو س (DOS) / ۋىندوۋس نىڭ بەلگىسى (CR LF) نى ئىشلىتىدۇ"
 
 #. add the label with the root warning
 #: ../mousepad/mousepad-window.c:662
 msgid "Warning, you are using the root account, you may harm your system."
-msgstr ""
-"دىققەت: ئالىي ئىشلەتكۈچى(root) ھوقۇقىدا مەشغۇلات قىلىۋاتىسىز. بەك دىققەت "
-"قىلىڭ، سىستېمىنى بۇزۇپ قويۇشىڭىز مۇمكىن"
+msgstr "دىققەت: ئالىي ئىشلەتكۈچى(root) ھوقۇقىدا مەشغۇلات قىلىۋاتىسىز. بەك دىققەت قىلىڭ، سىستېمىنى بۇزۇپ قويۇشىڭىز مۇمكىن"
 
 #. show the warning
 #: ../mousepad/mousepad-window.c:1100
