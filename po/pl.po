@@ -2,12 +2,12 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the mousepad package.
 # Piotr Sokół <psokol@jabster.pl>, 2012.
-#
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: mousepad 0.3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-10-05 07:39+0000\n"
+"POT-Creation-Date: 2012-10-31 14:57+0000\n"
 "PO-Revision-Date: 2012-10-07 10:36+0200\n"
 "Last-Translator: Piotr Sokół <psokol@jabster.pl>\n"
 "Language-Team: polski <>\n"
@@ -15,13 +15,12 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bits\n"
 "Language: \n"
-"Plural-Forms: nplurals=3; plural=((n==1) ? 0 : ((n%10>=2 && n%10<=4 && (n"
-"%100<10 || n%100>=20)) ? 1 : 2));\n"
+"Plural-Forms: nplurals=3; plural=((n==1) ? 0 : ((n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20)) ? 1 : 2));\n"
 "X-Generator: Gtranslator 2.91.5\n"
 
 #: ../mousepad/main.c:53
 msgid "Do not register with the D-BUS session message bus"
-msgstr ""
+msgstr "Nie rejestruje za pomocą demona powiadamiania sesji D-BUS"
 
 #: ../mousepad/main.c:54
 msgid "Quit a running Mousepad instance"
@@ -299,9 +298,9 @@ msgid "Korean"
 msgstr "Koreańskie"
 
 #: ../mousepad/mousepad-file.c:556
-#, fuzzy, c-format
+#, c-format
 msgid "Invalid byte sequence in conversion input"
-msgstr "Nieprawidłowa sekwencja bajtów na wejściu"
+msgstr "Nieprawidłowy ciąg bajtów na wejściu przekształcenia"
 
 #: ../mousepad/mousepad-file.c:875
 #, c-format
@@ -339,9 +338,8 @@ msgid "Print _line numbers"
 msgstr "Drukowanie numerów _wierszy"
 
 #: ../mousepad/mousepad-print.c:653
-#, fuzzy
 msgid "Number every"
-msgstr "Ilość każdego"
+msgstr "Wylicza wszystko"
 
 #: ../mousepad/mousepad-print.c:669
 msgid "line(s)"
@@ -690,18 +688,16 @@ msgid "Find _Next"
 msgstr "Wyszukaj _następny"
 
 #: ../mousepad/mousepad-window.c:432
-#, fuzzy
 msgid "Search forwards for the same text"
-msgstr "Szukaj w przód"
+msgstr "Wyszukuje ten sam tekst dalej"
 
 #: ../mousepad/mousepad-window.c:433
 msgid "Find _Previous"
 msgstr "Wyszukaj p_oprzedni"
 
 #: ../mousepad/mousepad-window.c:433
-#, fuzzy
 msgid "Search backwards for the same text"
-msgstr "Szukaj wstecz"
+msgstr "Wyszukuje ten sam tekst wcześniej"
 
 #: ../mousepad/mousepad-window.c:434
 msgid "Find and Rep_lace..."
@@ -736,70 +732,61 @@ msgid "_Convert"
 msgstr "_Konwertowanie"
 
 #: ../mousepad/mousepad-window.c:442
-#, fuzzy
 msgid "to _Uppercase"
-msgstr "na wielkie litery"
+msgstr "na _Wielkie litery"
 
 #: ../mousepad/mousepad-window.c:442
-#, fuzzy
 msgid "Change the case of the selection to uppercase"
-msgstr "Zamień znaki zaznaczenia na wielkie litery"
+msgstr "Zmienia znaki zaznaczenia na wielkie litery"
 
 #: ../mousepad/mousepad-window.c:443
-#, fuzzy
 msgid "to _Lowercase"
-msgstr "na małe litery"
+msgstr "na _Małe litery"
 
 #: ../mousepad/mousepad-window.c:443
-#, fuzzy
 msgid "Change the case of the selection to lowercase"
-msgstr "Zamień znaki zaznaczenia na małe litery"
+msgstr "Zmienia znaki zaznaczenia na małe litery"
 
 #: ../mousepad/mousepad-window.c:444
-#, fuzzy
 msgid "to _Title Case"
-msgstr "na tytuł"
+msgstr "na _Litery tytułowe"
 
 #: ../mousepad/mousepad-window.c:444
-#, fuzzy
 msgid "Change the case of the selection to title case"
-msgstr "Zamień znaki zaznaczenia na tytuł"
+msgstr "Zmienia znaki zaznaczenia na litery tytułowe"
 
 #: ../mousepad/mousepad-window.c:445
-#, fuzzy
 msgid "to _Opposite Case"
-msgstr "na odwrót"
+msgstr "na _Przeciwną wielkość liter"
 
 #: ../mousepad/mousepad-window.c:445
-#, fuzzy
 msgid "Change the case of the selection opposite case"
-msgstr "Zamień znaki zaznaczenia na odwrót"
+msgstr "Zmienia na przeciwną wielkość znaków zaznaczeniu"
 
 #: ../mousepad/mousepad-window.c:446
-#, fuzzy
 msgid "_Tabs to Spaces"
-msgstr "Znaki tabulatora na spacje"
+msgstr "_Tabulatory na Odstępy"
 
 #: ../mousepad/mousepad-window.c:446
 msgid "Convert all tabs to spaces in the selection or document"
-msgstr ""
+msgstr "Zamienia wszystkie tabulatory na odstępy w zaznaczeniu lub dokumencie"
 
 #: ../mousepad/mousepad-window.c:447
 msgid "_Spaces to Tabs"
-msgstr ""
+msgstr "_Odstępy na Tabulatory"
 
 #: ../mousepad/mousepad-window.c:447
 msgid ""
 "Convert all the leading spaces to tabs in the selected line(s) or document"
-msgstr ""
+msgstr "Zamienia wszystkie odstępy początkowe na tabulatory w zaznaczonych wierszach lub dokumencie"
 
 #: ../mousepad/mousepad-window.c:448
 msgid "St_rip Trailing Spaces"
-msgstr ""
+msgstr "Pokazuje ciągi odstępów"
 
 #: ../mousepad/mousepad-window.c:448
 msgid "Remove all the trailing spaces from the selected line(s) or document"
-msgstr ""
+msgstr "Usuwa wszystkie ciągi odstępów z zaznaczonych wierszy lub dokumentu"
 
 #: ../mousepad/mousepad-window.c:449
 msgid "_Transpose"
@@ -871,7 +858,7 @@ msgstr "_Typ pliku"
 
 #: ../mousepad/mousepad-window.c:462
 msgid "_Navigation"
-msgstr ""
+msgstr "_Poruszanie"
 
 #: ../mousepad/mousepad-window.c:463
 msgid "_Previous Tab"
@@ -891,7 +878,7 @@ msgstr "Przechodzi do następnej karty"
 
 #: ../mousepad/mousepad-window.c:465
 msgid "_Go to..."
-msgstr ""
+msgstr "_Idź do..."
 
 #: ../mousepad/mousepad-window.c:465
 msgid "Go to a specific location in the document"
@@ -951,15 +938,15 @@ msgstr "Zawijanie _tekstu"
 
 #: ../mousepad/mousepad-window.c:478
 msgid "Toggle breaking lines in between words"
-msgstr ""
+msgstr "Przełącza łamanie wierszy między słowami"
 
 #: ../mousepad/mousepad-window.c:479
 msgid "Write Unicode _BOM"
-msgstr ""
+msgstr "Pisze w Unicode _BOM"
 
 #: ../mousepad/mousepad-window.c:479
 msgid "Store the byte-order mark in the file"
-msgstr ""
+msgstr "Przechowuje oznaczenie porządku bajtów w pliku"
 
 #: ../mousepad/mousepad-window.c:484
 msgid "Unix (_LF)"
@@ -967,7 +954,7 @@ msgstr "Unix (_LF)"
 
 #: ../mousepad/mousepad-window.c:484
 msgid "Set the line ending of the document to Unix (LF)"
-msgstr ""
+msgstr "Ustawia kodowanie ostatniego wiersza dokumentu na Unix (LF)"
 
 #: ../mousepad/mousepad-window.c:485
 msgid "Mac (_CR)"
@@ -975,7 +962,7 @@ msgstr "Mac (_CR)"
 
 #: ../mousepad/mousepad-window.c:485
 msgid "Set the line ending of the document to Mac (CR)"
-msgstr ""
+msgstr "Ustawia kodowanie ostatniego wiersza dokumentu na Mac (CR)"
 
 #: ../mousepad/mousepad-window.c:486
 msgid "DOS / Windows (C_R LF)"
@@ -983,7 +970,7 @@ msgstr "DOS / Windows (C_R LF)"
 
 #: ../mousepad/mousepad-window.c:486
 msgid "Set the line ending of the document to DOS / Windows (CR LF)"
-msgstr ""
+msgstr "Ustawia kodowanie ostatniego wiersza dokumentu na DOS / Windows (CR LF)"
 
 #. add the label with the root warning
 #: ../mousepad/mousepad-window.c:662
@@ -1044,7 +1031,7 @@ msgstr "Brak danych w schowku"
 
 #: ../mousepad/mousepad-window.c:3222
 msgid "Turn off color schemes"
-msgstr ""
+msgstr "Wyłącza układy kolorów"
 
 #: ../mousepad/mousepad-window.c:3303
 msgid "No filetype"
@@ -1058,13 +1045,12 @@ msgstr "Szablony powinne być zgodne z kodowaniem UTF-8"
 #. set error message
 #: ../mousepad/mousepad-window.c:3518
 msgid "Reading the template failed, the menu item has been removed"
-msgstr ""
+msgstr "Nie udało się odczytać szablonu, obiekt menu został usunięty"
 
 #. set error message
 #: ../mousepad/mousepad-window.c:3523
-#, fuzzy
 msgid "Loading the template failed"
-msgstr "Nieudane wczytywanie szablonu"
+msgstr "Nie udało się załadować szablonu"
 
 #. create new file chooser dialog
 #: ../mousepad/mousepad-window.c:3548
