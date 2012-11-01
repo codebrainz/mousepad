@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mousepad 0.3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-10-31 14:57+0000\n"
+"POT-Creation-Date: 2012-11-01 07:00+0000\n"
 "PO-Revision-Date: 2012-10-07 10:36+0200\n"
 "Last-Translator: Piotr Sokół <psokol@jabster.pl>\n"
 "Language-Team: polski <>\n"
@@ -778,7 +778,9 @@ msgstr "_Odstępy na Tabulatory"
 #: ../mousepad/mousepad-window.c:447
 msgid ""
 "Convert all the leading spaces to tabs in the selected line(s) or document"
-msgstr "Zamienia wszystkie odstępy początkowe na tabulatory w zaznaczonych wierszach lub dokumencie"
+msgstr ""
+"Zamienia wszystkie odstępy początkowe na tabulatory w zaznaczonych wierszach "
+"lub dokumencie"
 
 #: ../mousepad/mousepad-window.c:448
 msgid "St_rip Trailing Spaces"
@@ -954,7 +956,7 @@ msgstr "Unix (_LF)"
 
 #: ../mousepad/mousepad-window.c:484
 msgid "Set the line ending of the document to Unix (LF)"
-msgstr "Ustawia kodowanie ostatniego wiersza dokumentu na Unix (LF)"
+msgstr "Ustala kodowanie końca wiersza typowe dla systemów Unix (LF)"
 
 #: ../mousepad/mousepad-window.c:485
 msgid "Mac (_CR)"
@@ -962,7 +964,7 @@ msgstr "Mac (_CR)"
 
 #: ../mousepad/mousepad-window.c:485
 msgid "Set the line ending of the document to Mac (CR)"
-msgstr "Ustawia kodowanie ostatniego wiersza dokumentu na Mac (CR)"
+msgstr "Ustala kodowanie końca wiersza typowe dla systemów Mac (CR)"
 
 #: ../mousepad/mousepad-window.c:486
 msgid "DOS / Windows (C_R LF)"
@@ -970,7 +972,8 @@ msgstr "DOS / Windows (C_R LF)"
 
 #: ../mousepad/mousepad-window.c:486
 msgid "Set the line ending of the document to DOS / Windows (CR LF)"
-msgstr "Ustawia kodowanie ostatniego wiersza dokumentu na DOS / Windows (CR LF)"
+msgstr ""
+"Ustawia kodowanie ostatniego wiersza dokumentu na DOS / Windows (CR LF)"
 
 #. add the label with the root warning
 #: ../mousepad/mousepad-window.c:662
@@ -1031,7 +1034,7 @@ msgstr "Brak danych w schowku"
 
 #: ../mousepad/mousepad-window.c:3222
 msgid "Turn off color schemes"
-msgstr "Wyłącza układy kolorów"
+msgstr "Wyłącza style kolorów"
 
 #: ../mousepad/mousepad-window.c:3303
 msgid "No filetype"
