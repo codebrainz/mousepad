@@ -3,13 +3,14 @@
 # This file is distributed under the same license as the PACKAGE package.
 # Karim Oulad Chalha <herr.linux88@gmail.com>, 2012.
 # mohammad <malham1@gmail.com>, 2012.
+# محمد الحرقان <malham1@gmail.com>, 2012.
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-07-06 08:51+0000\n"
-"PO-Revision-Date: 2012-07-06 20:12+0300\n"
-"Last-Translator: mohammad <malham1@gmail.com>\n"
+"POT-Creation-Date: 2012-11-11 02:24+0000\n"
+"PO-Revision-Date: 2012-11-11 06:53+0300\n"
+"Last-Translator: محمد الحرقان <malham1@gmail.com>\n"
 "Language-Team: http://www.vertaal.com.ar/files/factory/ar/list/\n"
 "Language: ar\n"
 "MIME-Version: 1.0\n"
@@ -25,7 +26,7 @@ msgstr "عدم التسجيل مع جلسة D-BUS رسالة bus"
 
 #: ../mousepad/main.c:54
 msgid "Quit a running Mousepad instance"
-msgstr "الخروج من Mousepad مُشغل الآخر"
+msgstr "الخروج من Mousepad المُشغلة الآخرى"
 
 #: ../mousepad/main.c:56
 msgid "Print version information and exit"
@@ -34,7 +35,7 @@ msgstr "طباعة معلومات الإصدار والخروج"
 #. default application name
 #: ../mousepad/main.c:80 ../Mousepad.desktop.in.in.h:1
 msgid "Mousepad"
-msgstr "Mousepad"
+msgstr "لوحة الفارة"
 
 #. initialize gtk+
 #: ../mousepad/main.c:92
@@ -53,7 +54,7 @@ msgstr "فريق تطوير إكسفس . كل الحقوق محفوظة."
 #: ../mousepad/main.c:116
 #, c-format
 msgid "Please report bugs to <%s>."
-msgstr "الرجاء الإبلاغ عن الخلل إلى <%s>."
+msgstr "الرجاء الإبلاغ عن علة إلى <%s>."
 
 #: ../mousepad/mousepad-dialogs.c:41
 msgid "Mousepad is a fast text editor for the Xfce Desktop Environment."
@@ -66,7 +67,7 @@ msgstr "Karim Oulad Chalha كريم اولاد الشلحة Mohamed Al Hargan م
 #. display an error message to the user
 #: ../mousepad/mousepad-dialogs.c:125
 msgid "Failed to open the documentation browser"
-msgstr "فشل فتح متصفح التوثيق"
+msgstr "فشل فتح متصفح الوثائق"
 
 #. build dialog
 #: ../mousepad/mousepad-dialogs.c:143
@@ -172,7 +173,7 @@ msgstr "آخر:"
 
 #: ../mousepad/mousepad-encoding-dialog.c:180
 msgid "Checking encodings..."
-msgstr "التحقق من الترميزات..."
+msgstr "التحقق من الترميز..."
 
 #. west european
 #: ../mousepad/mousepad-encoding.c:35
@@ -300,7 +301,7 @@ msgstr "تسلسل بايت غير صالح في مدخلات التحويل"
 #: ../mousepad/mousepad-file.c:875
 #, c-format
 msgid "The file \"%s\" you tried to reload does not exist anymore"
-msgstr "الملف \"%s\" الذي تحاول تحميله الملف لم يعد موجوداً"
+msgstr "الملف \"%s\" الذي تحاول تحميله لم يعد موجوداً"
 
 #: ../mousepad/mousepad-file.c:916
 #, c-format
@@ -498,13 +499,14 @@ msgstr "سطر: %d عمود: %d"
 msgid ""
 "Unable to create base directory \"%s\". Saving to file \"%s\" will be "
 "aborted."
-msgstr "غير قادر على إنشاء المجلد الأساسي \"%s\". الملف \"%s\" سيتم إحباط حفظه."
+msgstr ""
+"غير قادر على إنشاء المجلد الأساسي \"%s\". الملف \"%s\" سيتم إحباط حفظه."
 
 #. print error
 #: ../mousepad/mousepad-util.c:618
 #, c-format
 msgid "Failed to store the preferences to \"%s\": %s"
-msgstr "فشل لتخزين تفضيلات إلى \"%s\": %s"
+msgstr "فشل تخزين التفضيلات إلى \"%s\": %s"
 
 #: ../mousepad/mousepad-window.c:402
 msgid "_File"
@@ -604,7 +606,7 @@ msgstr "اغلاق علامة التبويب"
 
 #: ../mousepad/mousepad-window.c:416
 msgid "Close the current document"
-msgstr "أغلق المستند الحالي."
+msgstr "أغلق المستند الحالي"
 
 #: ../mousepad/mousepad-window.c:417
 msgid "_Close Window"
@@ -708,7 +710,7 @@ msgstr "_عرض"
 
 #: ../mousepad/mousepad-window.c:437
 msgid "Select F_ont..."
-msgstr "انتقي خط..."
+msgstr "حدد خط..."
 
 #: ../mousepad/mousepad-window.c:437
 msgid "Change the editor font"
@@ -774,8 +776,7 @@ msgstr "_المسافات إلى علامات تبويب"
 msgid ""
 "Convert all the leading spaces to tabs in the selected line(s) or document"
 msgstr ""
-"تحويل كافة المسافات البادئة إلى علامات تبويب في الأسطر (s) المحددة أو "
-"الوثيقة"
+"تحويل كافة المسافات البادئة إلى علامات تبويب في الأسطر (s) المحددة أو الوثيقة"
 
 #: ../mousepad/mousepad-window.c:448
 msgid "St_rip Trailing Spaces"
