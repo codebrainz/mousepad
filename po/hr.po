@@ -7,18 +7,18 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mousepad\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-07-03 22:00+0000\n"
+"POT-Creation-Date: 2012-11-14 16:00+0000\n"
 "PO-Revision-Date: 2012-05-06 00:21+0100\n"
 "Last-Translator: Ivica Kolić <ikoli@yahoo.com>\n"
 "Language-Team: Croatian <ikoli@yahoo.com>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-Country: CROATIA\n"
 "Language: \n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 "X-Poedit-Language: Croatian\n"
 "X-Poedit-SourceCharset: utf-8\n"
-"X-Poedit-Country: CROATIA\n"
 
 #: ../mousepad/main.c:53
 msgid "Do not register with the D-BUS session message bus"
@@ -308,7 +308,7 @@ msgstr "Datoteka \"%s\" koju ste pokušali ponovno učitati više ne postoji"
 #: ../mousepad/mousepad-file.c:916
 #, c-format
 msgid "Failed to read the status of \"%s\""
-msgstr ""
+msgstr "Neuspjelo čitanje statusa \"%s\""
 
 #. set a custom tab label
 #: ../mousepad/mousepad-print.c:125
@@ -365,7 +365,7 @@ msgstr "Tijelo:"
 
 #: ../mousepad/mousepad-print.c:729
 msgid "Line numbers:"
-msgstr ""
+msgstr "Brojevi redaka:"
 
 #. set dialog properties
 #: ../mousepad/mousepad-replace-dialog.c:167
@@ -383,7 +383,7 @@ msgstr "_Traži:"
 
 #: ../mousepad/mousepad-replace-dialog.c:213
 msgid "Replace _with:"
-msgstr ""
+msgstr "Zamjeni _sa:"
 
 #: ../mousepad/mousepad-replace-dialog.c:233
 msgid "Search _direction:"
@@ -529,7 +529,7 @@ msgstr "Napravi novi dokument u novom prozoru"
 
 #: ../mousepad/mousepad-window.c:405
 msgid "New From Te_mplate"
-msgstr ""
+msgstr "Novi iz pred_loška"
 
 #: ../mousepad/mousepad-window.c:406
 msgid "_Open..."
@@ -565,7 +565,7 @@ msgstr "Spremi _kao..."
 
 #: ../mousepad/mousepad-window.c:411
 msgid "Save current document as another file"
-msgstr ""
+msgstr "Spremi trenutni dokument kao drugu datoteku"
 
 #: ../mousepad/mousepad-window.c:412
 msgid "Save A_ll"
@@ -685,7 +685,7 @@ msgstr "Nađi _slijedeće"
 
 #: ../mousepad/mousepad-window.c:432
 msgid "Search forwards for the same text"
-msgstr ""
+msgstr "Traži naprijed za isti tekst"
 
 #: ../mousepad/mousepad-window.c:433
 msgid "Find _Previous"
@@ -693,7 +693,7 @@ msgstr "Nađi _prethodno"
 
 #: ../mousepad/mousepad-window.c:433
 msgid "Search backwards for the same text"
-msgstr ""
+msgstr "Traži unazad za isti tekst"
 
 #: ../mousepad/mousepad-window.c:434
 msgid "Find and Rep_lace..."
@@ -794,7 +794,7 @@ msgstr ""
 
 #: ../mousepad/mousepad-window.c:450
 msgid "_Move Selection"
-msgstr ""
+msgstr "_Premjesti odabir"
 
 #: ../mousepad/mousepad-window.c:451
 msgid "Line _Up"
@@ -802,7 +802,7 @@ msgstr ""
 
 #: ../mousepad/mousepad-window.c:451
 msgid "Move the selection one line up"
-msgstr ""
+msgstr "Pomakni odabir jedan redak gore"
 
 #: ../mousepad/mousepad-window.c:452
 msgid "Line _Down"
@@ -810,7 +810,7 @@ msgstr ""
 
 #: ../mousepad/mousepad-window.c:452
 msgid "Move the selection one line down"
-msgstr ""
+msgstr "Pomakni odabir jedan redak dolje"
 
 #: ../mousepad/mousepad-window.c:453
 msgid "D_uplicate Line / Selection"
@@ -878,7 +878,7 @@ msgstr "_Idi na..."
 
 #: ../mousepad/mousepad-window.c:465
 msgid "Go to a specific location in the document"
-msgstr ""
+msgstr "Idi na određenu lokaciju u dokumentu"
 
 #: ../mousepad/mousepad-window.c:467
 msgid "_Help"
@@ -1034,7 +1034,7 @@ msgstr ""
 #. set error message
 #: ../mousepad/mousepad-window.c:3510
 msgid "Templates should be UTF-8 valid"
-msgstr ""
+msgstr "Predlošci bi trebali biti UTF-8 valjani"
 
 #. set error message
 #: ../mousepad/mousepad-window.c:3518
@@ -1044,7 +1044,7 @@ msgstr ""
 #. set error message
 #: ../mousepad/mousepad-window.c:3523
 msgid "Loading the template failed"
-msgstr ""
+msgstr "Neuspjelo učitavanje predloška"
 
 #. create new file chooser dialog
 #: ../mousepad/mousepad-window.c:3548
