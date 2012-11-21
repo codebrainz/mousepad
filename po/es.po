@@ -57,14 +57,11 @@ msgstr "Informe de errores en <%s>."
 
 #: ../mousepad/mousepad-dialogs.c:41
 msgid "Mousepad is a fast text editor for the Xfce Desktop Environment."
-msgstr ""
-"Mousepad es un editor de txto veloz para el entorno de escritorio Xfce."
+msgstr "Mousepad es un editor de txto veloz para el entorno de escritorio Xfce."
 
 #: ../mousepad/mousepad-dialogs.c:50
 msgid "translator-credits"
-msgstr ""
-"Creditos de traducción\n"
-"Pablo Lezaeta <prflr88gmail.com>"
+msgstr "Pablo Lezaeta <prflr88@gmail.com>"
 
 #. display an error message to the user
 #: ../mousepad/mousepad-dialogs.c:125
@@ -225,7 +222,7 @@ msgstr "Cirílico/Ruso"
 
 #: ../mousepad/mousepad-encoding.c:58
 msgid "Cyrillic/Ukrainian"
-msgstr "Círilico/Ucraniano"
+msgstr "Cirílico/Ucraniano"
 
 #: ../mousepad/mousepad-encoding.c:59
 msgid "Romanian"
