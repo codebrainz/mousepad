@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mousepad master\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-08-09 11:24+0000\n"
+"POT-Creation-Date: 2012-11-25 03:27+0000\n"
 "PO-Revision-Date: 2012-07-11 18:28+0800\n"
 "Last-Translator: Cheng-Chia Tseng <pswo10680@gmail.com>\n"
 "Language-Team: chinese-l10n <chinese-l10n@googlegroups.com>\n"
@@ -42,11 +42,11 @@ msgstr ""
 #. no error message, the gui initialization failed
 #: ../mousepad/main.c:98
 msgid "Failed to open display."
-msgstr ""
+msgstr "未能開啟顯示。"
 
 #: ../mousepad/main.c:115
 msgid "The Xfce development team. All rights reserved."
-msgstr ""
+msgstr "Xfce 開發團隊。著作權所有。"
 
 #: ../mousepad/main.c:116
 #, c-format
@@ -64,12 +64,12 @@ msgstr ""
 #. display an error message to the user
 #: ../mousepad/mousepad-dialogs.c:125
 msgid "Failed to open the documentation browser"
-msgstr ""
+msgstr "未能開啟說明文件瀏覽器"
 
 #. build dialog
 #: ../mousepad/mousepad-dialogs.c:143
 msgid "Select Tab Size"
-msgstr ""
+msgstr "選取 Tab 的大小"
 
 #. build the dialog
 #: ../mousepad/mousepad-dialogs.c:224
@@ -209,15 +209,15 @@ msgstr "中歐語系"
 #: ../mousepad/mousepad-encoding.c:54 ../mousepad/mousepad-encoding.c:55
 #: ../mousepad/mousepad-encoding.c:56
 msgid "Cyrillic"
-msgstr ""
+msgstr "西里爾字母"
 
 #: ../mousepad/mousepad-encoding.c:57
 msgid "Cyrillic/Russian"
-msgstr ""
+msgstr "西里爾字母/俄文"
 
 #: ../mousepad/mousepad-encoding.c:58
 msgid "Cyrillic/Ukrainian"
-msgstr ""
+msgstr "西里爾字母/烏克蘭文"
 
 #: ../mousepad/mousepad-encoding.c:59
 msgid "Romanian"
@@ -304,7 +304,7 @@ msgstr ""
 #: ../mousepad/mousepad-file.c:916
 #, c-format
 msgid "Failed to read the status of \"%s\""
-msgstr ""
+msgstr "未能讀取 \"%s\" 的狀態"
 
 #. set a custom tab label
 #: ../mousepad/mousepad-print.c:125
@@ -341,7 +341,7 @@ msgstr ""
 
 #: ../mousepad/mousepad-print.c:674
 msgid "Enable text _wrapping"
-msgstr ""
+msgstr "啟用文字換行(_W)"
 
 #: ../mousepad/mousepad-print.c:681
 msgid "Enable _syntax highlighting"
@@ -499,7 +499,7 @@ msgstr ""
 #: ../mousepad/mousepad-util.c:618
 #, c-format
 msgid "Failed to store the preferences to \"%s\": %s"
-msgstr ""
+msgstr "未能將偏好設定儲存至 \"%s\": %s"
 
 #: ../mousepad/mousepad-window.c:402
 msgid "_File"
@@ -880,7 +880,7 @@ msgstr "求助(_H)"
 
 #: ../mousepad/mousepad-window.c:468
 msgid "_Contents"
-msgstr ""
+msgstr "目錄(_C)"
 
 #: ../mousepad/mousepad-window.c:468
 msgid "Display the Mousepad user manual"
