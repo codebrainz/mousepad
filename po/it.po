@@ -102,7 +102,7 @@ msgstr ""
 
 #: ../mousepad/mousepad-dialogs.c:362
 msgid "Do you want to save the changes before closing?"
-msgstr "Vuoi salvare le modifiche prima di uscire?"
+msgstr "Salvare le modifiche prima di uscire?"
 
 #: ../mousepad/mousepad-dialogs.c:363
 msgid "Save Changes"
@@ -506,7 +506,7 @@ msgstr ""
 #: ../mousepad/mousepad-util.c:618
 #, c-format
 msgid "Failed to store the preferences to \"%s\": %s"
-msgstr "Impossibile nel salvare le preferenze su \"%s\": %s"
+msgstr "Impossibile salvare le preferenze su \"%s\": %s"
 
 #: ../mousepad/mousepad-window.c:402
 msgid "_File"
