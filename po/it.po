@@ -60,7 +60,9 @@ msgstr "Mousepad è un editor di testo veloce per "
 
 #: ../mousepad/mousepad-dialogs.c:50
 msgid "translator-credits"
-msgstr "Riconoscimenti-traduttore"
+msgstr ""
+"Salvatore Caputo, <salvatorexfce@gmail.com> 2012\r\n"
+"Cristian Marchi, <cri.penta@gmail.com> 2012"
 
 #. display an error message to the user
 #: ../mousepad/mousepad-dialogs.c:125
