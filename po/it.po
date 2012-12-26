@@ -52,7 +52,7 @@ msgstr "Il team di sviluppo Xfce. Tutti i diritti riservati."
 #: ../mousepad/main.c:116
 #, c-format
 msgid "Please report bugs to <%s>."
-msgstr "Per favore riporta errori a <%s>."
+msgstr "Segnalare eventuali errori a <%s>."
 
 #: ../mousepad/mousepad-dialogs.c:41
 msgid "Mousepad is a fast text editor for the Xfce Desktop Environment."
