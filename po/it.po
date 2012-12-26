@@ -714,7 +714,7 @@ msgstr "Seleziona C_arattere"
 
 #: ../mousepad/mousepad-window.c:437
 msgid "Change the editor font"
-msgstr "Cambia l'editor dei caratteri"
+msgstr "Cambia il carattere dell'editor"
 
 #: ../mousepad/mousepad-window.c:438
 msgid "_Color Scheme"
@@ -734,7 +734,7 @@ msgstr "in _maiuscole"
 
 #: ../mousepad/mousepad-window.c:442
 msgid "Change the case of the selection to uppercase"
-msgstr "Cambia lo stile della selezione in maiuscole"
+msgstr "Trasforma la selezione in lettere maiuscole"
 
 #: ../mousepad/mousepad-window.c:443
 msgid "to _Lowercase"
@@ -742,7 +742,7 @@ msgstr "in mi_nuscole"
 
 #: ../mousepad/mousepad-window.c:443
 msgid "Change the case of the selection to lowercase"
-msgstr "Cambia lo stile della selezione in minuscole"
+msgstr "Trasforma la selezione in lettere minuscole"
 
 #: ../mousepad/mousepad-window.c:444
 msgid "to _Title Case"
