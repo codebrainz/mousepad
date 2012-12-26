@@ -698,7 +698,7 @@ msgstr "Cerca indietro per lo stesso testo"
 
 #: ../mousepad/mousepad-window.c:434
 msgid "Find and Rep_lace..."
-msgstr "Trova e Sos_tituisci"
+msgstr "Trova e sos_tituisci"
 
 #: ../mousepad/mousepad-window.c:434
 msgid "Search for and replace text"
@@ -710,7 +710,7 @@ msgstr "_Visualizza"
 
 #: ../mousepad/mousepad-window.c:437
 msgid "Select F_ont..."
-msgstr "Seleziona C_arattere"
+msgstr "Seleziona c_arattere..."
 
 #: ../mousepad/mousepad-window.c:437
 msgid "Change the editor font"
@@ -846,7 +846,7 @@ msgstr "_Documento"
 
 #: ../mousepad/mousepad-window.c:458
 msgid "Line E_nding"
-msgstr "Riga F_inale"
+msgstr "Riga f_inale"
 
 #: ../mousepad/mousepad-window.c:459
 msgid "Tab _Size"
@@ -942,7 +942,7 @@ msgstr "Attiva/disattiva l'inserimento del fine riga tra le parole"
 
 #: ../mousepad/mousepad-window.c:479
 msgid "Write Unicode _BOM"
-msgstr "Scrivi Unicode _BOM"
+msgstr "Scrivi _BOM Unicode"
 
 #: ../mousepad/mousepad-window.c:479
 msgid "Store the byte-order mark in the file"
