@@ -91,7 +91,7 @@ msgstr "Rimuovere tutte le voci dalla cronologia dei documenti?"
 
 #: ../mousepad/mousepad-dialogs.c:328
 msgid "Clear Documents History"
-msgstr "Pulisci cronologia documenti"
+msgstr "Svuota la cronologia dei documenti"
 
 #: ../mousepad/mousepad-dialogs.c:331
 msgid ""
@@ -554,7 +554,7 @@ msgstr "Pulisci _cronologia"
 
 #: ../mousepad/mousepad-window.c:409
 msgid "Clear the recently used files history"
-msgstr "Pulisci la cronologia dei file usati recentemente"
+msgstr "Svuota la cronologia dei file usati recentemente"
 
 #: ../mousepad/mousepad-window.c:410
 msgid "Save the current document"
@@ -1017,7 +1017,7 @@ msgstr "Codifica caratteri"
 #: ../mousepad/mousepad-window.c:2580
 #, c-format
 msgid "Open '%s'"
-msgstr "Apri '%s'"
+msgstr "Apre '%s'"
 
 #: ../mousepad/mousepad-window.c:2727
 msgid "Failed to clear the recent history"
