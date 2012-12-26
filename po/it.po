@@ -176,7 +176,7 @@ msgstr "Altro:"
 
 #: ../mousepad/mousepad-encoding-dialog.c:180
 msgid "Checking encodings..."
-msgstr "Controllo codifiche..."
+msgstr "Controllo codifiche in corso..."
 
 #. west european
 #: ../mousepad/mousepad-encoding.c:35
@@ -698,7 +698,7 @@ msgstr "Cerca indietro per lo stesso testo"
 
 #: ../mousepad/mousepad-window.c:434
 msgid "Find and Rep_lace..."
-msgstr "Trova e sos_tituisci"
+msgstr "Trova e sos_tituisci..."
 
 #: ../mousepad/mousepad-window.c:434
 msgid "Search for and replace text"
