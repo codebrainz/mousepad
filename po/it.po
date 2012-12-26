@@ -20,7 +20,7 @@ msgstr ""
 
 #: ../mousepad/main.c:53
 msgid "Do not register with the D-BUS session message bus"
-msgstr ""
+msgstr "Non registra con il messaggio bus di sessione D-BUS"
 
 #: ../mousepad/main.c:54
 msgid "Quit a running Mousepad instance"
@@ -28,7 +28,7 @@ msgstr "Chiude un'istanza di Mousepad"
 
 #: ../mousepad/main.c:56
 msgid "Print version information and exit"
-msgstr "Mostra informazioni sulla versione e esci"
+msgstr "Mostra informazioni sulla versione ed esce"
 
 #. default application name
 #: ../mousepad/main.c:80 ../Mousepad.desktop.in.in.h:1
@@ -838,7 +838,7 @@ msgstr "_Diminuisci rientro"
 
 #: ../mousepad/mousepad-window.c:455
 msgid "Decrease the indentation of the selection or current line"
-msgstr "Diminuisci il rientro della selezione o della riga corrente"
+msgstr "Diminuisce il rientro della selezione o della riga corrente"
 
 #: ../mousepad/mousepad-window.c:457
 msgid "_Document"
@@ -938,7 +938,7 @@ msgstr "_A capo automatico"
 
 #: ../mousepad/mousepad-window.c:478
 msgid "Toggle breaking lines in between words"
-msgstr ""
+msgstr "Attiva/disattiva l'inserimento del fine riga tra le parole"
 
 #: ../mousepad/mousepad-window.c:479
 msgid "Write Unicode _BOM"
