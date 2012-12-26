@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mousepad 0.2.16\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-12-26 08:27+0000\n"
+"POT-Creation-Date: 2012-12-26 13:48+0000\n"
 "PO-Revision-Date: 2012-09-06 12:31+0100\n"
 "Last-Translator: salvatorexfce <salvatorexfce@gmail.com>\n"
 "Language-Team: italian <xfce-it-translators@googlegroups.com>\n"
@@ -24,7 +24,7 @@ msgstr ""
 
 #: ../mousepad/main.c:54
 msgid "Quit a running Mousepad instance"
-msgstr "Chiudi un'istanza di Mousepad"
+msgstr "Chiude un'istanza di Mousepad"
 
 #: ../mousepad/main.c:56
 msgid "Print version information and exit"
@@ -70,7 +70,7 @@ msgstr "Impossibile aprire l'esploratore della documentazione"
 #. build dialog
 #: ../mousepad/mousepad-dialogs.c:143
 msgid "Select Tab Size"
-msgstr "Seleziona la dimensione della scheda"
+msgstr "Seleziona la dimensione della tabulazione"
 
 #. build the dialog
 #: ../mousepad/mousepad-dialogs.c:224
@@ -145,7 +145,7 @@ msgstr ""
 #. pack button, add signal and tooltip
 #: ../mousepad/mousepad-document.c:591
 msgid "Close this tab"
-msgstr "Chiudi questa scheda"
+msgstr "Chiude questa scheda"
 
 #. create an unique untitled document name
 #: ../mousepad/mousepad-document.c:626
@@ -241,9 +241,8 @@ msgid "Hebrew"
 msgstr "Ebreo"
 
 #: ../mousepad/mousepad-encoding.c:68
-#, fuzzy
 msgid "Hebrew Visual"
-msgstr "Ebreo Visuale"
+msgstr "Ebreo visuale"
 
 #. asian
 #: ../mousepad/mousepad-encoding.c:71
@@ -411,7 +410,7 @@ msgstr "Sensi_bile alle maiuscole"
 #. match whole word
 #: ../mousepad/mousepad-replace-dialog.c:260
 msgid "_Match whole word"
-msgstr "_Confronta le seguenti parole"
+msgstr "_Corrisponde all'intera parola"
 
 #: ../mousepad/mousepad-replace-dialog.c:271
 msgid "Replace _all in:"
@@ -458,11 +457,11 @@ msgstr "Evidenzia _tutto"
 
 #: ../mousepad/mousepad-search-bar.c:243 ../mousepad/mousepad-search-bar.c:250
 msgid "Mat_ch Case"
-msgstr "Con_fronta casi"
+msgstr "_Maiuscole/minuscole"
 
 #: ../mousepad/mousepad-statusbar.c:141
 msgid "Choose a filetype"
-msgstr "Scegli un formato file"
+msgstr "Scelta del formato file"
 
 #. language/filetype
 #: ../mousepad/mousepad-statusbar.c:146 ../mousepad/mousepad-statusbar.c:258
@@ -523,7 +522,7 @@ msgstr "Crea nuovo documento"
 
 #: ../mousepad/mousepad-window.c:404
 msgid "New _Window"
-msgstr "Nuova_finestra"
+msgstr "Nuova _finestra"
 
 #: ../mousepad/mousepad-window.c:404
 msgid "Create a new document in a new window"
@@ -539,7 +538,7 @@ msgstr "_Apri..."
 
 #: ../mousepad/mousepad-window.c:406
 msgid "Open a file"
-msgstr "Apri un file"
+msgstr "Apre un file"
 
 #: ../mousepad/mousepad-window.c:407
 msgid "Op_en Recent"
@@ -567,15 +566,15 @@ msgstr "Salva _come..."
 
 #: ../mousepad/mousepad-window.c:411
 msgid "Save current document as another file"
-msgstr "Salva il documento corrente come altro file"
+msgstr "Salva il documento corrente come un altro file"
 
 #: ../mousepad/mousepad-window.c:412
 msgid "Save A_ll"
-msgstr "Salva T_utto"
+msgstr "Salva t_utto"
 
 #: ../mousepad/mousepad-window.c:412
 msgid "Save all document in this window"
-msgstr "Salva tutto il documento in questa finestra"
+msgstr "Salva tutti i documenti in questa finestra"
 
 #: ../mousepad/mousepad-window.c:413
 msgid "Re_vert"
@@ -591,7 +590,7 @@ msgstr "_Stampa..."
 
 #: ../mousepad/mousepad-window.c:414
 msgid "Print the current document"
-msgstr "Stampa il documento attuale"
+msgstr "Stampa il documento corrente"
 
 #: ../mousepad/mousepad-window.c:415
 msgid "_Detach Tab"
@@ -599,7 +598,7 @@ msgstr "_Stacca scheda"
 
 #: ../mousepad/mousepad-window.c:415
 msgid "Move the current document to a new window"
-msgstr "Sposta il documento attuale in una nuova finestra"
+msgstr "Sposta il documento corrente in una nuova finestra"
 
 #: ../mousepad/mousepad-window.c:416
 msgid "Close _Tab"
@@ -607,7 +606,7 @@ msgstr "Chiudi _scheda"
 
 #: ../mousepad/mousepad-window.c:416
 msgid "Close the current document"
-msgstr "Chiudi il documento attuale"
+msgstr "Chiude il documento corrente"
 
 #: ../mousepad/mousepad-window.c:417
 msgid "_Close Window"
@@ -615,7 +614,7 @@ msgstr "_Chiudi finestra"
 
 #: ../mousepad/mousepad-window.c:417
 msgid "Close this window"
-msgstr "Chiudi questa finestra"
+msgstr "Chiude questa finestra"
 
 #: ../mousepad/mousepad-window.c:419
 msgid "_Edit"
@@ -655,7 +654,7 @@ msgstr "Incolla dalla cronologia degli appunti"
 
 #: ../mousepad/mousepad-window.c:427
 msgid "Paste as _Column"
-msgstr "Copia come _colonna"
+msgstr "Incolla come _colonna"
 
 #: ../mousepad/mousepad-window.c:427
 msgid "Paste the clipboard text into a column"
@@ -731,7 +730,7 @@ msgstr "_Converti"
 
 #: ../mousepad/mousepad-window.c:442
 msgid "to _Uppercase"
-msgstr "a _maiuscole"
+msgstr "in _maiuscole"
 
 #: ../mousepad/mousepad-window.c:442
 msgid "Change the case of the selection to uppercase"
@@ -739,7 +738,7 @@ msgstr "Cambia lo stile della selezione in maiuscole"
 
 #: ../mousepad/mousepad-window.c:443
 msgid "to _Lowercase"
-msgstr "a _minuscole"
+msgstr "in mi_nuscole"
 
 #: ../mousepad/mousepad-window.c:443
 msgid "Change the case of the selection to lowercase"
@@ -747,7 +746,7 @@ msgstr "Cambia lo stile della selezione in minuscole"
 
 #: ../mousepad/mousepad-window.c:444
 msgid "to _Title Case"
-msgstr "a stile _titolo"
+msgstr "in stile _titolo"
 
 #: ../mousepad/mousepad-window.c:444
 msgid "Change the case of the selection to title case"
@@ -755,7 +754,7 @@ msgstr "Cambia lo stile della selezione in stile titolo"
 
 #: ../mousepad/mousepad-window.c:445
 msgid "to _Opposite Case"
-msgstr "a _maiuscole/minuscole"
+msgstr "in maiusc_ole/minuscole"
 
 #: ../mousepad/mousepad-window.c:445
 msgid "Change the case of the selection opposite case"
@@ -791,11 +790,11 @@ msgstr ""
 
 #: ../mousepad/mousepad-window.c:449
 msgid "_Transpose"
-msgstr "_Sposta"
+msgstr "_Trasponi"
 
 #: ../mousepad/mousepad-window.c:449
 msgid "Reverse the order of something"
-msgstr "Inverti l'ordine di qualcosa"
+msgstr "Inverte l'ordine di qualcosa"
 
 #: ../mousepad/mousepad-window.c:450
 msgid "_Move Selection"
@@ -823,7 +822,7 @@ msgstr "D_uplica riga / Selezione"
 
 #: ../mousepad/mousepad-window.c:453
 msgid "Duplicate the current line or selection"
-msgstr "Duplica la riga o la selezione attuale"
+msgstr "Duplica la riga corrente o la selezione"
 
 #: ../mousepad/mousepad-window.c:454
 msgid "_Increase Indent"
@@ -831,7 +830,7 @@ msgstr "_Aumenta rientro"
 
 #: ../mousepad/mousepad-window.c:454
 msgid "Increase the indentation of the selection or current line"
-msgstr "Aumenta il rientro della selezione o della riga attuale"
+msgstr "Aumenta il rientro della selezione o della riga corrente"
 
 #: ../mousepad/mousepad-window.c:455
 msgid "_Decrease Indent"
@@ -851,7 +850,7 @@ msgstr "Riga F_inale"
 
 #: ../mousepad/mousepad-window.c:459
 msgid "Tab _Size"
-msgstr "_Dimensione scheda"
+msgstr "_Dimensione tabulazione"
 
 #: ../mousepad/mousepad-window.c:460
 msgid "_Filetype"
@@ -883,7 +882,7 @@ msgstr "_Vai a..."
 
 #: ../mousepad/mousepad-window.c:465
 msgid "Go to a specific location in the document"
-msgstr "Vai ad una specifica posizione nel documento"
+msgstr "Va a una specifica posizione nel documento"
 
 #: ../mousepad/mousepad-window.c:467
 msgid "_Help"
@@ -907,7 +906,7 @@ msgstr "N_umero righe"
 
 #: ../mousepad/mousepad-window.c:474
 msgid "Show line numbers"
-msgstr "Mostra numero righe"
+msgstr "Mostra il numero delle righe"
 
 #: ../mousepad/mousepad-window.c:475
 msgid "St_atusbar"
@@ -923,7 +922,7 @@ msgstr "Rientro _automatico"
 
 #: ../mousepad/mousepad-window.c:476
 msgid "Auto indent a new line"
-msgstr "Rientro automatico in una nuova riga"
+msgstr "Indenta automaticamente una nuova riga"
 
 #: ../mousepad/mousepad-window.c:477
 msgid "Insert _Spaces"
@@ -996,7 +995,7 @@ msgstr "Nessuno"
 #. create other action
 #: ../mousepad/mousepad-window.c:2084
 msgid "Set custom tab size"
-msgstr "Imposta dimensione personalizzata scheda"
+msgstr "Imposta una dimensione personalizzata della tabulazione"
 
 #. create suitable label for the other menu
 #: ../mousepad/mousepad-window.c:2132
@@ -1093,7 +1092,7 @@ msgstr "Impossibile stampare il documento"
 
 #: ../mousepad/mousepad-window.c:4424
 msgid "Choose Mousepad Font"
-msgstr "Scegli carattere Mousepad"
+msgstr "Scelta del carattere di Mousepad"
 
 #: ../Mousepad.desktop.in.in.h:2
 msgid "Simple Text Editor"
