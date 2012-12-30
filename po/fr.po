@@ -475,9 +475,8 @@ msgid "Filetype: None"
 msgstr "Type de fichier : Aucun"
 
 #: ../mousepad/mousepad-statusbar.c:169
-#, fuzzy
 msgid "Toggle the overwrite mode"
-msgstr "Basculer le mode d'écrasement"
+msgstr "Basculer vers le mode d'écrasement"
 
 #. overwrite label
 #: ../mousepad/mousepad-statusbar.c:174
@@ -501,7 +500,7 @@ msgstr "Ligne : %d Colonne : %d"
 
 #. show warning to the user
 #: ../mousepad/mousepad-util.c:572
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "Unable to create base directory \"%s\". Saving to file \"%s\" will be "
 "aborted."
@@ -725,9 +724,8 @@ msgid "Change the editor font"
 msgstr "Modifier la police de l'éditeur"
 
 #: ../mousepad/mousepad-window.c:438
-#, fuzzy
 msgid "_Color Scheme"
-msgstr "Jeu de couleurs"
+msgstr "Schéma de _couleurs"
 
 #: ../mousepad/mousepad-window.c:440
 msgid "_Text"
@@ -951,14 +949,12 @@ msgid "Toggle breaking lines in between words"
 msgstr "Basculer les lignes de rupture entre les mots"
 
 #: ../mousepad/mousepad-window.c:479
-#, fuzzy
 msgid "Write Unicode _BOM"
-msgstr "Ecrire Unicode _BOM"
+msgstr "Ecrire l'Unicode _BOM"
 
 #: ../mousepad/mousepad-window.c:479
-#, fuzzy
 msgid "Store the byte-order mark in the file"
-msgstr "Ranger la marque d'ordre octet dans le fichier"
+msgstr "Ranger la marque d'ordre d'octet dans le fichier"
 
 #: ../mousepad/mousepad-window.c:484
 msgid "Unix (_LF)"
@@ -1042,9 +1038,8 @@ msgid "No clipboard data"
 msgstr "Pas de donnée du presse-papiers"
 
 #: ../mousepad/mousepad-window.c:3219
-#, fuzzy
 msgid "Turn off color schemes"
-msgstr "Annuler les jeux de couleur"
+msgstr "Annuler les schémas de couleurs"
 
 #: ../mousepad/mousepad-window.c:3300
 msgid "No filetype"
