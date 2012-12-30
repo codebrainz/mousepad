@@ -567,9 +567,6 @@ mousepad_window_init (MousepadWindow *window)
   window->active = NULL;
   window->recent_manager = NULL;
 
-  /* setup window */
-  gtk_window_set_icon_name (GTK_WINDOW (window), "accessories-text-editor");
-
   /* increase clipboard history ref count */
   clipboard_history_ref_count++;
 

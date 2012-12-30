@@ -117,10 +117,6 @@ AC_SUBST([PLATFORM_LDFLAGS])
 
 AC_OUTPUT([
 Makefile
-icons/Makefile
-icons/16x16/Makefile
-icons/24x24/Makefile
-icons/scalable/Makefile
 mousepad/Makefile
 po/Makefile.in
 ])

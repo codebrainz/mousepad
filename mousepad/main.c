@@ -168,7 +168,7 @@ main (gint argc, gchar **argv)
 #endif /* !HAVE_DBUS */
 
   /* use the Mousepad icon as default for new windows */
-  gtk_window_set_default_icon_name ("Mousepad");
+  gtk_window_set_default_icon_name ("accessories-text-editor");
 
   /* create a new mousepad application */
   application = mousepad_application_get ();
