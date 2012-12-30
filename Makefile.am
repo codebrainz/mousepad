@@ -4,7 +4,7 @@ SUBDIRS =									\
 	po
 
 distclean-local:
-	rm -rf *.spec *.cache *~
+	rm -rf *.cache *~
 
 distuninstallcheck_listfiles = 						\ 
 	find . -type f -print | grep -v ./share/icons/hicolor/icon-theme.cache
@@ -40,7 +40,6 @@ dist-hook: ChangeLog
 
 EXTRA_DIST =									\
 	MousepadHelp.in								\
-	Mousepad.spec.in							\
 	intltool-extract.in							\
 	intltool-merge.in							\
 	intltool-update.in							\
@@ -48,7 +47,6 @@ EXTRA_DIST =									\
 
 DISTCLEANFILES =								\
 	MousepadHelp								\
-	Mousepad.spec								\
 	intltool-extract							\
 	intltool-merge								\
 	intltool-update								\
