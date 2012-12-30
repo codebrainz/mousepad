@@ -72,6 +72,7 @@ main (gint argc, gchar **argv)
 
   /* bind the text domain to the locale directory */
   bindtextdomain (GETTEXT_PACKAGE, PACKAGE_LOCALE_DIR);
+  bind_textdomain_codeset (GETTEXT_PACKAGE, "UTF-8");
 
   /* set the package textdomain */
   textdomain (GETTEXT_PACKAGE);
