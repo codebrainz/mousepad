@@ -1,6 +1,5 @@
 
 [Desktop Entry]
-Encoding=UTF-8
 _Name=Mousepad
 _Comment=Simple Text Editor
 _GenericName=Text Editor
@@ -9,5 +8,5 @@ Icon=accessories-text-editor
 Terminal=false
 StartupNotify=true
 Type=Application
-Categories=Application;Utility;TextEditor;GTK;
-MimeType=text/plain
+Categories=Utility;TextEditor;GTK;
+MimeType=text/plain;
