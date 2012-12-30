@@ -9,17 +9,6 @@ distclean-local:
 distuninstallcheck_listfiles = 						\ 
 	find . -type f -print | grep -v ./share/icons/hicolor/icon-theme.cache
 
-mousepad_scriptsdir = $(libdir)/xfce4/mousepad
-mousepad_scripts_SCRIPTS =							\
-	MousepadHelp
-
-MousepadHelp: MousepadHelp.in Makefile
-	rm -f MousepadHelp.gen MousepadHelp
-	sed -e "s,\@datadir\@,$(datadir),g" 					\
-		< $(srcdir)/MousepadHelp.in					\
-		> MousepadHelp.gen
-	mv MousepadHelp.gen MousepadHelp
-
 desktopdir = $(datadir)/applications
 desktop_in_in_files = 								\
 	mousepad.desktop.in.in
@@ -39,14 +28,12 @@ ChangeLog: Makefile
 dist-hook: ChangeLog
 
 EXTRA_DIST =									\
-	MousepadHelp.in								\
 	intltool-extract.in							\
 	intltool-merge.in							\
 	intltool-update.in							\
 	$(desktop_in_in_files)
 
 DISTCLEANFILES =								\
-	MousepadHelp								\
 	intltool-extract							\
 	intltool-merge								\
 	intltool-update								\
