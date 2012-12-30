@@ -18,36 +18,9 @@
 # Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
 #
 
-HELPDIR="@datadir@/doc/Mousepad/html"
 APPLICATIONS="exo-open firefox epiphany opera galeon mozilla konqueror dillo"
 
-# try to find a language
-if test -n "$LC_ALL"; then
-  LC=$LC_ALL
-elif test -n "$LANG"; then
-  LC=$LANG
-else
-  LC="C"
-fi
-
-# set the document or use index.html
-if test -n "$1"; then
-  HELPFILE="$1.html"
-else
-  HELPFILE="index.html"
-fi
-
-# test if the file exists, fallback on the C language or the C/index.html file
-if test -r "$HELPDIR/$LC/$HELPFILE"; then
-  URL="file://$HELPDIR/$LC/$HELPFILE"
-elif test -r "$HELPDIR/`echo $LC | sed 's/\(..\)_.*/\1/'`/$HELPFILE"; then
-  URL="file://$HELPDIR/`echo $LC | sed 's/\(..\)_.*/\1/'`/$HELPFILE"
-else
-  URL="file://$HELPDIR/C/index.html"
-fi
-
-# jump to a section if provided
-[ -n "$2" ] && URL="$URL#$2"
+URL="http://docs.xfce.org"
 
 # find a suitable browser to launch if no BROWSER variable is set
 if [ "x$BROWSER" = "x" ]; then

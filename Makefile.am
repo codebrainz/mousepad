@@ -1,15 +1,13 @@
 SUBDIRS =									\
 	icons									\
 	mousepad                                                        	\
-	po                                                                      \
-	docs
+	po
 
 distclean-local:
 	rm -rf *.spec *.cache *~
 
-rpm: dist
-	rpmbuild -ta $(PACKAGE)-$(VERSION).tar.gz
-	@rm -f $(PACKAGE)-$(VERSION).tar.gz
+distuninstallcheck_listfiles = 						\ 
+	find . -type f -print | grep -v ./share/icons/hicolor/icon-theme.cache
 
 mousepad_scriptsdir = $(libdir)/xfce4/mousepad
 mousepad_scripts_SCRIPTS =							\
@@ -56,8 +54,5 @@ DISTCLEANFILES =								\
 	intltool-update								\
 	$(desktop_in_files)							\
 	$(desktop_DATA)
-
-DISTCHECK_CONFIGURE_FLAGS =							\
-	--enable-xsltproc
 
 # vi:set ts=8 sw=8 noet ai nocindent syntax=automake:
