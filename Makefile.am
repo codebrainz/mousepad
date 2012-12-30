@@ -22,7 +22,7 @@ MousepadHelp: MousepadHelp.in Makefile
 
 desktopdir = $(datadir)/applications
 desktop_in_in_files = 								\
-	Mousepad.desktop.in.in
+	mousepad.desktop.in.in
 desktop_in_files = $(desktop_in_in_files:.desktop.in.in=.desktop.in)
 %.desktop.in: %.desktop.in.in
 	sed -e "s,\@libexecdir\@,$(libexecdir),g" < $< > $@
