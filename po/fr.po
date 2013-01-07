@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mousepad 0.2.16\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-12-30 19:27+0000\n"
+"POT-Creation-Date: 2013-01-07 14:42+0000\n"
 "PO-Revision-Date: 2012-09-01 17:32+0100\n"
 "Last-Translator: \n"
 "Language-Team: français <>\n"
@@ -733,7 +733,7 @@ msgstr "_Texte"
 
 #: ../mousepad/mousepad-window.c:441
 msgid "_Convert"
-msgstr "_CModifier la police éditeuronvertir"
+msgstr "_Convertir"
 
 #: ../mousepad/mousepad-window.c:442
 msgid "to _Uppercase"
@@ -950,7 +950,7 @@ msgstr "Basculer les lignes de rupture entre les mots"
 
 #: ../mousepad/mousepad-window.c:479
 msgid "Write Unicode _BOM"
-msgstr "Ecrire l'Unicode _BOM"
+msgstr "Écrire avec l'indicateur d'ordre des octets Unicode"
 
 #: ../mousepad/mousepad-window.c:479
 msgid "Store the byte-order mark in the file"
