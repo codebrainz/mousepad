@@ -1,23 +1,22 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # Γιώργος Στεφανάκης <nonviotale@gmail.com>, 2013.
-#
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
+"Project-Id-Version: mousepad\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2013-01-18 18:12+0000\n"
-"PO-Revision-Date: 2013-01-19 20:38+0200\n"
+"PO-Revision-Date: 2013-01-20 00:40+0300\n"
 "Last-Translator: Γιώργος Στεφανάκης <nonviotale@gmail.com>\n"
-"Language-Team: Greek, Modern (1453-) <>\n"
-"Language: \n"
+"Language-Team: xfce greek translation team\n"
+"Language: el\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Gtranslator 2.91.5\n"
+"X-Generator: Virtaal 0.7.1\n"
+"X-Poedit-SourceCharset: UTF-8\n"
 
 #: ../mousepad/main.c:53
 msgid "Do not register with the D-BUS session message bus"
@@ -29,7 +28,7 @@ msgstr "Έξοδος από μια τρέχουσα συνεδρία του Mous
 
 #: ../mousepad/main.c:56
 msgid "Print version information and exit"
-msgstr ""
+msgstr "Εμφάνιση πληροφοριών έκδοσης και έξοδος"
 
 #. default application name
 #: ../mousepad/main.c:81 ../mousepad.desktop.in.in.h:1
@@ -44,7 +43,7 @@ msgstr "[ΑΡΧΕΙΑ...]"
 #. no error message, the gui initialization failed
 #: ../mousepad/main.c:101
 msgid "Failed to open display."
-msgstr ""
+msgstr "Απέτυχε το άνοιγμα της οθόνης"
 
 #: ../mousepad/main.c:118
 msgid "The Xfce development team. All rights reserved."
@@ -134,7 +133,7 @@ msgstr "Εξωτερικά τροποποιημένο"
 
 #: ../mousepad/mousepad-dialogs.c:388
 msgid "If you save the document, all of the external changes will be lost."
-msgstr ""
+msgstr "Αν δε γίνει αποθήκευση, όλες οι εξωτερικές αλλαγές θα χαθούν οριστικά."
 
 #: ../mousepad/mousepad-dialogs.c:416
 msgid "Do you want to save your changes before reloading?"
@@ -147,7 +146,7 @@ msgstr ""
 #. pack button, add signal and tooltip
 #: ../mousepad/mousepad-document.c:591
 msgid "Close this tab"
-msgstr ""
+msgstr "Κλείσιμο αυτής της καρτέλας"
 
 #. create an unique untitled document name
 #: ../mousepad/mousepad-document.c:626
@@ -157,16 +156,16 @@ msgstr "Ανώνυμο"
 #. create the header
 #: ../mousepad/mousepad-encoding-dialog.c:134
 msgid "The document was not UTF-8 valid"
-msgstr ""
+msgstr "Η κωδικοποιούμενη τιμή δεν είναι έγκυρο UTF-8 "
 
 #: ../mousepad/mousepad-encoding-dialog.c:135
 msgid "Please select an encoding below."
-msgstr ""
+msgstr "Παρακαλώ επιλέξτε μια από τις παρακάτω κωδικοποιήσεις."
 
 #. encoding radio buttons
 #: ../mousepad/mousepad-encoding-dialog.c:147
 msgid "Default (UTF-8)"
-msgstr ""
+msgstr "Προεπιλογή (UTF-8)"
 
 #: ../mousepad/mousepad-encoding-dialog.c:153
 msgid "System"
@@ -178,7 +177,7 @@ msgstr "Άλλο:"
 
 #: ../mousepad/mousepad-encoding-dialog.c:180
 msgid "Checking encodings..."
-msgstr ""
+msgstr "Έλεγχος κωδικοποιήσεων..."
 
 #. west european
 #: ../mousepad/mousepad-encoding.c:35
@@ -191,7 +190,7 @@ msgstr "Ελληνικά"
 
 #: ../mousepad/mousepad-encoding.c:38
 msgid "Nordic"
-msgstr ""
+msgstr "Νορβηγικά"
 
 #: ../mousepad/mousepad-encoding.c:39
 msgid "South European"
@@ -301,22 +300,22 @@ msgstr "Κορεατικά"
 #: ../mousepad/mousepad-file.c:556
 #, c-format
 msgid "Invalid byte sequence in conversion input"
-msgstr ""
+msgstr "Άκυρη σειρά byte στην είσοδο μετατροπής"
 
 #: ../mousepad/mousepad-file.c:875
 #, c-format
 msgid "The file \"%s\" you tried to reload does not exist anymore"
-msgstr ""
+msgstr "Το αρχείο \"%s\" που προσπαθήσατε να επαναφορτίσετε, δεν υπάρχει πλεόν"
 
 #: ../mousepad/mousepad-file.c:916
 #, c-format
 msgid "Failed to read the status of \"%s\""
-msgstr ""
+msgstr "Αποτυχία ανάγνωσης της κατάστασης του \"%s\""
 
 #. set a custom tab label
 #: ../mousepad/mousepad-print.c:125
 msgid "Document Settings"
-msgstr ""
+msgstr "Ρυθμίσεις Κειμένου"
 
 #: ../mousepad/mousepad-print.c:595
 msgid "Page Setup"
@@ -324,7 +323,7 @@ msgstr "Διαμόρφωση σελίδας"
 
 #: ../mousepad/mousepad-print.c:605
 msgid "_Adjust page size and orientation"
-msgstr ""
+msgstr "Ρύ_θμιση μεγέθους σελίδας και προσανατολισμό"
 
 #: ../mousepad/mousepad-print.c:615
 msgid "Appearance"
@@ -340,11 +339,11 @@ msgstr "Εκτύπωση αριθμών _γραμμής"
 
 #: ../mousepad/mousepad-print.c:653
 msgid "Number every"
-msgstr ""
+msgstr "Αρίθμηση κάθε"
 
 #: ../mousepad/mousepad-print.c:669
 msgid "line(s)"
-msgstr ""
+msgstr "γραμμή(ες)"
 
 #: ../mousepad/mousepad-print.c:674
 msgid "Enable text _wrapping"
@@ -390,7 +389,7 @@ msgstr "Αντικατάσταση _με:"
 
 #: ../mousepad/mousepad-replace-dialog.c:233
 msgid "Search _direction:"
-msgstr ""
+msgstr "Κα_τεύθυνση αναζήτησης:"
 
 #: ../mousepad/mousepad-replace-dialog.c:242
 msgid "Up"
@@ -407,7 +406,7 @@ msgstr "Και τα δύο"
 #. case sensitive
 #: ../mousepad/mousepad-replace-dialog.c:253
 msgid "Case sensi_tive"
-msgstr ""
+msgstr "Δ_ιάκριση πεζών/κεφαλαίων"
 
 #. match whole word
 #: ../mousepad/mousepad-replace-dialog.c:260
@@ -416,19 +415,19 @@ msgstr "Αναζήτηση _ολόκληρων λέξεων"
 
 #: ../mousepad/mousepad-replace-dialog.c:271
 msgid "Replace _all in:"
-msgstr ""
+msgstr "Αντικατάσταση _όλων στο:"
 
 #: ../mousepad/mousepad-replace-dialog.c:278
 msgid "Selection"
-msgstr ""
+msgstr "Επιλογή"
 
 #: ../mousepad/mousepad-replace-dialog.c:279
 msgid "Document"
-msgstr ""
+msgstr "Έγγραφo"
 
 #: ../mousepad/mousepad-replace-dialog.c:280
 msgid "All Documents"
-msgstr ""
+msgstr "Όλα τα έγγραφα"
 
 #: ../mousepad/mousepad-replace-dialog.c:445
 #, c-format
@@ -439,31 +438,31 @@ msgstr[1] ""
 
 #: ../mousepad/mousepad-replace-dialog.c:540
 msgid "_Replace All"
-msgstr ""
+msgstr "Αντικατάσταση Ό_λων"
 
 #: ../mousepad/mousepad-search-bar.c:188
 msgid "Fi_nd:"
-msgstr ""
+msgstr "Εύρ_εση:"
 
 #: ../mousepad/mousepad-search-bar.c:208
 msgid "_Next"
-msgstr ""
+msgstr "Ε_πόμενο"
 
 #: ../mousepad/mousepad-search-bar.c:219
 msgid "_Previous"
-msgstr ""
+msgstr "_Προηγούμενο"
 
 #: ../mousepad/mousepad-search-bar.c:230
 msgid "Highlight _All"
-msgstr ""
+msgstr "Επισήμανση ό_λων"
 
 #: ../mousepad/mousepad-search-bar.c:243 ../mousepad/mousepad-search-bar.c:250
 msgid "Mat_ch Case"
-msgstr ""
+msgstr "Ταί_ριασμα χαρακτήρα"
 
 #: ../mousepad/mousepad-statusbar.c:141
 msgid "Choose a filetype"
-msgstr ""
+msgstr "Επιλέξτε έναν τύπο αρχείου"
 
 #. language/filetype
 #: ../mousepad/mousepad-statusbar.c:146 ../mousepad/mousepad-statusbar.c:258
@@ -477,7 +476,7 @@ msgstr ""
 #. overwrite label
 #: ../mousepad/mousepad-statusbar.c:174
 msgid "OVR"
-msgstr ""
+msgstr "OVR"
 
 #: ../mousepad/mousepad-statusbar.c:261
 #, c-format
@@ -487,12 +486,12 @@ msgstr ""
 #: ../mousepad/mousepad-statusbar.c:281
 #, c-format
 msgid "Line: %d Column: %d Selection: %d"
-msgstr ""
+msgstr "Γραμμή:%d Στήλη: %d Τμήμα: %d"
 
 #: ../mousepad/mousepad-statusbar.c:283
 #, c-format
 msgid "Line: %d Column: %d"
-msgstr ""
+msgstr "Στήλη: %d Γραμμή: %d"
 
 #. show warning to the user
 #: ../mousepad/mousepad-util.c:572
@@ -510,47 +509,47 @@ msgstr ""
 
 #: ../mousepad/mousepad-window.c:402
 msgid "_File"
-msgstr ""
+msgstr "Α_ρχείο"
 
 #: ../mousepad/mousepad-window.c:403
 msgid "_New"
-msgstr ""
+msgstr "Νέ_ο"
 
 #: ../mousepad/mousepad-window.c:403
 msgid "Create a new document"
-msgstr ""
+msgstr "Δημιουργία νέου εγγράφου"
 
 #: ../mousepad/mousepad-window.c:404
 msgid "New _Window"
-msgstr ""
+msgstr "Νέο _παράθυρο"
 
 #: ../mousepad/mousepad-window.c:404
 msgid "Create a new document in a new window"
-msgstr ""
+msgstr "Δημιουργία ενός νέου εγγράφου σε ένα νέο παράθυρο"
 
 #: ../mousepad/mousepad-window.c:405
 msgid "New From Te_mplate"
-msgstr ""
+msgstr "Νέα από πρό_τυπο"
 
 #: ../mousepad/mousepad-window.c:406
 msgid "_Open..."
-msgstr ""
+msgstr "Άν_οιγμα..."
 
 #: ../mousepad/mousepad-window.c:406
 msgid "Open a file"
-msgstr ""
+msgstr "Άνοιγμα αρχείου"
 
 #: ../mousepad/mousepad-window.c:407
 msgid "Op_en Recent"
-msgstr ""
+msgstr "Άνοιγμα π_ρόσφατου"
 
 #: ../mousepad/mousepad-window.c:408
 msgid "No items found"
-msgstr ""
+msgstr "Δε βρέθηκαν αντικείμενα"
 
 #: ../mousepad/mousepad-window.c:409
 msgid "Clear _History"
-msgstr ""
+msgstr "Εκκαθάριση _ιστορικού"
 
 #: ../mousepad/mousepad-window.c:409
 msgid "Clear the recently used files history"
@@ -558,11 +557,11 @@ msgstr ""
 
 #: ../mousepad/mousepad-window.c:410
 msgid "Save the current document"
-msgstr ""
+msgstr "Αποθήκευση του τρέχοντος εγγράφου"
 
 #: ../mousepad/mousepad-window.c:411
 msgid "Save _As..."
-msgstr ""
+msgstr "Αποθήκευση _ως..."
 
 #: ../mousepad/mousepad-window.c:411
 msgid "Save current document as another file"
@@ -570,7 +569,7 @@ msgstr ""
 
 #: ../mousepad/mousepad-window.c:412
 msgid "Save A_ll"
-msgstr ""
+msgstr "Αποθήκευση ό_λων"
 
 #: ../mousepad/mousepad-window.c:412
 msgid "Save all document in this window"
@@ -578,79 +577,79 @@ msgstr ""
 
 #: ../mousepad/mousepad-window.c:413
 msgid "Re_vert"
-msgstr ""
+msgstr "Επανα_φορά"
 
 #: ../mousepad/mousepad-window.c:413
 msgid "Revert to the saved version of the file"
-msgstr ""
+msgstr "Επαναφορά σε μια αποθηκευμένη έκδοση του αρχείου"
 
 #: ../mousepad/mousepad-window.c:414
 msgid "_Print..."
-msgstr ""
+msgstr "Εκτύ_πωση..."
 
 #: ../mousepad/mousepad-window.c:414
 msgid "Print the current document"
-msgstr ""
+msgstr "Εκτύπωση του τρέχοντος εγγράφου"
 
 #: ../mousepad/mousepad-window.c:415
 msgid "_Detach Tab"
-msgstr ""
+msgstr "Από_σπαση καρτέλας"
 
 #: ../mousepad/mousepad-window.c:415
 msgid "Move the current document to a new window"
-msgstr ""
+msgstr "Μετακίνηση του τρέχοντος εγγράφου σε νέο παράθυρο"
 
 #: ../mousepad/mousepad-window.c:416
 msgid "Close _Tab"
-msgstr ""
+msgstr "Κ_λείσιμο καρτέλας"
 
 #: ../mousepad/mousepad-window.c:416
 msgid "Close the current document"
-msgstr ""
+msgstr "Κλείσιμο του τρέχοντος εγγράφου"
 
 #: ../mousepad/mousepad-window.c:417
 msgid "_Close Window"
-msgstr ""
+msgstr "_Κλείσιμο παραθύρου"
 
 #: ../mousepad/mousepad-window.c:417
 msgid "Close this window"
-msgstr ""
+msgstr "Κλείσιμο αυτού του παραθύρου"
 
 #: ../mousepad/mousepad-window.c:419
 msgid "_Edit"
-msgstr ""
+msgstr "Επε_ξεργασία"
 
 #: ../mousepad/mousepad-window.c:420
 msgid "Undo the last action"
-msgstr ""
+msgstr "Αναίρεση της τελευταίας ενέργειας"
 
 #: ../mousepad/mousepad-window.c:421
 msgid "Redo the last undone action"
-msgstr ""
+msgstr "Επανάληψη της τελευταίας ακυρωμένης ενέργειας"
 
 #: ../mousepad/mousepad-window.c:422
 msgid "Cut the selection"
-msgstr ""
+msgstr "Αποκοπή της επιλογής"
 
 #: ../mousepad/mousepad-window.c:423
 msgid "Copy the selection"
-msgstr ""
+msgstr "Αντιγραφή της επιλογής"
 
 #: ../mousepad/mousepad-window.c:424
 msgid "Paste the clipboard"
-msgstr ""
+msgstr "Επικόλληση του προχείρου"
 
 #: ../mousepad/mousepad-window.c:425
 msgid "Paste _Special"
-msgstr ""
+msgstr "Ε_ιδική επικόλληση"
 
 #: ../mousepad/mousepad-window.c:426
 msgid "Paste from _History"
-msgstr ""
+msgstr "Επικόλληση από το π_ρόχειρο"
 
 #: ../mousepad/mousepad-window.c:426
 msgid "Paste from the clipboard history"
-msgstr ""
+msgstr "Επικόλληση από το ιστορικό του Πρόχειρου"
 
 #: ../mousepad/mousepad-window.c:427
 msgid "Paste as _Column"
@@ -678,55 +677,55 @@ msgstr ""
 
 #: ../mousepad/mousepad-window.c:431
 msgid "Search for text"
-msgstr ""
+msgstr "Αναζήτηση για κείμενο"
 
 #: ../mousepad/mousepad-window.c:432
 msgid "Find _Next"
-msgstr ""
+msgstr "Έυρεση _επόμενου"
 
 #: ../mousepad/mousepad-window.c:432
 msgid "Search forwards for the same text"
-msgstr ""
+msgstr "Αναζήτηση προς τα εμπρός για το ίδιο κείμενο"
 
 #: ../mousepad/mousepad-window.c:433
 msgid "Find _Previous"
-msgstr ""
+msgstr "Εύρεση _προηγούμενο"
 
 #: ../mousepad/mousepad-window.c:433
 msgid "Search backwards for the same text"
-msgstr ""
+msgstr "Αναζήτηση προς τα πίσω για το ίδιο κείμενο"
 
 #: ../mousepad/mousepad-window.c:434
 msgid "Find and Rep_lace..."
-msgstr ""
+msgstr "Αναζήτηση και α_ντικατάσταση..."
 
 #: ../mousepad/mousepad-window.c:434
 msgid "Search for and replace text"
-msgstr ""
+msgstr "Εύρεση για και αντικατάσταση κειμένου"
 
 #: ../mousepad/mousepad-window.c:436
 msgid "_View"
-msgstr ""
+msgstr "Προ_βολή"
 
 #: ../mousepad/mousepad-window.c:437
 msgid "Select F_ont..."
-msgstr ""
+msgstr "Επιλογή γραμματ_οσειράς..."
 
 #: ../mousepad/mousepad-window.c:437
 msgid "Change the editor font"
-msgstr ""
+msgstr "Αλλαγή γραμματοσειράς επεξεργαστή"
 
 #: ../mousepad/mousepad-window.c:438
 msgid "_Color Scheme"
-msgstr ""
+msgstr "_Χρώμα Θέματος"
 
 #: ../mousepad/mousepad-window.c:440
 msgid "_Text"
-msgstr ""
+msgstr "_Κείμενο"
 
 #: ../mousepad/mousepad-window.c:441
 msgid "_Convert"
-msgstr ""
+msgstr "_Μετατροπή"
 
 #: ../mousepad/mousepad-window.c:442
 msgid "to _Uppercase"
@@ -762,7 +761,7 @@ msgstr ""
 
 #: ../mousepad/mousepad-window.c:446
 msgid "_Tabs to Spaces"
-msgstr ""
+msgstr "Σ_τηλοθέτες σε Κενά"
 
 #: ../mousepad/mousepad-window.c:446
 msgid "Convert all tabs to spaces in the selection or document"
@@ -1013,7 +1012,7 @@ msgstr ""
 #: ../mousepad/mousepad-window.c:2577
 #, c-format
 msgid "Open '%s'"
-msgstr ""
+msgstr "Άνοιγμα '%s'"
 
 #: ../mousepad/mousepad-window.c:2724
 msgid "Failed to clear the recent history"
@@ -1022,7 +1021,7 @@ msgstr ""
 #. create an item to inform the user
 #: ../mousepad/mousepad-window.c:3148
 msgid "No clipboard data"
-msgstr ""
+msgstr "Δεν υπάρχουν δεδομένα στο πρόχειρο"
 
 #: ../mousepad/mousepad-window.c:3219
 msgid "Turn off color schemes"
@@ -1050,7 +1049,7 @@ msgstr ""
 #. create new file chooser dialog
 #: ../mousepad/mousepad-window.c:3545
 msgid "Open File"
-msgstr ""
+msgstr "Άνοιγμα αρχείου"
 
 #: ../mousepad/mousepad-window.c:3658
 #, c-format
@@ -1062,36 +1061,36 @@ msgstr ""
 #. show the warning and cleanup
 #: ../mousepad/mousepad-window.c:3662
 msgid "Failed to open file"
-msgstr ""
+msgstr "Αποτυχία ανοίγματος αρχείου"
 
 #. show the error
 #: ../mousepad/mousepad-window.c:3768 ../mousepad/mousepad-window.c:3891
 msgid "Failed to save the document"
-msgstr ""
+msgstr "Αποτυχία αποθήκευσης εγγράφου"
 
 #. create the dialog
 #: ../mousepad/mousepad-window.c:3792
 msgid "Save As"
-msgstr ""
+msgstr "Αποθήκευση ως"
 
 #. show the error
 #: ../mousepad/mousepad-window.c:3983
 msgid "Failed to reload the document"
-msgstr ""
+msgstr "Αποτυχία επαναφόρτισης εγγράφου"
 
 #. show the error
 #: ../mousepad/mousepad-window.c:4010
 msgid "Failed to print the document"
-msgstr ""
+msgstr "Αποτυχία εκτύπωσης εγγράφου"
 
 #: ../mousepad/mousepad-window.c:4421
 msgid "Choose Mousepad Font"
-msgstr ""
+msgstr "Επιλογή γραμματοσειράς mousepad"
 
 #: ../mousepad.desktop.in.in.h:2
 msgid "Simple Text Editor"
-msgstr ""
+msgstr "Απλός επεξεργαστής κειμένου"
 
 #: ../mousepad.desktop.in.in.h:3
 msgid "Text Editor"
-msgstr ""
+msgstr "Επεξεργαστής Κειμένου"
