@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2013-01-18 18:12+0000\n"
-"PO-Revision-Date: 2013-01-18 23:10+0200\n"
+"PO-Revision-Date: 2013-01-19 20:38+0200\n"
 "Last-Translator: Γιώργος Στεφανάκης <nonviotale@gmail.com>\n"
 "Language-Team: Greek, Modern (1453-) <>\n"
 "Language: \n"
@@ -25,7 +25,7 @@ msgstr ""
 
 #: ../mousepad/main.c:54
 msgid "Quit a running Mousepad instance"
-msgstr ""
+msgstr "Έξοδος από μια τρέχουσα συνεδρία του Mousepad"
 
 #: ../mousepad/main.c:56
 msgid "Print version information and exit"
@@ -39,7 +39,7 @@ msgstr "Mousepad"
 #. initialize gtk+
 #: ../mousepad/main.c:95
 msgid "[FILES...]"
-msgstr ""
+msgstr "[ΑΡΧΕΙΑ...]"
 
 #. no error message, the gui initialization failed
 #: ../mousepad/main.c:101
@@ -48,12 +48,12 @@ msgstr ""
 
 #: ../mousepad/main.c:118
 msgid "The Xfce development team. All rights reserved."
-msgstr ""
+msgstr "Η ομάδα ανάπτυξης του XFCE. Με επιφύλαξη όλων των δικαιωμάτων."
 
 #: ../mousepad/main.c:119
 #, c-format
 msgid "Please report bugs to <%s>."
-msgstr ""
+msgstr "Παρακαλώ αναφέρετε σφάλματα στο <%s>."
 
 #: ../mousepad/mousepad-dialogs.c:41
 msgid "Mousepad is a fast text editor for the Xfce Desktop Environment."
@@ -63,12 +63,12 @@ msgstr ""
 
 #: ../mousepad/mousepad-dialogs.c:50
 msgid "translator-credits"
-msgstr ""
+msgstr "Γιώργος Στεφανάκης <nonviotale@gmail.com>"
 
 #. display an error message to the user
 #: ../mousepad/mousepad-dialogs.c:105
 msgid "Failed to open the documentation browser"
-msgstr ""
+msgstr "Αποτυχία ανοίγματος του περιηγητή τεκμηρίωσης"
 
 #. build dialog
 #: ../mousepad/mousepad-dialogs.c:120
@@ -90,7 +90,7 @@ msgstr "Αριθμός σ_τήλης:"
 
 #: ../mousepad/mousepad-dialogs.c:300
 msgid "Remove all entries from the documents history?"
-msgstr ""
+msgstr "Αφαίρεση όλων των καταχωρήσεων από το ιστορικό του εγγράφου;"
 
 #: ../mousepad/mousepad-dialogs.c:305
 msgid "Clear Documents History"
@@ -101,6 +101,8 @@ msgid ""
 "Clearing the documents history will permanently remove all currently listed "
 "entries."
 msgstr ""
+"Ο καθαρισμός του ιστορικού του εγγράφου θα έχει ως αποτέλεσμα την μόνιμη "
+"αφαίρεση των καταχωρήσεων."
 
 #: ../mousepad/mousepad-dialogs.c:339
 msgid "Do you want to save the changes before closing?"
@@ -123,10 +125,12 @@ msgstr "Αν δε γίνει αποθήκευση, οι αλλαγές θα χα
 msgid ""
 "The document has been externally modified. Do you want to continue saving?"
 msgstr ""
+"Αυτό το έγγραφο έχει τροποποιηθεί εξωτερικά. Θέλετε να συνεχίσετε την "
+"αποθήκευση;"
 
 #: ../mousepad/mousepad-dialogs.c:386
 msgid "Externally Modified"
-msgstr ""
+msgstr "Εξωτερικά τροποποιημένο"
 
 #: ../mousepad/mousepad-dialogs.c:388
 msgid "If you save the document, all of the external changes will be lost."
