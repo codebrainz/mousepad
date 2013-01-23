@@ -3,33 +3,34 @@
 # This file is distributed under the same license as the mausepad package.
 # salepetronije <salepetronije@gmail.com>, 2012.
 # Саша Петровић <salepetronije@gmail.com>, 2012.
-# 
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: 89\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-01-06 17:18+0000\n"
-"PO-Revision-Date: 2012-09-16 22:49+0200\n"
+"POT-Creation-Date: 2013-01-23 10:33+0000\n"
+"PO-Revision-Date: 2013-01-23 12:09+0200\n"
 "Last-Translator: Саша Петровић <salepetronije@gmail.com>\n"
 "Language-Team: српски <xfce-i18n@xfce.org>\n"
+"Language: sr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: sr\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && (n"
+"%100<10 || n%100>=20) ? 1 : 2);\n"
 "X-Generator: Gtranslator 2.91.5\n"
 
 #: ../mousepad/main.c:53
 msgid "Do not register with the D-BUS session message bus"
-msgstr ""
+msgstr "Не уписује се са сабирницом порука сесије Д-сабирнице"
 
 #: ../mousepad/main.c:54
 msgid "Quit a running Mousepad instance"
-msgstr "Напусти покренути примерак Мишоловке"
+msgstr "Напушта покренути примерак Мишоловке"
 
 #: ../mousepad/main.c:56
 msgid "Print version information and exit"
-msgstr "Испиши податке о издању и изађи"
+msgstr "Исписује податке о издању и излази"
 
 #. default application name
 #: ../mousepad/main.c:81 ../mousepad.desktop.in.in.h:1
@@ -48,7 +49,7 @@ msgstr "Нисам успео да отворим приказ."
 
 #: ../mousepad/main.c:118
 msgid "The Xfce development team. All rights reserved."
-msgstr "ИксФЦЕ развојна дружина. Сва права задржана."
+msgstr "ИксФЦЕ развојна дружина. Сва права су задржана."
 
 #: ../mousepad/main.c:119
 #, c-format
@@ -88,7 +89,7 @@ msgstr "Број _колона: "
 
 #: ../mousepad/mousepad-dialogs.c:300
 msgid "Remove all entries from the documents history?"
-msgstr "Уклони све ставке из претходних докумената?"
+msgstr "Да уклоним све ставке из претходних докумената?"
 
 #: ../mousepad/mousepad-dialogs.c:305
 msgid "Clear Documents History"
@@ -104,7 +105,7 @@ msgstr ""
 
 #: ../mousepad/mousepad-dialogs.c:339
 msgid "Do you want to save the changes before closing?"
-msgstr "Да ли желите сачувати промене пре затварања?"
+msgstr "Да ли желите сачувати измене пре затварања?"
 
 #: ../mousepad/mousepad-dialogs.c:340
 msgid "Save Changes"
@@ -117,7 +118,7 @@ msgstr "_Не чувај"
 #. secondary text
 #: ../mousepad/mousepad-dialogs.c:363
 msgid "If you don't save the document, all the changes will be lost."
-msgstr "Ако не сачувате документ, нестаће све измене."
+msgstr "Ако не сачувате документ, све измене ће бити изгубљене."
 
 #: ../mousepad/mousepad-dialogs.c:385
 msgid ""
@@ -126,7 +127,7 @@ msgstr "Документ је измењен споља. Да ли желите 
 
 #: ../mousepad/mousepad-dialogs.c:386
 msgid "Externally Modified"
-msgstr "Измена споља"
+msgstr "Измењен споља"
 
 #: ../mousepad/mousepad-dialogs.c:388
 msgid "If you save the document, all of the external changes will be lost."
@@ -308,7 +309,7 @@ msgstr "Датотека „%s“ коју сте покушали поново 
 #: ../mousepad/mousepad-file.c:916
 #, c-format
 msgid "Failed to read the status of \"%s\""
-msgstr "Не успевам читати стање „%s“"
+msgstr "Нисам успео да прочитам стање „%s“"
 
 #. set a custom tab label
 #: ../mousepad/mousepad-print.c:125
@@ -526,7 +527,7 @@ msgstr "Нови _прозор"
 
 #: ../mousepad/mousepad-window.c:404
 msgid "Create a new document in a new window"
-msgstr "Направи нови документ у новом прозору"
+msgstr "Направите нови документ у новом прозору"
 
 #: ../mousepad/mousepad-window.c:405
 msgid "New From Te_mplate"
@@ -538,7 +539,7 @@ msgstr "_Отвори..."
 
 #: ../mousepad/mousepad-window.c:406
 msgid "Open a file"
-msgstr "Отвори датотеку"
+msgstr "Отворите датотеку"
 
 #: ../mousepad/mousepad-window.c:407
 msgid "Op_en Recent"
@@ -554,11 +555,11 @@ msgstr "Обриши _историју"
 
 #: ../mousepad/mousepad-window.c:409
 msgid "Clear the recently used files history"
-msgstr "Обриши историју скорашње коришћених докумената"
+msgstr "Обришите историју скорашње коришћених докумената"
 
 #: ../mousepad/mousepad-window.c:410
 msgid "Save the current document"
-msgstr "Сачувј тренутни документ"
+msgstr "Сачувјте тренутни документ"
 
 #: ../mousepad/mousepad-window.c:411
 msgid "Save _As..."
@@ -566,7 +567,7 @@ msgstr "Сачувај _као..."
 
 #: ../mousepad/mousepad-window.c:411
 msgid "Save current document as another file"
-msgstr "Сачувај тренутни документ као засебну датотеку"
+msgstr "Сачувајте тренутни документ као засебну датотеку"
 
 #: ../mousepad/mousepad-window.c:412
 msgid "Save A_ll"
@@ -574,7 +575,7 @@ msgstr "Сачувај с_ве"
 
 #: ../mousepad/mousepad-window.c:412
 msgid "Save all document in this window"
-msgstr "Сачувај све документе из овог прозора"
+msgstr "Сачувајте све документе из овог прозора"
 
 #: ../mousepad/mousepad-window.c:413
 msgid "Re_vert"
@@ -582,7 +583,7 @@ msgstr "Пон_ништи"
 
 #: ../mousepad/mousepad-window.c:413
 msgid "Revert to the saved version of the file"
-msgstr "Поништи чување на примерак који је већ сачуван"
+msgstr "Поништите чување на примерак који је већ сачуван"
 
 #: ../mousepad/mousepad-window.c:414
 msgid "_Print..."
@@ -590,7 +591,7 @@ msgstr "_Штампај..."
 
 #: ../mousepad/mousepad-window.c:414
 msgid "Print the current document"
-msgstr "Штампај тренутни документ"
+msgstr "Штампајте тренутни документ"
 
 #: ../mousepad/mousepad-window.c:415
 msgid "_Detach Tab"
@@ -598,7 +599,7 @@ msgstr "_Откачи језичак"
 
 #: ../mousepad/mousepad-window.c:415
 msgid "Move the current document to a new window"
-msgstr "Пренеси документ у нови прозор"
+msgstr "Пренесите документ у нови прозор"
 
 #: ../mousepad/mousepad-window.c:416
 msgid "Close _Tab"
@@ -614,7 +615,7 @@ msgstr "Затвори _прозор"
 
 #: ../mousepad/mousepad-window.c:417
 msgid "Close this window"
-msgstr "Затвара овај прозор"
+msgstr "Затворите овај прозор"
 
 #: ../mousepad/mousepad-window.c:419
 msgid "_Edit"
@@ -622,11 +623,11 @@ msgstr "_Уреди"
 
 #: ../mousepad/mousepad-window.c:420
 msgid "Undo the last action"
-msgstr "Поништи задњу радњу"
+msgstr "Поништите задњу радњу"
 
 #: ../mousepad/mousepad-window.c:421
 msgid "Redo the last undone action"
-msgstr "Поврати задњу поништену радњу"
+msgstr "Повратите задњу поништену радњу"
 
 #: ../mousepad/mousepad-window.c:422
 msgid "Cut the selection"
@@ -1097,114 +1098,3 @@ msgstr "Једноставан уређивач текста"
 #: ../mousepad.desktop.in.in.h:3
 msgid "Text Editor"
 msgstr "Уређивач текста"
-
-#~ msgid "Can't convert codeset to '%s'"
-#~ msgstr "Не могу да претворим кодирање у „%s“"
-
-#~ msgid "Can't open pipe to process"
-#~ msgstr "Не могу да отворим спојку за обрађивање"
-
-#~ msgid "A text editor for Xfce"
-#~ msgstr "Уређивач текста за ИксФЦЕ"
-
-#~ msgid "About %s"
-#~ msgstr "О програму %s"
-
-#~ msgid "Can't open file to write"
-#~ msgstr "Не могу да отворим датотеку за упис"
-
-#~ msgid "Can't write file"
-#~ msgstr "Не могу да запишем датотеку"
-
-#~ msgid "/File/_New"
-#~ msgstr "/Датотека/_Нова"
-
-#~ msgid "/File/_Save"
-#~ msgstr "/Датотека/_Сачувај"
-
-#~ msgid "/File/_Quit"
-#~ msgstr "/Датотека/_Одустани"
-
-#~ msgid "/Edit/_Undo"
-#~ msgstr "/Уреди/_Опозови"
-
-#~ msgid "/Edit/_Redo"
-#~ msgstr "/Уреди/_Поврати"
-
-#~ msgid "/Edit/Cu_t"
-#~ msgstr "/Уреди/_Исеци"
-
-#~ msgid "/Edit/_Copy"
-#~ msgstr "/Уреди/_Умножи"
-
-#~ msgid "/Edit/_Paste"
-#~ msgstr "/Уреди/_Налепи"
-
-#~ msgid "/Edit/_Delete"
-#~ msgstr "/Уреди/_Обриши"
-
-#~ msgid "/Edit/Select _All"
-#~ msgstr "/Уреди/Обележи _све"
-
-#~ msgid "/Search/_Find..."
-#~ msgstr "/Тражи/_Нађи..."
-
-#~ msgid "/Search/_Replace..."
-#~ msgstr "/Тражи/_Замени..."
-
-#~ msgid "/Search/_Jump To..."
-#~ msgstr "/Тражи/_Скочи на..."
-
-#~ msgid "/_Options"
-#~ msgstr "/_Могућности"
-
-#~ msgid "/Options/_Font..."
-#~ msgstr "/Могућности/_Словни лик..."
-
-#~ msgid "/Options/_Line Numbers"
-#~ msgstr "/Могућности/Бројеви _редова"
-
-#~ msgid "/Help/_About"
-#~ msgstr "/Помоћ/_О програму"
-
-#~ msgid "Search string not found"
-#~ msgstr "Тражена ниска није пронађена"
-
-#~ msgid "Replace?"
-#~ msgstr "Да заменим?"
-
-#~ msgid "%d strings replaced"
-#~ msgstr "Замењених ниски — %d"
-
-#~ msgid "Find"
-#~ msgstr "Нађи"
-
-#~ msgid "_Match case"
-#~ msgstr "_Упореди величину слова"
-
-#~ msgid "Jump To"
-#~ msgstr "Скочи до"
-
-#~ msgid "_Jump"
-#~ msgstr "_Скочи"
-
-#~ msgid "Current Locale (%s)"
-#~ msgstr "Тренутни језик (%s)"
-
-#~ msgid "Other Codeset"
-#~ msgstr "Други кодни распореди"
-
-#~ msgid "Code_set:"
-#~ msgstr "Кодни _распоред:"
-
-#~ msgid "'%s' is not supported"
-#~ msgstr "„%s“ није подржан"
-
-#~ msgid "Auto Detect"
-#~ msgstr "Сам препознај"
-
-#~ msgid "Ch_aracter Coding: "
-#~ msgstr "Кодирање зна_кова: "
-
-#~ msgid "'%s' already exists. Overwrite?"
-#~ msgstr "„%s“ већ постоји. Да препишем?"
