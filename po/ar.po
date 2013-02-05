@@ -1,24 +1,24 @@
-# SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# Karim Oulad Chalha <herr.linux88@gmail.com>, 2012.
+# Karim Oulad Chalha <herr.linux88@gmail.com>, 2012, 2013.
 # mohammad <malham1@gmail.com>, 2012.
 # محمد الحرقان <malham1@gmail.com>, 2012.
+# كريم أولاد الشلحة <herr.linux88@gmail.com>, 2012, 2013.
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
+"Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-11-11 02:24+0000\n"
-"PO-Revision-Date: 2012-11-11 06:53+0300\n"
-"Last-Translator: محمد الحرقان <malham1@gmail.com>\n"
-"Language-Team: http://www.vertaal.com.ar/files/factory/ar/list/\n"
+"PO-Revision-Date: 2013-02-03 20:22+0000\n"
+"Last-Translator: كريم أولاد الشلحة <herr.linux88@gmail.com>\n"
+"Language-Team: Arabic <herr.linux88@gmail.com>\n"
 "Language: ar\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 "
 "&& n%100<=10 ? 3 : n%100>=11 ? 4 : 5;\n"
-"X-Generator: Virtaal 0.7.1\n"
+"X-Generator: Lokalize 1.5\n"
 
 #: ../mousepad/main.c:53
 msgid "Do not register with the D-BUS session message bus"
@@ -26,7 +26,7 @@ msgstr "عدم التسجيل مع جلسة D-BUS رسالة bus"
 
 #: ../mousepad/main.c:54
 msgid "Quit a running Mousepad instance"
-msgstr "الخروج من Mousepad المُشغلة الآخرى"
+msgstr "الخروج من ماوس باد المُشغلة الآخرى"
 
 #: ../mousepad/main.c:56
 msgid "Print version information and exit"
@@ -35,7 +35,7 @@ msgstr "طباعة معلومات الإصدار والخروج"
 #. default application name
 #: ../mousepad/main.c:80 ../Mousepad.desktop.in.in.h:1
 msgid "Mousepad"
-msgstr "لوحة الفارة"
+msgstr "ماوس باد"
 
 #. initialize gtk+
 #: ../mousepad/main.c:92
@@ -58,11 +58,14 @@ msgstr "الرجاء الإبلاغ عن علة إلى <%s>."
 
 #: ../mousepad/mousepad-dialogs.c:41
 msgid "Mousepad is a fast text editor for the Xfce Desktop Environment."
-msgstr "Mousepad محرر نصوص سريع لبيئة سطح المكتب إكسفس."
+msgstr "ماوس باد محرر نصوص سريع لبيئة سطح المكتب إكسفس."
 
 #: ../mousepad/mousepad-dialogs.c:50
 msgid "translator-credits"
-msgstr "Karim Oulad Chalha كريم اولاد الشلحة Mohamed Al Hargan محمد الحرقان"
+msgstr ""
+"فريق تعريب إكسفس: "
+"كريم اولاد الشلحة "
+"محمد الحرقان"
 
 #. display an error message to the user
 #: ../mousepad/mousepad-dialogs.c:125
@@ -892,7 +895,7 @@ msgstr "_المحتويات"
 
 #: ../mousepad/mousepad-window.c:468
 msgid "Display the Mousepad user manual"
-msgstr "عرض دليل مستخدم Mousepad"
+msgstr "عرض دليل مستخدم لماوس باد"
 
 #: ../mousepad/mousepad-window.c:469
 msgid "About this application"
@@ -948,11 +951,11 @@ msgstr "تخزين علامة ترتيب البايت في الملف"
 
 #: ../mousepad/mousepad-window.c:484
 msgid "Unix (_LF)"
-msgstr "Unix (_LF)"
+msgstr "يونكس (_LF)"
 
 #: ../mousepad/mousepad-window.c:484
 msgid "Set the line ending of the document to Unix (LF)"
-msgstr "تعيين إنهاء أسطر المستند إلى Unix (LF)"
+msgstr "تعيين إنهاء أسطر المستند إلى يونكس (LF)"
 
 #: ../mousepad/mousepad-window.c:485
 msgid "Mac (_CR)"
@@ -964,11 +967,11 @@ msgstr "تعيين إنهاء أسطر المستند إلى ماك (CR)"
 
 #: ../mousepad/mousepad-window.c:486
 msgid "DOS / Windows (C_R LF)"
-msgstr "DOS / Windows (C_R LF)"
+msgstr "دوس / وندوز (C_R LF)"
 
 #: ../mousepad/mousepad-window.c:486
 msgid "Set the line ending of the document to DOS / Windows (CR LF)"
-msgstr "تعيين إنهاء أسطر المستند إلى DOS / Windows (C_R LF)"
+msgstr "تعيين إنهاء أسطر المستند إلى دوس / ومدوز (C_R LF)"
 
 #. add the label with the root warning
 #: ../mousepad/mousepad-window.c:662
@@ -1087,7 +1090,7 @@ msgstr "تعذر طبع المستند"
 
 #: ../mousepad/mousepad-window.c:4424
 msgid "Choose Mousepad Font"
-msgstr "اختر خط Mousepad"
+msgstr "اختر خط لماوس باد"
 
 #: ../Mousepad.desktop.in.in.h:2
 msgid "Simple Text Editor"
@@ -1096,3 +1099,4 @@ msgstr "محرر نصوص بسيط"
 #: ../Mousepad.desktop.in.in.h:3
 msgid "Text Editor"
 msgstr "محرر نصوص"
+
