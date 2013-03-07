@@ -2,22 +2,22 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the mausepad package.
 # salepetronije <salepetronije@gmail.com>, 2012.
-# Саша Петровић <salepetronije@gmail.com>, 2012.
+# Саша Петровић <salepetronije@gmail.com>, 2012, 2013.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: 89\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2013-01-23 10:33+0000\n"
-"PO-Revision-Date: 2013-01-23 12:09+0200\n"
+"PO-Revision-Date: 2013-03-07 16:40+0100\n"
 "Last-Translator: Саша Петровић <salepetronije@gmail.com>\n"
-"Language-Team: српски <xfce-i18n@xfce.org>\n"
+"Language-Team: српски <>\n"
 "Language: sr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && (n"
-"%100<10 || n%100>=20) ? 1 : 2);\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2) \n"
 "X-Generator: Gtranslator 2.91.5\n"
 
 #: ../mousepad/main.c:53
@@ -85,7 +85,7 @@ msgstr "Број _реда: "
 
 #: ../mousepad/mousepad-dialogs.c:242
 msgid "C_olumn number:"
-msgstr "Број _колона: "
+msgstr "Број _стубаца: "
 
 #: ../mousepad/mousepad-dialogs.c:300
 msgid "Remove all entries from the documents history?"
@@ -486,12 +486,12 @@ msgstr "Врста датотеке: %s"
 #: ../mousepad/mousepad-statusbar.c:281
 #, c-format
 msgid "Line: %d Column: %d Selection: %d"
-msgstr "Линија: %d колона: %d избор: %d"
+msgstr "Линија: %d стубаца: %d избор: %d"
 
 #: ../mousepad/mousepad-statusbar.c:283
 #, c-format
 msgid "Line: %d Column: %d"
-msgstr "Линија: %d колона %d"
+msgstr "Линија: %d стубаца %d"
 
 #. show warning to the user
 #: ../mousepad/mousepad-util.c:572
@@ -559,7 +559,7 @@ msgstr "Обришите историју скорашње коришћених 
 
 #: ../mousepad/mousepad-window.c:410
 msgid "Save the current document"
-msgstr "Сачувјте тренутни документ"
+msgstr "Сачувајте тренутни документ"
 
 #: ../mousepad/mousepad-window.c:411
 msgid "Save _As..."
@@ -655,11 +655,11 @@ msgstr "Налепи из историје исечака"
 
 #: ../mousepad/mousepad-window.c:427
 msgid "Paste as _Column"
-msgstr "Налепи у виду колоне"
+msgstr "Налепи у виду стубца"
 
 #: ../mousepad/mousepad-window.c:427
 msgid "Paste the clipboard text into a column"
-msgstr "Налепи текст исечка у колону"
+msgstr "Налепи текст исечка у стубац"
 
 #: ../mousepad/mousepad-window.c:428
 msgid "Delete the current selection"
@@ -675,7 +675,7 @@ msgstr "Измени избор"
 
 #: ../mousepad/mousepad-window.c:430
 msgid "Change a normal selection into a column selection and vice versa"
-msgstr "Измени нормалан одабир на избор колоне и обрнуто"
+msgstr "Измени нормалан одабир на избор стубца и обрнуто"
 
 #: ../mousepad/mousepad-window.c:431
 msgid "Search for text"
@@ -817,11 +817,11 @@ msgstr "Помери избор једну линију доле"
 
 #: ../mousepad/mousepad-window.c:453
 msgid "D_uplicate Line / Selection"
-msgstr "Дуплирај линију / избор"
+msgstr "Удвостручи линију / избор"
 
 #: ../mousepad/mousepad-window.c:453
 msgid "Duplicate the current line or selection"
-msgstr "Дуплирај тренутну линију или избор"
+msgstr "Удвостручи тренутну линију или избор"
 
 #: ../mousepad/mousepad-window.c:454
 msgid "_Increase Indent"
