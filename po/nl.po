@@ -572,7 +572,7 @@ msgstr "Sla alles op"
 
 #: ../mousepad/mousepad-window.c:412
 msgid "Save all document in this window"
-msgstr "Sla allle documenten in dit venster op"
+msgstr "Sla alle documenten in dit venster op"
 
 #: ../mousepad/mousepad-window.c:413
 msgid "Re_vert"
