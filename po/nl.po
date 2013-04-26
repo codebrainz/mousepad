@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mousepad\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-04-26 12:36+0000\n"
+"POT-Creation-Date: 2013-04-26 18:36+0000\n"
 "PO-Revision-Date: 2013-04-26 15:34+0200\n"
 "Last-Translator: Pjotr pjotrvertaalt@gmail.com\n"
 "Language-Team: Dutch (Flemish)\n"
@@ -42,7 +42,7 @@ msgstr "[FILES...]"
 #. no error message, the gui initialization failed
 #: ../mousepad/main.c:101
 msgid "Failed to open display."
-msgstr "Kon scherm niet openen"
+msgstr "Kon scherm niet openen."
 
 #: ../mousepad/main.c:118
 msgid "The Xfce development team. All rights reserved."
@@ -59,7 +59,7 @@ msgstr "Mousepad is een snelle tekstbewerker voor de Xfce-werkomgeving."
 
 #: ../mousepad/mousepad-dialogs.c:50
 msgid "translator-credits"
-msgstr "vertalers"
+msgstr "Pjotr <pjotrvertaalt@gmail.com>"
 
 #. display an error message to the user
 #: ../mousepad/mousepad-dialogs.c:105
@@ -115,13 +115,13 @@ msgstr "Sla _niet op"
 #. secondary text
 #: ../mousepad/mousepad-dialogs.c:363
 msgid "If you don't save the document, all the changes will be lost."
-msgstr "Als u het document niet opslaat, zullen alle veranderingen verloren gaan."
+msgstr ""
+"Als u het document niet opslaat, zullen alle veranderingen verloren gaan."
 
 #: ../mousepad/mousepad-dialogs.c:385
 msgid ""
 "The document has been externally modified. Do you want to continue saving?"
-msgstr ""
-"Het document is extern aangepast. Wilt u doorgaan met opslaan?"
+msgstr "Het document is extern aangepast. Wilt u doorgaan met opslaan?"
 
 #: ../mousepad/mousepad-dialogs.c:386
 msgid "Externally Modified"
@@ -129,7 +129,8 @@ msgstr "Extern aangepast"
 
 #: ../mousepad/mousepad-dialogs.c:388
 msgid "If you save the document, all of the external changes will be lost."
-msgstr "Als u het document opslaat, zullen alle externe veranderingen verloren gaan."
+msgstr ""
+"Als u het document opslaat, zullen alle externe veranderingen verloren gaan."
 
 #: ../mousepad/mousepad-dialogs.c:416
 msgid "Do you want to save your changes before reloading?"
@@ -138,7 +139,8 @@ msgstr "Wilt u uw veranderingen opslaan alvorens te herladen?"
 #: ../mousepad/mousepad-dialogs.c:418
 msgid "If you revert the file, all unsaved changes will be lost."
 msgstr ""
-"Indien u het bestand terugdraait, zullen alle niet-opgeslagen veranderingen verloren gaan."
+"Indien u het bestand terugdraait, zullen alle niet-opgeslagen veranderingen "
+"verloren gaan."
 
 #. pack button, add signal and tooltip
 #: ../mousepad/mousepad-document.c:591
@@ -344,7 +346,7 @@ msgstr "regel(s)"
 
 #: ../mousepad/mousepad-print.c:674
 msgid "Enable text _wrapping"
-msgstr "Schakel tekstomwikkeling in"
+msgstr "Schakel tekstomloop in"
 
 #: ../mousepad/mousepad-print.c:681
 msgid "Enable _syntax highlighting"
@@ -468,7 +470,7 @@ msgstr "Bestandtype: geen"
 
 #: ../mousepad/mousepad-statusbar.c:169
 msgid "Toggle the overwrite mode"
-msgstr "Schakel de overschrijfmodus"
+msgstr "Schakel de overschrijfmodus om"
 
 #. overwrite label
 #: ../mousepad/mousepad-statusbar.c:174
@@ -752,7 +754,7 @@ msgstr "Zet de geselecteerde tekst op titelformaat"
 
 #: ../mousepad/mousepad-window.c:445
 msgid "to _Opposite Case"
-msgstr "naar tegengestelde grootte"
+msgstr "in tegengestelde grootte"
 
 #: ../mousepad/mousepad-window.c:445
 msgid "Change the case of the selection opposite case"
@@ -930,11 +932,11 @@ msgstr "Voeg spaties in wanneer de tabknop is ingedrukt"
 
 #: ../mousepad/mousepad-window.c:478
 msgid "_Word Wrap"
-msgstr "Woordomwikkeling"
+msgstr "Woordomloop"
 
 #: ../mousepad/mousepad-window.c:478
 msgid "Toggle breaking lines in between words"
-msgstr "Schakel regelafbreking tussen woorden"
+msgstr "Schakel regelafbreking tussen woorden om"
 
 #: ../mousepad/mousepad-window.c:479
 msgid "Write Unicode _BOM"
@@ -971,7 +973,8 @@ msgstr "Stel de regelafbreking van het document in op DOS / Windows (CR LF)"
 #. add the label with the root warning
 #: ../mousepad/mousepad-window.c:659
 msgid "Warning, you are using the root account, you may harm your system."
-msgstr "Waarschuwing: u gebruikt het root-account; u kunt uw systeem beschadigen."
+msgstr ""
+"Waarschuwing: u gebruikt het root-account; u kunt uw systeem beschadigen."
 
 #. show the warning
 #: ../mousepad/mousepad-window.c:1097
@@ -1007,7 +1010,7 @@ msgstr "Anders..."
 #. get the offset length: 'Encoding: '
 #: ../mousepad/mousepad-window.c:2443 ../mousepad/mousepad-window.c:2674
 msgid "Charset"
-msgstr "Charset"
+msgstr "Tekenset"
 
 #: ../mousepad/mousepad-window.c:2577
 #, c-format
