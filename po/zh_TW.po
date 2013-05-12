@@ -7,23 +7,23 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mousepad master\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-03-03 00:06+0000\n"
-"PO-Revision-Date: 2013-03-03 11:11+0800\n"
+"POT-Creation-Date: 2013-05-12 07:12+0000\n"
+"PO-Revision-Date: 2013-05-12 16:58+0800\n"
 "Last-Translator: Cheng-Chia Tseng <pswo10680@gmail.com>\n"
 "Language-Team: chinese-l10n <chinese-l10n@googlegroups.com>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n>1);\n"
-"X-Generator: Poedit 1.5.4\n"
+"X-Generator: Poedit 1.5.5\n"
 
 #: ../mousepad/main.c:53
 msgid "Do not register with the D-BUS session message bus"
-msgstr ""
+msgstr "不要以 D-BUS 作業階段訊息匯流排註冊"
 
 #: ../mousepad/main.c:54
 msgid "Quit a running Mousepad instance"
-msgstr ""
+msgstr "退出執行中的 Mousepad 實體"
 
 #: ../mousepad/main.c:56
 msgid "Print version information and exit"
@@ -37,7 +37,7 @@ msgstr "Mousepad"
 #. initialize gtk+
 #: ../mousepad/main.c:95
 msgid "[FILES...]"
-msgstr ""
+msgstr "[檔案...]"
 
 #. no error message, the gui initialization failed
 #: ../mousepad/main.c:101
@@ -51,15 +51,15 @@ msgstr "Xfce 開發團隊。著作權所有。"
 #: ../mousepad/main.c:119
 #, c-format
 msgid "Please report bugs to <%s>."
-msgstr ""
+msgstr "請將臭蟲回報至 <%s>。"
 
 #: ../mousepad/mousepad-dialogs.c:41
 msgid "Mousepad is a fast text editor for the Xfce Desktop Environment."
-msgstr ""
+msgstr "Mousepad 是 Xfce 桌面環境的快速文字編輯器。"
 
 #: ../mousepad/mousepad-dialogs.c:50
 msgid "translator-credits"
-msgstr ""
+msgstr "Cheng-Chia Tseng <pswo10680@gmail.com>, 2013."
 
 #. display an error message to the user
 #: ../mousepad/mousepad-dialogs.c:105
@@ -122,7 +122,7 @@ msgstr ""
 
 #: ../mousepad/mousepad-dialogs.c:386
 msgid "Externally Modified"
-msgstr ""
+msgstr "已有外部修改"
 
 #: ../mousepad/mousepad-dialogs.c:388
 msgid "If you save the document, all of the external changes will be lost."
@@ -149,11 +149,11 @@ msgstr "未命名"
 #. create the header
 #: ../mousepad/mousepad-encoding-dialog.c:134
 msgid "The document was not UTF-8 valid"
-msgstr ""
+msgstr "文件並非有效的 UTF-8 編碼內容"
 
 #: ../mousepad/mousepad-encoding-dialog.c:135
 msgid "Please select an encoding below."
-msgstr ""
+msgstr "請選取下方的一種編碼。"
 
 #. encoding radio buttons
 #: ../mousepad/mousepad-encoding-dialog.c:147
@@ -324,19 +324,19 @@ msgstr "外觀"
 
 #: ../mousepad/mousepad-print.c:629
 msgid "Print page _headers"
-msgstr ""
+msgstr "列印頁標頭(_H)"
 
 #: ../mousepad/mousepad-print.c:636
 msgid "Print _line numbers"
-msgstr ""
+msgstr "列印列號(_L)"
 
 #: ../mousepad/mousepad-print.c:653
 msgid "Number every"
-msgstr ""
+msgstr "每隔"
 
 #: ../mousepad/mousepad-print.c:669
 msgid "line(s)"
-msgstr ""
+msgstr "列編號"
 
 #: ../mousepad/mousepad-print.c:674
 msgid "Enable text _wrapping"
@@ -344,7 +344,7 @@ msgstr "啟用文字換行(_W)"
 
 #: ../mousepad/mousepad-print.c:681
 msgid "Enable _syntax highlighting"
-msgstr ""
+msgstr "啟用語法標明(_S)"
 
 #: ../mousepad/mousepad-print.c:693
 msgid "Fonts"
@@ -522,7 +522,7 @@ msgstr "在新視窗建立新文件"
 
 #: ../mousepad/mousepad-window.c:405
 msgid "New From Te_mplate"
-msgstr ""
+msgstr "根據範本新增(_M)"
 
 #: ../mousepad/mousepad-window.c:406
 msgid "_Open..."
@@ -546,7 +546,7 @@ msgstr "清除歷史(_H)"
 
 #: ../mousepad/mousepad-window.c:409
 msgid "Clear the recently used files history"
-msgstr ""
+msgstr "清除最近使用的檔案歷史"
 
 #: ../mousepad/mousepad-window.c:410
 msgid "Save the current document"
@@ -570,11 +570,11 @@ msgstr "儲存此視窗的全部文件"
 
 #: ../mousepad/mousepad-window.c:413
 msgid "Re_vert"
-msgstr ""
+msgstr "還原"
 
 #: ../mousepad/mousepad-window.c:413
 msgid "Revert to the saved version of the file"
-msgstr ""
+msgstr "還原至檔案的儲存版本"
 
 #: ../mousepad/mousepad-window.c:414
 msgid "_Print..."
@@ -586,11 +586,11 @@ msgstr "列印目前文件"
 
 #: ../mousepad/mousepad-window.c:415
 msgid "_Detach Tab"
-msgstr ""
+msgstr "分離分頁(_D)"
 
 #: ../mousepad/mousepad-window.c:415
 msgid "Move the current document to a new window"
-msgstr ""
+msgstr "將目前文件移動成新的獨立視窗"
 
 #: ../mousepad/mousepad-window.c:416
 msgid "Close _Tab"
@@ -614,11 +614,11 @@ msgstr "編輯(_E)"
 
 #: ../mousepad/mousepad-window.c:420
 msgid "Undo the last action"
-msgstr ""
+msgstr "取消上次動作"
 
 #: ../mousepad/mousepad-window.c:421
 msgid "Redo the last undone action"
-msgstr ""
+msgstr "再次執行上次取消的動作"
 
 #: ../mousepad/mousepad-window.c:422
 msgid "Cut the selection"
@@ -787,31 +787,31 @@ msgstr ""
 
 #: ../mousepad/mousepad-window.c:450
 msgid "_Move Selection"
-msgstr ""
+msgstr "移動選取範圍(_M)"
 
 #: ../mousepad/mousepad-window.c:451
 msgid "Line _Up"
-msgstr ""
+msgstr "上移列(_U)"
 
 #: ../mousepad/mousepad-window.c:451
 msgid "Move the selection one line up"
-msgstr ""
+msgstr "將選取範圍上移一列"
 
 #: ../mousepad/mousepad-window.c:452
 msgid "Line _Down"
-msgstr ""
+msgstr "下移列(_D)"
 
 #: ../mousepad/mousepad-window.c:452
 msgid "Move the selection one line down"
-msgstr ""
+msgstr "將選取範圍下移一列"
 
 #: ../mousepad/mousepad-window.c:453
 msgid "D_uplicate Line / Selection"
-msgstr ""
+msgstr "再製列 / 選取範圍(_D)"
 
 #: ../mousepad/mousepad-window.c:453
 msgid "Duplicate the current line or selection"
-msgstr ""
+msgstr "再製目前列或是再製選取範圍"
 
 #: ../mousepad/mousepad-window.c:454
 msgid "_Increase Indent"
@@ -835,7 +835,7 @@ msgstr "文件(_D)"
 
 #: ../mousepad/mousepad-window.c:458
 msgid "Line E_nding"
-msgstr ""
+msgstr "列結尾(_N)"
 
 #: ../mousepad/mousepad-window.c:459
 msgid "Tab _Size"
@@ -964,7 +964,7 @@ msgstr "將文件的每行結尾改為 DOS / Windows 式 (CR LF)"
 #. add the label with the root warning
 #: ../mousepad/mousepad-window.c:659
 msgid "Warning, you are using the root account, you may harm your system."
-msgstr ""
+msgstr "警告，您目前是 root 帳號，您很有可能不小心傷害到您的系統。"
 
 #. show the warning
 #: ../mousepad/mousepad-window.c:1097
@@ -1009,7 +1009,7 @@ msgstr "開啟「%s」"
 
 #: ../mousepad/mousepad-window.c:2724
 msgid "Failed to clear the recent history"
-msgstr ""
+msgstr "無法清除最近歷史"
 
 #. create an item to inform the user
 #: ../mousepad/mousepad-window.c:3148
@@ -1018,7 +1018,7 @@ msgstr "剪貼簿沒有資料"
 
 #: ../mousepad/mousepad-window.c:3219
 msgid "Turn off color schemes"
-msgstr ""
+msgstr "關閉配色方案"
 
 #: ../mousepad/mousepad-window.c:3300
 msgid "No filetype"
@@ -1027,17 +1027,17 @@ msgstr "無檔案類型"
 #. set error message
 #: ../mousepad/mousepad-window.c:3507
 msgid "Templates should be UTF-8 valid"
-msgstr ""
+msgstr "範本應該要是有效的 UTF-8 編碼"
 
 #. set error message
 #: ../mousepad/mousepad-window.c:3515
 msgid "Reading the template failed, the menu item has been removed"
-msgstr ""
+msgstr "範本讀取失敗，選單項目已移除"
 
 #. set error message
 #: ../mousepad/mousepad-window.c:3520
 msgid "Loading the template failed"
-msgstr ""
+msgstr "範本載入失敗"
 
 #. create new file chooser dialog
 #: ../mousepad/mousepad-window.c:3545
