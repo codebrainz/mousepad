@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2013-05-20 09:36+0000\n"
-"PO-Revision-Date: 2013-05-20 12:10+0200\n"
+"PO-Revision-Date: 2013-05-20 12:21+0200\n"
 "Last-Translator: Piarres Beobide <pi@beobide.net>\n"
 "Language-Team: Euskara <librezale@librezale.org>\n"
 "Language: eu\n"
@@ -348,33 +348,33 @@ msgstr ""
 
 #: ../mousepad/mousepad-print.c:681
 msgid "Enable _syntax highlighting"
-msgstr ""
+msgstr "Gaitu _sintaxi nabarmenketa"
 
 #: ../mousepad/mousepad-print.c:693
 msgid "Fonts"
-msgstr ""
+msgstr "Letra-tipoak"
 
 #: ../mousepad/mousepad-print.c:709
 msgid "Header:"
-msgstr ""
+msgstr "Goiburua:"
 
 #: ../mousepad/mousepad-print.c:719
 msgid "Body:"
-msgstr ""
+msgstr "Testua:"
 
 #: ../mousepad/mousepad-print.c:729
 msgid "Line numbers:"
-msgstr ""
+msgstr "Lerro zenbakiak:"
 
 #. set dialog properties
 #: ../mousepad/mousepad-replace-dialog.c:167
 msgid "Replace"
-msgstr ""
+msgstr "Ordeztu"
 
 #: ../mousepad/mousepad-replace-dialog.c:174
 #: ../mousepad/mousepad-replace-dialog.c:540
 msgid "_Replace"
-msgstr ""
+msgstr "O_rdeztu"
 
 #: ../mousepad/mousepad-replace-dialog.c:192
 msgid "_Search for:"
@@ -382,7 +382,7 @@ msgstr ""
 
 #: ../mousepad/mousepad-replace-dialog.c:213
 msgid "Replace _with:"
-msgstr ""
+msgstr "Ordeztu _honekin:"
 
 #: ../mousepad/mousepad-replace-dialog.c:233
 msgid "Search _direction:"
@@ -390,25 +390,25 @@ msgstr ""
 
 #: ../mousepad/mousepad-replace-dialog.c:242
 msgid "Up"
-msgstr ""
+msgstr "Gora"
 
 #: ../mousepad/mousepad-replace-dialog.c:243
 msgid "Down"
-msgstr ""
+msgstr "Behera"
 
 #: ../mousepad/mousepad-replace-dialog.c:244
 msgid "Both"
-msgstr ""
+msgstr "Biak"
 
 #. case sensitive
 #: ../mousepad/mousepad-replace-dialog.c:253
 msgid "Case sensi_tive"
-msgstr ""
+msgstr "_Maiuskula/minuskula"
 
 #. match whole word
 #: ../mousepad/mousepad-replace-dialog.c:260
 msgid "_Match whole word"
-msgstr ""
+msgstr "Hitz _osoak soilik"
 
 #: ../mousepad/mousepad-replace-dialog.c:271
 msgid "Replace _all in:"
@@ -416,15 +416,15 @@ msgstr ""
 
 #: ../mousepad/mousepad-replace-dialog.c:278
 msgid "Selection"
-msgstr ""
+msgstr "Hautapena"
 
 #: ../mousepad/mousepad-replace-dialog.c:279
 msgid "Document"
-msgstr ""
+msgstr "Dokumentua"
 
 #: ../mousepad/mousepad-replace-dialog.c:280
 msgid "All Documents"
-msgstr ""
+msgstr "Dokumentu guztiak"
 
 #: ../mousepad/mousepad-replace-dialog.c:445
 #, c-format
@@ -435,19 +435,19 @@ msgstr[1] ""
 
 #: ../mousepad/mousepad-replace-dialog.c:540
 msgid "_Replace All"
-msgstr ""
+msgstr "O_rdeztu guztiak"
 
 #: ../mousepad/mousepad-search-bar.c:188
 msgid "Fi_nd:"
-msgstr ""
+msgstr "Bi_latu:"
 
 #: ../mousepad/mousepad-search-bar.c:208
 msgid "_Next"
-msgstr ""
+msgstr "_Hurrengoa"
 
 #: ../mousepad/mousepad-search-bar.c:219
 msgid "_Previous"
-msgstr ""
+msgstr "_Aurrekoa"
 
 #: ../mousepad/mousepad-search-bar.c:230
 msgid "Highlight _All"
@@ -459,16 +459,16 @@ msgstr ""
 
 #: ../mousepad/mousepad-statusbar.c:141
 msgid "Choose a filetype"
-msgstr ""
+msgstr "Aukeratu fitxategi-mota"
 
 #. language/filetype
 #: ../mousepad/mousepad-statusbar.c:146 ../mousepad/mousepad-statusbar.c:258
 msgid "Filetype: None"
-msgstr ""
+msgstr "Fitxategi-mota: Batez"
 
 #: ../mousepad/mousepad-statusbar.c:169
 msgid "Toggle the overwrite mode"
-msgstr ""
+msgstr "Txandakatu gainidazte modua"
 
 #. overwrite label
 #: ../mousepad/mousepad-statusbar.c:174
@@ -478,17 +478,17 @@ msgstr ""
 #: ../mousepad/mousepad-statusbar.c:261
 #, c-format
 msgid "Filetype: %s"
-msgstr ""
+msgstr "Fitxategi-mota: %s"
 
 #: ../mousepad/mousepad-statusbar.c:281
 #, c-format
 msgid "Line: %d Column: %d Selection: %d"
-msgstr ""
+msgstr "Lerroa: %d Zutabea_ %d Hautapena: %d"
 
 #: ../mousepad/mousepad-statusbar.c:283
 #, c-format
 msgid "Line: %d Column: %d"
-msgstr ""
+msgstr "Lerroa: %d Zutabea: %d"
 
 #. show warning to the user
 #: ../mousepad/mousepad-util.c:572
@@ -497,104 +497,106 @@ msgid ""
 "Unable to create base directory \"%s\". Saving to file \"%s\" will be "
 "aborted."
 msgstr ""
+"Ezin da \"%s\" oinarri direktorioa sortu. \"%s\" fitxategiaren gordetzea utzi "
+"egin da."
 
 #. print error
 #: ../mousepad/mousepad-util.c:618
 #, c-format
 msgid "Failed to store the preferences to \"%s\": %s"
-msgstr ""
+msgstr "Huts \"%s\"-ren ezarpenak gordetzean: %s"
 
 #: ../mousepad/mousepad-window.c:402
 msgid "_File"
-msgstr ""
+msgstr "_Fitxategia"
 
 #: ../mousepad/mousepad-window.c:403
 msgid "_New"
-msgstr ""
+msgstr "_Berria"
 
 #: ../mousepad/mousepad-window.c:403
 msgid "Create a new document"
-msgstr ""
+msgstr "Sortu dokumentu berri bat"
 
 #: ../mousepad/mousepad-window.c:404
 msgid "New _Window"
-msgstr ""
+msgstr "_Leiho berria"
 
 #: ../mousepad/mousepad-window.c:404
 msgid "Create a new document in a new window"
-msgstr ""
+msgstr "Sortu dokumentu berria bat leiho berrian"
 
 #: ../mousepad/mousepad-window.c:405
 msgid "New From Te_mplate"
-msgstr ""
+msgstr "Berria &txantiloitik"
 
 #: ../mousepad/mousepad-window.c:406
 msgid "_Open..."
-msgstr ""
+msgstr "_Ireki..."
 
 #: ../mousepad/mousepad-window.c:406
 msgid "Open a file"
-msgstr ""
+msgstr "Ireki fitxategia"
 
 #: ../mousepad/mousepad-window.c:407
 msgid "Op_en Recent"
-msgstr ""
+msgstr "Ireki _oraintsukoa"
 
 #: ../mousepad/mousepad-window.c:408
 msgid "No items found"
-msgstr ""
+msgstr "Ez da elementurik aurkitu"
 
 #: ../mousepad/mousepad-window.c:409
 msgid "Clear _History"
-msgstr ""
+msgstr "Garbitu _historia"
 
 #: ../mousepad/mousepad-window.c:409
 msgid "Clear the recently used files history"
-msgstr ""
+msgstr "Garbitu azkenaldian erabilitako fitxategi historia"
 
 #: ../mousepad/mousepad-window.c:410
 msgid "Save the current document"
-msgstr ""
+msgstr "Gorde uneko dokumentua"
 
 #: ../mousepad/mousepad-window.c:411
 msgid "Save _As..."
-msgstr ""
+msgstr "Gorde honel_a..."
 
 #: ../mousepad/mousepad-window.c:411
 msgid "Save current document as another file"
-msgstr ""
+msgstr "Gorde uneko dokumntua beste fitxategi batean"
 
 #: ../mousepad/mousepad-window.c:412
 msgid "Save A_ll"
-msgstr ""
+msgstr "Gorde _dena"
 
 #: ../mousepad/mousepad-window.c:412
 msgid "Save all document in this window"
-msgstr ""
+msgstr "Gorde leiho honetako dokumnetu guztia"
 
 #: ../mousepad/mousepad-window.c:413
 msgid "Re_vert"
-msgstr ""
+msgstr "_Leheneratu"
 
 #: ../mousepad/mousepad-window.c:413
 msgid "Revert to the saved version of the file"
-msgstr ""
+msgstr "Itzuli fitxategiaren gordetako bertsio batera"
 
 #: ../mousepad/mousepad-window.c:414
 msgid "_Print..."
-msgstr ""
+msgstr "In_primatu..."
 
 #: ../mousepad/mousepad-window.c:414
 msgid "Print the current document"
-msgstr ""
+msgstr "Inprimatu uneko dokumentua"
 
 #: ../mousepad/mousepad-window.c:415
 msgid "_Detach Tab"
-msgstr ""
+msgstr "_Desuztartu fitxa"
 
 #: ../mousepad/mousepad-window.c:415
 msgid "Move the current document to a new window"
-msgstr ""
+msgstr "Eraman uneko dokumentua leiho berri batera"
 
 #: ../mousepad/mousepad-window.c:416
 msgid "Close _Tab"
