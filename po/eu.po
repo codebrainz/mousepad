@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2013-05-20 09:36+0000\n"
-"PO-Revision-Date: 2013-05-20 12:00+0200\n"
+"PO-Revision-Date: 2013-05-20 12:10+0200\n"
 "Last-Translator: Piarres Beobide <pi@beobide.net>\n"
 "Language-Team: Euskara <librezale@librezale.org>\n"
 "Language: eu\n"
@@ -86,11 +86,11 @@ msgstr "Z_utabe zenbakia:"
 
 #: ../mousepad/mousepad-dialogs.c:300
 msgid "Remove all entries from the documents history?"
-msgstr ""
+msgstr "Dokumentu historiako sarrera guztiak ezabatu?"
 
 #: ../mousepad/mousepad-dialogs.c:305
 msgid "Clear Documents History"
-msgstr ""
+msgstr "Garbitu dokumentu historia"
 
 #: ../mousepad/mousepad-dialogs.c:308
 msgid ""
@@ -100,37 +100,40 @@ msgstr ""
 
 #: ../mousepad/mousepad-dialogs.c:339
 msgid "Do you want to save the changes before closing?"
-msgstr ""
+msgstr "Irten aurretik aldaketak gorde nahi dituzu?"
 
 #: ../mousepad/mousepad-dialogs.c:340
 msgid "Save Changes"
-msgstr ""
+msgstr "Gorde aldaketak"
 
 #: ../mousepad/mousepad-dialogs.c:341
 msgid "_Don't Save"
-msgstr ""
+msgstr "_Ez gorde"
 
 #. secondary text
 #: ../mousepad/mousepad-dialogs.c:363
 msgid "If you don't save the document, all the changes will be lost."
-msgstr ""
+msgstr "Dokumnetua ez baduzu gordetzen, aldaketa guztiak galduko dira."
 
 #: ../mousepad/mousepad-dialogs.c:385
 msgid ""
 "The document has been externally modified. Do you want to continue saving?"
 msgstr ""
+"Dokumentua kanpoaldetik eraldatua izan da. Gordetzen jarraitu nahi al duzu?"
 
 #: ../mousepad/mousepad-dialogs.c:386
 msgid "Externally Modified"
-msgstr ""
+msgstr "Kanpotik eraldatua"
 
 #: ../mousepad/mousepad-dialogs.c:388
 msgid "If you save the document, all of the external changes will be lost."
 msgstr ""
+"Dokumnetua gordetzen baduzu, kanpotik egindako aldaketa guztiak galduko "
+"dira."
 
 #: ../mousepad/mousepad-dialogs.c:416
 msgid "Do you want to save your changes before reloading?"
-msgstr ""
+msgstr "Birkargatu aurretik aldaketak gorde nahi dituzu?"
 
 #: ../mousepad/mousepad-dialogs.c:418
 msgid "If you revert the file, all unsaved changes will be lost."
@@ -139,127 +142,127 @@ msgstr ""
 #. pack button, add signal and tooltip
 #: ../mousepad/mousepad-document.c:591
 msgid "Close this tab"
-msgstr ""
+msgstr "Itxi fitxa hau"
 
 #. create an unique untitled document name
 #: ../mousepad/mousepad-document.c:626
 msgid "Untitled"
-msgstr ""
+msgstr "Izengabea"
 
 #. create the header
 #: ../mousepad/mousepad-encoding-dialog.c:134
 msgid "The document was not UTF-8 valid"
-msgstr ""
+msgstr "Dokumentua ez da UTF-8 balidoa"
 
 #: ../mousepad/mousepad-encoding-dialog.c:135
 msgid "Please select an encoding below."
-msgstr ""
+msgstr "Mesedez hautatu kodeketa bet behean."
 
 #. encoding radio buttons
 #: ../mousepad/mousepad-encoding-dialog.c:147
 msgid "Default (UTF-8)"
-msgstr ""
+msgstr "Lehenetsia (UTF-8)"
 
 #: ../mousepad/mousepad-encoding-dialog.c:153
 msgid "System"
-msgstr ""
+msgstr "Sistema"
 
 #: ../mousepad/mousepad-encoding-dialog.c:160
 msgid "Other:"
-msgstr ""
+msgstr "Besteak:"
 
 #: ../mousepad/mousepad-encoding-dialog.c:180
 msgid "Checking encodings..."
-msgstr ""
+msgstr "Kodeketak analizatzen..."
 
 #. west european
 #: ../mousepad/mousepad-encoding.c:35
 msgid "Celtic"
-msgstr ""
+msgstr "Zeltiarra"
 
 #: ../mousepad/mousepad-encoding.c:36 ../mousepad/mousepad-encoding.c:37
 msgid "Greek"
-msgstr ""
+msgstr "Grekoa"
 
 #: ../mousepad/mousepad-encoding.c:38
 msgid "Nordic"
-msgstr ""
+msgstr "Eskandinabiarra"
 
 #: ../mousepad/mousepad-encoding.c:39
 msgid "South European"
-msgstr ""
+msgstr "Hego Europakoa"
 
 #: ../mousepad/mousepad-encoding.c:40 ../mousepad/mousepad-encoding.c:41
 #: ../mousepad/mousepad-encoding.c:42 ../mousepad/mousepad-encoding.c:43
 msgid "Western"
-msgstr ""
+msgstr "Mendebaldekoa"
 
 #. east european
 #: ../mousepad/mousepad-encoding.c:46 ../mousepad/mousepad-encoding.c:47
 #: ../mousepad/mousepad-encoding.c:48
 msgid "Baltic"
-msgstr ""
+msgstr "Baltikokoa"
 
 #: ../mousepad/mousepad-encoding.c:49 ../mousepad/mousepad-encoding.c:50
 #: ../mousepad/mousepad-encoding.c:51
 msgid "Central European"
-msgstr ""
+msgstr "Europa erdialdekoa"
 
 #: ../mousepad/mousepad-encoding.c:52 ../mousepad/mousepad-encoding.c:53
 #: ../mousepad/mousepad-encoding.c:54 ../mousepad/mousepad-encoding.c:55
 #: ../mousepad/mousepad-encoding.c:56
 msgid "Cyrillic"
-msgstr ""
+msgstr "Zirilikoa"
 
 #: ../mousepad/mousepad-encoding.c:57
 msgid "Cyrillic/Russian"
-msgstr ""
+msgstr "Zirilikoa/Errusiarra"
 
 #: ../mousepad/mousepad-encoding.c:58
 msgid "Cyrillic/Ukrainian"
-msgstr ""
+msgstr "Zirilikoa/Ukrainarra"
 
 #: ../mousepad/mousepad-encoding.c:59
 msgid "Romanian"
-msgstr ""
+msgstr "Errumaniarra"
 
 #. middle eastern
 #: ../mousepad/mousepad-encoding.c:62 ../mousepad/mousepad-encoding.c:63
 #: ../mousepad/mousepad-encoding.c:64
 msgid "Arabic"
-msgstr ""
+msgstr "Arabiarra"
 
 #: ../mousepad/mousepad-encoding.c:65 ../mousepad/mousepad-encoding.c:66
 #: ../mousepad/mousepad-encoding.c:67
 msgid "Hebrew"
-msgstr ""
+msgstr "Hebrearra"
 
 #: ../mousepad/mousepad-encoding.c:68
 msgid "Hebrew Visual"
-msgstr ""
+msgstr "Hebrear bisuala"
 
 #. asian
 #: ../mousepad/mousepad-encoding.c:71
 msgid "Armenian"
-msgstr ""
+msgstr "Armeniarra"
 
 #: ../mousepad/mousepad-encoding.c:72
 msgid "Georgian"
-msgstr ""
+msgstr "Georgiarra"
 
 #: ../mousepad/mousepad-encoding.c:73
 msgid "Thai"
-msgstr ""
+msgstr "Thailandiarra"
 
 #: ../mousepad/mousepad-encoding.c:74 ../mousepad/mousepad-encoding.c:75
 #: ../mousepad/mousepad-encoding.c:76
 msgid "Turkish"
-msgstr ""
+msgstr "Turkiarra"
 
 #: ../mousepad/mousepad-encoding.c:77 ../mousepad/mousepad-encoding.c:78
 #: ../mousepad/mousepad-encoding.c:79
 msgid "Vietnamese"
-msgstr ""
+msgstr "Vietnamera"
 
 #. unicode
 #: ../mousepad/mousepad-encoding.c:82 ../mousepad/mousepad-encoding.c:83
@@ -267,33 +270,34 @@ msgstr ""
 #: ../mousepad/mousepad-encoding.c:86 ../mousepad/mousepad-encoding.c:87
 #: ../mousepad/mousepad-encoding.c:88 ../mousepad/mousepad-encoding.c:89
 msgid "Unicode"
-msgstr ""
+msgstr "Unicode"
 
 #. east asian
 #: ../mousepad/mousepad-encoding.c:92 ../mousepad/mousepad-encoding.c:93
 #: ../mousepad/mousepad-encoding.c:94 ../mousepad/mousepad-encoding.c:95
 msgid "Chinese Simplified"
-msgstr ""
+msgstr "Txinatar soildua"
 
 #: ../mousepad/mousepad-encoding.c:96 ../mousepad/mousepad-encoding.c:97
 #: ../mousepad/mousepad-encoding.c:98
 msgid "Chinese Traditional"
-msgstr ""
+msgstr "Txinatar tradizionala"
 
 #: ../mousepad/mousepad-encoding.c:99 ../mousepad/mousepad-encoding.c:100
 #: ../mousepad/mousepad-encoding.c:101
 msgid "Japanese"
-msgstr ""
+msgstr "Japoniarra"
 
 #: ../mousepad/mousepad-encoding.c:102 ../mousepad/mousepad-encoding.c:103
 #: ../mousepad/mousepad-encoding.c:104 ../mousepad/mousepad-encoding.c:105
+#, fuzzy
 msgid "Korean"
-msgstr ""
+msgstr "Korearra"
 
 #: ../mousepad/mousepad-file.c:556
 #, c-format
 msgid "Invalid byte sequence in conversion input"
-msgstr ""
+msgstr "Byteen sekuentzia baliogabea bihurketa-sarreran"
 
 #: ../mousepad/mousepad-file.c:875
 #, c-format
@@ -308,27 +312,27 @@ msgstr ""
 #. set a custom tab label
 #: ../mousepad/mousepad-print.c:125
 msgid "Document Settings"
-msgstr ""
+msgstr "Dokumentu ezarpenak"
 
 #: ../mousepad/mousepad-print.c:595
 msgid "Page Setup"
-msgstr ""
+msgstr "Orri ezarpena"
 
 #: ../mousepad/mousepad-print.c:605
 msgid "_Adjust page size and orientation"
-msgstr ""
+msgstr "Doitu orrialdearen tamaina eta orientazio_a"
 
 #: ../mousepad/mousepad-print.c:615
 msgid "Appearance"
-msgstr ""
+msgstr "Itxura"
 
 #: ../mousepad/mousepad-print.c:629
 msgid "Print page _headers"
-msgstr ""
+msgstr "Inprimatu _orrialde-goiburuak"
 
 #: ../mousepad/mousepad-print.c:636
 msgid "Print _line numbers"
-msgstr ""
+msgstr "Inprimatu _lerro-zenbakiak"
 
 #: ../mousepad/mousepad-print.c:653
 msgid "Number every"
