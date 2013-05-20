@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2013-05-20 09:36+0000\n"
-"PO-Revision-Date: 2013-05-20 12:21+0200\n"
+"PO-Revision-Date: 2013-05-20 12:27+0200\n"
 "Last-Translator: Piarres Beobide <pi@beobide.net>\n"
 "Language-Team: Euskara <librezale@librezale.org>\n"
 "Language: eu\n"
@@ -600,75 +600,75 @@ msgstr "Eraman uneko dokumentua leiho berri batera"
 
 #: ../mousepad/mousepad-window.c:416
 msgid "Close _Tab"
-msgstr ""
+msgstr "Itxi fi_txa"
 
 #: ../mousepad/mousepad-window.c:416
 msgid "Close the current document"
-msgstr ""
+msgstr "Itxi uneko dokumentua"
 
 #: ../mousepad/mousepad-window.c:417
 msgid "_Close Window"
-msgstr ""
+msgstr "_Itxi leihoa"
 
 #: ../mousepad/mousepad-window.c:417
 msgid "Close this window"
-msgstr ""
+msgstr "Itxi leiho hau"
 
 #: ../mousepad/mousepad-window.c:419
 msgid "_Edit"
-msgstr ""
+msgstr "_Editatu"
 
 #: ../mousepad/mousepad-window.c:420
 msgid "Undo the last action"
-msgstr ""
+msgstr "Desegin azken ekintza"
 
 #: ../mousepad/mousepad-window.c:421
 msgid "Redo the last undone action"
-msgstr ""
+msgstr "Berregin desegindako azken urratsa"
 
 #: ../mousepad/mousepad-window.c:422
 msgid "Cut the selection"
-msgstr ""
+msgstr "Ebaki hautapena"
 
 #: ../mousepad/mousepad-window.c:423
 msgid "Copy the selection"
-msgstr ""
+msgstr "Kopiatu hautapena"
 
 #: ../mousepad/mousepad-window.c:424
 msgid "Paste the clipboard"
-msgstr ""
+msgstr "Itsatsi arbela"
 
 #: ../mousepad/mousepad-window.c:425
 msgid "Paste _Special"
-msgstr ""
+msgstr "Itsatsi bere_zia"
 
 #: ../mousepad/mousepad-window.c:426
 msgid "Paste from _History"
-msgstr ""
+msgstr "Itx¡satsi historiatik"
 
 #: ../mousepad/mousepad-window.c:426
 msgid "Paste from the clipboard history"
-msgstr ""
+msgstr "Itsatsi arbel historiatik"
 
 #: ../mousepad/mousepad-window.c:427
 msgid "Paste as _Column"
-msgstr ""
+msgstr "Itsatsi _zutabe baten gisa"
 
 #: ../mousepad/mousepad-window.c:427
 msgid "Paste the clipboard text into a column"
-msgstr ""
+msgstr "Itsatsi arbeleko testua zutabe batetan"
 
 #: ../mousepad/mousepad-window.c:428
 msgid "Delete the current selection"
-msgstr ""
+msgstr "Ezabatu uneko hautapena"
 
 #: ../mousepad/mousepad-window.c:429
 msgid "Select the text in the entire document"
-msgstr ""
+msgstr "Hautatu dokumentuko osoko testua"
 
 #: ../mousepad/mousepad-window.c:430
 msgid "Change the selection"
-msgstr ""
+msgstr "Aldatu hautapena"
 
 #: ../mousepad/mousepad-window.c:430
 msgid "Change a normal selection into a column selection and vice versa"
