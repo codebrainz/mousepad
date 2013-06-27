@@ -836,79 +836,79 @@ msgstr ""
 
 #: ../mousepad/mousepad-window.c:457
 msgid "_Document"
-msgstr ""
+msgstr "_Dokumentua"
 
 #: ../mousepad/mousepad-window.c:458
 msgid "Line E_nding"
-msgstr ""
+msgstr "Lerro lo_deketa"
 
 #: ../mousepad/mousepad-window.c:459
 msgid "Tab _Size"
-msgstr ""
+msgstr "Fitxa _tamaina"
 
 #: ../mousepad/mousepad-window.c:460
 msgid "_Filetype"
-msgstr ""
+msgstr "_Fitxategi-mota"
 
 #: ../mousepad/mousepad-window.c:462
 msgid "_Navigation"
-msgstr ""
+msgstr "_Nabigazioa"
 
 #: ../mousepad/mousepad-window.c:463
 msgid "_Previous Tab"
-msgstr ""
+msgstr "Au_rreko fitxa"
 
 #: ../mousepad/mousepad-window.c:463
 msgid "Select the previous tab"
-msgstr ""
+msgstr "Hautatu aurreko fitxa"
 
 #: ../mousepad/mousepad-window.c:464
 msgid "_Next Tab"
-msgstr ""
+msgstr "_Hurrengo fitxa"
 
 #: ../mousepad/mousepad-window.c:464
 msgid "Select the next tab"
-msgstr ""
+msgstr "Hautatu hurrengo fitxa"
 
 #: ../mousepad/mousepad-window.c:465
 msgid "_Go to..."
-msgstr ""
+msgstr "_Joan ..."
 
 #: ../mousepad/mousepad-window.c:465
 msgid "Go to a specific location in the document"
-msgstr ""
+msgstr "Joan dokumentuko kokagune zehatz batera"
 
 #: ../mousepad/mousepad-window.c:467
 msgid "_Help"
-msgstr ""
+msgstr "_Laguntza"
 
 #: ../mousepad/mousepad-window.c:468
 msgid "_Contents"
-msgstr ""
+msgstr "Edu_kiak"
 
 #: ../mousepad/mousepad-window.c:468
 msgid "Display the Mousepad user manual"
-msgstr ""
+msgstr "Bistarazi Mousepad erabiltzaile manuala"
 
 #: ../mousepad/mousepad-window.c:469
 msgid "About this application"
-msgstr ""
+msgstr "Aplikazio honi buruz"
 
 #: ../mousepad/mousepad-window.c:474
 msgid "Line N_umbers"
-msgstr ""
+msgstr "Lerro ze_nbakiak"
 
 #: ../mousepad/mousepad-window.c:474
 msgid "Show line numbers"
-msgstr ""
+msgstr "Ikusi lerro zenbakiak"
 
 #: ../mousepad/mousepad-window.c:475
 msgid "St_atusbar"
-msgstr ""
+msgstr "Egoer_a-barra"
 
 #: ../mousepad/mousepad-window.c:475
 msgid "Change the visibility of the statusbar"
-msgstr ""
+msgstr "Aldatu egoera-barraren ikusgarritasuna"
 
 #: ../mousepad/mousepad-window.c:476
 msgid "_Auto Indent"
