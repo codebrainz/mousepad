@@ -6,14 +6,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-05-20 09:36+0000\n"
+"POT-Creation-Date: 2013-06-27 05:48+0000\n"
 "PO-Revision-Date: 2013-05-20 12:27+0200\n"
 "Last-Translator: Piarres Beobide <pi@beobide.net>\n"
 "Language-Team: Euskara <librezale@librezale.org>\n"
-"Language: eu\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: eu\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Virtaal 0.7.0\n"
 
@@ -128,8 +128,7 @@ msgstr "Kanpotik eraldatua"
 #: ../mousepad/mousepad-dialogs.c:388
 msgid "If you save the document, all of the external changes will be lost."
 msgstr ""
-"Dokumnetua gordetzen baduzu, kanpotik egindako aldaketa guztiak galduko "
-"dira."
+"Dokumnetua gordetzen baduzu, kanpotik egindako aldaketa guztiak galduko dira."
 
 #: ../mousepad/mousepad-dialogs.c:416
 msgid "Do you want to save your changes before reloading?"
@@ -497,8 +496,8 @@ msgid ""
 "Unable to create base directory \"%s\". Saving to file \"%s\" will be "
 "aborted."
 msgstr ""
-"Ezin da \"%s\" oinarri direktorioa sortu. \"%s\" fitxategiaren gordetzea utzi "
-"egin da."
+"Ezin da \"%s\" oinarri direktorioa sortu. \"%s\" fitxategiaren gordetzea "
+"utzi egin da."
 
 #. print error
 #: ../mousepad/mousepad-util.c:618
@@ -680,7 +679,7 @@ msgstr ""
 
 #: ../mousepad/mousepad-window.c:432
 msgid "Find _Next"
-msgstr ""
+msgstr "Bilatu _hurrengoa"
 
 #: ../mousepad/mousepad-window.c:432
 msgid "Search forwards for the same text"
@@ -688,7 +687,7 @@ msgstr ""
 
 #: ../mousepad/mousepad-window.c:433
 msgid "Find _Previous"
-msgstr ""
+msgstr "Bilatu au_rrekoa"
 
 #: ../mousepad/mousepad-window.c:433
 msgid "Search backwards for the same text"
@@ -696,19 +695,19 @@ msgstr ""
 
 #: ../mousepad/mousepad-window.c:434
 msgid "Find and Rep_lace..."
-msgstr ""
+msgstr "Bi_latu eta ordeztu..."
 
 #: ../mousepad/mousepad-window.c:434
 msgid "Search for and replace text"
-msgstr ""
+msgstr "Testua bilatu eta ordeztu"
 
 #: ../mousepad/mousepad-window.c:436
 msgid "_View"
-msgstr ""
+msgstr "I_kusi"
 
 #: ../mousepad/mousepad-window.c:437
 msgid "Select F_ont..."
-msgstr ""
+msgstr "Hautatu letra-tip_oa..."
 
 #: ../mousepad/mousepad-window.c:437
 msgid "Change the editor font"
