@@ -1,21 +1,22 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# Piarres Beobide <pi@beobide.net>, 2013.
+# 
+# Translators:
+# Piarres Beobide <pi@beobide.net>, 2013
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
+"Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-06-27 05:48+0000\n"
-"PO-Revision-Date: 2013-05-20 12:27+0200\n"
+"POT-Creation-Date: 2013-07-03 20:24+0200\n"
+"PO-Revision-Date: 2013-07-07 21:35+0000\n"
 "Last-Translator: Piarres Beobide <pi@beobide.net>\n"
-"Language-Team: Euskara <librezale@librezale.org>\n"
+"Language-Team: Basque (http://www.transifex.com/projects/p/xfce/language/eu/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: eu\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Virtaal 0.7.0\n"
 
 #: ../mousepad/main.c:53
 msgid "Do not register with the D-BUS session message bus"
@@ -118,8 +119,7 @@ msgstr "Dokumnetua ez baduzu gordetzen, aldaketa guztiak galduko dira."
 #: ../mousepad/mousepad-dialogs.c:385
 msgid ""
 "The document has been externally modified. Do you want to continue saving?"
-msgstr ""
-"Dokumentua kanpoaldetik eraldatua izan da. Gordetzen jarraitu nahi al duzu?"
+msgstr "Dokumentua kanpoaldetik eraldatua izan da. Gordetzen jarraitu nahi al duzu?"
 
 #: ../mousepad/mousepad-dialogs.c:386
 msgid "Externally Modified"
@@ -127,8 +127,7 @@ msgstr "Kanpotik eraldatua"
 
 #: ../mousepad/mousepad-dialogs.c:388
 msgid "If you save the document, all of the external changes will be lost."
-msgstr ""
-"Dokumnetua gordetzen baduzu, kanpotik egindako aldaketa guztiak galduko dira."
+msgstr "Dokumnetua gordetzen baduzu, kanpotik egindako aldaketa guztiak galduko dira."
 
 #: ../mousepad/mousepad-dialogs.c:416
 msgid "Do you want to save your changes before reloading?"
@@ -289,7 +288,6 @@ msgstr "Japoniarra"
 
 #: ../mousepad/mousepad-encoding.c:102 ../mousepad/mousepad-encoding.c:103
 #: ../mousepad/mousepad-encoding.c:104 ../mousepad/mousepad-encoding.c:105
-#, fuzzy
 msgid "Korean"
 msgstr "Korearra"
 
@@ -306,7 +304,7 @@ msgstr ""
 #: ../mousepad/mousepad-file.c:916
 #, c-format
 msgid "Failed to read the status of \"%s\""
-msgstr ""
+msgstr "Huts \"%s\"-ren egoera irakurtzerakoan."
 
 #. set a custom tab label
 #: ../mousepad/mousepad-print.c:125
@@ -492,12 +490,8 @@ msgstr "Lerroa: %d Zutabea: %d"
 #. show warning to the user
 #: ../mousepad/mousepad-util.c:572
 #, c-format
-msgid ""
-"Unable to create base directory \"%s\". Saving to file \"%s\" will be "
-"aborted."
-msgstr ""
-"Ezin da \"%s\" oinarri direktorioa sortu. \"%s\" fitxategiaren gordetzea "
-"utzi egin da."
+msgid "Unable to create base directory \"%s\". Saving to file \"%s\" will be aborted."
+msgstr "Ezin da \"%s\" oinarri direktorioa sortu. \"%s\" fitxategiaren gordetzea utzi egin da."
 
 #. print error
 #: ../mousepad/mousepad-util.c:618
@@ -719,11 +713,11 @@ msgstr ""
 
 #: ../mousepad/mousepad-window.c:440
 msgid "_Text"
-msgstr ""
+msgstr "_Testua"
 
 #: ../mousepad/mousepad-window.c:441
 msgid "_Convert"
-msgstr ""
+msgstr "_Bihurtu"
 
 #: ../mousepad/mousepad-window.c:442
 msgid "to _Uppercase"
@@ -796,27 +790,27 @@ msgstr ""
 
 #: ../mousepad/mousepad-window.c:451
 msgid "Line _Up"
-msgstr ""
+msgstr "Lerroa _gora"
 
 #: ../mousepad/mousepad-window.c:451
 msgid "Move the selection one line up"
-msgstr ""
+msgstr "Mugitu hautapena lerro bat gorantz"
 
 #: ../mousepad/mousepad-window.c:452
 msgid "Line _Down"
-msgstr ""
+msgstr "Lerroa _behera"
 
 #: ../mousepad/mousepad-window.c:452
 msgid "Move the selection one line down"
-msgstr ""
+msgstr "Mugitu hautapena lerro bat beherantz"
 
 #: ../mousepad/mousepad-window.c:453
 msgid "D_uplicate Line / Selection"
-msgstr ""
+msgstr "Bikoizt_u lerro / hautapena"
 
 #: ../mousepad/mousepad-window.c:453
 msgid "Duplicate the current line or selection"
-msgstr ""
+msgstr "Bikoiztu uneko lerro edo hautapena"
 
 #: ../mousepad/mousepad-window.c:454
 msgid "_Increase Indent"
@@ -978,48 +972,48 @@ msgstr ""
 
 #: ../mousepad/mousepad-window.c:1294
 msgid "Read Only"
-msgstr ""
+msgstr "Irakurtzeko soilik"
 
 #: ../mousepad/mousepad-window.c:1354 ../mousepad/mousepad-window.c:3218
 #: ../mousepad/mousepad-window.c:3299
 msgid "None"
-msgstr ""
+msgstr "Batez"
 
 #. create other action
 #: ../mousepad/mousepad-window.c:2081
 msgid "Set custom tab size"
-msgstr ""
+msgstr "Ezarri fitxa tamaina pertsonala"
 
 #. create suitable label for the other menu
 #: ../mousepad/mousepad-window.c:2129
 #, c-format
 msgid "Ot_her (%d)..."
-msgstr ""
+msgstr "Ge_hiago (%d)"
 
 #. set action label
 #: ../mousepad/mousepad-window.c:2140
 msgid "Ot_her..."
-msgstr ""
+msgstr "Ge_hiago..."
 
 #. build description
 #. get the offset length: 'Encoding: '
 #: ../mousepad/mousepad-window.c:2443 ../mousepad/mousepad-window.c:2674
 msgid "Charset"
-msgstr ""
+msgstr "Karaktere-jokoa"
 
 #: ../mousepad/mousepad-window.c:2577
 #, c-format
 msgid "Open '%s'"
-msgstr ""
+msgstr "Ireki '%s'"
 
 #: ../mousepad/mousepad-window.c:2724
 msgid "Failed to clear the recent history"
-msgstr ""
+msgstr "Huts azken aldiko historia sortzean"
 
 #. create an item to inform the user
 #: ../mousepad/mousepad-window.c:3148
 msgid "No clipboard data"
-msgstr ""
+msgstr "Ez dago arbel daturik"
 
 #: ../mousepad/mousepad-window.c:3219
 msgid "Turn off color schemes"
