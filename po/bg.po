@@ -1,21 +1,23 @@
-# Bulgarian translation of Mousepad package.
-# Copyright (C) 2005-2006 Erik Harrison.
-# This file is distributed under the same license as the Mousepad package.
-# Kiril Kirilov (Cybercop) <cybercop_montana@abv.bg>, 2012.
-#
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+# Translators:
+# cybercop <cybercop_montana@abv.bg>, 2012
+# cybercop <cybercop_montana@abv.bg>, 2012
 msgid ""
 msgstr ""
-"Project-Id-Version: mousepad 0.2.16\n"
+"Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-01-28 18:57+0000\n"
-"PO-Revision-Date: 2013-01-30 23:19+0200\n"
-"Last-Translator: Cybercop <cybercop_montana@abv.bg>\n"
-"Language-Team: Bulgarian <bg@li.org>\n"
-"Language: bg\n"
+"POT-Creation-Date: 2013-07-03 20:24+0200\n"
+"PO-Revision-Date: 2013-07-09 16:53+0000\n"
+"Last-Translator: cybercop <cybercop_montana@abv.bg>\n"
+"Language-Team: Bulgarian (http://www.transifex.com/projects/p/xfce/language/bg/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2)\n"
+"Language: bg\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: ../mousepad/main.c:53
 msgid "Do not register with the D-BUS session message bus"
@@ -30,8 +32,7 @@ msgid "Print version information and exit"
 msgstr "Показване на информация за версията и изход"
 
 #. default application name
-#: ../mousepad/main.c:81
-#: ../mousepad.desktop.in.in.h:1
+#: ../mousepad/main.c:81 ../mousepad.desktop.in.in.h:1
 msgid "Mousepad"
 msgstr "Mousepad"
 
@@ -94,7 +95,9 @@ msgid "Clear Documents History"
 msgstr "Изчистване на историята на документите"
 
 #: ../mousepad/mousepad-dialogs.c:308
-msgid "Clearing the documents history will permanently remove all currently listed entries."
+msgid ""
+"Clearing the documents history will permanently remove all currently listed "
+"entries."
 msgstr "Изчистването на историята на документите ще премахне завинаги всички изброени записи."
 
 #: ../mousepad/mousepad-dialogs.c:339
@@ -115,7 +118,8 @@ msgid "If you don't save the document, all the changes will be lost."
 msgstr "Ако не запазите документа, всички промени ще бъдат изгубени."
 
 #: ../mousepad/mousepad-dialogs.c:385
-msgid "The document has been externally modified. Do you want to continue saving?"
+msgid ""
+"The document has been externally modified. Do you want to continue saving?"
 msgstr "Документът е външно променен. Искате ли да продължи запазването?"
 
 #: ../mousepad/mousepad-dialogs.c:386
@@ -175,8 +179,7 @@ msgstr "Проверка на кодировка..."
 msgid "Celtic"
 msgstr "Келтски"
 
-#: ../mousepad/mousepad-encoding.c:36
-#: ../mousepad/mousepad-encoding.c:37
+#: ../mousepad/mousepad-encoding.c:36 ../mousepad/mousepad-encoding.c:37
 msgid "Greek"
 msgstr "Гръцки"
 
@@ -188,30 +191,24 @@ msgstr "Скандинавски"
 msgid "South European"
 msgstr "Южно-Европейски"
 
-#: ../mousepad/mousepad-encoding.c:40
-#: ../mousepad/mousepad-encoding.c:41
-#: ../mousepad/mousepad-encoding.c:42
-#: ../mousepad/mousepad-encoding.c:43
+#: ../mousepad/mousepad-encoding.c:40 ../mousepad/mousepad-encoding.c:41
+#: ../mousepad/mousepad-encoding.c:42 ../mousepad/mousepad-encoding.c:43
 msgid "Western"
 msgstr "Западен"
 
 #. east european
-#: ../mousepad/mousepad-encoding.c:46
-#: ../mousepad/mousepad-encoding.c:47
+#: ../mousepad/mousepad-encoding.c:46 ../mousepad/mousepad-encoding.c:47
 #: ../mousepad/mousepad-encoding.c:48
 msgid "Baltic"
 msgstr "Прибалтийски"
 
-#: ../mousepad/mousepad-encoding.c:49
-#: ../mousepad/mousepad-encoding.c:50
+#: ../mousepad/mousepad-encoding.c:49 ../mousepad/mousepad-encoding.c:50
 #: ../mousepad/mousepad-encoding.c:51
 msgid "Central European"
 msgstr "Централно-Европейски"
 
-#: ../mousepad/mousepad-encoding.c:52
-#: ../mousepad/mousepad-encoding.c:53
-#: ../mousepad/mousepad-encoding.c:54
-#: ../mousepad/mousepad-encoding.c:55
+#: ../mousepad/mousepad-encoding.c:52 ../mousepad/mousepad-encoding.c:53
+#: ../mousepad/mousepad-encoding.c:54 ../mousepad/mousepad-encoding.c:55
 #: ../mousepad/mousepad-encoding.c:56
 msgid "Cyrillic"
 msgstr "Кирилица"
@@ -229,14 +226,12 @@ msgid "Romanian"
 msgstr "Румънски"
 
 #. middle eastern
-#: ../mousepad/mousepad-encoding.c:62
-#: ../mousepad/mousepad-encoding.c:63
+#: ../mousepad/mousepad-encoding.c:62 ../mousepad/mousepad-encoding.c:63
 #: ../mousepad/mousepad-encoding.c:64
 msgid "Arabic"
 msgstr "Арабски"
 
-#: ../mousepad/mousepad-encoding.c:65
-#: ../mousepad/mousepad-encoding.c:66
+#: ../mousepad/mousepad-encoding.c:65 ../mousepad/mousepad-encoding.c:66
 #: ../mousepad/mousepad-encoding.c:67
 msgid "Hebrew"
 msgstr "Иврит"
@@ -258,54 +253,42 @@ msgstr "Грузински"
 msgid "Thai"
 msgstr "Тайландски"
 
-#: ../mousepad/mousepad-encoding.c:74
-#: ../mousepad/mousepad-encoding.c:75
+#: ../mousepad/mousepad-encoding.c:74 ../mousepad/mousepad-encoding.c:75
 #: ../mousepad/mousepad-encoding.c:76
 msgid "Turkish"
 msgstr "Турски"
 
-#: ../mousepad/mousepad-encoding.c:77
-#: ../mousepad/mousepad-encoding.c:78
+#: ../mousepad/mousepad-encoding.c:77 ../mousepad/mousepad-encoding.c:78
 #: ../mousepad/mousepad-encoding.c:79
 msgid "Vietnamese"
 msgstr "Виетнамски"
 
 #. unicode
-#: ../mousepad/mousepad-encoding.c:82
-#: ../mousepad/mousepad-encoding.c:83
-#: ../mousepad/mousepad-encoding.c:84
-#: ../mousepad/mousepad-encoding.c:85
-#: ../mousepad/mousepad-encoding.c:86
-#: ../mousepad/mousepad-encoding.c:87
-#: ../mousepad/mousepad-encoding.c:88
-#: ../mousepad/mousepad-encoding.c:89
+#: ../mousepad/mousepad-encoding.c:82 ../mousepad/mousepad-encoding.c:83
+#: ../mousepad/mousepad-encoding.c:84 ../mousepad/mousepad-encoding.c:85
+#: ../mousepad/mousepad-encoding.c:86 ../mousepad/mousepad-encoding.c:87
+#: ../mousepad/mousepad-encoding.c:88 ../mousepad/mousepad-encoding.c:89
 msgid "Unicode"
 msgstr "Юникод"
 
 #. east asian
-#: ../mousepad/mousepad-encoding.c:92
-#: ../mousepad/mousepad-encoding.c:93
-#: ../mousepad/mousepad-encoding.c:94
-#: ../mousepad/mousepad-encoding.c:95
+#: ../mousepad/mousepad-encoding.c:92 ../mousepad/mousepad-encoding.c:93
+#: ../mousepad/mousepad-encoding.c:94 ../mousepad/mousepad-encoding.c:95
 msgid "Chinese Simplified"
 msgstr "Китайски Опростен"
 
-#: ../mousepad/mousepad-encoding.c:96
-#: ../mousepad/mousepad-encoding.c:97
+#: ../mousepad/mousepad-encoding.c:96 ../mousepad/mousepad-encoding.c:97
 #: ../mousepad/mousepad-encoding.c:98
 msgid "Chinese Traditional"
 msgstr "Китайски традиционен"
 
-#: ../mousepad/mousepad-encoding.c:99
-#: ../mousepad/mousepad-encoding.c:100
+#: ../mousepad/mousepad-encoding.c:99 ../mousepad/mousepad-encoding.c:100
 #: ../mousepad/mousepad-encoding.c:101
 msgid "Japanese"
 msgstr "Японски"
 
-#: ../mousepad/mousepad-encoding.c:102
-#: ../mousepad/mousepad-encoding.c:103
-#: ../mousepad/mousepad-encoding.c:104
-#: ../mousepad/mousepad-encoding.c:105
+#: ../mousepad/mousepad-encoding.c:102 ../mousepad/mousepad-encoding.c:103
+#: ../mousepad/mousepad-encoding.c:104 ../mousepad/mousepad-encoding.c:105
 msgid "Korean"
 msgstr "Корейски"
 
@@ -447,7 +430,6 @@ msgid "%d occurence"
 msgid_plural "%d occurences"
 msgstr[0] "%d събитие"
 msgstr[1] "%d събития"
-msgstr[2] "%d събития"
 
 #: ../mousepad/mousepad-replace-dialog.c:540
 msgid "_Replace All"
@@ -469,8 +451,7 @@ msgstr "Предишен"
 msgid "Highlight _All"
 msgstr "Подчертаване на всички"
 
-#: ../mousepad/mousepad-search-bar.c:243
-#: ../mousepad/mousepad-search-bar.c:250
+#: ../mousepad/mousepad-search-bar.c:243 ../mousepad/mousepad-search-bar.c:250
 msgid "Mat_ch Case"
 msgstr "Намерено съвпадения"
 
@@ -479,8 +460,7 @@ msgid "Choose a filetype"
 msgstr "Избор на файлов тип"
 
 #. language/filetype
-#: ../mousepad/mousepad-statusbar.c:146
-#: ../mousepad/mousepad-statusbar.c:258
+#: ../mousepad/mousepad-statusbar.c:146 ../mousepad/mousepad-statusbar.c:258
 msgid "Filetype: None"
 msgstr "Файлов тип: Няма"
 
@@ -785,7 +765,8 @@ msgid "_Spaces to Tabs"
 msgstr "Преобразуване на интервалите в табулации"
 
 #: ../mousepad/mousepad-window.c:447
-msgid "Convert all the leading spaces to tabs in the selected line(s) or document"
+msgid ""
+"Convert all the leading spaces to tabs in the selected line(s) or document"
 msgstr "Преобразуване на всички водещи интервали в табулации в избраните редове или документите"
 
 #: ../mousepad/mousepad-window.c:448
@@ -994,8 +975,7 @@ msgstr "Не може да бъде отворен документа"
 msgid "Read Only"
 msgstr "Само за четене"
 
-#: ../mousepad/mousepad-window.c:1354
-#: ../mousepad/mousepad-window.c:3218
+#: ../mousepad/mousepad-window.c:1354 ../mousepad/mousepad-window.c:3218
 #: ../mousepad/mousepad-window.c:3299
 msgid "None"
 msgstr "Няма"
@@ -1018,8 +998,7 @@ msgstr "Друг..."
 
 #. build description
 #. get the offset length: 'Encoding: '
-#: ../mousepad/mousepad-window.c:2443
-#: ../mousepad/mousepad-window.c:2674
+#: ../mousepad/mousepad-window.c:2443 ../mousepad/mousepad-window.c:2674
 msgid "Charset"
 msgstr "Кодировка"
 
@@ -1067,7 +1046,9 @@ msgstr "Отваряне на файл"
 
 #: ../mousepad/mousepad-window.c:3658
 #, c-format
-msgid "Failed to open \"%s\" for reading. It will be removed from the document history"
+msgid ""
+"Failed to open \"%s\" for reading. It will be removed from the document "
+"history"
 msgstr "Неуспех при отваряне на \"%s\" за четене. Това ще бъде премахнато от историята на документите."
 
 #. show the warning and cleanup
@@ -1076,8 +1057,7 @@ msgid "Failed to open file"
 msgstr "Неуспех при отваряне на файл"
 
 #. show the error
-#: ../mousepad/mousepad-window.c:3768
-#: ../mousepad/mousepad-window.c:3891
+#: ../mousepad/mousepad-window.c:3768 ../mousepad/mousepad-window.c:3891
 msgid "Failed to save the document"
 msgstr "Неуспех при запазване на документ"
 
@@ -1107,114 +1087,3 @@ msgstr "Опростен текстов редактор"
 #: ../mousepad.desktop.in.in.h:3
 msgid "Text Editor"
 msgstr "Текстов редактор"
-
-#~ msgid "Can't convert codeset to '%s'"
-#~ msgstr "Не може да бъде преобразувана кодировката в '%s'"
-
-#~ msgid "Can't open pipe to process"
-#~ msgstr "Не може да бъде отворен канал за обработка"
-
-#~ msgid "A text editor for Xfce"
-#~ msgstr "Текстов редакто за Xfce"
-
-#~ msgid "About %s"
-#~ msgstr "Относно %s"
-
-#~ msgid "Can't open file to write"
-#~ msgstr "Не може да бъде отворен файл за запис"
-
-#~ msgid "Can't write file"
-#~ msgstr "Не може да бъде записан файл"
-
-#~ msgid "/File/_New"
-#~ msgstr "/Файл/_Нов"
-
-#~ msgid "/File/_Save"
-#~ msgstr "/Файл/Запазване"
-
-#~ msgid "/File/_Quit"
-#~ msgstr "/Файл/Изход"
-
-#~ msgid "/Edit/_Undo"
-#~ msgstr "/Редактиране/Отмяна"
-
-#~ msgid "/Edit/_Redo"
-#~ msgstr "/Редактиране/Връщане"
-
-#~ msgid "/Edit/Cu_t"
-#~ msgstr "/Редактиране/Отрязване"
-
-#~ msgid "/Edit/_Copy"
-#~ msgstr "/Редактиране/Копиране"
-
-#~ msgid "/Edit/_Paste"
-#~ msgstr "/Редактиране/Поставяне"
-
-#~ msgid "/Edit/_Delete"
-#~ msgstr "/Редактиране/Изтриване"
-
-#~ msgid "/Edit/Select _All"
-#~ msgstr "/Редактиране/Избор на всички"
-
-#~ msgid "/Search/_Find..."
-#~ msgstr "/Търсене/Намери..."
-
-#~ msgid "/Search/_Replace..."
-#~ msgstr "/Търсене/Замяна..."
-
-#~ msgid "/Search/_Jump To..."
-#~ msgstr "/Търсене/Прескачане до..."
-
-#~ msgid "/_Options"
-#~ msgstr "/Опции"
-
-#~ msgid "/Options/_Font..."
-#~ msgstr "/Опции/_Шрифт..."
-
-#~ msgid "/Options/_Line Numbers"
-#~ msgstr "/Опции/Номера на редове"
-
-#~ msgid "/Help/_About"
-#~ msgstr "/Помощ/Относно"
-
-#~ msgid "Search string not found"
-#~ msgstr "Търсеният низ не е намерен"
-
-#~ msgid "Replace?"
-#~ msgstr "Замяна?"
-
-#~ msgid "%d strings replaced"
-#~ msgstr "%d замяна на низ"
-
-#~ msgid "Find"
-#~ msgstr "Намери"
-
-#~ msgid "_Match case"
-#~ msgstr "Съвпадение"
-
-#~ msgid "Jump To"
-#~ msgstr "Прескочи до"
-
-#~ msgid "_Jump"
-#~ msgstr "Прескачане"
-
-#~ msgid "Current Locale (%s)"
-#~ msgstr "Текущ локал (%s)"
-
-#~ msgid "Other Codeset"
-#~ msgstr "Друга кодировка"
-
-#~ msgid "Code_set:"
-#~ msgstr "Кодировка:"
-
-#~ msgid "'%s' is not supported"
-#~ msgstr "'%s' не поддерживается"
-
-#~ msgid "Auto Detect"
-#~ msgstr "Автоматично засичане"
-
-#~ msgid "Ch_aracter Coding: "
-#~ msgstr "Кодировка на символите"
-
-#~ msgid "'%s' already exists. Overwrite?"
-#~ msgstr "'%s' вече съществува. Презапис?"
