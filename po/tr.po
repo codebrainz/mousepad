@@ -3,14 +3,15 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
+# wexaw, 2013
 # volkangezer <volkangezer@gmail.com>, 2013
 msgid ""
 msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2013-07-03 20:24+0200\n"
-"PO-Revision-Date: 2013-07-05 15:28+0000\n"
-"Last-Translator: volkangezer <volkangezer@gmail.com>\n"
+"PO-Revision-Date: 2013-08-14 21:10+0000\n"
+"Last-Translator: wexaw\n"
 "Language-Team: Turkish (http://www.transifex.com/projects/p/xfce/language/tr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -850,43 +851,43 @@ msgstr ""
 
 #: ../mousepad/mousepad-window.c:463
 msgid "_Previous Tab"
-msgstr ""
+msgstr "Önceki_Sekme"
 
 #: ../mousepad/mousepad-window.c:463
 msgid "Select the previous tab"
-msgstr ""
+msgstr "Önceki sekmeyi seç"
 
 #: ../mousepad/mousepad-window.c:464
 msgid "_Next Tab"
-msgstr ""
+msgstr "So_nraki Sekme"
 
 #: ../mousepad/mousepad-window.c:464
 msgid "Select the next tab"
-msgstr ""
+msgstr "Sonraki sekmeyi seç"
 
 #: ../mousepad/mousepad-window.c:465
 msgid "_Go to..."
-msgstr ""
+msgstr "_Git..."
 
 #: ../mousepad/mousepad-window.c:465
 msgid "Go to a specific location in the document"
-msgstr ""
+msgstr "Belge içinde belirli bir konuma git"
 
 #: ../mousepad/mousepad-window.c:467
 msgid "_Help"
-msgstr ""
+msgstr "_Yardım"
 
 #: ../mousepad/mousepad-window.c:468
 msgid "_Contents"
-msgstr ""
+msgstr "_İçindekiler"
 
 #: ../mousepad/mousepad-window.c:468
 msgid "Display the Mousepad user manual"
-msgstr ""
+msgstr "Mousepad kullanım kılavuzunu görüntüle"
 
 #: ../mousepad/mousepad-window.c:469
 msgid "About this application"
-msgstr ""
+msgstr "Bu uygulama hakkında"
 
 #: ../mousepad/mousepad-window.c:474
 msgid "Line N_umbers"
@@ -894,7 +895,7 @@ msgstr ""
 
 #: ../mousepad/mousepad-window.c:474
 msgid "Show line numbers"
-msgstr ""
+msgstr "Satır numaralarını göster"
 
 #: ../mousepad/mousepad-window.c:475
 msgid "St_atusbar"
@@ -977,7 +978,7 @@ msgstr ""
 #: ../mousepad/mousepad-window.c:1354 ../mousepad/mousepad-window.c:3218
 #: ../mousepad/mousepad-window.c:3299
 msgid "None"
-msgstr ""
+msgstr "Hiçbiri"
 
 #. create other action
 #: ../mousepad/mousepad-window.c:2081
@@ -1041,7 +1042,7 @@ msgstr ""
 #. create new file chooser dialog
 #: ../mousepad/mousepad-window.c:3545
 msgid "Open File"
-msgstr ""
+msgstr "Dosya Aç"
 
 #: ../mousepad/mousepad-window.c:3658
 #, c-format
@@ -1063,7 +1064,7 @@ msgstr ""
 #. create the dialog
 #: ../mousepad/mousepad-window.c:3792
 msgid "Save As"
-msgstr ""
+msgstr "Farklı Kaydet"
 
 #. show the error
 #: ../mousepad/mousepad-window.c:3983
@@ -1077,7 +1078,7 @@ msgstr ""
 
 #: ../mousepad/mousepad-window.c:4421
 msgid "Choose Mousepad Font"
-msgstr ""
+msgstr "Mousepad Yazı Tipini Seç"
 
 #: ../mousepad.desktop.in.in.h:2
 msgid "Simple Text Editor"
@@ -1085,4 +1086,4 @@ msgstr ""
 
 #: ../mousepad.desktop.in.in.h:3
 msgid "Text Editor"
-msgstr ""
+msgstr "Metin Düzenleyici"
