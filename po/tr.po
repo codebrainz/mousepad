@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2013-07-03 20:24+0200\n"
-"PO-Revision-Date: 2013-08-14 21:10+0000\n"
+"PO-Revision-Date: 2013-08-24 22:54+0000\n"
 "Last-Translator: wexaw\n"
 "Language-Team: Turkish (http://www.transifex.com/projects/p/xfce/language/tr/)\n"
 "MIME-Version: 1.0\n"
@@ -1082,7 +1082,7 @@ msgstr "Mousepad Yazı Tipini Seç"
 
 #: ../mousepad.desktop.in.in.h:2
 msgid "Simple Text Editor"
-msgstr ""
+msgstr "Basit Metin Düzenleyici"
 
 #: ../mousepad.desktop.in.in.h:3
 msgid "Text Editor"
