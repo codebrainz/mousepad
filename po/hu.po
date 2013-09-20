@@ -4,13 +4,14 @@
 # 
 # Translators:
 # Gabor Kelemen <kelemeng at gnome dot hu>, 2013
+# gyeben <gyonkibendeguz@gmail.com>, 2013
 msgid ""
 msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2013-07-03 20:24+0200\n"
-"PO-Revision-Date: 2013-07-09 23:06+0000\n"
-"Last-Translator: kelemeng <kelemeng@gnome.hu>\n"
+"PO-Revision-Date: 2013-09-20 19:06+0000\n"
+"Last-Translator: gyeben <gyonkibendeguz@gmail.com>\n"
 "Language-Team: Hungarian (http://www.transifex.com/projects/p/xfce/language/hu/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -65,7 +66,7 @@ msgstr "Kelemen Gábor <kelemeng at gnome dot hu>"
 #. display an error message to the user
 #: ../mousepad/mousepad-dialogs.c:105
 msgid "Failed to open the documentation browser"
-msgstr ""
+msgstr "Nem sikerült a dokumentáció böngésző megnyitása"
 
 #. build dialog
 #: ../mousepad/mousepad-dialogs.c:120
@@ -91,7 +92,7 @@ msgstr ""
 
 #: ../mousepad/mousepad-dialogs.c:305
 msgid "Clear Documents History"
-msgstr ""
+msgstr "Dokumentum előzmények törlése"
 
 #: ../mousepad/mousepad-dialogs.c:308
 msgid ""
@@ -309,7 +310,7 @@ msgstr ""
 #. set a custom tab label
 #: ../mousepad/mousepad-print.c:125
 msgid "Document Settings"
-msgstr ""
+msgstr "Dokumentum beállítások"
 
 #: ../mousepad/mousepad-print.c:595
 msgid "Page Setup"
@@ -456,12 +457,12 @@ msgstr "Kis- és _nagybetűk"
 
 #: ../mousepad/mousepad-statusbar.c:141
 msgid "Choose a filetype"
-msgstr ""
+msgstr "Válasszon ki egy fájltípust"
 
 #. language/filetype
 #: ../mousepad/mousepad-statusbar.c:146 ../mousepad/mousepad-statusbar.c:258
 msgid "Filetype: None"
-msgstr ""
+msgstr "Fájltípus: egyik sem"
 
 #: ../mousepad/mousepad-statusbar.c:169
 msgid "Toggle the overwrite mode"
@@ -475,7 +476,7 @@ msgstr "ÁTÍR"
 #: ../mousepad/mousepad-statusbar.c:261
 #, c-format
 msgid "Filetype: %s"
-msgstr ""
+msgstr "Fájltípus: %s"
 
 #: ../mousepad/mousepad-statusbar.c:281
 #, c-format
@@ -485,7 +486,7 @@ msgstr ""
 #: ../mousepad/mousepad-statusbar.c:283
 #, c-format
 msgid "Line: %d Column: %d"
-msgstr ""
+msgstr "Sor: %d Oszlop: %d"
 
 #. show warning to the user
 #: ../mousepad/mousepad-util.c:572
@@ -593,7 +594,7 @@ msgstr "A jelenlegi dokumentum áthelyezése egy másik ablakba"
 
 #: ../mousepad/mousepad-window.c:416
 msgid "Close _Tab"
-msgstr ""
+msgstr "_Fül bezárása"
 
 #: ../mousepad/mousepad-window.c:416
 msgid "Close the current document"
@@ -637,7 +638,7 @@ msgstr ""
 
 #: ../mousepad/mousepad-window.c:426
 msgid "Paste from _History"
-msgstr ""
+msgstr "Beillesztés az előzményekből"
 
 #: ../mousepad/mousepad-window.c:426
 msgid "Paste from the clipboard history"
@@ -645,7 +646,7 @@ msgstr ""
 
 #: ../mousepad/mousepad-window.c:427
 msgid "Paste as _Column"
-msgstr ""
+msgstr "Beillesztés oszlopként"
 
 #: ../mousepad/mousepad-window.c:427
 msgid "Paste the clipboard text into a column"
@@ -701,7 +702,7 @@ msgstr "_Nézet"
 
 #: ../mousepad/mousepad-window.c:437
 msgid "Select F_ont..."
-msgstr ""
+msgstr "B_etűtípus kiválasztása..."
 
 #: ../mousepad/mousepad-window.c:437
 msgid "Change the editor font"
@@ -842,11 +843,11 @@ msgstr ""
 
 #: ../mousepad/mousepad-window.c:460
 msgid "_Filetype"
-msgstr ""
+msgstr "_Fájltípus"
 
 #: ../mousepad/mousepad-window.c:462
 msgid "_Navigation"
-msgstr ""
+msgstr "_Navigáció"
 
 #: ../mousepad/mousepad-window.c:463
 msgid "_Previous Tab"
@@ -854,7 +855,7 @@ msgstr "_Előző lap"
 
 #: ../mousepad/mousepad-window.c:463
 msgid "Select the previous tab"
-msgstr ""
+msgstr "Előző fül kiválasztása"
 
 #: ../mousepad/mousepad-window.c:464
 msgid "_Next Tab"
@@ -862,7 +863,7 @@ msgstr "_Következő lap"
 
 #: ../mousepad/mousepad-window.c:464
 msgid "Select the next tab"
-msgstr ""
+msgstr "Következő fül kiválasztása"
 
 #: ../mousepad/mousepad-window.c:465
 msgid "_Go to..."
@@ -1013,20 +1014,20 @@ msgstr ""
 #. create an item to inform the user
 #: ../mousepad/mousepad-window.c:3148
 msgid "No clipboard data"
-msgstr ""
+msgstr "Nincs vágólap adat"
 
 #: ../mousepad/mousepad-window.c:3219
 msgid "Turn off color schemes"
-msgstr ""
+msgstr "Színsémák kikapcsolása"
 
 #: ../mousepad/mousepad-window.c:3300
 msgid "No filetype"
-msgstr ""
+msgstr "Nincs fájltípus"
 
 #. set error message
 #: ../mousepad/mousepad-window.c:3507
 msgid "Templates should be UTF-8 valid"
-msgstr ""
+msgstr "A sablonoknak UTF-8 érvényesnek kell lenniük"
 
 #. set error message
 #: ../mousepad/mousepad-window.c:3515
@@ -1058,7 +1059,7 @@ msgstr "A fájl megnyitása meghiúsult"
 #. show the error
 #: ../mousepad/mousepad-window.c:3768 ../mousepad/mousepad-window.c:3891
 msgid "Failed to save the document"
-msgstr ""
+msgstr "Nem sikerült a dokumentum mentése"
 
 #. create the dialog
 #: ../mousepad/mousepad-window.c:3792
@@ -1068,12 +1069,12 @@ msgstr "Mentés másként"
 #. show the error
 #: ../mousepad/mousepad-window.c:3983
 msgid "Failed to reload the document"
-msgstr ""
+msgstr "Nem sikerült a dokumentum újratöltése"
 
 #. show the error
 #: ../mousepad/mousepad-window.c:4010
 msgid "Failed to print the document"
-msgstr ""
+msgstr "Nem sikerült a dokumentum nyomtatása"
 
 #: ../mousepad/mousepad-window.c:4421
 msgid "Choose Mousepad Font"
