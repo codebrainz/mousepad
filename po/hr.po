@@ -1,24 +1,22 @@
-# Croatian translation for mousepad package.
+# SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the mousepad package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# This file is distributed under the same license as the PACKAGE package.
 # 
+# Translators:
+# Ivica  Kolić <ikoli@yahoo.com>, 2013
 msgid ""
 msgstr ""
-"Project-Id-Version: mousepad\n"
+"Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-01-03 14:24+0000\n"
-"PO-Revision-Date: 2012-05-06 00:21+0100\n"
-"Last-Translator: Ivica Kolić <ikoli@yahoo.com>\n"
-"Language-Team: Croatian <ikoli@yahoo.com>\n"
+"POT-Creation-Date: 2013-07-03 20:24+0200\n"
+"PO-Revision-Date: 2013-10-19 21:40+0000\n"
+"Last-Translator: Ivica  Kolić <ikoli@yahoo.com>\n"
+"Language-Team: Croatian (http://www.transifex.com/projects/p/xfce/language/hr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: \n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
-"X-Poedit-Language: Croatian\n"
-"X-Poedit-SourceCharset: utf-8\n"
-"X-Poedit-Country: CROATIA\n"
+"Language: hr\n"
+"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
 
 #: ../mousepad/main.c:53
 msgid "Do not register with the D-BUS session message bus"
@@ -54,7 +52,7 @@ msgstr "Xfce razvojni tim.Sva prava pridržana."
 #: ../mousepad/main.c:119
 #, c-format
 msgid "Please report bugs to <%s>."
-msgstr "Molim prijavite probleme  <%s>."
+msgstr "Molim prijavite probleme na <%s>."
 
 #: ../mousepad/mousepad-dialogs.c:41
 msgid "Mousepad is a fast text editor for the Xfce Desktop Environment."
@@ -99,9 +97,7 @@ msgstr "Očisti povijest dokumenata"
 msgid ""
 "Clearing the documents history will permanently remove all currently listed "
 "entries."
-msgstr ""
-"Čišćenje povijesti dokumenata će trajno ukloniti sve trenutno izlistane "
-"unose."
+msgstr "Čišćenje povijesti dokumenata će trajno ukloniti sve trenutno izlistane unose."
 
 #: ../mousepad/mousepad-dialogs.c:339
 msgid "Do you want to save the changes before closing?"
@@ -131,7 +127,7 @@ msgstr "Izmjenjen izvana"
 
 #: ../mousepad/mousepad-dialogs.c:388
 msgid "If you save the document, all of the external changes will be lost."
-msgstr "Ako  spremite dokument,sve vanjske promjene će biti izgubljene."
+msgstr "Ako  spremite dokument, sve vanjske promjene će biti izgubljene."
 
 #: ../mousepad/mousepad-dialogs.c:416
 msgid "Do you want to save your changes before reloading?"
@@ -293,7 +289,7 @@ msgstr "Japanski"
 #: ../mousepad/mousepad-encoding.c:102 ../mousepad/mousepad-encoding.c:103
 #: ../mousepad/mousepad-encoding.c:104 ../mousepad/mousepad-encoding.c:105
 msgid "Korean"
-msgstr "Korejanski"
+msgstr "Korejski"
 
 #: ../mousepad/mousepad-file.c:556
 #, c-format
@@ -433,6 +429,7 @@ msgid "%d occurence"
 msgid_plural "%d occurences"
 msgstr[0] ""
 msgstr[1] ""
+msgstr[2] ""
 
 #: ../mousepad/mousepad-replace-dialog.c:540
 msgid "_Replace All"
@@ -494,18 +491,14 @@ msgstr "Redak: %d Stupac: %d"
 #. show warning to the user
 #: ../mousepad/mousepad-util.c:572
 #, c-format
-msgid ""
-"Unable to create base directory \"%s\". Saving to file \"%s\" will be "
-"aborted."
+msgid "Unable to create base directory \"%s\". Saving to file \"%s\" will be aborted."
 msgstr ""
 
 #. print error
 #: ../mousepad/mousepad-util.c:618
 #, c-format
 msgid "Failed to store the preferences to \"%s\": %s"
-msgstr ""
-"Neuspjela pohrana osobitosti u \"%s\": \r\n"
-"%s"
+msgstr "Neuspjela pohrana osobitosti u \"%s\": \r\n%s"
 
 #: ../mousepad/mousepad-window.c:402
 msgid "_File"
@@ -850,7 +843,7 @@ msgstr "Veličina _kartice"
 
 #: ../mousepad/mousepad-window.c:460
 msgid "_Filetype"
-msgstr ""
+msgstr "_Tip datoteke"
 
 #: ../mousepad/mousepad-window.c:462
 msgid "_Navigation"
@@ -980,12 +973,12 @@ msgstr "Neuspjelo otvaranje dokumenta"
 
 #: ../mousepad/mousepad-window.c:1294
 msgid "Read Only"
-msgstr "Smo čitanje"
+msgstr "Samo čitanje"
 
 #: ../mousepad/mousepad-window.c:1354 ../mousepad/mousepad-window.c:3218
 #: ../mousepad/mousepad-window.c:3299
 msgid "None"
-msgstr ""
+msgstr "NIjedan"
 
 #. create other action
 #: ../mousepad/mousepad-window.c:2081
@@ -1056,8 +1049,7 @@ msgstr "Otvori datoteku"
 msgid ""
 "Failed to open \"%s\" for reading. It will be removed from the document "
 "history"
-msgstr ""
-"Neuspjelo otvaranje \"%s\" za čitanje.Niti će uklonjen iz povijesti dokumenta"
+msgstr "Neuspjelo otvaranje \"%s\" za čitanje. Biti će uklonjen iz povijesti dokumenta"
 
 #. show the warning and cleanup
 #: ../mousepad/mousepad-window.c:3662
