@@ -1,22 +1,23 @@
-# Russian translation of Mousepad package.
-# Copyright (C) 2005-2006 Erik Harrison.
-# This file is distributed under the same license as the Mousepad package.
-# Artem Vakhitov <temcat@mail.ru>, 2004.
-# Sergey Fedoseev <fedoseev.sergey@gmail.com>, 2006.
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
 # 
+# Translators:
+# Artem Vakhitov <temcat@mail.ru>, 2004
+# Sergey Fedoseev <fedoseev.sergey@gmail.com>, 2006
 msgid ""
 msgstr ""
-"Project-Id-Version: mousepad 0.2.16\n"
+"Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-10-16 05:48+0000\n"
-"PO-Revision-Date: 2012-08-27 21:58+1000\n"
-"Last-Translator: Alex 'AdUser' Z <ad_user@lavabit.com>\n"
-"Language-Team: Russian <ru@li.org>\n"
+"POT-Creation-Date: 2013-07-03 20:24+0200\n"
+"PO-Revision-Date: 2013-11-19 14:24+0000\n"
+"Last-Translator: Nick <nick@xfce.org>\n"
+"Language-Team: Russian (http://www.transifex.com/projects/p/xfce/language/ru/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: ru\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2)\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
 #: ../mousepad/main.c:53
 msgid "Do not register with the D-BUS session message bus"
@@ -31,25 +32,25 @@ msgid "Print version information and exit"
 msgstr "Показать версию и выйти"
 
 #. default application name
-#: ../mousepad/main.c:80 ../Mousepad.desktop.in.in.h:1
+#: ../mousepad/main.c:81 ../mousepad.desktop.in.in.h:1
 msgid "Mousepad"
 msgstr "Mousepad"
 
 #. initialize gtk+
-#: ../mousepad/main.c:92
+#: ../mousepad/main.c:95
 msgid "[FILES...]"
 msgstr "[ФАЙЛЫ...]"
 
 #. no error message, the gui initialization failed
-#: ../mousepad/main.c:98
+#: ../mousepad/main.c:101
 msgid "Failed to open display."
 msgstr "Не удалось открыть дисплей."
 
-#: ../mousepad/main.c:115
+#: ../mousepad/main.c:118
 msgid "The Xfce development team. All rights reserved."
 msgstr "Команда разработки среды Xfce. Все права сохранены."
 
-#: ../mousepad/main.c:116
+#: ../mousepad/main.c:119
 #, c-format
 msgid "Please report bugs to <%s>."
 msgstr "О найденных ошибках сообщайте на «%s»."
@@ -63,81 +64,79 @@ msgid "translator-credits"
 msgstr "сведения о переводах"
 
 #. display an error message to the user
-#: ../mousepad/mousepad-dialogs.c:125
+#: ../mousepad/mousepad-dialogs.c:105
 msgid "Failed to open the documentation browser"
 msgstr "Не удалось открыть документацию"
 
 #. build dialog
-#: ../mousepad/mousepad-dialogs.c:143
+#: ../mousepad/mousepad-dialogs.c:120
 msgid "Select Tab Size"
 msgstr "Выбрать размер табуляции"
 
 #. build the dialog
-#: ../mousepad/mousepad-dialogs.c:224
+#: ../mousepad/mousepad-dialogs.c:201
 msgid "Go To"
 msgstr "Перейти к"
 
-#: ../mousepad/mousepad-dialogs.c:246
+#: ../mousepad/mousepad-dialogs.c:223
 msgid "_Line number:"
 msgstr "_Номер строки: "
 
-#: ../mousepad/mousepad-dialogs.c:265
+#: ../mousepad/mousepad-dialogs.c:242
 msgid "C_olumn number:"
 msgstr "_Номер столбца: "
 
-#: ../mousepad/mousepad-dialogs.c:323
+#: ../mousepad/mousepad-dialogs.c:300
 msgid "Remove all entries from the documents history?"
 msgstr "Удалить все записи из истории открытых документов?"
 
-#: ../mousepad/mousepad-dialogs.c:328
+#: ../mousepad/mousepad-dialogs.c:305
 msgid "Clear Documents History"
 msgstr "Очистить историю документов"
 
-#: ../mousepad/mousepad-dialogs.c:331
+#: ../mousepad/mousepad-dialogs.c:308
 msgid ""
 "Clearing the documents history will permanently remove all currently listed "
 "entries."
-msgstr ""
-"Очистка истории открытых документов навсегда удалит все перечисленные записи."
+msgstr "Очистка истории открытых документов навсегда удалит все перечисленные записи."
 
-#: ../mousepad/mousepad-dialogs.c:362
+#: ../mousepad/mousepad-dialogs.c:339
 msgid "Do you want to save the changes before closing?"
 msgstr "Сохранить изменения?"
 
-#: ../mousepad/mousepad-dialogs.c:363
+#: ../mousepad/mousepad-dialogs.c:340
 msgid "Save Changes"
 msgstr "Сохранить изменения"
 
-#: ../mousepad/mousepad-dialogs.c:364
+#: ../mousepad/mousepad-dialogs.c:341
 msgid "_Don't Save"
 msgstr "_Не сохранять"
 
 #. secondary text
-#: ../mousepad/mousepad-dialogs.c:386
+#: ../mousepad/mousepad-dialogs.c:363
 msgid "If you don't save the document, all the changes will be lost."
 msgstr "Если вы не сохраните документ, все изменения будут потеряны."
 
-#: ../mousepad/mousepad-dialogs.c:408
+#: ../mousepad/mousepad-dialogs.c:385
 msgid ""
 "The document has been externally modified. Do you want to continue saving?"
 msgstr "Документ был изменен извне. Продолжить сохранение?"
 
-#: ../mousepad/mousepad-dialogs.c:409
+#: ../mousepad/mousepad-dialogs.c:386
 msgid "Externally Modified"
 msgstr "Изменено извне"
 
-#: ../mousepad/mousepad-dialogs.c:411
+#: ../mousepad/mousepad-dialogs.c:388
 msgid "If you save the document, all of the external changes will be lost."
 msgstr "Если вы не сохраните документ, все изменения будут утеряны."
 
-#: ../mousepad/mousepad-dialogs.c:439
+#: ../mousepad/mousepad-dialogs.c:416
 msgid "Do you want to save your changes before reloading?"
 msgstr "Сохранить изменения?"
 
-#: ../mousepad/mousepad-dialogs.c:441
+#: ../mousepad/mousepad-dialogs.c:418
 msgid "If you revert the file, all unsaved changes will be lost."
-msgstr ""
-"Если вы перезагрузите файл, все несохранённые изменения будут потеряны."
+msgstr "Если вы перезагрузите файл, все несохранённые изменения будут потеряны."
 
 #. pack button, add signal and tooltip
 #: ../mousepad/mousepad-document.c:591
@@ -296,9 +295,7 @@ msgstr "Корейский"
 #: ../mousepad/mousepad-file.c:556
 #, c-format
 msgid "Invalid byte sequence in conversion input"
-msgstr ""
-"Недопустимая последовательность байтов содержится во входной строке для "
-"преобразования"
+msgstr "Недопустимая последовательность байтов содержится во входной строке для преобразования"
 
 #: ../mousepad/mousepad-file.c:875
 #, c-format
@@ -495,12 +492,8 @@ msgstr "Строка: %d Столбец: %d"
 #. show warning to the user
 #: ../mousepad/mousepad-util.c:572
 #, c-format
-msgid ""
-"Unable to create base directory \"%s\". Saving to file \"%s\" will be "
-"aborted."
-msgstr ""
-"Не удалось создать директорию \"%s\". Сохранение в файл \"%s\" будет "
-"отменено."
+msgid "Unable to create base directory \"%s\". Saving to file \"%s\" will be aborted."
+msgstr "Не удалось создать директорию \"%s\". Сохранение в файл \"%s\" будет отменено."
 
 #. print error
 #: ../mousepad/mousepad-util.c:618
@@ -775,9 +768,7 @@ msgstr "Преобразовать табуляции в пробелы"
 #: ../mousepad/mousepad-window.c:447
 msgid ""
 "Convert all the leading spaces to tabs in the selected line(s) or document"
-msgstr ""
-"Преобразовать все ведущие пробелы в табуляции в выделенных строках или "
-"документе"
+msgstr "Преобразовать все ведущие пробелы в табуляции в выделенных строках или документе"
 
 #: ../mousepad/mousepad-window.c:448
 msgid "St_rip Trailing Spaces"
@@ -972,243 +963,128 @@ msgid "Set the line ending of the document to DOS / Windows (CR LF)"
 msgstr "Установить переводы строк в документе в стиль DOS / Windows (CR LF)"
 
 #. add the label with the root warning
-#: ../mousepad/mousepad-window.c:662
+#: ../mousepad/mousepad-window.c:659
 msgid "Warning, you are using the root account, you may harm your system."
-msgstr ""
-"Внимание, вы используете учетную запись суперпользователя, при этом вы "
-"можете повредить вашу систему."
+msgstr "Внимание, вы используете учетную запись суперпользователя, при этом вы можете повредить вашу систему."
 
 #. show the warning
-#: ../mousepad/mousepad-window.c:1100
+#: ../mousepad/mousepad-window.c:1097
 msgid "Failed to open the document"
 msgstr "Не удалось открыть документ"
 
-#: ../mousepad/mousepad-window.c:1297
+#: ../mousepad/mousepad-window.c:1294
 msgid "Read Only"
 msgstr "Только чтение"
 
-#: ../mousepad/mousepad-window.c:1357 ../mousepad/mousepad-window.c:3221
-#: ../mousepad/mousepad-window.c:3302
+#: ../mousepad/mousepad-window.c:1354 ../mousepad/mousepad-window.c:3218
+#: ../mousepad/mousepad-window.c:3299
 msgid "None"
 msgstr "Нет"
 
 #. create other action
-#: ../mousepad/mousepad-window.c:2084
+#: ../mousepad/mousepad-window.c:2081
 msgid "Set custom tab size"
 msgstr "Установить произвольный размер табуляции"
 
 #. create suitable label for the other menu
-#: ../mousepad/mousepad-window.c:2132
+#: ../mousepad/mousepad-window.c:2129
 #, c-format
 msgid "Ot_her (%d)..."
 msgstr "_Другой (%d)..."
 
 #. set action label
-#: ../mousepad/mousepad-window.c:2143
+#: ../mousepad/mousepad-window.c:2140
 msgid "Ot_her..."
 msgstr "_Другой..."
 
 #. build description
 #. get the offset length: 'Encoding: '
-#: ../mousepad/mousepad-window.c:2446 ../mousepad/mousepad-window.c:2677
+#: ../mousepad/mousepad-window.c:2443 ../mousepad/mousepad-window.c:2674
 msgid "Charset"
 msgstr "Кодировка"
 
-#: ../mousepad/mousepad-window.c:2580
+#: ../mousepad/mousepad-window.c:2577
 #, c-format
 msgid "Open '%s'"
 msgstr "Открыть '%s'"
 
-#: ../mousepad/mousepad-window.c:2727
+#: ../mousepad/mousepad-window.c:2724
 msgid "Failed to clear the recent history"
 msgstr "Не удалось очистить историю открытых файлов"
 
 #. create an item to inform the user
-#: ../mousepad/mousepad-window.c:3151
+#: ../mousepad/mousepad-window.c:3148
 msgid "No clipboard data"
 msgstr "Нет данных в буфере"
 
-#: ../mousepad/mousepad-window.c:3222
+#: ../mousepad/mousepad-window.c:3219
 msgid "Turn off color schemes"
 msgstr "Отключить цветовую схему"
 
-#: ../mousepad/mousepad-window.c:3303
+#: ../mousepad/mousepad-window.c:3300
 msgid "No filetype"
 msgstr "Без типа файла"
 
 #. set error message
-#: ../mousepad/mousepad-window.c:3510
+#: ../mousepad/mousepad-window.c:3507
 msgid "Templates should be UTF-8 valid"
 msgstr "Шаблоны должны быть сохранены в кодировке UTF-8"
 
 #. set error message
-#: ../mousepad/mousepad-window.c:3518
+#: ../mousepad/mousepad-window.c:3515
 msgid "Reading the template failed, the menu item has been removed"
 msgstr "Прочитать шаблон не удалось, пункт меню будет спрятан."
 
 #. set error message
-#: ../mousepad/mousepad-window.c:3523
+#: ../mousepad/mousepad-window.c:3520
 msgid "Loading the template failed"
 msgstr "Не удалось загрузить шаблон"
 
 #. create new file chooser dialog
-#: ../mousepad/mousepad-window.c:3548
+#: ../mousepad/mousepad-window.c:3545
 msgid "Open File"
 msgstr "Открыть файл"
 
-#: ../mousepad/mousepad-window.c:3661
+#: ../mousepad/mousepad-window.c:3658
 #, c-format
 msgid ""
 "Failed to open \"%s\" for reading. It will be removed from the document "
 "history"
-msgstr ""
-"Не удалось открыть \"%s\" для чтения. Документ будет удалён из истории "
-"открытых."
+msgstr "Не удалось открыть \"%s\" для чтения. Документ будет удалён из истории открытых."
 
 #. show the warning and cleanup
-#: ../mousepad/mousepad-window.c:3665
+#: ../mousepad/mousepad-window.c:3662
 msgid "Failed to open file"
 msgstr "Не удалось открыть файл"
 
 #. show the error
-#: ../mousepad/mousepad-window.c:3771 ../mousepad/mousepad-window.c:3894
+#: ../mousepad/mousepad-window.c:3768 ../mousepad/mousepad-window.c:3891
 msgid "Failed to save the document"
 msgstr "Не удалось сохранить документ"
 
 #. create the dialog
-#: ../mousepad/mousepad-window.c:3795
+#: ../mousepad/mousepad-window.c:3792
 msgid "Save As"
 msgstr "Сохранение файла"
 
 #. show the error
-#: ../mousepad/mousepad-window.c:3986
+#: ../mousepad/mousepad-window.c:3983
 msgid "Failed to reload the document"
 msgstr "Не удалось обновить документ"
 
 #. show the error
-#: ../mousepad/mousepad-window.c:4013
+#: ../mousepad/mousepad-window.c:4010
 msgid "Failed to print the document"
 msgstr "Не удалось напечатать документ"
 
-#: ../mousepad/mousepad-window.c:4424
+#: ../mousepad/mousepad-window.c:4421
 msgid "Choose Mousepad Font"
 msgstr "Выбрать шрифт"
 
-#: ../Mousepad.desktop.in.in.h:2
+#: ../mousepad.desktop.in.in.h:2
 msgid "Simple Text Editor"
 msgstr "Простой текстовый редактор"
 
-#: ../Mousepad.desktop.in.in.h:3
+#: ../mousepad.desktop.in.in.h:3
 msgid "Text Editor"
 msgstr "Текстовый редактор"
-
-#~ msgid "Can't convert codeset to '%s'"
-#~ msgstr "Не удалось преобразовать кодировку в '%s'"
-
-#~ msgid "Can't open pipe to process"
-#~ msgstr "Не удалось открыть канал к процессу"
-
-#~ msgid "A text editor for Xfce"
-#~ msgstr "Текстовый редактор для Xfce"
-
-#~ msgid "About %s"
-#~ msgstr "О программе \"%s\""
-
-#~ msgid "Can't open file to write"
-#~ msgstr "Не удалось открыть файл для записи"
-
-#~ msgid "Can't write file"
-#~ msgstr "Не удалось записать файл"
-
-#~ msgid "/File/_New"
-#~ msgstr "/Файл/_Создать"
-
-#~ msgid "/File/_Save"
-#~ msgstr "/Файл/Со_хранить"
-
-#~ msgid "/File/_Quit"
-#~ msgstr "/Файл/В_ыход"
-
-#~ msgid "/Edit/_Undo"
-#~ msgstr "/Правка/_Отменить"
-
-#~ msgid "/Edit/_Redo"
-#~ msgstr "/Правка/Ве_рнуть"
-
-#~ msgid "/Edit/Cu_t"
-#~ msgstr "/Правка/_Вырезать"
-
-#~ msgid "/Edit/_Copy"
-#~ msgstr "/Правка/_Копировать"
-
-#~ msgid "/Edit/_Paste"
-#~ msgstr "/Правка/Вст_авить"
-
-#~ msgid "/Edit/_Delete"
-#~ msgstr "/Правка/У_далить"
-
-#~ msgid "/Edit/Select _All"
-#~ msgstr "/Правка/В_ыделить все"
-
-#~ msgid "/Search/_Find..."
-#~ msgstr "/Поиск/_Найти..."
-
-#~ msgid "/Search/_Replace..."
-#~ msgstr "/Поиск/За_менить..."
-
-#~ msgid "/Search/_Jump To..."
-#~ msgstr "/Поиск/Перейти к _строке..."
-
-#~ msgid "/_Options"
-#~ msgstr "/П_араметры"
-
-#~ msgid "/Options/_Font..."
-#~ msgstr "/Параметры/_Шрифт..."
-
-#~ msgid "/Options/_Line Numbers"
-#~ msgstr "/Параметры/Показывать _номера строк"
-
-#~ msgid "/Help/_About"
-#~ msgstr "/Справка/_О программе"
-
-#~ msgid "Search string not found"
-#~ msgstr "Искомая строка не найдена"
-
-#~ msgid "Replace?"
-#~ msgstr "Заменить?"
-
-#~ msgid "%d strings replaced"
-#~ msgstr "%d строк заменено"
-
-#~ msgid "Find"
-#~ msgstr "Поиск"
-
-#~ msgid "_Match case"
-#~ msgstr "Учитывать _регистр"
-
-#~ msgid "Jump To"
-#~ msgstr "Переход"
-
-#~ msgid "_Jump"
-#~ msgstr "_Перейти"
-
-#~ msgid "Current Locale (%s)"
-#~ msgstr "Текущая локаль (%s)"
-
-#~ msgid "Other Codeset"
-#~ msgstr "Другая кодировка"
-
-#~ msgid "Code_set:"
-#~ msgstr "_Кодировка:"
-
-#~ msgid "'%s' is not supported"
-#~ msgstr "'%s' не поддерживается"
-
-#~ msgid "Auto Detect"
-#~ msgstr "Автоопределение"
-
-#~ msgid "Ch_aracter Coding: "
-#~ msgstr "Ко_дировка символов"
-
-#~ msgid "'%s' already exists. Overwrite?"
-#~ msgstr "'%s' уже существует. Переписать?"
