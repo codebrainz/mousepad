@@ -1,25 +1,22 @@
-# Slovak translations for mousepad package
-# Slovenské preklady pre balík mousepad.
-# Copyright (C) 2012 THE PACKAGE'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the mousepad package.
-# Tomáš Vadina <kyberdev@gmail.com>, 2012.
-#
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+# Translators:
+# Tomáš Vadina <tomasvadina+transifex@myopera.com>, 2012
 msgid ""
 msgstr ""
-"Project-Id-Version: mousepad 0.2.16\n"
+"Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-06-06 17:18+0000\n"
-"PO-Revision-Date: 2012-06-06 20:51+0200\n"
-"Last-Translator: Tomáš Vadina <kyberdev@gmail.com>\n"
-"Language-Team: slovenčina <slovenska-lokalizacia-xfce@googlegroups.com>\n"
-"Language: sk\n"
+"POT-Creation-Date: 2013-07-03 20:24+0200\n"
+"PO-Revision-Date: 2013-11-19 14:24+0000\n"
+"Last-Translator: Nick <nick@xfce.org>\n"
+"Language-Team: Slovak (http://www.transifex.com/projects/p/xfce/language/sk/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n==1) ? 1 : (n>=2 && n<=4) ? 2 : 0;\n"
-"X-Poedit-Language: Slovak\n"
-"X-Poedit-Country: SLOVAKIA\n"
-"X-Poedit-SourceCharset: utf-8\n"
+"Language: sk\n"
+"Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
 
 #: ../mousepad/main.c:53
 msgid "Do not register with the D-BUS session message bus"
@@ -34,25 +31,25 @@ msgid "Print version information and exit"
 msgstr "Vypísať informácie o verzii a ukončiť"
 
 #. default application name
-#: ../mousepad/main.c:80 ../Mousepad.desktop.in.in.h:1
+#: ../mousepad/main.c:81 ../mousepad.desktop.in.in.h:1
 msgid "Mousepad"
 msgstr "Mousepad"
 
 #. initialize gtk+
-#: ../mousepad/main.c:92
+#: ../mousepad/main.c:95
 msgid "[FILES...]"
 msgstr "[SÚBORY...]"
 
 #. no error message, the gui initialization failed
-#: ../mousepad/main.c:98
+#: ../mousepad/main.c:101
 msgid "Failed to open display."
 msgstr ""
 
-#: ../mousepad/main.c:115
+#: ../mousepad/main.c:118
 msgid "The Xfce development team. All rights reserved."
 msgstr "Vývojoví tím Xfce. Všetky práva vyhradené."
 
-#: ../mousepad/main.c:116
+#: ../mousepad/main.c:119
 #, c-format
 msgid "Please report bugs to <%s>."
 msgstr "Chyby hláste prosím na <%s>."
@@ -66,79 +63,77 @@ msgid "translator-credits"
 msgstr "Tomáš Vadina <kyberdev@gmail.com>"
 
 #. display an error message to the user
-#: ../mousepad/mousepad-dialogs.c:125
+#: ../mousepad/mousepad-dialogs.c:105
 msgid "Failed to open the documentation browser"
 msgstr ""
 
 #. build dialog
-#: ../mousepad/mousepad-dialogs.c:143
+#: ../mousepad/mousepad-dialogs.c:120
 msgid "Select Tab Size"
 msgstr ""
 
 #. build the dialog
-#: ../mousepad/mousepad-dialogs.c:224
+#: ../mousepad/mousepad-dialogs.c:201
 msgid "Go To"
 msgstr "Prejsť na"
 
-#: ../mousepad/mousepad-dialogs.c:246
+#: ../mousepad/mousepad-dialogs.c:223
 msgid "_Line number:"
 msgstr "Číslo _riadka:"
 
-#: ../mousepad/mousepad-dialogs.c:265
+#: ../mousepad/mousepad-dialogs.c:242
 msgid "C_olumn number:"
 msgstr "Číslo _stĺpca:"
 
-#: ../mousepad/mousepad-dialogs.c:323
+#: ../mousepad/mousepad-dialogs.c:300
 msgid "Remove all entries from the documents history?"
 msgstr ""
 
-#: ../mousepad/mousepad-dialogs.c:328
+#: ../mousepad/mousepad-dialogs.c:305
 msgid "Clear Documents History"
 msgstr "Vymazať históriu dokumentu"
 
-#: ../mousepad/mousepad-dialogs.c:331
+#: ../mousepad/mousepad-dialogs.c:308
 msgid ""
 "Clearing the documents history will permanently remove all currently listed "
 "entries."
-msgstr ""
-"Vymazanie histórie dokumentu natrvalo odstráni všetky aktuálne vypísané "
-"položky."
+msgstr "Vymazanie histórie dokumentu natrvalo odstráni všetky aktuálne vypísané položky."
 
-#: ../mousepad/mousepad-dialogs.c:362
+#: ../mousepad/mousepad-dialogs.c:339
 msgid "Do you want to save the changes before closing?"
 msgstr "Chcete uložiť zmeny pred zatvorením?"
 
-#: ../mousepad/mousepad-dialogs.c:363
+#: ../mousepad/mousepad-dialogs.c:340
 msgid "Save Changes"
 msgstr "Uložiť zmeny"
 
-#: ../mousepad/mousepad-dialogs.c:364
+#: ../mousepad/mousepad-dialogs.c:341
 msgid "_Don't Save"
 msgstr "_Neuložiť"
 
 #. secondary text
-#: ../mousepad/mousepad-dialogs.c:386
+#: ../mousepad/mousepad-dialogs.c:363
 msgid "If you don't save the document, all the changes will be lost."
 msgstr "Ak neuložíte dokument, všetky zmeny budú stratené."
 
-#: ../mousepad/mousepad-dialogs.c:408
+#: ../mousepad/mousepad-dialogs.c:385
 msgid ""
 "The document has been externally modified. Do you want to continue saving?"
 msgstr "Dokument bol externe upravený. Chcete pokračovať v ukladaní?"
 
-#: ../mousepad/mousepad-dialogs.c:409
+#: ../mousepad/mousepad-dialogs.c:386
 msgid "Externally Modified"
 msgstr "Externe upravené"
 
-#: ../mousepad/mousepad-dialogs.c:410
-msgid "If you don't save the document, all the external changes will be lost."
+#: ../mousepad/mousepad-dialogs.c:388
+msgid "If you save the document, all of the external changes will be lost."
 msgstr ""
 
-#: ../mousepad/mousepad-dialogs.c:438
+#: ../mousepad/mousepad-dialogs.c:416
 msgid "Do you want to save your changes before reloading?"
 msgstr ""
 
-#: ../mousepad/mousepad-dialogs.c:440
+#: ../mousepad/mousepad-dialogs.c:418
 msgid "If you revert the file, all unsaved changes will be lost."
 msgstr ""
 
@@ -496,9 +491,7 @@ msgstr ""
 #. show warning to the user
 #: ../mousepad/mousepad-util.c:572
 #, c-format
-msgid ""
-"Unable to create base directory \"%s\". Saving to file \"%s\" will be "
-"aborted."
+msgid "Unable to create base directory \"%s\". Saving to file \"%s\" will be aborted."
 msgstr ""
 
 #. print error
@@ -969,89 +962,89 @@ msgid "Set the line ending of the document to DOS / Windows (CR LF)"
 msgstr ""
 
 #. add the label with the root warning
-#: ../mousepad/mousepad-window.c:662
+#: ../mousepad/mousepad-window.c:659
 msgid "Warning, you are using the root account, you may harm your system."
 msgstr ""
 
 #. show the warning
-#: ../mousepad/mousepad-window.c:1100
+#: ../mousepad/mousepad-window.c:1097
 msgid "Failed to open the document"
 msgstr "Otvorenie dokumentu zlyhalo"
 
-#: ../mousepad/mousepad-window.c:1297
+#: ../mousepad/mousepad-window.c:1294
 msgid "Read Only"
 msgstr "Len na čítanie"
 
-#: ../mousepad/mousepad-window.c:1357 ../mousepad/mousepad-window.c:3221
-#: ../mousepad/mousepad-window.c:3302
+#: ../mousepad/mousepad-window.c:1354 ../mousepad/mousepad-window.c:3218
+#: ../mousepad/mousepad-window.c:3299
 msgid "None"
 msgstr "Žiadne"
 
 #. create other action
-#: ../mousepad/mousepad-window.c:2084
+#: ../mousepad/mousepad-window.c:2081
 msgid "Set custom tab size"
 msgstr ""
 
 #. create suitable label for the other menu
-#: ../mousepad/mousepad-window.c:2132
+#: ../mousepad/mousepad-window.c:2129
 #, c-format
 msgid "Ot_her (%d)..."
 msgstr "I_né (%d)..."
 
 #. set action label
-#: ../mousepad/mousepad-window.c:2143
+#: ../mousepad/mousepad-window.c:2140
 msgid "Ot_her..."
 msgstr "Iné"
 
 #. build description
 #. get the offset length: 'Encoding: '
-#: ../mousepad/mousepad-window.c:2446 ../mousepad/mousepad-window.c:2677
+#: ../mousepad/mousepad-window.c:2443 ../mousepad/mousepad-window.c:2674
 msgid "Charset"
 msgstr "Kódovanie"
 
-#: ../mousepad/mousepad-window.c:2580
+#: ../mousepad/mousepad-window.c:2577
 #, c-format
 msgid "Open '%s'"
 msgstr "Otvoriť '%s'"
 
-#: ../mousepad/mousepad-window.c:2727
+#: ../mousepad/mousepad-window.c:2724
 msgid "Failed to clear the recent history"
 msgstr ""
 
 #. create an item to inform the user
-#: ../mousepad/mousepad-window.c:3151
+#: ../mousepad/mousepad-window.c:3148
 msgid "No clipboard data"
 msgstr "Žiadne dáta v schránke"
 
-#: ../mousepad/mousepad-window.c:3222
+#: ../mousepad/mousepad-window.c:3219
 msgid "Turn off color schemes"
 msgstr "Vypnúť farebnú schému"
 
-#: ../mousepad/mousepad-window.c:3303
+#: ../mousepad/mousepad-window.c:3300
 msgid "No filetype"
 msgstr "Žiadny typ súboru"
 
 #. set error message
-#: ../mousepad/mousepad-window.c:3510
+#: ../mousepad/mousepad-window.c:3507
 msgid "Templates should be UTF-8 valid"
 msgstr ""
 
 #. set error message
-#: ../mousepad/mousepad-window.c:3518
+#: ../mousepad/mousepad-window.c:3515
 msgid "Reading the template failed, the menu item has been removed"
 msgstr ""
 
 #. set error message
-#: ../mousepad/mousepad-window.c:3523
+#: ../mousepad/mousepad-window.c:3520
 msgid "Loading the template failed"
 msgstr "Načítanie šablóny zlyhalo"
 
 #. create new file chooser dialog
-#: ../mousepad/mousepad-window.c:3548
+#: ../mousepad/mousepad-window.c:3545
 msgid "Open File"
 msgstr "Otvoriť súbor"
 
-#: ../mousepad/mousepad-window.c:3661
+#: ../mousepad/mousepad-window.c:3658
 #, c-format
 msgid ""
 "Failed to open \"%s\" for reading. It will be removed from the document "
@@ -1059,38 +1052,38 @@ msgid ""
 msgstr ""
 
 #. show the warning and cleanup
-#: ../mousepad/mousepad-window.c:3665
+#: ../mousepad/mousepad-window.c:3662
 msgid "Failed to open file"
 msgstr "Otvorenie súboru zlyhalo"
 
 #. show the error
-#: ../mousepad/mousepad-window.c:3771 ../mousepad/mousepad-window.c:3894
+#: ../mousepad/mousepad-window.c:3768 ../mousepad/mousepad-window.c:3891
 msgid "Failed to save the document"
 msgstr "Uloženie dokumentu zlyhalo"
 
 #. create the dialog
-#: ../mousepad/mousepad-window.c:3795
+#: ../mousepad/mousepad-window.c:3792
 msgid "Save As"
 msgstr "Uložiť ako"
 
 #. show the error
-#: ../mousepad/mousepad-window.c:3986
+#: ../mousepad/mousepad-window.c:3983
 msgid "Failed to reload the document"
 msgstr "Znovunačítanie dokumentu zlyhalo"
 
 #. show the error
-#: ../mousepad/mousepad-window.c:4013
+#: ../mousepad/mousepad-window.c:4010
 msgid "Failed to print the document"
 msgstr "Tlač dokumentu zlyhala"
 
-#: ../mousepad/mousepad-window.c:4424
+#: ../mousepad/mousepad-window.c:4421
 msgid "Choose Mousepad Font"
 msgstr "Vybrať písmo aplikácie Mousepad"
 
-#: ../Mousepad.desktop.in.in.h:2
+#: ../mousepad.desktop.in.in.h:2
 msgid "Simple Text Editor"
 msgstr "Jednoduchý textový editor"
 
-#: ../Mousepad.desktop.in.in.h:3
+#: ../mousepad.desktop.in.in.h:3
 msgid "Text Editor"
 msgstr "Textový editor"
