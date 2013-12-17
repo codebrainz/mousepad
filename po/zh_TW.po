@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2013-07-03 20:24+0200\n"
-"PO-Revision-Date: 2013-11-01 01:59+0000\n"
+"PO-Revision-Date: 2013-12-17 05:43+0000\n"
 "Last-Translator: Walter Cheuk <wwycheuk@gmail.com>\n"
 "Language-Team: Chinese (Taiwan) (http://www.transifex.com/projects/p/xfce/language/zh_TW/)\n"
 "MIME-Version: 1.0\n"
@@ -568,7 +568,7 @@ msgstr "儲存此視窗的全部文件"
 
 #: ../mousepad/mousepad-window.c:413
 msgid "Re_vert"
-msgstr "還原"
+msgstr "還原(_V)"
 
 #: ../mousepad/mousepad-window.c:413
 msgid "Revert to the saved version of the file"
@@ -756,7 +756,7 @@ msgstr ""
 
 #: ../mousepad/mousepad-window.c:446
 msgid "Convert all tabs to spaces in the selection or document"
-msgstr ""
+msgstr "將所選行或文件所有 tab 轉換為空格"
 
 #: ../mousepad/mousepad-window.c:447
 msgid "_Spaces to Tabs"
@@ -765,7 +765,7 @@ msgstr ""
 #: ../mousepad/mousepad-window.c:447
 msgid ""
 "Convert all the leading spaces to tabs in the selected line(s) or document"
-msgstr ""
+msgstr "將所選行或文件所有開首的空白轉換為 tab"
 
 #: ../mousepad/mousepad-window.c:448
 msgid "St_rip Trailing Spaces"
