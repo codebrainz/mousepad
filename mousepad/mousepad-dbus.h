@@ -17,6 +17,8 @@
 #ifndef __MOUSEPAD_DBUS_H__
 #define __MOUSEPAD_DBUS_H__
 
+G_BEGIN_DECLS
+
 typedef struct _MousepadDBusServiceClass MousepadDBusServiceClass;
 typedef struct _MousepadDBusService      MousepadDBusService;
 
