@@ -3,13 +3,13 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
-# Sveinn í Felli <sveinki@nett.is>, 2013
+# Sveinn í Felli <sveinki@nett.is>, 2013-2014
 msgid ""
 msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2013-07-03 20:24+0200\n"
-"PO-Revision-Date: 2013-12-14 06:54+0000\n"
+"PO-Revision-Date: 2014-01-23 19:43+0000\n"
 "Last-Translator: Sveinn í Felli <sv1@fellsnet.is>\n"
 "Language-Team: Icelandic (http://www.transifex.com/projects/p/xfce/language/is/)\n"
 "MIME-Version: 1.0\n"
@@ -452,16 +452,16 @@ msgstr ""
 
 #: ../mousepad/mousepad-search-bar.c:243 ../mousepad/mousepad-search-bar.c:250
 msgid "Mat_ch Case"
-msgstr ""
+msgstr "_Samsvara stafstöðu"
 
 #: ../mousepad/mousepad-statusbar.c:141
 msgid "Choose a filetype"
-msgstr ""
+msgstr "Veldu skráartegund"
 
 #. language/filetype
 #: ../mousepad/mousepad-statusbar.c:146 ../mousepad/mousepad-statusbar.c:258
 msgid "Filetype: None"
-msgstr ""
+msgstr "Skráartegund: engin"
 
 #: ../mousepad/mousepad-statusbar.c:169
 msgid "Toggle the overwrite mode"
@@ -693,7 +693,7 @@ msgstr "_Finna og skipta út"
 
 #: ../mousepad/mousepad-window.c:434
 msgid "Search for and replace text"
-msgstr ""
+msgstr "Leita að og skipta út texta"
 
 #: ../mousepad/mousepad-window.c:436
 msgid "_View"
@@ -705,7 +705,7 @@ msgstr "Velja let_ur..."
 
 #: ../mousepad/mousepad-window.c:437
 msgid "Change the editor font"
-msgstr ""
+msgstr "Velja leturgerð ritils"
 
 #: ../mousepad/mousepad-window.c:438
 msgid "_Color Scheme"
@@ -790,7 +790,7 @@ msgstr ""
 
 #: ../mousepad/mousepad-window.c:451
 msgid "Line _Up"
-msgstr ""
+msgstr "_Upp um línu"
 
 #: ../mousepad/mousepad-window.c:451
 msgid "Move the selection one line up"
@@ -798,7 +798,7 @@ msgstr ""
 
 #: ../mousepad/mousepad-window.c:452
 msgid "Line _Down"
-msgstr ""
+msgstr "_Niður um línu"
 
 #: ../mousepad/mousepad-window.c:452
 msgid "Move the selection one line down"
@@ -814,7 +814,7 @@ msgstr ""
 
 #: ../mousepad/mousepad-window.c:454
 msgid "_Increase Indent"
-msgstr ""
+msgstr "_Auka inndrátt"
 
 #: ../mousepad/mousepad-window.c:454
 msgid "Increase the indentation of the selection or current line"
@@ -822,7 +822,7 @@ msgstr ""
 
 #: ../mousepad/mousepad-window.c:455
 msgid "_Decrease Indent"
-msgstr ""
+msgstr "_Minnka inndrátt"
 
 #: ../mousepad/mousepad-window.c:455
 msgid "Decrease the indentation of the selection or current line"
@@ -834,19 +834,19 @@ msgstr "_Skjal"
 
 #: ../mousepad/mousepad-window.c:458
 msgid "Line E_nding"
-msgstr ""
+msgstr "Lí_nuendingar"
 
 #: ../mousepad/mousepad-window.c:459
 msgid "Tab _Size"
-msgstr ""
+msgstr "Stærð _flipa"
 
 #: ../mousepad/mousepad-window.c:460
 msgid "_Filetype"
-msgstr ""
+msgstr "S_kráartegund"
 
 #: ../mousepad/mousepad-window.c:462
 msgid "_Navigation"
-msgstr ""
+msgstr "_Yfirsýn"
 
 #: ../mousepad/mousepad-window.c:463
 msgid "_Previous Tab"
