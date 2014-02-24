@@ -4,13 +4,13 @@
 # 
 # Translators:
 # Jiri Grönroos <jiri.gronroos@iki.fi>, 2013
-# Juhani Numminen <juhaninumminen0@gmail.com>, 2013
+# Juhani Numminen <juhaninumminen0@gmail.com>, 2013-2014
 msgid ""
 msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2013-07-03 20:24+0200\n"
-"PO-Revision-Date: 2013-11-21 15:21+0000\n"
+"PO-Revision-Date: 2014-02-24 14:15+0000\n"
 "Last-Translator: Juhani Numminen <juhaninumminen0@gmail.com>\n"
 "Language-Team: Finnish (http://www.transifex.com/projects/p/xfce/language/fi/)\n"
 "MIME-Version: 1.0\n"
@@ -25,7 +25,7 @@ msgstr ""
 
 #: ../mousepad/main.c:54
 msgid "Quit a running Mousepad instance"
-msgstr ""
+msgstr "Lopeta käynnissä oleva Mousepad"
 
 #: ../mousepad/main.c:56
 msgid "Print version information and exit"
@@ -88,11 +88,11 @@ msgstr "_Sarakenumero:"
 
 #: ../mousepad/mousepad-dialogs.c:300
 msgid "Remove all entries from the documents history?"
-msgstr ""
+msgstr "Poistetaanko kaikki asiakirjojen historiatiedot?"
 
 #: ../mousepad/mousepad-dialogs.c:305
 msgid "Clear Documents History"
-msgstr ""
+msgstr "Tyhjennä asiakirjahistoria"
 
 #: ../mousepad/mousepad-dialogs.c:308
 msgid ""
@@ -164,7 +164,7 @@ msgstr "Oletus (UTF-8)"
 
 #: ../mousepad/mousepad-encoding-dialog.c:153
 msgid "System"
-msgstr ""
+msgstr "Järjestelmä"
 
 #: ../mousepad/mousepad-encoding-dialog.c:160
 msgid "Other:"
@@ -334,19 +334,19 @@ msgstr "Tu_losta rivinumerot"
 
 #: ../mousepad/mousepad-print.c:653
 msgid "Number every"
-msgstr ""
+msgstr "Numeroi kaikki"
 
 #: ../mousepad/mousepad-print.c:669
 msgid "line(s)"
-msgstr ""
+msgstr "rivi(t)"
 
 #: ../mousepad/mousepad-print.c:674
 msgid "Enable text _wrapping"
-msgstr ""
+msgstr "Ota käyttöön _tekstin rivitys"
 
 #: ../mousepad/mousepad-print.c:681
 msgid "Enable _syntax highlighting"
-msgstr ""
+msgstr "Ota käyttöön _syntaksin väritys"
 
 #: ../mousepad/mousepad-print.c:693
 msgid "Fonts"
@@ -481,7 +481,7 @@ msgstr "Tiedostotyyppi: %s"
 #: ../mousepad/mousepad-statusbar.c:281
 #, c-format
 msgid "Line: %d Column: %d Selection: %d"
-msgstr ""
+msgstr "Rivi: %d Sarake: %d Valinta: %d"
 
 #: ../mousepad/mousepad-statusbar.c:283
 #, c-format
