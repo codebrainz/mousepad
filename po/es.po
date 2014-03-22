@@ -1,23 +1,23 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# FIRST AUTHOR <bazanluis20@gmail.com>, 2012.
 # 
-#, fuzzy
+# Translators:
+# bazanluis20 <bazanluis20@gmail.com>, 2012
+# Pablo Lezaeta <prflr88@gmail.com>, 2013-2014
 msgid ""
 msgstr ""
-"Project-Id-Version: mousepad\n"
+"Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-03-13 00:51+0000\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: Spanish/es <xfce-i18n@xfce.org>\n"
+"POT-Creation-Date: 2013-07-03 20:24+0200\n"
+"PO-Revision-Date: 2014-03-22 12:26+0000\n"
+"Last-Translator: Pablo Lezaeta <prflr88@gmail.com>\n"
+"Language-Team: Spanish (http://www.transifex.com/projects/p/xfce/language/es/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: \n"
+"Language: es\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Poedit-Language: Spanish\n"
 
 #: ../mousepad/main.c:53
 msgid "Do not register with the D-BUS session message bus"
@@ -48,17 +48,16 @@ msgstr "No se pudo abrir la pantalla."
 
 #: ../mousepad/main.c:118
 msgid "The Xfce development team. All rights reserved."
-msgstr "El equipo de desarrollo Xfce. Todos los derechos reservados."
+msgstr "El equipo de desarrollo de Xfce. Todos los derechos reservados."
 
 #: ../mousepad/main.c:119
 #, c-format
 msgid "Please report bugs to <%s>."
-msgstr "Informe de errores en <%s>."
+msgstr "Informe de errores a <%s>."
 
 #: ../mousepad/mousepad-dialogs.c:41
 msgid "Mousepad is a fast text editor for the Xfce Desktop Environment."
-msgstr ""
-"Mousepad es un editor de txto veloz para el entorno de escritorio Xfce."
+msgstr "Mousepad es un editor de texto veloz para el entorno de escritorio Xfce."
 
 #: ../mousepad/mousepad-dialogs.c:50
 msgid "translator-credits"
@@ -99,9 +98,7 @@ msgstr "Limpiar histórico de documentos"
 msgid ""
 "Clearing the documents history will permanently remove all currently listed "
 "entries."
-msgstr ""
-"El borrar el historial de los documentos se eliminará permanentemente todas "
-"las entradas que figuran actualmente."
+msgstr "El borrar el historial de los documentos se eliminará permanentemente todas las entradas que figuran actualmente."
 
 #: ../mousepad/mousepad-dialogs.c:339
 msgid "Do you want to save the changes before closing?"
@@ -109,11 +106,11 @@ msgstr "¿Quiere guardar los cambios antes de cerrar?"
 
 #: ../mousepad/mousepad-dialogs.c:340
 msgid "Save Changes"
-msgstr "Guardar los cambios"
+msgstr "Guardar cambios"
 
 #: ../mousepad/mousepad-dialogs.c:341
 msgid "_Don't Save"
-msgstr "_No guardar"
+msgstr "_No guardar cambios"
 
 #. secondary text
 #: ../mousepad/mousepad-dialogs.c:363
@@ -123,8 +120,7 @@ msgstr "Si no guarda el documento, perderá todos los cambios."
 #: ../mousepad/mousepad-dialogs.c:385
 msgid ""
 "The document has been externally modified. Do you want to continue saving?"
-msgstr ""
-"El documento ha sido modificado externamente ¿Desea guardarlo igualmente?"
+msgstr "El documento ha sido modificado externamente ¿Desea guardarlo igualmente?"
 
 #: ../mousepad/mousepad-dialogs.c:386
 msgid "Externally Modified"
@@ -164,7 +160,7 @@ msgstr "Seleccione una codificación a continuación."
 #. encoding radio buttons
 #: ../mousepad/mousepad-encoding-dialog.c:147
 msgid "Default (UTF-8)"
-msgstr "Predeterminada (UTF+8)"
+msgstr "Predeterminado (UTF-8)"
 
 #: ../mousepad/mousepad-encoding-dialog.c:153
 msgid "System"
@@ -219,11 +215,11 @@ msgstr "Cirílico"
 
 #: ../mousepad/mousepad-encoding.c:57
 msgid "Cyrillic/Russian"
-msgstr "Cirílico/Ruso"
+msgstr "Cirílico / Ruso"
 
 #: ../mousepad/mousepad-encoding.c:58
 msgid "Cyrillic/Ukrainian"
-msgstr "Cirílico/Ucraniano"
+msgstr "Cirílico / Ucraniano"
 
 #: ../mousepad/mousepad-encoding.c:59
 msgid "Romanian"
@@ -255,7 +251,7 @@ msgstr "Georgiano"
 
 #: ../mousepad/mousepad-encoding.c:73
 msgid "Thai"
-msgstr "Thai"
+msgstr "Tailandés"
 
 #: ../mousepad/mousepad-encoding.c:74 ../mousepad/mousepad-encoding.c:75
 #: ../mousepad/mousepad-encoding.c:76
@@ -495,12 +491,8 @@ msgstr "Línea: %d Columna: %d"
 #. show warning to the user
 #: ../mousepad/mousepad-util.c:572
 #, c-format
-msgid ""
-"Unable to create base directory \"%s\". Saving to file \"%s\" will be "
-"aborted."
-msgstr ""
-"No se puede crear el directorio base «%s». Se cancelará el guardado del "
-"archivo «%s»."
+msgid "Unable to create base directory \"%s\". Saving to file \"%s\" will be aborted."
+msgstr "No se puede crear el directorio base «%s». Se cancelará el guardado del archivo «%s»."
 
 #. print error
 #: ../mousepad/mousepad-util.c:618
@@ -766,8 +758,7 @@ msgstr "_Tabulaciones a espacios"
 
 #: ../mousepad/mousepad-window.c:446
 msgid "Convert all tabs to spaces in the selection or document"
-msgstr ""
-"Convertir todas las tabulaciones a espacios en la selección o el documento"
+msgstr "Convertir todas las tabulaciones a espacios en la selección o el documento"
 
 #: ../mousepad/mousepad-window.c:447
 msgid "_Spaces to Tabs"
@@ -776,9 +767,7 @@ msgstr "E_spacios a tabulaciones"
 #: ../mousepad/mousepad-window.c:447
 msgid ""
 "Convert all the leading spaces to tabs in the selected line(s) or document"
-msgstr ""
-"Convierte todos los espacios iniciales en pestañas en las línea(s) "
-"seleccionadas o documento"
+msgstr "Convierte todos los espacios iniciales en pestañas en las línea(s) seleccionadas o documento"
 
 #: ../mousepad/mousepad-window.c:448
 msgid "St_rip Trailing Spaces"
@@ -786,8 +775,7 @@ msgstr "Qui_tar espacios finales"
 
 #: ../mousepad/mousepad-window.c:448
 msgid "Remove all the trailing spaces from the selected line(s) or document"
-msgstr ""
-"Retire todos los espacios al final de la línea seleccionada (s) o documento"
+msgstr "Retire todos los espacios al final de la línea seleccionada (s) o documento"
 
 #: ../mousepad/mousepad-window.c:449
 msgid "_Transpose"
@@ -959,11 +947,11 @@ msgstr "Establecer el final de línea del documento a Unix (LF)"
 
 #: ../mousepad/mousepad-window.c:485
 msgid "Mac (_CR)"
-msgstr "Mac OS9 / OSX (_CR)"
+msgstr "Mac OS 9  (_CR)"
 
 #: ../mousepad/mousepad-window.c:485
 msgid "Set the line ending of the document to Mac (CR)"
-msgstr "Establecer el final de línea del documento a Mac (CR)"
+msgstr "Establecer el final de línea del documento a Mac OS 9 (CR)"
 
 #: ../mousepad/mousepad-window.c:486
 msgid "DOS / Windows (C_R LF)"
@@ -971,14 +959,12 @@ msgstr "DOS / Windows (C_R LF)"
 
 #: ../mousepad/mousepad-window.c:486
 msgid "Set the line ending of the document to DOS / Windows (CR LF)"
-msgstr "Establecer el final de línea del documento a Windows (CR LF)"
+msgstr "Establecer el final de línea del documento a DOS / Windows (CR LF)"
 
 #. add the label with the root warning
 #: ../mousepad/mousepad-window.c:659
 msgid "Warning, you are using the root account, you may harm your system."
-msgstr ""
-"Peligro: Usted esá usando la cuenta de administrador (Root), podríadañar su "
-"equipo"
+msgstr "Peligro: Usted esá usando la cuenta de administrador (Root), podríadañar su equipo"
 
 #. show the warning
 #: ../mousepad/mousepad-window.c:1097
@@ -1063,9 +1049,7 @@ msgstr "Abrir carpeta"
 msgid ""
 "Failed to open \"%s\" for reading. It will be removed from the document "
 "history"
-msgstr ""
-"Fallo al abrir \"%s\" para su lectura, Este será removido del historial del "
-"documento"
+msgstr "Fallo al abrir \"%s\" para su lectura, Este será removido del historial del documento"
 
 #. show the warning and cleanup
 #: ../mousepad/mousepad-window.c:3662
