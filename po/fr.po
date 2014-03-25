@@ -6,13 +6,14 @@
 # jc1 <jc1>, 2012
 # jc1 <jc1.quebecos@gmail.com>, 2013
 # Luc Pionchon <luc@handhelds.org>, 2004
+# Urides <urien.desterres@gmail.com>, 2014
 msgid ""
 msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2013-07-03 20:24+0200\n"
-"PO-Revision-Date: 2013-08-04 17:49+0000\n"
-"Last-Translator: jc1 <jc1.quebecos@gmail.com>\n"
+"PO-Revision-Date: 2014-03-25 12:31+0000\n"
+"Last-Translator: Urides <urien.desterres@gmail.com>\n"
 "Language-Team: French (http://www.transifex.com/projects/p/xfce/language/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -125,7 +126,7 @@ msgstr "Le document a été modifié par l'extérieur. Voulez-vous continuer à 
 
 #: ../mousepad/mousepad-dialogs.c:386
 msgid "Externally Modified"
-msgstr "Extérieurement modifié"
+msgstr "Modifié extérieurement"
 
 #: ../mousepad/mousepad-dialogs.c:388
 msgid "If you save the document, all of the external changes will be lost."
@@ -152,11 +153,11 @@ msgstr "Sans titre"
 #. create the header
 #: ../mousepad/mousepad-encoding-dialog.c:134
 msgid "The document was not UTF-8 valid"
-msgstr "Le document n'est pas en UTF-8 valide"
+msgstr "Le document n’était pas en UTF-8 valide"
 
 #: ../mousepad/mousepad-encoding-dialog.c:135
 msgid "Please select an encoding below."
-msgstr "S'il vous plaît sélectionner un codage ci-dessous."
+msgstr "Veuillez sélectionner un encodage ci-dessous."
 
 #. encoding radio buttons
 #: ../mousepad/mousepad-encoding-dialog.c:147
@@ -343,7 +344,7 @@ msgstr "ligne(s)"
 
 #: ../mousepad/mousepad-print.c:674
 msgid "Enable text _wrapping"
-msgstr "Activer l'habillage du texte"
+msgstr "Activer l’adaptation du texte"
 
 #: ../mousepad/mousepad-print.c:681
 msgid "Enable _syntax highlighting"
@@ -450,7 +451,7 @@ msgstr "_Précédent"
 
 #: ../mousepad/mousepad-search-bar.c:230
 msgid "Highlight _All"
-msgstr "Mettre en surbrillance tout"
+msgstr "Tout surligner"
 
 #: ../mousepad/mousepad-search-bar.c:243 ../mousepad/mousepad-search-bar.c:250
 msgid "Mat_ch Case"
@@ -467,7 +468,7 @@ msgstr "Type de fichier : Aucun"
 
 #: ../mousepad/mousepad-statusbar.c:169
 msgid "Toggle the overwrite mode"
-msgstr "Basculer vers le mode d'écrasement"
+msgstr "Activer / désactiver le mode d'écrasement"
 
 #. overwrite label
 #: ../mousepad/mousepad-statusbar.c:174
@@ -703,7 +704,7 @@ msgstr "_Vue"
 
 #: ../mousepad/mousepad-window.c:437
 msgid "Select F_ont..."
-msgstr "Sélectionnez la police ..."
+msgstr "Sélectionner la _police..."
 
 #: ../mousepad/mousepad-window.c:437
 msgid "Change the editor font"
@@ -928,7 +929,7 @@ msgstr "_Retour à la ligne"
 
 #: ../mousepad/mousepad-window.c:478
 msgid "Toggle breaking lines in between words"
-msgstr "Basculer les lignes de rupture entre les mots"
+msgstr "Activer / désactiver les lignes de rupture entre les mots"
 
 #: ../mousepad/mousepad-window.c:479
 msgid "Write Unicode _BOM"
