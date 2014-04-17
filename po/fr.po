@@ -14,7 +14,7 @@ msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2013-07-03 20:24+0200\n"
-"PO-Revision-Date: 2014-04-16 13:51+0000\n"
+"PO-Revision-Date: 2014-04-17 10:18+0000\n"
 "Last-Translator: Urides <urien.desterres@gmail.com>\n"
 "Language-Team: French (http://www.transifex.com/projects/p/xfce/language/fr/)\n"
 "MIME-Version: 1.0\n"
@@ -887,7 +887,7 @@ msgstr "_Guide d’utilisation"
 
 #: ../mousepad/mousepad-window.c:468
 msgid "Display the Mousepad user manual"
-msgstr "Afficher le duide d’utilisation de Mousepad"
+msgstr "Afficher le guide d’utilisation de Mousepad"
 
 #: ../mousepad/mousepad-window.c:469
 msgid "About this application"
@@ -1036,7 +1036,7 @@ msgstr "Les modèles devraient être en UTF-8 valide"
 #. set error message
 #: ../mousepad/mousepad-window.c:3515
 msgid "Reading the template failed, the menu item has been removed"
-msgstr "La lecture du modèle a échoué, l’élément du menu a été supprimé"
+msgstr "La lecture du modèle a échoué, l’élément a été supprimé du menu"
 
 #. set error message
 #: ../mousepad/mousepad-window.c:3520
