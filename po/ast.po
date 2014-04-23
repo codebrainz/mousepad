@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2013-07-03 20:24+0200\n"
-"PO-Revision-Date: 2014-04-21 12:26+0000\n"
+"PO-Revision-Date: 2014-04-23 07:18+0000\n"
 "Last-Translator: Tornes Llume <l.lumex03.tornes@gmail.com>\n"
 "Language-Team: Asturian (http://www.transifex.com/projects/p/xfce/language/ast/)\n"
 "MIME-Version: 1.0\n"
@@ -167,7 +167,7 @@ msgstr "Sistema"
 
 #: ../mousepad/mousepad-encoding-dialog.c:160
 msgid "Other:"
-msgstr ""
+msgstr "Otru:"
 
 #: ../mousepad/mousepad-encoding-dialog.c:180
 msgid "Checking encodings..."
@@ -621,7 +621,7 @@ msgstr ""
 
 #: ../mousepad/mousepad-window.c:422
 msgid "Cut the selection"
-msgstr ""
+msgstr "Cortar la escoyeta"
 
 #: ../mousepad/mousepad-window.c:423
 msgid "Copy the selection"
