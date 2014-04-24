@@ -9,9 +9,9 @@ msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2013-07-03 20:24+0200\n"
-"PO-Revision-Date: 2014-04-23 07:18+0000\n"
+"PO-Revision-Date: 2014-04-24 10:20+0000\n"
 "Last-Translator: Tornes Llume <l.lumex03.tornes@gmail.com>\n"
-"Language-Team: Asturian (http://www.transifex.com/projects/p/xfce/language/ast/)\n"
+"Language-Team: Asturian (http://www.transifex.com/projects/p/xfce-apps/language/ast/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -47,12 +47,12 @@ msgstr ""
 
 #: ../mousepad/main.c:118
 msgid "The Xfce development team. All rights reserved."
-msgstr ""
+msgstr "Lequipu de desendolcu Xfce. Tolo drechos reservaos."
 
 #: ../mousepad/main.c:119
 #, c-format
 msgid "Please report bugs to <%s>."
-msgstr ""
+msgstr "Por favor, informa de fallos en <%s>."
 
 #: ../mousepad/mousepad-dialogs.c:41
 msgid "Mousepad is a fast text editor for the Xfce Desktop Environment."
@@ -65,7 +65,7 @@ msgstr "Softastur www.softastur.org"
 #. display an error message to the user
 #: ../mousepad/mousepad-dialogs.c:105
 msgid "Failed to open the documentation browser"
-msgstr ""
+msgstr "Fallu al abrir el restolador de la documentación"
 
 #. build dialog
 #: ../mousepad/mousepad-dialogs.c:120
@@ -87,11 +87,11 @@ msgstr "Númberu de c_olumna"
 
 #: ../mousepad/mousepad-dialogs.c:300
 msgid "Remove all entries from the documents history?"
-msgstr ""
+msgstr "¿Desanciar toles entraes de la historia de los documentos?"
 
 #: ../mousepad/mousepad-dialogs.c:305
 msgid "Clear Documents History"
-msgstr ""
+msgstr "Llimpiar historia de los documentos"
 
 #: ../mousepad/mousepad-dialogs.c:308
 msgid ""
@@ -123,7 +123,7 @@ msgstr "El documentu modificóse de mou esternu. ¿Quies siguir col guardáu?"
 
 #: ../mousepad/mousepad-dialogs.c:386
 msgid "Externally Modified"
-msgstr ""
+msgstr "Modificáu estrenamente"
 
 #: ../mousepad/mousepad-dialogs.c:388
 msgid "If you save the document, all of the external changes will be lost."
