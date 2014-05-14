@@ -10,9 +10,9 @@ msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2013-07-03 20:24+0200\n"
-"PO-Revision-Date: 2014-03-22 12:26+0000\n"
+"PO-Revision-Date: 2014-05-14 01:06+0000\n"
 "Last-Translator: Pablo Lezaeta <prflr88@gmail.com>\n"
-"Language-Team: Spanish (http://www.transifex.com/projects/p/xfce/language/es/)\n"
+"Language-Team: Spanish (http://www.transifex.com/projects/p/xfce-apps/language/es/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -98,7 +98,7 @@ msgstr "Limpiar histórico de documentos"
 msgid ""
 "Clearing the documents history will permanently remove all currently listed "
 "entries."
-msgstr "El borrar el historial de los documentos se eliminará permanentemente todas las entradas que figuran actualmente."
+msgstr "Al borrar el histórico de documentos se eliminará permanentemente todas las entradas que figuran actualmente."
 
 #: ../mousepad/mousepad-dialogs.c:339
 msgid "Do you want to save the changes before closing?"
@@ -350,7 +350,7 @@ msgstr "Activar el resaltado de _sintaxis"
 
 #: ../mousepad/mousepad-print.c:693
 msgid "Fonts"
-msgstr "Tipografías"
+msgstr "Tipos de letra"
 
 #: ../mousepad/mousepad-print.c:709
 msgid "Header:"
@@ -542,7 +542,7 @@ msgstr "No se encontraron objetos"
 
 #: ../mousepad/mousepad-window.c:409
 msgid "Clear _History"
-msgstr "Limpiar el _historial"
+msgstr "Limpiar el _histórico"
 
 #: ../mousepad/mousepad-window.c:409
 msgid "Clear the recently used files history"
@@ -706,7 +706,7 @@ msgstr "Seleccionar tip_ografía…"
 
 #: ../mousepad/mousepad-window.c:437
 msgid "Change the editor font"
-msgstr "Cambiar la tipografía del editor"
+msgstr "Cambiar el tipo de letra del editor"
 
 #: ../mousepad/mousepad-window.c:438
 msgid "_Color Scheme"
@@ -1009,7 +1009,7 @@ msgstr "Abrir '%s'"
 
 #: ../mousepad/mousepad-window.c:2724
 msgid "Failed to clear the recent history"
-msgstr "Fallo al limpiar el historial"
+msgstr "No se pudo limpiar el histórico"
 
 #. create an item to inform the user
 #: ../mousepad/mousepad-window.c:3148
@@ -1049,7 +1049,7 @@ msgstr "Abrir carpeta"
 msgid ""
 "Failed to open \"%s\" for reading. It will be removed from the document "
 "history"
-msgstr "Fallo al abrir \"%s\" para su lectura, Este será removido del historial del documento"
+msgstr "No se pudo abrir \"%s\" para su lectura, Este será removido del histórico de documentos"
 
 #. show the warning and cleanup
 #: ../mousepad/mousepad-window.c:3662
@@ -1078,7 +1078,7 @@ msgstr "Fallo al inprimir el documento"
 
 #: ../mousepad/mousepad-window.c:4421
 msgid "Choose Mousepad Font"
-msgstr "Seleccione el tamaño de la fuente de Mousepad"
+msgstr "Seleccione el tamaño del tipo de letra a usar por Mousepad"
 
 #: ../mousepad.desktop.in.in.h:2
 msgid "Simple Text Editor"
