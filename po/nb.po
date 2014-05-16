@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2013-07-03 20:24+0200\n"
-"PO-Revision-Date: 2014-05-16 15:58+0000\n"
+"PO-Revision-Date: 2014-05-16 22:30+0000\n"
 "Last-Translator: kingu <comradekingu@gmail.com>\n"
 "Language-Team: Norwegian Bokmål (http://www.transifex.com/projects/p/xfce-apps/language/nb/)\n"
 "MIME-Version: 1.0\n"
@@ -146,7 +146,7 @@ msgstr "Lukk denne fanen"
 #. create an unique untitled document name
 #: ../mousepad/mousepad-document.c:626
 msgid "Untitled"
-msgstr ""
+msgstr "Uten tittel"
 
 #. create the header
 #: ../mousepad/mousepad-encoding-dialog.c:134
@@ -964,12 +964,12 @@ msgstr ""
 #. add the label with the root warning
 #: ../mousepad/mousepad-window.c:659
 msgid "Warning, you are using the root account, you may harm your system."
-msgstr ""
+msgstr "Advarsel, du bruker root-kontoen, du har tilgang til å ødelegge systemet."
 
 #. show the warning
 #: ../mousepad/mousepad-window.c:1097
 msgid "Failed to open the document"
-msgstr ""
+msgstr "Feil ved åpning av dokument"
 
 #: ../mousepad/mousepad-window.c:1294
 msgid "Read Only"
@@ -1009,7 +1009,7 @@ msgstr "Åpne «%s»"
 
 #: ../mousepad/mousepad-window.c:2724
 msgid "Failed to clear the recent history"
-msgstr ""
+msgstr "Feil under tømming av nylig historikk"
 
 #. create an item to inform the user
 #: ../mousepad/mousepad-window.c:3148
@@ -1074,7 +1074,7 @@ msgstr ""
 #. show the error
 #: ../mousepad/mousepad-window.c:4010
 msgid "Failed to print the document"
-msgstr ""
+msgstr "Feil under utskrift av dokument"
 
 #: ../mousepad/mousepad-window.c:4421
 msgid "Choose Mousepad Font"
