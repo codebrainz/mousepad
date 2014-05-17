@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2013-07-03 20:24+0200\n"
-"PO-Revision-Date: 2014-05-16 22:30+0000\n"
+"PO-Revision-Date: 2014-05-16 22:31+0000\n"
 "Last-Translator: kingu <comradekingu@gmail.com>\n"
 "Language-Team: Norwegian Bokmål (http://www.transifex.com/projects/p/xfce-apps/language/nb/)\n"
 "MIME-Version: 1.0\n"
@@ -406,7 +406,7 @@ msgstr ""
 #. match whole word
 #: ../mousepad/mousepad-replace-dialog.c:260
 msgid "_Match whole word"
-msgstr ""
+msgstr "_Jamfør hele ord"
 
 #: ../mousepad/mousepad-replace-dialog.c:271
 msgid "Replace _all in:"
