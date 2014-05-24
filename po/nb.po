@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2013-07-03 20:24+0200\n"
-"PO-Revision-Date: 2014-05-22 19:10+0000\n"
+"PO-Revision-Date: 2014-05-24 19:45+0000\n"
 "Last-Translator: haarek <haarektrans@gmail.com>\n"
 "Language-Team: Norwegian Bokmål (http://www.transifex.com/projects/p/xfce-apps/language/nb/)\n"
 "MIME-Version: 1.0\n"
@@ -326,7 +326,7 @@ msgstr "Utseende"
 
 #: ../mousepad/mousepad-print.c:629
 msgid "Print page _headers"
-msgstr ""
+msgstr "Skriv ut side_hoder"
 
 #: ../mousepad/mousepad-print.c:636
 msgid "Print _line numbers"
@@ -662,7 +662,7 @@ msgstr "Velg tekst i hele dokumentet"
 
 #: ../mousepad/mousepad-window.c:430
 msgid "Change the selection"
-msgstr "Endre utvalg"
+msgstr "Endre utvalget"
 
 #: ../mousepad/mousepad-window.c:430
 msgid "Change a normal selection into a column selection and vice versa"
@@ -726,7 +726,7 @@ msgstr "til store bokstaver"
 
 #: ../mousepad/mousepad-window.c:442
 msgid "Change the case of the selection to uppercase"
-msgstr ""
+msgstr "Endre utvalget til store bokstaver"
 
 #: ../mousepad/mousepad-window.c:443
 msgid "to _Lowercase"
@@ -734,7 +734,7 @@ msgstr "til små bokstaver"
 
 #: ../mousepad/mousepad-window.c:443
 msgid "Change the case of the selection to lowercase"
-msgstr ""
+msgstr "Endre utvalget til små bokstaver"
 
 #: ../mousepad/mousepad-window.c:444
 msgid "to _Title Case"
