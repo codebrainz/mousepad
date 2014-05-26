@@ -4,12 +4,13 @@
 # 
 # Translators:
 # Tornes Llume <l.lumex03.tornes@gmail.com>, 2014
+# Tornes Llume <l.lumex03.tornes@gmail.com>, 2014
 msgid ""
 msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2013-07-03 20:24+0200\n"
-"PO-Revision-Date: 2014-04-24 10:20+0000\n"
+"PO-Revision-Date: 2014-05-26 12:16+0000\n"
 "Last-Translator: Tornes Llume <l.lumex03.tornes@gmail.com>\n"
 "Language-Team: Asturian (http://www.transifex.com/projects/p/xfce-apps/language/ast/)\n"
 "MIME-Version: 1.0\n"
@@ -20,15 +21,15 @@ msgstr ""
 
 #: ../mousepad/main.c:53
 msgid "Do not register with the D-BUS session message bus"
-msgstr ""
+msgstr "Nun rexistrar col bus de mensaxe de sesión D-BUS"
 
 #: ../mousepad/main.c:54
 msgid "Quit a running Mousepad instance"
-msgstr ""
+msgstr "Colar d'una instancia de Mousepad n'execución"
 
 #: ../mousepad/main.c:56
 msgid "Print version information and exit"
-msgstr ""
+msgstr "Amuesa la información de versión y cola"
 
 #. default application name
 #: ../mousepad/main.c:81 ../mousepad.desktop.in.in.h:1
@@ -43,11 +44,11 @@ msgstr "[FICHEROS...]"
 #. no error message, the gui initialization failed
 #: ../mousepad/main.c:101
 msgid "Failed to open display."
-msgstr ""
+msgstr "Fallu al abrir la pantalla."
 
 #: ../mousepad/main.c:118
 msgid "The Xfce development team. All rights reserved."
-msgstr "Lequipu de desendolcu Xfce. Tolo drechos reservaos."
+msgstr "L'equipu de desendolcu Xfce. Tolos drechos reservaos."
 
 #: ../mousepad/main.c:119
 #, c-format
@@ -70,7 +71,7 @@ msgstr "Fallu al abrir el restolador de la documentación"
 #. build dialog
 #: ../mousepad/mousepad-dialogs.c:120
 msgid "Select Tab Size"
-msgstr ""
+msgstr "Escoyer tamañu de llingüeta"
 
 #. build the dialog
 #: ../mousepad/mousepad-dialogs.c:201
@@ -109,12 +110,12 @@ msgstr "Guardar camudancies"
 
 #: ../mousepad/mousepad-dialogs.c:341
 msgid "_Don't Save"
-msgstr ""
+msgstr "_Nun guardar"
 
 #. secondary text
 #: ../mousepad/mousepad-dialogs.c:363
 msgid "If you don't save the document, all the changes will be lost."
-msgstr "SI nun guardes el documentu, toles camudancies perderánse."
+msgstr "SI nun guardes el documentu, perderánse toles camudancies."
 
 #: ../mousepad/mousepad-dialogs.c:385
 msgid ""
@@ -123,11 +124,11 @@ msgstr "El documentu modificóse de mou esternu. ¿Quies siguir col guardáu?"
 
 #: ../mousepad/mousepad-dialogs.c:386
 msgid "Externally Modified"
-msgstr "Modificáu estrenamente"
+msgstr "Modificáu esternamente"
 
 #: ../mousepad/mousepad-dialogs.c:388
 msgid "If you save the document, all of the external changes will be lost."
-msgstr "Si guardes el documentu, toles camudancies esternes perderánse."
+msgstr "Si guardes el documentu, perderánse toles camudancies esternes."
 
 #: ../mousepad/mousepad-dialogs.c:416
 msgid "Do you want to save your changes before reloading?"
@@ -150,11 +151,11 @@ msgstr "Ensin títulu"
 #. create the header
 #: ../mousepad/mousepad-encoding-dialog.c:134
 msgid "The document was not UTF-8 valid"
-msgstr ""
+msgstr "El documentu nun foi un UTF-8 válidu"
 
 #: ../mousepad/mousepad-encoding-dialog.c:135
 msgid "Please select an encoding below."
-msgstr ""
+msgstr "Por favor, esbilla una codificación embaxo."
 
 #. encoding radio buttons
 #: ../mousepad/mousepad-encoding-dialog.c:147
@@ -171,7 +172,7 @@ msgstr "Otru:"
 
 #: ../mousepad/mousepad-encoding-dialog.c:180
 msgid "Checking encodings..."
-msgstr ""
+msgstr "Comprobando codificaciones..."
 
 #. west european
 #: ../mousepad/mousepad-encoding.c:35
@@ -193,7 +194,7 @@ msgstr "Européu del sur"
 #: ../mousepad/mousepad-encoding.c:40 ../mousepad/mousepad-encoding.c:41
 #: ../mousepad/mousepad-encoding.c:42 ../mousepad/mousepad-encoding.c:43
 msgid "Western"
-msgstr ""
+msgstr "Occidental"
 
 #. east european
 #: ../mousepad/mousepad-encoding.c:46 ../mousepad/mousepad-encoding.c:47
@@ -294,7 +295,7 @@ msgstr "Koreanu"
 #: ../mousepad/mousepad-file.c:556
 #, c-format
 msgid "Invalid byte sequence in conversion input"
-msgstr ""
+msgstr "Secuencia byte inválida na entrada de conversión"
 
 #: ../mousepad/mousepad-file.c:875
 #, c-format
@@ -313,11 +314,11 @@ msgstr "Axustes del documentu"
 
 #: ../mousepad/mousepad-print.c:595
 msgid "Page Setup"
-msgstr ""
+msgstr "Configuración de página"
 
 #: ../mousepad/mousepad-print.c:605
 msgid "_Adjust page size and orientation"
-msgstr ""
+msgstr "_Axustar tamañu y orientación de la páxina"
 
 #: ../mousepad/mousepad-print.c:615
 msgid "Appearance"
@@ -325,15 +326,15 @@ msgstr "Aspeutu"
 
 #: ../mousepad/mousepad-print.c:629
 msgid "Print page _headers"
-msgstr ""
+msgstr "Imprentar te_steres de páxina"
 
 #: ../mousepad/mousepad-print.c:636
 msgid "Print _line numbers"
-msgstr ""
+msgstr "Imprentar númberu _llinies"
 
 #: ../mousepad/mousepad-print.c:653
 msgid "Number every"
-msgstr ""
+msgstr "Númberu cada"
 
 #: ../mousepad/mousepad-print.c:669
 msgid "line(s)"
@@ -353,7 +354,7 @@ msgstr "Fontes"
 
 #: ../mousepad/mousepad-print.c:709
 msgid "Header:"
-msgstr ""
+msgstr "Testera:"
 
 #: ../mousepad/mousepad-print.c:719
 msgid "Body:"
@@ -413,7 +414,7 @@ msgstr "Troc_ar too en:"
 
 #: ../mousepad/mousepad-replace-dialog.c:278
 msgid "Selection"
-msgstr "Escoyeta"
+msgstr "Esbilla"
 
 #: ../mousepad/mousepad-replace-dialog.c:279
 msgid "Document"
@@ -427,8 +428,8 @@ msgstr "Tolos documentos"
 #, c-format
 msgid "%d occurence"
 msgid_plural "%d occurences"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%d ocurrencia"
+msgstr[1] "%d ocurrencies"
 
 #: ../mousepad/mousepad-replace-dialog.c:540
 msgid "_Replace All"
@@ -456,12 +457,12 @@ msgstr ""
 
 #: ../mousepad/mousepad-statusbar.c:141
 msgid "Choose a filetype"
-msgstr ""
+msgstr "Escoyer una triba de ficheru"
 
 #. language/filetype
 #: ../mousepad/mousepad-statusbar.c:146 ../mousepad/mousepad-statusbar.c:258
 msgid "Filetype: None"
-msgstr ""
+msgstr "Triba de ficheru: Denguna"
 
 #: ../mousepad/mousepad-statusbar.c:169
 msgid "Toggle the overwrite mode"
@@ -480,7 +481,7 @@ msgstr "Triba de ficheru: %s"
 #: ../mousepad/mousepad-statusbar.c:281
 #, c-format
 msgid "Line: %d Column: %d Selection: %d"
-msgstr "Llinia: %d Columna: %d Escoyeta: %d"
+msgstr "Llinia: %d Columna: %d Esbilla: %d"
 
 #: ../mousepad/mousepad-statusbar.c:283
 #, c-format
@@ -491,7 +492,7 @@ msgstr "Llinia: %d Columna: %d"
 #: ../mousepad/mousepad-util.c:572
 #, c-format
 msgid "Unable to create base directory \"%s\". Saving to file \"%s\" will be aborted."
-msgstr ""
+msgstr "Nun pue crease'l direutoriu bas \"%s\". Albortaráse'l guardáu al ficheru \"%s\"."
 
 #. print error
 #: ../mousepad/mousepad-util.c:618
@@ -545,27 +546,27 @@ msgstr "Llimpiar _historia"
 
 #: ../mousepad/mousepad-window.c:409
 msgid "Clear the recently used files history"
-msgstr ""
+msgstr "Llimpiar la historia de ficheros usaos apocayá"
 
 #: ../mousepad/mousepad-window.c:410
 msgid "Save the current document"
-msgstr ""
+msgstr "Guardar documentu d'anguaño"
 
 #: ../mousepad/mousepad-window.c:411
 msgid "Save _As..."
-msgstr "_Atroxar como..."
+msgstr "Gu_ardar como"
 
 #: ../mousepad/mousepad-window.c:411
 msgid "Save current document as another file"
-msgstr ""
+msgstr "Guardar como otru ficheru'l documentu d'anguaño"
 
 #: ../mousepad/mousepad-window.c:412
 msgid "Save A_ll"
-msgstr "Atroxar t_oo"
+msgstr "Guardar t_oo"
 
 #: ../mousepad/mousepad-window.c:412
 msgid "Save all document in this window"
-msgstr "Atroxar tol documentu nesta ventana"
+msgstr "Guardar tol documentu nesta ventana"
 
 #: ../mousepad/mousepad-window.c:413
 msgid "Re_vert"
@@ -617,15 +618,15 @@ msgstr "Desfacer la cabera aición"
 
 #: ../mousepad/mousepad-window.c:421
 msgid "Redo the last undone action"
-msgstr ""
+msgstr "Refacer la cabera aición desfecha"
 
 #: ../mousepad/mousepad-window.c:422
 msgid "Cut the selection"
-msgstr "Cortar la escoyeta"
+msgstr "Cortar la esbilla"
 
 #: ../mousepad/mousepad-window.c:423
 msgid "Copy the selection"
-msgstr "Copiar la escoyeta"
+msgstr "Copiar la esbilla"
 
 #: ../mousepad/mousepad-window.c:424
 msgid "Paste the clipboard"
@@ -653,19 +654,19 @@ msgstr "Apegar el testu del cartafueyu a una columna"
 
 #: ../mousepad/mousepad-window.c:428
 msgid "Delete the current selection"
-msgstr "Desaniciar la escoyeta d'anguaño"
+msgstr "Desaniciar la esbilla d'anguaño"
 
 #: ../mousepad/mousepad-window.c:429
 msgid "Select the text in the entire document"
-msgstr ""
+msgstr "Esbillar el testu en tol documentu"
 
 #: ../mousepad/mousepad-window.c:430
 msgid "Change the selection"
-msgstr "Camudar la escoyeta"
+msgstr "Camudar la esbilla"
 
 #: ../mousepad/mousepad-window.c:430
 msgid "Change a normal selection into a column selection and vice versa"
-msgstr "Camudar una escoyeta normal "
+msgstr "Camudar una esbilla normal a una esbilla de columna y viceversa"
 
 #: ../mousepad/mousepad-window.c:431
 msgid "Search for text"
@@ -677,7 +678,7 @@ msgstr "Alcontrar _siguiente"
 
 #: ../mousepad/mousepad-window.c:432
 msgid "Search forwards for the same text"
-msgstr ""
+msgstr "Guetar p'alantre pol mesmu testu"
 
 #: ../mousepad/mousepad-window.c:433
 msgid "Find _Previous"
@@ -685,7 +686,7 @@ msgstr "Alcontrar anterior"
 
 #: ../mousepad/mousepad-window.c:433
 msgid "Search backwards for the same text"
-msgstr ""
+msgstr "Guetar p'atrás pol mesmu testu"
 
 #: ../mousepad/mousepad-window.c:434
 msgid "Find and Rep_lace..."
@@ -721,19 +722,19 @@ msgstr "_Convertir"
 
 #: ../mousepad/mousepad-window.c:442
 msgid "to _Uppercase"
-msgstr ""
+msgstr "a minúsc_ules"
 
 #: ../mousepad/mousepad-window.c:442
 msgid "Change the case of the selection to uppercase"
-msgstr ""
+msgstr "Camudar la lletra de la esbilla a mayúscules"
 
 #: ../mousepad/mousepad-window.c:443
 msgid "to _Lowercase"
-msgstr ""
+msgstr "a ma_yúscules"
 
 #: ../mousepad/mousepad-window.c:443
 msgid "Change the case of the selection to lowercase"
-msgstr ""
+msgstr "Camudar la lletra de la esbilla a minúscules"
 
 #: ../mousepad/mousepad-window.c:444
 msgid "to _Title Case"
@@ -753,15 +754,15 @@ msgstr ""
 
 #: ../mousepad/mousepad-window.c:446
 msgid "_Tabs to Spaces"
-msgstr ""
+msgstr "_Tabulaciones a espacios"
 
 #: ../mousepad/mousepad-window.c:446
 msgid "Convert all tabs to spaces in the selection or document"
-msgstr ""
+msgstr "Convertir toles tabulaciones na esbilla o'l documentu"
 
 #: ../mousepad/mousepad-window.c:447
 msgid "_Spaces to Tabs"
-msgstr ""
+msgstr "_Espacios a tabulaciones"
 
 #: ../mousepad/mousepad-window.c:447
 msgid ""
@@ -778,7 +779,7 @@ msgstr ""
 
 #: ../mousepad/mousepad-window.c:449
 msgid "_Transpose"
-msgstr ""
+msgstr "_Tresponer"
 
 #: ../mousepad/mousepad-window.c:449
 msgid "Reverse the order of something"
@@ -786,27 +787,27 @@ msgstr "Invertir l'orde de daqué"
 
 #: ../mousepad/mousepad-window.c:450
 msgid "_Move Selection"
-msgstr "_Mover escoyeta"
+msgstr "_Mover esbilla"
 
 #: ../mousepad/mousepad-window.c:451
 msgid "Line _Up"
-msgstr ""
+msgstr "Llinia arriba"
 
 #: ../mousepad/mousepad-window.c:451
 msgid "Move the selection one line up"
-msgstr ""
+msgstr "Mover la esbilla una llinia arriba"
 
 #: ../mousepad/mousepad-window.c:452
 msgid "Line _Down"
-msgstr ""
+msgstr "Llinia abaxo"
 
 #: ../mousepad/mousepad-window.c:452
 msgid "Move the selection one line down"
-msgstr "Mover la escoyeta una llinia abaxo"
+msgstr "Mover la esbilla una llinia abaxo"
 
 #: ../mousepad/mousepad-window.c:453
 msgid "D_uplicate Line / Selection"
-msgstr "D_uplicar llinia / escoyeta"
+msgstr "D_uplicar llinia / esbilla"
 
 #: ../mousepad/mousepad-window.c:453
 msgid "Duplicate the current line or selection"
@@ -838,7 +839,7 @@ msgstr "Final de llinia"
 
 #: ../mousepad/mousepad-window.c:459
 msgid "Tab _Size"
-msgstr ""
+msgstr "Tama_ñu de llingüeta"
 
 #: ../mousepad/mousepad-window.c:460
 msgid "_Filetype"
@@ -850,19 +851,19 @@ msgstr "_Restolación"
 
 #: ../mousepad/mousepad-window.c:463
 msgid "_Previous Tab"
-msgstr ""
+msgstr "_Llingüeta postrer"
 
 #: ../mousepad/mousepad-window.c:463
 msgid "Select the previous tab"
-msgstr ""
+msgstr "Esbillar llingüeta postrer"
 
 #: ../mousepad/mousepad-window.c:464
 msgid "_Next Tab"
-msgstr ""
+msgstr "Lli_ngüeta siguiente"
 
 #: ../mousepad/mousepad-window.c:464
 msgid "Select the next tab"
-msgstr ""
+msgstr "Esbillar llingüeta siguiente"
 
 #: ../mousepad/mousepad-window.c:465
 msgid "_Go to..."
@@ -874,7 +875,7 @@ msgstr "Dir a un allugamientu específicu nel documentu"
 
 #: ../mousepad/mousepad-window.c:467
 msgid "_Help"
-msgstr ""
+msgstr "_Ayuda"
 
 #: ../mousepad/mousepad-window.c:468
 msgid "_Contents"
@@ -882,11 +883,11 @@ msgstr "_Conteníos"
 
 #: ../mousepad/mousepad-window.c:468
 msgid "Display the Mousepad user manual"
-msgstr "Amosar el manual d'usuariu de Mousepad"
+msgstr "Amosar el manual d'usuariu Mousepad"
 
 #: ../mousepad/mousepad-window.c:469
 msgid "About this application"
-msgstr "Tocante esta aplicación"
+msgstr "Tocante a esta aplicación"
 
 #: ../mousepad/mousepad-window.c:474
 msgid "Line N_umbers"
@@ -894,7 +895,7 @@ msgstr "N_úmberu llinies"
 
 #: ../mousepad/mousepad-window.c:474
 msgid "Show line numbers"
-msgstr "Amosar númberu de llinies"
+msgstr "Amosar númberu llinies"
 
 #: ../mousepad/mousepad-window.c:475
 msgid "St_atusbar"
@@ -918,7 +919,7 @@ msgstr "Inxertar e_spacios"
 
 #: ../mousepad/mousepad-window.c:477
 msgid "Insert spaces when the tab button is pressed"
-msgstr "Inxertar espación cuando'l botón de tabulación tea primíu"
+msgstr "Inxertar espacios cuando'l botón de tabulación tea primíu"
 
 #: ../mousepad/mousepad-window.c:478
 msgid "_Word Wrap"
@@ -982,18 +983,18 @@ msgstr "Un res"
 #. create other action
 #: ../mousepad/mousepad-window.c:2081
 msgid "Set custom tab size"
-msgstr ""
+msgstr "Afitar tamañu de llingüeta personalizáu"
 
 #. create suitable label for the other menu
 #: ../mousepad/mousepad-window.c:2129
 #, c-format
 msgid "Ot_her (%d)..."
-msgstr ""
+msgstr "Ot_ru (%d)..."
 
 #. set action label
 #: ../mousepad/mousepad-window.c:2140
 msgid "Ot_her..."
-msgstr ""
+msgstr "Ot_ru"
 
 #. build description
 #. get the offset length: 'Encoding: '
@@ -1017,26 +1018,26 @@ msgstr "Ensin datos nel cartafueyu"
 
 #: ../mousepad/mousepad-window.c:3219
 msgid "Turn off color schemes"
-msgstr ""
+msgstr "Apagar esquemes de color"
 
 #: ../mousepad/mousepad-window.c:3300
 msgid "No filetype"
-msgstr ""
+msgstr "Nun hai triba de ficheru"
 
 #. set error message
 #: ../mousepad/mousepad-window.c:3507
 msgid "Templates should be UTF-8 valid"
-msgstr ""
+msgstr "Les plantíes deberíen ser UTF-8 válides"
 
 #. set error message
 #: ../mousepad/mousepad-window.c:3515
 msgid "Reading the template failed, the menu item has been removed"
-msgstr ""
+msgstr "Fallu al lleer la plantía, desanicióse l'oxetu del menú"
 
 #. set error message
 #: ../mousepad/mousepad-window.c:3520
 msgid "Loading the template failed"
-msgstr ""
+msgstr "Fallu al cargar la plantía"
 
 #. create new file chooser dialog
 #: ../mousepad/mousepad-window.c:3545
@@ -1048,7 +1049,7 @@ msgstr "Abrir ficheru"
 msgid ""
 "Failed to open \"%s\" for reading. It will be removed from the document "
 "history"
-msgstr ""
+msgstr "Fallu al abrir \"%s\" pa lleer. Desaniciaráse de la historia'l documentu"
 
 #. show the warning and cleanup
 #: ../mousepad/mousepad-window.c:3662
@@ -1058,7 +1059,7 @@ msgstr "Fallu al abrir el ficheru"
 #. show the error
 #: ../mousepad/mousepad-window.c:3768 ../mousepad/mousepad-window.c:3891
 msgid "Failed to save the document"
-msgstr ""
+msgstr "Fallu al guardar el documentu"
 
 #. create the dialog
 #: ../mousepad/mousepad-window.c:3792
@@ -1073,11 +1074,11 @@ msgstr "Fallu al recargar el documentu"
 #. show the error
 #: ../mousepad/mousepad-window.c:4010
 msgid "Failed to print the document"
-msgstr ""
+msgstr "Fallu al imprentar el documentu"
 
 #: ../mousepad/mousepad-window.c:4421
 msgid "Choose Mousepad Font"
-msgstr ""
+msgstr "Escoyer fonte de Mousepad"
 
 #: ../mousepad.desktop.in.in.h:2
 msgid "Simple Text Editor"
