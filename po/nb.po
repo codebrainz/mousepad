@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2013-07-03 20:24+0200\n"
-"PO-Revision-Date: 2014-05-24 19:45+0000\n"
+"PO-Revision-Date: 2014-05-29 14:13+0000\n"
 "Last-Translator: haarek <haarektrans@gmail.com>\n"
 "Language-Team: Norwegian Bokmål (http://www.transifex.com/projects/p/xfce-apps/language/nb/)\n"
 "MIME-Version: 1.0\n"
@@ -453,7 +453,7 @@ msgstr "Uthev _alle"
 
 #: ../mousepad/mousepad-search-bar.c:243 ../mousepad/mousepad-search-bar.c:250
 msgid "Mat_ch Case"
-msgstr ""
+msgstr "Endre tekstform"
 
 #: ../mousepad/mousepad-statusbar.c:141
 msgid "Choose a filetype"
@@ -738,19 +738,19 @@ msgstr "Endre utvalget til små bokstaver"
 
 #: ../mousepad/mousepad-window.c:444
 msgid "to _Title Case"
-msgstr ""
+msgstr "til tittel-form"
 
 #: ../mousepad/mousepad-window.c:444
 msgid "Change the case of the selection to title case"
-msgstr ""
+msgstr "Endre tekstformen for utvalget til samme som tittel."
 
 #: ../mousepad/mousepad-window.c:445
 msgid "to _Opposite Case"
-msgstr ""
+msgstr "til motsatt tekstform"
 
 #: ../mousepad/mousepad-window.c:445
 msgid "Change the case of the selection opposite case"
-msgstr ""
+msgstr "Endre fra stor eller liten tekst til motsatt tekstform"
 
 #: ../mousepad/mousepad-window.c:446
 msgid "_Tabs to Spaces"
@@ -927,7 +927,7 @@ msgstr "_Linjebrytning"
 
 #: ../mousepad/mousepad-window.c:478
 msgid "Toggle breaking lines in between words"
-msgstr ""
+msgstr "Slå på/av brytningslinjer mellom ord"
 
 #: ../mousepad/mousepad-window.c:479
 msgid "Write Unicode _BOM"
@@ -939,27 +939,27 @@ msgstr ""
 
 #: ../mousepad/mousepad-window.c:484
 msgid "Unix (_LF)"
-msgstr ""
+msgstr "Unix (_LF)"
 
 #: ../mousepad/mousepad-window.c:484
 msgid "Set the line ending of the document to Unix (LF)"
-msgstr ""
+msgstr "Sett linjeavslutning for dokumentet til Unix (LF)"
 
 #: ../mousepad/mousepad-window.c:485
 msgid "Mac (_CR)"
-msgstr ""
+msgstr "Mac (_CR)"
 
 #: ../mousepad/mousepad-window.c:485
 msgid "Set the line ending of the document to Mac (CR)"
-msgstr ""
+msgstr "Sett linjeavslutning for dokumentet til Mac (CR)"
 
 #: ../mousepad/mousepad-window.c:486
 msgid "DOS / Windows (C_R LF)"
-msgstr ""
+msgstr "DOS / Windows (C_R LF)"
 
 #: ../mousepad/mousepad-window.c:486
 msgid "Set the line ending of the document to DOS / Windows (CR LF)"
-msgstr ""
+msgstr "Sett linjeavslutning for dokumentet til DOS / Windows (CR LF)"
 
 #. add the label with the root warning
 #: ../mousepad/mousepad-window.c:659
