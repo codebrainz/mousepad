@@ -32,6 +32,15 @@
       </description>
     </key>
 
+    <key name="search-replace-all" type="b">
+      <default>false</default>
+      <summary>Replace all</summary>
+      <description>
+        When true the Replace search dialog is in "replace-all" mode, when
+        false the dialog is in "replace-one-at-a-time" mode.
+      </description>
+    </key>
+
     <key name="search-replace-all-location" type="i">
       <range min="0" max="2"/>
       <default>1</default>
