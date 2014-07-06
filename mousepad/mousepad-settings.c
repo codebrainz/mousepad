@@ -120,12 +120,14 @@ mousepad_settings_get_default (void)
 
   if (g_once_init_enter (&default_initialized))
     {
-      gchar            *conf_file;
       GSettingsBackend *backend;
 
       /* If we're installed in an unusual location, we still want to load
        * the schema so enforce this with the relevant environment variable. */
       mousepad_settings_update_gsettings_schema_dir ();
+
+#ifndef MOUSEPAD_GSETTINGS_USE_DBUS
+      gchar *conf_file;
 
       /* Path inside user's config directory */
       conf_file = g_build_filename (g_get_user_config_dir (),
@@ -136,6 +138,9 @@ mousepad_settings_get_default (void)
       /* Always use the keyfile backend */
       backend = g_keyfile_settings_backend_new (conf_file, "/", NULL);
       g_free (conf_file);
+#else
+      backend = g_settings_backend_get_default ();
+#endif
 
       /* Construct the singleton instance */
       default_settings = g_object_new (
