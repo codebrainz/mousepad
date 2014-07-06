@@ -2251,7 +2251,7 @@ mousepad_window_update_actions (MousepadWindow *window)
       action = gtk_action_group_get_action (window->action_group, "word-wrap");
       gtk_toggle_action_set_active (GTK_TOGGLE_ACTION (action), active);
 
-      active = mousepad_view_get_line_numbers (document->textview);
+      active = mousepad_settings_get_boolean ("view-line-numbers");
       action = gtk_action_group_get_action (window->action_group, "line-numbers");
       gtk_toggle_action_set_active (GTK_TOGGLE_ACTION (action), active);
 
@@ -4518,34 +4518,16 @@ static void
 mousepad_window_action_line_numbers (GtkToggleAction *action,
                                      MousepadWindow  *window)
 {
-  gint              page_num = 0;
-  gboolean          active;
-  GtkWidget        *page;
-  MousepadDocument *document;
+  gboolean active;
 
   mousepad_return_if_fail (MOUSEPAD_IS_WINDOW (window));
   mousepad_return_if_fail (MOUSEPAD_IS_DOCUMENT (window->active));
 
-  /* leave when menu updates are locked */
-  if (lock_menu_updates == 0)
-    {
-      /* get the current state */
-      active = gtk_toggle_action_get_active (action);
+  /* get the current state */
+  active = gtk_toggle_action_get_active (action);
 
-      /* save as the last used line number setting */
-      mousepad_settings_set_boolean ("view-line-numbers", active);
-
-      /* apply line numbers setting to all open textviews */
-      while ((page = gtk_notebook_get_nth_page (GTK_NOTEBOOK (window->notebook), page_num)))
-        {
-          if (G_LIKELY (MOUSEPAD_IS_DOCUMENT (page)))
-            {
-              document = MOUSEPAD_DOCUMENT (page);
-              mousepad_view_set_line_numbers (document->textview, active);
-            }
-          page_num++;
-        }
-    }
+  /* save as the last used line number setting */
+  mousepad_settings_set_boolean ("view-line-numbers", active);
 }
 
 

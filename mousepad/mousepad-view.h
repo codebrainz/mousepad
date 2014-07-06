@@ -92,9 +92,6 @@ void            mousepad_view_duplicate                 (MousepadView      *view
 void            mousepad_view_indent                    (MousepadView      *view,
                                                          gint               type);
 
-void            mousepad_view_set_line_numbers          (MousepadView      *view,
-                                                         gboolean           line_numbers);
-
 void            mousepad_view_set_auto_indent           (MousepadView      *view,
                                                          gboolean           auto_indent);
 
