@@ -1,0 +1,194 @@
+<schemalist>
+  <schema id="org.xfce.Mousepad" path="/org/xfce/Mousepad/" gettext-domain="mousepad">
+
+    <!-- Search preferences -->
+
+    <key name="search-direction" type="i">
+      <range min="0" max="2"/>
+      <default>1</default>
+      <summary>Search direction</summary>
+      <description>
+        When 0 the search direction is backwards/upwards, when 1 the search
+        direction is forwards/downwards, when 2 the search will wrap around.
+      </description>
+    </key>
+
+    <key name="search-match-case" type="b">
+      <default>false</default>
+      <summary>Match case</summary>
+      <description>
+        When true searches will be case-sensitive, when false they will
+        be case-insensitive.
+      </description>
+    </key>
+
+    <key name="search-match-whole-word" type="b">
+      <default>false</default>
+      <summary>Match whole word</summary>
+      <description>
+        When true searches must match an entire word (using default word
+        boundary characters), when false matches can occur anywhere, even
+        within a larger word.
+      </description>
+    </key>
+
+    <key name="search-replace-all-location" type="i">
+      <range min="0" max="2"/>
+      <default>1</default>
+      <summary>Replace-all location</summary>
+      <description>
+        When 0 the replace-all is performed within the current selection, when
+        1 the replace-all is performed in the current document, and when 2
+        the replace-all is performed in all currently open documents.
+      </description>
+    </key>
+
+    <!-- Textview preferences -->
+
+    <key name="view-autoindent" type="b">
+      <default>false</default>
+      <summary>Auto-indentation</summary>
+      <description>
+        When true auto-indentation is enabled, when false it is not.
+      </description>
+    </key>
+
+    <key name="view-font-name" type="s">
+      <default>'Monospace'</default>
+      <summary>Font name</summary>
+      <description>
+        The name of the font to use in the textviews. Can contain Pango
+        font description syntax for greater control.
+      </description>
+    </key>
+
+    <key name="view-show-line-numbers" type="b">
+      <default>false</default>
+      <summary>Show line numbers</summary>
+      <description>
+        When true the line numbers gutter/margin will be visible, when false
+        it will not be visible.
+      </description>
+    </key>
+
+    <key name="view-tab-size" type="i">
+      <range min="1" max="32"/>
+      <default>8</default>
+      <summary>Tab width</summary>
+      <description>
+        The number of characters wide that a tab character appears as.
+      </description>
+    </key>
+
+    <key name="view-insert-spaces" type="b">
+      <default>false</default>
+      <summary>Insert spaces instead of tabs</summary>
+      <description>
+        When true spaces will be insert when the Tab key is pressed instead
+        of tab characters, when false tab characters will be inserted.
+      </description>
+    </key>
+
+    <key name="view-word-wrap" type="b">
+      <default>false</default>
+      <summary>Word wrapping</summary>
+      <description>
+        When true long lines will be virtually wrapped in order to fit within
+        the text view, when false long lines will extend out of view.
+      </description>
+    </key>
+
+    <key name="view-color-scheme" type="s">
+      <default>'none'</default>
+      <summary>Color scheme</summary>
+      <description>
+        Name of the color scheme to use to highlight syntax or 'none' for
+        no syntax highlighting.
+      </description>
+    </key>
+
+    <!-- Window preferences -->
+
+    <key name="window-height" type="i">
+      <default>480</default>
+      <summary>Window height</summary>
+      <description>The height of window in pixels.</description>
+    </key>
+
+    <key name="window-width" type="i">
+      <default>640</default>
+      <summary>Window width</summary>
+      <description>The width of windows in pixels.</description>
+    </key>
+
+    <key name="window-statusbar-visible" type="b">
+      <default>true</default>
+      <summary>Statusbar visible</summary>
+      <description>
+        When true the statusbar is visible, when false it is not visible.
+      </description>
+    </key>
+
+    <!-- Other preferences -->
+
+    <key name="misc-always-show-tabs" type="b">
+      <default>false</default>
+      <summary>Always show tabs</summary>
+      <description>
+        When true the main document notebook will always show its tabs, when
+        false the tabs will be hidden when there is only one document open.
+      </description>
+    </key>
+
+    <key name="misc-cycle-tabs" type="b">
+      <default>false</default>
+      <summary>Cycle tabs</summary>
+      <description>
+        When true and cycling through tabs, wrap around once the last tab is
+        reached, when false do nothing at the last tab.
+      </description>
+    </key>
+
+    <key name="misc-default-tab-sizes" type="s">
+      <default>'2,3,4,8'</default>
+      <summary>Default tab sizes</summary>
+      <description>
+        A comma-separated string listing the tab sizes that are show in the
+        user-interface for selecting tab width.
+      </description>
+    </key>
+
+    <key name="misc-path-in-title" type="b">
+      <default>false</default>
+      <summary>Show path in window title</summary>
+      <description>
+        When true the active document's full path will be shown in the window's
+        titlebar, when false only the basename will be shown.
+      </description>
+    </key>
+
+    <key name="misc-recent-menu-items" type="i">
+      <range min="1" max="100"/>
+      <default>10</default>
+      <summary>Number of recent documents</summary>
+      <description>
+        The number of recent documents to track and show in the user interace.
+      </description>
+    </key>
+
+    <key name="misc-remember-geometry" type="b">
+      <default>true</default>
+      <summary>Remember window geometry</summary>
+      <description>
+        When true the size and position of the window will be saved and restored
+        for the next window if possible. Note that this feature may not behave
+        as expected with all window managers as the size and/or position reported
+        may vary depending on the size of window decorations or the number and
+        resolutions of currently connected monitors. If your windows are showing
+        off-screen or in weird locations, set this to false to use your window
+        manager's default window positioning mechanism.
+      </description>
+    </key>
+
+  </schema>
+</schemalist>

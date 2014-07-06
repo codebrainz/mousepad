@@ -113,6 +113,10 @@ endif
 EXTRA_DIST = \
 	mousepad-dbus-infos.xml \
 	mousepad-marshal.list \
+	mousepad-settings.gschema.xml \
 	mousepad-window-ui.xml
+
+gsettings_SCHEMAS = mousepad-settings.gschema.xml
+@GSETTINGS_RULES@
 
 # vi:set ts=8 sw=8 noet ai nocindent syntax=automake:

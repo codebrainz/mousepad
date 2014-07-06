@@ -23,6 +23,7 @@ intltool-merge.in
 intltool-update.in
 libtool
 ltmain.sh
+/m4/
 missing
 mkinstalldirs
 mousepad/.deps/
@@ -30,6 +31,7 @@ mousepad/mousepad
 mousepad/mousepad-dbus-infos.h
 mousepad/mousepad-marshal.c
 mousepad/mousepad-marshal.h
+/mousepad/mousepad-settings.gschema.valid
 mousepad/mousepad-window-ui.h
 po/.intltool-merge-cache
 po/POTFILES

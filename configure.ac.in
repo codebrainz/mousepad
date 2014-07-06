@@ -21,6 +21,7 @@ AC_COPYRIGHT([Copyright (c) 2007-2010
         The Xfce development team. All rights reserved.])
 AC_INIT([Mousepad], [mousepad_version], [http://bugzilla.xfce.org/], [mousepad])
 AC_PREREQ([2.50])
+AC_CONFIG_MACRO_DIR([m4])
 AC_CANONICAL_TARGET()
 AC_REVISION([])
 
@@ -85,6 +86,11 @@ XDT_CHECK_PACKAGE([GLIB], [glib-2.0], [2.12.0])
 XDT_CHECK_PACKAGE([GTHREAD], [gthread-2.0], [2.12.0])
 XDT_CHECK_PACKAGE([GTK], [gtk+-2.0], [2.18.0])
 XDT_CHECK_PACKAGE([GTKSOURCEVIEW], [gtksourceview-2.0])
+
+dnl ************************************
+dnl *** Enable support for GSettings ***
+dnl ************************************
+GLIB_GSETTINGS
 
 dnl **********************************
 dnl *** Optional support for D-BUS ***
