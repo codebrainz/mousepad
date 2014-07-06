@@ -2,10 +2,11 @@
 #include <mousepad/mousepad-settings.h>
 #include <stdlib.h>
 
+#ifdef MOUSEPAD_SETTINGS_KEYFILE_BACKEND
 /* Needed to use keyfile GSettings backend */
 # define G_SETTINGS_ENABLE_BACKEND
-#include <gio/gsettingsbackend.h>
-
+# include <gio/gsettingsbackend.h>
+#endif
 
 
 struct MousepadSettings_
@@ -120,14 +121,14 @@ mousepad_settings_get_default (void)
 
   if (g_once_init_enter (&default_initialized))
     {
-      GSettingsBackend *backend;
 
       /* If we're installed in an unusual location, we still want to load
        * the schema so enforce this with the relevant environment variable. */
       mousepad_settings_update_gsettings_schema_dir ();
 
-#ifndef MOUSEPAD_GSETTINGS_USE_DBUS
+#ifdef MOUSEPAD_SETTINGS_KEYFILE_BACKEND
 {
+      GSettingsBackend *backend;
       gchar *conf_file;
 
       /* Path inside user's config directory */
@@ -136,20 +137,22 @@ mousepad_settings_get_default (void)
                                     "settings.conf",
                                     NULL);
 
-      /* Always use the keyfile backend */
+      /* Create a keyfile backend */
       backend = g_keyfile_settings_backend_new (conf_file, "/", NULL);
       g_free (conf_file);
+
+      /* Construct the singleton instance with the keyfile backend */
+      default_settings = g_object_new (MOUSEPAD_TYPE_SETTINGS,
+                                       "backend", backend /* give ref to settings object */,
+                                       "schema-id", "org.xfce.Mousepad",
+                                       NULL);
 }
 #else
-      backend = g_settings_backend_get_default ();
+      /* Use the default GSettings backend (eg. registry, dconf, user-defaults, etc) */
+      default_settings = g_object_new (MOUSEPAD_TYPE_SETTINGS,
+                                       "schema-id", "org.xfce.Mousepad",
+                                       NULL);
 #endif
-
-      /* Construct the singleton instance */
-      default_settings = g_object_new (
-        MOUSEPAD_TYPE_SETTINGS,
-        "backend", backend /* give ref to settings object */,
-        "schema-id", "org.xfce.Mousepad",
-        NULL);
 
       /* Auto-cleanup at exit */
       atexit (mousepad_settings_cleanup_default);

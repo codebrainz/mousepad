@@ -80,11 +80,15 @@ mousepad_dbus_sources = \
 
 mousepad_CFLAGS += \
 	-DDBUS_API_SUBJECT_TO_CHANGE \
-	$(DBUS_CFLAGS) \
-	-DMOUSEPAD_GSETTINGS_USE_DBUS=1
+	$(DBUS_CFLAGS)
 
 mousepad_LDADD +=	\
 	$(DBUS_LIBS)
+endif
+
+if WITH_KEYFILE_SETTINGS
+mousepad_CFLAGS += \
+	-DMOUSEPAD_SETTINGS_KEYFILE_BACKEND=1
 endif
 
 if MAINTAINER_MODE

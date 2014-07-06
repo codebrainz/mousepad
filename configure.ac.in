@@ -92,6 +92,15 @@ dnl *** Enable support for GSettings ***
 dnl ************************************
 GLIB_GSETTINGS
 
+AC_ARG_ENABLE([keyfile-settings],
+              [AS_HELP_STRING([--enable-keyfile-settings],
+                              [Use the GSettings keyfile backend rather than the default])],
+              [enable_keyfile_settings="yes"],
+              [enable_keyfile_settings="default"])
+
+AM_CONDITIONAL([WITH_KEYFILE_SETTINGS],
+               [test "x$enable_keyfile_settings" = "xyes"])
+
 dnl **********************************
 dnl *** Optional support for D-BUS ***
 dnl **********************************
@@ -139,4 +148,5 @@ else
 echo "* D-BUS support:             no"
 fi
 echo "* Debug Support:             $enable_debug"
+echo "* Use keyfile backend:       $enable_keyfile_settings"
 echo
