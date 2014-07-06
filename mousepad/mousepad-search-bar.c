@@ -46,8 +46,6 @@ static void      mousepad_search_bar_highlight_toggled          (GtkWidget      
                                                                  MousepadSearchBar       *bar);
 static void      mousepad_search_bar_match_case_toggled         (GtkWidget               *button,
                                                                  MousepadSearchBar       *bar);
-static void      mousepad_search_bar_menuitem_toggled           (GtkCheckMenuItem        *item,
-                                                                 GtkToggleButton         *button);
 static void      mousepad_search_bar_highlight_schedule         (MousepadSearchBar       *bar);
 static gboolean  mousepad_search_bar_highlight_timeout          (gpointer                 user_data);
 static void      mousepad_search_bar_highlight_timeout_destroy  (gpointer                 user_data);
@@ -241,11 +239,19 @@ mousepad_search_bar_init (MousepadSearchBar *bar)
   g_signal_connect (G_OBJECT (check), "toggled", G_CALLBACK (mousepad_search_bar_match_case_toggled), bar);
   gtk_widget_show (check);
 
+  /* keep the widgets in sync with the GSettings */
+  g_settings_bind (MOUSEPAD_GSETTINGS,
+                   "search-match-case",
+                   check,
+                   "active",
+                   G_BINDING_DEFAULT);
+
+  /* overflow menu item for when window is too narrow to show the tool bar item */
   bar->match_case_entry = menuitem = gtk_check_menu_item_new_with_mnemonic (_("Mat_ch Case"));
   g_signal_connect_object (G_OBJECT (bar), "destroy", G_CALLBACK (gtk_widget_destroy), item, G_CONNECT_SWAPPED);
   gtk_tool_item_set_proxy_menu_item (item, "case-sensitive", menuitem);
-  gtk_check_menu_item_set_active (GTK_CHECK_MENU_ITEM (menuitem), match_case);
-  g_signal_connect (G_OBJECT (menuitem), "toggled", G_CALLBACK (mousepad_search_bar_menuitem_toggled), check);
+  /* Keep toolbar check button and overflow proxy menu item in sync */
+  g_object_bind_property (check, "active", menuitem, "active", G_BINDING_BIDIRECTIONAL | G_BINDING_SYNC_CREATE);
   gtk_widget_show (menuitem);
 }
 
@@ -378,36 +384,14 @@ mousepad_search_bar_match_case_toggled (GtkWidget         *button,
   /* get the state of the toggle button */
   active = gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (button));
 
-  /* set the state of the menu item */
-  gtk_check_menu_item_set_active (GTK_CHECK_MENU_ITEM (bar->match_case_entry), active);
-
   /* save the state */
   bar->match_case = active;
-
-  /* save the setting */
-  g_settings_set_boolean (MOUSEPAD_GSETTINGS, "search-match-case", active);
 
   /* search ahead with this new flags */
   mousepad_search_bar_entry_changed (NULL, bar);
 
   /* schedule a new hightlight */
   mousepad_search_bar_highlight_schedule (bar);
-}
-
-
-
-static void
-mousepad_search_bar_menuitem_toggled (GtkCheckMenuItem *item,
-                                      GtkToggleButton  *button)
-{
-  gboolean active;
-
-  mousepad_return_if_fail (GTK_IS_CHECK_MENU_ITEM (item));
-  mousepad_return_if_fail (GTK_IS_TOGGLE_BUTTON (button));
-
-  /* toggle the menubar item, he/she will send the signal */
-  active = gtk_check_menu_item_get_active (item);
-  gtk_toggle_button_set_active (button, active);
 }
 
 
