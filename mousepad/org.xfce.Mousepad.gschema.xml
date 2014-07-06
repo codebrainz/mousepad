@@ -45,7 +45,7 @@
 
     <!-- Textview preferences -->
 
-    <key name="view-autoindent" type="b">
+    <key name="view-auto-indent" type="b">
       <default>false</default>
       <summary>Auto-indentation</summary>
       <description>
@@ -62,7 +62,7 @@
       </description>
     </key>
 
-    <key name="view-show-line-numbers" type="b">
+    <key name="view-line-numbers" type="b">
       <default>false</default>
       <summary>Show line numbers</summary>
       <description>

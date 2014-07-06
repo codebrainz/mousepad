@@ -22,10 +22,10 @@
 #include <gdk/gdkkeysyms.h>
 
 #include <mousepad/mousepad-private.h>
+#include <mousepad/mousepad-settings.h>
 #include <mousepad/mousepad-marshal.h>
 #include <mousepad/mousepad-document.h>
 #include <mousepad/mousepad-search-bar.h>
-#include <mousepad/mousepad-preferences.h>
 #include <mousepad/mousepad-util.h>
 #include <mousepad/mousepad-window.h>
 
@@ -69,9 +69,6 @@ struct _MousepadSearchBarClass
 struct _MousepadSearchBar
 {
   GtkToolbar           __parent__;
-
-  /* preferences */
-  MousepadPreferences *preferences;
 
   /* text entry */
   GtkWidget           *entry;
@@ -164,11 +161,8 @@ mousepad_search_bar_init (MousepadSearchBar *bar)
   GtkToolItem *item;
   gboolean     match_case;
 
-  /* preferences */
-  bar->preferences = mousepad_preferences_get ();
-
   /* load some preferences */
-  g_object_get (G_OBJECT (bar->preferences), "search-match-case", &match_case, NULL);
+  match_case = g_settings_get_boolean (MOUSEPAD_GSETTINGS, "search-match-case");
 
   /* init variables */
   bar->highlight_id = 0;
@@ -261,9 +255,6 @@ static void
 mousepad_search_bar_finalize (GObject *object)
 {
   MousepadSearchBar *bar = MOUSEPAD_SEARCH_BAR (object);
-
-  /* release the preferences */
-  g_object_unref (G_OBJECT (bar->preferences));
 
   /* stop a running highlight timeout */
   if (bar->highlight_id != 0)
@@ -394,7 +385,7 @@ mousepad_search_bar_match_case_toggled (GtkWidget         *button,
   bar->match_case = active;
 
   /* save the setting */
-  g_object_set (G_OBJECT (bar->preferences), "search-match-case", active, NULL);
+  g_settings_set_boolean (MOUSEPAD_GSETTINGS, "search-match-case", active);
 
   /* search ahead with this new flags */
   mousepad_search_bar_entry_changed (NULL, bar);

@@ -29,11 +29,11 @@
 #endif
 
 #include <mousepad/mousepad-private.h>
+#include <mousepad/mousepad-settings.h>
 #include <mousepad/mousepad-util.h>
 #include <mousepad/mousepad-document.h>
 #include <mousepad/mousepad-marshal.h>
 #include <mousepad/mousepad-view.h>
-#include <mousepad/mousepad-preferences.h>
 #include <mousepad/mousepad-window.h>
 
 
@@ -180,7 +180,6 @@ mousepad_document_init (MousepadDocument *document)
   gchar                *font_name, *color_scheme;
   gint                  tab_size;
   GtkSourceStyleScheme *scheme = NULL;
-  MousepadPreferences  *preferences;
 
   /* private structure */
   document->priv = MOUSEPAD_DOCUMENT_GET_PRIVATE (document);
@@ -217,22 +216,14 @@ mousepad_document_init (MousepadDocument *document)
   target_list = gtk_drag_dest_get_target_list (GTK_WIDGET (document->textview));
   gtk_target_list_add_table (target_list, drop_targets, G_N_ELEMENTS (drop_targets));
 
-  /* preferences */
-  preferences = mousepad_preferences_get ();
-
   /* read all the default settings */
-  g_object_get (G_OBJECT (preferences),
-                "view-word-wrap", &word_wrap,
-                "view-line-numbers", &line_numbers,
-                "view-auto-indent", &auto_indent,
-                "view-font-name", &font_name,
-                "view-tab-size", &tab_size,
-                "view-insert-spaces", &insert_spaces,
-                "view-color-scheme", &color_scheme,
-                NULL);
-
-  /* release the preferences */
-  g_object_unref (G_OBJECT (preferences));
+  word_wrap = g_settings_get_boolean (MOUSEPAD_GSETTINGS, "view-word-wrap");
+  line_numbers = g_settings_get_boolean (MOUSEPAD_GSETTINGS, "view-line-numbers");
+  auto_indent = g_settings_get_boolean (MOUSEPAD_GSETTINGS, "view-auto-indent");
+  font_name = g_settings_get_string (MOUSEPAD_GSETTINGS, "view-font-name");
+  tab_size = g_settings_get_int (MOUSEPAD_GSETTINGS, "view-tab-size");
+  insert_spaces = g_settings_get_boolean (MOUSEPAD_GSETTINGS, "view-insert-spaces");
+  color_scheme = g_settings_get_string (MOUSEPAD_GSETTINGS, "view-color-scheme");
 
   /* set all the settings */
   mousepad_document_set_word_wrap (document, word_wrap);

@@ -19,6 +19,7 @@
 #endif
 
 #include <mousepad/mousepad-private.h>
+#include <mousepad/mousepad-settings.h>
 #include <mousepad/mousepad-application.h>
 #include <mousepad/mousepad-document.h>
 #include <mousepad/mousepad-replace-dialog.h>

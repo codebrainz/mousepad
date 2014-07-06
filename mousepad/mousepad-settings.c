@@ -98,7 +98,7 @@ mousepad_settings_update_gsettings_schema_dir (void)
 #else
       const gchar *pathsep = ";";
 #endif
-      new_value = g_strdup_printf("%s%s" MOUSEPAD_GSETTINGS_SCHEMA_DIR, old_value, pathsep);
+      new_value = g_strconcat (old_value, pathsep, MOUSEPAD_GSETTINGS_SCHEMA_DIR, NULL);
       g_setenv ("GSETTINGS_SCHEMA_DIR", new_value, TRUE);
       g_free (new_value);
     }

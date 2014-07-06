@@ -22,7 +22,6 @@
 #include <cairo.h>
 
 #include <mousepad/mousepad-private.h>
-#include <mousepad/mousepad-preferences.h>
 #include <mousepad/mousepad-document.h>
 #include <mousepad/mousepad-util.h>
 #include <mousepad/mousepad-print.h>

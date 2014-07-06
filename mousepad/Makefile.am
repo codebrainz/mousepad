@@ -33,8 +33,6 @@ mousepad_SOURCES = \
 	mousepad-encoding-dialog.h \
 	mousepad-file.c \
 	mousepad-file.h \
-	mousepad-preferences.c \
-	mousepad-preferences.h \
 	mousepad-print.c \
 	mousepad-print.h \
 	mousepad-private.h \

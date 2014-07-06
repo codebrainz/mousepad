@@ -34,11 +34,11 @@
 #include <glib/gstdio.h>
 
 #include <mousepad/mousepad-private.h>
+#include <mousepad/mousepad-settings.h>
 #include <mousepad/mousepad-application.h>
 #include <mousepad/mousepad-marshal.h>
 #include <mousepad/mousepad-document.h>
 #include <mousepad/mousepad-dialogs.h>
-#include <mousepad/mousepad-preferences.h>
 #include <mousepad/mousepad-replace-dialog.h>
 #include <mousepad/mousepad-encoding-dialog.h>
 #include <mousepad/mousepad-search-bar.h>
@@ -359,9 +359,6 @@ struct _MousepadWindow
 {
   GtkWindow __parent__;
 
-  /* mousepad preferences */
-  MousepadPreferences *preferences;
-
   /* the current active document */
   MousepadDocument    *active;
 
@@ -459,12 +456,12 @@ static const GtkActionEntry action_entries[] =
     { "tab-size-menu", NULL, N_("Tab _Size"), NULL, NULL, NULL, },
     { "language-menu", NULL, N_("_Filetype"), NULL, NULL, NULL, },
 
-  { "navigation-menu", NULL, N_("_Navigation"), NULL, },
+  { "navigation-menu", NULL, N_("_Navigation"), NULL, NULL, NULL, },
     { "back", GTK_STOCK_GO_BACK, N_("_Previous Tab"), "<control>Page_Up", N_("Select the previous tab"), G_CALLBACK (mousepad_window_action_prev_tab), },
     { "forward", GTK_STOCK_GO_FORWARD, N_("_Next Tab"), "<control>Page_Down", N_("Select the next tab"), G_CALLBACK (mousepad_window_action_next_tab), },
     { "go-to", GTK_STOCK_JUMP_TO, N_("_Go to..."), "<control>G", N_("Go to a specific location in the document"), G_CALLBACK (mousepad_window_action_go_to_position), },
 
-  { "help-menu", NULL, N_("_Help"), NULL, },
+  { "help-menu", NULL, N_("_Help"), NULL, NULL, NULL },
     { "contents", GTK_STOCK_HELP, N_ ("_Contents"), "F1", N_("Display the Mousepad user manual"), G_CALLBACK (mousepad_window_action_contents), },
     { "about", GTK_STOCK_ABOUT, NULL, NULL, N_("About this application"), G_CALLBACK (mousepad_window_action_about), }
 };
@@ -570,9 +567,6 @@ mousepad_window_init (MousepadWindow *window)
   /* increase clipboard history ref count */
   clipboard_history_ref_count++;
 
-  /* add the preferences to the window */
-  window->preferences = mousepad_preferences_get ();
-
   /* signal for handling the window delete event */
   g_signal_connect (G_OBJECT (window), "delete-event", G_CALLBACK (mousepad_window_delete_event), NULL);
 
@@ -587,11 +581,9 @@ mousepad_window_init (MousepadWindow *window)
   g_closure_sink (window->menu_item_deselected_closure);
 
   /* read settings from the preferences */
-  g_object_get (G_OBJECT (window->preferences),
-                "window-width", &width,
-                "window-height", &height,
-                "window-statusbar-visible", &statusbar_visible,
-                NULL);
+  width = g_settings_get_int (MOUSEPAD_GSETTINGS, "window-width");
+  height = g_settings_get_int (MOUSEPAD_GSETTINGS, "window-height");
+  statusbar_visible = g_settings_get_boolean (MOUSEPAD_GSETTINGS, "window-statusbar-visible");
 
   /* set the default window size */
   gtk_window_set_default_size (GTK_WINDOW (window), width, height);
@@ -755,9 +747,6 @@ mousepad_window_finalize (GObject *object)
   /* release the action group */
   g_object_unref (G_OBJECT (window->action_group));
 
-  /* release the preferences reference */
-  g_object_unref (G_OBJECT (window->preferences));
-
   /* free clipboard history if needed */
   if (clipboard_history_ref_count == 0 && clipboard_history != NULL)
     {
@@ -904,7 +893,7 @@ mousepad_window_save_geometry_timer (gpointer user_data)
   GDK_THREADS_ENTER ();
 
   /* check if we should remember the window geometry */
-  g_object_get (G_OBJECT (window->preferences), "misc-remember-geometry", &remember_geometry, NULL);
+  remember_geometry = g_settings_get_boolean (MOUSEPAD_GSETTINGS, "misc-remember-geometry");
   if (G_LIKELY (remember_geometry))
     {
       /* check if the window is still visible */
@@ -920,9 +909,8 @@ mousepad_window_save_geometry_timer (gpointer user_data)
               gtk_window_get_size (GTK_WINDOW (window), &width, &height);
 
               /* ...and remember them as default for new windows */
-              g_object_set (G_OBJECT (window->preferences),
-                            "window-width", width,
-                            "window-height", height, NULL);
+              g_settings_set_int (MOUSEPAD_GSETTINGS, "window-width", width);
+              g_settings_set_int (MOUSEPAD_GSETTINGS, "window-height", height);
             }
         }
     }
@@ -1281,7 +1269,7 @@ mousepad_window_set_title (MousepadWindow *window)
   mousepad_return_if_fail (MOUSEPAD_IS_WINDOW (window));
 
   /* whether to show the full path */
-  g_object_get (G_OBJECT (window->preferences), "misc-path-in-title", &show_full_path, NULL);
+  show_full_path = g_settings_get_boolean (MOUSEPAD_GSETTINGS, "misc-path-in-title");
 
   /* name we display in the title */
   if (G_UNLIKELY (show_full_path && mousepad_document_get_filename (document)))
@@ -1474,7 +1462,7 @@ mousepad_window_notebook_added (GtkNotebook     *notebook,
   npages = gtk_notebook_get_n_pages (GTK_NOTEBOOK (window->notebook));
 
   /* check tabs should always be visible */
-  g_object_get (G_OBJECT (window->preferences), "misc-always-show-tabs", &always_show_tabs, NULL);
+  always_show_tabs = g_settings_get_boolean (MOUSEPAD_GSETTINGS, "misc-always-show-tabs");
 
   /* change the visibility of the tabs accordingly */
   gtk_notebook_set_show_tabs (GTK_NOTEBOOK (window->notebook), always_show_tabs || (npages > 1));
@@ -1526,7 +1514,7 @@ mousepad_window_notebook_removed (GtkNotebook     *notebook,
   else
     {
       /* check tabs should always be visible */
-      g_object_get (G_OBJECT (window->preferences), "misc-always-show-tabs", &always_show_tabs, NULL);
+      always_show_tabs = g_settings_get_boolean (MOUSEPAD_GSETTINGS, "misc-always-show-tabs");
 
       /* change the visibility of the tabs accordingly */
       gtk_notebook_set_show_tabs (GTK_NOTEBOOK (window->notebook), always_show_tabs || (npages > 1));
@@ -2038,7 +2026,7 @@ mousepad_window_menu_tab_sizes (MousepadWindow *window)
   lock_menu_updates++;
 
   /* get the default tab sizes and active tab size */
-  g_object_get (G_OBJECT (window->preferences), "misc-default-tab-sizes", &tmp, NULL);
+  tmp = g_settings_get_string (MOUSEPAD_GSETTINGS, "misc-default-tab-sizes");
 
   /* get sizes array and free the temp string */
   tab_sizes = g_strsplit (tmp, ",", -1);
@@ -2221,7 +2209,7 @@ mousepad_window_update_actions (MousepadWindow *window)
       page_num = gtk_notebook_page_num (notebook, GTK_WIDGET (document));
 
       /* whether we cycle tabs */
-      g_object_get (G_OBJECT (window->preferences), "misc-cycle-tabs", &cycle_tabs, NULL);
+      cycle_tabs = g_settings_get_boolean (MOUSEPAD_GSETTINGS, "misc-cycle-tabs");
 
       /* set the sensitivity of the back and forward buttons in the go menu */
       action = gtk_action_group_get_action (window->action_group, "back");
@@ -2551,7 +2539,7 @@ mousepad_window_recent_menu_idle (gpointer user_data)
     }
 
   /* get the recent menu limit number */
-  g_object_get (G_OBJECT (window->preferences), "misc-recent-menu-items", &n, NULL);
+  n = g_settings_get_int (MOUSEPAD_GSETTINGS, "misc-recent-menu-items");
 
   /* append the items to the menu */
   for (li = filtered, i = 1; n > 0 && li != NULL; li = li->next)
@@ -3205,7 +3193,7 @@ mousepad_window_menu_color_schemes (MousepadWindow *window)
   lock_menu_updates++;
 
   /* get the previously saved colour scheme name */
-  g_object_get (window->preferences, "view-color-scheme", &selected_color_scheme, NULL);
+  selected_color_scheme = g_settings_get_string (MOUSEPAD_GSETTINGS, "view-color-scheme");
 
   /* get list of schemes */
   schemes = mousepad_util_color_schemes_get_sorted ();
@@ -3269,6 +3257,8 @@ mousepad_window_menu_color_schemes (MousepadWindow *window)
       /* cleanup */
       g_free (name);
     }
+
+  g_free (selected_color_scheme);
 
   /* cleanup the list */
   g_slist_free (schemes);
@@ -4422,7 +4412,7 @@ mousepad_window_action_select_font (GtkAction      *action,
   gtk_window_set_transient_for (GTK_WINDOW (dialog), GTK_WINDOW (window));
 
   /* set the current font name */
-  g_object_get (G_OBJECT (window->preferences), "view-font-name", &font_name, NULL);
+  font_name = g_settings_get_string (MOUSEPAD_GSETTINGS, "view-font-name");
   if (G_LIKELY (font_name))
     {
       gtk_font_selection_dialog_set_font_name (GTK_FONT_SELECTION_DIALOG (dialog), font_name);
@@ -4436,7 +4426,7 @@ mousepad_window_action_select_font (GtkAction      *action,
       font_name = gtk_font_selection_dialog_get_font_name (GTK_FONT_SELECTION_DIALOG (dialog));
 
       /* store the font in the preferences */
-      g_object_set (G_OBJECT (window->preferences), "view-font-name", font_name, NULL);
+      g_settings_set_string (MOUSEPAD_GSETTINGS, "view-font-name", font_name);
 
       /* apply the font in all documents in this window */
       for (i = 0; i < gtk_notebook_get_n_pages (GTK_NOTEBOOK (window->notebook)); i++)
@@ -4502,10 +4492,11 @@ mousepad_window_action_color_scheme (GtkToggleAction *action,
         }
 
       /* store as last used value */
-      g_object_set (G_OBJECT (window->preferences),
-                    "view-color-scheme",
-                    (scheme != NULL) ? gtk_source_style_scheme_get_id (scheme) : "none",
-                    NULL);
+      g_settings_set_string (MOUSEPAD_GSETTINGS, "view-color-scheme",
+                             (scheme != NULL) ?
+                               gtk_source_style_scheme_get_id (scheme) :
+                               "none");
+        
 
       /* apply colour scheme to all open textviews */
       while ((page = gtk_notebook_get_nth_page (GTK_NOTEBOOK (window->notebook), page_num)))
@@ -4543,7 +4534,7 @@ mousepad_window_action_line_numbers (GtkToggleAction *action,
       active = gtk_toggle_action_get_active (action);
 
       /* save as the last used line number setting */
-      g_object_set (G_OBJECT (window->preferences), "view-line-numbers", active, NULL);
+      g_settings_set_boolean (MOUSEPAD_GSETTINGS, "view-line-numbers", active);
 
       /* apply line numbers setting to all open textviews */
       while ((page = gtk_notebook_get_nth_page (GTK_NOTEBOOK (window->notebook), page_num)))
@@ -4618,7 +4609,7 @@ mousepad_window_action_statusbar (GtkToggleAction *action,
     }
 
   /* remember the setting */
-  g_object_set (G_OBJECT (window->preferences), "window-statusbar-visible", show_statusbar, NULL);
+  g_settings_set_boolean (MOUSEPAD_GSETTINGS, "window-statusbar-visible", show_statusbar);
 }
 
 
@@ -4808,7 +4799,7 @@ mousepad_window_action_auto_indent (GtkToggleAction *action,
       active = gtk_toggle_action_get_active (action);
 
       /* save as the last auto indent mode */
-      g_object_set (G_OBJECT (window->preferences), "view-auto-indent", active, NULL);
+      g_settings_set_boolean (MOUSEPAD_GSETTINGS, "view-auto-indent", active);
 
       /* update the active document */
       mousepad_view_set_auto_indent (window->active->textview, active);
@@ -4872,7 +4863,7 @@ mousepad_window_action_tab_size (GtkToggleAction *action,
         }
 
       /* store as last used value */
-      g_object_set (G_OBJECT (window->preferences), "view-tab-size", tab_size, NULL);
+      g_settings_set_int (MOUSEPAD_GSETTINGS, "view-tab-size", tab_size);
 
       /* set the value */
       mousepad_view_set_tab_size (window->active->textview, tab_size);
@@ -4900,7 +4891,7 @@ mousepad_window_action_word_wrap (GtkToggleAction *action,
       active = gtk_toggle_action_get_active (action);
 
       /* store this as the last used wrap mode */
-      g_object_set (G_OBJECT (window->preferences), "view-word-wrap", active, NULL);
+      g_settings_set_boolean (MOUSEPAD_GSETTINGS, "view-word-wrap", active);
 
       /* set the wrapping mode of the current document */
       mousepad_document_set_word_wrap (window->active, active);
@@ -4986,7 +4977,7 @@ mousepad_window_action_insert_spaces (GtkToggleAction *action,
       insert_spaces = gtk_toggle_action_get_active (action);
 
       /* save as the last auto indent mode */
-      g_object_set (G_OBJECT (window->preferences), "view-insert-spaces", insert_spaces, NULL);
+      g_settings_set_boolean (MOUSEPAD_GSETTINGS, "view-insert-spaces", insert_spaces);
 
       /* update the active document */
       mousepad_view_set_insert_spaces (window->active->textview, insert_spaces);
