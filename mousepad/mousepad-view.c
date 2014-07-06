@@ -25,6 +25,7 @@
 #include <gdk/gdkkeysyms.h>
 
 #include <mousepad/mousepad-private.h>
+#include <mousepad/mousepad-settings.h>
 #include <mousepad/mousepad-util.h>
 #include <mousepad/mousepad-view.h>
 
@@ -154,6 +155,13 @@ mousepad_view_init (MousepadView *view)
 
   g_signal_connect (GTK_TEXT_VIEW (view)->im_context, "commit",
                     G_CALLBACK (mousepad_view_commit_handler), view);
+
+  /* bind Gsettings */
+  g_settings_bind (MOUSEPAD_GSETTINGS,
+                   "view-line-numbers",
+                   view,
+                   "show-line-numbers",
+                   G_SETTINGS_BIND_DEFAULT);
 }
 
 

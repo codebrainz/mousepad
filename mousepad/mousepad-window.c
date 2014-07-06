@@ -4586,6 +4586,13 @@ mousepad_window_action_statusbar (GtkToggleAction *action,
     {
       /* setup a new statusbar */
       window->statusbar = mousepad_statusbar_new ();
+
+      g_settings_bind (MOUSEPAD_GSETTINGS,
+                       "window-statusbar-visible",
+                       window->statusbar,
+                       "visible",
+                       G_SETTINGS_BIND_DEFAULT);
+
       gtk_box_pack_end (GTK_BOX (window->box), window->statusbar, FALSE, FALSE, 0);
       gtk_widget_show (window->statusbar);
 
