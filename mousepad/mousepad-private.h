@@ -21,6 +21,7 @@
 #include <glib-object.h>
 #include <gtk/gtk.h>
 #include <glib/gi18n.h>
+#include <gio/gio.h>
 #include <gtksourceview/gtksourceview.h>
 #include <gtksourceview/gtksourcestylescheme.h>
 #include <gtksourceview/gtksourcestyleschememanager.h>
@@ -120,6 +121,11 @@ enum
 #else
 #define mousepad_widget_set_tooltip_text(widget,text) (mousepad_util_set_tooltip (widget, text))
 #endif
+
+/* settings */
+#define MOUSEPAD_GSETTINGS (G_SETTINGS (mousepad_settings_get_default ()))
+#define MOUSEPAD_GSETTINGS_ONCE_INIT() do { (void) MOUSEPAD_GSETTINGS; } while (0)
+#define MOUSEPAD_GSETTINGS_SYNC() do { g_settings_sync (); } while (0)
 
 G_END_DECLS
 

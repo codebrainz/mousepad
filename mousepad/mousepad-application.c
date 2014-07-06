@@ -85,6 +85,9 @@ mousepad_application_init (MousepadApplication *application)
       /* cleanup */
       g_free (filename);
     }
+
+    /* Initialize the MousepadSettings singleton if not already initialized */
+    MOUSEPAD_GSETTINGS_ONCE_INIT ();
 }
 
 
@@ -121,6 +124,9 @@ mousepad_application_finalize (GObject *object)
 
   /* cleanup the list of windows */
   g_slist_free (application->windows);
+
+  /* Flush GSettings to disk */
+  MOUSEPAD_GSETTINGS_SYNC ();
 
   (*G_OBJECT_CLASS (mousepad_application_parent_class)->finalize) (object);
 }

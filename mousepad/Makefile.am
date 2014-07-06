@@ -42,6 +42,8 @@ mousepad_SOURCES = \
 	mousepad-replace-dialog.h \
 	mousepad-search-bar.c \
 	mousepad-search-bar.h \
+	mousepad-settings.c \
+	mousepad-settings.h \
 	mousepad-statusbar.c \
 	mousepad-statusbar.h \
 	mousepad-view.c \
@@ -57,7 +59,8 @@ mousepad_CFLAGS = \
 	$(GTK_CFLAGS) \
 	$(GTHREAD_CFLAGS) \
 	$(GTKSOURCEVIEW_CFLAGS) \
-	$(PLATFORM_CFLAGS)
+	$(PLATFORM_CFLAGS) \
+	-DMOUSEPAD_GSETTINGS_SCHEMA_DIR=\""$(datadir)/glib-2.0/schemas"\"
 
 mousepad_LDFLAGS = \
 	-no-undefined \
@@ -113,10 +116,10 @@ endif
 EXTRA_DIST = \
 	mousepad-dbus-infos.xml \
 	mousepad-marshal.list \
-	mousepad-settings.gschema.xml \
-	mousepad-window-ui.xml
+	mousepad-window-ui.xml \
+	org.xfce.Mousepad.gschema.xml
 
-gsettings_SCHEMAS = mousepad-settings.gschema.xml
+gsettings_SCHEMAS = org.xfce.Mousepad.gschema.xml
 @GSETTINGS_RULES@
 
 # vi:set ts=8 sw=8 noet ai nocindent syntax=automake:
