@@ -19,6 +19,29 @@ GType             mousepad_settings_get_type (void);
 
 MousepadSettings *mousepad_settings_get_default (void);
 
+/* convenience wrappers for using the singleton settings */
+
+#define mousepad_settings_bind(key, object, prop, flags) \
+  g_settings_bind (G_SETTINGS (mousepad_settings_get_default ()), (key), (object), (prop), (flags))
+
+#define mousepad_settings_get_boolean(key) \
+  g_settings_get_boolean (G_SETTINGS (mousepad_settings_get_default ()), (key))
+
+#define mousepad_settings_set_boolean(key, value) \
+  g_settings_set_boolean (G_SETTINGS (mousepad_settings_get_default ()), (key), (value))
+
+#define mousepad_settings_get_int(key) \
+  g_settings_get_int (G_SETTINGS (mousepad_settings_get_default ()), (key))
+
+#define mousepad_settings_set_int(key, value) \
+  g_settings_set_int (G_SETTINGS (mousepad_settings_get_default ()), (key), (value))
+
+#define mousepad_settings_get_string(key) \
+  g_settings_get_string (G_SETTINGS (mousepad_settings_get_default ()), (key))
+
+#define mousepad_settings_set_string(key, value) \
+  g_settings_set_string (G_SETTINGS (mousepad_settings_get_default ()), (key), (value))
+
 G_END_DECLS
 
 #endif /* MOUSEPAD_SETTINGS_H_ */

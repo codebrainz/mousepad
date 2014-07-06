@@ -217,13 +217,13 @@ mousepad_document_init (MousepadDocument *document)
   gtk_target_list_add_table (target_list, drop_targets, G_N_ELEMENTS (drop_targets));
 
   /* read all the default settings */
-  word_wrap = g_settings_get_boolean (MOUSEPAD_GSETTINGS, "view-word-wrap");
-  line_numbers = g_settings_get_boolean (MOUSEPAD_GSETTINGS, "view-line-numbers");
-  auto_indent = g_settings_get_boolean (MOUSEPAD_GSETTINGS, "view-auto-indent");
-  font_name = g_settings_get_string (MOUSEPAD_GSETTINGS, "view-font-name");
-  tab_size = g_settings_get_int (MOUSEPAD_GSETTINGS, "view-tab-size");
-  insert_spaces = g_settings_get_boolean (MOUSEPAD_GSETTINGS, "view-insert-spaces");
-  color_scheme = g_settings_get_string (MOUSEPAD_GSETTINGS, "view-color-scheme");
+  word_wrap = mousepad_settings_get_boolean ("view-word-wrap");
+  line_numbers = mousepad_settings_get_boolean ("view-line-numbers");
+  auto_indent = mousepad_settings_get_boolean ("view-auto-indent");
+  font_name = mousepad_settings_get_string ("view-font-name");
+  tab_size = mousepad_settings_get_int ("view-tab-size");
+  insert_spaces = mousepad_settings_get_boolean ("view-insert-spaces");
+  color_scheme = mousepad_settings_get_string ("view-color-scheme");
 
   /* set all the settings */
   mousepad_document_set_word_wrap (document, word_wrap);

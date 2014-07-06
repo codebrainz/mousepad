@@ -157,11 +157,7 @@ mousepad_view_init (MousepadView *view)
                     G_CALLBACK (mousepad_view_commit_handler), view);
 
   /* bind Gsettings */
-  g_settings_bind (MOUSEPAD_GSETTINGS,
-                   "view-line-numbers",
-                   view,
-                   "show-line-numbers",
-                   G_SETTINGS_BIND_DEFAULT);
+  mousepad_settings_bind ("view-line-numbers", view, "show-line-numbers", G_SETTINGS_BIND_DEFAULT);
 }
 
 
