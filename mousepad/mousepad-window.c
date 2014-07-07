@@ -580,6 +580,16 @@ mousepad_window_update_tabs (MousepadWindow   *window,
 
 
 
+/* Called when 'window-recent-menu-items' setting changes to update the UI. */
+static void
+mousepad_window_update_recent_menu (MousepadWindow   *window,
+                                    gchar            *key,
+                                    MousepadSettings *settings)
+{
+  mousepad_window_recent_menu (window);
+}
+
+
 static void
 mousepad_window_init (MousepadWindow *window)
 {
@@ -755,6 +765,12 @@ mousepad_window_init (MousepadWindow *window)
   g_signal_connect_swapped (MOUSEPAD_GSETTINGS,
                             "changed::window-always-show-tabs",
                             G_CALLBACK (mousepad_window_update_tabs),
+                            window);
+
+  /* update the recent items menu when 'window-recent-menu-items' setting changes */
+  g_signal_connect_swapped (MOUSEPAD_GSETTINGS,
+                            "changed::window-recent-menu-items",
+                            G_CALLBACK (mousepad_window_update_recent_menu),
                             window);
 }
 
