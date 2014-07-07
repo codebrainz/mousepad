@@ -2268,7 +2268,7 @@ mousepad_window_update_actions (MousepadWindow *window)
       gtk_action_set_sensitive (action, sensitive);
 
       /* toggle the document settings */
-      active = mousepad_document_get_word_wrap (document);
+      active = mousepad_settings_get_boolean ("view-word-wrap");
       action = gtk_action_group_get_action (window->action_group, "word-wrap");
       gtk_toggle_action_set_active (GTK_TOGGLE_ACTION (action), active);
 
@@ -4855,9 +4855,6 @@ mousepad_window_action_word_wrap (GtkToggleAction *action,
 
       /* store this as the last used wrap mode */
       mousepad_settings_set_boolean ("view-word-wrap", active);
-
-      /* set the wrapping mode of the current document */
-      mousepad_document_set_word_wrap (window->active, active);
     }
 }
 

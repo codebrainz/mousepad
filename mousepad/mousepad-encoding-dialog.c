@@ -210,7 +210,7 @@ mousepad_encoding_dialog_init (MousepadEncodingDialog *dialog)
   gtk_text_view_set_editable (GTK_TEXT_VIEW (dialog->document->textview), FALSE);
   gtk_text_view_set_cursor_visible (GTK_TEXT_VIEW (dialog->document->textview), FALSE);
   gtk_source_view_set_show_line_numbers (GTK_SOURCE_VIEW (dialog->document->textview), FALSE);
-  mousepad_document_set_word_wrap (dialog->document, FALSE);
+  mousepad_view_set_word_wrap (dialog->document->textview, FALSE);
   gtk_widget_show (GTK_WIDGET (dialog->document));
 }
 

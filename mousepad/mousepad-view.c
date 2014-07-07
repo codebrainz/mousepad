@@ -139,6 +139,7 @@ enum
   PROP_SHOW_WHITESPACE,
   PROP_SHOW_LINE_ENDINGS,
   PROP_COLOR_SCHEME,
+  PROP_WORD_WRAP,
   NUM_PROPERTIES
 };
 
@@ -201,6 +202,15 @@ mousepad_view_class_init (MousepadViewClass *klass)
                          "The id of the syntax highlighting color scheme to use",
                          NULL,
                          G_PARAM_CONSTRUCT | G_PARAM_READWRITE));
+
+  g_object_class_install_property (
+    gobject_class,
+    PROP_WORD_WRAP,
+    g_param_spec_boolean ("word-wrap",
+                          "WordWrap",
+                          "Whether to virtually wrap long lines in the view",
+                          FALSE,
+                          G_PARAM_CONSTRUCT | G_PARAM_READWRITE));
 }
 
 
@@ -238,6 +248,7 @@ mousepad_view_init (MousepadView *view)
   mousepad_settings_bind ("view-smart-home-end", view, "smart-home-end", G_SETTINGS_BIND_DEFAULT);
   mousepad_settings_bind ("view-tab-width", view, "tab-width", G_SETTINGS_BIND_DEFAULT);
   mousepad_settings_bind ("view-color-scheme", view, "color-scheme", G_SETTINGS_BIND_DEFAULT);
+  mousepad_settings_bind ("view-word-wrap", view, "word-wrap", G_SETTINGS_BIND_DEFAULT);
 }
 
 
@@ -282,6 +293,9 @@ mousepad_view_set_property (GObject      *object,
     case PROP_COLOR_SCHEME:
       mousepad_view_set_color_scheme (view, g_value_get_string (value));
       break;
+    case PROP_WORD_WRAP:
+      mousepad_view_set_word_wrap (view, g_value_get_boolean (value));
+      break;
     default:
       G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
       break;
@@ -311,6 +325,9 @@ mousepad_view_get_property (GObject    *object,
       break;
     case PROP_COLOR_SCHEME:
       g_value_set_string (value, mousepad_view_get_color_scheme (view));
+      break;
+    case PROP_WORD_WRAP:
+      g_value_set_boolean (value, mousepad_view_get_word_wrap (view));
       break;
     default:
       G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
@@ -2619,4 +2636,31 @@ mousepad_view_get_color_scheme (MousepadView *view)
     return gtk_source_style_scheme_get_id (scheme);
 
   return "none";
+}
+
+
+
+void
+mousepad_view_set_word_wrap (MousepadView *view,
+                             gboolean      enabled)
+{
+  g_return_if_fail (MOUSEPAD_IS_VIEW (view));
+
+  gtk_text_view_set_wrap_mode (GTK_TEXT_VIEW (view),
+                               enabled ? GTK_WRAP_WORD : GTK_WRAP_NONE);
+  g_object_notify (G_OBJECT (view), "word-wrap");
+}
+
+
+
+gboolean
+mousepad_view_get_word_wrap (MousepadView *view)
+{
+  GtkWrapMode mode;
+
+  g_return_val_if_fail (MOUSEPAD_IS_VIEW (view), FALSE);
+
+  mode = gtk_text_view_get_wrap_mode (GTK_TEXT_VIEW (view));
+
+  return (mode == GTK_WRAP_WORD);
 }

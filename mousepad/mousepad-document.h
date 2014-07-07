@@ -63,9 +63,6 @@ MousepadDocument *mousepad_document_new            (void);
 void              mousepad_document_set_overwrite  (MousepadDocument *document,
                                                     gboolean          overwrite);
 
-void              mousepad_document_set_word_wrap  (MousepadDocument *document,
-                                                    gboolean          word_wrap);
-
 void              mousepad_document_focus_textview (MousepadDocument *document);
 
 void              mousepad_document_send_signals   (MousepadDocument *document);

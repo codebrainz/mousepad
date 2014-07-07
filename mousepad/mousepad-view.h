@@ -115,6 +115,11 @@ void            mousepad_view_set_color_scheme          (MousepadView      *view
 
 const gchar    *mousepad_view_get_color_scheme          (MousepadView      *view);
 
+void            mousepad_view_set_word_wrap             (MousepadView      *view,
+                                                         gboolean           enabled);
+
+gboolean        mousepad_view_get_word_wrap             (MousepadView      *view);
+
 G_END_DECLS
 
 #endif /* !__MOUSEPAD_VIEW_H__ */

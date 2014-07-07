@@ -96,9 +96,6 @@ struct _MousepadDocumentPrivate
   /* utf-8 valid document names */
   gchar               *utf8_filename;
   gchar               *utf8_basename;
-
-  /* settings */
-  guint                word_wrap : 1;
 };
 
 
@@ -176,9 +173,6 @@ static void
 mousepad_document_init (MousepadDocument *document)
 {
   GtkTargetList        *target_list;
-  gboolean              word_wrap;
-  gchar                *color_scheme;
-  GtkSourceStyleScheme *scheme = NULL;
 
   /* private structure */
   document->priv = MOUSEPAD_DOCUMENT_GET_PRIVATE (document);
@@ -214,21 +208,6 @@ mousepad_document_init (MousepadDocument *document)
   /* also allow dropping of uris and tabs in the textview */
   target_list = gtk_drag_dest_get_target_list (GTK_WIDGET (document->textview));
   gtk_target_list_add_table (target_list, drop_targets, G_N_ELEMENTS (drop_targets));
-
-  /* read all the default settings */
-  word_wrap = mousepad_settings_get_boolean ("view-word-wrap");
-  color_scheme = mousepad_settings_get_string ("view-color-scheme");
-
-  /* set all the settings */
-  mousepad_document_set_word_wrap (document, word_wrap);
-
-  if (g_strcmp0 (color_scheme, "none") != 0)
-    scheme =  gtk_source_style_scheme_manager_get_scheme (gtk_source_style_scheme_manager_get_default (), color_scheme);
-  gtk_source_buffer_set_highlight_syntax (GTK_SOURCE_BUFFER (document->buffer), (scheme != NULL));
-  gtk_source_buffer_set_style_scheme (GTK_SOURCE_BUFFER (document->buffer), scheme);
-
-  /* cleanup */
-  g_free (color_scheme);
 
   /* attach signals to the text view and buffer */
   g_signal_connect (G_OBJECT (document->buffer), "notify::cursor-position", G_CALLBACK (mousepad_document_notify_cursor_position), document);
@@ -463,22 +442,6 @@ mousepad_document_set_overwrite (MousepadDocument *document,
 
 
 void
-mousepad_document_set_word_wrap (MousepadDocument *document,
-                                 gboolean          word_wrap)
-{
-  mousepad_return_if_fail (MOUSEPAD_IS_DOCUMENT (document));
-
-  /* store the setting */
-  document->priv->word_wrap = word_wrap;
-
-  /* set the wrapping mode */
-  gtk_text_view_set_wrap_mode (GTK_TEXT_VIEW (document->textview),
-                               word_wrap ? GTK_WRAP_WORD : GTK_WRAP_NONE);
-}
-
-
-
-void
 mousepad_document_focus_textview (MousepadDocument *document)
 {
   mousepad_return_if_fail (MOUSEPAD_IS_DOCUMENT (document));
@@ -597,14 +560,4 @@ mousepad_document_get_filename (MousepadDocument *document)
   mousepad_return_val_if_fail (MOUSEPAD_IS_DOCUMENT (document), NULL);
 
   return document->priv->utf8_filename;
-}
-
-
-
-gboolean
-mousepad_document_get_word_wrap (MousepadDocument *document)
-{
-  mousepad_return_val_if_fail (MOUSEPAD_IS_DOCUMENT (document), FALSE);
-
-  return document->priv->word_wrap;
 }
