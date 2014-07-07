@@ -92,9 +92,6 @@ void            mousepad_view_duplicate                 (MousepadView      *view
 void            mousepad_view_indent                    (MousepadView      *view,
                                                          gint               type);
 
-void            mousepad_view_set_auto_indent           (MousepadView      *view,
-                                                         gboolean           auto_indent);
-
 void            mousepad_view_set_tab_size              (MousepadView      *view,
                                                          gint               tab_size);
 
@@ -105,8 +102,6 @@ gint            mousepad_view_get_selection_length      (MousepadView      *view
                                                          gboolean          *is_column_selection);
 
 gboolean        mousepad_view_get_line_numbers          (MousepadView      *view);
-
-gboolean        mousepad_view_get_auto_indent           (MousepadView      *view);
 
 gint            mousepad_view_get_tab_size              (MousepadView      *view);
 

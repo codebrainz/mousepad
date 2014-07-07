@@ -2255,7 +2255,7 @@ mousepad_window_update_actions (MousepadWindow *window)
       action = gtk_action_group_get_action (window->action_group, "line-numbers");
       gtk_toggle_action_set_active (GTK_TOGGLE_ACTION (action), active);
 
-      active = mousepad_view_get_auto_indent (document->textview);
+      active = mousepad_settings_get_boolean ("view-auto-indent");
       action = gtk_action_group_get_action (window->action_group, "auto-indent");
       gtk_toggle_action_set_active (GTK_TOGGLE_ACTION (action), active);
 
@@ -4779,18 +4779,11 @@ mousepad_window_action_auto_indent (GtkToggleAction *action,
   mousepad_return_if_fail (MOUSEPAD_IS_WINDOW (window));
   mousepad_return_if_fail (MOUSEPAD_IS_DOCUMENT (window->active));
 
-  /* leave when menu updates are locked */
-  if (lock_menu_updates == 0)
-    {
-      /* get the current state */
-      active = gtk_toggle_action_get_active (action);
+  /* get the current state */
+  active = gtk_toggle_action_get_active (action);
 
-      /* save as the last auto indent mode */
-      mousepad_settings_set_boolean ("view-auto-indent", active);
-
-      /* update the active document */
-      mousepad_view_set_auto_indent (window->active->textview, active);
-    }
+  /* save as the last auto indent mode */
+  mousepad_settings_set_boolean ("view-auto-indent", active);
 }
 
 

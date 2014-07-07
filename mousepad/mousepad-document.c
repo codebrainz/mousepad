@@ -176,7 +176,7 @@ static void
 mousepad_document_init (MousepadDocument *document)
 {
   GtkTargetList        *target_list;
-  gboolean              word_wrap, auto_indent, insert_spaces;
+  gboolean              word_wrap, insert_spaces;
   gchar                *font_name, *color_scheme;
   gint                  tab_size;
   GtkSourceStyleScheme *scheme = NULL;
@@ -218,7 +218,6 @@ mousepad_document_init (MousepadDocument *document)
 
   /* read all the default settings */
   word_wrap = mousepad_settings_get_boolean ("view-word-wrap");
-  auto_indent = mousepad_settings_get_boolean ("view-auto-indent");
   font_name = mousepad_settings_get_string ("view-font-name");
   tab_size = mousepad_settings_get_int ("view-tab-size");
   insert_spaces = mousepad_settings_get_boolean ("view-insert-spaces");
@@ -227,7 +226,6 @@ mousepad_document_init (MousepadDocument *document)
   /* set all the settings */
   mousepad_document_set_word_wrap (document, word_wrap);
   mousepad_document_set_font (document, font_name);
-  mousepad_view_set_auto_indent (document->textview, auto_indent);
   mousepad_view_set_tab_size (document->textview, tab_size);
   mousepad_view_set_insert_spaces (document->textview, insert_spaces);
 

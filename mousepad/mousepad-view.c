@@ -158,6 +158,7 @@ mousepad_view_init (MousepadView *view)
 
   /* bind Gsettings */
   mousepad_settings_bind ("view-line-numbers", view, "show-line-numbers", G_SETTINGS_BIND_DEFAULT);
+  mousepad_settings_bind ("view-auto-indent", view, "auto-indent", G_SETTINGS_BIND_DEFAULT);
 }
 
 
@@ -2281,17 +2282,6 @@ mousepad_view_indent (MousepadView *view,
 
 
 void
-mousepad_view_set_auto_indent (MousepadView *view,
-                               gboolean      auto_indent)
-{
-  mousepad_return_if_fail (MOUSEPAD_IS_VIEW (view));
-
-  gtk_source_view_set_auto_indent (GTK_SOURCE_VIEW (view), auto_indent);
-}
-
-
-
-void
 mousepad_view_set_tab_size (MousepadView *view,
                              gint          tab_size)
 {
@@ -2349,16 +2339,6 @@ mousepad_view_get_selection_length (MousepadView *view,
 
   /* return length */
   return sel_length;
-}
-
-
-
-gboolean
-mousepad_view_get_auto_indent (MousepadView *view)
-{
-  mousepad_return_val_if_fail (MOUSEPAD_IS_VIEW (view), FALSE);
-
-  return gtk_source_view_get_auto_indent (GTK_SOURCE_VIEW (view));
 }
 
 
