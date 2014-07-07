@@ -539,6 +539,18 @@ mousepad_window_class_init (MousepadWindowClass *klass)
 
 
 
+/* Called in response to any settings changed which affect the statusbar labels. */
+static void
+mousepad_window_update_statusbar_settings (MousepadWindow   *window,
+                                           gchar            *key,
+                                           MousepadSettings *settings)
+{
+  if (G_LIKELY (MOUSEPAD_IS_DOCUMENT (window->active)))
+    mousepad_document_send_signals (window->active);
+}
+
+
+
 static void
 mousepad_window_init (MousepadWindow *window)
 {
@@ -698,6 +710,15 @@ mousepad_window_init (MousepadWindow *window)
   gtk_drag_dest_set (GTK_WIDGET (window), GTK_DEST_DEFAULT_MOTION | GTK_DEST_DEFAULT_DROP, drop_targets, G_N_ELEMENTS (drop_targets), GDK_ACTION_COPY | GDK_ACTION_MOVE);
   g_signal_connect (G_OBJECT (window), "drag-data-received", G_CALLBACK (mousepad_window_drag_data_received), window);
 
+  /* update the statusbar with certain settings */
+  g_signal_connect_swapped (MOUSEPAD_GSETTINGS,
+                            "changed::view-tab-width",
+                            G_CALLBACK (mousepad_window_update_statusbar_settings),
+                            window);
+  g_signal_connect_swapped (MOUSEPAD_GSETTINGS,
+                            "changed::view-insert-spaces",
+                            G_CALLBACK (mousepad_window_update_statusbar_settings),
+                            window);
 }
 
 
@@ -2099,7 +2120,7 @@ mousepad_window_menu_tab_sizes_update (MousepadWindow *window)
   lock_menu_updates++;
 
   /* get tab size of active document */
-  tab_size = mousepad_view_get_tab_size (window->active->textview);
+  tab_size = mousepad_settings_get_int ("view-tab-width");
 
   /* check if there is a default item with this number */
   name = g_strdup_printf ("tab-size_%d", tab_size);
@@ -2251,7 +2272,7 @@ mousepad_window_update_actions (MousepadWindow *window)
       action = gtk_action_group_get_action (window->action_group, "word-wrap");
       gtk_toggle_action_set_active (GTK_TOGGLE_ACTION (action), active);
 
-      active = mousepad_settings_get_boolean ("view-line-numbers");
+      active = mousepad_settings_get_boolean ("view-show-line-numbers");
       action = gtk_action_group_get_action (window->action_group, "line-numbers");
       gtk_toggle_action_set_active (GTK_TOGGLE_ACTION (action), active);
 
@@ -2262,7 +2283,7 @@ mousepad_window_update_actions (MousepadWindow *window)
       /* update the tabs size menu */
       mousepad_window_menu_tab_sizes_update (window);
 
-      active = mousepad_view_get_insert_spaces (document->textview);
+      active = mousepad_settings_get_boolean ("view-insert-spaces");
       action = gtk_action_group_get_action (window->action_group, "insert-spaces");
       gtk_toggle_action_set_active (GTK_TOGGLE_ACTION (action), active);
 
@@ -4509,7 +4530,7 @@ mousepad_window_action_line_numbers (GtkToggleAction *action,
   active = gtk_toggle_action_get_active (action);
 
   /* save as the last used line number setting */
-  mousepad_settings_set_boolean ("view-line-numbers", active);
+  mousepad_settings_set_boolean ("view-show-line-numbers", active);
 }
 
 
@@ -4818,17 +4839,14 @@ mousepad_window_action_tab_size (GtkToggleAction *action,
       if (tab_size == 0)
         {
           /* get tab size from document */
-          tab_size = mousepad_view_get_tab_size (window->active->textview);
+          tab_size = mousepad_settings_get_int ("view-tab-width");
 
           /* select other size in dialog */
           tab_size = mousepad_dialogs_other_tab_size (GTK_WINDOW (window), tab_size);
         }
 
       /* store as last used value */
-      mousepad_settings_set_int ("view-tab-size", tab_size);
-
-      /* set the value */
-      mousepad_view_set_tab_size (window->active->textview, tab_size);
+      mousepad_settings_set_int ("view-tab-width", tab_size);
 
       /* update menu */
       mousepad_window_menu_tab_sizes_update (window);
@@ -4940,9 +4958,6 @@ mousepad_window_action_insert_spaces (GtkToggleAction *action,
 
       /* save as the last auto indent mode */
       mousepad_settings_set_boolean ("view-insert-spaces", insert_spaces);
-
-      /* update the active document */
-      mousepad_view_set_insert_spaces (window->active->textview, insert_spaces);
     }
 }
 

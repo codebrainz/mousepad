@@ -213,11 +213,20 @@ mousepad_view_init (MousepadView *view)
                     G_CALLBACK (mousepad_view_commit_handler), view);
 
   /* bind Gsettings */
-  mousepad_settings_bind ("view-line-numbers", view, "show-line-numbers", G_SETTINGS_BIND_DEFAULT);
   mousepad_settings_bind ("view-auto-indent", view, "auto-indent", G_SETTINGS_BIND_DEFAULT);
   mousepad_settings_bind ("view-font-name", view, "font-name", G_SETTINGS_BIND_DEFAULT);
   mousepad_settings_bind ("view-show-whitespace", view, "show-whitespace", G_SETTINGS_BIND_DEFAULT);
   mousepad_settings_bind ("view-show-line-endings", view, "show-line-endings", G_SETTINGS_BIND_DEFAULT);
+  mousepad_settings_bind ("view-highlight-current-line", view, "highlight-current-line", G_SETTINGS_BIND_DEFAULT);
+  mousepad_settings_bind ("view-indent-on-tab", view, "indent-on-tab", G_SETTINGS_BIND_DEFAULT);
+  mousepad_settings_bind ("view-indent-width", view, "indent-width", G_SETTINGS_BIND_DEFAULT);
+  mousepad_settings_bind ("view-insert-spaces", view, "insert-spaces-instead-of-tabs", G_SETTINGS_BIND_DEFAULT);
+  mousepad_settings_bind ("view-right-margin-position", view, "right-margin-position", G_SETTINGS_BIND_DEFAULT);
+  mousepad_settings_bind ("view-show-line-marks", view, "show-line-marks", G_SETTINGS_BIND_DEFAULT);
+  mousepad_settings_bind ("view-show-line-numbers", view, "show-line-numbers", G_SETTINGS_BIND_DEFAULT);
+  mousepad_settings_bind ("view-show-right-margin", view, "show-right-margin", G_SETTINGS_BIND_DEFAULT);
+  mousepad_settings_bind ("view-smart-home-end", view, "smart-home-end", G_SETTINGS_BIND_DEFAULT);
+  mousepad_settings_bind ("view-tab-width", view, "tab-width", G_SETTINGS_BIND_DEFAULT);
 }
 
 
@@ -2394,29 +2403,6 @@ mousepad_view_indent (MousepadView *view,
 
 
 
-void
-mousepad_view_set_tab_size (MousepadView *view,
-                             gint          tab_size)
-{
-  mousepad_return_if_fail (MOUSEPAD_IS_VIEW (view));
-  mousepad_return_if_fail (GTK_IS_TEXT_VIEW (view));
-
-  gtk_source_view_set_tab_width (GTK_SOURCE_VIEW (view), tab_size);
-}
-
-
-
-void
-mousepad_view_set_insert_spaces (MousepadView *view,
-                                 gboolean      insert_spaces)
-{
-  mousepad_return_if_fail (MOUSEPAD_IS_VIEW (view));
-
-  gtk_source_view_set_insert_spaces_instead_of_tabs (GTK_SOURCE_VIEW (view), insert_spaces);
-}
-
-
-
 gboolean
 mousepad_view_get_selection_length (MousepadView *view,
                                     gboolean     *is_column_selection)
@@ -2452,26 +2438,6 @@ mousepad_view_get_selection_length (MousepadView *view,
 
   /* return length */
   return sel_length;
-}
-
-
-
-gint
-mousepad_view_get_tab_size (MousepadView *view)
-{
-  mousepad_return_val_if_fail (MOUSEPAD_IS_VIEW (view), -1);
-
-  return gtk_source_view_get_tab_width (GTK_SOURCE_VIEW (view));
-}
-
-
-
-gboolean
-mousepad_view_get_insert_spaces (MousepadView *view)
-{
-  mousepad_return_val_if_fail (MOUSEPAD_IS_VIEW (view), FALSE);
-
-  return gtk_source_view_get_insert_spaces_instead_of_tabs (GTK_SOURCE_VIEW (view));
 }
 
 

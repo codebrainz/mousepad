@@ -92,20 +92,8 @@ void            mousepad_view_duplicate                 (MousepadView      *view
 void            mousepad_view_indent                    (MousepadView      *view,
                                                          gint               type);
 
-void            mousepad_view_set_tab_size              (MousepadView      *view,
-                                                         gint               tab_size);
-
-void            mousepad_view_set_insert_spaces         (MousepadView      *view,
-                                                         gboolean           insert_spaces);
-
 gint            mousepad_view_get_selection_length      (MousepadView      *view,
                                                          gboolean          *is_column_selection);
-
-gboolean        mousepad_view_get_line_numbers          (MousepadView      *view);
-
-gint            mousepad_view_get_tab_size              (MousepadView      *view);
-
-gboolean        mousepad_view_get_insert_spaces         (MousepadView      *view);
 
 void            mousepad_view_set_font_name             (MousepadView      *view,
                                                          const gchar       *font_name);

@@ -176,9 +176,8 @@ static void
 mousepad_document_init (MousepadDocument *document)
 {
   GtkTargetList        *target_list;
-  gboolean              word_wrap, insert_spaces;
+  gboolean              word_wrap;
   gchar                *color_scheme;
-  gint                  tab_size;
   GtkSourceStyleScheme *scheme = NULL;
 
   /* private structure */
@@ -218,14 +217,10 @@ mousepad_document_init (MousepadDocument *document)
 
   /* read all the default settings */
   word_wrap = mousepad_settings_get_boolean ("view-word-wrap");
-  tab_size = mousepad_settings_get_int ("view-tab-size");
-  insert_spaces = mousepad_settings_get_boolean ("view-insert-spaces");
   color_scheme = mousepad_settings_get_string ("view-color-scheme");
 
   /* set all the settings */
   mousepad_document_set_word_wrap (document, word_wrap);
-  mousepad_view_set_tab_size (document->textview, tab_size);
-  mousepad_view_set_insert_spaces (document->textview, insert_spaces);
 
   if (g_strcmp0 (color_scheme, "none") != 0)
     scheme =  gtk_source_style_scheme_manager_get_scheme (gtk_source_style_scheme_manager_get_default (), color_scheme);
@@ -286,7 +281,7 @@ mousepad_document_notify_cursor_position (GtkTextBuffer    *buffer,
   line = gtk_text_iter_get_line (&iter) + 1;
 
   /* get the tab size */
-  tab_size = mousepad_view_get_tab_size (document->textview);
+  tab_size = mousepad_settings_get_int ("view-tab-width");
 
   /* get the column */
   column = mousepad_util_get_real_line_offset (&iter, tab_size);

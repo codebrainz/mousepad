@@ -1,5 +1,14 @@
 <schemalist>
 
+  <!-- Enums and flags -->
+  
+  <enum id="org.xfce.Mousepad.SmartHomeEnd">
+    <value nick="disabled" value="0"/>
+    <value nick="before" value="1"/>
+    <value nick="after" value="2"/>
+    <value nick="always" value="3"/>
+  </enum>
+
   <schema id="org.xfce.Mousepad" path="/org/xfce/Mousepad/" gettext-domain="mousepad">
 
     <!-- Search preferences -->
@@ -90,21 +99,30 @@
       </description>
     </key>
 
-    <key name="view-line-numbers" type="b">
-      <default>false</default>
-      <summary>Show line numbers</summary>
+    <key name="view-highlight-current-line" type="b">
+      <default>true</default>
+      <summary>Highlight current line</summary>
       <description>
-        When true the line numbers gutter/margin will be visible, when false
-        it will not be visible.
+        When true visually indicate the line with the caret on it, when false
+        provide no such indication.
       </description>
     </key>
 
-    <key name="view-tab-size" type="i">
-      <range min="1" max="32"/>
-      <default>8</default>
-      <summary>Tab width</summary>
+    <key name="view-indent-on-tab" type="b">
+      <default>true</default>
+      <summary>Indent on tab</summary>
       <description>
-        The number of characters wide that a tab character appears as.
+        When true indent selected text when tab key is pressed, when false,
+        don't indent on tab.
+      </description>
+    </key>
+
+    <key name="view-indent-width" type="i">
+      <range min="-1" max="32"/>
+      <default>-1</default>
+      <summary>Indentation width</summary>
+      <description>
+        Width of an indentation step expressed in number of spaces.
       </description>
     </key>
 
@@ -114,6 +132,55 @@
       <description>
         When true spaces will be insert when the Tab key is pressed instead
         of tab characters, when false tab characters will be inserted.
+      </description>
+    </key>
+    
+    <key name="view-right-margin-position" type="i">
+      <range min="1" max="1000"/>
+      <default>80</default>
+      <summary>Right margin position</summary>
+      <description>
+        Position of the right margin (line drawn vertically down right side
+        of the view).
+      </description>
+    </key>
+    
+    <key name="view-show-line-marks" type="b">
+      <default>false</default>
+      <summary>Show line marks</summary>
+      <description>Whether to display line mark pixbufs.</description>
+    </key>
+
+    <key name="view-show-line-numbers" type="b">
+      <default>false</default>
+      <summary>Show line numbers</summary>
+      <description>
+        When true the line numbers gutter/margin will be visible, when false
+        it will not be visible.
+      </description>
+    </key>
+
+    <key name="view-show-right-margin" type="b">
+      <default>false</default>
+      <summary>Show right margin</summary>
+      <description>
+        When true the right margin is displayed at the column specified in
+        'view-right-margin-position', when false it is not drawn.
+      </description>
+    </key>
+    
+    <key name="view-smart-home-end" enum="org.xfce.Mousepad.SmartHomeEnd">
+      <default>'disabled'</default>
+      <summary>Smart home end type</summary>
+      <description>Sets the behaviour of the HOME and END keys.</description>
+    </key>
+
+    <key name="view-tab-width" type="i">
+      <range min="1" max="32"/>
+      <default>8</default>
+      <summary>Tab width</summary>
+      <description>
+        The number of characters wide that a tab character appears as.
       </description>
     </key>
 
