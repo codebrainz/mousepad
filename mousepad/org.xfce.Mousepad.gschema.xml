@@ -1,4 +1,5 @@
 <schemalist>
+
   <schema id="org.xfce.Mousepad" path="/org/xfce/Mousepad/" gettext-domain="mousepad">
 
     <!-- Search preferences -->
@@ -68,6 +69,24 @@
       <description>
         The name of the font to use in the textviews. Can contain Pango
         font description syntax for greater control.
+      </description>
+    </key>
+
+    <key name="view-show-whitespace" type="b">
+      <default>false</default>
+      <summary>Show whitespace</summary>
+      <description>
+        When true whitespace will be visualized in the view.
+        See also 'view-show-line-endings'.
+      </description>
+    </key>
+
+    <key name="view-show-line-endings" type="b">
+      <default>false</default>
+      <summary>Show line endings</summary>
+      <description>
+        When true newlines will be visualized in the view.
+        See also 'view-show-whitespace'.
       </description>
     </key>
 

@@ -112,6 +112,16 @@ void            mousepad_view_set_font_name             (MousepadView      *view
 
 const gchar    *mousepad_view_get_font_name             (MousepadView      *view);
 
+void            mousepad_view_set_show_whitespace       (MousepadView      *view,
+                                                         gboolean           show);
+
+gboolean        mousepad_view_get_show_whitespace       (MousepadView      *view);
+
+void            mousepad_view_set_show_line_endings     (MousepadView      *view,
+                                                         gboolean           show);
+
+gboolean        mousepad_view_get_show_line_endings     (MousepadView      *view);
+
 G_END_DECLS
 
 #endif /* !__MOUSEPAD_VIEW_H__ */
