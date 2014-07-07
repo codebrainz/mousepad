@@ -126,11 +126,13 @@ mousepad_replace_dialog_bind_setting (MousepadReplaceDialog *dialog,
 {
   gchar *signal_name;
 
-  mousepad_settings_bind (key, object, property, G_SETTINGS_BIND_DEFAULT);
+  mousepad_settings_bind (MOUSEPAD_SCHEMA_SEARCH_STATE, key,
+                          object, property,
+                          G_SETTINGS_BIND_DEFAULT);
 
   signal_name = g_strdup_printf ("changed::%s", key);
 
-  g_signal_connect_swapped (MOUSEPAD_GSETTINGS,
+  g_signal_connect_swapped (MOUSEPAD_SEARCH_STATE_SETTINGS,
                             signal_name,
                             G_CALLBACK (mousepad_replace_dialog_settings_changed),
                             dialog);
@@ -227,7 +229,7 @@ mousepad_replace_dialog_init (MousepadReplaceDialog *dialog)
   gtk_combo_box_append_text (GTK_COMBO_BOX (combo), _("Both"));
   gtk_widget_show (combo);
 
-  mousepad_replace_dialog_bind_setting (dialog, "search-direction", combo, "active");
+  mousepad_replace_dialog_bind_setting (dialog, MOUSEPAD_STATE_SEARCH_DIRECTION, combo, "active");
 
   /* release size group */
   g_object_unref (G_OBJECT (size_group));
@@ -237,14 +239,14 @@ mousepad_replace_dialog_init (MousepadReplaceDialog *dialog)
   gtk_box_pack_start (GTK_BOX (vbox), check, FALSE, FALSE, 0);
   gtk_widget_show (check);
 
-  mousepad_replace_dialog_bind_setting (dialog, "search-match-case", check, "active");
+  mousepad_replace_dialog_bind_setting (dialog, MOUSEPAD_STATE_SEARCH_MATCH_CASE, check, "active");
 
   /* match whole word */
   check = gtk_check_button_new_with_mnemonic (_("_Match whole word"));
   gtk_box_pack_start (GTK_BOX (vbox), check, FALSE, FALSE, 0);
   gtk_widget_show (check);
 
-  mousepad_replace_dialog_bind_setting (dialog, "search-match-whole-word", check, "active");
+  mousepad_replace_dialog_bind_setting (dialog, MOUSEPAD_STATE_SEARCH_MATCH_WHOLE_WORD, check, "active");
 
   /* horizontal box for the replace all options */
   hbox = gtk_hbox_new (FALSE, 8);
@@ -255,7 +257,7 @@ mousepad_replace_dialog_init (MousepadReplaceDialog *dialog)
   gtk_box_pack_start (GTK_BOX (hbox), check, FALSE, FALSE, 0);
   gtk_widget_show (check);
 
-  mousepad_replace_dialog_bind_setting (dialog, "search-replace-all", check, "active");
+  mousepad_replace_dialog_bind_setting (dialog, MOUSEPAD_STATE_SEARCH_REPLACE_ALL, check, "active");
 
   combo = dialog->search_location_combo = gtk_combo_box_new_text ();
   gtk_box_pack_start (GTK_BOX (hbox), combo, FALSE, FALSE, 0);
@@ -265,7 +267,7 @@ mousepad_replace_dialog_init (MousepadReplaceDialog *dialog)
   gtk_widget_set_sensitive (combo, FALSE);
   gtk_widget_show (combo);
 
-  mousepad_replace_dialog_bind_setting (dialog, "search-replace-all-location", combo, "active");
+  mousepad_replace_dialog_bind_setting (dialog, MOUSEPAD_STATE_SEARCH_REPLACE_ALL_LOCATION, combo, "active");
 
   label = dialog->hits_label = gtk_label_new (NULL);
   gtk_box_pack_start (GTK_BOX (hbox), label, FALSE, FALSE, 0);
@@ -320,11 +322,11 @@ mousepad_replace_dialog_response (GtkWidget *widget,
   gboolean               match_case, match_whole_word, replace_all;
 
   /* read the search settings */
-  search_direction = mousepad_settings_get_int ("search-direction");
-  replace_all_location = mousepad_settings_get_int ("search-replace-all-location");
-  match_case = mousepad_settings_get_boolean ("search-match-case");
-  match_whole_word = mousepad_settings_get_boolean ("search-match-whole-word");
-  replace_all = mousepad_settings_get_boolean ("search-replace-all");
+  search_direction = mousepad_settings_get_int (MOUSEPAD_SCHEMA_SEARCH_STATE, MOUSEPAD_STATE_SEARCH_DIRECTION);
+  replace_all_location = mousepad_settings_get_int (MOUSEPAD_SCHEMA_SEARCH_STATE, MOUSEPAD_STATE_SEARCH_REPLACE_ALL_LOCATION);
+  match_case = mousepad_settings_get_boolean (MOUSEPAD_SCHEMA_SEARCH_STATE, MOUSEPAD_STATE_SEARCH_MATCH_CASE);
+  match_whole_word = mousepad_settings_get_boolean (MOUSEPAD_SCHEMA_SEARCH_STATE, MOUSEPAD_STATE_SEARCH_MATCH_WHOLE_WORD);
+  replace_all = mousepad_settings_get_boolean (MOUSEPAD_SCHEMA_SEARCH_STATE, MOUSEPAD_STATE_SEARCH_REPLACE_ALL);
 
   /* close dialog */
   if (response_id == MOUSEPAD_RESPONSE_CLOSE)
@@ -446,7 +448,8 @@ mousepad_replace_dialog_changed (MousepadReplaceDialog *dialog)
   gboolean     sensitive;
   gboolean     replace_all;
 
-  replace_all = mousepad_settings_get_boolean ("search-replace-all");
+  replace_all = mousepad_settings_get_boolean (MOUSEPAD_SCHEMA_SEARCH_STATE,
+                                               MOUSEPAD_STATE_SEARCH_REPLACE_ALL);
 
   /* set the sensitivity of some dialog widgets */
   gtk_widget_set_sensitive (dialog->search_location_combo, replace_all);

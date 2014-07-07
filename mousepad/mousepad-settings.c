@@ -11,14 +11,15 @@
 
 struct MousepadSettings_
 {
-  GSettings parent;
+  GObject parent;
+  GSettings *settings[MOUSEPAD_NUM_SCHEMAS];
 };
 
 
 
 struct MousepadSettingsClass_
 {
-  GSettingsClass parent_class;
+  GObjectClass parent_class;
 };
 
 
@@ -27,12 +28,43 @@ static void mousepad_settings_finalize (GObject *object);
 
 
 
-G_DEFINE_TYPE (MousepadSettings, mousepad_settings, G_TYPE_SETTINGS)
+G_DEFINE_TYPE (MousepadSettings, mousepad_settings, G_TYPE_OBJECT)
 
 
 
-/* Global GSettings subclass instance, accessed by mousepad_settings_get_default() */
+/* Global instance, accessed by mousepad_settings_get_default() */
 static MousepadSettings *default_settings = NULL;
+
+
+
+static const gchar *mousepad_schema_ids[MOUSEPAD_NUM_SCHEMAS] =
+{
+  "org.xfce.mousepad.preferences.view",
+  "org.xfce.mousepad.preferences.window",
+  "org.xfce.mousepad.state.search",
+  "org.xfce.mousepad.state.window"
+};
+
+
+
+GType
+mousepad_schema_get_type (void)
+{
+  static GType type = 0;
+  if (G_UNLIKELY (type == 0))
+    {
+      static const GEnumValue values[] =
+      {
+        { MOUSEPAD_SCHEMA_VIEW_SETTINGS,   "MOUSEPAD_SCHEMA_VIEW_SETTINGS",   "view-settings" },
+        { MOUSEPAD_SCHEMA_WINDOW_SETTINGS, "MOUSEPAD_SCHEMA_WINDOW_SETTINGS", "window-settings" },
+        { MOUSEPAD_SCHEMA_SEARCH_STATE,    "MOUSEPAD_SCHEMA_SEARCH_STATE",    "search-state" },
+        { MOUSEPAD_SCHEMA_WINDOW_STATE,    "MOUSEPAD_SCHEMA_WINDOW_STATE",    "window-state" },
+        { 0, NULL, NULL }
+      };
+     type = g_enum_register_static ("MousepadSchema", values);
+    }
+  return type;
+}
 
 
 
@@ -50,14 +82,19 @@ mousepad_settings_class_init (MousepadSettingsClass *klass)
 
 static void
 mousepad_settings_finalize (GObject *object)
-{/*
-  MousepadSettings *self;
+{
+  gint i;
+  MousepadSettings *self = MOUSEPAD_SETTINGS (object);
 
-  g_return_if_fail (MOUSEPAD_IS_SETTINGS (object));
-
-  self = MOUSEPAD_SETTINGS (object);
-*/
   G_OBJECT_CLASS (mousepad_settings_parent_class)->finalize (object);
+
+  g_settings_sync ();
+
+  for (i = 0; i < MOUSEPAD_NUM_SCHEMAS; i++)
+    {
+      if (G_IS_SETTINGS (self->settings[i]))
+        g_object_unref (self->settings[i]);
+    }
 }
 
 
@@ -65,6 +102,34 @@ mousepad_settings_finalize (GObject *object)
 static void
 mousepad_settings_init (MousepadSettings *self)
 {
+  gint i;
+
+#ifdef MOUSEPAD_SETTINGS_KEYFILE_BACKEND
+  GSettingsBackend *backend;
+  gchar *conf_file;
+
+  /* Path inside user's config directory */
+  conf_file = g_build_filename (g_get_user_config_dir (),
+                                "Mousepad",
+                                "settings.conf",
+                                NULL);
+
+  /* Create a keyfile backend */
+  backend = g_keyfile_settings_backend_new (conf_file, "/", NULL);
+  g_free (conf_file);
+
+  for (i = 0; i < MOUSEPAD_NUM_SCHEMAS; i++)
+    {
+      self->settings[i] = g_object_new (G_TYPE_SETTINGS,
+                                        "backend", backend,
+                                        "schema-id", mousepad_schema_ids[i],
+                                        NULL);
+      /* TODO: need to cleanup backend reference? */
+    }
+#else
+  for (i = 0; i < MOUSEPAD_NUM_SCHEMAS; i++)
+    self->settings[i] = g_settings_new (mousepad_schema_ids[i]);
+#endif
 }
 
 
@@ -73,9 +138,6 @@ mousepad_settings_init (MousepadSettings *self)
 static void
 mousepad_settings_cleanup_default (void)
 {
-  /* last-ditch attempt to save settings to disk */
-  MOUSEPAD_GSETTINGS_SYNC ();
-
   /* cleanup the singleton settings instance */
   if (MOUSEPAD_IS_SETTINGS (default_settings))
     {
@@ -126,33 +188,7 @@ mousepad_settings_get_default (void)
        * the schema so enforce this with the relevant environment variable. */
       mousepad_settings_update_gsettings_schema_dir ();
 
-#ifdef MOUSEPAD_SETTINGS_KEYFILE_BACKEND
-{
-      GSettingsBackend *backend;
-      gchar *conf_file;
-
-      /* Path inside user's config directory */
-      conf_file = g_build_filename (g_get_user_config_dir (),
-                                    "Mousepad",
-                                    "settings.conf",
-                                    NULL);
-
-      /* Create a keyfile backend */
-      backend = g_keyfile_settings_backend_new (conf_file, "/", NULL);
-      g_free (conf_file);
-
-      /* Construct the singleton instance with the keyfile backend */
-      default_settings = g_object_new (MOUSEPAD_TYPE_SETTINGS,
-                                       "backend", backend /* give ref to settings object */,
-                                       "schema-id", "org.xfce.Mousepad",
-                                       NULL);
-}
-#else
-      /* Use the default GSettings backend (eg. registry, dconf, user-defaults, etc) */
-      default_settings = g_object_new (MOUSEPAD_TYPE_SETTINGS,
-                                       "schema-id", "org.xfce.Mousepad",
-                                       NULL);
-#endif
+      default_settings = g_object_new (MOUSEPAD_TYPE_SETTINGS, NULL);
 
       /* Auto-cleanup at exit */
       atexit (mousepad_settings_cleanup_default);
@@ -164,4 +200,106 @@ mousepad_settings_get_default (void)
   g_warn_if_fail (MOUSEPAD_IS_SETTINGS (default_settings));
 
   return default_settings;
+}
+
+
+
+GSettings *
+mousepad_settings_get_from_schema (MousepadSettings *settings,
+                                   MousepadSchema    schema)
+{
+  g_return_val_if_fail (MOUSEPAD_IS_SETTINGS (settings), NULL);
+  g_return_val_if_fail (schema < MOUSEPAD_NUM_SCHEMAS, NULL);
+
+  return settings->settings[schema];
+}
+
+
+
+void
+mousepad_settings_bind (MousepadSchema     schema,
+                        const gchar       *key,
+                        gpointer           object,
+                        const gchar       *prop,
+                        GSettingsBindFlags flags)
+{
+  MousepadSettings *settings;
+  g_return_if_fail (schema < MOUSEPAD_NUM_SCHEMAS);
+  settings = mousepad_settings_get_default ();
+  g_settings_bind (settings->settings[schema], key, object, prop, flags);
+}
+
+
+
+gboolean
+mousepad_settings_get_boolean (MousepadSchema  schema,
+                               const gchar    *key)
+{
+  MousepadSettings *settings;
+  g_return_val_if_fail (schema < MOUSEPAD_NUM_SCHEMAS, FALSE);
+  settings = mousepad_settings_get_default ();
+  return g_settings_get_boolean (settings->settings[schema], key);
+}
+
+
+
+void
+mousepad_settings_set_boolean (MousepadSchema  schema,
+                               const gchar    *key,
+                               gboolean        value)
+{
+  MousepadSettings *settings;
+  g_return_if_fail (schema < MOUSEPAD_NUM_SCHEMAS);
+  settings = mousepad_settings_get_default ();
+  g_settings_set_boolean (settings->settings[schema], key, value);
+}
+
+
+
+gint
+mousepad_settings_get_int (MousepadSchema  schema,
+                           const gchar    *key)
+{
+  MousepadSettings *settings;
+  g_return_val_if_fail (schema < MOUSEPAD_NUM_SCHEMAS, FALSE);
+  settings = mousepad_settings_get_default ();
+  return g_settings_get_int (settings->settings[schema], key);
+}
+
+
+
+void
+mousepad_settings_set_int (MousepadSchema  schema,
+                           const gchar    *key,
+                           gint            value)
+{
+  MousepadSettings *settings;
+  g_return_if_fail (schema < MOUSEPAD_NUM_SCHEMAS);
+  settings = mousepad_settings_get_default ();
+  g_settings_set_int (settings->settings[schema], key, value);
+}
+
+
+
+gchar *
+mousepad_settings_get_string (MousepadSchema  schema,
+                              const gchar    *key)
+{
+  MousepadSettings *settings;
+  g_return_val_if_fail (schema < MOUSEPAD_NUM_SCHEMAS, FALSE);
+  settings = mousepad_settings_get_default ();
+  return g_settings_get_string (settings->settings[schema], key);
+}
+
+
+
+void
+mousepad_settings_set_string (MousepadSchema  schema,
+                              const gchar    *key,
+                              const gchar    *value)
+{
+  MousepadSettings *settings;
+  g_return_if_fail (schema < MOUSEPAD_NUM_SCHEMAS);
+  settings = mousepad_settings_get_default ();
+  g_settings_set_string (settings->settings[schema], key, value);
 }

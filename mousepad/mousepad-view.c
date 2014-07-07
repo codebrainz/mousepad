@@ -233,22 +233,29 @@ mousepad_view_init (MousepadView *view)
                     G_CALLBACK (mousepad_view_commit_handler), view);
 
   /* bind Gsettings */
-  mousepad_settings_bind ("view-auto-indent", view, "auto-indent", G_SETTINGS_BIND_DEFAULT);
-  mousepad_settings_bind ("view-font-name", view, "font-name", G_SETTINGS_BIND_DEFAULT);
-  mousepad_settings_bind ("view-show-whitespace", view, "show-whitespace", G_SETTINGS_BIND_DEFAULT);
-  mousepad_settings_bind ("view-show-line-endings", view, "show-line-endings", G_SETTINGS_BIND_DEFAULT);
-  mousepad_settings_bind ("view-highlight-current-line", view, "highlight-current-line", G_SETTINGS_BIND_DEFAULT);
-  mousepad_settings_bind ("view-indent-on-tab", view, "indent-on-tab", G_SETTINGS_BIND_DEFAULT);
-  mousepad_settings_bind ("view-indent-width", view, "indent-width", G_SETTINGS_BIND_DEFAULT);
-  mousepad_settings_bind ("view-insert-spaces", view, "insert-spaces-instead-of-tabs", G_SETTINGS_BIND_DEFAULT);
-  mousepad_settings_bind ("view-right-margin-position", view, "right-margin-position", G_SETTINGS_BIND_DEFAULT);
-  mousepad_settings_bind ("view-show-line-marks", view, "show-line-marks", G_SETTINGS_BIND_DEFAULT);
-  mousepad_settings_bind ("view-show-line-numbers", view, "show-line-numbers", G_SETTINGS_BIND_DEFAULT);
-  mousepad_settings_bind ("view-show-right-margin", view, "show-right-margin", G_SETTINGS_BIND_DEFAULT);
-  mousepad_settings_bind ("view-smart-home-end", view, "smart-home-end", G_SETTINGS_BIND_DEFAULT);
-  mousepad_settings_bind ("view-tab-width", view, "tab-width", G_SETTINGS_BIND_DEFAULT);
-  mousepad_settings_bind ("view-color-scheme", view, "color-scheme", G_SETTINGS_BIND_DEFAULT);
-  mousepad_settings_bind ("view-word-wrap", view, "word-wrap", G_SETTINGS_BIND_DEFAULT);
+#define BIND_(setting, prop) \
+  mousepad_settings_bind (MOUSEPAD_SCHEMA_VIEW_SETTINGS, \
+                          MOUSEPAD_SETTING_##setting, view, prop, \
+                          G_SETTINGS_BIND_DEFAULT)
+
+  BIND_ (AUTO_INDENT,            "auto-indent");
+  BIND_ (FONT_NAME,              "font-name");
+  BIND_ (SHOW_WHITESPACE,        "show-whitespace");
+  BIND_ (SHOW_LINE_ENDINGS,      "show-line-endings");
+  BIND_ (HIGHLIGHT_CURRENT_LINE, "highlight-current-line");
+  BIND_ (INDENT_ON_TAB,          "indent-on-tab");
+  BIND_ (INDENT_WIDTH,           "indent-width");
+  BIND_ (INSERT_SPACES,          "insert-spaces-instead-of-tabs");
+  BIND_ (RIGHT_MARGIN_POSITION,  "right-margin-position");
+  BIND_ (SHOW_LINE_MARKS,        "show-line-marks");
+  BIND_ (SHOW_LINE_NUMBERS,      "show-line-numbers");
+  BIND_ (SHOW_RIGHT_MARGIN,      "show-right-margin");
+  BIND_ (SMART_HOME_END,         "smart-home-end");
+  BIND_ (TAB_WIDTH,              "tab-width");
+  BIND_ (COLOR_SCHEME,           "color-scheme");
+  BIND_ (WORD_WRAP,              "word-wrap");
+
+#undef BIND_
 }
 
 

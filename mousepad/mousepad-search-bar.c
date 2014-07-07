@@ -160,7 +160,8 @@ mousepad_search_bar_init (MousepadSearchBar *bar)
   gboolean     match_case;
 
   /* load some preferences */
-  match_case = mousepad_settings_get_boolean ("search-match-case");
+  match_case = mousepad_settings_get_boolean (MOUSEPAD_SCHEMA_SEARCH_STATE,
+                                              MOUSEPAD_STATE_SEARCH_MATCH_CASE);
 
   /* init variables */
   bar->highlight_id = 0;
@@ -240,7 +241,10 @@ mousepad_search_bar_init (MousepadSearchBar *bar)
   gtk_widget_show (check);
 
   /* keep the widgets in sync with the GSettings */
-  mousepad_settings_bind ("search-match-case", check, "active", G_SETTINGS_BIND_DEFAULT);
+  mousepad_settings_bind (MOUSEPAD_SCHEMA_SEARCH_STATE,
+                          MOUSEPAD_STATE_SEARCH_MATCH_CASE,
+                          check, "active",
+                          G_SETTINGS_BIND_DEFAULT);
 
   /* overflow menu item for when window is too narrow to show the tool bar item */
   bar->match_case_entry = menuitem = gtk_check_menu_item_new_with_mnemonic (_("Mat_ch Case"));
