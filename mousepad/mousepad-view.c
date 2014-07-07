@@ -138,6 +138,7 @@ enum
   PROP_FONT_NAME,
   PROP_SHOW_WHITESPACE,
   PROP_SHOW_LINE_ENDINGS,
+  PROP_COLOR_SCHEME,
   NUM_PROPERTIES
 };
 
@@ -191,6 +192,15 @@ mousepad_view_class_init (MousepadViewClass *klass)
                           "Whether line-endings are visualized in the view",
                           FALSE,
                           G_PARAM_CONSTRUCT | G_PARAM_READWRITE));
+
+  g_object_class_install_property (
+    gobject_class,
+    PROP_COLOR_SCHEME,
+    g_param_spec_string ("color-scheme",
+                         "ColorScheme",
+                         "The id of the syntax highlighting color scheme to use",
+                         NULL,
+                         G_PARAM_CONSTRUCT | G_PARAM_READWRITE));
 }
 
 
@@ -227,6 +237,7 @@ mousepad_view_init (MousepadView *view)
   mousepad_settings_bind ("view-show-right-margin", view, "show-right-margin", G_SETTINGS_BIND_DEFAULT);
   mousepad_settings_bind ("view-smart-home-end", view, "smart-home-end", G_SETTINGS_BIND_DEFAULT);
   mousepad_settings_bind ("view-tab-width", view, "tab-width", G_SETTINGS_BIND_DEFAULT);
+  mousepad_settings_bind ("view-color-scheme", view, "color-scheme", G_SETTINGS_BIND_DEFAULT);
 }
 
 
@@ -268,6 +279,9 @@ mousepad_view_set_property (GObject      *object,
     case PROP_SHOW_LINE_ENDINGS:
       mousepad_view_set_show_line_endings (view, g_value_get_boolean (value));
       break;
+    case PROP_COLOR_SCHEME:
+      mousepad_view_set_color_scheme (view, g_value_get_string (value));
+      break;
     default:
       G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
       break;
@@ -294,6 +308,9 @@ mousepad_view_get_property (GObject    *object,
       break;
     case PROP_SHOW_LINE_ENDINGS:
       g_value_set_boolean (value, mousepad_view_get_show_line_endings (view));
+      break;
+    case PROP_COLOR_SCHEME:
+      g_value_set_string (value, mousepad_view_get_color_scheme (view));
       break;
     default:
       G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
@@ -2554,4 +2571,52 @@ mousepad_view_get_show_line_endings (MousepadView *view)
   g_return_val_if_fail (MOUSEPAD_IS_VIEW (view), FALSE);
 
   return view->show_line_endings;
+}
+
+
+
+void
+mousepad_view_set_color_scheme (MousepadView *view,
+                                const gchar  *color_scheme)
+{
+  GtkSourceBuffer      *buffer;
+  GtkSourceStyleScheme *scheme;
+  g_return_if_fail (MOUSEPAD_IS_VIEW (view));
+
+  if (color_scheme == NULL || g_strcmp0 (color_scheme, "none") == 0)
+    scheme = NULL;
+  else
+    {
+      GtkSourceStyleSchemeManager *manager;
+      manager = gtk_source_style_scheme_manager_get_default ();
+      scheme = gtk_source_style_scheme_manager_get_scheme (manager, color_scheme);
+      g_warn_if_fail (scheme != NULL);
+    }
+
+  buffer = (GtkSourceBuffer*) gtk_text_view_get_buffer (GTK_TEXT_VIEW (view));
+  if (GTK_IS_SOURCE_BUFFER (buffer))
+    {
+      gtk_source_buffer_set_style_scheme (buffer, scheme);
+      gtk_source_buffer_set_highlight_syntax (buffer, (scheme != NULL));
+      g_object_notify (G_OBJECT (view), "color-scheme");
+    }
+}
+
+
+
+const gchar *
+mousepad_view_get_color_scheme (MousepadView *view)
+{
+  GtkSourceBuffer      *buffer;
+  GtkSourceStyleScheme *scheme;
+
+  g_return_val_if_fail (MOUSEPAD_IS_VIEW (view), NULL);
+
+  buffer = (GtkSourceBuffer*) gtk_text_view_get_buffer (GTK_TEXT_VIEW (view));
+
+  scheme = gtk_source_buffer_get_style_scheme (buffer);
+  if (GTK_IS_SOURCE_STYLE_SCHEME (scheme))
+    return gtk_source_style_scheme_get_id (scheme);
+
+  return "none";
 }

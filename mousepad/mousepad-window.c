@@ -4461,12 +4461,8 @@ static void
 mousepad_window_action_color_scheme (GtkToggleAction *action,
                                      MousepadWindow  *window)
 {
-  gint                  page_num = 0;
   guint                 scheme_id_hash;
-  GtkWidget            *page;
-  GtkTextBuffer        *buffer;
   GtkSourceStyleScheme *scheme = NULL;
-  MousepadDocument     *document;
   GSList               *schemes, *iter;
 
   mousepad_return_if_fail (MOUSEPAD_IS_WINDOW (window));
@@ -4499,19 +4495,6 @@ mousepad_window_action_color_scheme (GtkToggleAction *action,
                                     (scheme != NULL) ?
                                     gtk_source_style_scheme_get_id (scheme) :
                                     "none");
-
-      /* apply colour scheme to all open textviews */
-      while ((page = gtk_notebook_get_nth_page (GTK_NOTEBOOK (window->notebook), page_num)))
-        {
-          if (G_LIKELY (MOUSEPAD_IS_DOCUMENT (page)))
-            {
-              document = MOUSEPAD_DOCUMENT (page);
-              buffer = gtk_text_view_get_buffer (GTK_TEXT_VIEW (document->textview));
-              gtk_source_buffer_set_highlight_syntax (GTK_SOURCE_BUFFER (buffer), (scheme != NULL));
-              gtk_source_buffer_set_style_scheme (GTK_SOURCE_BUFFER (buffer), scheme);
-            }
-            page_num++;
-        }
     }
 }
 

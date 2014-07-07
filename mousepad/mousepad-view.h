@@ -110,6 +110,11 @@ void            mousepad_view_set_show_line_endings     (MousepadView      *view
 
 gboolean        mousepad_view_get_show_line_endings     (MousepadView      *view);
 
+void            mousepad_view_set_color_scheme          (MousepadView      *view,
+                                                         const gchar       *color_scheme);
+
+const gchar    *mousepad_view_get_color_scheme          (MousepadView      *view);
+
 G_END_DECLS
 
 #endif /* !__MOUSEPAD_VIEW_H__ */
