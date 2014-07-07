@@ -552,6 +552,17 @@ mousepad_window_update_statusbar_settings (MousepadWindow   *window,
 
 
 
+/* Called in response to any setting changed which affects the window title. */
+static void
+mousepad_window_update_window_title (MousepadWindow   *window,
+                                     gchar            *key,
+                                     MousepadSettings *settings)
+{
+  mousepad_window_set_title (window);
+}
+
+
+
 static void
 mousepad_window_init (MousepadWindow *window)
 {
@@ -715,6 +726,12 @@ mousepad_window_init (MousepadWindow *window)
   g_signal_connect_swapped (MOUSEPAD_GSETTINGS,
                             "changed::view-insert-spaces",
                             G_CALLBACK (mousepad_window_update_statusbar_settings),
+                            window);
+
+  /* update the window title when 'path-in-title' setting changes */
+  g_signal_connect_swapped (MOUSEPAD_GSETTINGS,
+                            "changed::window-path-in-title",
+                            G_CALLBACK (mousepad_window_update_window_title),
                             window);
 }
 
