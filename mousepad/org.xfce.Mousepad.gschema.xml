@@ -204,18 +204,6 @@
 
     <!-- Window preferences -->
 
-    <key name="window-height" type="i">
-      <default>480</default>
-      <summary>Window height</summary>
-      <description>The height of window in pixels.</description>
-    </key>
-
-    <key name="window-width" type="i">
-      <default>640</default>
-      <summary>Window width</summary>
-      <description>The width of windows in pixels.</description>
-    </key>
-
     <key name="window-statusbar-visible" type="b">
       <default>true</default>
       <summary>Statusbar visible</summary>
@@ -269,17 +257,23 @@
       </description>
     </key>
 
+    <key name="window-height" type="i">
+      <default>480</default>
+      <summary>Window height</summary>
+      <description>The height of window in pixels.</description>
+    </key>
+
+    <key name="window-width" type="i">
+      <default>640</default>
+      <summary>Window width</summary>
+      <description>The width of windows in pixels.</description>
+    </key>
+
     <key name="window-remember-geometry" type="b">
       <default>true</default>
       <summary>Remember window geometry</summary>
       <description>
-        When true the size and position of the window will be saved and restored
-        for the next window if possible. Note that this feature may not behave
-        as expected with all window managers as the size and/or position reported
-        may vary depending on the size of window decorations or the number and
-        resolutions of currently connected monitors. If your windows are showing
-        off-screen or in weird locations, set this to false to use your window
-        manager's default window positioning mechanism.
+        When true the size of the window will be saved and restored.
       </description>
     </key>
 
