@@ -124,20 +124,15 @@ mousepad_replace_dialog_bind_setting (MousepadReplaceDialog *dialog,
                                       gpointer               object,
                                       const gchar           *property)
 {
-  gchar *signal_name;
-
   mousepad_settings_bind (MOUSEPAD_SCHEMA_SEARCH_STATE, key,
                           object, property,
                           G_SETTINGS_BIND_DEFAULT);
 
-  signal_name = g_strdup_printf ("changed::%s", key);
-
-  g_signal_connect_swapped (MOUSEPAD_SEARCH_STATE_SETTINGS,
-                            signal_name,
-                            G_CALLBACK (mousepad_replace_dialog_settings_changed),
-                            dialog);
-
-  g_free (signal_name);
+  mousepad_settings_connect_changed (MOUSEPAD_SCHEMA_SEARCH_STATE,
+                                     key,
+                                     G_CALLBACK (mousepad_replace_dialog_settings_changed),
+                                     dialog,
+                                     G_CONNECT_SWAPPED);
 }
 
 
@@ -494,7 +489,7 @@ mousepad_replace_dialog_settings_changed (MousepadReplaceDialog *dialog,
                                           MousepadSettings      *settings)
 {
   /* reset occurences label */
-  if (g_strcmp0 (key, "search-replace-all") == 0)
+  if (g_strcmp0 (key, MOUSEPAD_STATE_SEARCH_REPLACE_ALL) == 0)
     gtk_label_set_text (GTK_LABEL (dialog->hits_label), NULL);
 
   mousepad_replace_dialog_changed (dialog);

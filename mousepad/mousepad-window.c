@@ -752,32 +752,38 @@ mousepad_window_init (MousepadWindow *window)
   g_signal_connect (G_OBJECT (window), "drag-data-received", G_CALLBACK (mousepad_window_drag_data_received), window);
 
   /* update the statusbar with certain settings */
-  g_signal_connect_swapped (MOUSEPAD_VIEW_SETTINGS,
-                            "changed::" MOUSEPAD_SETTING_TAB_WIDTH,
-                            G_CALLBACK (mousepad_window_update_statusbar_settings),
-                            window);
-  g_signal_connect_swapped (MOUSEPAD_VIEW_SETTINGS,
-                            "changed::" MOUSEPAD_SETTING_INSERT_SPACES,
-                            G_CALLBACK (mousepad_window_update_statusbar_settings),
-                            window);
+  mousepad_settings_connect_changed (MOUSEPAD_SCHEMA_VIEW_SETTINGS,
+                                     MOUSEPAD_SETTING_TAB_WIDTH,
+                                     G_CALLBACK (mousepad_window_update_statusbar_settings),
+                                     window,
+                                     G_CONNECT_SWAPPED);
+
+  mousepad_settings_connect_changed (MOUSEPAD_SCHEMA_VIEW_SETTINGS,
+                                     MOUSEPAD_SETTING_INSERT_SPACES,
+                                     G_CALLBACK (mousepad_window_update_statusbar_settings),
+                                     window,
+                                     G_CONNECT_SWAPPED);
 
   /* update the window title when 'path-in-title' setting changes */
-  g_signal_connect_swapped (MOUSEPAD_WINDOW_SETTINGS,
-                            "changed::" MOUSEPAD_SETTING_PATH_IN_TITLE,
-                            G_CALLBACK (mousepad_window_update_window_title),
-                            window);
+  mousepad_settings_connect_changed (MOUSEPAD_SCHEMA_WINDOW_SETTINGS,
+                                     MOUSEPAD_SETTING_PATH_IN_TITLE,
+                                     G_CALLBACK (mousepad_window_update_window_title),
+                                     window,
+                                     G_CONNECT_SWAPPED);
 
   /* update the tabs when 'always-show-tabs' setting changes */
-  g_signal_connect_swapped (MOUSEPAD_WINDOW_SETTINGS,
-                            "changed::" MOUSEPAD_SETTING_ALWAYS_SHOW_TABS,
-                            G_CALLBACK (mousepad_window_update_tabs),
-                            window);
+  mousepad_settings_connect_changed (MOUSEPAD_SCHEMA_WINDOW_SETTINGS,
+                                     MOUSEPAD_SETTING_ALWAYS_SHOW_TABS,
+                                     G_CALLBACK (mousepad_window_update_tabs),
+                                     window,
+                                     G_CONNECT_SWAPPED);
 
   /* update the recent items menu when 'window-recent-menu-items' setting changes */
-  g_signal_connect_swapped (MOUSEPAD_WINDOW_SETTINGS,
-                            "changed::" MOUSEPAD_SETTING_RECENT_MENU_ITEMS,
-                            G_CALLBACK (mousepad_window_update_recent_menu),
-                            window);
+  mousepad_settings_connect_changed (MOUSEPAD_SCHEMA_WINDOW_SETTINGS,
+                                     MOUSEPAD_SETTING_RECENT_MENU_ITEMS,
+                                     G_CALLBACK (mousepad_window_update_recent_menu),
+                                     window,
+                                     G_CONNECT_SWAPPED);
 }
 
 

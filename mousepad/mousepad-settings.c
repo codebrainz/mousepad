@@ -231,6 +231,41 @@ mousepad_settings_bind (MousepadSchema     schema,
 
 
 
+gulong
+mousepad_settings_connect_changed (MousepadSchema     schema,
+                                   const gchar       *key,
+                                   GCallback          callback,
+                                   gpointer           user_data,
+                                   GSignalFlags       connect_flags)
+{
+  gulong            signal_id;
+  gchar            *signal_name;
+  MousepadSettings *settings;
+
+  g_return_val_if_fail (schema < MOUSEPAD_NUM_SCHEMAS, 0);
+  g_return_val_if_fail (callback != NULL, 0);
+
+  if (key != NULL)
+    signal_name = g_strdup_printf ("changed::%s", key);
+  else
+    signal_name = g_strdup ("changed");
+
+  settings = mousepad_settings_get_default ();
+
+  signal_id = g_signal_connect_data (settings->settings[schema],
+                                     signal_name,
+                                     callback,
+                                     user_data,
+                                     NULL,
+                                     connect_flags);
+
+  g_free (signal_name);
+
+  return signal_id;
+}
+
+
+
 gboolean
 mousepad_settings_get_boolean (MousepadSchema  schema,
                                const gchar    *key)

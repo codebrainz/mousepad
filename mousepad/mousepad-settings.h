@@ -41,6 +41,12 @@ void              mousepad_settings_bind            (MousepadSchema     schema,
                                                      const gchar       *prop,
                                                      GSettingsBindFlags flags);
 
+gulong            mousepad_settings_connect_changed (MousepadSchema     schema,
+                                                     const gchar       *key,
+                                                     GCallback          callback,
+                                                     gpointer           user_data,
+                                                     GSignalFlags       connect_flags);
+
 gboolean          mousepad_settings_get_boolean     (MousepadSchema     schema,
                                                      const gchar       *key);
 
