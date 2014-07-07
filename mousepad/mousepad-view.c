@@ -31,11 +31,20 @@
 
 
 
+#define MOUSEPAD_VIEW_DEFAULT_FONT "Monospace"
 #define mousepad_view_get_buffer(view) (gtk_text_view_get_buffer (GTK_TEXT_VIEW (view)))
 
 
 
 static void      mousepad_view_finalize                      (GObject            *object);
+static void      mousepad_view_set_property                  (GObject            *object,
+                                                              guint               prop_id,
+                                                              const GValue       *value,
+                                                              GParamSpec         *pspec);
+static void      mousepad_view_get_property                  (GObject            *object,
+                                                              guint               prop_id,
+                                                              GValue             *value,
+                                                              GParamSpec         *pspec);
 static void      mousepad_view_style_set                     (GtkWidget          *widget,
                                                               GtkStyle           *previous_style);
 static gint      mousepad_view_expose                        (GtkWidget          *widget,
@@ -112,6 +121,18 @@ struct _MousepadView
 
   /* if the selection is in editing mode */
   guint               selection_editing : 1;
+
+  /* the font used in the view */
+  gchar              *font_name;
+};
+
+
+
+enum
+{
+  PROP_0,
+  PROP_FONT_NAME,
+  NUM_PROPERTIES
 };
 
 
@@ -128,6 +149,8 @@ mousepad_view_class_init (MousepadViewClass *klass)
 
   gobject_class = G_OBJECT_CLASS (klass);
   gobject_class->finalize = mousepad_view_finalize;
+  gobject_class->set_property = mousepad_view_set_property;
+  gobject_class->get_property = mousepad_view_get_property;
 
   widget_class = GTK_WIDGET_CLASS (klass);
   widget_class->expose_event         = mousepad_view_expose;
@@ -135,47 +158,15 @@ mousepad_view_class_init (MousepadViewClass *klass)
   widget_class->key_press_event      = mousepad_view_key_press_event;
   widget_class->button_press_event   = mousepad_view_button_press_event;
   widget_class->button_release_event = mousepad_view_button_release_event;
-}
 
-
-
-void
-mousepad_view_set_font_name (MousepadView *view,
-                             const gchar  *font_name)
-{
-  PangoFontDescription *font_desc;
-
-  g_return_if_fail (MOUSEPAD_IS_VIEW (view));
-
-  if (font_name == NULL)
-    font_name = "Monospace";
-
-  font_desc = pango_font_description_from_string (font_name);
-
-  if (G_LIKELY (font_desc != NULL))
-    {
-#if GTK_CHECK_VERSION(3, 0, 0)
-      gtk_widget_override_font (GTK_WIDGET (view), font_desc);
-#else
-      gtk_widget_modify_font (GTK_WIDGET (view), font_desc);
-#endif
-      pango_font_description_free (font_desc);
-    }
-  else
-    g_critical ("Invalid font-name given: %s", font_name);
-}
-
-
-
-/* when the view-font-name setting changes, update the view to use that font */
-static void
-mousepad_view_font_name_setting_changed (MousepadView     *view,
-                                         gchar            *key,
-                                         MousepadSettings *settings)
-{
-  gchar *font_name = mousepad_settings_get_string ("view-font-name");
-  mousepad_view_set_font_name (view, font_name);
-  g_free (font_name);
+  g_object_class_install_property (
+    gobject_class,
+    PROP_FONT_NAME,
+    g_param_spec_string ("font-name",
+                         "FontName",
+                         "The name of the font to use in the view",
+                         MOUSEPAD_VIEW_DEFAULT_FONT,
+                         G_PARAM_READWRITE));
 }
 
 
@@ -183,8 +174,6 @@ mousepad_view_font_name_setting_changed (MousepadView     *view,
 static void
 mousepad_view_init (MousepadView *view)
 {
-  gchar *font_name;
-
   /* initialize selection variables */
   view->selection_timeout_id = 0;
   view->selection_tag = NULL;
@@ -202,17 +191,7 @@ mousepad_view_init (MousepadView *view)
   /* bind Gsettings */
   mousepad_settings_bind ("view-line-numbers", view, "show-line-numbers", G_SETTINGS_BIND_DEFAULT);
   mousepad_settings_bind ("view-auto-indent", view, "auto-indent", G_SETTINGS_BIND_DEFAULT);
-
-  /* Set the initial font-name */
-  font_name = mousepad_settings_get_string ("view-font-name");
-  mousepad_view_set_font_name (view, font_name);
-  g_free (font_name);
-
-  /* connect to Gsettings change notifications */
-  g_signal_connect_swapped (MOUSEPAD_GSETTINGS,
-                            "changed::view-font-name",
-                            G_CALLBACK (mousepad_view_font_name_setting_changed),
-                            view);
+  mousepad_settings_bind ("view-font-name", view, "font-name", G_SETTINGS_BIND_DEFAULT);
 }
 
 
@@ -231,6 +210,48 @@ mousepad_view_finalize (GObject *object)
     g_slist_free (view->selection_marks);
 
   (*G_OBJECT_CLASS (mousepad_view_parent_class)->finalize) (object);
+}
+
+
+
+static void
+mousepad_view_set_property (GObject      *object,
+                            guint         prop_id,
+                            const GValue *value,
+                            GParamSpec   *pspec)
+{
+  MousepadView *view = MOUSEPAD_VIEW (object);
+
+  switch (prop_id)
+    {
+    case PROP_FONT_NAME:
+      mousepad_view_set_font_name (view, g_value_get_string (value));
+      break;
+    default:
+      G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
+      break;
+    }
+}
+
+
+
+static void
+mousepad_view_get_property (GObject    *object,
+                            guint       prop_id,
+                            GValue     *value,
+                            GParamSpec *pspec)
+{
+  MousepadView *view = MOUSEPAD_VIEW (object);
+
+  switch (prop_id)
+    {
+    case PROP_FONT_NAME:
+      g_value_set_string (value, mousepad_view_get_font_name (view));
+      break;
+    default:
+      G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
+      break;
+    }
 }
 
 
@@ -2413,4 +2434,51 @@ mousepad_view_get_insert_spaces (MousepadView *view)
   mousepad_return_val_if_fail (MOUSEPAD_IS_VIEW (view), FALSE);
 
   return gtk_source_view_get_insert_spaces_instead_of_tabs (GTK_SOURCE_VIEW (view));
+}
+
+
+
+void
+mousepad_view_set_font_name (MousepadView *view,
+                             const gchar  *font_name)
+{
+  PangoFontDescription *font_desc;
+
+  g_return_if_fail (MOUSEPAD_IS_VIEW (view));
+
+  /* Passing NULL resets to the default font */
+  if (font_name == NULL)
+    font_name = MOUSEPAD_VIEW_DEFAULT_FONT;
+
+  font_desc = pango_font_description_from_string (font_name);
+  if (G_LIKELY (font_desc != NULL))
+    {
+      /* Override the GtkWidget's font */
+#if GTK_CHECK_VERSION(3, 0, 0)
+      gtk_widget_override_font (GTK_WIDGET (view), font_desc);
+#else
+      gtk_widget_modify_font (GTK_WIDGET (view), font_desc);
+#endif
+
+      /* Save the normalized representation of the font as a string */
+      g_free (view->font_name);
+      view->font_name = pango_font_description_to_string (font_desc);
+
+      /* Notify interested parties that the property has changed */
+      g_object_notify (G_OBJECT (view), "font-name");
+    }
+  else
+    g_critical ("Invalid font-name given: %s", font_name);
+
+  pango_font_description_free (font_desc);
+}
+
+
+
+const gchar *
+mousepad_view_get_font_name (MousepadView *view)
+{
+  g_return_val_if_fail (MOUSEPAD_IS_VIEW (view), NULL);
+
+  return view->font_name;
 }

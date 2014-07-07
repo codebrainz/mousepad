@@ -110,6 +110,8 @@ gboolean        mousepad_view_get_insert_spaces         (MousepadView      *view
 void            mousepad_view_set_font_name             (MousepadView      *view,
                                                          const gchar       *font_name);
 
+const gchar    *mousepad_view_get_font_name             (MousepadView      *view);
+
 G_END_DECLS
 
 #endif /* !__MOUSEPAD_VIEW_H__ */
