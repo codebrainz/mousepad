@@ -914,7 +914,7 @@ mousepad_window_save_geometry_timer (gpointer user_data)
   GDK_THREADS_ENTER ();
 
   /* check if we should remember the window geometry */
-  remember_geometry = mousepad_settings_get_boolean ("misc-remember-geometry");
+  remember_geometry = mousepad_settings_get_boolean ("window-remember-geometry");
   if (G_LIKELY (remember_geometry))
     {
       /* check if the window is still visible */
@@ -1290,7 +1290,7 @@ mousepad_window_set_title (MousepadWindow *window)
   mousepad_return_if_fail (MOUSEPAD_IS_WINDOW (window));
 
   /* whether to show the full path */
-  show_full_path = mousepad_settings_get_boolean ("misc-path-in-title");
+  show_full_path = mousepad_settings_get_boolean ("window-path-in-title");
 
   /* name we display in the title */
   if (G_UNLIKELY (show_full_path && mousepad_document_get_filename (document)))
@@ -1483,7 +1483,7 @@ mousepad_window_notebook_added (GtkNotebook     *notebook,
   npages = gtk_notebook_get_n_pages (GTK_NOTEBOOK (window->notebook));
 
   /* check tabs should always be visible */
-  always_show_tabs = mousepad_settings_get_boolean ("misc-always-show-tabs");
+  always_show_tabs = mousepad_settings_get_boolean ("window-always-show-tabs");
 
   /* change the visibility of the tabs accordingly */
   gtk_notebook_set_show_tabs (GTK_NOTEBOOK (window->notebook), always_show_tabs || (npages > 1));
@@ -1535,7 +1535,7 @@ mousepad_window_notebook_removed (GtkNotebook     *notebook,
   else
     {
       /* check tabs should always be visible */
-      always_show_tabs = mousepad_settings_get_boolean ("misc-always-show-tabs");
+      always_show_tabs = mousepad_settings_get_boolean ("window-always-show-tabs");
 
       /* change the visibility of the tabs accordingly */
       gtk_notebook_set_show_tabs (GTK_NOTEBOOK (window->notebook), always_show_tabs || (npages > 1));
@@ -2047,7 +2047,7 @@ mousepad_window_menu_tab_sizes (MousepadWindow *window)
   lock_menu_updates++;
 
   /* get the default tab sizes and active tab size */
-  tmp = mousepad_settings_get_string ("misc-default-tab-sizes");
+  tmp = mousepad_settings_get_string ("window-default-tab-sizes");
 
   /* get sizes array and free the temp string */
   tab_sizes = g_strsplit (tmp, ",", -1);
@@ -2230,7 +2230,7 @@ mousepad_window_update_actions (MousepadWindow *window)
       page_num = gtk_notebook_page_num (notebook, GTK_WIDGET (document));
 
       /* whether we cycle tabs */
-      cycle_tabs = mousepad_settings_get_boolean ("misc-cycle-tabs");
+      cycle_tabs = mousepad_settings_get_boolean ("window-cycle-tabs");
 
       /* set the sensitivity of the back and forward buttons in the go menu */
       action = gtk_action_group_get_action (window->action_group, "back");
@@ -2560,7 +2560,7 @@ mousepad_window_recent_menu_idle (gpointer user_data)
     }
 
   /* get the recent menu limit number */
-  n = mousepad_settings_get_int ("misc-recent-menu-items");
+  n = mousepad_settings_get_int ("window-recent-menu-items");
 
   /* append the items to the menu */
   for (li = filtered, i = 1; n > 0 && li != NULL; li = li->next)

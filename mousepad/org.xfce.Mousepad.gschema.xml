@@ -224,9 +224,7 @@
       </description>
     </key>
 
-    <!-- Other preferences -->
-
-    <key name="misc-always-show-tabs" type="b">
+    <key name="window-always-show-tabs" type="b">
       <default>false</default>
       <summary>Always show tabs</summary>
       <description>
@@ -235,7 +233,7 @@
       </description>
     </key>
 
-    <key name="misc-cycle-tabs" type="b">
+    <key name="window-cycle-tabs" type="b">
       <default>false</default>
       <summary>Cycle tabs</summary>
       <description>
@@ -244,7 +242,7 @@
       </description>
     </key>
 
-    <key name="misc-default-tab-sizes" type="s">
+    <key name="window-default-tab-sizes" type="s">
       <default>'2,3,4,8'</default>
       <summary>Default tab sizes</summary>
       <description>
@@ -253,7 +251,7 @@
       </description>
     </key>
 
-    <key name="misc-path-in-title" type="b">
+    <key name="window-path-in-title" type="b">
       <default>false</default>
       <summary>Show path in window title</summary>
       <description>
@@ -262,7 +260,7 @@
       </description>
     </key>
 
-    <key name="misc-recent-menu-items" type="i">
+    <key name="window-recent-menu-items" type="i">
       <range min="1" max="100"/>
       <default>10</default>
       <summary>Number of recent documents</summary>
@@ -271,7 +269,7 @@
       </description>
     </key>
 
-    <key name="misc-remember-geometry" type="b">
+    <key name="window-remember-geometry" type="b">
       <default>true</default>
       <summary>Remember window geometry</summary>
       <description>
