@@ -100,6 +100,7 @@ static void              mousepad_window_set_title                    (MousepadW
 static void              mousepad_window_populate_statusbar_popup     (MousepadWindow         *window,
                                                                        GtkMenu                *menu,
                                                                        MousepadStatusbar      *statusbar);
+static void              mousepad_window_create_statusbar             (MousepadWindow         *window);
 static void              mousepad_window_statusbar_filetype_toggled   (GtkCheckMenuItem       *item,
                                                                        MousepadWindow         *window);
 
@@ -560,9 +561,7 @@ mousepad_window_init (MousepadWindow *window)
   GtkWidget     *separator;
   GtkWidget     *ebox;
   GtkWidget     *item;
-  GtkAction     *action;
   gint           width, height;
-  gboolean       statusbar_visible;
 
   /* initialize stuff */
   window->save_geometry_timer_id = 0;
@@ -595,7 +594,6 @@ mousepad_window_init (MousepadWindow *window)
   /* read settings from the preferences */
   width = mousepad_settings_get_int ("window-width");
   height = mousepad_settings_get_int ("window-height");
-  statusbar_visible = mousepad_settings_get_boolean ("window-statusbar-visible");
 
   /* set the default window size */
   gtk_window_set_default_size (GTK_WINDOW (window), width, height);
@@ -702,9 +700,8 @@ mousepad_window_init (MousepadWindow *window)
   gtk_box_pack_start (GTK_BOX (window->box), window->notebook, TRUE, TRUE, PADDING);
   gtk_widget_show (window->notebook);
 
-  /* check if we should display the statusbar by default */
-  action = gtk_action_group_get_action (window->action_group, "statusbar");
-  gtk_toggle_action_set_active (GTK_TOGGLE_ACTION (action), statusbar_visible);
+  /* create the statusbar */
+  mousepad_window_create_statusbar (window);
 
   /* allow drops in the window */
   gtk_drag_dest_set (GTK_WIDGET (window), GTK_DEST_DEFAULT_MOTION | GTK_DEST_DEFAULT_DROP, drop_targets, G_N_ELEMENTS (drop_targets), GDK_ACTION_COPY | GDK_ACTION_MOVE);
@@ -3427,6 +3424,36 @@ mousepad_window_menu_languages (MousepadWindow *window)
 
 
 
+static void
+mousepad_window_create_statusbar (MousepadWindow *window)
+{
+  GtkAction *action;
+
+  /* setup a new statusbar */
+  window->statusbar = mousepad_statusbar_new ();
+
+  /* bind the GSetting to the GtkAction that controls the statusbar */
+  action = gtk_action_group_get_action (window->action_group, "statusbar");
+  mousepad_settings_bind ("window-statusbar-visible", action, "active", G_SETTINGS_BIND_DEFAULT);
+
+  /* pack the statusbar into the window UI */
+  gtk_box_pack_end (GTK_BOX (window->box), window->statusbar, FALSE, FALSE, 0);
+
+  /* overwrite toggle signal */
+  g_signal_connect_swapped (G_OBJECT (window->statusbar), "enable-overwrite",
+                            G_CALLBACK (mousepad_window_action_statusbar_overwrite), window);
+
+  /* populate filetype popup menu signal */
+  g_signal_connect_swapped (G_OBJECT (window->statusbar), "populate-filetype-popup",
+                            G_CALLBACK (mousepad_window_populate_statusbar_popup), window);
+
+  /* update the statusbar items */
+  if (MOUSEPAD_IS_DOCUMENT (window->active))
+    mousepad_document_send_signals (window->active);
+}
+
+
+
 /**
  * Menu Actions
  *
@@ -4542,47 +4569,8 @@ mousepad_window_action_statusbar (GtkToggleAction *action,
   /* whether we show the statusbar */
   show_statusbar = gtk_toggle_action_get_active (action);
 
-  /* check if we should drop the statusbar */
-  if (!show_statusbar && window->statusbar != NULL)
-    {
-      /* destroy the statusbar */
-      gtk_widget_destroy (window->statusbar);
-      window->statusbar = NULL;
-    }
-  else if (show_statusbar && window->statusbar == NULL)
-    {
-      /* setup a new statusbar */
-      window->statusbar = mousepad_statusbar_new ();
-
-      mousepad_settings_bind ("window-statusbar-visible",
-                              window->statusbar,
-                              "visible",
-                              G_SETTINGS_BIND_DEFAULT);
-
-      gtk_box_pack_end (GTK_BOX (window->box), window->statusbar, FALSE, FALSE, 0);
-      gtk_widget_show (window->statusbar);
-
-      /* overwrite toggle signal */
-      g_signal_connect_swapped (G_OBJECT (window->statusbar), "enable-overwrite",
-                                G_CALLBACK (mousepad_window_action_statusbar_overwrite), window);
-
-      /* populate filetype popup menu signal */
-      g_signal_connect_swapped (G_OBJECT (window->statusbar), "populate-filetype-popup",
-                                G_CALLBACK (mousepad_window_populate_statusbar_popup), window);
-
-      /* update the statusbar items */
-      if (window->active)
-        {
-          /* debug check */
-          mousepad_return_if_fail (MOUSEPAD_IS_DOCUMENT (window->active));
-
-          /* ask document to resend the cursor status signals */
-          mousepad_document_send_signals (window->active);
-        }
-    }
-
-  /* remember the setting */
-  mousepad_settings_set_boolean ("window-statusbar-visible", show_statusbar);
+  /* show/hide the statusbar accordingly */
+  gtk_widget_set_visible (window->statusbar, show_statusbar);
 }
 
 
