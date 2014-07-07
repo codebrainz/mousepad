@@ -177,7 +177,7 @@ mousepad_document_init (MousepadDocument *document)
 {
   GtkTargetList        *target_list;
   gboolean              word_wrap, insert_spaces;
-  gchar                *font_name, *color_scheme;
+  gchar                *color_scheme;
   gint                  tab_size;
   GtkSourceStyleScheme *scheme = NULL;
 
@@ -218,14 +218,12 @@ mousepad_document_init (MousepadDocument *document)
 
   /* read all the default settings */
   word_wrap = mousepad_settings_get_boolean ("view-word-wrap");
-  font_name = mousepad_settings_get_string ("view-font-name");
   tab_size = mousepad_settings_get_int ("view-tab-size");
   insert_spaces = mousepad_settings_get_boolean ("view-insert-spaces");
   color_scheme = mousepad_settings_get_string ("view-color-scheme");
 
   /* set all the settings */
   mousepad_document_set_word_wrap (document, word_wrap);
-  mousepad_document_set_font (document, font_name);
   mousepad_view_set_tab_size (document->textview, tab_size);
   mousepad_view_set_insert_spaces (document->textview, insert_spaces);
 
@@ -235,7 +233,6 @@ mousepad_document_init (MousepadDocument *document)
   gtk_source_buffer_set_style_scheme (GTK_SOURCE_BUFFER (document->buffer), scheme);
 
   /* cleanup */
-  g_free (font_name);
   g_free (color_scheme);
 
   /* attach signals to the text view and buffer */
@@ -482,25 +479,6 @@ mousepad_document_set_word_wrap (MousepadDocument *document,
   /* set the wrapping mode */
   gtk_text_view_set_wrap_mode (GTK_TEXT_VIEW (document->textview),
                                word_wrap ? GTK_WRAP_WORD : GTK_WRAP_NONE);
-}
-
-
-
-void
-mousepad_document_set_font (MousepadDocument *document,
-                            const gchar      *font_name)
-{
-  PangoFontDescription *font_desc;
-
-  mousepad_return_if_fail (MOUSEPAD_IS_DOCUMENT (document));
-
-  if (G_LIKELY (font_name))
-    {
-      /* set the widget font */
-      font_desc = pango_font_description_from_string (font_name);
-      gtk_widget_modify_font (GTK_WIDGET (document->textview), font_desc);
-      pango_font_description_free (font_desc);
-    }
 }
 
 

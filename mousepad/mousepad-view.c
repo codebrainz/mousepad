@@ -139,9 +139,52 @@ mousepad_view_class_init (MousepadViewClass *klass)
 
 
 
+void
+mousepad_view_set_font_name (MousepadView *view,
+                             const gchar  *font_name)
+{
+  PangoFontDescription *font_desc;
+
+  g_return_if_fail (MOUSEPAD_IS_VIEW (view));
+
+  if (font_name == NULL)
+    font_name = "Monospace";
+
+  font_desc = pango_font_description_from_string (font_name);
+
+  if (G_LIKELY (font_desc != NULL))
+    {
+#if GTK_CHECK_VERSION(3, 0, 0)
+      gtk_widget_override_font (GTK_WIDGET (view), font_desc);
+#else
+      gtk_widget_modify_font (GTK_WIDGET (view), font_desc);
+#endif
+      pango_font_description_free (font_desc);
+    }
+  else
+    g_critical ("Invalid font-name given: %s", font_name);
+}
+
+
+
+/* when the view-font-name setting changes, update the view to use that font */
+static void
+mousepad_view_font_name_setting_changed (MousepadView     *view,
+                                         gchar            *key,
+                                         MousepadSettings *settings)
+{
+  gchar *font_name = mousepad_settings_get_string ("view-font-name");
+  mousepad_view_set_font_name (view, font_name);
+  g_free (font_name);
+}
+
+
+
 static void
 mousepad_view_init (MousepadView *view)
 {
+  gchar *font_name;
+
   /* initialize selection variables */
   view->selection_timeout_id = 0;
   view->selection_tag = NULL;
@@ -159,6 +202,17 @@ mousepad_view_init (MousepadView *view)
   /* bind Gsettings */
   mousepad_settings_bind ("view-line-numbers", view, "show-line-numbers", G_SETTINGS_BIND_DEFAULT);
   mousepad_settings_bind ("view-auto-indent", view, "auto-indent", G_SETTINGS_BIND_DEFAULT);
+
+  /* Set the initial font-name */
+  font_name = mousepad_settings_get_string ("view-font-name");
+  mousepad_view_set_font_name (view, font_name);
+  g_free (font_name);
+
+  /* connect to Gsettings change notifications */
+  g_signal_connect_swapped (MOUSEPAD_GSETTINGS,
+                            "changed::view-font-name",
+                            G_CALLBACK (mousepad_view_font_name_setting_changed),
+                            view);
 }
 
 

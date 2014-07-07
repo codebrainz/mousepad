@@ -107,6 +107,8 @@ gint            mousepad_view_get_tab_size              (MousepadView      *view
 
 gboolean        mousepad_view_get_insert_spaces         (MousepadView      *view);
 
+void            mousepad_view_set_font_name             (MousepadView      *view,
+                                                         const gchar       *font_name);
 
 G_END_DECLS
 

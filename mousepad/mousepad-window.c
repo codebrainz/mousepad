@@ -4401,9 +4401,7 @@ mousepad_window_action_select_font (GtkAction      *action,
                                     MousepadWindow *window)
 {
   GtkWidget        *dialog;
-  MousepadDocument *document;
   gchar            *font_name;
-  gint              i;
 
   mousepad_return_if_fail (MOUSEPAD_IS_WINDOW (window));
   mousepad_return_if_fail (MOUSEPAD_IS_DOCUMENT (window->active));
@@ -4427,22 +4425,6 @@ mousepad_window_action_select_font (GtkAction      *action,
 
       /* store the font in the preferences */
       mousepad_settings_set_string ("view-font-name", font_name);
-
-      /* apply the font in all documents in this window */
-      for (i = 0; i < gtk_notebook_get_n_pages (GTK_NOTEBOOK (window->notebook)); i++)
-        {
-          /* get the document */
-          document = MOUSEPAD_DOCUMENT (gtk_notebook_get_nth_page (GTK_NOTEBOOK (window->notebook), i));
-
-          /* debug check */
-          mousepad_return_if_fail (MOUSEPAD_IS_DOCUMENT (document));
-
-          /* set the font */
-          mousepad_document_set_font (document, font_name);
-
-          /* update the tab array */
-          mousepad_view_set_tab_size (document->textview, mousepad_view_get_tab_size (document->textview));
-        }
 
       /* cleanup */
       g_free (font_name);
