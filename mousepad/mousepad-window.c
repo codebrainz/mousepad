@@ -180,6 +180,9 @@ static void              mousepad_window_update_actions               (MousepadW
 static gboolean          mousepad_window_update_gomenu_idle           (gpointer                user_data);
 static void              mousepad_window_update_gomenu_idle_destroy   (gpointer                user_data);
 static void              mousepad_window_update_gomenu                (MousepadWindow         *window);
+static void              mousepad_window_update_tabs                  (MousepadWindow         *window,
+                                                                       gchar                  *key,
+                                                                       MousepadSettings       *settings);
 static void              mousepad_window_menu_color_schemes           (MousepadWindow         *window);
 static void              mousepad_window_menu_languages               (MousepadWindow         *window);
 
@@ -563,6 +566,20 @@ mousepad_window_update_window_title (MousepadWindow   *window,
 
 
 
+/* Called when always-show-tabs setting changes to update the UI. */
+static void
+mousepad_window_update_tabs (MousepadWindow   *window,
+                             gchar            *key,
+                             MousepadSettings *settings)
+{
+  gint     n_pages = gtk_notebook_get_n_pages (GTK_NOTEBOOK (window->notebook));
+  gboolean always_show = mousepad_settings_get_boolean ("window-always-show-tabs");
+  gtk_notebook_set_show_tabs (GTK_NOTEBOOK (window->notebook),
+                              (n_pages > 1 || always_show) ? TRUE : FALSE);
+}
+
+
+
 static void
 mousepad_window_init (MousepadWindow *window)
 {
@@ -732,6 +749,12 @@ mousepad_window_init (MousepadWindow *window)
   g_signal_connect_swapped (MOUSEPAD_GSETTINGS,
                             "changed::window-path-in-title",
                             G_CALLBACK (mousepad_window_update_window_title),
+                            window);
+
+  /* update the tabs when 'always-show-tabs' setting changes */
+  g_signal_connect_swapped (MOUSEPAD_GSETTINGS,
+                            "changed::window-always-show-tabs",
+                            G_CALLBACK (mousepad_window_update_tabs),
                             window);
 }
 
@@ -1475,8 +1498,6 @@ mousepad_window_notebook_added (GtkNotebook     *notebook,
                                 MousepadWindow  *window)
 {
   MousepadDocument *document = MOUSEPAD_DOCUMENT (page);
-  gboolean          always_show_tabs;
-  gint              npages;
 
   mousepad_return_if_fail (MOUSEPAD_IS_WINDOW (window));
   mousepad_return_if_fail (MOUSEPAD_IS_DOCUMENT (document));
@@ -1493,14 +1514,8 @@ mousepad_window_notebook_added (GtkNotebook     *notebook,
   g_signal_connect_swapped (G_OBJECT (document->buffer), "modified-changed", G_CALLBACK (mousepad_window_modified_changed), window);
   g_signal_connect (G_OBJECT (document->textview), "populate-popup", G_CALLBACK (mousepad_window_menu_textview_popup), window);
 
-  /* get the number of pages */
-  npages = gtk_notebook_get_n_pages (GTK_NOTEBOOK (window->notebook));
-
-  /* check tabs should always be visible */
-  always_show_tabs = mousepad_settings_get_boolean ("window-always-show-tabs");
-
   /* change the visibility of the tabs accordingly */
-  gtk_notebook_set_show_tabs (GTK_NOTEBOOK (window->notebook), always_show_tabs || (npages > 1));
+  mousepad_window_update_tabs (window, NULL, NULL);
 
   /* update the go menu */
   mousepad_window_update_gomenu (window);
@@ -1514,7 +1529,6 @@ mousepad_window_notebook_removed (GtkNotebook     *notebook,
                                   guint            page_num,
                                   MousepadWindow  *window)
 {
-  gboolean          always_show_tabs;
   gint              npages;
   MousepadDocument *document = MOUSEPAD_DOCUMENT (page);
 
@@ -1548,11 +1562,8 @@ mousepad_window_notebook_removed (GtkNotebook     *notebook,
     }
   else
     {
-      /* check tabs should always be visible */
-      always_show_tabs = mousepad_settings_get_boolean ("window-always-show-tabs");
-
       /* change the visibility of the tabs accordingly */
-      gtk_notebook_set_show_tabs (GTK_NOTEBOOK (window->notebook), always_show_tabs || (npages > 1));
+      mousepad_window_update_tabs (window, NULL, NULL);
 
       /* update the go menu */
       mousepad_window_update_gomenu (window);
