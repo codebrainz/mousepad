@@ -22,6 +22,7 @@
 #include <mousepad/mousepad-settings.h>
 #include <mousepad/mousepad-application.h>
 #include <mousepad/mousepad-document.h>
+#include <mousepad/mousepad-prefs-dialog.h>
 #include <mousepad/mousepad-replace-dialog.h>
 #include <mousepad/mousepad-window.h>
 
@@ -48,10 +49,13 @@ struct _MousepadApplicationClass
 
 struct _MousepadApplication
 {
-  GObject  __parent__;
+  GObject    __parent__;
 
   /* internal list of all the opened windows */
-  GSList  *windows;
+  GSList    *windows;
+
+  /* the preferences dialog when shown */
+  GtkWidget *prefs_dialog;
 };
 
 
@@ -76,6 +80,8 @@ mousepad_application_init (MousepadApplication *application)
 {
   gchar *filename;
 
+  application->prefs_dialog = NULL;
+
   /* check if we have a saved accel map */
   filename = mousepad_util_get_save_location (MOUSEPAD_ACCELS_RELPATH, FALSE);
   if (G_LIKELY (filename != NULL))
@@ -96,6 +102,9 @@ mousepad_application_finalize (GObject *object)
   MousepadApplication *application = MOUSEPAD_APPLICATION (object);
   GSList              *li;
   gchar               *filename;
+
+  if (GTK_IS_WIDGET (application->prefs_dialog))
+    gtk_widget_destroy (application->prefs_dialog);
 
   /* flush the history items of the replace dialog
    * this is a bit of an ugly place, but cleaning on a window close
@@ -297,4 +306,50 @@ mousepad_application_new_window_with_files (MousepadApplication  *application,
 
   /* show the window */
   gtk_widget_show (window);
+}
+
+
+
+static void
+mousepad_application_prefs_dialog_response (MousepadApplication *application,
+                                            gint                 response_id,
+                                            MousepadPrefsDialog *dialog)
+{
+  gtk_widget_destroy (GTK_WIDGET (application->prefs_dialog));
+  application->prefs_dialog = NULL;
+}
+
+
+
+void
+mousepad_application_show_preferences (MousepadApplication  *application,
+                                       GtkWindow            *transient_for)
+{
+  /* if the dialog isn't already shown, create one */
+  if (! GTK_IS_WIDGET (application->prefs_dialog))
+    {
+      application->prefs_dialog = mousepad_prefs_dialog_new ();
+
+      /* destroy the dialog when it's close button is pressed */
+      g_signal_connect_swapped (application->prefs_dialog,
+                                "response",
+                                G_CALLBACK (mousepad_application_prefs_dialog_response),
+                                application);
+    }
+
+  /* if no transient window was specified, used the first application window
+   * or NULL if no windows exists (shouldn't happen) */
+  if (! GTK_IS_WINDOW (transient_for))
+    {
+      if (application->windows && GTK_IS_WINDOW (application->windows->data))
+        transient_for = GTK_WINDOW (application->windows->data);
+      else
+        transient_for = NULL;
+    }
+
+  /* associate it with one of the windows */
+  gtk_window_set_transient_for (GTK_WINDOW (application->prefs_dialog), transient_for);
+
+  /* show it to the user */
+  gtk_window_present (GTK_WINDOW (application->prefs_dialog));
 }

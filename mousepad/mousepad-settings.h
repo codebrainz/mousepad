@@ -68,6 +68,13 @@ void              mousepad_settings_set_string      (MousepadSchema     schema,
                                                      const gchar       *key,
                                                      const gchar       *value);
 
+gint              mousepad_settings_get_enum        (MousepadSchema     schema,
+                                                     const gchar       *key);
+
+void              mousepad_settings_set_enum        (MousepadSchema     schema,
+                                                     const gchar       *key,
+                                                     gint               value);
+
 /* Setting names */
 #define MOUSEPAD_SETTING_AUTO_INDENT            "auto-indent"
 #define MOUSEPAD_SETTING_FONT_NAME              "font-name"

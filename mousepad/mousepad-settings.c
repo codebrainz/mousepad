@@ -296,7 +296,7 @@ mousepad_settings_get_int (MousepadSchema  schema,
                            const gchar    *key)
 {
   MousepadSettings *settings;
-  g_return_val_if_fail (schema < MOUSEPAD_NUM_SCHEMAS, FALSE);
+  g_return_val_if_fail (schema < MOUSEPAD_NUM_SCHEMAS, 0);
   settings = mousepad_settings_get_default ();
   return g_settings_get_int (settings->settings[schema], key);
 }
@@ -321,7 +321,7 @@ mousepad_settings_get_string (MousepadSchema  schema,
                               const gchar    *key)
 {
   MousepadSettings *settings;
-  g_return_val_if_fail (schema < MOUSEPAD_NUM_SCHEMAS, FALSE);
+  g_return_val_if_fail (schema < MOUSEPAD_NUM_SCHEMAS, NULL);
   settings = mousepad_settings_get_default ();
   return g_settings_get_string (settings->settings[schema], key);
 }
@@ -337,4 +337,29 @@ mousepad_settings_set_string (MousepadSchema  schema,
   g_return_if_fail (schema < MOUSEPAD_NUM_SCHEMAS);
   settings = mousepad_settings_get_default ();
   g_settings_set_string (settings->settings[schema], key, value);
+}
+
+
+
+gint
+mousepad_settings_get_enum (MousepadSchema schema,
+                            const gchar   *key)
+{
+  MousepadSettings *settings;
+  g_return_val_if_fail (schema < MOUSEPAD_NUM_SCHEMAS, 0);
+  settings = mousepad_settings_get_default ();
+  return g_settings_get_enum (settings->settings[schema], key);
+}
+
+
+
+void
+mousepad_settings_set_enum (MousepadSchema schema,
+                            const gchar   *key,
+                            gint           value)
+{
+  MousepadSettings *settings;
+  g_return_if_fail (schema < MOUSEPAD_NUM_SCHEMAS);
+  settings = mousepad_settings_get_default ();
+  g_settings_set_enum (settings->settings[schema], key, value);
 }
