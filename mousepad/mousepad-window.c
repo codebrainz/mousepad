@@ -288,6 +288,8 @@ static void              mousepad_window_action_find_previous         (GtkAction
 static void              mousepad_window_action_replace_destroy       (MousepadWindow         *window);
 static void              mousepad_window_action_replace               (GtkAction              *action,
                                                                        MousepadWindow         *window);
+static void              mousepad_window_action_preferences           (GtkAction              *action,
+                                                                       MousepadWindow         *window);
 static void              mousepad_window_action_select_font           (GtkAction              *action,
                                                                        MousepadWindow         *window);
 static void              mousepad_window_action_color_scheme          (GtkToggleAction        *action,
@@ -433,6 +435,7 @@ static const GtkActionEntry action_entries[] =
     { "find-next", NULL, N_("Find _Next"), "F3", N_("Search forwards for the same text"), G_CALLBACK (mousepad_window_action_find_next), },
     { "find-previous", NULL, N_("Find _Previous"), "<shift>F3", N_("Search backwards for the same text"), G_CALLBACK (mousepad_window_action_find_previous), },
     { "replace", GTK_STOCK_FIND_AND_REPLACE, N_("Find and Rep_lace..."), NULL, N_("Search for and replace text"), G_CALLBACK (mousepad_window_action_replace), },
+    { "preferences", GTK_STOCK_PREFERENCES, N_("Preferences"), NULL, N_("Show the preferences dialog"), G_CALLBACK (mousepad_window_action_preferences), },
 
   { "view-menu", NULL, N_("_View"), NULL, NULL, NULL, },
     { "font", GTK_STOCK_SELECT_FONT, N_("Select F_ont..."), NULL, N_("Change the editor font"), G_CALLBACK (mousepad_window_action_select_font), },
@@ -4496,6 +4499,15 @@ mousepad_window_action_replace (GtkAction      *action,
 
 
 static void
+mousepad_window_action_preferences (GtkAction      *action,
+                                    MousepadWindow *window)
+{
+  mousepad_window_show_preferences (window);
+}
+
+
+
+static void
 mousepad_window_action_select_font (GtkAction      *action,
                                     MousepadWindow *window)
 {
@@ -5083,4 +5095,15 @@ mousepad_window_action_about (GtkAction      *action,
 
   /* show about dialog */
   mousepad_dialogs_show_about (GTK_WINDOW (window));
+}
+
+
+
+void
+mousepad_window_show_preferences (MousepadWindow  *window)
+{
+  MousepadApplication *application;
+  g_return_if_fail (MOUSEPAD_IS_WINDOW (window));
+  application = mousepad_application_get ();
+  mousepad_application_show_preferences (application, GTK_WINDOW (window));
 }

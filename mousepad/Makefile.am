@@ -33,6 +33,9 @@ mousepad_SOURCES = \
 	mousepad-encoding-dialog.h \
 	mousepad-file.c \
 	mousepad-file.h \
+	mousepad-prefs-dialog.c \
+	mousepad-prefs-dialog.h \
+	mousepad-prefs-dialog-ui.h \
 	mousepad-print.c \
 	mousepad-print.h \
 	mousepad-private.h \
@@ -94,11 +97,13 @@ endif
 if MAINTAINER_MODE
 DISTCLEANFILES = \
 	$(mousepad_built_sources) \
-	mousepad-window-ui.h
+	mousepad-window-ui.h \
+	mousepad-prefs-dialog-ui.h
 
 BUILT_SOURCES = \
 	$(mousepad_built_sources) \
-	mousepad-window-ui.h
+	mousepad-window-ui.h \
+	mousepad-prefs-dialog-ui.h
 
 if HAVE_DBUS
 mousepad-dbus-infos.h: mousepad-dbus-infos.xml Makefile
@@ -107,6 +112,9 @@ endif
 
 mousepad-window-ui.h: mousepad-window-ui.xml Makefile
 	$(AM_V_GEN) exo-csource --strip-comments --strip-content --static --name=mousepad_window_ui $< > $@
+
+mousepad-prefs-dialog-ui.h: mousepad-prefs-dialog.glade Makefile
+	$(AM_V_GEN) exo-csource --strip-comments --strip-content --static --name=mousepad_prefs_dialog_ui $< > $@
 
 mousepad-marshal.h: mousepad-marshal.list Makefile
 	$(AM_V_GEN) glib-genmarshal --header --prefix=_mousepad_marshal $< > $@
@@ -120,6 +128,7 @@ EXTRA_DIST = \
 	mousepad-dbus-infos.xml \
 	mousepad-marshal.list \
 	mousepad-window-ui.xml \
+	mousepad-prefs-dialog.glade \
 	org.xfce.Mousepad.gschema.xml
 
 gsettings_SCHEMAS = org.xfce.Mousepad.gschema.xml

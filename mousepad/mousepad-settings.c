@@ -379,6 +379,25 @@ mousepad_setting_connect (const gchar  *path,
 
 
 
+void
+mousepad_setting_disconnect (const gchar *path,
+                             gulong       handler_id)
+{
+  MousepadSchema schema;
+
+  g_return_if_fail (path != NULL);
+  g_return_if_fail (handler_id > 0);
+
+  schema = mousepad_settings_parse_path (path, NULL);
+
+  if (G_LIKELY (schema != MOUSEPAD_NUM_SCHEMAS))
+    g_signal_handler_disconnect (mousepad_settings[schema], handler_id);
+  else
+    g_warn_if_reached ();
+}
+
+
+
 gboolean
 mousepad_setting_get (const gchar *path,
                       const gchar *format_string,
@@ -515,4 +534,52 @@ mousepad_setting_set_string (const gchar *path,
                              const gchar *value)
 {
   mousepad_setting_set (path, "s", value);
+}
+
+
+
+gint
+mousepad_setting_get_enum (const gchar *path)
+{
+  gint           result = 0;
+  const gchar   *key_name;
+  MousepadSchema schema;
+
+  g_return_val_if_fail (path != NULL, FALSE);
+
+  schema = mousepad_settings_parse_path (path, &key_name);
+
+  if (G_LIKELY (schema != MOUSEPAD_NUM_SCHEMAS))
+    {
+      MOUSEPAD_SETTINGS_LOCK ();
+      result = g_settings_get_enum (mousepad_settings[schema], key_name);
+      MOUSEPAD_SETTINGS_UNLOCK ();
+    }
+  else
+    g_warn_if_reached ();
+
+  return result;
+}
+
+
+
+void
+mousepad_setting_set_enum (const gchar *path,
+                           gint         value)
+{
+  const gchar   *key_name;
+  MousepadSchema schema;
+
+  g_return_val_if_fail (path != NULL, FALSE);
+
+  schema = mousepad_settings_parse_path (path, &key_name);
+
+  if (G_LIKELY (schema != MOUSEPAD_NUM_SCHEMAS))
+    {
+      MOUSEPAD_SETTINGS_LOCK ();
+      g_settings_set_enum (mousepad_settings[schema], key_name, value);
+      MOUSEPAD_SETTINGS_UNLOCK ();
+    }
+  else
+    g_warn_if_reached ();
 }

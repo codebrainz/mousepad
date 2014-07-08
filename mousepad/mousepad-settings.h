@@ -53,6 +53,9 @@ gulong   mousepad_setting_connect     (const gchar       *path,
                                        gpointer           user_data,
                                        GSignalFlags       connect_flags);
 
+void     mousepad_setting_disconnect  (const gchar       *path,
+                                       gulong             handler_id);
+
 /* functions for reading and writing settings */
 
 gboolean mousepad_setting_get         (const gchar       *path,
@@ -80,6 +83,11 @@ gchar   *mousepad_setting_get_string  (const gchar       *path);
 void     mousepad_setting_set_string  (const gchar       *path,
                                        const gchar       *value);
 
+gint     mousepad_setting_get_enum    (const gchar       *path);
+
+void     mousepad_setting_set_enum    (const gchar       *path,
+                                       gint               value);
+
 /* wrappers for above read/write functions with shorter arguments */
 
 #define MOUSEPAD_SETTING_BIND(setting, object, prop, flags) \
@@ -88,15 +96,20 @@ void     mousepad_setting_set_string  (const gchar       *path,
 #define MOUSEPAD_SETTING_CONNECT(setting, callback, user_data, connect_flags) \
   mousepad_setting_connect (MOUSEPAD_SETTING_##setting, callback, user_data, connect_flags)
 
+#define MOUSEPAD_SETTING_DISCONNECT(setting, id) \
+  mousepad_setting_disconnect (MOUSEPAD_SETTING_##setting, id)
+
 #define MOUSEPAD_SETTING_GET(setting, ...)           mousepad_setting_get (MOUSEPAD_SETTING_##setting, __VA_ARGS__)
 #define MOUSEPAD_SETTING_GET_BOOLEAN(setting)        mousepad_setting_get_boolean (MOUSEPAD_SETTING_##setting)
 #define MOUSEPAD_SETTING_GET_INT(setting)            mousepad_setting_get_int (MOUSEPAD_SETTING_##setting)
 #define MOUSEPAD_SETTING_GET_STRING(setting)         mousepad_setting_get_string (MOUSEPAD_SETTING_##setting)
+#define MOUSEPAD_SETTING_GET_ENUM(setting)           mousepad_setting_get_enum (MOUSEPAD_SETTING_##setting)
 
 #define MOUSEPAD_SETTING_SET(setting, ...)           mousepad_setting_set (MOUSEPAD_SETTING_##setting, __VA_ARGS__)
 #define MOUSEPAD_SETTING_SET_BOOLEAN(setting, value) mousepad_setting_set_boolean (MOUSEPAD_SETTING_##setting, value)
 #define MOUSEPAD_SETTING_SET_INT(setting, value)     mousepad_setting_set_int (MOUSEPAD_SETTING_##setting, value)
 #define MOUSEPAD_SETTING_SET_STRING(setting, value)  mousepad_setting_set_string (MOUSEPAD_SETTING_##setting, value)
+#define MOUSEPAD_SETTING_SET_ENUM(setting, value)    mousepad_setting_set_enum (MOUSEPAD_SETTING_##setting, value)
 
 G_END_DECLS
 

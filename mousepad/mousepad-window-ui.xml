@@ -62,6 +62,8 @@
       <menuitem action="find-next" />
       <menuitem action="find-previous" />
       <menuitem action="replace" />
+      <separator />
+      <menuitem action="preferences" />
     </menu>
 
     <menu action="view-menu">
