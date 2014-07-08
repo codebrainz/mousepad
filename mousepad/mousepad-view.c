@@ -128,6 +128,8 @@ struct _MousepadView
   /* whitespace visualization */
   gboolean            show_whitespace;
   gboolean            show_line_endings;
+
+  gchar              *color_scheme;
 };
 
 
@@ -183,7 +185,7 @@ mousepad_view_class_init (MousepadViewClass *klass)
                           "ShowWhitespace",
                           "Whether whitespace is visualized in the view",
                           FALSE,
-                          G_PARAM_CONSTRUCT | G_PARAM_READWRITE));
+                          G_PARAM_READWRITE));
 
   g_object_class_install_property (
     gobject_class,
@@ -192,7 +194,7 @@ mousepad_view_class_init (MousepadViewClass *klass)
                           "ShowLineEndings",
                           "Whether line-endings are visualized in the view",
                           FALSE,
-                          G_PARAM_CONSTRUCT | G_PARAM_READWRITE));
+                          G_PARAM_READWRITE));
 
   g_object_class_install_property (
     gobject_class,
@@ -201,7 +203,7 @@ mousepad_view_class_init (MousepadViewClass *klass)
                          "ColorScheme",
                          "The id of the syntax highlighting color scheme to use",
                          NULL,
-                         G_PARAM_CONSTRUCT | G_PARAM_READWRITE));
+                         G_PARAM_READWRITE));
 
   g_object_class_install_property (
     gobject_class,
@@ -210,9 +212,29 @@ mousepad_view_class_init (MousepadViewClass *klass)
                           "WordWrap",
                           "Whether to virtually wrap long lines in the view",
                           FALSE,
-                          G_PARAM_CONSTRUCT | G_PARAM_READWRITE));
+                          G_PARAM_READWRITE));
 }
 
+
+
+static void
+mousepad_view_buffer_changed (MousepadView *view,
+                              GParamSpec   *pspec,
+                              gpointer      user_data)
+{
+  GtkSourceBuffer *buffer;
+
+  buffer = (GtkSourceBuffer*) gtk_text_view_get_buffer (GTK_TEXT_VIEW (view));
+  if (GTK_IS_SOURCE_BUFFER (buffer))
+    {
+      GtkSourceStyleSchemeManager *manager;
+      GtkSourceStyleScheme        *scheme;
+
+      manager = gtk_source_style_scheme_manager_get_default ();
+      scheme = gtk_source_style_scheme_manager_get_scheme (manager, view->color_scheme);
+      gtk_source_buffer_set_style_scheme (buffer, scheme);
+    }
+}
 
 
 static void
@@ -224,6 +246,13 @@ mousepad_view_init (MousepadView *view)
   view->selection_marks = NULL;
   view->selection_length = 0;
   view->selection_editing = FALSE;
+  view->color_scheme = g_strdup ("none");
+
+  /* make sure any buffers set on the view get the color scheme applied to them */
+  g_signal_connect (view,
+                    "notify::buffer",
+                    G_CALLBACK (mousepad_view_buffer_changed),
+                    NULL);
 
   /* reset drag coordinates */
   view->selection_start_x = view->selection_end_x = -1;
@@ -272,6 +301,9 @@ mousepad_view_finalize (GObject *object)
   /* free the selection marks list (marks are owned by the buffer) */
   if (G_UNLIKELY (view->selection_marks != NULL))
     g_slist_free (view->selection_marks);
+
+  /* cleanup color scheme name */
+  g_free (view->color_scheme);
 
   (*G_OBJECT_CLASS (mousepad_view_parent_class)->finalize) (object);
 }
@@ -2603,25 +2635,16 @@ void
 mousepad_view_set_color_scheme (MousepadView *view,
                                 const gchar  *color_scheme)
 {
-  GtkSourceBuffer      *buffer;
-  GtkSourceStyleScheme *scheme;
   g_return_if_fail (MOUSEPAD_IS_VIEW (view));
 
-  if (color_scheme == NULL || g_strcmp0 (color_scheme, "none") == 0)
-    scheme = NULL;
-  else
+  if (g_strcmp0 (color_scheme, view->color_scheme) != 0)
     {
-      GtkSourceStyleSchemeManager *manager;
-      manager = gtk_source_style_scheme_manager_get_default ();
-      scheme = gtk_source_style_scheme_manager_get_scheme (manager, color_scheme);
-      g_warn_if_fail (scheme != NULL);
-    }
+      g_free (view->color_scheme);
+      view->color_scheme = g_strdup (color_scheme);
 
-  buffer = (GtkSourceBuffer*) gtk_text_view_get_buffer (GTK_TEXT_VIEW (view));
-  if (GTK_IS_SOURCE_BUFFER (buffer))
-    {
-      gtk_source_buffer_set_style_scheme (buffer, scheme);
-      gtk_source_buffer_set_highlight_syntax (buffer, (scheme != NULL));
+      /* update the buffer if there is one */
+      mousepad_view_buffer_changed (view, NULL, NULL);
+
       g_object_notify (G_OBJECT (view), "color-scheme");
     }
 }
@@ -2631,18 +2654,9 @@ mousepad_view_set_color_scheme (MousepadView *view,
 const gchar *
 mousepad_view_get_color_scheme (MousepadView *view)
 {
-  GtkSourceBuffer      *buffer;
-  GtkSourceStyleScheme *scheme;
-
   g_return_val_if_fail (MOUSEPAD_IS_VIEW (view), NULL);
 
-  buffer = (GtkSourceBuffer*) gtk_text_view_get_buffer (GTK_TEXT_VIEW (view));
-
-  scheme = gtk_source_buffer_get_style_scheme (buffer);
-  if (GTK_IS_SOURCE_STYLE_SCHEME (scheme))
-    return gtk_source_style_scheme_get_id (scheme);
-
-  return "none";
+  return view->color_scheme;
 }
 
 
