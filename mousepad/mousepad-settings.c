@@ -1,6 +1,7 @@
 #include <mousepad/mousepad-private.h>
 #include <mousepad/mousepad-settings.h>
 #include <stdlib.h>
+#include <ctype.h>
 
 #ifdef MOUSEPAD_SETTINGS_KEYFILE_BACKEND
 /* Needed to use keyfile GSettings backend */
@@ -9,35 +10,21 @@
 #endif
 
 
-struct MousepadSettings_
+
+typedef enum
 {
-  GObject parent;
-  GSettings *settings[MOUSEPAD_NUM_SCHEMAS];
-};
+  MOUSEPAD_SCHEMA_VIEW_SETTINGS,
+  MOUSEPAD_SCHEMA_WINDOW_SETTINGS,
+  MOUSEPAD_SCHEMA_SEARCH_STATE,
+  MOUSEPAD_SCHEMA_WINDOW_STATE,
+  MOUSEPAD_NUM_SCHEMAS
+}
+MousepadSchema;
 
 
 
-struct MousepadSettingsClass_
-{
-  GObjectClass parent_class;
-};
-
-
-
-static void mousepad_settings_finalize (GObject *object);
-
-
-
-G_DEFINE_TYPE (MousepadSettings, mousepad_settings, G_TYPE_OBJECT)
-
-
-
-/* Global instance, accessed by mousepad_settings_get_default() */
-static MousepadSettings *default_settings = NULL;
-
-
-
-static const gchar *mousepad_schema_ids[MOUSEPAD_NUM_SCHEMAS] =
+static const gchar *
+mousepad_schema_ids[MOUSEPAD_NUM_SCHEMAS] =
 {
   "org.xfce.mousepad.preferences.view",
   "org.xfce.mousepad.preferences.window",
@@ -47,102 +34,41 @@ static const gchar *mousepad_schema_ids[MOUSEPAD_NUM_SCHEMAS] =
 
 
 
-GType
-mousepad_schema_get_type (void)
-{
-  static GType type = 0;
-  if (G_UNLIKELY (type == 0))
-    {
-      static const GEnumValue values[] =
-      {
-        { MOUSEPAD_SCHEMA_VIEW_SETTINGS,   "MOUSEPAD_SCHEMA_VIEW_SETTINGS",   "view-settings" },
-        { MOUSEPAD_SCHEMA_WINDOW_SETTINGS, "MOUSEPAD_SCHEMA_WINDOW_SETTINGS", "window-settings" },
-        { MOUSEPAD_SCHEMA_SEARCH_STATE,    "MOUSEPAD_SCHEMA_SEARCH_STATE",    "search-state" },
-        { MOUSEPAD_SCHEMA_WINDOW_STATE,    "MOUSEPAD_SCHEMA_WINDOW_STATE",    "window-state" },
-        { 0, NULL, NULL }
-      };
-     type = g_enum_register_static ("MousepadSchema", values);
-    }
-  return type;
-}
+static GSettings *mousepad_settings[MOUSEPAD_NUM_SCHEMAS] = { NULL };
+static gint       mousepad_settings_init_count            = 0;
 
 
 
-static void
-mousepad_settings_class_init (MousepadSettingsClass *klass)
-{
-  GObjectClass *g_object_class;
-
-  g_object_class = G_OBJECT_CLASS (klass);
-
-  g_object_class->finalize = mousepad_settings_finalize;
-}
+G_LOCK_DEFINE (settings_lock);
+#define MOUSEPAD_SETTINGS_LOCK()   G_LOCK (settings_lock)
+#define MOUSEPAD_SETTINGS_UNLOCK() G_UNLOCK (settings_lock)
 
 
 
-static void
-mousepad_settings_finalize (GObject *object)
+void
+mousepad_settings_finalize (void)
 {
   gint i;
-  MousepadSettings *self = MOUSEPAD_SETTINGS (object);
 
-  G_OBJECT_CLASS (mousepad_settings_parent_class)->finalize (object);
+  MOUSEPAD_SETTINGS_LOCK ();
 
   g_settings_sync ();
 
-  for (i = 0; i < MOUSEPAD_NUM_SCHEMAS; i++)
+  mousepad_settings_init_count--;
+  if (mousepad_settings_init_count > 0)
     {
-      if (G_IS_SETTINGS (self->settings[i]))
-        g_object_unref (self->settings[i]);
+      MOUSEPAD_SETTINGS_UNLOCK ();
+      return;
     }
-}
-
-
-
-static void
-mousepad_settings_init (MousepadSettings *self)
-{
-  gint i;
-
-#ifdef MOUSEPAD_SETTINGS_KEYFILE_BACKEND
-  GSettingsBackend *backend;
-  gchar *conf_file;
-
-  /* Path inside user's config directory */
-  conf_file = g_build_filename (g_get_user_config_dir (),
-                                "Mousepad",
-                                "settings.conf",
-                                NULL);
-
-  /* Create a keyfile backend */
-  backend = g_keyfile_settings_backend_new (conf_file, "/", NULL);
-  g_free (conf_file);
+  MOUSEPAD_SETTINGS_UNLOCK ();
 
   for (i = 0; i < MOUSEPAD_NUM_SCHEMAS; i++)
     {
-      self->settings[i] = g_object_new (G_TYPE_SETTINGS,
-                                        "backend", backend,
-                                        "schema-id", mousepad_schema_ids[i],
-                                        NULL);
-      /* TODO: need to cleanup backend reference? */
-    }
-#else
-  for (i = 0; i < MOUSEPAD_NUM_SCHEMAS; i++)
-    self->settings[i] = g_settings_new (mousepad_schema_ids[i]);
-#endif
-}
-
-
-
-/* Called at exit to cleanup the MousepadSettings singleton */
-static void
-mousepad_settings_cleanup_default (void)
-{
-  /* cleanup the singleton settings instance */
-  if (MOUSEPAD_IS_SETTINGS (default_settings))
-    {
-      g_object_unref (default_settings);
-      default_settings = NULL;
+      if (G_IS_SETTINGS (mousepad_settings[i]))
+        {
+          g_object_unref (mousepad_settings[i]);
+          mousepad_settings[i] = NULL;
+        }
     }
 }
 
@@ -151,11 +77,14 @@ mousepad_settings_cleanup_default (void)
 static void
 mousepad_settings_update_gsettings_schema_dir (void)
 {
-  const gchar *old_value = g_getenv ("GSETTINGS_SCHEMA_DIR");
-  /* Append to existing env. var. */
-  if (old_value != NULL)
+  const gchar *old_value;
+
+  old_value = g_getenv ("GSETTINGS_SCHEMA_DIR");
+  /* Append to existing env. var. if not in there yet */
+  if (old_value != NULL &&
+      strstr (old_value, MOUSEPAD_GSETTINGS_SCHEMA_DIR) != NULL)
     {
-      gchar *new_value;
+      gchar       *new_value;
 #ifndef G_OS_WIN32
       const gchar *pathsep = ":";
 #else
@@ -174,92 +103,276 @@ mousepad_settings_update_gsettings_schema_dir (void)
 
 
 
-/* The first time it's called, it constructs the singleton instance that
- * is always returned and is automatically cleaned up during normal exit. */
-MousepadSettings *
-mousepad_settings_get_default (void)
+void
+mousepad_settings_init (void)
 {
-  static gsize default_initialized = 0;
 
-  if (g_once_init_enter (&default_initialized))
+  MOUSEPAD_SETTINGS_LOCK ();
+
+  if (mousepad_settings_init_count == 0)
     {
+      gint i;
 
       /* If we're installed in an unusual location, we still want to load
        * the schema so enforce this with the relevant environment variable. */
       mousepad_settings_update_gsettings_schema_dir ();
 
-      default_settings = g_object_new (MOUSEPAD_TYPE_SETTINGS, NULL);
+#ifdef MOUSEPAD_SETTINGS_KEYFILE_BACKEND
+{
+      GSettingsBackend *backend;
+      gchar            *conf_file;
 
-      /* Auto-cleanup at exit */
-      atexit (mousepad_settings_cleanup_default);
+      /* Path inside user's config directory */
+      conf_file = g_build_filename (g_get_user_config_dir (),
+                                    "Mousepad",
+                                    "settings.conf",
+                                    NULL);
 
-      /* Never enter this block again */
-      g_once_init_leave (&default_initialized, 1);
+      /* Create a keyfile backend */
+      backend = g_keyfile_settings_backend_new (conf_file, "/", NULL);
+      g_free (conf_file);
+
+      for (i = 0; i < MOUSEPAD_NUM_SCHEMAS; i++)
+        {
+          mousepad_settings[i] = g_object_new (G_TYPE_SETTINGS,
+                                               "backend", backend,
+                                               "schema-id", mousepad_schema_ids[i],
+                                               NULL);
+          /* TODO: need to cleanup backend reference? */
+        }
+}
+#else
+      for (i = 0; i < MOUSEPAD_NUM_SCHEMAS; i++)
+        mousepad_settings[i] = g_settings_new (mousepad_schema_ids[i]);
+#endif
     }
 
-  g_warn_if_fail (MOUSEPAD_IS_SETTINGS (default_settings));
+    mousepad_settings_init_count++;
 
-  return default_settings;
+    MOUSEPAD_SETTINGS_UNLOCK ();
 }
 
 
 
-GSettings *
-mousepad_settings_get_from_schema (MousepadSettings *settings,
-                                   MousepadSchema    schema)
+/* checks that string starts and ends with alnum character and contains only
+ * alnum, underscore or dash/hyphen characters */
+static gboolean
+mousepad_settings_check_path_part (const gchar *s,
+                                   gint         len)
 {
-  g_return_val_if_fail (MOUSEPAD_IS_SETTINGS (settings), NULL);
-  g_return_val_if_fail (schema < MOUSEPAD_NUM_SCHEMAS, NULL);
+  gint i;
 
-  return settings->settings[schema];
+  if (! isalnum (s[0]) || ! isalnum (s[len-1]))
+    return FALSE;
+
+  for (i = 0; i < len ; i++)
+    {
+      if (! isalnum (s[i]) && s[i] != '-' && s[i] != '_')
+        return FALSE;
+    }
+
+  return TRUE;
 }
 
 
 
-void
-mousepad_settings_bind (MousepadSchema     schema,
-                        const gchar       *key,
-                        gpointer           object,
-                        const gchar       *prop,
-                        GSettingsBindFlags flags)
+
+static gboolean
+mousepad_settings_parse_path_names (const gchar  *path,
+                                    const gchar **type,
+                                    gint         *type_length,
+                                    const gchar **schema,
+                                    gint         *schema_length,
+                                    const gchar **key,
+                                    gint         *key_length,
+                                    gboolean      validate_parts)
 {
-  MousepadSettings *settings;
-  g_return_if_fail (schema < MOUSEPAD_NUM_SCHEMAS);
-  settings = mousepad_settings_get_default ();
-  g_settings_bind (settings->settings[schema], key, object, prop, flags);
+  const gchar *t=NULL, *s=NULL, *k=NULL, *p;
+  gint         tl=0, sl=0, kl=0;
+
+  if (G_UNLIKELY (! path || ! path[0]))
+    return FALSE;
+
+  p = path;
+  while (*p)
+    {
+      if (*p == '/' || p == path /* first char but not a slash */)
+        {
+          if (t == NULL)
+            {
+              /* skip leading slash if exists */
+              t = (*p == '/') ? ++p : p++;
+              continue;
+            }
+          else if (s == NULL)
+            {
+              tl = p - t;
+              s = ++p;
+              continue;
+            }
+          else if (k == NULL)
+            {
+              sl = p - s;
+              k = ++p;
+              continue;
+            }
+        }
+      ++p;
+    }
+
+  kl = p - k;
+  /* remove trailing slash if it exists */
+  if (k[kl - 1] == '/')
+    kl--;
+
+  /* sanity checking on what was actually parsed (or not) */
+  if (!t || !s || !k || !tl || !sl || !kl ||
+      (validate_parts &&
+       (! mousepad_settings_check_path_part (t, tl) ||
+        ! mousepad_settings_check_path_part (s, sl) ||
+        ! mousepad_settings_check_path_part (k, kl))))
+    {
+        return FALSE;
+    }
+
+  /* return desired values to caller */
+  if (type)          *type          = t;
+  if (type_length)   *type_length   = tl;
+  if (schema)        *schema        = s;
+  if (schema_length) *schema_length = sl;
+  if (key)           *key           = k;
+  if (key_length)    *key_length    = kl;
+
+  return TRUE;
+}
+
+
+
+static MousepadSchema
+mousepad_settings_schema_from_names (const gchar *type,
+                                     gint         type_len,
+                                     const gchar *name,
+                                     gint         name_len)
+{
+  if (type_len == 11 && strncmp ("preferences", type, type_len) == 0)
+    {
+      if (name_len == 4 && strncmp ("view", name, name_len) == 0)
+        return MOUSEPAD_SCHEMA_VIEW_SETTINGS;
+      else if (name_len == 6 && strncmp ("window", name, name_len) == 0)
+        return MOUSEPAD_SCHEMA_WINDOW_SETTINGS;
+    }
+  else if (type_len == 5 && strncmp ("state", type, type_len) == 0)
+    {
+      if (name_len == 6 && strncmp ("search", name, name_len) == 0)
+        return MOUSEPAD_SCHEMA_SEARCH_STATE;
+      else if (name_len == 6 && strncmp ("window", name, name_len) == 0)
+        return MOUSEPAD_SCHEMA_WINDOW_STATE;
+    }
+  return MOUSEPAD_NUM_SCHEMAS; /* not found */
+}
+
+
+
+static MousepadSchema
+mousepad_settings_parse_path (const gchar  *path,
+                              const gchar **key_name)
+{
+  const gchar *type_name, *schema_name;
+  gint         type_len, schema_len, key_len;
+
+  if (mousepad_settings_parse_path_names (path,
+                                          &type_name,
+                                          &type_len,
+                                          &schema_name,
+                                          &schema_len,
+                                          key_name,
+                                          &key_len,
+                                          TRUE))
+    {
+      MousepadSchema  schema;
+
+      schema = mousepad_settings_schema_from_names (type_name,
+                                                    type_len,
+                                                    schema_name,
+                                                    schema_len);
+
+      if (schema == MOUSEPAD_NUM_SCHEMAS && key_name != NULL)
+        *key_name = NULL;
+
+      return schema;
+    }
+  else if (key_name != NULL)
+    {
+      *key_name = NULL;
+    }
+
+  return MOUSEPAD_NUM_SCHEMAS;
+}
+
+
+
+gboolean
+mousepad_setting_bind (const gchar       *path,
+                       gpointer           object,
+                       const gchar       *prop,
+                       GSettingsBindFlags flags)
+{
+  gboolean       result = FALSE;
+  const gchar   *key_name;
+  MousepadSchema schema;
+
+  g_return_val_if_fail (path != NULL, FALSE);
+  g_return_val_if_fail (object != NULL, FALSE);
+  g_return_val_if_fail (prop != NULL, FALSE);
+
+
+  schema = mousepad_settings_parse_path (path, &key_name);
+
+  if (G_LIKELY (schema != MOUSEPAD_NUM_SCHEMAS))
+    {
+      MOUSEPAD_SETTINGS_LOCK ();
+      g_settings_bind (mousepad_settings[schema], key_name, object, prop, flags);
+      MOUSEPAD_SETTINGS_UNLOCK ();
+      result = TRUE;
+    }
+
+  return result;
 }
 
 
 
 gulong
-mousepad_settings_connect_changed (MousepadSchema     schema,
-                                   const gchar       *key,
-                                   GCallback          callback,
-                                   gpointer           user_data,
-                                   GSignalFlags       connect_flags)
+mousepad_setting_connect (const gchar  *path,
+                           GCallback    callback,
+                           gpointer     user_data,
+                           GSignalFlags connect_flags)
 {
-  gulong            signal_id;
-  gchar            *signal_name;
-  MousepadSettings *settings;
+  gulong         signal_id = 0;
+  const gchar   *key_name;
+  MousepadSchema schema;
 
-  g_return_val_if_fail (schema < MOUSEPAD_NUM_SCHEMAS, 0);
+  g_return_val_if_fail (path != NULL, 0);
   g_return_val_if_fail (callback != NULL, 0);
 
-  if (key != NULL)
-    signal_name = g_strdup_printf ("changed::%s", key);
-  else
-    signal_name = g_strdup ("changed");
+  schema = mousepad_settings_parse_path (path, &key_name);
 
-  settings = mousepad_settings_get_default ();
+  if (G_LIKELY (schema != MOUSEPAD_NUM_SCHEMAS))
+    {
+      gchar *signal_name;
 
-  signal_id = g_signal_connect_data (settings->settings[schema],
-                                     signal_name,
-                                     callback,
-                                     user_data,
-                                     NULL,
-                                     connect_flags);
+      signal_name = g_strdup_printf ("changed::%s", key_name);
 
-  g_free (signal_name);
+      MOUSEPAD_SETTINGS_LOCK ();
+      signal_id = g_signal_connect_data (mousepad_settings[schema],
+                                         signal_name,
+                                         callback,
+                                         user_data,
+                                         NULL,
+                                         connect_flags);
+      MOUSEPAD_SETTINGS_UNLOCK ();
+
+      g_free (signal_name);
+    }
 
   return signal_id;
 }
@@ -267,74 +380,139 @@ mousepad_settings_connect_changed (MousepadSchema     schema,
 
 
 gboolean
-mousepad_settings_get_boolean (MousepadSchema  schema,
-                               const gchar    *key)
+mousepad_setting_get (const gchar *path,
+                      const gchar *format_string,
+                      ...)
 {
-  MousepadSettings *settings;
-  g_return_val_if_fail (schema < MOUSEPAD_NUM_SCHEMAS, FALSE);
-  settings = mousepad_settings_get_default ();
-  return g_settings_get_boolean (settings->settings[schema], key);
+  gboolean       result = FALSE;
+  const gchar   *key_name;
+  MousepadSchema schema;
+
+  g_return_val_if_fail (path != NULL, FALSE);
+  g_return_val_if_fail (format_string != NULL, FALSE);
+
+  schema = mousepad_settings_parse_path (path, &key_name);
+
+  if (G_LIKELY (schema != MOUSEPAD_NUM_SCHEMAS))
+    {
+
+      GVariant *variant;
+      va_list   ap;
+
+      MOUSEPAD_SETTINGS_LOCK ();
+      variant = g_settings_get_value (mousepad_settings[schema], key_name);
+      MOUSEPAD_SETTINGS_UNLOCK ();
+
+      g_variant_ref_sink (variant);
+
+      va_start (ap, format_string);
+      g_variant_get_va (variant, format_string, NULL, &ap);
+      va_end (ap);
+
+      g_variant_unref (variant);
+
+      result = TRUE;
+    }
+
+  return result;
+}
+
+
+
+gboolean
+mousepad_setting_set (const gchar *path,
+                      const gchar *format_string,
+                      ...)
+{
+  gboolean       result = FALSE;
+  const gchar   *key_name;
+  MousepadSchema schema;
+
+  g_return_val_if_fail (path != NULL, FALSE);
+  g_return_val_if_fail (format_string != NULL, FALSE);
+
+  schema = mousepad_settings_parse_path (path, &key_name);
+
+  if (G_LIKELY (schema != MOUSEPAD_NUM_SCHEMAS))
+    {
+      GVariant *variant;
+      va_list   ap;
+
+      va_start (ap, format_string);
+      variant = g_variant_new_va (format_string, NULL, &ap);
+      va_end (ap);
+
+      g_variant_ref_sink (variant);
+
+      MOUSEPAD_SETTINGS_LOCK ();
+      g_settings_set_value (mousepad_settings[schema], key_name, variant);
+      MOUSEPAD_SETTINGS_UNLOCK ();
+
+      g_variant_unref (variant);
+
+      result = TRUE;
+    }
+
+
+  return result;
+}
+
+
+
+gboolean
+mousepad_setting_get_boolean (const gchar *path)
+{
+  gboolean value = FALSE;
+  gboolean result = mousepad_setting_get (path, "b", &value);
+  g_warn_if_fail (result);
+  return value;
 }
 
 
 
 void
-mousepad_settings_set_boolean (MousepadSchema  schema,
-                               const gchar    *key,
-                               gboolean        value)
+mousepad_setting_set_boolean (const gchar *path,
+                              gboolean     value)
 {
-  MousepadSettings *settings;
-  g_return_if_fail (schema < MOUSEPAD_NUM_SCHEMAS);
-  settings = mousepad_settings_get_default ();
-  g_settings_set_boolean (settings->settings[schema], key, value);
+  mousepad_setting_set (path, "b", value);
 }
 
 
 
 gint
-mousepad_settings_get_int (MousepadSchema  schema,
-                           const gchar    *key)
+mousepad_setting_get_int (const gchar *path)
 {
-  MousepadSettings *settings;
-  g_return_val_if_fail (schema < MOUSEPAD_NUM_SCHEMAS, FALSE);
-  settings = mousepad_settings_get_default ();
-  return g_settings_get_int (settings->settings[schema], key);
+  gint     value = 0;
+  gboolean result = mousepad_setting_get (path, "i", &value);
+  g_warn_if_fail (result);
+  return value;
 }
 
 
 
 void
-mousepad_settings_set_int (MousepadSchema  schema,
-                           const gchar    *key,
-                           gint            value)
+mousepad_setting_set_int (const gchar *path,
+                          gint         value)
 {
-  MousepadSettings *settings;
-  g_return_if_fail (schema < MOUSEPAD_NUM_SCHEMAS);
-  settings = mousepad_settings_get_default ();
-  g_settings_set_int (settings->settings[schema], key, value);
+  mousepad_setting_set (path, "i", value);
 }
 
 
 
 gchar *
-mousepad_settings_get_string (MousepadSchema  schema,
-                              const gchar    *key)
+mousepad_setting_get_string (const gchar *path)
 {
-  MousepadSettings *settings;
-  g_return_val_if_fail (schema < MOUSEPAD_NUM_SCHEMAS, FALSE);
-  settings = mousepad_settings_get_default ();
-  return g_settings_get_string (settings->settings[schema], key);
+  gchar   *value = NULL;
+  gboolean result = mousepad_setting_get (path, "s", &value);
+  g_warn_if_fail (result);
+  return value;
 }
 
 
 
 void
-mousepad_settings_set_string (MousepadSchema  schema,
-                              const gchar    *key,
-                              const gchar    *value)
+mousepad_setting_set_string (const gchar *path,
+                             const gchar *value)
 {
-  MousepadSettings *settings;
-  g_return_if_fail (schema < MOUSEPAD_NUM_SCHEMAS);
-  settings = mousepad_settings_get_default ();
-  g_settings_set_string (settings->settings[schema], key, value);
+  mousepad_setting_set (path, "s", value);
 }

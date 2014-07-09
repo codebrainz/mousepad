@@ -260,8 +260,7 @@ mousepad_document_notify_cursor_position (GtkTextBuffer    *buffer,
   line = gtk_text_iter_get_line (&iter) + 1;
 
   /* get the tab size */
-  tab_size = mousepad_settings_get_int (MOUSEPAD_SCHEMA_VIEW_SETTINGS,
-                                        MOUSEPAD_SETTING_TAB_WIDTH);
+  tab_size = MOUSEPAD_SETTING_GET_INT (TAB_WIDTH);
 
   /* get the column */
   column = mousepad_util_get_real_line_offset (&iter, tab_size);

@@ -39,7 +39,7 @@ static void                 mousepad_replace_dialog_response            (GtkWidg
 static void                 mousepad_replace_dialog_changed             (MousepadReplaceDialog *dialog);
 static void                 mousepad_replace_dialog_settings_changed    (MousepadReplaceDialog *dialog,
                                                                          gchar                 *key,
-                                                                         MousepadSettings      *settings);
+                                                                         GSettings             *settings);
 static void                 mousepad_replace_dialog_history_combo_box   (GtkComboBox           *combo_box);
 static void                 mousepad_replace_dialog_history_insert_text (const gchar           *text);
 
@@ -120,19 +120,16 @@ mousepad_replace_dialog_class_init (MousepadReplaceDialogClass *klass)
 
 static void
 mousepad_replace_dialog_bind_setting (MousepadReplaceDialog *dialog,
-                                      const gchar           *key,
+                                      const gchar           *path,
                                       gpointer               object,
                                       const gchar           *property)
 {
-  mousepad_settings_bind (MOUSEPAD_SCHEMA_SEARCH_STATE, key,
-                          object, property,
-                          G_SETTINGS_BIND_DEFAULT);
+  mousepad_setting_bind (path, object, property, G_SETTINGS_BIND_DEFAULT);
 
-  mousepad_settings_connect_changed (MOUSEPAD_SCHEMA_SEARCH_STATE,
-                                     key,
-                                     G_CALLBACK (mousepad_replace_dialog_settings_changed),
-                                     dialog,
-                                     G_CONNECT_SWAPPED);
+  mousepad_setting_connect (path,
+                            G_CALLBACK (mousepad_replace_dialog_settings_changed),
+                            dialog,
+                            G_CONNECT_SWAPPED);
 }
 
 
@@ -224,7 +221,7 @@ mousepad_replace_dialog_init (MousepadReplaceDialog *dialog)
   gtk_combo_box_append_text (GTK_COMBO_BOX (combo), _("Both"));
   gtk_widget_show (combo);
 
-  mousepad_replace_dialog_bind_setting (dialog, MOUSEPAD_STATE_SEARCH_DIRECTION, combo, "active");
+  mousepad_replace_dialog_bind_setting (dialog, MOUSEPAD_SETTING_SEARCH_DIRECTION, combo, "active");
 
   /* release size group */
   g_object_unref (G_OBJECT (size_group));
@@ -234,14 +231,14 @@ mousepad_replace_dialog_init (MousepadReplaceDialog *dialog)
   gtk_box_pack_start (GTK_BOX (vbox), check, FALSE, FALSE, 0);
   gtk_widget_show (check);
 
-  mousepad_replace_dialog_bind_setting (dialog, MOUSEPAD_STATE_SEARCH_MATCH_CASE, check, "active");
+  mousepad_replace_dialog_bind_setting (dialog, MOUSEPAD_SETTING_SEARCH_MATCH_CASE, check, "active");
 
   /* match whole word */
   check = gtk_check_button_new_with_mnemonic (_("_Match whole word"));
   gtk_box_pack_start (GTK_BOX (vbox), check, FALSE, FALSE, 0);
   gtk_widget_show (check);
 
-  mousepad_replace_dialog_bind_setting (dialog, MOUSEPAD_STATE_SEARCH_MATCH_WHOLE_WORD, check, "active");
+  mousepad_replace_dialog_bind_setting (dialog, MOUSEPAD_SETTING_SEARCH_MATCH_WHOLE_WORD, check, "active");
 
   /* horizontal box for the replace all options */
   hbox = gtk_hbox_new (FALSE, 8);
@@ -252,7 +249,7 @@ mousepad_replace_dialog_init (MousepadReplaceDialog *dialog)
   gtk_box_pack_start (GTK_BOX (hbox), check, FALSE, FALSE, 0);
   gtk_widget_show (check);
 
-  mousepad_replace_dialog_bind_setting (dialog, MOUSEPAD_STATE_SEARCH_REPLACE_ALL, check, "active");
+  mousepad_replace_dialog_bind_setting (dialog, MOUSEPAD_SETTING_SEARCH_REPLACE_ALL, check, "active");
 
   combo = dialog->search_location_combo = gtk_combo_box_new_text ();
   gtk_box_pack_start (GTK_BOX (hbox), combo, FALSE, FALSE, 0);
@@ -262,7 +259,7 @@ mousepad_replace_dialog_init (MousepadReplaceDialog *dialog)
   gtk_widget_set_sensitive (combo, FALSE);
   gtk_widget_show (combo);
 
-  mousepad_replace_dialog_bind_setting (dialog, MOUSEPAD_STATE_SEARCH_REPLACE_ALL_LOCATION, combo, "active");
+  mousepad_replace_dialog_bind_setting (dialog, MOUSEPAD_SETTING_SEARCH_REPLACE_ALL_LOCATION, combo, "active");
 
   label = dialog->hits_label = gtk_label_new (NULL);
   gtk_box_pack_start (GTK_BOX (hbox), label, FALSE, FALSE, 0);
@@ -317,11 +314,11 @@ mousepad_replace_dialog_response (GtkWidget *widget,
   gboolean               match_case, match_whole_word, replace_all;
 
   /* read the search settings */
-  search_direction = mousepad_settings_get_int (MOUSEPAD_SCHEMA_SEARCH_STATE, MOUSEPAD_STATE_SEARCH_DIRECTION);
-  replace_all_location = mousepad_settings_get_int (MOUSEPAD_SCHEMA_SEARCH_STATE, MOUSEPAD_STATE_SEARCH_REPLACE_ALL_LOCATION);
-  match_case = mousepad_settings_get_boolean (MOUSEPAD_SCHEMA_SEARCH_STATE, MOUSEPAD_STATE_SEARCH_MATCH_CASE);
-  match_whole_word = mousepad_settings_get_boolean (MOUSEPAD_SCHEMA_SEARCH_STATE, MOUSEPAD_STATE_SEARCH_MATCH_WHOLE_WORD);
-  replace_all = mousepad_settings_get_boolean (MOUSEPAD_SCHEMA_SEARCH_STATE, MOUSEPAD_STATE_SEARCH_REPLACE_ALL);
+  search_direction = MOUSEPAD_SETTING_GET_INT (SEARCH_DIRECTION);
+  replace_all_location = MOUSEPAD_SETTING_GET_INT (SEARCH_REPLACE_ALL_LOCATION);
+  match_case = MOUSEPAD_SETTING_GET_BOOLEAN (SEARCH_MATCH_CASE);
+  match_whole_word = MOUSEPAD_SETTING_GET_BOOLEAN (SEARCH_MATCH_WHOLE_WORD);
+  replace_all = MOUSEPAD_SETTING_GET_BOOLEAN (SEARCH_REPLACE_ALL);
 
   /* close dialog */
   if (response_id == MOUSEPAD_RESPONSE_CLOSE)
@@ -443,8 +440,7 @@ mousepad_replace_dialog_changed (MousepadReplaceDialog *dialog)
   gboolean     sensitive;
   gboolean     replace_all;
 
-  replace_all = mousepad_settings_get_boolean (MOUSEPAD_SCHEMA_SEARCH_STATE,
-                                               MOUSEPAD_STATE_SEARCH_REPLACE_ALL);
+  replace_all = MOUSEPAD_SETTING_GET_BOOLEAN (SEARCH_REPLACE_ALL);
 
   /* set the sensitivity of some dialog widgets */
   gtk_widget_set_sensitive (dialog->search_location_combo, replace_all);
@@ -486,11 +482,10 @@ mousepad_replace_dialog_changed (MousepadReplaceDialog *dialog)
 static void
 mousepad_replace_dialog_settings_changed (MousepadReplaceDialog *dialog,
                                           gchar                 *key,
-                                          MousepadSettings      *settings)
+                                          GSettings             *settings)
 {
   /* reset occurences label */
-  if (g_strcmp0 (key, MOUSEPAD_STATE_SEARCH_REPLACE_ALL) == 0)
-    gtk_label_set_text (GTK_LABEL (dialog->hits_label), NULL);
+  gtk_label_set_text (GTK_LABEL (dialog->hits_label), NULL);
 
   mousepad_replace_dialog_changed (dialog);
 }

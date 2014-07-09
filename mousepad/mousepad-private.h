@@ -122,20 +122,6 @@ enum
 #define mousepad_widget_set_tooltip_text(widget,text) (mousepad_util_set_tooltip (widget, text))
 #endif
 
-/* Access to the various GSettings instances */
-#define MOUSEPAD_VIEW_SETTINGS \
-  (mousepad_settings_get_from_schema (mousepad_settings_get_default (), \
-                                      MOUSEPAD_SCHEMA_VIEW_SETTINGS))
-#define MOUSEPAD_WINDOW_SETTINGS \
-  (mousepad_settings_get_from_schema (mousepad_settings_get_default (), \
-                                      MOUSEPAD_SCHEMA_WINDOW_SETTINGS))
-#define MOUSEPAD_SEARCH_STATE_SETTINGS \
-  (mousepad_settings_get_from_schema (mousepad_settings_get_default (), \
-                                      MOUSEPAD_SCHEMA_SEARCH_STATE))
-#define MOUSEPAD_WINDOW_STATE_SETTINGS \
-  (mousepad_settings_get_from_schema (mousepad_settings_get_default (), \
-                                      MOUSEPAD_SCHEMA_WINDOW_STATE))
-
 G_END_DECLS
 
 #endif /* !__MOUSEPAD_PRIVATE_H__ */

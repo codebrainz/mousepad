@@ -2,105 +2,101 @@
 #define MOUSEPAD_SETTINGS_H_ 1
 
 #include <glib-object.h>
+#include <gio/gio.h>
 
 G_BEGIN_DECLS
 
-typedef enum
-{
-  MOUSEPAD_SCHEMA_VIEW_SETTINGS,
-  MOUSEPAD_SCHEMA_WINDOW_SETTINGS,
-  MOUSEPAD_SCHEMA_SEARCH_STATE,
-  MOUSEPAD_SCHEMA_WINDOW_STATE,
-  MOUSEPAD_NUM_SCHEMAS
-}
-MousepadSchema;
-
-GType mousepad_schema_get_type (void);
-#define MOUSEPAD_TYPE_SCHEMA (mousepad_schema_get_type ())
-
-#define MOUSEPAD_TYPE_SETTINGS            (mousepad_settings_get_type ())
-#define MOUSEPAD_SETTINGS(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), MOUSEPAD_TYPE_SETTINGS, MousepadSettings))
-#define MOUSEPAD_SETTINGS_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), MOUSEPAD_TYPE_SETTINGS, MousepadSettingsClass))
-#define MOUSEPAD_IS_SETTINGS(obj)         (G_TYPE_CHECK_INSTANCE_TYPE ((obj), MOUSEPAD_TYPE_SETTINGS))
-#define MOUSEPAD_IS_SETTINGS_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), MOUSEPAD_TYPE_SETTINGS))
-#define MOUSEPAD_SETTINGS_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), MOUSEPAD_TYPE_SETTINGS, MousepadSettingsClass))
-
-typedef struct MousepadSettings_      MousepadSettings;
-typedef struct MousepadSettingsClass_ MousepadSettingsClass;
-
-GType             mousepad_settings_get_type        (void);
-
-MousepadSettings *mousepad_settings_get_default     (void);
-
-GSettings        *mousepad_settings_get_from_schema (MousepadSettings  *settings,
-                                                     MousepadSchema     schema);
-
-void              mousepad_settings_bind            (MousepadSchema     schema,
-                                                     const gchar       *key,
-                                                     gpointer           object,
-                                                     const gchar       *prop,
-                                                     GSettingsBindFlags flags);
-
-gulong            mousepad_settings_connect_changed (MousepadSchema     schema,
-                                                     const gchar       *key,
-                                                     GCallback          callback,
-                                                     gpointer           user_data,
-                                                     GSignalFlags       connect_flags);
-
-gboolean          mousepad_settings_get_boolean     (MousepadSchema     schema,
-                                                     const gchar       *key);
-
-void              mousepad_settings_set_boolean     (MousepadSchema     schema,
-                                                     const gchar       *key,
-                                                     gboolean           value);
-
-gint              mousepad_settings_get_int         (MousepadSchema     schema,
-                                                     const gchar       *key);
-
-void              mousepad_settings_set_int         (MousepadSchema     schema,
-                                                     const gchar       *key,
-                                                     gint               value);
-
-gchar            *mousepad_settings_get_string      (MousepadSchema     schema,
-                                                     const gchar       *key);
-
-void              mousepad_settings_set_string      (MousepadSchema     schema,
-                                                     const gchar       *key,
-                                                     const gchar       *value);
-
 /* Setting names */
-#define MOUSEPAD_SETTING_AUTO_INDENT            "auto-indent"
-#define MOUSEPAD_SETTING_FONT_NAME              "font-name"
-#define MOUSEPAD_SETTING_SHOW_WHITESPACE        "show-whitespace"
-#define MOUSEPAD_SETTING_SHOW_LINE_ENDINGS      "show-line-endings"
-#define MOUSEPAD_SETTING_HIGHLIGHT_CURRENT_LINE "highlight-current-line"
-#define MOUSEPAD_SETTING_INDENT_ON_TAB          "indent-on-tab"
-#define MOUSEPAD_SETTING_INDENT_WIDTH           "indent-width"
-#define MOUSEPAD_SETTING_INSERT_SPACES          "insert-spaces"
-#define MOUSEPAD_SETTING_RIGHT_MARGIN_POSITION  "right-margin-position"
-#define MOUSEPAD_SETTING_SHOW_LINE_MARKS        "show-line-marks"
-#define MOUSEPAD_SETTING_SHOW_LINE_NUMBERS      "show-line-numbers"
-#define MOUSEPAD_SETTING_SHOW_RIGHT_MARGIN      "show-right-margin"
-#define MOUSEPAD_SETTING_SMART_HOME_END         "smart-home-end"
-#define MOUSEPAD_SETTING_TAB_WIDTH              "tab-width"
-#define MOUSEPAD_SETTING_WORD_WRAP              "word-wrap"
-#define MOUSEPAD_SETTING_COLOR_SCHEME           "color-scheme"
-#define MOUSEPAD_SETTING_STATUSBAR_VISIBLE      "statusbar-visible"
-#define MOUSEPAD_SETTING_ALWAYS_SHOW_TABS       "always-show-tabs"
-#define MOUSEPAD_SETTING_CYCLE_TABS             "cycle-tabs"
-#define MOUSEPAD_SETTING_DEFAULT_TAB_SIZES      "default-tab-sizes"
-#define MOUSEPAD_SETTING_PATH_IN_TITLE          "path-in-title"
-#define MOUSEPAD_SETTING_RECENT_MENU_ITEMS      "recent-menu-items"
-#define MOUSEPAD_SETTING_REMEMBER_GEOMETRY      "remember-geometry"
+#define MOUSEPAD_SETTING_AUTO_INDENT                "/preferences/view/auto-indent"
+#define MOUSEPAD_SETTING_FONT_NAME                  "/preferences/view/font-name"
+#define MOUSEPAD_SETTING_SHOW_WHITESPACE            "/preferences/view/show-whitespace"
+#define MOUSEPAD_SETTING_SHOW_LINE_ENDINGS          "/preferences/view/show-line-endings"
+#define MOUSEPAD_SETTING_HIGHLIGHT_CURRENT_LINE     "/preferences/view/highlight-current-line"
+#define MOUSEPAD_SETTING_INDENT_ON_TAB              "/preferences/view/indent-on-tab"
+#define MOUSEPAD_SETTING_INDENT_WIDTH               "/preferences/view/indent-width"
+#define MOUSEPAD_SETTING_INSERT_SPACES              "/preferences/view/insert-spaces"
+#define MOUSEPAD_SETTING_RIGHT_MARGIN_POSITION      "/preferences/view/right-margin-position"
+#define MOUSEPAD_SETTING_SHOW_LINE_MARKS            "/preferences/view/show-line-marks"
+#define MOUSEPAD_SETTING_SHOW_LINE_NUMBERS          "/preferences/view/show-line-numbers"
+#define MOUSEPAD_SETTING_SHOW_RIGHT_MARGIN          "/preferences/view/show-right-margin"
+#define MOUSEPAD_SETTING_SMART_HOME_END             "/preferences/view/smart-home-end"
+#define MOUSEPAD_SETTING_TAB_WIDTH                  "/preferences/view/tab-width"
+#define MOUSEPAD_SETTING_WORD_WRAP                  "/preferences/view/word-wrap"
+#define MOUSEPAD_SETTING_COLOR_SCHEME               "/preferences/view/color-scheme"
+#define MOUSEPAD_SETTING_STATUSBAR_VISIBLE          "/preferences/window/statusbar-visible"
+#define MOUSEPAD_SETTING_ALWAYS_SHOW_TABS           "/preferences/window/always-show-tabs"
+#define MOUSEPAD_SETTING_CYCLE_TABS                 "/preferences/window/cycle-tabs"
+#define MOUSEPAD_SETTING_DEFAULT_TAB_SIZES          "/preferences/window/default-tab-sizes"
+#define MOUSEPAD_SETTING_PATH_IN_TITLE              "/preferences/window/path-in-title"
+#define MOUSEPAD_SETTING_RECENT_MENU_ITEMS          "/preferences/window/recent-menu-items"
+#define MOUSEPAD_SETTING_REMEMBER_GEOMETRY          "/preferences/window/remember-geometry"
 
 /* State setting names */
-#define MOUSEPAD_STATE_SEARCH_DIRECTION            "direction"
-#define MOUSEPAD_STATE_SEARCH_MATCH_CASE           "match-case"
-#define MOUSEPAD_STATE_SEARCH_MATCH_WHOLE_WORD     "match-whole-word"
-#define MOUSEPAD_STATE_SEARCH_REPLACE_ALL          "replace-all"
-#define MOUSEPAD_STATE_SEARCH_REPLACE_ALL_LOCATION "replace-all-location"
-#define MOUSEPAD_STATE_WINDOW_HEIGHT               "height"
-#define MOUSEPAD_STATE_WINDOW_WIDTH                "width"
+#define MOUSEPAD_SETTING_SEARCH_DIRECTION            "/state/search/direction"
+#define MOUSEPAD_SETTING_SEARCH_MATCH_CASE           "/state/search/match-case"
+#define MOUSEPAD_SETTING_SEARCH_MATCH_WHOLE_WORD     "/state/search/match-whole-word"
+#define MOUSEPAD_SETTING_SEARCH_REPLACE_ALL          "/state/search/replace-all"
+#define MOUSEPAD_SETTING_SEARCH_REPLACE_ALL_LOCATION "/state/search/replace-all-location"
+#define MOUSEPAD_SETTING_WINDOW_HEIGHT               "/state/window/height"
+#define MOUSEPAD_SETTING_WINDOW_WIDTH                "/state/window/width"
+
+void     mousepad_settings_init       (void);
+void     mousepad_settings_finalize   (void);
+
+gboolean mousepad_setting_bind        (const gchar       *path,
+                                       gpointer           object,
+                                       const gchar       *prop,
+                                       GSettingsBindFlags flags);
+
+gulong   mousepad_setting_connect     (const gchar       *path,
+                                       GCallback          callback,
+                                       gpointer           user_data,
+                                       GSignalFlags       connect_flags);
+
+/* functions for reading and writing settings */
+
+gboolean mousepad_setting_get         (const gchar       *path,
+                                       const gchar       *format_string,
+                                       ...);
+
+gboolean mousepad_setting_set         (const gchar       *path,
+                                       const gchar       *format_string,
+                                       ...);
+
+/* convenience functions for reading/writing common types */
+
+gboolean mousepad_setting_get_boolean (const gchar       *path);
+
+void     mousepad_setting_set_boolean (const gchar       *path,
+                                       gboolean           value);
+
+gint     mousepad_setting_get_int     (const gchar       *path);
+
+void     mousepad_setting_set_int     (const gchar       *path,
+                                       gint               value);
+
+gchar   *mousepad_setting_get_string  (const gchar       *path);
+
+void     mousepad_setting_set_string  (const gchar       *path,
+                                       const gchar       *value);
+
+/* wrappers for above read/write functions with shorter arguments */
+
+#define MOUSEPAD_SETTING_BIND(setting, object, prop, flags) \
+  mousepad_setting_bind (MOUSEPAD_SETTING_##setting, object, prop, flags)
+
+#define MOUSEPAD_SETTING_CONNECT(setting, callback, user_data, connect_flags) \
+  mousepad_setting_connect (MOUSEPAD_SETTING_##setting, callback, user_data, connect_flags)
+
+#define MOUSEPAD_SETTING_GET(setting, ...)           mousepad_setting_get (MOUSEPAD_SETTING_##setting, __VA_ARGS__)
+#define MOUSEPAD_SETTING_GET_BOOLEAN(setting)        mousepad_setting_get_boolean (MOUSEPAD_SETTING_##setting)
+#define MOUSEPAD_SETTING_GET_INT(setting)            mousepad_setting_get_int (MOUSEPAD_SETTING_##setting)
+#define MOUSEPAD_SETTING_GET_STRING(setting)         mousepad_setting_get_string (MOUSEPAD_SETTING_##setting)
+
+#define MOUSEPAD_SETTING_SET(setting, ...)           mousepad_setting_set (MOUSEPAD_SETTING_##setting, __VA_ARGS__)
+#define MOUSEPAD_SETTING_SET_BOOLEAN(setting, value) mousepad_setting_set_boolean (MOUSEPAD_SETTING_##setting, value)
+#define MOUSEPAD_SETTING_SET_INT(setting, value)     mousepad_setting_set_int (MOUSEPAD_SETTING_##setting, value)
+#define MOUSEPAD_SETTING_SET_STRING(setting, value)  mousepad_setting_set_string (MOUSEPAD_SETTING_##setting, value)
 
 G_END_DECLS
 

@@ -263,9 +263,7 @@ mousepad_view_init (MousepadView *view)
 
   /* bind Gsettings */
 #define BIND_(setting, prop) \
-  mousepad_settings_bind (MOUSEPAD_SCHEMA_VIEW_SETTINGS, \
-                          MOUSEPAD_SETTING_##setting, view, prop, \
-                          G_SETTINGS_BIND_DEFAULT)
+  MOUSEPAD_SETTING_BIND (setting, view, prop, G_SETTINGS_BIND_DEFAULT)
 
   BIND_ (AUTO_INDENT,            "auto-indent");
   BIND_ (FONT_NAME,              "font-name");

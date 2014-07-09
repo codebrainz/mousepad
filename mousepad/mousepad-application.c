@@ -76,6 +76,8 @@ mousepad_application_init (MousepadApplication *application)
 {
   gchar *filename;
 
+  mousepad_settings_init ();
+
   /* check if we have a saved accel map */
   filename = mousepad_util_get_save_location (MOUSEPAD_ACCELS_RELPATH, FALSE);
   if (G_LIKELY (filename != NULL))
@@ -122,6 +124,8 @@ mousepad_application_finalize (GObject *object)
 
   /* cleanup the list of windows */
   g_slist_free (application->windows);
+
+  mousepad_settings_finalize ();
 
   (*G_OBJECT_CLASS (mousepad_application_parent_class)->finalize) (object);
 }
