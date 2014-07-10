@@ -41,6 +41,15 @@
         font description syntax for greater control.
       </description>
     </key>
+    <key name="use-default-monospace-font" type="b">
+      <default>true</default>
+      <summary>Use default monospace font</summary>
+      <description>
+        When enabled, rather than using the font specified in the 'font-name'
+        setting, the default fixed-width font will be used (ie. the font
+        name 'Monospace').
+      </description>
+    </key>
     <key name="show-whitespace" type="b">
       <default>false</default>
       <summary>Show whitespace</summary>

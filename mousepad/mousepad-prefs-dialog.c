@@ -17,7 +17,7 @@
 #define WID_HIGHLIGHT_MATCHING_BRACES_CHECK "/prefs/view/display/highlight-braces-check"
 #define WID_WORD_WRAP_CHECK                 "/prefs/view/display/word-wrap-check"
 
-#define WID_DEFAULT_FONT_CHECK              "/prefs/view/font/default-check"
+#define WID_USE_DEFAULT_FONT_CHECK          "/prefs/view/font/default-check"
 #define WID_FONT_BUTTON                     "/prefs/view/font/chooser-button"
 #define WID_SCHEME_COMBO                    "/prefs/view/color-scheme-combo"
 #define WID_SCHEME_MODEL                    "/prefs/view/color-scheme-model"
@@ -277,7 +277,6 @@ mousepad_prefs_dialog_home_end_setting_changed (MousepadPrefsDialog *self,
                                                 GSettings           *settings)
 {
   GtkComboBox *combo;
-  gint         value;
 
   /* don't do anything when the combo box is itself updating the setting */
   if (self->blocked)
@@ -335,9 +334,9 @@ mousepad_prefs_dialog_init (MousepadPrefsDialog *self)
   g_object_bind_property (check, "active", widget, "sensitive", G_BINDING_SYNC_CREATE);
 
   /* enable/disable font chooser button when the default font checkbox is changed */
-  check = mousepad_builder_get_widget (self->builder, WID_DEFAULT_FONT_CHECK);
+  check = mousepad_builder_get_widget (self->builder, WID_USE_DEFAULT_FONT_CHECK);
   widget = mousepad_builder_get_widget (self->builder, WID_FONT_BUTTON);
-  g_object_bind_property (check, "active", widget, "sensitive", G_BINDING_SYNC_CREATE);
+  g_object_bind_property (check, "active", widget, "sensitive", G_BINDING_SYNC_CREATE | G_BINDING_INVERT_BOOLEAN);
 
   /* bind checkboxes to settings */
 #define BIND_CHECKBOX(setting)                                           \
@@ -354,6 +353,7 @@ mousepad_prefs_dialog_init (MousepadPrefsDialog *self)
   BIND_CHECKBOX (SHOW_RIGHT_MARGIN);
   BIND_CHECKBOX (HIGHLIGHT_CURRENT_LINE);
   BIND_CHECKBOX (WORD_WRAP);
+  BIND_CHECKBOX (USE_DEFAULT_FONT);
 
   /* Editor */
   BIND_CHECKBOX (AUTO_INDENT);
@@ -377,7 +377,7 @@ mousepad_prefs_dialog_init (MousepadPrefsDialog *self)
   MOUSEPAD_SETTING_BIND (FONT_NAME,
                          gtk_builder_get_object (self->builder, WID_FONT_BUTTON),
                          "font-name",
-                         G_SETTINGS_BIND_DEFAULT);
+                         G_SETTINGS_BIND_DEFAULT | G_SETTINGS_BIND_NO_SENSITIVITY);
 
   mousepad_prefs_dialog_setup_color_schemes_combo (self);
 

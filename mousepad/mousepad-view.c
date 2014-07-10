@@ -89,6 +89,7 @@ static void      mousepad_view_transpose_lines               (GtkTextBuffer     
                                                               GtkTextIter         *end_iter);
 static void      mousepad_view_transpose_words               (GtkTextBuffer       *buffer,
                                                               GtkTextIter         *iter);
+static void      mousepad_view_update_font                   (MousepadView        *view);
 
 
 
@@ -99,37 +100,38 @@ struct _MousepadViewClass
 
 struct _MousepadView
 {
-  GtkSourceView  __parent__;
+  GtkSourceView         __parent__;
 
   /* the selection style tag */
-  GtkTextTag         *selection_tag;
+  GtkTextTag           *selection_tag;
 
   /* list with all the selection marks */
-  GSList             *selection_marks;
+  GSList               *selection_marks;
 
   /* selection timeout id */
-  guint               selection_timeout_id;
+  guint                 selection_timeout_id;
 
   /* coordinates for the selection */
-  gint                selection_start_x;
-  gint                selection_start_y;
-  gint                selection_end_x;
-  gint                selection_end_y;
+  gint                  selection_start_x;
+  gint                  selection_start_y;
+  gint                  selection_end_x;
+  gint                  selection_end_y;
 
   /* length of the selection (-1 = zerro width selection, 0 = no selection) */
-  gint                selection_length;
+  gint                  selection_length;
 
   /* if the selection is in editing mode */
-  guint               selection_editing : 1;
+  guint                 selection_editing : 1;
 
   /* the font used in the view */
-  gchar              *font_name;
+  gchar                *font_name;
+  PangoFontDescription *font_desc;
 
   /* whitespace visualization */
-  gboolean            show_whitespace;
-  gboolean            show_line_endings;
+  gboolean              show_whitespace;
+  gboolean              show_line_endings;
 
-  gchar              *color_scheme;
+  gchar                *color_scheme;
 };
 
 
@@ -237,6 +239,17 @@ mousepad_view_buffer_changed (MousepadView *view,
 }
 
 
+
+static void
+mousepad_view_use_default_font_setting_changed (MousepadView *view,
+                                                gchar        *key,
+                                                GSettings    *settings)
+{
+  mousepad_view_update_font (view);
+}
+
+
+
 static void
 mousepad_view_init (MousepadView *view)
 {
@@ -247,6 +260,8 @@ mousepad_view_init (MousepadView *view)
   view->selection_length = 0;
   view->selection_editing = FALSE;
   view->color_scheme = g_strdup ("none");
+  view->font_name = NULL;
+  view->font_desc = NULL;
 
   /* make sure any buffers set on the view get the color scheme applied to them */
   g_signal_connect (view,
@@ -281,6 +296,12 @@ mousepad_view_init (MousepadView *view)
   BIND_ (TAB_WIDTH,              "tab-width");
   BIND_ (COLOR_SCHEME,           "color-scheme");
   BIND_ (WORD_WRAP,              "word-wrap");
+
+  /* override with default font when the setting is enabled */
+  MOUSEPAD_SETTING_CONNECT (USE_DEFAULT_FONT,
+                            G_CALLBACK (mousepad_view_use_default_font_setting_changed),
+                            view,
+                            G_CONNECT_SWAPPED);
 
 #undef BIND_
 }
@@ -2528,24 +2549,22 @@ mousepad_view_set_font_name (MousepadView *view,
   font_desc = pango_font_description_from_string (font_name);
   if (G_LIKELY (font_desc != NULL))
     {
-      /* Override the GtkWidget's font */
-#if GTK_CHECK_VERSION(3, 0, 0)
-      gtk_widget_override_font (GTK_WIDGET (view), font_desc);
-#else
-      gtk_widget_modify_font (GTK_WIDGET (view), font_desc);
-#endif
-
       /* Save the normalized representation of the font as a string */
       g_free (view->font_name);
       view->font_name = pango_font_description_to_string (font_desc);
+
+      /* save the font description for later updating */
+      pango_font_description_free (view->font_desc);
+      view->font_desc = font_desc;
+
+      /* apply either the default or this font depending on settings */
+      mousepad_view_update_font (view);
 
       /* Notify interested parties that the property has changed */
       g_object_notify (G_OBJECT (view), "font-name");
     }
   else
     g_critical ("Invalid font-name given: %s", font_name);
-
-  pango_font_description_free (font_desc);
 }
 
 
@@ -2569,6 +2588,39 @@ mousepad_view_update_draw_spaces (MousepadView *view)
     flags |= GTK_SOURCE_DRAW_SPACES_NEWLINE;
 
   gtk_source_view_set_draw_spaces (GTK_SOURCE_VIEW (view), flags);
+}
+
+
+
+static void
+mousepad_view_override_font (MousepadView         *view,
+                             PangoFontDescription *font_desc)
+{
+#if GTK_CHECK_VERSION (3, 0, 0)
+  gtk_widget_override_font (GTK_WIDGET (view), font_desc);
+#else
+  gtk_widget_modify_font (GTK_WIDGET (view), font_desc);
+#endif
+}
+
+
+
+static void
+mousepad_view_update_font (MousepadView *view)
+{
+  gboolean use_default;
+
+  use_default = MOUSEPAD_SETTING_GET_BOOLEAN (USE_DEFAULT_FONT);
+
+  if (use_default)
+    {
+      PangoFontDescription *font_desc;
+      font_desc = pango_font_description_from_string (MOUSEPAD_VIEW_DEFAULT_FONT);
+      mousepad_view_override_font (view, font_desc);
+      pango_font_description_free (font_desc);
+    }
+  else
+    mousepad_view_override_font (view, view->font_desc);
 }
 
 
