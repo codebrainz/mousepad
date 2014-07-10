@@ -6,12 +6,6 @@
 
 
 
-G_LOCK_DEFINE (settings_lock);
-#define MOUSEPAD_SETTINGS_LOCK()   G_LOCK (settings_lock)
-#define MOUSEPAD_SETTINGS_UNLOCK() G_UNLOCK (settings_lock)
-
-
-
 static MousepadSettingsStore *settings_store = NULL;
 static gint settings_init_count = 0;
 
@@ -20,18 +14,11 @@ static gint settings_init_count = 0;
 void
 mousepad_settings_finalize (void)
 {
-  MOUSEPAD_SETTINGS_LOCK ();
-
   g_settings_sync ();
 
   settings_init_count--;
   if (settings_init_count > 0)
-    {
-      MOUSEPAD_SETTINGS_UNLOCK ();
-      return;
-    }
-
-  MOUSEPAD_SETTINGS_UNLOCK ();
+    return;
 
   if (MOUSEPAD_IS_SETTINGS_STORE (settings_store))
     {
@@ -46,8 +33,6 @@ void
 mousepad_settings_init (void)
 {
 
-  MOUSEPAD_SETTINGS_LOCK ();
-
   if (settings_init_count == 0)
     {
       if (! MOUSEPAD_IS_SETTINGS_STORE (settings_store))
@@ -55,8 +40,6 @@ mousepad_settings_init (void)
     }
 
   settings_init_count++;
-
-  MOUSEPAD_SETTINGS_UNLOCK ();
 }
 
 
@@ -77,9 +60,7 @@ mousepad_setting_bind (const gchar       *path,
 
   if (mousepad_settings_store_lookup (settings_store, path, &key_name, &settings))
     {
-      MOUSEPAD_SETTINGS_LOCK ();
       g_settings_bind (settings, key_name, object, prop, flags);
-      MOUSEPAD_SETTINGS_UNLOCK ();
       return TRUE;
     }
 
@@ -107,14 +88,12 @@ mousepad_setting_connect (const gchar  *path,
 
       signal_name = g_strdup_printf ("changed::%s", key_name);
 
-      MOUSEPAD_SETTINGS_LOCK ();
       signal_id = g_signal_connect_data (settings,
                                          signal_name,
                                          callback,
                                          user_data,
                                          NULL,
                                          connect_flags);
-      MOUSEPAD_SETTINGS_UNLOCK ();
 
       g_free (signal_name);
     }
@@ -160,9 +139,7 @@ mousepad_setting_get (const gchar *path,
       GVariant *variant;
       va_list   ap;
 
-      MOUSEPAD_SETTINGS_LOCK ();
       variant = g_settings_get_value (settings, key_name);
-      MOUSEPAD_SETTINGS_UNLOCK ();
 
       g_variant_ref_sink (variant);
 
@@ -203,9 +180,7 @@ mousepad_setting_set (const gchar *path,
 
       g_variant_ref_sink (variant);
 
-      MOUSEPAD_SETTINGS_LOCK ();
       g_settings_set_value (settings, key_name, variant);
-      MOUSEPAD_SETTINGS_UNLOCK ();
 
       g_variant_unref (variant);
 
@@ -288,11 +263,7 @@ mousepad_setting_get_enum (const gchar *path)
   g_return_val_if_fail (path != NULL, FALSE);
 
   if (mousepad_settings_store_lookup (settings_store, path, &key_name, &settings))
-    {
-      MOUSEPAD_SETTINGS_LOCK ();
-      result = g_settings_get_enum (settings, key_name);
-      MOUSEPAD_SETTINGS_UNLOCK ();
-    }
+    result = g_settings_get_enum (settings, key_name);
   else
     g_warn_if_reached ();
 
@@ -311,11 +282,7 @@ mousepad_setting_set_enum (const gchar *path,
   g_return_val_if_fail (path != NULL, FALSE);
 
   if (mousepad_settings_store_lookup (settings_store, path, &key_name, &settings))
-    {
-      MOUSEPAD_SETTINGS_LOCK ();
-      g_settings_set_enum (settings, key_name, value);
-      MOUSEPAD_SETTINGS_UNLOCK ();
-    }
+    g_settings_set_enum (settings, key_name, value);
   else
     g_warn_if_reached ();
 }
