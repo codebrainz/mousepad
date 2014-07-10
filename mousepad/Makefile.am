@@ -131,9 +131,9 @@ EXTRA_DIST = \
 	mousepad-marshal.list \
 	mousepad-window-ui.xml \
 	mousepad-prefs-dialog.glade \
-	org.xfce.Mousepad.gschema.xml
+	org.xfce.mousepad.gschema.xml
 
-gsettings_SCHEMAS = org.xfce.Mousepad.gschema.xml
+gsettings_SCHEMAS = org.xfce.mousepad.gschema.xml
 @GSETTINGS_RULES@
 
 # vi:set ts=8 sw=8 noet ai nocindent syntax=automake:
