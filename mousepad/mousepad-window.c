@@ -324,6 +324,8 @@ static void              mousepad_window_action_color_scheme          (GtkToggle
                                                                        MousepadWindow         *window);
 static void              mousepad_window_action_line_numbers          (GtkToggleAction        *action,
                                                                        MousepadWindow         *window);
+static void              mousepad_window_action_toolbar               (GtkToggleAction        *action,
+                                                                       MousepadWindow         *window);
 static void              mousepad_window_action_statusbar_overwrite   (MousepadWindow         *window,
                                                                        gboolean                overwrite);
 static void              mousepad_window_action_statusbar             (GtkToggleAction        *action,
@@ -474,6 +476,7 @@ static const GtkActionEntry action_entries[] =
 static const GtkToggleActionEntry toggle_action_entries[] =
 {
   { "line-numbers", NULL, N_("Line N_umbers"), NULL, N_("Show line numbers"), G_CALLBACK (mousepad_window_action_line_numbers), FALSE, },
+  { "toolbar", NULL, N_("_Toolbar"), NULL, N_("Change the visibility of the toolbar"), G_CALLBACK (mousepad_window_action_toolbar), FALSE, },
   { "statusbar", NULL, N_("St_atusbar"), NULL, N_("Change the visibility of the statusbar"), G_CALLBACK (mousepad_window_action_statusbar), FALSE, },
   { "auto-indent", NULL, N_("_Auto Indent"), NULL, N_("Auto indent a new line"), G_CALLBACK (mousepad_window_action_auto_indent), FALSE, },
   { "insert-spaces", NULL, N_("Insert _Spaces"), NULL, N_("Insert spaces when the tab button is pressed"), G_CALLBACK (mousepad_window_action_insert_spaces), FALSE, },
@@ -601,11 +604,14 @@ mousepad_window_init (MousepadWindow *window)
 {
   GtkAccelGroup *accel_group;
   GtkWidget     *menubar;
+  GtkWidget     *toolbar;
   GtkWidget     *label;
   GtkWidget     *separator;
   GtkWidget     *ebox;
   GtkWidget     *item;
+  GtkAction     *action;
   gint           width, height;
+  gboolean       active;
 
   /* initialize stuff */
   window->save_geometry_timer_id = 0;
@@ -682,6 +688,17 @@ mousepad_window_init (MousepadWindow *window)
   menubar = gtk_ui_manager_get_widget (window->ui_manager, "/main-menu");
   gtk_box_pack_start (GTK_BOX (window->box), menubar, FALSE, FALSE, 0);
   gtk_widget_show (menubar);
+  
+  toolbar = gtk_ui_manager_get_widget (window->ui_manager, "/main-toolbar");
+  gtk_box_pack_start (GTK_BOX (window->box), toolbar, FALSE, FALSE, 0);
+
+  /* sync the toolbar visibility and action state to the setting */
+  action = gtk_action_group_get_action (window->action_group, "toolbar");
+  active = MOUSEPAD_SETTING_GET_BOOLEAN (TOOLBAR_VISIBLE);
+  gtk_toggle_action_set_active (GTK_TOGGLE_ACTION (action), active);
+
+  /* update the toolbar visibility with the setting */
+  MOUSEPAD_SETTING_BIND (TOOLBAR_VISIBLE, toolbar, "visible", G_SETTINGS_BIND_DEFAULT);
 
   /* check if we need to add the root warning */
   if (G_UNLIKELY (geteuid () == 0))
@@ -878,12 +895,15 @@ mousepad_window_connect_proxy (GtkUIManager   *manager,
                                MousepadWindow *window)
 {
   mousepad_return_if_fail (GTK_IS_ACTION (action));
-  mousepad_return_if_fail (GTK_IS_MENU_ITEM (proxy));
+  mousepad_return_if_fail (GTK_IS_MENU_ITEM (proxy) || GTK_IS_TOOL_ITEM (proxy));
   mousepad_return_if_fail (GTK_IS_UI_MANAGER (manager));
 
-  /* we want to get informed when the user hovers a menu item */
-  g_signal_connect_closure (G_OBJECT (proxy), "select", window->menu_item_selected_closure, FALSE);
-  g_signal_connect_closure (G_OBJECT (proxy), "deselect", window->menu_item_deselected_closure, FALSE);
+  if (GTK_IS_MENU_ITEM (proxy))
+    {
+      /* we want to get informed when the user hovers a menu item */
+      g_signal_connect_closure (G_OBJECT (proxy), "select", window->menu_item_selected_closure, FALSE);
+      g_signal_connect_closure (G_OBJECT (proxy), "deselect", window->menu_item_deselected_closure, FALSE);
+    }
 }
 
 
@@ -895,12 +915,15 @@ mousepad_window_disconnect_proxy (GtkUIManager   *manager,
                                   MousepadWindow *window)
 {
   mousepad_return_if_fail (GTK_IS_ACTION (action));
-  mousepad_return_if_fail (GTK_IS_MENU_ITEM (proxy));
+  mousepad_return_if_fail (GTK_IS_MENU_ITEM (proxy) || GTK_IS_TOOL_ITEM (proxy));
   mousepad_return_if_fail (GTK_IS_UI_MANAGER (manager));
 
-  /* disconnect the signal from mousepad_window_connect_proxy() */
-  g_signal_handlers_disconnect_matched (G_OBJECT (proxy), G_SIGNAL_MATCH_CLOSURE, 0, 0, window->menu_item_selected_closure, NULL, NULL);
-  g_signal_handlers_disconnect_matched (G_OBJECT (proxy), G_SIGNAL_MATCH_CLOSURE, 0, 0, window->menu_item_deselected_closure, NULL, NULL);
+  if (GTK_IS_MENU_ITEM (proxy))
+    {
+      /* disconnect the signal from mousepad_window_connect_proxy() */
+      g_signal_handlers_disconnect_matched (G_OBJECT (proxy), G_SIGNAL_MATCH_CLOSURE, 0, 0, window->menu_item_selected_closure, NULL, NULL);
+      g_signal_handlers_disconnect_matched (G_OBJECT (proxy), G_SIGNAL_MATCH_CLOSURE, 0, 0, window->menu_item_deselected_closure, NULL, NULL);
+    }
 }
 
 
@@ -4790,6 +4813,21 @@ mousepad_window_action_line_numbers (GtkToggleAction *action,
 
   /* save as the last used line number setting */
   MOUSEPAD_SETTING_SET_BOOLEAN (SHOW_LINE_NUMBERS, active);
+}
+
+
+
+static void
+mousepad_window_action_toolbar (GtkToggleAction *action,
+                                MousepadWindow  *window)
+{
+  gboolean active;
+
+  mousepad_return_if_fail (MOUSEPAD_IS_WINDOW (window));
+
+  active = gtk_toggle_action_get_active (action);
+
+  MOUSEPAD_SETTING_SET_BOOLEAN (TOOLBAR_VISIBLE, active);
 }
 
 

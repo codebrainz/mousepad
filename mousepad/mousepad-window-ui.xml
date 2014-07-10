@@ -99,6 +99,7 @@
       </menu>
       <menuitem action="line-numbers" />
       <separator />
+      <menuitem action="toolbar" />
       <menuitem action="statusbar" />
     </menu>
 
@@ -132,6 +133,27 @@
       <menuitem action="about" />
     </menu>
   </menubar>
+
+  <toolbar action="main-toolbar">
+      <toolitem action="new" />
+      <toolitem action="open" />
+      <toolitem action="save" />
+      <toolitem action="save-as" />
+      <toolitem action="revert" />
+      <toolitem action="close" />
+      <separator />
+      <toolitem action="undo" />
+      <toolitem action="redo" />
+      <toolitem action="cut" />
+      <toolitem action="copy" />
+      <toolitem action="paste" />
+      <separator />
+      <toolitem action="find" />
+      <toolitem action="replace" />
+      <toolitem action="go-to" />
+      <separator />
+      <toolitem action="close-window" />
+  </toolbar>
 
   <popup action="tab-menu">
     <menuitem action="save" />

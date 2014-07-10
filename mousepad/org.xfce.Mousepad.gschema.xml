@@ -152,6 +152,13 @@
 
   <!-- window preferences -->
   <schema id="org.xfce.mousepad.preferences.window" path="/org/xfce/mousepad/preferences/window/" gettext-domain="mousepad">
+    <key name="toolbar-visible" type="b">
+      <default>false</default>
+      <summary>Toolbar visible</summary>
+      <description>
+        When true the toolbar is visible, when false it is not visible.
+      </description>
+    </key>
     <key name="statusbar-visible" type="b">
       <default>true</default>
       <summary>Statusbar visible</summary>
