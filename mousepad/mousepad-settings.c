@@ -11,6 +11,10 @@
 
 
 
+#define MOUSEPAD_SETTINGS_MAX_KEY_LEN 512
+
+
+
 typedef enum
 {
   MOUSEPAD_SCHEMA_VIEW_SETTINGS,
@@ -177,7 +181,6 @@ mousepad_settings_check_path_part (const gchar *s,
 
 
 
-
 static gboolean
 mousepad_settings_parse_path_names (const gchar  *path,
                                     const gchar **type,
@@ -276,9 +279,10 @@ mousepad_settings_schema_from_names (const gchar *type,
 
 static MousepadSchema
 mousepad_settings_parse_path (const gchar  *path,
-                              const gchar **key_name)
+                              gchar        *out_key_name, /* out */
+                              gsize        *out_key_len)  /* in/out */
 {
-  const gchar *type_name, *schema_name;
+  const gchar *type_name, *schema_name, *key_name;
   gint         type_len, schema_len, key_len;
 
   if (mousepad_settings_parse_path_names (path,
@@ -286,25 +290,28 @@ mousepad_settings_parse_path (const gchar  *path,
                                           &type_len,
                                           &schema_name,
                                           &schema_len,
-                                          key_name,
+                                          &key_name,
                                           &key_len,
                                           TRUE))
     {
       MousepadSchema  schema;
+      gboolean        have_key_len = (out_key_len != NULL);
+      gsize           max_key_len = have_key_len ? MIN (key_len, *out_key_len) : key_len;
 
       schema = mousepad_settings_schema_from_names (type_name,
                                                     type_len,
                                                     schema_name,
                                                     schema_len);
 
-      if (schema == MOUSEPAD_NUM_SCHEMAS && key_name != NULL)
-        *key_name = NULL;
+      /* copy into the caller's string */
+      if (schema != MOUSEPAD_NUM_SCHEMAS && out_key_name != NULL)
+        strncpy (out_key_name, key_name, max_key_len);
+
+      /* tell caller how much was copied */
+      if (have_key_len)
+        *out_key_len = max_key_len;
 
       return schema;
-    }
-  else if (key_name != NULL)
-    {
-      *key_name = NULL;
     }
 
   return MOUSEPAD_NUM_SCHEMAS;
@@ -319,15 +326,16 @@ mousepad_setting_bind (const gchar       *path,
                        GSettingsBindFlags flags)
 {
   gboolean       result = FALSE;
-  const gchar   *key_name;
   MousepadSchema schema;
+  gchar          key_name[MOUSEPAD_SETTINGS_MAX_KEY_LEN] = {0};
+  gsize          key_len = MOUSEPAD_SETTINGS_MAX_KEY_LEN - 1;
 
   g_return_val_if_fail (path != NULL, FALSE);
   g_return_val_if_fail (object != NULL, FALSE);
   g_return_val_if_fail (prop != NULL, FALSE);
 
 
-  schema = mousepad_settings_parse_path (path, &key_name);
+  schema = mousepad_settings_parse_path (path, key_name, &key_len);
 
   if (G_LIKELY (schema != MOUSEPAD_NUM_SCHEMAS))
     {
@@ -349,13 +357,14 @@ mousepad_setting_connect (const gchar  *path,
                            GSignalFlags connect_flags)
 {
   gulong         signal_id = 0;
-  const gchar   *key_name;
   MousepadSchema schema;
+  gchar          key_name[MOUSEPAD_SETTINGS_MAX_KEY_LEN] = {0};
+  gsize          key_len = MOUSEPAD_SETTINGS_MAX_KEY_LEN - 1;
 
   g_return_val_if_fail (path != NULL, 0);
   g_return_val_if_fail (callback != NULL, 0);
 
-  schema = mousepad_settings_parse_path (path, &key_name);
+  schema = mousepad_settings_parse_path (path, key_name, &key_len);
 
   if (G_LIKELY (schema != MOUSEPAD_NUM_SCHEMAS))
     {
@@ -389,7 +398,7 @@ mousepad_setting_disconnect (const gchar *path,
   g_return_if_fail (path != NULL);
   g_return_if_fail (handler_id > 0);
 
-  schema = mousepad_settings_parse_path (path, NULL);
+  schema = mousepad_settings_parse_path (path, NULL, NULL);
 
   if (G_LIKELY (schema != MOUSEPAD_NUM_SCHEMAS))
     g_signal_handler_disconnect (mousepad_settings[schema], handler_id);
@@ -405,13 +414,14 @@ mousepad_setting_get (const gchar *path,
                       ...)
 {
   gboolean       result = FALSE;
-  const gchar   *key_name;
   MousepadSchema schema;
+  gchar          key_name[MOUSEPAD_SETTINGS_MAX_KEY_LEN] = {0};
+  gsize          key_len = MOUSEPAD_SETTINGS_MAX_KEY_LEN - 1;
 
   g_return_val_if_fail (path != NULL, FALSE);
   g_return_val_if_fail (format_string != NULL, FALSE);
 
-  schema = mousepad_settings_parse_path (path, &key_name);
+  schema = mousepad_settings_parse_path (path, key_name, &key_len);
 
   if (G_LIKELY (schema != MOUSEPAD_NUM_SCHEMAS))
     {
@@ -445,13 +455,14 @@ mousepad_setting_set (const gchar *path,
                       ...)
 {
   gboolean       result = FALSE;
-  const gchar   *key_name;
   MousepadSchema schema;
+  gchar          key_name[MOUSEPAD_SETTINGS_MAX_KEY_LEN] = {0};
+  gsize          key_len = MOUSEPAD_SETTINGS_MAX_KEY_LEN - 1;
 
   g_return_val_if_fail (path != NULL, FALSE);
   g_return_val_if_fail (format_string != NULL, FALSE);
 
-  schema = mousepad_settings_parse_path (path, &key_name);
+  schema = mousepad_settings_parse_path (path, key_name, &key_len);
 
   if (G_LIKELY (schema != MOUSEPAD_NUM_SCHEMAS))
     {
@@ -543,12 +554,13 @@ gint
 mousepad_setting_get_enum (const gchar *path)
 {
   gint           result = 0;
-  const gchar   *key_name;
   MousepadSchema schema;
+  gchar          key_name[MOUSEPAD_SETTINGS_MAX_KEY_LEN] = {0};
+  gsize          key_len = MOUSEPAD_SETTINGS_MAX_KEY_LEN - 1;
 
   g_return_val_if_fail (path != NULL, FALSE);
 
-  schema = mousepad_settings_parse_path (path, &key_name);
+  schema = mousepad_settings_parse_path (path, key_name, &key_len);
 
   if (G_LIKELY (schema != MOUSEPAD_NUM_SCHEMAS))
     {
@@ -568,12 +580,13 @@ void
 mousepad_setting_set_enum (const gchar *path,
                            gint         value)
 {
-  const gchar   *key_name;
   MousepadSchema schema;
+  gchar          key_name[MOUSEPAD_SETTINGS_MAX_KEY_LEN] = {0};
+  gsize          key_len = MOUSEPAD_SETTINGS_MAX_KEY_LEN - 1;
 
   g_return_val_if_fail (path != NULL, FALSE);
 
-  schema = mousepad_settings_parse_path (path, &key_name);
+  schema = mousepad_settings_parse_path (path, key_name, &key_len);
 
   if (G_LIKELY (schema != MOUSEPAD_NUM_SCHEMAS))
     {
