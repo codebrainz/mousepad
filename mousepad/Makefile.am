@@ -45,6 +45,8 @@ mousepad_SOURCES = \
 	mousepad-search-bar.h \
 	mousepad-settings.c \
 	mousepad-settings.h \
+	mousepad-settings-store.c \
+	mousepad-settings-store.h \
 	mousepad-statusbar.c \
 	mousepad-statusbar.h \
 	mousepad-view.c \
