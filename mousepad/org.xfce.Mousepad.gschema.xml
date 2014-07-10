@@ -284,6 +284,13 @@
       <summary>window width</summary>
       <description>The width of windows in pixels.</description>
     </key>
+    <key name="fullscreen" type="b">
+      <default>false</default>
+      <summary>window fullscreen</summary>
+      <description>
+        When true the window will be fullscreen, when false it won't be.
+      </description>
+    </key>
   </schema>
 
 </schemalist>

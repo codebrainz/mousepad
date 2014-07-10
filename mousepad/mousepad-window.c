@@ -330,6 +330,8 @@ static void              mousepad_window_action_statusbar_overwrite   (MousepadW
                                                                        gboolean                overwrite);
 static void              mousepad_window_action_statusbar             (GtkToggleAction        *action,
                                                                        MousepadWindow         *window);
+static void              mousepad_window_action_fullscreen            (GtkToggleAction        *action,
+                                                                       MousepadWindow         *window);
 static void              mousepad_window_action_language              (GtkToggleAction        *action,
                                                                        MousepadWindow         *window);
 static void              mousepad_window_action_auto_indent           (GtkToggleAction        *action,
@@ -478,6 +480,7 @@ static const GtkToggleActionEntry toggle_action_entries[] =
   { "line-numbers", NULL, N_("Line N_umbers"), NULL, N_("Show line numbers"), G_CALLBACK (mousepad_window_action_line_numbers), FALSE, },
   { "toolbar", NULL, N_("_Toolbar"), NULL, N_("Change the visibility of the toolbar"), G_CALLBACK (mousepad_window_action_toolbar), FALSE, },
   { "statusbar", NULL, N_("St_atusbar"), NULL, N_("Change the visibility of the statusbar"), G_CALLBACK (mousepad_window_action_statusbar), FALSE, },
+  { "fullscreen", GTK_STOCK_FULLSCREEN, N_("_Fullscreen"), NULL, N_("Make the window fullscreen"), G_CALLBACK (mousepad_window_action_fullscreen), FALSE, },
   { "auto-indent", NULL, N_("_Auto Indent"), NULL, N_("Auto indent a new line"), G_CALLBACK (mousepad_window_action_auto_indent), FALSE, },
   { "insert-spaces", NULL, N_("Insert _Spaces"), NULL, N_("Insert spaces when the tab button is pressed"), G_CALLBACK (mousepad_window_action_insert_spaces), FALSE, },
   { "word-wrap", NULL, N_("_Word Wrap"), NULL, N_("Toggle breaking lines in between words"), G_CALLBACK (mousepad_window_action_word_wrap), FALSE, },
@@ -699,6 +702,10 @@ mousepad_window_init (MousepadWindow *window)
 
   /* update the toolbar visibility with the setting */
   MOUSEPAD_SETTING_BIND (TOOLBAR_VISIBLE, toolbar, "visible", G_SETTINGS_BIND_DEFAULT);
+
+  /* update the window fullscreen state when setting changes */
+  action = gtk_action_group_get_action (window->action_group, "fullscreen");
+  MOUSEPAD_SETTING_BIND (WINDOW_FULLSCREEN, action, "active", G_SETTINGS_BIND_DEFAULT);
 
   /* check if we need to add the root warning */
   if (G_UNLIKELY (geteuid () == 0))
@@ -4858,6 +4865,30 @@ mousepad_window_action_statusbar (GtkToggleAction *action,
 
   /* show/hide the statusbar accordingly */
   gtk_widget_set_visible (window->statusbar, show_statusbar);
+}
+
+
+
+static void
+mousepad_window_action_fullscreen (GtkToggleAction *action,
+                                   MousepadWindow  *window)
+{
+  gboolean fullscreen;
+
+  fullscreen = MOUSEPAD_SETTING_GET_BOOLEAN (WINDOW_FULLSCREEN);
+
+  if (fullscreen)
+    {
+      gtk_window_fullscreen (GTK_WINDOW (window));
+      gtk_action_set_stock_id (GTK_ACTION (action), GTK_STOCK_LEAVE_FULLSCREEN);
+      gtk_action_set_tooltip (GTK_ACTION (action), _("Leave fullscreen mode"));
+    }
+  else
+    {
+      gtk_window_unfullscreen (GTK_WINDOW (window));
+      gtk_action_set_stock_id (GTK_ACTION (action), GTK_STOCK_FULLSCREEN);
+      gtk_action_set_tooltip (GTK_ACTION (action), _("Make the window fullscreen"));
+    }
 }
 
 

@@ -41,6 +41,7 @@ G_BEGIN_DECLS
 #define MOUSEPAD_SETTING_SEARCH_REPLACE_ALL_LOCATION "/state/search/replace-all-location"
 #define MOUSEPAD_SETTING_WINDOW_HEIGHT               "/state/window/height"
 #define MOUSEPAD_SETTING_WINDOW_WIDTH                "/state/window/width"
+#define MOUSEPAD_SETTING_WINDOW_FULLSCREEN           "/state/window/fullscreen"
 
 void     mousepad_settings_init       (void);
 void     mousepad_settings_finalize   (void);

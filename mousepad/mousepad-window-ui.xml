@@ -101,6 +101,8 @@
       <separator />
       <menuitem action="toolbar" />
       <menuitem action="statusbar" />
+      <separator />
+      <menuitem action="fullscreen" />
     </menu>
 
     <menu action="document-menu">
@@ -152,7 +154,7 @@
       <toolitem action="replace" />
       <toolitem action="go-to" />
       <separator />
-      <toolitem action="close-window" />
+      <toolitem action="fullscreen" />
   </toolbar>
 
   <popup action="tab-menu">
