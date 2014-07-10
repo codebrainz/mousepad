@@ -138,8 +138,9 @@ mousepad_settings_init (void)
                                                "backend", backend,
                                                "schema-id", mousepad_schema_ids[i],
                                                NULL);
-          /* TODO: need to cleanup backend reference? */
         }
+
+      g_object_unref (backend);
 }
 #else
       for (i = 0; i < MOUSEPAD_NUM_SCHEMAS; i++)
