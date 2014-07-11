@@ -200,12 +200,11 @@
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkCheckButton" id="/prefs/view/display/highlight-braces-check">
+                      <object class="GtkCheckButton" id="/prefs/view/display/match-braces-check">
                         <property name="label" translatable="yes">Highlight matching brackets</property>
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
                         <property name="receives_default">False</property>
-                        <property name="active">True</property>
                         <property name="draw_indicator">True</property>
                       </object>
                       <packing>

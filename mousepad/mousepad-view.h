@@ -120,6 +120,11 @@ void            mousepad_view_set_word_wrap             (MousepadView      *view
 
 gboolean        mousepad_view_get_word_wrap             (MousepadView      *view);
 
+void            mousepad_view_set_match_braces          (MousepadView      *view,
+                                                         gboolean           enabled);
+
+gboolean        mousepad_view_get_match_braces          (MousepadView      *view);
+
 G_END_DECLS
 
 #endif /* !__MOUSEPAD_VIEW_H__ */

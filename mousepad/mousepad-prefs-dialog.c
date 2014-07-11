@@ -14,7 +14,7 @@
 #define WID_SHOW_RIGHT_MARGIN_CHECK         "/prefs/view/display/long-line-check"
 #define WID_RIGHT_MARGIN_SPIN               "/prefs/view/display/long-line-spin"
 #define WID_HIGHLIGHT_CURRENT_LINE_CHECK    "/prefs/view/display/highlight-current-line-check"
-#define WID_HIGHLIGHT_MATCHING_BRACES_CHECK "/prefs/view/display/highlight-braces-check"
+#define WID_MATCH_BRACES_CHECK              "/prefs/view/display/match-braces-check"
 #define WID_WORD_WRAP_CHECK                 "/prefs/view/display/word-wrap-check"
 
 #define WID_USE_DEFAULT_FONT_CHECK          "/prefs/view/font/default-check"
@@ -354,6 +354,7 @@ mousepad_prefs_dialog_init (MousepadPrefsDialog *self)
   BIND_CHECKBOX (HIGHLIGHT_CURRENT_LINE);
   BIND_CHECKBOX (WORD_WRAP);
   BIND_CHECKBOX (USE_DEFAULT_FONT);
+  BIND_CHECKBOX (MATCH_BRACES);
 
   /* Editor */
   BIND_CHECKBOX (AUTO_INDENT);

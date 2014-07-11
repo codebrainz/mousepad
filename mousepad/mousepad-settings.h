@@ -23,6 +23,7 @@ G_BEGIN_DECLS
 #define MOUSEPAD_SETTING_SMART_HOME_END             "/preferences/view/smart-home-end"
 #define MOUSEPAD_SETTING_TAB_WIDTH                  "/preferences/view/tab-width"
 #define MOUSEPAD_SETTING_WORD_WRAP                  "/preferences/view/word-wrap"
+#define MOUSEPAD_SETTING_MATCH_BRACES               "/preferences/view/match-braces"
 #define MOUSEPAD_SETTING_COLOR_SCHEME               "/preferences/view/color-scheme"
 #define MOUSEPAD_SETTING_TOOLBAR_VISIBLE            "/preferences/window/toolbar-visible"
 #define MOUSEPAD_SETTING_STATUSBAR_VISIBLE          "/preferences/window/statusbar-visible"

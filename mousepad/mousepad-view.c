@@ -133,6 +133,8 @@ struct _MousepadView
   gboolean              show_line_endings;
 
   gchar                *color_scheme;
+
+  gboolean              match_braces;
 };
 
 
@@ -145,6 +147,7 @@ enum
   PROP_SHOW_LINE_ENDINGS,
   PROP_COLOR_SCHEME,
   PROP_WORD_WRAP,
+  PROP_MATCH_BRACES,
   NUM_PROPERTIES
 };
 
@@ -216,6 +219,15 @@ mousepad_view_class_init (MousepadViewClass *klass)
                           "Whether to virtually wrap long lines in the view",
                           FALSE,
                           G_PARAM_READWRITE));
+
+  g_object_class_install_property (
+    gobject_class,
+    PROP_MATCH_BRACES,
+    g_param_spec_boolean ("match-braces",
+                          "MatchBraces",
+                          "Whether to highlight matching braces, parens, brackets, etc.",
+                          FALSE,
+                          G_PARAM_READWRITE));
 }
 
 
@@ -236,6 +248,8 @@ mousepad_view_buffer_changed (MousepadView *view,
       manager = gtk_source_style_scheme_manager_get_default ();
       scheme = gtk_source_style_scheme_manager_get_scheme (manager, view->color_scheme);
       gtk_source_buffer_set_style_scheme (buffer, scheme);
+
+      gtk_source_buffer_set_highlight_matching_brackets (buffer, view->match_braces);
     }
 }
 
@@ -264,6 +278,7 @@ mousepad_view_init (MousepadView *view)
   view->font_name = NULL;
   view->font_desc = NULL;
   view->font_handler = 0;
+  view->match_braces = FALSE;
 
   /* make sure any buffers set on the view get the color scheme applied to them */
   g_signal_connect (view,
@@ -298,6 +313,7 @@ mousepad_view_init (MousepadView *view)
   BIND_ (TAB_WIDTH,              "tab-width");
   BIND_ (COLOR_SCHEME,           "color-scheme");
   BIND_ (WORD_WRAP,              "word-wrap");
+  BIND_ (MATCH_BRACES,           "match-braces");
 
   /* override with default font when the setting is enabled */
   view->font_handler =
@@ -361,6 +377,9 @@ mousepad_view_set_property (GObject      *object,
     case PROP_WORD_WRAP:
       mousepad_view_set_word_wrap (view, g_value_get_boolean (value));
       break;
+    case PROP_MATCH_BRACES:
+      mousepad_view_set_match_braces (view, g_value_get_boolean (value));
+      break;
     default:
       G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
       break;
@@ -393,6 +412,9 @@ mousepad_view_get_property (GObject    *object,
       break;
     case PROP_WORD_WRAP:
       g_value_set_boolean (value, mousepad_view_get_word_wrap (view));
+      break;
+    case PROP_MATCH_BRACES:
+      g_value_set_boolean (value, mousepad_view_get_match_braces (view));
       break;
     default:
       G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
@@ -2741,4 +2763,29 @@ mousepad_view_get_word_wrap (MousepadView *view)
   mode = gtk_text_view_get_wrap_mode (GTK_TEXT_VIEW (view));
 
   return (mode == GTK_WRAP_WORD);
+}
+
+
+
+void
+mousepad_view_set_match_braces (MousepadView *view,
+                                gboolean      enabled)
+{
+  g_return_if_fail (MOUSEPAD_IS_VIEW (view));
+
+  view->match_braces = enabled;
+
+  mousepad_view_buffer_changed (view, NULL, NULL);
+
+  g_object_notify (G_OBJECT (view), "match-braces");
+}
+
+
+
+gboolean
+mousepad_view_get_match_braces (MousepadView *view)
+{
+  g_return_val_if_fail (MOUSEPAD_IS_VIEW (view), FALSE);
+
+  return view->match_braces;
 }

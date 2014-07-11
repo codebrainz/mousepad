@@ -149,6 +149,14 @@
         the text view, when false long lines will extend out of view.
       </description>
     </key>
+    <key name="match-braces" type="b">
+      <default>false</default>
+      <summary>Match braces</summary>
+      <description>
+        When true highlight matching braces, brackets, parents, etc, when
+        false don't highlight them.
+      </description>
+    </key>
     <key name="color-scheme" type="s">
       <default>'none'</default>
       <summary>Color scheme</summary>
