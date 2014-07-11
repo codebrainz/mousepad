@@ -9,10 +9,13 @@ mousepad/mousepad-document.c
 mousepad/mousepad-encoding-dialog.c
 mousepad/mousepad-encoding.c
 mousepad/mousepad-file.c
-mousepad/mousepad-preferences.c
+mousepad/mousepad-prefs-dialog.c
+mousepad/mousepad-prefs-dialog.glade
 mousepad/mousepad-print.c
 mousepad/mousepad-replace-dialog.c
 mousepad/mousepad-search-bar.c
+mousepad/mousepad-settings.c
+mousepad/mousepad-settings-store.c
 mousepad/mousepad-statusbar.c
 mousepad/mousepad-util.c
 mousepad/mousepad-view.c
