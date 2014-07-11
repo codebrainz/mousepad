@@ -58,24 +58,6 @@
       <menuitem action="select-all" />
       <menuitem action="change-selection" />
       <separator />
-      <menuitem action="find" />
-      <menuitem action="find-next" />
-      <menuitem action="find-previous" />
-      <menuitem action="replace" />
-    </menu>
-
-    <menu action="view-menu">
-      <menuitem action="font" />
-      <separator />
-      <menu action="color-scheme-menu">
-        <placeholder name="placeholder-color-scheme-items" />
-      </menu>
-      <menuitem action="line-numbers" />
-      <separator />
-      <menuitem action="statusbar" />
-    </menu>
-
-    <menu action="text-menu">
       <menu action="convert-menu">
         <menuitem action="lowercase" />
         <menuitem action="uppercase" />
@@ -93,14 +75,40 @@
         <menuitem action="line-up" />
         <menuitem action="line-down" />
       </menu>
-      <separator />
       <menuitem action="duplicate" />
-      <separator />
       <menuitem action="increase-indent" />
       <menuitem action="decrease-indent" />
+      <separator />
+      <menuitem action="preferences" />
+    </menu>
+
+    <menu action="search-menu">
+      <menuitem action="find" />
+      <menuitem action="find-next" />
+      <menuitem action="find-previous" />
+      <menuitem action="replace" />
+      <separator />
+      <menuitem action="go-to" />
+    </menu>
+
+    <menu action="view-menu">
+      <menuitem action="font" />
+      <separator />
+      <menu action="color-scheme-menu">
+        <placeholder name="placeholder-color-scheme-items" />
+      </menu>
+      <menuitem action="line-numbers" />
+      <separator />
+      <menuitem action="toolbar" />
+      <menuitem action="statusbar" />
+      <separator />
+      <menuitem action="fullscreen" />
     </menu>
 
     <menu action="document-menu">
+      <menu action="language-menu">
+        <placeholder name="placeholder-language-section-items" />
+      </menu>
       <menuitem action="auto-indent" />
       <menu action="eol-menu">
         <menuitem action="unix" />
@@ -116,18 +124,10 @@
       <separator />
       <menuitem action="write-bom" />
       <separator />
-      <menu action="language-menu">
-        <placeholder name="placeholder-language-section-items" />
-      </menu>
-    </menu>
-
-    <menu action="navigation-menu">
       <menuitem action="back" />
       <menuitem action="forward" />
       <separator />
       <placeholder name="placeholder-file-items" />
-      <separator />
-      <menuitem action="go-to" />
     </menu>
 
     <menu action="help-menu">
@@ -135,6 +135,27 @@
       <menuitem action="about" />
     </menu>
   </menubar>
+
+  <toolbar action="main-toolbar">
+      <toolitem action="new" />
+      <toolitem action="open" />
+      <toolitem action="save" />
+      <toolitem action="save-as" />
+      <toolitem action="revert" />
+      <toolitem action="close" />
+      <separator />
+      <toolitem action="undo" />
+      <toolitem action="redo" />
+      <toolitem action="cut" />
+      <toolitem action="copy" />
+      <toolitem action="paste" />
+      <separator />
+      <toolitem action="find" />
+      <toolitem action="replace" />
+      <toolitem action="go-to" />
+      <separator />
+      <toolitem action="fullscreen" />
+  </toolbar>
 
   <popup action="tab-menu">
     <menuitem action="save" />
@@ -153,7 +174,34 @@
     <menuitem action="cut" />
     <menuitem action="copy" />
     <menuitem action="paste" />
+    <menu action="paste-menu">
+      <menuitem action="paste-history" />
+      <menuitem action="paste-column" />
+    </menu>
+    <menuitem action="delete" />
     <separator />
     <menuitem action="select-all" />
+    <menuitem action="change-selection" />
+    <separator />
+    <menu action="convert-menu">
+      <menuitem action="lowercase" />
+      <menuitem action="uppercase" />
+      <menuitem action="titlecase" />
+      <menuitem action="opposite-case" />
+      <separator />
+      <menuitem action="tabs-to-spaces" />
+      <menuitem action="spaces-to-tabs" />
+      <separator />
+      <menuitem action="strip-trailing" />
+      <separator />
+      <menuitem action="transpose" />
+    </menu>
+    <menu action="move-menu">
+      <menuitem action="line-up" />
+      <menuitem action="line-down" />
+    </menu>
+    <menuitem action="duplicate" />
+    <menuitem action="increase-indent" />
+    <menuitem action="decrease-indent" />
   </popup>
 </ui>

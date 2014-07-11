@@ -54,6 +54,8 @@ gboolean        mousepad_window_open_files       (MousepadWindow  *window,
                                                   const gchar     *working_directory,
                                                   gchar          **filenames);
 
+void            mousepad_window_show_preferences (MousepadWindow  *window);
+
 G_END_DECLS
 
 #endif /* !__MOUSEPAD_WINDOW_H__ */

@@ -33,8 +33,9 @@ mousepad_SOURCES = \
 	mousepad-encoding-dialog.h \
 	mousepad-file.c \
 	mousepad-file.h \
-	mousepad-preferences.c \
-	mousepad-preferences.h \
+	mousepad-prefs-dialog.c \
+	mousepad-prefs-dialog.h \
+	mousepad-prefs-dialog-ui.h \
 	mousepad-print.c \
 	mousepad-print.h \
 	mousepad-private.h \
@@ -42,6 +43,10 @@ mousepad_SOURCES = \
 	mousepad-replace-dialog.h \
 	mousepad-search-bar.c \
 	mousepad-search-bar.h \
+	mousepad-settings.c \
+	mousepad-settings.h \
+	mousepad-settings-store.c \
+	mousepad-settings-store.h \
 	mousepad-statusbar.c \
 	mousepad-statusbar.h \
 	mousepad-view.c \
@@ -57,7 +62,8 @@ mousepad_CFLAGS = \
 	$(GTK_CFLAGS) \
 	$(GTHREAD_CFLAGS) \
 	$(GTKSOURCEVIEW_CFLAGS) \
-	$(PLATFORM_CFLAGS)
+	$(PLATFORM_CFLAGS) \
+	-DMOUSEPAD_GSETTINGS_SCHEMA_DIR=\""$(datadir)/glib-2.0/schemas"\"
 
 mousepad_LDFLAGS = \
 	-no-undefined \
@@ -85,14 +91,21 @@ mousepad_LDADD +=	\
 	$(DBUS_LIBS)
 endif
 
+if WITH_KEYFILE_SETTINGS
+mousepad_CFLAGS += \
+	-DMOUSEPAD_SETTINGS_KEYFILE_BACKEND=1
+endif
+
 if MAINTAINER_MODE
 DISTCLEANFILES = \
 	$(mousepad_built_sources) \
-	mousepad-window-ui.h
+	mousepad-window-ui.h \
+	mousepad-prefs-dialog-ui.h
 
 BUILT_SOURCES = \
 	$(mousepad_built_sources) \
-	mousepad-window-ui.h
+	mousepad-window-ui.h \
+	mousepad-prefs-dialog-ui.h
 
 if HAVE_DBUS
 mousepad-dbus-infos.h: mousepad-dbus-infos.xml Makefile
@@ -101,6 +114,9 @@ endif
 
 mousepad-window-ui.h: mousepad-window-ui.xml Makefile
 	$(AM_V_GEN) exo-csource --strip-comments --strip-content --static --name=mousepad_window_ui $< > $@
+
+mousepad-prefs-dialog-ui.h: mousepad-prefs-dialog.glade Makefile
+	$(AM_V_GEN) exo-csource --strip-comments --strip-content --static --name=mousepad_prefs_dialog_ui $< > $@
 
 mousepad-marshal.h: mousepad-marshal.list Makefile
 	$(AM_V_GEN) glib-genmarshal --header --prefix=_mousepad_marshal $< > $@
@@ -113,6 +129,11 @@ endif
 EXTRA_DIST = \
 	mousepad-dbus-infos.xml \
 	mousepad-marshal.list \
-	mousepad-window-ui.xml
+	mousepad-window-ui.xml \
+	mousepad-prefs-dialog.glade \
+	org.xfce.mousepad.gschema.xml
+
+gsettings_SCHEMAS = org.xfce.mousepad.gschema.xml
+@GSETTINGS_RULES@
 
 # vi:set ts=8 sw=8 noet ai nocindent syntax=automake:

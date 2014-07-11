@@ -43,6 +43,9 @@ void                 mousepad_application_new_window_with_files  (MousepadApplic
                                                                   const gchar          *working_directory,
                                                                   gchar               **filenames);
 
+void                 mousepad_application_show_preferences       (MousepadApplication  *application,
+                                                                  GtkWindow            *transient_for);
+
 G_END_DECLS
 
 #endif /* !__MOUSEPAD_APPLICATION_H__ */

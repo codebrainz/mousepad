@@ -29,11 +29,11 @@
 #endif
 
 #include <mousepad/mousepad-private.h>
+#include <mousepad/mousepad-settings.h>
 #include <mousepad/mousepad-util.h>
 #include <mousepad/mousepad-document.h>
 #include <mousepad/mousepad-marshal.h>
 #include <mousepad/mousepad-view.h>
-#include <mousepad/mousepad-preferences.h>
 #include <mousepad/mousepad-window.h>
 
 
@@ -96,9 +96,6 @@ struct _MousepadDocumentPrivate
   /* utf-8 valid document names */
   gchar               *utf8_filename;
   gchar               *utf8_basename;
-
-  /* settings */
-  guint                word_wrap : 1;
 };
 
 
@@ -176,11 +173,6 @@ static void
 mousepad_document_init (MousepadDocument *document)
 {
   GtkTargetList        *target_list;
-  gboolean              word_wrap, auto_indent, line_numbers, insert_spaces;
-  gchar                *font_name, *color_scheme;
-  gint                  tab_size;
-  GtkSourceStyleScheme *scheme = NULL;
-  MousepadPreferences  *preferences;
 
   /* private structure */
   document->priv = MOUSEPAD_DOCUMENT_GET_PRIVATE (document);
@@ -216,40 +208,6 @@ mousepad_document_init (MousepadDocument *document)
   /* also allow dropping of uris and tabs in the textview */
   target_list = gtk_drag_dest_get_target_list (GTK_WIDGET (document->textview));
   gtk_target_list_add_table (target_list, drop_targets, G_N_ELEMENTS (drop_targets));
-
-  /* preferences */
-  preferences = mousepad_preferences_get ();
-
-  /* read all the default settings */
-  g_object_get (G_OBJECT (preferences),
-                "view-word-wrap", &word_wrap,
-                "view-line-numbers", &line_numbers,
-                "view-auto-indent", &auto_indent,
-                "view-font-name", &font_name,
-                "view-tab-size", &tab_size,
-                "view-insert-spaces", &insert_spaces,
-                "view-color-scheme", &color_scheme,
-                NULL);
-
-  /* release the preferences */
-  g_object_unref (G_OBJECT (preferences));
-
-  /* set all the settings */
-  mousepad_document_set_word_wrap (document, word_wrap);
-  mousepad_document_set_font (document, font_name);
-  mousepad_view_set_line_numbers (document->textview, line_numbers);
-  mousepad_view_set_auto_indent (document->textview, auto_indent);
-  mousepad_view_set_tab_size (document->textview, tab_size);
-  mousepad_view_set_insert_spaces (document->textview, insert_spaces);
-
-  if (g_strcmp0 (color_scheme, "none") != 0)
-    scheme =  gtk_source_style_scheme_manager_get_scheme (gtk_source_style_scheme_manager_get_default (), color_scheme);
-  gtk_source_buffer_set_highlight_syntax (GTK_SOURCE_BUFFER (document->buffer), (scheme != NULL));
-  gtk_source_buffer_set_style_scheme (GTK_SOURCE_BUFFER (document->buffer), scheme);
-
-  /* cleanup */
-  g_free (font_name);
-  g_free (color_scheme);
 
   /* attach signals to the text view and buffer */
   g_signal_connect (G_OBJECT (document->buffer), "notify::cursor-position", G_CALLBACK (mousepad_document_notify_cursor_position), document);
@@ -302,7 +260,7 @@ mousepad_document_notify_cursor_position (GtkTextBuffer    *buffer,
   line = gtk_text_iter_get_line (&iter) + 1;
 
   /* get the tab size */
-  tab_size = mousepad_view_get_tab_size (document->textview);
+  tab_size = MOUSEPAD_SETTING_GET_INT (TAB_WIDTH);
 
   /* get the column */
   column = mousepad_util_get_real_line_offset (&iter, tab_size);
@@ -484,41 +442,6 @@ mousepad_document_set_overwrite (MousepadDocument *document,
 
 
 void
-mousepad_document_set_word_wrap (MousepadDocument *document,
-                                 gboolean          word_wrap)
-{
-  mousepad_return_if_fail (MOUSEPAD_IS_DOCUMENT (document));
-
-  /* store the setting */
-  document->priv->word_wrap = word_wrap;
-
-  /* set the wrapping mode */
-  gtk_text_view_set_wrap_mode (GTK_TEXT_VIEW (document->textview),
-                               word_wrap ? GTK_WRAP_WORD : GTK_WRAP_NONE);
-}
-
-
-
-void
-mousepad_document_set_font (MousepadDocument *document,
-                            const gchar      *font_name)
-{
-  PangoFontDescription *font_desc;
-
-  mousepad_return_if_fail (MOUSEPAD_IS_DOCUMENT (document));
-
-  if (G_LIKELY (font_name))
-    {
-      /* set the widget font */
-      font_desc = pango_font_description_from_string (font_name);
-      gtk_widget_modify_font (GTK_WIDGET (document->textview), font_desc);
-      pango_font_description_free (font_desc);
-    }
-}
-
-
-
-void
 mousepad_document_focus_textview (MousepadDocument *document)
 {
   mousepad_return_if_fail (MOUSEPAD_IS_DOCUMENT (document));
@@ -637,14 +560,4 @@ mousepad_document_get_filename (MousepadDocument *document)
   mousepad_return_val_if_fail (MOUSEPAD_IS_DOCUMENT (document), NULL);
 
   return document->priv->utf8_filename;
-}
-
-
-
-gboolean
-mousepad_document_get_word_wrap (MousepadDocument *document)
-{
-  mousepad_return_val_if_fail (MOUSEPAD_IS_DOCUMENT (document), FALSE);
-
-  return document->priv->word_wrap;
 }

@@ -92,29 +92,38 @@ void            mousepad_view_duplicate                 (MousepadView      *view
 void            mousepad_view_indent                    (MousepadView      *view,
                                                          gint               type);
 
-void            mousepad_view_set_line_numbers          (MousepadView      *view,
-                                                         gboolean           line_numbers);
-
-void            mousepad_view_set_auto_indent           (MousepadView      *view,
-                                                         gboolean           auto_indent);
-
-void            mousepad_view_set_tab_size              (MousepadView      *view,
-                                                         gint               tab_size);
-
-void            mousepad_view_set_insert_spaces         (MousepadView      *view,
-                                                         gboolean           insert_spaces);
-
 gint            mousepad_view_get_selection_length      (MousepadView      *view,
                                                          gboolean          *is_column_selection);
 
-gboolean        mousepad_view_get_line_numbers          (MousepadView      *view);
+void            mousepad_view_set_font_name             (MousepadView      *view,
+                                                         const gchar       *font_name);
 
-gboolean        mousepad_view_get_auto_indent           (MousepadView      *view);
+const gchar    *mousepad_view_get_font_name             (MousepadView      *view);
 
-gint            mousepad_view_get_tab_size              (MousepadView      *view);
+void            mousepad_view_set_show_whitespace       (MousepadView      *view,
+                                                         gboolean           show);
 
-gboolean        mousepad_view_get_insert_spaces         (MousepadView      *view);
+gboolean        mousepad_view_get_show_whitespace       (MousepadView      *view);
 
+void            mousepad_view_set_show_line_endings     (MousepadView      *view,
+                                                         gboolean           show);
+
+gboolean        mousepad_view_get_show_line_endings     (MousepadView      *view);
+
+void            mousepad_view_set_color_scheme          (MousepadView      *view,
+                                                         const gchar       *color_scheme);
+
+const gchar    *mousepad_view_get_color_scheme          (MousepadView      *view);
+
+void            mousepad_view_set_word_wrap             (MousepadView      *view,
+                                                         gboolean           enabled);
+
+gboolean        mousepad_view_get_word_wrap             (MousepadView      *view);
+
+void            mousepad_view_set_match_braces          (MousepadView      *view,
+                                                         gboolean           enabled);
+
+gboolean        mousepad_view_get_match_braces          (MousepadView      *view);
 
 G_END_DECLS
 

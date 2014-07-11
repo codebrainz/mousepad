@@ -25,16 +25,26 @@
 #include <gdk/gdkkeysyms.h>
 
 #include <mousepad/mousepad-private.h>
+#include <mousepad/mousepad-settings.h>
 #include <mousepad/mousepad-util.h>
 #include <mousepad/mousepad-view.h>
 
 
 
+#define MOUSEPAD_VIEW_DEFAULT_FONT "Monospace"
 #define mousepad_view_get_buffer(view) (gtk_text_view_get_buffer (GTK_TEXT_VIEW (view)))
 
 
 
 static void      mousepad_view_finalize                      (GObject            *object);
+static void      mousepad_view_set_property                  (GObject            *object,
+                                                              guint               prop_id,
+                                                              const GValue       *value,
+                                                              GParamSpec         *pspec);
+static void      mousepad_view_get_property                  (GObject            *object,
+                                                              guint               prop_id,
+                                                              GValue             *value,
+                                                              GParamSpec         *pspec);
 static void      mousepad_view_style_set                     (GtkWidget          *widget,
                                                               GtkStyle           *previous_style);
 static gint      mousepad_view_expose                        (GtkWidget          *widget,
@@ -79,6 +89,7 @@ static void      mousepad_view_transpose_lines               (GtkTextBuffer     
                                                               GtkTextIter         *end_iter);
 static void      mousepad_view_transpose_words               (GtkTextBuffer       *buffer,
                                                               GtkTextIter         *iter);
+static void      mousepad_view_update_font                   (MousepadView        *view);
 
 
 
@@ -89,28 +100,55 @@ struct _MousepadViewClass
 
 struct _MousepadView
 {
-  GtkSourceView  __parent__;
+  GtkSourceView         __parent__;
 
   /* the selection style tag */
-  GtkTextTag         *selection_tag;
+  GtkTextTag           *selection_tag;
 
   /* list with all the selection marks */
-  GSList             *selection_marks;
+  GSList               *selection_marks;
 
   /* selection timeout id */
-  guint               selection_timeout_id;
+  guint                 selection_timeout_id;
 
   /* coordinates for the selection */
-  gint                selection_start_x;
-  gint                selection_start_y;
-  gint                selection_end_x;
-  gint                selection_end_y;
+  gint                  selection_start_x;
+  gint                  selection_start_y;
+  gint                  selection_end_x;
+  gint                  selection_end_y;
 
   /* length of the selection (-1 = zerro width selection, 0 = no selection) */
-  gint                selection_length;
+  gint                  selection_length;
 
   /* if the selection is in editing mode */
-  guint               selection_editing : 1;
+  guint                 selection_editing : 1;
+
+  /* the font used in the view */
+  gchar                *font_name;
+  PangoFontDescription *font_desc;
+  gulong                font_handler;
+
+  /* whitespace visualization */
+  gboolean              show_whitespace;
+  gboolean              show_line_endings;
+
+  gchar                *color_scheme;
+
+  gboolean              match_braces;
+};
+
+
+
+enum
+{
+  PROP_0,
+  PROP_FONT_NAME,
+  PROP_SHOW_WHITESPACE,
+  PROP_SHOW_LINE_ENDINGS,
+  PROP_COLOR_SCHEME,
+  PROP_WORD_WRAP,
+  PROP_MATCH_BRACES,
+  NUM_PROPERTIES
 };
 
 
@@ -127,6 +165,8 @@ mousepad_view_class_init (MousepadViewClass *klass)
 
   gobject_class = G_OBJECT_CLASS (klass);
   gobject_class->finalize = mousepad_view_finalize;
+  gobject_class->set_property = mousepad_view_set_property;
+  gobject_class->get_property = mousepad_view_get_property;
 
   widget_class = GTK_WIDGET_CLASS (klass);
   widget_class->expose_event         = mousepad_view_expose;
@@ -134,6 +174,93 @@ mousepad_view_class_init (MousepadViewClass *klass)
   widget_class->key_press_event      = mousepad_view_key_press_event;
   widget_class->button_press_event   = mousepad_view_button_press_event;
   widget_class->button_release_event = mousepad_view_button_release_event;
+
+  g_object_class_install_property (
+    gobject_class,
+    PROP_FONT_NAME,
+    g_param_spec_string ("font-name",
+                         "FontName",
+                         "The name of the font to use in the view",
+                         MOUSEPAD_VIEW_DEFAULT_FONT,
+                         G_PARAM_READWRITE));
+
+  g_object_class_install_property (
+    gobject_class,
+    PROP_SHOW_WHITESPACE,
+    g_param_spec_boolean ("show-whitespace",
+                          "ShowWhitespace",
+                          "Whether whitespace is visualized in the view",
+                          FALSE,
+                          G_PARAM_READWRITE));
+
+  g_object_class_install_property (
+    gobject_class,
+    PROP_SHOW_LINE_ENDINGS,
+    g_param_spec_boolean ("show-line-endings",
+                          "ShowLineEndings",
+                          "Whether line-endings are visualized in the view",
+                          FALSE,
+                          G_PARAM_READWRITE));
+
+  g_object_class_install_property (
+    gobject_class,
+    PROP_COLOR_SCHEME,
+    g_param_spec_string ("color-scheme",
+                         "ColorScheme",
+                         "The id of the syntax highlighting color scheme to use",
+                         NULL,
+                         G_PARAM_READWRITE));
+
+  g_object_class_install_property (
+    gobject_class,
+    PROP_WORD_WRAP,
+    g_param_spec_boolean ("word-wrap",
+                          "WordWrap",
+                          "Whether to virtually wrap long lines in the view",
+                          FALSE,
+                          G_PARAM_READWRITE));
+
+  g_object_class_install_property (
+    gobject_class,
+    PROP_MATCH_BRACES,
+    g_param_spec_boolean ("match-braces",
+                          "MatchBraces",
+                          "Whether to highlight matching braces, parens, brackets, etc.",
+                          FALSE,
+                          G_PARAM_READWRITE));
+}
+
+
+
+static void
+mousepad_view_buffer_changed (MousepadView *view,
+                              GParamSpec   *pspec,
+                              gpointer      user_data)
+{
+  GtkSourceBuffer *buffer;
+
+  buffer = (GtkSourceBuffer*) gtk_text_view_get_buffer (GTK_TEXT_VIEW (view));
+  if (GTK_IS_SOURCE_BUFFER (buffer))
+    {
+      GtkSourceStyleSchemeManager *manager;
+      GtkSourceStyleScheme        *scheme;
+
+      manager = gtk_source_style_scheme_manager_get_default ();
+      scheme = gtk_source_style_scheme_manager_get_scheme (manager, view->color_scheme);
+      gtk_source_buffer_set_style_scheme (buffer, scheme);
+
+      gtk_source_buffer_set_highlight_matching_brackets (buffer, view->match_braces);
+    }
+}
+
+
+
+static void
+mousepad_view_use_default_font_setting_changed (MousepadView *view,
+                                                gchar        *key,
+                                                GSettings    *settings)
+{
+  mousepad_view_update_font (view);
 }
 
 
@@ -147,6 +274,17 @@ mousepad_view_init (MousepadView *view)
   view->selection_marks = NULL;
   view->selection_length = 0;
   view->selection_editing = FALSE;
+  view->color_scheme = g_strdup ("none");
+  view->font_name = NULL;
+  view->font_desc = NULL;
+  view->font_handler = 0;
+  view->match_braces = FALSE;
+
+  /* make sure any buffers set on the view get the color scheme applied to them */
+  g_signal_connect (view,
+                    "notify::buffer",
+                    G_CALLBACK (mousepad_view_buffer_changed),
+                    NULL);
 
   /* reset drag coordinates */
   view->selection_start_x = view->selection_end_x = -1;
@@ -154,6 +292,37 @@ mousepad_view_init (MousepadView *view)
 
   g_signal_connect (GTK_TEXT_VIEW (view)->im_context, "commit",
                     G_CALLBACK (mousepad_view_commit_handler), view);
+
+  /* bind Gsettings */
+#define BIND_(setting, prop) \
+  MOUSEPAD_SETTING_BIND (setting, view, prop, G_SETTINGS_BIND_DEFAULT)
+
+  BIND_ (AUTO_INDENT,            "auto-indent");
+  BIND_ (FONT_NAME,              "font-name");
+  BIND_ (SHOW_WHITESPACE,        "show-whitespace");
+  BIND_ (SHOW_LINE_ENDINGS,      "show-line-endings");
+  BIND_ (HIGHLIGHT_CURRENT_LINE, "highlight-current-line");
+  BIND_ (INDENT_ON_TAB,          "indent-on-tab");
+  BIND_ (INDENT_WIDTH,           "indent-width");
+  BIND_ (INSERT_SPACES,          "insert-spaces-instead-of-tabs");
+  BIND_ (RIGHT_MARGIN_POSITION,  "right-margin-position");
+  BIND_ (SHOW_LINE_MARKS,        "show-line-marks");
+  BIND_ (SHOW_LINE_NUMBERS,      "show-line-numbers");
+  BIND_ (SHOW_RIGHT_MARGIN,      "show-right-margin");
+  BIND_ (SMART_HOME_END,         "smart-home-end");
+  BIND_ (TAB_WIDTH,              "tab-width");
+  BIND_ (COLOR_SCHEME,           "color-scheme");
+  BIND_ (WORD_WRAP,              "word-wrap");
+  BIND_ (MATCH_BRACES,           "match-braces");
+
+  /* override with default font when the setting is enabled */
+  view->font_handler =
+    MOUSEPAD_SETTING_CONNECT (USE_DEFAULT_FONT,
+                              G_CALLBACK (mousepad_view_use_default_font_setting_changed),
+                              view,
+                              G_CONNECT_SWAPPED);
+
+#undef BIND_
 }
 
 
@@ -167,11 +336,90 @@ mousepad_view_finalize (GObject *object)
   if (G_UNLIKELY (view->selection_timeout_id != 0))
     g_source_remove (view->selection_timeout_id);
 
+  /* disconnect the settings changed callback */
+  if (view->font_handler > 0)
+    MOUSEPAD_SETTING_DISCONNECT (FONT_NAME, view->font_handler);
+
   /* free the selection marks list (marks are owned by the buffer) */
   if (G_UNLIKELY (view->selection_marks != NULL))
     g_slist_free (view->selection_marks);
 
+  /* cleanup color scheme name */
+  g_free (view->color_scheme);
+
   (*G_OBJECT_CLASS (mousepad_view_parent_class)->finalize) (object);
+}
+
+
+
+static void
+mousepad_view_set_property (GObject      *object,
+                            guint         prop_id,
+                            const GValue *value,
+                            GParamSpec   *pspec)
+{
+  MousepadView *view = MOUSEPAD_VIEW (object);
+
+  switch (prop_id)
+    {
+    case PROP_FONT_NAME:
+      mousepad_view_set_font_name (view, g_value_get_string (value));
+      break;
+    case PROP_SHOW_WHITESPACE:
+      mousepad_view_set_show_whitespace (view, g_value_get_boolean (value));
+      break;
+    case PROP_SHOW_LINE_ENDINGS:
+      mousepad_view_set_show_line_endings (view, g_value_get_boolean (value));
+      break;
+    case PROP_COLOR_SCHEME:
+      mousepad_view_set_color_scheme (view, g_value_get_string (value));
+      break;
+    case PROP_WORD_WRAP:
+      mousepad_view_set_word_wrap (view, g_value_get_boolean (value));
+      break;
+    case PROP_MATCH_BRACES:
+      mousepad_view_set_match_braces (view, g_value_get_boolean (value));
+      break;
+    default:
+      G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
+      break;
+    }
+}
+
+
+
+static void
+mousepad_view_get_property (GObject    *object,
+                            guint       prop_id,
+                            GValue     *value,
+                            GParamSpec *pspec)
+{
+  MousepadView *view = MOUSEPAD_VIEW (object);
+
+  switch (prop_id)
+    {
+    case PROP_FONT_NAME:
+      g_value_set_string (value, mousepad_view_get_font_name (view));
+      break;
+    case PROP_SHOW_WHITESPACE:
+      g_value_set_boolean (value, mousepad_view_get_show_whitespace (view));
+      break;
+    case PROP_SHOW_LINE_ENDINGS:
+      g_value_set_boolean (value, mousepad_view_get_show_line_endings (view));
+      break;
+    case PROP_COLOR_SCHEME:
+      g_value_set_string (value, mousepad_view_get_color_scheme (view));
+      break;
+    case PROP_WORD_WRAP:
+      g_value_set_boolean (value, mousepad_view_get_word_wrap (view));
+      break;
+    case PROP_MATCH_BRACES:
+      g_value_set_boolean (value, mousepad_view_get_match_braces (view));
+      break;
+    default:
+      G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
+      break;
+    }
 }
 
 
@@ -2276,51 +2524,6 @@ mousepad_view_indent (MousepadView *view,
 
 
 
-void
-mousepad_view_set_line_numbers (MousepadView *view,
-                                gboolean      line_numbers)
-{
-  mousepad_return_if_fail (MOUSEPAD_IS_VIEW (view));
-
-  gtk_source_view_set_show_line_numbers (GTK_SOURCE_VIEW (view), line_numbers);
-}
-
-
-
-void
-mousepad_view_set_auto_indent (MousepadView *view,
-                               gboolean      auto_indent)
-{
-  mousepad_return_if_fail (MOUSEPAD_IS_VIEW (view));
-
-  gtk_source_view_set_auto_indent (GTK_SOURCE_VIEW (view), auto_indent);
-}
-
-
-
-void
-mousepad_view_set_tab_size (MousepadView *view,
-                             gint          tab_size)
-{
-  mousepad_return_if_fail (MOUSEPAD_IS_VIEW (view));
-  mousepad_return_if_fail (GTK_IS_TEXT_VIEW (view));
-
-  gtk_source_view_set_tab_width (GTK_SOURCE_VIEW (view), tab_size);
-}
-
-
-
-void
-mousepad_view_set_insert_spaces (MousepadView *view,
-                                 gboolean      insert_spaces)
-{
-  mousepad_return_if_fail (MOUSEPAD_IS_VIEW (view));
-
-  gtk_source_view_set_insert_spaces_instead_of_tabs (GTK_SOURCE_VIEW (view), insert_spaces);
-}
-
-
-
 gboolean
 mousepad_view_get_selection_length (MousepadView *view,
                                     gboolean     *is_column_selection)
@@ -2360,40 +2563,229 @@ mousepad_view_get_selection_length (MousepadView *view,
 
 
 
-gboolean
-mousepad_view_get_line_numbers (MousepadView *view)
+void
+mousepad_view_set_font_name (MousepadView *view,
+                             const gchar  *font_name)
 {
-  mousepad_return_val_if_fail (MOUSEPAD_IS_VIEW (view), FALSE);
+  PangoFontDescription *font_desc;
 
-  return gtk_source_view_get_show_line_numbers (GTK_SOURCE_VIEW (view));
+  g_return_if_fail (MOUSEPAD_IS_VIEW (view));
+
+  /* Passing NULL resets to the default font */
+  if (font_name == NULL)
+    font_name = MOUSEPAD_VIEW_DEFAULT_FONT;
+
+  font_desc = pango_font_description_from_string (font_name);
+  if (G_LIKELY (font_desc != NULL))
+    {
+      /* Save the normalized representation of the font as a string */
+      g_free (view->font_name);
+      view->font_name = pango_font_description_to_string (font_desc);
+
+      /* save the font description for later updating */
+      pango_font_description_free (view->font_desc);
+      view->font_desc = font_desc;
+
+      /* apply either the default or this font depending on settings */
+      mousepad_view_update_font (view);
+
+      /* Notify interested parties that the property has changed */
+      g_object_notify (G_OBJECT (view), "font-name");
+    }
+  else
+    g_critical ("Invalid font-name given: %s", font_name);
+}
+
+
+
+static void
+mousepad_view_update_draw_spaces (MousepadView *view)
+{
+  GtkSourceDrawSpacesFlags flags = 0;
+
+  if (view->show_whitespace)
+    {
+      flags |= GTK_SOURCE_DRAW_SPACES_SPACE |
+               GTK_SOURCE_DRAW_SPACES_TAB |
+               GTK_SOURCE_DRAW_SPACES_NBSP |
+               GTK_SOURCE_DRAW_SPACES_LEADING |
+               GTK_SOURCE_DRAW_SPACES_TEXT |
+               GTK_SOURCE_DRAW_SPACES_TRAILING;
+    }
+
+  if (view->show_line_endings)
+    flags |= GTK_SOURCE_DRAW_SPACES_NEWLINE;
+
+  gtk_source_view_set_draw_spaces (GTK_SOURCE_VIEW (view), flags);
+}
+
+
+
+static void
+mousepad_view_override_font (MousepadView         *view,
+                             PangoFontDescription *font_desc)
+{
+#if GTK_CHECK_VERSION (3, 0, 0)
+  gtk_widget_override_font (GTK_WIDGET (view), font_desc);
+#else
+  gtk_widget_modify_font (GTK_WIDGET (view), font_desc);
+#endif
+}
+
+
+
+static void
+mousepad_view_update_font (MousepadView *view)
+{
+  gboolean use_default;
+
+  use_default = MOUSEPAD_SETTING_GET_BOOLEAN (USE_DEFAULT_FONT);
+
+  if (use_default)
+    {
+      PangoFontDescription *font_desc;
+      font_desc = pango_font_description_from_string (MOUSEPAD_VIEW_DEFAULT_FONT);
+      mousepad_view_override_font (view, font_desc);
+      pango_font_description_free (font_desc);
+    }
+  else
+    mousepad_view_override_font (view, view->font_desc);
+}
+
+
+
+const gchar *
+mousepad_view_get_font_name (MousepadView *view)
+{
+  g_return_val_if_fail (MOUSEPAD_IS_VIEW (view), NULL);
+
+  return view->font_name;
+}
+
+
+
+void
+mousepad_view_set_show_whitespace (MousepadView *view,
+                                   gboolean      show)
+{
+  g_return_if_fail (MOUSEPAD_IS_VIEW (view));
+
+  view->show_whitespace = show;
+  mousepad_view_update_draw_spaces (view);
+  g_object_notify (G_OBJECT (view), "show-whitespace");
 }
 
 
 
 gboolean
-mousepad_view_get_auto_indent (MousepadView *view)
+mousepad_view_get_show_whitespace (MousepadView *view)
 {
-  mousepad_return_val_if_fail (MOUSEPAD_IS_VIEW (view), FALSE);
+  g_return_val_if_fail (MOUSEPAD_IS_VIEW (view), FALSE);
 
-  return gtk_source_view_get_auto_indent (GTK_SOURCE_VIEW (view));
+  return view->show_whitespace;
 }
 
 
 
-gint
-mousepad_view_get_tab_size (MousepadView *view)
+void
+mousepad_view_set_show_line_endings (MousepadView *view,
+                                     gboolean      show)
 {
-  mousepad_return_val_if_fail (MOUSEPAD_IS_VIEW (view), -1);
+  g_return_if_fail (MOUSEPAD_IS_VIEW (view));
 
-  return gtk_source_view_get_tab_width (GTK_SOURCE_VIEW (view));
+  view->show_line_endings = show;
+  mousepad_view_update_draw_spaces (view);
+  g_object_notify (G_OBJECT (view), "show-line-endings");
 }
 
 
 
 gboolean
-mousepad_view_get_insert_spaces (MousepadView *view)
+mousepad_view_get_show_line_endings (MousepadView *view)
 {
-  mousepad_return_val_if_fail (MOUSEPAD_IS_VIEW (view), FALSE);
+  g_return_val_if_fail (MOUSEPAD_IS_VIEW (view), FALSE);
 
-  return gtk_source_view_get_insert_spaces_instead_of_tabs (GTK_SOURCE_VIEW (view));
+  return view->show_line_endings;
+}
+
+
+
+void
+mousepad_view_set_color_scheme (MousepadView *view,
+                                const gchar  *color_scheme)
+{
+  g_return_if_fail (MOUSEPAD_IS_VIEW (view));
+
+  if (g_strcmp0 (color_scheme, view->color_scheme) != 0)
+    {
+      g_free (view->color_scheme);
+      view->color_scheme = g_strdup (color_scheme);
+
+      /* update the buffer if there is one */
+      mousepad_view_buffer_changed (view, NULL, NULL);
+
+      g_object_notify (G_OBJECT (view), "color-scheme");
+    }
+}
+
+
+
+const gchar *
+mousepad_view_get_color_scheme (MousepadView *view)
+{
+  g_return_val_if_fail (MOUSEPAD_IS_VIEW (view), NULL);
+
+  return view->color_scheme;
+}
+
+
+
+void
+mousepad_view_set_word_wrap (MousepadView *view,
+                             gboolean      enabled)
+{
+  g_return_if_fail (MOUSEPAD_IS_VIEW (view));
+
+  gtk_text_view_set_wrap_mode (GTK_TEXT_VIEW (view),
+                               enabled ? GTK_WRAP_WORD : GTK_WRAP_NONE);
+  g_object_notify (G_OBJECT (view), "word-wrap");
+}
+
+
+
+gboolean
+mousepad_view_get_word_wrap (MousepadView *view)
+{
+  GtkWrapMode mode;
+
+  g_return_val_if_fail (MOUSEPAD_IS_VIEW (view), FALSE);
+
+  mode = gtk_text_view_get_wrap_mode (GTK_TEXT_VIEW (view));
+
+  return (mode == GTK_WRAP_WORD);
+}
+
+
+
+void
+mousepad_view_set_match_braces (MousepadView *view,
+                                gboolean      enabled)
+{
+  g_return_if_fail (MOUSEPAD_IS_VIEW (view));
+
+  view->match_braces = enabled;
+
+  mousepad_view_buffer_changed (view, NULL, NULL);
+
+  g_object_notify (G_OBJECT (view), "match-braces");
+}
+
+
+
+gboolean
+mousepad_view_get_match_braces (MousepadView *view)
+{
+  g_return_val_if_fail (MOUSEPAD_IS_VIEW (view), FALSE);
+
+  return view->match_braces;
 }

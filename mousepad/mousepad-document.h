@@ -60,14 +60,8 @@ GType             mousepad_document_get_type       (void) G_GNUC_CONST;
 
 MousepadDocument *mousepad_document_new            (void);
 
-void              mousepad_document_set_font       (MousepadDocument *document,
-                                                    const gchar      *font_name);
-
 void              mousepad_document_set_overwrite  (MousepadDocument *document,
                                                     gboolean          overwrite);
-
-void              mousepad_document_set_word_wrap  (MousepadDocument *document,
-                                                    gboolean          word_wrap);
 
 void              mousepad_document_focus_textview (MousepadDocument *document);
 
