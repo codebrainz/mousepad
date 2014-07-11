@@ -126,6 +126,7 @@ struct _MousepadView
   /* the font used in the view */
   gchar                *font_name;
   PangoFontDescription *font_desc;
+  gulong                font_handler;
 
   /* whitespace visualization */
   gboolean              show_whitespace;
@@ -262,6 +263,7 @@ mousepad_view_init (MousepadView *view)
   view->color_scheme = g_strdup ("none");
   view->font_name = NULL;
   view->font_desc = NULL;
+  view->font_handler = 0;
 
   /* make sure any buffers set on the view get the color scheme applied to them */
   g_signal_connect (view,
@@ -298,10 +300,11 @@ mousepad_view_init (MousepadView *view)
   BIND_ (WORD_WRAP,              "word-wrap");
 
   /* override with default font when the setting is enabled */
-  MOUSEPAD_SETTING_CONNECT (USE_DEFAULT_FONT,
-                            G_CALLBACK (mousepad_view_use_default_font_setting_changed),
-                            view,
-                            G_CONNECT_SWAPPED);
+  view->font_handler =
+    MOUSEPAD_SETTING_CONNECT (USE_DEFAULT_FONT,
+                              G_CALLBACK (mousepad_view_use_default_font_setting_changed),
+                              view,
+                              G_CONNECT_SWAPPED);
 
 #undef BIND_
 }
@@ -316,6 +319,10 @@ mousepad_view_finalize (GObject *object)
   /* stop a running selection timeout */
   if (G_UNLIKELY (view->selection_timeout_id != 0))
     g_source_remove (view->selection_timeout_id);
+
+  /* disconnect the settings changed callback */
+  if (view->font_handler > 0)
+    MOUSEPAD_SETTING_DISCONNECT (FONT_NAME, view->font_handler);
 
   /* free the selection marks list (marks are owned by the buffer) */
   if (G_UNLIKELY (view->selection_marks != NULL))
