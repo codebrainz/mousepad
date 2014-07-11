@@ -393,6 +393,7 @@ struct _MousepadWindow
   GtkWidget           *search_bar;
   GtkWidget           *statusbar;
   GtkWidget           *replace_dialog;
+  GtkWidget           *toolbar;
 
   /* support to remember window geometry */
   guint                save_geometry_timer_id;
@@ -602,12 +603,31 @@ mousepad_window_update_recent_menu (MousepadWindow *window,
 }
 
 
+
+static void
+mousepad_window_update_toolbar (MousepadWindow *window,
+                                gchar          *key,
+                                GSettings      *settings)
+{
+  gboolean visible;
+  GtkIconSize size;
+  GtkToolbarStyle style;
+
+  visible = MOUSEPAD_SETTING_GET_BOOLEAN (TOOLBAR_VISIBLE);
+  size = MOUSEPAD_SETTING_GET_ENUM (TOOLBAR_ICON_SIZE);
+  style = MOUSEPAD_SETTING_GET_ENUM (TOOLBAR_STYLE);
+
+  gtk_widget_set_visible (window->toolbar, visible);
+  gtk_toolbar_set_icon_size (GTK_TOOLBAR (window->toolbar), size);
+  gtk_toolbar_set_style (GTK_TOOLBAR (window->toolbar), style);
+}
+
+
 static void
 mousepad_window_init (MousepadWindow *window)
 {
   GtkAccelGroup *accel_group;
   GtkWidget     *menubar;
-  GtkWidget     *toolbar;
   GtkWidget     *label;
   GtkWidget     *separator;
   GtkWidget     *ebox;
@@ -691,17 +711,29 @@ mousepad_window_init (MousepadWindow *window)
   menubar = gtk_ui_manager_get_widget (window->ui_manager, "/main-menu");
   gtk_box_pack_start (GTK_BOX (window->box), menubar, FALSE, FALSE, 0);
   gtk_widget_show (menubar);
-  
-  toolbar = gtk_ui_manager_get_widget (window->ui_manager, "/main-toolbar");
-  gtk_box_pack_start (GTK_BOX (window->box), toolbar, FALSE, FALSE, 0);
+
+  window->toolbar = gtk_ui_manager_get_widget (window->ui_manager, "/main-toolbar");
+  gtk_box_pack_start (GTK_BOX (window->box), window->toolbar, FALSE, FALSE, 0);
 
   /* sync the toolbar visibility and action state to the setting */
   action = gtk_action_group_get_action (window->action_group, "toolbar");
   active = MOUSEPAD_SETTING_GET_BOOLEAN (TOOLBAR_VISIBLE);
   gtk_toggle_action_set_active (GTK_TOGGLE_ACTION (action), active);
 
-  /* update the toolbar visibility with the setting */
-  MOUSEPAD_SETTING_BIND (TOOLBAR_VISIBLE, toolbar, "visible", G_SETTINGS_BIND_DEFAULT);
+  /* update the toolbar with the settings */
+  mousepad_window_update_toolbar (window, NULL, NULL);
+  MOUSEPAD_SETTING_CONNECT (TOOLBAR_VISIBLE,
+                            G_CALLBACK (mousepad_window_update_toolbar),
+                            window,
+                            G_CONNECT_SWAPPED);
+  MOUSEPAD_SETTING_CONNECT (TOOLBAR_STYLE,
+                            G_CALLBACK (mousepad_window_update_toolbar),
+                            window,
+                            G_CONNECT_SWAPPED);
+  MOUSEPAD_SETTING_CONNECT (TOOLBAR_ICON_SIZE,
+                            G_CALLBACK (mousepad_window_update_toolbar),
+                            window,
+                            G_CONNECT_SWAPPED);
 
   /* update the window fullscreen state when setting changes */
   action = gtk_action_group_get_action (window->action_group, "fullscreen");

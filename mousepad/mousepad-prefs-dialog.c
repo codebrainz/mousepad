@@ -34,6 +34,11 @@
 #define WID_REMEMBER_GEOMETRY_CHECK         "/prefs/window/general/remember-window-size-check"
 #define WID_ALWAYS_SHOW_TABS_CHECK          "/prefs/window/notebook/always-show-tabs-check"
 #define WID_CYCLE_TABS_CHECK                "/prefs/window/notebook/cycle-tabs-check"
+#define WID_TOOLBAR_VISIBLE_CHECK           "/prefs/window/toolbar/visible-check"
+#define WID_TOOLBAR_STYLE_COMBO             "/prefs/window/toolbar/style-combo"
+#define WID_TOOLBAR_STYLE_LABEL             "/prefs/window/toolbar/style-label"
+#define WID_TOOLBAR_ICON_SIZE_COMBO         "/prefs/window/toolbar/icon-size-combo"
+#define WID_TOOLBAR_ICON_SIZE_LABEL         "/prefs/window/toolbar/icon-size-label"
 
 
 
@@ -53,6 +58,8 @@ struct MousepadPrefsDialog_
   gulong      color_scheme_signal;
   gulong      tab_mode_signal;
   gulong      home_end_signal;
+  gulong      toolbar_style_signal;
+  gulong      toolbar_icon_size_signal;
 };
 
 struct MousepadPrefsDialogClass_
@@ -98,6 +105,10 @@ mousepad_prefs_dialog_finalize (GObject *object)
     MOUSEPAD_SETTING_DISCONNECT (INSERT_SPACES, self->tab_mode_signal);
   if (self->home_end_signal > 0)
     MOUSEPAD_SETTING_DISCONNECT (SMART_HOME_END, self->home_end_signal);
+  if (self->toolbar_style_signal > 0)
+    MOUSEPAD_SETTING_DISCONNECT (TOOLBAR_STYLE, self->toolbar_style_signal);
+  if (self->toolbar_icon_size_signal > 0)
+    MOUSEPAD_SETTING_DISCONNECT (TOOLBAR_ICON_SIZE, self->toolbar_icon_size_signal);
 
   /* destroy the GtkBuilder instance */
   if (G_IS_OBJECT (self->builder))
@@ -289,6 +300,97 @@ mousepad_prefs_dialog_home_end_setting_changed (MousepadPrefsDialog *self,
 
 
 
+/* update toolbar style setting when combo changes */
+static void
+mousepad_prefs_dialog_toolbar_style_changed (MousepadPrefsDialog *self,
+                                             GtkComboBox         *combo)
+{
+  self->blocked = TRUE;
+  MOUSEPAD_SETTING_SET_ENUM (TOOLBAR_STYLE, gtk_combo_box_get_active (combo));
+  self->blocked = FALSE;
+}
+
+
+
+/* update the combo when the setting changes */
+static void
+mousepad_prefs_dialog_toolbar_style_setting_changed (MousepadPrefsDialog *self,
+                                                     gchar               *key,
+                                                     GSettings           *settings)
+{
+  GtkComboBox *combo;
+
+  /* don't do anything when the combo box is itself updating the setting */
+  if (self->blocked)
+    return;
+
+  combo = GTK_COMBO_BOX (gtk_builder_get_object (self->builder, WID_TOOLBAR_STYLE_COMBO));
+
+  gtk_combo_box_set_active (combo, MOUSEPAD_SETTING_GET_ENUM (TOOLBAR_STYLE));
+}
+
+
+
+/* update toolbar icon size setting when combo changes */
+static void
+mousepad_prefs_dialog_toolbar_icon_size_changed (MousepadPrefsDialog *self,
+                                                 GtkComboBox         *combo)
+{
+  GtkTreeIter iter;
+
+  if (gtk_combo_box_get_active_iter (combo, &iter))
+    {
+      GtkTreeModel *model;
+      gint          icon_size = 0;
+
+      model = gtk_combo_box_get_model (combo);
+
+      gtk_tree_model_get (model, &iter, 0, &icon_size, -1);
+
+      self->blocked = TRUE;
+      MOUSEPAD_SETTING_SET_ENUM (TOOLBAR_ICON_SIZE, icon_size);
+      self->blocked = FALSE;
+    }
+}
+
+
+
+/* update the combo when the setting changes */
+static void
+mousepad_prefs_dialog_toolbar_icon_size_setting_changed (MousepadPrefsDialog *self,
+                                                         gchar               *key,
+                                                         GSettings           *settings)
+{
+  GtkComboBox  *combo;
+  GtkTreeModel *model;
+  GtkTreeIter   iter;
+  gint          icon_size;
+  gboolean      valid;
+
+  /* don't do anything when the combo box is itself updating the setting */
+  if (self->blocked)
+    return;
+
+  icon_size = MOUSEPAD_SETTING_GET_ENUM (TOOLBAR_ICON_SIZE);
+  combo = GTK_COMBO_BOX (gtk_builder_get_object (self->builder, WID_TOOLBAR_ICON_SIZE_COMBO));
+  model = gtk_combo_box_get_model (combo);
+  valid = gtk_tree_model_get_iter_first (model, &iter);
+  
+  while (valid)
+    {
+      gint size = 0;
+      gtk_tree_model_get (model, &iter, 0, &size, -1);
+      if (size == icon_size)
+        {
+          gtk_combo_box_set_active_iter (combo, &iter);
+          break;
+        }
+      valid = gtk_tree_model_iter_next (model, &iter);
+    }
+}
+
+
+
 #define mousepad_builder_get_widget(builder, name) \
   GTK_WIDGET (gtk_builder_get_object (builder, name))
 
@@ -338,13 +440,28 @@ mousepad_prefs_dialog_init (MousepadPrefsDialog *self)
   widget = mousepad_builder_get_widget (self->builder, WID_FONT_BUTTON);
   g_object_bind_property (check, "active", widget, "sensitive", G_BINDING_SYNC_CREATE | G_BINDING_INVERT_BOOLEAN);
 
+  /* enable/disable toolbar-related widgets when checkbox changes */
+  check = mousepad_builder_get_widget (self->builder, WID_TOOLBAR_VISIBLE_CHECK);
+
+  widget = mousepad_builder_get_widget (self->builder, WID_TOOLBAR_STYLE_LABEL);
+  g_object_bind_property (check, "active", widget, "sensitive", G_BINDING_SYNC_CREATE);
+  widget = mousepad_builder_get_widget (self->builder, WID_TOOLBAR_STYLE_COMBO);
+  g_object_bind_property (check, "active", widget, "sensitive", G_BINDING_SYNC_CREATE);
+  gtk_combo_box_set_active (GTK_COMBO_BOX (widget), MOUSEPAD_SETTING_GET_ENUM (TOOLBAR_STYLE));
+
+  widget = mousepad_builder_get_widget (self->builder, WID_TOOLBAR_ICON_SIZE_LABEL);
+  g_object_bind_property (check, "active", widget, "sensitive", G_BINDING_SYNC_CREATE);
+  widget = mousepad_builder_get_widget (self->builder, WID_TOOLBAR_ICON_SIZE_COMBO);
+  g_object_bind_property (check, "active", widget, "sensitive", G_BINDING_SYNC_CREATE);
+  mousepad_prefs_dialog_toolbar_icon_size_setting_changed (self, NULL, NULL);
+
   /* bind checkboxes to settings */
 #define BIND_CHECKBOX(setting)                                           \
   MOUSEPAD_SETTING_BIND (setting,                                        \
                          gtk_builder_get_object (self->builder,          \
                                                  WID_##setting##_CHECK), \
                          "active",                                       \
-                         G_BINDING_DEFAULT)
+                         G_SETTINGS_BIND_DEFAULT)
 
   /* View */
   BIND_CHECKBOX (SHOW_LINE_NUMBERS);
@@ -365,6 +482,7 @@ mousepad_prefs_dialog_init (MousepadPrefsDialog *self)
   BIND_CHECKBOX (REMEMBER_GEOMETRY);
   BIND_CHECKBOX (ALWAYS_SHOW_TABS);
   BIND_CHECKBOX (CYCLE_TABS);
+  BIND_CHECKBOX (TOOLBAR_VISIBLE);
 
 #undef BIND_CHECKBOX
 
@@ -415,7 +533,31 @@ mousepad_prefs_dialog_init (MousepadPrefsDialog *self)
                               self,
                               G_CONNECT_SWAPPED);
 
-  /* TODO: match-braces */
+  /* update toolbar style when changed */
+  g_signal_connect_swapped (gtk_builder_get_object (self->builder, WID_TOOLBAR_STYLE_COMBO),
+                            "changed",
+                            G_CALLBACK (mousepad_prefs_dialog_toolbar_style_changed),
+                            self);
+
+  /* update toolbar style combo when the setting changes */
+  self->toolbar_style_signal =
+    MOUSEPAD_SETTING_CONNECT (TOOLBAR_STYLE,
+                              G_CALLBACK (mousepad_prefs_dialog_toolbar_style_setting_changed),
+                              self,
+                              G_CONNECT_SWAPPED);
+
+  /* update toolbar icon size when changed */
+  g_signal_connect_swapped (gtk_builder_get_object (self->builder, WID_TOOLBAR_ICON_SIZE_COMBO),
+                            "changed",
+                            G_CALLBACK (mousepad_prefs_dialog_toolbar_icon_size_changed),
+                            self);
+
+  /* update toolbar icon size combo when setting changes */
+  self->toolbar_icon_size_signal =
+    MOUSEPAD_SETTING_CONNECT (TOOLBAR_ICON_SIZE,
+                              G_CALLBACK (mousepad_prefs_dialog_toolbar_icon_size_setting_changed),
+                              self,
+                              G_CONNECT_SWAPPED);
 }
 
 

@@ -9,6 +9,22 @@
     <value nick="always" value="3"/>
   </enum>
 
+  <enum id="org.xfce.mousepad.ToolbarStyle">
+    <value nick="icons" value="0"/>
+    <value nick="text" value="1"/>
+    <value nick="both" value="2"/>
+    <value nick="both-horiz" value="3"/>
+  </enum>
+
+  <enum id="org.xfce.mousepad.IconSize">
+    <value nick="menu" value="1"/>
+    <value nick="small-toolbar" value="2"/>
+    <value nick="large-toolbar" value="3"/>
+    <value nick="button" value="4"/>
+    <value nick="dnd" value="5"/>
+    <value nick="dialog" value="6"/>
+  </enum>
+
   <schema id="org.xfce.mousepad" path="/org/xfce/mousepad/" gettext-domain="mousepad">
     <child name="preferences" schema="org.xfce.mousepad.preferences"/>
     <child name="state" schema="org.xfce.mousepad.state"/>
@@ -174,6 +190,21 @@
       <summary>Toolbar visible</summary>
       <description>
         When true the toolbar is visible, when false it is not visible.
+      </description>
+    </key>
+    <key name="toolbar-style" enum="org.xfce.mousepad.ToolbarStyle">
+      <default>'icons'</default>
+      <summary>Toolbar style</summary>
+      <description>
+        Controls how the toolbar items will be drawn with respect to text
+        labels and icons (if visible).
+      </description>
+    </key>
+    <key name="toolbar-icon-size" enum="org.xfce.mousepad.IconSize">
+      <default>'small-toolbar'</default>
+      <summary>Toolbar icon size</summary>
+      <description>
+        Controls the size of the toolbar icons (if visible).
       </description>
     </key>
     <key name="statusbar-visible" type="b">

@@ -26,6 +26,8 @@ G_BEGIN_DECLS
 #define MOUSEPAD_SETTING_MATCH_BRACES               "/preferences/view/match-braces"
 #define MOUSEPAD_SETTING_COLOR_SCHEME               "/preferences/view/color-scheme"
 #define MOUSEPAD_SETTING_TOOLBAR_VISIBLE            "/preferences/window/toolbar-visible"
+#define MOUSEPAD_SETTING_TOOLBAR_STYLE              "/preferences/window/toolbar-style"
+#define MOUSEPAD_SETTING_TOOLBAR_ICON_SIZE          "/preferences/window/toolbar-icon-size"
 #define MOUSEPAD_SETTING_STATUSBAR_VISIBLE          "/preferences/window/statusbar-visible"
 #define MOUSEPAD_SETTING_ALWAYS_SHOW_TABS           "/preferences/window/always-show-tabs"
 #define MOUSEPAD_SETTING_CYCLE_TABS                 "/preferences/window/cycle-tabs"
