@@ -67,7 +67,7 @@
       </description>
     </key>
     <key name="highlight-current-line" type="b">
-      <default>true</default>
+      <default>false</default>
       <summary>Highlight current line</summary>
       <description>
         When true visually indicate the line with the caret on it, when false
@@ -169,7 +169,7 @@
       </description>
     </key>
     <key name="statusbar-visible" type="b">
-      <default>true</default>
+      <default>false</default>
       <summary>Statusbar visible</summary>
       <description>
         When true the statusbar is visible, when false it is not visible.
