@@ -649,13 +649,17 @@ mousepad_print_create_custom_widget (GtkPrintOperation *operation)
   gtk_container_add (GTK_CONTAINER (alignment), print->widget_line_numbers_hbox);
   gtk_widget_show (print->widget_line_numbers_hbox);
 
-  label = gtk_label_new (_("Number every"));
+  label = gtk_label_new (_("Numbering interval:"));
   gtk_misc_set_alignment (GTK_MISC (label), 0.0, 0.5);
   gtk_box_pack_start (GTK_BOX (print->widget_line_numbers_hbox), label, FALSE, TRUE, 0);
   gtk_widget_show (label);
 
   adjustment = GTK_ADJUSTMENT (gtk_adjustment_new (1.0, 1.0, 100.0, 1.0, 0.0, 0.0));
   print->widget_line_numbers_spin = gtk_spin_button_new (adjustment, 1.0, 0);
+  gtk_widget_set_tooltip_text (print->widget_line_numbers_spin,
+    _("The interval at which to print line numbers. For example a value of 1 "
+      "will print a line number on each line, a value of 2 will print a line "
+      "number on every other line, and so on."));
   gtk_spin_button_set_value (GTK_SPIN_BUTTON (print->widget_line_numbers_spin),
                              (gdouble) print->line_number_increment);
   g_signal_connect (G_OBJECT (print->widget_line_numbers_spin),
@@ -664,11 +668,6 @@ mousepad_print_create_custom_widget (GtkPrintOperation *operation)
                     print);
   gtk_box_pack_start (GTK_BOX (print->widget_line_numbers_hbox), print->widget_line_numbers_spin, FALSE, TRUE, 0);
   gtk_widget_show (print->widget_line_numbers_spin);
-
-  label = gtk_label_new (_("line(s)"));
-  gtk_misc_set_alignment (GTK_MISC (label), 0.0, 0.5);
-  gtk_box_pack_start (GTK_BOX (print->widget_line_numbers_hbox), label, FALSE, TRUE, 0);
-  gtk_widget_show (label);
 
   button = print->widget_text_wrapping = gtk_check_button_new_with_mnemonic (_("Enable text _wrapping"));
   gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (button),
