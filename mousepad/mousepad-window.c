@@ -481,7 +481,7 @@ static const GtkToggleActionEntry toggle_action_entries[] =
   { "line-numbers", NULL, N_("Line N_umbers"), NULL, N_("Show line numbers"), G_CALLBACK (mousepad_window_action_line_numbers), FALSE, },
   { "toolbar", NULL, N_("_Toolbar"), NULL, N_("Change the visibility of the toolbar"), G_CALLBACK (mousepad_window_action_toolbar), FALSE, },
   { "statusbar", NULL, N_("St_atusbar"), NULL, N_("Change the visibility of the statusbar"), G_CALLBACK (mousepad_window_action_statusbar), FALSE, },
-  { "fullscreen", GTK_STOCK_FULLSCREEN, N_("_Fullscreen"), NULL, N_("Make the window fullscreen"), G_CALLBACK (mousepad_window_action_fullscreen), FALSE, },
+  { "fullscreen", GTK_STOCK_FULLSCREEN, N_("_Fullscreen"), "F11", N_("Make the window fullscreen"), G_CALLBACK (mousepad_window_action_fullscreen), FALSE, },
   { "auto-indent", NULL, N_("_Auto Indent"), NULL, N_("Auto indent a new line"), G_CALLBACK (mousepad_window_action_auto_indent), FALSE, },
   { "insert-spaces", NULL, N_("Insert _Spaces"), NULL, N_("Insert spaces when the tab button is pressed"), G_CALLBACK (mousepad_window_action_insert_spaces), FALSE, },
   { "word-wrap", NULL, N_("_Word Wrap"), NULL, N_("Toggle breaking lines in between words"), G_CALLBACK (mousepad_window_action_word_wrap), FALSE, },
