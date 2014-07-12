@@ -981,7 +981,10 @@ mousepad_util_search (GtkTextBuffer       *buffer,
           if (flags & MOUSEPAD_SEARCH_FLAGS_ACTION_SELECT)
             {
               /* select the match */
-              gtk_text_buffer_select_range (buffer, &match_start, &match_end);
+              if (! search_backwards)
+                gtk_text_buffer_select_range (buffer, &match_start, &match_end);
+              else
+                gtk_text_buffer_select_range (buffer, &match_end, &match_start);
             }
           else if (flags & MOUSEPAD_SEARCH_FLAGS_ACTION_REPLACE)
             {
