@@ -40,6 +40,10 @@ static void      mousepad_search_bar_finalize                   (GObject        
 static void      mousepad_search_bar_find_string                (MousepadSearchBar       *bar,
                                                                  MousepadSearchFlags   flags);
 static void      mousepad_search_bar_hide_clicked               (MousepadSearchBar       *bar);
+static void      mousepad_search_bar_entry_activate             (GtkWidget               *entry,
+                                                                 MousepadSearchBar       *bar);
+static void      mousepad_search_bar_entry_activate_backward    (GtkWidget               *entry,
+                                                                 MousepadSearchBar       *bar);
 static void      mousepad_search_bar_entry_changed              (GtkWidget               *entry,
                                                                  MousepadSearchBar       *bar);
 static void      mousepad_search_bar_highlight_toggled          (GtkWidget               *button,
@@ -107,6 +111,7 @@ static void
 mousepad_search_bar_class_init (MousepadSearchBarClass *klass)
 {
   GObjectClass  *gobject_class;
+  GObjectClass  *entry_class;
   GtkBindingSet *binding_set;
 
   gobject_class = G_OBJECT_CLASS (klass);
@@ -148,6 +153,22 @@ mousepad_search_bar_class_init (MousepadSearchBarClass *klass)
                            "GtkToolButton::icon-spacing = 2\n"
                          "}\n"
                        "widget \"MousepadWindow.*.Gtk*ToolButton\" style \"mousepad-button-style\"\n");
+
+  /* add an activate-backwards signal to GtkEntry */
+  entry_class = g_type_class_ref (GTK_TYPE_ENTRY);
+  if (G_LIKELY (g_signal_lookup("activate-backward", GTK_TYPE_ENTRY) == 0))
+    {
+      /* install the signal */
+      g_signal_new("activate-backward",
+                   GTK_TYPE_ENTRY,
+                   G_SIGNAL_RUN_LAST | G_SIGNAL_ACTION,
+                   0, NULL, NULL,
+                   g_cclosure_marshal_VOID__VOID,
+                   G_TYPE_NONE, 0);
+      binding_set = gtk_binding_set_by_class(entry_class);
+      gtk_binding_entry_add_signal(binding_set, GDK_Return, GDK_SHIFT_MASK, "activate-backward", 0);
+    }
+  g_type_class_unref (entry_class);
 }
 
 
@@ -191,6 +212,8 @@ mousepad_search_bar_init (MousepadSearchBar *bar)
   gtk_container_add (GTK_CONTAINER (item), bar->entry);
   gtk_label_set_mnemonic_widget (GTK_LABEL (label), bar->entry);
   g_signal_connect (G_OBJECT (bar->entry), "changed", G_CALLBACK (mousepad_search_bar_entry_changed), bar);
+  g_signal_connect (G_OBJECT (bar->entry), "activate", G_CALLBACK (mousepad_search_bar_entry_activate), bar);
+  g_signal_connect (G_OBJECT (bar->entry), "activate-backward", G_CALLBACK (mousepad_search_bar_entry_activate_backward), bar);
   gtk_widget_show (bar->entry);
 
   /* next button */
@@ -313,6 +336,24 @@ mousepad_search_bar_hide_clicked (MousepadSearchBar *bar)
 
   /* emit the signal */
   g_signal_emit (G_OBJECT (bar), search_bar_signals[HIDE_BAR], 0);
+}
+
+
+
+static void
+mousepad_search_bar_entry_activate (GtkWidget         *entry,
+                                    MousepadSearchBar *bar)
+{
+  mousepad_search_bar_find_next (bar);
+}
+
+
+
+static void
+mousepad_search_bar_entry_activate_backward (GtkWidget         *entry,
+                                             MousepadSearchBar *bar)
+{
+  mousepad_search_bar_find_previous (bar);
 }
 
 
