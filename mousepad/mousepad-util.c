@@ -679,9 +679,16 @@ mousepad_util_search_iter (const GtkTextIter   *start,
   /* walk from the start to the end iter */
   for (;;)
     {
-      /* break when we reach the limit iter */
-      if (G_UNLIKELY (gtk_text_iter_equal (&iter, limit)))
-        break;
+      /* break when we reach the limit iter, for backwards searching it's
+       * it has to be less than the limit which is 0 so that we can match
+       * at the very start of the buffer. for forwards searching the limit
+       * is the index after the last char so break when we are at or past
+       * the limit. */
+      if ((search_backwards && gtk_text_iter_compare (&iter, limit) < 0) ||
+          (!search_backwards && gtk_text_iter_compare (&iter, limit) >= 0))
+        {
+          break;
+        }
 
       /* get the unichar characters */
       iter_char = gtk_text_iter_get_char (&iter);
