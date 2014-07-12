@@ -623,6 +623,58 @@ mousepad_window_update_toolbar (MousepadWindow *window,
 }
 
 
+
+static void
+mousepad_window_restore (MousepadWindow *window)
+{
+  gboolean remember_size, remember_position, remember_state;
+
+  remember_size = MOUSEPAD_SETTING_GET_BOOLEAN (REMEMBER_SIZE);
+  remember_position = MOUSEPAD_SETTING_GET_BOOLEAN (REMEMBER_POSITION);
+  remember_state = MOUSEPAD_SETTING_GET_BOOLEAN (REMEMBER_STATE);
+
+  /* first restore size */
+  if (remember_size)
+    {
+      gint width, height;
+
+      width = MOUSEPAD_SETTING_GET_INT (WINDOW_WIDTH);
+      height = MOUSEPAD_SETTING_GET_INT (WINDOW_HEIGHT);
+
+      gtk_window_set_default_size (GTK_WINDOW (window), width, height);
+    }
+
+  /* then restore position */
+  if (remember_position)
+    {
+      gint left, top;
+
+      left = MOUSEPAD_SETTING_GET_INT (WINDOW_LEFT);
+      top = MOUSEPAD_SETTING_GET_INT (WINDOW_TOP);
+
+      gtk_window_move (GTK_WINDOW (window), left, top);
+    }
+
+  /* finally restore window state */
+  if (remember_state)
+    {
+      gboolean maximized, fullscreen;
+
+      maximized = MOUSEPAD_SETTING_GET_BOOLEAN (WINDOW_MAXIMIZED);
+      fullscreen = MOUSEPAD_SETTING_GET_BOOLEAN (WINDOW_FULLSCREEN);
+
+      /* first restore if it was maximized */
+      if (maximized)
+        gtk_window_maximize (GTK_WINDOW (window));
+
+      /* then restore if it was fullscreen */
+      if (fullscreen)
+        gtk_window_fullscreen (GTK_WINDOW (window));
+    }
+}
+
+
+
 static void
 mousepad_window_init (MousepadWindow *window)
 {
@@ -633,7 +685,6 @@ mousepad_window_init (MousepadWindow *window)
   GtkWidget     *ebox;
   GtkWidget     *item;
   GtkAction     *action;
-  gint           width, height;
   gboolean       active;
 
   /* initialize stuff */
@@ -664,12 +715,8 @@ mousepad_window_init (MousepadWindow *window)
   g_closure_ref (window->menu_item_deselected_closure);
   g_closure_sink (window->menu_item_deselected_closure);
 
-  /* read settings from the preferences */
-  width = MOUSEPAD_SETTING_GET_INT (WINDOW_WIDTH);
-  height = MOUSEPAD_SETTING_GET_INT (WINDOW_HEIGHT);
-
-  /* set the default window size */
-  gtk_window_set_default_size (GTK_WINDOW (window), width, height);
+  /* restore window settings */
+  mousepad_window_restore (window);
 
   /* the action group for this window */
   window->action_group = gtk_action_group_new ("MousepadWindow");
@@ -903,7 +950,10 @@ mousepad_window_configure_event (GtkWidget         *widget,
   MousepadWindow *window = MOUSEPAD_WINDOW (widget);
 
   /* check if we have a new dimension here */
-  if (widget->allocation.width != event->width || widget->allocation.height != event->height)
+  if (widget->allocation.width != event->width ||
+      widget->allocation.height != event->height ||
+      widget->allocation.x != event->x ||
+      widget->allocation.y != event->y)
     {
       /* drop any previous timer source */
       if (window->save_geometry_timer_id > 0)
@@ -1029,16 +1079,16 @@ mousepad_window_save_geometry_timer (gpointer user_data)
 {
   GdkWindowState   state;
   MousepadWindow  *window = MOUSEPAD_WINDOW (user_data);
-  gboolean         remember_geometry;
-  gint             width;
-  gint             height;
+  gboolean         remember_size, remember_position, remember_state;
 
   GDK_THREADS_ENTER ();
 
   /* check if we should remember the window geometry */
-  remember_geometry = MOUSEPAD_SETTING_GET_BOOLEAN (REMEMBER_GEOMETRY);
+  remember_size = MOUSEPAD_SETTING_GET_BOOLEAN (REMEMBER_SIZE);
+  remember_position = MOUSEPAD_SETTING_GET_BOOLEAN (REMEMBER_POSITION);
+  remember_state = MOUSEPAD_SETTING_GET_BOOLEAN (REMEMBER_STATE);
 
-  if (G_LIKELY (remember_geometry))
+  if (remember_size || remember_position || remember_state)
     {
       /* check if the window is still visible */
       if (gtk_widget_get_visible (GTK_WIDGET(window)))
@@ -1049,12 +1099,36 @@ mousepad_window_save_geometry_timer (gpointer user_data)
           /* don't save geometry for maximized or fullscreen windows */
           if ((state & (GDK_WINDOW_STATE_MAXIMIZED | GDK_WINDOW_STATE_FULLSCREEN)) == 0)
             {
-              /* determine the current width/height of the window... */
-              gtk_window_get_size (GTK_WINDOW (window), &width, &height);
+              if (remember_size)
+                {
+                  gint width, height;
+                
+                  /* determine the current width/height of the window... */
+                  gtk_window_get_size (GTK_WINDOW (window), &width, &height);
 
-              /* ...and remember them as default for new windows */
-              MOUSEPAD_SETTING_SET_INT (WINDOW_WIDTH, width);
-              MOUSEPAD_SETTING_SET_INT (WINDOW_HEIGHT, height);
+                  /* ...and remember them as default for new windows */
+                  MOUSEPAD_SETTING_SET_INT (WINDOW_WIDTH, width);
+                  MOUSEPAD_SETTING_SET_INT (WINDOW_HEIGHT, height);
+                }
+
+              if (remember_position)
+                {
+                  gint left, top;
+                  
+                  /* determine the current left/top position of the window */
+                  gtk_window_get_position (GTK_WINDOW (window), &left, &top);
+
+                  /* and then remember it for next startup */
+                  MOUSEPAD_SETTING_SET_INT (WINDOW_LEFT, left);
+                  MOUSEPAD_SETTING_SET_INT (WINDOW_TOP, top);
+                }
+            }
+
+          if (remember_state)
+            {
+              /* remember whether the window is maximized or full screen or not */
+              MOUSEPAD_SETTING_SET_BOOLEAN (WINDOW_MAXIMIZED, (state & GDK_WINDOW_STATE_MAXIMIZED));
+              MOUSEPAD_SETTING_SET_BOOLEAN (WINDOW_FULLSCREEN, (state & GDK_WINDOW_STATE_FULLSCREEN));
             }
         }
     }
@@ -4942,17 +5016,24 @@ static void
 mousepad_window_action_fullscreen (GtkToggleAction *action,
                                    MousepadWindow  *window)
 {
-  gboolean fullscreen;
+  gboolean       fullscreen;
+  GdkWindow     *gdk_window;
+  GdkWindowState state;
+
+  if (! gtk_widget_get_visible (GTK_WIDGET (window)))
+    return;
 
   fullscreen = MOUSEPAD_SETTING_GET_BOOLEAN (WINDOW_FULLSCREEN);
+  gdk_window = gtk_widget_get_window (GTK_WIDGET (window));
+  state = gdk_window_get_state (gdk_window);
 
-  if (fullscreen)
+  if (fullscreen && !(state & GDK_WINDOW_STATE_FULLSCREEN))
     {
       gtk_window_fullscreen (GTK_WINDOW (window));
       gtk_action_set_stock_id (GTK_ACTION (action), GTK_STOCK_LEAVE_FULLSCREEN);
       gtk_action_set_tooltip (GTK_ACTION (action), _("Leave fullscreen mode"));
     }
-  else
+  else if (state & GDK_WINDOW_STATE_FULLSCREEN)
     {
       gtk_window_unfullscreen (GTK_WINDOW (window));
       gtk_action_set_stock_id (GTK_ACTION (action), GTK_STOCK_FULLSCREEN);

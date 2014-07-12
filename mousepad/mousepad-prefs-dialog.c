@@ -31,7 +31,9 @@
 /* Window page */
 #define WID_STATUSBAR_VISIBLE_CHECK         "/prefs/window/general/show-statusbar-check"
 #define WID_PATH_IN_TITLE_CHECK             "/prefs/window/general/show-path-in-title-check"
-#define WID_REMEMBER_GEOMETRY_CHECK         "/prefs/window/general/remember-window-size-check"
+#define WID_REMEMBER_SIZE_CHECK             "/prefs/window/general/remember-window-size-check"
+#define WID_REMEMBER_POSITION_CHECK         "/prefs/window/general/remember-window-position-check"
+#define WID_REMEMBER_STATE_CHECK            "/prefs/window/general/remember-window-state-check"
 #define WID_ALWAYS_SHOW_TABS_CHECK          "/prefs/window/notebook/always-show-tabs-check"
 #define WID_CYCLE_TABS_CHECK                "/prefs/window/notebook/cycle-tabs-check"
 #define WID_TOOLBAR_VISIBLE_CHECK           "/prefs/window/toolbar/visible-check"
@@ -479,7 +481,9 @@ mousepad_prefs_dialog_init (MousepadPrefsDialog *self)
   /* Window */
   BIND_CHECKBOX (STATUSBAR_VISIBLE);
   BIND_CHECKBOX (PATH_IN_TITLE);
-  BIND_CHECKBOX (REMEMBER_GEOMETRY);
+  BIND_CHECKBOX (REMEMBER_SIZE);
+  BIND_CHECKBOX (REMEMBER_POSITION);
+  BIND_CHECKBOX (REMEMBER_STATE);
   BIND_CHECKBOX (ALWAYS_SHOW_TABS);
   BIND_CHECKBOX (CYCLE_TABS);
   BIND_CHECKBOX (TOOLBAR_VISIBLE);

@@ -67,6 +67,66 @@
     <property name="step_increment">1</property>
     <property name="page_increment">10</property>
   </object>
+  <object class="GtkListStore" id="/prefs/window/toolbar/icon-size-model">
+    <columns>
+      <!-- column-name size -->
+      <column type="GtkIconSize"/>
+      <!-- column-name name -->
+      <column type="gchararray"/>
+    </columns>
+    <data>
+      <row>
+        <col id="0">menu</col>
+        <col id="1" translatable="yes">Menu</col>
+      </row>
+      <row>
+        <col id="0">small-toolbar</col>
+        <col id="1" translatable="yes">Small Toolbar</col>
+      </row>
+      <row>
+        <col id="0">large-toolbar</col>
+        <col id="1" translatable="yes">Large Toolbar</col>
+      </row>
+      <row>
+        <col id="0">button</col>
+        <col id="1" translatable="yes">Button</col>
+      </row>
+      <row>
+        <col id="0">dnd</col>
+        <col id="1" translatable="yes">Drag &amp; Drop</col>
+      </row>
+      <row>
+        <col id="0">dialog</col>
+        <col id="1" translatable="yes">Dialog</col>
+      </row>
+    </data>
+  </object>
+  <object class="GtkListStore" id="/prefs/window/toolbar/style-model">
+    <columns>
+      <!-- column-name style -->
+      <column type="GtkToolbarStyle"/>
+      <!-- column-name name -->
+      <column type="gchararray"/>
+    </columns>
+    <data>
+      <row>
+        <col id="0">icons</col>
+        <col id="1" translatable="yes">Icons Only</col>
+      </row>
+      <row>
+        <col id="0">text</col>
+        <col id="1" translatable="yes">Text Only</col>
+      </row>
+      <row>
+        <col id="0">both</col>
+        <col id="1" translatable="yes">Text Below Icons</col>
+      </row>
+      <row>
+        <col id="0">both-horiz</col>
+        <col id="1" translatable="yes">Text Beside Icons</col>
+      </row>
+    </data>
+  </object>
   <object class="GtkNotebook" id="/prefs/main-notebook">
     <property name="visible">True</property>
     <property name="can_focus">True</property>
@@ -659,6 +719,34 @@
                         <property name="position">2</property>
                       </packing>
                     </child>
+                    <child>
+                      <object class="GtkCheckButton" id="/prefs/window/general/remember-window-position-check">
+                        <property name="label" translatable="yes">Remember window position</property>
+                        <property name="visible">True</property>
+                        <property name="can_focus">True</property>
+                        <property name="receives_default">False</property>
+                        <property name="draw_indicator">True</property>
+                      </object>
+                      <packing>
+                        <property name="expand">True</property>
+                        <property name="fill">True</property>
+                        <property name="position">3</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkCheckButton" id="/prefs/window/general/remember-window-state-check">
+                        <property name="label" translatable="yes">Remember window state</property>
+                        <property name="visible">True</property>
+                        <property name="can_focus">True</property>
+                        <property name="receives_default">False</property>
+                        <property name="draw_indicator">True</property>
+                      </object>
+                      <packing>
+                        <property name="expand">True</property>
+                        <property name="fill">True</property>
+                        <property name="position">4</property>
+                      </packing>
+                    </child>
                   </object>
                 </child>
               </object>
@@ -882,65 +970,5 @@
         <property name="tab_fill">False</property>
       </packing>
     </child>
-  </object>
-  <object class="GtkListStore" id="/prefs/window/toolbar/icon-size-model">
-    <columns>
-      <!-- column-name size -->
-      <column type="GtkIconSize"/>
-      <!-- column-name name -->
-      <column type="gchararray"/>
-    </columns>
-    <data>
-      <row>
-        <col id="0">menu</col>
-        <col id="1" translatable="yes">Menu</col>
-      </row>
-      <row>
-        <col id="0">small-toolbar</col>
-        <col id="1" translatable="yes">Small Toolbar</col>
-      </row>
-      <row>
-        <col id="0">large-toolbar</col>
-        <col id="1" translatable="yes">Large Toolbar</col>
-      </row>
-      <row>
-        <col id="0">button</col>
-        <col id="1" translatable="yes">Button</col>
-      </row>
-      <row>
-        <col id="0">dnd</col>
-        <col id="1" translatable="yes">Drag &amp; Drop</col>
-      </row>
-      <row>
-        <col id="0">dialog</col>
-        <col id="1" translatable="yes">Dialog</col>
-      </row>
-    </data>
-  </object>
-  <object class="GtkListStore" id="/prefs/window/toolbar/style-model">
-    <columns>
-      <!-- column-name style -->
-      <column type="GtkToolbarStyle"/>
-      <!-- column-name name -->
-      <column type="gchararray"/>
-    </columns>
-    <data>
-      <row>
-        <col id="0">icons</col>
-        <col id="1" translatable="yes">Icons Only</col>
-      </row>
-      <row>
-        <col id="0">text</col>
-        <col id="1" translatable="yes">Text Only</col>
-      </row>
-      <row>
-        <col id="0">both</col>
-        <col id="1" translatable="yes">Text Below Icons</col>
-      </row>
-      <row>
-        <col id="0">both-horiz</col>
-        <col id="1" translatable="yes">Text Beside Icons</col>
-      </row>
-    </data>
   </object>
 </interface>

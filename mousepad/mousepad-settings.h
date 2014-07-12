@@ -34,7 +34,9 @@ G_BEGIN_DECLS
 #define MOUSEPAD_SETTING_DEFAULT_TAB_SIZES          "/preferences/window/default-tab-sizes"
 #define MOUSEPAD_SETTING_PATH_IN_TITLE              "/preferences/window/path-in-title"
 #define MOUSEPAD_SETTING_RECENT_MENU_ITEMS          "/preferences/window/recent-menu-items"
-#define MOUSEPAD_SETTING_REMEMBER_GEOMETRY          "/preferences/window/remember-geometry"
+#define MOUSEPAD_SETTING_REMEMBER_SIZE              "/preferences/window/remember-size"
+#define MOUSEPAD_SETTING_REMEMBER_POSITION          "/preferences/window/remember-position"
+#define MOUSEPAD_SETTING_REMEMBER_STATE             "/preferences/window/remember-state"
 
 /* State setting names */
 #define MOUSEPAD_SETTING_SEARCH_DIRECTION            "/state/search/direction"
@@ -44,6 +46,9 @@ G_BEGIN_DECLS
 #define MOUSEPAD_SETTING_SEARCH_REPLACE_ALL_LOCATION "/state/search/replace-all-location"
 #define MOUSEPAD_SETTING_WINDOW_HEIGHT               "/state/window/height"
 #define MOUSEPAD_SETTING_WINDOW_WIDTH                "/state/window/width"
+#define MOUSEPAD_SETTING_WINDOW_TOP                  "/state/window/top"
+#define MOUSEPAD_SETTING_WINDOW_LEFT                 "/state/window/left"
+#define MOUSEPAD_SETTING_WINDOW_MAXIMIZED            "/state/window/maximized"
 #define MOUSEPAD_SETTING_WINDOW_FULLSCREEN           "/state/window/fullscreen"
 
 void     mousepad_settings_init       (void);

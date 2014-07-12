@@ -254,11 +254,32 @@
         The number of recent documents to track and show in the user interace.
       </description>
     </key>
-    <key name="remember-geometry" type="b">
+    <key name="remember-size" type="b">
       <default>true</default>
-      <summary>Remember window geometry</summary>
+      <summary>Remember window size</summary>
       <description>
         When true the size of the window will be saved and restored.
+      </description>
+    </key>
+    <key name="remember-position" type="b">
+      <default>false</default>
+      <summary>Remember window position</summary>
+      <description>
+        When true will attempt to save and restore the position of the window
+        when false it won't. Note that window placement is supposed to be the
+        job of the Window Manager and that there's no guarantee the restored
+        window position will be respected, accurate, or even visible on any
+        screen.
+      </description>
+    </key>
+    <key name="remember-state" type="b">
+      <default>true</default>
+      <summary>Remember window state</summary>
+      <description>
+        When true will attempt to save and restore the windows state (ex.
+        normal, maximized, fullscreen, etc, when false it will not. Your
+        Window Manager may very well not report when retrieving or not respect
+        it when setting.
       </description>
     </key>
   </schema>
@@ -322,6 +343,21 @@
       <default>640</default>
       <summary>window width</summary>
       <description>The width of windows in pixels.</description>
+    </key>
+    <key name="top" type="i">
+      <default>-1</default>
+      <summary>window top</summary>
+      <description>The Y coordinate of the window's position</description>
+    </key>
+    <key name="left" type="i">
+      <default>-1</default>
+      <summary>window left</summary>
+      <description>The X coordinate of the window's position</description>
+    </key>
+    <key name="maximized" type="b">
+      <default>false</default>
+      <summary>window maximized</summary>
+      <description>Whether the window is maximized or not.</description>
     </key>
     <key name="fullscreen" type="b">
       <default>false</default>
