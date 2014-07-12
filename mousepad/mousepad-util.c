@@ -822,6 +822,8 @@ mousepad_util_search_get_iters (GtkTextBuffer       *buffer,
       tmp = *start;
       *start = *end;
       *end = tmp;
+      /* when searching backwards, we need to start before the selection */
+      gtk_text_iter_backward_char (iter);
     }
 }
 
@@ -975,7 +977,7 @@ mousepad_util_search (GtkTextBuffer       *buffer,
               gtk_text_buffer_select_range (buffer, &match_start, &match_end);
             }
           else if (flags & MOUSEPAD_SEARCH_FLAGS_ACTION_REPLACE)
-          {
+            {
               /* create text mark */
               mark_replace = gtk_text_buffer_create_mark (buffer, NULL, &match_start, search_backwards);
 
@@ -1002,8 +1004,8 @@ mousepad_util_search (GtkTextBuffer       *buffer,
 
               /* search again */
               search_again = TRUE;
-          }
-        else if (flags & MOUSEPAD_SEARCH_FLAGS_ACTION_NONE)
+            }
+          else if (flags & MOUSEPAD_SEARCH_FLAGS_ACTION_NONE)
             {
               /* keep searching when requested */
               if (flags & MOUSEPAD_SEARCH_FLAGS_ENTIRE_AREA)
@@ -1012,8 +1014,8 @@ mousepad_util_search (GtkTextBuffer       *buffer,
               /* move iter */
               iter = match_end;
             }
-        else
-          {
+          else
+            {
               /* no valid action was defined */
               mousepad_assert_not_reached ();
             }
