@@ -153,7 +153,7 @@
       <toolitem action="find" />
       <toolitem action="replace" />
       <toolitem action="go-to" />
-      <separator />
+      <separator name="spacer" />
       <toolitem action="fullscreen" />
   </toolbar>
 

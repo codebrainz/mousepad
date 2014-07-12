@@ -762,6 +762,11 @@ mousepad_window_init (MousepadWindow *window)
   window->toolbar = gtk_ui_manager_get_widget (window->ui_manager, "/main-toolbar");
   gtk_box_pack_start (GTK_BOX (window->box), window->toolbar, FALSE, FALSE, 0);
 
+  /* make the last toolbar separator so it expands and is invisible */
+  item = gtk_ui_manager_get_widget (window->ui_manager, "/main-toolbar/spacer");
+  gtk_separator_tool_item_set_draw (GTK_SEPARATOR_TOOL_ITEM (item), FALSE);
+  gtk_tool_item_set_expand (GTK_TOOL_ITEM (item), TRUE);
+
   /* sync the toolbar visibility and action state to the setting */
   action = gtk_action_group_get_action (window->action_group, "toolbar");
   active = MOUSEPAD_SETTING_GET_BOOLEAN (TOOLBAR_VISIBLE);
