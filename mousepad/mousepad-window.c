@@ -455,10 +455,10 @@ static const GtkActionEntry action_entries[] =
 
   { "search-menu", NULL, N_("_Search"), NULL, NULL, NULL, },
     { "find", GTK_STOCK_FIND, NULL, NULL, N_("Search for text"), G_CALLBACK (mousepad_window_action_find), },
-    { "find-next", NULL, N_("Find _Next"), "F3", N_("Search forwards for the same text"), G_CALLBACK (mousepad_window_action_find_next), },
-    { "find-previous", NULL, N_("Find _Previous"), "<shift>F3", N_("Search backwards for the same text"), G_CALLBACK (mousepad_window_action_find_previous), },
+    { "find-next", NULL, N_("Find _Next"), "<control>g", N_("Search forwards for the same text"), G_CALLBACK (mousepad_window_action_find_next), },
+    { "find-previous", NULL, N_("Find _Previous"), "<shift><control>g", N_("Search backwards for the same text"), G_CALLBACK (mousepad_window_action_find_previous), },
     { "replace", GTK_STOCK_FIND_AND_REPLACE, N_("Find and Rep_lace..."), NULL, N_("Search for and replace text"), G_CALLBACK (mousepad_window_action_replace), },
-    { "go-to", GTK_STOCK_JUMP_TO, N_("_Go to..."), "<control>G", N_("Go to a specific location in the document"), G_CALLBACK (mousepad_window_action_go_to_position), },
+    { "go-to", GTK_STOCK_JUMP_TO, N_("_Go to..."), "<control>l", N_("Go to a specific location in the document"), G_CALLBACK (mousepad_window_action_go_to_position), },
 
   { "view-menu", NULL, N_("_View"), NULL, NULL, NULL, },
     { "font", GTK_STOCK_SELECT_FONT, N_("Select F_ont..."), NULL, N_("Change the editor font"), G_CALLBACK (mousepad_window_action_select_font), },
