@@ -505,3 +505,13 @@ mousepad_search_bar_find_previous (MousepadSearchBar *bar)
   /* search */
   mousepad_search_bar_find_string (bar, flags);
 }
+
+
+
+void
+mousepad_search_bar_set_text (MousepadSearchBar *bar, gchar *text)
+{
+  mousepad_return_if_fail (MOUSEPAD_IS_SEARCH_BAR (bar));
+
+  gtk_entry_set_text (GTK_ENTRY (bar->entry), text);
+}

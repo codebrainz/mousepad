@@ -566,3 +566,11 @@ mousepad_replace_dialog_page_switched (MousepadReplaceDialog *dialog)
 {
   mousepad_replace_dialog_changed (dialog);
 }
+
+
+
+void
+mousepad_replace_dialog_set_text (MousepadReplaceDialog *dialog, gchar *text)
+{
+  gtk_entry_set_text (GTK_ENTRY (dialog->search_entry), text);
+}

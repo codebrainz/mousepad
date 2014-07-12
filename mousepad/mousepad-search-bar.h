@@ -41,6 +41,8 @@ void            mousepad_search_bar_find_next       (MousepadSearchBar *bar);
 
 void            mousepad_search_bar_find_previous   (MousepadSearchBar *bar);
 
+void            mousepad_search_bar_set_text        (MousepadSearchBar *bar, gchar *text);
+
 G_END_DECLS
 
 #endif /* !__MOUSEPAD_SEARCH_BAR_H__ */
