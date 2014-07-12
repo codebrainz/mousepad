@@ -285,6 +285,12 @@ mousepad_print_settings_load (GtkPrintOperation *operation)
     else
       gtk_source_print_compositor_set_line_numbers_font_name (print->compositor, body_font);
 
+    /* setup line number printing */
+    if (print->print_line_numbers)
+      gtk_source_print_compositor_set_print_line_numbers (print->compositor, print->line_number_increment);
+    else
+      gtk_source_print_compositor_set_print_line_numbers (print->compositor, 0);
+
     /* cleanup */
     g_free (body_font);
     g_free (header_font);
@@ -501,6 +507,10 @@ mousepad_print_button_toggled (GtkWidget     *button,
   {
     print->print_line_numbers = active;
     gtk_widget_set_sensitive (print->widget_line_numbers_hbox, active);
+    if (active)
+      gtk_source_print_compositor_set_print_line_numbers (print->compositor, print->line_number_increment);
+    else
+      gtk_source_print_compositor_set_print_line_numbers (print->compositor, 0);
   }
   else if (button == print->widget_text_wrapping)
     gtk_source_print_compositor_set_wrap_mode (print->compositor, active ? GTK_WRAP_WORD : GTK_WRAP_NONE);
@@ -535,13 +545,8 @@ mousepad_print_spin_value_changed (GtkSpinButton *button,
 {
   print->line_number_increment = gtk_spin_button_get_value_as_int (button);
 
-  if (print->line_number_increment > 0 && print->print_line_numbers)
-    {
-      gtk_source_print_compositor_set_print_line_numbers (print->compositor,
-                                                          print->line_number_increment);
-    }
-  else
-    gtk_source_print_compositor_set_print_line_numbers (print->compositor, 0);
+  gtk_source_print_compositor_set_print_line_numbers (print->compositor,
+                                                      print->line_number_increment);
 }
 
 
