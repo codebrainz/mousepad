@@ -279,7 +279,7 @@ mousepad_setting_set_enum (const gchar *path,
   const gchar *key_name = NULL;
   GSettings   *settings = NULL;
 
-  g_return_val_if_fail (path != NULL, FALSE);
+  g_return_if_fail (path != NULL);
 
   if (mousepad_settings_store_lookup (settings_store, path, &key_name, &settings))
     g_settings_set_enum (settings, key_name, value);
