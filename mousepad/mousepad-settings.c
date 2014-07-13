@@ -103,6 +103,40 @@ mousepad_setting_connect (const gchar  *path,
 
 
 
+gulong
+mousepad_setting_connect_object (const gchar  *path,
+                                 GCallback     callback,
+                                 gpointer      gobject,
+                                 GConnectFlags connect_flags)
+{
+  gulong       signal_id = 0;
+  const gchar *key_name = NULL;
+  GSettings   *settings = NULL;
+
+  g_return_val_if_fail (path != NULL, 0);
+  g_return_val_if_fail (callback != NULL, 0);
+  g_return_val_if_fail (G_IS_OBJECT (gobject), 0);
+
+  if (mousepad_settings_store_lookup (settings_store, path, &key_name, &settings))
+    {
+      gchar *signal_name;
+
+      signal_name = g_strdup_printf ("changed::%s", key_name);
+
+      signal_id = g_signal_connect_object (settings,
+                                           signal_name,
+                                           callback,
+                                           gobject,
+                                           connect_flags);
+
+      g_free (signal_name);
+    }
+
+  return signal_id;
+}
+
+
+
 void
 mousepad_setting_disconnect (const gchar *path,
                              gulong       handler_id)

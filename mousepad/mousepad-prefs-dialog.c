@@ -57,11 +57,6 @@ struct MousepadPrefsDialog_
   GtkDialog   parent;
   GtkBuilder *builder;
   gboolean    blocked;
-  gulong      color_scheme_signal;
-  gulong      tab_mode_signal;
-  gulong      home_end_signal;
-  gulong      toolbar_style_signal;
-  gulong      toolbar_icon_size_signal;
 };
 
 struct MousepadPrefsDialogClass_
@@ -99,18 +94,6 @@ mousepad_prefs_dialog_finalize (GObject *object)
   g_return_if_fail (MOUSEPAD_IS_PREFS_DIALOG (object));
 
   self = MOUSEPAD_PREFS_DIALOG (object);
-
-  /* disconnect the "changed" signals from the settings that we connected manually */
-  if (self->color_scheme_signal > 0)
-    MOUSEPAD_SETTING_DISCONNECT (COLOR_SCHEME, self->color_scheme_signal);
-  if (self->tab_mode_signal > 0)
-    MOUSEPAD_SETTING_DISCONNECT (INSERT_SPACES, self->tab_mode_signal);
-  if (self->home_end_signal > 0)
-    MOUSEPAD_SETTING_DISCONNECT (SMART_HOME_END, self->home_end_signal);
-  if (self->toolbar_style_signal > 0)
-    MOUSEPAD_SETTING_DISCONNECT (TOOLBAR_STYLE, self->toolbar_style_signal);
-  if (self->toolbar_icon_size_signal > 0)
-    MOUSEPAD_SETTING_DISCONNECT (TOOLBAR_ICON_SIZE, self->toolbar_icon_size_signal);
 
   /* destroy the GtkBuilder instance */
   if (G_IS_OBJECT (self->builder))
@@ -224,11 +207,10 @@ mousepad_prefs_dialog_setup_color_schemes_combo (MousepadPrefsDialog *self)
                             G_CALLBACK (mousepad_prefs_dialog_color_scheme_changed),
                             self);
 
-  self->color_scheme_signal =
-    MOUSEPAD_SETTING_CONNECT (COLOR_SCHEME,
-                              G_CALLBACK (mousepad_prefs_dialog_color_scheme_setting_changed),
-                              self,
-                              G_CONNECT_SWAPPED);
+  MOUSEPAD_SETTING_CONNECT_OBJECT (COLOR_SCHEME,
+                                   G_CALLBACK (mousepad_prefs_dialog_color_scheme_setting_changed),
+                                   self,
+                                   G_CONNECT_SWAPPED);
 }
 
 
@@ -518,11 +500,10 @@ mousepad_prefs_dialog_init (MousepadPrefsDialog *self)
                             self);
 
   /* update tab mode combo when setting changes */
-  self->tab_mode_signal =
-    MOUSEPAD_SETTING_CONNECT (INSERT_SPACES,
-                              G_CALLBACK (mousepad_prefs_dialog_tab_mode_setting_changed),
-                              self,
-                              G_CONNECT_SWAPPED);
+  MOUSEPAD_SETTING_CONNECT_OBJECT (INSERT_SPACES,
+                                   G_CALLBACK (mousepad_prefs_dialog_tab_mode_setting_changed),
+                                   self,
+                                   G_CONNECT_SWAPPED);
 
   /* update home/end when changed */
   g_signal_connect_swapped (gtk_builder_get_object (self->builder, WID_SMART_HOME_END_COMBO),
@@ -531,11 +512,10 @@ mousepad_prefs_dialog_init (MousepadPrefsDialog *self)
                             self);
 
   /* update home/end combo when setting changes */
-  self->home_end_signal =
-    MOUSEPAD_SETTING_CONNECT (SMART_HOME_END,
-                              G_CALLBACK (mousepad_prefs_dialog_home_end_setting_changed),
-                              self,
-                              G_CONNECT_SWAPPED);
+  MOUSEPAD_SETTING_CONNECT_OBJECT (SMART_HOME_END,
+                                   G_CALLBACK (mousepad_prefs_dialog_home_end_setting_changed),
+                                   self,
+                                   G_CONNECT_SWAPPED);
 
   /* update toolbar style when changed */
   g_signal_connect_swapped (gtk_builder_get_object (self->builder, WID_TOOLBAR_STYLE_COMBO),
@@ -544,11 +524,10 @@ mousepad_prefs_dialog_init (MousepadPrefsDialog *self)
                             self);
 
   /* update toolbar style combo when the setting changes */
-  self->toolbar_style_signal =
-    MOUSEPAD_SETTING_CONNECT (TOOLBAR_STYLE,
-                              G_CALLBACK (mousepad_prefs_dialog_toolbar_style_setting_changed),
-                              self,
-                              G_CONNECT_SWAPPED);
+  MOUSEPAD_SETTING_CONNECT_OBJECT (TOOLBAR_STYLE,
+                                   G_CALLBACK (mousepad_prefs_dialog_toolbar_style_setting_changed),
+                                   self,
+                                   G_CONNECT_SWAPPED);
 
   /* update toolbar icon size when changed */
   g_signal_connect_swapped (gtk_builder_get_object (self->builder, WID_TOOLBAR_ICON_SIZE_COMBO),
@@ -557,11 +536,10 @@ mousepad_prefs_dialog_init (MousepadPrefsDialog *self)
                             self);
 
   /* update toolbar icon size combo when setting changes */
-  self->toolbar_icon_size_signal =
-    MOUSEPAD_SETTING_CONNECT (TOOLBAR_ICON_SIZE,
-                              G_CALLBACK (mousepad_prefs_dialog_toolbar_icon_size_setting_changed),
-                              self,
-                              G_CONNECT_SWAPPED);
+  MOUSEPAD_SETTING_CONNECT_OBJECT (TOOLBAR_ICON_SIZE,
+                                   G_CALLBACK (mousepad_prefs_dialog_toolbar_icon_size_setting_changed),
+                                   self,
+                                   G_CONNECT_SWAPPED);
 }
 
 

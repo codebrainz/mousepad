@@ -406,21 +406,6 @@ struct _MousepadWindow
   /* idle update functions for the recent and go menu */
   guint                update_recent_menu_id;
   guint                update_go_menu_id;
-
-  /* settings signal handler ids that must be disconnected on destruction */
-  gulong               menubar_visible_id;
-  gulong               menubar_visible_fs_id;
-  gulong               toolbar_visible_id;
-  gulong               toolbar_visible_fs_id;
-  gulong               toolbar_style_id;
-  gulong               toolbar_icon_size_id;
-  gulong               tab_width_id;
-  gulong               insert_spaces_id;
-  gulong               statusbar_visible_id;
-  gulong               statusbar_visible_fs_id;
-  gulong               path_in_title_id;
-  gulong               always_show_tabs_id;
-  gulong               recent_menu_items_id;
 };
 
 
@@ -717,17 +702,15 @@ mousepad_window_create_menubar (MousepadWindow *window)
   gtk_toggle_action_set_active (GTK_TOGGLE_ACTION (action), active);
   gtk_widget_set_visible (window->menubar, active);
 
-  window->menubar_visible_id =
-    MOUSEPAD_SETTING_CONNECT (MENUBAR_VISIBLE,
-                              G_CALLBACK (mousepad_window_update_main_widgets),
-                              window,
-                              G_CONNECT_SWAPPED);
+  MOUSEPAD_SETTING_CONNECT_OBJECT (MENUBAR_VISIBLE,
+                                  G_CALLBACK (mousepad_window_update_main_widgets),
+                                  window,
+                                  G_CONNECT_SWAPPED);
 
-  window->menubar_visible_fs_id =
-    MOUSEPAD_SETTING_CONNECT (MENUBAR_VISIBLE_FULLSCREEN,
-                              G_CALLBACK (mousepad_window_update_main_widgets),
-                              window,
-                              G_CONNECT_SWAPPED);
+  MOUSEPAD_SETTING_CONNECT_OBJECT (MENUBAR_VISIBLE_FULLSCREEN,
+                                  G_CALLBACK (mousepad_window_update_main_widgets),
+                                  window,
+                                  G_CONNECT_SWAPPED);
 }
 
 
@@ -763,29 +746,25 @@ mousepad_window_create_toolbar (MousepadWindow *window)
   mousepad_window_update_toolbar (window, NULL, NULL);
 
   /* connect to some signals to keep in sync */
-  window->toolbar_visible_id =
-    MOUSEPAD_SETTING_CONNECT (TOOLBAR_VISIBLE,
-                              G_CALLBACK (mousepad_window_update_toolbar),
-                              window,
-                              G_CONNECT_SWAPPED);
+  MOUSEPAD_SETTING_CONNECT_OBJECT (TOOLBAR_VISIBLE,
+                                   G_CALLBACK (mousepad_window_update_toolbar),
+                                   window,
+                                   G_CONNECT_SWAPPED);
 
-  window->toolbar_visible_fs_id =
-    MOUSEPAD_SETTING_CONNECT (TOOLBAR_VISIBLE_FULLSCREEN,
-                              G_CALLBACK (mousepad_window_update_main_widgets),
-                              window,
-                              G_CONNECT_SWAPPED);
+  MOUSEPAD_SETTING_CONNECT_OBJECT (TOOLBAR_VISIBLE_FULLSCREEN,
+                                   G_CALLBACK (mousepad_window_update_main_widgets),
+                                   window,
+                                   G_CONNECT_SWAPPED);
 
-  window->toolbar_style_id =
-    MOUSEPAD_SETTING_CONNECT (TOOLBAR_STYLE,
-                              G_CALLBACK (mousepad_window_update_toolbar),
-                              window,
-                              G_CONNECT_SWAPPED);
+  MOUSEPAD_SETTING_CONNECT_OBJECT (TOOLBAR_STYLE,
+                                   G_CALLBACK (mousepad_window_update_toolbar),
+                                   window,
+                                   G_CONNECT_SWAPPED);
 
-  window->toolbar_icon_size_id =
-    MOUSEPAD_SETTING_CONNECT (TOOLBAR_ICON_SIZE,
-                              G_CALLBACK (mousepad_window_update_toolbar),
-                              window,
-                              G_CONNECT_SWAPPED);
+  MOUSEPAD_SETTING_CONNECT_OBJECT (TOOLBAR_ICON_SIZE,
+                                   G_CALLBACK (mousepad_window_update_toolbar),
+                                   window,
+                                   G_CONNECT_SWAPPED);
 }
 
 
@@ -901,29 +880,25 @@ mousepad_window_create_statusbar (MousepadWindow *window)
     mousepad_document_send_signals (window->active);
 
   /* update the statusbar with certain settings */
-  window->tab_width_id =
-    MOUSEPAD_SETTING_CONNECT (TAB_WIDTH,
-                              G_CALLBACK (mousepad_window_update_statusbar_settings),
-                              window,
-                              G_CONNECT_SWAPPED);
+  MOUSEPAD_SETTING_CONNECT_OBJECT (TAB_WIDTH,
+                                   G_CALLBACK (mousepad_window_update_statusbar_settings),
+                                   window,
+                                   G_CONNECT_SWAPPED);
 
-  window->insert_spaces_id =
-    MOUSEPAD_SETTING_CONNECT (INSERT_SPACES,
-                              G_CALLBACK (mousepad_window_update_statusbar_settings),
-                              window,
-                              G_CONNECT_SWAPPED);
+  MOUSEPAD_SETTING_CONNECT_OBJECT (INSERT_SPACES,
+                                   G_CALLBACK (mousepad_window_update_statusbar_settings),
+                                   window,
+                                   G_CONNECT_SWAPPED);
 
-  window->statusbar_visible_id =
-    MOUSEPAD_SETTING_CONNECT (STATUSBAR_VISIBLE,
-                              G_CALLBACK (mousepad_window_update_main_widgets),
-                              window,
-                              G_CONNECT_SWAPPED);
+  MOUSEPAD_SETTING_CONNECT_OBJECT (STATUSBAR_VISIBLE,
+                                   G_CALLBACK (mousepad_window_update_main_widgets),
+                                   window,
+                                   G_CONNECT_SWAPPED);
 
-  window->statusbar_visible_fs_id =
-    MOUSEPAD_SETTING_CONNECT (STATUSBAR_VISIBLE_FULLSCREEN,
-                              G_CALLBACK (mousepad_window_update_main_widgets),
-                              window,
-                              G_CONNECT_SWAPPED);
+  MOUSEPAD_SETTING_CONNECT_OBJECT (STATUSBAR_VISIBLE_FULLSCREEN,
+                                   G_CALLBACK (mousepad_window_update_main_widgets),
+                                   window,
+                                   G_CONNECT_SWAPPED);
 }
 
 
@@ -1032,25 +1007,22 @@ mousepad_window_init (MousepadWindow *window)
                           G_BINDING_DEFAULT | G_BINDING_SYNC_CREATE | G_BINDING_INVERT_BOOLEAN);
 
   /* update the window title when 'path-in-title' setting changes */
-  window->path_in_title_id =
-    MOUSEPAD_SETTING_CONNECT (PATH_IN_TITLE,
-                              G_CALLBACK (mousepad_window_update_window_title),
-                              window,
-                              G_CONNECT_SWAPPED);
+  MOUSEPAD_SETTING_CONNECT_OBJECT (PATH_IN_TITLE,
+                                   G_CALLBACK (mousepad_window_update_window_title),
+                                   window,
+                                   G_CONNECT_SWAPPED);
 
   /* update the tabs when 'always-show-tabs' setting changes */
-  window->always_show_tabs_id =
-    MOUSEPAD_SETTING_CONNECT (ALWAYS_SHOW_TABS,
-                              G_CALLBACK (mousepad_window_update_tabs),
-                              window,
-                              G_CONNECT_SWAPPED);
+  MOUSEPAD_SETTING_CONNECT_OBJECT (ALWAYS_SHOW_TABS,
+                                   G_CALLBACK (mousepad_window_update_tabs),
+                                   window,
+                                   G_CONNECT_SWAPPED);
 
   /* update the recent items menu when 'window-recent-menu-items' setting changes */
-  window->recent_menu_items_id =
-    MOUSEPAD_SETTING_CONNECT (RECENT_MENU_ITEMS,
-                              G_CALLBACK (mousepad_window_update_recent_menu),
-                              window,
-                              G_CONNECT_SWAPPED);
+  MOUSEPAD_SETTING_CONNECT_OBJECT (RECENT_MENU_ITEMS,
+                                   G_CALLBACK (mousepad_window_update_recent_menu),
+                                   window,
+                                   G_CONNECT_SWAPPED);
 }
 
 
@@ -1077,24 +1049,6 @@ static void
 mousepad_window_finalize (GObject *object)
 {
   MousepadWindow *window = MOUSEPAD_WINDOW (object);
-
-  /* disconnect settings callbacks since settings lives longer than the window */
-# define DISCONNECT_(setting, lower) \
-      MOUSEPAD_SETTING_DISCONNECT (setting, window->lower##_id)
-  DISCONNECT_ (MENUBAR_VISIBLE, menubar_visible);
-  DISCONNECT_ (MENUBAR_VISIBLE_FULLSCREEN, menubar_visible_fs);
-  DISCONNECT_ (TOOLBAR_VISIBLE, toolbar_visible);
-  DISCONNECT_ (TOOLBAR_VISIBLE_FULLSCREEN, toolbar_visible_fs);
-  DISCONNECT_ (TOOLBAR_STYLE, toolbar_style);
-  DISCONNECT_ (TOOLBAR_ICON_SIZE, toolbar_icon_size);
-  DISCONNECT_ (TAB_WIDTH, tab_width);
-  DISCONNECT_ (INSERT_SPACES, insert_spaces);
-  DISCONNECT_ (STATUSBAR_VISIBLE, statusbar_visible);
-  DISCONNECT_ (STATUSBAR_VISIBLE_FULLSCREEN, statusbar_visible_fs);
-  DISCONNECT_ (PATH_IN_TITLE, path_in_title);
-  DISCONNECT_ (ALWAYS_SHOW_TABS, always_show_tabs);
-  DISCONNECT_ (RECENT_MENU_ITEMS, recent_menu_items);
-# undef DISCONNECT_
 
   /* decrease history clipboard ref count */
   clipboard_history_ref_count--;
