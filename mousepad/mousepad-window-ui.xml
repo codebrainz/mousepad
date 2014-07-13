@@ -99,6 +99,7 @@
       </menu>
       <menuitem action="line-numbers" />
       <separator />
+      <menuitem action="menubar" />
       <menuitem action="toolbar" />
       <menuitem action="statusbar" />
       <separator />

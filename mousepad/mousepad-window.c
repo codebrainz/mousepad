@@ -324,6 +324,8 @@ static void              mousepad_window_action_color_scheme          (GtkToggle
                                                                        MousepadWindow         *window);
 static void              mousepad_window_action_line_numbers          (GtkToggleAction        *action,
                                                                        MousepadWindow         *window);
+static void              mousepad_window_action_menubar               (GtkToggleAction        *action,
+                                                                       MousepadWindow         *window);
 static void              mousepad_window_action_toolbar               (GtkToggleAction        *action,
                                                                        MousepadWindow         *window);
 static void              mousepad_window_action_statusbar_overwrite   (MousepadWindow         *window,
@@ -480,6 +482,7 @@ static const GtkActionEntry action_entries[] =
 static const GtkToggleActionEntry toggle_action_entries[] =
 {
   { "line-numbers", NULL, N_("Line N_umbers"), NULL, N_("Show line numbers"), G_CALLBACK (mousepad_window_action_line_numbers), FALSE, },
+  { "menubar", NULL, N_("_Menubar"), NULL, N_("Change the visibility of the main menubar"), G_CALLBACK (mousepad_window_action_menubar), FALSE, },
   { "toolbar", NULL, N_("_Toolbar"), NULL, N_("Change the visibility of the toolbar"), G_CALLBACK (mousepad_window_action_toolbar), FALSE, },
   { "statusbar", NULL, N_("St_atusbar"), NULL, N_("Change the visibility of the statusbar"), G_CALLBACK (mousepad_window_action_statusbar), FALSE, },
   { "fullscreen", GTK_STOCK_FULLSCREEN, N_("_Fullscreen"), "F11", N_("Make the window fullscreen"), G_CALLBACK (mousepad_window_action_fullscreen), FALSE, },
@@ -758,6 +761,7 @@ mousepad_window_init (MousepadWindow *window)
   window->menubar = gtk_ui_manager_get_widget (window->ui_manager, "/main-menu");
   gtk_box_pack_start (GTK_BOX (window->box), window->menubar, FALSE, FALSE, 0);
   gtk_widget_show (window->menubar);
+  MOUSEPAD_SETTING_BIND (MENUBAR_VISIBLE, window->menubar, "visible", G_SETTINGS_BIND_DEFAULT);
 
   window->toolbar = gtk_ui_manager_get_widget (window->ui_manager, "/main-toolbar");
   gtk_box_pack_start (GTK_BOX (window->box), window->toolbar, FALSE, FALSE, 0);
@@ -4964,6 +4968,21 @@ mousepad_window_action_line_numbers (GtkToggleAction *action,
 
   /* save as the last used line number setting */
   MOUSEPAD_SETTING_SET_BOOLEAN (SHOW_LINE_NUMBERS, active);
+}
+
+
+
+static void
+mousepad_window_action_menubar (GtkToggleAction *action,
+                                MousepadWindow  *window)
+{
+  gboolean active;
+
+  mousepad_return_if_fail (MOUSEPAD_IS_WINDOW (window));
+
+  active = gtk_toggle_action_get_active (action);
+
+  MOUSEPAD_SETTING_SET_BOOLEAN (MENUBAR_VISIBLE, active);
 }
 
 
