@@ -787,10 +787,6 @@ mousepad_window_init (MousepadWindow *window)
                             window,
                             G_CONNECT_SWAPPED);
 
-  /* update the window fullscreen state when setting changes */
-  action = gtk_action_group_get_action (window->action_group, "fullscreen");
-  MOUSEPAD_SETTING_BIND (WINDOW_FULLSCREEN, action, "active", G_SETTINGS_BIND_DEFAULT);
-
   /* check if we need to add the root warning */
   if (G_UNLIKELY (geteuid () == 0))
     {
@@ -5028,7 +5024,7 @@ mousepad_window_action_fullscreen (GtkToggleAction *action,
   if (! gtk_widget_get_visible (GTK_WIDGET (window)))
     return;
 
-  fullscreen = MOUSEPAD_SETTING_GET_BOOLEAN (WINDOW_FULLSCREEN);
+  fullscreen = gtk_toggle_action_get_active (action);
   gdk_window = gtk_widget_get_window (GTK_WIDGET (window));
   state = gdk_window_get_state (gdk_window);
 
