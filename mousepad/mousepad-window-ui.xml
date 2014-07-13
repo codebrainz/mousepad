@@ -204,5 +204,7 @@
     <menuitem action="duplicate" />
     <menuitem action="increase-indent" />
     <menuitem action="decrease-indent" />
+    <separator name="menubar-visible-separator" />
+    <menuitem name="menubar-visible-item" action="menubar" />
   </popup>
 </ui>

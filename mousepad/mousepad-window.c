@@ -996,6 +996,16 @@ mousepad_window_init (MousepadWindow *window)
   gtk_drag_dest_set (GTK_WIDGET (window), GTK_DEST_DEFAULT_MOTION | GTK_DEST_DEFAULT_DROP, drop_targets, G_N_ELEMENTS (drop_targets), GDK_ACTION_COPY | GDK_ACTION_MOVE);
   g_signal_connect (G_OBJECT (window), "drag-data-received", G_CALLBACK (mousepad_window_drag_data_received), window);
 
+  /* Add menubar action to the textview menu when the menubar is hidden */
+  item = gtk_ui_manager_get_widget (window->ui_manager, "/textview-menu/menubar-visible-separator");
+  g_object_bind_property (window->menubar, "visible",
+                          item,            "visible",
+                          G_BINDING_DEFAULT | G_BINDING_SYNC_CREATE | G_BINDING_INVERT_BOOLEAN);
+  item = gtk_ui_manager_get_widget (window->ui_manager, "/textview-menu/menubar-visible-item");
+  g_object_bind_property (window->menubar, "visible",
+                          item,            "visible",
+                          G_BINDING_DEFAULT | G_BINDING_SYNC_CREATE | G_BINDING_INVERT_BOOLEAN);
+
   /* update the window title when 'path-in-title' setting changes */
   MOUSEPAD_SETTING_CONNECT (PATH_IN_TITLE,
                             G_CALLBACK (mousepad_window_update_window_title),
