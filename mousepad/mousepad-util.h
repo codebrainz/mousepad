@@ -133,6 +133,8 @@ GSList    *mousepad_util_language_sections_get_sorted     (void);
 
 GSList    *mousepad_util_languages_get_sorted_for_section (const gchar         *section);
 
+GtkAction *mousepad_util_find_related_action              (GtkWidget           *widget);
+
 G_END_DECLS
 
 #endif /* !__MOUSEPAD_UTIL_H__ */

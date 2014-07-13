@@ -85,6 +85,13 @@ static void              mousepad_window_menu_item_selected           (GtkWidget
                                                                        MousepadWindow         *window);
 static void              mousepad_window_menu_item_deselected         (GtkWidget              *menu_item,
                                                                        MousepadWindow         *window);
+static gboolean          mousepad_window_tool_item_enter_event        (GtkWidget              *tool_item,
+                                                                       GdkEvent               *event,
+                                                                       MousepadWindow         *window);
+static gboolean          mousepad_window_tool_item_leave_event        (GtkWidget              *tool_item,
+                                                                       GdkEvent               *event,
+                                                                       MousepadWindow         *window);
+
 
 /* save windows geometry */
 static gboolean          mousepad_window_save_geometry_timer          (gpointer                user_data);
@@ -1112,8 +1119,25 @@ mousepad_window_connect_proxy (GtkUIManager   *manager,
 
   if (GTK_IS_MENU_ITEM (proxy))
     {
+      /* menu item's don't work with gdk window events */
       g_signal_connect_object (proxy, "select", G_CALLBACK (mousepad_window_menu_item_selected), window, 0);
       g_signal_connect_object (proxy, "deselect", G_CALLBACK (mousepad_window_menu_item_deselected), window, 0);
+    }
+  else if (GTK_IS_TOOL_ITEM (proxy))
+    {
+      GtkWidget *child;
+
+      /* tool items will have GtkButton or other widgets in them, we want the child */
+      child = gtk_bin_get_child (GTK_BIN (proxy));
+
+      /* get events for mouse enter/leave and focus in/out */
+      gtk_widget_add_events (child, GDK_ENTER_NOTIFY_MASK | GDK_LEAVE_NOTIFY_MASK | GDK_FOCUS_CHANGE_MASK);
+
+      /* connect to signals for the events */
+      g_signal_connect_object (child, "enter-notify-event", G_CALLBACK (mousepad_window_tool_item_enter_event), window, 0);
+      g_signal_connect_object (child, "leave-notify-event", G_CALLBACK (mousepad_window_tool_item_leave_event), window, 0);
+      g_signal_connect_object (child, "focus-in-event", G_CALLBACK (mousepad_window_tool_item_enter_event), window, 0);
+      g_signal_connect_object (child, "focus-out-event", G_CALLBACK (mousepad_window_tool_item_leave_event), window, 0);
     }
 }
 
@@ -1131,8 +1155,22 @@ mousepad_window_disconnect_proxy (GtkUIManager   *manager,
 
   if (GTK_IS_MENU_ITEM (proxy))
     {
+      /* disconnect from the select/deselect signals */
       g_signal_handlers_disconnect_by_func (proxy, mousepad_window_menu_item_selected, window);
       g_signal_handlers_disconnect_by_func (proxy, mousepad_window_menu_item_deselected, window);
+    }
+  else if (GTK_IS_TOOL_ITEM (proxy))
+    {
+      GtkWidget *child;
+
+      /* tool items will have GtkButton or other widgets in them, we want the child */
+      child = gtk_bin_get_child (GTK_BIN (proxy));
+
+      /* disconnect from the gdk window event signals */
+      g_signal_handlers_disconnect_by_func (child, mousepad_window_tool_item_enter_event, window);
+      g_signal_handlers_disconnect_by_func (child, mousepad_window_tool_item_leave_event, window);
+      g_signal_handlers_disconnect_by_func (child, mousepad_window_tool_item_enter_event, window);
+      g_signal_handlers_disconnect_by_func (child, mousepad_window_tool_item_leave_event, window);
     }
 }
 
@@ -1142,35 +1180,7 @@ static void
 mousepad_window_menu_item_selected (GtkWidget      *menu_item,
                                     MousepadWindow *window)
 {
-  GtkAction *action;
-  gchar     *tooltip;
-  gint       id;
-
-  /* we can only display tooltips if we have a statusbar */
-  if (G_LIKELY (window->statusbar != NULL))
-    {
-      /* get the action from the menu item */
-#if GTK_CHECK_VERSION (2, 16, 0)
-      action = gtk_activatable_get_related_action (GTK_ACTIVATABLE (menu_item));
-#else
-      action = gtk_widget_get_action (menu_item);
-#endif
-      if (G_LIKELY (action))
-        {
-          /* read the tooltip from the action, if there is one */
-          g_object_get (G_OBJECT (action), "tooltip", &tooltip, NULL);
-
-          if (G_LIKELY (tooltip != NULL))
-            {
-              /* show the tooltip */
-              id = gtk_statusbar_get_context_id (GTK_STATUSBAR (window->statusbar), "tooltip");
-              gtk_statusbar_push (GTK_STATUSBAR (window->statusbar), id, tooltip);
-
-              /* cleanup */
-              g_free (tooltip);
-            }
-        }
-    }
+  mousepad_statusbar_push_tooltip (MOUSEPAD_STATUSBAR (window->statusbar), menu_item);
 }
 
 
@@ -1179,15 +1189,31 @@ static void
 mousepad_window_menu_item_deselected (GtkWidget      *menu_item,
                                       MousepadWindow *window)
 {
-  gint id;
+  mousepad_statusbar_pop_tooltip (MOUSEPAD_STATUSBAR (window->statusbar), menu_item);
+}
 
-  /* we can only undisplay tooltips if we have a statusbar */
-  if (G_LIKELY (window->statusbar != NULL))
-    {
-      /* drop the last tooltip from the statusbar */
-      id = gtk_statusbar_get_context_id (GTK_STATUSBAR (window->statusbar), "tooltip");
-      gtk_statusbar_pop (GTK_STATUSBAR (window->statusbar), id);
-    }
+
+
+static gboolean
+mousepad_window_tool_item_enter_event (GtkWidget      *tool_item,
+                                       GdkEvent       *event,
+                                       MousepadWindow *window)
+{
+  mousepad_statusbar_push_tooltip (MOUSEPAD_STATUSBAR (window->statusbar), tool_item);
+
+  return FALSE;
+}
+
+
+
+static gboolean
+mousepad_window_tool_item_leave_event (GtkWidget      *tool_item,
+                                       GdkEvent       *event,
+                                       MousepadWindow *window)
+{
+  mousepad_statusbar_pop_tooltip (MOUSEPAD_STATUSBAR (window->statusbar), tool_item);
+
+  return FALSE;
 }
 
 

@@ -1216,3 +1216,31 @@ mousepad_util_languages_get_sorted_for_section (const gchar *section)
 
   return g_slist_sort(list, (GCompareFunc)mousepad_util_languages_name_compare);
 }
+
+
+
+/* get the related action of the widget or walk up the parents to find one.
+ * useful for example to get the related action of a tool item from its child. */
+GtkAction *
+mousepad_util_find_related_action (GtkWidget *widget)
+{
+  GtkAction *action;
+
+  g_return_val_if_fail (GTK_IS_WIDGET (widget), NULL);
+
+  do
+    {
+      if (GTK_IS_ACTIVATABLE (widget))
+        action = gtk_activatable_get_related_action (GTK_ACTIVATABLE (widget));
+
+      if (G_UNLIKELY (action == NULL))
+        {
+          if (gtk_widget_is_toplevel (widget))
+            break;
+          widget = gtk_widget_get_parent (widget);
+        }
+    }
+  while (action == NULL);
+
+  return action;
+}
