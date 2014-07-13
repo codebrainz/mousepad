@@ -376,10 +376,6 @@ struct _MousepadWindow
   /* the current active document */
   MousepadDocument    *active;
 
-  /* closures for the menu callbacks */
-  GClosure            *menu_item_selected_closure;
-  GClosure            *menu_item_deselected_closure;
-
   /* action group */
   GtkActionGroup      *action_group;
 
@@ -927,16 +923,6 @@ mousepad_window_init (MousepadWindow *window)
   /* signal for handling the window delete event */
   g_signal_connect (G_OBJECT (window), "delete-event", G_CALLBACK (mousepad_window_delete_event), NULL);
 
-  /* allocate a closure for the menu_item_selected() callback */
-  window->menu_item_selected_closure = g_cclosure_new_object (G_CALLBACK (mousepad_window_menu_item_selected), G_OBJECT (window));
-  g_closure_ref (window->menu_item_selected_closure);
-  g_closure_sink (window->menu_item_selected_closure);
-
-  /* allocate a closure for the menu_item_deselected() callback */
-  window->menu_item_deselected_closure = g_cclosure_new_object (G_CALLBACK (mousepad_window_menu_item_deselected), G_OBJECT (window));
-  g_closure_ref (window->menu_item_deselected_closure);
-  g_closure_sink (window->menu_item_deselected_closure);
-
   /* restore window settings */
   mousepad_window_restore (window);
 
@@ -1061,10 +1047,6 @@ mousepad_window_finalize (GObject *object)
   if (G_UNLIKELY (window->update_go_menu_id != 0))
     g_source_remove (window->update_go_menu_id);
 
-  /* drop our references on the menu_item_selected()/menu_item_deselected() closures */
-  g_closure_unref (window->menu_item_deselected_closure);
-  g_closure_unref (window->menu_item_selected_closure);
-
   /* release the ui manager */
   g_signal_handlers_disconnect_matched (G_OBJECT (window->ui_manager), G_SIGNAL_MATCH_DATA, 0, 0, NULL, NULL, window);
   g_object_unref (G_OBJECT (window->ui_manager));
@@ -1130,9 +1112,8 @@ mousepad_window_connect_proxy (GtkUIManager   *manager,
 
   if (GTK_IS_MENU_ITEM (proxy))
     {
-      /* we want to get informed when the user hovers a menu item */
-      g_signal_connect_closure (G_OBJECT (proxy), "select", window->menu_item_selected_closure, FALSE);
-      g_signal_connect_closure (G_OBJECT (proxy), "deselect", window->menu_item_deselected_closure, FALSE);
+      g_signal_connect_object (proxy, "select", G_CALLBACK (mousepad_window_menu_item_selected), window, 0);
+      g_signal_connect_object (proxy, "deselect", G_CALLBACK (mousepad_window_menu_item_deselected), window, 0);
     }
 }
 
@@ -1150,9 +1131,8 @@ mousepad_window_disconnect_proxy (GtkUIManager   *manager,
 
   if (GTK_IS_MENU_ITEM (proxy))
     {
-      /* disconnect the signal from mousepad_window_connect_proxy() */
-      g_signal_handlers_disconnect_matched (G_OBJECT (proxy), G_SIGNAL_MATCH_CLOSURE, 0, 0, window->menu_item_selected_closure, NULL, NULL);
-      g_signal_handlers_disconnect_matched (G_OBJECT (proxy), G_SIGNAL_MATCH_CLOSURE, 0, 0, window->menu_item_deselected_closure, NULL, NULL);
+      g_signal_handlers_disconnect_by_func (proxy, mousepad_window_menu_item_selected, window);
+      g_signal_handlers_disconnect_by_func (proxy, mousepad_window_menu_item_deselected, window);
     }
 }
 
