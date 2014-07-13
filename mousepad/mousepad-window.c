@@ -394,6 +394,7 @@ struct _MousepadWindow
   GtkWidget           *statusbar;
   GtkWidget           *replace_dialog;
   GtkWidget           *toolbar;
+  GtkWidget           *menubar;
 
   /* support to remember window geometry */
   guint                save_geometry_timer_id;
@@ -679,7 +680,6 @@ static void
 mousepad_window_init (MousepadWindow *window)
 {
   GtkAccelGroup *accel_group;
-  GtkWidget     *menubar;
   GtkWidget     *label;
   GtkWidget     *separator;
   GtkWidget     *ebox;
@@ -755,9 +755,9 @@ mousepad_window_init (MousepadWindow *window)
   gtk_container_add (GTK_CONTAINER (window), window->box);
   gtk_widget_show (window->box);
 
-  menubar = gtk_ui_manager_get_widget (window->ui_manager, "/main-menu");
-  gtk_box_pack_start (GTK_BOX (window->box), menubar, FALSE, FALSE, 0);
-  gtk_widget_show (menubar);
+  window->menubar = gtk_ui_manager_get_widget (window->ui_manager, "/main-menu");
+  gtk_box_pack_start (GTK_BOX (window->box), window->menubar, FALSE, FALSE, 0);
+  gtk_widget_show (window->menubar);
 
   window->toolbar = gtk_ui_manager_get_widget (window->ui_manager, "/main-toolbar");
   gtk_box_pack_start (GTK_BOX (window->box), window->toolbar, FALSE, FALSE, 0);
@@ -5017,7 +5017,8 @@ static void
 mousepad_window_action_fullscreen (GtkToggleAction *action,
                                    MousepadWindow  *window)
 {
-  gboolean       fullscreen;
+  gboolean       fullscreen, mb_visible, tb_visible, sb_visible;
+  gint           mb_visible_fs, tb_visible_fs, sb_visible_fs;
   GdkWindow     *gdk_window;
   GdkWindowState state;
 
@@ -5028,17 +5029,44 @@ mousepad_window_action_fullscreen (GtkToggleAction *action,
   gdk_window = gtk_widget_get_window (GTK_WIDGET (window));
   state = gdk_window_get_state (gdk_window);
 
+  /* get the non-fullscreen settings */
+  mb_visible = MOUSEPAD_SETTING_GET_BOOLEAN (MENUBAR_VISIBLE);
+  tb_visible = MOUSEPAD_SETTING_GET_BOOLEAN (TOOLBAR_VISIBLE);
+  sb_visible = MOUSEPAD_SETTING_GET_BOOLEAN (STATUSBAR_VISIBLE);
+
+  /* get the fullscreen settings */
+  mb_visible_fs = MOUSEPAD_SETTING_GET_ENUM (MENUBAR_VISIBLE_FULLSCREEN);
+  tb_visible_fs = MOUSEPAD_SETTING_GET_ENUM (TOOLBAR_VISIBLE_FULLSCREEN);
+  sb_visible_fs = MOUSEPAD_SETTING_GET_ENUM (STATUSBAR_VISIBLE_FULLSCREEN);
+
+  /* set to true or false based on fullscreen setting */
+  mb_visible_fs = (mb_visible_fs == 0) ? mb_visible : (mb_visible_fs == 2);
+  tb_visible_fs = (tb_visible_fs == 0) ? tb_visible : (tb_visible_fs == 2);
+  sb_visible_fs = (sb_visible_fs == 0) ? sb_visible : (sb_visible_fs == 2);
+
+  /* entering fullscreen mode */
   if (fullscreen && !(state & GDK_WINDOW_STATE_FULLSCREEN))
     {
       gtk_window_fullscreen (GTK_WINDOW (window));
       gtk_action_set_stock_id (GTK_ACTION (action), GTK_STOCK_LEAVE_FULLSCREEN);
       gtk_action_set_tooltip (GTK_ACTION (action), _("Leave fullscreen mode"));
+
+      /* update main widgets visibility for fullscreen mode */
+      gtk_widget_set_visible (window->menubar, mb_visible_fs);
+      gtk_widget_set_visible (window->toolbar, tb_visible_fs);
+      gtk_widget_set_visible (window->statusbar, sb_visible_fs);
     }
+  /* leaving fullscreen mode */
   else if (state & GDK_WINDOW_STATE_FULLSCREEN)
     {
       gtk_window_unfullscreen (GTK_WINDOW (window));
       gtk_action_set_stock_id (GTK_ACTION (action), GTK_STOCK_FULLSCREEN);
       gtk_action_set_tooltip (GTK_ACTION (action), _("Make the window fullscreen"));
+
+      /* update main widgets visibility for normal mode */
+      gtk_widget_set_visible (window->menubar, mb_visible);
+      gtk_widget_set_visible (window->toolbar, tb_visible);
+      gtk_widget_set_visible (window->statusbar, sb_visible);
     }
 }
 

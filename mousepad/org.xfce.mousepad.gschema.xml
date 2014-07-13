@@ -25,6 +25,12 @@
     <value nick="dialog" value="6"/>
   </enum>
 
+  <enum id="org.xfce.mousepad.ShowInFullscreen">
+    <value nick="auto" value="0"/>
+    <value nick="no" value="1"/>
+    <value nick="yes" value="2"/>
+  </enum>
+
   <schema id="org.xfce.mousepad" path="/org/xfce/mousepad/" gettext-domain="mousepad">
     <child name="preferences" schema="org.xfce.mousepad.preferences"/>
     <child name="state" schema="org.xfce.mousepad.state"/>
@@ -185,13 +191,6 @@
 
   <!-- window preferences -->
   <schema id="org.xfce.mousepad.preferences.window" path="/org/xfce/mousepad/preferences/window/" gettext-domain="mousepad">
-    <key name="toolbar-visible" type="b">
-      <default>false</default>
-      <summary>Toolbar visible</summary>
-      <description>
-        When true the toolbar is visible, when false it is not visible.
-      </description>
-    </key>
     <key name="toolbar-style" enum="org.xfce.mousepad.ToolbarStyle">
       <default>'icons'</default>
       <summary>Toolbar style</summary>
@@ -205,13 +204,6 @@
       <summary>Toolbar icon size</summary>
       <description>
         Controls the size of the toolbar icons (if visible).
-      </description>
-    </key>
-    <key name="statusbar-visible" type="b">
-      <default>false</default>
-      <summary>Statusbar visible</summary>
-      <description>
-        When true the statusbar is visible, when false it is not visible.
       </description>
     </key>
     <key name="always-show-tabs" type="b">
@@ -280,6 +272,54 @@
         normal, maximized, fullscreen, etc, when false it will not. Your
         Window Manager may very well not report when retrieving or not respect
         it when setting.
+      </description>
+    </key>
+    <key name="menubar-visible" type="b">
+      <default>true</default>
+      <summary>Menubar visible</summary>
+      <description>
+        When true the main menubar is visible, when false it is not visible.
+      </description>
+    </key>
+    <key name="toolbar-visible" type="b">
+      <default>false</default>
+      <summary>Toolbar visible</summary>
+      <description>
+        When true the toolbar is visible, when false it is not visible.
+      </description>
+    </key>
+    <key name="statusbar-visible" type="b">
+      <default>false</default>
+      <summary>Statusbar visible</summary>
+      <description>
+        When true the statusbar is visible, when false it is not visible.
+      </description>
+    </key>
+    <key name="menubar-visible-in-fullscreen" enum="org.xfce.mousepad.ShowInFullscreen">
+      <default>'auto'</default>
+      <summary>Menubar visible in fullscreen mode</summary>
+      <description>
+        A value of 'auto' means follow the main menubar-visible setting, 'no'
+        means the menubar is not visible in fullscreen, and 'yes' means that
+        it is always visible in fullscreen.
+      </description>
+    </key>
+    <key name="toolbar-visible-in-fullscreen" enum="org.xfce.mousepad.ShowInFullscreen">
+      <default>'auto'</default>
+      <summary>Toolbar visible in fullscreen mode</summary>
+      <description>
+        A value of 'auto' means follow the main toolbar-visible setting, 'no'
+        means the toolbar is not visible in fullscreen, and 'yes' means that
+        it is always visible in fullscreen.
+      </description>
+    </key>
+    <key name="statusbar-visible-in-fullscreen" enum="org.xfce.mousepad.ShowInFullscreen">
+      <default>'auto'</default>
+      <summary>Statusbar visible in fullscreen mode</summary>
+      <description>
+        A value of 'auto' means follow the main statusbar-visible setting, 'no'
+        means the statusbar is not visible in fullscreen, and 'yes' means that
+        it is always visible in fullscreen.
       </description>
     </key>
   </schema>
