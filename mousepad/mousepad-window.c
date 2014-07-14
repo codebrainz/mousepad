@@ -2279,6 +2279,11 @@ mousepad_window_menu_templates_fill (MousepadWindow *window,
   /* append the files */
   for (li = files_list; li != NULL; li = li->next)
     {
+      GtkSourceLanguage *language;
+
+      language = gtk_source_language_manager_guess_language (
+                    gtk_source_language_manager_get_default (), li->data, NULL);
+
       /* create directory label */
       label = g_filename_display_basename (li->data);
 
@@ -2291,6 +2296,7 @@ mousepad_window_menu_templates_fill (MousepadWindow *window,
       item = gtk_image_menu_item_new_with_label (label);
       gtk_menu_shell_append (GTK_MENU_SHELL (menu), item);
       mousepad_object_set_data_full (G_OBJECT (item), "filename", li->data, g_free);
+      mousepad_object_set_data_full (G_OBJECT (item), "language", g_object_ref (language), g_object_unref);
       g_signal_connect (G_OBJECT (item), "activate", G_CALLBACK (mousepad_window_action_new_from_template), window);
       gtk_widget_show (item);
 
@@ -3581,11 +3587,12 @@ static void
 mousepad_window_action_new_from_template (GtkMenuItem    *item,
                                           MousepadWindow *window)
 {
-  const gchar      *filename;
-  GError           *error = NULL;
-  gint              result;
-  MousepadDocument *document;
-  const gchar      *message;
+  const gchar       *filename;
+  GError            *error = NULL;
+  gint               result;
+  MousepadDocument  *document;
+  const gchar       *message;
+  GtkSourceLanguage *language;
 
 
   mousepad_return_if_fail (MOUSEPAD_IS_WINDOW (window));
@@ -3593,6 +3600,7 @@ mousepad_window_action_new_from_template (GtkMenuItem    *item,
 
   /* get the filename from the menu item */
   filename = mousepad_object_get_data (G_OBJECT (item), "filename");
+  language = mousepad_object_get_data (G_OBJECT (item), "language");
 
   /* test if the file exists */
   if (G_LIKELY (filename))
@@ -3617,6 +3625,7 @@ mousepad_window_action_new_from_template (GtkMenuItem    *item,
         {
           /* no errors, insert the document */
           mousepad_window_add (window, document);
+          mousepad_file_set_language (window->active->file, language);
         }
       else
         {
