@@ -1081,60 +1081,6 @@ mousepad_util_search (GtkTextBuffer       *buffer,
 
 
 
-/**
- * Colour scheme functions
- */
-gint
-mousepad_util_color_schemes_name_compare (gconstpointer a,
-                                          gconstpointer b)
-{
-  const gchar *name_a, *name_b;
-
-  if (G_UNLIKELY (!GTK_IS_SOURCE_STYLE_SCHEME (a)))
-    return -(a != b);
-  if (G_UNLIKELY (!GTK_IS_SOURCE_STYLE_SCHEME (b)))
-    return a != b;
-
-  name_a = gtk_source_style_scheme_get_name (GTK_SOURCE_STYLE_SCHEME (a));
-  name_b = gtk_source_style_scheme_get_name (GTK_SOURCE_STYLE_SCHEME (b));
-
-  return g_utf8_collate (name_a, name_b);
-}
-
-
-
-GSList *
-mousepad_util_color_schemes_get (void)
-{
-  GSList               *list = NULL;
-  const gchar * const  *schemes;
-  GtkSourceStyleScheme *scheme;
-
-  schemes = gtk_source_style_scheme_manager_get_scheme_ids (
-              gtk_source_style_scheme_manager_get_default ());
-
-  while (*schemes)
-    {
-      scheme = gtk_source_style_scheme_manager_get_scheme (
-                gtk_source_style_scheme_manager_get_default (), *schemes);
-      list = g_slist_prepend (list, scheme);
-      schemes++;
-    }
-
-  return list;
-}
-
-
-
-GSList *
-mousepad_util_color_schemes_get_sorted (void)
-{
-  return g_slist_sort (mousepad_util_color_schemes_get (),
-                       mousepad_util_color_schemes_name_compare);
-}
-
-
-
 /* get the related action of the widget or walk up the parents to find one.
  * useful for example to get the related action of a tool item from its child. */
 GtkAction *

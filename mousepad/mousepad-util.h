@@ -119,13 +119,6 @@ gint       mousepad_util_search                           (GtkTextBuffer       *
                                                            const gchar         *replace,
                                                            MousepadSearchFlags  flags);
 
-gint       mousepad_util_color_schemes_name_compare       (gconstpointer        a,
-                                                           gconstpointer        b);
-
-GSList    *mousepad_util_color_schemes_get                (void);
-
-GSList    *mousepad_util_color_schemes_get_sorted         (void);
-
 GtkAction *mousepad_util_find_related_action              (GtkWidget           *widget);
 
 GIcon     *mousepad_util_icon_for_mime_type               (const gchar         *mime_type);

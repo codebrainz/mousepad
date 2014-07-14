@@ -3,6 +3,7 @@
 
 #include <gtk/gtk.h>
 #include <gtksourceview/gtksourcelanguage.h>
+#include <gtksourceview/gtksourcestylescheme.h>
 
 G_BEGIN_DECLS
 
@@ -16,16 +17,23 @@ G_BEGIN_DECLS
 typedef struct MousepadActionGroup_      MousepadActionGroup;
 typedef struct MousepadActionGroupClass_ MousepadActionGroupClass;
 
-GType              mousepad_action_group_get_type             (void);
+GType                 mousepad_action_group_get_type                 (void);
 
-GtkActionGroup    *mousepad_action_group_new                  (void);
+GtkActionGroup       *mousepad_action_group_new                      (void);
 
-void               mousepad_action_group_set_active_language  (MousepadActionGroup *group,
-                                                               GtkSourceLanguage   *language);
+void                  mousepad_action_group_set_active_language      (MousepadActionGroup *group,
+                                                                      GtkSourceLanguage   *language);
 
-GtkSourceLanguage *mousepad_action_group_get_active_language  (MousepadActionGroup *group);
+GtkSourceLanguage    *mousepad_action_group_get_active_language      (MousepadActionGroup *group);
 
-GtkWidget         *mousepad_action_group_create_language_menu (MousepadActionGroup *group);
+GtkWidget            *mousepad_action_group_create_language_menu     (MousepadActionGroup *group);
+
+void                  mousepad_action_group_set_active_style_scheme  (MousepadActionGroup  *group,
+                                                                      GtkSourceStyleScheme *scheme);
+
+GtkSourceStyleScheme *mousepad_action_group_get_active_style_scheme  (MousepadActionGroup *group);
+
+GtkWidget            *mousepad_action_group_create_style_scheme_menu (MousepadActionGroup *group);
 
 G_END_DECLS
 

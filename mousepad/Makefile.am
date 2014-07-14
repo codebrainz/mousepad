@@ -53,6 +53,8 @@ mousepad_SOURCES = \
 	mousepad-settings-store.h \
 	mousepad-statusbar.c \
 	mousepad-statusbar.h \
+	mousepad-style-scheme-action.c \
+	mousepad-style-scheme-action.h \
 	mousepad-view.c \
 	mousepad-view.h \
 	mousepad-util.c \
