@@ -33,6 +33,8 @@ mousepad_SOURCES = \
 	mousepad-encoding-dialog.h \
 	mousepad-file.c \
 	mousepad-file.h \
+	mousepad-languages.c \
+	mousepad-languages.h \
 	mousepad-prefs-dialog.c \
 	mousepad-prefs-dialog.h \
 	mousepad-prefs-dialog-ui.h \

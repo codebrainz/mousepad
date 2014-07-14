@@ -44,6 +44,7 @@
 #include <mousepad/mousepad-search-bar.h>
 #include <mousepad/mousepad-statusbar.h>
 #include <mousepad/mousepad-print.h>
+#include <mousepad/mousepad-languages.h>
 #include <mousepad/mousepad-window.h>
 #include <mousepad/mousepad-window-ui.h>
 
@@ -104,12 +105,9 @@ static gboolean          mousepad_window_open_file                    (MousepadW
 static gboolean          mousepad_window_close_document               (MousepadWindow         *window,
                                                                        MousepadDocument       *document);
 static void              mousepad_window_set_title                    (MousepadWindow         *window);
-static void              mousepad_window_populate_statusbar_popup     (MousepadWindow         *window,
-                                                                       GtkMenu                *menu,
+static GtkMenu          *mousepad_window_provide_languages_menu       (MousepadWindow         *window,
                                                                        MousepadStatusbar      *statusbar);
 static void              mousepad_window_create_statusbar             (MousepadWindow         *window);
-static void              mousepad_window_statusbar_filetype_toggled   (GtkCheckMenuItem       *item,
-                                                                       MousepadWindow         *window);
 static gboolean          mousepad_window_get_in_fullscreen            (MousepadWindow         *window);
 static void              mousepad_window_update_main_widgets          (MousepadWindow         *window);
 
@@ -162,7 +160,7 @@ static void              mousepad_window_selection_changed            (MousepadD
 static void              mousepad_window_overwrite_changed            (MousepadDocument       *document,
                                                                        gboolean                overwrite,
                                                                        MousepadWindow         *window);
-static void              mousepad_window_language_changed             (MousepadDocument       *document,
+static void              mousepad_window_buffer_language_changed      (MousepadDocument       *document,
                                                                        GtkSourceLanguage      *language,
                                                                        MousepadWindow         *window);
 static void              mousepad_window_can_undo                     (MousepadWindow         *window,
@@ -193,7 +191,6 @@ static void              mousepad_window_update_tabs                  (MousepadW
                                                                        gchar                  *key,
                                                                        GSettings              *settings);
 static void              mousepad_window_menu_color_schemes           (MousepadWindow         *window);
-static void              mousepad_window_menu_languages               (MousepadWindow         *window);
 
 /* recent functions */
 static void              mousepad_window_recent_add                   (MousepadWindow         *window,
@@ -343,8 +340,6 @@ static void              mousepad_window_action_statusbar             (GtkToggle
                                                                        MousepadWindow         *window);
 static void              mousepad_window_action_fullscreen            (GtkToggleAction        *action,
                                                                        MousepadWindow         *window);
-static void              mousepad_window_action_language              (GtkToggleAction        *action,
-                                                                       MousepadWindow         *window);
 static void              mousepad_window_action_auto_indent           (GtkToggleAction        *action,
                                                                        MousepadWindow         *window);
 static void              mousepad_window_action_line_ending           (GtkRadioAction         *action,
@@ -383,8 +378,9 @@ struct _MousepadWindow
   /* the current active document */
   MousepadDocument    *active;
 
-  /* action group */
+  /* action groups */
   GtkActionGroup      *action_group;
+  GtkActionGroup      *language_actions;
 
   /* recent manager */
   GtkRecentManager    *recent_manager;
@@ -685,6 +681,42 @@ mousepad_window_restore (MousepadWindow *window)
 
 
 static void
+mousepad_window_language_changed (MousepadWindow    *window,
+                                  GtkSourceLanguage *language,
+                                  GtkActionGroup    *group)
+{
+  /* update the language on the active file */
+  mousepad_file_set_language (window->active->file, language);
+
+  /* update the filetype shown in the statusbar */
+  mousepad_statusbar_set_language (MOUSEPAD_STATUSBAR (window->statusbar), language);
+}
+
+
+
+static void
+mousepad_window_create_languages_menu (MousepadWindow *window)
+{
+  GtkWidget *menu, *item;
+
+  /* create the languages menu and add it to the placeholder */
+  menu = mousepad_languages_create_menu (window->language_actions);
+  item = gtk_ui_manager_get_widget (window->ui_manager, "/main-menu/document-menu/language-menu");
+  gtk_menu_item_set_submenu (GTK_MENU_ITEM (item), menu);
+  gtk_widget_show_all (menu);
+  gtk_widget_show (item);
+
+  /* watch for activations of the language actions */
+  g_signal_connect_object (window->language_actions,
+                           "language-changed",
+                           G_CALLBACK (mousepad_window_language_changed),
+                           window,
+                           G_CONNECT_SWAPPED);
+}
+
+
+
+static void
 mousepad_window_create_menubar (MousepadWindow *window)
 {
   GtkAction *action;
@@ -692,6 +724,8 @@ mousepad_window_create_menubar (MousepadWindow *window)
 
   window->menubar = gtk_ui_manager_get_widget (window->ui_manager, "/main-menu");
   gtk_box_pack_start (GTK_BOX (window->box), window->menubar, FALSE, FALSE, 0);
+
+  mousepad_window_create_languages_menu (window);
 
   /* sync the menubar visibility and action state to the setting */
   action = gtk_action_group_get_action (window->action_group, "menubar");
@@ -875,8 +909,8 @@ mousepad_window_create_statusbar (MousepadWindow *window)
                             G_CALLBACK (mousepad_window_action_statusbar_overwrite), window);
 
   /* populate filetype popup menu signal */
-  g_signal_connect_swapped (G_OBJECT (window->statusbar), "populate-filetype-popup",
-                            G_CALLBACK (mousepad_window_populate_statusbar_popup), window);
+  g_signal_connect_swapped (G_OBJECT (window->statusbar), "provide-languages-menu",
+                            G_CALLBACK (mousepad_window_provide_languages_menu), window);
 
   /* update the statusbar items */
   if (MOUSEPAD_IS_DOCUMENT (window->active))
@@ -940,11 +974,15 @@ mousepad_window_init (MousepadWindow *window)
   gtk_action_group_add_toggle_actions (window->action_group, toggle_action_entries, G_N_ELEMENTS (toggle_action_entries), GTK_WIDGET (window));
   gtk_action_group_add_radio_actions (window->action_group, radio_action_entries, G_N_ELEMENTS (radio_action_entries), -1, G_CALLBACK (mousepad_window_action_line_ending), GTK_WIDGET (window));
 
+  /* the action group for the languages/filetypes actions */
+  window->language_actions = mousepad_languages_action_group_new ();
+
   /* create the ui manager and connect proxy signals for the statusbar */
   window->ui_manager = gtk_ui_manager_new ();
   g_signal_connect (G_OBJECT (window->ui_manager), "connect-proxy", G_CALLBACK (mousepad_window_connect_proxy), window);
   g_signal_connect (G_OBJECT (window->ui_manager), "disconnect-proxy", G_CALLBACK (mousepad_window_disconnect_proxy), window);
   gtk_ui_manager_insert_action_group (window->ui_manager, window->action_group, 0);
+  gtk_ui_manager_insert_action_group (window->ui_manager, window->language_actions, 1);
   gtk_ui_manager_add_ui_from_string (window->ui_manager, mousepad_window_ui, mousepad_window_ui_length, NULL);
 
   /* build the templates menu when the item is shown for the first time */
@@ -957,9 +995,6 @@ mousepad_window_init (MousepadWindow *window)
 
   /* add color schemes menu */
   mousepad_window_menu_color_schemes (window);
-
-  /* add languages/filetypes menu */
-  mousepad_window_menu_languages (window);
 
   /* set accel group for the window */
   accel_group = gtk_ui_manager_get_accel_group (window->ui_manager);
@@ -1058,8 +1093,9 @@ mousepad_window_finalize (GObject *object)
   g_signal_handlers_disconnect_matched (G_OBJECT (window->ui_manager), G_SIGNAL_MATCH_DATA, 0, 0, NULL, NULL, window);
   g_object_unref (G_OBJECT (window->ui_manager));
 
-  /* release the action group */
+  /* release the action groups */
   g_object_unref (G_OBJECT (window->action_group));
+  g_object_unref (G_OBJECT (window->language_actions));
 
   /* free clipboard history if needed */
   if (clipboard_history_ref_count == 0 && clipboard_history != NULL)
@@ -1657,92 +1693,12 @@ mousepad_window_set_title (MousepadWindow *window)
 
 
 
-static void
-mousepad_window_statusbar_filetype_toggled (GtkCheckMenuItem *item,
-                                            MousepadWindow   *window)
+/* give the statusbar a languages menu created from our action group */
+static GtkMenu *
+mousepad_window_provide_languages_menu (MousepadWindow    *window,
+                                        MousepadStatusbar *statusbar)
 {
-  const gchar              *language_id;
-  GtkSourceLanguage        *language;
-  GtkSourceLanguageManager *manager;
-
-  mousepad_return_if_fail (MOUSEPAD_IS_WINDOW (window));
-  mousepad_return_if_fail (MOUSEPAD_IS_DOCUMENT (window->active));
-
-  manager = gtk_source_language_manager_get_default ();
-  language_id = g_object_get_data (G_OBJECT (item), "language_id");
-
-  /* check if None was selected */
-  if (!language_id || g_strcmp0 (language_id, "none") == 0)
-    {
-      gtk_source_buffer_set_language (GTK_SOURCE_BUFFER (window->active->buffer), NULL);
-      gtk_source_buffer_set_highlight_syntax (GTK_SOURCE_BUFFER (window->active->buffer), FALSE);
-      return;
-    }
-
-  /* set to a non-None language */
-  language = gtk_source_language_manager_get_language (manager, language_id);
-  gtk_source_buffer_set_highlight_syntax (GTK_SOURCE_BUFFER (window->active->buffer), TRUE);
-  gtk_source_buffer_set_language (GTK_SOURCE_BUFFER (window->active->buffer), language);
-}
-
-
-
-static void
-mousepad_window_populate_statusbar_popup (MousepadWindow    *window,
-                                          GtkMenu           *menu,
-                                          MousepadStatusbar *statusbar)
-{
-  GSList            *group = NULL;
-  GSList            *sections, *s_iter;
-  GSList            *languages, *l_iter;
-  GtkWidget         *item;
-  GtkWidget         *submenu;
-  GtkSourceLanguage *active;
-
-  mousepad_return_if_fail (MOUSEPAD_IS_WINDOW (window));
-  mousepad_return_if_fail (MOUSEPAD_IS_DOCUMENT (window->active));
-
-  active = gtk_source_buffer_get_language (GTK_SOURCE_BUFFER (window->active->buffer));
-
-  item = gtk_radio_menu_item_new_with_label (group, _("None"));
-  group = gtk_radio_menu_item_get_group (GTK_RADIO_MENU_ITEM (item));
-  g_object_set_data (G_OBJECT (item), "language_id", "none");
-  g_signal_connect (item, "toggled", G_CALLBACK (mousepad_window_statusbar_filetype_toggled), window);
-  gtk_menu_shell_append (GTK_MENU_SHELL (menu), item);
-  gtk_widget_show (item);
-
-  if (!active)
-    gtk_check_menu_item_set_active (GTK_CHECK_MENU_ITEM (item), TRUE);
-
-  item = gtk_separator_menu_item_new ();
-  gtk_menu_shell_append (GTK_MENU_SHELL (menu), item);
-  gtk_widget_show (item);
-
-  sections = mousepad_util_language_sections_get_sorted ();
-
-  for (s_iter = sections ; s_iter != NULL; s_iter = g_slist_next (s_iter))
-    {
-      item = gtk_menu_item_new_with_label (s_iter->data);
-      gtk_widget_show (item);
-      submenu = gtk_menu_new ();
-      gtk_menu_item_set_submenu (GTK_MENU_ITEM (item), submenu);
-      gtk_widget_show (submenu);
-      gtk_menu_shell_append (GTK_MENU_SHELL (menu), item);
-
-      languages = mousepad_util_languages_get_sorted_for_section (s_iter->data);
-      for (l_iter = languages; l_iter != NULL; l_iter = g_slist_next (l_iter))
-        {
-          item = gtk_radio_menu_item_new_with_label (group, gtk_source_language_get_name (l_iter->data));
-          group = gtk_radio_menu_item_get_group (GTK_RADIO_MENU_ITEM (item));
-          g_object_set_data (G_OBJECT (item), "language_id", (gpointer) gtk_source_language_get_id (l_iter->data));
-          g_signal_connect (item, "toggled", G_CALLBACK (mousepad_window_statusbar_filetype_toggled), window);
-          gtk_menu_shell_append (GTK_MENU_SHELL (submenu), item);
-          gtk_widget_show (item);
-
-          if (active == l_iter->data)
-            gtk_check_menu_item_set_active (GTK_CHECK_MENU_ITEM (item), TRUE);
-        }
-    }
+  return GTK_MENU (mousepad_languages_create_menu (window->language_actions));
 }
 
 
@@ -1829,7 +1785,7 @@ mousepad_window_notebook_added (GtkNotebook     *notebook,
   g_signal_connect (G_OBJECT (page), "cursor-changed", G_CALLBACK (mousepad_window_cursor_changed), window);
   g_signal_connect (G_OBJECT (page), "selection-changed", G_CALLBACK (mousepad_window_selection_changed), window);
   g_signal_connect (G_OBJECT (page), "overwrite-changed", G_CALLBACK (mousepad_window_overwrite_changed), window);
-  g_signal_connect (G_OBJECT (page), "language-changed", G_CALLBACK (mousepad_window_language_changed), window);
+  g_signal_connect (G_OBJECT (page), "language-changed", G_CALLBACK (mousepad_window_buffer_language_changed), window);
   g_signal_connect (G_OBJECT (page), "drag-data-received", G_CALLBACK (mousepad_window_drag_data_received), window);
   g_signal_connect_swapped (G_OBJECT (document->buffer), "notify::can-undo", G_CALLBACK (mousepad_window_can_undo), window);
   g_signal_connect_swapped (G_OBJECT (document->buffer), "notify::can-redo", G_CALLBACK (mousepad_window_can_redo), window);
@@ -2131,41 +2087,12 @@ mousepad_window_overwrite_changed (MousepadDocument *document,
 
 
 static void
-mousepad_window_language_changed (MousepadDocument  *document,
-                                  GtkSourceLanguage *language,
-                                  MousepadWindow    *window)
+mousepad_window_buffer_language_changed (MousepadDocument  *document,
+                                         GtkSourceLanguage *language,
+                                         MousepadWindow    *window)
 {
-  gchar     *path;
-  GtkWidget *item;
-
-  if (!GTK_IS_SOURCE_LANGUAGE (language))
-    goto set_none;
-
-  path = g_strdup_printf ("/main-menu/document-menu/language-menu/"
-                          "placeholder-language-section-items/"
-                          "language-section-%s/language-%s",
-                          gtk_source_language_get_section (language),
-                          gtk_source_language_get_id (language));
-  item = gtk_ui_manager_get_widget (window->ui_manager, path);
-  g_free (path);
-
-  /* activate the appropriate menu item for the new language */
-  if (GTK_IS_CHECK_MENU_ITEM (item))
-    {
-      gtk_check_menu_item_set_active (GTK_CHECK_MENU_ITEM (item), TRUE);
-      goto set_statusbar;
-    }
-
-set_none:
-  item = gtk_ui_manager_get_widget (window->ui_manager,
-                                        "/main-menu/document-menu/language-menu/language-none");
-  if (GTK_IS_CHECK_MENU_ITEM (item))
-    gtk_check_menu_item_set_active (GTK_CHECK_MENU_ITEM (item), TRUE);
-
-set_statusbar:
-  /* set the filetype in the statusbar */
-  if (window->statusbar)
-    mousepad_statusbar_set_language (MOUSEPAD_STATUSBAR (window->statusbar), language);
+  /* activate the action for the new buffer language */
+  mousepad_languages_set_active (window->language_actions, language);
 }
 
 
@@ -2563,6 +2490,7 @@ mousepad_window_update_actions (MousepadWindow *window)
   gboolean            active, sensitive;
   MousepadLineEnding  line_ending;
   const gchar        *action_name;
+  GtkSourceLanguage  *language;
 
   mousepad_return_if_fail (MOUSEPAD_IS_WINDOW (window));
 
@@ -2642,6 +2570,10 @@ mousepad_window_update_actions (MousepadWindow *window)
       action = mousepad_object_get_data (G_OBJECT (document), "document-menu-action");
       if (G_LIKELY (action != NULL))
         gtk_toggle_action_set_active (GTK_TOGGLE_ACTION (action), TRUE);
+
+      /* update the currently active language */
+      language = gtk_source_buffer_get_language (GTK_SOURCE_BUFFER (window->active->buffer));
+      mousepad_languages_set_active (window->language_actions, language);
 
       /* allow menu actions again */
       lock_menu_updates--;
@@ -3630,143 +3562,6 @@ mousepad_window_menu_color_schemes (MousepadWindow *window)
 
   /* cleanup the list */
   g_slist_free (schemes);
-
-  /* unlock */
-  lock_menu_updates--;
-}
-
-
-
-static void
-mousepad_window_menu_languages (MousepadWindow *window)
-{
-  gint                  merge_id;
-  gchar                *name, *section_path;
-  gchar                 section_name[64];
-  GtkAction            *action;
-  GtkRadioAction       *radio_action;
-  GSList               *group = NULL;
-  GSList               *sections, *sect_iter, *languages, *lang_iter;
-
-  lock_menu_updates++;
-
-  merge_id = gtk_ui_manager_new_merge_id (window->ui_manager);
-
-  /* add the none language directly under the filetype */
-  radio_action = gtk_radio_action_new ("language-none",
-                                 _("None"),
-                                 _("No filetype"),
-                                 NULL,
-                                 g_str_hash ("none"));
-  gtk_radio_action_set_group (radio_action, group);
-  group = gtk_radio_action_get_group (radio_action);
-  g_signal_connect (G_OBJECT (radio_action), "activate", G_CALLBACK (mousepad_window_action_language), window);
-  gtk_action_group_add_action_with_accel (window->action_group, GTK_ACTION (radio_action), "");
-
-  /* release the action */
-  g_object_unref (G_OBJECT (radio_action));
-
-  /* add the action to the go menu */
-  gtk_ui_manager_add_ui (window->ui_manager,
-                         merge_id,
-                         "/main-menu/document-menu/language-menu/placeholder-language-section-items",
-                         "language-none",
-                         "language-none",
-                         GTK_UI_MANAGER_MENUITEM,
-                         FALSE);
-
-  /* add a separator */
-  gtk_ui_manager_add_ui (window->ui_manager,
-                         merge_id,
-                         "/main-menu/document-menu/language-menu/placeholder-language-section-items",
-                         "language-separator",
-                         NULL,
-                         GTK_UI_MANAGER_SEPARATOR,
-                         FALSE);
-
-  sections = mousepad_util_language_sections_get_sorted ();
-
-  for (sect_iter = sections; sect_iter != NULL; sect_iter = g_slist_next (sect_iter))
-    {
-      languages = mousepad_util_languages_get_sorted_for_section (sect_iter->data);
-
-      /* make sure there are langs in the section, otherwise skip it */
-      if (!languages)
-        continue;
-      else if (!g_slist_length (languages))
-        {
-          g_slist_free (languages);
-          continue;
-        }
-
-      g_snprintf (section_name, 64, "language-section-%s", (gchar *)sect_iter->data);
-
-      /* add the section directly under the gtkuimanager dynamic menu filetype */
-      action = gtk_action_new (section_name,
-                               sect_iter->data,
-                               NULL,
-                               NULL);
-      gtk_action_group_add_action_with_accel (window->action_group, GTK_ACTION (action), "");
-
-      /* release the action */
-      g_object_unref (G_OBJECT (action));
-
-      /* add a menu for each section */
-      gtk_ui_manager_add_ui (window->ui_manager,
-                             merge_id,
-                             "/main-menu/document-menu/language-menu/placeholder-language-section-items",
-                             section_name,
-                             section_name,
-                             GTK_UI_MANAGER_MENU,
-                             FALSE);
-
-      section_path = g_strdup_printf ("/main-menu/document-menu/language-menu/"
-                                      "placeholder-language-section-items/%s",
-                                      section_name);
-
-      for (lang_iter = languages; lang_iter != NULL; lang_iter = g_slist_next (lang_iter))
-        {
-          if (g_strcmp0 (sect_iter->data, gtk_source_language_get_section (lang_iter->data)) == 0)
-          {
-            /* create action name */
-            name = g_strdup_printf ("language-%s", gtk_source_language_get_id (lang_iter->data));
-
-            radio_action = gtk_radio_action_new (name,
-                                                 gtk_source_language_get_name (lang_iter->data),
-                                                 NULL,
-                                                 NULL,
-                                                 g_str_hash (gtk_source_language_get_id (lang_iter->data)));
-            gtk_radio_action_set_group (radio_action, group);
-            group = gtk_radio_action_get_group (radio_action);
-            g_signal_connect (G_OBJECT (radio_action),
-                              "activate",
-                              G_CALLBACK (mousepad_window_action_language),
-                              window);
-            gtk_action_group_add_action_with_accel (window->action_group, GTK_ACTION (radio_action), "");
-
-            /* release the action */
-            g_object_unref (G_OBJECT (radio_action));
-
-            /* add the action to the section menu */
-            gtk_ui_manager_add_ui (window->ui_manager,
-                                   merge_id,
-                                   section_path,
-                                   name,
-                                   name,
-                                   GTK_UI_MANAGER_MENUITEM,
-                                   FALSE);
-
-            /* cleanup before next language */
-            g_free (name);
-          }
-        }
-
-        /* cleanup before next section */
-        g_free (section_path);
-        g_slist_free (languages);
-    }
-
-  g_slist_free (sections);
 
   /* unlock */
   lock_menu_updates--;
@@ -5228,42 +5023,6 @@ mousepad_window_action_fullscreen (GtkToggleAction *action,
 
   /* update the widgets based on whether in fullscreen mode or not */
   mousepad_window_update_main_widgets (window);
-}
-
-
-
-static void
-mousepad_window_action_language (GtkToggleAction *action,
-                                 MousepadWindow  *window)
-{
-  guint                     lang_hash;
-  const gchar *const       *lang_id;
-  GtkSourceLanguage        *language;
-  GtkSourceLanguageManager *manager;
-  GtkSourceBuffer          *buffer;
-
-  lang_hash = (guint) gtk_radio_action_get_current_value (GTK_RADIO_ACTION (action));
-  buffer = GTK_SOURCE_BUFFER (gtk_text_view_get_buffer (GTK_TEXT_VIEW (window->active->textview)));
-
-  if (lang_hash == g_str_hash ("none"))
-    {
-      gtk_source_buffer_set_language (buffer, NULL);
-      return;
-    }
-
-  manager = gtk_source_language_manager_get_default ();
-  lang_id = gtk_source_language_manager_get_language_ids (manager);
-
-  while (*lang_id)
-    {
-      if (g_str_hash (*lang_id) == lang_hash)
-        {
-          language = gtk_source_language_manager_get_language (manager, *lang_id);
-          gtk_source_buffer_set_language (buffer, language);
-          break;
-        }
-      lang_id++;
-    }
 }
 
 
