@@ -17,6 +17,8 @@
 #ifndef __MOUSEPAD_UTIL_H__
 #define __MOUSEPAD_UTIL_H__
 
+#include <gtk/gtk.h>
+
 G_BEGIN_DECLS
 
 #define MOUSEPAD_TYPE_SEARCH_FLAGS (mousepad_util_search_flags_get_type ())

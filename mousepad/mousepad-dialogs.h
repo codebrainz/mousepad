@@ -17,6 +17,8 @@
 #ifndef __MOUSEPAD_DIALOGS_H__
 #define __MOUSEPAD_DIALOGS_H__
 
+#include <gtk/gtk.h>
+
 G_BEGIN_DECLS
 
 /* dialog responses */

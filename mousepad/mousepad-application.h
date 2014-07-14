@@ -17,6 +17,8 @@
 #ifndef __MOUSEPAD_APPLICATION_H__
 #define __MOUSEPAD_APPLICATION_H__
 
+#include <gtk/gtk.h>
+
 G_BEGIN_DECLS
 
 typedef struct _MousepadApplicationClass MousepadApplicationClass;

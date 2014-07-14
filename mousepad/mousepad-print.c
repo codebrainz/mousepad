@@ -25,6 +25,7 @@
 
 #include <pango/pango.h>
 #include <cairo.h>
+#include <gtksourceview/gtksourceprintcompositor.h>
 
 #define DOCUMENT_SPACING (10)
 

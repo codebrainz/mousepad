@@ -23,6 +23,9 @@
 #include <mousepad/mousepad-prefs-dialog-ui.h>
 #include <mousepad/mousepad-settings.h>
 
+#include <gtksourceview/gtksourcestylescheme.h>
+#include <gtksourceview/gtksourcestyleschememanager.h>
+
 
 
 #define WID_NOTEBOOK                        "/prefs/main-notebook"

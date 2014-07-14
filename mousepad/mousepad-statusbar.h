@@ -17,6 +17,9 @@
 #ifndef __MOUSEPAD_STATUSBAR_H__
 #define __MOUSEPAD_STATUSBAR_H__
 
+#include <gtk/gtk.h>
+#include <gtksourceview/gtksourcelanguage.h>
+
 G_BEGIN_DECLS
 
 #define MOUSEPAD_TYPE_STATUSBAR            (mousepad_statusbar_get_type ())

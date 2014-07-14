@@ -36,6 +36,8 @@
 #include <mousepad/mousepad-view.h>
 #include <mousepad/mousepad-window.h>
 
+#include <gtksourceview/gtksourcebuffer.h>
+
 
 
 #define MOUSEPAD_DOCUMENT_GET_PRIVATE(obj) (G_TYPE_INSTANCE_GET_PRIVATE ((obj), MOUSEPAD_TYPE_DOCUMENT, MousepadDocumentPrivate))

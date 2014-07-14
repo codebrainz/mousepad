@@ -40,8 +40,10 @@
 #include <mousepad/mousepad-private.h>
 #include <mousepad/mousepad-file.h>
 
-#include <glib.h>
 #include <glib/gstdio.h>
+#include <gtksourceview/gtksourcebuffer.h>
+#include <gtksourceview/gtksourcelanguage.h>
+#include <gtksourceview/gtksourcelanguagemanager.h>
 
 
 

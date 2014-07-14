@@ -21,6 +21,8 @@ G_BEGIN_DECLS
 
 #include <mousepad/mousepad-encoding.h>
 
+#include <gtksourceview/gtksourcelanguage.h>
+
 typedef struct _MousepadFileClass  MousepadFileClass;
 typedef struct _MousepadFile       MousepadFile;
 

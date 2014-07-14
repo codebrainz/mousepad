@@ -47,6 +47,9 @@
 #include <mousepad/mousepad-window-ui.h>
 
 #include <glib/gstdio.h>
+#include <gtksourceview/gtksourcelanguage.h>
+#include <gtksourceview/gtksourcelanguagemanager.h>
+#include <gtksourceview/gtksourcebuffer.h>
 
 
 

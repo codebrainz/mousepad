@@ -28,6 +28,9 @@
 #include <mousepad/mousepad-view.h>
 
 #include <gdk/gdkkeysyms.h>
+#include <gtksourceview/gtksourceview.h>
+#include <gtksourceview/gtksourcestylescheme.h>
+#include <gtksourceview/gtksourcestyleschememanager.h>
 
 
 

@@ -22,6 +22,9 @@
 #include <mousepad/mousepad-dialogs.h>
 #include <mousepad/mousepad-util.h>
 
+#include <gtksourceview/gtksourcestylescheme.h>
+#include <gtksourceview/gtksourcestyleschememanager.h>
+
 
 
 void

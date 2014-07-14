@@ -18,21 +18,16 @@
 #define __MOUSEPAD_PRIVATE_H__
 
 #ifdef NDEBUG
-#define G_DISABLE_CHECKS
-#define G_DISABLE_ASSERT
+# define G_DISABLE_CHECKS
+# define G_DISABLE_ASSERT
 #endif
 
+/* These are the only three headers that can be assumed to always be included
+ * since they are so core to the basic and advanced type system that GLib
+ * provides us and for all the various i18n includes and macros we need. */
 #include <glib.h>
 #include <glib-object.h>
-#include <gtk/gtk.h>
 #include <glib/gi18n.h>
-#include <gio/gio.h>
-#include <gtksourceview/gtksourceview.h>
-#include <gtksourceview/gtksourcestylescheme.h>
-#include <gtksourceview/gtksourcestyleschememanager.h>
-#include <gtksourceview/gtksourcelanguage.h>
-#include <gtksourceview/gtksourcelanguagemanager.h>
-#include <gtksourceview/gtksourceprintcompositor.h>
 
 G_BEGIN_DECLS
 
