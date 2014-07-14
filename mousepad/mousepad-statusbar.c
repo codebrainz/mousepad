@@ -38,7 +38,7 @@ static gboolean mousepad_statusbar_filetype_clicked  (GtkWidget         *widget,
 enum
 {
   ENABLE_OVERWRITE,
-  POPULATE_FILETYPE_POPUP,
+  PROVIDE_LANGUAGES_MENU,
   LAST_SIGNAL,
 };
 
@@ -93,13 +93,13 @@ mousepad_statusbar_class_init (MousepadStatusbarClass *klass)
                   g_cclosure_marshal_VOID__BOOLEAN,
                   G_TYPE_NONE, 1, G_TYPE_BOOLEAN);
 
-  statusbar_signals[POPULATE_FILETYPE_POPUP] =
-    g_signal_new (I_("populate-filetype-popup"),
+  statusbar_signals[PROVIDE_LANGUAGES_MENU] =
+    g_signal_new (I_("provide-languages-menu"),
                   G_TYPE_FROM_CLASS (gobject_class),
                   G_SIGNAL_RUN_LAST,
                   0, NULL, NULL,
-                  g_cclosure_marshal_VOID__OBJECT,
-                  G_TYPE_NONE, 1, GTK_TYPE_MENU);
+                  g_cclosure_marshal_generic,
+                  GTK_TYPE_MENU, 0);
 }
 
 
@@ -205,7 +205,7 @@ mousepad_statusbar_filetype_clicked (GtkWidget         *widget,
                                      GdkEventButton    *event,
                                      MousepadStatusbar *statusbar)
 {
-  GtkMenu *menu;
+  GtkMenu *menu = NULL;
   GList   *children;
   gint     n_children = 0;
 
@@ -215,11 +215,9 @@ mousepad_statusbar_filetype_clicked (GtkWidget         *widget,
   if (event->type != GDK_BUTTON_PRESS || event->button != 1)
     return FALSE;
 
-  /* create the popup menu */
-  menu = GTK_MENU (gtk_menu_new ());
-
-  /* send the signal to fill the menu */
-  g_signal_emit (G_OBJECT (statusbar), statusbar_signals[POPULATE_FILETYPE_POPUP], 0, menu);
+  /* get the window to create the popup menu for us */
+  g_signal_emit (statusbar, statusbar_signals[PROVIDE_LANGUAGES_MENU], 0, &menu);
+  g_warn_if_fail (GTK_IS_MENU (menu));
 
   /* get the number of items in the menu */
   children = gtk_container_get_children (GTK_CONTAINER (menu));

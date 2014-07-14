@@ -462,9 +462,13 @@ mousepad_file_guess_language (MousepadFile *file)
       content_type = NULL;
     }
 
-  language = gtk_source_language_manager_guess_language (gtk_source_language_manager_get_default (),
-                                                         file->filename,
-                                                         content_type);
+  if (G_LIKELY (content_type != NULL || file->filename != NULL))
+    {
+      language = gtk_source_language_manager_guess_language (gtk_source_language_manager_get_default (),
+                                                             file->filename,
+                                                             content_type);
+    }
+
   g_free (content_type);
 
   return language;
