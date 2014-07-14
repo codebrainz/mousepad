@@ -14,25 +14,14 @@
  * Place, Suite 330, Boston, MA  02111-1307  USA
  */
 
-#ifdef HAVE_CONFIG_H
-#include <config.h>
-#endif
-
-#ifdef HAVE_STDIO_H
-#include <stdio.h>
-#endif
-#ifdef HAVE_STDLIB_H
-#include <stdlib.h>
-#endif
-#ifdef HAVE_LIBINTL_H
-#include <libintl.h>
-#endif
-
 #include <mousepad/mousepad-private.h>
 #include <mousepad/mousepad-application.h>
-
 #ifdef HAVE_DBUS
 #include <mousepad/mousepad-dbus.h>
+#endif
+
+#ifdef HAVE_LIBINTL_H
+#include <libintl.h>
 #endif
 
 

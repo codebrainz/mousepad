@@ -14,9 +14,13 @@
  * Place, Suite 330, Boston, MA  02111-1307  USA
  */
 
-#ifdef HAVE_CONFIG_H
-#include <config.h>
-#endif
+#include <mousepad/mousepad-private.h>
+#include <mousepad/mousepad-file.h>
+
+#include <glib/gstdio.h>
+#include <gtksourceview/gtksourcebuffer.h>
+#include <gtksourceview/gtksourcelanguage.h>
+#include <gtksourceview/gtksourcelanguagemanager.h>
 
 #ifdef HAVE_SYS_TYPES_H
 #include <sys/types.h>
@@ -30,21 +34,8 @@
 #ifdef HAVE_FCNTL_H
 #include <fcntl.h>
 #endif
-#ifdef HAVE_STRING_H
-#include <string.h>
-#endif
-#ifdef HAVE_ERRNO_H
+
 #include <errno.h>
-#endif
-
-#include <mousepad/mousepad-private.h>
-#include <mousepad/mousepad-file.h>
-
-#include <glib/gstdio.h>
-#include <gtksourceview/gtksourcebuffer.h>
-#include <gtksourceview/gtksourcelanguage.h>
-#include <gtksourceview/gtksourcelanguagemanager.h>
-
 
 
 enum

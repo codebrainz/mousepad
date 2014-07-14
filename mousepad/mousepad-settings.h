@@ -17,7 +17,6 @@
 #ifndef __MOUSEPAD_SETTINGS_H__
 #define __MOUSEPAD_SETTINGS_H__ 1
 
-#include <glib-object.h>
 #include <gio/gio.h>
 
 G_BEGIN_DECLS

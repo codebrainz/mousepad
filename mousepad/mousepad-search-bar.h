@@ -17,6 +17,8 @@
 #ifndef __MOUSEPAD_SEARCH_BAR_H__
 #define __MOUSEPAD_SEARCH_BAR_H__
 
+#include <gtk/gtk.h>
+
 G_BEGIN_DECLS
 
 #define MOUSEPAD_TYPE_SEARCH_BAR            (mousepad_search_bar_get_type ())

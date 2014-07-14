@@ -17,6 +17,8 @@
 #ifndef __MOUSEPAD_REPLACE_DIALOG_H__
 #define __MOUSEPAD_REPLACE_DIALOG_H__
 
+#include <gtk/gtk.h>
+
 G_BEGIN_DECLS
 
 #define MOUSEPAD_TYPE_REPLACE_DIALOG            (mousepad_replace_dialog_get_type ())

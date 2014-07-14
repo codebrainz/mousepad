@@ -17,11 +17,11 @@
 #ifndef __MOUSEPAD_DOCUMENT_H__
 #define __MOUSEPAD_DOCUMENT_H__
 
-G_BEGIN_DECLS
-
 #include <mousepad/mousepad-util.h>
 #include <mousepad/mousepad-file.h>
 #include <mousepad/mousepad-view.h>
+
+G_BEGIN_DECLS
 
 typedef struct _MousepadDocumentPrivate MousepadDocumentPrivate;
 typedef struct _MousepadDocumentClass   MousepadDocumentClass;

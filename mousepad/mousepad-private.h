@@ -14,9 +14,23 @@
  * Place, Suite 330, Boston, MA  02111-1307  USA
  */
 
+/* Include this file at the top of every source file. Never include it in
+ * any other headers. */
+
 #ifndef __MOUSEPAD_PRIVATE_H__
 #define __MOUSEPAD_PRIVATE_H__
 
+/* Our configuration header from the build system */
+#ifdef HAVE_CONFIG_H
+# include "config.h"
+#endif
+
+/* Some really common stdlib headers */
+#include <stdlib.h>
+#include <stdio.h>
+#include <string.h>
+
+/* In non-debug mode, turn off g_return_*()/g_assert*() debugging checks. */
 #ifdef NDEBUG
 # define G_DISABLE_CHECKS
 # define G_DISABLE_ASSERT

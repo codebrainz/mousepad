@@ -14,17 +14,11 @@
  * Place, Suite 330, Boston, MA  02111-1307  USA
  */
 
-#ifdef HAVE_CONFIG_H
-#include <config.h>
-#endif
-
 #include <mousepad/mousepad-private.h>
 #include <mousepad/mousepad-document.h>
 #include <mousepad/mousepad-util.h>
 #include <mousepad/mousepad-print.h>
 
-#include <pango/pango.h>
-#include <cairo.h>
 #include <gtksourceview/gtksourceprintcompositor.h>
 
 #define DOCUMENT_SPACING (10)

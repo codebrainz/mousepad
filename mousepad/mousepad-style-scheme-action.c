@@ -14,11 +14,9 @@
  * Place, Suite 330, Boston, MA  02111-1307  USA
  */
 
-#ifdef HAVE_CONFIG_H
-#include "config.h"
-#endif
-
+#include <mousepad/mousepad-private.h>
 #include <mousepad/mousepad-style-scheme-action.h>
+
 #include <glib/gi18n.h>
 #include <gtksourceview/gtksourcestyleschememanager.h>
 

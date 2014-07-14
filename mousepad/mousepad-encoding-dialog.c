@@ -14,21 +14,12 @@
  * Place, Suite 330, Boston, MA  02111-1307  USA
  */
 
-#ifdef HAVE_CONFIG_H
-#include <config.h>
-#endif
-
-#ifdef HAVE_STRING_H
-#include <string.h>
-#endif
-
 #include <mousepad/mousepad-private.h>
 #include <mousepad/mousepad-document.h>
 #include <mousepad/mousepad-encoding.h>
 #include <mousepad/mousepad-encoding-dialog.h>
 #include <mousepad/mousepad-util.h>
 
-#include <glib.h>
 #include <glib/gstdio.h>
 #include <gtksourceview/gtksourceview.h>
 

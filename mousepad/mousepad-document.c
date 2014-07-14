@@ -14,20 +14,6 @@
  * Place, Suite 330, Boston, MA  02111-1307  USA
  */
 
-#ifdef HAVE_CONFIG_H
-#include <config.h>
-#endif
-
-#ifdef HAVE_MEMORY_H
-#include <memory.h>
-#endif
-#ifdef HAVE_STRING_H
-#include <string.h>
-#endif
-#ifdef HAVE_TIME_H
-#include <time.h>
-#endif
-
 #include <mousepad/mousepad-private.h>
 #include <mousepad/mousepad-settings.h>
 #include <mousepad/mousepad-util.h>
@@ -37,6 +23,12 @@
 #include <mousepad/mousepad-window.h>
 
 #include <gtksourceview/gtksourcebuffer.h>
+
+#ifdef HAVE_MEMORY_H
+#include <memory.h>
+#endif
+
+#include <time.h>
 
 
 

@@ -17,9 +17,9 @@
 #ifndef __MOUSEPAD_WINDOW_H__
 #define __MOUSEPAD_WINDOW_H__
 
-G_BEGIN_DECLS
-
 #include <mousepad/mousepad-document.h>
+
+G_BEGIN_DECLS
 
 #define MOUSEPAD_TYPE_WINDOW            (mousepad_window_get_type ())
 #define MOUSEPAD_WINDOW(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), MOUSEPAD_TYPE_WINDOW, MousepadWindow))
