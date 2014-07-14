@@ -21,6 +21,8 @@ mousepad_SOURCES = \
 	$(mousepad_built_sources) \
 	$(mousepad_dbus_sources) \
 	main.c \
+	mousepad-action-group.c \
+	mousepad-action-group.h \
 	mousepad-application.c \
 	mousepad-application.h \
 	mousepad-dialogs.c \
@@ -33,8 +35,8 @@ mousepad_SOURCES = \
 	mousepad-encoding-dialog.h \
 	mousepad-file.c \
 	mousepad-file.h \
-	mousepad-languages.c \
-	mousepad-languages.h \
+	mousepad-language-action.c \
+	mousepad-language-action.h \
 	mousepad-prefs-dialog.c \
 	mousepad-prefs-dialog.h \
 	mousepad-prefs-dialog-ui.h \

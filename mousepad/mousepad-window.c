@@ -35,6 +35,7 @@
 
 #include <mousepad/mousepad-private.h>
 #include <mousepad/mousepad-settings.h>
+#include <mousepad/mousepad-action-group.h>
 #include <mousepad/mousepad-application.h>
 #include <mousepad/mousepad-marshal.h>
 #include <mousepad/mousepad-document.h>
@@ -44,7 +45,6 @@
 #include <mousepad/mousepad-search-bar.h>
 #include <mousepad/mousepad-statusbar.h>
 #include <mousepad/mousepad-print.h>
-#include <mousepad/mousepad-languages.h>
 #include <mousepad/mousepad-window.h>
 #include <mousepad/mousepad-window-ui.h>
 
@@ -105,7 +105,7 @@ static gboolean          mousepad_window_open_file                    (MousepadW
 static gboolean          mousepad_window_close_document               (MousepadWindow         *window,
                                                                        MousepadDocument       *document);
 static void              mousepad_window_set_title                    (MousepadWindow         *window);
-static GtkMenu          *mousepad_window_provide_languages_menu       (MousepadWindow         *window,
+static GtkWidget        *mousepad_window_provide_languages_menu       (MousepadWindow         *window,
                                                                        MousepadStatusbar      *statusbar);
 static void              mousepad_window_create_statusbar             (MousepadWindow         *window);
 static gboolean          mousepad_window_get_in_fullscreen            (MousepadWindow         *window);
@@ -380,7 +380,6 @@ struct _MousepadWindow
 
   /* action groups */
   GtkActionGroup      *action_group;
-  GtkActionGroup      *language_actions;
 
   /* recent manager */
   GtkRecentManager    *recent_manager;
@@ -681,10 +680,15 @@ mousepad_window_restore (MousepadWindow *window)
 
 
 static void
-mousepad_window_language_changed (MousepadWindow    *window,
-                                  GtkSourceLanguage *language,
-                                  GtkActionGroup    *group)
+mousepad_window_action_group_language_changed (MousepadWindow      *window,
+                                               GParamSpec          *pspec,
+                                               MousepadActionGroup *group)
 {
+  GtkSourceLanguage *language;
+
+  /* get the new active language */
+  language = mousepad_action_group_get_active_language (group);
+
   /* update the language on the active file */
   mousepad_file_set_language (window->active->file, language);
 
@@ -697,19 +701,22 @@ mousepad_window_language_changed (MousepadWindow    *window,
 static void
 mousepad_window_create_languages_menu (MousepadWindow *window)
 {
-  GtkWidget *menu, *item;
+  GtkWidget           *menu, *item;
+  MousepadActionGroup *group;
+  static const gchar  *menu_path = "/main-menu/document-menu/language-menu";
 
   /* create the languages menu and add it to the placeholder */
-  menu = mousepad_languages_create_menu (window->language_actions);
-  item = gtk_ui_manager_get_widget (window->ui_manager, "/main-menu/document-menu/language-menu");
+  group = MOUSEPAD_ACTION_GROUP (window->action_group);
+  menu = mousepad_action_group_create_language_menu (group);
+  item = gtk_ui_manager_get_widget (window->ui_manager, menu_path);
   gtk_menu_item_set_submenu (GTK_MENU_ITEM (item), menu);
   gtk_widget_show_all (menu);
   gtk_widget_show (item);
 
   /* watch for activations of the language actions */
-  g_signal_connect_object (window->language_actions,
-                           "language-changed",
-                           G_CALLBACK (mousepad_window_language_changed),
+  g_signal_connect_object (window->action_group,
+                           "notify::active-language",
+                           G_CALLBACK (mousepad_window_action_group_language_changed),
                            window,
                            G_CONNECT_SWAPPED);
 }
@@ -968,21 +975,17 @@ mousepad_window_init (MousepadWindow *window)
   mousepad_window_restore (window);
 
   /* the action group for this window */
-  window->action_group = gtk_action_group_new ("MousepadWindow");
+  window->action_group = mousepad_action_group_new ();
   gtk_action_group_set_translation_domain (window->action_group, GETTEXT_PACKAGE);
   gtk_action_group_add_actions (window->action_group, action_entries, G_N_ELEMENTS (action_entries), GTK_WIDGET (window));
   gtk_action_group_add_toggle_actions (window->action_group, toggle_action_entries, G_N_ELEMENTS (toggle_action_entries), GTK_WIDGET (window));
   gtk_action_group_add_radio_actions (window->action_group, radio_action_entries, G_N_ELEMENTS (radio_action_entries), -1, G_CALLBACK (mousepad_window_action_line_ending), GTK_WIDGET (window));
-
-  /* the action group for the languages/filetypes actions */
-  window->language_actions = mousepad_languages_action_group_new ();
 
   /* create the ui manager and connect proxy signals for the statusbar */
   window->ui_manager = gtk_ui_manager_new ();
   g_signal_connect (G_OBJECT (window->ui_manager), "connect-proxy", G_CALLBACK (mousepad_window_connect_proxy), window);
   g_signal_connect (G_OBJECT (window->ui_manager), "disconnect-proxy", G_CALLBACK (mousepad_window_disconnect_proxy), window);
   gtk_ui_manager_insert_action_group (window->ui_manager, window->action_group, 0);
-  gtk_ui_manager_insert_action_group (window->ui_manager, window->language_actions, 1);
   gtk_ui_manager_add_ui_from_string (window->ui_manager, mousepad_window_ui, mousepad_window_ui_length, NULL);
 
   /* build the templates menu when the item is shown for the first time */
@@ -1095,7 +1098,6 @@ mousepad_window_finalize (GObject *object)
 
   /* release the action groups */
   g_object_unref (G_OBJECT (window->action_group));
-  g_object_unref (G_OBJECT (window->language_actions));
 
   /* free clipboard history if needed */
   if (clipboard_history_ref_count == 0 && clipboard_history != NULL)
@@ -1694,11 +1696,14 @@ mousepad_window_set_title (MousepadWindow *window)
 
 
 /* give the statusbar a languages menu created from our action group */
-static GtkMenu *
+static GtkWidget *
 mousepad_window_provide_languages_menu (MousepadWindow    *window,
                                         MousepadStatusbar *statusbar)
 {
-  return GTK_MENU (mousepad_languages_create_menu (window->language_actions));
+  MousepadActionGroup *group;
+  
+  group = MOUSEPAD_ACTION_GROUP (window->action_group);
+  return mousepad_action_group_create_language_menu (group);
 }
 
 
@@ -1819,7 +1824,7 @@ mousepad_window_notebook_removed (GtkNotebook     *notebook,
   g_signal_handlers_disconnect_by_func (G_OBJECT (page), mousepad_window_cursor_changed, window);
   g_signal_handlers_disconnect_by_func (G_OBJECT (page), mousepad_window_selection_changed, window);
   g_signal_handlers_disconnect_by_func (G_OBJECT (page), mousepad_window_overwrite_changed, window);
-  g_signal_handlers_disconnect_by_func (G_OBJECT (page), mousepad_window_language_changed, window);
+  g_signal_handlers_disconnect_by_func (G_OBJECT (page), mousepad_window_buffer_language_changed, window);
   g_signal_handlers_disconnect_by_func (G_OBJECT (page), mousepad_window_drag_data_received, window);
   g_signal_handlers_disconnect_by_func (G_OBJECT (document->buffer), mousepad_window_can_undo, window);
   g_signal_handlers_disconnect_by_func (G_OBJECT (document->buffer), mousepad_window_can_redo, window);
@@ -2091,8 +2096,11 @@ mousepad_window_buffer_language_changed (MousepadDocument  *document,
                                          GtkSourceLanguage *language,
                                          MousepadWindow    *window)
 {
+  MousepadActionGroup *group;
+
   /* activate the action for the new buffer language */
-  mousepad_languages_set_active (window->language_actions, language);
+  group = MOUSEPAD_ACTION_GROUP (window->action_group);
+  mousepad_action_group_set_active_language (group, language);
 }
 
 
@@ -2497,6 +2505,8 @@ mousepad_window_update_actions (MousepadWindow *window)
   /* update the actions for the active document */
   if (G_LIKELY (document))
     {
+      MousepadActionGroup *group;
+
       /* avoid menu actions */
       lock_menu_updates++;
 
@@ -2573,7 +2583,8 @@ mousepad_window_update_actions (MousepadWindow *window)
 
       /* update the currently active language */
       language = gtk_source_buffer_get_language (GTK_SOURCE_BUFFER (window->active->buffer));
-      mousepad_languages_set_active (window->language_actions, language);
+      group = MOUSEPAD_ACTION_GROUP (window->action_group);
+      mousepad_action_group_set_active_language (group, language);
 
       /* allow menu actions again */
       lock_menu_updates--;

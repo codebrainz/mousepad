@@ -1160,3 +1160,20 @@ mousepad_util_find_related_action (GtkWidget *widget)
 
   return action;
 }
+
+
+
+GIcon *
+mousepad_util_icon_for_mime_type (const gchar *mime_type)
+{
+  gchar *content_type;
+  GIcon *icon = NULL;
+
+  g_return_val_if_fail (mime_type != NULL, NULL);
+
+  content_type = g_content_type_from_mime_type (mime_type);
+  if (content_type != NULL)
+    icon = g_content_type_get_icon (content_type);
+
+  return icon;
+}
