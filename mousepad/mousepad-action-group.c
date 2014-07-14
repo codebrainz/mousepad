@@ -5,6 +5,7 @@
 #include <mousepad/mousepad-action-group.h>
 #include <mousepad/mousepad-language-action.h>
 #include <mousepad/mousepad-style-scheme-action.h>
+#include <mousepad/mousepad-settings.h>
 #include <glib/gi18n.h>
 #include <gtksourceview/gtksourcelanguagemanager.h>
 #include <gtksourceview/gtksourcestyleschememanager.h>
@@ -65,6 +66,9 @@ static gint       mousepad_action_group_style_schemes_name_compare       (gconst
                                                                           gconstpointer           b);
 static GSList    *mousepad_action_group_get_style_schemes                (void);
 static GSList    *mousepad_action_group_style_schemes_get_sorted         (void);
+static void       mousepad_action_group_color_scheme_setting_changed     (MousepadActionGroup    *self,
+                                                                          gchar                  *key,
+                                                                          GSettings              *settings);
 
 
 
@@ -175,13 +179,28 @@ mousepad_action_group_get_property (GObject    *object,
 static void
 mousepad_action_group_init (MousepadActionGroup *self)
 {
+  gchar                *scheme_id;
+  GtkSourceStyleScheme *scheme;
+
   self->active_language = NULL;
   mousepad_action_group_add_language_actions (self);
   mousepad_action_group_set_active_language (self, NULL);
 
   self->active_scheme = NULL;
   mousepad_action_group_add_style_scheme_actions (self);
-  mousepad_action_group_set_active_style_scheme (self, NULL);
+
+  /* set the initial style scheme from the setting */
+  scheme_id = MOUSEPAD_SETTING_GET_STRING (COLOR_SCHEME);
+  scheme = gtk_source_style_scheme_manager_get_scheme (
+              gtk_source_style_scheme_manager_get_default (), scheme_id);
+  g_free (scheme_id);
+  mousepad_action_group_set_active_style_scheme (self, scheme);
+
+  /* update the colour scheme when the setting changes */
+  MOUSEPAD_SETTING_CONNECT_OBJECT (COLOR_SCHEME,
+                                   G_CALLBACK (mousepad_action_group_color_scheme_setting_changed),
+                                   self,
+                                   G_CONNECT_SWAPPED);
 }
 
 
@@ -259,6 +278,11 @@ mousepad_action_group_set_active_style_scheme (MousepadActionGroup  *self,
   /* prevent recursion since we watch the action's 'activate' signal */
   self->locked = TRUE;
   gtk_toggle_action_set_active (GTK_TOGGLE_ACTION (action), TRUE);
+  self->locked = FALSE;
+
+  /* update the setting when the active action is changed */
+  self->locked = TRUE;
+  MOUSEPAD_SETTING_SET_STRING (COLOR_SCHEME, gtk_source_style_scheme_get_id (scheme));
   self->locked = FALSE;
 
   g_object_notify (G_OBJECT (self), "active-style-scheme");
@@ -434,6 +458,29 @@ mousepad_action_group_style_scheme_action_activate (MousepadActionGroup       *s
       scheme = mousepad_style_scheme_action_get_style_scheme (action);
       mousepad_action_group_set_active_style_scheme (self, scheme);
     }
+}
+
+
+
+static void
+mousepad_action_group_color_scheme_setting_changed (MousepadActionGroup *self,
+                                                    gchar               *key,
+                                                    GSettings           *settings)
+{
+  GtkSourceStyleScheme *scheme;
+  gchar                *scheme_id;
+
+  /* prevent recursion since the active style scheme setter updates the setting */
+  if (self->locked)
+    return;
+
+  /* set the style scheme from the setting */
+  scheme_id = MOUSEPAD_SETTING_GET_STRING (COLOR_SCHEME);
+  scheme = gtk_source_style_scheme_manager_get_scheme (
+              gtk_source_style_scheme_manager_get_default (), scheme_id);
+  g_free (scheme_id);
+
+  mousepad_action_group_set_active_style_scheme (self, scheme);
 }
 
 
