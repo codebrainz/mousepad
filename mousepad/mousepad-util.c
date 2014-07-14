@@ -472,26 +472,6 @@ mousepad_util_dialog_header (GtkDialog   *dialog,
 }
 
 
-#if !GTK_CHECK_VERSION (2,12,0)
-void
-mousepad_util_set_tooltip (GtkWidget   *widget,
-                           const gchar *string)
-{
-  static GtkTooltips *tooltips = NULL;
-
-  mousepad_return_if_fail (GTK_IS_WIDGET (widget));
-  mousepad_return_if_fail (string ? g_utf8_validate (string, -1, NULL) : TRUE);
-
-  /* allocate the shared tooltips on-demand */
-  if (G_UNLIKELY (tooltips == NULL))
-    tooltips = gtk_tooltips_new ();
-
-  /* setup the tooltip for the widget */
-  gtk_tooltips_set_tip (tooltips, widget, string, NULL);
-}
-#endif
-
-
 gint
 mousepad_util_get_real_line_offset (const GtkTextIter *iter,
                                     gint               tab_size)

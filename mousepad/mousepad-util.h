@@ -89,11 +89,6 @@ void       mousepad_util_dialog_header                    (GtkDialog           *
                                                            const gchar         *subtitle,
                                                            const gchar         *icon);
 
-#if !GTK_CHECK_VERSION (2,12,0)
-void       mousepad_util_set_tooltip                      (GtkWidget           *widget,
-                                                           const gchar         *string);
-#endif
-
 gint       mousepad_util_get_real_line_offset             (const GtkTextIter   *iter,
                                                            gint                 tab_size);
 

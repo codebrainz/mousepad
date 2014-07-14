@@ -138,7 +138,7 @@ mousepad_statusbar_init (MousepadStatusbar *statusbar)
   ebox = gtk_event_box_new ();
   gtk_box_pack_start (GTK_BOX (box), ebox, FALSE, TRUE, 0);
   gtk_event_box_set_visible_window (GTK_EVENT_BOX (ebox), FALSE);
-  mousepad_widget_set_tooltip_text (ebox, _("Choose a filetype"));
+  gtk_widget_set_tooltip_text (ebox, _("Choose a filetype"));
   g_signal_connect (G_OBJECT (ebox), "button-press-event", G_CALLBACK (mousepad_statusbar_filetype_clicked), statusbar);
   gtk_widget_show (ebox);
 
@@ -166,7 +166,7 @@ mousepad_statusbar_init (MousepadStatusbar *statusbar)
   ebox = gtk_event_box_new ();
   gtk_box_pack_start (GTK_BOX (box), ebox, FALSE, TRUE, 0);
   gtk_event_box_set_visible_window (GTK_EVENT_BOX (ebox), FALSE);
-  mousepad_widget_set_tooltip_text (ebox, _("Toggle the overwrite mode"));
+  gtk_widget_set_tooltip_text (ebox, _("Toggle the overwrite mode"));
   g_signal_connect (G_OBJECT (ebox), "button-press-event", G_CALLBACK (mousepad_statusbar_overwrite_clicked), statusbar);
   gtk_widget_show (ebox);
 

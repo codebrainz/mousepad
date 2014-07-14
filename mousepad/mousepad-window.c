@@ -53,9 +53,7 @@
 #define PADDING                   (2)
 #define PASTE_HISTORY_MENU_LENGTH (30)
 
-#if GTK_CHECK_VERSION (2,12,0)
 static gconstpointer NOTEBOOK_GROUP = "Mousepad";
-#endif
 
 
 
@@ -139,13 +137,11 @@ static gboolean          mousepad_window_notebook_button_release_event (GtkNoteb
 static gboolean          mousepad_window_notebook_button_press_event  (GtkNotebook            *notebook,
                                                                        GdkEventButton         *event,
                                                                        MousepadWindow         *window);
-#if GTK_CHECK_VERSION (2,12,0)
 static GtkNotebook      *mousepad_window_notebook_create_window       (GtkNotebook            *notebook,
                                                                        GtkWidget              *page,
                                                                        gint                    x,
                                                                        gint                    y,
                                                                        MousepadWindow         *window);
-#endif
 
 /* document signals */
 static void              mousepad_window_modified_changed             (MousepadWindow         *window);
@@ -915,11 +911,7 @@ mousepad_window_create_notebook (MousepadWindow *window)
                                    NULL);
 
   /* set the group id */
-#if GTK_CHECK_VERSION (2,12,0)
   gtk_notebook_set_group (GTK_NOTEBOOK (window->notebook), (gpointer) NOTEBOOK_GROUP);
-#else
-  gtk_notebook_set_group_id (GTK_NOTEBOOK (window->notebook), 1337);
-#endif
 
   /* connect signals to the notebooks */
   g_signal_connect (G_OBJECT (window->notebook), "switch-page", G_CALLBACK (mousepad_window_notebook_switch_page), window);
@@ -928,9 +920,7 @@ mousepad_window_create_notebook (MousepadWindow *window)
   g_signal_connect (G_OBJECT (window->notebook), "page-removed", G_CALLBACK (mousepad_window_notebook_removed), window);
   g_signal_connect (G_OBJECT (window->notebook), "button-press-event", G_CALLBACK (mousepad_window_notebook_button_press_event), window);
   g_signal_connect (G_OBJECT (window->notebook), "button-release-event", G_CALLBACK (mousepad_window_notebook_button_release_event), window);
-#if GTK_CHECK_VERSION (2,12,0)
   g_signal_connect (G_OBJECT (window->notebook), "create-window", G_CALLBACK (mousepad_window_notebook_create_window), window);
-#endif
 
   /* append and show the notebook */
   gtk_box_pack_start (GTK_BOX (window->box), window->notebook, TRUE, TRUE, PADDING);
@@ -2027,7 +2017,6 @@ mousepad_window_notebook_button_release_event (GtkNotebook    *notebook,
 
 
 
-#if GTK_CHECK_VERSION (2,12,0)
 static GtkNotebook *
 mousepad_window_notebook_create_window (GtkNotebook    *notebook,
                                         GtkWidget      *page,
@@ -2061,7 +2050,6 @@ mousepad_window_notebook_create_window (GtkNotebook    *notebook,
 
   return NULL;
 }
-#endif
 
 
 
@@ -4171,28 +4159,10 @@ mousepad_window_action_detach (GtkAction      *action,
   mousepad_return_if_fail (MOUSEPAD_IS_WINDOW (window));
   mousepad_return_if_fail (MOUSEPAD_IS_DOCUMENT (window->active));
 
-#if GTK_CHECK_VERSION (2,12,0)
   /* invoke function without cooridinates */
   mousepad_window_notebook_create_window (GTK_NOTEBOOK (window->notebook),
                                           GTK_WIDGET (window->active),
                                           -1, -1, window);
-#else
-  /* only detach when there are more then 2 tabs */
-  if (G_LIKELY (gtk_notebook_get_n_pages (GTK_NOTEBOOK (window->notebook)) >= 2))
-    {
-      /* take a reference */
-      g_object_ref (G_OBJECT (window->active));
-
-      /* remove the document from the active window */
-      gtk_container_remove (GTK_CONTAINER (window->notebook), GTK_WIDGET (window->active));
-
-      /* emit the new window with document signal */
-      g_signal_emit (G_OBJECT (window), window_signals[NEW_WINDOW_WITH_DOCUMENT], 0, window->active, -1, -1);
-
-      /* release our reference */
-      g_object_unref (G_OBJECT (window->active));
-    }
-#endif
 }
 
 

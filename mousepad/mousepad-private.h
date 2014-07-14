@@ -115,13 +115,6 @@ enum
 #define G_UNLIKELY(expr) (expr)
 #endif
 
-/* tooltip api */
-#if GTK_CHECK_VERSION (2,12,0)
-#define mousepad_widget_set_tooltip_text(widget,text) (gtk_widget_set_tooltip_text (widget, text))
-#else
-#define mousepad_widget_set_tooltip_text(widget,text) (mousepad_util_set_tooltip (widget, text))
-#endif
-
 /* GLib does some questionable (ie. non-standard) stuff when passing function
  * pointers as void pointers and such. This dirty little hack will at least
  * squelch warnings about it so we can easily see warnings that we can

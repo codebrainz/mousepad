@@ -41,11 +41,7 @@ mousepad_dialogs_show_about (GtkWindow *parent)
                          "comments", _("Mousepad is a fast text editor for the Xfce Desktop Environment."),
                          "destroy-with-parent", TRUE,
                          "logo-icon-name", "accessories-text-editor",
-#if GTK_CHECK_VERSION (2,12,0)
                          "program-name", PACKAGE_NAME,
-#else
-                         "name", PACKAGE_NAME,
-#endif
                          "version", PACKAGE_VERSION,
                          "translator-credits", _("translator-credits"),
                          "website", "http://www.xfce.org/",
