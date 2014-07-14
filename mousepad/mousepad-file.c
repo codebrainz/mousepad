@@ -82,6 +82,9 @@ struct _MousepadFile
 
   /* whether we write the bom at the start of the file */
   guint               write_bom : 1;
+
+  /* whether the filetype has been set by user or we should guess it */
+  gboolean            user_set_language;
 };
 
 
@@ -142,16 +145,17 @@ static void
 mousepad_file_init (MousepadFile *file)
 {
   /* initialize */
-  file->filename    = NULL;
-  file->encoding    = MOUSEPAD_ENCODING_UTF_8;
+  file->filename          = NULL;
+  file->encoding          = MOUSEPAD_ENCODING_UTF_8;
 #ifdef G_OS_WIN32
-  file->line_ending = MOUSEPAD_EOL_DOS;
+  file->line_ending       = MOUSEPAD_EOL_DOS;
 #else
-  file->line_ending = MOUSEPAD_EOL_UNIX;
+  file->line_ending       = MOUSEPAD_EOL_UNIX;
 #endif
-  file->readonly    = TRUE;
-  file->mtime       = 0;
-  file->write_bom   = FALSE;
+  file->readonly          = TRUE;
+  file->mtime             = 0;
+  file->write_bom         = FALSE;
+  file->user_set_language = FALSE;
 }
 
 
@@ -836,6 +840,11 @@ mousepad_file_save (MousepadFile  *file,
           /* we saved succesfully */
           mousepad_file_set_readonly (file, FALSE);
 
+          /* if the user hasn't set the filetype, try and re-guess it now
+           * that we have a new filename to go by */
+          if (! file->user_set_language)
+            mousepad_file_set_language (file, mousepad_file_guess_language (file));
+
           /* everything went file */
           succeed = TRUE;
 
@@ -920,4 +929,15 @@ mousepad_file_get_externally_modified (MousepadFile  *file,
     g_set_error (error, G_FILE_ERROR, error_code, _("Failed to read the status of \"%s\""), file->filename);
 
   return TRUE;
+}
+
+
+
+void
+mousepad_file_set_user_set_language (MousepadFile *file,
+                                     gboolean      set_by_user)
+{
+  g_return_if_fail (MOUSEPAD_IS_FILE (file));
+
+  file->user_set_language = set_by_user;
 }

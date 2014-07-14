@@ -92,6 +92,9 @@ gboolean            mousepad_file_reload                   (MousepadFile        
 
 gboolean            mousepad_file_get_externally_modified  (MousepadFile        *file,
                                                             GError             **error);
+
+void                mousepad_file_set_user_set_language    (MousepadFile        *file,
+                                                            gboolean             set_by_user);
 G_END_DECLS
 
 #endif /* !__MOUSEPAD_FILE_H__ */

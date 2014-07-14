@@ -1000,6 +1000,18 @@ mousepad_window_create_statusbar (MousepadWindow *window)
 
 
 static void
+mousepad_window_user_set_language (MousepadWindow      *window,
+                                   GtkSourceLanguage   *language,
+                                   MousepadActionGroup *group)
+{
+  /* mark the file as having its language chosen explicitly by the user
+   * so we don't clobber their choice by guessing ourselves */
+  mousepad_file_set_user_set_language (window->active->file, TRUE);
+}
+
+
+
+static void
 mousepad_window_init (MousepadWindow *window)
 {
   GtkAccelGroup *accel_group;
@@ -1032,6 +1044,7 @@ mousepad_window_init (MousepadWindow *window)
   gtk_action_group_add_actions (window->action_group, action_entries, G_N_ELEMENTS (action_entries), GTK_WIDGET (window));
   gtk_action_group_add_toggle_actions (window->action_group, toggle_action_entries, G_N_ELEMENTS (toggle_action_entries), GTK_WIDGET (window));
   gtk_action_group_add_radio_actions (window->action_group, radio_action_entries, G_N_ELEMENTS (radio_action_entries), -1, G_CALLBACK (mousepad_window_action_line_ending), GTK_WIDGET (window));
+  g_signal_connect_object (window->action_group, "user-set-language", G_CALLBACK (mousepad_window_user_set_language), window, G_CONNECT_SWAPPED);
 
   /* create the ui manager and connect proxy signals for the statusbar */
   window->ui_manager = gtk_ui_manager_new ();

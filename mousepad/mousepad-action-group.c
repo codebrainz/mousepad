@@ -120,6 +120,14 @@ mousepad_action_group_class_init (MousepadActionGroupClass *klass)
                          "The currently active style scheme action",
                          MOUSEPAD_TYPE_STYLE_SCHEME_ACTION,
                          G_PARAM_READWRITE));
+
+  g_signal_new ("user-set-language",
+                G_TYPE_FROM_CLASS (g_object_class),
+                G_SIGNAL_RUN_LAST,
+                0, NULL, NULL,
+                g_cclosure_marshal_VOID__OBJECT,
+                G_TYPE_NONE, 0,
+                GTK_TYPE_SOURCE_LANGUAGE);
 }
 
 
@@ -455,6 +463,9 @@ mousepad_action_group_language_action_activate (MousepadActionGroup    *self,
 
       language = mousepad_language_action_get_language (action);
       mousepad_action_group_set_active_language (self, language);
+
+      /* notify interested parties that the user explicitly set the filetype */
+      g_signal_emit_by_name (self, "user-set-language", language);
     }
 }
 
