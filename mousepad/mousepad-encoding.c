@@ -22,10 +22,10 @@
 #include <string.h>
 #endif
 
-#include <glib.h>
-
 #include <mousepad/mousepad-private.h>
 #include <mousepad/mousepad-encoding.h>
+
+#include <glib.h>
 
 
 

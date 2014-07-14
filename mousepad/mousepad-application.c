@@ -25,7 +25,6 @@
 #include <mousepad/mousepad-prefs-dialog.h>
 #include <mousepad/mousepad-replace-dialog.h>
 #include <mousepad/mousepad-window.h>
-#include <mousepad/mousepad-private.h>
 
 
 
@@ -164,7 +163,7 @@ mousepad_application_get (void)
 gboolean
 mousepad_application_has_windows (MousepadApplication *application)
 {
-  mousepad_return_val_if_fail (MOUSEPAD_IS_APPLICATION (application), FALSE);
+  g_return_val_if_fail (MOUSEPAD_IS_APPLICATION (application), FALSE);
 
   return (application->windows != NULL);
 }
@@ -175,9 +174,9 @@ static void
 mousepad_application_window_destroyed (GtkWidget           *window,
                                        MousepadApplication *application)
 {
-  mousepad_return_if_fail (GTK_IS_WINDOW (window));
-  mousepad_return_if_fail (MOUSEPAD_IS_APPLICATION (application));
-  mousepad_return_if_fail (g_slist_find (application->windows, window) != NULL);
+  g_return_if_fail (GTK_IS_WINDOW (window));
+  g_return_if_fail (MOUSEPAD_IS_APPLICATION (application));
+  g_return_if_fail (g_slist_find (application->windows, window) != NULL);
 
   /* remove the window from the list */
   application->windows = g_slist_remove (application->windows, window);
@@ -193,9 +192,9 @@ void
 mousepad_application_take_window (MousepadApplication *application,
                                   GtkWindow           *window)
 {
-  mousepad_return_if_fail (MOUSEPAD_IS_WINDOW (window));
-  mousepad_return_if_fail (MOUSEPAD_IS_APPLICATION (application));
-  mousepad_return_if_fail (g_slist_find (application->windows, window) == NULL);
+  g_return_if_fail (MOUSEPAD_IS_WINDOW (window));
+  g_return_if_fail (MOUSEPAD_IS_APPLICATION (application));
+  g_return_if_fail (g_slist_find (application->windows, window) == NULL);
 
   /* connect to the "destroy" signal */
   g_signal_connect (G_OBJECT (window), "destroy", G_CALLBACK (mousepad_application_window_destroyed), application);
@@ -236,9 +235,9 @@ mousepad_application_new_window_with_document (MousepadWindow      *existing,
   GtkWidget *window;
   GdkScreen *screen;
 
-  mousepad_return_if_fail (MOUSEPAD_IS_WINDOW (existing));
-  mousepad_return_if_fail (document == NULL || MOUSEPAD_IS_DOCUMENT (document));
-  mousepad_return_if_fail (MOUSEPAD_IS_APPLICATION (application));
+  g_return_if_fail (MOUSEPAD_IS_WINDOW (existing));
+  g_return_if_fail (document == NULL || MOUSEPAD_IS_DOCUMENT (document));
+  g_return_if_fail (MOUSEPAD_IS_APPLICATION (application));
 
   /* create a new window (signals added and already hooked up) */
   window = mousepad_application_create_window (application);
@@ -285,8 +284,8 @@ mousepad_application_new_window_with_files (MousepadApplication  *application,
   gboolean          succeed = FALSE;
   MousepadDocument *document;
 
-  mousepad_return_if_fail (MOUSEPAD_IS_APPLICATION (application));
-  mousepad_return_if_fail (screen == NULL || GDK_IS_SCREEN (screen));
+  g_return_if_fail (MOUSEPAD_IS_APPLICATION (application));
+  g_return_if_fail (screen == NULL || GDK_IS_SCREEN (screen));
 
   /* create a new window (signals added and already hooked up) */
   window = mousepad_application_create_window (application);

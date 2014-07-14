@@ -37,11 +37,11 @@
 #include <errno.h>
 #endif
 
-#include <glib.h>
-#include <glib/gstdio.h>
-
 #include <mousepad/mousepad-private.h>
 #include <mousepad/mousepad-file.h>
+
+#include <glib.h>
+#include <glib/gstdio.h>
 
 
 
@@ -180,7 +180,7 @@ static void
 mousepad_file_set_readonly (MousepadFile *file,
                             gboolean      readonly)
 {
-  mousepad_return_if_fail (MOUSEPAD_IS_FILE (file));
+  g_return_if_fail (MOUSEPAD_IS_FILE (file));
 
   if (G_LIKELY (file->readonly != readonly))
     {
@@ -203,8 +203,8 @@ mousepad_file_encoding_read_bom (const gchar *contents,
   MousepadEncoding  encoding = MOUSEPAD_ENCODING_NONE;
   gsize             bytes = 0;
 
-  mousepad_return_val_if_fail (contents != NULL && length > 0, MOUSEPAD_ENCODING_NONE);
-  mousepad_return_val_if_fail (contents != NULL && length > 0, MOUSEPAD_ENCODING_NONE);
+  g_return_val_if_fail (contents != NULL && length > 0, MOUSEPAD_ENCODING_NONE);
+  g_return_val_if_fail (contents != NULL && length > 0, MOUSEPAD_ENCODING_NONE);
 
   switch (bom[0])
     {
@@ -268,7 +268,7 @@ mousepad_file_new (GtkTextBuffer *buffer)
 {
   MousepadFile *file;
 
-  mousepad_return_val_if_fail (GTK_IS_TEXT_BUFFER (buffer), NULL);
+  g_return_val_if_fail (GTK_IS_TEXT_BUFFER (buffer), NULL);
 
   file = g_object_new (MOUSEPAD_TYPE_FILE, NULL);
 
@@ -284,7 +284,7 @@ void
 mousepad_file_set_filename (MousepadFile *file,
                             const gchar  *filename)
 {
-  mousepad_return_if_fail (MOUSEPAD_IS_FILE (file));
+  g_return_if_fail (MOUSEPAD_IS_FILE (file));
 
   /* free the old filename */
   g_free (file->filename);
@@ -301,7 +301,7 @@ mousepad_file_set_filename (MousepadFile *file,
 const gchar *
 mousepad_file_get_filename (MousepadFile *file)
 {
-  mousepad_return_val_if_fail (MOUSEPAD_IS_FILE (file), NULL);
+  g_return_val_if_fail (MOUSEPAD_IS_FILE (file), NULL);
 
   return file->filename;
 }
@@ -311,7 +311,7 @@ mousepad_file_get_filename (MousepadFile *file)
 gchar *
 mousepad_file_get_uri (MousepadFile *file)
 {
-  mousepad_return_val_if_fail (MOUSEPAD_IS_FILE (file), NULL);
+  g_return_val_if_fail (MOUSEPAD_IS_FILE (file), NULL);
 
   return g_filename_to_uri (file->filename, NULL, NULL);
 }
@@ -322,7 +322,7 @@ void
 mousepad_file_set_encoding (MousepadFile     *file,
                             MousepadEncoding  encoding)
 {
-  mousepad_return_if_fail (MOUSEPAD_IS_FILE (file));
+  g_return_if_fail (MOUSEPAD_IS_FILE (file));
 
   /* set new encoding */
   file->encoding = encoding;
@@ -333,7 +333,7 @@ mousepad_file_set_encoding (MousepadFile     *file,
 MousepadEncoding
 mousepad_file_get_encoding (MousepadFile *file)
 {
-  mousepad_return_val_if_fail (MOUSEPAD_IS_FILE (file), MOUSEPAD_ENCODING_NONE);
+  g_return_val_if_fail (MOUSEPAD_IS_FILE (file), MOUSEPAD_ENCODING_NONE);
 
   return file->encoding;
 }
@@ -343,7 +343,7 @@ mousepad_file_get_encoding (MousepadFile *file)
 gboolean
 mousepad_file_get_read_only (MousepadFile *file)
 {
-  mousepad_return_val_if_fail (MOUSEPAD_IS_FILE (file), FALSE);
+  g_return_val_if_fail (MOUSEPAD_IS_FILE (file), FALSE);
 
   return file->filename ? file->readonly : FALSE;
 }
@@ -354,8 +354,8 @@ void
 mousepad_file_set_write_bom (MousepadFile *file,
                              gboolean      write_bom)
 {
-  mousepad_return_if_fail (MOUSEPAD_IS_FILE (file));
-  mousepad_return_if_fail (mousepad_encoding_is_unicode (file->encoding));
+  g_return_if_fail (MOUSEPAD_IS_FILE (file));
+  g_return_if_fail (mousepad_encoding_is_unicode (file->encoding));
 
   /* set new value */
   file->write_bom = write_bom;
@@ -367,7 +367,7 @@ gboolean
 mousepad_file_get_write_bom (MousepadFile *file,
                              gboolean     *sensitive)
 {
-  mousepad_return_val_if_fail (MOUSEPAD_IS_FILE (file), FALSE);
+  g_return_val_if_fail (MOUSEPAD_IS_FILE (file), FALSE);
 
   /* return if we can write a bom */
   if (G_LIKELY (sensitive))
@@ -382,7 +382,7 @@ void
 mousepad_file_set_line_ending (MousepadFile       *file,
                                MousepadLineEnding  line_ending)
 {
-  mousepad_return_if_fail (MOUSEPAD_IS_FILE (file));
+  g_return_if_fail (MOUSEPAD_IS_FILE (file));
 
   file->line_ending = line_ending;
 }
@@ -401,8 +401,8 @@ void
 mousepad_file_set_language (MousepadFile      *file,
                             GtkSourceLanguage *language)
 {
-  mousepad_return_if_fail (MOUSEPAD_IS_FILE (file));
-  mousepad_return_if_fail (GTK_IS_SOURCE_BUFFER (file->buffer));
+  g_return_if_fail (MOUSEPAD_IS_FILE (file));
+  g_return_if_fail (GTK_IS_SOURCE_BUFFER (file->buffer));
 
   gtk_source_buffer_set_language (GTK_SOURCE_BUFFER (file->buffer), language);
 }
@@ -412,8 +412,8 @@ mousepad_file_set_language (MousepadFile      *file,
 GtkSourceLanguage *
 mousepad_file_get_language (MousepadFile *file)
 {
-  mousepad_return_val_if_fail (MOUSEPAD_IS_FILE (file), NULL);
-  mousepad_return_val_if_fail (GTK_IS_SOURCE_BUFFER (file->buffer), NULL);
+  g_return_val_if_fail (MOUSEPAD_IS_FILE (file), NULL);
+  g_return_val_if_fail (GTK_IS_SOURCE_BUFFER (file->buffer), NULL);
 
   return gtk_source_buffer_get_language (GTK_SOURCE_BUFFER (file->buffer));
 }
@@ -426,8 +426,8 @@ mousepad_file_set_language_id (MousepadFile *file,
 {
   GtkSourceLanguage *lang;
 
-  mousepad_return_if_fail (MOUSEPAD_IS_FILE (file));
-  mousepad_return_if_fail (GTK_IS_SOURCE_BUFFER (file->buffer));
+  g_return_if_fail (MOUSEPAD_IS_FILE (file));
+  g_return_if_fail (GTK_IS_SOURCE_BUFFER (file->buffer));
 
   if (G_UNLIKELY (language_id == NULL))
     {
@@ -498,10 +498,10 @@ mousepad_file_open (MousepadFile  *file,
   const gchar      *end, *n, *m;
   MousepadEncoding  bom_encoding;
 
-  mousepad_return_val_if_fail (MOUSEPAD_IS_FILE (file), FALSE);
-  mousepad_return_val_if_fail (GTK_IS_TEXT_BUFFER (file->buffer), FALSE);
-  mousepad_return_val_if_fail (error == NULL || *error == NULL, FALSE);
-  mousepad_return_val_if_fail (file->filename != NULL || template_filename != NULL, FALSE);
+  g_return_val_if_fail (MOUSEPAD_IS_FILE (file), FALSE);
+  g_return_val_if_fail (GTK_IS_TEXT_BUFFER (file->buffer), FALSE);
+  g_return_val_if_fail (error == NULL || *error == NULL, FALSE);
+  g_return_val_if_fail (file->filename != NULL || template_filename != NULL, FALSE);
 
   /* get the filename */
   if (G_UNLIKELY (template_filename != NULL))
@@ -718,10 +718,10 @@ mousepad_file_save (MousepadFile  *file,
   struct stat   statb;
   gchar       **chunks;
 
-  mousepad_return_val_if_fail (MOUSEPAD_IS_FILE (file), FALSE);
-  mousepad_return_val_if_fail (GTK_IS_TEXT_BUFFER (file->buffer), FALSE);
-  mousepad_return_val_if_fail (error == NULL || *error == NULL, FALSE);
-  mousepad_return_val_if_fail (file->filename != NULL, FALSE);
+  g_return_val_if_fail (MOUSEPAD_IS_FILE (file), FALSE);
+  g_return_val_if_fail (GTK_IS_TEXT_BUFFER (file->buffer), FALSE);
+  g_return_val_if_fail (error == NULL || *error == NULL, FALSE);
+  g_return_val_if_fail (file->filename != NULL, FALSE);
 
   /* open the file */
   fd = g_open (file->filename, O_WRONLY | O_CREAT | O_TRUNC, 0666);
@@ -875,10 +875,10 @@ mousepad_file_reload (MousepadFile  *file,
   GtkTextIter start, end;
   gboolean    succeed = FALSE;
 
-  mousepad_return_val_if_fail (MOUSEPAD_IS_FILE (file), FALSE);
-  mousepad_return_val_if_fail (GTK_IS_TEXT_BUFFER (file->buffer), FALSE);
-  mousepad_return_val_if_fail (error == NULL || *error == NULL, FALSE);
-  mousepad_return_val_if_fail (file->filename != NULL, FALSE);
+  g_return_val_if_fail (MOUSEPAD_IS_FILE (file), FALSE);
+  g_return_val_if_fail (GTK_IS_TEXT_BUFFER (file->buffer), FALSE);
+  g_return_val_if_fail (error == NULL || *error == NULL, FALSE);
+  g_return_val_if_fail (file->filename != NULL, FALSE);
 
   /* simple test if the file has not been removed */
   if (G_UNLIKELY (g_file_test (file->filename, G_FILE_TEST_EXISTS) == FALSE))
@@ -909,9 +909,9 @@ mousepad_file_get_externally_modified (MousepadFile  *file,
   struct stat statb;
   GFileError  error_code;
 
-  mousepad_return_val_if_fail (MOUSEPAD_IS_FILE (file), TRUE);
-  mousepad_return_val_if_fail (file->filename != NULL, TRUE);
-  mousepad_return_val_if_fail (error == NULL || *error == NULL, FALSE);
+  g_return_val_if_fail (MOUSEPAD_IS_FILE (file), TRUE);
+  g_return_val_if_fail (file->filename != NULL, TRUE);
+  g_return_val_if_fail (error == NULL || *error == NULL, FALSE);
 
   /* check if our modification time differs from the current one */
   if (G_LIKELY (g_stat (file->filename, &statb) == 0))

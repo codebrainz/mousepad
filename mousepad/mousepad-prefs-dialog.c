@@ -18,10 +18,10 @@
 #include "config.h"
 #endif
 
+#include <mousepad/mousepad-private.h>
 #include <mousepad/mousepad-prefs-dialog.h>
 #include <mousepad/mousepad-prefs-dialog-ui.h>
 #include <mousepad/mousepad-settings.h>
-#include <mousepad/mousepad-private.h>
 
 
 

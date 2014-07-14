@@ -22,12 +22,12 @@
 #include <string.h>
 #endif
 
-#include <gdk/gdkkeysyms.h>
-
 #include <mousepad/mousepad-private.h>
 #include <mousepad/mousepad-settings.h>
 #include <mousepad/mousepad-util.h>
 #include <mousepad/mousepad-view.h>
+
+#include <gdk/gdkkeysyms.h>
 
 
 
@@ -611,14 +611,14 @@ mousepad_view_commit_handler (GtkIMContext *context,
                               const gchar  *str,
                               MousepadView *view)
 {
-  mousepad_return_if_fail (MOUSEPAD_IS_VIEW (view));
-  mousepad_return_if_fail (GTK_IS_IM_CONTEXT (context));
+  g_return_if_fail (MOUSEPAD_IS_VIEW (view));
+  g_return_if_fail (GTK_IS_IM_CONTEXT (context));
 
   /* if there is a selection, insert this string there too */
   if (G_UNLIKELY (view->selection_marks != NULL))
     {
       /* debug check */
-      mousepad_return_if_fail (gtk_text_view_get_editable (GTK_TEXT_VIEW (view)) == FALSE);
+      g_return_if_fail (gtk_text_view_get_editable (GTK_TEXT_VIEW (view)) == FALSE);
 
       /* handle the text input for the multi selection */
       mousepad_view_selection_key_press_event (view, str, 0, 0);
@@ -762,11 +762,11 @@ mousepad_view_selection_key_press_event (MousepadView *view,
   GSList        *li;
   GtkTextBuffer *buffer;
 
-  mousepad_return_if_fail (view->selection_marks != NULL);
-  mousepad_return_if_fail (view->selection_start_x == -1);
-  mousepad_return_if_fail (view->selection_end_x == -1);
-  mousepad_return_if_fail ((keyval == 0 && text != NULL) || keyval != 0);
-  mousepad_return_if_fail (g_slist_length (view->selection_marks) % 2 == 0);
+  g_return_if_fail (view->selection_marks != NULL);
+  g_return_if_fail (view->selection_start_x == -1);
+  g_return_if_fail (view->selection_end_x == -1);
+  g_return_if_fail ((keyval == 0 && text != NULL) || keyval != 0);
+  g_return_if_fail (g_slist_length (view->selection_marks) % 2 == 0);
 
   /* get the buffer */
   buffer = mousepad_view_get_buffer (view);
@@ -827,9 +827,9 @@ mousepad_view_selection_delete_content (MousepadView *view)
   GtkTextIter    start_iter, end_iter;
   GSList        *li;
 
-  mousepad_return_if_fail (view->selection_marks != NULL);
-  mousepad_return_if_fail (view->selection_length > 0);
-  mousepad_return_if_fail (g_slist_length (view->selection_marks) % 2 == 0);
+  g_return_if_fail (view->selection_marks != NULL);
+  g_return_if_fail (view->selection_length > 0);
+  g_return_if_fail (g_slist_length (view->selection_marks) % 2 == 0);
 
   /* get the buffer */
   buffer = mousepad_view_get_buffer (view);
@@ -869,7 +869,7 @@ mousepad_view_selection_destroy (MousepadView *view)
   GSList        *li;
   GtkTextIter    start_iter, end_iter;
 
-  mousepad_return_if_fail (view->selection_marks != NULL);
+  g_return_if_fail (view->selection_marks != NULL);
 
   /* get the buffer */
   buffer = mousepad_view_get_buffer (view);
@@ -929,8 +929,8 @@ mousepad_view_selection_draw (MousepadView *view,
   GtkTextMark   *start_mark, *end_mark;
   GSList        *li;
 
-  mousepad_return_if_fail (MOUSEPAD_IS_VIEW (view));
-  mousepad_return_if_fail (view->selection_marks == NULL || g_slist_length (view->selection_marks) % 2 == 0);
+  g_return_if_fail (MOUSEPAD_IS_VIEW (view));
+  g_return_if_fail (view->selection_marks == NULL || g_slist_length (view->selection_marks) % 2 == 0);
 
   /* get the buffer */
   buffer = mousepad_view_get_buffer (view);
@@ -1164,7 +1164,7 @@ mousepad_view_selection_string (MousepadView *view)
   GtkTextIter    start_iter, end_iter;
   GSList        *li;
 
-  mousepad_return_val_if_fail (view->selection_marks == NULL || g_slist_length (view->selection_marks) % 2 == 0, NULL);
+  g_return_val_if_fail (view->selection_marks == NULL || g_slist_length (view->selection_marks) % 2 == 0, NULL);
 
   /* create new string */
   string = g_string_new (NULL);
@@ -1354,7 +1354,7 @@ mousepad_view_scroll_to_cursor (MousepadView *view)
 {
   GtkTextBuffer *buffer;
 
-  mousepad_return_if_fail (MOUSEPAD_IS_VIEW (view));
+  g_return_if_fail (MOUSEPAD_IS_VIEW (view));
 
   /* get the buffer */
   buffer = mousepad_view_get_buffer (view);
@@ -1375,7 +1375,7 @@ mousepad_view_transpose_multi_selection (GtkTextBuffer *buffer,
   GSList      *strings = NULL;
   GtkTextIter  start_iter, end_iter;
 
-  mousepad_return_if_fail (MOUSEPAD_IS_VIEW (view));
+  g_return_if_fail (MOUSEPAD_IS_VIEW (view));
 
   /* get the strings and delete the existing strings */
   for (li = view->selection_marks; li != NULL; li = li->next)
@@ -1603,7 +1603,7 @@ mousepad_view_transpose (MousepadView *view)
   GtkTextBuffer *buffer;
   GtkTextIter    sel_start, sel_end;
 
-  mousepad_return_if_fail (MOUSEPAD_IS_VIEW (view));
+  g_return_if_fail (MOUSEPAD_IS_VIEW (view));
 
   /* get the buffer */
   buffer = mousepad_view_get_buffer (view);
@@ -1679,8 +1679,8 @@ mousepad_view_clipboard_cut (MousepadView *view)
   GtkTextBuffer *buffer;
   gchar         *string;
 
-  mousepad_return_if_fail (MOUSEPAD_IS_VIEW (view));
-  mousepad_return_if_fail (mousepad_view_get_selection_length (view, NULL) > 0);
+  g_return_if_fail (MOUSEPAD_IS_VIEW (view));
+  g_return_if_fail (mousepad_view_get_selection_length (view, NULL) > 0);
 
   /* get the clipboard */
   clipboard = gtk_widget_get_clipboard (GTK_WIDGET (view), GDK_SELECTION_CLIPBOARD);
@@ -1724,8 +1724,8 @@ mousepad_view_clipboard_copy (MousepadView *view)
   GtkTextBuffer *buffer;
   gchar         *string;
 
-  mousepad_return_if_fail (MOUSEPAD_IS_VIEW (view));
-  mousepad_return_if_fail (mousepad_view_get_selection_length (view, NULL) > 0);
+  g_return_if_fail (MOUSEPAD_IS_VIEW (view));
+  g_return_if_fail (mousepad_view_get_selection_length (view, NULL) > 0);
 
   /* get the clipboard */
   clipboard = gtk_widget_get_clipboard (GTK_WIDGET (view), GDK_SELECTION_CLIPBOARD);
@@ -1868,8 +1868,8 @@ mousepad_view_delete_selection (MousepadView *view)
 {
   GtkTextBuffer *buffer;
 
-  mousepad_return_if_fail (MOUSEPAD_IS_VIEW (view));
-  mousepad_return_if_fail (mousepad_view_get_selection_length (view, NULL) > 0);
+  g_return_if_fail (MOUSEPAD_IS_VIEW (view));
+  g_return_if_fail (mousepad_view_get_selection_length (view, NULL) > 0);
 
   if (view->selection_marks != NULL)
     {
@@ -1900,7 +1900,7 @@ mousepad_view_select_all (MousepadView *view)
   GtkTextIter    start, end;
   GtkTextBuffer *buffer;
 
-  mousepad_return_if_fail (MOUSEPAD_IS_VIEW (view));
+  g_return_if_fail (MOUSEPAD_IS_VIEW (view));
 
   /* cleanup our selection */
   if (view->selection_marks != NULL)
@@ -1925,8 +1925,8 @@ mousepad_view_change_selection (MousepadView *view)
   GtkTextIter    start_iter, end_iter;
   GdkRectangle   rect;
 
-  mousepad_return_if_fail (MOUSEPAD_IS_VIEW (view));
-  mousepad_return_if_fail (mousepad_view_get_selection_length (view, NULL) != 0);
+  g_return_if_fail (MOUSEPAD_IS_VIEW (view));
+  g_return_if_fail (mousepad_view_get_selection_length (view, NULL) != 0);
 
   /* get the buffer */
   buffer = mousepad_view_get_buffer (view);
@@ -1990,8 +1990,8 @@ mousepad_view_convert_selection_case (MousepadView *view,
   gint           offset = -1;
   GSList        *li = NULL;
 
-  mousepad_return_if_fail (MOUSEPAD_IS_VIEW (view));
-  mousepad_return_if_fail (mousepad_view_get_selection_length (view, NULL) > 0);
+  g_return_if_fail (MOUSEPAD_IS_VIEW (view));
+  g_return_if_fail (mousepad_view_get_selection_length (view, NULL) > 0);
 
   /* get the buffer */
   buffer = mousepad_view_get_buffer (view);
@@ -2045,7 +2045,7 @@ mousepad_view_convert_selection_case (MousepadView *view,
                 break;
 
               default:
-                mousepad_assert_not_reached ();
+                g_assert_not_reached ();
                 break;
             }
 
@@ -2053,7 +2053,7 @@ mousepad_view_convert_selection_case (MousepadView *view,
           if (G_LIKELY (converted && strcmp (text, converted) != 0))
             {
               /* debug check */
-              mousepad_return_if_fail (g_utf8_validate (converted, -1, NULL));
+              g_return_if_fail (g_utf8_validate (converted, -1, NULL));
 
               /* delete old string */
               gtk_text_buffer_delete (buffer, &start_iter, &end_iter);
@@ -2110,7 +2110,7 @@ mousepad_view_convert_spaces_and_tabs (MousepadView *view,
   gint           start_offset = -1;
   gchar         *string;
 
-  mousepad_return_if_fail (MOUSEPAD_IS_VIEW (view));
+  g_return_if_fail (MOUSEPAD_IS_VIEW (view));
 
   /* get the buffer */
   buffer = mousepad_view_get_buffer (view);
@@ -2275,7 +2275,7 @@ mousepad_view_strip_trailing_spaces (MousepadView *view)
   gint           start, end, i;
   gunichar       c;
 
-  mousepad_return_if_fail (MOUSEPAD_IS_VIEW (view));
+  g_return_if_fail (MOUSEPAD_IS_VIEW (view));
 
   /* get the buffer */
   buffer = mousepad_view_get_buffer (view);
@@ -2347,7 +2347,7 @@ mousepad_view_move_selection (MousepadView *view,
   gchar         *text;
   gboolean       insert_eol;
 
-  mousepad_return_if_fail (MOUSEPAD_IS_VIEW (view));
+  g_return_if_fail (MOUSEPAD_IS_VIEW (view));
 
   /* get the buffer */
   buffer = mousepad_view_get_buffer (view);
@@ -2470,7 +2470,7 @@ mousepad_view_duplicate (MousepadView *view)
   gboolean       has_selection;
   gboolean       insert_eol = FALSE;
 
-  mousepad_return_if_fail (MOUSEPAD_IS_VIEW (view));
+  g_return_if_fail (MOUSEPAD_IS_VIEW (view));
 
   /* get the buffer */
   buffer = mousepad_view_get_buffer (view);
@@ -2509,7 +2509,7 @@ void
 mousepad_view_indent (MousepadView *view,
                       gint          type)
 {
-  mousepad_return_if_fail (MOUSEPAD_IS_VIEW (view));
+  g_return_if_fail (MOUSEPAD_IS_VIEW (view));
 
   /* run a forced indent of the line(s) */
   mousepad_view_indent_selection (view, type == INCREASE_INDENT, TRUE);
@@ -2526,7 +2526,7 @@ mousepad_view_get_selection_length (MousepadView *view,
   gint           sel_length = 0;
   gboolean       column_selection;
 
-  mousepad_return_val_if_fail (MOUSEPAD_IS_VIEW (view), FALSE);
+  g_return_val_if_fail (MOUSEPAD_IS_VIEW (view), FALSE);
 
   /* get the text buffer */
   buffer = mousepad_view_get_buffer (view);

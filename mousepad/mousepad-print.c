@@ -18,13 +18,13 @@
 #include <config.h>
 #endif
 
-#include <pango/pango.h>
-#include <cairo.h>
-
 #include <mousepad/mousepad-private.h>
 #include <mousepad/mousepad-document.h>
 #include <mousepad/mousepad-util.h>
 #include <mousepad/mousepad-print.h>
+
+#include <pango/pango.h>
+#include <cairo.h>
 
 #define DOCUMENT_SPACING (10)
 
@@ -158,8 +158,8 @@ mousepad_print_settings_load (GtkPrintOperation *operation)
   PangoContext          *context;
   PangoFontDescription  *font_desc;
 
-  mousepad_return_if_fail (MOUSEPAD_IS_DOCUMENT (print->document));
-  mousepad_return_if_fail (GTK_IS_WIDGET (print->document->textview));
+  g_return_if_fail (MOUSEPAD_IS_DOCUMENT (print->document));
+  g_return_if_fail (GTK_IS_WIDGET (print->document->textview));
 
   /* get the config file filename */
   filename = mousepad_util_get_save_location (MOUSEPAD_RC_RELPATH, FALSE);
@@ -782,12 +782,12 @@ mousepad_print_document_interactive (MousepadPrint     *print,
 {
   GtkPrintOperationResult result;
 
-  mousepad_return_val_if_fail (MOUSEPAD_IS_PRINT (print), FALSE);
-  mousepad_return_val_if_fail (GTK_IS_PRINT_OPERATION (print), FALSE);
-  mousepad_return_val_if_fail (MOUSEPAD_IS_DOCUMENT (document), FALSE);
-  mousepad_return_val_if_fail (GTK_IS_SOURCE_BUFFER (document->buffer), FALSE);
-  mousepad_return_val_if_fail (GTK_IS_WINDOW (parent), FALSE);
-  mousepad_return_val_if_fail (error == NULL || *error == NULL, FALSE);
+  g_return_val_if_fail (MOUSEPAD_IS_PRINT (print), FALSE);
+  g_return_val_if_fail (GTK_IS_PRINT_OPERATION (print), FALSE);
+  g_return_val_if_fail (MOUSEPAD_IS_DOCUMENT (document), FALSE);
+  g_return_val_if_fail (GTK_IS_SOURCE_BUFFER (document->buffer), FALSE);
+  g_return_val_if_fail (GTK_IS_WINDOW (parent), FALSE);
+  g_return_val_if_fail (error == NULL || *error == NULL, FALSE);
 
   /* set the document */
   print->document = document;

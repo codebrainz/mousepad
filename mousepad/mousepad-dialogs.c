@@ -149,14 +149,14 @@ mousepad_dialogs_go_to_line_changed (GtkSpinButton *line_spin,
   GtkTextBuffer *buffer;
   GtkTextIter    iter;
 
-  mousepad_return_if_fail (GTK_IS_SPIN_BUTTON (line_spin));
-  mousepad_return_if_fail (GTK_IS_SPIN_BUTTON (col_spin));
+  g_return_if_fail (GTK_IS_SPIN_BUTTON (line_spin));
+  g_return_if_fail (GTK_IS_SPIN_BUTTON (col_spin));
 
   /* get the text buffer */
   buffer = mousepad_object_get_data (G_OBJECT (col_spin), "buffer");
 
   /* debug check */
-  mousepad_return_if_fail (GTK_IS_TEXT_BUFFER (buffer));
+  g_return_if_fail (GTK_IS_TEXT_BUFFER (buffer));
 
   /* get iter at line */
   gtk_text_buffer_get_iter_at_line (buffer, &iter, gtk_spin_button_get_value_as_int (line_spin) - 1);

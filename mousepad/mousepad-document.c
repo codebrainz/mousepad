@@ -250,8 +250,8 @@ mousepad_document_notify_cursor_position (GtkTextBuffer    *buffer,
   gint        line, column, selection;
   gint        tab_size;
 
-  mousepad_return_if_fail (GTK_IS_TEXT_BUFFER (buffer));
-  mousepad_return_if_fail (MOUSEPAD_IS_DOCUMENT (document));
+  g_return_if_fail (GTK_IS_TEXT_BUFFER (buffer));
+  g_return_if_fail (MOUSEPAD_IS_DOCUMENT (document));
 
   /* get the current iter position */
   gtk_text_buffer_get_iter_at_mark (buffer, &iter, gtk_text_buffer_get_insert (buffer));
@@ -282,8 +282,8 @@ mousepad_document_notify_has_selection (GtkTextBuffer    *buffer,
   gint     selection;
   gboolean is_column_selection;
 
-  mousepad_return_if_fail (GTK_IS_TEXT_BUFFER (buffer));
-  mousepad_return_if_fail (MOUSEPAD_IS_DOCUMENT (document));
+  g_return_if_fail (GTK_IS_TEXT_BUFFER (buffer));
+  g_return_if_fail (MOUSEPAD_IS_DOCUMENT (document));
 
   /* get length of the selection */
   selection = mousepad_view_get_selection_length (document->textview, &is_column_selection);
@@ -309,8 +309,8 @@ mousepad_document_notify_overwrite (GtkTextView      *textview,
 {
   gboolean overwrite;
 
-  mousepad_return_if_fail (MOUSEPAD_IS_DOCUMENT (document));
-  mousepad_return_if_fail (GTK_IS_TEXT_VIEW (textview));
+  g_return_if_fail (MOUSEPAD_IS_DOCUMENT (document));
+  g_return_if_fail (GTK_IS_TEXT_VIEW (textview));
 
   /* whether overwrite is enabled */
   overwrite = gtk_text_view_get_overwrite (textview);
@@ -328,8 +328,8 @@ mousepad_document_notify_language (GtkSourceBuffer  *buffer,
 {
   GtkSourceLanguage *language;
 
-  mousepad_return_if_fail (MOUSEPAD_IS_DOCUMENT (document));
-  mousepad_return_if_fail (GTK_IS_SOURCE_BUFFER (buffer));
+  g_return_if_fail (MOUSEPAD_IS_DOCUMENT (document));
+  g_return_if_fail (GTK_IS_SOURCE_BUFFER (buffer));
 
   /* the new language */
   language = gtk_source_buffer_get_language (buffer);
@@ -350,7 +350,7 @@ mousepad_document_drag_data_received (GtkWidget        *widget,
                                       guint             drag_time,
                                       MousepadDocument *document)
 {
-  mousepad_return_if_fail (MOUSEPAD_IS_DOCUMENT (document));
+  g_return_if_fail (MOUSEPAD_IS_DOCUMENT (document));
 
   /* emit the drag-data-received signal from the document when a tab or uri has been dropped */
   if (info == TARGET_TEXT_URI_LIST || info == TARGET_GTK_NOTEBOOK_TAB)
@@ -365,8 +365,8 @@ mousepad_document_filename_changed (MousepadDocument *document,
 {
   gchar *utf8_filename, *utf8_basename;
 
-  mousepad_return_if_fail (MOUSEPAD_IS_DOCUMENT (document));
-  mousepad_return_if_fail (filename != NULL);
+  g_return_if_fail (MOUSEPAD_IS_DOCUMENT (document));
+  g_return_if_fail (filename != NULL);
 
   /* convert the title into a utf-8 valid version for display */
   utf8_filename = g_filename_to_utf8 (filename, -1, NULL, NULL, NULL);
@@ -408,9 +408,9 @@ mousepad_document_label_color (MousepadDocument *document)
   GdkColor  red   = {0, 0xffff, 0x0000, 0x0000};
   GdkColor *color;
 
-  mousepad_return_if_fail (MOUSEPAD_IS_DOCUMENT (document));
-  mousepad_return_if_fail (GTK_IS_TEXT_BUFFER (document->buffer));
-  mousepad_return_if_fail (MOUSEPAD_IS_FILE (document->file));
+  g_return_if_fail (MOUSEPAD_IS_DOCUMENT (document));
+  g_return_if_fail (GTK_IS_TEXT_BUFFER (document->buffer));
+  g_return_if_fail (MOUSEPAD_IS_FILE (document->file));
 
   if (document->priv->label)
     {
@@ -434,7 +434,7 @@ void
 mousepad_document_set_overwrite (MousepadDocument *document,
                                  gboolean          overwrite)
 {
-  mousepad_return_if_fail (MOUSEPAD_IS_DOCUMENT (document));
+  g_return_if_fail (MOUSEPAD_IS_DOCUMENT (document));
 
   gtk_text_view_set_overwrite (GTK_TEXT_VIEW (document->textview), overwrite);
 }
@@ -444,7 +444,7 @@ mousepad_document_set_overwrite (MousepadDocument *document,
 void
 mousepad_document_focus_textview (MousepadDocument *document)
 {
-  mousepad_return_if_fail (MOUSEPAD_IS_DOCUMENT (document));
+  g_return_if_fail (MOUSEPAD_IS_DOCUMENT (document));
 
   /* focus the textview */
   gtk_widget_grab_focus (GTK_WIDGET (document->textview));
@@ -455,7 +455,7 @@ mousepad_document_focus_textview (MousepadDocument *document)
 void
 mousepad_document_send_signals (MousepadDocument *document)
 {
-  mousepad_return_if_fail (MOUSEPAD_IS_DOCUMENT (document));
+  g_return_if_fail (MOUSEPAD_IS_DOCUMENT (document));
 
   /* re-send the cursor changed signal */
   mousepad_document_notify_cursor_position (document->buffer, NULL, document);
@@ -540,7 +540,7 @@ mousepad_document_get_basename (MousepadDocument *document)
 {
   static gint untitled_counter = 0;
 
-  mousepad_return_val_if_fail (MOUSEPAD_IS_DOCUMENT (document), NULL);
+  g_return_val_if_fail (MOUSEPAD_IS_DOCUMENT (document), NULL);
 
   /* check if there is a filename set */
   if (document->priv->utf8_basename == NULL)
@@ -557,7 +557,7 @@ mousepad_document_get_basename (MousepadDocument *document)
 const gchar *
 mousepad_document_get_filename (MousepadDocument *document)
 {
-  mousepad_return_val_if_fail (MOUSEPAD_IS_DOCUMENT (document), NULL);
+  g_return_val_if_fail (MOUSEPAD_IS_DOCUMENT (document), NULL);
 
   return document->priv->utf8_filename;
 }

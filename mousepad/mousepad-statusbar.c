@@ -183,7 +183,7 @@ mousepad_statusbar_overwrite_clicked (GtkWidget         *widget,
                                       GdkEventButton    *event,
                                       MousepadStatusbar *statusbar)
 {
-  mousepad_return_val_if_fail (MOUSEPAD_IS_STATUSBAR (statusbar), FALSE);
+  g_return_val_if_fail (MOUSEPAD_IS_STATUSBAR (statusbar), FALSE);
 
   /* only respond on the left button click */
   if (event->type != GDK_BUTTON_PRESS || event->button != 1)
@@ -209,7 +209,7 @@ mousepad_statusbar_filetype_clicked (GtkWidget         *widget,
   GList   *children;
   gint     n_children = 0;
 
-  mousepad_return_val_if_fail (MOUSEPAD_IS_STATUSBAR (statusbar), FALSE);
+  g_return_val_if_fail (MOUSEPAD_IS_STATUSBAR (statusbar), FALSE);
 
   /* only respond on the left button click */
   if (event->type != GDK_BUTTON_PRESS || event->button != 1)
@@ -250,7 +250,7 @@ mousepad_statusbar_set_language (MousepadStatusbar *statusbar,
 {
   gchar *label;
 
-  mousepad_return_if_fail (MOUSEPAD_IS_STATUSBAR (statusbar));
+  g_return_if_fail (MOUSEPAD_IS_STATUSBAR (statusbar));
 
   if (language == NULL)
       gtk_label_set_text (GTK_LABEL (statusbar->language), _("Filetype: None"));
@@ -272,7 +272,7 @@ mousepad_statusbar_set_cursor_position (MousepadStatusbar *statusbar,
 {
   gchar string[64];
 
-  mousepad_return_if_fail (MOUSEPAD_IS_STATUSBAR (statusbar));
+  g_return_if_fail (MOUSEPAD_IS_STATUSBAR (statusbar));
 
   /* create printable string */
   if (G_UNLIKELY (selection > 0))
@@ -290,7 +290,7 @@ void
 mousepad_statusbar_set_overwrite (MousepadStatusbar *statusbar,
                                   gboolean           overwrite)
 {
-  mousepad_return_if_fail (MOUSEPAD_IS_STATUSBAR (statusbar));
+  g_return_if_fail (MOUSEPAD_IS_STATUSBAR (statusbar));
 
   gtk_widget_set_sensitive (statusbar->overwrite, overwrite);
 

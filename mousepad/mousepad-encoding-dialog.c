@@ -22,14 +22,14 @@
 #include <string.h>
 #endif
 
-#include <glib.h>
-#include <glib/gstdio.h>
-
 #include <mousepad/mousepad-private.h>
 #include <mousepad/mousepad-document.h>
 #include <mousepad/mousepad-encoding.h>
 #include <mousepad/mousepad-encoding-dialog.h>
 #include <mousepad/mousepad-util.h>
+
+#include <glib.h>
+#include <glib/gstdio.h>
 
 
 
@@ -474,8 +474,8 @@ mousepad_encoding_dialog_new (GtkWindow    *parent,
 {
   MousepadEncodingDialog *dialog;
 
-  mousepad_return_val_if_fail (GTK_IS_WINDOW (parent), NULL);
-  mousepad_return_val_if_fail (MOUSEPAD_IS_FILE (file), NULL);
+  g_return_val_if_fail (GTK_IS_WINDOW (parent), NULL);
+  g_return_val_if_fail (MOUSEPAD_IS_FILE (file), NULL);
 
   /* create the dialog */
   dialog = g_object_new (MOUSEPAD_TYPE_ENCODING_DIALOG, NULL);
@@ -500,7 +500,7 @@ mousepad_encoding_dialog_new (GtkWindow    *parent,
 MousepadEncoding
 mousepad_encoding_dialog_get_encoding (MousepadEncodingDialog *dialog)
 {
-  mousepad_return_val_if_fail (MOUSEPAD_IS_ENCODING_DIALOG (dialog), MOUSEPAD_ENCODING_NONE);
+  g_return_val_if_fail (MOUSEPAD_IS_ENCODING_DIALOG (dialog), MOUSEPAD_ENCODING_NONE);
 
   return mousepad_file_get_encoding (dialog->document->file);
 }
@@ -510,7 +510,7 @@ mousepad_encoding_dialog_get_encoding (MousepadEncodingDialog *dialog)
 const gchar *
 mousepad_encoding_dialog_get_encoding_custom (MousepadEncodingDialog *dialog)
 {
-  mousepad_return_val_if_fail (MOUSEPAD_IS_ENCODING_DIALOG (dialog), NULL);
+  g_return_val_if_fail (MOUSEPAD_IS_ENCODING_DIALOG (dialog), NULL);
 
   return NULL;
 }

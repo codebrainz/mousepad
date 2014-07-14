@@ -25,13 +25,13 @@
 #include <unistd.h>
 #endif
 
-#include <dbus/dbus-glib-lowlevel.h>
-#include <dbus/dbus-glib.h>
-#include <dbus/dbus.h>
-
 #include <mousepad/mousepad-private.h>
 #include <mousepad/mousepad-dbus.h>
 #include <mousepad/mousepad-application.h>
+
+#include <dbus/dbus-glib-lowlevel.h>
+#include <dbus/dbus-glib.h>
+#include <dbus/dbus.h>
 
 
 
@@ -157,8 +157,8 @@ mousepad_dbus_service_launch_files (MousepadDBusService  *dbus_service,
 {
   MousepadApplication *application;
 
-  mousepad_return_val_if_fail (g_path_is_absolute (working_directory), FALSE);
-  mousepad_return_val_if_fail (error == NULL || *error == NULL, FALSE);
+  g_return_val_if_fail (g_path_is_absolute (working_directory), FALSE);
+  g_return_val_if_fail (error == NULL || *error == NULL, FALSE);
 
   /* open a mousepad window */
   application = mousepad_application_get ();
@@ -268,7 +268,7 @@ mousepad_dbus_client_terminate (GError **error)
 {
   DBusMessage *message;
 
-  mousepad_return_val_if_fail (error == NULL || *error == NULL, FALSE);
+  g_return_val_if_fail (error == NULL || *error == NULL, FALSE);
 
   /* generate the message */
   message = dbus_message_new_method_call (MOUSEPAD_DBUS_INTERFACE, MOUSEPAD_DBUS_PATH,
@@ -311,8 +311,8 @@ mousepad_dbus_client_launch_files (gchar       **filenames,
   guint        length = 0;
   gboolean     succeed;
 
-  mousepad_return_val_if_fail (g_path_is_absolute (working_directory), FALSE);
-  mousepad_return_val_if_fail (error == NULL || *error == NULL, FALSE);
+  g_return_val_if_fail (g_path_is_absolute (working_directory), FALSE);
+  g_return_val_if_fail (error == NULL || *error == NULL, FALSE);
 
   /* get the length of the filesname string */
   if (filenames)

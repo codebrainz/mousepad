@@ -277,8 +277,8 @@ mousepad_replace_dialog_unrealize (GtkWidget *widget)
   MousepadReplaceDialog *dialog = MOUSEPAD_REPLACE_DIALOG (widget);
   const gchar           *text;
 
-  mousepad_return_if_fail (GTK_IS_ENTRY (dialog->replace_entry));
-  mousepad_return_if_fail (GTK_IS_ENTRY (dialog->search_entry));
+  g_return_if_fail (GTK_IS_ENTRY (dialog->replace_entry));
+  g_return_if_fail (GTK_IS_ENTRY (dialog->search_entry));
 
   text = gtk_entry_get_text (GTK_ENTRY (dialog->search_entry));
   mousepad_replace_dialog_history_insert_text (text);
@@ -500,7 +500,7 @@ mousepad_replace_dialog_history_combo_box (GtkComboBox *combo_box)
 {
   GSList *li;
 
-  mousepad_return_if_fail (GTK_IS_COMBO_BOX (combo_box));
+  g_return_if_fail (GTK_IS_COMBO_BOX (combo_box));
 
   /* append the items from the history to the combobox */
   for (li = history_list; li != NULL; li = li->next)

@@ -17,6 +17,11 @@
 #ifndef __MOUSEPAD_PRIVATE_H__
 #define __MOUSEPAD_PRIVATE_H__
 
+#ifdef NDEBUG
+#define G_DISABLE_CHECKS
+#define G_DISABLE_ASSERT
+#endif
+
 #include <glib.h>
 #include <glib-object.h>
 #include <gtk/gtk.h>
@@ -67,19 +72,6 @@ enum
 #define mousepad_object_set_data_full(object,key,data,destroy) (g_object_set_qdata_full ((object), \
                                                                 g_quark_from_static_string (key), (data), (GDestroyNotify) (destroy)))
 #define mousepad_object_get_data(object,key)                   (g_object_get_qdata ((object), g_quark_try_string (key)))
-
-/* support macros for debugging */
-#ifndef NDEBUG
-#define mousepad_assert(expr)                  g_assert (expr)
-#define mousepad_assert_not_reached()          g_assert_not_reached ()
-#define mousepad_return_if_fail(expr)          g_return_if_fail (expr)
-#define mousepad_return_val_if_fail(expr, val) g_return_val_if_fail (expr, (val))
-#else
-#define mousepad_assert(expr)                  G_STMT_START{ (void)0; }G_STMT_END
-#define mousepad_assert_not_reached()          G_STMT_START{ (void)0; }G_STMT_END
-#define mousepad_return_if_fail(expr)          G_STMT_START{ (void)0; }G_STMT_END
-#define mousepad_return_val_if_fail(expr, val) G_STMT_START{ (void)0; }G_STMT_END
-#endif
 
 /* avoid trivial g_value_get_*() function calls */
 #ifdef NDEBUG
