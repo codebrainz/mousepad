@@ -82,7 +82,7 @@ gboolean mousepad_setting_bind           (const gchar       *path,
 gulong   mousepad_setting_connect        (const gchar       *path,
                                           GCallback          callback,
                                           gpointer           user_data,
-                                          GSignalFlags       connect_flags);
+                                          GConnectFlags      connect_flags);
 
 gulong   mousepad_setting_connect_object (const gchar       *path,
                                           GCallback          callback,

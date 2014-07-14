@@ -90,10 +90,10 @@ mousepad_setting_bind (const gchar       *path,
 
 
 gulong
-mousepad_setting_connect (const gchar  *path,
-                           GCallback    callback,
-                           gpointer     user_data,
-                           GSignalFlags connect_flags)
+mousepad_setting_connect (const gchar   *path,
+                           GCallback     callback,
+                           gpointer      user_data,
+                           GConnectFlags connect_flags)
 {
   gulong       signal_id = 0;
   const gchar *key_name = NULL;
