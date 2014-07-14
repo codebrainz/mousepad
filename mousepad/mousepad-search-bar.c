@@ -163,6 +163,7 @@ mousepad_search_bar_class_init (MousepadSearchBarClass *klass)
                    G_TYPE_NONE, 0);
       binding_set = gtk_binding_set_by_class(entry_class);
       gtk_binding_entry_add_signal(binding_set, GDK_Return, GDK_SHIFT_MASK, "activate-backward", 0);
+      gtk_binding_entry_add_signal(binding_set, GDK_KP_Enter, GDK_SHIFT_MASK, "activate-backward", 0);
     }
   g_type_class_unref (entry_class);
 }
