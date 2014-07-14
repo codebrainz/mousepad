@@ -122,6 +122,28 @@ enum
 #define mousepad_widget_set_tooltip_text(widget,text) (mousepad_util_set_tooltip (widget, text))
 #endif
 
+/* GLib does some questionable (ie. non-standard) stuff when passing function
+ * pointers as void pointers and such. This dirty little hack will at least
+ * squelch warnings about it so we can easily see warnings that we can
+ * actually fix in our code. */
+static inline guint
+mousepad_disconnect_by_func_ (gpointer  instance,
+                              GCallback callback,
+                              gpointer  data)
+{
+  union {
+      gpointer  ptr;
+      GCallback callback;
+  } bad_stuff;
+  /* we'll set it in the union as a GCallback type */
+  bad_stuff.callback = callback;
+  /* but we'll use it via the gpointer type */
+  return g_signal_handlers_disconnect_by_func (instance, bad_stuff.ptr, data);
+}
+
+#define mousepad_disconnect_by_func(instance, callback, data) \
+  mousepad_disconnect_by_func_ (instance, G_CALLBACK (callback), data)
+
 G_END_DECLS
 
 #endif /* !__MOUSEPAD_PRIVATE_H__ */

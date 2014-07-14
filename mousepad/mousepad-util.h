@@ -21,9 +21,7 @@ G_BEGIN_DECLS
 
 #define MOUSEPAD_TYPE_SEARCH_FLAGS (mousepad_util_search_flags_get_type ())
 
-typedef enum _MousepadSearchFlags MousepadSearchFlags;
-
-enum _MousepadSearchFlags
+typedef enum
 {
   /* search area */
   MOUSEPAD_SEARCH_FLAGS_AREA_DOCUMENT     = 1 << 0,  /* search the entire document */
@@ -53,7 +51,8 @@ enum _MousepadSearchFlags
   MOUSEPAD_SEARCH_FLAGS_ACTION_CLEANUP    = 1 << 15, /* cleanup the highlighted occurences */
   MOUSEPAD_SEARCH_FLAGS_ACTION_SELECT     = 1 << 16, /* select the match */
   MOUSEPAD_SEARCH_FLAGS_ACTION_REPLACE    = 1 << 17, /* replace the match */
-};
+}
+MousepadSearchFlags;
 
 gboolean   mousepad_util_iter_starts_word                 (const GtkTextIter   *iter);
 

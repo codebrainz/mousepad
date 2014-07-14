@@ -152,7 +152,7 @@ enum
 
 
 
-G_DEFINE_TYPE (MousepadView, mousepad_view, GTK_TYPE_SOURCE_VIEW);
+G_DEFINE_TYPE (MousepadView, mousepad_view, GTK_TYPE_SOURCE_VIEW)
 
 
 

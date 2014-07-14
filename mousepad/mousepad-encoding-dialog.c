@@ -94,7 +94,7 @@ struct _MousepadEncodingDialog
 
 
 
-G_DEFINE_TYPE (MousepadEncodingDialog, mousepad_encoding_dialog, GTK_TYPE_DIALOG);
+G_DEFINE_TYPE (MousepadEncodingDialog, mousepad_encoding_dialog, GTK_TYPE_DIALOG)
 
 
 

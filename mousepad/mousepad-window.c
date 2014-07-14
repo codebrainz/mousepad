@@ -506,7 +506,7 @@ static guint   clipboard_history_ref_count = 0;
 
 
 
-G_DEFINE_TYPE (MousepadWindow, mousepad_window, GTK_TYPE_WINDOW);
+G_DEFINE_TYPE (MousepadWindow, mousepad_window, GTK_TYPE_WINDOW)
 
 
 
@@ -1127,7 +1127,7 @@ mousepad_window_dispose (GObject *object)
 
   /* disconnect recent manager signal */
   if (G_LIKELY (window->recent_manager))
-    g_signal_handlers_disconnect_by_func (G_OBJECT (window->recent_manager), mousepad_window_recent_menu, window);
+    mousepad_disconnect_by_func (G_OBJECT (window->recent_manager), mousepad_window_recent_menu, window);
 
   /* destroy the save geometry timer source */
   if (G_UNLIKELY (window->save_geometry_timer_id != 0))
@@ -1256,8 +1256,8 @@ mousepad_window_disconnect_proxy (GtkUIManager   *manager,
   if (GTK_IS_MENU_ITEM (proxy))
     {
       /* disconnect from the select/deselect signals */
-      g_signal_handlers_disconnect_by_func (proxy, mousepad_window_menu_item_selected, window);
-      g_signal_handlers_disconnect_by_func (proxy, mousepad_window_menu_item_deselected, window);
+      mousepad_disconnect_by_func (proxy, mousepad_window_menu_item_selected, window);
+      mousepad_disconnect_by_func (proxy, mousepad_window_menu_item_deselected, window);
     }
   else if (GTK_IS_TOOL_ITEM (proxy))
     {
@@ -1267,10 +1267,10 @@ mousepad_window_disconnect_proxy (GtkUIManager   *manager,
       child = gtk_bin_get_child (GTK_BIN (proxy));
 
       /* disconnect from the gdk window event signals */
-      g_signal_handlers_disconnect_by_func (child, mousepad_window_tool_item_enter_event, window);
-      g_signal_handlers_disconnect_by_func (child, mousepad_window_tool_item_leave_event, window);
-      g_signal_handlers_disconnect_by_func (child, mousepad_window_tool_item_enter_event, window);
-      g_signal_handlers_disconnect_by_func (child, mousepad_window_tool_item_leave_event, window);
+      mousepad_disconnect_by_func (child, mousepad_window_tool_item_enter_event, window);
+      mousepad_disconnect_by_func (child, mousepad_window_tool_item_leave_event, window);
+      mousepad_disconnect_by_func (child, mousepad_window_tool_item_enter_event, window);
+      mousepad_disconnect_by_func (child, mousepad_window_tool_item_leave_event, window);
     }
 }
 
@@ -1882,16 +1882,16 @@ mousepad_window_notebook_removed (GtkNotebook     *notebook,
   mousepad_return_if_fail (GTK_IS_NOTEBOOK (notebook));
 
   /* disconnect the old document signals */
-  g_signal_handlers_disconnect_by_func (G_OBJECT (page), mousepad_window_button_close_tab, window);
-  g_signal_handlers_disconnect_by_func (G_OBJECT (page), mousepad_window_cursor_changed, window);
-  g_signal_handlers_disconnect_by_func (G_OBJECT (page), mousepad_window_selection_changed, window);
-  g_signal_handlers_disconnect_by_func (G_OBJECT (page), mousepad_window_overwrite_changed, window);
-  g_signal_handlers_disconnect_by_func (G_OBJECT (page), mousepad_window_buffer_language_changed, window);
-  g_signal_handlers_disconnect_by_func (G_OBJECT (page), mousepad_window_drag_data_received, window);
-  g_signal_handlers_disconnect_by_func (G_OBJECT (document->buffer), mousepad_window_can_undo, window);
-  g_signal_handlers_disconnect_by_func (G_OBJECT (document->buffer), mousepad_window_can_redo, window);
-  g_signal_handlers_disconnect_by_func (G_OBJECT (document->buffer), mousepad_window_modified_changed, window);
-  g_signal_handlers_disconnect_by_func (G_OBJECT (document->textview), mousepad_window_menu_textview_popup, window);
+  mousepad_disconnect_by_func (G_OBJECT (page), mousepad_window_button_close_tab, window);
+  mousepad_disconnect_by_func (G_OBJECT (page), mousepad_window_cursor_changed, window);
+  mousepad_disconnect_by_func (G_OBJECT (page), mousepad_window_selection_changed, window);
+  mousepad_disconnect_by_func (G_OBJECT (page), mousepad_window_overwrite_changed, window);
+  mousepad_disconnect_by_func (G_OBJECT (page), mousepad_window_buffer_language_changed, window);
+  mousepad_disconnect_by_func (G_OBJECT (page), mousepad_window_drag_data_received, window);
+  mousepad_disconnect_by_func (G_OBJECT (document->buffer), mousepad_window_can_undo, window);
+  mousepad_disconnect_by_func (G_OBJECT (document->buffer), mousepad_window_can_redo, window);
+  mousepad_disconnect_by_func (G_OBJECT (document->buffer), mousepad_window_modified_changed, window);
+  mousepad_disconnect_by_func (G_OBJECT (document->textview), mousepad_window_menu_textview_popup, window);
 
   /* unset the go menu item (part of the old window) */
   mousepad_object_set_data (G_OBJECT (page), "document-menu-action", NULL);
@@ -2515,7 +2515,7 @@ mousepad_window_menu_textview_deactivate (GtkWidget   *menu,
   mousepad_return_if_fail (textview->popup_menu == menu);
 
   /* disconnect this signal */
-  g_signal_handlers_disconnect_by_func (G_OBJECT (menu), mousepad_window_menu_textview_deactivate, textview);
+  mousepad_disconnect_by_func (G_OBJECT (menu), mousepad_window_menu_textview_deactivate, textview);
 
   /* unset the popup menu since your menu is owned by the ui manager */
   GTK_TEXT_VIEW (textview)->popup_menu = NULL;
@@ -4713,7 +4713,7 @@ mousepad_window_action_replace_destroy (MousepadWindow *window)
   mousepad_return_if_fail (MOUSEPAD_IS_WINDOW (window));
 
   /* disconnect tab switch signal */
-  g_signal_handlers_disconnect_by_func (G_OBJECT (window->notebook), mousepad_window_action_replace_switch_page, window);
+  mousepad_disconnect_by_func (G_OBJECT (window->notebook), mousepad_window_action_replace_switch_page, window);
 
   /* reset the dialog variable */
   window->replace_dialog = NULL;

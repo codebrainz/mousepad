@@ -103,7 +103,7 @@ mousepad_search_bar_new (void)
 
 
 
-G_DEFINE_TYPE (MousepadSearchBar, mousepad_search_bar, GTK_TYPE_TOOLBAR);
+G_DEFINE_TYPE (MousepadSearchBar, mousepad_search_bar, GTK_TYPE_TOOLBAR)
 
 
 

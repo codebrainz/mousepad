@@ -89,7 +89,7 @@ struct _MousepadPrint
 
 
 
-G_DEFINE_TYPE (MousepadPrint, mousepad_print, GTK_TYPE_PRINT_OPERATION);
+G_DEFINE_TYPE (MousepadPrint, mousepad_print, GTK_TYPE_PRINT_OPERATION)
 
 
 

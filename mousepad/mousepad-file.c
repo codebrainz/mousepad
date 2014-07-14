@@ -99,7 +99,7 @@ static guint file_signals[LAST_SIGNAL];
 
 
 
-G_DEFINE_TYPE (MousepadFile, mousepad_file, G_TYPE_OBJECT);
+G_DEFINE_TYPE (MousepadFile, mousepad_file, G_TYPE_OBJECT)
 
 
 

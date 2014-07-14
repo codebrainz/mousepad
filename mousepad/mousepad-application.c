@@ -25,6 +25,7 @@
 #include <mousepad/mousepad-prefs-dialog.h>
 #include <mousepad/mousepad-replace-dialog.h>
 #include <mousepad/mousepad-window.h>
+#include <mousepad/mousepad-private.h>
 
 
 
@@ -60,7 +61,7 @@ struct _MousepadApplication
 
 
 
-G_DEFINE_TYPE (MousepadApplication, mousepad_application, G_TYPE_OBJECT);
+G_DEFINE_TYPE (MousepadApplication, mousepad_application, G_TYPE_OBJECT)
 
 
 
@@ -126,7 +127,7 @@ mousepad_application_finalize (GObject *object)
   /* destroy the windows if they are still opened */
   for (li = application->windows; li != NULL; li = li->next)
     {
-      g_signal_handlers_disconnect_by_func (G_OBJECT (li->data), G_CALLBACK (mousepad_application_window_destroyed), application);
+      mousepad_disconnect_by_func (G_OBJECT (li->data), mousepad_application_window_destroyed, application);
       gtk_widget_destroy (GTK_WIDGET (li->data));
     }
 

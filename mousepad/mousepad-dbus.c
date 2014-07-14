@@ -69,7 +69,7 @@ struct _MousepadDBusService
 
 
 
-G_DEFINE_TYPE (MousepadDBusService, mousepad_dbus_service, G_TYPE_OBJECT);
+G_DEFINE_TYPE (MousepadDBusService, mousepad_dbus_service, G_TYPE_OBJECT)
 
 
 

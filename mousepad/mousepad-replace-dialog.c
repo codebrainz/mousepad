@@ -90,7 +90,7 @@ static guint   dialog_signals[LAST_SIGNAL];
 
 
 
-G_DEFINE_TYPE (MousepadReplaceDialog, mousepad_replace_dialog, GTK_TYPE_DIALOG);
+G_DEFINE_TYPE (MousepadReplaceDialog, mousepad_replace_dialog, GTK_TYPE_DIALOG)
 
 
 static void

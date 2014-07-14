@@ -112,7 +112,7 @@ mousepad_document_new (void)
 
 
 
-G_DEFINE_TYPE (MousepadDocument, mousepad_document, GTK_TYPE_SCROLLED_WINDOW);
+G_DEFINE_TYPE (MousepadDocument, mousepad_document, GTK_TYPE_SCROLLED_WINDOW)
 
 
 

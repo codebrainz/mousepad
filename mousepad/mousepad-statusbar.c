@@ -66,7 +66,7 @@ static guint statusbar_signals[LAST_SIGNAL];
 
 
 
-G_DEFINE_TYPE (MousepadStatusbar, mousepad_statusbar, GTK_TYPE_STATUSBAR);
+G_DEFINE_TYPE (MousepadStatusbar, mousepad_statusbar, GTK_TYPE_STATUSBAR)
 
 
 
