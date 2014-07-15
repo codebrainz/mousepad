@@ -2196,6 +2196,7 @@ mousepad_window_menu_templates_fill (MousepadWindow *window,
   gchar       *absolute_path;
   gchar       *label, *dot;
   const gchar *name;
+  gboolean     files_added = FALSE;
   GtkWidget   *item, *image, *submenu;
 
   /* open the directory */
@@ -2300,6 +2301,9 @@ mousepad_window_menu_templates_fill (MousepadWindow *window,
       gtk_image_menu_item_set_image (GTK_IMAGE_MENU_ITEM (item), image);
       gtk_widget_show (image);
 
+      /* disable the menu item telling the user there's no templates */
+      files_added = TRUE;
+
       /* cleanup */
       g_free (label);
     }
@@ -2307,6 +2311,19 @@ mousepad_window_menu_templates_fill (MousepadWindow *window,
   /* cleanup */
   g_slist_free (dirs_list);
   g_slist_free (files_list);
+
+  if (! files_added)
+    {
+      gchar *msg;
+      
+      msg = g_strdup_printf (_("No template files found in\n'%s'"), path);
+      item = gtk_menu_item_new_with_label (msg);
+      g_free (msg);
+      
+      gtk_widget_set_sensitive (item, FALSE);
+      gtk_menu_shell_append (GTK_MENU_SHELL (menu), item);
+      gtk_widget_show (item);
+    }
 }
 
 
@@ -2345,11 +2362,8 @@ mousepad_window_menu_templates (GtkWidget      *item,
       /* fill the menu */
       mousepad_window_menu_templates_fill (window, submenu, templates_path);
 
-      /* set the submenu if it contains items, else hide the item */
-      if (G_LIKELY (GTK_MENU_SHELL (submenu)->children != NULL))
-        gtk_menu_item_set_submenu (GTK_MENU_ITEM (item), submenu);
-      else
-        gtk_widget_hide (item);
+      /* set the submenu */
+      gtk_menu_item_set_submenu (GTK_MENU_ITEM (item), submenu);
 
       /* release */
       g_object_unref (G_OBJECT (submenu));
