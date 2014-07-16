@@ -15,6 +15,7 @@
  */
 
 #include <mousepad/mousepad-private.h>
+#include <mousepad/mousepad-gtkcompat.h>
 #include <mousepad/mousepad-settings.h>
 #include <mousepad/mousepad-marshal.h>
 #include <mousepad/mousepad-document.h>
@@ -23,7 +24,6 @@
 #include <mousepad/mousepad-window.h>
 
 #include <gdk/gdk.h>
-#include <gdk/gdkkeysyms.h>
 
 
 
