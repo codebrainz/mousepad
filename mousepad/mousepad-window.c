@@ -4622,7 +4622,7 @@ mousepad_window_action_find (GtkAction      *action,
     }
 
   /* set the search entry text if the search bar is hidden*/
-  if (GTK_WIDGET_VISIBLE (window->search_bar) == FALSE)
+  if (gtk_widget_get_visible (window->search_bar) == FALSE)
     {
       if (gtk_text_buffer_get_has_selection (window->active->buffer) == TRUE)
         {
