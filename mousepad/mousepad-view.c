@@ -20,6 +20,7 @@
 #include <mousepad/mousepad-util.h>
 #include <mousepad/mousepad-view.h>
 
+#include <gtksourceview/gtksourcebuffer.h>
 #include <gtksourceview/gtksourceview.h>
 #include <gtksourceview/gtksourcestylescheme.h>
 #include <gtksourceview/gtksourcestyleschememanager.h>
@@ -161,7 +162,7 @@ enum
 
 
 
-G_DEFINE_TYPE (MousepadView, mousepad_view, GTK_TYPE_SOURCE_VIEW)
+G_DEFINE_TYPE (MousepadView, mousepad_view, GTK_SOURCE_TYPE_VIEW)
 
 
 
@@ -250,7 +251,7 @@ mousepad_view_buffer_changed (MousepadView *view,
   GtkSourceBuffer *buffer;
 
   buffer = (GtkSourceBuffer*) gtk_text_view_get_buffer (GTK_TEXT_VIEW (view));
-  if (GTK_IS_SOURCE_BUFFER (buffer))
+  if (GTK_SOURCE_IS_BUFFER (buffer))
     {
       GtkSourceStyleSchemeManager *manager;
       GtkSourceStyleScheme        *scheme;

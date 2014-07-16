@@ -15,6 +15,7 @@
  */
 
 #include <mousepad/mousepad-private.h>
+#include <mousepad/mousepad-gtkcompat.h>
 #include <mousepad/mousepad-document.h>
 #include <mousepad/mousepad-encoding.h>
 #include <mousepad/mousepad-encoding-dialog.h>

@@ -15,6 +15,7 @@
  */
 
 #include <mousepad/mousepad-private.h>
+#include <mousepad/mousepad-gtkcompat.h>
 #include <mousepad/mousepad-style-scheme-action.h>
 
 #include <glib/gi18n.h>
@@ -81,7 +82,7 @@ mousepad_style_scheme_action_class_init (MousepadStyleSchemeActionClass *klass)
     g_param_spec_object ("style-scheme",
                          "StyleScheme",
                          "The style scheme related to the action",
-                         GTK_TYPE_SOURCE_STYLE_SCHEME,
+                         GTK_SOURCE_TYPE_STYLE_SCHEME,
                          G_PARAM_CONSTRUCT_ONLY | G_PARAM_READWRITE));
 }
 
@@ -96,7 +97,7 @@ mousepad_style_scheme_action_finalize (GObject *object)
 
   self = MOUSEPAD_STYLE_SCHEME_ACTION (object);
 
-  if (GTK_IS_SOURCE_STYLE_SCHEME (self->scheme))
+  if (GTK_SOURCE_IS_STYLE_SCHEME (self->scheme))
     g_object_unref (self->scheme);
 
   G_OBJECT_CLASS (mousepad_style_scheme_action_parent_class)->finalize (object);
@@ -161,7 +162,7 @@ mousepad_style_scheme_action_new (GtkSourceStyleScheme *scheme)
   gchar       *name;
   GtkAction   *action;
 
-  if (GTK_IS_SOURCE_STYLE_SCHEME (scheme))
+  if (GTK_SOURCE_IS_STYLE_SCHEME (scheme))
     scheme_id = gtk_source_style_scheme_get_id (scheme);
   else
     scheme_id = "none";

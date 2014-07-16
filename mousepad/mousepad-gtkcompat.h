@@ -14,6 +14,10 @@ G_BEGIN_DECLS
 #if ! GTK_CHECK_VERSION(2, 24, 0)
 # define gtk_combo_box_text_new_with_entry gtk_combo_box_entry_new_text
 # define gtk_combo_box_text_new            gtk_combo_box_new_text
+# define gtk_combo_box_text_append_text    gtk_combo_box_append_text
+# define GtkComboBoxText                   GtkComboBox
+# define GTK_COMBO_BOX_TEXT                GTK_COMBO_BOX
+# define gtk_notebook_set_group_name       gtk_notebook_set_group
 #endif
 
 #if ! GTK_CHECK_VERSION(3, 0, 0)
@@ -33,6 +37,19 @@ gtk_widget_get_allocated_height (GtkWidget *widget)
   gtk_widget_get_allocation (widget, &alloc);
   return alloc.height;
 }
+#else
+/* Does nothing */
+# define gtk_dialog_set_has_separator(dialog, setting) do { } while (0)
+#endif
+
+/* GtkSourceView3 compatibility */
+#if ! GTK_CHECK_VERSION(3, 0, 0)
+# define GTK_SOURCE_TYPE_LANGUAGE     GTK_TYPE_SOURCE_LANGUAGE
+# define GTK_SOURCE_IS_LANGUAGE       GTK_IS_SOURCE_LANGUAGE
+# define GTK_SOURCE_TYPE_STYLE_SCHEME GTK_TYPE_SOURCE_STYLE_SCHEME
+# define GTK_SOURCE_IS_STYLE_SCHEME   GTK_IS_SOURCE_STYLE_SCHEME
+# define GTK_SOURCE_IS_BUFFER         GTK_IS_SOURCE_BUFFER
+# define GTK_SOURCE_TYPE_VIEW         GTK_TYPE_SOURCE_VIEW
 #endif
 
 G_END_DECLS

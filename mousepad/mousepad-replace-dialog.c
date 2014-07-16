@@ -33,7 +33,7 @@ static void                 mousepad_replace_dialog_changed             (Mousepa
 static void                 mousepad_replace_dialog_settings_changed    (MousepadReplaceDialog *dialog,
                                                                          gchar                 *key,
                                                                          GSettings             *settings);
-static void                 mousepad_replace_dialog_history_combo_box   (GtkComboBox           *combo_box);
+static void                 mousepad_replace_dialog_history_combo_box   (GtkComboBoxText       *combo_box);
 static void                 mousepad_replace_dialog_history_insert_text (const gchar           *text);
 
 
@@ -209,9 +209,9 @@ mousepad_replace_dialog_init (MousepadReplaceDialog *dialog)
   combo = gtk_combo_box_text_new ();
   gtk_box_pack_start (GTK_BOX (hbox), combo, FALSE, FALSE, 0);
   gtk_label_set_mnemonic_widget (GTK_LABEL(label), combo);
-  gtk_combo_box_append_text (GTK_COMBO_BOX (combo), _("Up"));
-  gtk_combo_box_append_text (GTK_COMBO_BOX (combo), _("Down"));
-  gtk_combo_box_append_text (GTK_COMBO_BOX (combo), _("Both"));
+  gtk_combo_box_text_append_text (GTK_COMBO_BOX_TEXT (combo), _("Up"));
+  gtk_combo_box_text_append_text (GTK_COMBO_BOX_TEXT (combo), _("Down"));
+  gtk_combo_box_text_append_text (GTK_COMBO_BOX_TEXT (combo), _("Both"));
   gtk_widget_show (combo);
 
   mousepad_replace_dialog_bind_setting (dialog, MOUSEPAD_SETTING_SEARCH_DIRECTION, combo, "active");
@@ -246,9 +246,9 @@ mousepad_replace_dialog_init (MousepadReplaceDialog *dialog)
 
   combo = dialog->search_location_combo = gtk_combo_box_text_new ();
   gtk_box_pack_start (GTK_BOX (hbox), combo, FALSE, FALSE, 0);
-  gtk_combo_box_append_text (GTK_COMBO_BOX (combo), _("Selection"));
-  gtk_combo_box_append_text (GTK_COMBO_BOX (combo), _("Document"));
-  gtk_combo_box_append_text (GTK_COMBO_BOX (combo), _("All Documents"));
+  gtk_combo_box_text_append_text (GTK_COMBO_BOX_TEXT (combo), _("Selection"));
+  gtk_combo_box_text_append_text (GTK_COMBO_BOX_TEXT (combo), _("Document"));
+  gtk_combo_box_text_append_text (GTK_COMBO_BOX_TEXT (combo), _("All Documents"));
   gtk_widget_set_sensitive (combo, FALSE);
   gtk_widget_show (combo);
 
@@ -489,7 +489,7 @@ mousepad_replace_dialog_settings_changed (MousepadReplaceDialog *dialog,
  * History functions
  **/
 static void
-mousepad_replace_dialog_history_combo_box (GtkComboBox *combo_box)
+mousepad_replace_dialog_history_combo_box (GtkComboBoxText *combo_box)
 {
   GSList *li;
 
@@ -497,7 +497,7 @@ mousepad_replace_dialog_history_combo_box (GtkComboBox *combo_box)
 
   /* append the items from the history to the combobox */
   for (li = history_list; li != NULL; li = li->next)
-    gtk_combo_box_append_text (combo_box, li->data);
+    gtk_combo_box_text_append_text (combo_box, li->data);
 }
 
 

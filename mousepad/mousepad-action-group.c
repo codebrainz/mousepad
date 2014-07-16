@@ -16,6 +16,7 @@
 
 #include <mousepad/mousepad-private.h>
 #include <mousepad/mousepad-action-group.h>
+#include <mousepad/mousepad-gtkcompat.h>
 #include <mousepad/mousepad-language-action.h>
 #include <mousepad/mousepad-style-scheme-action.h>
 #include <mousepad/mousepad-settings.h>
@@ -124,7 +125,7 @@ mousepad_action_group_class_init (MousepadActionGroupClass *klass)
                 0, NULL, NULL,
                 g_cclosure_marshal_VOID__OBJECT,
                 G_TYPE_NONE, 0,
-                GTK_TYPE_SOURCE_LANGUAGE);
+                GTK_SOURCE_TYPE_LANGUAGE);
 }
 
 
@@ -138,10 +139,10 @@ mousepad_action_group_finalize (GObject *object)
 
   self = MOUSEPAD_ACTION_GROUP (object);
 
-  if (GTK_IS_SOURCE_LANGUAGE (self->active_language))
+  if (GTK_SOURCE_IS_LANGUAGE (self->active_language))
     g_object_unref (self->active_language);
 
-  if (GTK_IS_SOURCE_STYLE_SCHEME (self->active_scheme))
+  if (GTK_SOURCE_IS_STYLE_SCHEME (self->active_scheme))
     g_object_unref (self->active_scheme);
 
   G_OBJECT_CLASS (mousepad_action_group_parent_class)->finalize (object);
@@ -248,10 +249,10 @@ mousepad_action_group_set_active_language (MousepadActionGroup *self,
 
   g_return_if_fail (MOUSEPAD_IS_ACTION_GROUP (self));
 
-  if (GTK_IS_SOURCE_LANGUAGE (self->active_language))
+  if (GTK_SOURCE_IS_LANGUAGE (self->active_language))
     g_object_unref (self->active_language);
 
-  if (GTK_IS_SOURCE_LANGUAGE (language))
+  if (GTK_SOURCE_IS_LANGUAGE (language))
     self->active_language = g_object_ref (language);
   else
     self->active_language = NULL;
@@ -286,10 +287,10 @@ mousepad_action_group_set_active_style_scheme (MousepadActionGroup  *self,
 
   g_return_if_fail (MOUSEPAD_IS_ACTION_GROUP (self));
 
-  if (GTK_IS_SOURCE_STYLE_SCHEME (self->active_scheme))
+  if (GTK_SOURCE_IS_STYLE_SCHEME (self->active_scheme))
     g_object_unref (self->active_scheme);
 
-  if (GTK_IS_SOURCE_STYLE_SCHEME (scheme))
+  if (GTK_SOURCE_IS_STYLE_SCHEME (scheme))
     self->active_scheme = g_object_ref (scheme);
   else
     self->active_scheme = NULL;
@@ -567,7 +568,7 @@ mousepad_action_group_get_language_action (MousepadActionGroup *self,
 
   g_return_val_if_fail (MOUSEPAD_IS_ACTION_GROUP (self), NULL);
 
-  if (GTK_IS_SOURCE_LANGUAGE (language))
+  if (GTK_SOURCE_IS_LANGUAGE (language))
     language_id = gtk_source_language_get_id (language);
   else
     language_id = "none";
@@ -587,9 +588,9 @@ mousepad_action_group_languages_name_compare (gconstpointer a,
 {
   const gchar *name_a, *name_b;
 
-  if (G_UNLIKELY (!GTK_IS_SOURCE_LANGUAGE (a)))
+  if (G_UNLIKELY (!GTK_SOURCE_IS_LANGUAGE (a)))
     return -(a != b);
-  if (G_UNLIKELY (!GTK_IS_SOURCE_LANGUAGE (b)))
+  if (G_UNLIKELY (!GTK_SOURCE_IS_LANGUAGE (b)))
     return a != b;
 
   name_a = gtk_source_language_get_name (GTK_SOURCE_LANGUAGE (a));
@@ -614,7 +615,7 @@ mousepad_action_group_get_sorted_section_names (void)
   while (*languages)
     {
       language = gtk_source_language_manager_get_language (manager, *languages);
-      if (G_LIKELY (GTK_IS_SOURCE_LANGUAGE (language)))
+      if (G_LIKELY (GTK_SOURCE_IS_LANGUAGE (language)))
         {
           /* ensure no duplicates in list */
           if (!g_slist_find_custom (list,
@@ -648,7 +649,7 @@ mousepad_action_group_get_sorted_languages_for_section (const gchar *section)
   while (*languages)
     {
       language = gtk_source_language_manager_get_language (manager, *languages);
-      if (G_LIKELY (GTK_IS_SOURCE_LANGUAGE (language)))
+      if (G_LIKELY (GTK_SOURCE_IS_LANGUAGE (language)))
         {
           /* only get languages in the specified section */
           if (g_strcmp0 (gtk_source_language_get_section (language), section) == 0)
@@ -709,7 +710,7 @@ mousepad_action_group_get_style_scheme_action (MousepadActionGroup  *self,
   const gchar *scheme_id;
   GtkAction   *action;
 
-  if (GTK_IS_SOURCE_STYLE_SCHEME (scheme))
+  if (GTK_SOURCE_IS_STYLE_SCHEME (scheme))
     scheme_id = gtk_source_style_scheme_get_id (scheme);
   else
     scheme_id = "none";
@@ -729,9 +730,9 @@ mousepad_action_group_style_schemes_name_compare (gconstpointer a,
 {
   const gchar *name_a, *name_b;
 
-  if (G_UNLIKELY (!GTK_IS_SOURCE_STYLE_SCHEME (a)))
+  if (G_UNLIKELY (!GTK_SOURCE_IS_STYLE_SCHEME (a)))
     return -(a != b);
-  if (G_UNLIKELY (!GTK_IS_SOURCE_STYLE_SCHEME (b)))
+  if (G_UNLIKELY (!GTK_SOURCE_IS_STYLE_SCHEME (b)))
     return a != b;
 
   name_a = gtk_source_style_scheme_get_name (GTK_SOURCE_STYLE_SCHEME (a));
