@@ -24,6 +24,14 @@
 #include <gtksourceview/gtksourcestylescheme.h>
 #include <gtksourceview/gtksourcestyleschememanager.h>
 
+/* GTK+ 3 removed textview->im_context which is used for multi-selection and
+ * nobody has re-written multi-selection feature to not use this field
+ * so if building with GTK3 or with GSEAL_ENABLE disable the multi-select
+ * feature altogether :( */
+#if ! GTK_CHECK_VERSION(3, 0, 0) && ! defined(GSEAL_ENABLE)
+#define HAVE_MULTISELECT 1
+#endif
+
 
 
 #define MOUSEPAD_VIEW_DEFAULT_FONT "Monospace"
@@ -40,12 +48,15 @@ static void      mousepad_view_get_property                  (GObject           
                                                               guint               prop_id,
                                                               GValue             *value,
                                                               GParamSpec         *pspec);
+#ifdef HAVE_MULTISELECT
 static void      mousepad_view_style_set                     (GtkWidget          *widget,
                                                               GtkStyle           *previous_style);
 static gint      mousepad_view_expose                        (GtkWidget          *widget,
                                                               GdkEventExpose     *event);
+#endif
 static gboolean  mousepad_view_key_press_event               (GtkWidget          *widget,
                                                               GdkEventKey        *event);
+#ifdef HAVE_MULTISELECT
 static gboolean  mousepad_view_button_press_event            (GtkWidget          *widget,
                                                               GdkEventButton     *event);
 static gboolean  mousepad_view_button_release_event          (GtkWidget          *widget,
@@ -67,6 +78,7 @@ static void      mousepad_view_selection_draw                (MousepadView      
 static gboolean  mousepad_view_selection_timeout             (gpointer            user_data);
 static void      mousepad_view_selection_timeout_destroy     (gpointer            user_data);
 static gchar    *mousepad_view_selection_string              (MousepadView       *view);
+#endif
 static void      mousepad_view_indent_increase               (MousepadView       *view,
                                                               GtkTextIter        *iter);
 static void      mousepad_view_indent_decrease               (MousepadView       *view,
@@ -74,8 +86,10 @@ static void      mousepad_view_indent_decrease               (MousepadView      
 static void      mousepad_view_indent_selection              (MousepadView       *view,
                                                               gboolean            increase,
                                                               gboolean            force);
+#ifdef HAVE_MULTISELECT
 static void      mousepad_view_transpose_multi_selection     (GtkTextBuffer       *buffer,
                                                               MousepadView        *view);
+#endif
 static void      mousepad_view_transpose_range               (GtkTextBuffer       *buffer,
                                                               GtkTextIter         *start_iter,
                                                               GtkTextIter         *end_iter);
@@ -163,11 +177,13 @@ mousepad_view_class_init (MousepadViewClass *klass)
   gobject_class->get_property = mousepad_view_get_property;
 
   widget_class = GTK_WIDGET_CLASS (klass);
+  widget_class->key_press_event      = mousepad_view_key_press_event;
+#ifdef HAVE_MUTLISELECT
   widget_class->expose_event         = mousepad_view_expose;
   widget_class->style_set            = mousepad_view_style_set;
-  widget_class->key_press_event      = mousepad_view_key_press_event;
   widget_class->button_press_event   = mousepad_view_button_press_event;
   widget_class->button_release_event = mousepad_view_button_release_event;
+#endif
 
   g_object_class_install_property (
     gobject_class,
@@ -283,8 +299,10 @@ mousepad_view_init (MousepadView *view)
   view->selection_start_x = view->selection_end_x = -1;
   view->selection_start_y = view->selection_end_y = -1;
 
+#ifdef HAVE_MULTISELECT
   g_signal_connect (GTK_TEXT_VIEW (view)->im_context, "commit",
                     G_CALLBACK (mousepad_view_commit_handler), view);
+#endif
 
   /* bind Gsettings */
 #define BIND_(setting, prop) \
@@ -412,6 +430,7 @@ mousepad_view_get_property (GObject    *object,
 
 
 
+#ifdef HAVE_MUTLISELECT
 static gboolean
 mousepad_view_expose (GtkWidget      *widget,
                       GdkEventExpose *event)
@@ -472,6 +491,7 @@ mousepad_view_style_set (GtkWidget *widget,
         mousepad_view_selection_draw (view, FALSE);
     }
 }
+#endif
 
 
 
@@ -484,7 +504,6 @@ mousepad_view_key_press_event (GtkWidget   *widget,
   GtkTextIter    iter;
   GtkTextMark   *cursor;
   guint          modifiers;
-  gboolean       im_handled;
   gboolean       is_editable;
 
   /* get the modifiers state */
@@ -557,13 +576,15 @@ mousepad_view_key_press_event (GtkWidget   *widget,
             /* delete or destroy the selection */
             if (view->selection_length > 0)
               mousepad_view_delete_selection (view);
+#ifdef HAVE_MULTISELECT
             else
               mousepad_view_selection_destroy (view);
-
+#endif
             return TRUE;
           }
         break;
 
+#ifdef HAVE_MULTISELECT
       case GDK_BackSpace:
         if (view->selection_marks != NULL && is_editable)
           {
@@ -573,10 +594,16 @@ mousepad_view_key_press_event (GtkWidget   *widget,
             return TRUE;
           }
         break;
+#endif
 
       default:
+#ifndef HAVE_MULTISELECT
+        break;
+#else
         if (G_UNLIKELY (view->selection_marks != NULL && is_editable))
           {
+            gboolean im_handled;
+
             /* block textview updates (from gtk) */
             gtk_text_view_set_editable (GTK_TEXT_VIEW (view), FALSE);
 
@@ -590,17 +617,21 @@ mousepad_view_key_press_event (GtkWidget   *widget,
             if (im_handled)
               return TRUE;
           }
+#endif
     }
 
+#ifdef HAVE_MULTISELECT
   /* remove the selection when no valid key combination has been pressed */
   if (G_UNLIKELY (view->selection_marks != NULL && event->is_modifier == FALSE))
     mousepad_view_selection_destroy (view);
+#endif
 
   return (*GTK_WIDGET_CLASS (mousepad_view_parent_class)->key_press_event) (widget, event);
 }
 
 
 
+#ifdef HAVE_MULTISELECT
 static void
 mousepad_view_commit_handler (GtkIMContext *context,
                               const gchar  *str,
@@ -701,12 +732,14 @@ mousepad_view_button_release_event (GtkWidget      *widget,
 
   return (*GTK_WIDGET_CLASS (mousepad_view_parent_class)->button_release_event) (widget, event);
 }
+#endif
 
 
 
 /**
  * Selection Functions
  **/
+#ifdef HAVE_MULTISELECT
 static gboolean
 mousepad_view_selection_word_range (const GtkTextIter *iter,
                                     GtkTextIter       *range_start,
@@ -1197,6 +1230,7 @@ mousepad_view_selection_string (MousepadView *view)
   /* return the string */
   return g_string_free (string, FALSE);
 }
+#endif
 
 
 
@@ -1362,6 +1396,7 @@ mousepad_view_scroll_to_cursor (MousepadView *view)
 
 
 
+#ifdef HAVE_MULTISELECT
 static void
 mousepad_view_transpose_multi_selection (GtkTextBuffer *buffer,
                                          MousepadView  *view)
@@ -1412,6 +1447,7 @@ mousepad_view_transpose_multi_selection (GtkTextBuffer *buffer,
   /* free list */
   g_slist_free (strings);
 }
+#endif
 
 
 
@@ -1606,12 +1642,15 @@ mousepad_view_transpose (MousepadView *view)
   /* begin user action */
   gtk_text_buffer_begin_user_action (buffer);
 
+#ifdef HAVE_MULTISELECT
   if (view->selection_marks != NULL)
     {
       /* transpose a multi selection */
       mousepad_view_transpose_multi_selection (buffer, view);
     }
-  else if (gtk_text_buffer_get_selection_bounds (buffer, &sel_start, &sel_end))
+  else
+#endif
+  if (gtk_text_buffer_get_selection_bounds (buffer, &sel_start, &sel_end))
     {
       /* if the selection is not on the same line, include the whole lines */
       if (gtk_text_iter_get_line (&sel_start) == gtk_text_iter_get_line (&sel_end))
@@ -1672,7 +1711,6 @@ mousepad_view_clipboard_cut (MousepadView *view)
 {
   GtkClipboard  *clipboard;
   GtkTextBuffer *buffer;
-  gchar         *string;
 
   g_return_if_fail (MOUSEPAD_IS_VIEW (view));
   g_return_if_fail (mousepad_view_get_selection_length (view, NULL) > 0);
@@ -1680,8 +1718,11 @@ mousepad_view_clipboard_cut (MousepadView *view)
   /* get the clipboard */
   clipboard = gtk_widget_get_clipboard (GTK_WIDGET (view), GDK_SELECTION_CLIPBOARD);
 
+#ifdef HAVE_MULTISELECT
   if (view->selection_marks != NULL)
     {
+      gchar *string;
+
       /* get the selection string */
       string = mousepad_view_selection_string (view);
 
@@ -1698,6 +1739,7 @@ mousepad_view_clipboard_cut (MousepadView *view)
       mousepad_view_selection_destroy (view);
     }
   else
+#endif
     {
       /* get the buffer */
       buffer = mousepad_view_get_buffer (view);
@@ -1717,7 +1759,6 @@ mousepad_view_clipboard_copy (MousepadView *view)
 {
   GtkClipboard  *clipboard;
   GtkTextBuffer *buffer;
-  gchar         *string;
 
   g_return_if_fail (MOUSEPAD_IS_VIEW (view));
   g_return_if_fail (mousepad_view_get_selection_length (view, NULL) > 0);
@@ -1725,8 +1766,11 @@ mousepad_view_clipboard_copy (MousepadView *view)
   /* get the clipboard */
   clipboard = gtk_widget_get_clipboard (GTK_WIDGET (view), GDK_SELECTION_CLIPBOARD);
 
+#ifdef HAVE_MULTISELECT
   if (view->selection_marks != NULL)
     {
+      gchar *string;
+
       /* get the selection string */
       string = mousepad_view_selection_string (view);
 
@@ -1737,6 +1781,7 @@ mousepad_view_clipboard_copy (MousepadView *view)
       g_free (string);
     }
   else
+#endif
     {
       /* get the buffer */
       buffer = mousepad_view_get_buffer (view);
@@ -1866,6 +1911,7 @@ mousepad_view_delete_selection (MousepadView *view)
   g_return_if_fail (MOUSEPAD_IS_VIEW (view));
   g_return_if_fail (mousepad_view_get_selection_length (view, NULL) > 0);
 
+#ifdef HAVE_MULTISELECT
   if (view->selection_marks != NULL)
     {
       /* remove the text in our selection */
@@ -1875,6 +1921,7 @@ mousepad_view_delete_selection (MousepadView *view)
       mousepad_view_selection_destroy (view);
     }
   else
+#endif
     {
       /* get the buffer */
       buffer = mousepad_view_get_buffer (view);
@@ -1897,9 +1944,11 @@ mousepad_view_select_all (MousepadView *view)
 
   g_return_if_fail (MOUSEPAD_IS_VIEW (view));
 
+#ifdef HAVE_MULTISELECT
   /* cleanup our selection */
   if (view->selection_marks != NULL)
     mousepad_view_selection_destroy (view);
+#endif
 
   /* get the buffer */
   buffer = mousepad_view_get_buffer (view);
@@ -1916,6 +1965,7 @@ mousepad_view_select_all (MousepadView *view)
 void
 mousepad_view_change_selection (MousepadView *view)
 {
+#ifdef HAVE_MULTISELECT
   GtkTextBuffer *buffer;
   GtkTextIter    start_iter, end_iter;
   GdkRectangle   rect;
@@ -1970,6 +2020,7 @@ mousepad_view_change_selection (MousepadView *view)
 
   /* allow notifications again */
   g_object_thaw_notify (G_OBJECT (buffer));
+#endif
 }
 
 
@@ -2076,11 +2127,13 @@ mousepad_view_convert_selection_case (MousepadView *view,
       /* select range */
       gtk_text_buffer_select_range (buffer, &end_iter, &start_iter);
     }
+#ifdef HAVE_MULTISELECT
   else
     {
       /* redraw column selection */
       mousepad_view_selection_draw (view, FALSE);
     }
+#endif
 
   /* end user action */
   gtk_text_buffer_end_user_action (buffer);

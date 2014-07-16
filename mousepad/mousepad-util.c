@@ -413,10 +413,13 @@ mousepad_util_dialog_header (GtkDialog   *dialog,
   gchar     *full_title;
   GtkWidget *vbox, *ebox, *hbox;
   GtkWidget *icon, *label, *line;
+  GtkWidget *dialog_vbox;
+  GtkStyle  *style;
 
   /* remove the main vbox */
-  g_object_ref (G_OBJECT (dialog->vbox));
-  gtk_container_remove (GTK_CONTAINER (dialog), dialog->vbox);
+  dialog_vbox = gtk_bin_get_child (GTK_BIN (dialog));
+  g_object_ref (G_OBJECT (dialog_vbox));
+  gtk_container_remove (GTK_CONTAINER (dialog), dialog_vbox);
 
   /* add a new vbox to the main window */
   vbox = gtk_vbox_new (FALSE, 0);
@@ -426,7 +429,8 @@ mousepad_util_dialog_header (GtkDialog   *dialog,
   /* event box for the background color */
   ebox = gtk_event_box_new ();
   gtk_box_pack_start (GTK_BOX (vbox), ebox, FALSE, FALSE, 0);
-  gtk_widget_modify_bg (ebox, GTK_STATE_NORMAL, &ebox->style->base[GTK_STATE_NORMAL]);
+  style = gtk_widget_get_style (ebox);
+  gtk_widget_modify_bg (ebox, GTK_STATE_NORMAL, &style->base[GTK_STATE_NORMAL]);
   gtk_widget_show (ebox);
 
   /* create a hbox */
@@ -459,8 +463,8 @@ mousepad_util_dialog_header (GtkDialog   *dialog,
   gtk_widget_show (line);
 
   /* add the main dialog box to the new vbox */
-  gtk_box_pack_start (GTK_BOX (vbox), GTK_DIALOG (dialog)->vbox, TRUE, TRUE, 0);
-  g_object_unref (G_OBJECT (GTK_DIALOG (dialog)->vbox));
+  gtk_box_pack_start (GTK_BOX (vbox), dialog_vbox, TRUE, TRUE, 0);
+  g_object_unref (G_OBJECT (dialog_vbox));
 }
 
 
@@ -1094,4 +1098,67 @@ mousepad_util_icon_for_mime_type (const gchar *mime_type)
     icon = g_content_type_get_icon (content_type);
 
   return icon;
+}
+
+
+
+static void
+mousepad_util_container_foreach_counter (GtkWidget *widget,
+                                         guint     *n_children)
+{
+  *n_children++;
+}
+
+
+
+gboolean
+mousepad_util_container_has_children (GtkContainer *container)
+{
+  guint n_children = 0;
+
+  g_return_val_if_fail (GTK_IS_CONTAINER (container), FALSE);
+
+  gtk_container_foreach (container,
+                         (GtkCallback) mousepad_util_container_foreach_counter,
+                         &n_children);
+
+  return (n_children > 0);
+}
+
+
+void
+mousepad_util_container_clear (GtkContainer *container)
+{
+  GList *list, *iter;
+
+  g_return_if_fail (GTK_IS_CONTAINER (container));
+
+  list = gtk_container_get_children (container);
+
+  for (iter = list; iter != NULL; iter = g_list_next (iter))
+    gtk_container_remove (container, iter->data);
+
+  g_list_free (list);
+}
+
+
+
+void
+mousepad_util_container_move_children (GtkContainer *source,
+                                       GtkContainer *destination)
+{
+  GList *list, *iter;
+
+  list = gtk_container_get_children (source);
+
+  for (iter = list; iter != NULL; iter = g_list_next (iter))
+    {
+      GtkWidget *tmp = g_object_ref (iter->data);
+
+      gtk_container_remove (source, tmp);
+      gtk_container_add (destination, tmp);
+      g_object_unref (tmp);
+    }
+
+  g_list_free (list);
 }

@@ -21,6 +21,7 @@
 #include <mousepad/mousepad-marshal.h>
 #include <mousepad/mousepad-document.h>
 #include <mousepad/mousepad-dialogs.h>
+#include <mousepad/mousepad-gtkcompat.h>
 #include <mousepad/mousepad-replace-dialog.h>
 #include <mousepad/mousepad-encoding-dialog.h>
 #include <mousepad/mousepad-search-bar.h>
@@ -169,7 +170,7 @@ static void              mousepad_window_menu_templates               (GtkWidget
 static void              mousepad_window_menu_tab_sizes               (MousepadWindow         *window);
 static void              mousepad_window_menu_tab_sizes_update        (MousepadWindow         *window);
 static void              mousepad_window_menu_textview_deactivate     (GtkWidget              *menu,
-                                                                       GtkTextView            *textview);
+                                                                       MousepadWindow         *window);
 static void              mousepad_window_menu_textview_popup          (GtkTextView            *textview,
                                                                        GtkMenu                *old_menu,
                                                                        MousepadWindow         *window);
@@ -1162,12 +1163,15 @@ mousepad_window_configure_event (GtkWidget         *widget,
                                  GdkEventConfigure *event)
 {
   MousepadWindow *window = MOUSEPAD_WINDOW (widget);
+  GtkAllocation   alloc = { 0, 0, 0, 0 };
+
+  gtk_widget_get_allocation (widget, &alloc);
 
   /* check if we have a new dimension here */
-  if (widget->allocation.width != event->width ||
-      widget->allocation.height != event->height ||
-      widget->allocation.x != event->x ||
-      widget->allocation.y != event->y)
+  if (alloc.width != event->width ||
+      alloc.height != event->height ||
+      alloc.x != event->x ||
+      alloc.y != event->y)
     {
       /* drop any previous timer source */
       if (window->save_geometry_timer_id > 0)
@@ -1325,7 +1329,7 @@ mousepad_window_save_geometry_timer (gpointer user_data)
       if (gtk_widget_get_visible (GTK_WIDGET(window)))
         {
           /* determine the current state of the window */
-          state = gdk_window_get_state (GTK_WIDGET (window)->window);
+          state = gdk_window_get_state (gtk_widget_get_window (GTK_WIDGET (window)));
 
           /* don't save geometry for maximized or fullscreen windows */
           if ((state & (GDK_WINDOW_STATE_MAXIMIZED | GDK_WINDOW_STATE_FULLSCREEN)) == 0)
@@ -1911,14 +1915,77 @@ mousepad_window_notebook_menu_position (GtkMenu  *menu,
                                         gboolean *push_in,
                                         gpointer  user_data)
 {
-  GtkWidget *widget = GTK_WIDGET (user_data);
+  GtkWidget    *widget = GTK_WIDGET (user_data);
+  GtkAllocation alloc = { 0, 0, 0, 0 };
 
-  gdk_window_get_origin (widget->window, x, y);
+  gdk_window_get_origin (gtk_widget_get_window (widget), x, y);
+  gtk_widget_get_allocation (widget, &alloc);
 
-  *x += widget->allocation.x;
-  *y += widget->allocation.y + widget->allocation.height;
+  *x += alloc.x;
+  *y += alloc.y + alloc.height;
 
   *push_in = TRUE;
+}
+
+
+
+/* stolen from Geany notebook.c */
+static gboolean
+mousepad_window_is_position_on_tab_bar(GtkNotebook *notebook, GdkEventButton *event)
+{
+  GtkWidget      *page, *tab, *nb;
+  GtkPositionType tab_pos;
+  gint            scroll_arrow_hlength, scroll_arrow_vlength;
+  gdouble         x, y;
+
+  page = gtk_notebook_get_nth_page (notebook, 0);
+  g_return_val_if_fail (page != NULL, FALSE);
+
+  tab = gtk_notebook_get_tab_label (notebook, page);
+  g_return_val_if_fail (tab != NULL, FALSE);
+
+  tab_pos = gtk_notebook_get_tab_pos (notebook);
+  nb = GTK_WIDGET (notebook);
+
+  gtk_widget_style_get (GTK_WIDGET (notebook),
+                        "scroll-arrow-hlength", &scroll_arrow_hlength,
+                        "scroll-arrow-vlength", &scroll_arrow_vlength,
+                        NULL);
+
+  if (! gdk_event_get_coords ((GdkEvent*) event, &x, &y))
+    {
+      x = event->x;
+      y = event->y;
+    }
+
+  switch (tab_pos)
+    {
+    case GTK_POS_TOP:
+    case GTK_POS_BOTTOM:
+      if (event->y >= 0 && event->y <= gtk_widget_get_allocated_height (tab))
+        {
+          if (! gtk_notebook_get_scrollable (notebook) || (
+            x > scroll_arrow_hlength &&
+            x < gtk_widget_get_allocated_width (nb) - scroll_arrow_hlength))
+          {
+            return TRUE;
+          }
+        }
+      break;
+    case GTK_POS_LEFT:
+    case GTK_POS_RIGHT:
+        if (event->x >= 0 && event->x <= gtk_widget_get_allocated_width (tab))
+          {
+            if (! gtk_notebook_get_scrollable (notebook) || (
+                y > scroll_arrow_vlength &&
+                y < gtk_widget_get_allocated_height (nb) - scroll_arrow_vlength))
+              {
+                return TRUE;
+              }
+          }
+    }
+
+  return FALSE;
 }
 
 
@@ -1940,14 +2007,17 @@ mousepad_window_notebook_button_press_event (GtkNotebook    *notebook,
       /* walk through the tabs and look for the tab under the cursor */
       while ((page = gtk_notebook_get_nth_page (notebook, page_num)) != NULL)
         {
+          GtkAllocation alloc = { 0, 0, 0, 0 };
+
           label = gtk_notebook_get_tab_label (notebook, page);
 
           /* get the origin of the label */
-          gdk_window_get_origin (label->window, &x_root, NULL);
-          x_root = x_root + label->allocation.x;
+          gdk_window_get_origin (gtk_widget_get_window (label), &x_root, NULL);
+          gtk_widget_get_allocation (label, &alloc);
+          x_root = x_root + alloc.x;
 
           /* check if the cursor is inside this label */
-          if (event->x_root >= x_root && event->x_root <= (x_root + label->allocation.width))
+          if (event->x_root >= x_root && event->x_root <= (x_root + alloc.width))
             {
               /* switch to this tab */
               gtk_notebook_set_current_page (notebook, page_num);
@@ -1979,8 +2049,16 @@ mousepad_window_notebook_button_press_event (GtkNotebook    *notebook,
     }
   else if (event->type == GDK_2BUTTON_PRESS && event->button == 1)
     {
+      GtkWidget   *ev_widget, *nb_child;
+
+      ev_widget = gtk_get_event_widget ((GdkEvent*) event);
+      nb_child = gtk_notebook_get_nth_page (notebook,
+                                            gtk_notebook_get_current_page (notebook));
+      if (ev_widget == NULL || ev_widget == nb_child || gtk_widget_is_ancestor (ev_widget, nb_child))
+        return FALSE;
+      
       /* check if the event window is the notebook event window (not a tab) */
-      if (event->window == notebook->event_window)
+      if (mousepad_window_is_position_on_tab_bar (notebook, event))
         {
           /* create new document */
           mousepad_window_action_new (NULL, window);
@@ -2247,7 +2325,7 @@ mousepad_window_menu_templates_fill (MousepadWindow *window,
       mousepad_window_menu_templates_fill (window, submenu, li->data);
 
       /* check if the sub menu contains items */
-      if (G_LIKELY (GTK_MENU_SHELL (submenu)->children != NULL))
+      if (mousepad_util_container_has_children (GTK_CONTAINER (submenu)))
         {
           /* create directory label */
           label = g_filename_display_basename (li->data);
@@ -2504,48 +2582,57 @@ mousepad_window_menu_tab_sizes_update (MousepadWindow *window)
 
 
 static void
-mousepad_window_menu_textview_deactivate (GtkWidget   *menu,
-                                          GtkTextView *textview)
+mousepad_window_menu_textview_shown (GtkMenu        *menu,
+                                     MousepadWindow *window)
 {
-  g_return_if_fail (GTK_IS_TEXT_VIEW (textview));
-  g_return_if_fail (textview->popup_menu == menu);
+  GtkWidget *our_menu;
+
+  g_return_if_fail (MOUSEPAD_IS_WINDOW (window));
 
   /* disconnect this signal */
-  mousepad_disconnect_by_func (G_OBJECT (menu), mousepad_window_menu_textview_deactivate, textview);
+  mousepad_disconnect_by_func (menu, mousepad_window_menu_textview_shown, window);
 
-  /* unset the popup menu since your menu is owned by the ui manager */
-  GTK_TEXT_VIEW (textview)->popup_menu = NULL;
+  /* empty the original menu */
+  mousepad_util_container_clear (GTK_CONTAINER (menu));
+
+  /* get the ui manager menu and move its children into the other menu */
+  our_menu = gtk_ui_manager_get_widget (window->ui_manager, "/textview-menu");
+  mousepad_util_container_move_children (GTK_CONTAINER (our_menu), GTK_CONTAINER (menu));
+}
+
+
+
+static void
+mousepad_window_menu_textview_deactivate (GtkWidget      *menu,
+                                          MousepadWindow *window)
+{
+  GtkWidget *our_menu;
+
+  g_return_if_fail (MOUSEPAD_IS_WINDOW (window));
+
+  /* disconnect this signal */
+  mousepad_disconnect_by_func (G_OBJECT (menu), mousepad_window_menu_textview_deactivate, window);
+
+  /* copy the menus children back into the ui manager menu */
+  our_menu = gtk_ui_manager_get_widget (window->ui_manager, "/textview-menu");
+  mousepad_util_container_move_children (GTK_CONTAINER (menu), GTK_CONTAINER (our_menu));
 }
 
 
 
 static void
 mousepad_window_menu_textview_popup (GtkTextView    *textview,
-                                     GtkMenu        *old_menu,
+                                     GtkMenu        *menu,
                                      MousepadWindow *window)
 {
-  GtkWidget *menu;
-
-  g_return_if_fail (GTK_WIDGET (old_menu) == textview->popup_menu);
   g_return_if_fail (GTK_IS_TEXT_VIEW (textview));
+  g_return_if_fail (GTK_IS_MENU (menu));
   g_return_if_fail (MOUSEPAD_IS_WINDOW (window));
   g_return_if_fail (MOUSEPAD_IS_DOCUMENT (window->active));
-  g_return_if_fail (GTK_IS_MENU (textview->popup_menu));
-
-  /* destroy origional menu */
-  gtk_widget_destroy (textview->popup_menu);
-
-  /* get the textview menu */
-  menu = gtk_ui_manager_get_widget (window->ui_manager, "/textview-menu");
 
   /* connect signal */
-  g_signal_connect (G_OBJECT (menu), "deactivate", G_CALLBACK (mousepad_window_menu_textview_deactivate), textview);
-
-  /* set screen */
-  gtk_menu_set_screen (GTK_MENU (menu), gtk_widget_get_screen (GTK_WIDGET (textview)));
-
-  /* set ours */
-  textview->popup_menu = menu;
+  g_signal_connect (G_OBJECT (menu), "show", G_CALLBACK (mousepad_window_menu_textview_shown), window);
+  g_signal_connect (G_OBJECT (menu), "deactivate", G_CALLBACK (mousepad_window_menu_textview_deactivate), window);
 }
 
 
@@ -3114,10 +3201,12 @@ mousepad_window_drag_data_received (GtkWidget        *widget,
   g_return_if_fail (GDK_IS_DRAG_CONTEXT (context));
 
   /* we only accept text/uri-list drops with format 8 and atleast one byte of data */
-  if (info == TARGET_TEXT_URI_LIST && selection_data->format == 8 && selection_data->length > 0)
+  if (info == TARGET_TEXT_URI_LIST &&
+      gtk_selection_data_get_format (selection_data) == 8 &&
+      gtk_selection_data_get_length (selection_data) > 0)
     {
       /* extract the uris from the data */
-      uris = g_uri_list_extract_uris ((const gchar *)selection_data->data);
+      uris = g_uri_list_extract_uris ((const gchar *) gtk_selection_data_get_data (selection_data));
 
       /* get working directory */
       working_directory = g_get_current_dir ();
@@ -3138,7 +3227,7 @@ mousepad_window_drag_data_received (GtkWidget        *widget,
       notebook = gtk_drag_get_source_widget (context);
 
       /* get the document that has been dragged */
-      document = (GtkWidget **) selection_data->data;
+      document = (GtkWidget **) gtk_selection_data_get_data (selection_data);
 
       /* check */
       g_return_if_fail (MOUSEPAD_IS_DOCUMENT (*document));
@@ -3155,12 +3244,16 @@ mousepad_window_drag_data_received (GtkWidget        *widget,
       /* figure out where to insert the tab in the notebook */
       for (i = 0; i < n_pages; i++)
         {
+          GtkAllocation alloc = { 0, 0, 0, 0 };
+
           /* get the child label */
           child = gtk_notebook_get_nth_page (GTK_NOTEBOOK (window->notebook), i);
           label = gtk_notebook_get_tab_label (GTK_NOTEBOOK (window->notebook), child);
 
+          gtk_widget_get_allocation (label, &alloc);
+
           /* break if we have a matching drop position */
-          if (x < (label->allocation.x + label->allocation.width / 2))
+          if (x < (alloc.x + alloc.width / 2))
             break;
         }
 
@@ -3491,7 +3584,7 @@ mousepad_window_paste_history_menu (MousepadWindow *window)
   if (list_data != NULL)
     {
       /* add separator between history and active menu items */
-      if (GTK_MENU_SHELL (menu)->children != NULL)
+      if (mousepad_util_container_has_children (GTK_CONTAINER (menu)))
         {
           item = gtk_separator_menu_item_new ();
           gtk_menu_shell_append (GTK_MENU_SHELL (menu), item);
@@ -3505,7 +3598,7 @@ mousepad_window_paste_history_menu (MousepadWindow *window)
       g_signal_connect (G_OBJECT (item), "activate", G_CALLBACK (mousepad_window_paste_history_activate), window);
       gtk_widget_show (item);
     }
-  else if (GTK_MENU_SHELL (menu)->children == NULL)
+  else if (! mousepad_util_container_has_children (GTK_CONTAINER (menu)))
     {
       /* create an item to inform the user */
       item = gtk_menu_item_new_with_label (_("No clipboard data"));

@@ -119,6 +119,13 @@ GtkAction *mousepad_util_find_related_action              (GtkWidget           *
 
 GIcon     *mousepad_util_icon_for_mime_type               (const gchar         *mime_type);
 
+gboolean   mousepad_util_container_has_children           (GtkContainer        *container);
+
+void       mousepad_util_container_clear                  (GtkContainer        *container);
+
+void       mousepad_util_container_move_children          (GtkContainer        *source,
+                                                           GtkContainer        *destination);
+
 G_END_DECLS
 
 #endif /* !__MOUSEPAD_UTIL_H__ */
