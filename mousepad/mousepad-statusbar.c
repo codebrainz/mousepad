@@ -108,7 +108,9 @@ mousepad_statusbar_init (MousepadStatusbar *statusbar)
   GList *frame;
 
   /* init statusbar */
+#if ! GTK_CHECK_VERSION(3, 0, 0)
   gtk_statusbar_set_has_resize_grip (bar, TRUE);
+#endif
 
   /* create a new horizontal box */
   box = gtk_hbox_new (FALSE, 8);

@@ -15,6 +15,7 @@
  */
 
 #include <mousepad/mousepad-private.h>
+#include <mousepad/mousepad-gtkcompat.h>
 #include <mousepad/mousepad-settings.h>
 #include <mousepad/mousepad-util.h>
 #include <mousepad/mousepad-document.h>
@@ -158,7 +159,7 @@ mousepad_document_class_init (MousepadDocumentClass *klass)
                   G_SIGNAL_RUN_LAST,
                   0, NULL, NULL,
                   g_cclosure_marshal_VOID__OBJECT,
-                  G_TYPE_NONE, 1, GTK_TYPE_SOURCE_LANGUAGE);
+                  G_TYPE_NONE, 1, GTK_SOURCE_TYPE_LANGUAGE);
 }
 
 
@@ -323,7 +324,7 @@ mousepad_document_notify_language (GtkSourceBuffer  *buffer,
   GtkSourceLanguage *language;
 
   g_return_if_fail (MOUSEPAD_IS_DOCUMENT (document));
-  g_return_if_fail (GTK_IS_SOURCE_BUFFER (buffer));
+  g_return_if_fail (GTK_SOURCE_IS_BUFFER (buffer));
 
   /* the new language */
   language = gtk_source_buffer_get_language (buffer);

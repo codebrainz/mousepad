@@ -15,6 +15,7 @@
  */
 
 #include <mousepad/mousepad-private.h>
+#include <mousepad/mousepad-gtkcompat.h>
 #include <mousepad/mousepad-file.h>
 
 #include <glib/gstdio.h>
@@ -395,7 +396,7 @@ mousepad_file_set_language (MousepadFile      *file,
                             GtkSourceLanguage *language)
 {
   g_return_if_fail (MOUSEPAD_IS_FILE (file));
-  g_return_if_fail (GTK_IS_SOURCE_BUFFER (file->buffer));
+  g_return_if_fail (GTK_SOURCE_IS_BUFFER (file->buffer));
 
   gtk_source_buffer_set_language (GTK_SOURCE_BUFFER (file->buffer), language);
 }
@@ -406,7 +407,7 @@ GtkSourceLanguage *
 mousepad_file_get_language (MousepadFile *file)
 {
   g_return_val_if_fail (MOUSEPAD_IS_FILE (file), NULL);
-  g_return_val_if_fail (GTK_IS_SOURCE_BUFFER (file->buffer), NULL);
+  g_return_val_if_fail (GTK_SOURCE_IS_BUFFER (file->buffer), NULL);
 
   return gtk_source_buffer_get_language (GTK_SOURCE_BUFFER (file->buffer));
 }
@@ -420,7 +421,7 @@ mousepad_file_set_language_id (MousepadFile *file,
   GtkSourceLanguage *lang;
 
   g_return_if_fail (MOUSEPAD_IS_FILE (file));
-  g_return_if_fail (GTK_IS_SOURCE_BUFFER (file->buffer));
+  g_return_if_fail (GTK_SOURCE_IS_BUFFER (file->buffer));
 
   if (G_UNLIKELY (language_id == NULL))
     {
