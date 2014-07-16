@@ -20,6 +20,7 @@
 #include <mousepad/mousepad-util.h>
 #include <mousepad/mousepad-view.h>
 
+#include <gtksourceview/gtksourcebuffer.h>
 #include <gtksourceview/gtksourceview.h>
 #include <gtksourceview/gtksourcestylescheme.h>
 #include <gtksourceview/gtksourcestyleschememanager.h>
@@ -161,7 +162,7 @@ enum
 
 
 
-G_DEFINE_TYPE (MousepadView, mousepad_view, GTK_TYPE_SOURCE_VIEW)
+G_DEFINE_TYPE (MousepadView, mousepad_view, GTK_SOURCE_TYPE_VIEW)
 
 
 
@@ -178,7 +179,7 @@ mousepad_view_class_init (MousepadViewClass *klass)
 
   widget_class = GTK_WIDGET_CLASS (klass);
   widget_class->key_press_event      = mousepad_view_key_press_event;
-#ifdef HAVE_MUTLISELECT
+#ifdef HAVE_MULTISELECT
   widget_class->expose_event         = mousepad_view_expose;
   widget_class->style_set            = mousepad_view_style_set;
   widget_class->button_press_event   = mousepad_view_button_press_event;
@@ -250,7 +251,7 @@ mousepad_view_buffer_changed (MousepadView *view,
   GtkSourceBuffer *buffer;
 
   buffer = (GtkSourceBuffer*) gtk_text_view_get_buffer (GTK_TEXT_VIEW (view));
-  if (GTK_IS_SOURCE_BUFFER (buffer))
+  if (GTK_SOURCE_IS_BUFFER (buffer))
     {
       GtkSourceStyleSchemeManager *manager;
       GtkSourceStyleScheme        *scheme;
@@ -430,7 +431,7 @@ mousepad_view_get_property (GObject    *object,
 
 
 
-#ifdef HAVE_MUTLISELECT
+#ifdef HAVE_MULTISELECT
 static gboolean
 mousepad_view_expose (GtkWidget      *widget,
                       GdkEventExpose *event)

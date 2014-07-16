@@ -1106,7 +1106,7 @@ static void
 mousepad_util_container_foreach_counter (GtkWidget *widget,
                                          guint     *n_children)
 {
-  *n_children++;
+  *n_children = *n_children + 1;
 }
 
 

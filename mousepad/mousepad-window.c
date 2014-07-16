@@ -48,7 +48,7 @@
 #define PADDING                   (2)
 #define PASTE_HISTORY_MENU_LENGTH (30)
 
-static gconstpointer NOTEBOOK_GROUP = "Mousepad";
+static const gchar *NOTEBOOK_GROUP = "Mousepad";
 
 
 
@@ -897,16 +897,17 @@ static void
 mousepad_window_create_notebook (MousepadWindow *window)
 {
   window->notebook = g_object_new (GTK_TYPE_NOTEBOOK,
-                                   "homogeneous", FALSE,
                                    "scrollable", TRUE,
                                    "show-border", FALSE,
                                    "show-tabs", FALSE,
+#if ! GTK_CHECK_VERSION(3, 0, 0)
                                    "tab-hborder", 0,
                                    "tab-vborder", 0,
+#endif
                                    NULL);
 
   /* set the group id */
-  gtk_notebook_set_group (GTK_NOTEBOOK (window->notebook), (gpointer) NOTEBOOK_GROUP);
+  gtk_notebook_set_group_name (GTK_NOTEBOOK (window->notebook), NOTEBOOK_GROUP);
 
   /* connect signals to the notebooks */
   g_signal_connect (G_OBJECT (window->notebook), "switch-page", G_CALLBACK (mousepad_window_notebook_switch_page), window);
@@ -1013,6 +1014,10 @@ mousepad_window_init (MousepadWindow *window)
   window->replace_dialog = NULL;
   window->active = NULL;
   window->recent_manager = NULL;
+
+#if GTK_CHECK_VERSION(3, 0, 0)
+  gtk_window_set_has_resize_grip (GTK_WINDOW (window), TRUE);
+#endif
 
   /* increase clipboard history ref count */
   clipboard_history_ref_count++;
@@ -2416,7 +2421,6 @@ mousepad_window_menu_templates (GtkWidget      *item,
 
   g_return_if_fail (MOUSEPAD_IS_WINDOW (window));
   g_return_if_fail (GTK_IS_MENU_ITEM (item));
-  g_return_if_fail (gtk_menu_item_get_submenu (GTK_MENU_ITEM (item)) == NULL);
 
   /* schedule the idle build of the recent menu */
   mousepad_window_recent_menu (window);

@@ -15,6 +15,7 @@
  */
 
 #include <mousepad/mousepad-private.h>
+#include <mousepad/mousepad-gtkcompat.h>
 #include <mousepad/mousepad-language-action.h>
 #include <mousepad/mousepad-util.h>
 
@@ -79,7 +80,7 @@ mousepad_language_action_class_init (MousepadLanguageActionClass *klass)
       "language",
       "Language",
       "The GtkSourceLanguage associated with the action",
-      GTK_TYPE_SOURCE_LANGUAGE,
+      GTK_SOURCE_TYPE_LANGUAGE,
       G_PARAM_CONSTRUCT_ONLY | G_PARAM_READWRITE));
 
 }
@@ -95,7 +96,7 @@ mousepad_language_action_finalize (GObject *object)
 
   self = MOUSEPAD_LANGUAGE_ACTION (object);
 
-  if (GTK_IS_SOURCE_LANGUAGE (self->language))
+  if (GTK_SOURCE_IS_LANGUAGE (self->language))
     g_object_unref (self->language);
 
   G_OBJECT_CLASS (mousepad_language_action_parent_class)->finalize (object);
@@ -160,7 +161,7 @@ mousepad_language_action_new (GtkSourceLanguage *language)
   const gchar *language_id;
   GtkAction   *action;
 
-  if (GTK_IS_SOURCE_LANGUAGE (language))
+  if (GTK_SOURCE_IS_LANGUAGE (language))
     language_id = gtk_source_language_get_id (language);
   else
     language_id = "none";
@@ -217,7 +218,7 @@ mousepad_language_action_set_language (MousepadLanguageAction *self,
   GIcon  *icon = NULL;
 
   g_return_if_fail (MOUSEPAD_IS_LANGUAGE_ACTION (self));
-  g_return_if_fail (language == NULL || GTK_IS_SOURCE_LANGUAGE (language));
+  g_return_if_fail (language == NULL || GTK_SOURCE_IS_LANGUAGE (language));
 
   if (G_UNLIKELY (self->language != NULL))
     g_object_unref (self->language);

@@ -15,10 +15,12 @@
  */
 
 #include <mousepad/mousepad-private.h>
+#include <mousepad/mousepad-gtkcompat.h>
 #include <mousepad/mousepad-document.h>
 #include <mousepad/mousepad-util.h>
 #include <mousepad/mousepad-print.h>
 
+#include <gtksourceview/gtksourcebuffer.h>
 #include <gtksourceview/gtksourceprintcompositor.h>
 
 #define DOCUMENT_SPACING (10)
@@ -780,7 +782,7 @@ mousepad_print_document_interactive (MousepadPrint     *print,
   g_return_val_if_fail (MOUSEPAD_IS_PRINT (print), FALSE);
   g_return_val_if_fail (GTK_IS_PRINT_OPERATION (print), FALSE);
   g_return_val_if_fail (MOUSEPAD_IS_DOCUMENT (document), FALSE);
-  g_return_val_if_fail (GTK_IS_SOURCE_BUFFER (document->buffer), FALSE);
+  g_return_val_if_fail (GTK_SOURCE_IS_BUFFER (document->buffer), FALSE);
   g_return_val_if_fail (GTK_IS_WINDOW (parent), FALSE);
   g_return_val_if_fail (error == NULL || *error == NULL, FALSE);
 
