@@ -21,6 +21,7 @@
 #include <mousepad/mousepad-dialogs.h>
 #include <mousepad/mousepad-util.h>
 #include <mousepad/mousepad-marshal.h>
+#include <mousepad/mousepad-gtkcompat.h>
 
 
 
@@ -164,7 +165,7 @@ mousepad_replace_dialog_init (MousepadReplaceDialog *dialog)
   gtk_misc_set_alignment (GTK_MISC (label), 0, 0.5);
   gtk_widget_show (label);
 
-  combo = gtk_combo_box_entry_new_text ();
+  combo = gtk_combo_box_text_new_with_entry ();
   mousepad_replace_dialog_history_combo_box (GTK_COMBO_BOX (combo));
   gtk_box_pack_start (GTK_BOX (hbox), combo, TRUE, TRUE, 0);
   gtk_label_set_mnemonic_widget (GTK_LABEL(label), combo);
@@ -185,7 +186,7 @@ mousepad_replace_dialog_init (MousepadReplaceDialog *dialog)
   gtk_misc_set_alignment (GTK_MISC (label), 0, 0.5);
   gtk_widget_show (label);
 
-  combo = gtk_combo_box_entry_new_text ();
+  combo = gtk_combo_box_text_new_with_entry ();
   mousepad_replace_dialog_history_combo_box (GTK_COMBO_BOX (combo));
   gtk_box_pack_start (GTK_BOX (hbox), combo, TRUE, TRUE, 0);
   gtk_widget_show (combo);
@@ -205,7 +206,7 @@ mousepad_replace_dialog_init (MousepadReplaceDialog *dialog)
   gtk_misc_set_alignment (GTK_MISC (label), 0, 0.5);
   gtk_widget_show (label);
 
-  combo = gtk_combo_box_new_text ();
+  combo = gtk_combo_box_text_new ();
   gtk_box_pack_start (GTK_BOX (hbox), combo, FALSE, FALSE, 0);
   gtk_label_set_mnemonic_widget (GTK_LABEL(label), combo);
   gtk_combo_box_append_text (GTK_COMBO_BOX (combo), _("Up"));
@@ -243,7 +244,7 @@ mousepad_replace_dialog_init (MousepadReplaceDialog *dialog)
 
   mousepad_replace_dialog_bind_setting (dialog, MOUSEPAD_SETTING_SEARCH_REPLACE_ALL, check, "active");
 
-  combo = dialog->search_location_combo = gtk_combo_box_new_text ();
+  combo = dialog->search_location_combo = gtk_combo_box_text_new ();
   gtk_box_pack_start (GTK_BOX (hbox), combo, FALSE, FALSE, 0);
   gtk_combo_box_append_text (GTK_COMBO_BOX (combo), _("Selection"));
   gtk_combo_box_append_text (GTK_COMBO_BOX (combo), _("Document"));
