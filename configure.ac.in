@@ -89,22 +89,22 @@ dnl **********************
 dnl *** GTK+ 3 support ***
 dnl **********************
 
-AC_ARG_ENABLE([gtk3], [
-  AS_HELP_STRING([--enable-gtk3], [Build against GTK+ 3 instead of GTK+ 2])
-])
+AC_ARG_ENABLE([gtk3],
+              [AS_HELP_STRING([--enable-gtk3],
+                              [Build against GTK+ 3 instead of GTK+ 2])],
+              [enable_gtk3=$enableval],
+              [enable_gtk3=auto])
 
-# Hard-fail if --enable-gtk3(=yes) was supplied and no GTK3 package
-AS_IF([test "x$enable_gtk3" = "xyes"], [PKG_CHECK_MODULES([GTK], [gtk+-3.0])])
+AS_IF([test "x$enable_gtk3" = "xyes"],
+      [PKG_CHECK_MODULES([GTK], [gtk+-3.0])])
 
-# Fall back to GTK2 package if GTK3 package is not found and --enable-gtk3=auto
-AS_IF([test "x$enable_gtk3" = "xauto"], [
-  PKG_CHECK_MODULES([GTK], [gtk+-3.0], [enable_gtk3="yes"], [enable_gtk3="no"])
-])
+AS_IF([test "x$enable_gtk3" = "xauto"],
+      [PKG_CHECK_MODULES([GTK], [gtk+-3.0],
+                         [enable_gtk3=yes], [enable_gtk3=no])])
 
-# If --enable-gtk3=no/--disable-gtk3 or with auto GTK3 package was not found
-AS_IF([test "x$enable_gtk3" = "xno"], [PKG_CHECK_MODULES([GTK], [gtk+-2.0 >= 2.24])])
+AS_IF([test "x$enable_gtk3" = "xno"],
+      [PKG_CHECK_MODULES([GTK], [gtk+-2.0 >= 2.24])])
 
-# Decide which GtkSourceView to use based on GTK 2 or 3
 AS_IF([test "x$enable_gtk3" = "xyes"],
       [PKG_CHECK_MODULES([GTKSOURCEVIEW], [gtksourceview-3.0])],
       [PKG_CHECK_MODULES([GTKSOURCEVIEW], [gtksourceview-2.0])])
@@ -173,5 +173,5 @@ echo "* D-BUS support:             no"
 fi
 echo "* Debug Support:             $enable_debug"
 echo "* Use keyfile backend:       $enable_keyfile_settings"
-echo "* Building with GTK+ 3:      $enable_gtk3"
+echo "* Build with GTK+ 3:         $enable_gtk3"
 echo
