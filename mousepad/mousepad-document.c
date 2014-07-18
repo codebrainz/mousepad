@@ -16,6 +16,7 @@
 
 #include <mousepad/mousepad-private.h>
 #include <mousepad/mousepad-gtkcompat.h>
+#include <mousepad/mousepad-close-button.h>
 #include <mousepad/mousepad-settings.h>
 #include <mousepad/mousepad-util.h>
 #include <mousepad/mousepad-document.h>
@@ -470,9 +471,8 @@ mousepad_document_send_signals (MousepadDocument *document)
 GtkWidget *
 mousepad_document_get_tab_label (MousepadDocument *document)
 {
-  GtkWidget  *hbox;
-  GtkWidget  *button, *image;
-  GtkRcStyle *style;
+  GtkWidget  *hbox, *align;
+  GtkWidget  *button;
 
   /* create the box */
   hbox = gtk_hbox_new (FALSE, 0);
@@ -493,28 +493,16 @@ mousepad_document_get_tab_label (MousepadDocument *document)
   mousepad_document_label_color (document);
 
   /* create the button */
-  button = gtk_button_new ();
-  gtk_button_set_focus_on_click (GTK_BUTTON (button), FALSE);
-  gtk_button_set_relief (GTK_BUTTON (button), GTK_RELIEF_NONE);
-  gtk_widget_set_can_default(GTK_WIDGET(button), FALSE);
-  gtk_widget_set_can_focus(GTK_WIDGET(button), FALSE);
-
-  /* make button a bit smaller */
-  style = gtk_rc_style_new ();
-  style->xthickness = style->ythickness = 0;
-  gtk_widget_modify_style (button, style);
-  g_object_unref (G_OBJECT (style));
+  align = gtk_alignment_new (1.0, 0.5, 0.0, 0.0);
+  button = mousepad_close_button_new ();
+  gtk_container_add (GTK_CONTAINER (align), button);
+  gtk_widget_show (button);
 
   /* pack button, add signal and tooltip */
   gtk_widget_set_tooltip_text (button, _("Close this tab"));
-  gtk_box_pack_start (GTK_BOX (hbox), button, FALSE, FALSE, 0);
+  gtk_box_pack_start (GTK_BOX (hbox), align, FALSE, FALSE, 0);
   g_signal_connect (G_OBJECT (button), "clicked", G_CALLBACK (mousepad_document_tab_button_clicked), document);
-  gtk_widget_show (button);
-
-  /* button image */
-  image = gtk_image_new_from_stock (GTK_STOCK_CLOSE, GTK_ICON_SIZE_MENU);
-  gtk_container_add (GTK_CONTAINER (button), image);
-  gtk_widget_show (image);
+  gtk_widget_show (align);
 
   return hbox;
 }

@@ -25,6 +25,8 @@ mousepad_SOURCES = \
 	mousepad-action-group.h \
 	mousepad-application.c \
 	mousepad-application.h \
+	mousepad-close-button.c \
+	mousepad-close-button.h \
 	mousepad-dialogs.c \
 	mousepad-dialogs.h \
 	mousepad-document.c \
