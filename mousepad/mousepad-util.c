@@ -15,6 +15,7 @@
  */
 
 #include <mousepad/mousepad-private.h>
+#include <mousepad/mousepad-gtkcompat.h>
 #include <mousepad/mousepad-util.h>
 
 
@@ -422,7 +423,7 @@ mousepad_util_dialog_header (GtkDialog   *dialog,
   gtk_container_remove (GTK_CONTAINER (dialog), dialog_vbox);
 
   /* add a new vbox to the main window */
-  vbox = gtk_vbox_new (FALSE, 0);
+  vbox = gtk_box_new (GTK_ORIENTATION_VERTICAL, 0);
   gtk_container_add (GTK_CONTAINER (dialog), vbox);
   gtk_widget_show (vbox);
 
@@ -434,7 +435,7 @@ mousepad_util_dialog_header (GtkDialog   *dialog,
   gtk_widget_show (ebox);
 
   /* create a hbox */
-  hbox = gtk_hbox_new (FALSE, 12);
+  hbox = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 12);
   gtk_container_set_border_width (GTK_CONTAINER (hbox), 6);
   gtk_container_add (GTK_CONTAINER (ebox), hbox);
   gtk_widget_show (hbox);
@@ -458,7 +459,7 @@ mousepad_util_dialog_header (GtkDialog   *dialog,
   g_free (full_title);
 
   /* add the separator between header and content */
-  line = gtk_hseparator_new ();
+  line = gtk_separator_new (GTK_ORIENTATION_HORIZONTAL);
   gtk_box_pack_start (GTK_BOX (vbox), line, FALSE, FALSE, 0);
   gtk_widget_show (line);
 

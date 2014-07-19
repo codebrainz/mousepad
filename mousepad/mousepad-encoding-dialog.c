@@ -127,11 +127,11 @@ mousepad_encoding_dialog_init (MousepadEncodingDialog *dialog)
                                _("Please select an encoding below."), GTK_STOCK_FILE);
 
   /* dialog vbox */
-  vbox = gtk_vbox_new (FALSE, 6);
+  vbox = gtk_box_new (GTK_ORIENTATION_VERTICAL, 6);
   gtk_box_pack_start (GTK_BOX (gtk_dialog_get_content_area (GTK_DIALOG (dialog))), vbox, TRUE, TRUE, 0);
   gtk_widget_show (vbox);
 
-  hbox = gtk_hbox_new (FALSE, 6);
+  hbox = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 6);
   gtk_box_pack_start (GTK_BOX (vbox), hbox, FALSE, FALSE, 0);
   gtk_widget_show (hbox);
 
@@ -183,7 +183,7 @@ mousepad_encoding_dialog_init (MousepadEncodingDialog *dialog)
   gtk_widget_show (icon);
 
   /* error box */
-  dialog->error_box = gtk_hbox_new (FALSE, 6);
+  dialog->error_box = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 6);
   gtk_box_pack_start (GTK_BOX (vbox), dialog->error_box, FALSE, FALSE, 0);
 
   /* error icon */
@@ -248,8 +248,6 @@ mousepad_encoding_dialog_test_encodings_idle (gpointer user_data)
   gsize                   length, written;
   guint                   i, n;
   gchar                  *encoded;
-
-  GDK_THREADS_ENTER ();
 
   /* get the filename */
   filename = mousepad_file_get_filename (dialog->document->file);
@@ -321,8 +319,6 @@ mousepad_encoding_dialog_test_encodings_idle (gpointer user_data)
 
   /* select the first item */
   gtk_combo_box_set_active (GTK_COMBO_BOX (dialog->combo), 0);
-
-  GDK_THREADS_LEAVE ();
 
   return FALSE;
 }

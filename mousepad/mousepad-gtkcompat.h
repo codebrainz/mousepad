@@ -21,6 +21,16 @@ G_BEGIN_DECLS
 #endif
 
 #if ! GTK_CHECK_VERSION(3, 0, 0)
+# define gtk_scale_new_with_range(orientation, min, max, step) \
+  (((orientation) == GTK_ORIENTATION_HORIZONTAL) ? \
+    gtk_hscale_new_with_range (min, max, step) : \
+    gtk_vscale_new_with_range (min, max, step))
+# define gtk_box_new(orientation, spacing) \
+  (((orientation) == GTK_ORIENTATION_HORIZONTAL) ? \
+    gtk_hbox_new (FALSE, spacing) : gtk_vbox_new (FALSE, spacing))
+# define gtk_separator_new(orientation) \
+  (((orientation) == GTK_ORIENTATION_HORIZONTAL) ? \
+    gtk_hseparator_new () : gtk_vseparator_new ())
 static inline gint
 gtk_widget_get_allocated_width (GtkWidget *widget)
 {
@@ -40,6 +50,24 @@ gtk_widget_get_allocated_height (GtkWidget *widget)
 #else
 /* Does nothing */
 # define gtk_dialog_set_has_separator(dialog, setting) do { } while (0)
+#endif
+
+#if ! GTK_CHECK_VERSION(3, 2, 0)
+# define GTK_FONT_CHOOSER_DIALOG(obj) GTK_FONT_SELECTION_DIALOG (obj)
+# define gtk_font_chooser_dialog_new(title, window) \
+  g_object_new (GTK_TYPE_FONT_SELECTION_DIALOG, "title", title, \
+                "transient-for", window, NULL)
+/* These don't exist in any version, just for compatibility */
+# define gtk_font_chooser_dialog_set_font_name(dialog, fontname) \
+  gtk_font_selection_dialog_set_font_name (dialog, fontname)
+# define gtk_font_chooser_dialog_get_font_name(dialog) \
+  gtk_font_selection_dialog_get_font_name (dialog)
+# else
+/* These don't exist in any version, just for compatibility */
+# define gtk_font_chooser_dialog_set_font_name(dialog, fontname) \
+  gtk_font_chooser_set_font (GTK_FONT_CHOOSER (dialog), fontname)
+# define gtk_font_chooser_dialog_get_font_name(dialog) \
+  gtk_font_chooser_get_font (GTK_FONT_CHOOSER (dialog))
 #endif
 
 /* GtkSourceView3 compatibility */

@@ -15,6 +15,7 @@
  */
 
 #include <mousepad/mousepad-private.h>
+#include <mousepad/mousepad-gtkcompat.h>
 #include <mousepad/mousepad-statusbar.h>
 #include <mousepad/mousepad-window.h>
 #include <mousepad/mousepad-util.h>
@@ -113,7 +114,7 @@ mousepad_statusbar_init (MousepadStatusbar *statusbar)
 #endif
 
   /* create a new horizontal box */
-  box = gtk_hbox_new (FALSE, 8);
+  box = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 8);
   gtk_widget_show (box);
 
   /* reorder the gtk statusbar */
@@ -128,7 +129,7 @@ mousepad_statusbar_init (MousepadStatusbar *statusbar)
   g_list_free (frame);
 
   /* separator */
-  separator = gtk_vseparator_new ();
+  separator = gtk_separator_new (GTK_ORIENTATION_VERTICAL);
   gtk_box_pack_start (GTK_BOX (box), separator, FALSE, FALSE, 0);
   gtk_widget_show (separator);
 
@@ -146,7 +147,7 @@ mousepad_statusbar_init (MousepadStatusbar *statusbar)
   gtk_widget_show (statusbar->language);
 
   /* separator */
-  separator = gtk_vseparator_new ();
+  separator = gtk_separator_new (GTK_ORIENTATION_VERTICAL);
   gtk_box_pack_start (GTK_BOX (box), separator, FALSE, FALSE, 0);
   gtk_widget_show (separator);
 
@@ -156,7 +157,7 @@ mousepad_statusbar_init (MousepadStatusbar *statusbar)
   gtk_widget_show (statusbar->position);
 
   /* separator */
-  separator = gtk_vseparator_new ();
+  separator = gtk_separator_new (GTK_ORIENTATION_VERTICAL);
   gtk_box_pack_start (GTK_BOX (box), separator, FALSE, FALSE, 0);
   gtk_widget_show (separator);
 
