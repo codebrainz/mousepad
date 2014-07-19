@@ -32,8 +32,12 @@
 
 /* In non-debug mode, turn off g_return_*()/g_assert*() debugging checks. */
 #ifdef NDEBUG
-# define G_DISABLE_CHECKS
-# define G_DISABLE_ASSERT
+# ifndef G_DISABLE_CHECKS
+#  define G_DISABLE_CHECKS
+# endif
+# ifndef G_DISABLE_ASSERT
+#  define G_DISABLE_ASSERT
+# endif
 #endif
 
 /* These are the only three headers that can be assumed to always be included
