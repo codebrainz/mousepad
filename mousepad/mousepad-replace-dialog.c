@@ -152,7 +152,7 @@ mousepad_replace_dialog_init (MousepadReplaceDialog *dialog)
   gtk_widget_show (vbox);
 
   /* horizontal box for search string */
-  hbox = gtk_hbox_new (FALSE, 8);
+  hbox = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 8);
   gtk_box_pack_start (GTK_BOX (vbox), hbox, TRUE, TRUE, 0);
   gtk_widget_show (hbox);
 
@@ -176,7 +176,7 @@ mousepad_replace_dialog_init (MousepadReplaceDialog *dialog)
   g_signal_connect_swapped (G_OBJECT (dialog->search_entry), "changed", G_CALLBACK (mousepad_replace_dialog_changed), dialog);
 
   /* horizontal box for replace string */
-  hbox = gtk_hbox_new (FALSE, 8);
+  hbox = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 8);
   gtk_box_pack_start (GTK_BOX (vbox), hbox, TRUE, TRUE, 0);
   gtk_widget_show (hbox);
 
@@ -195,7 +195,7 @@ mousepad_replace_dialog_init (MousepadReplaceDialog *dialog)
   dialog->replace_entry = gtk_bin_get_child (GTK_BIN (combo));
 
   /* search direction */
-  hbox = gtk_hbox_new (FALSE, 8);
+  hbox = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 8);
   gtk_box_pack_start (GTK_BOX (vbox), hbox, TRUE, TRUE, 0);
   gtk_label_set_mnemonic_widget (GTK_LABEL(label), combo);
   gtk_widget_show (hbox);
@@ -234,7 +234,7 @@ mousepad_replace_dialog_init (MousepadReplaceDialog *dialog)
   mousepad_replace_dialog_bind_setting (dialog, MOUSEPAD_SETTING_SEARCH_MATCH_WHOLE_WORD, check, "active");
 
   /* horizontal box for the replace all options */
-  hbox = gtk_hbox_new (FALSE, 8);
+  hbox = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 8);
   gtk_box_pack_start (GTK_BOX (vbox), hbox, FALSE, FALSE, 0);
   gtk_widget_show (hbox);
 

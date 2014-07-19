@@ -136,6 +136,12 @@ mousepad_search_bar_class_init (MousepadSearchBarClass *klass)
   binding_set = gtk_binding_set_by_class (klass);
   gtk_binding_entry_add_signal (binding_set, GDK_Escape, 0, "hide-bar", 0);
 
+  /* In GTK3, gtkrc is deprecated */
+#if GTK_CHECK_VERSION(3, 0, 0) && defined(__GNUC__)
+# pragma GCC diagnostic push
+# pragma GCC diagnostic ignored "-Wdeprecated-declarations"
+#endif
+
   /* hide the shadow around the toolbar */
   gtk_rc_parse_string ("style \"mousepad-search-bar-style\"\n"
                          "{\n"
@@ -149,6 +155,10 @@ mousepad_search_bar_class_init (MousepadSearchBarClass *klass)
                            "GtkToolButton::icon-spacing = 2\n"
                          "}\n"
                        "widget \"MousepadWindow.*.Gtk*ToolButton\" style \"mousepad-button-style\"\n");
+
+#if GTK_CHECK_VERSION(3, 0, 0) && defined(__GNUC__)
+# pragma GCC diagnostic pop
+#endif
 
   /* add an activate-backwards signal to GtkEntry */
   entry_class = g_type_class_ref (GTK_TYPE_ENTRY);
@@ -463,8 +473,6 @@ mousepad_search_bar_highlight_timeout (gpointer user_data)
   MousepadSearchBar   *bar = MOUSEPAD_SEARCH_BAR (user_data);
   MousepadSearchFlags  flags;
 
-  GDK_THREADS_ENTER ();
-
   /* set search flags */
   flags = MOUSEPAD_SEARCH_FLAGS_DIR_FORWARD
           | MOUSEPAD_SEARCH_FLAGS_ITER_AREA_START
@@ -472,8 +480,6 @@ mousepad_search_bar_highlight_timeout (gpointer user_data)
 
   /* emit signal */
   mousepad_search_bar_find_string (bar, flags);
-
-  GDK_THREADS_LEAVE ();
 
   /* stop the timeout */
   return FALSE;

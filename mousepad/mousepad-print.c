@@ -585,7 +585,7 @@ mousepad_print_create_custom_widget (GtkPrintOperation *operation)
   GtkWidget     *table;
   GtkAdjustment *adjustment;
 
-  vbox = gtk_vbox_new (FALSE, 6);
+  vbox = gtk_box_new (GTK_ORIENTATION_VERTICAL, 6);
   gtk_container_set_border_width (GTK_CONTAINER (vbox), 8);
 
   frame = gtk_frame_new (NULL);
@@ -623,7 +623,7 @@ mousepad_print_create_custom_widget (GtkPrintOperation *operation)
   gtk_container_add (GTK_CONTAINER (frame), alignment);
   gtk_widget_show (alignment);
 
-  vbox2 = gtk_vbox_new (FALSE, 6);
+  vbox2 = gtk_box_new (GTK_ORIENTATION_VERTICAL, 6);
   gtk_container_add (GTK_CONTAINER (alignment), vbox2);
   gtk_widget_show (vbox2);
 
@@ -646,7 +646,7 @@ mousepad_print_create_custom_widget (GtkPrintOperation *operation)
   gtk_box_pack_start (GTK_BOX (vbox2), alignment, FALSE, FALSE, 0);
   gtk_widget_show (alignment);
 
-  print->widget_line_numbers_hbox = gtk_hbox_new (FALSE, 6);
+  print->widget_line_numbers_hbox = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 6);
   gtk_widget_set_sensitive (print->widget_line_numbers_hbox, print->print_line_numbers);
   gtk_container_add (GTK_CONTAINER (alignment), print->widget_line_numbers_hbox);
   gtk_widget_show (print->widget_line_numbers_hbox);
@@ -700,6 +700,12 @@ mousepad_print_create_custom_widget (GtkPrintOperation *operation)
   gtk_container_add (GTK_CONTAINER (frame), alignment);
   gtk_widget_show (alignment);
 
+  /* In GTK3, GtkTable is deprecated */
+#if GTK_CHECK_VERSION(3, 0, 0) && defined(__GNUC__)
+# pragma GCC diagnostic push
+# pragma GCC diagnostic ignored "-Wdeprecated-declarations"
+#endif
+
   table = gtk_table_new (3, 2, FALSE);
   gtk_table_set_col_spacings (GTK_TABLE (table), 6);
   gtk_table_set_row_spacings (GTK_TABLE (table), 6);
@@ -735,6 +741,10 @@ mousepad_print_create_custom_widget (GtkPrintOperation *operation)
   gtk_table_attach_defaults (GTK_TABLE (table), print->widget_line_numbers_font, 1, 2, 2, 3);
   g_signal_connect (G_OBJECT (print->widget_line_numbers_font), "font-set", G_CALLBACK (mousepad_print_button_font_set), print);
   gtk_widget_show (print->widget_line_numbers_font);
+
+#if GTK_CHECK_VERSION(3, 0, 0) && defined(__GNUC__)
+# pragma GCC diagnostic pop
+#endif
 
   return vbox;
 }

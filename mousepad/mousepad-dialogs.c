@@ -15,6 +15,7 @@
  */
 
 #include <mousepad/mousepad-private.h>
+#include <mousepad/mousepad-gtkcompat.h>
 #include <mousepad/mousepad-dialogs.h>
 #include <mousepad/mousepad-util.h>
 
@@ -121,7 +122,7 @@ mousepad_dialogs_other_tab_size (GtkWindow *parent,
   gtk_dialog_set_default_response (GTK_DIALOG (dialog), MOUSEPAD_RESPONSE_OK);
 
   /* create scale widget */
-  scale = gtk_hscale_new_with_range (1, 32, 1);
+  scale = gtk_scale_new_with_range (GTK_ORIENTATION_HORIZONTAL, 1, 32, 1);
   gtk_range_set_value (GTK_RANGE (scale), active_size);
   gtk_scale_set_digits (GTK_SCALE (scale), 0);
   gtk_scale_set_draw_value (GTK_SCALE (scale), TRUE);
@@ -202,7 +203,7 @@ mousepad_dialogs_go_to (GtkWindow     *parent,
   gtk_dialog_set_default_response (GTK_DIALOG (dialog), MOUSEPAD_RESPONSE_JUMP_TO);
   gtk_window_set_resizable (GTK_WINDOW (dialog), FALSE);
 
-  vbox = gtk_vbox_new (FALSE, 6);
+  vbox = gtk_box_new (GTK_ORIENTATION_VERTICAL, 6);
   gtk_box_pack_start (GTK_BOX (gtk_dialog_get_content_area (GTK_DIALOG(dialog))), vbox, TRUE, TRUE, 0);
   gtk_container_set_border_width (GTK_CONTAINER (vbox), 6);
   gtk_widget_show (vbox);
@@ -211,7 +212,7 @@ mousepad_dialogs_go_to (GtkWindow     *parent,
   size_group = gtk_size_group_new (GTK_SIZE_GROUP_HORIZONTAL);
 
   /* line number box */
-  hbox = gtk_hbox_new (FALSE, 12);
+  hbox = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 12);
   gtk_box_pack_start (GTK_BOX (vbox), hbox, TRUE, TRUE, 0);
   gtk_widget_show (hbox);
 
@@ -230,7 +231,7 @@ mousepad_dialogs_go_to (GtkWindow     *parent,
   gtk_widget_show (line_spin);
 
   /* column box */
-  hbox = gtk_hbox_new (FALSE, 12);
+  hbox = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 12);
   gtk_box_pack_start (GTK_BOX (vbox), hbox, TRUE, TRUE, 0);
   gtk_widget_show (hbox);
 

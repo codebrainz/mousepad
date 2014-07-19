@@ -864,6 +864,12 @@ mousepad_window_create_root_warning (MousepadWindow *window)
     {
       GtkWidget *ebox, *label, *separator;
 
+  /* In GTK3, gtkrc is deprecated */
+#if GTK_CHECK_VERSION(3, 0, 0) && defined(__GNUC__)
+# pragma GCC diagnostic push
+# pragma GCC diagnostic ignored "-Wdeprecated-declarations"
+#endif
+
       /* install default settings for the root warning text box */
       gtk_rc_parse_string ("style\"mousepad-window-root-style\"\n"
                              "{\n"
@@ -872,6 +878,10 @@ mousepad_window_create_root_warning (MousepadWindow *window)
                              "}\n"
                            "widget\"MousepadWindow.*.root-warning\"style\"mousepad-window-root-style\"\n"
                            "widget\"MousepadWindow.*.root-warning.GtkLabel\"style\"mousepad-window-root-style\"\n");
+
+#if GTK_CHECK_VERSION(3, 0, 0) && defined(__GNUC__)
+# pragma GCC diagnostic pop
+#endif
 
       /* add the box for the root warning */
       ebox = gtk_event_box_new ();
@@ -885,7 +895,7 @@ mousepad_window_create_root_warning (MousepadWindow *window)
       gtk_container_add (GTK_CONTAINER (ebox), label);
       gtk_widget_show (label);
 
-      separator = gtk_hseparator_new ();
+      separator = gtk_separator_new (GTK_ORIENTATION_HORIZONTAL);
       gtk_box_pack_start (GTK_BOX (window->box), separator, FALSE, FALSE, 0);
       gtk_widget_show (separator);
     }
@@ -1056,7 +1066,7 @@ mousepad_window_init (MousepadWindow *window)
   gtk_window_add_accel_group (GTK_WINDOW (window), accel_group);
 
   /* create the main table */
-  window->box = gtk_vbox_new (FALSE, 0);
+  window->box = gtk_box_new (GTK_ORIENTATION_VERTICAL, 0);
   gtk_container_add (GTK_CONTAINER (window), window->box);
   gtk_widget_show (window->box);
 
@@ -1321,8 +1331,6 @@ mousepad_window_save_geometry_timer (gpointer user_data)
   MousepadWindow  *window = MOUSEPAD_WINDOW (user_data);
   gboolean         remember_size, remember_position, remember_state;
 
-  GDK_THREADS_ENTER ();
-
   /* check if we should remember the window geometry */
   remember_size = MOUSEPAD_SETTING_GET_BOOLEAN (REMEMBER_SIZE);
   remember_position = MOUSEPAD_SETTING_GET_BOOLEAN (REMEMBER_POSITION);
@@ -1372,8 +1380,6 @@ mousepad_window_save_geometry_timer (gpointer user_data)
             }
         }
     }
-
-  GDK_THREADS_LEAVE ();
 
   return FALSE;
 }
@@ -2765,8 +2771,6 @@ mousepad_window_update_gomenu_idle (gpointer user_data)
 
   g_return_val_if_fail (MOUSEPAD_IS_WINDOW (user_data), FALSE);
 
-  GDK_THREADS_ENTER ();
-
   /* get the window */
   window = MOUSEPAD_WINDOW (user_data);
 
@@ -2840,8 +2844,6 @@ mousepad_window_update_gomenu_idle (gpointer user_data)
 
   /* release our lock */
   lock_menu_updates--;
-
-  GDK_THREADS_LEAVE ();
 
   return FALSE;
 }
@@ -2966,8 +2968,6 @@ mousepad_window_recent_menu_idle (gpointer user_data)
   gchar           name[32];
   gint            n, i;
 
-  GDK_THREADS_ENTER ();
-
   if (window->recent_merge_id != 0)
     {
       /* unmerge the ui controls from the previous update */
@@ -3080,8 +3080,6 @@ mousepad_window_recent_menu_idle (gpointer user_data)
   g_list_foreach (items, (GFunc) gtk_recent_info_unref, NULL);
   g_list_free (items);
   g_list_free (filtered);
-
-  GDK_THREADS_LEAVE ();
 
   /* stop the idle function */
   return FALSE;
@@ -3510,7 +3508,7 @@ mousepad_window_paste_history_menu_item (const gchar *text,
   item = gtk_menu_item_new ();
 
   /* create a hbox */
-  hbox = gtk_hbox_new (FALSE, 14);
+  hbox = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 14);
   gtk_container_add (GTK_CONTAINER (item), hbox);
   gtk_widget_show (hbox);
 
@@ -3793,7 +3791,7 @@ mousepad_window_action_open (GtkAction      *action,
   gtk_file_chooser_set_select_multiple (GTK_FILE_CHOOSER (chooser), TRUE);
 
   /* encoding selector */
-  hbox = gtk_hbox_new (FALSE, 6);
+  hbox = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 6);
   gtk_container_set_border_width (GTK_CONTAINER (hbox), 5);
   gtk_file_chooser_set_extra_widget (GTK_FILE_CHOOSER (chooser), hbox);
   gtk_widget_show (hbox);
@@ -4871,15 +4869,14 @@ mousepad_window_action_select_font (GtkAction      *action,
   g_return_if_fail (MOUSEPAD_IS_WINDOW (window));
   g_return_if_fail (MOUSEPAD_IS_DOCUMENT (window->active));
 
-  dialog = gtk_font_selection_dialog_new (_("Choose Mousepad Font"));
-  gtk_window_set_transient_for (GTK_WINDOW (dialog), GTK_WINDOW (window));
+  dialog = gtk_font_chooser_dialog_new (_("Choose Mousepad Font"), GTK_WINDOW (window));
 
   /* set the current font name */
   font_name = MOUSEPAD_SETTING_GET_STRING (FONT_NAME);
 
   if (G_LIKELY (font_name))
     {
-      gtk_font_selection_dialog_set_font_name (GTK_FONT_SELECTION_DIALOG (dialog), font_name);
+      gtk_font_chooser_dialog_set_font_name (GTK_FONT_CHOOSER_DIALOG (dialog), font_name);
       g_free (font_name);
     }
 
@@ -4887,7 +4884,7 @@ mousepad_window_action_select_font (GtkAction      *action,
   if (G_LIKELY (gtk_dialog_run (GTK_DIALOG (dialog)) == GTK_RESPONSE_OK))
     {
       /* get the selected font from the dialog */
-      font_name = gtk_font_selection_dialog_get_font_name (GTK_FONT_SELECTION_DIALOG (dialog));
+      font_name = gtk_font_chooser_dialog_get_font_name (GTK_FONT_CHOOSER_DIALOG (dialog));
 
       /* store the font in the preferences */
       MOUSEPAD_SETTING_SET_STRING (FONT_NAME, font_name);

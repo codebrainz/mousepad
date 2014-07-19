@@ -475,7 +475,7 @@ mousepad_document_get_tab_label (MousepadDocument *document)
   GtkWidget  *button;
 
   /* create the box */
-  hbox = gtk_hbox_new (FALSE, 0);
+  hbox = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 0);
   gtk_widget_show (hbox);
 
   /* the ebox */
