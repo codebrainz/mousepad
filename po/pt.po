@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-07-15 06:30+0200\n"
-"PO-Revision-Date: 2014-07-26 03:38+0000\n"
+"PO-Revision-Date: 2014-07-26 12:30+0000\n"
 "Last-Translator: Alexandre Fidalgo <alexandremagnos15@gmail.com>\n"
 "Language-Team: Portuguese (http://www.transifex.com/projects/p/xfce-apps/language/pt/)\n"
 "MIME-Version: 1.0\n"
@@ -561,7 +561,7 @@ msgid ""
 "The interval at which to print line numbers. For example a value of 1 will "
 "print a line number on each line, a value of 2 will print a line number on "
 "every other line, and so on."
-msgstr ""
+msgstr "O intervalo para imprimir números de linha. Por exemplo, um valor de 1 imprime um número em cada linha, um valor de 2 vai imprimir um número de linha de todas as outras linhas, e assim por diante."
 
 #: ../mousepad/mousepad-print.c:672
 msgid "Enable text _wrapping"
@@ -987,7 +987,7 @@ msgstr "Mover a seleção uma linha abaixo"
 
 #: ../mousepad/mousepad-window.c:441
 msgid "Dup_licate Line / Selection"
-msgstr ""
+msgstr "Dup_licar linha / Selecção"
 
 #: ../mousepad/mousepad-window.c:441
 msgid "Duplicate the current line or selection"
@@ -1011,11 +1011,11 @@ msgstr "Diminuir o avanço da linha ou seleção atual"
 
 #: ../mousepad/mousepad-window.c:444
 msgid "Show the preferences dialog"
-msgstr ""
+msgstr "Mostrar a informação de preferências"
 
 #: ../mousepad/mousepad-window.c:446
 msgid "_Search"
-msgstr ""
+msgstr "_Pesquisa"
 
 #: ../mousepad/mousepad-window.c:447
 msgid "Search for text"
@@ -1123,19 +1123,19 @@ msgstr "_Número das linhas"
 
 #: ../mousepad/mousepad-window.c:472
 msgid "_Menubar"
-msgstr ""
+msgstr "_Barra de menu"
 
 #: ../mousepad/mousepad-window.c:472
 msgid "Change the visibility of the main menubar"
-msgstr ""
+msgstr "Alterar a visibilidade da barra de menu principal"
 
 #: ../mousepad/mousepad-window.c:473
 msgid "_Toolbar"
-msgstr ""
+msgstr "_Barra de ferramentas"
 
 #: ../mousepad/mousepad-window.c:473
 msgid "Change the visibility of the toolbar"
-msgstr ""
+msgstr "Alterar a visibilidade da barra de ferramentas"
 
 #: ../mousepad/mousepad-window.c:474
 msgid "St_atusbar"
@@ -1147,11 +1147,11 @@ msgstr "Alterar a visibilidade da barra de estado"
 
 #: ../mousepad/mousepad-window.c:475
 msgid "_Fullscreen"
-msgstr ""
+msgstr "_Ecrã inteiro"
 
 #: ../mousepad/mousepad-window.c:475 ../mousepad/mousepad-window.c:4950
 msgid "Make the window fullscreen"
-msgstr ""
+msgstr "Ponha a janela em ecrã inteiro"
 
 #: ../mousepad/mousepad-window.c:476
 msgid "_Auto Indent"
@@ -1228,7 +1228,7 @@ msgstr "Só leitura"
 msgid ""
 "No template files found in\n"
 "'%s'"
-msgstr ""
+msgstr "Não foram encontrados ficheiros modelo em\n'%s'"
 
 #. create other action
 #: ../mousepad/mousepad-window.c:2436
@@ -1324,7 +1324,7 @@ msgstr "Escolha o tipo de letra do Mousepad"
 
 #: ../mousepad/mousepad-window.c:4943
 msgid "Leave fullscreen mode"
-msgstr ""
+msgstr "Deixe ficar o modo de ecrã inteiro"
 
 #: ../mousepad.desktop.in.in.h:2
 msgid "Simple Text Editor"
