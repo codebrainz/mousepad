@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-07-15 06:30+0200\n"
-"PO-Revision-Date: 2014-07-27 02:55+0000\n"
+"PO-Revision-Date: 2014-07-28 21:27+0000\n"
 "Last-Translator: Pablo Roberto Francisco Lezaeta Reyes <prflr88@gmail.com>\n"
 "Language-Team: Spanish (http://www.transifex.com/projects/p/xfce-apps/language/es/)\n"
 "MIME-Version: 1.0\n"
@@ -628,7 +628,7 @@ msgstr "Sensi_ble a mayúsculas y minúsculas"
 #. match whole word
 #: ../mousepad/mousepad-replace-dialog.c:229
 msgid "_Match whole word"
-msgstr "_Sólo palabras completas"
+msgstr "_Solamente palabras completas"
 
 #: ../mousepad/mousepad-replace-dialog.c:240
 msgid "Replace _all in:"
@@ -694,7 +694,7 @@ msgstr "Activar o desactivar el modo de sobreescritura"
 #. overwrite label
 #: ../mousepad/mousepad-statusbar.c:170
 msgid "OVR"
-msgstr "OVR"
+msgstr "Sobrescribir"
 
 #: ../mousepad/mousepad-statusbar.c:255
 #, c-format
@@ -954,7 +954,7 @@ msgstr "Qui_tar espacios finales"
 
 #: ../mousepad/mousepad-window.c:436
 msgid "Remove all the trailing spaces from the selected line(s) or document"
-msgstr "Retire todos los espacios al final de la línea seleccionada (s) o documento"
+msgstr "Retire todos los espacios al final de la(s) línea(s) seleccionada(s) o documento"
 
 #: ../mousepad/mousepad-window.c:437
 msgid "_Transpose"
@@ -1034,11 +1034,11 @@ msgstr "Buscar a_nterior"
 
 #: ../mousepad/mousepad-window.c:449
 msgid "Search backwards for the same text"
-msgstr "Buscar el mismo texto hacia adelante"
+msgstr "Buscar el mismo texto hacia atrás"
 
 #: ../mousepad/mousepad-window.c:450
 msgid "Find and Rep_lace..."
-msgstr "Buscar y remplazar…"
+msgstr "Buscar y re_mplazar…"
 
 #: ../mousepad/mousepad-window.c:450
 msgid "Search for and replace text"
@@ -1327,7 +1327,7 @@ msgstr "Salir del modo de pantalla completa"
 
 #: ../mousepad.desktop.in.in.h:2
 msgid "Simple Text Editor"
-msgstr "Simple editor de texto"
+msgstr "Un simple editor de texto"
 
 #: ../mousepad.desktop.in.in.h:3
 msgid "Text Editor"
