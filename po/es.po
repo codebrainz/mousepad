@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-07-15 06:30+0200\n"
-"PO-Revision-Date: 2014-07-28 21:27+0000\n"
+"PO-Revision-Date: 2014-08-02 01:58+0000\n"
 "Last-Translator: Pablo Roberto Francisco Lezaeta Reyes <prflr88@gmail.com>\n"
 "Language-Team: Spanish (http://www.transifex.com/projects/p/xfce-apps/language/es/)\n"
 "MIME-Version: 1.0\n"
@@ -88,17 +88,17 @@ msgstr "Número de c_olumna:"
 
 #: ../mousepad/mousepad-dialogs.c:295
 msgid "Remove all entries from the documents history?"
-msgstr "¿Quiere quitar todas las entradas del histórico de documentos?"
+msgstr "¿Quiere quitar todas las entradas del historial de documentos?"
 
 #: ../mousepad/mousepad-dialogs.c:300
 msgid "Clear Documents History"
-msgstr "Limpiar histórico de documentos"
+msgstr "Limpiar historial de documentos"
 
 #: ../mousepad/mousepad-dialogs.c:303
 msgid ""
 "Clearing the documents history will permanently remove all currently listed "
 "entries."
-msgstr "Al borrar el histórico de documentos se eliminará permanentemente todas las entradas que figuran actualmente."
+msgstr "Al borrar el historial de documentos se eliminará permanentemente todas las entradas que figuran actualmente."
 
 #: ../mousepad/mousepad-dialogs.c:334
 msgid "Do you want to save the changes before closing?"
@@ -769,11 +769,11 @@ msgstr "No se encontraron objetos"
 
 #: ../mousepad/mousepad-window.c:407
 msgid "Clear _History"
-msgstr "Limpiar el _histórico"
+msgstr "Limpiar el _historial"
 
 #: ../mousepad/mousepad-window.c:407
 msgid "Clear the recently used files history"
-msgstr "Limpiar el histórico de archivos usados ​​recientemente"
+msgstr "Limpiar el historial de archivos usados ​​recientemente"
 
 #: ../mousepad/mousepad-window.c:408
 msgid "Save the current document"
@@ -865,11 +865,11 @@ msgstr "Pegado _especial"
 
 #: ../mousepad/mousepad-window.c:424
 msgid "Paste from _History"
-msgstr "Pegar desde el _histórico"
+msgstr "Pegar desde el _historial"
 
 #: ../mousepad/mousepad-window.c:424
 msgid "Paste from the clipboard history"
-msgstr "Pegar desde el histórico del portapapeles"
+msgstr "Pegar desde el historial del portapapeles"
 
 #: ../mousepad/mousepad-window.c:425
 msgid "Paste as _Column"
@@ -1258,7 +1258,7 @@ msgstr "Abrir '%s'"
 
 #: ../mousepad/mousepad-window.c:3087
 msgid "Failed to clear the recent history"
-msgstr "No se pudo limpiar el histórico"
+msgstr "No se pudo limpiar el historial"
 
 #. create an item to inform the user
 #: ../mousepad/mousepad-window.c:3511
@@ -1290,7 +1290,7 @@ msgstr "Abrir carpeta"
 msgid ""
 "Failed to open \"%s\" for reading. It will be removed from the document "
 "history"
-msgstr "No se pudo abrir «%s» para su lectura. Este será removido del histórico de documentos"
+msgstr "No se pudo abrir «%s» para su lectura. Este será removido del historial de documentos"
 
 #. show the warning and cleanup
 #: ../mousepad/mousepad-window.c:3805
