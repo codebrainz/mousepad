@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-07-15 06:30+0200\n"
-"PO-Revision-Date: 2014-08-05 09:01+0000\n"
+"PO-Revision-Date: 2014-08-05 10:51+0000\n"
 "Last-Translator: Yarema aka Knedlyk <yupadmin@gmail.com>\n"
 "Language-Team: Ukrainian (http://www.transifex.com/projects/p/xfce-apps/language/uk/)\n"
 "MIME-Version: 1.0\n"
@@ -408,7 +408,7 @@ msgstr "Показувати закінчення рядків"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:22
 msgid "Long line margin at column:"
-msgstr ""
+msgstr "Довга гранична лінія при колонці:"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:23
 msgid "Highlight current line"
@@ -516,11 +516,11 @@ msgstr "Завжди показувати вкладки навіть з одн�
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:49
 msgid "Cycled notebook tab switching"
-msgstr ""
+msgstr "Кругова зміна вкладок ноутбука"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:50
 msgid "<b>Notebook tabs</b>"
-msgstr ""
+msgstr "<b>Вкладки ноутбука</b>"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:51
 msgid "Window"
@@ -553,14 +553,14 @@ msgstr "Друкувати _номери лінійок"
 
 #: ../mousepad/mousepad-print.c:652
 msgid "Numbering interval:"
-msgstr ""
+msgstr "Інтервал нумерування:"
 
 #: ../mousepad/mousepad-print.c:660
 msgid ""
 "The interval at which to print line numbers. For example a value of 1 will "
 "print a line number on each line, a value of 2 will print a line number on "
 "every other line, and so on."
-msgstr ""
+msgstr "Інтервал, при якому подавати номери стрічок. Наприклад, при значенні 1 буде вписуватися номер для кожної стрічки, при значенні 2 буде подаватися номер тільки кожної другої стрічки, і так далі."
 
 #: ../mousepad/mousepad-print.c:672
 msgid "Enable text _wrapping"
@@ -714,7 +714,7 @@ msgstr "Лінійка: %d Колонка: %d"
 
 #: ../mousepad/mousepad-style-scheme-action.c:193
 msgid "No style scheme"
-msgstr ""
+msgstr "Немає схеми стилю"
 
 #. show warning to the user
 #: ../mousepad/mousepad-util.c:544
@@ -926,7 +926,7 @@ msgstr "Змінити регістр вибраного до заголовни
 
 #: ../mousepad/mousepad-window.c:433
 msgid "To _Opposite Case"
-msgstr ""
+msgstr "До _протилежного регістру"
 
 #: ../mousepad/mousepad-window.c:433
 msgid "Change the case of the selection opposite case"
@@ -1127,7 +1127,7 @@ msgstr "Панель _меню"
 
 #: ../mousepad/mousepad-window.c:472
 msgid "Change the visibility of the main menubar"
-msgstr ""
+msgstr "Змінити видимість головної панелі меню"
 
 #: ../mousepad/mousepad-window.c:473
 msgid "_Toolbar"
@@ -1135,7 +1135,7 @@ msgstr "_Панель"
 
 #: ../mousepad/mousepad-window.c:473
 msgid "Change the visibility of the toolbar"
-msgstr ""
+msgstr "Змінити видимість панелі"
 
 #: ../mousepad/mousepad-window.c:474
 msgid "St_atusbar"
@@ -1228,7 +1228,7 @@ msgstr "Тільки читати"
 msgid ""
 "No template files found in\n"
 "'%s'"
-msgstr ""
+msgstr "Не знайдено файлів-шаблонів в\n'%s'"
 
 #. create other action
 #: ../mousepad/mousepad-window.c:2436
