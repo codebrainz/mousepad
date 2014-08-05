@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-07-15 06:30+0200\n"
-"PO-Revision-Date: 2014-07-19 12:33+0000\n"
+"PO-Revision-Date: 2014-08-05 09:01+0000\n"
 "Last-Translator: Yarema aka Knedlyk <yupadmin@gmail.com>\n"
 "Language-Team: Ukrainian (http://www.transifex.com/projects/p/xfce-apps/language/uk/)\n"
 "MIME-Version: 1.0\n"
@@ -309,11 +309,11 @@ msgstr "Неможливо прочитати статус \"%s\""
 
 #: ../mousepad/mousepad-language-action.c:229
 msgid "Plain Text"
-msgstr ""
+msgstr "Простий текст"
 
 #: ../mousepad/mousepad-language-action.c:230
 msgid "No filetype"
-msgstr ""
+msgstr "Без типу файлу"
 
 #. setup the window properties
 #: ../mousepad/mousepad-prefs-dialog.c:433 ../mousepad/mousepad-window.c:444
@@ -355,43 +355,43 @@ msgstr "Немає"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:9
 msgid "Menu"
-msgstr ""
+msgstr "Меню"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:10
 msgid "Small Toolbar"
-msgstr ""
+msgstr "Маленька панель"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:11
 msgid "Large Toolbar"
-msgstr ""
+msgstr "Велика панель"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:12
 msgid "Button"
-msgstr ""
+msgstr "Кнопка"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:13
 msgid "Drag & Drop"
-msgstr ""
+msgstr "Захопити і перенести"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:14
 msgid "Dialog"
-msgstr ""
+msgstr "Діалог"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:15
 msgid "Icons Only"
-msgstr ""
+msgstr "Тільки значки"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:16
 msgid "Text Only"
-msgstr ""
+msgstr "Тільки текст"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:17
 msgid "Text Below Icons"
-msgstr ""
+msgstr "Текст за значками"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:18
 msgid "Text Beside Icons"
-msgstr ""
+msgstr "Текст за значками"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:19
 #: ../mousepad/mousepad-window.c:471
@@ -400,7 +400,7 @@ msgstr "Показати номери рядків"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:20
 msgid "Display whitespace"
-msgstr ""
+msgstr "Показувати пропуски"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:21
 msgid "Display line endings"
@@ -476,43 +476,43 @@ msgstr "Показувати панель статусу"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:39
 msgid "Show full filename in title bar"
-msgstr ""
+msgstr "Показувати повну назву в панелі заголовку"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:40
 msgid "Remember window size"
-msgstr ""
+msgstr "Пам’ятати розмір вікна"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:41
 msgid "Remember window position"
-msgstr ""
+msgstr "Пам’ятати позицію вікна"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:42
 msgid "Remember window state"
-msgstr ""
+msgstr "Пам’ятати стан вікна"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:43
 msgid "<b>General</b>"
-msgstr ""
+msgstr "<b>Загальне</b>"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:44
 msgid "Show toolbar"
-msgstr ""
+msgstr "Показати панель"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:45
 msgid "Style:"
-msgstr ""
+msgstr "Стиль:"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:46
 msgid "Icon Size:"
-msgstr ""
+msgstr "Розмір значків:"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:47
 msgid "<b>Toolbar</b>"
-msgstr ""
+msgstr "<b>Панель</b>"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:48
 msgid "Always show tabs even with one file"
-msgstr ""
+msgstr "Завжди показувати вкладки навіть з одним файлом"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:49
 msgid "Cycled notebook tab switching"
@@ -524,7 +524,7 @@ msgstr ""
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:51
 msgid "Window"
-msgstr ""
+msgstr "Вікно"
 
 #. set a custom tab label
 #: ../mousepad/mousepad-print.c:119
@@ -898,11 +898,11 @@ msgstr "Змінити нормальний вибір до вибору кол�
 
 #: ../mousepad/mousepad-window.c:429
 msgid "Conve_rt"
-msgstr ""
+msgstr "Конве_ртувати"
 
 #: ../mousepad/mousepad-window.c:430
 msgid "To _Uppercase"
-msgstr ""
+msgstr "у _верхній регістр"
 
 #: ../mousepad/mousepad-window.c:430
 msgid "Change the case of the selection to uppercase"
@@ -910,7 +910,7 @@ msgstr "Змінити регістр вибраного до верхнього
 
 #: ../mousepad/mousepad-window.c:431
 msgid "To _Lowercase"
-msgstr ""
+msgstr "у _нижній регістр"
 
 #: ../mousepad/mousepad-window.c:431
 msgid "Change the case of the selection to lowercase"
@@ -918,7 +918,7 @@ msgstr "Змінити регістр вибраного до нижнього"
 
 #: ../mousepad/mousepad-window.c:432
 msgid "To _Title Case"
-msgstr ""
+msgstr "до _заголовних букв"
 
 #: ../mousepad/mousepad-window.c:432
 msgid "Change the case of the selection to title case"
@@ -987,7 +987,7 @@ msgstr "Перемістити вибране на один рядок вниз"
 
 #: ../mousepad/mousepad-window.c:441
 msgid "Dup_licate Line / Selection"
-msgstr ""
+msgstr "Про_дублювати рядок / Вибране"
 
 #: ../mousepad/mousepad-window.c:441
 msgid "Duplicate the current line or selection"
@@ -1011,11 +1011,11 @@ msgstr "Зменшити відступ вибраного або поточно
 
 #: ../mousepad/mousepad-window.c:444
 msgid "Show the preferences dialog"
-msgstr ""
+msgstr "Показати діалог параметрів"
 
 #: ../mousepad/mousepad-window.c:446
 msgid "_Search"
-msgstr ""
+msgstr "_Пошук"
 
 #: ../mousepad/mousepad-window.c:447
 msgid "Search for text"
@@ -1123,7 +1123,7 @@ msgstr "Номери _рядків"
 
 #: ../mousepad/mousepad-window.c:472
 msgid "_Menubar"
-msgstr ""
+msgstr "Панель _меню"
 
 #: ../mousepad/mousepad-window.c:472
 msgid "Change the visibility of the main menubar"
@@ -1131,7 +1131,7 @@ msgstr ""
 
 #: ../mousepad/mousepad-window.c:473
 msgid "_Toolbar"
-msgstr ""
+msgstr "_Панель"
 
 #: ../mousepad/mousepad-window.c:473
 msgid "Change the visibility of the toolbar"
@@ -1147,11 +1147,11 @@ msgstr "Змінити видимість панелі статусу"
 
 #: ../mousepad/mousepad-window.c:475
 msgid "_Fullscreen"
-msgstr ""
+msgstr "Повний _екран"
 
 #: ../mousepad/mousepad-window.c:475 ../mousepad/mousepad-window.c:4950
 msgid "Make the window fullscreen"
-msgstr ""
+msgstr "Включити повноекранний режим вікна"
 
 #: ../mousepad/mousepad-window.c:476
 msgid "_Auto Indent"
@@ -1324,7 +1324,7 @@ msgstr "Виберіть шрифти для Mousepad"
 
 #: ../mousepad/mousepad-window.c:4943
 msgid "Leave fullscreen mode"
-msgstr ""
+msgstr "Покинути повноекранний режим"
 
 #: ../mousepad.desktop.in.in.h:2
 msgid "Simple Text Editor"
