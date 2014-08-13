@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-07-15 06:30+0200\n"
-"PO-Revision-Date: 2014-08-13 10:30+0000\n"
+"PO-Revision-Date: 2014-08-13 10:32+0000\n"
 "Last-Translator: Cristian Marchi <cri.penta@gmail.com>\n"
 "Language-Team: Italian (http://www.transifex.com/projects/p/xfce-apps/language/it/)\n"
 "MIME-Version: 1.0\n"
@@ -308,7 +308,7 @@ msgstr "Impossibile leggere lo stato di «%s»"
 
 #: ../mousepad/mousepad-language-action.c:229
 msgid "Plain Text"
-msgstr ""
+msgstr "Testo semplice"
 
 #: ../mousepad/mousepad-language-action.c:230
 msgid "No filetype"
@@ -358,11 +358,11 @@ msgstr "Menu"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:10
 msgid "Small Toolbar"
-msgstr ""
+msgstr "Barra di stato piccola"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:11
 msgid "Large Toolbar"
-msgstr ""
+msgstr "Barra di stato grande"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:12
 msgid "Button"
@@ -471,7 +471,7 @@ msgstr ""
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:38
 msgid "Show status bar"
-msgstr ""
+msgstr "Mostra la barra di stato"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:39
 msgid "Show full filename in title bar"
@@ -1133,7 +1133,7 @@ msgstr ""
 
 #: ../mousepad/mousepad-window.c:473
 msgid "Change the visibility of the toolbar"
-msgstr ""
+msgstr "Cambia la visibilità della barra di stato"
 
 #: ../mousepad/mousepad-window.c:474
 msgid "St_atusbar"
@@ -1145,7 +1145,7 @@ msgstr "Cambia la visibilità della barra di stato"
 
 #: ../mousepad/mousepad-window.c:475
 msgid "_Fullscreen"
-msgstr ""
+msgstr "A schermo inter_o"
 
 #: ../mousepad/mousepad-window.c:475 ../mousepad/mousepad-window.c:4950
 msgid "Make the window fullscreen"
