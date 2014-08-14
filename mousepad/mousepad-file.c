@@ -543,10 +543,6 @@ mousepad_file_open (MousepadFile  *file,
             {
               validate:
 
-              /* glib uses a faster validator when the string is nul-terminated */
-              if (G_LIKELY (length > 0 && contents[length] == '\0'))
-                length = -1;
-
               /* leave when the contents is not utf-8 valid */
               if (g_utf8_validate (contents, length, &end) == FALSE)
                 {
