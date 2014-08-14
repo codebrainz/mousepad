@@ -482,7 +482,7 @@ mousepad_file_open (MousepadFile  *file,
   GMappedFile      *mapped_file;
   const gchar      *filename;
   gint              retval = ERROR_READING_FAILED;
-  gsize             length, written;
+  gsize             file_size, written;
   gsize             bom_length;
   const gchar      *contents;
   gchar            *encoded = NULL;
@@ -517,22 +517,22 @@ mousepad_file_open (MousepadFile  *file,
 
   if (G_LIKELY (mapped_file))
     {
-      /* get the mapped file contents and length */
+      /* get the mapped file contents and size */
       contents = g_mapped_file_get_contents (mapped_file);
-      length = g_mapped_file_get_length (mapped_file);
+      file_size = g_mapped_file_get_length (mapped_file);
 
-      if (G_LIKELY (contents != NULL && length > 0))
+      if (G_LIKELY (contents != NULL && file_size > 0))
         {
           /* detect if there is a bom with the encoding type */
-          bom_encoding = mousepad_file_encoding_read_bom (contents, length, &bom_length);
+          bom_encoding = mousepad_file_encoding_read_bom (contents, file_size, &bom_length);
           if (G_UNLIKELY (bom_encoding != MOUSEPAD_ENCODING_NONE))
             {
               /* we've found a valid bom at the start of the contents */
               file->write_bom = TRUE;
 
-              /* advance the contents offset and decrease length */
+              /* advance the contents offset and decrease size */
               contents += bom_length;
-              length -= bom_length;
+              file_size -= bom_length;
 
               /* set the detected encoding */
               file->encoding = bom_encoding;
@@ -544,7 +544,7 @@ mousepad_file_open (MousepadFile  *file,
               validate:
 
               /* leave when the contents is not utf-8 valid */
-              if (g_utf8_validate (contents, length, &end) == FALSE)
+              if (g_utf8_validate (contents, file_size, &end) == FALSE)
                 {
                   /* set return value */
                   retval = ERROR_NOT_UTF8_VALID;
@@ -562,7 +562,7 @@ mousepad_file_open (MousepadFile  *file,
               charset = mousepad_encoding_get_charset (file->encoding);
 
               /* convert the contents */
-              encoded = g_convert (contents, length, "UTF-8", charset, NULL, &written, error);
+              encoded = g_convert (contents, file_size, "UTF-8", charset, NULL, &written, error);
 
               /* check if the string is utf-8 valid */
               if (G_UNLIKELY (encoded == NULL))
@@ -575,7 +575,7 @@ mousepad_file_open (MousepadFile  *file,
 
               /* set new values */
               contents = encoded;
-              length = written;
+              file_size = written;
 
               /* validate the converted content */
               goto validate;
