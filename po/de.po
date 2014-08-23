@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-07-15 06:30+0200\n"
-"PO-Revision-Date: 2014-07-30 13:02+0000\n"
+"PO-Revision-Date: 2014-08-23 13:08+0000\n"
 "Last-Translator: Tobias Bannert\n"
 "Language-Team: German (http://www.transifex.com/projects/p/xfce-apps/language/de/)\n"
 "MIME-Version: 1.0\n"
@@ -367,15 +367,15 @@ msgstr ""
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:12
 msgid "Button"
-msgstr ""
+msgstr "Knopf"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:13
 msgid "Drag & Drop"
-msgstr ""
+msgstr "Ziehen & Ablegen"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:14
 msgid "Dialog"
-msgstr ""
+msgstr "Dialog"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:15
 msgid "Icons Only"
@@ -444,11 +444,11 @@ msgstr "Ansicht"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:31
 msgid "Tab width:"
-msgstr ""
+msgstr "Reiterbreite:"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:32
 msgid "Tab mode:"
-msgstr ""
+msgstr "Reitermodus:"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:33
 msgid "Enable automatic indentation"
@@ -460,7 +460,7 @@ msgstr ""
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:35
 msgid "Behaviour:"
-msgstr ""
+msgstr "Verhalten:"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:36
 msgid "<b>Home/End Keys</b>"
@@ -496,7 +496,7 @@ msgstr ""
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:44
 msgid "Show toolbar"
-msgstr ""
+msgstr "Werkzeugleiste anzeigen"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:45
 msgid "Style:"
@@ -524,7 +524,7 @@ msgstr ""
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:51
 msgid "Window"
-msgstr ""
+msgstr "Fenster"
 
 #. set a custom tab label
 #: ../mousepad/mousepad-print.c:119
