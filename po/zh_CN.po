@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-07-15 06:30+0200\n"
-"PO-Revision-Date: 2014-08-28 04:29+0000\n"
+"PO-Revision-Date: 2014-08-28 08:11+0000\n"
 "Last-Translator: yjwork <yjwork@qq.com>\n"
 "Language-Team: Chinese (China) (http://www.transifex.com/projects/p/xfce-apps/language/zh_CN/)\n"
 "MIME-Version: 1.0\n"
@@ -329,27 +329,27 @@ msgstr "已禁用"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:2
 msgid "Before"
-msgstr ""
+msgstr "之前"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:3
 msgid "After"
-msgstr ""
+msgstr "之后"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:4
 msgid "Always"
-msgstr ""
+msgstr "总是"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:5
 msgid "Insert Tabs"
-msgstr ""
+msgstr "插入制表符"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:6
 msgid "Insert Spaces"
-msgstr ""
+msgstr "插入空格"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:7
 msgid "none"
-msgstr ""
+msgstr "无"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:8
 #: ../mousepad/mousepad-style-scheme-action.c:192
@@ -362,23 +362,23 @@ msgstr "菜单"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:10
 msgid "Small Toolbar"
-msgstr ""
+msgstr "小工具栏"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:11
 msgid "Large Toolbar"
-msgstr ""
+msgstr "大工具栏"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:12
 msgid "Button"
-msgstr ""
+msgstr "按钮"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:13
 msgid "Drag & Drop"
-msgstr ""
+msgstr "拖放"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:14
 msgid "Dialog"
-msgstr ""
+msgstr "对话框"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:15
 msgid "Icons Only"
@@ -403,11 +403,11 @@ msgstr "显示行号"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:20
 msgid "Display whitespace"
-msgstr ""
+msgstr "显示空格"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:21
 msgid "Display line endings"
-msgstr ""
+msgstr "显示行尾"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:22
 msgid "Long line margin at column:"
@@ -415,11 +415,11 @@ msgstr ""
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:23
 msgid "Highlight current line"
-msgstr ""
+msgstr "高亮当前行"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:24
 msgid "Highlight matching brackets"
-msgstr ""
+msgstr "高亮成对括号"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:25
 msgid "Wrap long lines"
@@ -431,7 +431,7 @@ msgstr "<b>显示</b>"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:27
 msgid "Use system monospace font"
-msgstr ""
+msgstr "使用系统等宽字体"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:28
 msgid "<b>Font</b>"
@@ -443,7 +443,7 @@ msgstr "<b>颜色方案</b>"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:30
 msgid "View"
-msgstr ""
+msgstr "视图"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:31
 msgid "Tab width:"
@@ -455,23 +455,23 @@ msgstr ""
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:33
 msgid "Enable automatic indentation"
-msgstr ""
+msgstr "启用自动缩进"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:34
 msgid "<b>Indentation</b>"
-msgstr ""
+msgstr "<b>缩进</b>"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:35
 msgid "Behaviour:"
-msgstr ""
+msgstr "行为:"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:36
 msgid "<b>Home/End Keys</b>"
-msgstr ""
+msgstr "<b>Home/End 键</b>"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:37
 msgid "Editor"
-msgstr ""
+msgstr "编辑器"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:38
 msgid "Show status bar"
@@ -479,23 +479,23 @@ msgstr "显示状态栏"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:39
 msgid "Show full filename in title bar"
-msgstr ""
+msgstr "在标题栏显示完整文件名"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:40
 msgid "Remember window size"
-msgstr ""
+msgstr "记住窗口大小"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:41
 msgid "Remember window position"
-msgstr ""
+msgstr "记住窗口位置"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:42
 msgid "Remember window state"
-msgstr ""
+msgstr "记住窗口状态"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:43
 msgid "<b>General</b>"
-msgstr ""
+msgstr "<b>常规</b>"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:44
 msgid "Show toolbar"
@@ -527,7 +527,7 @@ msgstr ""
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:51
 msgid "Window"
-msgstr ""
+msgstr "窗口"
 
 #. set a custom tab label
 #: ../mousepad/mousepad-print.c:119
@@ -556,7 +556,7 @@ msgstr "打印行号(_L)"
 
 #: ../mousepad/mousepad-print.c:652
 msgid "Numbering interval:"
-msgstr ""
+msgstr "编号间隔："
 
 #: ../mousepad/mousepad-print.c:660
 msgid ""
@@ -715,7 +715,7 @@ msgstr "行: %d 列: %d"
 
 #: ../mousepad/mousepad-style-scheme-action.c:193
 msgid "No style scheme"
-msgstr ""
+msgstr "无风格方案"
 
 #. show warning to the user
 #: ../mousepad/mousepad-util.c:544
@@ -988,7 +988,7 @@ msgstr "向下移动选中行"
 
 #: ../mousepad/mousepad-window.c:441
 msgid "Dup_licate Line / Selection"
-msgstr ""
+msgstr "复制行或选中部分(_L)"
 
 #: ../mousepad/mousepad-window.c:441
 msgid "Duplicate the current line or selection"
@@ -1012,11 +1012,11 @@ msgstr "减少选中部分或者当前行的缩进"
 
 #: ../mousepad/mousepad-window.c:444
 msgid "Show the preferences dialog"
-msgstr ""
+msgstr "显示首选项对话框"
 
 #: ../mousepad/mousepad-window.c:446
 msgid "_Search"
-msgstr ""
+msgstr "搜索(_S)："
 
 #: ../mousepad/mousepad-window.c:447
 msgid "Search for text"
@@ -1124,7 +1124,7 @@ msgstr "行号(_U)"
 
 #: ../mousepad/mousepad-window.c:472
 msgid "_Menubar"
-msgstr ""
+msgstr "菜单栏(_M)"
 
 #: ../mousepad/mousepad-window.c:472
 msgid "Change the visibility of the main menubar"
@@ -1132,11 +1132,11 @@ msgstr ""
 
 #: ../mousepad/mousepad-window.c:473
 msgid "_Toolbar"
-msgstr ""
+msgstr "工具栏(_T)"
 
 #: ../mousepad/mousepad-window.c:473
 msgid "Change the visibility of the toolbar"
-msgstr ""
+msgstr "修改工具栏的可见性"
 
 #: ../mousepad/mousepad-window.c:474
 msgid "St_atusbar"
@@ -1152,7 +1152,7 @@ msgstr "全屏(_F)"
 
 #: ../mousepad/mousepad-window.c:475 ../mousepad/mousepad-window.c:4950
 msgid "Make the window fullscreen"
-msgstr ""
+msgstr "使窗口全屏"
 
 #: ../mousepad/mousepad-window.c:476
 msgid "_Auto Indent"
@@ -1229,7 +1229,7 @@ msgstr "只读"
 msgid ""
 "No template files found in\n"
 "'%s'"
-msgstr ""
+msgstr "在下列位置未发现模板文件\n'%s'"
 
 #. create other action
 #: ../mousepad/mousepad-window.c:2436
