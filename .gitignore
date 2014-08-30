@@ -1,5 +1,6 @@
 *.o
 *.gmo
+*.policy
 Makefile
 Makefile.in
 Makefile.in.in
