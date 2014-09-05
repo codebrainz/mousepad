@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-07-15 06:30+0200\n"
-"PO-Revision-Date: 2014-09-05 00:15+0000\n"
+"PO-Revision-Date: 2014-09-05 13:46+0000\n"
 "Last-Translator: Tobias Bannert\n"
 "Language-Team: German (http://www.transifex.com/projects/p/xfce-apps/language/de/)\n"
 "MIME-Version: 1.0\n"
@@ -346,12 +346,12 @@ msgstr "Leerzeichen einfügen"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:7
 msgid "none"
-msgstr ""
+msgstr "nichts"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:8
 #: ../mousepad/mousepad-style-scheme-action.c:192
 msgid "None"
-msgstr "Kein"
+msgstr "Nichts"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:9
 msgid "Menu"
@@ -408,7 +408,7 @@ msgstr "Zeilenumbrüche anzeigen"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:22
 msgid "Long line margin at column:"
-msgstr ""
+msgstr "Seitenrand, für lange Zeilen, bei Spalte:"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:23
 msgid "Highlight current line"
@@ -416,11 +416,11 @@ msgstr "Aktuelle Zeile hervorheben"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:24
 msgid "Highlight matching brackets"
-msgstr ""
+msgstr "Zusammengehörige Klammern hervorheben"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:25
 msgid "Wrap long lines"
-msgstr ""
+msgstr "Lange Zeilen umbrechen"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:26
 msgid "<b>Display</b>"
@@ -464,7 +464,7 @@ msgstr "Verhalten:"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:36
 msgid "<b>Home/End Keys</b>"
-msgstr ""
+msgstr "<b>Pos1/Ende-Tasten</b>"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:37
 msgid "Editor"
@@ -488,7 +488,7 @@ msgstr "Fensterposition merken"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:42
 msgid "Remember window state"
-msgstr ""
+msgstr "Fensterzustand merken"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:43
 msgid "<b>General</b>"
@@ -516,7 +516,7 @@ msgstr "Reiter immer anzeigen, auch bei einer Datei"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:49
 msgid "Cycled notebook tab switching"
-msgstr ""
+msgstr "Kreisender Notizbuchreiterwechsel"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:50
 msgid "<b>Notebook tabs</b>"
@@ -553,7 +553,7 @@ msgstr "_Zeilennummern drucken"
 
 #: ../mousepad/mousepad-print.c:652
 msgid "Numbering interval:"
-msgstr ""
+msgstr "Nummerierungsabstand:"
 
 #: ../mousepad/mousepad-print.c:660
 msgid ""
@@ -713,7 +713,7 @@ msgstr "Zeile: %d Spalte: %d"
 
 #: ../mousepad/mousepad-style-scheme-action.c:193
 msgid "No style scheme"
-msgstr ""
+msgstr "Kein Stilschema"
 
 #. show warning to the user
 #: ../mousepad/mousepad-util.c:544
@@ -929,7 +929,7 @@ msgstr "Zum _umgekehrten Fall"
 
 #: ../mousepad/mousepad-window.c:433
 msgid "Change the case of the selection opposite case"
-msgstr "Groß- und Kleinschreibung im ausgewählten Text vertauschen"
+msgstr "Groß- und Kleinschreibung, im ausgewählten Text, vertauschen"
 
 #: ../mousepad/mousepad-window.c:434
 msgid "_Tabs to Spaces"
@@ -941,7 +941,7 @@ msgstr "Alle Tabulatoren im ausgewählten Text oder Dokument in Leerzeichen umwa
 
 #: ../mousepad/mousepad-window.c:435
 msgid "_Spaces to Tabs"
-msgstr "_Leerzeichen in Tabulatoren umwandeln "
+msgstr "_Leerzeichen in Tabulatoren umwandeln"
 
 #: ../mousepad/mousepad-window.c:435
 msgid ""
@@ -954,11 +954,11 @@ msgstr "Leerzeichen am Zeilenende _entfernen"
 
 #: ../mousepad/mousepad-window.c:436
 msgid "Remove all the trailing spaces from the selected line(s) or document"
-msgstr "Alle Leerzeichen vom Zeilenende der ausgewählten Zeilen oder des Dokumentes entfernen."
+msgstr "Alle Leerzeichen vom Zeilenende, der ausgewählten Zeilen oder des Dokumentes, entfernen."
 
 #: ../mousepad/mousepad-window.c:437
 msgid "_Transpose"
-msgstr "_Umstellen"
+msgstr "_Vertauschen"
 
 #: ../mousepad/mousepad-window.c:437
 msgid "Reverse the order of something"
@@ -1066,7 +1066,7 @@ msgstr "Schrift der Textbearbeitung ändern"
 
 #: ../mousepad/mousepad-window.c:455
 msgid "_Color Scheme"
-msgstr "Farbs_chema"
+msgstr "_Farbschema"
 
 #: ../mousepad/mousepad-window.c:457
 msgid "_Document"
@@ -1118,7 +1118,7 @@ msgstr "Über diese Anwendung"
 
 #: ../mousepad/mousepad-window.c:471
 msgid "Line N_umbers"
-msgstr "Zeilenn_ummern"
+msgstr "_Zeilennummern"
 
 #: ../mousepad/mousepad-window.c:472
 msgid "_Menubar"
@@ -1126,7 +1126,7 @@ msgstr "_Menüleiste"
 
 #: ../mousepad/mousepad-window.c:472
 msgid "Change the visibility of the main menubar"
-msgstr ""
+msgstr "Die Sichtbarkeit der Hauptmenüleiste ändern"
 
 #: ../mousepad/mousepad-window.c:473
 msgid "_Toolbar"
@@ -1134,7 +1134,7 @@ msgstr "_Werkzeugleiste"
 
 #: ../mousepad/mousepad-window.c:473
 msgid "Change the visibility of the toolbar"
-msgstr ""
+msgstr "Die Sichtbarkeit der Werkzeugleiste ändern"
 
 #: ../mousepad/mousepad-window.c:474
 msgid "St_atusbar"
@@ -1150,7 +1150,7 @@ msgstr "_Vollbild"
 
 #: ../mousepad/mousepad-window.c:475 ../mousepad/mousepad-window.c:4950
 msgid "Make the window fullscreen"
-msgstr ""
+msgstr "Zum Vollbildmodus wechseln"
 
 #: ../mousepad/mousepad-window.c:476
 msgid "_Auto Indent"
@@ -1178,7 +1178,7 @@ msgstr "Zeilen zwischen Wörtern umbrechen"
 
 #: ../mousepad/mousepad-window.c:479
 msgid "Write Unicode _BOM"
-msgstr "_Unicode BOM schreiben"
+msgstr "_Unicode-BOM schreiben"
 
 #: ../mousepad/mousepad-window.c:479
 msgid "Store the byte-order mark in the file"
@@ -1190,7 +1190,7 @@ msgstr "Unix (_LF)"
 
 #: ../mousepad/mousepad-window.c:484
 msgid "Set the line ending of the document to Unix (LF)"
-msgstr "Das Zeilenende auf »Unix« (LF) setzen"
+msgstr "Das Zeilenende auf »Unix« (LF) einstellen"
 
 #: ../mousepad/mousepad-window.c:485
 msgid "Mac (_CR)"
@@ -1198,7 +1198,7 @@ msgstr "Mac (_CR)"
 
 #: ../mousepad/mousepad-window.c:485
 msgid "Set the line ending of the document to Mac (CR)"
-msgstr "Das Zeilenende auf »Mac« (CR) setzen"
+msgstr "Das Zeilenende auf »Mac« (CR) einstellen"
 
 #: ../mousepad/mousepad-window.c:486
 msgid "DOS / Windows (C_R LF)"
@@ -1206,12 +1206,12 @@ msgstr "DOS/Windows (C_R+LF)"
 
 #: ../mousepad/mousepad-window.c:486
 msgid "Set the line ending of the document to DOS / Windows (CR LF)"
-msgstr "Das Zeilenende auf »DOS / WIndows« (CR LF) setzen"
+msgstr "Das Zeilenende auf »DOS / WIndows« (CR LF) einstellen"
 
 #. add the label with the root warning
 #: ../mousepad/mousepad-window.c:882
 msgid "Warning, you are using the root account, you may harm your system."
-msgstr "Achtung, Sie arbeiten mit Administartorrechten und können Ihr System beschädigen."
+msgstr "Achtung, Sie benutzen das Systemverwalterkonto und können Ihr System beschädigen."
 
 #. show the warning
 #: ../mousepad/mousepad-window.c:1534
@@ -1227,7 +1227,7 @@ msgstr "Schreibgeschützt"
 msgid ""
 "No template files found in\n"
 "'%s'"
-msgstr ""
+msgstr "Keine Vorlagedateien in\n»%s« gefunden"
 
 #. create other action
 #: ../mousepad/mousepad-window.c:2436
