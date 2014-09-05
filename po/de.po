@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-07-15 06:30+0200\n"
-"PO-Revision-Date: 2014-09-04 13:03+0000\n"
+"PO-Revision-Date: 2014-09-05 00:15+0000\n"
 "Last-Translator: Tobias Bannert\n"
 "Language-Team: German (http://www.transifex.com/projects/p/xfce-apps/language/de/)\n"
 "MIME-Version: 1.0\n"
@@ -400,11 +400,11 @@ msgstr "Zeilennummern anzeigen"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:20
 msgid "Display whitespace"
-msgstr ""
+msgstr "Leerzeichen anzeigen"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:21
 msgid "Display line endings"
-msgstr ""
+msgstr "Zeilenumbrüche anzeigen"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:22
 msgid "Long line margin at column:"
@@ -412,7 +412,7 @@ msgstr ""
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:23
 msgid "Highlight current line"
-msgstr ""
+msgstr "Aktuelle Zeile hervorheben"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:24
 msgid "Highlight matching brackets"
@@ -476,15 +476,15 @@ msgstr "Statusleiste anzeigen"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:39
 msgid "Show full filename in title bar"
-msgstr ""
+msgstr "Vollständigen Dateinamen in der Titelleiste anzeigen"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:40
 msgid "Remember window size"
-msgstr ""
+msgstr "Fenstergröße merken"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:41
 msgid "Remember window position"
-msgstr ""
+msgstr "Fensterposition merken"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:42
 msgid "Remember window state"
@@ -492,7 +492,7 @@ msgstr ""
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:43
 msgid "<b>General</b>"
-msgstr ""
+msgstr "<b>Allgemein</b>"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:44
 msgid "Show toolbar"
@@ -512,7 +512,7 @@ msgstr "<b>Werkzeugleiste</b>"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:48
 msgid "Always show tabs even with one file"
-msgstr ""
+msgstr "Reiter immer anzeigen, auch bei einer Datei"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:49
 msgid "Cycled notebook tab switching"
@@ -520,7 +520,7 @@ msgstr ""
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:50
 msgid "<b>Notebook tabs</b>"
-msgstr ""
+msgstr "<b>Notizbuchreiter</b>"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:51
 msgid "Window"
@@ -598,7 +598,7 @@ msgstr "E_rsetzen"
 
 #: ../mousepad/mousepad-replace-dialog.c:161
 msgid "_Search for:"
-msgstr "_Suche nach:"
+msgstr "_Suchen nach:"
 
 #: ../mousepad/mousepad-replace-dialog.c:182
 msgid "Replace _with:"
@@ -986,7 +986,7 @@ msgstr "Auswahl um eine Zeile nach unten bewegen"
 
 #: ../mousepad/mousepad-window.c:441
 msgid "Dup_licate Line / Selection"
-msgstr ""
+msgstr "_Zeile/Auswahl verdoppeln"
 
 #: ../mousepad/mousepad-window.c:441
 msgid "Duplicate the current line or selection"
