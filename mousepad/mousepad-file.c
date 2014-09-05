@@ -863,7 +863,7 @@ mousepad_file_reload (MousepadFile  *file,
                       GError       **error)
 {
   GtkTextIter start, end;
-  gboolean    succeed = FALSE;
+  gint        succeed;
 
   g_return_val_if_fail (MOUSEPAD_IS_FILE (file), FALSE);
   g_return_val_if_fail (GTK_IS_TEXT_BUFFER (file->buffer), FALSE);
@@ -887,7 +887,7 @@ mousepad_file_reload (MousepadFile  *file,
   /* reload the file */
   succeed = mousepad_file_open (file, NULL, error);
 
-  return succeed;
+  return (succeed == 0);
 }
 
 
