@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-07-15 06:30+0200\n"
-"PO-Revision-Date: 2014-08-15 08:53+0000\n"
+"PO-Revision-Date: 2014-09-13 06:57+0000\n"
 "Last-Translator: Cristian Marchi <cri.penta@gmail.com>\n"
 "Language-Team: Italian (http://www.transifex.com/projects/p/xfce-apps/language/it/)\n"
 "MIME-Version: 1.0\n"
@@ -312,7 +312,7 @@ msgstr "Testo semplice"
 
 #: ../mousepad/mousepad-language-action.c:230
 msgid "No filetype"
-msgstr ""
+msgstr "Nessun formato file"
 
 #. setup the window properties
 #: ../mousepad/mousepad-prefs-dialog.c:433 ../mousepad/mousepad-window.c:444
@@ -370,11 +370,11 @@ msgstr "Pulsante"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:13
 msgid "Drag & Drop"
-msgstr ""
+msgstr "Drag & Drop"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:14
 msgid "Dialog"
-msgstr ""
+msgstr "Finestra"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:15
 msgid "Icons Only"
@@ -515,11 +515,11 @@ msgstr "Mostra sempre le schede anche con un solo file"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:49
 msgid "Cycled notebook tab switching"
-msgstr ""
+msgstr "Scorrimento delle schede ciclico"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:50
 msgid "<b>Notebook tabs</b>"
-msgstr ""
+msgstr "<b>Schede</b>"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:51
 msgid "Window"
