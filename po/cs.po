@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-07-15 06:30+0200\n"
-"PO-Revision-Date: 2014-09-19 22:58+0000\n"
+"PO-Revision-Date: 2014-10-03 21:07+0000\n"
 "Last-Translator: Michal Várady <miko.vaji@gmail.com>\n"
 "Language-Team: Czech (http://www.transifex.com/projects/p/xfce-apps/language/cs/)\n"
 "MIME-Version: 1.0\n"
@@ -408,7 +408,7 @@ msgstr "Zobrazit ukončení řádku"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:22
 msgid "Long line margin at column:"
-msgstr ""
+msgstr "Zalamovat dlouhé řádky na sloupci:"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:23
 msgid "Highlight current line"
@@ -416,7 +416,7 @@ msgstr "Zvýraznit aktuální řádek"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:24
 msgid "Highlight matching brackets"
-msgstr ""
+msgstr "Zvýraznit závorky na shodné úrovni"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:25
 msgid "Wrap long lines"
@@ -516,7 +516,7 @@ msgstr "Vždy zobrazovat karty i při jednom souboru"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:49
 msgid "Cycled notebook tab switching"
-msgstr ""
+msgstr "Přejít na první kartu po dosažení poslední karty při přepínání karet poznámkových bloků"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:50
 msgid "<b>Notebook tabs</b>"
@@ -560,7 +560,7 @@ msgid ""
 "The interval at which to print line numbers. For example a value of 1 will "
 "print a line number on each line, a value of 2 will print a line number on "
 "every other line, and so on."
-msgstr ""
+msgstr "Perioda pro zobrazení čísel řádků. Například hodnota 1 zajistí výpis čísla řádku u každého řádku, hodnotou 2 nastavíte výpis čísla řádku u každého druhého řádku a tak dále."
 
 #: ../mousepad/mousepad-print.c:672
 msgid "Enable text _wrapping"
@@ -714,7 +714,7 @@ msgstr "Řádek: %d Sloupec: %d"
 
 #: ../mousepad/mousepad-style-scheme-action.c:193
 msgid "No style scheme"
-msgstr ""
+msgstr "Žádné schéma stylu"
 
 #. show warning to the user
 #: ../mousepad/mousepad-util.c:544
