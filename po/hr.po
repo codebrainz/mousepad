@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-07-15 06:30+0200\n"
-"PO-Revision-Date: 2014-10-09 05:22+0000\n"
+"PO-Revision-Date: 2014-10-16 10:19+0000\n"
 "Last-Translator: Ivica  Kolić <ikoli@yahoo.com>\n"
 "Language-Team: Croatian (http://www.transifex.com/projects/p/xfce-apps/language/hr/)\n"
 "MIME-Version: 1.0\n"
@@ -959,7 +959,7 @@ msgstr "Ukloni sve razmake na repu odabranih redaka(retku) ili dokumenta"
 
 #: ../mousepad/mousepad-window.c:437
 msgid "_Transpose"
-msgstr "Preo_kreni"
+msgstr "_Preokreni"
 
 #: ../mousepad/mousepad-window.c:437
 msgid "Reverse the order of something"
@@ -1011,7 +1011,7 @@ msgstr "Smanji uvlaćenje retka ili odabira"
 
 #: ../mousepad/mousepad-window.c:444
 msgid "Show the preferences dialog"
-msgstr "Prikaži okvir osobitosti"
+msgstr "Prikaži dijalog osobitosti"
 
 #: ../mousepad/mousepad-window.c:446
 msgid "_Search"
