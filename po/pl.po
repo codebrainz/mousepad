@@ -4,6 +4,8 @@
 # 
 # Translators:
 # ised, 2014
+# ised, 2014
+# Nick Schermer <nick@xfce.org>, 2014
 # Nick Schermer <nick@xfce.org>, 2014
 # Piotr Sokół <psokol@jabster.pl>, 2012,2014
 # Piotr Strębski <strebski@o2.pl>, 2014
@@ -12,7 +14,7 @@ msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-07-15 06:30+0200\n"
-"PO-Revision-Date: 2014-10-06 12:12+0000\n"
+"PO-Revision-Date: 2014-10-20 07:47+0000\n"
 "Last-Translator: Piotr Sokół <psokol@jabster.pl>\n"
 "Language-Team: Polish (http://www.transifex.com/projects/p/xfce-apps/language/pl/)\n"
 "MIME-Version: 1.0\n"
@@ -328,23 +330,23 @@ msgstr "Wyłączone"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:2
 msgid "Before"
-msgstr "Przed"
+msgstr "Najpierw koniec tekstu"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:3
 msgid "After"
-msgstr "Po"
+msgstr "Najpierw koniec wiersza"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:4
 msgid "Always"
-msgstr "Zawsze"
+msgstr "Zawsze koniec tekstu"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:5
 msgid "Insert Tabs"
-msgstr "Wstaw Tabulatory"
+msgstr "Wstawianie znaków tabulatora"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:6
 msgid "Insert Spaces"
-msgstr "Wstaw Spacje"
+msgstr "Wstawianie znaków odstępu"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:7
 msgid "none"
@@ -377,7 +379,7 @@ msgstr "Przeciągnij i upuść"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:14
 msgid "Dialog"
-msgstr ""
+msgstr "Okno dialogowe"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:15
 msgid "Icons Only"
@@ -398,31 +400,31 @@ msgstr "Etykiety obok ikon"
 #: ../mousepad/mousepad-prefs-dialog.glade.h:19
 #: ../mousepad/mousepad-window.c:471
 msgid "Show line numbers"
-msgstr "Przełącza wyświetlanie numeracji wierszy"
+msgstr "Numery wierszy"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:20
 msgid "Display whitespace"
-msgstr "Wyświetl białe znaki"
+msgstr "Białe znaki"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:21
 msgid "Display line endings"
-msgstr "Wyświetl zakończenia linii"
+msgstr "Zakończenia wierszy"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:22
 msgid "Long line margin at column:"
-msgstr ""
+msgstr "Kolumna marginesu długich wierszy:"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:23
 msgid "Highlight current line"
-msgstr "Podświetlanie bieżącego wiersza"
+msgstr "Wyróżnianie bieżącego wiersza"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:24
 msgid "Highlight matching brackets"
-msgstr "Podświetlanie pasujących nawiasów"
+msgstr "Wyróżnianie pasujących nawiasów"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:25
 msgid "Wrap long lines"
-msgstr "Zawijanie długich wierszy"
+msgstr "Zawijanie tekstu"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:26
 msgid "<b>Display</b>"
@@ -430,7 +432,7 @@ msgstr "<b>Widok</b>"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:27
 msgid "Use system monospace font"
-msgstr "Użyj systemowej czcionki o stałej szerokości"
+msgstr "Używanie systemowej czcionki o stałej szerokości"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:28
 msgid "<b>Font</b>"
@@ -446,19 +448,19 @@ msgstr "Widok"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:31
 msgid "Tab width:"
-msgstr "Szerokość tabulatora:"
+msgstr "Szerokość:"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:32
 msgid "Tab mode:"
-msgstr "Tryb tabulatora:"
+msgstr "Tryb:"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:33
 msgid "Enable automatic indentation"
-msgstr "Włącz automatyczną indentację"
+msgstr "Automatyczne wcięcia"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:34
 msgid "<b>Indentation</b>"
-msgstr "<b>Indentacja</b>"
+msgstr "<b>Tabulacja</b>"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:35
 msgid "Behaviour:"
@@ -474,23 +476,23 @@ msgstr "Edytor"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:38
 msgid "Show status bar"
-msgstr "Pokaż pasek statusu"
+msgstr "Pasek stanu"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:39
 msgid "Show full filename in title bar"
-msgstr "Pokazuj pełną nazwę pliku w paku tytułu"
+msgstr "Pełna nazwa pliku na pasku tytułu"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:40
 msgid "Remember window size"
-msgstr "Zapamiętaj rozmiar okna"
+msgstr "Pamiętanie rozmiaru okna"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:41
 msgid "Remember window position"
-msgstr "Zapamiętaj położenie okna"
+msgstr "Pamiętanie położenia okna"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:42
 msgid "Remember window state"
-msgstr "Zapamiętaj stan okna"
+msgstr "Pamiętanie stanu okna"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:43
 msgid "<b>General</b>"
@@ -498,7 +500,7 @@ msgstr "<b>Ogólne</b>"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:44
 msgid "Show toolbar"
-msgstr "Pokaż pasek narzędziowy"
+msgstr "Wyświetlanie"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:45
 msgid "Style:"
@@ -514,15 +516,15 @@ msgstr "<b>Pasek narzędziowy</b>"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:48
 msgid "Always show tabs even with one file"
-msgstr "Zawsze pokazuj zakładki, nawet przy jednym pliku"
+msgstr "Wyświetlanie nawet dla jednego dokumentu"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:49
 msgid "Cycled notebook tab switching"
-msgstr ""
+msgstr "Cykliczne przełącznie"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:50
 msgid "<b>Notebook tabs</b>"
-msgstr "<b>Zakładki</b>"
+msgstr "<b>Karty</b>"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:51
 msgid "Window"
@@ -555,14 +557,14 @@ msgstr "Drukowanie numerów _wierszy"
 
 #: ../mousepad/mousepad-print.c:652
 msgid "Numbering interval:"
-msgstr ""
+msgstr "Odstęp numeracji:"
 
 #: ../mousepad/mousepad-print.c:660
 msgid ""
 "The interval at which to print line numbers. For example a value of 1 will "
 "print a line number on each line, a value of 2 will print a line number on "
 "every other line, and so on."
-msgstr ""
+msgstr "Określa odstęp z jakim wyświetlane będą numery wierszy. Dla wartości 1 numery pojawią się w każdym wierszu, wartość 2 wyświetli numer w co drugim wierszu, itd."
 
 #: ../mousepad/mousepad-print.c:672
 msgid "Enable text _wrapping"
@@ -716,7 +718,7 @@ msgstr "Wiersz: %d Kolumna: %d"
 
 #: ../mousepad/mousepad-style-scheme-action.c:193
 msgid "No style scheme"
-msgstr "Brak schematu stylu"
+msgstr "Brak zestawu kolorów"
 
 #. show warning to the user
 #: ../mousepad/mousepad-util.c:544
@@ -904,7 +906,7 @@ msgstr "P_rzekształć"
 
 #: ../mousepad/mousepad-window.c:430
 msgid "To _Uppercase"
-msgstr ""
+msgstr "Na _wielkie litery"
 
 #: ../mousepad/mousepad-window.c:430
 msgid "Change the case of the selection to uppercase"
@@ -912,7 +914,7 @@ msgstr "Zmienia znaki zaznaczonego tekstu na wielkie litery"
 
 #: ../mousepad/mousepad-window.c:431
 msgid "To _Lowercase"
-msgstr ""
+msgstr "Na _małe litery"
 
 #: ../mousepad/mousepad-window.c:431
 msgid "Change the case of the selection to lowercase"
@@ -920,7 +922,7 @@ msgstr "Zmienia znaki zaznaczonego tekstu na małe litery"
 
 #: ../mousepad/mousepad-window.c:432
 msgid "To _Title Case"
-msgstr ""
+msgstr "Na _rozpoczynane wielką literą"
 
 #: ../mousepad/mousepad-window.c:432
 msgid "Change the case of the selection to title case"
@@ -928,7 +930,7 @@ msgstr "Zmienia znaki zaznaczonego tekstu na litery tytułowe"
 
 #: ../mousepad/mousepad-window.c:433
 msgid "To _Opposite Case"
-msgstr ""
+msgstr "Na _odwrotną wielkość liter"
 
 #: ../mousepad/mousepad-window.c:433
 msgid "Change the case of the selection opposite case"
@@ -940,7 +942,7 @@ msgstr "_Tabulatory na odstępy"
 
 #: ../mousepad/mousepad-window.c:434
 msgid "Convert all tabs to spaces in the selection or document"
-msgstr "Zamienia wszystkie tabulatory na odstępy w zaznaczeniu lub dokumencie"
+msgstr "Zamienia wszystkie tabulatory na odstępy w zaznaczonym fragmencie lub dokumencie"
 
 #: ../mousepad/mousepad-window.c:435
 msgid "_Spaces to Tabs"
@@ -949,15 +951,15 @@ msgstr "_Odstępy na tabulatory"
 #: ../mousepad/mousepad-window.c:435
 msgid ""
 "Convert all the leading spaces to tabs in the selected line(s) or document"
-msgstr "Zamienia wszystkie odstępy początkowe na tabulatory w zaznaczonych wierszach lub dokumencie"
+msgstr "Zamienia wszystkie odstępy początkowe na tabulatory w zaznaczonym fragmencie lub dokumencie"
 
 #: ../mousepad/mousepad-window.c:436
 msgid "St_rip Trailing Spaces"
-msgstr "Pokazuje ciągi odstępów"
+msgstr "_Usuń odstępy końcowe"
 
 #: ../mousepad/mousepad-window.c:436
 msgid "Remove all the trailing spaces from the selected line(s) or document"
-msgstr "Usuwa wszystkie ciągi odstępów z zaznaczonych wierszy lub dokumentu"
+msgstr "Usuwa wszystkie odstępy z końców zaznaczonych wierszy lub dokumentu"
 
 #: ../mousepad/mousepad-window.c:437
 msgid "_Transpose"
@@ -969,7 +971,7 @@ msgstr "Odwraca kolejność wierszy lub znaków"
 
 #: ../mousepad/mousepad-window.c:438
 msgid "_Move Selection"
-msgstr "_Przemieszczanie zaznaczenia"
+msgstr "_Przemieść zaznaczenie"
 
 #: ../mousepad/mousepad-window.c:439
 msgid "Line _Up"
@@ -989,7 +991,7 @@ msgstr "Przemieszcza zaznaczony tekst jeden wiersz w górę"
 
 #: ../mousepad/mousepad-window.c:441
 msgid "Dup_licate Line / Selection"
-msgstr ""
+msgstr "_Powiel wiersz lub zaznaczenie"
 
 #: ../mousepad/mousepad-window.c:441
 msgid "Duplicate the current line or selection"
@@ -1013,11 +1015,11 @@ msgstr "Zmniejsza wcięcie zaznaczonego tekstu lub bieżącego wiersza"
 
 #: ../mousepad/mousepad-window.c:444
 msgid "Show the preferences dialog"
-msgstr "Pokaż okno preferencji"
+msgstr "Wyświetla okno preferencji"
 
 #: ../mousepad/mousepad-window.c:446
 msgid "_Search"
-msgstr "_Wyszukaj"
+msgstr "_Wyszukiwanie"
 
 #: ../mousepad/mousepad-window.c:447
 msgid "Search for text"
@@ -1069,7 +1071,7 @@ msgstr "Zmienia czcionkę dokumentu"
 
 #: ../mousepad/mousepad-window.c:455
 msgid "_Color Scheme"
-msgstr "Styl _kolorów"
+msgstr "Zestaw _kolorów"
 
 #: ../mousepad/mousepad-window.c:457
 msgid "_Document"
@@ -1129,7 +1131,7 @@ msgstr "Pasek _menu"
 
 #: ../mousepad/mousepad-window.c:472
 msgid "Change the visibility of the main menubar"
-msgstr "Zmień wyświetlanie głównego paska menu"
+msgstr "Przełącza wyświetlanie paska menu"
 
 #: ../mousepad/mousepad-window.c:473
 msgid "_Toolbar"
@@ -1137,7 +1139,7 @@ msgstr "_Pasek narzędziowy"
 
 #: ../mousepad/mousepad-window.c:473
 msgid "Change the visibility of the toolbar"
-msgstr "Zmień wyświetlanie paska narzędzi"
+msgstr "Przełącza wyświetlanie paska narzędziowego"
 
 #: ../mousepad/mousepad-window.c:474
 msgid "St_atusbar"
@@ -1153,7 +1155,7 @@ msgstr "_Pełny ekran"
 
 #: ../mousepad/mousepad-window.c:475 ../mousepad/mousepad-window.c:4950
 msgid "Make the window fullscreen"
-msgstr "Włącz tryb pełnego ekranu"
+msgstr "Wyświetla okno na pełnym ekranie"
 
 #: ../mousepad/mousepad-window.c:476
 msgid "_Auto Indent"
@@ -1165,11 +1167,11 @@ msgstr "Automatycznie wcina nowy akapit"
 
 #: ../mousepad/mousepad-window.c:477
 msgid "Insert _Spaces"
-msgstr "Wstawianie znaków _spacji"
+msgstr "Wstawianie znaków _odstępu"
 
 #: ../mousepad/mousepad-window.c:477
 msgid "Insert spaces when the tab button is pressed"
-msgstr "Wstawia znaki spacji zamiast znaków tabulatora"
+msgstr "Wstawia znaki odstępu zamiast tabulatora"
 
 #: ../mousepad/mousepad-window.c:478
 msgid "_Word Wrap"
@@ -1181,7 +1183,7 @@ msgstr "Przełącza łamanie wierszy między słowami"
 
 #: ../mousepad/mousepad-window.c:479
 msgid "Write Unicode _BOM"
-msgstr "Pisze w Unicode _BOM"
+msgstr "Zapisywania znacznika _BOM"
 
 #: ../mousepad/mousepad-window.c:479
 msgid "Store the byte-order mark in the file"
@@ -1326,7 +1328,7 @@ msgstr "Wybór czcionki"
 
 #: ../mousepad/mousepad-window.c:4943
 msgid "Leave fullscreen mode"
-msgstr "Opuść tryb pełnego ekranu"
+msgstr "Wyłącza tryb pełnego ekranu"
 
 #: ../mousepad.desktop.in.in.h:2
 msgid "Simple Text Editor"
