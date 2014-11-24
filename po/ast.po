@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-07-15 06:30+0200\n"
-"PO-Revision-Date: 2014-08-05 15:15+0000\n"
+"PO-Revision-Date: 2014-11-24 16:30+0000\n"
 "Last-Translator: Ḷḷumex03 <tornes@opmbx.org>\n"
 "Language-Team: Asturian (http://www.transifex.com/projects/p/xfce-apps/language/ast/)\n"
 "MIME-Version: 1.0\n"
@@ -1103,7 +1103,7 @@ msgstr "Esbillar llingüeta siguiente"
 
 #: ../mousepad/mousepad-window.c:464
 msgid "_Help"
-msgstr "_Ayuda"
+msgstr "A_yuda"
 
 #: ../mousepad/mousepad-window.c:465
 msgid "_Contents"
