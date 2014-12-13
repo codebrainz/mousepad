@@ -4,6 +4,7 @@
 # 
 # Translators:
 # Mustafa TEKKOYUN <mustafa.tekkoyun@gmail.com>, 2013
+# Natavan Mirzayeva <mirzayevanatavan@gmail.com>, 2014
 # Necdet Yücel <necdetyucel@gmail.com>, 2013-2014
 # Redcode, 2013-2014
 # Volkan Gezer <volkangezer@gmail.com>, 2013
@@ -12,8 +13,8 @@ msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-07-15 06:30+0200\n"
-"PO-Revision-Date: 2014-12-11 12:30+0000\n"
-"Last-Translator: Necdet Yücel <necdetyucel@gmail.com>\n"
+"PO-Revision-Date: 2014-12-13 16:37+0000\n"
+"Last-Translator: Natavan Mirzayeva <mirzayevanatavan@gmail.com>\n"
 "Language-Team: Turkish (http://www.transifex.com/projects/p/xfce-apps/language/tr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -324,27 +325,27 @@ msgstr "Tercihler"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:1
 msgid "Disabled"
-msgstr ""
+msgstr "Kullanışsız"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:2
 msgid "Before"
-msgstr ""
+msgstr "Önce"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:3
 msgid "After"
-msgstr ""
+msgstr "Sonra"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:4
 msgid "Always"
-msgstr ""
+msgstr "Her zaman"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:5
 msgid "Insert Tabs"
-msgstr ""
+msgstr "Sekmeleri Ekle"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:6
 msgid "Insert Spaces"
-msgstr ""
+msgstr "Boşlukları Ekle"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:7
 msgid "none"
@@ -361,39 +362,39 @@ msgstr "Menü"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:10
 msgid "Small Toolbar"
-msgstr ""
+msgstr "Küçük Araç Çubuğu"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:11
 msgid "Large Toolbar"
-msgstr ""
+msgstr "Büyük Araç Çubuğu"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:12
 msgid "Button"
-msgstr ""
+msgstr "Düğme"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:13
 msgid "Drag & Drop"
-msgstr ""
+msgstr "Sürükle ve Bırak"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:14
 msgid "Dialog"
-msgstr ""
+msgstr "Diyalog"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:15
 msgid "Icons Only"
-msgstr ""
+msgstr "Sadece Simgeler"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:16
 msgid "Text Only"
-msgstr ""
+msgstr "Sadece Metin"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:17
 msgid "Text Below Icons"
-msgstr ""
+msgstr "Simgelerin Altındaki Metin"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:18
 msgid "Text Beside Icons"
-msgstr ""
+msgstr "Simgelerin Yanındaki Metin"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:19
 #: ../mousepad/mousepad-window.c:471
@@ -402,103 +403,103 @@ msgstr "Satır numaralarını göster"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:20
 msgid "Display whitespace"
-msgstr ""
+msgstr "Ekran boşluğu"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:21
 msgid "Display line endings"
-msgstr ""
+msgstr "Görünen satır sonları"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:22
 msgid "Long line margin at column:"
-msgstr ""
+msgstr "Sutundaki uzun çizgi marjı:"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:23
 msgid "Highlight current line"
-msgstr ""
+msgstr "Geçerli satırı vurgulayın"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:24
 msgid "Highlight matching brackets"
-msgstr ""
+msgstr "Uygun parantezleri vurgulayın"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:25
 msgid "Wrap long lines"
-msgstr ""
+msgstr "Uzun çizgileri çerçevele"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:26
 msgid "<b>Display</b>"
-msgstr ""
+msgstr "<b>Ekran</b>"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:27
 msgid "Use system monospace font"
-msgstr ""
+msgstr "Eşaralıklı yazıtipi kullanım sistemi"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:28
 msgid "<b>Font</b>"
-msgstr ""
+msgstr "<b>Kaynak</b>"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:29
 msgid "<b>Colour scheme</b>"
-msgstr ""
+msgstr "<b>Renk şeması</b>"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:30
 msgid "View"
-msgstr ""
+msgstr "Görünüm"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:31
 msgid "Tab width:"
-msgstr ""
+msgstr "Sekme genişliği:"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:32
 msgid "Tab mode:"
-msgstr ""
+msgstr "Sekme modu:"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:33
 msgid "Enable automatic indentation"
-msgstr ""
+msgstr "Otomatik girintini etkinleştirin"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:34
 msgid "<b>Indentation</b>"
-msgstr ""
+msgstr "<b>Girinti</b>"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:35
 msgid "Behaviour:"
-msgstr ""
+msgstr "Tutum:"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:36
 msgid "<b>Home/End Keys</b>"
-msgstr ""
+msgstr "<b>Ev/Sonlandırma Tuşları</b>"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:37
 msgid "Editor"
-msgstr ""
+msgstr "Program kurgu sorumlusu"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:38
 msgid "Show status bar"
-msgstr ""
+msgstr "Durum çubuğunu göster"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:39
 msgid "Show full filename in title bar"
-msgstr ""
+msgstr "Başlık çubuğundaki tam dosya adını göster"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:40
 msgid "Remember window size"
-msgstr ""
+msgstr "Pencere boyutunu hatırla"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:41
 msgid "Remember window position"
-msgstr ""
+msgstr "Pencere konumunu hatırla"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:42
 msgid "Remember window state"
-msgstr ""
+msgstr "Pencere durumunu hatırla"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:43
 msgid "<b>General</b>"
-msgstr ""
+msgstr "<b>Genel</b>"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:44
 msgid "Show toolbar"
-msgstr ""
+msgstr "Araç çubuğunu göster"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:45
 msgid "Style:"
@@ -506,27 +507,27 @@ msgstr "Stil:"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:46
 msgid "Icon Size:"
-msgstr ""
+msgstr "Simge boyutu:"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:47
 msgid "<b>Toolbar</b>"
-msgstr ""
+msgstr "<b>Araç çubuğu</b>"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:48
 msgid "Always show tabs even with one file"
-msgstr ""
+msgstr "Herzaman tek bir dosyalı olsa dahi sekmeleri göster"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:49
 msgid "Cycled notebook tab switching"
-msgstr ""
+msgstr "Sağlanan dizüstü sekmesinin anahtarlaması"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:50
 msgid "<b>Notebook tabs</b>"
-msgstr ""
+msgstr "<b>Dizüstü sekmeleri</b>"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:51
 msgid "Window"
-msgstr ""
+msgstr "Pencere"
 
 #. set a custom tab label
 #: ../mousepad/mousepad-print.c:119
@@ -555,14 +556,14 @@ msgstr "Sa_tır numaralarını yazdır"
 
 #: ../mousepad/mousepad-print.c:652
 msgid "Numbering interval:"
-msgstr ""
+msgstr "Numaralandırılmış aralık:"
 
 #: ../mousepad/mousepad-print.c:660
 msgid ""
 "The interval at which to print line numbers. For example a value of 1 will "
 "print a line number on each line, a value of 2 will print a line number on "
 "every other line, and so on."
-msgstr ""
+msgstr "Satır  numaralarını yazdırmak için aralık.Örneğin 1 değeri  satırda bir satır numarasını yazdıracaktır,2 değeri  diğer satırda bir satır numarası yazdıracaktır,ve saire."
 
 #: ../mousepad/mousepad-print.c:672
 msgid "Enable text _wrapping"
@@ -715,7 +716,7 @@ msgstr "Satır: %d Sütun: %d"
 
 #: ../mousepad/mousepad-style-scheme-action.c:193
 msgid "No style scheme"
-msgstr ""
+msgstr "Stil şeması yoktur"
 
 #. show warning to the user
 #: ../mousepad/mousepad-util.c:544
@@ -899,11 +900,11 @@ msgstr "Seçimi sütun seçimine ve tam tersine değiştir"
 
 #: ../mousepad/mousepad-window.c:429
 msgid "Conve_rt"
-msgstr ""
+msgstr "_Dönüştürme"
 
 #: ../mousepad/mousepad-window.c:430
 msgid "To _Uppercase"
-msgstr ""
+msgstr "_Büyük Harfle"
 
 #: ../mousepad/mousepad-window.c:430
 msgid "Change the case of the selection to uppercase"
@@ -911,7 +912,7 @@ msgstr "Seçimi büyük harfe dönüştür"
 
 #: ../mousepad/mousepad-window.c:431
 msgid "To _Lowercase"
-msgstr ""
+msgstr "_Küçük Harfle"
 
 #: ../mousepad/mousepad-window.c:431
 msgid "Change the case of the selection to lowercase"
@@ -919,7 +920,7 @@ msgstr "Seçimi küçük harfe dönüştür"
 
 #: ../mousepad/mousepad-window.c:432
 msgid "To _Title Case"
-msgstr ""
+msgstr "_Başlık Durumunda"
 
 #: ../mousepad/mousepad-window.c:432
 msgid "Change the case of the selection to title case"
@@ -927,7 +928,7 @@ msgstr "Seçimdeki kelimelerin ilk harflerini büyüt"
 
 #: ../mousepad/mousepad-window.c:433
 msgid "To _Opposite Case"
-msgstr ""
+msgstr "_Durum Karşısında"
 
 #: ../mousepad/mousepad-window.c:433
 msgid "Change the case of the selection opposite case"
@@ -988,7 +989,7 @@ msgstr "Seçimi bir satır aşağı taşı"
 
 #: ../mousepad/mousepad-window.c:441
 msgid "Dup_licate Line / Selection"
-msgstr ""
+msgstr "Yed_ek çizgi/Seçenek"
 
 #: ../mousepad/mousepad-window.c:441
 msgid "Duplicate the current line or selection"
@@ -1012,11 +1013,11 @@ msgstr "Seçimin veya mevcut çizginin girintisini azat"
 
 #: ../mousepad/mousepad-window.c:444
 msgid "Show the preferences dialog"
-msgstr ""
+msgstr "İletişim tercihlerini göster"
 
 #: ../mousepad/mousepad-window.c:446
 msgid "_Search"
-msgstr ""
+msgstr "_Arama"
 
 #: ../mousepad/mousepad-window.c:447
 msgid "Search for text"
@@ -1124,19 +1125,19 @@ msgstr "Satır _Numaraları"
 
 #: ../mousepad/mousepad-window.c:472
 msgid "_Menubar"
-msgstr ""
+msgstr "_Menü çubuğu"
 
 #: ../mousepad/mousepad-window.c:472
 msgid "Change the visibility of the main menubar"
-msgstr ""
+msgstr "Ana menü çubuğunun görünürlüğünü değiştir"
 
 #: ../mousepad/mousepad-window.c:473
 msgid "_Toolbar"
-msgstr ""
+msgstr "_Araç çubuğu"
 
 #: ../mousepad/mousepad-window.c:473
 msgid "Change the visibility of the toolbar"
-msgstr ""
+msgstr "Araç çubuğunun görünürlüğünü değiştir"
 
 #: ../mousepad/mousepad-window.c:474
 msgid "St_atusbar"
@@ -1148,11 +1149,11 @@ msgstr "Durum çubuğunun görünürlüğünü değiştir"
 
 #: ../mousepad/mousepad-window.c:475
 msgid "_Fullscreen"
-msgstr ""
+msgstr "_Tam ekran"
 
 #: ../mousepad/mousepad-window.c:475 ../mousepad/mousepad-window.c:4950
 msgid "Make the window fullscreen"
-msgstr ""
+msgstr "Pencereyi tam ekran yap"
 
 #: ../mousepad/mousepad-window.c:476
 msgid "_Auto Indent"
@@ -1229,7 +1230,7 @@ msgstr "Salt okunur"
 msgid ""
 "No template files found in\n"
 "'%s'"
-msgstr ""
+msgstr "Şablon dosyaları bulunamadı\n'%s'"
 
 #. create other action
 #: ../mousepad/mousepad-window.c:2436
@@ -1325,7 +1326,7 @@ msgstr "Mousepad Yazı Tipini Seç"
 
 #: ../mousepad/mousepad-window.c:4943
 msgid "Leave fullscreen mode"
-msgstr ""
+msgstr "Tam ekran modundan çıkın"
 
 #: ../mousepad.desktop.in.in.h:2
 msgid "Simple Text Editor"
