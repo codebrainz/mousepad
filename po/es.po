@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-07-15 06:30+0200\n"
-"PO-Revision-Date: 2014-08-02 01:58+0000\n"
+"PO-Revision-Date: 2014-12-26 20:47+0000\n"
 "Last-Translator: Pablo Roberto Francisco Lezaeta Reyes <prflr88@gmail.com>\n"
 "Language-Team: Spanish (http://www.transifex.com/projects/p/xfce-apps/language/es/)\n"
 "MIME-Version: 1.0\n"
@@ -61,7 +61,7 @@ msgstr "Mousepad es un editor de texto veloz para el entorno de escritorio Xfce.
 
 #: ../mousepad/mousepad-dialogs.c:45
 msgid "translator-credits"
-msgstr "Pablo Lezaeta <prflr88@gmail.com> 2013-2014"
+msgstr "Pablo Lezaeta <prflr88@gmail.com> 2013-2015"
 
 #. display an error message to the user
 #: ../mousepad/mousepad-dialogs.c:100
@@ -295,7 +295,7 @@ msgstr "Coreano"
 #: ../mousepad/mousepad-file.c:557
 #, c-format
 msgid "Invalid byte sequence in conversion input"
-msgstr "Secuencia de <i>bytes</i> no válida en la entrada de conversión"
+msgstr "Secuencia de bytes no válida en la entrada de conversión"
 
 #: ../mousepad/mousepad-file.c:881
 #, c-format
@@ -516,7 +516,7 @@ msgstr "Siempre mostrar pestañas aun conun archivo"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:49
 msgid "Cycled notebook tab switching"
-msgstr "Cambiar cíclicamente las pestañas de bloc de notas"
+msgstr "Cambiar cíclicamente las pestañas del bloc de notas"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:50
 msgid "<b>Notebook tabs</b>"
