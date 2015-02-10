@@ -5,16 +5,19 @@
 # Translators:
 # Hunt Xu <huntxu@live.cn>, 2012
 # qingxianhao <qinghao1@foxmail.com>, 2012
-# yjwork <yjwork@qq.com>, 2014
+# qingxianhao <qinghao1@foxmail.com>, 2012
+# 玉堂白鹤 <yjwork@qq.com>, 2014
 # 周潇波 <zhouxiaobo.500@gmail.com>, 2013
+# 周潇波 <zhouxiaobo.500@gmail.com>, 2013
+# 玉堂白鹤 <yjwork@qq.com>, 2014
 # yjwork527 <yjwork.xfce@gmail.com>, 2012
 msgid ""
 msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-07-15 06:30+0200\n"
-"PO-Revision-Date: 2014-08-28 08:11+0000\n"
-"Last-Translator: yjwork <yjwork@qq.com>\n"
+"PO-Revision-Date: 2015-02-10 15:04+0000\n"
+"Last-Translator: 玉堂白鹤 <yjwork@qq.com>\n"
 "Language-Team: Chinese (China) (http://www.transifex.com/projects/p/xfce-apps/language/zh_CN/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -64,7 +67,7 @@ msgstr "Mousepad 是 Xfce 桌面环境下的一个快速的文本编辑器 。"
 
 #: ../mousepad/mousepad-dialogs.c:45
 msgid "translator-credits"
-msgstr "玉堂白鹤 <yjwork.xfce@gmail.com>\nqinghao <qinghao1@foxmail.com>"
+msgstr "玉堂白鹤 <yjwork@qq.com>\nqinghao <qinghao1@foxmail.com>"
 
 #. display an error message to the user
 #: ../mousepad/mousepad-dialogs.c:100
@@ -83,7 +86,7 @@ msgstr "转至"
 
 #: ../mousepad/mousepad-dialogs.c:218
 msgid "_Line number:"
-msgstr "行号（_L):"
+msgstr "行号(_L):"
 
 #: ../mousepad/mousepad-dialogs.c:237
 msgid "C_olumn number:"
@@ -123,7 +126,7 @@ msgstr "如果您不保存文档，所有更改将会丢失。"
 #: ../mousepad/mousepad-dialogs.c:380
 msgid ""
 "The document has been externally modified. Do you want to continue saving?"
-msgstr "文档在外部修改了。你要继续保存吗？"
+msgstr "文档在外部修改了。您要继续保存吗？"
 
 #: ../mousepad/mousepad-dialogs.c:381
 msgid "Externally Modified"
@@ -131,7 +134,7 @@ msgstr "外部修改"
 
 #: ../mousepad/mousepad-dialogs.c:383
 msgid "If you save the document, all of the external changes will be lost."
-msgstr "如果你保存文档，所有外部改动都会丢失。"
+msgstr "如果您保存文档，所有外部改动都会丢失。"
 
 #: ../mousepad/mousepad-dialogs.c:411
 msgid "Do you want to save your changes before reloading?"
@@ -411,7 +414,7 @@ msgstr "显示行尾"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:22
 msgid "Long line margin at column:"
-msgstr ""
+msgstr "显示长边缘线在列："
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:23
 msgid "Highlight current line"
@@ -423,7 +426,7 @@ msgstr "高亮成对括号"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:25
 msgid "Wrap long lines"
-msgstr ""
+msgstr "为长行换行"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:26
 msgid "<b>Display</b>"
@@ -447,11 +450,11 @@ msgstr "视图"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:31
 msgid "Tab width:"
-msgstr ""
+msgstr "Tab 宽度:"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:32
 msgid "Tab mode:"
-msgstr ""
+msgstr "Tab 模式:"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:33
 msgid "Enable automatic indentation"
@@ -515,15 +518,15 @@ msgstr "<b>工具栏</b>"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:48
 msgid "Always show tabs even with one file"
-msgstr ""
+msgstr "即使只有一个文件也显示标签"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:49
 msgid "Cycled notebook tab switching"
-msgstr ""
+msgstr "切换时循环笔记本标签"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:50
 msgid "<b>Notebook tabs</b>"
-msgstr ""
+msgstr "<b>笔记本标签</b>"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:51
 msgid "Window"
@@ -563,7 +566,7 @@ msgid ""
 "The interval at which to print line numbers. For example a value of 1 will "
 "print a line number on each line, a value of 2 will print a line number on "
 "every other line, and so on."
-msgstr ""
+msgstr "要打印的行号间隔。比如如果是值为 1,则在每行打印；如果值为 2,则隔行打印；以此类推。"
 
 #: ../mousepad/mousepad-print.c:672
 msgid "Enable text _wrapping"
@@ -1128,7 +1131,7 @@ msgstr "菜单栏(_M)"
 
 #: ../mousepad/mousepad-window.c:472
 msgid "Change the visibility of the main menubar"
-msgstr ""
+msgstr "改变主菜单栏的可见性"
 
 #: ../mousepad/mousepad-window.c:473
 msgid "_Toolbar"
