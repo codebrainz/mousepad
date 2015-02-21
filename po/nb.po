@@ -3,15 +3,15 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
-# Allan Nordhøy <comradekingu@gmail.com>, 2014
+# Allan Nordhøy <comradekingu@gmail.com>, 2014-2015
 # Harald <haarektrans@gmail.com>, 2014
 msgid ""
 msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-07-15 06:30+0200\n"
-"PO-Revision-Date: 2014-07-29 14:47+0000\n"
-"Last-Translator: Harald <haarektrans@gmail.com>\n"
+"PO-Revision-Date: 2015-02-21 17:02+0000\n"
+"Last-Translator: Allan Nordhøy <comradekingu@gmail.com>\n"
 "Language-Team: Norwegian Bokmål (http://www.transifex.com/projects/p/xfce-apps/language/nb/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -326,27 +326,27 @@ msgstr "Deaktivert"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:2
 msgid "Before"
-msgstr ""
+msgstr "Før"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:3
 msgid "After"
-msgstr ""
+msgstr "Etter"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:4
 msgid "Always"
-msgstr ""
+msgstr "Alltid"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:5
 msgid "Insert Tabs"
-msgstr ""
+msgstr "Sett inn tabulatorfelter"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:6
 msgid "Insert Spaces"
-msgstr ""
+msgstr "Legg til mellomrom"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:7
 msgid "none"
-msgstr ""
+msgstr "ingen"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:8
 #: ../mousepad/mousepad-style-scheme-action.c:192
@@ -367,15 +367,15 @@ msgstr "Stor verktøylinje"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:12
 msgid "Button"
-msgstr ""
+msgstr "Knapp"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:13
 msgid "Drag & Drop"
-msgstr ""
+msgstr "Dra-og-slipp"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:14
 msgid "Dialog"
-msgstr ""
+msgstr "Dialog"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:15
 msgid "Icons Only"
@@ -400,131 +400,131 @@ msgstr "Vis linjenummerering"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:20
 msgid "Display whitespace"
-msgstr ""
+msgstr "Vis mellomrom"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:21
 msgid "Display line endings"
-msgstr ""
+msgstr "Vis linjeendelser"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:22
 msgid "Long line margin at column:"
-msgstr ""
+msgstr "Lang linjemargin på kolonne:"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:23
 msgid "Highlight current line"
-msgstr ""
+msgstr "Fremheving av gjeldende linje"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:24
 msgid "Highlight matching brackets"
-msgstr ""
+msgstr "Fremhevning av samsvarende parenteser"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:25
 msgid "Wrap long lines"
-msgstr ""
+msgstr "Linjebrytning for lange setninger"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:26
 msgid "<b>Display</b>"
-msgstr ""
+msgstr "<b>Vis</b>"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:27
 msgid "Use system monospace font"
-msgstr ""
+msgstr "Bruk systemets fastbreddeskrift"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:28
 msgid "<b>Font</b>"
-msgstr ""
+msgstr "<b>Skriftsnitt</b>"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:29
 msgid "<b>Colour scheme</b>"
-msgstr ""
+msgstr "<b>Fargepalett</b>"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:30
 msgid "View"
-msgstr ""
+msgstr "Vis"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:31
 msgid "Tab width:"
-msgstr ""
+msgstr "Tabulatorbredde:"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:32
 msgid "Tab mode:"
-msgstr ""
+msgstr "Tabulatormodus:"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:33
 msgid "Enable automatic indentation"
-msgstr ""
+msgstr "Skru på automatisk innrykk"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:34
 msgid "<b>Indentation</b>"
-msgstr ""
+msgstr "<b>Innrykk</b>"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:35
 msgid "Behaviour:"
-msgstr ""
+msgstr "Oppførsel:"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:36
 msgid "<b>Home/End Keys</b>"
-msgstr ""
+msgstr "<b>Home/End-knapper</b>"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:37
 msgid "Editor"
-msgstr ""
+msgstr "Tekstbehandler"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:38
 msgid "Show status bar"
-msgstr ""
+msgstr "Vis i statusfelt"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:39
 msgid "Show full filename in title bar"
-msgstr ""
+msgstr "Vis hele filnavn i tittelfelt"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:40
 msgid "Remember window size"
-msgstr ""
+msgstr "Husk vindusstørrelse"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:41
 msgid "Remember window position"
-msgstr ""
+msgstr "Husk vindusplassering"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:42
 msgid "Remember window state"
-msgstr ""
+msgstr "Husk vindusmodus"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:43
 msgid "<b>General</b>"
-msgstr ""
+msgstr "<b>Hovedinnstillinger</b>"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:44
 msgid "Show toolbar"
-msgstr ""
+msgstr "Vis verktøylinje"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:45
 msgid "Style:"
-msgstr ""
+msgstr "Stil:"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:46
 msgid "Icon Size:"
-msgstr ""
+msgstr "Ikonstørrelse:"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:47
 msgid "<b>Toolbar</b>"
-msgstr ""
+msgstr "<b>Verktøylinje</b>"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:48
 msgid "Always show tabs even with one file"
-msgstr ""
+msgstr "Alltid vis faner, selv med bare én fil"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:49
 msgid "Cycled notebook tab switching"
-msgstr ""
+msgstr "Syklisk notatblokkfaneveksling"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:50
 msgid "<b>Notebook tabs</b>"
-msgstr ""
+msgstr "<b>Notatblokkfaner</b>"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:51
 msgid "Window"
-msgstr ""
+msgstr "Vindu"
 
 #. set a custom tab label
 #: ../mousepad/mousepad-print.c:119
@@ -553,14 +553,14 @@ msgstr "Skriv ut linjenummer"
 
 #: ../mousepad/mousepad-print.c:652
 msgid "Numbering interval:"
-msgstr ""
+msgstr "Nummereringsintervall:"
 
 #: ../mousepad/mousepad-print.c:660
 msgid ""
 "The interval at which to print line numbers. For example a value of 1 will "
 "print a line number on each line, a value of 2 will print a line number on "
 "every other line, and so on."
-msgstr ""
+msgstr "Intervallen mellom skriving av linjenmummer. For eksempel vil verdien 1 føre til nummerering av hver linje, verdien 2 vil skrive nummer på annenhver linje, og så videre."
 
 #: ../mousepad/mousepad-print.c:672
 msgid "Enable text _wrapping"
@@ -713,7 +713,7 @@ msgstr "Linje: %d Kolonne: %d"
 
 #: ../mousepad/mousepad-style-scheme-action.c:193
 msgid "No style scheme"
-msgstr ""
+msgstr "Ingen stilpalett"
 
 #. show warning to the user
 #: ../mousepad/mousepad-util.c:544
@@ -897,11 +897,11 @@ msgstr "Endre vanlig utvalg til kolonne-utvalg og vice versa"
 
 #: ../mousepad/mousepad-window.c:429
 msgid "Conve_rt"
-msgstr ""
+msgstr "Konver_rter"
 
 #: ../mousepad/mousepad-window.c:430
 msgid "To _Uppercase"
-msgstr ""
+msgstr "Til _storversaler"
 
 #: ../mousepad/mousepad-window.c:430
 msgid "Change the case of the selection to uppercase"
@@ -909,7 +909,7 @@ msgstr "Endre utvalget til store bokstaver"
 
 #: ../mousepad/mousepad-window.c:431
 msgid "To _Lowercase"
-msgstr ""
+msgstr "Til _småversaler"
 
 #: ../mousepad/mousepad-window.c:431
 msgid "Change the case of the selection to lowercase"
@@ -917,7 +917,7 @@ msgstr "Endre utvalget til små bokstaver"
 
 #: ../mousepad/mousepad-window.c:432
 msgid "To _Title Case"
-msgstr ""
+msgstr "Til _tittelversaler"
 
 #: ../mousepad/mousepad-window.c:432
 msgid "Change the case of the selection to title case"
@@ -925,7 +925,7 @@ msgstr "Endre tekstformen for utvalget til samme som tittel."
 
 #: ../mousepad/mousepad-window.c:433
 msgid "To _Opposite Case"
-msgstr ""
+msgstr "Til _omvendte versaler"
 
 #: ../mousepad/mousepad-window.c:433
 msgid "Change the case of the selection opposite case"
@@ -986,7 +986,7 @@ msgstr "Flytt utvalget én linje nedover"
 
 #: ../mousepad/mousepad-window.c:441
 msgid "Dup_licate Line / Selection"
-msgstr ""
+msgstr "Dup_liser linje / utvalg"
 
 #: ../mousepad/mousepad-window.c:441
 msgid "Duplicate the current line or selection"
@@ -1010,11 +1010,11 @@ msgstr "Minker innrykket til gjeldende utvalg eller fil"
 
 #: ../mousepad/mousepad-window.c:444
 msgid "Show the preferences dialog"
-msgstr ""
+msgstr "Vis innstillingsdialogen"
 
 #: ../mousepad/mousepad-window.c:446
 msgid "_Search"
-msgstr ""
+msgstr "_Søk"
 
 #: ../mousepad/mousepad-window.c:447
 msgid "Search for text"
@@ -1122,19 +1122,19 @@ msgstr "Linje-N_ummer"
 
 #: ../mousepad/mousepad-window.c:472
 msgid "_Menubar"
-msgstr ""
+msgstr "_Menyfelt"
 
 #: ../mousepad/mousepad-window.c:472
 msgid "Change the visibility of the main menubar"
-msgstr ""
+msgstr "Endre synlighet for hovedmenylinje"
 
 #: ../mousepad/mousepad-window.c:473
 msgid "_Toolbar"
-msgstr ""
+msgstr "_Verktøylinje"
 
 #: ../mousepad/mousepad-window.c:473
 msgid "Change the visibility of the toolbar"
-msgstr ""
+msgstr "Endre synlighet for verktøylinjen"
 
 #: ../mousepad/mousepad-window.c:474
 msgid "St_atusbar"
@@ -1146,11 +1146,11 @@ msgstr "Endre synlighet på statuslinje"
 
 #: ../mousepad/mousepad-window.c:475
 msgid "_Fullscreen"
-msgstr ""
+msgstr "_Fullskjermsvisning"
 
 #: ../mousepad/mousepad-window.c:475 ../mousepad/mousepad-window.c:4950
 msgid "Make the window fullscreen"
-msgstr ""
+msgstr "Bytt til fullskjermsvisning av vindu"
 
 #: ../mousepad/mousepad-window.c:476
 msgid "_Auto Indent"
@@ -1227,7 +1227,7 @@ msgstr "Kun lesing"
 msgid ""
 "No template files found in\n"
 "'%s'"
-msgstr ""
+msgstr "Ingen maler ble funnet i\n'%s'"
 
 #. create other action
 #: ../mousepad/mousepad-window.c:2436
@@ -1323,7 +1323,7 @@ msgstr "Velg font i Mousepad"
 
 #: ../mousepad/mousepad-window.c:4943
 msgid "Leave fullscreen mode"
-msgstr ""
+msgstr "Forlat fullskjermsmodus"
 
 #: ../mousepad.desktop.in.in.h:2
 msgid "Simple Text Editor"
