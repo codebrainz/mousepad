@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-07-15 06:30+0200\n"
-"PO-Revision-Date: 2015-02-23 11:15+0000\n"
+"PO-Revision-Date: 2015-02-23 12:32+0000\n"
 "Last-Translator: Lyubomir Vasilev\n"
 "Language-Team: Bulgarian (http://www.transifex.com/projects/p/xfce-apps/language/bg/)\n"
 "MIME-Version: 1.0\n"
@@ -721,13 +721,13 @@ msgstr "Няма стилова схема"
 #: ../mousepad/mousepad-util.c:544
 #, c-format
 msgid "Unable to create base directory \"%s\". Saving to file \"%s\" will be aborted."
-msgstr "Не може да бъде създадена директория \"%s\". Запазването във файл \"%s\" ще бъде отменено."
+msgstr "Неуспешно създаване на директория „%s“. Запазването във файла „%s“ ще бъде отменено."
 
 #. print error
 #: ../mousepad/mousepad-util.c:590
 #, c-format
 msgid "Failed to store the preferences to \"%s\": %s"
-msgstr "Не могат да бъда запазени настройките в \"%s\": %s"
+msgstr "Неуспешно запазване на настройките в „%s“: %s"
 
 #: ../mousepad/mousepad-window.c:400
 msgid "_File"
@@ -1229,7 +1229,7 @@ msgstr "Само за четене"
 msgid ""
 "No template files found in\n"
 "'%s'"
-msgstr "Няма шаблонни файлове в\n'%s'"
+msgstr "Няма шаблонни файлове в\n„%s“"
 
 #. create other action
 #: ../mousepad/mousepad-window.c:2436
@@ -1256,7 +1256,7 @@ msgstr "Кодировка"
 #: ../mousepad/mousepad-window.c:2940
 #, c-format
 msgid "Open '%s'"
-msgstr "Отваряне на '%s'"
+msgstr "Отваряне на „%s“"
 
 #: ../mousepad/mousepad-window.c:3087
 msgid "Failed to clear the recent history"
@@ -1292,7 +1292,7 @@ msgstr "Отваряне на файл"
 msgid ""
 "Failed to open \"%s\" for reading. It will be removed from the document "
 "history"
-msgstr "Неуспех при отваряне на \"%s\" за четене. Това ще бъде премахнато от историята на документите."
+msgstr "Неуспешно отваряне на „%s“ за четене. Това ще бъде премахнато от историята на документите."
 
 #. show the warning and cleanup
 #: ../mousepad/mousepad-window.c:3805
