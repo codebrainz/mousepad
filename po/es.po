@@ -4,14 +4,15 @@
 # 
 # Translators:
 # bazanluis20 <bazanluis20@gmail.com>, 2012
+# Manolo Díaz <diaz.manolo@gmail.com>, 2015
 # Pablo Roberto Francisco Lezaeta Reyes <prflr88@gmail.com>, 2013-2015
 msgid ""
 msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-07-15 06:30+0200\n"
-"PO-Revision-Date: 2015-02-22 06:56+0000\n"
-"Last-Translator: Pablo Roberto Francisco Lezaeta Reyes <prflr88@gmail.com>\n"
+"PO-Revision-Date: 2015-02-23 11:58+0000\n"
+"Last-Translator: Manolo Díaz <diaz.manolo@gmail.com>\n"
 "Language-Team: Spanish (http://www.transifex.com/projects/p/xfce-apps/language/es/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -512,7 +513,7 @@ msgstr "<b>Barra de herramientas</b>"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:48
 msgid "Always show tabs even with one file"
-msgstr "Siempre mostrar pestañas aun conun archivo"
+msgstr "Siempre mostrar pestañas, aun con un archivo"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:49
 msgid "Cycled notebook tab switching"
@@ -689,7 +690,7 @@ msgstr "Tipo de archivo: Ninguno"
 
 #: ../mousepad/mousepad-statusbar.c:165
 msgid "Toggle the overwrite mode"
-msgstr "Activar o desactivar el modo de sobreescritura"
+msgstr "Indica si inserta texto o sobrescribe"
 
 #. overwrite label
 #: ../mousepad/mousepad-statusbar.c:170
@@ -946,7 +947,7 @@ msgstr "E_spacios a tabulaciones"
 #: ../mousepad/mousepad-window.c:435
 msgid ""
 "Convert all the leading spaces to tabs in the selected line(s) or document"
-msgstr "Convierte todos los espacios iniciales en pestañas en las línea(s) seleccionadas o documento"
+msgstr "Convierte todos los espacios iniciales en tabulaciones en las línea(s) seleccionadas o documento"
 
 #: ../mousepad/mousepad-window.c:436
 msgid "St_rip Trailing Spaces"
