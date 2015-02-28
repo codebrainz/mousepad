@@ -865,7 +865,7 @@ mousepad_window_create_root_warning (MousepadWindow *window)
       GtkWidget *ebox, *label, *separator;
 
   /* In GTK3, gtkrc is deprecated */
-#if GTK_CHECK_VERSION(3, 0, 0) && defined(__GNUC__)
+#if GTK_CHECK_VERSION(3, 0, 0) && (__GNUC__ > 4 || __GNUC__ == 4 && __GNUC_MINOR__ > 2)
 # pragma GCC diagnostic push
 # pragma GCC diagnostic ignored "-Wdeprecated-declarations"
 #endif
@@ -879,7 +879,7 @@ mousepad_window_create_root_warning (MousepadWindow *window)
                            "widget\"MousepadWindow.*.root-warning\"style\"mousepad-window-root-style\"\n"
                            "widget\"MousepadWindow.*.root-warning.GtkLabel\"style\"mousepad-window-root-style\"\n");
 
-#if GTK_CHECK_VERSION(3, 0, 0) && defined(__GNUC__)
+#if GTK_CHECK_VERSION(3, 0, 0) && (__GNUC__ > 4 || __GNUC__ == 4 && __GNUC_MINOR__ > 2)
 # pragma GCC diagnostic pop
 #endif
 
