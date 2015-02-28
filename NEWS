@@ -1,3 +1,26 @@
+0.4.0
+=====
+- Use GSettings to improve preference handling
+- A new preferences dialog exposing all preferences in the GUI
+- Implement config and GUI preferences for various GtkSourceView properties
+  such as:
+    * Highlighting the current line
+    * Match braces
+    * Indentation width control
+    * Right margin (long-line margin) column
+    * Showing/hiding of line numbers
+    * Smart home and end keys
+- Improved GUI configurability and state persistence, including:
+    * A toolbar for commonly used items
+    * Fullscreen support
+    * Main menu re-organization
+    * Improved editor context menu
+    * Improved single-instance multi-window support
+    * Remember and synchronize size, position, and state, across windows
+      and instances
+- Support for building against GTK+ 3
+- Various other improvements and bugs fixed
+
 0.3.0
 =====
 Highlights:
