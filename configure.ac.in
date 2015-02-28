@@ -6,7 +6,7 @@ m4_define([mousepad_version_minor], [4])
 m4_define([mousepad_version_micro], [0])
 m4_define([mousepad_version_nano], []) dnl leave this empty to have no nano version
 m4_define([mousepad_version_build], [@REVISION@])
-m4_define([mousepad_version_tag], [])
+m4_define([mousepad_version_tag], [git])
 m4_define([mousepad_version], [mousepad_version_major().mousepad_version_minor().mousepad_version_micro()ifelse(mousepad_version_nano(), [], [], [.mousepad_version_nano()])ifelse(mousepad_version_tag(), [git], [mousepad_version_tag()-mousepad_version_build()], [mousepad_version_tag()])])
 
 dnl *******************************************
