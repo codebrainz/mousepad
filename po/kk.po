@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-07-15 06:30+0200\n"
-"PO-Revision-Date: 2015-03-01 15:17+0000\n"
+"PO-Revision-Date: 2015-03-12 09:49+0000\n"
 "Last-Translator: Baurzhan Muftakhidinov <baurthefirst@gmail.com>\n"
 "Language-Team: Kazakh (http://www.transifex.com/projects/p/xfce-apps/language/kk/)\n"
 "MIME-Version: 1.0\n"
@@ -423,7 +423,7 @@ msgstr "Ұзын жолдарды тасымалдау"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:26
 msgid "<b>Display</b>"
-msgstr ""
+msgstr "<b>Көрініс</b>"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:27
 msgid "Use system monospace font"
@@ -515,11 +515,11 @@ msgstr "Бір файл болса да беттерді көрсету"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:49
 msgid "Cycled notebook tab switching"
-msgstr ""
+msgstr "Беттер арасында циклды ауысу"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:50
 msgid "<b>Notebook tabs</b>"
-msgstr ""
+msgstr "<b>Беттер</b>"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:51
 msgid "Window"
@@ -915,11 +915,11 @@ msgstr "Таңдалған мәтін регистрін кіші әріптер
 
 #: ../mousepad/mousepad-window.c:432
 msgid "To _Title Case"
-msgstr ""
+msgstr "Бас_ты әріптен"
 
 #: ../mousepad/mousepad-window.c:432
 msgid "Change the case of the selection to title case"
-msgstr ""
+msgstr "Таңдалған мәтінді бас әріптен басталатындай өзгерту"
 
 #: ../mousepad/mousepad-window.c:433
 msgid "To _Opposite Case"
@@ -956,7 +956,7 @@ msgstr "Ағымдағы жол(дар)дан не құжаттан барлық
 
 #: ../mousepad/mousepad-window.c:437
 msgid "_Transpose"
-msgstr ""
+msgstr "_Бұру"
 
 #: ../mousepad/mousepad-window.c:437
 msgid "Reverse the order of something"
@@ -1168,11 +1168,11 @@ msgstr "Табуляция батырмасы басылған кезде бос
 
 #: ../mousepad/mousepad-window.c:478
 msgid "_Word Wrap"
-msgstr ""
+msgstr "Жо_лдарды тасымалдау"
 
 #: ../mousepad/mousepad-window.c:478
 msgid "Toggle breaking lines in between words"
-msgstr ""
+msgstr "Жолдарды сөз бойынша тасымалдауды іске қосу/сөндіру"
 
 #: ../mousepad/mousepad-window.c:479
 msgid "Write Unicode _BOM"
