@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-07-15 06:30+0200\n"
-"PO-Revision-Date: 2015-03-15 01:18+0000\n"
+"PO-Revision-Date: 2015-03-15 10:27+0000\n"
 "Last-Translator: Efstathios Iosifidis <iefstathios@gmail.com>\n"
 "Language-Team: Greek (http://www.transifex.com/projects/p/xfce-apps/language/el/)\n"
 "MIME-Version: 1.0\n"
@@ -371,7 +371,7 @@ msgstr "Κουμπί"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:13
 msgid "Drag & Drop"
-msgstr ""
+msgstr "Σύρσιμο & απόθεση"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:14
 msgid "Dialog"
@@ -391,7 +391,7 @@ msgstr "Κείμενο κάτω από τα εικονίδια"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:18
 msgid "Text Beside Icons"
-msgstr ""
+msgstr "Κείμενο διπλα στα εικονίδια"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:19
 #: ../mousepad/mousepad-window.c:471
@@ -412,7 +412,7 @@ msgstr ""
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:23
 msgid "Highlight current line"
-msgstr ""
+msgstr "Επισήμανση τρέχουσας γραμμής"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:24
 msgid "Highlight matching brackets"
@@ -420,7 +420,7 @@ msgstr ""
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:25
 msgid "Wrap long lines"
-msgstr ""
+msgstr "Αναδίπλωση μεάγλων γραμμών"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:26
 msgid "<b>Display</b>"
