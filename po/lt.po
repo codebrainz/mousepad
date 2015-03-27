@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-07-15 06:30+0200\n"
-"PO-Revision-Date: 2015-03-20 21:05+0000\n"
+"PO-Revision-Date: 2015-03-27 11:49+0000\n"
 "Last-Translator: Moo\n"
 "Language-Team: Lithuanian (http://www.transifex.com/projects/p/xfce-apps/language/lt/)\n"
 "MIME-Version: 1.0\n"
@@ -128,7 +128,7 @@ msgstr "Dokumentas pakeistas"
 
 #: ../mousepad/mousepad-dialogs.c:383
 msgid "If you save the document, all of the external changes will be lost."
-msgstr ""
+msgstr "Jeigu išsaugosite dokumentą, visi išoriniai pakeitimai bus prarasti."
 
 #: ../mousepad/mousepad-dialogs.c:411
 msgid "Do you want to save your changes before reloading?"
