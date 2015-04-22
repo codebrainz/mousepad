@@ -9,14 +9,14 @@
 # 玉堂白鹤 <yjwork@qq.com>, 2014
 # 周潇波 <zhouxiaobo.500@gmail.com>, 2013
 # 周潇波 <zhouxiaobo.500@gmail.com>, 2013
-# 玉堂白鹤 <yjwork@qq.com>, 2014
+# 玉堂白鹤 <yjwork@qq.com>, 2014-2015
 # yjwork527 <yjwork.xfce@gmail.com>, 2012
 msgid ""
 msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-07-15 06:30+0200\n"
-"PO-Revision-Date: 2015-02-10 15:04+0000\n"
+"PO-Revision-Date: 2015-04-22 14:47+0000\n"
 "Last-Translator: 玉堂白鹤 <yjwork@qq.com>\n"
 "Language-Team: Chinese (China) (http://www.transifex.com/projects/p/xfce-apps/language/zh_CN/)\n"
 "MIME-Version: 1.0\n"
@@ -86,15 +86,15 @@ msgstr "转至"
 
 #: ../mousepad/mousepad-dialogs.c:218
 msgid "_Line number:"
-msgstr "行号(_L):"
+msgstr "行号(_L)："
 
 #: ../mousepad/mousepad-dialogs.c:237
 msgid "C_olumn number:"
-msgstr "列数(_O):"
+msgstr "列数(_O)："
 
 #: ../mousepad/mousepad-dialogs.c:295
 msgid "Remove all entries from the documents history?"
-msgstr "清除文档历史的所有条目?"
+msgstr "清除文档历史的所有条目？"
 
 #: ../mousepad/mousepad-dialogs.c:300
 msgid "Clear Documents History"
@@ -138,7 +138,7 @@ msgstr "如果您保存文档，所有外部改动都会丢失。"
 
 #: ../mousepad/mousepad-dialogs.c:411
 msgid "Do you want to save your changes before reloading?"
-msgstr "您想在重新载入之前保存您的更改么?"
+msgstr "您想在重新载入之前保存您的更改么？"
 
 #: ../mousepad/mousepad-dialogs.c:413
 msgid "If you revert the file, all unsaved changes will be lost."
@@ -174,7 +174,7 @@ msgstr "系统"
 
 #: ../mousepad/mousepad-encoding-dialog.c:151
 msgid "Other:"
-msgstr "其他:"
+msgstr "其他："
 
 #: ../mousepad/mousepad-encoding-dialog.c:171
 msgid "Checking encodings..."
@@ -450,11 +450,11 @@ msgstr "视图"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:31
 msgid "Tab width:"
-msgstr "Tab 宽度:"
+msgstr "Tab 宽度："
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:32
 msgid "Tab mode:"
-msgstr "Tab 模式:"
+msgstr "Tab 模式："
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:33
 msgid "Enable automatic indentation"
@@ -466,7 +466,7 @@ msgstr "<b>缩进</b>"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:35
 msgid "Behaviour:"
-msgstr "行为:"
+msgstr "行为："
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:36
 msgid "<b>Home/End Keys</b>"
@@ -566,7 +566,7 @@ msgid ""
 "The interval at which to print line numbers. For example a value of 1 will "
 "print a line number on each line, a value of 2 will print a line number on "
 "every other line, and so on."
-msgstr "要打印的行号间隔。比如如果是值为 1,则在每行打印；如果值为 2,则隔行打印；以此类推。"
+msgstr "要打印的行号间隔。比如如果是值为 1，则在每行打印；如果值为 2，则隔行打印；以此类推。"
 
 #: ../mousepad/mousepad-print.c:672
 msgid "Enable text _wrapping"
@@ -582,7 +582,7 @@ msgstr "字体"
 
 #: ../mousepad/mousepad-print.c:707
 msgid "Header:"
-msgstr "页眉:"
+msgstr "页眉："
 
 #: ../mousepad/mousepad-print.c:717
 msgid "Body:"
@@ -590,7 +590,7 @@ msgstr "正文："
 
 #: ../mousepad/mousepad-print.c:727
 msgid "Line numbers:"
-msgstr "行号:"
+msgstr "行号："
 
 #. set dialog properties
 #: ../mousepad/mousepad-replace-dialog.c:136
@@ -604,11 +604,11 @@ msgstr "替换(_R)"
 
 #: ../mousepad/mousepad-replace-dialog.c:161
 msgid "_Search for:"
-msgstr "搜索(_S):"
+msgstr "搜索(_S)："
 
 #: ../mousepad/mousepad-replace-dialog.c:182
 msgid "Replace _with:"
-msgstr "替换为(_W):"
+msgstr "替换为(_W)："
 
 #: ../mousepad/mousepad-replace-dialog.c:202
 msgid "Search _direction:"
@@ -634,7 +634,7 @@ msgstr "区分大小写"
 #. match whole word
 #: ../mousepad/mousepad-replace-dialog.c:229
 msgid "_Match whole word"
-msgstr "全字匹配（_M）"
+msgstr "全字匹配(_M)"
 
 #: ../mousepad/mousepad-replace-dialog.c:240
 msgid "Replace _all in:"
@@ -709,12 +709,12 @@ msgstr "文件类型： %s"
 #: ../mousepad/mousepad-statusbar.c:275
 #, c-format
 msgid "Line: %d Column: %d Selection: %d"
-msgstr "行: %d 列: %d 选择: %d"
+msgstr "行：%d 列： %d 选择： %d"
 
 #: ../mousepad/mousepad-statusbar.c:277
 #, c-format
 msgid "Line: %d Column: %d"
-msgstr "行: %d 列: %d"
+msgstr "行： %d 列：%d"
 
 #: ../mousepad/mousepad-style-scheme-action.c:193
 msgid "No style scheme"
@@ -866,7 +866,7 @@ msgstr "粘贴剪切板内容"
 
 #: ../mousepad/mousepad-window.c:423
 msgid "Paste _Special"
-msgstr "选择性粘贴_(S)"
+msgstr "选择性粘贴(_S)"
 
 #: ../mousepad/mousepad-window.c:424
 msgid "Paste from _History"
@@ -902,7 +902,7 @@ msgstr "在普通选择方式和列选择方式之间切换"
 
 #: ../mousepad/mousepad-window.c:429
 msgid "Conve_rt"
-msgstr "转换（_R)"
+msgstr "转换(_R)"
 
 #: ../mousepad/mousepad-window.c:430
 msgid "To _Uppercase"
@@ -1019,7 +1019,7 @@ msgstr "显示首选项对话框"
 
 #: ../mousepad/mousepad-window.c:446
 msgid "_Search"
-msgstr "搜索(_S)："
+msgstr "搜索(_S)"
 
 #: ../mousepad/mousepad-window.c:447
 msgid "Search for text"
@@ -1099,7 +1099,7 @@ msgstr "选择前一个标签"
 
 #: ../mousepad/mousepad-window.c:462
 msgid "_Next Tab"
-msgstr "下一个标签（_N)"
+msgstr "下一个标签(_N)"
 
 #: ../mousepad/mousepad-window.c:462
 msgid "Select the next tab"
