@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-07-15 06:30+0200\n"
-"PO-Revision-Date: 2015-04-09 21:13+0000\n"
+"PO-Revision-Date: 2015-04-23 10:32+0000\n"
 "Last-Translator: Moo\n"
 "Language-Team: Lithuanian (http://www.transifex.com/projects/p/xfce-apps/language/lt/)\n"
 "MIME-Version: 1.0\n"
@@ -334,7 +334,7 @@ msgstr ""
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:4
 msgid "Always"
-msgstr ""
+msgstr "Visada"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:5
 msgid "Insert Tabs"
@@ -464,7 +464,7 @@ msgstr "Elgsena:"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:36
 msgid "<b>Home/End Keys</b>"
-msgstr ""
+msgstr "<b>Home/End Klavišai</b>"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:37
 msgid "Editor"
