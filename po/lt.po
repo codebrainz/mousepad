@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-07-15 06:30+0200\n"
-"PO-Revision-Date: 2015-04-23 10:32+0000\n"
+"PO-Revision-Date: 2015-04-24 19:14+0000\n"
 "Last-Translator: Moo\n"
 "Language-Team: Lithuanian (http://www.transifex.com/projects/p/xfce-apps/language/lt/)\n"
 "MIME-Version: 1.0\n"
@@ -326,11 +326,11 @@ msgstr "Išjungta"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:2
 msgid "Before"
-msgstr ""
+msgstr "Prieš"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:3
 msgid "After"
-msgstr ""
+msgstr "Po"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:4
 msgid "Always"
