@@ -16,7 +16,7 @@ msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-07-15 06:30+0200\n"
-"PO-Revision-Date: 2015-04-22 14:47+0000\n"
+"PO-Revision-Date: 2015-05-14 03:26+0000\n"
 "Last-Translator: 玉堂白鹤 <yjwork@qq.com>\n"
 "Language-Team: Chinese (China) (http://www.transifex.com/projects/p/xfce-apps/language/zh_CN/)\n"
 "MIME-Version: 1.0\n"
@@ -35,7 +35,7 @@ msgstr "退出正在运行的 Mousepad 实例"
 
 #: ../mousepad/main.c:45
 msgid "Print version information and exit"
-msgstr "列印版本信息并退出"
+msgstr "打印版本信息并退出"
 
 #. default application name
 #: ../mousepad/main.c:70 ../mousepad.desktop.in.in.h:1
@@ -54,7 +54,7 @@ msgstr "打开显示失败。"
 
 #: ../mousepad/main.c:107
 msgid "The Xfce development team. All rights reserved."
-msgstr "Xfce 的开发团队。保留所有权利。"
+msgstr "Xfce 开发团队。版权所有。"
 
 #: ../mousepad/main.c:108
 #, c-format
