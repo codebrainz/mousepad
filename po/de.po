@@ -3,15 +3,15 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
-# Mark__T <mark@foresightlinux.org>, 2012
-# Tobias Bannert, 2013-2014
+# Mark Trompell <mark@foresightlinux.org>, 2012
+# Tobias Bannert <tobannert@gmail.com>, 2013-2015
 msgid ""
 msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-07-15 06:30+0200\n"
-"PO-Revision-Date: 2014-10-08 23:53+0000\n"
-"Last-Translator: Tobias Bannert\n"
+"PO-Revision-Date: 2015-06-20 17:10+0000\n"
+"Last-Translator: Tobias Bannert <tobannert@gmail.com>\n"
 "Language-Team: German (http://www.transifex.com/projects/p/xfce-apps/language/de/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -529,7 +529,7 @@ msgstr "Fenster"
 #. set a custom tab label
 #: ../mousepad/mousepad-print.c:119
 msgid "Document Settings"
-msgstr "Dokumenteneinstellungen"
+msgstr "Dokumenteinstellungen"
 
 #: ../mousepad/mousepad-print.c:594
 msgid "Page Setup"
