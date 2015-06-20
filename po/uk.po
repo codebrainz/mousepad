@@ -4,13 +4,13 @@
 # 
 # Translators:
 # Yarema aka Knedlyk <yarpry@gmail.com>, 2012
-# Yarema aka Knedlyk <yupadmin@gmail.com>, 2014
+# Yarema aka Knedlyk <yupadmin@gmail.com>, 2014-2015
 msgid ""
 msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-07-15 06:30+0200\n"
-"PO-Revision-Date: 2014-08-05 10:51+0000\n"
+"PO-Revision-Date: 2015-06-20 11:01+0000\n"
 "Last-Translator: Yarema aka Knedlyk <yupadmin@gmail.com>\n"
 "Language-Team: Ukrainian (http://www.transifex.com/projects/p/xfce-apps/language/uk/)\n"
 "MIME-Version: 1.0\n"
@@ -318,7 +318,7 @@ msgstr "Без типу файлу"
 #. setup the window properties
 #: ../mousepad/mousepad-prefs-dialog.c:433 ../mousepad/mousepad-window.c:444
 msgid "Preferences"
-msgstr "Наплаштування"
+msgstr "Параметри"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:1
 msgid "Disabled"
