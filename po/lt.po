@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-07-15 06:30+0200\n"
-"PO-Revision-Date: 2015-04-29 20:41+0000\n"
+"PO-Revision-Date: 2015-06-24 12:29+0000\n"
 "Last-Translator: Moo\n"
 "Language-Team: Lithuanian (http://www.transifex.com/projects/p/xfce-apps/language/lt/)\n"
 "MIME-Version: 1.0\n"
@@ -57,7 +57,7 @@ msgstr "Apie klaidas praneškite <%s>."
 
 #: ../mousepad/mousepad-dialogs.c:40
 msgid "Mousepad is a fast text editor for the Xfce Desktop Environment."
-msgstr "Mousepad yra greitas teksto redaktorius skirtas Xfce darbastalio aplinkai."
+msgstr "Mousepad yra greitas teksto redaktorius skirtas Xfce darbalaukio aplinkai."
 
 #: ../mousepad/mousepad-dialogs.c:45
 msgid "translator-credits"
@@ -690,7 +690,7 @@ msgstr "Failo tipas: joks"
 
 #: ../mousepad/mousepad-statusbar.c:165
 msgid "Toggle the overwrite mode"
-msgstr "Perjungti perrašymo režimą"
+msgstr "Perjungti perrašymo veikseną"
 
 #. overwrite label
 #: ../mousepad/mousepad-statusbar.c:170
@@ -1324,7 +1324,7 @@ msgstr "Pasirinkite Mousepad šriftą"
 
 #: ../mousepad/mousepad-window.c:4943
 msgid "Leave fullscreen mode"
-msgstr "Palikti viso ekrano veikseną"
+msgstr "Išeiti iš viso ekrano veiksenos"
 
 #: ../mousepad.desktop.in.in.h:2
 msgid "Simple Text Editor"
