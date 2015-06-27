@@ -306,21 +306,52 @@ mousepad_dbus_client_launch_files (gchar       **filenames,
   DBusMessage *message;
   guint        length = 0;
   gboolean     succeed;
+  GPtrArray   *utf8_filenames;
+  gchar       *utf8_dir = NULL;
 
   g_return_val_if_fail (g_path_is_absolute (working_directory), FALSE);
   g_return_val_if_fail (error == NULL || *error == NULL, FALSE);
 
-  /* get the length of the filesname string */
-  if (filenames)
-    length = g_strv_length (filenames);
+  utf8_filenames = g_ptr_array_sized_new(length + 1);
+  g_ptr_array_set_free_func(utf8_filenames, g_free);
+
+  if (filenames != NULL)
+    {
+      gchar **fn_iter;
+      /* get the length of the filesname string */
+      length = g_strv_length (filenames);
+      /* encode locale filenames to UTF-8 for DBus */
+      for (fn_iter = filenames; *fn_iter != NULL; fn_iter++)
+        {
+          gchar *utf8_fn = g_filename_to_utf8(*fn_iter, -1, NULL, NULL, error);
+          if (utf8_fn == NULL)
+            {
+              g_ptr_array_free(utf8_filenames, TRUE);
+              return FALSE;
+            }
+          g_ptr_array_add(utf8_filenames, utf8_fn);
+        }
+    }
+  g_ptr_array_add(utf8_filenames, NULL);
+
+  if (working_directory != NULL)
+    {
+      /* encode working directory to UTF-8 for DBus */
+      utf8_dir = g_filename_to_utf8(working_directory, -1, NULL, NULL, error);
+      if (utf8_dir == NULL)
+        {
+          g_ptr_array_free(utf8_filenames, TRUE);
+          return FALSE;
+        }
+    }
 
   /* generate the message */
   message = dbus_message_new_method_call (MOUSEPAD_DBUS_INTERFACE, MOUSEPAD_DBUS_PATH,
                                           MOUSEPAD_DBUS_INTERFACE, "LaunchFiles");
   dbus_message_set_auto_start (message, FALSE);
   dbus_message_append_args (message,
-                            DBUS_TYPE_STRING, &working_directory,
-                            DBUS_TYPE_ARRAY, DBUS_TYPE_STRING, &filenames, length,
+                            DBUS_TYPE_STRING, &utf8_dir,
+                            DBUS_TYPE_ARRAY, DBUS_TYPE_STRING, &utf8_filenames->pdata, length,
                             DBUS_TYPE_INVALID);
 
   /* send the message */
@@ -328,6 +359,10 @@ mousepad_dbus_client_launch_files (gchar       **filenames,
 
   /* unref the message */
   dbus_message_unref (message);
+
+  /* cleanup the UTF-8 strings */
+  g_ptr_array_free(utf8_filenames, TRUE);
+  g_free(utf8_dir);
 
   return succeed;
 }
