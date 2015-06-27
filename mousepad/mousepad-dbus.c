@@ -312,24 +312,23 @@ mousepad_dbus_client_launch_files (gchar       **filenames,
   g_return_val_if_fail (g_path_is_absolute (working_directory), FALSE);
   g_return_val_if_fail (error == NULL || *error == NULL, FALSE);
 
-  utf8_filenames = g_ptr_array_sized_new(length + 1);
-  g_ptr_array_set_free_func(utf8_filenames, g_free);
-
+  utf8_filenames = g_ptr_array_new_with_free_func(g_free);
   if (filenames != NULL)
     {
-      gchar **fn_iter;
+      guint i;
       /* get the length of the filesname string */
       length = g_strv_length (filenames);
+      g_ptr_array_set_size(utf8_filenames, length + 1);
       /* encode locale filenames to UTF-8 for DBus */
-      for (fn_iter = filenames; *fn_iter != NULL; fn_iter++)
+      for (i = 0; i < length; i++)
         {
-          gchar *utf8_fn = g_filename_to_utf8(*fn_iter, -1, NULL, NULL, error);
+          gchar *utf8_fn = g_filename_to_utf8(filenames[i], -1, NULL, NULL, error);
           if (utf8_fn == NULL)
             {
               g_ptr_array_free(utf8_filenames, TRUE);
               return FALSE;
             }
-          g_ptr_array_add(utf8_filenames, utf8_fn);
+          utf8_filenames->pdata[i] = utf8_fn;
         }
     }
   g_ptr_array_add(utf8_filenames, NULL);
