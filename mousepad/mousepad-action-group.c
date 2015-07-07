@@ -617,6 +617,13 @@ mousepad_action_group_get_sorted_section_names (void)
       language = gtk_source_language_manager_get_language (manager, *languages);
       if (G_LIKELY (GTK_SOURCE_IS_LANGUAGE (language)))
         {
+          /* ignore hidden languages */
+          if(gtk_source_language_get_hidden(language))
+            {
+              languages++;
+              continue;
+            }
+
           /* ensure no duplicates in list */
           if (!g_slist_find_custom (list,
                                     gtk_source_language_get_section (language),
@@ -651,6 +658,13 @@ mousepad_action_group_get_sorted_languages_for_section (const gchar *section)
       language = gtk_source_language_manager_get_language (manager, *languages);
       if (G_LIKELY (GTK_SOURCE_IS_LANGUAGE (language)))
         {
+          /* ignore hidden languages */
+          if(gtk_source_language_get_hidden(language))
+            {
+              languages++;
+              continue;
+            }
+
           /* only get languages in the specified section */
           if (g_strcmp0 (gtk_source_language_get_section (language), section) == 0)
             list = g_slist_prepend (list, language);
