@@ -298,7 +298,7 @@ void
 mousepad_setting_set_string (const gchar *path,
                              const gchar *value)
 {
-  mousepad_setting_set (path, "s", value);
+  mousepad_setting_set (path, "s", value != NULL ? value : "");
 }
 
 
