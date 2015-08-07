@@ -12,9 +12,9 @@ msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-07-15 06:30+0200\n"
-"PO-Revision-Date: 2014-12-08 16:44+0000\n"
+"PO-Revision-Date: 2015-08-07 18:22+0000\n"
 "Last-Translator: عبدالله رضوان <abbodmar@gmail.com>\n"
-"Language-Team: Arabic (http://www.transifex.com/projects/p/xfce-apps/language/ar/)\n"
+"Language-Team: Arabic (http://www.transifex.com/xfce/xfce-apps/language/ar/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -555,7 +555,7 @@ msgstr "طباعة أرقام الأسطر"
 
 #: ../mousepad/mousepad-print.c:652
 msgid "Numbering interval:"
-msgstr ""
+msgstr "فاصلة الترقيم:"
 
 #: ../mousepad/mousepad-print.c:660
 msgid ""
@@ -719,7 +719,7 @@ msgstr "سطر: %d عمود: %d"
 
 #: ../mousepad/mousepad-style-scheme-action.c:193
 msgid "No style scheme"
-msgstr ""
+msgstr "لا مخطط نمط"
 
 #. show warning to the user
 #: ../mousepad/mousepad-util.c:544
@@ -903,7 +903,7 @@ msgstr "تغيير التحديد العادي إلى تحديد عمود وال
 
 #: ../mousepad/mousepad-window.c:429
 msgid "Conve_rt"
-msgstr ""
+msgstr "_تحويل"
 
 #: ../mousepad/mousepad-window.c:430
 msgid "To _Uppercase"
@@ -1016,7 +1016,7 @@ msgstr "إنقاص المسافة البادئة للتحديد أو للسطر 
 
 #: ../mousepad/mousepad-window.c:444
 msgid "Show the preferences dialog"
-msgstr ""
+msgstr "اعرض الحوار تفضيلات"
 
 #: ../mousepad/mousepad-window.c:446
 msgid "_Search"
@@ -1128,7 +1128,7 @@ msgstr "أرقام الأسطر"
 
 #: ../mousepad/mousepad-window.c:472
 msgid "_Menubar"
-msgstr ""
+msgstr "_شريط القائمة"
 
 #: ../mousepad/mousepad-window.c:472
 msgid "Change the visibility of the main menubar"
@@ -1156,7 +1156,7 @@ msgstr "_ملء الشاشة"
 
 #: ../mousepad/mousepad-window.c:475 ../mousepad/mousepad-window.c:4950
 msgid "Make the window fullscreen"
-msgstr ""
+msgstr "اجعل النافذة في وضع ملء الشاشة"
 
 #: ../mousepad/mousepad-window.c:476
 msgid "_Auto Indent"
@@ -1233,7 +1233,7 @@ msgstr "للقراءة فقط"
 msgid ""
 "No template files found in\n"
 "'%s'"
-msgstr ""
+msgstr "لا توجد ملفات قوالب متوفرة في\"%s\""
 
 #. create other action
 #: ../mousepad/mousepad-window.c:2436
