@@ -8,7 +8,7 @@
 # qingxianhao <qinghao1@foxmail.com>, 2012
 # 玉堂白鹤 <yjwork@qq.com>, 2014
 # 周潇波 <zhouxiaobo.500@gmail.com>, 2013
-# 周潇波 <zhouxiaobo.500@gmail.com>, 2013
+# 周潇波 <zhouxiaobo.500@gmail.com>, 2013,2015
 # 玉堂白鹤 <yjwork@qq.com>, 2014-2015
 # yjwork527 <yjwork.xfce@gmail.com>, 2012
 msgid ""
@@ -16,9 +16,9 @@ msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-07-15 06:30+0200\n"
-"PO-Revision-Date: 2015-05-14 03:26+0000\n"
-"Last-Translator: 玉堂白鹤 <yjwork@qq.com>\n"
-"Language-Team: Chinese (China) (http://www.transifex.com/projects/p/xfce-apps/language/zh_CN/)\n"
+"PO-Revision-Date: 2015-08-08 01:08+0000\n"
+"Last-Translator: 周潇波 <zhouxiaobo.500@gmail.com>\n"
+"Language-Team: Chinese (China) (http://www.transifex.com/xfce/xfce-apps/language/zh_CN/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -1183,7 +1183,7 @@ msgstr "切换词间换行"
 
 #: ../mousepad/mousepad-window.c:479
 msgid "Write Unicode _BOM"
-msgstr "写 Unicode BOM(_B)"
+msgstr "写入 Unicode BOM(_B)"
 
 #: ../mousepad/mousepad-window.c:479
 msgid "Store the byte-order mark in the file"
@@ -1216,7 +1216,7 @@ msgstr "设置文档行结束符为 DOS / Windows 格式 (CR LF)"
 #. add the label with the root warning
 #: ../mousepad/mousepad-window.c:882
 msgid "Warning, you are using the root account, you may harm your system."
-msgstr "警告：您正在使用root账户，操作不当可能损害您的系统。"
+msgstr "警告：您正在使用root账户，操作不当可能会损害您的系统。"
 
 #. show the warning
 #: ../mousepad/mousepad-window.c:1534
