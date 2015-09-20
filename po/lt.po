@@ -10,9 +10,9 @@ msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-07-15 06:30+0200\n"
-"PO-Revision-Date: 2015-06-24 12:29+0000\n"
+"PO-Revision-Date: 2015-09-20 19:55+0000\n"
 "Last-Translator: Moo\n"
-"Language-Team: Lithuanian (http://www.transifex.com/projects/p/xfce-apps/language/lt/)\n"
+"Language-Team: Lithuanian (http://www.transifex.com/xfce/xfce-apps/language/lt/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -726,7 +726,7 @@ msgstr "Bazinio aplanko „%s“ sukurti nepavyko. Saugojimas į failą „%s“
 #: ../mousepad/mousepad-util.c:590
 #, c-format
 msgid "Failed to store the preferences to \"%s\": %s"
-msgstr "Išsaugoti nustatymų į „%s“ nepavyko: %s"
+msgstr "Išsaugoti nuostatų į „%s“ nepavyko: %s"
 
 #: ../mousepad/mousepad-window.c:400
 msgid "_File"
