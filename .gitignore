@@ -1,8 +1,9 @@
 *.o
+*.gmo
 Makefile
 Makefile.in
 Makefile.in.in
-Mousepad.desktop
+mousepad.desktop
 MousepadHelp
 aclocal.m4
 autom4te.cache/
@@ -33,6 +34,7 @@ mousepad/mousepad-marshal.c
 mousepad/mousepad-marshal.h
 /mousepad/mousepad-prefs-dialog-ui.h
 /mousepad/mousepad-settings.gschema.valid
+/mousepad/org.xfce.mousepad.gschema.valid
 mousepad/mousepad-window-ui.h
 po/.intltool-merge-cache
 po/POTFILES
