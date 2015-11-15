@@ -3,7 +3,7 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
-# enolp <enolp@softastur.org>, 2014
+# enolp <enolp@softastur.org>, 2014-2015
 # Ḷḷumex03 <tornes@opmbx.org>, 2014
 # Ḷḷumex03 <tornes@opmbx.org>, 2014
 # Ḷḷumex03 <tornes@opmbx.org>, 2014
@@ -12,9 +12,9 @@ msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-07-15 06:30+0200\n"
-"PO-Revision-Date: 2014-12-13 20:48+0000\n"
+"PO-Revision-Date: 2015-11-15 00:15+0000\n"
 "Last-Translator: enolp <enolp@softastur.org>\n"
-"Language-Team: Asturian (http://www.transifex.com/projects/p/xfce-apps/language/ast/)\n"
+"Language-Team: Asturian (http://www.transifex.com/xfce/xfce-apps/language/ast/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -302,12 +302,12 @@ msgstr "Secuencia byte inválida na entrada de conversión"
 #: ../mousepad/mousepad-file.c:881
 #, c-format
 msgid "The file \"%s\" you tried to reload does not exist anymore"
-msgstr "El ficheru \"%s\" qu'intentes recargar nun esiste"
+msgstr "El ficheru «%s» qu'intentes recargar nun esiste"
 
 #: ../mousepad/mousepad-file.c:922
 #, c-format
 msgid "Failed to read the status of \"%s\""
-msgstr "Fallu al lleer l'estáu de \"%s\""
+msgstr "Fallu al lleer l'estáu de «%s»"
 
 #: ../mousepad/mousepad-language-action.c:229
 msgid "Plain Text"
@@ -721,13 +721,13 @@ msgstr ""
 #: ../mousepad/mousepad-util.c:544
 #, c-format
 msgid "Unable to create base directory \"%s\". Saving to file \"%s\" will be aborted."
-msgstr "Nun pue crease'l direutoriu base \"%s\". Albortaráse'l guardáu al ficheru \"%s\"."
+msgstr "Nun pue crease'l direutoriu base «%s». Albortaráse'l guardáu al ficheru «%s»."
 
 #. print error
 #: ../mousepad/mousepad-util.c:590
 #, c-format
 msgid "Failed to store the preferences to \"%s\": %s"
-msgstr "Fallu al atroxar les preferencia a \"%s\": %s"
+msgstr "Fallu al atroxar les preferencia a «%s»: %s"
 
 #: ../mousepad/mousepad-window.c:400
 msgid "_File"
@@ -1292,7 +1292,7 @@ msgstr "Abrir ficheru"
 msgid ""
 "Failed to open \"%s\" for reading. It will be removed from the document "
 "history"
-msgstr "Fallu al abrir \"%s\" pa lleer. Desaniciaráse de la historia'l documentu"
+msgstr "Fallu al abrir «%s» pa lleer. Desaniciaráse de la historia'l documentu"
 
 #. show the warning and cleanup
 #: ../mousepad/mousepad-window.c:3805
