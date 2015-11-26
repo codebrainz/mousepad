@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-07-15 06:30+0200\n"
-"PO-Revision-Date: 2015-09-20 19:55+0000\n"
+"PO-Revision-Date: 2015-11-26 23:15+0000\n"
 "Last-Translator: Moo\n"
 "Language-Team: Lithuanian (http://www.transifex.com/xfce/xfce-apps/language/lt/)\n"
 "MIME-Version: 1.0\n"
@@ -1151,7 +1151,7 @@ msgstr "_Visas ekranas"
 
 #: ../mousepad/mousepad-window.c:475 ../mousepad/mousepad-window.c:4950
 msgid "Make the window fullscreen"
-msgstr "Rodyti langą per visą ekraną"
+msgstr "Rodyti langą visame ekrane"
 
 #: ../mousepad/mousepad-window.c:476
 msgid "_Auto Indent"
@@ -1324,7 +1324,7 @@ msgstr "Pasirinkite Mousepad šriftą"
 
 #: ../mousepad/mousepad-window.c:4943
 msgid "Leave fullscreen mode"
-msgstr "Išeiti iš viso ekrano veiksenos"
+msgstr "Išjungti viso ekrano veikseną"
 
 #: ../mousepad.desktop.in.in.h:2
 msgid "Simple Text Editor"
