@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-07-15 06:30+0200\n"
-"PO-Revision-Date: 2015-12-15 17:29+0000\n"
+"PO-Revision-Date: 2015-12-15 17:54+0000\n"
 "Last-Translator: Davidmp <medipas@gmail.com>\n"
 "Language-Team: Catalan (http://www.transifex.com/xfce/xfce-apps/language/ca/)\n"
 "MIME-Version: 1.0\n"
@@ -453,11 +453,11 @@ msgstr "Mode de la pestanya:"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:33
 msgid "Enable automatic indentation"
-msgstr ""
+msgstr "Habilita el sagnat automàtic"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:34
 msgid "<b>Indentation</b>"
-msgstr ""
+msgstr "<b>Sagnat</b>"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:35
 msgid "Behaviour:"
@@ -465,7 +465,7 @@ msgstr "Comportament:"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:36
 msgid "<b>Home/End Keys</b>"
-msgstr ""
+msgstr "<b>Tecles d'inici/final</b>"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:37
 msgid "Editor"
@@ -477,19 +477,19 @@ msgstr "Mostra la barra d'estat"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:39
 msgid "Show full filename in title bar"
-msgstr ""
+msgstr "Mostra el nom sencer del fitxer a la barra de títol"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:40
 msgid "Remember window size"
-msgstr ""
+msgstr "Recorda la mida de la finestra"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:41
 msgid "Remember window position"
-msgstr ""
+msgstr "Recorda la posició de la finestra"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:42
 msgid "Remember window state"
-msgstr ""
+msgstr "Recorda l'estat de la finestra"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:43
 msgid "<b>General</b>"
@@ -497,23 +497,23 @@ msgstr "<b>General</b>"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:44
 msgid "Show toolbar"
-msgstr ""
+msgstr "Mostra la barra d'eines"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:45
 msgid "Style:"
-msgstr ""
+msgstr "Estil:"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:46
 msgid "Icon Size:"
-msgstr ""
+msgstr "Mida de la icona:"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:47
 msgid "<b>Toolbar</b>"
-msgstr ""
+msgstr "<b>Barra d'eines</b>"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:48
 msgid "Always show tabs even with one file"
-msgstr ""
+msgstr "Mostra sempre pestanyes fins i tot amb un fitxer"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:49
 msgid "Cycled notebook tab switching"
@@ -525,7 +525,7 @@ msgstr ""
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:51
 msgid "Window"
-msgstr ""
+msgstr "Finestra"
 
 #. set a custom tab label
 #: ../mousepad/mousepad-print.c:119
@@ -554,18 +554,18 @@ msgstr "Imprimix els _números de les línies"
 
 #: ../mousepad/mousepad-print.c:652
 msgid "Numbering interval:"
-msgstr ""
+msgstr "Interval de numeració:"
 
 #: ../mousepad/mousepad-print.c:660
 msgid ""
 "The interval at which to print line numbers. For example a value of 1 will "
 "print a line number on each line, a value of 2 will print a line number on "
 "every other line, and so on."
-msgstr ""
+msgstr "L'interval en què voleu imprimir els números de línia. Per exemple, amb un valor d'1 s'imprimirà un número de línia a cada línia, amb un valor de 2 s'imprimirà un número de línia cada dues línies, i així successivament."
 
 #: ../mousepad/mousepad-print.c:672
 msgid "Enable text _wrapping"
-msgstr ""
+msgstr "Habilita l'a_justament del text"
 
 #: ../mousepad/mousepad-print.c:679
 msgid "Enable _syntax highlighting"
@@ -651,8 +651,8 @@ msgstr "Tots els documents"
 #, c-format
 msgid "%d occurence"
 msgid_plural "%d occurences"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%d aparició"
+msgstr[1] "%d aparicions"
 
 #: ../mousepad/mousepad-replace-dialog.c:442
 msgid "_Replace All"
@@ -677,7 +677,7 @@ msgstr "Destaca-ho t_ot"
 #. overflow menu item for when window is too narrow to show the tool bar item
 #: ../mousepad/mousepad-search-bar.c:255 ../mousepad/mousepad-search-bar.c:266
 msgid "Mat_ch Case"
-msgstr ""
+msgstr "Coincidència de _caixa"
 
 #: ../mousepad/mousepad-statusbar.c:137
 msgid "Choose a filetype"
@@ -695,17 +695,17 @@ msgstr "Alterna el mode d'escriptura"
 #. overwrite label
 #: ../mousepad/mousepad-statusbar.c:170
 msgid "OVR"
-msgstr ""
+msgstr "Sobreescriu"
 
 #: ../mousepad/mousepad-statusbar.c:255
 #, c-format
 msgid "Filetype: %s"
-msgstr ""
+msgstr "Tipus de fitxer: %s"
 
 #: ../mousepad/mousepad-statusbar.c:275
 #, c-format
 msgid "Line: %d Column: %d Selection: %d"
-msgstr ""
+msgstr "Línia: %d Columna: %d Selecció: %d"
 
 #: ../mousepad/mousepad-statusbar.c:277
 #, c-format
@@ -714,7 +714,7 @@ msgstr "Línia: %d Columna: %d"
 
 #: ../mousepad/mousepad-style-scheme-action.c:193
 msgid "No style scheme"
-msgstr ""
+msgstr "Sense esquema d'estil"
 
 #. show warning to the user
 #: ../mousepad/mousepad-util.c:544
@@ -730,15 +730,15 @@ msgstr ""
 
 #: ../mousepad/mousepad-window.c:400
 msgid "_File"
-msgstr ""
+msgstr "_Fitxer"
 
 #: ../mousepad/mousepad-window.c:401
 msgid "_New"
-msgstr ""
+msgstr "_Nou"
 
 #: ../mousepad/mousepad-window.c:401
 msgid "Create a new document"
-msgstr ""
+msgstr "Crea un document nou"
 
 #: ../mousepad/mousepad-window.c:402
 msgid "New _Window"
@@ -746,43 +746,43 @@ msgstr "Nova _Finestra"
 
 #: ../mousepad/mousepad-window.c:402
 msgid "Create a new document in a new window"
-msgstr ""
+msgstr "Crea un document nou en una finestra nova"
 
 #: ../mousepad/mousepad-window.c:403
 msgid "New From Te_mplate"
-msgstr ""
+msgstr "Nou des d'una plantilla"
 
 #: ../mousepad/mousepad-window.c:404
 msgid "_Open..."
-msgstr ""
+msgstr "_Obre"
 
 #: ../mousepad/mousepad-window.c:404
 msgid "Open a file"
-msgstr ""
+msgstr "Obre un fitxer"
 
 #: ../mousepad/mousepad-window.c:405
 msgid "Op_en Recent"
-msgstr ""
+msgstr "Obre un fitxer recent"
 
 #: ../mousepad/mousepad-window.c:406
 msgid "No items found"
-msgstr ""
+msgstr "No s'han trobat elements"
 
 #: ../mousepad/mousepad-window.c:407
 msgid "Clear _History"
-msgstr ""
+msgstr "Neteja l'historial"
 
 #: ../mousepad/mousepad-window.c:407
 msgid "Clear the recently used files history"
-msgstr ""
+msgstr "Neteja l'historial dels fitxers recents"
 
 #: ../mousepad/mousepad-window.c:408
 msgid "Save the current document"
-msgstr ""
+msgstr "Desa el document actual"
 
 #: ../mousepad/mousepad-window.c:409
 msgid "Save _As..."
-msgstr ""
+msgstr "Desa com _a..."
 
 #: ../mousepad/mousepad-window.c:409
 msgid "Save current document as another file"
