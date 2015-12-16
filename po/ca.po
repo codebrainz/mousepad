@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-07-15 06:30+0200\n"
-"PO-Revision-Date: 2015-12-15 17:54+0000\n"
+"PO-Revision-Date: 2015-12-16 17:29+0000\n"
 "Last-Translator: Davidmp <medipas@gmail.com>\n"
 "Language-Team: Catalan (http://www.transifex.com/xfce/xfce-apps/language/ca/)\n"
 "MIME-Version: 1.0\n"
@@ -726,7 +726,7 @@ msgstr ""
 #: ../mousepad/mousepad-util.c:590
 #, c-format
 msgid "Failed to store the preferences to \"%s\": %s"
-msgstr ""
+msgstr "Ha fallat desar les preferències a \"%s\": %s"
 
 #: ../mousepad/mousepad-window.c:400
 msgid "_File"
@@ -786,7 +786,7 @@ msgstr "Desa com _a..."
 
 #: ../mousepad/mousepad-window.c:409
 msgid "Save current document as another file"
-msgstr ""
+msgstr "Desa el document actual com a un altre fitxer"
 
 #: ../mousepad/mousepad-window.c:410
 msgid "Save A_ll"
@@ -794,15 +794,15 @@ msgstr "Desa-ho _Tot"
 
 #: ../mousepad/mousepad-window.c:410
 msgid "Save all document in this window"
-msgstr ""
+msgstr "Desa tots els documents d'aquesta finestra"
 
 #: ../mousepad/mousepad-window.c:411
 msgid "Re_vert"
-msgstr ""
+msgstr "Re_verteix"
 
 #: ../mousepad/mousepad-window.c:411
 msgid "Revert to the saved version of the file"
-msgstr ""
+msgstr "Reverteix a la versió desada del fitxer"
 
 #: ../mousepad/mousepad-window.c:412
 msgid "_Print..."
@@ -814,7 +814,7 @@ msgstr "Imprimeix el document actual"
 
 #: ../mousepad/mousepad-window.c:413
 msgid "_Detach Tab"
-msgstr ""
+msgstr "_Separa la pestanya"
 
 #: ../mousepad/mousepad-window.c:413
 msgid "Move the current document to a new window"
@@ -862,23 +862,23 @@ msgstr "Enganxa la selecció"
 
 #: ../mousepad/mousepad-window.c:423
 msgid "Paste _Special"
-msgstr ""
+msgstr "Enganxa l'e_special"
 
 #: ../mousepad/mousepad-window.c:424
 msgid "Paste from _History"
-msgstr ""
+msgstr "Enganxa des de l'_historial"
 
 #: ../mousepad/mousepad-window.c:424
 msgid "Paste from the clipboard history"
-msgstr ""
+msgstr "Enganxa des de l'historial del porta-retalls"
 
 #: ../mousepad/mousepad-window.c:425
 msgid "Paste as _Column"
-msgstr ""
+msgstr "Enganxa com a _columna"
 
 #: ../mousepad/mousepad-window.c:425
 msgid "Paste the clipboard text into a column"
-msgstr ""
+msgstr "Enganxa el text del porta-retalls dins d'una columna"
 
 #: ../mousepad/mousepad-window.c:426
 msgid "Delete the current selection"
@@ -886,23 +886,23 @@ msgstr "Esborra la selecció actual"
 
 #: ../mousepad/mousepad-window.c:427
 msgid "Select the text in the entire document"
-msgstr ""
+msgstr "Selecciona el text de tot el document"
 
 #: ../mousepad/mousepad-window.c:428
 msgid "Change the selection"
-msgstr ""
+msgstr "Canvia la selecció"
 
 #: ../mousepad/mousepad-window.c:428
 msgid "Change a normal selection into a column selection and vice versa"
-msgstr ""
+msgstr "Canvia una selecció normal a una selecció de columna i i viceversa"
 
 #: ../mousepad/mousepad-window.c:429
 msgid "Conve_rt"
-msgstr ""
+msgstr "Conve_rteix"
 
 #: ../mousepad/mousepad-window.c:430
 msgid "To _Uppercase"
-msgstr ""
+msgstr "a majúsc_ules"
 
 #: ../mousepad/mousepad-window.c:430
 msgid "Change the case of the selection to uppercase"
@@ -910,11 +910,11 @@ msgstr ""
 
 #: ../mousepad/mousepad-window.c:431
 msgid "To _Lowercase"
-msgstr ""
+msgstr "a minúscu_les"
 
 #: ../mousepad/mousepad-window.c:431
 msgid "Change the case of the selection to lowercase"
-msgstr ""
+msgstr "Canvia la caixa de la selecció a caixa baixa"
 
 #: ../mousepad/mousepad-window.c:432
 msgid "To _Title Case"
@@ -922,7 +922,7 @@ msgstr ""
 
 #: ../mousepad/mousepad-window.c:432
 msgid "Change the case of the selection to title case"
-msgstr ""
+msgstr "Canvia la caixa de la selecció a caixa alta"
 
 #: ../mousepad/mousepad-window.c:433
 msgid "To _Opposite Case"
