@@ -4,13 +4,13 @@
 # 
 # Translators:
 # Algimantas Margevičius <margevicius.algimantas@gmail.com>, 2012
-# Moo, 2015
+# Moo, 2015-2016
 msgid ""
 msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-07-15 06:30+0200\n"
-"PO-Revision-Date: 2015-11-26 23:15+0000\n"
+"PO-Revision-Date: 2016-01-13 21:26+0000\n"
 "Last-Translator: Moo\n"
 "Language-Team: Lithuanian (http://www.transifex.com/xfce/xfce-apps/language/lt/)\n"
 "MIME-Version: 1.0\n"
@@ -309,7 +309,7 @@ msgstr "Nepavyko perskaityti „%s“ būseną"
 
 #: ../mousepad/mousepad-language-action.c:229
 msgid "Plain Text"
-msgstr "Grynas Tekstas"
+msgstr "Grynas tekstas"
 
 #: ../mousepad/mousepad-language-action.c:230
 msgid "No filetype"
@@ -338,11 +338,11 @@ msgstr "Visada"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:5
 msgid "Insert Tabs"
-msgstr "Įterpti Tabuliavimus"
+msgstr "Įterpti tabuliavimus"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:6
 msgid "Insert Spaces"
-msgstr "Įterpti Tarpus"
+msgstr "Įterpti tarpus"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:7
 msgid "none"
@@ -359,11 +359,11 @@ msgstr "Meniu"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:10
 msgid "Small Toolbar"
-msgstr "Maža Įrankių Juosta"
+msgstr "Maža įrankių juosta"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:11
 msgid "Large Toolbar"
-msgstr "Didelė Įrankių Juosta"
+msgstr "Didelė įrankių juosta"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:12
 msgid "Button"
@@ -379,19 +379,19 @@ msgstr "Dialogas"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:15
 msgid "Icons Only"
-msgstr "Tik Piktogramos"
+msgstr "Tik piktogramos"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:16
 msgid "Text Only"
-msgstr "Tik Tekstas"
+msgstr "Tik tekstas"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:17
 msgid "Text Below Icons"
-msgstr "Tekstas po Piktogramomis"
+msgstr "Tekstas po piktogramomis"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:18
 msgid "Text Beside Icons"
-msgstr "Tekstas šalia Piktogramų"
+msgstr "Tekstas šalia piktogramų"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:19
 #: ../mousepad/mousepad-window.c:471
@@ -504,11 +504,11 @@ msgstr "Stilius:"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:46
 msgid "Icon Size:"
-msgstr "Piktogramų Dydis:"
+msgstr "Piktogramų dydis:"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:47
 msgid "<b>Toolbar</b>"
-msgstr "<b>Įrankių Juosta</b>"
+msgstr "<b>Įrankių juosta</b>"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:48
 msgid "Always show tabs even with one file"
