@@ -89,12 +89,12 @@ main (gint argc, gchar **argv)
       if (G_LIKELY (error == NULL))
         {
           /* no error message, the gui initialization failed */
-          g_error ("%s", _("Failed to open display."));
+          g_printerr ("%s\n", _("Failed to open display."));
         }
       else
         {
           /* print the error message */
-          g_error ("%s", error->message);
+          g_printerr ("%s\n", error->message);
           g_error_free (error);
         }
 
@@ -120,7 +120,7 @@ main (gint argc, gchar **argv)
       /* try to terminate whatever is running */
       if (!mousepad_dbus_client_terminate (&error))
         {
-          g_error ("Failed to terminate a running instance: %s\n", error->message);
+          g_printerr ("Failed to terminate a running instance: %s\n", error->message);
           g_error_free (error);
           return EXIT_FAILURE;
         }
@@ -148,7 +148,7 @@ main (gint argc, gchar **argv)
           /* print errors, if needed */
           if (G_UNLIKELY (error))
             {
-              g_error ("Mousepad: %s\n", error->message);
+              g_printerr ("Mousepad: %s\n", error->message);
               g_error_free (error);
 
               return EXIT_FAILURE;
@@ -165,7 +165,7 @@ main (gint argc, gchar **argv)
   /* Initialize xfconf */
   if (G_UNLIKELY (xfconf_init(&error) == FALSE))
     {
-      g_error ("Failed to initialize xfconf");
+      g_printerr ("Failed to initialize xfconf");
       g_error_free (error);
 
       return EXIT_FAILURE;
