@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-07-15 06:30+0200\n"
-"PO-Revision-Date: 2016-02-05 14:43+0000\n"
+"PO-Revision-Date: 2016-02-06 17:10+0000\n"
 "Last-Translator: Apostolos Papadimitriu <apostolos.papadimitriu@gmail.com>\n"
 "Language-Team: Greek (http://www.transifex.com/xfce/xfce-apps/language/el/)\n"
 "MIME-Version: 1.0\n"
@@ -651,8 +651,8 @@ msgstr "Όλα τα έγγραφα"
 #, c-format
 msgid "%d occurence"
 msgid_plural "%d occurences"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%d εμφάνιση"
+msgstr[1] "%d εμφανίσεις"
 
 #: ../mousepad/mousepad-replace-dialog.c:442
 msgid "_Replace All"
@@ -918,7 +918,7 @@ msgstr "Αλλαγή της επιλογής σε πεζά"
 
 #: ../mousepad/mousepad-window.c:432
 msgid "To _Title Case"
-msgstr ""
+msgstr "Το Πρώτο Γράμμα Κεφαλαίο"
 
 #: ../mousepad/mousepad-window.c:432
 msgid "Change the case of the selection to title case"
@@ -1291,7 +1291,7 @@ msgstr "Άνοιγμα αρχείου"
 msgid ""
 "Failed to open \"%s\" for reading. It will be removed from the document "
 "history"
-msgstr ""
+msgstr "Αποτυχία ανοίγματος του \"%s\" για ανάγνωση. Θα αφαιρεθεί από το ιστορικό εγγράφων."
 
 #. show the warning and cleanup
 #: ../mousepad/mousepad-window.c:3805
