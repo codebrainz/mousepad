@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-07-15 06:30+0200\n"
-"PO-Revision-Date: 2016-02-07 22:01+0000\n"
+"PO-Revision-Date: 2016-02-08 22:26+0000\n"
 "Last-Translator: Apostolos Papadimitriu <apostolos.papadimitriu@gmail.com>\n"
 "Language-Team: Greek (http://www.transifex.com/xfce/xfce-apps/language/el/)\n"
 "MIME-Version: 1.0\n"
@@ -62,7 +62,7 @@ msgstr "Το mousepad είναι ένας γρήγορος επεξεργαστ�
 
 #: ../mousepad/mousepad-dialogs.c:45
 msgid "translator-credits"
-msgstr "Γιώργος Στεφανάκης <nonviotale@gmail.com>"
+msgstr "Γιώργος Στεφανάκης <nonviotale@gmail.com>\nΑπόστολος Παπαδημητρίου <apostolos.papadimitriu@gmail.com>"
 
 #. display an error message to the user
 #: ../mousepad/mousepad-dialogs.c:100
@@ -339,11 +339,11 @@ msgstr "Πάντα"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:5
 msgid "Insert Tabs"
-msgstr "Εισαγωγή Tabs"
+msgstr "Εισαγωγή tabs"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:6
 msgid "Insert Spaces"
-msgstr "Εισαγωγή Κενών"
+msgstr "Εισαγωγή κενών"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:7
 msgid "none"
@@ -364,7 +364,7 @@ msgstr "Μικρή Εργαλειοθήκη"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:11
 msgid "Large Toolbar"
-msgstr "Μεγάλη Εργαλειοθήκη"
+msgstr "Μεγάλη εργαλειοθήκη"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:12
 msgid "Button"
@@ -401,7 +401,7 @@ msgstr "Εμφάνιση αριθμών γραμμής"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:20
 msgid "Display whitespace"
-msgstr "Εμφάνιση συμβόλου κενού"
+msgstr "Προβολή συμβόλου κενού"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:21
 msgid "Display line endings"
@@ -629,7 +629,7 @@ msgstr "Δ_ιάκριση πεζών/κεφαλαίων"
 #. match whole word
 #: ../mousepad/mousepad-replace-dialog.c:229
 msgid "_Match whole word"
-msgstr "Αναζήτηση _ολόκληρων λέξεων"
+msgstr "_Ταίριασμα ολόκληρων λέξεων"
 
 #: ../mousepad/mousepad-replace-dialog.c:240
 msgid "Replace _all in:"
@@ -874,7 +874,7 @@ msgstr "Επικόλληση από το ιστορικό του Πρόχειρ�
 
 #: ../mousepad/mousepad-window.c:425
 msgid "Paste as _Column"
-msgstr "Επικόλληση ως _Στήλη"
+msgstr "Επικόλληση ως _στήλη"
 
 #: ../mousepad/mousepad-window.c:425
 msgid "Paste the clipboard text into a column"
@@ -898,11 +898,11 @@ msgstr "Αλλαγή μιας κανονικής επιλογής κειμένο
 
 #: ../mousepad/mousepad-window.c:429
 msgid "Conve_rt"
-msgstr "_Μετατροπή"
+msgstr "_μετατροπή"
 
 #: ../mousepad/mousepad-window.c:430
 msgid "To _Uppercase"
-msgstr "Σε _Κεφαλαία"
+msgstr "Σε _κεφαλαία"
 
 #: ../mousepad/mousepad-window.c:430
 msgid "Change the case of the selection to uppercase"
@@ -910,7 +910,7 @@ msgstr "Αλλαγή της επιλογής σε κεφαλαία"
 
 #: ../mousepad/mousepad-window.c:431
 msgid "To _Lowercase"
-msgstr "Σε _Πεζά"
+msgstr "Σε _πεζά"
 
 #: ../mousepad/mousepad-window.c:431
 msgid "Change the case of the selection to lowercase"
@@ -926,7 +926,7 @@ msgstr ""
 
 #: ../mousepad/mousepad-window.c:433
 msgid "To _Opposite Case"
-msgstr ""
+msgstr "Στην αντί_θετη μορφή"
 
 #: ../mousepad/mousepad-window.c:433
 msgid "Change the case of the selection opposite case"
@@ -967,11 +967,11 @@ msgstr ""
 
 #: ../mousepad/mousepad-window.c:438
 msgid "_Move Selection"
-msgstr "_Μετακίνηση Επιλογής"
+msgstr "_Μετακίνηση επιλογής"
 
 #: ../mousepad/mousepad-window.c:439
 msgid "Line _Up"
-msgstr "Γραμμή _Πάνω"
+msgstr "Γραμμή _πάνω"
 
 #: ../mousepad/mousepad-window.c:439
 msgid "Move the selection one line up"
@@ -979,7 +979,7 @@ msgstr "Μετακίνηση της επιλογής μια γραμμή πάν�
 
 #: ../mousepad/mousepad-window.c:440
 msgid "Line _Down"
-msgstr "Γραμμή _Κάτω"
+msgstr "Γραμμή _κάτω"
 
 #: ../mousepad/mousepad-window.c:440
 msgid "Move the selection one line down"
@@ -987,7 +987,7 @@ msgstr "Μετακίνηση της επιλογής μια γραμμή κάτ�
 
 #: ../mousepad/mousepad-window.c:441
 msgid "Dup_licate Line / Selection"
-msgstr "Διπ_λασιασμός Γραμμής / Επιλογής"
+msgstr "Διπ_λασιασμός γραμμής / επιλογής"
 
 #: ../mousepad/mousepad-window.c:441
 msgid "Duplicate the current line or selection"
@@ -1075,7 +1075,7 @@ msgstr "Έ_γγραφο"
 
 #: ../mousepad/mousepad-window.c:458
 msgid "Line E_nding"
-msgstr "_Τέλος Γραμμής"
+msgstr "_Τέλος γραμμής"
 
 #: ../mousepad/mousepad-window.c:459
 msgid "Tab _Size"
@@ -1139,7 +1139,7 @@ msgstr "Αλλαγή της ορατότητας της εργαλειοθήκη
 
 #: ../mousepad/mousepad-window.c:474
 msgid "St_atusbar"
-msgstr "Γραμμή _Κατάστασης"
+msgstr "Γραμμή _κατάστασης"
 
 #: ../mousepad/mousepad-window.c:474
 msgid "Change the visibility of the statusbar"
@@ -1163,7 +1163,7 @@ msgstr "Αυτόματη εσοχή σε νέα γραμμή"
 
 #: ../mousepad/mousepad-window.c:477
 msgid "Insert _Spaces"
-msgstr "Εισαγωγή _Κενών"
+msgstr "Εισαγωγή _κενών"
 
 #: ../mousepad/mousepad-window.c:477
 msgid "Insert spaces when the tab button is pressed"
