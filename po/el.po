@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-07-15 06:30+0200\n"
-"PO-Revision-Date: 2016-02-08 22:26+0000\n"
+"PO-Revision-Date: 2016-02-09 22:26+0000\n"
 "Last-Translator: Apostolos Papadimitriu <apostolos.papadimitriu@gmail.com>\n"
 "Language-Team: Greek (http://www.transifex.com/xfce/xfce-apps/language/el/)\n"
 "MIME-Version: 1.0\n"
@@ -22,7 +22,7 @@ msgstr ""
 
 #: ../mousepad/main.c:42
 msgid "Do not register with the D-BUS session message bus"
-msgstr ""
+msgstr "Να μη χρησιμοποιείται ο δίαυλος μηνυμάτων συνεδρίας D-BUS"
 
 #: ../mousepad/main.c:43
 msgid "Quit a running Mousepad instance"
@@ -137,7 +137,7 @@ msgstr "Θέλετε να αποθηκεύεσετε τις αλλαγές πρ�
 
 #: ../mousepad/mousepad-dialogs.c:413
 msgid "If you revert the file, all unsaved changes will be lost."
-msgstr ""
+msgstr "Αν επαναφέρετε το αρχείο, όλες οι μη αποθηκευμένες αλλαγές θα χαθούν."
 
 #. pack button, add signal and tooltip
 #: ../mousepad/mousepad-document.c:508
@@ -339,7 +339,7 @@ msgstr "Πάντα"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:5
 msgid "Insert Tabs"
-msgstr "Εισαγωγή tabs"
+msgstr "Εισαγωγή στηλοθετών"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:6
 msgid "Insert Spaces"
@@ -360,7 +360,7 @@ msgstr "Μενού"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:10
 msgid "Small Toolbar"
-msgstr "Μικρή Εργαλειοθήκη"
+msgstr "Μικρή εργαλειοθήκη"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:11
 msgid "Large Toolbar"
@@ -392,7 +392,7 @@ msgstr "Κείμενο κάτω από τα εικονίδια"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:18
 msgid "Text Beside Icons"
-msgstr "Κείμενο διπλα στα εικονίδια"
+msgstr "Κείμενο δίπλα στα εικονίδια"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:19
 #: ../mousepad/mousepad-window.c:471
@@ -409,7 +409,7 @@ msgstr "Προβολή συμβόλου τέλους γραμμής"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:22
 msgid "Long line margin at column:"
-msgstr ""
+msgstr "Όριο μακράς γραμμής στη στήλη:"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:23
 msgid "Highlight current line"
@@ -417,11 +417,11 @@ msgstr "Επισήμανση τρέχουσας γραμμής"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:24
 msgid "Highlight matching brackets"
-msgstr ""
+msgstr "Υπόδειξη ταιριαστών αγκίστρων"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:25
 msgid "Wrap long lines"
-msgstr "Αναδίπλωση μεάγλων γραμμών"
+msgstr "Αναδίπλωση μεγάλων γραμμών"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:26
 msgid "<b>Display</b>"
@@ -437,7 +437,7 @@ msgstr "<b>Γραμματοσειρά</b>"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:29
 msgid "<b>Colour scheme</b>"
-msgstr ""
+msgstr "<b>Συνδυασμός χρωμάτων</b>"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:30
 msgid "View"
@@ -449,7 +449,7 @@ msgstr "Πλάτος καρτέλας:"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:32
 msgid "Tab mode:"
-msgstr ""
+msgstr "Λειτουργία στηλοθέτη:"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:33
 msgid "Enable automatic indentation"
@@ -481,15 +481,15 @@ msgstr "Εμφάνιση πλήρους ονόματος αρχείου στη �
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:40
 msgid "Remember window size"
-msgstr "Να θυμάται το μέγεθος του παραθύρου"
+msgstr "Ενθύμηση μεγέθους παραθύρου"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:41
 msgid "Remember window position"
-msgstr "Να θυμάται τη θέση του παραθύρου"
+msgstr "Ενθύμηση θέσης παραθύρου"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:42
 msgid "Remember window state"
-msgstr "Να θυμάται την κατάσταση του παραθύρου"
+msgstr "Ενθύμηση κατάστασης παραθύρου"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:43
 msgid "<b>General</b>"
@@ -513,15 +513,15 @@ msgstr "<b>Εργαλειοθήκη</b>"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:48
 msgid "Always show tabs even with one file"
-msgstr "Να εμφανίζονται πάντοτε η καρτέλες και με μόνο ένα αρχείο"
+msgstr "Να εμφανίζονται πάντοτε οι καρτέλες και με μόνο ένα αρχείο"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:49
 msgid "Cycled notebook tab switching"
-msgstr ""
+msgstr "Κυλική εναλλαγή καρτελών"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:50
 msgid "<b>Notebook tabs</b>"
-msgstr ""
+msgstr "<b>Καρτέλες</b>"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:51
 msgid "Window"
@@ -561,7 +561,7 @@ msgid ""
 "The interval at which to print line numbers. For example a value of 1 will "
 "print a line number on each line, a value of 2 will print a line number on "
 "every other line, and so on."
-msgstr ""
+msgstr "Το μεσοδιάστημα στο οποίο θα εμφανίζονται οι αριθμοί γραμμών. Για παράδειγμα η τιμή 1 θα εμφανίζει αριθμούς γραμμών σε κάθε γραμμή, η τιμή 2 θα εμφανίζει αριθμούς γραμμών κάθε δεύτερη γραμμή κτλ."
 
 #: ../mousepad/mousepad-print.c:672
 msgid "Enable text _wrapping"
@@ -656,7 +656,7 @@ msgstr[1] "%d εμφανίσεις"
 
 #: ../mousepad/mousepad-replace-dialog.c:442
 msgid "_Replace All"
-msgstr "Αντικατάσταση Ό_λων"
+msgstr "Αντικατάσταση ό_λων"
 
 #: ../mousepad/mousepad-search-bar.c:198
 msgid "Fi_nd:"
@@ -690,7 +690,7 @@ msgstr "Τύπος αρχείου: Κανένας"
 
 #: ../mousepad/mousepad-statusbar.c:165
 msgid "Toggle the overwrite mode"
-msgstr ""
+msgstr "Ενεργοποίηση κατάστασης λειτουργίας επανεγγραφής"
 
 #. overwrite label
 #: ../mousepad/mousepad-statusbar.c:170
@@ -714,13 +714,13 @@ msgstr "Στήλη: %d Γραμμή: %d"
 
 #: ../mousepad/mousepad-style-scheme-action.c:193
 msgid "No style scheme"
-msgstr ""
+msgstr "Κανένα στυλ"
 
 #. show warning to the user
 #: ../mousepad/mousepad-util.c:544
 #, c-format
 msgid "Unable to create base directory \"%s\". Saving to file \"%s\" will be aborted."
-msgstr ""
+msgstr "Αδυναμία δημιουργίας καταλόγου \"%s\". Η αποθήκευση στο αρχείο \"%s\" θα ματαιωθεί."
 
 #. print error
 #: ../mousepad/mousepad-util.c:590
@@ -734,7 +734,7 @@ msgstr "Α_ρχείο"
 
 #: ../mousepad/mousepad-window.c:401
 msgid "_New"
-msgstr "Νέ_ο"
+msgstr "_Νέο"
 
 #: ../mousepad/mousepad-window.c:401
 msgid "Create a new document"
@@ -750,11 +750,11 @@ msgstr "Δημιουργία ενός νέου εγγράφου σε ένα νέ
 
 #: ../mousepad/mousepad-window.c:403
 msgid "New From Te_mplate"
-msgstr "Νέα από πρό_τυπο"
+msgstr "Νέo από πρό_τυπο"
 
 #: ../mousepad/mousepad-window.c:404
 msgid "_Open..."
-msgstr "Άν_οιγμα..."
+msgstr "Άν_οιγμα"
 
 #: ../mousepad/mousepad-window.c:404
 msgid "Open a file"
@@ -806,7 +806,7 @@ msgstr "Επαναφορά σε μια αποθηκευμένη έκδοση τ�
 
 #: ../mousepad/mousepad-window.c:412
 msgid "_Print..."
-msgstr "Εκτύ_πωση..."
+msgstr "_Εκτύπωση..."
 
 #: ../mousepad/mousepad-window.c:412
 msgid "Print the current document"
@@ -822,7 +822,7 @@ msgstr "Μετακίνηση του τρέχοντος εγγράφου σε ν�
 
 #: ../mousepad/mousepad-window.c:414
 msgid "Close _Tab"
-msgstr "Κ_λείσιμο καρτέλας"
+msgstr "Κλεί_σιμο καρτέλας"
 
 #: ../mousepad/mousepad-window.c:414
 msgid "Close the current document"
@@ -830,7 +830,7 @@ msgstr "Κλείσιμο του τρέχοντος εγγράφου"
 
 #: ../mousepad/mousepad-window.c:415
 msgid "_Close Window"
-msgstr "_Κλείσιμο παραθύρου"
+msgstr "Κλείσι_μο παραθύρου"
 
 #: ../mousepad/mousepad-window.c:415
 msgid "Close this window"
@@ -838,7 +838,7 @@ msgstr "Κλείσιμο αυτού του παραθύρου"
 
 #: ../mousepad/mousepad-window.c:417
 msgid "_Edit"
-msgstr "Επε_ξεργασία"
+msgstr "_Επεξεργασία"
 
 #: ../mousepad/mousepad-window.c:418
 msgid "Undo the last action"
@@ -898,7 +898,7 @@ msgstr "Αλλαγή μιας κανονικής επιλογής κειμένο
 
 #: ../mousepad/mousepad-window.c:429
 msgid "Conve_rt"
-msgstr "_μετατροπή"
+msgstr "_Μετατροπή"
 
 #: ../mousepad/mousepad-window.c:430
 msgid "To _Uppercase"
@@ -922,7 +922,7 @@ msgstr "Το Πρώτο Γράμμα Κεφαλαίο"
 
 #: ../mousepad/mousepad-window.c:432
 msgid "Change the case of the selection to title case"
-msgstr ""
+msgstr "Αλλαγή του επιλεγμένου κειμένου σε μορφοποίηση τίτλων"
 
 #: ../mousepad/mousepad-window.c:433
 msgid "To _Opposite Case"
@@ -930,11 +930,11 @@ msgstr "Στην αντί_θετη μορφή"
 
 #: ../mousepad/mousepad-window.c:433
 msgid "Change the case of the selection opposite case"
-msgstr ""
+msgstr "Εναλλαγή του επιλεγμένου κειμένου από κεφαλαία σε πεζά και το αντίστροφο"
 
 #: ../mousepad/mousepad-window.c:434
 msgid "_Tabs to Spaces"
-msgstr "Σ_τηλοθέτες σε Κενά"
+msgstr "Από σ_τηλοθέτες σε διαστήματα"
 
 #: ../mousepad/mousepad-window.c:434
 msgid "Convert all tabs to spaces in the selection or document"
@@ -942,32 +942,32 @@ msgstr "Μετατροπή όλων των tabs σε κενά στο επιλε�
 
 #: ../mousepad/mousepad-window.c:435
 msgid "_Spaces to Tabs"
-msgstr ""
+msgstr "_Από διαστήματα σε στηλοθέτες"
 
 #: ../mousepad/mousepad-window.c:435
 msgid ""
 "Convert all the leading spaces to tabs in the selected line(s) or document"
-msgstr "Μετατροπή όλων των αρχικών κενών σε tabs στο επιλεγμένο κείμενο ή το έγγραφο"
+msgstr "Μετατροπή όλων των αρχικών κενών σε στηλοθετών στο επιλεγμένο κείμενο ή το έγγραφο"
 
 #: ../mousepad/mousepad-window.c:436
 msgid "St_rip Trailing Spaces"
-msgstr ""
+msgstr "Α_φαίρεση τελικών διαστημάτων"
 
 #: ../mousepad/mousepad-window.c:436
 msgid "Remove all the trailing spaces from the selected line(s) or document"
-msgstr ""
+msgstr "Αφαίρεση όλων των τελικών διαστημάτων από τις επιλεγμένες γραμμές ή το έγγραφο"
 
 #: ../mousepad/mousepad-window.c:437
 msgid "_Transpose"
-msgstr ""
+msgstr "Αντιμετά_θεση"
 
 #: ../mousepad/mousepad-window.c:437
 msgid "Reverse the order of something"
-msgstr ""
+msgstr "Αντιστροφή της διάταξης"
 
 #: ../mousepad/mousepad-window.c:438
 msgid "_Move Selection"
-msgstr "_Μετακίνηση επιλογής"
+msgstr "Μετα_κίνηση επιλογής"
 
 #: ../mousepad/mousepad-window.c:439
 msgid "Line _Up"
@@ -995,7 +995,7 @@ msgstr "Διπλασιασμός τρέχουσας γραμμής ή επιλο
 
 #: ../mousepad/mousepad-window.c:442
 msgid "_Increase Indent"
-msgstr "_Αύξηση Εσοχής"
+msgstr "Αύ_ξηση εσοχής"
 
 #: ../mousepad/mousepad-window.c:442
 msgid "Increase the indentation of the selection or current line"
@@ -1003,7 +1003,7 @@ msgstr "Αύξηση εσοχής της επιλογής ή της τρέχου
 
 #: ../mousepad/mousepad-window.c:443
 msgid "_Decrease Indent"
-msgstr "_Μείωση Εσοχής"
+msgstr "Μεί_ωση εσοχής"
 
 #: ../mousepad/mousepad-window.c:443
 msgid "Decrease the indentation of the selection or current line"
@@ -1055,7 +1055,7 @@ msgstr "Μετάβαση σε μια συγκεκριμένη τοποθεσία
 
 #: ../mousepad/mousepad-window.c:453
 msgid "_View"
-msgstr "Προ_βολή"
+msgstr "_Προβολή"
 
 #: ../mousepad/mousepad-window.c:454
 msgid "Select F_ont..."
@@ -1067,7 +1067,7 @@ msgstr "Αλλαγή γραμματοσειράς επεξεργαστή"
 
 #: ../mousepad/mousepad-window.c:455
 msgid "_Color Scheme"
-msgstr "_Χρώμα Θέματος"
+msgstr "_Συνδυασμός χρωμάτων"
 
 #: ../mousepad/mousepad-window.c:457
 msgid "_Document"
@@ -1079,7 +1079,7 @@ msgstr "_Τέλος γραμμής"
 
 #: ../mousepad/mousepad-window.c:459
 msgid "Tab _Size"
-msgstr "_Μέγεθος Tab"
+msgstr "_Μέγεθος στηλοθέτη"
 
 #: ../mousepad/mousepad-window.c:460
 msgid "_Filetype"
@@ -1171,7 +1171,7 @@ msgstr "Εισαγωγή κενών όταν πατάτε το πλήκτρο Ta
 
 #: ../mousepad/mousepad-window.c:478
 msgid "_Word Wrap"
-msgstr ""
+msgstr "Ανα_δίπλωση λέξεων"
 
 #: ../mousepad/mousepad-window.c:478
 msgid "Toggle breaking lines in between words"
@@ -1179,11 +1179,11 @@ msgstr ""
 
 #: ../mousepad/mousepad-window.c:479
 msgid "Write Unicode _BOM"
-msgstr ""
+msgstr "Εγγραφή Unicode BOM"
 
 #: ../mousepad/mousepad-window.c:479
 msgid "Store the byte-order mark in the file"
-msgstr ""
+msgstr "Αποθήκευση της σήμανσης σειράς byte (ΒΟΜ) στο αρχείο"
 
 #: ../mousepad/mousepad-window.c:484
 msgid "Unix (_LF)"
@@ -1212,7 +1212,7 @@ msgstr "Ορισμός τύπου τέλους γραμμής σε DOS / Windows
 #. add the label with the root warning
 #: ../mousepad/mousepad-window.c:882
 msgid "Warning, you are using the root account, you may harm your system."
-msgstr ""
+msgstr "Προειδοποίηση. Χρησιμοποιείτε το λογαριασμό root. Ενδέχεται να βλάψετε το σύστημα."
 
 #. show the warning
 #: ../mousepad/mousepad-window.c:1534
@@ -1250,7 +1250,7 @@ msgstr "Ά_λλο..."
 #. get the offset length: 'Encoding: '
 #: ../mousepad/mousepad-window.c:2806 ../mousepad/mousepad-window.c:3037
 msgid "Charset"
-msgstr ""
+msgstr "Σύνολο χαρακτήρων"
 
 #: ../mousepad/mousepad-window.c:2940
 #, c-format
