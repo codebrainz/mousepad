@@ -4,16 +4,16 @@
 # 
 # Translators:
 # Aputsiaĸ Niels Janussen <aj@isit.gl>, 2014
-# Chris Darnell <chris@cedeel.com>, 2013
+# Chris Darnell <chris@cedeel.com>, 2013,2016
 # Per Kongstad <pko@xfce.org>, 2012
 msgid ""
 msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-07-15 06:30+0200\n"
-"PO-Revision-Date: 2014-09-26 09:37+0000\n"
-"Last-Translator: Aputsiaĸ Niels Janussen <aj@isit.gl>\n"
-"Language-Team: Danish (http://www.transifex.com/projects/p/xfce-apps/language/da/)\n"
+"PO-Revision-Date: 2016-02-22 22:31+0000\n"
+"Last-Translator: Chris Darnell <chris@cedeel.com>\n"
+"Language-Team: Danish (http://www.transifex.com/xfce/xfce-apps/language/da/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -441,7 +441,7 @@ msgstr "<b>Farveskema</b>"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:30
 msgid "View"
-msgstr ""
+msgstr "Visning"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:31
 msgid "Tab width:"
@@ -1055,7 +1055,7 @@ msgstr ""
 
 #: ../mousepad/mousepad-window.c:453
 msgid "_View"
-msgstr ""
+msgstr "_Vis"
 
 #: ../mousepad/mousepad-window.c:454
 msgid "Select F_ont..."
@@ -1103,7 +1103,7 @@ msgstr ""
 
 #: ../mousepad/mousepad-window.c:464
 msgid "_Help"
-msgstr ""
+msgstr "_Hjælp"
 
 #: ../mousepad/mousepad-window.c:465
 msgid "_Contents"
@@ -1139,7 +1139,7 @@ msgstr ""
 
 #: ../mousepad/mousepad-window.c:474
 msgid "St_atusbar"
-msgstr ""
+msgstr "St_atusbar"
 
 #: ../mousepad/mousepad-window.c:474
 msgid "Change the visibility of the statusbar"
@@ -1147,7 +1147,7 @@ msgstr ""
 
 #: ../mousepad/mousepad-window.c:475
 msgid "_Fullscreen"
-msgstr ""
+msgstr "_Fuld skærm"
 
 #: ../mousepad/mousepad-window.c:475 ../mousepad/mousepad-window.c:4950
 msgid "Make the window fullscreen"
@@ -1284,7 +1284,7 @@ msgstr ""
 #. create new file chooser dialog
 #: ../mousepad/mousepad-window.c:3688
 msgid "Open File"
-msgstr ""
+msgstr "Åben fil"
 
 #: ../mousepad/mousepad-window.c:3801
 #, c-format
@@ -1296,7 +1296,7 @@ msgstr ""
 #. show the warning and cleanup
 #: ../mousepad/mousepad-window.c:3805
 msgid "Failed to open file"
-msgstr ""
+msgstr "Kunne ikke åbne filen"
 
 #. show the error
 #: ../mousepad/mousepad-window.c:3911 ../mousepad/mousepad-window.c:4034
