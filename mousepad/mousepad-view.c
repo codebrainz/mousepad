@@ -324,15 +324,9 @@ mousepad_view_init (MousepadView *view)
   BIND_ (SHOW_RIGHT_MARGIN,      "show-right-margin");
   BIND_ (SMART_HOME_END,         "smart-home-end");
   BIND_ (TAB_WIDTH,              "tab-width");
+  BIND_ (COLOR_SCHEME,           "color-scheme");
   BIND_ (WORD_WRAP,              "word-wrap");
   BIND_ (MATCH_BRACES,           "match-braces");
-
-  /* for color-scheme, use G_SETTINGS_BIND_GET_NO_CHANGES to stop
-   * a cycle that was causing DBus thrashing. See:
-   * https://bugzilla.xfce.org/show_bug.cgi?id=12134 */
-  MOUSEPAD_SETTING_BIND (COLOR_SCHEME, view, "color-scheme",
-                         G_SETTINGS_BIND_DEFAULT |
-                           G_SETTINGS_BIND_GET_NO_CHANGES);
 
   /* override with default font when the setting is enabled */
   MOUSEPAD_SETTING_CONNECT_OBJECT (USE_DEFAULT_FONT,
