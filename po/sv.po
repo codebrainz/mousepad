@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-07-15 06:30+0200\n"
-"PO-Revision-Date: 2015-10-05 20:51+0000\n"
+"PO-Revision-Date: 2016-04-13 09:24+0000\n"
 "Last-Translator: Påvel Nicklasson <pavelnicklasson@bahnhof.se>\n"
 "Language-Team: Swedish (http://www.transifex.com/xfce/xfce-apps/language/sv/)\n"
 "MIME-Version: 1.0\n"
@@ -978,7 +978,7 @@ msgstr "Flytta markeringen en rad upp"
 
 #: ../mousepad/mousepad-window.c:440
 msgid "Line _Down"
-msgstr "Line _Down"
+msgstr "Ra_d ner"
 
 #: ../mousepad/mousepad-window.c:440
 msgid "Move the selection one line down"
@@ -1066,7 +1066,7 @@ msgstr "Ändra redigerarens teckensnitt"
 
 #: ../mousepad/mousepad-window.c:455
 msgid "_Color Scheme"
-msgstr "Färsgs_chema"
+msgstr "Färgs_chema"
 
 #: ../mousepad/mousepad-window.c:457
 msgid "_Document"
