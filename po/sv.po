@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-07-15 06:30+0200\n"
-"PO-Revision-Date: 2016-04-13 09:24+0000\n"
+"PO-Revision-Date: 2016-04-24 12:04+0000\n"
 "Last-Translator: Påvel Nicklasson <pavelnicklasson@bahnhof.se>\n"
 "Language-Team: Swedish (http://www.transifex.com/xfce/xfce-apps/language/sv/)\n"
 "MIME-Version: 1.0\n"
@@ -428,11 +428,11 @@ msgstr "<b>Visa</b>"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:27
 msgid "Use system monospace font"
-msgstr "Använd systemets monospace-teckensnitt"
+msgstr "Använd systemets monospace-typsnitt"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:28
 msgid "<b>Font</b>"
-msgstr "<b>Teckensnitt</b>"
+msgstr "<b>Typsnitt</b>"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:29
 msgid "<b>Colour scheme</b>"
@@ -572,7 +572,7 @@ msgstr "Aktivera _syntaxmarkering"
 
 #: ../mousepad/mousepad-print.c:691
 msgid "Fonts"
-msgstr "Teckensnitt"
+msgstr "Typsnitt"
 
 #: ../mousepad/mousepad-print.c:707
 msgid "Header:"
@@ -1058,11 +1058,11 @@ msgstr "_Visa"
 
 #: ../mousepad/mousepad-window.c:454
 msgid "Select F_ont..."
-msgstr "Välj te_ckensnitt..."
+msgstr "Välj t_ypsnitt..."
 
 #: ../mousepad/mousepad-window.c:454
 msgid "Change the editor font"
-msgstr "Ändra redigerarens teckensnitt"
+msgstr "Ändra redigerarens typsnitt"
 
 #: ../mousepad/mousepad-window.c:455
 msgid "_Color Scheme"
@@ -1319,7 +1319,7 @@ msgstr "Misslyckades med att skriva ut dokumentet"
 
 #: ../mousepad/mousepad-window.c:4777
 msgid "Choose Mousepad Font"
-msgstr "Välj Mousepad-teckensnitt"
+msgstr "Välj Mousepad-typsnitt"
 
 #: ../mousepad/mousepad-window.c:4943
 msgid "Leave fullscreen mode"
