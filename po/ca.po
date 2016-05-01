@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-07-15 06:30+0200\n"
-"PO-Revision-Date: 2016-04-30 22:11+0000\n"
+"PO-Revision-Date: 2016-05-01 15:13+0000\n"
 "Last-Translator: Robert Antoni Buj i Gelonch <rbuj@fedoraproject.org>\n"
 "Language-Team: Catalan (http://www.transifex.com/xfce/xfce-apps/language/ca/)\n"
 "MIME-Version: 1.0\n"
@@ -153,7 +153,7 @@ msgstr "Sense títol"
 #. create the header
 #: ../mousepad/mousepad-encoding-dialog.c:125
 msgid "The document was not UTF-8 valid"
-msgstr "El document no és vàlid segons es especificacions UTF-8"
+msgstr "El document no és vàlid segons les especificacions UTF-8"
 
 #: ../mousepad/mousepad-encoding-dialog.c:126
 msgid "Please select an encoding below."
@@ -221,11 +221,11 @@ msgstr "Ciríl·lic/Rus"
 
 #: ../mousepad/mousepad-encoding.c:48
 msgid "Cyrillic/Ukrainian"
-msgstr "Ciríl·lic/Ucranià"
+msgstr "Ciríl·lic/ucraïnès"
 
 #: ../mousepad/mousepad-encoding.c:49
 msgid "Romanian"
-msgstr "Romanés"
+msgstr "Romanès"
 
 #. middle eastern
 #: ../mousepad/mousepad-encoding.c:52 ../mousepad/mousepad-encoding.c:53
@@ -287,7 +287,7 @@ msgstr "Xinés tradicional"
 #: ../mousepad/mousepad-encoding.c:89 ../mousepad/mousepad-encoding.c:90
 #: ../mousepad/mousepad-encoding.c:91
 msgid "Japanese"
-msgstr "Japonés"
+msgstr "Japonès"
 
 #: ../mousepad/mousepad-encoding.c:92 ../mousepad/mousepad-encoding.c:93
 #: ../mousepad/mousepad-encoding.c:94 ../mousepad/mousepad-encoding.c:95
@@ -302,12 +302,12 @@ msgstr "Seqüència de bytes invàlida en la conversió de l'entrada"
 #: ../mousepad/mousepad-file.c:881
 #, c-format
 msgid "The file \"%s\" you tried to reload does not exist anymore"
-msgstr "El fitxer \"%s\" que has intentat recarregar ja no existeix"
+msgstr "El fitxer «%s» que heu intentat recarregar ja no existeix"
 
 #: ../mousepad/mousepad-file.c:922
 #, c-format
 msgid "Failed to read the status of \"%s\""
-msgstr "Ha hagut un error al llegir l'estat de \"%s\""
+msgstr "No s'ha pogut llegir l'estat de «%s»"
 
 #: ../mousepad/mousepad-language-action.c:229
 msgid "Plain Text"
@@ -539,11 +539,11 @@ msgstr "Configuració de la pàgina"
 
 #: ../mousepad/mousepad-print.c:604
 msgid "_Adjust page size and orientation"
-msgstr "_Ajusta el tamany de la pàgina i l'orientació"
+msgstr "_Ajusta la mida i l'orientació de la pàgina"
 
 #: ../mousepad/mousepad-print.c:614
 msgid "Appearance"
-msgstr "Apariència"
+msgstr "Aparença"
 
 #: ../mousepad/mousepad-print.c:628
 msgid "Print page _headers"
@@ -574,7 +574,7 @@ msgstr "Activa el ressaltat de la _sintaxi"
 
 #: ../mousepad/mousepad-print.c:691
 msgid "Fonts"
-msgstr "Fonts"
+msgstr "Tipus de lletres"
 
 #: ../mousepad/mousepad-print.c:707
 msgid "Header:"
@@ -721,13 +721,13 @@ msgstr "Sense esquema d'estil"
 #: ../mousepad/mousepad-util.c:544
 #, c-format
 msgid "Unable to create base directory \"%s\". Saving to file \"%s\" will be aborted."
-msgstr "No es pot crear el directori de base \"%s\". S'avortarà el desament del fitxer \"%s\"."
+msgstr "No es pot crear el directori base «%s». S'avortarà el desament del fitxer «%s»."
 
 #. print error
 #: ../mousepad/mousepad-util.c:590
 #, c-format
 msgid "Failed to store the preferences to \"%s\": %s"
-msgstr "Ha fallat desar les preferències a \"%s\": %s"
+msgstr "No s'ha pogut desar les preferències a «%s»: %s"
 
 #: ../mousepad/mousepad-window.c:400
 msgid "_File"
@@ -1256,7 +1256,7 @@ msgstr "Conjunt de caràcters"
 #: ../mousepad/mousepad-window.c:2940
 #, c-format
 msgid "Open '%s'"
-msgstr "Obre \"%s\""
+msgstr "Obre «%s»"
 
 #: ../mousepad/mousepad-window.c:3087
 msgid "Failed to clear the recent history"
@@ -1292,7 +1292,7 @@ msgstr "Obre un fitxer"
 msgid ""
 "Failed to open \"%s\" for reading. It will be removed from the document "
 "history"
-msgstr "Ha fallat obrir \"%s\" per a la lectura. S'eliminarà de l'historial de documents"
+msgstr "No s'ha pogut obrir «%s» per a la lectura. S'eliminarà de l'historial de documents"
 
 #. show the warning and cleanup
 #: ../mousepad/mousepad-window.c:3805
