@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-07-15 06:30+0200\n"
-"PO-Revision-Date: 2016-05-02 13:12+0000\n"
+"PO-Revision-Date: 2016-05-02 19:54+0000\n"
 "Last-Translator: Robert Antoni Buj i Gelonch <rbuj@fedoraproject.org>\n"
 "Language-Team: Catalan (http://www.transifex.com/xfce/xfce-apps/language/ca/)\n"
 "MIME-Version: 1.0\n"
@@ -27,7 +27,7 @@ msgstr "No es registra al bus de missatges de sessió de D-BUS"
 
 #: ../mousepad/main.c:43
 msgid "Quit a running Mousepad instance"
-msgstr "Tanca una instància activa del Mousepad"
+msgstr "Tanca una instància en execució de Mousepad"
 
 #: ../mousepad/main.c:45
 msgid "Print version information and exit"
@@ -755,7 +755,7 @@ msgstr "Nou des d'una plantilla"
 
 #: ../mousepad/mousepad-window.c:404
 msgid "_Open..."
-msgstr "_Obre"
+msgstr "_Obre..."
 
 #: ../mousepad/mousepad-window.c:404
 msgid "Open a file"
@@ -883,7 +883,7 @@ msgstr "Enganxa el text del porta-retalls dins d'una columna"
 
 #: ../mousepad/mousepad-window.c:426
 msgid "Delete the current selection"
-msgstr "Esborra la selecció actual"
+msgstr "Suprimeix la selecció actual"
 
 #: ../mousepad/mousepad-window.c:427
 msgid "Select the text in the entire document"
@@ -1040,7 +1040,7 @@ msgstr "Cerca enrere el mateix text"
 
 #: ../mousepad/mousepad-window.c:450
 msgid "Find and Rep_lace..."
-msgstr "Troba i reem_plaça..."
+msgstr "Troba i _substitueix..."
 
 #: ../mousepad/mousepad-window.c:450
 msgid "Search for and replace text"
@@ -1124,11 +1124,11 @@ msgstr "Nú_meros de línies"
 
 #: ../mousepad/mousepad-window.c:472
 msgid "_Menubar"
-msgstr "Barra de _menú"
+msgstr "Barra de _menús"
 
 #: ../mousepad/mousepad-window.c:472
 msgid "Change the visibility of the main menubar"
-msgstr "Canvia la visibilitat de la barra de menú principal"
+msgstr "Canvia la visibilitat de la barra de menús principal"
 
 #: ../mousepad/mousepad-window.c:473
 msgid "_Toolbar"
@@ -1229,7 +1229,7 @@ msgstr "Només de lectura"
 msgid ""
 "No template files found in\n"
 "'%s'"
-msgstr "No s'han trobat fitxers de plantilla a\n\"%s\""
+msgstr "No s'ha trobat cap fitxer de plantilla a\n«%s»"
 
 #. create other action
 #: ../mousepad/mousepad-window.c:2436
@@ -1270,7 +1270,7 @@ msgstr "No hi ha dades al porta-retalls"
 #. set error message
 #: ../mousepad/mousepad-window.c:3650
 msgid "Templates should be UTF-8 valid"
-msgstr "Les plantilles haurien de ser UTF-8 vàlid"
+msgstr "Les plantilles haurien de tenir una codificació UTF-8 vàlida"
 
 #. set error message
 #: ../mousepad/mousepad-window.c:3658
@@ -1321,7 +1321,7 @@ msgstr "Ha fallat la impressió del document"
 
 #: ../mousepad/mousepad-window.c:4777
 msgid "Choose Mousepad Font"
-msgstr "Trieu el tipus de lletra del Mousepad"
+msgstr "Trieu el tipus de lletra de Mousepad"
 
 #: ../mousepad/mousepad-window.c:4943
 msgid "Leave fullscreen mode"
