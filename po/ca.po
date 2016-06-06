@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-07-15 06:30+0200\n"
-"PO-Revision-Date: 2016-06-05 17:43+0000\n"
+"PO-Revision-Date: 2016-06-06 11:02+0000\n"
 "Last-Translator: Robert Antoni Buj i Gelonch <rbuj@fedoraproject.org>\n"
 "Language-Team: Catalan (http://www.transifex.com/xfce/xfce-apps/language/ca/)\n"
 "MIME-Version: 1.0\n"
@@ -586,7 +586,7 @@ msgstr "Cos:"
 
 #: ../mousepad/mousepad-print.c:727
 msgid "Line numbers:"
-msgstr "Número de línies:"
+msgstr "Números de les línies:"
 
 #. set dialog properties
 #: ../mousepad/mousepad-replace-dialog.c:136
