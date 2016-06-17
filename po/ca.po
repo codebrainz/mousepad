@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-07-15 06:30+0200\n"
-"PO-Revision-Date: 2016-06-06 16:58+0000\n"
+"PO-Revision-Date: 2016-06-17 08:03+0000\n"
 "Last-Translator: Robert Antoni Buj i Gelonch <rbuj@fedoraproject.org>\n"
 "Language-Team: Catalan (http://www.transifex.com/xfce/xfce-apps/language/ca/)\n"
 "MIME-Version: 1.0\n"
@@ -46,7 +46,7 @@ msgstr "[FITXERS...]"
 #. no error message, the gui initialization failed
 #: ../mousepad/main.c:90
 msgid "Failed to open display."
-msgstr "No s'ha pogut obrir la pantalla."
+msgstr "Ha fallat l'obriment de la pantalla."
 
 #: ../mousepad/main.c:107
 msgid "The Xfce development team. All rights reserved."
@@ -68,7 +68,7 @@ msgstr "Robert Antoni Buj Gelonch <rbuj@fedoraproject.org>"
 #. display an error message to the user
 #: ../mousepad/mousepad-dialogs.c:100
 msgid "Failed to open the documentation browser"
-msgstr "No s'ha pogut obrir el navegador de la documentació"
+msgstr "Ha fallat l'obriment del navegador de la documentació"
 
 #. build dialog
 #: ../mousepad/mousepad-dialogs.c:115
@@ -307,7 +307,7 @@ msgstr "El fitxer «%s» que heu intentat recarregar ja no existeix"
 #: ../mousepad/mousepad-file.c:922
 #, c-format
 msgid "Failed to read the status of \"%s\""
-msgstr "No s'ha pogut llegir l'estat de «%s»"
+msgstr "Ha fallat la lectura de l'estat de «%s»"
 
 #: ../mousepad/mousepad-language-action.c:229
 msgid "Plain Text"
@@ -727,7 +727,7 @@ msgstr "No es pot crear el directori base «%s». S'avortarà el desament del fi
 #: ../mousepad/mousepad-util.c:590
 #, c-format
 msgid "Failed to store the preferences to \"%s\": %s"
-msgstr "No s'ha pogut desar les preferències a «%s»: %s"
+msgstr "Ha fallat el desament de les preferències a «%s»: %s"
 
 #: ../mousepad/mousepad-window.c:400
 msgid "_File"
@@ -743,7 +743,7 @@ msgstr "Crea un document nou"
 
 #: ../mousepad/mousepad-window.c:402
 msgid "New _Window"
-msgstr "Nova _finestra"
+msgstr "_Finestra nova"
 
 #: ../mousepad/mousepad-window.c:402
 msgid "Create a new document in a new window"
@@ -1218,7 +1218,7 @@ msgstr "Atenció, esteu fent servir el compte root, això podria malmetre el sis
 #. show the warning
 #: ../mousepad/mousepad-window.c:1534
 msgid "Failed to open the document"
-msgstr "Ha fallat obrir el document"
+msgstr "Ha fallat l'obriment del document"
 
 #: ../mousepad/mousepad-window.c:1731
 msgid "Read Only"
@@ -1260,7 +1260,7 @@ msgstr "Obre «%s»"
 
 #: ../mousepad/mousepad-window.c:3087
 msgid "Failed to clear the recent history"
-msgstr "Ha fallat esborrar l'historial recent"
+msgstr "Ha fallat l'esborrament de l'historial recent"
 
 #. create an item to inform the user
 #: ../mousepad/mousepad-window.c:3511
@@ -1280,7 +1280,7 @@ msgstr "Ha fallat la lectura de la plantilla, l'element del menú ha estat elimi
 #. set error message
 #: ../mousepad/mousepad-window.c:3663
 msgid "Loading the template failed"
-msgstr "Ha fallat carregar la plantilla"
+msgstr "Ha fallat la càrrega de la plantilla"
 
 #. create new file chooser dialog
 #: ../mousepad/mousepad-window.c:3688
@@ -1292,12 +1292,12 @@ msgstr "Obre un fitxer"
 msgid ""
 "Failed to open \"%s\" for reading. It will be removed from the document "
 "history"
-msgstr "No s'ha pogut obrir «%s» per a la lectura. S'eliminarà de l'historial de documents"
+msgstr "Ha fallat l'obriment de «%s» per a la lectura. S'eliminarà de l'historial de documents"
 
 #. show the warning and cleanup
 #: ../mousepad/mousepad-window.c:3805
 msgid "Failed to open file"
-msgstr "Ha fallat obrir el fitxer"
+msgstr "Ha fallat l'obriment del fitxer"
 
 #. show the error
 #: ../mousepad/mousepad-window.c:3911 ../mousepad/mousepad-window.c:4034
@@ -1312,7 +1312,7 @@ msgstr "Anomena i desa"
 #. show the error
 #: ../mousepad/mousepad-window.c:4126
 msgid "Failed to reload the document"
-msgstr "Ha fallat tornar a carregar el document"
+msgstr "Ha fallat la recàrrega del document"
 
 #. show the error
 #: ../mousepad/mousepad-window.c:4153
