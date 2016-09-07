@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-07-15 06:30+0200\n"
-"PO-Revision-Date: 2016-07-18 17:50+0000\n"
+"PO-Revision-Date: 2016-09-07 13:07+0000\n"
 "Last-Translator: Moo\n"
 "Language-Team: Lithuanian (http://www.transifex.com/xfce/xfce-apps/language/lt/)\n"
 "MIME-Version: 1.0\n"
@@ -61,7 +61,7 @@ msgstr "Mousepad yra greitas teksto redaktorius skirtas Xfce darbalaukio aplinka
 
 #: ../mousepad/mousepad-dialogs.c:45
 msgid "translator-credits"
-msgstr "Algimantas Margevičius <margevicius.algimantas@gmail.com>"
+msgstr "Algimantas Margevičius <margevicius.algimantas@gmail.com>\nMoo"
 
 #. display an error message to the user
 #: ../mousepad/mousepad-dialogs.c:100
@@ -440,7 +440,7 @@ msgstr "<b>Spalvų schema</b>"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:30
 msgid "View"
-msgstr "Rodinys"
+msgstr "Rodymas"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:31
 msgid "Tab width:"
@@ -762,7 +762,7 @@ msgstr "Atverti failą"
 
 #: ../mousepad/mousepad-window.c:405
 msgid "Op_en Recent"
-msgstr "_Atverti paskutiniuosius"
+msgstr "_Atverti paskiausiai naudotus"
 
 #: ../mousepad/mousepad-window.c:406
 msgid "No items found"
@@ -774,7 +774,7 @@ msgstr "Išvalyti _istoriją"
 
 #: ../mousepad/mousepad-window.c:407
 msgid "Clear the recently used files history"
-msgstr "Išvalyti paskutinių naudotų failų istoriją"
+msgstr "Išvalyti paskiausiai naudotų failų istoriją"
 
 #: ../mousepad/mousepad-window.c:408
 msgid "Save the current document"
@@ -967,7 +967,7 @@ msgstr "Pakeisti ko nors tvarką"
 
 #: ../mousepad/mousepad-window.c:438
 msgid "_Move Selection"
-msgstr "_Perkelti pažymėjimą"
+msgstr "_Perkelti žymėjimą"
 
 #: ../mousepad/mousepad-window.c:439
 msgid "Line _Up"
@@ -1259,7 +1259,7 @@ msgstr "Atverti „%s“"
 
 #: ../mousepad/mousepad-window.c:3087
 msgid "Failed to clear the recent history"
-msgstr "Išvalyti paskutinių dokumentų istorijos nepavyko"
+msgstr "Nepavyko išvalyti paskiausiai naudotų dokumentų istorijos"
 
 #. create an item to inform the user
 #: ../mousepad/mousepad-window.c:3511
