@@ -7,17 +7,17 @@
 # qingxianhao <qinghao1@foxmail.com>, 2012
 # qingxianhao <qinghao1@foxmail.com>, 2012
 # 玉堂白鹤 <yjwork@qq.com>, 2014
-# 周潇波 <zhouxiaobo.500@gmail.com>, 2013
-# 周潇波 <zhouxiaobo.500@gmail.com>, 2013,2015
-# 玉堂白鹤 <yjwork@qq.com>, 2014-2015
+# xiaobo zhou <zhouxiaobo.500@gmail.com>, 2013
+# xiaobo zhou <zhouxiaobo.500@gmail.com>, 2013,2015
+# 玉堂白鹤 <yjwork@qq.com>, 2014-2016
 # yjwork527 <yjwork.xfce@gmail.com>, 2012
 msgid ""
 msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-07-15 06:30+0200\n"
-"PO-Revision-Date: 2015-08-08 01:08+0000\n"
-"Last-Translator: 周潇波 <zhouxiaobo.500@gmail.com>\n"
+"PO-Revision-Date: 2016-10-26 06:31+0000\n"
+"Last-Translator: 玉堂白鹤 <yjwork@qq.com>\n"
 "Language-Team: Chinese (China) (http://www.transifex.com/xfce/xfce-apps/language/zh_CN/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -612,7 +612,7 @@ msgstr "替换为(_W)："
 
 #: ../mousepad/mousepad-replace-dialog.c:202
 msgid "Search _direction:"
-msgstr "搜索方向(_D)"
+msgstr "搜索方向(_D):"
 
 #: ../mousepad/mousepad-replace-dialog.c:211
 msgid "Up"
@@ -664,7 +664,7 @@ msgstr "全部替换(_R)"
 
 #: ../mousepad/mousepad-search-bar.c:198
 msgid "Fi_nd:"
-msgstr "查找(_N)"
+msgstr "查找(_N):"
 
 #: ../mousepad/mousepad-search-bar.c:220
 msgid "_Next"
