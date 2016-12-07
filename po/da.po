@@ -3,16 +3,18 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
-# Aputsiaĸ Niels Janussen <aj@isit.gl>, 2014
+# Aputsiak Niels Janussen <aj@isit.gl>, 2014
+# Aputsiak Niels Janussen <aj@isit.gl>, 2014
 # Chris Darnell <chris@cedeel.com>, 2013,2016
 # Per Kongstad <pko@xfce.org>, 2012
+# scootergrisen, 2016
 msgid ""
 msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-07-15 06:30+0200\n"
-"PO-Revision-Date: 2016-02-22 22:31+0000\n"
-"Last-Translator: Chris Darnell <chris@cedeel.com>\n"
+"PO-Revision-Date: 2016-12-07 21:55+0000\n"
+"Last-Translator: scootergrisen\n"
 "Language-Team: Danish (http://www.transifex.com/xfce/xfce-apps/language/da/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -62,7 +64,7 @@ msgstr "Mousepad er en hurtig tekstbehandler for Xfce-skrivebordsmiljøet."
 
 #: ../mousepad/mousepad-dialogs.c:45
 msgid "translator-credits"
-msgstr "anerkendelse til oversættere"
+msgstr "Per Kongstad\nAputsiak Niels Janussen\nChris Darnell\nscootergrisen"
 
 #. display an error message to the user
 #: ../mousepad/mousepad-dialogs.c:100
@@ -72,7 +74,7 @@ msgstr "Kunne ikke åbne dokumentations-læseren"
 #. build dialog
 #: ../mousepad/mousepad-dialogs.c:115
 msgid "Select Tab Size"
-msgstr "Vælg fanebladstørrelse"
+msgstr "Vælg tabulatorstørrelse"
 
 #. build the dialog
 #: ../mousepad/mousepad-dialogs.c:196
@@ -310,7 +312,7 @@ msgstr "Kunne ikke læse statussen for \"%s\""
 
 #: ../mousepad/mousepad-language-action.c:229
 msgid "Plain Text"
-msgstr ""
+msgstr "Almindelig tekst"
 
 #: ../mousepad/mousepad-language-action.c:230
 msgid "No filetype"
@@ -1047,7 +1049,7 @@ msgstr ""
 
 #: ../mousepad/mousepad-window.c:451
 msgid "_Go to..."
-msgstr ""
+msgstr "_Gå til..."
 
 #: ../mousepad/mousepad-window.c:451
 msgid "Go to a specific location in the document"
@@ -1059,7 +1061,7 @@ msgstr "_Vis"
 
 #: ../mousepad/mousepad-window.c:454
 msgid "Select F_ont..."
-msgstr ""
+msgstr "Vælg _skrifttype..."
 
 #: ../mousepad/mousepad-window.c:454
 msgid "Change the editor font"
@@ -1087,19 +1089,19 @@ msgstr ""
 
 #: ../mousepad/mousepad-window.c:461
 msgid "_Previous Tab"
-msgstr ""
+msgstr "_Forrige faneblad"
 
 #: ../mousepad/mousepad-window.c:461
 msgid "Select the previous tab"
-msgstr ""
+msgstr "Vælg det forrige faneblad"
 
 #: ../mousepad/mousepad-window.c:462
 msgid "_Next Tab"
-msgstr ""
+msgstr "_Næste faneblad"
 
 #: ../mousepad/mousepad-window.c:462
 msgid "Select the next tab"
-msgstr ""
+msgstr "Vælg det næste faneblad"
 
 #: ../mousepad/mousepad-window.c:464
 msgid "_Help"
@@ -1107,7 +1109,7 @@ msgstr "_Hjælp"
 
 #: ../mousepad/mousepad-window.c:465
 msgid "_Contents"
-msgstr ""
+msgstr "_Indhold"
 
 #: ../mousepad/mousepad-window.c:465
 msgid "Display the Mousepad user manual"
