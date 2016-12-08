@@ -14,7 +14,7 @@ msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-07-15 06:30+0200\n"
-"PO-Revision-Date: 2016-12-08 04:55+0000\n"
+"PO-Revision-Date: 2016-12-08 09:32+0000\n"
 "Last-Translator: scootergrisen\n"
 "Language-Team: Danish (http://www.transifex.com/xfce/xfce-apps/language/da/)\n"
 "MIME-Version: 1.0\n"
@@ -52,7 +52,7 @@ msgstr "Kunne ikke åbne skærmen."
 
 #: ../mousepad/main.c:107
 msgid "The Xfce development team. All rights reserved."
-msgstr "Xfce udviklingsholdet. Alle rettigheder forbeholdes."
+msgstr "Xfce's udviklingshold. Alle rettigheder forbeholdes."
 
 #: ../mousepad/main.c:108
 #, c-format
