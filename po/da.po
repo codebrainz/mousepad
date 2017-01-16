@@ -14,7 +14,7 @@ msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-07-15 06:30+0200\n"
-"PO-Revision-Date: 2017-01-14 15:12+0000\n"
+"PO-Revision-Date: 2017-01-16 11:10+0000\n"
 "Last-Translator: scootergrisen\n"
 "Language-Team: Danish (http://www.transifex.com/xfce/xfce-apps/language/da/)\n"
 "MIME-Version: 1.0\n"
@@ -33,7 +33,7 @@ msgstr "Afslut en kørende instans af Mousepad"
 
 #: ../mousepad/main.c:45
 msgid "Print version information and exit"
-msgstr "Vis versionsinformation og afslut"
+msgstr "Udskriv versionsinformation og afslut"
 
 #. default application name
 #: ../mousepad/main.c:70 ../mousepad.desktop.in.in.h:1
@@ -627,7 +627,7 @@ msgstr "Begge"
 #. case sensitive
 #: ../mousepad/mousepad-replace-dialog.c:222
 msgid "Case sensi_tive"
-msgstr "Forskel på små og s_tore bogstaver"
+msgstr "Forskel på s_tore og små bogstaver"
 
 #. match whole word
 #: ../mousepad/mousepad-replace-dialog.c:229
@@ -1287,7 +1287,7 @@ msgstr "Indlæsning af skabelonen fejlede"
 #. create new file chooser dialog
 #: ../mousepad/mousepad-window.c:3688
 msgid "Open File"
-msgstr "Åben fil"
+msgstr "Åbn fil"
 
 #: ../mousepad/mousepad-window.c:3801
 #, c-format
