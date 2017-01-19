@@ -14,7 +14,7 @@ msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-07-15 06:30+0200\n"
-"PO-Revision-Date: 2017-01-16 11:10+0000\n"
+"PO-Revision-Date: 2017-01-19 10:01+0000\n"
 "Last-Translator: scootergrisen\n"
 "Language-Team: Danish (http://www.transifex.com/xfce/xfce-apps/language/da/)\n"
 "MIME-Version: 1.0\n"
@@ -693,7 +693,7 @@ msgstr "Filtype: Ingen"
 
 #: ../mousepad/mousepad-statusbar.c:165
 msgid "Toggle the overwrite mode"
-msgstr "Overskrivningstilstand (til/fra)"
+msgstr "Overskrivningstilstand til/fra"
 
 #. overwrite label
 #: ../mousepad/mousepad-statusbar.c:170
@@ -1178,7 +1178,7 @@ msgstr "Ombryd _ord"
 
 #: ../mousepad/mousepad-window.c:478
 msgid "Toggle breaking lines in between words"
-msgstr "Bryder linjer mellem ord (til/fra)"
+msgstr "Bryder linjer mellem ord til/fra"
 
 #: ../mousepad/mousepad-window.c:479
 msgid "Write Unicode _BOM"
