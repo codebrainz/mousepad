@@ -14,7 +14,7 @@ msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-07-15 06:30+0200\n"
-"PO-Revision-Date: 2017-01-19 10:01+0000\n"
+"PO-Revision-Date: 2017-01-20 13:11+0000\n"
 "Last-Translator: scootergrisen\n"
 "Language-Team: Danish (http://www.transifex.com/xfce/xfce-apps/language/da/)\n"
 "MIME-Version: 1.0\n"
@@ -1277,7 +1277,7 @@ msgstr "Skabeloner skal være gyldig UTF-8"
 #. set error message
 #: ../mousepad/mousepad-window.c:3658
 msgid "Reading the template failed, the menu item has been removed"
-msgstr "Læsning af skabelon fejlede. Menupunktet er blevet fjernet"
+msgstr "Læsning af skabelonen fejlede. Menupunktet er blevet fjernet"
 
 #. set error message
 #: ../mousepad/mousepad-window.c:3663
