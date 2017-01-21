@@ -14,7 +14,7 @@ msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-07-15 06:30+0200\n"
-"PO-Revision-Date: 2017-01-20 13:11+0000\n"
+"PO-Revision-Date: 2017-01-21 17:49+0000\n"
 "Last-Translator: scootergrisen\n"
 "Language-Team: Danish (http://www.transifex.com/xfce/xfce-apps/language/da/)\n"
 "MIME-Version: 1.0\n"
@@ -70,7 +70,7 @@ msgstr "Per Kongstad\nAputsiak Niels Janussen\nChris Darnell\nscootergrisen"
 #. display an error message to the user
 #: ../mousepad/mousepad-dialogs.c:100
 msgid "Failed to open the documentation browser"
-msgstr "Kunne ikke åbne dokumentations-læseren"
+msgstr "Kunne ikke åbne dokumentationsbrowseren"
 
 #. build dialog
 #: ../mousepad/mousepad-dialogs.c:115
