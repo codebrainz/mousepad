@@ -3,17 +3,18 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
-# bazanluis20 <bazanluis20@gmail.com>, 2012
+# Luis Enrique Bazán De León <bazanluis20@gmail.com>, 2012
 # Manolo Díaz <diaz.manolo@gmail.com>, 2015
-# Pablo Roberto Francisco Lezaeta Reyes <prflr88@gmail.com>, 2013-2015
+# Pablo Roberto “Jristz” Lezaeta Reyes <prflr88@gmail.com>, 2013-2015
+# Pablo Roberto “Jristz” Lezaeta Reyes <prflr88@gmail.com>, 2017
 msgid ""
 msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-07-15 06:30+0200\n"
-"PO-Revision-Date: 2015-02-23 11:58+0000\n"
-"Last-Translator: Manolo Díaz <diaz.manolo@gmail.com>\n"
-"Language-Team: Spanish (http://www.transifex.com/projects/p/xfce-apps/language/es/)\n"
+"PO-Revision-Date: 2017-03-13 05:27+0000\n"
+"Last-Translator: Pablo Roberto “Jristz” Lezaeta Reyes <prflr88@gmail.com>\n"
+"Language-Team: Spanish (http://www.transifex.com/xfce/xfce-apps/language/es/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -62,7 +63,7 @@ msgstr "Mousepad es un editor de texto veloz para el entorno de escritorio Xfce.
 
 #: ../mousepad/mousepad-dialogs.c:45
 msgid "translator-credits"
-msgstr "Pablo Lezaeta <prflr88@gmail.com> 2013-2015"
+msgstr "Pablo Lezaeta <prflr88@gmail.com> 2013-2016"
 
 #. display an error message to the user
 #: ../mousepad/mousepad-dialogs.c:100
@@ -918,7 +919,7 @@ msgstr "Cambiar el tipo de caso de la seleccionada a minúscula"
 
 #: ../mousepad/mousepad-window.c:432
 msgid "To _Title Case"
-msgstr "Convertir a <i>_Tittle Case</i>"
+msgstr "Convertir a «_Tittle Case»"
 
 #: ../mousepad/mousepad-window.c:432
 msgid "Change the case of the selection to title case"
@@ -1187,32 +1188,32 @@ msgstr "Almacenar la marca de orden de bytes en el archivo"
 
 #: ../mousepad/mousepad-window.c:484
 msgid "Unix (_LF)"
-msgstr "Unix (_LF)"
+msgstr "Unix y sistemas tipo Unix, OSX (_LF)"
 
 #: ../mousepad/mousepad-window.c:484
 msgid "Set the line ending of the document to Unix (LF)"
-msgstr "Establecer el final de línea del documento a Unix (LF)"
+msgstr "Establecer el final de línea del documento a Unix y sistemas tipo Unix, OSX (LF)"
 
 #: ../mousepad/mousepad-window.c:485
 msgid "Mac (_CR)"
-msgstr "Mac OS 9  (_CR)"
+msgstr "Apple II y Mac OS 9  (_CR)"
 
 #: ../mousepad/mousepad-window.c:485
 msgid "Set the line ending of the document to Mac (CR)"
-msgstr "Establecer el final de línea del documento a Mac OS 9 (CR)"
+msgstr "Establecer el final de línea del documento a Apple II y Mac OS 9 (CR)"
 
 #: ../mousepad/mousepad-window.c:486
 msgid "DOS / Windows (C_R LF)"
-msgstr "DOS / Windows (C_R LF)"
+msgstr "CP/M, MP/M, DOS y Windows (C_R LF)"
 
 #: ../mousepad/mousepad-window.c:486
 msgid "Set the line ending of the document to DOS / Windows (CR LF)"
-msgstr "Establecer el final de línea del documento a DOS / Windows (CR LF)"
+msgstr "Establecer el final de línea del documento a CP/M, MP/M, DOS y Windows (CR LF)"
 
 #. add the label with the root warning
 #: ../mousepad/mousepad-window.c:882
 msgid "Warning, you are using the root account, you may harm your system."
-msgstr "Advertencia, está usando la cuenta de administrador (Root), podría dañar su equipo."
+msgstr "Advertencia, está usando la cuenta de superusuario, podría dañar su equipo."
 
 #. show the warning
 #: ../mousepad/mousepad-window.c:1534
@@ -1255,7 +1256,7 @@ msgstr "Conjunto de caracteres"
 #: ../mousepad/mousepad-window.c:2940
 #, c-format
 msgid "Open '%s'"
-msgstr "Abrir '%s'"
+msgstr "Abrir «%s»"
 
 #: ../mousepad/mousepad-window.c:3087
 msgid "Failed to clear the recent history"
