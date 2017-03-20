@@ -3,13 +3,13 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
-# Xosé <xosecalvo@gmail.com>, 2015
+# Xosé <xosecalvo@gmail.com>, 2015,2017
 msgid ""
 msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-07-15 06:30+0200\n"
-"PO-Revision-Date: 2015-09-19 08:39+0000\n"
+"PO-Revision-Date: 2017-03-20 21:57+0000\n"
 "Last-Translator: Xosé <xosecalvo@gmail.com>\n"
 "Language-Team: Galician (http://www.transifex.com/xfce/xfce-apps/language/gl/)\n"
 "MIME-Version: 1.0\n"
@@ -407,7 +407,7 @@ msgstr "Mostrar os remates das liñas"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:22
 msgid "Long line margin at column:"
-msgstr ""
+msgstr "Marxe de liña longa na columna:"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:23
 msgid "Highlight current line"
@@ -427,7 +427,7 @@ msgstr ""
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:27
 msgid "Use system monospace font"
-msgstr ""
+msgstr "Empregar a fonto monoespazada do sistema"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:28
 msgid "<b>Font</b>"
@@ -443,11 +443,11 @@ msgstr "Ver"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:31
 msgid "Tab width:"
-msgstr ""
+msgstr "Largo da tabulación:"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:32
 msgid "Tab mode:"
-msgstr ""
+msgstr "Modo da tabulación:"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:33
 msgid "Enable automatic indentation"
@@ -675,7 +675,7 @@ msgstr "Realzar _todo"
 #. overflow menu item for when window is too narrow to show the tool bar item
 #: ../mousepad/mousepad-search-bar.c:255 ../mousepad/mousepad-search-bar.c:266
 msgid "Mat_ch Case"
-msgstr ""
+msgstr "_Coincidir maiúsculas e minúsculas"
 
 #: ../mousepad/mousepad-statusbar.c:137
 msgid "Choose a filetype"
@@ -812,7 +812,7 @@ msgstr "Imprimir este documento"
 
 #: ../mousepad/mousepad-window.c:413
 msgid "_Detach Tab"
-msgstr ""
+msgstr "_Separar lapela"
 
 #: ../mousepad/mousepad-window.c:413
 msgid "Move the current document to a new window"
@@ -916,44 +916,44 @@ msgstr "Cambiar a selección a minúsculas"
 
 #: ../mousepad/mousepad-window.c:432
 msgid "To _Title Case"
-msgstr ""
+msgstr "Maiúsculas nas palabras importantes"
 
 #: ../mousepad/mousepad-window.c:432
 msgid "Change the case of the selection to title case"
-msgstr ""
+msgstr "Cambiar a selección a maiúsculas nas palabras importantes"
 
 #: ../mousepad/mousepad-window.c:433
 msgid "To _Opposite Case"
-msgstr ""
+msgstr "Inverter maiúsculas e minúsculas"
 
 #: ../mousepad/mousepad-window.c:433
 msgid "Change the case of the selection opposite case"
-msgstr ""
+msgstr "Inverter as maiúsculas e as minúsculas da selecció"
 
 #: ../mousepad/mousepad-window.c:434
 msgid "_Tabs to Spaces"
-msgstr ""
+msgstr "_Tabuladores a espazos"
 
 #: ../mousepad/mousepad-window.c:434
 msgid "Convert all tabs to spaces in the selection or document"
-msgstr ""
+msgstr "Converter todos os tabuladores a espazos na selección ou documento"
 
 #: ../mousepad/mousepad-window.c:435
 msgid "_Spaces to Tabs"
-msgstr ""
+msgstr "_Espazos a tabuladores"
 
 #: ../mousepad/mousepad-window.c:435
 msgid ""
 "Convert all the leading spaces to tabs in the selected line(s) or document"
-msgstr ""
+msgstr "Converter os espazos iniciais en tabuladores na(s) liña(s) seleccionadas ou en todo o documento"
 
 #: ../mousepad/mousepad-window.c:436
 msgid "St_rip Trailing Spaces"
-msgstr ""
+msgstr "_Retirar os espazos ao final"
 
 #: ../mousepad/mousepad-window.c:436
 msgid "Remove all the trailing spaces from the selected line(s) or document"
-msgstr ""
+msgstr "Retirar todos os espazos ao final da(s) liña(s) seleccionadas ou de todo o documento"
 
 #: ../mousepad/mousepad-window.c:437
 msgid "_Transpose"
@@ -1073,11 +1073,11 @@ msgstr "_Documento"
 
 #: ../mousepad/mousepad-window.c:458
 msgid "Line E_nding"
-msgstr ""
+msgstr "Fi_nal de liña"
 
 #: ../mousepad/mousepad-window.c:459
 msgid "Tab _Size"
-msgstr ""
+msgstr "Tama_ño de tabulación"
 
 #: ../mousepad/mousepad-window.c:460
 msgid "_Filetype"
@@ -1125,23 +1125,23 @@ msgstr "_Barra de menú"
 
 #: ../mousepad/mousepad-window.c:472
 msgid "Change the visibility of the main menubar"
-msgstr ""
+msgstr "Cambiar a visibilidade da barra de menú principal"
 
 #: ../mousepad/mousepad-window.c:473
 msgid "_Toolbar"
-msgstr ""
+msgstr "_Barra de ferramentas"
 
 #: ../mousepad/mousepad-window.c:473
 msgid "Change the visibility of the toolbar"
-msgstr ""
+msgstr "Cambiar a visibilidade da barra de ferramentas"
 
 #: ../mousepad/mousepad-window.c:474
 msgid "St_atusbar"
-msgstr ""
+msgstr "Barra de est_ado"
 
 #: ../mousepad/mousepad-window.c:474
 msgid "Change the visibility of the statusbar"
-msgstr ""
+msgstr "Cambiar a visibilidade da barra de estado"
 
 #: ../mousepad/mousepad-window.c:475
 msgid "_Fullscreen"
@@ -1149,73 +1149,73 @@ msgstr "_Pantalla completa"
 
 #: ../mousepad/mousepad-window.c:475 ../mousepad/mousepad-window.c:4950
 msgid "Make the window fullscreen"
-msgstr ""
+msgstr "Converter a xanela a pantalla completa"
 
 #: ../mousepad/mousepad-window.c:476
 msgid "_Auto Indent"
-msgstr ""
+msgstr "Sangría _automática"
 
 #: ../mousepad/mousepad-window.c:476
 msgid "Auto indent a new line"
-msgstr ""
+msgstr "Crear sangría automática en liña nova"
 
 #: ../mousepad/mousepad-window.c:477
 msgid "Insert _Spaces"
-msgstr ""
+msgstr "Inserir e_spazos"
 
 #: ../mousepad/mousepad-window.c:477
 msgid "Insert spaces when the tab button is pressed"
-msgstr ""
+msgstr "Inserir espazos ao premer a tecla de tabulación"
 
 #: ../mousepad/mousepad-window.c:478
 msgid "_Word Wrap"
-msgstr ""
+msgstr "A_xuste de liña"
 
 #: ../mousepad/mousepad-window.c:478
 msgid "Toggle breaking lines in between words"
-msgstr ""
+msgstr "Alternar que se quebren as liñas entre palabras"
 
 #: ../mousepad/mousepad-window.c:479
 msgid "Write Unicode _BOM"
-msgstr ""
+msgstr "Escribir _BOM de Unicode"
 
 #: ../mousepad/mousepad-window.c:479
 msgid "Store the byte-order mark in the file"
-msgstr ""
+msgstr "Almacenar a marca de orde de bytes no ficheiro"
 
 #: ../mousepad/mousepad-window.c:484
 msgid "Unix (_LF)"
-msgstr ""
+msgstr "Unix (_LF)"
 
 #: ../mousepad/mousepad-window.c:484
 msgid "Set the line ending of the document to Unix (LF)"
-msgstr ""
+msgstr "Configurar o final de liña do documento como de Unix (LF)"
 
 #: ../mousepad/mousepad-window.c:485
 msgid "Mac (_CR)"
-msgstr ""
+msgstr "Mac (_CR)"
 
 #: ../mousepad/mousepad-window.c:485
 msgid "Set the line ending of the document to Mac (CR)"
-msgstr ""
+msgstr "Configurar o final de liña do documento como de Mac (CR)"
 
 #: ../mousepad/mousepad-window.c:486
 msgid "DOS / Windows (C_R LF)"
-msgstr ""
+msgstr "DOS / Windows (C_R LF)"
 
 #: ../mousepad/mousepad-window.c:486
 msgid "Set the line ending of the document to DOS / Windows (CR LF)"
-msgstr ""
+msgstr "Configurar o final de liña do documento como de DOS / Windows (CR LF)"
 
 #. add the label with the root warning
 #: ../mousepad/mousepad-window.c:882
 msgid "Warning, you are using the root account, you may harm your system."
-msgstr ""
+msgstr "Advertencia, está usando a conta de root, pode danar o sistema."
 
 #. show the warning
 #: ../mousepad/mousepad-window.c:1534
 msgid "Failed to open the document"
-msgstr ""
+msgstr "Non foi posíbel abrir o documento"
 
 #: ../mousepad/mousepad-window.c:1731
 msgid "Read Only"
@@ -1226,23 +1226,23 @@ msgstr "Só de lectura"
 msgid ""
 "No template files found in\n"
 "'%s'"
-msgstr ""
+msgstr "Non se atoparon ficheiros de modelo en\n«%s»"
 
 #. create other action
 #: ../mousepad/mousepad-window.c:2436
 msgid "Set custom tab size"
-msgstr ""
+msgstr "Seleccionar o tamaño personalizado das lapelas"
 
 #. create suitable label for the other menu
 #: ../mousepad/mousepad-window.c:2484
 #, c-format
 msgid "Ot_her (%d)..."
-msgstr ""
+msgstr "Ou_tro (%d)..."
 
 #. set action label
 #: ../mousepad/mousepad-window.c:2495
 msgid "Ot_her..."
-msgstr ""
+msgstr "Ou_tro..."
 
 #. build description
 #. get the offset length: 'Encoding: '
@@ -1253,31 +1253,31 @@ msgstr "Conxunto de caracteres"
 #: ../mousepad/mousepad-window.c:2940
 #, c-format
 msgid "Open '%s'"
-msgstr ""
+msgstr "Abrir «%s»"
 
 #: ../mousepad/mousepad-window.c:3087
 msgid "Failed to clear the recent history"
-msgstr ""
+msgstr "Non foi posíbel limpar o historial de ficheiros usados recentemente"
 
 #. create an item to inform the user
 #: ../mousepad/mousepad-window.c:3511
 msgid "No clipboard data"
-msgstr ""
+msgstr "Non hai datos no portarretallos"
 
 #. set error message
 #: ../mousepad/mousepad-window.c:3650
 msgid "Templates should be UTF-8 valid"
-msgstr ""
+msgstr "Os modelos deberían ter UTF-8 correcto"
 
 #. set error message
 #: ../mousepad/mousepad-window.c:3658
 msgid "Reading the template failed, the menu item has been removed"
-msgstr ""
+msgstr "Produciuse un fallo ao ler o modelo; retirouse o elemento do menú"
 
 #. set error message
 #: ../mousepad/mousepad-window.c:3663
 msgid "Loading the template failed"
-msgstr ""
+msgstr "Produciuse un fallo ao cargar o modelo"
 
 #. create new file chooser dialog
 #: ../mousepad/mousepad-window.c:3688
@@ -1289,17 +1289,17 @@ msgstr "Abrir ficheiro"
 msgid ""
 "Failed to open \"%s\" for reading. It will be removed from the document "
 "history"
-msgstr ""
+msgstr "Produciuse un fallo ao abrir «%s» para lectura. Será eliminado do historial de documentos"
 
 #. show the warning and cleanup
 #: ../mousepad/mousepad-window.c:3805
 msgid "Failed to open file"
-msgstr ""
+msgstr "Produciuse un erro ao abrir o ficheiro"
 
 #. show the error
 #: ../mousepad/mousepad-window.c:3911 ../mousepad/mousepad-window.c:4034
 msgid "Failed to save the document"
-msgstr ""
+msgstr "Produciuse un erro ao gardar o documento"
 
 #. create the dialog
 #: ../mousepad/mousepad-window.c:3935
@@ -1309,25 +1309,25 @@ msgstr "Gardar como"
 #. show the error
 #: ../mousepad/mousepad-window.c:4126
 msgid "Failed to reload the document"
-msgstr ""
+msgstr "Produciuse un erro ao recargar o documento"
 
 #. show the error
 #: ../mousepad/mousepad-window.c:4153
 msgid "Failed to print the document"
-msgstr ""
+msgstr "Non foi posíbel imprimir o documento"
 
 #: ../mousepad/mousepad-window.c:4777
 msgid "Choose Mousepad Font"
-msgstr ""
+msgstr "Escoller o tipo de letra de Mousepad"
 
 #: ../mousepad/mousepad-window.c:4943
 msgid "Leave fullscreen mode"
-msgstr ""
+msgstr "Saír do modo de pantalla completa"
 
 #: ../mousepad.desktop.in.in.h:2
 msgid "Simple Text Editor"
-msgstr ""
+msgstr "Editor de texto sinxelo"
 
 #: ../mousepad.desktop.in.in.h:3
 msgid "Text Editor"
-msgstr ""
+msgstr "Editor de texto"
