@@ -5,24 +5,25 @@
 # Translators:
 # ised, 2014
 # ised, 2014
-# m4sk1n <m4sk1n@o2.pl>, 2017
+# m4sk1n <m4sk1n@vivaldi.net>, 2017
 # Nick Schermer <nick@xfce.org>, 2014
 # Nick Schermer <nick@xfce.org>, 2014
 # Piotr Sokół <psokol.l10n@gmail.com>, 2012,2014
+# Piotr Sokół <psokol.l10n@gmail.com>, 2017
 # Piotr Strębski <strebski@o2.pl>, 2014
 msgid ""
 msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-07-15 06:30+0200\n"
-"PO-Revision-Date: 2017-01-19 19:25+0000\n"
-"Last-Translator: m4sk1n <m4sk1n@o2.pl>\n"
+"PO-Revision-Date: 2017-04-03 07:42+0000\n"
+"Last-Translator: Piotr Sokół <psokol.l10n@gmail.com>\n"
 "Language-Team: Polish (http://www.transifex.com/xfce/xfce-apps/language/pl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: pl\n"
-"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"Plural-Forms: nplurals=4; plural=(n==1 ? 0 : (n%10>=2 && n%10<=4) && (n%100<12 || n%100>=14) ? 1 : n!=1 && (n%10>=0 && n%10<=1) || (n%10>=5 && n%10<=9) || (n%100>=12 && n%100<=14) ? 2 : 3);\n"
 
 #: ../mousepad/main.c:42
 msgid "Do not register with the D-BUS session message bus"
@@ -409,7 +410,7 @@ msgstr "Białe znaki"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:21
 msgid "Display line endings"
-msgstr "Wyświetlaj końce linii"
+msgstr "Zakończenia wierszy"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:22
 msgid "Long line margin at column:"
@@ -417,15 +418,15 @@ msgstr "Kolumna marginesu długich wierszy:"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:23
 msgid "Highlight current line"
-msgstr "Podświetlaj obecną linię"
+msgstr "Wyróżnianie bieżącego wiersza"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:24
 msgid "Highlight matching brackets"
-msgstr "Podświetlaj pasujące nawiasy"
+msgstr "Wyróżnianie pasujących nawiasów"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:25
 msgid "Wrap long lines"
-msgstr "Zawijaj długie wiersze"
+msgstr "Zawijanie długich wierszy"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:26
 msgid "<b>Display</b>"
@@ -433,7 +434,7 @@ msgstr "<b>Widok</b>"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:27
 msgid "Use system monospace font"
-msgstr "Użyj systemowej czcionki o stałej szerokości"
+msgstr "Używanie systemowej czcionki o stałej szerokości"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:28
 msgid "<b>Font</b>"
@@ -658,6 +659,7 @@ msgid_plural "%d occurences"
 msgstr[0] "%d wystąpienie"
 msgstr[1] "%d wystąpienia"
 msgstr[2] "%d wystąpień"
+msgstr[3] "%d wystąpień"
 
 #: ../mousepad/mousepad-replace-dialog.c:442
 msgid "_Replace All"
