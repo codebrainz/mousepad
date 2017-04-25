@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-07-15 06:30+0200\n"
-"PO-Revision-Date: 2017-04-24 13:24+0000\n"
+"PO-Revision-Date: 2017-04-25 10:31+0000\n"
 "Last-Translator: Aljoša Žagar <anthon.manix@gmail.com>\n"
 "Language-Team: Slovenian (http://www.transifex.com/xfce/xfce-apps/language/sl/)\n"
 "MIME-Version: 1.0\n"
@@ -294,7 +294,7 @@ msgstr "Korejsko"
 #: ../mousepad/mousepad-file.c:557
 #, c-format
 msgid "Invalid byte sequence in conversion input"
-msgstr ""
+msgstr "Neveljavno zaporede bajtov v vhodnem pretvorniškem viru"
 
 #: ../mousepad/mousepad-file.c:881
 #, c-format
@@ -427,7 +427,7 @@ msgstr "<b>Prikaz</b>"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:27
 msgid "Use system monospace font"
-msgstr ""
+msgstr "Uporabi sistemsko pisavo stalne širine"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:28
 msgid "<b>Font</b>"
