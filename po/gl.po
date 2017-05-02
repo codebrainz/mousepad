@@ -3,14 +3,15 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
+# Daniel Muñiz Fontoira <dani@damufo.com>, 2017
 # Xosé <xosecalvo@gmail.com>, 2015,2017
 msgid ""
 msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-07-15 06:30+0200\n"
-"PO-Revision-Date: 2017-03-20 21:57+0000\n"
-"Last-Translator: Xosé <xosecalvo@gmail.com>\n"
+"PO-Revision-Date: 2017-05-02 19:31+0000\n"
+"Last-Translator: Daniel Muñiz Fontoira <dani@damufo.com>\n"
 "Language-Team: Galician (http://www.transifex.com/xfce/xfce-apps/language/gl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -43,7 +44,7 @@ msgstr "[FICHEIROS...]"
 #. no error message, the gui initialization failed
 #: ../mousepad/main.c:90
 msgid "Failed to open display."
-msgstr ""
+msgstr "Fallo ao abrir a pantalla."
 
 #: ../mousepad/main.c:107
 msgid "The Xfce development team. All rights reserved."
@@ -423,7 +424,7 @@ msgstr "Axustar as liñas longas"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:26
 msgid "<b>Display</b>"
-msgstr ""
+msgstr "<b>Pantalla</b>"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:27
 msgid "Use system monospace font"
