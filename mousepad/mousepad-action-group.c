@@ -124,7 +124,7 @@ mousepad_action_group_class_init (MousepadActionGroupClass *klass)
                 G_SIGNAL_RUN_LAST,
                 0, NULL, NULL,
                 g_cclosure_marshal_VOID__OBJECT,
-                G_TYPE_NONE, 0,
+                G_TYPE_NONE, 1,
                 GTK_SOURCE_TYPE_LANGUAGE);
 }
 
