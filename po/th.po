@@ -6,14 +6,15 @@
 # Arthit Suriyawongkul <arthit@gmail.com>, 2013
 # Arthit Suriyawongkul <arthit@gmail.com>, 2013
 # Theppitak Karoonboonyanan <theppitak@gmail.com>, 2013-2014
+# Theppitak Karoonboonyanan <theppitak@gmail.com>, 2017
 msgid ""
 msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-07-15 06:30+0200\n"
-"PO-Revision-Date: 2014-07-19 08:00+0000\n"
+"PO-Revision-Date: 2017-06-18 10:08+0000\n"
 "Last-Translator: Theppitak Karoonboonyanan <theppitak@gmail.com>\n"
-"Language-Team: Thai (http://www.transifex.com/projects/p/xfce-apps/language/th/)\n"
+"Language-Team: Thai (http://www.transifex.com/xfce/xfce-apps/language/th/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -67,7 +68,7 @@ msgstr "Arthit Suriyawongkul <arthit@gmail.com>\nTheppitak Karoonboonyanan <thep
 #. display an error message to the user
 #: ../mousepad/mousepad-dialogs.c:100
 msgid "Failed to open the documentation browser"
-msgstr "เปิดเบราว์เซอร์แสดงเอกสารไม่สำเร็จ"
+msgstr "เปิดเครื่องมือท่องดูเอกสารไม่สำเร็จ"
 
 #. build dialog
 #: ../mousepad/mousepad-dialogs.c:115
