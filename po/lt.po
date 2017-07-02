@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-07-15 06:30+0200\n"
-"PO-Revision-Date: 2017-06-17 23:26+0000\n"
+"PO-Revision-Date: 2017-07-02 20:05+0000\n"
 "Last-Translator: Moo\n"
 "Language-Team: Lithuanian (http://www.transifex.com/xfce/xfce-apps/language/lt/)\n"
 "MIME-Version: 1.0\n"
@@ -798,7 +798,7 @@ msgstr "Įrašyti visus dokumentus, esančius šiame lange"
 
 #: ../mousepad/mousepad-window.c:411
 msgid "Re_vert"
-msgstr "Ats_tatyti"
+msgstr "Sugrąž_inti"
 
 #: ../mousepad/mousepad-window.c:411
 msgid "Revert to the saved version of the file"
@@ -814,7 +814,7 @@ msgstr "Spausdinti esamą dokumentą"
 
 #: ../mousepad/mousepad-window.c:413
 msgid "_Detach Tab"
-msgstr "_Atkabinti kortelę"
+msgstr "_Atskirti kortelę"
 
 #: ../mousepad/mousepad-window.c:413
 msgid "Move the current document to a new window"
@@ -987,7 +987,7 @@ msgstr "Perkelia pasirinkimą eilute žemiau"
 
 #: ../mousepad/mousepad-window.c:441
 msgid "Dup_licate Line / Selection"
-msgstr "Dub_liuoti eilutę / pasirinkimą"
+msgstr "Dub_liuoti eilutę / žymėjimą"
 
 #: ../mousepad/mousepad-window.c:441
 msgid "Duplicate the current line or selection"
@@ -1055,7 +1055,7 @@ msgstr "Eiti į konkrečią dokumento vietą"
 
 #: ../mousepad/mousepad-window.c:453
 msgid "_View"
-msgstr "R_odymas"
+msgstr "R_odinys"
 
 #: ../mousepad/mousepad-window.c:454
 msgid "Select F_ont..."
@@ -1244,7 +1244,7 @@ msgstr "K_ita (%d)..."
 #. set action label
 #: ../mousepad/mousepad-window.c:2495
 msgid "Ot_her..."
-msgstr "_Kita"
+msgstr "_Kita..."
 
 #. build description
 #. get the offset length: 'Encoding: '
