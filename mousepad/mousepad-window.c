@@ -712,33 +712,6 @@ mousepad_window_create_languages_menu (MousepadWindow *window)
 
 
 static void
-mousepad_window_action_group_style_scheme_changed (MousepadWindow      *window,
-                                                   GParamSpec          *pspec,
-                                                   MousepadActionGroup *group)
-{
-  GtkSourceStyleScheme *scheme;
-  const gchar          *scheme_id = NULL;
-  gint                  npages, i;
-
-  /* get the new active language */
-  scheme = mousepad_action_group_get_active_style_scheme (group);
-  if (scheme != NULL)
-    scheme_id = gtk_source_style_scheme_get_id (scheme);
-
-  /* update the color scheme on all the documents */
-  npages = gtk_notebook_get_n_pages (GTK_NOTEBOOK (window->notebook));
-  for (i = 0; i < npages; i++)
-    {
-      MousepadDocument *document;
-
-      document = MOUSEPAD_DOCUMENT (gtk_notebook_get_nth_page (GTK_NOTEBOOK (window->notebook), i));
-      mousepad_view_set_color_scheme (document->textview, scheme_id);
-    }
-}
-
-
-
-static void
 mousepad_window_create_style_schemes_menu (MousepadWindow *window)
 {
   GtkWidget           *menu, *item;
@@ -752,13 +725,6 @@ mousepad_window_create_style_schemes_menu (MousepadWindow *window)
   gtk_menu_item_set_submenu (GTK_MENU_ITEM (item), menu);
   gtk_widget_show_all (menu);
   gtk_widget_show (item);
-  
-  /* watch for activations of the style schemes actions */
-  g_signal_connect_object (window->action_group,
-                           "notify::active-style-scheme",
-                           G_CALLBACK (mousepad_window_action_group_style_scheme_changed),
-                           window,
-                           G_CONNECT_SWAPPED);
 }
 
 

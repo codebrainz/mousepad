@@ -284,8 +284,6 @@ mousepad_action_group_set_active_style_scheme (MousepadActionGroup  *self,
                                                GtkSourceStyleScheme *scheme)
 {
   GtkAction   *action;
-  const gchar *scheme_name = NULL;
-
   g_return_if_fail (MOUSEPAD_IS_ACTION_GROUP (self));
 
   if (GTK_SOURCE_IS_STYLE_SCHEME (self->active_scheme))
@@ -301,14 +299,6 @@ mousepad_action_group_set_active_style_scheme (MousepadActionGroup  *self,
   /* prevent recursion since we watch the action's 'activate' signal */
   self->locked = TRUE;
   gtk_toggle_action_set_active (GTK_TOGGLE_ACTION (action), TRUE);
-  self->locked = FALSE;
-
-  /* update the setting when the active action is changed */
-  if (scheme != NULL)
-    scheme_name = gtk_source_style_scheme_get_id(scheme);
-
-  self->locked = TRUE;
-  MOUSEPAD_SETTING_SET_STRING (COLOR_SCHEME, scheme_name);
   self->locked = FALSE;
 
   g_object_notify (G_OBJECT (self), "active-style-scheme");
@@ -477,6 +467,8 @@ static void
 mousepad_action_group_style_scheme_action_activate (MousepadActionGroup       *self,
                                                     MousepadStyleSchemeAction *action)
 {
+  const gchar *scheme_name = NULL;
+
   /* only update the active action if we're not already in the process of
    * setting it and the sender action is actually active */
   if (! self->locked &&
@@ -485,7 +477,14 @@ mousepad_action_group_style_scheme_action_activate (MousepadActionGroup       *s
       GtkSourceStyleScheme *scheme;
 
       scheme = mousepad_style_scheme_action_get_style_scheme (action);
-      mousepad_action_group_set_active_style_scheme (self, scheme);
+
+      /* update the setting when the active action is changed */
+      if (scheme != NULL)
+        scheme_name = gtk_source_style_scheme_get_id(scheme);
+
+      self->locked = TRUE;
+      MOUSEPAD_SETTING_SET_STRING (COLOR_SCHEME, scheme_name);
+      self->locked = FALSE;
     }
 }
 
