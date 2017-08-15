@@ -2089,7 +2089,14 @@ mousepad_window_notebook_create_window (GtkNotebook    *notebook,
       g_object_ref (G_OBJECT (document));
 
       /* remove the document from the active window */
+#if GTK_CHECK_VERSION (3, 16, 0)
+      gtk_notebook_detach_tab (GTK_CONTAINER (window->notebook), page);
+#else
+      /* crashes on GTK+ 3 somewhere between 3.10-3.16
+       * Fixed above using new function added in 3.16
+       * See: https://bugzilla.gnome.org/show_bug.cgi?id=744385 */
       gtk_container_remove (GTK_CONTAINER (window->notebook), page);
+#endif
 
       /* emit the new window with document signal */
       g_signal_emit (G_OBJECT (window), window_signals[NEW_WINDOW_WITH_DOCUMENT], 0, document, x, y);
