@@ -3,8 +3,8 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
-# Aputsiak Niels Janussen <aj@isit.gl>, 2014
-# Aputsiak Niels Janussen <aj@isit.gl>, 2014
+# Aputsiak Niels Janussen (Skjalden) <aj@isit.gl>, 2014
+# Aputsiak Niels Janussen (Skjalden) <aj@isit.gl>, 2014
 # Chris Darnell <chris@cedeel.com>, 2013,2016
 # Per Kongstad <pko@xfce.org>, 2012
 # scootergrisen, 2016
@@ -14,7 +14,7 @@ msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-07-15 06:30+0200\n"
-"PO-Revision-Date: 2017-01-21 17:49+0000\n"
+"PO-Revision-Date: 2017-09-13 16:33+0000\n"
 "Last-Translator: scootergrisen\n"
 "Language-Team: Danish (http://www.transifex.com/xfce/xfce-apps/language/da/)\n"
 "MIME-Version: 1.0\n"
@@ -379,7 +379,7 @@ msgstr "Træk & slip"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:14
 msgid "Dialog"
-msgstr "Vindue"
+msgstr "Dialog"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:15
 msgid "Icons Only"
@@ -508,7 +508,7 @@ msgstr "Stil:"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:46
 msgid "Icon Size:"
-msgstr "Størrelse på ikon:"
+msgstr "Ikonstørrelse:"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:47
 msgid "<b>Toolbar</b>"
