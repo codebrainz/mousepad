@@ -14,7 +14,7 @@ msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-07-15 06:30+0200\n"
-"PO-Revision-Date: 2017-09-13 16:33+0000\n"
+"PO-Revision-Date: 2017-09-13 19:57+0000\n"
 "Last-Translator: scootergrisen\n"
 "Language-Team: Danish (http://www.transifex.com/xfce/xfce-apps/language/da/)\n"
 "MIME-Version: 1.0\n"
@@ -432,7 +432,7 @@ msgstr "<b>Skærm</b>"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:27
 msgid "Use system monospace font"
-msgstr "Benyt systemets skrifttype med fast bredde"
+msgstr "Brug systemets skrifttype med fast bredde"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:28
 msgid "<b>Font</b>"
@@ -1014,7 +1014,7 @@ msgstr "Formindsk indrykningen af markeringen eller nuværende linje"
 
 #: ../mousepad/mousepad-window.c:444
 msgid "Show the preferences dialog"
-msgstr "Vis dialogen Præferencer"
+msgstr "Vis præferencer-dialog"
 
 #: ../mousepad/mousepad-window.c:446
 msgid "_Search"
