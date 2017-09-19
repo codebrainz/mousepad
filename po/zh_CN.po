@@ -7,8 +7,8 @@
 # qingxianhao <qinghao1@foxmail.com>, 2012
 # qingxianhao <qinghao1@foxmail.com>, 2012
 # 玉堂白鹤 <yjwork@qq.com>, 2014
-# xiaobo zhou <zhouxiaobo.500@gmail.com>, 2013
-# xiaobo zhou <zhouxiaobo.500@gmail.com>, 2013,2015
+# Xiaobo Zhou <zhouxiaobo.500@gmail.com>, 2013
+# Xiaobo Zhou <zhouxiaobo.500@gmail.com>, 2013,2015
 # 玉堂白鹤 <yjwork@qq.com>, 2014-2016
 # yjwork527 <yjwork.xfce@gmail.com>, 2012
 msgid ""
@@ -16,7 +16,7 @@ msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-07-15 06:30+0200\n"
-"PO-Revision-Date: 2016-10-26 06:31+0000\n"
+"PO-Revision-Date: 2017-09-19 18:05+0000\n"
 "Last-Translator: 玉堂白鹤 <yjwork@qq.com>\n"
 "Language-Team: Chinese (China) (http://www.transifex.com/xfce/xfce-apps/language/zh_CN/)\n"
 "MIME-Version: 1.0\n"
@@ -466,7 +466,7 @@ msgstr "<b>缩进</b>"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:35
 msgid "Behaviour:"
-msgstr "行为："
+msgstr ""
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:36
 msgid "<b>Home/End Keys</b>"
