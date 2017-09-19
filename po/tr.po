@@ -3,7 +3,7 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
-# Mustafa TEKKOYUN <mustafa.tekkoyun@gmail.com>, 2013
+# Mustafa TEKKOYUN <inactive+tekotek@transifex.com>, 2013
 # Natavan Mirzayeva <mirzayevanatavan@gmail.com>, 2014
 # Necdet Yücel <necdetyucel@gmail.com>, 2013-2014
 # Redcode, 2013-2014
@@ -13,9 +13,9 @@ msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-07-15 06:30+0200\n"
-"PO-Revision-Date: 2014-12-13 16:37+0000\n"
+"PO-Revision-Date: 2017-09-19 18:05+0000\n"
 "Last-Translator: Natavan Mirzayeva <mirzayevanatavan@gmail.com>\n"
-"Language-Team: Turkish (http://www.transifex.com/projects/p/xfce-apps/language/tr/)\n"
+"Language-Team: Turkish (http://www.transifex.com/xfce/xfce-apps/language/tr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
