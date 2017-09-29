@@ -14,7 +14,7 @@ msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-07-15 06:30+0200\n"
-"PO-Revision-Date: 2017-09-19 18:04+0000\n"
+"PO-Revision-Date: 2017-09-29 17:23+0000\n"
 "Last-Translator: scootergrisen\n"
 "Language-Team: Danish (http://www.transifex.com/xfce/xfce-apps/language/da/)\n"
 "MIME-Version: 1.0\n"
@@ -568,11 +568,11 @@ msgstr "Intervallet hvormed linjenumre udskrives. F.eks. vil en værdi på 1 uds
 
 #: ../mousepad/mousepad-print.c:672
 msgid "Enable text _wrapping"
-msgstr "Slå tekst_ombrydning til"
+msgstr "Aktivér tekst_ombrydning"
 
 #: ../mousepad/mousepad-print.c:679
 msgid "Enable _syntax highlighting"
-msgstr "Slå _syntaksfremhævelse til"
+msgstr "Aktivér _syntaksfremhævelse"
 
 #: ../mousepad/mousepad-print.c:691
 msgid "Fonts"
