@@ -4,13 +4,14 @@
 # 
 # Translators:
 # Piarres Beobide <pi@beobide.net>, 2013
+# Sr Aldeano <sraldeano@gmail.com>, 2017
 msgid ""
 msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-07-15 06:30+0200\n"
-"PO-Revision-Date: 2017-09-19 18:04+0000\n"
-"Last-Translator: Xfce Bot <transifex@xfce.org>\n"
+"PO-Revision-Date: 2017-09-30 08:28+0000\n"
+"Last-Translator: Sr Aldeano <sraldeano@gmail.com>\n"
 "Language-Team: Basque (http://www.transifex.com/xfce/xfce-apps/language/eu/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -308,7 +309,7 @@ msgstr "Huts \"%s\"-ren egoera irakurtzerakoan."
 
 #: ../mousepad/mousepad-language-action.c:229
 msgid "Plain Text"
-msgstr ""
+msgstr "Testu Hutsa"
 
 #: ../mousepad/mousepad-language-action.c:230
 msgid "No filetype"
@@ -333,7 +334,7 @@ msgstr ""
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:4
 msgid "Always"
-msgstr ""
+msgstr "Beti"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:5
 msgid "Insert Tabs"
@@ -354,7 +355,7 @@ msgstr "Batez"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:9
 msgid "Menu"
-msgstr ""
+msgstr "Menua"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:10
 msgid "Small Toolbar"
@@ -366,7 +367,7 @@ msgstr ""
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:12
 msgid "Button"
-msgstr ""
+msgstr "Botoia"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:13
 msgid "Drag & Drop"
@@ -382,7 +383,7 @@ msgstr ""
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:16
 msgid "Text Only"
-msgstr ""
+msgstr "Testua Soilik"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:17
 msgid "Text Below Icons"
@@ -499,7 +500,7 @@ msgstr ""
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:45
 msgid "Style:"
-msgstr ""
+msgstr "Itxura:"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:46
 msgid "Icon Size:"
@@ -523,7 +524,7 @@ msgstr ""
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:51
 msgid "Window"
-msgstr ""
+msgstr "Lehioa"
 
 #. set a custom tab label
 #: ../mousepad/mousepad-print.c:119
@@ -1215,7 +1216,7 @@ msgstr ""
 #. show the warning
 #: ../mousepad/mousepad-window.c:1534
 msgid "Failed to open the document"
-msgstr ""
+msgstr "Dokumentu irekitzeak huts egin du"
 
 #: ../mousepad/mousepad-window.c:1731
 msgid "Read Only"
@@ -1304,7 +1305,7 @@ msgstr ""
 #. create the dialog
 #: ../mousepad/mousepad-window.c:3935
 msgid "Save As"
-msgstr ""
+msgstr "Gorde Honela"
 
 #. show the error
 #: ../mousepad/mousepad-window.c:4126
@@ -1330,4 +1331,4 @@ msgstr ""
 
 #: ../mousepad.desktop.in.in.h:3
 msgid "Text Editor"
-msgstr ""
+msgstr "Testu Editatzailea"
