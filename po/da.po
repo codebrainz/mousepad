@@ -14,7 +14,7 @@ msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-07-15 06:30+0200\n"
-"PO-Revision-Date: 2017-09-30 19:47+0000\n"
+"PO-Revision-Date: 2017-11-01 05:08+0000\n"
 "Last-Translator: scootergrisen\n"
 "Language-Team: Danish (http://www.transifex.com/xfce/xfce-apps/language/da/)\n"
 "MIME-Version: 1.0\n"
@@ -238,11 +238,11 @@ msgstr "Arabisk"
 #: ../mousepad/mousepad-encoding.c:55 ../mousepad/mousepad-encoding.c:56
 #: ../mousepad/mousepad-encoding.c:57
 msgid "Hebrew"
-msgstr "Hebræisk"
+msgstr "Hebraisk"
 
 #: ../mousepad/mousepad-encoding.c:58
 msgid "Hebrew Visual"
-msgstr "Hebræisk (visuelt)"
+msgstr "Hebraisk (visuelt)"
 
 #. asian
 #: ../mousepad/mousepad-encoding.c:61
