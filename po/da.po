@@ -5,6 +5,7 @@
 # Translators:
 # Aputsiak Niels Janussen (Skjalden) <aj@isit.gl>, 2014
 # Aputsiak Niels Janussen (Skjalden) <aj@isit.gl>, 2014
+# Aputsiak Niels Janussen (Skjalden) <aj@isit.gl>, 2014
 # Chris Darnell <chris@cedeel.com>, 2013,2016
 # Per Kongstad <pko@xfce.org>, 2012
 # scootergrisen, 2016
@@ -14,7 +15,7 @@ msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-07-15 06:30+0200\n"
-"PO-Revision-Date: 2017-11-17 15:03+0000\n"
+"PO-Revision-Date: 2017-11-27 21:31+0000\n"
 "Last-Translator: scootergrisen\n"
 "Language-Team: Danish (http://www.transifex.com/xfce/xfce-apps/language/da/)\n"
 "MIME-Version: 1.0\n"
@@ -375,7 +376,7 @@ msgstr "Knap"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:13
 msgid "Drag & Drop"
-msgstr "Træk & slip"
+msgstr "Træk og slip"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:14
 msgid "Dialog"
