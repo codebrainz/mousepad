@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-07-15 06:30+0200\n"
-"PO-Revision-Date: 2018-03-11 21:13+0000\n"
+"PO-Revision-Date: 2018-03-12 10:11+0000\n"
 "Last-Translator: Erlend Østlie <erlendandreas12368@gmail.com>\n"
 "Language-Team: Norwegian Bokmål (http://www.transifex.com/xfce/xfce-apps/language/nb/)\n"
 "MIME-Version: 1.0\n"
@@ -551,7 +551,7 @@ msgstr "Skriv ut side_hoder"
 
 #: ../mousepad/mousepad-print.c:635
 msgid "Print _line numbers"
-msgstr "Skriv ut linjenummer"
+msgstr "Skriv ut _linjenummer"
 
 #: ../mousepad/mousepad-print.c:652
 msgid "Numbering interval:"
@@ -608,7 +608,7 @@ msgstr "Erstatt _med:"
 
 #: ../mousepad/mousepad-replace-dialog.c:202
 msgid "Search _direction:"
-msgstr "Søkeretning:"
+msgstr "Søke_retning:"
 
 #: ../mousepad/mousepad-replace-dialog.c:211
 msgid "Up"
