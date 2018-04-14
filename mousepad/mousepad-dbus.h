@@ -19,17 +19,7 @@
 
 G_BEGIN_DECLS
 
-typedef struct _MousepadDBusServiceClass MousepadDBusServiceClass;
-typedef struct _MousepadDBusService      MousepadDBusService;
-
-#define MOUSEPAD_TYPE_DBUS_SERVICE            (mousepad_dbus_service_get_type ())
-#define MOUSEPAD_DBUS_SERVICE(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), MOUSEPAD_TYPE_DBUS_SERVICE, MousepadDBusService))
-#define MOUSEPAD_DBUS_SERVICE_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), MOUSEPAD_TYPE_DBUS_SERVICE, MousepadDBusServiceClass))
-#define MOUSEPAD_IS_DBUS_SERVICE(obj)         (G_TYPE_CHECK_INSTANCE_TYPE ((obj), MOUSEPAD_TYPE_DBUS_SERVICE))
-#define MOUSEPAD_IS_DBUS_SERVICE_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), MOUSEPAD_TYPE_DBUS_BRIGDE))
-#define MOUSEPAD_DBUS_SERVICE_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), MOUSEPAD_TYPE_DBUS_SERVICE, MousepadDBusServiceClass))
-
-GType     mousepad_dbus_service_get_type    (void) G_GNUC_CONST;
+void      mousepad_dbus_service_init        (void);
 
 gboolean  mousepad_dbus_client_terminate    (GError      **error);
 

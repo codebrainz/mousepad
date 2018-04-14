@@ -88,6 +88,7 @@ mousepad_LDADD = \
 
 if HAVE_DBUS
 mousepad_built_sources +=	\
+	mousepad-dbus-infos.c \
 	mousepad-dbus-infos.h
 
 mousepad_dbus_sources = \
@@ -119,8 +120,8 @@ BUILT_SOURCES = \
 	mousepad-prefs-dialog-ui.h
 
 if HAVE_DBUS
-mousepad-dbus-infos.h: mousepad-dbus-infos.xml Makefile
-	$(AM_V_GEN) dbus-binding-tool --prefix=mousepad_dbus_service --mode=glib-server $< > $@
+mousepad-dbus-infos.c mousepad-dbus-infos.h: mousepad-dbus-infos.xml Makefile
+	$(AM_V_GEN) gdbus-codegen --interface-prefix org.xfce. --generate-c-code mousepad-dbus-infos $<
 endif
 
 mousepad-window-ui.h: mousepad-window-ui.xml Makefile

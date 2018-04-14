@@ -129,7 +129,7 @@ AM_CONDITIONAL([WITH_KEYFILE_SETTINGS],
 dnl **********************************
 dnl *** Optional support for D-BUS ***
 dnl **********************************
-XDT_CHECK_OPTIONAL_PACKAGE([DBUS], [dbus-glib-1],
+XDT_CHECK_OPTIONAL_PACKAGE([DBUS], [dbus-1],
                            [0.34], [dbus], [D-BUS support])
 
 dnl ***************************************************

@@ -57,9 +57,6 @@ main (gint argc, gchar **argv)
   MousepadApplication *application;
   GError              *error = NULL;
   gchar               *working_directory;
-#ifdef HAVE_DBUS
-  MousepadDBusService *dbus_service;
-#endif
 
   /* bind the text domain to the locale directory */
   bindtextdomain (GETTEXT_PACKAGE, PACKAGE_LOCALE_DIR);
@@ -186,7 +183,7 @@ main (gint argc, gchar **argv)
     {
 #ifdef HAVE_DBUS
       /* register with dbus */
-      dbus_service = g_object_new (MOUSEPAD_TYPE_DBUS_SERVICE, NULL);
+      mousepad_dbus_service_init ();
 #endif
 
       /* enter the main loop */
@@ -194,11 +191,6 @@ main (gint argc, gchar **argv)
 
       /* Shutdown xfconf */
       xfconf_shutdown();
-
-#ifdef HAVE_DBUS
-      /* release dbus service reference */
-      g_object_unref (G_OBJECT (dbus_service));
-#endif
     }
 
   /* release application reference */

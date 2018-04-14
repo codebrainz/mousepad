@@ -31,6 +31,7 @@ missing
 mkinstalldirs
 mousepad/.deps/
 mousepad/mousepad
+mousepad/mousepad-dbus-infos.c
 mousepad/mousepad-dbus-infos.h
 mousepad/mousepad-marshal.c
 mousepad/mousepad-marshal.h

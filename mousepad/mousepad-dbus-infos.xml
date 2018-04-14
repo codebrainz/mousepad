@@ -26,19 +26,19 @@
     This inferface is internally used by Mousepad and should not be used externally.
   -->
   <interface name="org.xfce.Mousepad">
-    <annotation name="org.freedesktop.DBus.GLib.CSymbol" value="mousepad_dbus_service" />
+    <annotation name="org.gtk.GDBus.C.Name" value="MousepadDBusService" />
 
     <!--
-      LaunchFiles (working-directory : STRING, filenames : ARRAY OF STRING : VOID
+      LaunchFiles (working_directory : STRING, filenames : ARRAY OF STRING : VOID
 
-      working-directory : the directory, relative to which filenames should
+      working_directory : the directory, relative to which filenames should
                           be interpreted.
       filenames         : an array of file names to launch. The file names may
                           be either file:-URIs, absolute paths or paths relative
                           to the working-directory.
     -->
     <method name="LaunchFiles">
-      <arg direction="in" name="working-directory" type="s" />
+      <arg direction="in" name="working_directory" type="s" />
       <arg direction="in" name="filenames" type="as" />
     </method>
 
