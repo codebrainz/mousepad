@@ -14,7 +14,7 @@ msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-07-15 06:30+0200\n"
-"PO-Revision-Date: 2018-04-28 16:00+0000\n"
+"PO-Revision-Date: 2018-04-28 18:47+0000\n"
 "Last-Translator: Balázs Meskó <meskobalazs@gmail.com>\n"
 "Language-Team: Hungarian (http://www.transifex.com/xfce/xfce-apps/language/hu/)\n"
 "MIME-Version: 1.0\n"
@@ -520,7 +520,7 @@ msgstr "Mindig mutassa a lapokat, egy fájl esetén is"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:49
 msgid "Cycled notebook tab switching"
-msgstr ""
+msgstr "Körkörös munkafüzetlap-váltás"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:50
 msgid "<b>Notebook tabs</b>"
@@ -564,7 +564,7 @@ msgid ""
 "The interval at which to print line numbers. For example a value of 1 will "
 "print a line number on each line, a value of 2 will print a line number on "
 "every other line, and so on."
-msgstr ""
+msgstr "A sorszámok kiírási intervalluma. Például az 1 érték esetén minden sorban ki lesz írva a sor száma, 2 esetén viszont csak minden másodikban, és így tovább."
 
 #: ../mousepad/mousepad-print.c:672
 msgid "Enable text _wrapping"
@@ -729,7 +729,7 @@ msgstr "Nem hozható létre a(z) „%s” alapkönyvtár. A(z) „%s” fájl me
 #: ../mousepad/mousepad-util.c:590
 #, c-format
 msgid "Failed to store the preferences to \"%s\": %s"
-msgstr ""
+msgstr "A beállítások tárolása itt meghiúsult: „%s”: %s"
 
 #: ../mousepad/mousepad-window.c:400
 msgid "_File"
