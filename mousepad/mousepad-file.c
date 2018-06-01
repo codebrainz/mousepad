@@ -267,7 +267,7 @@ mousepad_file_new (GtkTextBuffer *buffer)
   file = g_object_new (MOUSEPAD_TYPE_FILE, NULL);
 
   /* set the buffer */
-  file->buffer = g_object_ref (G_OBJECT (buffer));
+  file->buffer = GTK_TEXT_BUFFER (g_object_ref (G_OBJECT (buffer)));
 
   return file;
 }

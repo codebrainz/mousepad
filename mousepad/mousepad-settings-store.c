@@ -275,8 +275,8 @@ mousepad_settings_store_lookup (MousepadSettingsStore *self,
 {
   MousepadSettingKey *key;
 
-  g_return_val_if_fail (MOUSEPAD_IS_SETTINGS_STORE (self), NULL);
-  g_return_val_if_fail (path != NULL, NULL);
+  g_return_val_if_fail (MOUSEPAD_IS_SETTINGS_STORE (self), FALSE);
+  g_return_val_if_fail (path != NULL, FALSE);
 
   if (key_name == NULL && settings == NULL)
     return g_hash_table_contains (self->keys, path);
