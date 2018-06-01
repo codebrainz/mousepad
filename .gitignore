@@ -18,6 +18,7 @@ configure
 configure.ac
 depcomp
 docs/manual/C/Mousepad.xml
+INSTALL
 install-sh
 intltool-extract.in
 intltool-merge.in
