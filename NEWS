@@ -1,3 +1,21 @@
+0.4.1
+=====
+- Fix crash when dragging tab to root window (Bug #13336)
+- Fix the signal definition of user-set-language (Bug #13630)
+- Prevent a weird cycle in GSettings use (Bug #12134)
+  - Properly fixed later by Alistair Buxton
+- Fix some warnings about using NULL (Bug #11663)
+- Limit prefs dialog tab width to range allowed by schema (Bug #12055)
+- Don't show hidden GSV languages (Bug #12043)
+- Encode filenames passed to DBus as UTF-8
+- Translation updates: Albanian, Arabic, Asturian, Basque, Bulgarian, Catalan,
+  Chinese (China), Chinese (Taiwan), Croatian, Czech, Danish, Dutch,
+  English (Australia), English (United Kingdom), Finnish, French, Galician,
+  German, Greek, Hebrew, Hungarian, Icelandic, Indonesian, Italian, Japanese,
+  Kazakh, Korean, Lithuanian, Malay, Norwegian Bokmål, Norwegian Nynorsk,
+  Occitan, Polish, Portuguese, Portuguese (Brazil), Romanian, Russian, Serbian,
+  Slovak, Slovenian, Spanish, Swedish, Telugu, Thai, Turkish, Ukrainian, Uyghu
+
 0.4.0
 =====
 - Use GSettings to improve preference handling
