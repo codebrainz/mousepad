@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-06-05 06:31+0200\n"
-"PO-Revision-Date: 2018-06-17 13:02+0000\n"
+"PO-Revision-Date: 2018-06-23 18:30+0000\n"
 "Last-Translator: Emanuele Petriglia <inbox@emanuelepetriglia.me>\n"
 "Language-Team: Italian (http://www.transifex.com/xfce/xfce-apps/language/it/)\n"
 "MIME-Version: 1.0\n"
@@ -946,7 +946,7 @@ msgstr "_Spazi in tabulazioni"
 #: ../mousepad/mousepad-window.c:436
 msgid ""
 "Convert all the leading spaces to tabs in the selected line(s) or document"
-msgstr "Converti tutti i primi spazi in schede nella righe selezionate o nel documento"
+msgstr "Converti tutti i primi spazi in tabulazioni nella riga(e) selezionate o nel documento"
 
 #: ../mousepad/mousepad-window.c:437
 msgid "St_rip Trailing Spaces"
@@ -954,7 +954,7 @@ msgstr "_Rimuovi gli spazi finali"
 
 #: ../mousepad/mousepad-window.c:437
 msgid "Remove all the trailing spaces from the selected line(s) or document"
-msgstr "Rimuove tutta la serie di spazi dalla riga(e) selezionata(e) o dal documento"
+msgstr "Rimuove tutti gli spazi finali dalla riga(e) selezionate o dal documento"
 
 #: ../mousepad/mousepad-window.c:438
 msgid "_Transpose"
@@ -986,7 +986,7 @@ msgstr "Sposta la selezione una riga in basso"
 
 #: ../mousepad/mousepad-window.c:442
 msgid "Dup_licate Line / Selection"
-msgstr "Dup_lica riga/selezione"
+msgstr "Dup_lica riga / selezione"
 
 #: ../mousepad/mousepad-window.c:442
 msgid "Duplicate the current line or selection"
@@ -1038,7 +1038,7 @@ msgstr "Cerca indietro per lo stesso testo"
 
 #: ../mousepad/mousepad-window.c:451
 msgid "Find and Rep_lace..."
-msgstr "Trova e sos_tituisci..."
+msgstr "Trova e sos_tituisci…"
 
 #: ../mousepad/mousepad-window.c:451
 msgid "Search for and replace text"
@@ -1046,7 +1046,7 @@ msgstr "Cerca e sostituisce nel testo"
 
 #: ../mousepad/mousepad-window.c:452
 msgid "_Go to..."
-msgstr "_Vai a..."
+msgstr "_Vai a…"
 
 #: ../mousepad/mousepad-window.c:452
 msgid "Go to a specific location in the document"
@@ -1058,11 +1058,11 @@ msgstr "_Visualizza"
 
 #: ../mousepad/mousepad-window.c:455
 msgid "Select F_ont..."
-msgstr "Seleziona c_arattere..."
+msgstr "Seleziona c_arattere…"
 
 #: ../mousepad/mousepad-window.c:455
 msgid "Change the editor font"
-msgstr "Cambia il carattere dell'editor"
+msgstr "Cambia il tipo di carattere dell'editor"
 
 #: ../mousepad/mousepad-window.c:456
 msgid "_Color Scheme"
@@ -1130,11 +1130,11 @@ msgstr "Cambia la visibilità della barra dei menu"
 
 #: ../mousepad/mousepad-window.c:474
 msgid "_Toolbar"
-msgstr "Barra s_trumenti"
+msgstr "Barra degli s_trumenti"
 
 #: ../mousepad/mousepad-window.c:474
 msgid "Change the visibility of the toolbar"
-msgstr "Cambia la visibilità della barra strumenti"
+msgstr "Cambia la visibilità della barra degli strumenti"
 
 #: ../mousepad/mousepad-window.c:475
 msgid "St_atusbar"
@@ -1166,7 +1166,7 @@ msgstr "Inserisci _spazi"
 
 #: ../mousepad/mousepad-window.c:478
 msgid "Insert spaces when the tab button is pressed"
-msgstr "Inserisce degli spazi usando il pulsante tab"
+msgstr "Inserisce degli spazi usando il pulsante di tabulazione"
 
 #: ../mousepad/mousepad-window.c:479
 msgid "_Word Wrap"
@@ -1174,7 +1174,7 @@ msgstr "A _capo automatico"
 
 #: ../mousepad/mousepad-window.c:479
 msgid "Toggle breaking lines in between words"
-msgstr "Attiva/disattiva l'inserimento del fine riga tra le parole"
+msgstr "Attiva o disattiva l'inserimento del fine riga tra le parole"
 
 #: ../mousepad/mousepad-window.c:480
 msgid "Write Unicode _BOM"
@@ -1211,7 +1211,7 @@ msgstr "Imposta la riga finale del documento a DOS / Windows (CR LF)"
 #. add the label with the root warning
 #: ../mousepad/mousepad-window.c:860
 msgid "Warning, you are using the root account, you may harm your system."
-msgstr "Attenzione, si sta usando l'account root; si potrebbe danneggiare il sistema"
+msgstr "Attenzione, si sta usando l'account amministratore, si potrebbe danneggiare il sistema."
 
 #. show the warning
 #: ../mousepad/mousepad-window.c:1516
@@ -1227,7 +1227,7 @@ msgstr "Sola lettura"
 msgid ""
 "No template files found in\n"
 "'%s'"
-msgstr "Non è stato trovato alcun file modello in\n\"%s\""
+msgstr "Non è stato trovato alcun file modello in\n'%s'"
 
 #. create other action
 #: ../mousepad/mousepad-window.c:2498
@@ -1238,12 +1238,12 @@ msgstr "Imposta una dimensione personalizzata della tabulazione"
 #: ../mousepad/mousepad-window.c:2546
 #, c-format
 msgid "Ot_her (%d)..."
-msgstr "Al_tro (%d)..."
+msgstr "Al_tro (%d)…"
 
 #. set action label
 #: ../mousepad/mousepad-window.c:2557
 msgid "Ot_her..."
-msgstr "Al_tro..."
+msgstr "Al_tro…"
 
 #. build description
 #. get the offset length: 'Encoding: '
@@ -1278,7 +1278,7 @@ msgstr "Lettura del modello non riuscita, l'elemento del menu è stato rimosso"
 #. set error message
 #: ../mousepad/mousepad-window.c:3732
 msgid "Loading the template failed"
-msgstr "Caricamento del modello non riuscita"
+msgstr "Impossibile caricare il modello"
 
 #. create new file chooser dialog
 #: ../mousepad/mousepad-window.c:3757
@@ -1290,7 +1290,7 @@ msgstr "Apri file"
 msgid ""
 "Failed to open \"%s\" for reading. It will be removed from the document "
 "history"
-msgstr "Impossibile aprire «%s» in lettura. Sarà rimosso dalla cronologia dei documenti"
+msgstr "Impossibile aprire \"%s\" in lettura. Sarà rimosso dalla cronologia dei documenti"
 
 #. show the warning and cleanup
 #: ../mousepad/mousepad-window.c:3874
@@ -1319,7 +1319,7 @@ msgstr "Impossibile stampare il documento"
 
 #: ../mousepad/mousepad-window.c:4846
 msgid "Choose Mousepad Font"
-msgstr "Scelta del carattere di Mousepad"
+msgstr "Scelta del tipo di carattere di Mousepad"
 
 #: ../mousepad/mousepad-window.c:5011
 msgid "Leave fullscreen mode"
