@@ -4006,6 +4006,8 @@ mousepad_window_action_save_as (GtkAction      *action,
   current_filename = mousepad_file_get_filename (document->file);
   if (current_filename)
     gtk_file_chooser_set_filename (GTK_FILE_CHOOSER (dialog), current_filename);
+  else
+    gtk_file_chooser_set_current_folder (GTK_FILE_CHOOSER (dialog), g_get_home_dir());
 
   /* run the dialog */
   if (gtk_dialog_run (GTK_DIALOG (dialog)) == GTK_RESPONSE_OK)
