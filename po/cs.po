@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-06-05 06:31+0200\n"
-"PO-Revision-Date: 2018-08-02 05:46+0000\n"
+"PO-Revision-Date: 2018-08-02 14:45+0000\n"
 "Last-Translator: Pavel Borecki <pavel.borecki@gmail.com>\n"
 "Language-Team: Czech (http://www.transifex.com/xfce/xfce-apps/language/cs/)\n"
 "MIME-Version: 1.0\n"
@@ -565,7 +565,7 @@ msgstr "Perioda pro zobrazení čísel řádků. Například hodnota 1 zajistí 
 
 #: ../mousepad/mousepad-print.c:674
 msgid "Enable text _wrapping"
-msgstr "Povolit _zalamování textu"
+msgstr "_Zalamovat text"
 
 #: ../mousepad/mousepad-print.c:681
 msgid "Enable _syntax highlighting"
@@ -595,7 +595,7 @@ msgstr "Nahradit"
 #: ../mousepad/mousepad-replace-dialog.c:144
 #: ../mousepad/mousepad-replace-dialog.c:443
 msgid "_Replace"
-msgstr "_Nahradit"
+msgstr "Nah_radit"
 
 #: ../mousepad/mousepad-replace-dialog.c:162
 msgid "_Search for:"
@@ -756,7 +756,7 @@ msgstr "Nový _ze šablony"
 
 #: ../mousepad/mousepad-window.c:405
 msgid "_Open..."
-msgstr "_Otevřít..."
+msgstr "_Otevřít…"
 
 #: ../mousepad/mousepad-window.c:405
 msgid "Open a file"
@@ -764,7 +764,7 @@ msgstr "Otevře soubor"
 
 #: ../mousepad/mousepad-window.c:406
 msgid "Op_en Recent"
-msgstr "Otevřít _nedávný"
+msgstr "Otevřít n_edávný"
 
 #: ../mousepad/mousepad-window.c:407
 msgid "No items found"
@@ -784,7 +784,7 @@ msgstr "Uloží tento dokument"
 
 #: ../mousepad/mousepad-window.c:410
 msgid "Save _As..."
-msgstr "Uložit _jako..."
+msgstr "Uložit j_ako…"
 
 #: ../mousepad/mousepad-window.c:410
 msgid "Save current document as another file"
