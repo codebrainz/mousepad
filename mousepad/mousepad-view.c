@@ -25,6 +25,8 @@
 #include <gtksourceview/gtksourcestylescheme.h>
 #include <gtksourceview/gtksourcestyleschememanager.h>
 
+#include <xfconf/xfconf.h>
+
 /* GTK+ 3 removed textview->im_context which is used for multi-selection and
  * nobody has re-written multi-selection feature to not use this field
  * so if building with GTK3 or with GSEAL_ENABLE disable the multi-select
@@ -35,7 +37,7 @@
 
 
 
-#define MOUSEPAD_VIEW_DEFAULT_FONT "Monospace"
+#define MOUSEPAD_VIEW_DEFAULT_FONT "Monospace 10"
 #define mousepad_view_get_buffer(view) (gtk_text_view_get_buffer (GTK_TEXT_VIEW (view)))
 
 
@@ -2686,8 +2688,18 @@ mousepad_view_update_font (MousepadView *view)
 
   if (use_default)
     {
+      XfconfChannel *channel = xfconf_channel_get ("xsettings");
+      gchar *font = xfconf_channel_get_string (channel, "/Gtk/MonospaceFontName", NULL);
       PangoFontDescription *font_desc;
-      font_desc = pango_font_description_from_string (MOUSEPAD_VIEW_DEFAULT_FONT);
+
+      if (G_LIKELY (font != NULL))
+        {
+          font_desc = pango_font_description_from_string (font);
+          g_free (font);
+        }
+      else
+          font_desc = pango_font_description_from_string (MOUSEPAD_VIEW_DEFAULT_FONT);
+
       mousepad_view_override_font (view, font_desc);
       pango_font_description_free (font_desc);
     }

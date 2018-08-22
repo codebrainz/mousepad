@@ -24,6 +24,8 @@
 #include <libintl.h>
 #endif
 
+#include <xfconf/xfconf.h>
+
 
 /* globals */
 static gchar    **filenames = NULL;
@@ -160,6 +162,15 @@ main (gint argc, gchar **argv)
   /* use the Mousepad icon as default for new windows */
   gtk_window_set_default_icon_name ("accessories-text-editor");
 
+  /* Initialize xfconf */
+  if (G_UNLIKELY (xfconf_init(&error) == FALSE))
+    {
+      g_error ("Failed to initialize xfconf");
+      g_error_free (error);
+
+      return EXIT_FAILURE;
+    }
+
   /* create a new mousepad application */
   application = mousepad_application_get ();
 
@@ -180,6 +191,9 @@ main (gint argc, gchar **argv)
 
       /* enter the main loop */
       gtk_main ();
+
+      /* Shutdown xfconf */
+      xfconf_shutdown();
 
 #ifdef HAVE_DBUS
       /* release dbus service reference */
