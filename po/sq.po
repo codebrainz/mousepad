@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-06-05 06:31+0200\n"
-"PO-Revision-Date: 2018-06-05 11:13+0000\n"
+"PO-Revision-Date: 2018-09-14 00:16+0000\n"
 "Last-Translator: Besnik <besnik@programeshqip.org>\n"
 "Language-Team: Albanian (http://www.transifex.com/xfce/xfce-apps/language/sq/)\n"
 "MIME-Version: 1.0\n"
@@ -60,7 +60,7 @@ msgstr "Mousepad është një përpunues i shpejtë tekstesh për Mjedisin Deskt
 
 #: ../mousepad/mousepad-dialogs.c:46
 msgid "translator-credits"
-msgstr ""
+msgstr "translator-credits"
 
 #. display an error message to the user
 #: ../mousepad/mousepad-dialogs.c:101
