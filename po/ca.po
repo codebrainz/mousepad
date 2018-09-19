@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-06-05 06:31+0200\n"
-"PO-Revision-Date: 2018-09-14 00:16+0000\n"
+"PO-Revision-Date: 2018-09-19 20:55+0000\n"
 "Last-Translator: Robert Antoni Buj Gelonch <rbuj@fedoraproject.org>\n"
 "Language-Team: Catalan (http://www.transifex.com/xfce/xfce-apps/language/ca/)\n"
 "MIME-Version: 1.0\n"
@@ -366,7 +366,7 @@ msgstr "Barra d'eines petita"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:11
 msgid "Large Toolbar"
-msgstr "Barra d'eines grossa"
+msgstr "Barra d'eines gran"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:12
 msgid "Button"
