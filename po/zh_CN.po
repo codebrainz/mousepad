@@ -7,6 +7,7 @@
 # qingxianhao <qinghao1@foxmail.com>, 2012
 # qingxianhao <qinghao1@foxmail.com>, 2012
 # SamHX <samzh@outlook.com>, 2017
+# Shun <shun98@139.com>, 2018
 # 玉堂白鹤 <yjwork@qq.com>, 2014
 # xiaobo zhou <zhouxiaobo.500@gmail.com>, 2013
 # xiaobo zhou <zhouxiaobo.500@gmail.com>, 2013,2015
@@ -17,8 +18,8 @@ msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-06-05 06:31+0200\n"
-"PO-Revision-Date: 2018-09-14 00:15+0000\n"
-"Last-Translator: Nick Schermer <nick@xfce.org>\n"
+"PO-Revision-Date: 2018-09-30 16:14+0000\n"
+"Last-Translator: Shun <shun98@139.com>\n"
 "Language-Team: Chinese (China) (http://www.transifex.com/xfce/xfce-apps/language/zh_CN/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -28,7 +29,7 @@ msgstr ""
 
 #: ../mousepad/main.c:42
 msgid "Do not register with the D-BUS session message bus"
-msgstr "不注册 D-BUS 会话消息总线"
+msgstr "不注册于 D-BUS 会话消息总线"
 
 #: ../mousepad/main.c:43
 msgid "Quit a running Mousepad instance"
@@ -46,12 +47,12 @@ msgstr "Mousepad"
 #. initialize gtk+
 #: ../mousepad/main.c:84
 msgid "[FILES...]"
-msgstr "[FILES...]"
+msgstr "[文件...]"
 
 #. no error message, the gui initialization failed
 #: ../mousepad/main.c:90
 msgid "Failed to open display."
-msgstr "打开显示失败。"
+msgstr "无法开启显示。"
 
 #: ../mousepad/main.c:107
 msgid "The Xfce development team. All rights reserved."
@@ -64,7 +65,7 @@ msgstr "请向 <%s> 报告缺陷。"
 
 #: ../mousepad/mousepad-dialogs.c:41
 msgid "Mousepad is a fast text editor for the Xfce Desktop Environment."
-msgstr "Mousepad 是 Xfce 桌面环境下的一个快速的文本编辑器 。"
+msgstr "Mousepad 是 Xfce 桌面环境下一个快速的文本编辑器 。"
 
 #: ../mousepad/mousepad-dialogs.c:46
 msgid "translator-credits"
@@ -83,7 +84,7 @@ msgstr "选择制表符大小"
 #. build the dialog
 #: ../mousepad/mousepad-dialogs.c:197
 msgid "Go To"
-msgstr "转至"
+msgstr "跳行"
 
 #: ../mousepad/mousepad-dialogs.c:219
 msgid "_Line number:"
@@ -91,7 +92,7 @@ msgstr "行号(_L)："
 
 #: ../mousepad/mousepad-dialogs.c:238
 msgid "C_olumn number:"
-msgstr "列数(_O)："
+msgstr "列号(_O)："
 
 #: ../mousepad/mousepad-dialogs.c:296
 msgid "Remove all entries from the documents history?"
@@ -158,11 +159,11 @@ msgstr "未命名"
 #. create the header
 #: ../mousepad/mousepad-encoding-dialog.c:126
 msgid "The document was not UTF-8 valid"
-msgstr "该文件是不是有效的 UTF-8 文件。"
+msgstr "该文件不是有效的 UTF-8 文档"
 
 #: ../mousepad/mousepad-encoding-dialog.c:127
 msgid "Please select an encoding below."
-msgstr "请选择下面的编码。"
+msgstr "请在下方选择一种编码。"
 
 #. encoding radio buttons
 #: ../mousepad/mousepad-encoding-dialog.c:139
@@ -407,15 +408,15 @@ msgstr "显示行号"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:20
 msgid "Display whitespace"
-msgstr "显示空格"
+msgstr "标明空白符"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:21
 msgid "Display line endings"
-msgstr "显示行尾"
+msgstr "标明行尾"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:22
 msgid "Long line margin at column:"
-msgstr "显示长边缘线在列："
+msgstr "行超长提示线位置（列）："
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:23
 msgid "Highlight current line"
@@ -423,7 +424,7 @@ msgstr "高亮当前行"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:24
 msgid "Highlight matching brackets"
-msgstr "高亮成对括号"
+msgstr "高亮括号对"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:25
 msgid "Wrap long lines"
@@ -523,7 +524,7 @@ msgstr "即使只有一个文件也显示标签"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:49
 msgid "Cycled notebook tab switching"
-msgstr "切换时循环笔记本标签"
+msgstr "循环切换笔记本标签"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:50
 msgid "<b>Notebook tabs</b>"
@@ -613,7 +614,7 @@ msgstr "替换为(_W)："
 
 #: ../mousepad/mousepad-replace-dialog.c:203
 msgid "Search _direction:"
-msgstr "搜索方向(_D):"
+msgstr "搜索方向(_D)："
 
 #: ../mousepad/mousepad-replace-dialog.c:212
 msgid "Up"
@@ -665,7 +666,7 @@ msgstr "全部替换(_R)"
 
 #: ../mousepad/mousepad-search-bar.c:208
 msgid "Fi_nd:"
-msgstr "查找(_N):"
+msgstr "查找(_N)："
 
 #: ../mousepad/mousepad-search-bar.c:230
 msgid "_Next"
@@ -879,11 +880,11 @@ msgstr "从剪切板历史粘贴"
 
 #: ../mousepad/mousepad-window.c:426
 msgid "Paste as _Column"
-msgstr "粘贴为列(_C)"
+msgstr "粘贴成列(_C)"
 
 #: ../mousepad/mousepad-window.c:426
 msgid "Paste the clipboard text into a column"
-msgstr "粘贴剪切板文本为一个列"
+msgstr "粘贴剪切板文本到一列中"
 
 #: ../mousepad/mousepad-window.c:427
 msgid "Delete the current selection"
@@ -1217,7 +1218,7 @@ msgstr "设置文档行结束符为 DOS / Windows 格式 (CR LF)"
 #. add the label with the root warning
 #: ../mousepad/mousepad-window.c:860
 msgid "Warning, you are using the root account, you may harm your system."
-msgstr "警告：您正在使用root账户，操作不当可能会损害您的系统。"
+msgstr "警告：您正在使用 root 账户，操作不当可能会损害您的系统。"
 
 #. show the warning
 #: ../mousepad/mousepad-window.c:1516
