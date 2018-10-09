@@ -4,13 +4,13 @@
 # 
 # Translators:
 # Daniel Muñiz Fontoira <dani@damufo.com>, 2017-2018
-# Xosé <xosecalvo@gmail.com>, 2015,2017
+# Xosé, 2015,2017
 msgid ""
 msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-06-05 06:31+0200\n"
-"PO-Revision-Date: 2018-06-10 00:17+0000\n"
+"PO-Revision-Date: 2018-10-09 14:19+0000\n"
 "Last-Translator: Daniel Muñiz Fontoira <dani@damufo.com>\n"
 "Language-Team: Galician (http://www.transifex.com/xfce/xfce-apps/language/gl/)\n"
 "MIME-Version: 1.0\n"
@@ -428,7 +428,7 @@ msgstr "<b>Pantalla</b>"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:27
 msgid "Use system monospace font"
-msgstr "Empregar a fonto monoespazada do sistema"
+msgstr "Empregar a letra monoespazo do sistema"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:28
 msgid "<b>Font</b>"
