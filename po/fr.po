@@ -19,7 +19,7 @@ msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-06-05 06:31+0200\n"
-"PO-Revision-Date: 2018-10-09 20:09+0000\n"
+"PO-Revision-Date: 2018-10-10 09:41+0000\n"
 "Last-Translator: Charles Monzat <c.monzat@laposte.net>\n"
 "Language-Team: French (http://www.transifex.com/xfce/xfce-apps/language/fr/)\n"
 "MIME-Version: 1.0\n"
@@ -1047,7 +1047,7 @@ msgstr "Rechercher vers le haut le même texte"
 
 #: ../mousepad/mousepad-window.c:451
 msgid "Find and Rep_lace..."
-msgstr "Rechercher et remp_lacer..."
+msgstr "Rechercher et re_mplacer…"
 
 #: ../mousepad/mousepad-window.c:451
 msgid "Search for and replace text"
@@ -1055,7 +1055,7 @@ msgstr "Rechercher et remplacer du texte"
 
 #: ../mousepad/mousepad-window.c:452
 msgid "_Go to..."
-msgstr "A_ller à..."
+msgstr "_Aller à…"
 
 #: ../mousepad/mousepad-window.c:452
 msgid "Go to a specific location in the document"
@@ -1067,11 +1067,11 @@ msgstr "_Affichage"
 
 #: ../mousepad/mousepad-window.c:455
 msgid "Select F_ont..."
-msgstr "Sélectionner la _police..."
+msgstr "Sélectionner la p_olice…"
 
 #: ../mousepad/mousepad-window.c:455
 msgid "Change the editor font"
-msgstr "Changer la police de l’éditeur"
+msgstr "Modifier la police de l’éditeur"
 
 #: ../mousepad/mousepad-window.c:456
 msgid "_Color Scheme"
@@ -1079,7 +1079,7 @@ msgstr "Jeu de _couleurs"
 
 #: ../mousepad/mousepad-window.c:458
 msgid "_Document"
-msgstr "_Document"
+msgstr "D_ocument"
 
 #: ../mousepad/mousepad-window.c:459
 msgid "Line E_nding"
@@ -1131,27 +1131,27 @@ msgstr "_Numéros de ligne"
 
 #: ../mousepad/mousepad-window.c:473
 msgid "_Menubar"
-msgstr "_Barre de menu"
+msgstr "Barre de _menu"
 
 #: ../mousepad/mousepad-window.c:473
 msgid "Change the visibility of the main menubar"
-msgstr "Changer la visibilité de la barre de menu principale"
+msgstr "Modifier la visibilité de la barre de menu principale"
 
 #: ../mousepad/mousepad-window.c:474
 msgid "_Toolbar"
-msgstr "_Barre d'outils"
+msgstr "Barre d’o_utils"
 
 #: ../mousepad/mousepad-window.c:474
 msgid "Change the visibility of the toolbar"
-msgstr "Changer la visibilité de la barre d'outils"
+msgstr "Modifier la visibilité de la barre d’outils"
 
 #: ../mousepad/mousepad-window.c:475
 msgid "St_atusbar"
-msgstr "_Barre d’état"
+msgstr "Barre d’é_tat"
 
 #: ../mousepad/mousepad-window.c:475
 msgid "Change the visibility of the statusbar"
-msgstr "Changer la visibilité de la barre d’état"
+msgstr "Modifier la visibilité de la barre d’état"
 
 #: ../mousepad/mousepad-window.c:476
 msgid "_Fullscreen"
@@ -1175,7 +1175,7 @@ msgstr "Insérer des _espaces"
 
 #: ../mousepad/mousepad-window.c:478
 msgid "Insert spaces when the tab button is pressed"
-msgstr "Insérer des espaces lorsque le bouton tab est pressé"
+msgstr "Insérer des espaces en appuyant sur la touche Tab"
 
 #: ../mousepad/mousepad-window.c:479
 msgid "_Word Wrap"
@@ -1183,11 +1183,11 @@ msgstr "_Retour à la ligne automatique"
 
 #: ../mousepad/mousepad-window.c:479
 msgid "Toggle breaking lines in between words"
-msgstr "Activer ou non la coupure des mots entre deux lignes"
+msgstr "Activer / Désactiver la coupure des mots entre deux lignes"
 
 #: ../mousepad/mousepad-window.c:480
 msgid "Write Unicode _BOM"
-msgstr "Écrire en Unicode avec IOO"
+msgstr "Écrire en _Unicode avec IOO"
 
 #: ../mousepad/mousepad-window.c:480
 msgid "Store the byte-order mark in the file"
@@ -1220,7 +1220,7 @@ msgstr "Définir la fin de ligne du document pour DOS / Windows (CR LF)"
 #. add the label with the root warning
 #: ../mousepad/mousepad-window.c:860
 msgid "Warning, you are using the root account, you may harm your system."
-msgstr "Attention, vous utilisez le compte root ; vous risquez d’endommager votre système."
+msgstr "Attention, vous utilisez le compte root ; vous risquez d’endommager votre système."
 
 #. show the warning
 #: ../mousepad/mousepad-window.c:1516
@@ -1236,7 +1236,7 @@ msgstr "Lecture seule"
 msgid ""
 "No template files found in\n"
 "'%s'"
-msgstr "Aucun modèle de fichier trouvé dans\n« %s »"
+msgstr "Aucun modèle de fichier trouvé dans\n« %s »"
 
 #. create other action
 #: ../mousepad/mousepad-window.c:2498
@@ -1247,12 +1247,12 @@ msgstr "Personnaliser la taille de l’onglet "
 #: ../mousepad/mousepad-window.c:2546
 #, c-format
 msgid "Ot_her (%d)..."
-msgstr "Aut_re (%d)..."
+msgstr "Aut_re (%d)…"
 
 #. set action label
 #: ../mousepad/mousepad-window.c:2557
 msgid "Ot_her..."
-msgstr "Aut_re..."
+msgstr "Aut_re…"
 
 #. build description
 #. get the offset length: 'Encoding: '
@@ -1299,7 +1299,7 @@ msgstr "Ouvrir un fichier"
 msgid ""
 "Failed to open \"%s\" for reading. It will be removed from the document "
 "history"
-msgstr "Impossible d’ouvrir « %s ». Il sera supprimé de l’historique des documents"
+msgstr "Impossible d’ouvrir « %s ». Il sera supprimé de l’historique des documents"
 
 #. show the warning and cleanup
 #: ../mousepad/mousepad-window.c:3874
