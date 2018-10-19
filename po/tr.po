@@ -4,6 +4,7 @@
 # 
 # Translators:
 # Demiray Muhterem <mdemiray@msn.com>, 2018
+# Emin Tufan <etcetin@gmail.com>, 2018
 # Mustafa TEKKOYUN <inactive+tekotek@transifex.com>, 2013
 # Natavan Mirzayeva <mirzayevanatavan@gmail.com>, 2014
 # Necdet Yücel <necdetyucel@gmail.com>, 2013-2014
@@ -14,8 +15,8 @@ msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-06-05 06:31+0200\n"
-"PO-Revision-Date: 2018-09-14 00:15+0000\n"
-"Last-Translator: Mustafa TEKKOYUN <inactive+tekotek@transifex.com>\n"
+"PO-Revision-Date: 2018-10-19 16:01+0000\n"
+"Last-Translator: Emin Tufan <etcetin@gmail.com>\n"
 "Language-Team: Turkish (http://www.transifex.com/xfce/xfce-apps/language/tr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -150,7 +151,7 @@ msgstr "Bu sekmeyi kapat"
 #. create an unique untitled document name
 #: ../mousepad/mousepad-document.c:532
 msgid "Untitled"
-msgstr "İsimsiz"
+msgstr "Adsız"
 
 #. create the header
 #: ../mousepad/mousepad-encoding-dialog.c:126
@@ -304,7 +305,7 @@ msgstr "Dönüştürme girdisinde geçersiz bayt sırası"
 #: ../mousepad/mousepad-file.c:878
 #, c-format
 msgid "The file \"%s\" you tried to reload does not exist anymore"
-msgstr "Yeniden yüklemeye çalıştığınız \"%s\" dosyası artık mevcut değil"
+msgstr "Yeniden yüklemeye çalıştığınız \"%s\" dosyası artık yok"
 
 #: ../mousepad/mousepad-file.c:919
 #, c-format
@@ -383,11 +384,11 @@ msgstr "Diyalog"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:15
 msgid "Icons Only"
-msgstr "Sadece Simgeler"
+msgstr "Yalnızca Simgeler"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:16
 msgid "Text Only"
-msgstr "Sadece Metin"
+msgstr "Yalnızca Metin"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:17
 msgid "Text Below Icons"
@@ -412,7 +413,7 @@ msgstr "Görünen satır sonları"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:22
 msgid "Long line margin at column:"
-msgstr "Sutundaki uzun çizgi marjı:"
+msgstr "Sütundaki uzun satır marjı:"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:23
 msgid "Highlight current line"
@@ -424,7 +425,7 @@ msgstr "Uygun parantezleri vurgulayın"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:25
 msgid "Wrap long lines"
-msgstr "Uzun çizgileri çerçevele"
+msgstr "Uzun satırları çerçevele"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:26
 msgid "<b>Display</b>"
@@ -452,7 +453,7 @@ msgstr "Sekme genişliği:"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:32
 msgid "Tab mode:"
-msgstr "Sekme modu:"
+msgstr "Sekme kipi:"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:33
 msgid "Enable automatic indentation"
@@ -516,7 +517,7 @@ msgstr "<b>Araç çubuğu</b>"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:48
 msgid "Always show tabs even with one file"
-msgstr "Herzaman tek bir dosyalı olsa dahi sekmeleri göster"
+msgstr "Tek dosya da olsa sekmeleri daima göster"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:49
 msgid "Cycled notebook tab switching"
@@ -632,7 +633,7 @@ msgstr "Büyük/küçük duyarlı"
 #. match whole word
 #: ../mousepad/mousepad-replace-dialog.c:230
 msgid "_Match whole word"
-msgstr "_Tüm kelimeyi eşleştir"
+msgstr "_Tüm sözcüğü eşleştir"
 
 #: ../mousepad/mousepad-replace-dialog.c:241
 msgid "Replace _all in:"
@@ -925,7 +926,7 @@ msgstr "_Başlık Durumunda"
 
 #: ../mousepad/mousepad-window.c:433
 msgid "Change the case of the selection to title case"
-msgstr "Seçimdeki kelimelerin ilk harflerini büyüt"
+msgstr "Seçimdeki sözcüklerin ilk harflerini büyüt"
 
 #: ../mousepad/mousepad-window.c:434
 msgid "To _Opposite Case"
@@ -990,11 +991,11 @@ msgstr "Seçimi bir satır aşağı taşı"
 
 #: ../mousepad/mousepad-window.c:442
 msgid "Dup_licate Line / Selection"
-msgstr "Yed_ek çizgi/Seçenek"
+msgstr "Satırı / Seçimi Yinele"
 
 #: ../mousepad/mousepad-window.c:442
 msgid "Duplicate the current line or selection"
-msgstr "Güncel çizgiyi veya seçimi yinele"
+msgstr "Geçerli satırı veya seçimi yinele"
 
 #: ../mousepad/mousepad-window.c:443
 msgid "_Increase Indent"
@@ -1002,7 +1003,7 @@ msgstr "Girintiyi _Arttır"
 
 #: ../mousepad/mousepad-window.c:443
 msgid "Increase the indentation of the selection or current line"
-msgstr "Seçimin veya mevcut çizginin girintisini arttır"
+msgstr "Seçimin veya geçerli satırın girintisini arttır"
 
 #: ../mousepad/mousepad-window.c:444
 msgid "_Decrease Indent"
@@ -1010,7 +1011,7 @@ msgstr "Girintiyi A_zalt"
 
 #: ../mousepad/mousepad-window.c:444
 msgid "Decrease the indentation of the selection or current line"
-msgstr "Seçimin veya mevcut çizginin girintisini azat"
+msgstr "Seçimin veya geçerli satırın girintisini azat"
 
 #: ../mousepad/mousepad-window.c:445
 msgid "Show the preferences dialog"
@@ -1162,7 +1163,7 @@ msgstr "_Otomatik Girinti"
 
 #: ../mousepad/mousepad-window.c:477
 msgid "Auto indent a new line"
-msgstr "Yeni bir satırı otomatik girintile"
+msgstr "Yeni bir satırı kendiliğinden girintile"
 
 #: ../mousepad/mousepad-window.c:478
 msgid "Insert _Spaces"
@@ -1178,7 +1179,7 @@ msgstr "_Sözcük Kaydır"
 
 #: ../mousepad/mousepad-window.c:479
 msgid "Toggle breaking lines in between words"
-msgstr "Kelimeler arasında kesme çizgisi kullan"
+msgstr "Sözcükler arasında kesme çizgisi kullan"
 
 #: ../mousepad/mousepad-window.c:480
 msgid "Write Unicode _BOM"
@@ -1215,7 +1216,7 @@ msgstr "Belgenin satır sonunu DOS / Windows için ayarla (CR LF)"
 #. add the label with the root warning
 #: ../mousepad/mousepad-window.c:860
 msgid "Warning, you are using the root account, you may harm your system."
-msgstr "Uyarı, root hesabını kullanıyorsunuz, sisteminize zarar verebilrisiniz."
+msgstr "Uyarı, kök hesabını kullanıyorsunuz, sisteminize zarar verebilirsiniz."
 
 #. show the warning
 #: ../mousepad/mousepad-window.c:1516
@@ -1294,7 +1295,7 @@ msgstr "Dosya Aç"
 msgid ""
 "Failed to open \"%s\" for reading. It will be removed from the document "
 "history"
-msgstr "\"%s\" okumak için açılamadı. Gelge geçmişinden kaldırılacak"
+msgstr "\"%s\" okumak için açılamadı. Belge geçmişinden kaldırılacak"
 
 #. show the warning and cleanup
 #: ../mousepad/mousepad-window.c:3874
@@ -1327,7 +1328,7 @@ msgstr "Mousepad Yazı Tipini Seç"
 
 #: ../mousepad/mousepad-window.c:5011
 msgid "Leave fullscreen mode"
-msgstr "Tam ekran modundan çıkın"
+msgstr "Tam ekran kipinden çık"
 
 #: ../mousepad.desktop.in.in.h:2
 msgid "Simple Text Editor"
