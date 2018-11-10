@@ -4,13 +4,13 @@
 # 
 # Translators:
 # ByungHyun Choi <byunghyun.choi@gmail.com>, 2006
-# Seong-ho Cho <darkcircle.0426@gmail.com>, 2011-2015
+# Seong-ho Cho <darkcircle.0426@gmail.com>, 2011-2015,2018
 msgid ""
 msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-06-05 06:31+0200\n"
-"PO-Revision-Date: 2018-09-14 00:16+0000\n"
+"PO-Revision-Date: 2018-11-10 13:39+0000\n"
 "Last-Translator: Seong-ho Cho <darkcircle.0426@gmail.com>\n"
 "Language-Team: Korean (http://www.transifex.com/xfce/xfce-apps/language/ko/)\n"
 "MIME-Version: 1.0\n"
@@ -1338,8 +1338,8 @@ msgstr "문서 편집기"
 #. to. This isn't a good idea, but is common on single user systems.
 #: ../org.xfce.mousepad.policy.in.in.h:6
 msgid "Run Mousepad as root"
-msgstr ""
+msgstr "루트 권한으로 마우스패드 실행"
 
 #: ../org.xfce.mousepad.policy.in.in.h:7
 msgid "Authentication is required to run Mousepad as root."
-msgstr ""
+msgstr "마우스패드를 루트 권한으로 실행하려면 인증이 필요합니다."
