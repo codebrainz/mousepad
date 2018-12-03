@@ -6,12 +6,13 @@
 # Sveinn í Felli <sv1@fellsnet.is>, 2014
 # Sveinn í Felli <sveinki@nett.is>, 2013-2014
 # Sveinn í Felli <sveinki@nett.is>, 2013-2014, 2015-2016
+# Sveinn í Felli <sveinki@nett.is>, 2013-2014, 2015-2016, 2018
 msgid ""
 msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-06-05 06:31+0200\n"
-"PO-Revision-Date: 2018-09-14 00:16+0000\n"
+"PO-Revision-Date: 2018-11-29 11:15+0000\n"
 "Last-Translator: Sveinn í Felli <sv1@fellsnet.is>\n"
 "Language-Team: Icelandic (http://www.transifex.com/xfce/xfce-apps/language/is/)\n"
 "MIME-Version: 1.0\n"
@@ -22,7 +23,7 @@ msgstr ""
 
 #: ../mousepad/main.c:42
 msgid "Do not register with the D-BUS session message bus"
-msgstr ""
+msgstr "Ekki skrá sig á D-BUS seturásinni"
 
 #: ../mousepad/main.c:43
 msgid "Quit a running Mousepad instance"
@@ -409,7 +410,7 @@ msgstr "Sýna línuendingar"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:22
 msgid "Long line margin at column:"
-msgstr ""
+msgstr "Löng línuspássía í dálki:"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:23
 msgid "Highlight current line"
@@ -517,11 +518,11 @@ msgstr "Alltaf sýna flipa, líka þegar einungis ein skrá er opin"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:49
 msgid "Cycled notebook tab switching"
-msgstr ""
+msgstr "Skipt á milli flipa með flettingu"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:50
 msgid "<b>Notebook tabs</b>"
-msgstr ""
+msgstr "<b>Flipar</b>"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:51
 msgid "Window"
@@ -1175,7 +1176,7 @@ msgstr "_Textaskrið"
 
 #: ../mousepad/mousepad-window.c:479
 msgid "Toggle breaking lines in between words"
-msgstr ""
+msgstr "Víxla skiptingu lína á milli orða af/á"
 
 #: ../mousepad/mousepad-window.c:480
 msgid "Write Unicode _BOM"
@@ -1183,7 +1184,7 @@ msgstr "Skrifa Unicode _BOM"
 
 #: ../mousepad/mousepad-window.c:480
 msgid "Store the byte-order mark in the file"
-msgstr ""
+msgstr "Geyma bætaröðunarmerki í skránni"
 
 #: ../mousepad/mousepad-window.c:485
 msgid "Unix (_LF)"
@@ -1191,7 +1192,7 @@ msgstr "Unix (_LF)"
 
 #: ../mousepad/mousepad-window.c:485
 msgid "Set the line ending of the document to Unix (LF)"
-msgstr ""
+msgstr "Stilla línuendingu skjalsins á Unix (LF)"
 
 #: ../mousepad/mousepad-window.c:486
 msgid "Mac (_CR)"
@@ -1199,7 +1200,7 @@ msgstr "Mac (_CR)"
 
 #: ../mousepad/mousepad-window.c:486
 msgid "Set the line ending of the document to Mac (CR)"
-msgstr ""
+msgstr "Stilla línuendingu skjalsins á Mac (CR)"
 
 #: ../mousepad/mousepad-window.c:487
 msgid "DOS / Windows (C_R LF)"
@@ -1207,7 +1208,7 @@ msgstr "DOS / Windows (C_R LF)"
 
 #: ../mousepad/mousepad-window.c:487
 msgid "Set the line ending of the document to DOS / Windows (CR LF)"
-msgstr ""
+msgstr "Stilla línuendingu skjalsins á DOS / Windows (CR LF)"
 
 #. add the label with the root warning
 #: ../mousepad/mousepad-window.c:860
@@ -1340,8 +1341,8 @@ msgstr "Textaritill"
 #. to. This isn't a good idea, but is common on single user systems.
 #: ../org.xfce.mousepad.policy.in.in.h:6
 msgid "Run Mousepad as root"
-msgstr ""
+msgstr "Keyra Mousepad sem kerfisstjóri/root"
 
 #: ../org.xfce.mousepad.policy.in.in.h:7
 msgid "Authentication is required to run Mousepad as root."
-msgstr ""
+msgstr "Auðkenningar er krafist til að keyra Mousepad sem kerfisstjóri (root)"
