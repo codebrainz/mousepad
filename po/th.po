@@ -6,13 +6,13 @@
 # bact' <arthit@gmail.com>, 2013
 # bact' <arthit@gmail.com>, 2013
 # Theppitak Karoonboonyanan <theppitak@gmail.com>, 2013-2014
-# Theppitak Karoonboonyanan <theppitak@gmail.com>, 2017
+# Theppitak Karoonboonyanan <theppitak@gmail.com>, 2017,2019
 msgid ""
 msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-06-05 06:31+0200\n"
-"PO-Revision-Date: 2018-09-14 00:16+0000\n"
+"PO-Revision-Date: 2019-01-04 09:23+0000\n"
 "Last-Translator: Theppitak Karoonboonyanan <theppitak@gmail.com>\n"
 "Language-Team: Thai (http://www.transifex.com/xfce/xfce-apps/language/th/)\n"
 "MIME-Version: 1.0\n"
@@ -1340,8 +1340,8 @@ msgstr "เครื่องมือแก้ไขข้อความ"
 #. to. This isn't a good idea, but is common on single user systems.
 #: ../org.xfce.mousepad.policy.in.in.h:6
 msgid "Run Mousepad as root"
-msgstr ""
+msgstr "เรียก Mousepad ในฐานะ root"
 
 #: ../org.xfce.mousepad.policy.in.in.h:7
 msgid "Authentication is required to run Mousepad as root."
-msgstr ""
+msgstr "ต้องยืนยันตัวบุคคลก่อนเรียก Mousepad ในฐานะ root"
