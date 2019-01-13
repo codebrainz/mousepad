@@ -7,7 +7,7 @@
 # Igor <f2404@yandex.ru>, 2018
 # Sergey Alyoshin <alyoshin.s@gmail.com>, 2014
 # Sergey Fedoseev <fedoseev.sergey@gmail.com>, 2006
-# Zmicer Turok <zmicerturok@gmail.com>, 2018
+# Zmicer Turok <zmicerturok@gmail.com>, 2018-2019
 # Zmicer Turok <zmicerturok@gmail.com >, 2018
 # Сяргей Снапкоўскі, 2018
 msgid ""
@@ -15,7 +15,7 @@ msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-06-05 06:31+0200\n"
-"PO-Revision-Date: 2018-07-06 20:37+0000\n"
+"PO-Revision-Date: 2019-01-13 16:44+0000\n"
 "Last-Translator: Zmicer Turok <zmicerturok@gmail.com>\n"
 "Language-Team: Belarusian (http://www.transifex.com/xfce/xfce-apps/language/be/)\n"
 "MIME-Version: 1.0\n"
@@ -860,7 +860,7 @@ msgstr "Выразаць вылучанае"
 
 #: ../mousepad/mousepad-window.c:422
 msgid "Copy the selection"
-msgstr "Скапіраваць вылучанае"
+msgstr "Скапіяваць вылучанае"
 
 #: ../mousepad/mousepad-window.c:423
 msgid "Paste the clipboard"
