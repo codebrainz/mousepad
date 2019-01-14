@@ -15,7 +15,7 @@ msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-06-05 06:31+0200\n"
-"PO-Revision-Date: 2019-01-13 16:44+0000\n"
+"PO-Revision-Date: 2019-01-14 11:08+0000\n"
 "Last-Translator: Zmicer Turok <zmicerturok@gmail.com>\n"
 "Language-Team: Belarusian (http://www.transifex.com/xfce/xfce-apps/language/be/)\n"
 "MIME-Version: 1.0\n"
@@ -1218,7 +1218,7 @@ msgstr "Выкарыстоўваць пераносы радкоў як у DOS �
 #. add the label with the root warning
 #: ../mousepad/mousepad-window.c:860
 msgid "Warning, you are using the root account, you may harm your system."
-msgstr "Увага, вы выкарыстоўваеце root рахунак  і можаце пашкодзіць сітэму."
+msgstr "Увага, вы выкарыстоўваеце root-акаўнт  і можаце пашкодзіць сітэму."
 
 #. show the warning
 #: ../mousepad/mousepad-window.c:1516
