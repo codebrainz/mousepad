@@ -4,14 +4,14 @@
 # 
 # Translators:
 # Alexandre Fidalgo <alexandremagnos15@gmail.com>, 2014
-# Nuno Miguel <nunomgue@gmail.com>, 2013,2018
+# Nuno Miguel <nunomgue@gmail.com>, 2013,2018-2019
 # Sérgio Marques <smarquespt@gmail.com>, 2012
 msgid ""
 msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-06-05 06:31+0200\n"
-"PO-Revision-Date: 2019-01-20 13:05+0000\n"
+"PO-Revision-Date: 2019-01-20 20:17+0000\n"
 "Last-Translator: Nuno Miguel <nunomgue@gmail.com>\n"
 "Language-Team: Portuguese (http://www.transifex.com/xfce/xfce-apps/language/pt/)\n"
 "MIME-Version: 1.0\n"
@@ -457,7 +457,7 @@ msgstr "Activar recuo automático"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:34
 msgid "<b>Indentation</b>"
-msgstr "<b>Recuo</b>"
+msgstr "<b>Indentação</b>"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:35
 msgid "Behaviour:"
