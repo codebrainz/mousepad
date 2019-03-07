@@ -9,13 +9,13 @@
 # Chris Darnell <chris@cedeel.com>, 2013,2016
 # Per Kongstad <pko@xfce.org>, 2012
 # scootergrisen, 2016
-# scootergrisen, 2016-2018
+# scootergrisen, 2016-2019
 msgid ""
 msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-06-05 06:31+0200\n"
-"PO-Revision-Date: 2018-09-14 00:16+0000\n"
+"PO-Revision-Date: 2019-03-07 11:15+0000\n"
 "Last-Translator: scootergrisen\n"
 "Language-Team: Danish (http://www.transifex.com/xfce/xfce-apps/language/da/)\n"
 "MIME-Version: 1.0\n"
@@ -151,7 +151,7 @@ msgstr "Luk dette faneblad"
 #. create an unique untitled document name
 #: ../mousepad/mousepad-document.c:532
 msgid "Untitled"
-msgstr "Uden titel"
+msgstr "Unavngivet"
 
 #. create the header
 #: ../mousepad/mousepad-encoding-dialog.c:126
