@@ -443,6 +443,14 @@ mousepad_prefs_dialog_init (MousepadPrefsDialog *self)
   widget = mousepad_builder_get_widget (self->builder, WID_FONT_BUTTON);
   g_object_bind_property (check, "active", widget, "sensitive", G_BINDING_SYNC_CREATE | G_BINDING_INVERT_BOOLEAN);
 
+  /* setup tab mode combo box */
+  widget = mousepad_builder_get_widget (self->builder, WID_TAB_MODE_COMBO);
+  gtk_combo_box_set_active (GTK_COMBO_BOX (widget), MOUSEPAD_SETTING_GET_BOOLEAN (INSERT_SPACES));
+
+  /* setup home/end keys combo box */
+  widget = mousepad_builder_get_widget (self->builder, WID_SMART_HOME_END_COMBO);
+  gtk_combo_box_set_active (GTK_COMBO_BOX (widget), MOUSEPAD_SETTING_GET_ENUM (SMART_HOME_END));
+
   /* enable/disable toolbar-related widgets when checkbox changes */
   check = mousepad_builder_get_widget (self->builder, WID_TOOLBAR_VISIBLE_CHECK);
 
