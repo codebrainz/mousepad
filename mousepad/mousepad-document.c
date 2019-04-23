@@ -34,10 +34,6 @@
 
 
 
-#define MOUSEPAD_DOCUMENT_GET_PRIVATE(obj) (G_TYPE_INSTANCE_GET_PRIVATE ((obj), MOUSEPAD_TYPE_DOCUMENT, MousepadDocumentPrivate))
-
-
-
 static void      mousepad_document_finalize                (GObject                *object);
 static void      mousepad_document_notify_cursor_position  (GtkTextBuffer          *buffer,
                                                             GParamSpec             *pspec,
@@ -108,7 +104,7 @@ mousepad_document_new (void)
 
 
 
-G_DEFINE_TYPE (MousepadDocument, mousepad_document, GTK_TYPE_SCROLLED_WINDOW)
+G_DEFINE_TYPE_WITH_PRIVATE (MousepadDocument, mousepad_document, GTK_TYPE_SCROLLED_WINDOW)
 
 
 
@@ -116,8 +112,6 @@ static void
 mousepad_document_class_init (MousepadDocumentClass *klass)
 {
   GObjectClass *gobject_class;
-
-  g_type_class_add_private (klass, sizeof (MousepadDocumentPrivate));
 
   gobject_class = G_OBJECT_CLASS (klass);
   gobject_class->finalize = mousepad_document_finalize;
@@ -171,7 +165,7 @@ mousepad_document_init (MousepadDocument *document)
   GtkTargetList        *target_list;
 
   /* private structure */
-  document->priv = MOUSEPAD_DOCUMENT_GET_PRIVATE (document);
+  document->priv = mousepad_document_get_instance_private (document);
 
   /* initialize the variables */
   document->priv->utf8_filename = NULL;
