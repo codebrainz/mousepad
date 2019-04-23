@@ -2360,7 +2360,8 @@ mousepad_window_menu_templates_fill (MousepadWindow *window,
       item = gtk_image_menu_item_new_with_label (label);
       gtk_menu_shell_append (GTK_MENU_SHELL (menu), item);
       mousepad_object_set_data_full (G_OBJECT (item), "filename", li->data, g_free);
-      mousepad_object_set_data_full (G_OBJECT (item), "language", g_object_ref (language), g_object_unref);
+      if (language != NULL)
+        mousepad_object_set_data_full (G_OBJECT (item), "language", g_object_ref (language), g_object_unref);
       g_signal_connect (G_OBJECT (item), "activate", G_CALLBACK (mousepad_window_action_new_from_template), window);
       gtk_widget_show (item);
 

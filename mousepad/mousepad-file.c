@@ -682,8 +682,11 @@ mousepad_file_open (MousepadFile  *file,
       g_mapped_file_free (mapped_file);
 #endif
 
-      /* guess and set the file's filetype/language */
-      mousepad_file_set_language (file, mousepad_file_guess_language (file));
+      if (G_LIKELY (filename != template_filename))
+        {
+          /* guess and set the file's filetype/language */
+          mousepad_file_set_language (file, mousepad_file_guess_language (file));
+        }
 
       /* this does not count as a modified buffer */
       gtk_text_buffer_set_modified (file->buffer, FALSE);
