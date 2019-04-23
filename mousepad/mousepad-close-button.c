@@ -10,9 +10,6 @@ struct MousepadCloseButton_
 struct MousepadCloseButtonClass_
 {
   GtkButtonClass  parent_class;
-#if GTK_CHECK_VERSION(3, 0, 0)
-  GtkCssProvider *css_provider;
-#endif
 };
 
 
@@ -40,17 +37,7 @@ mousepad_close_button_style_set (GtkWidget *widget,
 static void
 mousepad_close_button_class_init (MousepadCloseButtonClass *klass)
 {
-#if GTK_CHECK_VERSION(3, 0, 0)
-  static const gchar *button_style =
-    "* {\n"
-    "  outline-width: 0;\n"
-    "  outline-offset: 0;\n"
-    "  padding: 0;\n"
-    "}\n";
-
-  klass->css_provider = gtk_css_provider_new ();
-  gtk_css_provider_load_from_data (klass->css_provider, button_style, -1, NULL);
-#else
+#if !GTK_CHECK_VERSION(3, 0, 0)
   GtkWidgetClass *widget_class;
 
   gtk_rc_parse_string (
@@ -75,12 +62,24 @@ mousepad_close_button_init (MousepadCloseButton *button)
   GtkWidget *image;
 
 #if GTK_CHECK_VERSION(3, 0, 0)
+  GtkCssProvider  *css_provider;
   GtkStyleContext *context;
+
+  static const gchar *button_style =
+    "* {\n"
+    "  outline-width: 0;\n"
+    "  outline-offset: 0;\n"
+    "  padding: 0;\n"
+    "}\n";
+
+  css_provider = gtk_css_provider_new ();
+  gtk_css_provider_load_from_data (css_provider, button_style, -1, NULL);
 
   context = gtk_widget_get_style_context (GTK_WIDGET (button));
   gtk_style_context_add_provider (context,
-                                  GTK_STYLE_PROVIDER (MOUSEPAD_CLOSE_BUTTON_GET_CLASS(button)->css_provider),
+                                  GTK_STYLE_PROVIDER (css_provider),
                                   GTK_STYLE_PROVIDER_PRIORITY_APPLICATION);
+  g_object_unref (css_provider);
 #else
   gtk_widget_set_name (GTK_WIDGET (button), "mousepad-close-button");
 #endif
