@@ -4868,6 +4868,8 @@ mousepad_window_action_select_font (GtkAction      *action,
 
       /* store the font in the preferences */
       MOUSEPAD_SETTING_SET_STRING (FONT_NAME, font_name);
+      /* stop using default font */
+      MOUSEPAD_SETTING_SET_BOOLEAN (USE_DEFAULT_FONT, FALSE);
 
       /* cleanup */
       g_free (font_name);
