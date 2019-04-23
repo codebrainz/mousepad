@@ -20,8 +20,12 @@
 #include <mousepad/mousepad-util.h>
 #include <mousepad/mousepad-print.h>
 
+#if GTK_CHECK_VERSION(3, 0, 0)
+#include <gtksourceview/gtksource.h>
+#else
 #include <gtksourceview/gtksourcebuffer.h>
 #include <gtksourceview/gtksourceprintcompositor.h>
+#endif
 
 #define DOCUMENT_SPACING (10)
 

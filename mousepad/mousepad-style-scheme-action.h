@@ -18,7 +18,12 @@
 #define __MOUSEPAD_STYLESCHEME_ACTION_H__ 1
 
 #include <gtk/gtk.h>
+
+#if GTK_CHECK_VERSION(3, 0, 0)
+#include <gtksourceview/gtksource.h>
+#else
 #include <gtksourceview/gtksourcestylescheme.h>
+#endif
 
 G_BEGIN_DECLS
 

@@ -18,7 +18,12 @@
 #define __MOUSEPAD_STATUSBAR_H__
 
 #include <gtk/gtk.h>
+
+#if GTK_CHECK_VERSION(3, 0, 0)
+#include <gtksourceview/gtksource.h>
+#else
 #include <gtksourceview/gtksourcelanguage.h>
+#endif
 
 G_BEGIN_DECLS
 

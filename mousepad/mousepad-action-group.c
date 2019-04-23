@@ -21,9 +21,12 @@
 #include <mousepad/mousepad-style-scheme-action.h>
 #include <mousepad/mousepad-settings.h>
 
+#if GTK_CHECK_VERSION(3, 0, 0)
+#include <gtksourceview/gtksource.h>
+#else
 #include <gtksourceview/gtksourcelanguagemanager.h>
 #include <gtksourceview/gtksourcestyleschememanager.h>
-
+#endif
 
 
 enum

@@ -20,10 +20,14 @@
 #include <mousepad/mousepad-util.h>
 #include <mousepad/mousepad-view.h>
 
+#if GTK_CHECK_VERSION(3, 0, 0)
+#include <gtksourceview/gtksource.h>
+#else
 #include <gtksourceview/gtksourcebuffer.h>
 #include <gtksourceview/gtksourceview.h>
 #include <gtksourceview/gtksourcestylescheme.h>
 #include <gtksourceview/gtksourcestyleschememanager.h>
+#endif
 
 #include <xfconf/xfconf.h>
 

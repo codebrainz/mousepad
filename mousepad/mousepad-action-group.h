@@ -18,8 +18,12 @@
 #define __MOUSEPAD_ACTION_GROUP_H__ 1
 
 #include <gtk/gtk.h>
+#if GTK_CHECK_VERSION(3, 0, 0)
+#include <gtksourceview/gtksource.h>
+#else
 #include <gtksourceview/gtksourcelanguage.h>
 #include <gtksourceview/gtksourcestylescheme.h>
+#endif
 
 G_BEGIN_DECLS
 
