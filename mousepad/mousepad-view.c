@@ -255,18 +255,30 @@ mousepad_view_buffer_changed (MousepadView *view,
                               gpointer      user_data)
 {
   GtkSourceBuffer *buffer;
-
   buffer = (GtkSourceBuffer*) gtk_text_view_get_buffer (GTK_TEXT_VIEW (view));
+
   if (GTK_SOURCE_IS_BUFFER (buffer))
     {
       GtkSourceStyleSchemeManager *manager;
       GtkSourceStyleScheme        *scheme;
+      gboolean enable_highlight = TRUE;
 
       manager = gtk_source_style_scheme_manager_get_default ();
       scheme = gtk_source_style_scheme_manager_get_scheme (manager,
         view->color_scheme ? view->color_scheme : "");
-      gtk_source_buffer_set_style_scheme (buffer, scheme);
 
+#ifdef GTK_SOURCE_CHECK_VERSION
+#if GTK_SOURCE_CHECK_VERSION (3, 21, 0)
+      if (!GTK_SOURCE_IS_STYLE_SCHEME (scheme))
+      {
+        scheme = gtk_source_style_scheme_manager_get_scheme (manager, "classic");
+        enable_highlight = FALSE;
+      }
+#endif
+#endif
+
+      gtk_source_buffer_set_style_scheme (buffer, scheme);
+      gtk_source_buffer_set_highlight_syntax (buffer, enable_highlight);
       gtk_source_buffer_set_highlight_matching_brackets (buffer, view->match_braces);
     }
 }
