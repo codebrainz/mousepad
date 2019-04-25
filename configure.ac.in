@@ -47,7 +47,7 @@ AC_PROG_CC()
 AM_PROG_CC_C_O()
 AC_PROG_LD()
 AC_PROG_INSTALL()
-IT_PROG_INTLTOOL()
+IT_PROG_INTLTOOL([0.35.0])
 AC_CHECK_PROGS([PERL], [perl5 perl])
 
 dnl **************************
