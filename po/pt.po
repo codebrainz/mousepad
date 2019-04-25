@@ -4,6 +4,7 @@
 # 
 # Translators:
 # Alexandre Fidalgo <alexandremagnos15@gmail.com>, 2014
+# José Vieira <jvieira33@sapo.pt>, 2019
 # Nuno Miguel <nunomgue@gmail.com>, 2013,2018-2019
 # Sérgio Marques <smarquespt@gmail.com>, 2012
 msgid ""
@@ -11,8 +12,8 @@ msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-06-05 06:31+0200\n"
-"PO-Revision-Date: 2019-03-02 18:14+0000\n"
-"Last-Translator: Nuno Miguel <nunomgue@gmail.com>\n"
+"PO-Revision-Date: 2019-04-25 13:04+0000\n"
+"Last-Translator: José Vieira <jvieira33@sapo.pt>\n"
 "Language-Team: Portuguese (http://www.transifex.com/xfce/xfce-apps/language/pt/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -477,7 +478,7 @@ msgstr "Mostrar barra de estado"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:39
 msgid "Show full filename in title bar"
-msgstr "Mostrar nome de ficheiro completo a barra de titulo"
+msgstr "Mostrar nome completo do ficheiro na barra de titulo"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:40
 msgid "Remember window size"
