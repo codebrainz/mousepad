@@ -925,7 +925,7 @@ mousepad_util_search (GtkTextBuffer       *buffer,
   /* store the initial iters in marks */
   mark_start = gtk_text_buffer_create_mark (buffer, NULL, &start, TRUE);
   mark_iter  = gtk_text_buffer_create_mark (buffer, NULL, &iter, TRUE);
-  mark_end   = gtk_text_buffer_create_mark (buffer, NULL, &end, TRUE);
+  mark_end   = gtk_text_buffer_create_mark (buffer, NULL, &end, FALSE);
 
   /* some to make the code easier to read */
   search_backwards = ((flags & MOUSEPAD_SEARCH_FLAGS_DIR_BACKWARD) != 0);
