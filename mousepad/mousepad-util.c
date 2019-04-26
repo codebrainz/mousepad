@@ -806,8 +806,6 @@ mousepad_util_search_get_iters (GtkTextBuffer       *buffer,
       tmp = *start;
       *start = *end;
       *end = tmp;
-      /* when searching backwards, we need to start before the selection */
-      gtk_text_iter_backward_char (iter);
     }
 }
 
@@ -942,6 +940,9 @@ mousepad_util_search (GtkTextBuffer       *buffer,
 
       /* set the new search string */
       string = reversed;
+
+      /* start before the selection */
+      gtk_text_iter_backward_char (&iter);
     }
 
   do
