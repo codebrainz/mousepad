@@ -279,12 +279,18 @@ mousepad_application_new_window_with_files (MousepadApplication  *application,
   GtkWidget        *window;
   gboolean          succeed = FALSE;
   MousepadDocument *document;
+  GtkWindowGroup   *window_group;
 
   g_return_if_fail (MOUSEPAD_IS_APPLICATION (application));
   g_return_if_fail (screen == NULL || GDK_IS_SCREEN (screen));
 
   /* create a new window (signals added and already hooked up) */
   window = mousepad_application_create_window (application);
+
+  /* add window to own window group so that grabs only affect parent window */
+  window_group = gtk_window_group_new ();
+  gtk_window_group_add_window (window_group, GTK_WINDOW (window));
+  g_object_unref (window_group);
 
   /* place the window on the right screen */
   gtk_window_set_screen (GTK_WINDOW (window), screen ? screen : gdk_screen_get_default ());
