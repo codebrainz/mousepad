@@ -4,7 +4,7 @@
 # 
 # Translators:
 # Cristian Marchi <cri.penta@gmail.com>, 2013-2014
-# Emanuele Petriglia <inbox@emanuelepetriglia.me>, 2018
+# Emanuele Petriglia <transifex@emanuelepetriglia.com>, 2018
 msgid ""
 msgstr ""
 "Project-Id-Version: Xfce Apps\n"
