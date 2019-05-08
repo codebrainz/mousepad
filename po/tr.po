@@ -8,7 +8,7 @@
 # Mustafa TEKKOYUN <inactive+tekotek@transifex.com>, 2013
 # Natavan Mirzayeva <mirzayevanatavan@gmail.com>, 2014
 # Necdet Yücel <necdetyucel@gmail.com>, 2013-2014
-# Redcode, 2013-2014
+# Recep, 2013-2014
 # Volkan Gezer <volkangezer@gmail.com>, 2013
 msgid ""
 msgstr ""
