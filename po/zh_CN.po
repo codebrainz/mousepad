@@ -9,8 +9,8 @@
 # SamHX <samzh@outlook.com>, 2017
 # Shun <shun98@139.com>, 2018
 # 玉堂白鹤 <yjwork@qq.com>, 2014
-# Xiaobo Zhou <zhouxiaobo.500@gmail.com>, 2013
-# Xiaobo Zhou <zhouxiaobo.500@gmail.com>, 2013,2015
+# Cally Mal <zhouxiaobo.500@gmail.com>, 2013
+# Cally Mal <zhouxiaobo.500@gmail.com>, 2013,2015
 # 玉堂白鹤 <yjwork@qq.com>, 2014-2016,2018
 # yjwork527 <yjwork.xfce@gmail.com>, 2012
 msgid ""
