@@ -3,7 +3,7 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
-# Mark Trompell <mark@foresightlinux.org>, 2012
+# Mark Trompell <mark@marktrompell.de>, 2012
 # Tobias Bannert <tobannert@gmail.com>, 2013-2015
 # Vinzenz Vietzke <vinz@vinzv.de>, 2018
 msgid ""
