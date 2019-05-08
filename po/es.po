@@ -7,7 +7,7 @@
 # Manolo Díaz <diaz.manolo@gmail.com>, 2015
 # Pablo Lezaeta Reyes [pˈaβ̞lo lˌe̞θaˈeta rˈejɛ] <prflr88@gmail.com>, 2013-2015
 # Pablo Lezaeta Reyes [pˈaβ̞lo lˌe̞θaˈeta rˈejɛ] <prflr88@gmail.com>, 2017
-# Markel, 2018
+# Markel @wakutiteo, 2018
 msgid ""
 msgstr ""
 "Project-Id-Version: Xfce Apps\n"
