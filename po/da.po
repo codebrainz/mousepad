@@ -15,7 +15,7 @@ msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-06-05 06:31+0200\n"
-"PO-Revision-Date: 2019-04-30 14:32+0000\n"
+"PO-Revision-Date: 2019-05-09 22:54+0000\n"
 "Last-Translator: scootergrisen\n"
 "Language-Team: Danish (http://www.transifex.com/xfce/xfce-apps/language/da/)\n"
 "MIME-Version: 1.0\n"
@@ -890,7 +890,7 @@ msgstr "Slet den nuværende markering"
 
 #: ../mousepad/mousepad-window.c:428
 msgid "Select the text in the entire document"
-msgstr "Slet teksten i hele dokumentet"
+msgstr "Vælg teksten i hele dokumentet"
 
 #: ../mousepad/mousepad-window.c:429
 msgid "Change the selection"
