@@ -15,7 +15,7 @@ msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-06-05 06:31+0200\n"
-"PO-Revision-Date: 2019-05-09 22:54+0000\n"
+"PO-Revision-Date: 2019-05-15 20:19+0000\n"
 "Last-Translator: scootergrisen\n"
 "Language-Team: Danish (http://www.transifex.com/xfce/xfce-apps/language/da/)\n"
 "MIME-Version: 1.0\n"
@@ -862,7 +862,7 @@ msgstr "Kopiér markeringen"
 
 #: ../mousepad/mousepad-window.c:423
 msgid "Paste the clipboard"
-msgstr "Sæt ind fra udklipsholderen"
+msgstr "Indsæt fra udklipsholderen"
 
 #: ../mousepad/mousepad-window.c:424
 msgid "Paste _Special"
@@ -870,11 +870,11 @@ msgstr "Indsæt _speciel"
 
 #: ../mousepad/mousepad-window.c:425
 msgid "Paste from _History"
-msgstr "Sæt ind fra _historik"
+msgstr "Indsæt fra _historik"
 
 #: ../mousepad/mousepad-window.c:425
 msgid "Paste from the clipboard history"
-msgstr "Sæt ind fra udklipsholderens historik"
+msgstr "Indsæt fra udklipsholderens historik"
 
 #: ../mousepad/mousepad-window.c:426
 msgid "Paste as _Column"
