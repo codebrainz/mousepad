@@ -15,7 +15,7 @@ msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-06-05 06:31+0200\n"
-"PO-Revision-Date: 2019-05-15 20:19+0000\n"
+"PO-Revision-Date: 2019-05-16 19:08+0000\n"
 "Last-Translator: scootergrisen\n"
 "Language-Team: Danish (http://www.transifex.com/xfce/xfce-apps/language/da/)\n"
 "MIME-Version: 1.0\n"
@@ -1278,12 +1278,12 @@ msgstr "Skabeloner skal være gyldig UTF-8"
 #. set error message
 #: ../mousepad/mousepad-window.c:3727
 msgid "Reading the template failed, the menu item has been removed"
-msgstr "Læsning af skabelonen fejlede. Menupunktet er blevet fjernet"
+msgstr "Læsning af skabelonen mislykkedes. Menupunktet er blevet fjernet"
 
 #. set error message
 #: ../mousepad/mousepad-window.c:3732
 msgid "Loading the template failed"
-msgstr "Indlæsning af skabelonen fejlede"
+msgstr "Indlæsning af skabelonen mislykkedes"
 
 #. create new file chooser dialog
 #: ../mousepad/mousepad-window.c:3757
