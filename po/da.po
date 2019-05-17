@@ -15,7 +15,7 @@ msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-06-05 06:31+0200\n"
-"PO-Revision-Date: 2019-05-16 19:08+0000\n"
+"PO-Revision-Date: 2019-05-17 11:43+0000\n"
 "Last-Translator: scootergrisen\n"
 "Language-Team: Danish (http://www.transifex.com/xfce/xfce-apps/language/da/)\n"
 "MIME-Version: 1.0\n"
@@ -44,7 +44,7 @@ msgstr "Mousepad"
 #. initialize gtk+
 #: ../mousepad/main.c:84
 msgid "[FILES...]"
-msgstr "[FILER...]"
+msgstr "[FILER ...]"
 
 #. no error message, the gui initialization failed
 #: ../mousepad/main.c:90
@@ -177,7 +177,7 @@ msgstr "Andet:"
 
 #: ../mousepad/mousepad-encoding-dialog.c:172
 msgid "Checking encodings..."
-msgstr "Kontrollerer kodninger..."
+msgstr "Kontrollerer kodninger ..."
 
 #. west european
 #: ../mousepad/mousepad-encoding.c:25
@@ -758,7 +758,7 @@ msgstr "Ny fra _skabelon"
 
 #: ../mousepad/mousepad-window.c:405
 msgid "_Open..."
-msgstr "_Åbn..."
+msgstr "_Åbn ..."
 
 #: ../mousepad/mousepad-window.c:405
 msgid "Open a file"
@@ -786,7 +786,7 @@ msgstr "Gem det nuværende dokument"
 
 #: ../mousepad/mousepad-window.c:410
 msgid "Save _As..."
-msgstr "Gem _som..."
+msgstr "Gem _som ..."
 
 #: ../mousepad/mousepad-window.c:410
 msgid "Save current document as another file"
@@ -810,7 +810,7 @@ msgstr "Tilbagefør til gemte version af filen"
 
 #: ../mousepad/mousepad-window.c:413
 msgid "_Print..."
-msgstr "_Udskriv..."
+msgstr "_Udskriv ..."
 
 #: ../mousepad/mousepad-window.c:413
 msgid "Print the current document"
@@ -1043,7 +1043,7 @@ msgstr "Søg baglæns efter den samme tekst"
 
 #: ../mousepad/mousepad-window.c:451
 msgid "Find and Rep_lace..."
-msgstr "Find og _erstat..."
+msgstr "Find og _erstat ..."
 
 #: ../mousepad/mousepad-window.c:451
 msgid "Search for and replace text"
@@ -1051,7 +1051,7 @@ msgstr "Søg efter og erstat tekst"
 
 #: ../mousepad/mousepad-window.c:452
 msgid "_Go to..."
-msgstr "_Gå til..."
+msgstr "_Gå til ..."
 
 #: ../mousepad/mousepad-window.c:452
 msgid "Go to a specific location in the document"
@@ -1063,7 +1063,7 @@ msgstr "_Vis"
 
 #: ../mousepad/mousepad-window.c:455
 msgid "Select F_ont..."
-msgstr "Vælg _skrifttype..."
+msgstr "Vælg _skrifttype ..."
 
 #: ../mousepad/mousepad-window.c:455
 msgid "Change the editor font"
@@ -1243,12 +1243,12 @@ msgstr "Sæt brugerdefineret tabulatorstørrelse"
 #: ../mousepad/mousepad-window.c:2546
 #, c-format
 msgid "Ot_her (%d)..."
-msgstr "_Andet (%d)..."
+msgstr "_Andet (%d) ..."
 
 #. set action label
 #: ../mousepad/mousepad-window.c:2557
 msgid "Ot_her..."
-msgstr "_Andet..."
+msgstr "_Andet ..."
 
 #. build description
 #. get the offset length: 'Encoding: '
