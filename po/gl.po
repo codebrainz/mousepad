@@ -3,14 +3,14 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
-# Daniel Muñiz Fontoira <dani@damufo.com>, 2017-2018
+# Daniel Muñiz Fontoira <dani@damufo.com>, 2017-2019
 # Xosé, 2015,2017
 msgid ""
 msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-06-05 06:31+0200\n"
-"PO-Revision-Date: 2019-03-09 23:36+0000\n"
+"PO-Revision-Date: 2019-05-17 09:35+0000\n"
 "Last-Translator: Daniel Muñiz Fontoira <dani@damufo.com>\n"
 "Language-Team: Galician (http://www.transifex.com/xfce/xfce-apps/language/gl/)\n"
 "MIME-Version: 1.0\n"
@@ -29,7 +29,7 @@ msgstr "Saír dunha instancia do Mousepad en execución"
 
 #: ../mousepad/main.c:45
 msgid "Print version information and exit"
-msgstr "Mostrar a información da versión e saír"
+msgstr "Amosar a información da versión e saír"
 
 #. default application name
 #: ../mousepad/main.c:70 ../mousepad.desktop.in.in.h:1
@@ -44,7 +44,7 @@ msgstr "[FICHEIROS...]"
 #. no error message, the gui initialization failed
 #: ../mousepad/main.c:90
 msgid "Failed to open display."
-msgstr "Fallo ao abrir a pantalla."
+msgstr "Produciuse un fallo ao abrir a pantalla."
 
 #: ../mousepad/main.c:107
 msgid "The Xfce development team. All rights reserved."
@@ -66,7 +66,7 @@ msgstr "Xosé <xosecalvo@gmail.com>, 2015"
 #. display an error message to the user
 #: ../mousepad/mousepad-dialogs.c:101
 msgid "Failed to open the documentation browser"
-msgstr "Produciuse un erro ao abrir o navegador de documentación"
+msgstr "Produciuse un fallo ao abrir o navegador de documentación"
 
 #. build dialog
 #: ../mousepad/mousepad-dialogs.c:116
@@ -396,15 +396,15 @@ msgstr "Texto a carón das iconas"
 #: ../mousepad/mousepad-prefs-dialog.glade.h:19
 #: ../mousepad/mousepad-window.c:472
 msgid "Show line numbers"
-msgstr "Mostrar os números de liña"
+msgstr "Amosar os números de liña"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:20
 msgid "Display whitespace"
-msgstr "Mostrar os espazos en branco"
+msgstr "Amosar os espazos en branco"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:21
 msgid "Display line endings"
-msgstr "Mostrar os remates das liñas"
+msgstr "Amosar os remates das liñas"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:22
 msgid "Long line margin at column:"
@@ -412,7 +412,7 @@ msgstr "Marxe de liña longa na columna:"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:23
 msgid "Highlight current line"
-msgstr "Realizar a liña actual"
+msgstr "Realzar a liña actual"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:24
 msgid "Highlight matching brackets"
@@ -472,11 +472,11 @@ msgstr "Editor"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:38
 msgid "Show status bar"
-msgstr "Mostrar a barra de estado"
+msgstr "Amosar a barra de estado"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:39
 msgid "Show full filename in title bar"
-msgstr "Mostrar o nome completo do ficheiro na barra de título"
+msgstr "Amosar o nome completo do ficheiro na barra de título"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:40
 msgid "Remember window size"
@@ -496,7 +496,7 @@ msgstr "<b>Xeral</b>"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:44
 msgid "Show toolbar"
-msgstr "Mostrar a barra de ferramentas"
+msgstr "Amosar a barra de ferramentas"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:45
 msgid "Style:"
@@ -512,7 +512,7 @@ msgstr "<b>Barra de ferramentas</b>"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:48
 msgid "Always show tabs even with one file"
-msgstr "Mostrar sempre as lapelas, mesmo cun único ficheiro"
+msgstr "Amosar sempre as lapelas, mesmo cun único ficheiro"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:49
 msgid "Cycled notebook tab switching"
@@ -628,7 +628,7 @@ msgstr "Distinguir maiúsculas e minúsculas"
 #. match whole word
 #: ../mousepad/mousepad-replace-dialog.c:230
 msgid "_Match whole word"
-msgstr "_Buscar a palabra completa"
+msgstr "_Coincidir con palabra enteira"
 
 #: ../mousepad/mousepad-replace-dialog.c:241
 msgid "Replace _all in:"
@@ -689,7 +689,7 @@ msgstr "Tipo de ficheiro: Ningún"
 
 #: ../mousepad/mousepad-statusbar.c:168
 msgid "Toggle the overwrite mode"
-msgstr "Conmutar o modo de substitución"
+msgstr "Alterna entre os modos inserir e sobrescribir"
 
 #. overwrite label
 #: ../mousepad/mousepad-statusbar.c:173
@@ -845,7 +845,7 @@ msgstr "Desfacer a última acción"
 
 #: ../mousepad/mousepad-window.c:420
 msgid "Redo the last undone action"
-msgstr "Facer outra vez a última acción que se desfixo"
+msgstr "Refacer a última acción que se desfixo"
 
 #: ../mousepad/mousepad-window.c:421
 msgid "Cut the selection"
@@ -857,7 +857,7 @@ msgstr "Copiar a selección"
 
 #: ../mousepad/mousepad-window.c:423
 msgid "Paste the clipboard"
-msgstr "Pegar o portarretallos"
+msgstr "Pegar do portapapeis"
 
 #: ../mousepad/mousepad-window.c:424
 msgid "Paste _Special"
@@ -869,7 +869,7 @@ msgstr "Pegar do _historial"
 
 #: ../mousepad/mousepad-window.c:425
 msgid "Paste from the clipboard history"
-msgstr "Pegar do historial do portarretallos"
+msgstr "Pegar do historial do portapapeis"
 
 #: ../mousepad/mousepad-window.c:426
 msgid "Paste as _Column"
@@ -877,7 +877,7 @@ msgstr "Pegar como _columna"
 
 #: ../mousepad/mousepad-window.c:426
 msgid "Paste the clipboard text into a column"
-msgstr "Pegar o texto do portarretallos nunha columna"
+msgstr "Pegar o texto do portapapeis nunha columna"
 
 #: ../mousepad/mousepad-window.c:427
 msgid "Delete the current selection"
@@ -929,7 +929,7 @@ msgstr "Inverter maiúsculas e minúsculas"
 
 #: ../mousepad/mousepad-window.c:434
 msgid "Change the case of the selection opposite case"
-msgstr "Inverter as maiúsculas e as minúsculas da selecció"
+msgstr "Inverter as maiúsculas e as minúsculas da selección"
 
 #: ../mousepad/mousepad-window.c:435
 msgid "_Tabs to Spaces"
@@ -962,7 +962,7 @@ msgstr "_Traspor"
 
 #: ../mousepad/mousepad-window.c:438
 msgid "Reverse the order of something"
-msgstr "Reverter a orde de algo"
+msgstr "Inverter a orde de algo"
 
 #: ../mousepad/mousepad-window.c:439
 msgid "_Move Selection"
@@ -1010,7 +1010,7 @@ msgstr "Reducir a sangría da selección o liña actuais"
 
 #: ../mousepad/mousepad-window.c:445
 msgid "Show the preferences dialog"
-msgstr "Mostrar o diálogo de preferencias"
+msgstr "Amosar o diálogo de preferencias"
 
 #: ../mousepad/mousepad-window.c:447
 msgid "_Search"
@@ -1110,7 +1110,7 @@ msgstr "_Contido"
 
 #: ../mousepad/mousepad-window.c:466
 msgid "Display the Mousepad user manual"
-msgstr "Mostrar o manual de usuario do Mousepad"
+msgstr "Amosar o manual de usuario do Mousepad"
 
 #: ../mousepad/mousepad-window.c:467
 msgid "About this application"
@@ -1216,7 +1216,7 @@ msgstr "Advertencia, está usando a conta de root, pode danar o sistema."
 #. show the warning
 #: ../mousepad/mousepad-window.c:1516
 msgid "Failed to open the document"
-msgstr "Non foi posíbel abrir o documento"
+msgstr "Produciuse un fallo ao abrir o documento"
 
 #: ../mousepad/mousepad-window.c:1713
 msgid "Read Only"
@@ -1258,12 +1258,12 @@ msgstr "Abrir «%s»"
 
 #: ../mousepad/mousepad-window.c:3150
 msgid "Failed to clear the recent history"
-msgstr "Non foi posíbel limpar o historial de ficheiros usados recentemente"
+msgstr "Produciuse un fallo ao limpar o historial recente"
 
 #. create an item to inform the user
 #: ../mousepad/mousepad-window.c:3580
 msgid "No clipboard data"
-msgstr "Non hai datos no portarretallos"
+msgstr "Non hai datos no portapapeis"
 
 #. set error message
 #: ../mousepad/mousepad-window.c:3719
@@ -1290,12 +1290,12 @@ msgstr "Abrir ficheiro"
 msgid ""
 "Failed to open \"%s\" for reading. It will be removed from the document "
 "history"
-msgstr "Produciuse un fallo ao abrir «%s» para lectura. Será eliminado do historial de documentos"
+msgstr "Produciuse un fallo ao abrir «%s» para lectura. Será retirado do historial de documentos"
 
 #. show the warning and cleanup
 #: ../mousepad/mousepad-window.c:3874
 msgid "Failed to open file"
-msgstr "Produciuse un erro ao abrir o ficheiro"
+msgstr "Produciuse un fallo ao abrir o ficheiro"
 
 #. show the error
 #: ../mousepad/mousepad-window.c:3980 ../mousepad/mousepad-window.c:4103
