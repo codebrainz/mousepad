@@ -209,7 +209,7 @@ mousepad_style_scheme_action_set_style_scheme (MousepadStyleSchemeAction *self,
       authors = (gchar**) gtk_source_style_scheme_get_authors (scheme);
       author = g_strjoinv (", ", authors);
 
-      tooltip = g_strdup_printf ("%s\n\nAuthors: %s\nFilename: %s",
+      tooltip = g_strdup_printf (_("%s | Authors: %s | Filename: %s"),
                                  gtk_source_style_scheme_get_description (scheme),
                                  author,
                                  gtk_source_style_scheme_get_filename (scheme));
