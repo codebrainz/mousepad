@@ -132,6 +132,20 @@ dnl **********************************
 XDT_CHECK_OPTIONAL_PACKAGE([DBUS], [dbus-glib-1],
                            [0.34], [dbus], [D-BUS support])
 
+dnl ***************************************************
+dnl *** Check for tools required in maintainer mode ***
+dnl ***************************************************
+AS_IF([test "x$USE_MAINTAINER_MODE" = "xyes"],
+[
+  AC_PATH_PROG([EXO_CSOURCE], [exo-csource])
+  AS_IF([test -z "$EXO_CSOURCE"],
+  [
+    echo '*** The program "exo-csource" is required to build when --enable-maintainer-mode'
+    echo '*** is specified.'
+    exit 1
+  ])
+])
+
 dnl ***********************************
 dnl *** Check for debugging support ***
 dnl ***********************************
