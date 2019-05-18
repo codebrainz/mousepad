@@ -3776,7 +3776,7 @@ mousepad_window_action_open (GtkAction      *action,
   gtk_file_chooser_set_extra_widget (GTK_FILE_CHOOSER (chooser), hbox);
   gtk_widget_show (hbox);
 
-  label = gtk_label_new_with_mnemonic ("_Encoding:");
+  label = gtk_label_new_with_mnemonic (_("_Encoding:"));
   gtk_misc_set_alignment (GTK_MISC (label), 1.0, 0.5);
   gtk_box_pack_start (GTK_BOX (hbox), label, TRUE, TRUE, 0);
   gtk_widget_show (label);
