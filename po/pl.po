@@ -5,10 +5,10 @@
 # Translators:
 # ised, 2014
 # ised, 2014
-# Marcin Mikołajczak <me@m4sk.in>, 2017
+# Marcin Mikołajczak <me@mkljczk.pl>, 2017
 # Nick Schermer <nick@xfce.org>, 2014
 # Nick Schermer <nick@xfce.org>, 2014
-# No Ne, 2018
+# No Ne, 2018-2019
 # Piotr Sokół <psokol.l10n@gmail.com>, 2012,2014
 # Piotr Sokół <psokol.l10n@gmail.com>, 2017
 # Piotr Strębski <strebski@gmail.com>, 2014
@@ -16,8 +16,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-06-05 06:31+0200\n"
-"PO-Revision-Date: 2018-09-14 00:16+0000\n"
+"POT-Creation-Date: 2019-05-19 00:30+0200\n"
+"PO-Revision-Date: 2019-05-19 05:15+0000\n"
 "Last-Translator: No Ne\n"
 "Language-Team: Polish (http://www.transifex.com/xfce/xfce-apps/language/pl/)\n"
 "MIME-Version: 1.0\n"
@@ -26,158 +26,158 @@ msgstr ""
 "Language: pl\n"
 "Plural-Forms: nplurals=4; plural=(n==1 ? 0 : (n%10>=2 && n%10<=4) && (n%100<12 || n%100>14) ? 1 : n!=1 && (n%10>=0 && n%10<=1) || (n%10>=5 && n%10<=9) || (n%100>=12 && n%100<=14) ? 2 : 3);\n"
 
-#: ../mousepad/main.c:42
+#: ../mousepad/main.c:44
 msgid "Do not register with the D-BUS session message bus"
 msgstr "Nie rejestruje za pomocą demona powiadamiania sesji D-BUS"
 
-#: ../mousepad/main.c:43
+#: ../mousepad/main.c:45
 msgid "Quit a running Mousepad instance"
 msgstr "Kończy działanie bieżącego wystąpienia programu"
 
-#: ../mousepad/main.c:45
+#: ../mousepad/main.c:47
 msgid "Print version information and exit"
 msgstr "Wypisuje informacje o wersji i kończy"
 
 #. default application name
-#: ../mousepad/main.c:70 ../mousepad.desktop.in.in.h:1
+#: ../mousepad/main.c:72 ../mousepad.desktop.in.in.h:1
 msgid "Mousepad"
 msgstr "Mousepad"
 
 #. initialize gtk+
-#: ../mousepad/main.c:84
+#: ../mousepad/main.c:86
 msgid "[FILES...]"
 msgstr "[PLIK...]"
 
 #. no error message, the gui initialization failed
-#: ../mousepad/main.c:90
+#: ../mousepad/main.c:92
 msgid "Failed to open display."
 msgstr "Nie udało się otworzyć ekranu."
 
-#: ../mousepad/main.c:107
+#: ../mousepad/main.c:109
 msgid "The Xfce development team. All rights reserved."
 msgstr "Zespół twórców Xfce. Wszystkie prawa zastrzeżone."
 
-#: ../mousepad/main.c:108
+#: ../mousepad/main.c:110
 #, c-format
 msgid "Please report bugs to <%s>."
 msgstr "Proszę zgłaszać błędy na adres <%s>."
 
-#: ../mousepad/mousepad-dialogs.c:41
+#: ../mousepad/mousepad-dialogs.c:44
 msgid "Mousepad is a fast text editor for the Xfce Desktop Environment."
 msgstr "Umożliwia szybkie edytowanie tekstu w środowisku graficznym Xfce."
 
-#: ../mousepad/mousepad-dialogs.c:46
+#: ../mousepad/mousepad-dialogs.c:49
 msgid "translator-credits"
 msgstr "Piotr Sokół <psokol@jabster.pl>, 2012, 2014."
 
 #. display an error message to the user
-#: ../mousepad/mousepad-dialogs.c:101
+#: ../mousepad/mousepad-dialogs.c:104
 msgid "Failed to open the documentation browser"
 msgstr "Nie udało się otworzyć przeglądarki dokumentacji"
 
 #. build dialog
-#: ../mousepad/mousepad-dialogs.c:116
+#: ../mousepad/mousepad-dialogs.c:119
 msgid "Select Tab Size"
 msgstr "Wybór rozmiaru tabulacji"
 
 #. build the dialog
-#: ../mousepad/mousepad-dialogs.c:197
+#: ../mousepad/mousepad-dialogs.c:200
 msgid "Go To"
 msgstr "Przechodzenie"
 
-#: ../mousepad/mousepad-dialogs.c:219
+#: ../mousepad/mousepad-dialogs.c:222
 msgid "_Line number:"
 msgstr "Numer _wiersza:"
 
-#: ../mousepad/mousepad-dialogs.c:238
+#: ../mousepad/mousepad-dialogs.c:241
 msgid "C_olumn number:"
 msgstr "Numer _kolumny:"
 
-#: ../mousepad/mousepad-dialogs.c:296
+#: ../mousepad/mousepad-dialogs.c:299
 msgid "Remove all entries from the documents history?"
 msgstr "Usunąć wszystkie wpisy z historii dokumentów?"
 
-#: ../mousepad/mousepad-dialogs.c:301
+#: ../mousepad/mousepad-dialogs.c:304
 msgid "Clear Documents History"
 msgstr "Wyczyść historię dokumentów"
 
-#: ../mousepad/mousepad-dialogs.c:304
+#: ../mousepad/mousepad-dialogs.c:307
 msgid ""
 "Clearing the documents history will permanently remove all currently listed "
 "entries."
 msgstr "Wyczyszczenie historii dokumentów, usunie wszystkie pozycje na liście."
 
-#: ../mousepad/mousepad-dialogs.c:335
+#: ../mousepad/mousepad-dialogs.c:338
 msgid "Do you want to save the changes before closing?"
 msgstr "Zapisać zmiany w dokumencie przed jego zamknięciem?"
 
-#: ../mousepad/mousepad-dialogs.c:336
+#: ../mousepad/mousepad-dialogs.c:339
 msgid "Save Changes"
 msgstr "Zapisywanie zmian"
 
-#: ../mousepad/mousepad-dialogs.c:337
+#: ../mousepad/mousepad-dialogs.c:340
 msgid "_Don't Save"
 msgstr "_Nie zapisuj"
 
 #. secondary text
-#: ../mousepad/mousepad-dialogs.c:359
+#: ../mousepad/mousepad-dialogs.c:362
 msgid "If you don't save the document, all the changes will be lost."
 msgstr "Jeśli dokument nie zostanie zapisany, wszystkie wprowadzone zmiany zostaną utracone."
 
-#: ../mousepad/mousepad-dialogs.c:381
+#: ../mousepad/mousepad-dialogs.c:384
 msgid ""
 "The document has been externally modified. Do you want to continue saving?"
 msgstr "Dokument został zmodyfikowany przez inny program. Kontynuować zapisywanie?"
 
-#: ../mousepad/mousepad-dialogs.c:382
+#: ../mousepad/mousepad-dialogs.c:385
 msgid "Externally Modified"
 msgstr "Zmodyfikowany przez inny program"
 
-#: ../mousepad/mousepad-dialogs.c:384
+#: ../mousepad/mousepad-dialogs.c:387
 msgid "If you save the document, all of the external changes will be lost."
 msgstr "Zapisanie dokumentu sprawi, że wszystkie zmiany dokonane przez inny program zostaną utracone."
 
-#: ../mousepad/mousepad-dialogs.c:412
+#: ../mousepad/mousepad-dialogs.c:415
 msgid "Do you want to save your changes before reloading?"
 msgstr "Zapisać zmiany przed ponownym wczytaniem?"
 
-#: ../mousepad/mousepad-dialogs.c:414
+#: ../mousepad/mousepad-dialogs.c:417
 msgid "If you revert the file, all unsaved changes will be lost."
 msgstr "Przywrócenie poprzedniej wersji dokumentu sprawi, że wszystkie niezapisane zmiany zostaną utracone."
 
 #. pack button, add signal and tooltip
-#: ../mousepad/mousepad-document.c:502
+#: ../mousepad/mousepad-document.c:500
 msgid "Close this tab"
 msgstr "Zamyka kartę"
 
 #. create an unique untitled document name
-#: ../mousepad/mousepad-document.c:532
+#: ../mousepad/mousepad-document.c:530
 msgid "Untitled"
 msgstr "Bez tytułu"
 
 #. create the header
-#: ../mousepad/mousepad-encoding-dialog.c:126
+#: ../mousepad/mousepad-encoding-dialog.c:131
 msgid "The document was not UTF-8 valid"
 msgstr "Kodowanie dokumentu niezgodne z UTF-8"
 
-#: ../mousepad/mousepad-encoding-dialog.c:127
+#: ../mousepad/mousepad-encoding-dialog.c:132
 msgid "Please select an encoding below."
 msgstr "Wybieranie kodowania"
 
 #. encoding radio buttons
-#: ../mousepad/mousepad-encoding-dialog.c:139
+#: ../mousepad/mousepad-encoding-dialog.c:144
 msgid "Default (UTF-8)"
 msgstr "Domyślne (UTF-8)"
 
-#: ../mousepad/mousepad-encoding-dialog.c:145
+#: ../mousepad/mousepad-encoding-dialog.c:150
 msgid "System"
 msgstr "Systemowe"
 
-#: ../mousepad/mousepad-encoding-dialog.c:152
+#: ../mousepad/mousepad-encoding-dialog.c:157
 msgid "Other:"
 msgstr "Inne:"
 
-#: ../mousepad/mousepad-encoding-dialog.c:172
+#: ../mousepad/mousepad-encoding-dialog.c:177
 msgid "Checking encodings..."
 msgstr "Sprawdzanie kodowań..."
 
@@ -299,17 +299,17 @@ msgstr "Japońskie"
 msgid "Korean"
 msgstr "Koreańskie"
 
-#: ../mousepad/mousepad-file.c:554
+#: ../mousepad/mousepad-file.c:555
 #, c-format
 msgid "Invalid byte sequence in conversion input"
 msgstr "Nieprawidłowy ciąg bajtów na wejściu przekształcenia"
 
-#: ../mousepad/mousepad-file.c:878
+#: ../mousepad/mousepad-file.c:899
 #, c-format
 msgid "The file \"%s\" you tried to reload does not exist anymore"
 msgstr "Wczytywany ponownie plik „%s” już nie istnieje"
 
-#: ../mousepad/mousepad-file.c:919
+#: ../mousepad/mousepad-file.c:940
 #, c-format
 msgid "Failed to read the status of \"%s\""
 msgstr "Nie udało się odczytać stanu „%s”"
@@ -323,7 +323,7 @@ msgid "No filetype"
 msgstr "Brak typu pliku"
 
 #. setup the window properties
-#: ../mousepad/mousepad-prefs-dialog.c:433 ../mousepad/mousepad-window.c:445
+#: ../mousepad/mousepad-prefs-dialog.c:437 ../mousepad/mousepad-window.c:450
 msgid "Preferences"
 msgstr "Preferencje"
 
@@ -356,7 +356,7 @@ msgid "none"
 msgstr "brak"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:8
-#: ../mousepad/mousepad-style-scheme-action.c:193
+#: ../mousepad/mousepad-style-scheme-action.c:197
 msgid "None"
 msgstr "Brak"
 
@@ -401,7 +401,7 @@ msgid "Text Beside Icons"
 msgstr "Etykiety obok ikon"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:19
-#: ../mousepad/mousepad-window.c:472
+#: ../mousepad/mousepad-window.c:477
 msgid "Show line numbers"
 msgstr "Numery wierszy"
 
@@ -534,62 +534,62 @@ msgid "Window"
 msgstr "Okno"
 
 #. set a custom tab label
-#: ../mousepad/mousepad-print.c:121
+#: ../mousepad/mousepad-print.c:125
 msgid "Document Settings"
 msgstr "Dokument"
 
-#: ../mousepad/mousepad-print.c:596
+#: ../mousepad/mousepad-print.c:600
 msgid "Page Setup"
 msgstr "Konfiguracja strony"
 
-#: ../mousepad/mousepad-print.c:606
+#: ../mousepad/mousepad-print.c:610
 msgid "_Adjust page size and orientation"
 msgstr "_Dostosuj rozmiar i orientację strony"
 
-#: ../mousepad/mousepad-print.c:616
+#: ../mousepad/mousepad-print.c:620
 msgid "Appearance"
 msgstr "Wygląd"
 
-#: ../mousepad/mousepad-print.c:630
+#: ../mousepad/mousepad-print.c:634
 msgid "Print page _headers"
 msgstr "Drukowanie _nagłówków stron"
 
-#: ../mousepad/mousepad-print.c:637
+#: ../mousepad/mousepad-print.c:641
 msgid "Print _line numbers"
 msgstr "Drukowanie numerów _wierszy"
 
-#: ../mousepad/mousepad-print.c:654
+#: ../mousepad/mousepad-print.c:658
 msgid "Numbering interval:"
 msgstr "Odstęp numeracji:"
 
-#: ../mousepad/mousepad-print.c:662
+#: ../mousepad/mousepad-print.c:666
 msgid ""
 "The interval at which to print line numbers. For example a value of 1 will "
 "print a line number on each line, a value of 2 will print a line number on "
 "every other line, and so on."
 msgstr "Określa odstęp z jakim wyświetlane będą numery wierszy. Dla wartości 1 numery pojawią się w każdym wierszu, wartość 2 wyświetli numer w co drugim wierszu, itd."
 
-#: ../mousepad/mousepad-print.c:674
+#: ../mousepad/mousepad-print.c:678
 msgid "Enable text _wrapping"
 msgstr "_Zawijanie tekstu"
 
-#: ../mousepad/mousepad-print.c:681
+#: ../mousepad/mousepad-print.c:685
 msgid "Enable _syntax highlighting"
 msgstr "Kolorowanie _składni"
 
-#: ../mousepad/mousepad-print.c:693
+#: ../mousepad/mousepad-print.c:697
 msgid "Fonts"
 msgstr "Czcionki"
 
-#: ../mousepad/mousepad-print.c:715
+#: ../mousepad/mousepad-print.c:719
 msgid "Header:"
 msgstr "Nagłówek:"
 
-#: ../mousepad/mousepad-print.c:725
+#: ../mousepad/mousepad-print.c:729
 msgid "Body:"
 msgstr "Zawartość:"
 
-#: ../mousepad/mousepad-print.c:735
+#: ../mousepad/mousepad-print.c:739
 msgid "Line numbers:"
 msgstr "Numery wierszy:"
 
@@ -720,9 +720,14 @@ msgstr "Wiersz: %d Kolumna: %d Zaznaczenie: %d"
 msgid "Line: %d Column: %d"
 msgstr "Wiersz: %d Kolumna: %d"
 
-#: ../mousepad/mousepad-style-scheme-action.c:194
+#: ../mousepad/mousepad-style-scheme-action.c:198
 msgid "No style scheme"
 msgstr "Brak zestawu kolorów"
+
+#: ../mousepad/mousepad-style-scheme-action.c:212
+#, c-format
+msgid "%s | Authors: %s | Filename: %s"
+msgstr "%s | Autorzy: %s | Nazwa pliku: %s"
 
 #. show warning to the user
 #: ../mousepad/mousepad-util.c:549
@@ -736,502 +741,502 @@ msgstr "Nie można utworzyć katalogu bazowego „%s”. Zapisywanie do pliku �
 msgid "Failed to store the preferences to \"%s\": %s"
 msgstr "Nie udało się zachować preferencji w „%s”: %s"
 
-#: ../mousepad/mousepad-window.c:401
+#: ../mousepad/mousepad-window.c:406
 msgid "_File"
 msgstr "_Plik"
 
-#: ../mousepad/mousepad-window.c:402
+#: ../mousepad/mousepad-window.c:407
 msgid "_New"
 msgstr "_Nowy"
 
-#: ../mousepad/mousepad-window.c:402
+#: ../mousepad/mousepad-window.c:407
 msgid "Create a new document"
 msgstr "Tworzy nowy dokument"
 
-#: ../mousepad/mousepad-window.c:403
+#: ../mousepad/mousepad-window.c:408
 msgid "New _Window"
 msgstr "Nowe _okno"
 
-#: ../mousepad/mousepad-window.c:403
+#: ../mousepad/mousepad-window.c:408
 msgid "Create a new document in a new window"
 msgstr "Tworzy nowy dokument w nowym oknie"
 
-#: ../mousepad/mousepad-window.c:404
+#: ../mousepad/mousepad-window.c:409
 msgid "New From Te_mplate"
 msgstr "Nowy z _szablonu"
 
-#: ../mousepad/mousepad-window.c:405
+#: ../mousepad/mousepad-window.c:410
 msgid "_Open..."
 msgstr "_Otwórz..."
 
-#: ../mousepad/mousepad-window.c:405
+#: ../mousepad/mousepad-window.c:410
 msgid "Open a file"
 msgstr "Otwiera plik"
 
-#: ../mousepad/mousepad-window.c:406
+#: ../mousepad/mousepad-window.c:411
 msgid "Op_en Recent"
 msgstr "O_statnio otwarte"
 
-#: ../mousepad/mousepad-window.c:407
+#: ../mousepad/mousepad-window.c:412
 msgid "No items found"
 msgstr "Brak elementów"
 
-#: ../mousepad/mousepad-window.c:408
+#: ../mousepad/mousepad-window.c:413
 msgid "Clear _History"
 msgstr "_Wyczyść"
 
-#: ../mousepad/mousepad-window.c:408
+#: ../mousepad/mousepad-window.c:413
 msgid "Clear the recently used files history"
 msgstr "Czyści listę ostatnio otwartych plików"
 
-#: ../mousepad/mousepad-window.c:409
+#: ../mousepad/mousepad-window.c:414
 msgid "Save the current document"
 msgstr "Zapisuje bieżący dokument"
 
-#: ../mousepad/mousepad-window.c:410
+#: ../mousepad/mousepad-window.c:415
 msgid "Save _As..."
 msgstr "Zapisz j_ako..."
 
-#: ../mousepad/mousepad-window.c:410
+#: ../mousepad/mousepad-window.c:415
 msgid "Save current document as another file"
 msgstr "Zapisuje bieżący dokument w innym pliku"
 
-#: ../mousepad/mousepad-window.c:411
+#: ../mousepad/mousepad-window.c:416
 msgid "Save A_ll"
 msgstr "Zapisz _wszystkie"
 
-#: ../mousepad/mousepad-window.c:411
+#: ../mousepad/mousepad-window.c:416
 msgid "Save all document in this window"
 msgstr "Zapisuje wszystkie dokumenty bieżącego okna"
 
-#: ../mousepad/mousepad-window.c:412
+#: ../mousepad/mousepad-window.c:417
 msgid "Re_vert"
 msgstr "_Przywróć"
 
-#: ../mousepad/mousepad-window.c:412
+#: ../mousepad/mousepad-window.c:417
 msgid "Revert to the saved version of the file"
 msgstr "Przywraca ostatnią zapisaną wersję pliku"
 
-#: ../mousepad/mousepad-window.c:413
+#: ../mousepad/mousepad-window.c:418
 msgid "_Print..."
 msgstr "_Wydrukuj..."
 
-#: ../mousepad/mousepad-window.c:413
+#: ../mousepad/mousepad-window.c:418
 msgid "Print the current document"
 msgstr "Drukuje bieżący dokument"
 
-#: ../mousepad/mousepad-window.c:414
+#: ../mousepad/mousepad-window.c:419
 msgid "_Detach Tab"
 msgstr "_Odłącz kartę"
 
-#: ../mousepad/mousepad-window.c:414
+#: ../mousepad/mousepad-window.c:419
 msgid "Move the current document to a new window"
 msgstr "Przemieszcza bieżący dokument do nowego okna"
 
-#: ../mousepad/mousepad-window.c:415
+#: ../mousepad/mousepad-window.c:420
 msgid "Close _Tab"
 msgstr "Zamknij _kartę"
 
-#: ../mousepad/mousepad-window.c:415
+#: ../mousepad/mousepad-window.c:420
 msgid "Close the current document"
 msgstr "Zamyka bieżący dokument"
 
-#: ../mousepad/mousepad-window.c:416
+#: ../mousepad/mousepad-window.c:421
 msgid "_Close Window"
 msgstr "Za_mknij okno"
 
-#: ../mousepad/mousepad-window.c:416
+#: ../mousepad/mousepad-window.c:421
 msgid "Close this window"
 msgstr "Zamyka bieżące okno"
 
-#: ../mousepad/mousepad-window.c:418
+#: ../mousepad/mousepad-window.c:423
 msgid "_Edit"
 msgstr "_Edycja"
 
-#: ../mousepad/mousepad-window.c:419
+#: ../mousepad/mousepad-window.c:424
 msgid "Undo the last action"
 msgstr "Cofa ostatnią czynność"
 
-#: ../mousepad/mousepad-window.c:420
+#: ../mousepad/mousepad-window.c:425
 msgid "Redo the last undone action"
 msgstr "Ponawia ostatnią cofniętą czynność"
 
-#: ../mousepad/mousepad-window.c:421
+#: ../mousepad/mousepad-window.c:426
 msgid "Cut the selection"
 msgstr "Przenosi zaznaczony tekst do schowka"
 
-#: ../mousepad/mousepad-window.c:422
+#: ../mousepad/mousepad-window.c:427
 msgid "Copy the selection"
 msgstr "Kopiuje zaznaczony tekst do schowka"
 
-#: ../mousepad/mousepad-window.c:423
+#: ../mousepad/mousepad-window.c:428
 msgid "Paste the clipboard"
 msgstr "Umieszcza w dokumencie tekst znajdujący się w schowku"
 
-#: ../mousepad/mousepad-window.c:424
+#: ../mousepad/mousepad-window.c:429
 msgid "Paste _Special"
 msgstr "Wklejanie _specjalne"
 
-#: ../mousepad/mousepad-window.c:425
+#: ../mousepad/mousepad-window.c:430
 msgid "Paste from _History"
 msgstr "Z _historii"
 
-#: ../mousepad/mousepad-window.c:425
+#: ../mousepad/mousepad-window.c:430
 msgid "Paste from the clipboard history"
 msgstr "Umieszcza w dokumencie tekst wcześniej przechowywany w schowku"
 
-#: ../mousepad/mousepad-window.c:426
+#: ../mousepad/mousepad-window.c:431
 msgid "Paste as _Column"
 msgstr "Jako _kolumna"
 
-#: ../mousepad/mousepad-window.c:426
+#: ../mousepad/mousepad-window.c:431
 msgid "Paste the clipboard text into a column"
 msgstr "Umieszcza w dokumencie skopiowany tekst jako kolumnę"
 
-#: ../mousepad/mousepad-window.c:427
+#: ../mousepad/mousepad-window.c:432
 msgid "Delete the current selection"
 msgstr "Usuwa zaznaczony tekst"
 
-#: ../mousepad/mousepad-window.c:428
+#: ../mousepad/mousepad-window.c:433
 msgid "Select the text in the entire document"
 msgstr "Zaznacza tekst całego dokumentu"
 
-#: ../mousepad/mousepad-window.c:429
+#: ../mousepad/mousepad-window.c:434
 msgid "Change the selection"
 msgstr "Zmień sposób zaznaczenia"
 
-#: ../mousepad/mousepad-window.c:429
+#: ../mousepad/mousepad-window.c:434
 msgid "Change a normal selection into a column selection and vice versa"
 msgstr "Przełącza pomiędzy zwykłym sposobem zaznaczania tekstu a zaznaczaniem kolumn"
 
-#: ../mousepad/mousepad-window.c:430
+#: ../mousepad/mousepad-window.c:435
 msgid "Conve_rt"
 msgstr "P_rzekształć"
 
-#: ../mousepad/mousepad-window.c:431
+#: ../mousepad/mousepad-window.c:436
 msgid "To _Uppercase"
 msgstr "Na _wielkie litery"
 
-#: ../mousepad/mousepad-window.c:431
+#: ../mousepad/mousepad-window.c:436
 msgid "Change the case of the selection to uppercase"
 msgstr "Zmienia znaki zaznaczonego tekstu na wielkie litery"
 
-#: ../mousepad/mousepad-window.c:432
+#: ../mousepad/mousepad-window.c:437
 msgid "To _Lowercase"
 msgstr "Na _małe litery"
 
-#: ../mousepad/mousepad-window.c:432
+#: ../mousepad/mousepad-window.c:437
 msgid "Change the case of the selection to lowercase"
 msgstr "Zmienia znaki zaznaczonego tekstu na małe litery"
 
-#: ../mousepad/mousepad-window.c:433
+#: ../mousepad/mousepad-window.c:438
 msgid "To _Title Case"
 msgstr "Na _rozpoczynane wielką literą"
 
-#: ../mousepad/mousepad-window.c:433
+#: ../mousepad/mousepad-window.c:438
 msgid "Change the case of the selection to title case"
 msgstr "Zmienia znaki zaznaczonego tekstu na litery tytułowe"
 
-#: ../mousepad/mousepad-window.c:434
+#: ../mousepad/mousepad-window.c:439
 msgid "To _Opposite Case"
 msgstr "Na _odwrotną wielkość liter"
 
-#: ../mousepad/mousepad-window.c:434
+#: ../mousepad/mousepad-window.c:439
 msgid "Change the case of the selection opposite case"
 msgstr "Zmienia wielkość znaków w zaznaczonym teksie na odwrotną"
 
-#: ../mousepad/mousepad-window.c:435
+#: ../mousepad/mousepad-window.c:440
 msgid "_Tabs to Spaces"
 msgstr "_Tabulatory na odstępy"
 
-#: ../mousepad/mousepad-window.c:435
+#: ../mousepad/mousepad-window.c:440
 msgid "Convert all tabs to spaces in the selection or document"
 msgstr "Zamienia wszystkie tabulatory na odstępy w zaznaczonym fragmencie lub dokumencie"
 
-#: ../mousepad/mousepad-window.c:436
+#: ../mousepad/mousepad-window.c:441
 msgid "_Spaces to Tabs"
 msgstr "_Odstępy na tabulatory"
 
-#: ../mousepad/mousepad-window.c:436
+#: ../mousepad/mousepad-window.c:441
 msgid ""
 "Convert all the leading spaces to tabs in the selected line(s) or document"
 msgstr "Zamienia wszystkie odstępy początkowe na tabulatory w zaznaczonym fragmencie lub dokumencie"
 
-#: ../mousepad/mousepad-window.c:437
+#: ../mousepad/mousepad-window.c:442
 msgid "St_rip Trailing Spaces"
 msgstr "_Usuń odstępy końcowe"
 
-#: ../mousepad/mousepad-window.c:437
+#: ../mousepad/mousepad-window.c:442
 msgid "Remove all the trailing spaces from the selected line(s) or document"
 msgstr "Usuwa wszystkie odstępy z końców zaznaczonych wierszy lub dokumentu"
 
-#: ../mousepad/mousepad-window.c:438
+#: ../mousepad/mousepad-window.c:443
 msgid "_Transpose"
 msgstr "_Odwróć kolejność"
 
-#: ../mousepad/mousepad-window.c:438
+#: ../mousepad/mousepad-window.c:443
 msgid "Reverse the order of something"
 msgstr "Odwraca kolejność wierszy lub znaków"
 
-#: ../mousepad/mousepad-window.c:439
+#: ../mousepad/mousepad-window.c:444
 msgid "_Move Selection"
 msgstr "_Przemieść zaznaczenie"
 
-#: ../mousepad/mousepad-window.c:440
+#: ../mousepad/mousepad-window.c:445
 msgid "Line _Up"
 msgstr "Wiersz w gó_rę"
 
-#: ../mousepad/mousepad-window.c:440
+#: ../mousepad/mousepad-window.c:445
 msgid "Move the selection one line up"
 msgstr "Przemieszcza zaznaczony tekst jeden wiersz w górę"
 
-#: ../mousepad/mousepad-window.c:441
+#: ../mousepad/mousepad-window.c:446
 msgid "Line _Down"
 msgstr "Wiersz w _dół"
 
-#: ../mousepad/mousepad-window.c:441
+#: ../mousepad/mousepad-window.c:446
 msgid "Move the selection one line down"
 msgstr "Przemieszcza zaznaczony tekst jeden wiersz w górę"
 
-#: ../mousepad/mousepad-window.c:442
+#: ../mousepad/mousepad-window.c:447
 msgid "Dup_licate Line / Selection"
 msgstr "_Powiel wiersz lub zaznaczenie"
 
-#: ../mousepad/mousepad-window.c:442
+#: ../mousepad/mousepad-window.c:447
 msgid "Duplicate the current line or selection"
 msgstr "Tworzy kopię bieżącego wiersza lub zaznaczonego tekstu"
 
-#: ../mousepad/mousepad-window.c:443
+#: ../mousepad/mousepad-window.c:448
 msgid "_Increase Indent"
 msgstr "Z_większ wcięcie"
 
-#: ../mousepad/mousepad-window.c:443
+#: ../mousepad/mousepad-window.c:448
 msgid "Increase the indentation of the selection or current line"
 msgstr "Zwiększa wcięcie zaznaczonego tekstu lub bieżącego wiersza"
 
-#: ../mousepad/mousepad-window.c:444
+#: ../mousepad/mousepad-window.c:449
 msgid "_Decrease Indent"
 msgstr "Z_mniejsz wcięcie"
 
-#: ../mousepad/mousepad-window.c:444
+#: ../mousepad/mousepad-window.c:449
 msgid "Decrease the indentation of the selection or current line"
 msgstr "Zmniejsza wcięcie zaznaczonego tekstu lub bieżącego wiersza"
 
-#: ../mousepad/mousepad-window.c:445
+#: ../mousepad/mousepad-window.c:450
 msgid "Show the preferences dialog"
 msgstr "Wyświetla okno preferencji"
 
-#: ../mousepad/mousepad-window.c:447
+#: ../mousepad/mousepad-window.c:452
 msgid "_Search"
 msgstr "_Wyszukiwanie"
 
-#: ../mousepad/mousepad-window.c:448
+#: ../mousepad/mousepad-window.c:453
 msgid "Search for text"
 msgstr "Wyszukuje wprowadzony tekst"
 
-#: ../mousepad/mousepad-window.c:449
+#: ../mousepad/mousepad-window.c:454
 msgid "Find _Next"
 msgstr "Wyszukaj _następny"
 
-#: ../mousepad/mousepad-window.c:449
+#: ../mousepad/mousepad-window.c:454
 msgid "Search forwards for the same text"
 msgstr "Wyszukuje następne wystąpienie wyszukiwanego tekstu"
 
-#: ../mousepad/mousepad-window.c:450
+#: ../mousepad/mousepad-window.c:455
 msgid "Find _Previous"
 msgstr "Wyszukaj p_oprzedni"
 
-#: ../mousepad/mousepad-window.c:450
+#: ../mousepad/mousepad-window.c:455
 msgid "Search backwards for the same text"
 msgstr "Wyszukuje poprzednie wystąpienie wyszukiwanego tekstu"
 
-#: ../mousepad/mousepad-window.c:451
+#: ../mousepad/mousepad-window.c:456
 msgid "Find and Rep_lace..."
 msgstr "Wyszukaj i _zastąp..."
 
-#: ../mousepad/mousepad-window.c:451
+#: ../mousepad/mousepad-window.c:456
 msgid "Search for and replace text"
 msgstr "Wyszukuje i zamienia wprowadzony tekst"
 
-#: ../mousepad/mousepad-window.c:452
+#: ../mousepad/mousepad-window.c:457
 msgid "_Go to..."
 msgstr "_Wiersz i kolumna..."
 
-#: ../mousepad/mousepad-window.c:452
+#: ../mousepad/mousepad-window.c:457
 msgid "Go to a specific location in the document"
 msgstr "Przechodzi do określonego położenia w dokumencie"
 
-#: ../mousepad/mousepad-window.c:454
+#: ../mousepad/mousepad-window.c:459
 msgid "_View"
 msgstr "_Widok"
 
-#: ../mousepad/mousepad-window.c:455
+#: ../mousepad/mousepad-window.c:460
 msgid "Select F_ont..."
 msgstr "_Czcionka..."
 
-#: ../mousepad/mousepad-window.c:455
+#: ../mousepad/mousepad-window.c:460
 msgid "Change the editor font"
 msgstr "Zmienia czcionkę dokumentu"
 
-#: ../mousepad/mousepad-window.c:456
+#: ../mousepad/mousepad-window.c:461
 msgid "_Color Scheme"
 msgstr "Zestaw _kolorów"
 
-#: ../mousepad/mousepad-window.c:458
+#: ../mousepad/mousepad-window.c:463
 msgid "_Document"
 msgstr "_Dokument"
 
-#: ../mousepad/mousepad-window.c:459
+#: ../mousepad/mousepad-window.c:464
 msgid "Line E_nding"
 msgstr "Znaki _końca wiersza"
 
-#: ../mousepad/mousepad-window.c:460
+#: ../mousepad/mousepad-window.c:465
 msgid "Tab _Size"
 msgstr "_Rozmiar tabulacji"
 
-#: ../mousepad/mousepad-window.c:461
+#: ../mousepad/mousepad-window.c:466
 msgid "_Filetype"
 msgstr "_Typ pliku"
 
-#: ../mousepad/mousepad-window.c:462
+#: ../mousepad/mousepad-window.c:467
 msgid "_Previous Tab"
 msgstr "_Poprzednia karta"
 
-#: ../mousepad/mousepad-window.c:462
+#: ../mousepad/mousepad-window.c:467
 msgid "Select the previous tab"
 msgstr "Przechodzi do poprzedniej karty"
 
-#: ../mousepad/mousepad-window.c:463
+#: ../mousepad/mousepad-window.c:468
 msgid "_Next Tab"
 msgstr "_Następna karta"
 
-#: ../mousepad/mousepad-window.c:463
+#: ../mousepad/mousepad-window.c:468
 msgid "Select the next tab"
 msgstr "Przechodzi do następnej karty"
 
-#: ../mousepad/mousepad-window.c:465
+#: ../mousepad/mousepad-window.c:470
 msgid "_Help"
 msgstr "Pomo_c"
 
-#: ../mousepad/mousepad-window.c:466
+#: ../mousepad/mousepad-window.c:471
 msgid "_Contents"
 msgstr "_Spis treści"
 
-#: ../mousepad/mousepad-window.c:466
+#: ../mousepad/mousepad-window.c:471
 msgid "Display the Mousepad user manual"
 msgstr "Wyświetla podręcznik programu"
 
-#: ../mousepad/mousepad-window.c:467
+#: ../mousepad/mousepad-window.c:472
 msgid "About this application"
 msgstr "Wyświetla informacje o programie"
 
-#: ../mousepad/mousepad-window.c:472
+#: ../mousepad/mousepad-window.c:477
 msgid "Line N_umbers"
 msgstr "_Numery wierszy"
 
-#: ../mousepad/mousepad-window.c:473
+#: ../mousepad/mousepad-window.c:478
 msgid "_Menubar"
 msgstr "Pasek _menu"
 
-#: ../mousepad/mousepad-window.c:473
+#: ../mousepad/mousepad-window.c:478
 msgid "Change the visibility of the main menubar"
 msgstr "Przełącza wyświetlanie paska menu"
 
-#: ../mousepad/mousepad-window.c:474
+#: ../mousepad/mousepad-window.c:479
 msgid "_Toolbar"
 msgstr "_Pasek narzędziowy"
 
-#: ../mousepad/mousepad-window.c:474
+#: ../mousepad/mousepad-window.c:479
 msgid "Change the visibility of the toolbar"
 msgstr "Przełącza wyświetlanie paska narzędziowego"
 
-#: ../mousepad/mousepad-window.c:475
+#: ../mousepad/mousepad-window.c:480
 msgid "St_atusbar"
 msgstr "Pasek _stanu"
 
-#: ../mousepad/mousepad-window.c:475
+#: ../mousepad/mousepad-window.c:480
 msgid "Change the visibility of the statusbar"
 msgstr "Przełącza wyświetlanie paska stanu"
 
-#: ../mousepad/mousepad-window.c:476
+#: ../mousepad/mousepad-window.c:481
 msgid "_Fullscreen"
 msgstr "_Pełny ekran"
 
-#: ../mousepad/mousepad-window.c:476 ../mousepad/mousepad-window.c:5018
+#: ../mousepad/mousepad-window.c:481 ../mousepad/mousepad-window.c:5026
 msgid "Make the window fullscreen"
 msgstr "Wyświetla okno na pełnym ekranie"
 
-#: ../mousepad/mousepad-window.c:477
+#: ../mousepad/mousepad-window.c:482
 msgid "_Auto Indent"
 msgstr "_Automatyczne wcięcia"
 
-#: ../mousepad/mousepad-window.c:477
+#: ../mousepad/mousepad-window.c:482
 msgid "Auto indent a new line"
 msgstr "Automatycznie wcina nowy akapit"
 
-#: ../mousepad/mousepad-window.c:478
+#: ../mousepad/mousepad-window.c:483
 msgid "Insert _Spaces"
 msgstr "Wstawianie znaków _odstępu"
 
-#: ../mousepad/mousepad-window.c:478
+#: ../mousepad/mousepad-window.c:483
 msgid "Insert spaces when the tab button is pressed"
 msgstr "Wstawia znaki odstępu zamiast tabulatora"
 
-#: ../mousepad/mousepad-window.c:479
+#: ../mousepad/mousepad-window.c:484
 msgid "_Word Wrap"
 msgstr "Zawijanie _tekstu"
 
-#: ../mousepad/mousepad-window.c:479
+#: ../mousepad/mousepad-window.c:484
 msgid "Toggle breaking lines in between words"
 msgstr "Przełącza łamanie wierszy między słowami"
 
-#: ../mousepad/mousepad-window.c:480
+#: ../mousepad/mousepad-window.c:485
 msgid "Write Unicode _BOM"
 msgstr "Zapisywania znacznika _BOM"
 
-#: ../mousepad/mousepad-window.c:480
+#: ../mousepad/mousepad-window.c:485
 msgid "Store the byte-order mark in the file"
 msgstr "Przechowuje oznaczenie porządku bajtów w pliku"
 
-#: ../mousepad/mousepad-window.c:485
+#: ../mousepad/mousepad-window.c:490
 msgid "Unix (_LF)"
 msgstr "Unix (_LF)"
 
-#: ../mousepad/mousepad-window.c:485
+#: ../mousepad/mousepad-window.c:490
 msgid "Set the line ending of the document to Unix (LF)"
 msgstr "Ustala kodowanie końca wiersza typowe dla systemów Unix (LF)"
 
-#: ../mousepad/mousepad-window.c:486
+#: ../mousepad/mousepad-window.c:491
 msgid "Mac (_CR)"
 msgstr "Mac (_CR)"
 
-#: ../mousepad/mousepad-window.c:486
+#: ../mousepad/mousepad-window.c:491
 msgid "Set the line ending of the document to Mac (CR)"
 msgstr "Ustala kodowanie końca wiersza typowe dla systemów Mac (CR)"
 
-#: ../mousepad/mousepad-window.c:487
+#: ../mousepad/mousepad-window.c:492
 msgid "DOS / Windows (C_R LF)"
 msgstr "DOS / Windows (C_R LF)"
 
-#: ../mousepad/mousepad-window.c:487
+#: ../mousepad/mousepad-window.c:492
 msgid "Set the line ending of the document to DOS / Windows (CR LF)"
 msgstr "Ustala kodowanie końca wiersza typowe dla systemów DOS / Windows (CR LF)"
 
 #. add the label with the root warning
-#: ../mousepad/mousepad-window.c:860
+#: ../mousepad/mousepad-window.c:865
 msgid "Warning, you are using the root account, you may harm your system."
 msgstr "Uwaga: bieżące konto należy do użytkownika root. Istnieje możliwość uszkodzenia systemu."
 
 #. show the warning
-#: ../mousepad/mousepad-window.c:1516
+#: ../mousepad/mousepad-window.c:1521
 msgid "Failed to open the document"
 msgstr "Nie udało się otworzyć dokumentu"
 
-#: ../mousepad/mousepad-window.c:1713
+#: ../mousepad/mousepad-window.c:1718
 msgid "Read Only"
 msgstr "Tylko do odczytu"
 
-#: ../mousepad/mousepad-window.c:2382
+#: ../mousepad/mousepad-window.c:2388
 #, c-format
 msgid ""
 "No template files found in\n"
@@ -1239,62 +1244,66 @@ msgid ""
 msgstr "Nie odnaleziono plików szablonu w\npołożeniu „%s”"
 
 #. create other action
-#: ../mousepad/mousepad-window.c:2498
+#: ../mousepad/mousepad-window.c:2504
 msgid "Set custom tab size"
 msgstr "Konfiguruje własny rozmiar tabulacji"
 
 #. create suitable label for the other menu
-#: ../mousepad/mousepad-window.c:2546
+#: ../mousepad/mousepad-window.c:2552
 #, c-format
 msgid "Ot_her (%d)..."
 msgstr "_Inny (%d)..."
 
 #. set action label
-#: ../mousepad/mousepad-window.c:2557
+#: ../mousepad/mousepad-window.c:2563
 msgid "Ot_her..."
 msgstr "_Inny..."
 
 #. build description
 #. get the offset length: 'Encoding: '
-#: ../mousepad/mousepad-window.c:2873 ../mousepad/mousepad-window.c:3100
+#: ../mousepad/mousepad-window.c:2879 ../mousepad/mousepad-window.c:3106
 msgid "Charset"
 msgstr "Kodowanie"
 
-#: ../mousepad/mousepad-window.c:3005
+#: ../mousepad/mousepad-window.c:3011
 #, c-format
 msgid "Open '%s'"
 msgstr "Otwórz „%s”"
 
-#: ../mousepad/mousepad-window.c:3150
+#: ../mousepad/mousepad-window.c:3156
 msgid "Failed to clear the recent history"
 msgstr "Nie udało się wyczyścić historii"
 
 #. create an item to inform the user
-#: ../mousepad/mousepad-window.c:3580
+#: ../mousepad/mousepad-window.c:3586
 msgid "No clipboard data"
 msgstr "Brak danych w schowku"
 
 #. set error message
-#: ../mousepad/mousepad-window.c:3719
+#: ../mousepad/mousepad-window.c:3725
 msgid "Templates should be UTF-8 valid"
 msgstr "Szablony powinne być zgodne z kodowaniem UTF-8"
 
 #. set error message
-#: ../mousepad/mousepad-window.c:3727
+#: ../mousepad/mousepad-window.c:3733
 msgid "Reading the template failed, the menu item has been removed"
 msgstr "Nie udało się odczytać szablonu, obiekt menu został usunięty"
 
 #. set error message
-#: ../mousepad/mousepad-window.c:3732
+#: ../mousepad/mousepad-window.c:3738
 msgid "Loading the template failed"
 msgstr "Nie udało się wczytać szablonu"
 
 #. create new file chooser dialog
-#: ../mousepad/mousepad-window.c:3757
+#: ../mousepad/mousepad-window.c:3763
 msgid "Open File"
 msgstr "Wybór pliku"
 
-#: ../mousepad/mousepad-window.c:3870
+#: ../mousepad/mousepad-window.c:3779
+msgid "_Encoding:"
+msgstr "_Kodowanie:"
+
+#: ../mousepad/mousepad-window.c:3876
 #, c-format
 msgid ""
 "Failed to open \"%s\" for reading. It will be removed from the document "
@@ -1302,35 +1311,35 @@ msgid ""
 msgstr "Nie udało się odczytać pliku „%s”. Plik zostanie usunięty z historii."
 
 #. show the warning and cleanup
-#: ../mousepad/mousepad-window.c:3874
+#: ../mousepad/mousepad-window.c:3880
 msgid "Failed to open file"
 msgstr "Nie udało się otworzyć pliku"
 
 #. show the error
-#: ../mousepad/mousepad-window.c:3980 ../mousepad/mousepad-window.c:4103
+#: ../mousepad/mousepad-window.c:3986 ../mousepad/mousepad-window.c:4109
 msgid "Failed to save the document"
 msgstr "Nie udało się zapisać dokumentu"
 
 #. create the dialog
-#: ../mousepad/mousepad-window.c:4004
+#: ../mousepad/mousepad-window.c:4010
 msgid "Save As"
 msgstr "Wybór pliku"
 
 #. show the error
-#: ../mousepad/mousepad-window.c:4195
+#: ../mousepad/mousepad-window.c:4201
 msgid "Failed to reload the document"
 msgstr "Nie udało się ponownie wczytać dokumentu"
 
 #. show the error
-#: ../mousepad/mousepad-window.c:4222
+#: ../mousepad/mousepad-window.c:4228
 msgid "Failed to print the document"
 msgstr "Nie udało się wydrukować dokumentu"
 
-#: ../mousepad/mousepad-window.c:4846
+#: ../mousepad/mousepad-window.c:4852
 msgid "Choose Mousepad Font"
 msgstr "Wybór czcionki"
 
-#: ../mousepad/mousepad-window.c:5011
+#: ../mousepad/mousepad-window.c:5019
 msgid "Leave fullscreen mode"
 msgstr "Wyłącza tryb pełnego ekranu"
 
