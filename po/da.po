@@ -15,7 +15,7 @@ msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-05-19 00:30+0200\n"
-"PO-Revision-Date: 2019-05-19 18:47+0000\n"
+"PO-Revision-Date: 2019-05-25 21:15+0000\n"
 "Last-Translator: scootergrisen\n"
 "Language-Team: Danish (http://www.transifex.com/xfce/xfce-apps/language/da/)\n"
 "MIME-Version: 1.0\n"
@@ -26,7 +26,7 @@ msgstr ""
 
 #: ../mousepad/main.c:44
 msgid "Do not register with the D-BUS session message bus"
-msgstr "Undlad at registrere med D-BUS-sessionshåndteringensbussen"
+msgstr "Registrer ikke med D-BUS-sessionsmeddelelsesbussen"
 
 #: ../mousepad/main.c:45
 msgid "Quit a running Mousepad instance"
@@ -115,7 +115,7 @@ msgstr "Gem ændringer"
 
 #: ../mousepad/mousepad-dialogs.c:340
 msgid "_Don't Save"
-msgstr "Undlad at _gemme"
+msgstr "Gem _ikke"
 
 #. secondary text
 #: ../mousepad/mousepad-dialogs.c:362
@@ -771,7 +771,7 @@ msgstr "Åbn en fil"
 
 #: ../mousepad/mousepad-window.c:411
 msgid "Op_en Recent"
-msgstr "Åbn nyl_ige"
+msgstr "Åbn n_ylige"
 
 #: ../mousepad/mousepad-window.c:412
 msgid "No items found"
@@ -799,7 +799,7 @@ msgstr "Gem det nuværende dokument som anden fil"
 
 #: ../mousepad/mousepad-window.c:416
 msgid "Save A_ll"
-msgstr "Gem a_lle"
+msgstr "Gem _alle"
 
 #: ../mousepad/mousepad-window.c:416
 msgid "Save all document in this window"
@@ -823,7 +823,7 @@ msgstr "Udskriv det nuværende dokument"
 
 #: ../mousepad/mousepad-window.c:419
 msgid "_Detach Tab"
-msgstr "_Frigør faneblad"
+msgstr "Fri_gør faneblad"
 
 #: ../mousepad/mousepad-window.c:419
 msgid "Move the current document to a new window"
@@ -1004,7 +1004,7 @@ msgstr "Duplikér den nuværende linje eller markering"
 
 #: ../mousepad/mousepad-window.c:448
 msgid "_Increase Indent"
-msgstr "_Forøg indrykning"
+msgstr "_For_øg indrykning"
 
 #: ../mousepad/mousepad-window.c:448
 msgid "Increase the indentation of the selection or current line"
@@ -1012,7 +1012,7 @@ msgstr "Forøg indrykningen af markeringen eller nuværende linje"
 
 #: ../mousepad/mousepad-window.c:449
 msgid "_Decrease Indent"
-msgstr "_Formindsk indrykning"
+msgstr "For_mindsk indrykning"
 
 #: ../mousepad/mousepad-window.c:449
 msgid "Decrease the indentation of the selection or current line"
@@ -1076,7 +1076,7 @@ msgstr "Skift redigeringens skrifttype"
 
 #: ../mousepad/mousepad-window.c:461
 msgid "_Color Scheme"
-msgstr "_Farveskema"
+msgstr "Fa_rveskema"
 
 #: ../mousepad/mousepad-window.c:463
 msgid "_Document"
@@ -1092,7 +1092,7 @@ msgstr "Tabulator_størrelse"
 
 #: ../mousepad/mousepad-window.c:466
 msgid "_Filetype"
-msgstr "_Filtype"
+msgstr "Fil_type"
 
 #: ../mousepad/mousepad-window.c:467
 msgid "_Previous Tab"
@@ -1120,7 +1120,7 @@ msgstr "_Indhold"
 
 #: ../mousepad/mousepad-window.c:471
 msgid "Display the Mousepad user manual"
-msgstr "Vis Mousepad brugermanual"
+msgstr "Vis brugermanualen til Mousepad"
 
 #: ../mousepad/mousepad-window.c:472
 msgid "About this application"
@@ -1160,7 +1160,7 @@ msgstr "_Fuldskærm"
 
 #: ../mousepad/mousepad-window.c:481 ../mousepad/mousepad-window.c:5026
 msgid "Make the window fullscreen"
-msgstr "Gør vinduet til fuldskærm"
+msgstr "Sæt vinduet i fuldskærm"
 
 #: ../mousepad/mousepad-window.c:482
 msgid "_Auto Indent"
