@@ -207,8 +207,9 @@ mousepad_encoding_dialog_init (MousepadEncodingDialog *dialog)
   gtk_box_pack_start (GTK_BOX (vbox), GTK_WIDGET (dialog->document), TRUE, TRUE, 0);
   gtk_text_view_set_editable (GTK_TEXT_VIEW (dialog->document->textview), FALSE);
   gtk_text_view_set_cursor_visible (GTK_TEXT_VIEW (dialog->document->textview), FALSE);
+  g_settings_unbind (G_OBJECT (dialog->document->textview), "show-line-numbers");
   gtk_source_view_set_show_line_numbers (GTK_SOURCE_VIEW (dialog->document->textview), FALSE);
-  mousepad_view_set_word_wrap (dialog->document->textview, FALSE);
+  gtk_text_view_set_wrap_mode (GTK_TEXT_VIEW (dialog->document->textview), GTK_WRAP_NONE);
   gtk_widget_show (GTK_WIDGET (dialog->document));
 }
 
