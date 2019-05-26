@@ -285,6 +285,10 @@ mousepad_file_set_filename (MousepadFile *file,
 {
   g_return_if_fail (MOUSEPAD_IS_FILE (file));
 
+  /* reset the stored modification time when a new filename set */
+  if (g_strcmp0 (file->filename, filename) != 0)
+    file->mtime = 0;
+
   /* free the old filename */
   g_free (file->filename);
 
