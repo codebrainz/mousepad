@@ -753,7 +753,7 @@ mousepad_window_create_menubar (MousepadWindow *window)
   action = gtk_action_group_get_action (window->action_group, "menubar");
   if (MOUSEPAD_SETTING_GET_BOOLEAN (WINDOW_FULLSCREEN))
     {
-      gint value = MOUSEPAD_SETTING_GET_BOOLEAN (MENUBAR_VISIBLE_FULLSCREEN);
+      gint value = MOUSEPAD_SETTING_GET_ENUM (MENUBAR_VISIBLE_FULLSCREEN);
       active = (value == 0) ? MOUSEPAD_SETTING_GET_BOOLEAN (MENUBAR_VISIBLE) : (value == 2);
     }
   else
@@ -793,7 +793,7 @@ mousepad_window_create_toolbar (MousepadWindow *window)
   action = gtk_action_group_get_action (window->action_group, "toolbar");
   if (MOUSEPAD_SETTING_GET_BOOLEAN (WINDOW_FULLSCREEN))
     {
-      gint value = MOUSEPAD_SETTING_GET_BOOLEAN (TOOLBAR_VISIBLE_FULLSCREEN);
+      gint value = MOUSEPAD_SETTING_GET_ENUM (TOOLBAR_VISIBLE_FULLSCREEN);
       active = (value == 0) ? MOUSEPAD_SETTING_GET_BOOLEAN (TOOLBAR_VISIBLE) : (value == 2);
     }
   else
@@ -920,7 +920,7 @@ mousepad_window_create_statusbar (MousepadWindow *window)
   action = gtk_action_group_get_action (window->action_group, "statusbar");
   if (MOUSEPAD_SETTING_GET_BOOLEAN (WINDOW_FULLSCREEN))
     {
-      gint value = MOUSEPAD_SETTING_GET_BOOLEAN (STATUSBAR_VISIBLE_FULLSCREEN);
+      gint value = MOUSEPAD_SETTING_GET_ENUM (STATUSBAR_VISIBLE_FULLSCREEN);
       active = (value == 0) ? MOUSEPAD_SETTING_GET_BOOLEAN (STATUSBAR_VISIBLE) : (value == 2);
     }
   else
