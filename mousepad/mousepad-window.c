@@ -107,6 +107,7 @@ static GtkWidget        *mousepad_window_provide_languages_menu       (MousepadW
                                                                        MousepadStatusbar      *statusbar);
 static void              mousepad_window_create_statusbar             (MousepadWindow         *window);
 static gboolean          mousepad_window_get_in_fullscreen            (MousepadWindow         *window);
+static gboolean          mousepad_window_fullscreen_bars_timer        (gpointer                user_data);
 static void              mousepad_window_update_main_widgets          (MousepadWindow         *window);
 
 /* notebook signals */
@@ -393,6 +394,9 @@ struct _MousepadWindow
 
   /* support to remember window geometry */
   guint                save_geometry_timer_id;
+
+  /* fullscreen bars visibility switch */
+  guint                fullscreen_bars_timer_id;
 
   /* idle update functions for the recent and go menu */
   guint                update_recent_menu_id;
@@ -987,6 +991,7 @@ mousepad_window_init (MousepadWindow *window)
 
   /* initialize stuff */
   window->save_geometry_timer_id = 0;
+  window->fullscreen_bars_timer_id = 0;
   window->update_recent_menu_id = 0;
   window->update_go_menu_id = 0;
   window->gomenu_merge_id = 0;
@@ -1104,6 +1109,10 @@ mousepad_window_dispose (GObject *object)
   /* destroy the save geometry timer source */
   if (G_UNLIKELY (window->save_geometry_timer_id != 0))
     g_source_remove (window->save_geometry_timer_id);
+
+  /* destroy the fullscreen bars timer source */
+  if (G_UNLIKELY (window->fullscreen_bars_timer_id != 0))
+    g_source_remove (window->fullscreen_bars_timer_id);
 
   (*G_OBJECT_CLASS (mousepad_window_parent_class)->dispose) (object);
 }
@@ -4966,6 +4975,20 @@ mousepad_window_action_statusbar (GtkToggleAction *action,
 
 
 
+static gboolean
+mousepad_window_fullscreen_bars_timer (gpointer user_data)
+{
+  MousepadWindow *window = MOUSEPAD_WINDOW (user_data);
+
+  mousepad_window_update_main_widgets (window);
+
+  MOUSEPAD_WINDOW (user_data)->fullscreen_bars_timer_id = 0;
+
+  return FALSE;
+}
+
+
+
 static void
 mousepad_window_update_main_widgets (MousepadWindow *window)
 {
@@ -5026,8 +5049,13 @@ mousepad_window_action_fullscreen (GtkToggleAction *action,
       gtk_action_set_tooltip (GTK_ACTION (action), _("Make the window fullscreen"));
     }
 
-  /* update the widgets based on whether in fullscreen mode or not */
-  mousepad_window_update_main_widgets (window);
+  if (window->fullscreen_bars_timer_id == 0)
+    {
+      /* update the widgets based on whether in fullscreen mode or not */
+      window->fullscreen_bars_timer_id = g_timeout_add_full (G_PRIORITY_DEFAULT_IDLE, 50,
+                                                             mousepad_window_fullscreen_bars_timer,
+                                                             window, NULL);
+    }
 }
 
 
