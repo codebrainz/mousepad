@@ -15,7 +15,7 @@ msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-05-19 00:30+0200\n"
-"PO-Revision-Date: 2019-05-25 21:15+0000\n"
+"PO-Revision-Date: 2019-05-28 15:56+0000\n"
 "Last-Translator: scootergrisen\n"
 "Language-Team: Danish (http://www.transifex.com/xfce/xfce-apps/language/da/)\n"
 "MIME-Version: 1.0\n"
@@ -771,7 +771,7 @@ msgstr "Åbn en fil"
 
 #: ../mousepad/mousepad-window.c:411
 msgid "Op_en Recent"
-msgstr "Åbn n_ylige"
+msgstr "Åbn s_eneste"
 
 #: ../mousepad/mousepad-window.c:412
 msgid "No items found"
@@ -783,7 +783,7 @@ msgstr "Ryd _historik"
 
 #: ../mousepad/mousepad-window.c:413
 msgid "Clear the recently used files history"
-msgstr "Ryd historikken over nyligt brugte filer"
+msgstr "Ryd historikken over seneste brugte filer"
 
 #: ../mousepad/mousepad-window.c:414
 msgid "Save the current document"
@@ -1268,7 +1268,7 @@ msgstr "Åbn '%s'"
 
 #: ../mousepad/mousepad-window.c:3156
 msgid "Failed to clear the recent history"
-msgstr "Kunne ikke rydde nylig historik"
+msgstr "Kunne ikke rydde seneste-historikken"
 
 #. create an item to inform the user
 #: ../mousepad/mousepad-window.c:3586
