@@ -15,7 +15,7 @@ msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-05-19 00:30+0200\n"
-"PO-Revision-Date: 2019-06-01 14:18+0000\n"
+"PO-Revision-Date: 2019-06-03 17:33+0000\n"
 "Last-Translator: scootergrisen\n"
 "Language-Team: Danish (http://www.transifex.com/xfce/xfce-apps/language/da/)\n"
 "MIME-Version: 1.0\n"
@@ -783,7 +783,7 @@ msgstr "Ryd _historik"
 
 #: ../mousepad/mousepad-window.c:413
 msgid "Clear the recently used files history"
-msgstr "Ryd historikken over seneste brugte filer"
+msgstr "Ryd historikken over senest brugte filer"
 
 #: ../mousepad/mousepad-window.c:414
 msgid "Save the current document"
