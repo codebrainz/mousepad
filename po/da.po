@@ -15,7 +15,7 @@ msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-05-19 00:30+0200\n"
-"PO-Revision-Date: 2019-06-10 10:44+0000\n"
+"PO-Revision-Date: 2019-06-11 12:55+0000\n"
 "Last-Translator: scootergrisen\n"
 "Language-Team: Danish (http://www.transifex.com/xfce/xfce-apps/language/da/)\n"
 "MIME-Version: 1.0\n"
@@ -300,7 +300,7 @@ msgstr "Koreansk"
 #: ../mousepad/mousepad-file.c:555
 #, c-format
 msgid "Invalid byte sequence in conversion input"
-msgstr "Ugyldig sekvens for byte i konverteringsinput"
+msgstr "Ugyldig bytesekvens i konverteringsinput"
 
 #: ../mousepad/mousepad-file.c:899
 #, c-format
