@@ -231,7 +231,7 @@
       </description>
     </key>
     <key name="path-in-title" type="b">
-      <default>false</default>
+      <default>true</default>
       <summary>Show path in window title</summary>
       <description>
         When true the active document's full path will be shown in the window's
