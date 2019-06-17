@@ -107,21 +107,22 @@
     </menu>
 
     <menu action="document-menu">
-      <menu action="language-menu">
-        <placeholder name="placeholder-language-section-items" />
-      </menu>
+      <menuitem action="word-wrap" />
       <menuitem action="auto-indent" />
-      <menu action="eol-menu">
-        <menuitem action="unix" />
-        <menuitem action="mac" />
-        <menuitem action="dos" />
-      </menu>
       <menu action="tab-size-menu">
         <placeholder name="placeholder-tab-items" />
         <separator />
         <menuitem action="insert-spaces" />
       </menu>
-      <menuitem action="word-wrap" />
+      <separator />
+      <menu action="language-menu">
+        <placeholder name="placeholder-language-section-items" />
+      </menu>
+      <menu action="eol-menu">
+        <menuitem action="unix" />
+        <menuitem action="mac" />
+        <menuitem action="dos" />
+      </menu>
       <separator />
       <menuitem action="write-bom" />
       <separator />
