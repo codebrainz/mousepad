@@ -153,6 +153,13 @@ main (gint argc, gchar **argv)
 
           return EXIT_SUCCESS;
         }
+
+        /* No instance may own the service name, so we need to clean the error */
+        if (G_UNLIKELY (error))
+          {
+            g_error_free (error);
+            error = NULL;
+          }
     }
 #endif /* !HAVE_DBUS */
 
