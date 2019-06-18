@@ -20,9 +20,6 @@
 #include <mousepad/mousepad-dbus-infos.h>
 #include <mousepad/mousepad-application.h>
 
-#include <dbus/dbus.h>
-#include <gio/gio.h>
-
 #ifdef HAVE_SYS_TYPES_H
 #include <sys/types.h>
 #endif
@@ -159,67 +156,6 @@ mousepad_dbus_service_terminate (MousepadDBusService   *dbus_service,
 
 
 /**
- * mousepad_dbus_client_send:
- * @message : A #DBusMessage.
- * @error   : Return location for errors or %NULL.
- *
- * This function sends the DBus message and should avoid
- * code duplication in the functions below.
- *
- * Return value: %TRUE on succeed or %FALSE if @error is set.
- **/
-static gboolean
-mousepad_dbus_client_send (DBusMessage  *message,
-                           GError      **error)
-{
-  DBusConnection *connection;
-  DBusMessage    *result;
-  DBusError       derror;
-
-  dbus_error_init (&derror);
-
-  /* try to connect to the session bus */
-  connection = dbus_bus_get (DBUS_BUS_SESSION, &derror);
-  if (G_UNLIKELY (connection == NULL))
-    {
-      g_dbus_error_set_dbus_error (error, derror.name, derror.message, NULL);
-      dbus_error_free (&derror);
-      return FALSE;
-    }
-
-  /* send the message */
-  result = dbus_connection_send_with_reply_and_block (connection, message, -1, &derror);
-
-  /* check if no reply was received */
-  if (result == NULL)
-    {
-      /* check if there was just no instance running */
-      if (!dbus_error_has_name (&derror, DBUS_ERROR_NAME_HAS_NO_OWNER))
-        g_dbus_error_set_dbus_error (error, derror.name, derror.message, NULL);
-
-      dbus_error_free (&derror);
-      return FALSE;
-    }
-
-  /* but maybe we received an error */
-  if (G_UNLIKELY (dbus_message_get_type (result) == DBUS_MESSAGE_TYPE_ERROR))
-    {
-      dbus_set_error_from_message (&derror, result);
-      g_dbus_error_set_dbus_error (error, derror.name, derror.message, NULL);
-      dbus_message_unref (result);
-      dbus_error_free (&derror);
-      return FALSE;
-    }
-
-  /* it seems everything worked */
-  dbus_message_unref (result);
-
-  return TRUE;
-}
-
-
-
-/**
  * mousepad_dbus_client_terminate:
  * @error : Return location for errors or %NULL.
  *
@@ -232,24 +168,22 @@ mousepad_dbus_client_send (DBusMessage  *message,
 gboolean
 mousepad_dbus_client_terminate (GError **error)
 {
-  DBusMessage *message;
+  gboolean             succeed;
+  MousepadDBusService *proxy;
 
-  g_return_val_if_fail (error == NULL || *error == NULL, FALSE);
+  proxy = mousepad_dbus_service_proxy_new_for_bus_sync (G_BUS_TYPE_SESSION,
+                                                        G_DBUS_PROXY_FLAGS_NONE,
+                                                        MOUSEPAD_DBUS_INTERFACE,
+                                                        MOUSEPAD_DBUS_PATH,
+                                                        NULL, error);
 
-  /* generate the message */
-  message = dbus_message_new_method_call (MOUSEPAD_DBUS_INTERFACE, MOUSEPAD_DBUS_PATH,
-                                          MOUSEPAD_DBUS_INTERFACE, "Terminate");
-  dbus_message_set_auto_start (message, FALSE);
+  g_return_val_if_fail (proxy != NULL, FALSE);
 
+  succeed = mousepad_dbus_service_call_terminate_sync (proxy, NULL, error);
 
-  /* send the message */
-  mousepad_dbus_client_send (message, error);
+  g_object_unref (proxy);
 
-  /* unref the message */
-  dbus_message_unref (message);
-
-  /* we return false if an error was set */
-  return (error != NULL);
+  return succeed;
 }
 
 
@@ -273,11 +207,11 @@ mousepad_dbus_client_launch_files (gchar       **filenames,
                                    const gchar  *working_directory,
                                    GError      **error)
 {
-  DBusMessage *message;
-  guint        length = 0;
-  gboolean     succeed;
-  GPtrArray   *utf8_filenames;
-  gchar       *utf8_dir = NULL;
+  MousepadDBusService *proxy;
+  guint                length = 0;
+  gboolean             succeed = FALSE;
+  GPtrArray           *utf8_filenames;
+  gchar               *utf8_dir = NULL;
 
   g_return_val_if_fail (g_path_is_absolute (working_directory), FALSE);
   g_return_val_if_fail (error == NULL || *error == NULL, FALSE);
@@ -314,20 +248,19 @@ mousepad_dbus_client_launch_files (gchar       **filenames,
         }
     }
 
-  /* generate the message */
-  message = dbus_message_new_method_call (MOUSEPAD_DBUS_INTERFACE, MOUSEPAD_DBUS_PATH,
-                                          MOUSEPAD_DBUS_INTERFACE, "LaunchFiles");
-  dbus_message_set_auto_start (message, FALSE);
-  dbus_message_append_args (message,
-                            DBUS_TYPE_STRING, &utf8_dir,
-                            DBUS_TYPE_ARRAY, DBUS_TYPE_STRING, &utf8_filenames->pdata, length,
-                            DBUS_TYPE_INVALID);
+  proxy = mousepad_dbus_service_proxy_new_for_bus_sync (G_BUS_TYPE_SESSION,
+                                                        G_DBUS_PROXY_FLAGS_NONE,
+                                                        MOUSEPAD_DBUS_INTERFACE,
+                                                        MOUSEPAD_DBUS_PATH,
+                                                        NULL, error);
 
-  /* send the message */
-  succeed = mousepad_dbus_client_send (message, error);
+  if (proxy)
+    {
+     succeed = mousepad_dbus_service_call_launch_files_sync (
+        proxy, utf8_dir, utf8_filenames->pdata, NULL, error);
 
-  /* unref the message */
-  dbus_message_unref (message);
+      g_object_unref (proxy);
+    }
 
   /* cleanup the UTF-8 strings */
   g_ptr_array_free(utf8_filenames, TRUE);
