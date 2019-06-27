@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-05-19 00:30+0200\n"
-"PO-Revision-Date: 2019-06-24 14:26+0000\n"
+"PO-Revision-Date: 2019-06-27 11:17+0000\n"
 "Last-Translator: Vinzenz Vietzke <vinz@vinzv.de>\n"
 "Language-Team: German (http://www.transifex.com/xfce/xfce-apps/language/de/)\n"
 "MIME-Version: 1.0\n"
@@ -449,7 +449,7 @@ msgstr "Tabulatorbreite:"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:32
 msgid "Tab mode:"
-msgstr "Tabulatorbreite:"
+msgstr "Tabulatormodus:"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:33
 msgid "Enable automatic indentation"
