@@ -15,7 +15,7 @@ msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-05-19 00:30+0200\n"
-"PO-Revision-Date: 2019-06-17 21:53+0000\n"
+"PO-Revision-Date: 2019-07-07 09:57+0000\n"
 "Last-Translator: scootergrisen\n"
 "Language-Team: Danish (http://www.transifex.com/xfce/xfce-apps/language/da/)\n"
 "MIME-Version: 1.0\n"
@@ -413,7 +413,7 @@ msgstr "Vis linjeskift"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:22
 msgid "Long line margin at column:"
-msgstr "Lang linje-margen ved kolonne:"
+msgstr "Margen for lange linjer ved kolonne:"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:23
 msgid "Highlight current line"
@@ -421,7 +421,7 @@ msgstr "Fremhæv nuværende linje"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:24
 msgid "Highlight matching brackets"
-msgstr "Fremhæv sammenhørende parenteser"
+msgstr "Fremhæv modsvarende parenteser"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:25
 msgid "Wrap long lines"
@@ -453,7 +453,7 @@ msgstr "Tabulatorbredde:"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:32
 msgid "Tab mode:"
-msgstr "Tabulator-tilstand:"
+msgstr "Tabulatortilstand:"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:33
 msgid "Enable automatic indentation"
