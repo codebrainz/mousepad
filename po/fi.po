@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-05-19 00:30+0200\n"
-"PO-Revision-Date: 2019-07-16 20:43+0000\n"
+"PO-Revision-Date: 2019-07-17 07:58+0000\n"
 "Last-Translator: Jiri Grönroos <jiri.gronroos@iki.fi>\n"
 "Language-Team: Finnish (http://www.transifex.com/xfce/xfce-apps/language/fi/)\n"
 "MIME-Version: 1.0\n"
@@ -23,7 +23,7 @@ msgstr ""
 
 #: ../mousepad/main.c:44
 msgid "Do not register with the D-BUS session message bus"
-msgstr "Älä rekisteröi D-Bus -istunnon kanssa"
+msgstr "Älä rekisteröi D-Bus-istunnon viestiväylän kanssa"
 
 #: ../mousepad/main.c:45
 msgid "Quit a running Mousepad instance"
@@ -174,7 +174,7 @@ msgstr "Muu:"
 
 #: ../mousepad/mousepad-encoding-dialog.c:177
 msgid "Checking encodings..."
-msgstr "Tarkista merkistökoodaukset…"
+msgstr "Tarkistetaan merkistökoodaukset…"
 
 #. west european
 #: ../mousepad/mousepad-encoding.c:25
@@ -430,11 +430,11 @@ msgstr "<b>Näyttö</b>"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:27
 msgid "Use system monospace font"
-msgstr "Käytä järjestelmän tasalevyista kirjasinta"
+msgstr "Käytä järjestelmän tasalevyista fonttia"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:28
 msgid "<b>Font</b>"
-msgstr "<b>Kirjasin</b>"
+msgstr "<b>Fontti</b>"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:29
 msgid "<b>Colour scheme</b>"
@@ -574,7 +574,7 @@ msgstr "Ota käyttöön _syntaksin väritys"
 
 #: ../mousepad/mousepad-print.c:697
 msgid "Fonts"
-msgstr "Kirjasimet"
+msgstr "Fontit"
 
 #: ../mousepad/mousepad-print.c:719
 msgid "Header:"
@@ -1065,11 +1065,11 @@ msgstr "_Näytä"
 
 #: ../mousepad/mousepad-window.c:460
 msgid "Select F_ont..."
-msgstr "_Valitse kirjasin…"
+msgstr "_Valitse fontti…"
 
 #: ../mousepad/mousepad-window.c:460
 msgid "Change the editor font"
-msgstr "Vaihda muokkaimen kirjasinta"
+msgstr "Vaihda muokkaimen fonttia"
 
 #: ../mousepad/mousepad-window.c:461
 msgid "_Color Scheme"
@@ -1330,11 +1330,11 @@ msgstr "Asiakirjan tulostaminen epäonnistui"
 
 #: ../mousepad/mousepad-window.c:4852
 msgid "Choose Mousepad Font"
-msgstr "Valitse Mousepadin kirjasin"
+msgstr "Valitse Mousepadin fontti"
 
 #: ../mousepad/mousepad-window.c:5019
 msgid "Leave fullscreen mode"
-msgstr "Poistu koko ruudun tilasta"
+msgstr "Poistu koko näytön tilasta"
 
 #: ../mousepad.desktop.in.in.h:2
 msgid "Simple Text Editor"
