@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-05-19 00:30+0200\n"
-"PO-Revision-Date: 2019-05-19 15:08+0000\n"
+"PO-Revision-Date: 2019-07-23 16:58+0000\n"
 "Last-Translator: Emanuele Petriglia <transifex@emanuelepetriglia.com>\n"
 "Language-Team: Italian (http://www.transifex.com/xfce/xfce-apps/language/it/)\n"
 "MIME-Version: 1.0\n"
@@ -62,7 +62,7 @@ msgstr "Mousepad è un editor di testo veloce per l'ambiente grafico Xfce."
 
 #: ../mousepad/mousepad-dialogs.c:49
 msgid "translator-credits"
-msgstr "Salvatore Caputo, <salvatorexfce@gmail.com> 2012\nCristian Marchi, <cri.penta@gmail.com> 2012, 2013, 2014\nEmanuele Petriglia, <inbox@emanuelepetriglia.me> 2018"
+msgstr "Salvatore Caputo, <salvatorexfce@gmail.com> 2012\nCristian Marchi, <cri.penta@gmail.com> 2012, 2013, 2014\nEmanuele Petriglia, <inbox@emanuelepetriglia.com> 2018, 2019"
 
 #. display an error message to the user
 #: ../mousepad/mousepad-dialogs.c:104
