@@ -1,3 +1,38 @@
+0.4.2
+======
+- Port to GDBus (Bug #14337)
+- Show full path in window title by default (Bug #2896)
+- Reset modification time when new filename is set (Bug #10498)
+- Do not overwrite view settings when opening encoding dialog (Bug #12298)
+- Make dialog windows modal only for parent window (Bug #10488)
+- Add string to translation (Bug #11049)
+- Selecting a font via menu now disables system font (Bug #12773)
+- Check for exo-csource in maintainer mode (Bug #12719)
+- New line can't be printed in status bar (Bug #11050)
+- Do not move text cursor when searching backwards (Bug #14942)
+- Fix gravity of selection end mark (Bug #10986)
+- Missing line in dbus.h, found typo in window.h (Bug #10583)
+- Append a newline char at EOF when saving (Bug #4824)
+- Do not core dump on silly errors, just exit (Bug #12413)
+- Fix gtksourceview warnings/errors (Bug 11663)
+- Only set template filetype when detected (Bug #15314)
+- Replace deprecated style properties in MousepadCloseButton (Bug #13114)
+- Fix Tab mode and Home/End Keys in preferences dialog (Bug #15075)
+- Fix language guess function (Bug #15141)
+- Read system font from xfconf property (Bug #12485)
+- Add pkexec policy (Bug #11088)
+- Fix g_type_class_add_private is deprecated
+- Set intltool minimum version
+- Bump minimal required glib
+- Translation Updates: Albanian, Arabic, Asturian, Basque, Belarusian,
+  Bulgarian, Catalan, Chinese (China), Chinese (Taiwan), Croatian, Czech,
+  Danish, Dutch (Flemish), English (Australia), English (Great Britain),
+  Finnish, French, Galician, German, Greek, Hebrew, Hungarian, Icelandic,
+  Indonesian, Italian, Japanese, Kazakh, Korean, Lithuanian, Malay,
+  Norwegian Bokmål, Norwegian Nynorsk, Occitan, Polish, Portuguese,
+  Portuguese (Brazilian), Romanian, Russian, Serbian, Slovak, Slovenian,
+  Spanish, Swedish, Telugu, Thai, Turkish, Ukrainian, Uyghur
+
 0.4.1
 =====
 - Fix crash when dragging tab to root window (Bug #13336)
