@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-05-19 00:30+0200\n"
-"PO-Revision-Date: 2019-05-19 07:59+0000\n"
+"PO-Revision-Date: 2019-07-30 09:54+0000\n"
 "Last-Translator: Daniel Muñiz Fontoira <dani@damufo.com>\n"
 "Language-Team: Galician (http://www.transifex.com/xfce/xfce-apps/language/gl/)\n"
 "MIME-Version: 1.0\n"
@@ -910,7 +910,7 @@ msgstr "En m_aíusculas"
 
 #: ../mousepad/mousepad-window.c:436
 msgid "Change the case of the selection to uppercase"
-msgstr "Cambiar a selección a maiúsculas"
+msgstr "Cambia a maiúsculas o texto seleccionado"
 
 #: ../mousepad/mousepad-window.c:437
 msgid "To _Lowercase"
@@ -918,7 +918,7 @@ msgstr "A m_inúsculas"
 
 #: ../mousepad/mousepad-window.c:437
 msgid "Change the case of the selection to lowercase"
-msgstr "Cambiar a selección a minúsculas"
+msgstr "Cambia a minúsculas o texto seleccionado"
 
 #: ../mousepad/mousepad-window.c:438
 msgid "To _Title Case"
@@ -926,7 +926,7 @@ msgstr "Maiúsculas nas palabras importantes"
 
 #: ../mousepad/mousepad-window.c:438
 msgid "Change the case of the selection to title case"
-msgstr "Cambiar a selección a maiúsculas nas palabras importantes"
+msgstr "Cambia a primeira letra das palabras a maiúsculas no texto seleccionado"
 
 #: ../mousepad/mousepad-window.c:439
 msgid "To _Opposite Case"
@@ -934,7 +934,7 @@ msgstr "Inverter maiúsculas e minúsculas"
 
 #: ../mousepad/mousepad-window.c:439
 msgid "Change the case of the selection opposite case"
-msgstr "Inverter as maiúsculas e as minúsculas da selección"
+msgstr "Cambia as maiúsculas a minúsculas e viceversa no texto seleccionado"
 
 #: ../mousepad/mousepad-window.c:440
 msgid "_Tabs to Spaces"
@@ -955,11 +955,11 @@ msgstr "Converter os espazos iniciais en tabuladores na(s) liña(s) seleccionada
 
 #: ../mousepad/mousepad-window.c:442
 msgid "St_rip Trailing Spaces"
-msgstr "_Retirar os espazos ao final"
+msgstr "Elimina_r os espazos ao final"
 
 #: ../mousepad/mousepad-window.c:442
 msgid "Remove all the trailing spaces from the selected line(s) or document"
-msgstr "Retirar todos os espazos ao final da(s) liña(s) seleccionadas ou de todo o documento"
+msgstr "Eliminar todos os espazos no final das liñas seleccionadas ou documento"
 
 #: ../mousepad/mousepad-window.c:443
 msgid "_Transpose"
