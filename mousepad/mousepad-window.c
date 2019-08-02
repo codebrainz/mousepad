@@ -920,6 +920,18 @@ mousepad_window_create_statusbar (MousepadWindow *window)
   gtk_toggle_action_set_active (GTK_TOGGLE_ACTION (action), active);
   gtk_widget_set_visible (window->statusbar, active);
 
+#if !GTK_CHECK_VERSION (4, 0, 0)
+  /* make the statusbar smaller */
+  /*
+   * to fix hard-coded, oversized GTK+3 status bar padding, see:
+   * https://gitlab.gnome.org/GNOME/gtk/-/commit/94ebe2106817f6bc7aaf868bd00d0fc381d33e7e
+   * fixed in GTK+4:
+   * https://gitlab.gnome.org/GNOME/gtk/-/commit/1a7cbddbd4e98e4641e690035013abbfaec130b0
+   */
+  gtk_widget_set_margin_top (window->statusbar, 0);
+  gtk_widget_set_margin_bottom (window->statusbar, 0);
+#endif
+
   /* pack the statusbar into the window UI */
   gtk_box_pack_end (GTK_BOX (window->box), window->statusbar, FALSE, FALSE, 0);
 
