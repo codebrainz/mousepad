@@ -80,7 +80,7 @@ gchar     *mousepad_util_utf8_stropposite                 (const gchar         *
 
 gchar     *mousepad_util_escape_underscores               (const gchar         *str);
 
-GtkWidget *mousepad_util_image_button                     (const gchar         *stock_id,
+GtkWidget *mousepad_util_image_button                     (const gchar         *icon_name,
                                                            const gchar         *label);
 
 void       mousepad_util_entry_error                      (GtkWidget           *widget,

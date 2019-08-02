@@ -607,7 +607,7 @@ mousepad_print_create_custom_widget (GtkPrintOperation *operation)
   gtk_container_add (GTK_CONTAINER (frame), alignment);
   gtk_widget_show (alignment);
 
-  button = mousepad_util_image_button (GTK_STOCK_PROPERTIES, _("_Adjust page size and orientation"));
+  button = mousepad_util_image_button ("document-properties", _("_Adjust page size and orientation"));
   g_signal_connect (G_OBJECT (button), "clicked", G_CALLBACK (mousepad_print_page_setup_dialog), operation);
   gtk_container_add (GTK_CONTAINER (alignment), button);
   gtk_widget_show (button);

@@ -361,12 +361,12 @@ mousepad_util_escape_underscores (const gchar *str)
 
 
 GtkWidget *
-mousepad_util_image_button (const gchar *stock_id,
+mousepad_util_image_button (const gchar *icon_name,
                             const gchar *label)
 {
   GtkWidget *button, *image;
 
-  image = gtk_image_new_from_stock (stock_id, GTK_ICON_SIZE_BUTTON);
+  image = gtk_image_new_from_icon_name (icon_name, GTK_ICON_SIZE_BUTTON);
   gtk_widget_show (image);
 
   button = gtk_button_new_with_mnemonic (label);

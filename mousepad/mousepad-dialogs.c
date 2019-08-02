@@ -308,7 +308,7 @@ mousepad_dialogs_clear_recent (GtkWindow *parent)
                                               "remove all currently listed entries."));
 
   /* the dialog icon */
-  image = gtk_image_new_from_stock (GTK_STOCK_CLEAR, GTK_ICON_SIZE_DIALOG);
+  image = gtk_image_new_from_icon_name ("edit-clear", GTK_ICON_SIZE_DIALOG);
   gtk_message_dialog_set_image (GTK_MESSAGE_DIALOG (dialog), image);
   gtk_widget_show (image);
 
@@ -337,19 +337,19 @@ mousepad_dialogs_save_changes (GtkWindow *parent,
                                    GTK_MESSAGE_OTHER, GTK_BUTTONS_NONE,
                                    _("Do you want to save the changes before closing?"));
   gtk_window_set_title (GTK_WINDOW (dialog), _("Save Changes"));
-  gtk_dialog_add_action_widget (GTK_DIALOG (dialog), mousepad_util_image_button (GTK_STOCK_DELETE, _("_Don't Save")), MOUSEPAD_RESPONSE_DONT_SAVE);
+  gtk_dialog_add_action_widget (GTK_DIALOG (dialog), mousepad_util_image_button ("edit-delete", _("_Don't Save")), MOUSEPAD_RESPONSE_DONT_SAVE);
   gtk_dialog_add_button (GTK_DIALOG (dialog), GTK_STOCK_CANCEL, MOUSEPAD_RESPONSE_CANCEL);
 
   /* we show the save as button instead of save for readonly document */
   if (G_UNLIKELY (readonly))
     {
-      image = gtk_image_new_from_stock (GTK_STOCK_SAVE_AS, GTK_ICON_SIZE_DIALOG);
+      image = gtk_image_new_from_icon_name ("document-save-as", GTK_ICON_SIZE_DIALOG);
       gtk_dialog_add_buttons (GTK_DIALOG (dialog), GTK_STOCK_SAVE_AS, MOUSEPAD_RESPONSE_SAVE_AS, NULL);
       gtk_dialog_set_default_response (GTK_DIALOG (dialog), MOUSEPAD_RESPONSE_SAVE_AS);
     }
   else
     {
-      image = gtk_image_new_from_stock (GTK_STOCK_SAVE, GTK_ICON_SIZE_DIALOG);
+      image = gtk_image_new_from_icon_name ("document-save", GTK_ICON_SIZE_DIALOG);
       gtk_dialog_add_buttons (GTK_DIALOG (dialog), GTK_STOCK_SAVE, MOUSEPAD_RESPONSE_SAVE, NULL);
       gtk_dialog_set_default_response (GTK_DIALOG (dialog), MOUSEPAD_RESPONSE_SAVE);
     }

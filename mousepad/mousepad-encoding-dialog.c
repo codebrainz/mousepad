@@ -129,7 +129,7 @@ mousepad_encoding_dialog_init (MousepadEncodingDialog *dialog)
 
   /* create the header */
   mousepad_util_dialog_header (GTK_DIALOG (dialog), _("The document was not UTF-8 valid"),
-                               _("Please select an encoding below."), GTK_STOCK_FILE);
+                               _("Please select an encoding below."), "text-x-generic");
 
   /* dialog vbox */
   vbox = gtk_box_new (GTK_ORIENTATION_VERTICAL, 6);
@@ -192,7 +192,7 @@ mousepad_encoding_dialog_init (MousepadEncodingDialog *dialog)
   gtk_box_pack_start (GTK_BOX (vbox), dialog->error_box, FALSE, FALSE, 0);
 
   /* error icon */
-  icon = gtk_image_new_from_stock (GTK_STOCK_DIALOG_ERROR, GTK_ICON_SIZE_BUTTON);
+  icon = gtk_image_new_from_icon_name ("dialog-error", GTK_ICON_SIZE_BUTTON);
   gtk_box_pack_start (GTK_BOX (dialog->error_box), icon, FALSE, FALSE, 0);
   gtk_widget_show (icon);
 

@@ -141,7 +141,7 @@ mousepad_replace_dialog_init (MousepadReplaceDialog *dialog)
 
   /* dialog buttons */
   dialog->find_button = gtk_dialog_add_button (GTK_DIALOG (dialog), GTK_STOCK_FIND, MOUSEPAD_RESPONSE_FIND);
-  dialog->replace_button = mousepad_util_image_button (GTK_STOCK_FIND_AND_REPLACE, _("_Replace"));
+  dialog->replace_button = mousepad_util_image_button ("edit-find-replace", _("_Replace"));
   gtk_dialog_add_action_widget (GTK_DIALOG (dialog), dialog->replace_button, MOUSEPAD_RESPONSE_REPLACE);
   gtk_dialog_add_button (GTK_DIALOG (dialog), GTK_STOCK_CLOSE, MOUSEPAD_RESPONSE_CLOSE);
   gtk_dialog_set_default_response (GTK_DIALOG (dialog), MOUSEPAD_RESPONSE_FIND);

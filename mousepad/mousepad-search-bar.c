@@ -224,7 +224,7 @@ mousepad_search_bar_init (MousepadSearchBar *bar)
   gtk_widget_show (bar->entry);
 
   /* next button */
-  image = gtk_image_new_from_stock (GTK_STOCK_GO_DOWN, TOOL_BAR_ICON_SIZE);
+  image = gtk_image_new_from_icon_name ("go-down", TOOL_BAR_ICON_SIZE);
   gtk_widget_show (image);
 
   item = gtk_tool_button_new (image, _("_Next"));
@@ -235,7 +235,7 @@ mousepad_search_bar_init (MousepadSearchBar *bar)
   gtk_widget_show (GTK_WIDGET (item));
 
   /* previous button */
-  image = gtk_image_new_from_stock (GTK_STOCK_GO_UP, TOOL_BAR_ICON_SIZE);
+  image = gtk_image_new_from_icon_name ("go-up", TOOL_BAR_ICON_SIZE);
   gtk_widget_show (image);
 
   item = gtk_tool_button_new (image, _("_Previous"));
@@ -248,7 +248,7 @@ mousepad_search_bar_init (MousepadSearchBar *bar)
   /* highlight all */
   item = (GtkToolItem *) gtk_toggle_tool_button_new ();
   g_signal_connect_object (G_OBJECT (bar), "destroy", G_CALLBACK (gtk_widget_destroy), item, G_CONNECT_SWAPPED);
-  gtk_tool_button_set_icon_name (GTK_TOOL_BUTTON (item), GTK_STOCK_SELECT_ALL);
+  gtk_tool_button_set_icon_name (GTK_TOOL_BUTTON (item), "edit-select-all");
   gtk_tool_button_set_label (GTK_TOOL_BUTTON (item), _("Highlight _All"));
   gtk_tool_item_set_is_important (item, TRUE);
   gtk_tool_button_set_use_underline (GTK_TOOL_BUTTON (item), TRUE);

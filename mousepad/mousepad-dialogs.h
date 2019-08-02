@@ -38,8 +38,6 @@ enum {
   MOUSEPAD_RESPONSE_CHECK_ENTRY
 };
 
-GtkWidget *mousepad_dialogs_image_button        (const gchar   *stock_id,
-                                                 const gchar   *label);
 
 void       mousepad_dialogs_show_about          (GtkWindow     *parent);
 

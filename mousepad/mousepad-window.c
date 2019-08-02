@@ -2330,7 +2330,7 @@ mousepad_window_menu_templates_fill (MousepadWindow *window,
           g_free (label);
 
           /* set menu image */
-          image = gtk_image_new_from_icon_name (GTK_STOCK_DIRECTORY, GTK_ICON_SIZE_MENU);
+          image = gtk_image_new_from_icon_name ("folder", GTK_ICON_SIZE_MENU);
           gtk_image_menu_item_set_image (GTK_IMAGE_MENU_ITEM (item), image);
           gtk_widget_show (image);
         }
@@ -2366,7 +2366,7 @@ mousepad_window_menu_templates_fill (MousepadWindow *window,
       gtk_widget_show (item);
 
       /* set menu image */
-      image = gtk_image_new_from_icon_name (GTK_STOCK_FILE, GTK_ICON_SIZE_MENU);
+      image = gtk_image_new_from_icon_name ("text-x-generic", GTK_ICON_SIZE_MENU);
       gtk_image_menu_item_set_image (GTK_IMAGE_MENU_ITEM (item), image);
       gtk_widget_show (image);
 
