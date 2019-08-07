@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE policyconfig PUBLIC
  "-//freedesktop//DTD PolicyKit Policy Configuration 1.0//EN"
- "http://www.freedesktop.org/standards/PolicyKit/1/policyconfig.dtd">
+ "https://www.freedesktop.org/standards/PolicyKit/1/policyconfig.dtd">
 <policyconfig>
 
   <!--
@@ -11,7 +11,7 @@
  -->
 
  <vendor>Mousepad</vendor>
- <vendor_url>http://xfce.org/</vendor_url>
+ <vendor_url>https://xfce.org/</vendor_url>
  <icon_name>accessories-text-editor</icon_name>
 
 

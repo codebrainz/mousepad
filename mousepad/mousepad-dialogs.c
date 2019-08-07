@@ -47,7 +47,7 @@ mousepad_dialogs_show_about (GtkWindow *parent)
                          "program-name", PACKAGE_NAME,
                          "version", PACKAGE_VERSION,
                          "translator-credits", _("translator-credits"),
-                         "website", "http://www.xfce.org/",
+                         "website", "https://www.xfce.org/",
                          NULL);
 }
 
@@ -95,7 +95,7 @@ mousepad_dialogs_show_help (GtkWindow   *parent,
   else
     screen = gdk_screen_get_default ();
 
-  uri = "http://docs.xfce.org";
+  uri = "https://docs.xfce.org";
 
   /* try to run the documentation browser */
   if (!gtk_show_uri (screen, uri, gtk_get_current_event_time (), &error))
