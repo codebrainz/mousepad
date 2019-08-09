@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-05-19 00:30+0200\n"
-"PO-Revision-Date: 2019-07-30 09:54+0000\n"
+"PO-Revision-Date: 2019-08-09 14:46+0000\n"
 "Last-Translator: Daniel Muñiz Fontoira <dani@damufo.com>\n"
 "Language-Team: Galician (http://www.transifex.com/xfce/xfce-apps/language/gl/)\n"
 "MIME-Version: 1.0\n"
@@ -132,7 +132,7 @@ msgstr "Se garda o documento hanse perder todos os cambios externos."
 
 #: ../mousepad/mousepad-dialogs.c:415
 msgid "Do you want to save your changes before reloading?"
-msgstr "Desexa gardar os seus cambios antes de cargar de novo?"
+msgstr "Desexa gardar os seus cambios antes de recargar?"
 
 #: ../mousepad/mousepad-dialogs.c:417
 msgid "If you revert the file, all unsaved changes will be lost."
@@ -172,7 +172,7 @@ msgstr "Outros:"
 
 #: ../mousepad/mousepad-encoding-dialog.c:177
 msgid "Checking encodings..."
-msgstr "A comprobar as codificacións..."
+msgstr "Estase a comprobar as codificacións..."
 
 #. west european
 #: ../mousepad/mousepad-encoding.c:25
@@ -300,7 +300,7 @@ msgstr "Hai unha secuencia de bytes incorrecta na entrada de conversión"
 #: ../mousepad/mousepad-file.c:899
 #, c-format
 msgid "The file \"%s\" you tried to reload does not exist anymore"
-msgstr "O ficheiro «%s» que tento cargar de novo non existe máis"
+msgstr "O ficheiro «%s» que tenta recargar xa non existe"
 
 #: ../mousepad/mousepad-file.c:940
 #, c-format
