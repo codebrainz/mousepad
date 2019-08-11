@@ -14,7 +14,7 @@ msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-05-19 00:30+0200\n"
-"PO-Revision-Date: 2019-07-24 07:09+0000\n"
+"PO-Revision-Date: 2019-08-11 06:10+0000\n"
 "Last-Translator: Kjell Cato Heskjestad <cato@heskjestad.xyz>\n"
 "Language-Team: Norwegian Bokmål (http://www.transifex.com/xfce/xfce-apps/language/nb/)\n"
 "MIME-Version: 1.0\n"
@@ -48,7 +48,7 @@ msgstr "[FILER…]"
 #. no error message, the gui initialization failed
 #: ../mousepad/main.c:92
 msgid "Failed to open display."
-msgstr "Kunne ikke åpne skjermressurs."
+msgstr "Klarte ikke åpne skjermressurs."
 
 #: ../mousepad/main.c:109
 msgid "The Xfce development team. All rights reserved."
@@ -70,7 +70,7 @@ msgstr "haarek - Harald <https://www.transifex.com/accounts/profile/haarek/>\nki
 #. display an error message to the user
 #: ../mousepad/mousepad-dialogs.c:104
 msgid "Failed to open the documentation browser"
-msgstr "Kunne ikke åpne dokumentasjons-utforskeren"
+msgstr "Klarte ikke åpne dokumentasjons-utforskeren"
 
 #. build dialog
 #: ../mousepad/mousepad-dialogs.c:119
@@ -1323,7 +1323,7 @@ msgstr "Lagre som"
 #. show the error
 #: ../mousepad/mousepad-window.c:4201
 msgid "Failed to reload the document"
-msgstr "Kunne ikke laste inn dokumentet på ny"
+msgstr "Klarte ikke laste inn dokumentet på nytt"
 
 #. show the error
 #: ../mousepad/mousepad-window.c:4228
