@@ -15,7 +15,7 @@ msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-05-19 00:30+0200\n"
-"PO-Revision-Date: 2019-07-07 09:57+0000\n"
+"PO-Revision-Date: 2019-08-17 09:40+0000\n"
 "Last-Translator: scootergrisen\n"
 "Language-Team: Danish (http://www.transifex.com/xfce/xfce-apps/language/da/)\n"
 "MIME-Version: 1.0\n"
@@ -146,7 +146,7 @@ msgstr "Hvis du tilbagefører filen, så vil alle ændringer som ikke er gemt, g
 #. pack button, add signal and tooltip
 #: ../mousepad/mousepad-document.c:500
 msgid "Close this tab"
-msgstr "Luk dette faneblad"
+msgstr "Luk fanebladet"
 
 #. create an unique untitled document name
 #: ../mousepad/mousepad-document.c:530
@@ -803,7 +803,7 @@ msgstr "Gem _alle"
 
 #: ../mousepad/mousepad-window.c:416
 msgid "Save all document in this window"
-msgstr "Gem alle dokumenter i dette vindue"
+msgstr "Gem alle dokumenter i vinduet"
 
 #: ../mousepad/mousepad-window.c:417
 msgid "Re_vert"
@@ -843,7 +843,7 @@ msgstr "_Luk vindue"
 
 #: ../mousepad/mousepad-window.c:421
 msgid "Close this window"
-msgstr "Luk dette vindue"
+msgstr "Luk vinduet"
 
 #: ../mousepad/mousepad-window.c:423
 msgid "_Edit"
@@ -1124,7 +1124,7 @@ msgstr "Vis brugermanualen til Mousepad"
 
 #: ../mousepad/mousepad-window.c:472
 msgid "About this application"
-msgstr "Om dette program"
+msgstr "Om programmet"
 
 #: ../mousepad/mousepad-window.c:477
 msgid "Line N_umbers"
