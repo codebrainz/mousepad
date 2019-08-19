@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-05-19 00:30+0200\n"
-"PO-Revision-Date: 2019-08-10 07:21+0000\n"
+"PO-Revision-Date: 2019-08-19 15:31+0000\n"
 "Last-Translator: Daniel Muñiz Fontoira <dani@damufo.com>\n"
 "Language-Team: Galician (http://www.transifex.com/xfce/xfce-apps/language/gl/)\n"
 "MIME-Version: 1.0\n"
@@ -724,7 +724,7 @@ msgstr "%s | Autores: %s | Nome do ficheiro: %s"
 #: ../mousepad/mousepad-util.c:549
 #, c-format
 msgid "Unable to create base directory \"%s\". Saving to file \"%s\" will be aborted."
-msgstr "Non foi posíbel crear o directorio base «%s». Vaise interromper o gardado do ficheiro «%s»."
+msgstr "Non se puido crear o directorio base «%s». Vaise interromper o gardado do ficheiro «%s»."
 
 #. print error
 #: ../mousepad/mousepad-util.c:595
@@ -1119,7 +1119,7 @@ msgstr "Amosar o manual de usuario do Mousepad"
 
 #: ../mousepad/mousepad-window.c:472
 msgid "About this application"
-msgstr "Sobre este aplicativo"
+msgstr "Sobre esta aplicación"
 
 #: ../mousepad/mousepad-window.c:477
 msgid "Line N_umbers"
@@ -1216,7 +1216,7 @@ msgstr "Configurar o final de liña do documento como de DOS / Windows (CR LF)"
 #. add the label with the root warning
 #: ../mousepad/mousepad-window.c:865
 msgid "Warning, you are using the root account, you may harm your system."
-msgstr "Advertencia, está usando a conta de root, pode danar o sistema."
+msgstr "Aviso, está usando a conta de root, pode danar o sistema."
 
 #. show the warning
 #: ../mousepad/mousepad-window.c:1521
@@ -1324,7 +1324,7 @@ msgstr "Produciuse un erro ao recargar o documento"
 #. show the error
 #: ../mousepad/mousepad-window.c:4228
 msgid "Failed to print the document"
-msgstr "Non foi posíbel imprimir o documento"
+msgstr "Non se puido imprimir o documento"
 
 #: ../mousepad/mousepad-window.c:4852
 msgid "Choose Mousepad Font"
