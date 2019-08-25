@@ -4728,7 +4728,7 @@ mousepad_window_action_find_next (GtkAction      *action,
   g_return_if_fail (MOUSEPAD_IS_WINDOW (window));
   g_return_if_fail (MOUSEPAD_IS_DOCUMENT (window->active));
 
-  /* find the next occurence */
+  /* find the next occurrence */
   if (G_LIKELY (window->search_bar != NULL))
     mousepad_search_bar_find_next (MOUSEPAD_SEARCH_BAR (window->search_bar));
 }
@@ -4742,7 +4742,7 @@ mousepad_window_action_find_previous (GtkAction      *action,
   g_return_if_fail (MOUSEPAD_IS_WINDOW (window));
   g_return_if_fail (MOUSEPAD_IS_DOCUMENT (window->active));
 
-  /* find the previous occurence */
+  /* find the previous occurrence */
   if (G_LIKELY (window->search_bar != NULL))
     mousepad_search_bar_find_previous (MOUSEPAD_SEARCH_BAR (window->search_bar));
 }

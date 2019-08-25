@@ -49,8 +49,8 @@ typedef enum
 
   /* actions */
   MOUSEPAD_SEARCH_FLAGS_ACTION_NONE       = 1 << 13, /* no visible actions */
-  MOUSEPAD_SEARCH_FLAGS_ACTION_HIGHTLIGHT = 1 << 14, /* highlight all the occurences */
-  MOUSEPAD_SEARCH_FLAGS_ACTION_CLEANUP    = 1 << 15, /* cleanup the highlighted occurences */
+  MOUSEPAD_SEARCH_FLAGS_ACTION_HIGHTLIGHT = 1 << 14, /* highlight all the occurrences */
+  MOUSEPAD_SEARCH_FLAGS_ACTION_CLEANUP    = 1 << 15, /* cleanup the highlighted occurrences */
   MOUSEPAD_SEARCH_FLAGS_ACTION_SELECT     = 1 << 16, /* select the match */
   MOUSEPAD_SEARCH_FLAGS_ACTION_REPLACE    = 1 << 17, /* replace the match */
 }

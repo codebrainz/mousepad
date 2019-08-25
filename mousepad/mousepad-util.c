@@ -844,10 +844,10 @@ mousepad_util_highlight (GtkTextBuffer       *buffer,
   /* initialize cache iters */
   cache_start = cache_end = iter;
 
-  /* highlight all the occurences of the strings */
+  /* highlight all the occurrences of the strings */
   do
     {
-      /* search for the next occurence of the string */
+      /* search for the next occurrence of the string */
       found = mousepad_util_search_iter (&iter, string, flags, &match_start, &match_end, &end);
 
       if (G_LIKELY (found))
@@ -862,14 +862,14 @@ mousepad_util_highlight (GtkTextBuffer       *buffer,
             {
               if (cached)
                 {
-                  /* highlight the cached occurences */
+                  /* highlight the cached occurrences */
                   gtk_text_buffer_apply_tag (buffer, tag, &cache_start, &cache_end);
 
                   /* cache is flushed */
                   cached = FALSE;
                 }
 
-              /* highlight the matched occurence */
+              /* highlight the matched occurrence */
               gtk_text_buffer_apply_tag (buffer, tag, &match_start, &match_end);
 
               /* set the new cache start iter */

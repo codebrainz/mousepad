@@ -419,7 +419,7 @@ mousepad_replace_dialog_response (GtkWidget *widget,
   /* update counter */
   if (replace_all)
     {
-      message = g_strdup_printf (ngettext ("%d occurence", "%d occurences", matches), matches);
+      message = g_strdup_printf (ngettext ("%d occurrence", "%d occurrences", matches), matches);
       gtk_label_set_markup (GTK_LABEL (dialog->hits_label), message);
       g_free (message);
     }
@@ -458,7 +458,7 @@ mousepad_replace_dialog_changed (MousepadReplaceDialog *dialog)
       /* not text, means no error */
       mousepad_util_entry_error (dialog->search_entry, FALSE);
 
-      /* reset occurences label */
+      /* reset occurrences label */
       gtk_label_set_text (GTK_LABEL (dialog->hits_label), NULL);
 
       /* buttons are not sensitive */
@@ -477,7 +477,7 @@ mousepad_replace_dialog_settings_changed (MousepadReplaceDialog *dialog,
                                           gchar                 *key,
                                           GSettings             *settings)
 {
-  /* reset occurences label */
+  /* reset occurrences label */
   gtk_label_set_text (GTK_LABEL (dialog->hits_label), NULL);
 
   mousepad_replace_dialog_changed (dialog);
