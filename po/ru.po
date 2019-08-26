@@ -11,8 +11,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-05-19 00:30+0200\n"
-"PO-Revision-Date: 2019-05-19 14:38+0000\n"
+"POT-Creation-Date: 2019-08-26 00:31+0200\n"
+"PO-Revision-Date: 2019-08-26 13:55+0000\n"
 "Last-Translator: Igor <f2404@yandex.ru>\n"
 "Language-Team: Russian (http://www.transifex.com/xfce/xfce-apps/language/ru/)\n"
 "MIME-Version: 1.0\n"
@@ -34,25 +34,25 @@ msgid "Print version information and exit"
 msgstr "Показать версию и выйти"
 
 #. default application name
-#: ../mousepad/main.c:72 ../mousepad.desktop.in.in.h:1
+#: ../mousepad/main.c:69 ../mousepad.desktop.in.in.h:1
 msgid "Mousepad"
 msgstr "Mousepad"
 
 #. initialize gtk+
-#: ../mousepad/main.c:86
+#: ../mousepad/main.c:83
 msgid "[FILES...]"
 msgstr "[ФАЙЛЫ...]"
 
 #. no error message, the gui initialization failed
-#: ../mousepad/main.c:92
+#: ../mousepad/main.c:89
 msgid "Failed to open display."
 msgstr "Не удалось открыть дисплей."
 
-#: ../mousepad/main.c:109
+#: ../mousepad/main.c:106
 msgid "The Xfce development team. All rights reserved."
 msgstr "Команда разработчиков Xfce. Все права защищены."
 
-#: ../mousepad/main.c:110
+#: ../mousepad/main.c:107
 #, c-format
 msgid "Please report bugs to <%s>."
 msgstr "О найденных ошибках сообщайте на «%s»."
@@ -294,17 +294,17 @@ msgstr "Японский"
 msgid "Korean"
 msgstr "Корейский"
 
-#: ../mousepad/mousepad-file.c:555
+#: ../mousepad/mousepad-file.c:559
 #, c-format
 msgid "Invalid byte sequence in conversion input"
 msgstr "Недопустимая последовательность байтов во входной строке для преобразования"
 
-#: ../mousepad/mousepad-file.c:899
+#: ../mousepad/mousepad-file.c:903
 #, c-format
 msgid "The file \"%s\" you tried to reload does not exist anymore"
 msgstr "Файл «%s», который вы пытаетесь перезагрузить, больше не существует"
 
-#: ../mousepad/mousepad-file.c:940
+#: ../mousepad/mousepad-file.c:944
 #, c-format
 msgid "Failed to read the status of \"%s\""
 msgstr "Не удалось прочитать состояние «%s»"
@@ -650,8 +650,8 @@ msgstr "Во всех документах"
 
 #: ../mousepad/mousepad-replace-dialog.c:422
 #, c-format
-msgid "%d occurence"
-msgid_plural "%d occurences"
+msgid "%d occurrence"
+msgid_plural "%d occurrences"
 msgstr[0] "%d совпадение"
 msgstr[1] "%d совпадения"
 msgstr[2] "%d совпадений"
