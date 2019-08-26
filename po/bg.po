@@ -11,8 +11,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-05-19 00:30+0200\n"
-"PO-Revision-Date: 2019-05-19 09:02+0000\n"
+"POT-Creation-Date: 2019-08-26 00:31+0200\n"
+"PO-Revision-Date: 2019-08-26 08:40+0000\n"
 "Last-Translator: Kiril Kirilov <cybercop_montana@abv.bg>\n"
 "Language-Team: Bulgarian (http://www.transifex.com/xfce/xfce-apps/language/bg/)\n"
 "MIME-Version: 1.0\n"
@@ -34,25 +34,25 @@ msgid "Print version information and exit"
 msgstr "Показване на информация за версията и изход"
 
 #. default application name
-#: ../mousepad/main.c:72 ../mousepad.desktop.in.in.h:1
+#: ../mousepad/main.c:69 ../mousepad.desktop.in.in.h:1
 msgid "Mousepad"
 msgstr "Mousepad"
 
 #. initialize gtk+
-#: ../mousepad/main.c:86
+#: ../mousepad/main.c:83
 msgid "[FILES...]"
 msgstr "[ФАЙЛОВЕ...]"
 
 #. no error message, the gui initialization failed
-#: ../mousepad/main.c:92
+#: ../mousepad/main.c:89
 msgid "Failed to open display."
 msgstr "Неуспех при отварянето на дисплея."
 
-#: ../mousepad/main.c:109
+#: ../mousepad/main.c:106
 msgid "The Xfce development team. All rights reserved."
 msgstr "Екипът по разработката на Xfce. Всички права са запазени."
 
-#: ../mousepad/main.c:110
+#: ../mousepad/main.c:107
 #, c-format
 msgid "Please report bugs to <%s>."
 msgstr "Моля, докладвайте грешки на <%s>."
@@ -294,17 +294,17 @@ msgstr "Японски"
 msgid "Korean"
 msgstr "Корейски"
 
-#: ../mousepad/mousepad-file.c:555
+#: ../mousepad/mousepad-file.c:559
 #, c-format
 msgid "Invalid byte sequence in conversion input"
 msgstr "Невалидна последователност на байтовете във входния низ за конвертиране"
 
-#: ../mousepad/mousepad-file.c:899
+#: ../mousepad/mousepad-file.c:903
 #, c-format
 msgid "The file \"%s\" you tried to reload does not exist anymore"
 msgstr "Файлът „%s“  , който се опитвате да презаредите, вече не съществува"
 
-#: ../mousepad/mousepad-file.c:940
+#: ../mousepad/mousepad-file.c:944
 #, c-format
 msgid "Failed to read the status of \"%s\""
 msgstr "Неуспешно прочитане на състоянието на „%s“"
@@ -650,8 +650,8 @@ msgstr "Всички документи"
 
 #: ../mousepad/mousepad-replace-dialog.c:422
 #, c-format
-msgid "%d occurence"
-msgid_plural "%d occurences"
+msgid "%d occurrence"
+msgid_plural "%d occurrences"
 msgstr[0] "%d събитие"
 msgstr[1] "%d събития"
 
