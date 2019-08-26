@@ -6,15 +6,15 @@
 # Casper casper, 2019
 # Luis Enrique Bazán De León <bazanluis20@gmail.com>, 2012
 # Manolo Díaz <diaz.manolo@gmail.com>, 2015
-# Pablo Lezaeta Reyes [pˈaβ̞lo lˌe̞θaˈeta rˈejɛ] <prflr88@gmail.com>, 2013-2015
-# Pablo Lezaeta Reyes [pˈaβ̞lo lˌe̞θaˈeta rˈejɛ] <prflr88@gmail.com>, 2017
+# prflr88 <prflr88@gmail.com>, 2013-2015
+# prflr88 <prflr88@gmail.com>, 2017
 # Markel @wakutiteo, 2018
 msgid ""
 msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-05-19 00:30+0200\n"
-"PO-Revision-Date: 2019-05-19 07:47+0000\n"
+"POT-Creation-Date: 2019-08-26 00:31+0200\n"
+"PO-Revision-Date: 2019-08-26 14:05+0000\n"
 "Last-Translator: Casper casper\n"
 "Language-Team: Spanish (http://www.transifex.com/xfce/xfce-apps/language/es/)\n"
 "MIME-Version: 1.0\n"
@@ -36,25 +36,25 @@ msgid "Print version information and exit"
 msgstr "Mostrar la información de la versión y salir"
 
 #. default application name
-#: ../mousepad/main.c:72 ../mousepad.desktop.in.in.h:1
+#: ../mousepad/main.c:69 ../mousepad.desktop.in.in.h:1
 msgid "Mousepad"
 msgstr "Mousepad"
 
 #. initialize gtk+
-#: ../mousepad/main.c:86
+#: ../mousepad/main.c:83
 msgid "[FILES...]"
 msgstr "[ARCHIVOS...]"
 
 #. no error message, the gui initialization failed
-#: ../mousepad/main.c:92
+#: ../mousepad/main.c:89
 msgid "Failed to open display."
 msgstr "No se pudo abrir la pantalla."
 
-#: ../mousepad/main.c:109
+#: ../mousepad/main.c:106
 msgid "The Xfce development team. All rights reserved."
 msgstr "El equipo de desarrollo de Xfce. Todos los derechos reservados."
 
-#: ../mousepad/main.c:110
+#: ../mousepad/main.c:107
 #, c-format
 msgid "Please report bugs to <%s>."
 msgstr "Informe de errores a <%s>."
@@ -296,17 +296,17 @@ msgstr "Japonés"
 msgid "Korean"
 msgstr "Coreano"
 
-#: ../mousepad/mousepad-file.c:555
+#: ../mousepad/mousepad-file.c:559
 #, c-format
 msgid "Invalid byte sequence in conversion input"
 msgstr "Secuencia de bytes no válida en la entrada de conversión"
 
-#: ../mousepad/mousepad-file.c:899
+#: ../mousepad/mousepad-file.c:903
 #, c-format
 msgid "The file \"%s\" you tried to reload does not exist anymore"
 msgstr "El archivo «%s» que está intentando recargar ya no existe"
 
-#: ../mousepad/mousepad-file.c:940
+#: ../mousepad/mousepad-file.c:944
 #, c-format
 msgid "Failed to read the status of \"%s\""
 msgstr "No se pudo leer el estado de «%s»"
@@ -652,8 +652,8 @@ msgstr "Todos los documentos"
 
 #: ../mousepad/mousepad-replace-dialog.c:422
 #, c-format
-msgid "%d occurence"
-msgid_plural "%d occurences"
+msgid "%d occurrence"
+msgid_plural "%d occurrences"
 msgstr[0] "%d ocurrencia"
 msgstr[1] "%d ocurrencias"
 
