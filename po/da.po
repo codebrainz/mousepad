@@ -14,8 +14,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-05-19 00:30+0200\n"
-"PO-Revision-Date: 2019-08-17 09:40+0000\n"
+"POT-Creation-Date: 2019-08-26 00:31+0200\n"
+"PO-Revision-Date: 2019-08-29 08:43+0000\n"
 "Last-Translator: scootergrisen\n"
 "Language-Team: Danish (http://www.transifex.com/xfce/xfce-apps/language/da/)\n"
 "MIME-Version: 1.0\n"
@@ -37,25 +37,25 @@ msgid "Print version information and exit"
 msgstr "Udskriv versionsinformation og afslut"
 
 #. default application name
-#: ../mousepad/main.c:72 ../mousepad.desktop.in.in.h:1
+#: ../mousepad/main.c:69 ../mousepad.desktop.in.in.h:1
 msgid "Mousepad"
 msgstr "Mousepad"
 
 #. initialize gtk+
-#: ../mousepad/main.c:86
+#: ../mousepad/main.c:83
 msgid "[FILES...]"
 msgstr "[FILER ...]"
 
 #. no error message, the gui initialization failed
-#: ../mousepad/main.c:92
+#: ../mousepad/main.c:89
 msgid "Failed to open display."
 msgstr "Kunne ikke åbne skærmen."
 
-#: ../mousepad/main.c:109
+#: ../mousepad/main.c:106
 msgid "The Xfce development team. All rights reserved."
 msgstr "Xfce's udviklingshold. Alle rettigheder forbeholdes."
 
-#: ../mousepad/main.c:110
+#: ../mousepad/main.c:107
 #, c-format
 msgid "Please report bugs to <%s>."
 msgstr "Rapportér venligst fejl til <%s>."
@@ -297,17 +297,17 @@ msgstr "Japansk"
 msgid "Korean"
 msgstr "Koreansk"
 
-#: ../mousepad/mousepad-file.c:555
+#: ../mousepad/mousepad-file.c:559
 #, c-format
 msgid "Invalid byte sequence in conversion input"
 msgstr "Ugyldig bytesekvens i konverteringsinput"
 
-#: ../mousepad/mousepad-file.c:899
+#: ../mousepad/mousepad-file.c:903
 #, c-format
 msgid "The file \"%s\" you tried to reload does not exist anymore"
 msgstr "Filen \"%s\", som du forsøgte at genindlæse, findes ikke længere"
 
-#: ../mousepad/mousepad-file.c:940
+#: ../mousepad/mousepad-file.c:944
 #, c-format
 msgid "Failed to read the status of \"%s\""
 msgstr "Kunne ikke læse statussen for \"%s\""
@@ -653,8 +653,8 @@ msgstr "Alle dokumenter"
 
 #: ../mousepad/mousepad-replace-dialog.c:422
 #, c-format
-msgid "%d occurence"
-msgid_plural "%d occurences"
+msgid "%d occurrence"
+msgid_plural "%d occurrences"
 msgstr[0] "%d forekomst"
 msgstr[1] "%d forekomster"
 
