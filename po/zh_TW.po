@@ -4,7 +4,7 @@
 # 
 # Translators:
 # 黃柏諺 <s8321414@gmail.com>, 2014,2018-2019
-# Walter Cheuk <wwycheuk@gmail.com>, 2013
+# Walter Cheuk <wwycheuk@gmail.com>, 2013,2019
 # 黃柏諺 <s8321414@gmail.com>, 2014
 # 黃柏諺 <s8321414@gmail.com>, 2019
 msgid ""
@@ -12,8 +12,8 @@ msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-08-26 00:31+0200\n"
-"PO-Revision-Date: 2019-08-27 07:30+0000\n"
-"Last-Translator: 黃柏諺 <s8321414@gmail.com>\n"
+"PO-Revision-Date: 2019-09-11 02:37+0000\n"
+"Last-Translator: Walter Cheuk <wwycheuk@gmail.com>\n"
 "Language-Team: Chinese (Taiwan) (http://www.transifex.com/xfce/xfce-apps/language/zh_TW/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -943,7 +943,7 @@ msgstr "定位點轉為空格(_T)"
 
 #: ../mousepad/mousepad-window.c:440
 msgid "Convert all tabs to spaces in the selection or document"
-msgstr "將所選行或文件所有定位點(tab)轉換為空格"
+msgstr "將所選範圍或文件所有定位點轉換為空格"
 
 #: ../mousepad/mousepad-window.c:441
 msgid "_Spaces to Tabs"
@@ -952,7 +952,7 @@ msgstr "空格轉為定位點(_S)"
 #: ../mousepad/mousepad-window.c:441
 msgid ""
 "Convert all the leading spaces to tabs in the selected line(s) or document"
-msgstr "將所選行或文件所有開首的空白轉換為定位點(tab)"
+msgstr "將所選行或文件所有開首的空白轉換為定位點"
 
 #: ../mousepad/mousepad-window.c:442
 msgid "St_rip Trailing Spaces"
@@ -992,11 +992,11 @@ msgstr "將選取範圍下移一列"
 
 #: ../mousepad/mousepad-window.c:447
 msgid "Dup_licate Line / Selection"
-msgstr "重覆的行/選擇(_L)"
+msgstr "為游標所在的行或選取範圍製作複本(_L)"
 
 #: ../mousepad/mousepad-window.c:447
 msgid "Duplicate the current line or selection"
-msgstr "再製目前列或是再製選取範圍"
+msgstr "將游標所在的行，或是選取範圍的文字製作複本"
 
 #: ../mousepad/mousepad-window.c:448
 msgid "_Increase Indent"
@@ -1084,7 +1084,7 @@ msgstr "列結尾(_N)"
 
 #: ../mousepad/mousepad-window.c:465
 msgid "Tab _Size"
-msgstr "定位點(tab)大小(_S)"
+msgstr "定位點大小(_S)"
 
 #: ../mousepad/mousepad-window.c:466
 msgid "_Filetype"
@@ -1238,7 +1238,7 @@ msgstr "在下列的位置中沒有發現模板檔案\n'%s'"
 #. create other action
 #: ../mousepad/mousepad-window.c:2504
 msgid "Set custom tab size"
-msgstr "設定自訂定位點(tab)大小"
+msgstr "設定自訂定位點大小"
 
 #. create suitable label for the other menu
 #: ../mousepad/mousepad-window.c:2552
