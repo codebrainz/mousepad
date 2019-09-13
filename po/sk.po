@@ -3,7 +3,7 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
-# Dušan Kazik <prescott66@gmail.com>, 2015-2016
+# Dušan Kazik <prescott66@gmail.com>, 2015-2016,2019
 # Slavko <linux@slavino.sk>, 2015
 # Tomáš Vadina <inactive+kyberdev@transifex.com>, 2012
 # Tomáš Vadina <inactive+kyberdev@transifex.com>, 2014
@@ -11,8 +11,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-06-05 06:31+0200\n"
-"PO-Revision-Date: 2018-09-14 00:16+0000\n"
+"POT-Creation-Date: 2019-08-26 00:31+0200\n"
+"PO-Revision-Date: 2019-09-13 19:26+0000\n"
 "Last-Translator: Dušan Kazik <prescott66@gmail.com>\n"
 "Language-Team: Slovak (http://www.transifex.com/xfce/xfce-apps/language/sk/)\n"
 "MIME-Version: 1.0\n"
@@ -21,158 +21,158 @@ msgstr ""
 "Language: sk\n"
 "Plural-Forms: nplurals=4; plural=(n % 1 == 0 && n == 1 ? 0 : n % 1 == 0 && n >= 2 && n <= 4 ? 1 : n % 1 != 0 ? 2: 3);\n"
 
-#: ../mousepad/main.c:42
+#: ../mousepad/main.c:44
 msgid "Do not register with the D-BUS session message bus"
 msgstr "Neregistrovať so zbernicou správ sedenia D-BUS"
 
-#: ../mousepad/main.c:43
+#: ../mousepad/main.c:45
 msgid "Quit a running Mousepad instance"
 msgstr "Ukončiť bežiacu inštanciu Mousepadu"
 
-#: ../mousepad/main.c:45
+#: ../mousepad/main.c:47
 msgid "Print version information and exit"
 msgstr "Vypísať informácie o verzii a ukončiť"
 
 #. default application name
-#: ../mousepad/main.c:70 ../mousepad.desktop.in.in.h:1
+#: ../mousepad/main.c:69 ../mousepad.desktop.in.in.h:1
 msgid "Mousepad"
 msgstr "Mousepad"
 
 #. initialize gtk+
-#: ../mousepad/main.c:84
+#: ../mousepad/main.c:83
 msgid "[FILES...]"
 msgstr "[SÚBORY...]"
 
 #. no error message, the gui initialization failed
-#: ../mousepad/main.c:90
+#: ../mousepad/main.c:89
 msgid "Failed to open display."
 msgstr "Zlyhalo otvorenie displeja."
 
-#: ../mousepad/main.c:107
+#: ../mousepad/main.c:106
 msgid "The Xfce development team. All rights reserved."
 msgstr "Vývojový tím Xfce. Všetky práva vyhradené."
 
-#: ../mousepad/main.c:108
+#: ../mousepad/main.c:107
 #, c-format
 msgid "Please report bugs to <%s>."
 msgstr "Chyby hláste prosím na <%s>."
 
-#: ../mousepad/mousepad-dialogs.c:41
+#: ../mousepad/mousepad-dialogs.c:44
 msgid "Mousepad is a fast text editor for the Xfce Desktop Environment."
 msgstr "Mousepad je rýchly textový editor pre pracovné prostredie Xfce."
 
-#: ../mousepad/mousepad-dialogs.c:46
+#: ../mousepad/mousepad-dialogs.c:49
 msgid "translator-credits"
 msgstr "Tomáš Vadina <kyberdev@gmail.com>"
 
 #. display an error message to the user
-#: ../mousepad/mousepad-dialogs.c:101
+#: ../mousepad/mousepad-dialogs.c:104
 msgid "Failed to open the documentation browser"
 msgstr "Zlyhalo otvorenie prehliadača dokumentácie"
 
 #. build dialog
-#: ../mousepad/mousepad-dialogs.c:116
+#: ../mousepad/mousepad-dialogs.c:119
 msgid "Select Tab Size"
 msgstr "Vyberte veľkosť záložiek"
 
 #. build the dialog
-#: ../mousepad/mousepad-dialogs.c:197
+#: ../mousepad/mousepad-dialogs.c:200
 msgid "Go To"
 msgstr "Prejsť na"
 
-#: ../mousepad/mousepad-dialogs.c:219
+#: ../mousepad/mousepad-dialogs.c:222
 msgid "_Line number:"
 msgstr "Číslo _riadka:"
 
-#: ../mousepad/mousepad-dialogs.c:238
+#: ../mousepad/mousepad-dialogs.c:241
 msgid "C_olumn number:"
 msgstr "Číslo _stĺpca:"
 
-#: ../mousepad/mousepad-dialogs.c:296
+#: ../mousepad/mousepad-dialogs.c:299
 msgid "Remove all entries from the documents history?"
 msgstr "Odstrániť všetky položky histórie dokumentov?"
 
-#: ../mousepad/mousepad-dialogs.c:301
+#: ../mousepad/mousepad-dialogs.c:304
 msgid "Clear Documents History"
 msgstr "Vymazať históriu dokumentu"
 
-#: ../mousepad/mousepad-dialogs.c:304
+#: ../mousepad/mousepad-dialogs.c:307
 msgid ""
 "Clearing the documents history will permanently remove all currently listed "
 "entries."
 msgstr "Vymazanie histórie dokumentu natrvalo odstráni všetky aktuálne vypísané položky."
 
-#: ../mousepad/mousepad-dialogs.c:335
+#: ../mousepad/mousepad-dialogs.c:338
 msgid "Do you want to save the changes before closing?"
 msgstr "Chcete uložiť zmeny pred zatvorením?"
 
-#: ../mousepad/mousepad-dialogs.c:336
+#: ../mousepad/mousepad-dialogs.c:339
 msgid "Save Changes"
 msgstr "Uloženie zmien"
 
-#: ../mousepad/mousepad-dialogs.c:337
+#: ../mousepad/mousepad-dialogs.c:340
 msgid "_Don't Save"
 msgstr "_Neuložiť"
 
 #. secondary text
-#: ../mousepad/mousepad-dialogs.c:359
+#: ../mousepad/mousepad-dialogs.c:362
 msgid "If you don't save the document, all the changes will be lost."
 msgstr "Ak neuložíte dokument, všetky zmeny budú stratené."
 
-#: ../mousepad/mousepad-dialogs.c:381
+#: ../mousepad/mousepad-dialogs.c:384
 msgid ""
 "The document has been externally modified. Do you want to continue saving?"
 msgstr "Dokument bol externe upravený. Chcete pokračovať v ukladaní?"
 
-#: ../mousepad/mousepad-dialogs.c:382
+#: ../mousepad/mousepad-dialogs.c:385
 msgid "Externally Modified"
 msgstr "Externe upravené"
 
-#: ../mousepad/mousepad-dialogs.c:384
+#: ../mousepad/mousepad-dialogs.c:387
 msgid "If you save the document, all of the external changes will be lost."
 msgstr "Ak uložíte dokument, všetky externé zmeny budú stratené."
 
-#: ../mousepad/mousepad-dialogs.c:412
+#: ../mousepad/mousepad-dialogs.c:415
 msgid "Do you want to save your changes before reloading?"
 msgstr "Chcete pred opätovným načítaním uložiť zmeny?"
 
-#: ../mousepad/mousepad-dialogs.c:414
+#: ../mousepad/mousepad-dialogs.c:417
 msgid "If you revert the file, all unsaved changes will be lost."
 msgstr "Ak súbor obnovíte, všetky neuložené zmeny budú stratené."
 
 #. pack button, add signal and tooltip
-#: ../mousepad/mousepad-document.c:502
+#: ../mousepad/mousepad-document.c:500
 msgid "Close this tab"
 msgstr "Zavrieť túto kartu"
 
 #. create an unique untitled document name
-#: ../mousepad/mousepad-document.c:532
+#: ../mousepad/mousepad-document.c:530
 msgid "Untitled"
 msgstr "Nepomenovaný"
 
 #. create the header
-#: ../mousepad/mousepad-encoding-dialog.c:126
+#: ../mousepad/mousepad-encoding-dialog.c:131
 msgid "The document was not UTF-8 valid"
 msgstr "Dokument nie je platný UTF-8"
 
-#: ../mousepad/mousepad-encoding-dialog.c:127
+#: ../mousepad/mousepad-encoding-dialog.c:132
 msgid "Please select an encoding below."
 msgstr "Prosím, vyberte kódovanie."
 
 #. encoding radio buttons
-#: ../mousepad/mousepad-encoding-dialog.c:139
+#: ../mousepad/mousepad-encoding-dialog.c:144
 msgid "Default (UTF-8)"
 msgstr "Predvolené (UTF-8)"
 
-#: ../mousepad/mousepad-encoding-dialog.c:145
+#: ../mousepad/mousepad-encoding-dialog.c:150
 msgid "System"
 msgstr "Systém"
 
-#: ../mousepad/mousepad-encoding-dialog.c:152
+#: ../mousepad/mousepad-encoding-dialog.c:157
 msgid "Other:"
 msgstr "Ostatné:"
 
-#: ../mousepad/mousepad-encoding-dialog.c:172
+#: ../mousepad/mousepad-encoding-dialog.c:177
 msgid "Checking encodings..."
 msgstr "Kontrola kódovaní…"
 
@@ -294,17 +294,17 @@ msgstr "Japonské"
 msgid "Korean"
 msgstr "Kórejské"
 
-#: ../mousepad/mousepad-file.c:554
+#: ../mousepad/mousepad-file.c:559
 #, c-format
 msgid "Invalid byte sequence in conversion input"
 msgstr "Neplatná postupnosť bajtov na vstupe konverzie"
 
-#: ../mousepad/mousepad-file.c:878
+#: ../mousepad/mousepad-file.c:903
 #, c-format
 msgid "The file \"%s\" you tried to reload does not exist anymore"
 msgstr "Súbor \"%s\", ktorý ste skúsili znovu načítať už neexistuje"
 
-#: ../mousepad/mousepad-file.c:919
+#: ../mousepad/mousepad-file.c:944
 #, c-format
 msgid "Failed to read the status of \"%s\""
 msgstr "Zlyhalo čítanie stavu súboru \"%s\""
@@ -318,7 +318,7 @@ msgid "No filetype"
 msgstr "Žiadny typ súboru"
 
 #. setup the window properties
-#: ../mousepad/mousepad-prefs-dialog.c:433 ../mousepad/mousepad-window.c:445
+#: ../mousepad/mousepad-prefs-dialog.c:437 ../mousepad/mousepad-window.c:450
 msgid "Preferences"
 msgstr "Predvoľby"
 
@@ -351,7 +351,7 @@ msgid "none"
 msgstr "žiadne"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:8
-#: ../mousepad/mousepad-style-scheme-action.c:193
+#: ../mousepad/mousepad-style-scheme-action.c:197
 msgid "None"
 msgstr "Žiadne"
 
@@ -396,7 +396,7 @@ msgid "Text Beside Icons"
 msgstr "Text vedľa ikon"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:19
-#: ../mousepad/mousepad-window.c:472
+#: ../mousepad/mousepad-window.c:477
 msgid "Show line numbers"
 msgstr "Zobraziť čísla riadkov"
 
@@ -529,62 +529,62 @@ msgid "Window"
 msgstr "Okno"
 
 #. set a custom tab label
-#: ../mousepad/mousepad-print.c:121
+#: ../mousepad/mousepad-print.c:125
 msgid "Document Settings"
 msgstr "Nastavenia dokumentu"
 
-#: ../mousepad/mousepad-print.c:596
+#: ../mousepad/mousepad-print.c:600
 msgid "Page Setup"
 msgstr "Nastavenia strany"
 
-#: ../mousepad/mousepad-print.c:606
+#: ../mousepad/mousepad-print.c:610
 msgid "_Adjust page size and orientation"
 msgstr "_Upraviť veľkosť a orientáciu stránky"
 
-#: ../mousepad/mousepad-print.c:616
+#: ../mousepad/mousepad-print.c:620
 msgid "Appearance"
 msgstr "Vzhľad"
 
-#: ../mousepad/mousepad-print.c:630
+#: ../mousepad/mousepad-print.c:634
 msgid "Print page _headers"
 msgstr "Tlačiť _hlavičky stránok"
 
-#: ../mousepad/mousepad-print.c:637
+#: ../mousepad/mousepad-print.c:641
 msgid "Print _line numbers"
 msgstr "Tlačiť čísla _riadkov"
 
-#: ../mousepad/mousepad-print.c:654
+#: ../mousepad/mousepad-print.c:658
 msgid "Numbering interval:"
 msgstr "Interval číslovania:"
 
-#: ../mousepad/mousepad-print.c:662
+#: ../mousepad/mousepad-print.c:666
 msgid ""
 "The interval at which to print line numbers. For example a value of 1 will "
 "print a line number on each line, a value of 2 will print a line number on "
 "every other line, and so on."
 msgstr "Interval, podľa ktorého sa majú vypísať čísla riadkov. Napríklad hodnota 1 vypíše číslo riadku na každom riadku, hodnota 2 vypíše číslo riadku na každom druhom riadku a pod."
 
-#: ../mousepad/mousepad-print.c:674
+#: ../mousepad/mousepad-print.c:678
 msgid "Enable text _wrapping"
 msgstr "Povoliť _zalamovanie textu"
 
-#: ../mousepad/mousepad-print.c:681
+#: ../mousepad/mousepad-print.c:685
 msgid "Enable _syntax highlighting"
 msgstr "Povoliť zvý_razňovanie syntaxe"
 
-#: ../mousepad/mousepad-print.c:693
+#: ../mousepad/mousepad-print.c:697
 msgid "Fonts"
 msgstr "Písma"
 
-#: ../mousepad/mousepad-print.c:715
+#: ../mousepad/mousepad-print.c:719
 msgid "Header:"
 msgstr "Hlavička:"
 
-#: ../mousepad/mousepad-print.c:725
+#: ../mousepad/mousepad-print.c:729
 msgid "Body:"
 msgstr "Telo:"
 
-#: ../mousepad/mousepad-print.c:735
+#: ../mousepad/mousepad-print.c:739
 msgid "Line numbers:"
 msgstr "Čísla riadkov:"
 
@@ -650,12 +650,12 @@ msgstr "Vo všetkych dokumentoch"
 
 #: ../mousepad/mousepad-replace-dialog.c:422
 #, c-format
-msgid "%d occurence"
-msgid_plural "%d occurences"
-msgstr[0] "%d výskytov"
-msgstr[1] "%d výskyt"
-msgstr[2] "%d výskyty"
-msgstr[3] "%d výskyty"
+msgid "%d occurrence"
+msgid_plural "%d occurrences"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+msgstr[3] ""
 
 #: ../mousepad/mousepad-replace-dialog.c:443
 msgid "_Replace All"
@@ -715,9 +715,14 @@ msgstr "Riadok: %d Stĺpec: %d Selection: %d"
 msgid "Line: %d Column: %d"
 msgstr "Riadok: %d Stĺpec: %d"
 
-#: ../mousepad/mousepad-style-scheme-action.c:194
+#: ../mousepad/mousepad-style-scheme-action.c:198
 msgid "No style scheme"
 msgstr "Žiadna schéma štýlu"
+
+#: ../mousepad/mousepad-style-scheme-action.c:212
+#, c-format
+msgid "%s | Authors: %s | Filename: %s"
+msgstr ""
 
 #. show warning to the user
 #: ../mousepad/mousepad-util.c:549
@@ -731,502 +736,502 @@ msgstr "Nie je možné vytvoriť základný adresár \"%s\". Uloženie do súbor
 msgid "Failed to store the preferences to \"%s\": %s"
 msgstr "Zlyhalo uloženie nastavení do \"%s\": %s"
 
-#: ../mousepad/mousepad-window.c:401
+#: ../mousepad/mousepad-window.c:406
 msgid "_File"
 msgstr "_Súbor"
 
-#: ../mousepad/mousepad-window.c:402
+#: ../mousepad/mousepad-window.c:407
 msgid "_New"
 msgstr "_Nový"
 
-#: ../mousepad/mousepad-window.c:402
+#: ../mousepad/mousepad-window.c:407
 msgid "Create a new document"
 msgstr "Vytvoriť nový dokument"
 
-#: ../mousepad/mousepad-window.c:403
+#: ../mousepad/mousepad-window.c:408
 msgid "New _Window"
 msgstr "Nové _okno"
 
-#: ../mousepad/mousepad-window.c:403
+#: ../mousepad/mousepad-window.c:408
 msgid "Create a new document in a new window"
 msgstr "Vytvoriť nový dokument v novom okne"
 
-#: ../mousepad/mousepad-window.c:404
+#: ../mousepad/mousepad-window.c:409
 msgid "New From Te_mplate"
 msgstr "Nový zo š_ablóny"
 
-#: ../mousepad/mousepad-window.c:405
+#: ../mousepad/mousepad-window.c:410
 msgid "_Open..."
 msgstr "_Otvoriť..."
 
-#: ../mousepad/mousepad-window.c:405
+#: ../mousepad/mousepad-window.c:410
 msgid "Open a file"
 msgstr "Otvoriť súbor"
 
-#: ../mousepad/mousepad-window.c:406
+#: ../mousepad/mousepad-window.c:411
 msgid "Op_en Recent"
 msgstr "Otvoriť _nedávne"
 
-#: ../mousepad/mousepad-window.c:407
+#: ../mousepad/mousepad-window.c:412
 msgid "No items found"
 msgstr "Nenájdené žiadne položky"
 
-#: ../mousepad/mousepad-window.c:408
+#: ../mousepad/mousepad-window.c:413
 msgid "Clear _History"
 msgstr "Vymazať _históriu"
 
-#: ../mousepad/mousepad-window.c:408
+#: ../mousepad/mousepad-window.c:413
 msgid "Clear the recently used files history"
 msgstr "Vymazať históriu naposledy použitých súborov"
 
-#: ../mousepad/mousepad-window.c:409
+#: ../mousepad/mousepad-window.c:414
 msgid "Save the current document"
 msgstr "Uložiť aktuálny dokument"
 
-#: ../mousepad/mousepad-window.c:410
+#: ../mousepad/mousepad-window.c:415
 msgid "Save _As..."
 msgstr "Uložiť _ako..."
 
-#: ../mousepad/mousepad-window.c:410
+#: ../mousepad/mousepad-window.c:415
 msgid "Save current document as another file"
 msgstr "Uložiť aktuálny dokument ako iný súbor"
 
-#: ../mousepad/mousepad-window.c:411
+#: ../mousepad/mousepad-window.c:416
 msgid "Save A_ll"
 msgstr "Uložiť _všetko"
 
-#: ../mousepad/mousepad-window.c:411
+#: ../mousepad/mousepad-window.c:416
 msgid "Save all document in this window"
 msgstr "Uložiť všetky dokumenty v tomto okne"
 
-#: ../mousepad/mousepad-window.c:412
+#: ../mousepad/mousepad-window.c:417
 msgid "Re_vert"
 msgstr "_Vrátiť"
 
-#: ../mousepad/mousepad-window.c:412
+#: ../mousepad/mousepad-window.c:417
 msgid "Revert to the saved version of the file"
 msgstr "Vrátiť na uloženú verziu súboru"
 
-#: ../mousepad/mousepad-window.c:413
+#: ../mousepad/mousepad-window.c:418
 msgid "_Print..."
 msgstr "_Tlačiť..."
 
-#: ../mousepad/mousepad-window.c:413
+#: ../mousepad/mousepad-window.c:418
 msgid "Print the current document"
 msgstr "Vytlačiť aktuálny dokument"
 
-#: ../mousepad/mousepad-window.c:414
+#: ../mousepad/mousepad-window.c:419
 msgid "_Detach Tab"
 msgstr "_Odpojiť kartu"
 
-#: ../mousepad/mousepad-window.c:414
+#: ../mousepad/mousepad-window.c:419
 msgid "Move the current document to a new window"
 msgstr "Presunúť aktuálny dokument do nového okna"
 
-#: ../mousepad/mousepad-window.c:415
+#: ../mousepad/mousepad-window.c:420
 msgid "Close _Tab"
 msgstr "Zavrieť _kartu"
 
-#: ../mousepad/mousepad-window.c:415
+#: ../mousepad/mousepad-window.c:420
 msgid "Close the current document"
 msgstr "Zavrieť aktuálny dokument"
 
-#: ../mousepad/mousepad-window.c:416
+#: ../mousepad/mousepad-window.c:421
 msgid "_Close Window"
 msgstr "_Zavrieť okno"
 
-#: ../mousepad/mousepad-window.c:416
+#: ../mousepad/mousepad-window.c:421
 msgid "Close this window"
 msgstr "Zavrieť toto okno"
 
-#: ../mousepad/mousepad-window.c:418
+#: ../mousepad/mousepad-window.c:423
 msgid "_Edit"
 msgstr "_Upraviť"
 
-#: ../mousepad/mousepad-window.c:419
+#: ../mousepad/mousepad-window.c:424
 msgid "Undo the last action"
 msgstr "Vrátiť poslednú akciu"
 
-#: ../mousepad/mousepad-window.c:420
+#: ../mousepad/mousepad-window.c:425
 msgid "Redo the last undone action"
 msgstr "Zopakovať naposledy vrátenú akciu"
 
-#: ../mousepad/mousepad-window.c:421
+#: ../mousepad/mousepad-window.c:426
 msgid "Cut the selection"
 msgstr "Vystrihnúť výber"
 
-#: ../mousepad/mousepad-window.c:422
+#: ../mousepad/mousepad-window.c:427
 msgid "Copy the selection"
 msgstr "Kopírovať výber"
 
-#: ../mousepad/mousepad-window.c:423
+#: ../mousepad/mousepad-window.c:428
 msgid "Paste the clipboard"
 msgstr "Vložiť zo schránky"
 
-#: ../mousepad/mousepad-window.c:424
+#: ../mousepad/mousepad-window.c:429
 msgid "Paste _Special"
 msgstr "Vložiť š_peciálne"
 
-#: ../mousepad/mousepad-window.c:425
+#: ../mousepad/mousepad-window.c:430
 msgid "Paste from _History"
 msgstr "Vložiť z _histórie"
 
-#: ../mousepad/mousepad-window.c:425
+#: ../mousepad/mousepad-window.c:430
 msgid "Paste from the clipboard history"
 msgstr "Vložiť z histórie schránky"
 
-#: ../mousepad/mousepad-window.c:426
+#: ../mousepad/mousepad-window.c:431
 msgid "Paste as _Column"
 msgstr "Vložiť ako _stĺpec"
 
-#: ../mousepad/mousepad-window.c:426
+#: ../mousepad/mousepad-window.c:431
 msgid "Paste the clipboard text into a column"
 msgstr "Vložiť text zo schránky do stĺpca"
 
-#: ../mousepad/mousepad-window.c:427
+#: ../mousepad/mousepad-window.c:432
 msgid "Delete the current selection"
 msgstr "Vymazať aktuálny výber"
 
-#: ../mousepad/mousepad-window.c:428
+#: ../mousepad/mousepad-window.c:433
 msgid "Select the text in the entire document"
 msgstr "Vybrať text v celom dokumente"
 
-#: ../mousepad/mousepad-window.c:429
+#: ../mousepad/mousepad-window.c:434
 msgid "Change the selection"
 msgstr "Zmeniť výber"
 
-#: ../mousepad/mousepad-window.c:429
+#: ../mousepad/mousepad-window.c:434
 msgid "Change a normal selection into a column selection and vice versa"
 msgstr "Zmeniť normálny výber na stĺpcový výber a naopak"
 
-#: ../mousepad/mousepad-window.c:430
+#: ../mousepad/mousepad-window.c:435
 msgid "Conve_rt"
 msgstr "Konve_rtovať"
 
-#: ../mousepad/mousepad-window.c:431
+#: ../mousepad/mousepad-window.c:436
 msgid "To _Uppercase"
 msgstr "Na veľké _písmená"
 
-#: ../mousepad/mousepad-window.c:431
+#: ../mousepad/mousepad-window.c:436
 msgid "Change the case of the selection to uppercase"
 msgstr "Zmení veľkosť písmen výberu na veľké"
 
-#: ../mousepad/mousepad-window.c:432
+#: ../mousepad/mousepad-window.c:437
 msgid "To _Lowercase"
 msgstr "Na _malé písmená"
 
-#: ../mousepad/mousepad-window.c:432
+#: ../mousepad/mousepad-window.c:437
 msgid "Change the case of the selection to lowercase"
 msgstr "Zmení veľkosť písmen výberu na malé"
 
-#: ../mousepad/mousepad-window.c:433
+#: ../mousepad/mousepad-window.c:438
 msgid "To _Title Case"
 msgstr "Počiatočné pí_smená na veľké"
 
-#: ../mousepad/mousepad-window.c:433
+#: ../mousepad/mousepad-window.c:438
 msgid "Change the case of the selection to title case"
 msgstr "Zmení veľkosť počiatočných písmen na veľké"
 
-#: ../mousepad/mousepad-window.c:434
+#: ../mousepad/mousepad-window.c:439
 msgid "To _Opposite Case"
 msgstr "Na _opačnú veľkosť písmen"
 
-#: ../mousepad/mousepad-window.c:434
+#: ../mousepad/mousepad-window.c:439
 msgid "Change the case of the selection opposite case"
 msgstr "Zmeniť veľkosť písmen výberu na opačnú"
 
-#: ../mousepad/mousepad-window.c:435
+#: ../mousepad/mousepad-window.c:440
 msgid "_Tabs to Spaces"
 msgstr "_Tabulátory na medzery"
 
-#: ../mousepad/mousepad-window.c:435
+#: ../mousepad/mousepad-window.c:440
 msgid "Convert all tabs to spaces in the selection or document"
 msgstr "Skonvertuje všetky tabulátory na medzery vo výbere alebo dokumente"
 
-#: ../mousepad/mousepad-window.c:436
+#: ../mousepad/mousepad-window.c:441
 msgid "_Spaces to Tabs"
 msgstr "Me_dzery na tabulátory"
 
-#: ../mousepad/mousepad-window.c:436
+#: ../mousepad/mousepad-window.c:441
 msgid ""
 "Convert all the leading spaces to tabs in the selected line(s) or document"
 msgstr "Skonvertuje všetky počiatočné medzery na tabulátory vo vybratých riadkoch alebo dokumente"
 
-#: ../mousepad/mousepad-window.c:437
+#: ../mousepad/mousepad-window.c:442
 msgid "St_rip Trailing Spaces"
 msgstr "Odst_rániť koncové medzery"
 
-#: ../mousepad/mousepad-window.c:437
+#: ../mousepad/mousepad-window.c:442
 msgid "Remove all the trailing spaces from the selected line(s) or document"
 msgstr "Odstráni všetky medzery na koncoch vybratých riadkov, alebo dokumentu"
 
-#: ../mousepad/mousepad-window.c:438
+#: ../mousepad/mousepad-window.c:443
 msgid "_Transpose"
 msgstr "_Transponovať"
 
-#: ../mousepad/mousepad-window.c:438
+#: ../mousepad/mousepad-window.c:443
 msgid "Reverse the order of something"
 msgstr "Obrátiť poradie niečoho"
 
-#: ../mousepad/mousepad-window.c:439
+#: ../mousepad/mousepad-window.c:444
 msgid "_Move Selection"
 msgstr "Presunúť vý_ber"
 
-#: ../mousepad/mousepad-window.c:440
+#: ../mousepad/mousepad-window.c:445
 msgid "Line _Up"
 msgstr "O riadok v_yššie"
 
-#: ../mousepad/mousepad-window.c:440
+#: ../mousepad/mousepad-window.c:445
 msgid "Move the selection one line up"
 msgstr "Presunie výber o riadok vyššie"
 
-#: ../mousepad/mousepad-window.c:441
+#: ../mousepad/mousepad-window.c:446
 msgid "Line _Down"
 msgstr "O riadok _nižšie"
 
-#: ../mousepad/mousepad-window.c:441
+#: ../mousepad/mousepad-window.c:446
 msgid "Move the selection one line down"
 msgstr "Presunie výber o riadok nižšie"
 
-#: ../mousepad/mousepad-window.c:442
+#: ../mousepad/mousepad-window.c:447
 msgid "Dup_licate Line / Selection"
 msgstr "Dup_likovať riadok alebo výber"
 
-#: ../mousepad/mousepad-window.c:442
+#: ../mousepad/mousepad-window.c:447
 msgid "Duplicate the current line or selection"
 msgstr "Zduplikuje aktuálny riadok alebo výber"
 
-#: ../mousepad/mousepad-window.c:443
+#: ../mousepad/mousepad-window.c:448
 msgid "_Increase Indent"
 msgstr "_Zvýšiť odsadenie"
 
-#: ../mousepad/mousepad-window.c:443
+#: ../mousepad/mousepad-window.c:448
 msgid "Increase the indentation of the selection or current line"
 msgstr "Zvýši odsadenie výberu alebo aktuálneho riadku"
 
-#: ../mousepad/mousepad-window.c:444
+#: ../mousepad/mousepad-window.c:449
 msgid "_Decrease Indent"
 msgstr "Z_nížiť odsadenie"
 
-#: ../mousepad/mousepad-window.c:444
+#: ../mousepad/mousepad-window.c:449
 msgid "Decrease the indentation of the selection or current line"
 msgstr "Zníži odsadenie výberu alebo riadku"
 
-#: ../mousepad/mousepad-window.c:445
+#: ../mousepad/mousepad-window.c:450
 msgid "Show the preferences dialog"
 msgstr "Zobrazí dialógové okno s nastaveniami"
 
-#: ../mousepad/mousepad-window.c:447
+#: ../mousepad/mousepad-window.c:452
 msgid "_Search"
 msgstr "_Vyhľadať"
 
-#: ../mousepad/mousepad-window.c:448
+#: ../mousepad/mousepad-window.c:453
 msgid "Search for text"
 msgstr "Hľadať text"
 
-#: ../mousepad/mousepad-window.c:449
+#: ../mousepad/mousepad-window.c:454
 msgid "Find _Next"
 msgstr "Nájsť ď_alšie"
 
-#: ../mousepad/mousepad-window.c:449
+#: ../mousepad/mousepad-window.c:454
 msgid "Search forwards for the same text"
 msgstr "Hľadať dopredu ten istý text"
 
-#: ../mousepad/mousepad-window.c:450
+#: ../mousepad/mousepad-window.c:455
 msgid "Find _Previous"
 msgstr "Nájsť _predchádzajúce"
 
-#: ../mousepad/mousepad-window.c:450
+#: ../mousepad/mousepad-window.c:455
 msgid "Search backwards for the same text"
 msgstr "Hľadať dozadu ten istý text"
 
-#: ../mousepad/mousepad-window.c:451
+#: ../mousepad/mousepad-window.c:456
 msgid "Find and Rep_lace..."
 msgstr "Nájsť a nah_radiť..."
 
-#: ../mousepad/mousepad-window.c:451
+#: ../mousepad/mousepad-window.c:456
 msgid "Search for and replace text"
 msgstr "Vyhľadá a nahradí text"
 
-#: ../mousepad/mousepad-window.c:452
+#: ../mousepad/mousepad-window.c:457
 msgid "_Go to..."
 msgstr "_Prejsť na..."
 
-#: ../mousepad/mousepad-window.c:452
+#: ../mousepad/mousepad-window.c:457
 msgid "Go to a specific location in the document"
 msgstr "Prejde na špecifické umiestnenie v dokumente"
 
-#: ../mousepad/mousepad-window.c:454
+#: ../mousepad/mousepad-window.c:459
 msgid "_View"
 msgstr "_Zobraziť"
 
-#: ../mousepad/mousepad-window.c:455
+#: ../mousepad/mousepad-window.c:460
 msgid "Select F_ont..."
 msgstr "Vybrať _písmo..."
 
-#: ../mousepad/mousepad-window.c:455
+#: ../mousepad/mousepad-window.c:460
 msgid "Change the editor font"
 msgstr "Zmeniť písmo editora"
 
-#: ../mousepad/mousepad-window.c:456
+#: ../mousepad/mousepad-window.c:461
 msgid "_Color Scheme"
 msgstr "_Farebná schéma"
 
-#: ../mousepad/mousepad-window.c:458
+#: ../mousepad/mousepad-window.c:463
 msgid "_Document"
 msgstr "_Dokument"
 
-#: ../mousepad/mousepad-window.c:459
+#: ../mousepad/mousepad-window.c:464
 msgid "Line E_nding"
 msgstr "Uko_nčenia riadkov"
 
-#: ../mousepad/mousepad-window.c:460
+#: ../mousepad/mousepad-window.c:465
 msgid "Tab _Size"
 msgstr "Veľko_sť karty"
 
-#: ../mousepad/mousepad-window.c:461
+#: ../mousepad/mousepad-window.c:466
 msgid "_Filetype"
 msgstr "_Typ súboru"
 
-#: ../mousepad/mousepad-window.c:462
+#: ../mousepad/mousepad-window.c:467
 msgid "_Previous Tab"
 msgstr "_Predchádzajúca karta"
 
-#: ../mousepad/mousepad-window.c:462
+#: ../mousepad/mousepad-window.c:467
 msgid "Select the previous tab"
 msgstr "Vybrať predchádzajúcu kartu"
 
-#: ../mousepad/mousepad-window.c:463
+#: ../mousepad/mousepad-window.c:468
 msgid "_Next Tab"
 msgstr "_Nasledujúca karta"
 
-#: ../mousepad/mousepad-window.c:463
+#: ../mousepad/mousepad-window.c:468
 msgid "Select the next tab"
 msgstr "Vybrať nasledujúcu kartu"
 
-#: ../mousepad/mousepad-window.c:465
+#: ../mousepad/mousepad-window.c:470
 msgid "_Help"
 msgstr "_Pomocník"
 
-#: ../mousepad/mousepad-window.c:466
+#: ../mousepad/mousepad-window.c:471
 msgid "_Contents"
 msgstr "_Obsah"
 
-#: ../mousepad/mousepad-window.c:466
+#: ../mousepad/mousepad-window.c:471
 msgid "Display the Mousepad user manual"
 msgstr "Zobraziť návod na použite pre Mousepad"
 
-#: ../mousepad/mousepad-window.c:467
+#: ../mousepad/mousepad-window.c:472
 msgid "About this application"
 msgstr "O tejto aplikácii"
 
-#: ../mousepad/mousepad-window.c:472
+#: ../mousepad/mousepad-window.c:477
 msgid "Line N_umbers"
 msgstr "Čís_la riadkov"
 
-#: ../mousepad/mousepad-window.c:473
+#: ../mousepad/mousepad-window.c:478
 msgid "_Menubar"
 msgstr "Panel _ponuky"
 
-#: ../mousepad/mousepad-window.c:473
+#: ../mousepad/mousepad-window.c:478
 msgid "Change the visibility of the main menubar"
 msgstr "Zmení viditeľnosť hlavného panelu ponuky"
 
-#: ../mousepad/mousepad-window.c:474
+#: ../mousepad/mousepad-window.c:479
 msgid "_Toolbar"
 msgstr "Panel _nástrojov"
 
-#: ../mousepad/mousepad-window.c:474
+#: ../mousepad/mousepad-window.c:479
 msgid "Change the visibility of the toolbar"
 msgstr "Zmení viditeľnosť panelu nástrojov"
 
-#: ../mousepad/mousepad-window.c:475
+#: ../mousepad/mousepad-window.c:480
 msgid "St_atusbar"
 msgstr "St_avová lišta"
 
-#: ../mousepad/mousepad-window.c:475
+#: ../mousepad/mousepad-window.c:480
 msgid "Change the visibility of the statusbar"
 msgstr "Zmení viditeľnosť stavovej lišty"
 
-#: ../mousepad/mousepad-window.c:476
+#: ../mousepad/mousepad-window.c:481
 msgid "_Fullscreen"
 msgstr "Na _celú obrazovku"
 
-#: ../mousepad/mousepad-window.c:476 ../mousepad/mousepad-window.c:5018
+#: ../mousepad/mousepad-window.c:481 ../mousepad/mousepad-window.c:5026
 msgid "Make the window fullscreen"
 msgstr "Prepne okno na celú obrazovku"
 
-#: ../mousepad/mousepad-window.c:477
+#: ../mousepad/mousepad-window.c:482
 msgid "_Auto Indent"
 msgstr "_Automatické odsadenie"
 
-#: ../mousepad/mousepad-window.c:477
+#: ../mousepad/mousepad-window.c:482
 msgid "Auto indent a new line"
 msgstr "Automaticky odsadí nový riadok"
 
-#: ../mousepad/mousepad-window.c:478
+#: ../mousepad/mousepad-window.c:483
 msgid "Insert _Spaces"
 msgstr "Vložiť med_zery"
 
-#: ../mousepad/mousepad-window.c:478
+#: ../mousepad/mousepad-window.c:483
 msgid "Insert spaces when the tab button is pressed"
 msgstr "Pri stlačení tabulátora vloží medzery"
 
-#: ../mousepad/mousepad-window.c:479
+#: ../mousepad/mousepad-window.c:484
 msgid "_Word Wrap"
 msgstr "_Zalamovanie textu"
 
-#: ../mousepad/mousepad-window.c:479
+#: ../mousepad/mousepad-window.c:484
 msgid "Toggle breaking lines in between words"
 msgstr "Prepnúť ukončenia riadkov medzi slovami"
 
-#: ../mousepad/mousepad-window.c:480
+#: ../mousepad/mousepad-window.c:485
 msgid "Write Unicode _BOM"
 msgstr "Zapísať značku poradia bajtov(_BOM) v kódovaní Unicode"
 
-#: ../mousepad/mousepad-window.c:480
+#: ../mousepad/mousepad-window.c:485
 msgid "Store the byte-order mark in the file"
 msgstr "Uložiť značku poradia bajtov do súboru"
 
-#: ../mousepad/mousepad-window.c:485
+#: ../mousepad/mousepad-window.c:490
 msgid "Unix (_LF)"
 msgstr "Unix (_LF)"
 
-#: ../mousepad/mousepad-window.c:485
+#: ../mousepad/mousepad-window.c:490
 msgid "Set the line ending of the document to Unix (LF)"
 msgstr "Nastaviť ukončenia riadkov dokmentu na Unix (LF)"
 
-#: ../mousepad/mousepad-window.c:486
+#: ../mousepad/mousepad-window.c:491
 msgid "Mac (_CR)"
 msgstr "Mac (_CR)"
 
-#: ../mousepad/mousepad-window.c:486
+#: ../mousepad/mousepad-window.c:491
 msgid "Set the line ending of the document to Mac (CR)"
 msgstr "Nastaviť ukončenia riadkov dokumentu na Mac (CR)"
 
-#: ../mousepad/mousepad-window.c:487
+#: ../mousepad/mousepad-window.c:492
 msgid "DOS / Windows (C_R LF)"
 msgstr "DOS / Windows (C_R LF)"
 
-#: ../mousepad/mousepad-window.c:487
+#: ../mousepad/mousepad-window.c:492
 msgid "Set the line ending of the document to DOS / Windows (CR LF)"
 msgstr "Nastaviť ukončenia riadkov dokumentu na DOS / Windows (CR LF)"
 
 #. add the label with the root warning
-#: ../mousepad/mousepad-window.c:860
+#: ../mousepad/mousepad-window.c:865
 msgid "Warning, you are using the root account, you may harm your system."
 msgstr "Upozornenie. Používate účet správcu, čím môžete poškodiť váš systém."
 
 #. show the warning
-#: ../mousepad/mousepad-window.c:1516
+#: ../mousepad/mousepad-window.c:1521
 msgid "Failed to open the document"
 msgstr "Otvorenie dokumentu zlyhalo"
 
-#: ../mousepad/mousepad-window.c:1713
+#: ../mousepad/mousepad-window.c:1718
 msgid "Read Only"
 msgstr "Len na čítanie"
 
-#: ../mousepad/mousepad-window.c:2382
+#: ../mousepad/mousepad-window.c:2388
 #, c-format
 msgid ""
 "No template files found in\n"
@@ -1234,62 +1239,66 @@ msgid ""
 msgstr "Nenašli sa žiadne súbory so šablónami v\n\"%s\""
 
 #. create other action
-#: ../mousepad/mousepad-window.c:2498
+#: ../mousepad/mousepad-window.c:2504
 msgid "Set custom tab size"
 msgstr "Nastaviť vlastnú veľkosť tabulátora"
 
 #. create suitable label for the other menu
-#: ../mousepad/mousepad-window.c:2546
+#: ../mousepad/mousepad-window.c:2552
 #, c-format
 msgid "Ot_her (%d)..."
 msgstr "I_né (%d)..."
 
 #. set action label
-#: ../mousepad/mousepad-window.c:2557
+#: ../mousepad/mousepad-window.c:2563
 msgid "Ot_her..."
 msgstr "Iné"
 
 #. build description
 #. get the offset length: 'Encoding: '
-#: ../mousepad/mousepad-window.c:2873 ../mousepad/mousepad-window.c:3100
+#: ../mousepad/mousepad-window.c:2879 ../mousepad/mousepad-window.c:3106
 msgid "Charset"
 msgstr "Kódovanie"
 
-#: ../mousepad/mousepad-window.c:3005
+#: ../mousepad/mousepad-window.c:3011
 #, c-format
 msgid "Open '%s'"
 msgstr "Otvoriť '%s'"
 
-#: ../mousepad/mousepad-window.c:3150
+#: ../mousepad/mousepad-window.c:3156
 msgid "Failed to clear the recent history"
 msgstr "Zllyhalo vymazanie nedávnej histórie"
 
 #. create an item to inform the user
-#: ../mousepad/mousepad-window.c:3580
+#: ../mousepad/mousepad-window.c:3586
 msgid "No clipboard data"
 msgstr "Žiadne dáta v schránke"
 
 #. set error message
-#: ../mousepad/mousepad-window.c:3719
+#: ../mousepad/mousepad-window.c:3725
 msgid "Templates should be UTF-8 valid"
 msgstr "Šablóny by mali byť v platnom kódovaní UTF-8"
 
 #. set error message
-#: ../mousepad/mousepad-window.c:3727
+#: ../mousepad/mousepad-window.c:3733
 msgid "Reading the template failed, the menu item has been removed"
 msgstr "Čítanie šablóny zlyhalo. Položka ponuky bola odstránená."
 
 #. set error message
-#: ../mousepad/mousepad-window.c:3732
+#: ../mousepad/mousepad-window.c:3738
 msgid "Loading the template failed"
 msgstr "Načítanie šablóny zlyhalo"
 
 #. create new file chooser dialog
-#: ../mousepad/mousepad-window.c:3757
+#: ../mousepad/mousepad-window.c:3763
 msgid "Open File"
 msgstr "Otvoriť súbor"
 
-#: ../mousepad/mousepad-window.c:3870
+#: ../mousepad/mousepad-window.c:3779
+msgid "_Encoding:"
+msgstr "_Kódovanie:"
+
+#: ../mousepad/mousepad-window.c:3876
 #, c-format
 msgid ""
 "Failed to open \"%s\" for reading. It will be removed from the document "
@@ -1297,35 +1306,35 @@ msgid ""
 msgstr "Zlyhalo otvorenie súboru \"%s\" na čítanie. Bude odstránený z histórie dokumentov"
 
 #. show the warning and cleanup
-#: ../mousepad/mousepad-window.c:3874
+#: ../mousepad/mousepad-window.c:3880
 msgid "Failed to open file"
 msgstr "Otvorenie súboru zlyhalo"
 
 #. show the error
-#: ../mousepad/mousepad-window.c:3980 ../mousepad/mousepad-window.c:4103
+#: ../mousepad/mousepad-window.c:3986 ../mousepad/mousepad-window.c:4109
 msgid "Failed to save the document"
 msgstr "Uloženie dokumentu zlyhalo"
 
 #. create the dialog
-#: ../mousepad/mousepad-window.c:4004
+#: ../mousepad/mousepad-window.c:4010
 msgid "Save As"
 msgstr "Uložiť ako"
 
 #. show the error
-#: ../mousepad/mousepad-window.c:4195
+#: ../mousepad/mousepad-window.c:4201
 msgid "Failed to reload the document"
 msgstr "Znovunačítanie dokumentu zlyhalo"
 
 #. show the error
-#: ../mousepad/mousepad-window.c:4222
+#: ../mousepad/mousepad-window.c:4228
 msgid "Failed to print the document"
 msgstr "Tlač dokumentu zlyhala"
 
-#: ../mousepad/mousepad-window.c:4846
+#: ../mousepad/mousepad-window.c:4852
 msgid "Choose Mousepad Font"
 msgstr "Vybrať písmo aplikácie Mousepad"
 
-#: ../mousepad/mousepad-window.c:5011
+#: ../mousepad/mousepad-window.c:5019
 msgid "Leave fullscreen mode"
 msgstr "Opustí režim celej obrazovky"
 
