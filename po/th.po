@@ -11,8 +11,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-05-19 00:30+0200\n"
-"PO-Revision-Date: 2019-05-27 07:58+0000\n"
+"POT-Creation-Date: 2019-08-26 00:31+0200\n"
+"PO-Revision-Date: 2019-09-16 07:25+0000\n"
 "Last-Translator: Theppitak Karoonboonyanan <theppitak@gmail.com>\n"
 "Language-Team: Thai (http://www.transifex.com/xfce/xfce-apps/language/th/)\n"
 "MIME-Version: 1.0\n"
@@ -34,25 +34,25 @@ msgid "Print version information and exit"
 msgstr "แสดงข้อมูลรุ่นแล้วจบการทำงาน"
 
 #. default application name
-#: ../mousepad/main.c:72 ../mousepad.desktop.in.in.h:1
+#: ../mousepad/main.c:69 ../mousepad.desktop.in.in.h:1
 msgid "Mousepad"
 msgstr "Mousepad"
 
 #. initialize gtk+
-#: ../mousepad/main.c:86
+#: ../mousepad/main.c:83
 msgid "[FILES...]"
 msgstr "[แฟ้ม...]"
 
 #. no error message, the gui initialization failed
-#: ../mousepad/main.c:92
+#: ../mousepad/main.c:89
 msgid "Failed to open display."
 msgstr "เปิดดิสเพลย์ไม่สำเร็จ"
 
-#: ../mousepad/main.c:109
+#: ../mousepad/main.c:106
 msgid "The Xfce development team. All rights reserved."
 msgstr "The Xfce development team. All rights reserved."
 
-#: ../mousepad/main.c:110
+#: ../mousepad/main.c:107
 #, c-format
 msgid "Please report bugs to <%s>."
 msgstr "หากพบปัญหา กรุณารายงานที่ <%s>"
@@ -294,17 +294,17 @@ msgstr "ญี่ปุ่น"
 msgid "Korean"
 msgstr "เกาหลี"
 
-#: ../mousepad/mousepad-file.c:555
+#: ../mousepad/mousepad-file.c:559
 #, c-format
 msgid "Invalid byte sequence in conversion input"
 msgstr "พบลำดับไบต์ที่ไม่ถูกต้องในข้อมูลขาเข้าของการแปลงรหัส"
 
-#: ../mousepad/mousepad-file.c:899
+#: ../mousepad/mousepad-file.c:903
 #, c-format
 msgid "The file \"%s\" you tried to reload does not exist anymore"
 msgstr "แฟ้ม \"%s\" ที่คุณพยายามโหลดใหม่ไม่มีอยู่อีกต่อไปแล้ว"
 
-#: ../mousepad/mousepad-file.c:940
+#: ../mousepad/mousepad-file.c:944
 #, c-format
 msgid "Failed to read the status of \"%s\""
 msgstr "อ่านสถานะของ \"%s\" ไม่สำเร็จ"
@@ -650,9 +650,9 @@ msgstr "ทุกเอกสาร"
 
 #: ../mousepad/mousepad-replace-dialog.c:422
 #, c-format
-msgid "%d occurence"
-msgid_plural "%d occurences"
-msgstr[0] "พบ %d แห่ง"
+msgid "%d occurrence"
+msgid_plural "%d occurrences"
+msgstr[0] "%d แห่ง"
 
 #: ../mousepad/mousepad-replace-dialog.c:443
 msgid "_Replace All"
