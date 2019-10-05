@@ -139,6 +139,7 @@ AM_CONDITIONAL([HAVE_DBUS], [test "x$enable_dbus" = "xyes"])
 
 AS_IF([test "x$enable_dbus" = "xyes"],
 [
+  XDT_CHECK_PACKAGE([GIO_UNIX], [gio-unix-2.0], [2.42.0])
   AC_PATH_PROG([GDBUS_CODEGEN], [gdbus-codegen])
   AC_DEFINE([HAVE_DBUS], [1], [Define if DBUS support is enabled])
 ])

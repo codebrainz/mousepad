@@ -97,10 +97,12 @@ mousepad_dbus_sources = \
 
 mousepad_CFLAGS += \
 	-DDBUS_API_SUBJECT_TO_CHANGE \
-	$(DBUS_CFLAGS)
+	$(DBUS_CFLAGS) \
+	$(GIO_UNIX_CFLAGS)
 
 mousepad_LDADD +=	\
-	$(DBUS_LIBS)
+	$(DBUS_LIBS) \
+	$(GIO_UNIX_LIBS)
 endif
 
 if WITH_KEYFILE_SETTINGS
