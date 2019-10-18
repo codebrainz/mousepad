@@ -19,7 +19,7 @@ msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-08-26 00:31+0200\n"
-"PO-Revision-Date: 2019-08-26 12:34+0000\n"
+"PO-Revision-Date: 2019-10-18 19:44+0000\n"
 "Last-Translator: Yannick Le Guen <leguen.yannick@gmail.com>\n"
 "Language-Team: French (http://www.transifex.com/xfce/xfce-apps/language/fr/)\n"
 "MIME-Version: 1.0\n"
@@ -80,7 +80,7 @@ msgstr "Impossible d’ouvrir le visionneur de documentation"
 #. build dialog
 #: ../mousepad/mousepad-dialogs.c:119
 msgid "Select Tab Size"
-msgstr "Sélectionner la taille de l’onglet "
+msgstr "Sélectionner la taille des tabulations"
 
 #. build the dialog
 #: ../mousepad/mousepad-dialogs.c:200
@@ -1092,7 +1092,7 @@ msgstr "_Fin de ligne"
 
 #: ../mousepad/mousepad-window.c:465
 msgid "Tab _Size"
-msgstr "Taille de l’_onglet"
+msgstr "Taille des tabulati_ons"
 
 #: ../mousepad/mousepad-window.c:466
 msgid "_Filetype"
@@ -1246,7 +1246,7 @@ msgstr "Aucun modèle de fichier trouvé dans\n« %s »"
 #. create other action
 #: ../mousepad/mousepad-window.c:2504
 msgid "Set custom tab size"
-msgstr "Personnaliser la taille de l’onglet "
+msgstr "Personnaliser la taille des tabulations"
 
 #. create suitable label for the other menu
 #: ../mousepad/mousepad-window.c:2552
