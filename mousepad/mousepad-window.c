@@ -3367,6 +3367,19 @@ mousepad_window_drag_data_received (GtkWidget        *widget,
 /**
  * Find and replace
  **/
+static gboolean
+mousepad_window_scroll_to_cursor (MousepadWindow *window)
+{
+  g_return_val_if_fail (MOUSEPAD_IS_WINDOW (window), FALSE);
+
+  if (window->active != NULL)
+    mousepad_view_scroll_to_cursor (window->active->textview);
+
+  return FALSE;
+}
+
+
+
 static gint
 mousepad_window_search (MousepadWindow      *window,
                         MousepadSearchFlags  flags,
@@ -3401,13 +3414,13 @@ mousepad_window_search (MousepadWindow      *window,
     }
   else if (window->active != NULL)
     {
-      /* search or replace in the active document */
+      /* search or replace in the active document whenever idle */
       nmatches = mousepad_util_search (window->active->search_context, string, replacement, flags);
 
       /* make sure the selection is visible */
       if (flags & (MOUSEPAD_SEARCH_FLAGS_ACTION_SELECT | MOUSEPAD_SEARCH_FLAGS_ACTION_REPLACE)
           && nmatches > 0)
-        mousepad_view_scroll_to_cursor (window->active->textview);
+        g_idle_add (G_SOURCE_FUNC (mousepad_window_scroll_to_cursor), window);
     }
   else
     {
