@@ -1600,7 +1600,11 @@ mousepad_window_open_files (MousepadWindow  *window,
       else if (g_path_is_absolute (filenames[n]) == FALSE)
         {
           /* create an absolute file */
+#if GLIB_CHECK_VERSION (2, 58, 0)
+          filename = g_canonicalize_filename (filenames[n], working_directory);
+#else
           filename = g_build_filename (working_directory, filenames[n], NULL);
+#endif
         }
       else
         {
