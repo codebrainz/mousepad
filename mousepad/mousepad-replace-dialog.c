@@ -143,10 +143,10 @@ mousepad_replace_dialog_bind_setting (MousepadReplaceDialog *dialog,
 {
   mousepad_setting_bind (path, object, property, G_SETTINGS_BIND_DEFAULT);
 
-  mousepad_setting_connect (path,
-                            G_CALLBACK (mousepad_replace_dialog_settings_changed),
-                            dialog,
-                            G_CONNECT_SWAPPED);
+  mousepad_setting_connect_object (path,
+                                   G_CALLBACK (mousepad_replace_dialog_settings_changed),
+                                   dialog,
+                                   G_CONNECT_SWAPPED);
 }
 
 
