@@ -385,6 +385,13 @@
         the replace-all is performed in all currently open documents.
       </description>
     </key>
+    <key name="highlight-all" type="b">
+      <default>false</default>
+      <summary>Highlight all</summary>
+      <description>
+        When true search results are highlighted, otherwise they aren't.
+      </description>
+    </key>
   </schema>
 
   <!-- window state -->

@@ -190,6 +190,7 @@ mousepad_search_bar_init (MousepadSearchBar *bar)
   /* init variables */
   bar->match_case = match_case;
   bar->enable_regex = enable_regex;
+  bar->highlight_all = MOUSEPAD_SETTING_GET_BOOLEAN (SEARCH_HIGHLIGHT_ALL);
 
   /* the close button */
   item = gtk_tool_button_new_from_stock (GTK_STOCK_CLOSE);
@@ -252,6 +253,8 @@ mousepad_search_bar_init (MousepadSearchBar *bar)
   gtk_toolbar_insert (GTK_TOOLBAR (bar), item, -1);
   g_signal_connect (G_OBJECT (item), "clicked", G_CALLBACK (mousepad_search_bar_highlight_toggled), bar);
   gtk_widget_show (GTK_WIDGET (item));
+
+  MOUSEPAD_SETTING_BIND (SEARCH_HIGHLIGHT_ALL, item, "active", G_SETTINGS_BIND_DEFAULT);
 
   /* check button for case sensitive, including the proxy menu item */
   item = gtk_tool_item_new ();
