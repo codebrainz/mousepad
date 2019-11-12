@@ -157,7 +157,7 @@ mousepad_replace_dialog_init (MousepadReplaceDialog *dialog)
   GtkSizeGroup *size_group;
 
   /* set dialog properties */
-  gtk_window_set_title (GTK_WINDOW (dialog), _("Replace"));
+  gtk_window_set_title (GTK_WINDOW (dialog), _("Find and Replace"));
   gtk_window_set_default_size (GTK_WINDOW (dialog), 400, -1);
   g_signal_connect (G_OBJECT (dialog), "response", G_CALLBACK (mousepad_replace_dialog_response), NULL);
 
