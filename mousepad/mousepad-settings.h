@@ -59,6 +59,7 @@ G_BEGIN_DECLS
 
 /* State setting names */
 #define MOUSEPAD_SETTING_SEARCH_DIRECTION            "/state/search/direction"
+#define MOUSEPAD_SETTING_SEARCH_WRAP_AROUND          "/state/search/wrap-around"
 #define MOUSEPAD_SETTING_SEARCH_MATCH_CASE           "/state/search/match-case"
 #define MOUSEPAD_SETTING_SEARCH_ENABLE_REGEX         "/state/search/enable-regex"
 #define MOUSEPAD_SETTING_SEARCH_MATCH_WHOLE_WORD     "/state/search/match-whole-word"

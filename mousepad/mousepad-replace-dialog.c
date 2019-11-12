@@ -72,8 +72,7 @@ enum
 enum
 {
   DIRECTION_UP = 0,
-  DIRECTION_DOWN,
-  DIRECTION_BOTH
+  DIRECTION_DOWN
 };
 
 enum
@@ -236,16 +235,22 @@ mousepad_replace_dialog_init (MousepadReplaceDialog *dialog)
 
   combo = gtk_combo_box_text_new ();
   gtk_box_pack_start (GTK_BOX (hbox), combo, FALSE, FALSE, 0);
-  gtk_label_set_mnemonic_widget (GTK_LABEL(label), combo);
+  gtk_label_set_mnemonic_widget (GTK_LABEL (label), combo);
   gtk_combo_box_text_append_text (GTK_COMBO_BOX_TEXT (combo), _("Up"));
   gtk_combo_box_text_append_text (GTK_COMBO_BOX_TEXT (combo), _("Down"));
-  gtk_combo_box_text_append_text (GTK_COMBO_BOX_TEXT (combo), _("Both"));
   gtk_widget_show (combo);
 
   mousepad_replace_dialog_bind_setting (dialog, MOUSEPAD_SETTING_SEARCH_DIRECTION, combo, "active");
 
   /* release size group */
   g_object_unref (G_OBJECT (size_group));
+
+  /* wrap around */
+  check = gtk_check_button_new_with_mnemonic (_("_Wrap around"));
+  gtk_box_pack_start (GTK_BOX (hbox), check, FALSE, FALSE, 0);
+  gtk_widget_show (check);
+
+  mousepad_replace_dialog_bind_setting (dialog, MOUSEPAD_SETTING_SEARCH_WRAP_AROUND, check, "active");
 
   /* case sensitive */
   check = gtk_check_button_new_with_mnemonic (_("Case sensi_tive"));
@@ -339,7 +344,7 @@ mousepad_replace_dialog_response (GtkWidget *widget,
   const gchar           *search_str, *replace_str;
   gchar                 *message;
   gint                   search_direction, replace_all_location;
-  gboolean               match_case, enable_regex, match_whole_word, replace_all;
+  gboolean               wrap_around, match_case, enable_regex, match_whole_word, replace_all;
 
   /* close dialog */
   if (response_id == MOUSEPAD_RESPONSE_CLOSE || response_id < 0)
@@ -351,6 +356,7 @@ mousepad_replace_dialog_response (GtkWidget *widget,
   /* read the search settings */
   search_direction = MOUSEPAD_SETTING_GET_INT (SEARCH_DIRECTION);
   replace_all_location = MOUSEPAD_SETTING_GET_INT (SEARCH_REPLACE_ALL_LOCATION);
+  wrap_around = MOUSEPAD_SETTING_GET_BOOLEAN (SEARCH_WRAP_AROUND);
   match_case = MOUSEPAD_SETTING_GET_BOOLEAN (SEARCH_MATCH_CASE);
   enable_regex = MOUSEPAD_SETTING_GET_BOOLEAN (SEARCH_ENABLE_REGEX);
   match_whole_word = MOUSEPAD_SETTING_GET_BOOLEAN (SEARCH_MATCH_WHOLE_WORD);
@@ -376,7 +382,7 @@ mousepad_replace_dialog_response (GtkWidget *widget,
     flags |= MOUSEPAD_SEARCH_FLAGS_WHOLE_WORD;
 
   /* wrap around */
-  if (search_direction == DIRECTION_BOTH)
+  if (wrap_around)
     flags |= MOUSEPAD_SEARCH_FLAGS_WRAP_AROUND;
 
   /* search area */

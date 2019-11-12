@@ -327,12 +327,19 @@
   <!-- search state -->
   <schema id="org.xfce.mousepad.state.search" path="/org/xfce/mousepad/state/search/" gettext-domain="mousepad">
     <key name="direction" type="i">
-      <range min="0" max="2"/>
+      <range min="0" max="1"/>
       <default>1</default>
       <summary>search direction</summary>
       <description>
         When 0 the search direction is backwards/upwards, when 1 the search
         direction is forwards/downwards, when 2 the search will wrap around.
+      </description>
+    </key>
+    <key name="wrap-around" type="b">
+      <default>false</default>
+      <summary>Wrap around</summary>
+      <description>
+        When true searches will wrap around, when false they will not.
       </description>
     </key>
     <key name="match-case" type="b">
