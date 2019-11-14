@@ -2420,11 +2420,11 @@ mousepad_window_menu_templates_fill (MousepadWindow *window,
   if (! files_added)
     {
       gchar *msg;
-      
+
       msg = g_strdup_printf (_("No template files found in\n'%s'"), path);
       item = gtk_menu_item_new_with_label (msg);
       g_free (msg);
-      
+
       gtk_widget_set_sensitive (item, FALSE);
       gtk_menu_shell_append (GTK_MENU_SHELL (menu), item);
       gtk_widget_show (item);
@@ -2437,7 +2437,7 @@ static void
 mousepad_window_menu_templates (GtkWidget      *item,
                                 MousepadWindow *window)
 {
-  GtkWidget   *submenu;
+  GtkWidget   *submenu, *menu_item;
   const gchar *homedir;
   gchar       *templates_path;
 
@@ -2455,28 +2455,35 @@ mousepad_window_menu_templates (GtkWidget      *item,
   /* get the templates path */
   templates_path = g_build_filename (homedir, "Templates", NULL);
 
+  /* create submenu */
+  submenu = gtk_menu_new ();
+  g_object_ref_sink (G_OBJECT (submenu));
+  gtk_menu_set_screen (GTK_MENU (submenu), gtk_widget_get_screen (item));
+
   /* check if the directory exists */
   if (g_file_test (templates_path, G_FILE_TEST_IS_DIR))
     {
-      /* create submenu */
-      submenu = gtk_menu_new ();
-      g_object_ref_sink (G_OBJECT (submenu));
-      gtk_menu_set_screen (GTK_MENU (submenu), gtk_widget_get_screen (item));
-
       /* fill the menu */
       mousepad_window_menu_templates_fill (window, submenu, templates_path);
-
-      /* set the submenu */
-      gtk_menu_item_set_submenu (GTK_MENU_ITEM (item), submenu);
-
-      /* release */
-      g_object_unref (G_OBJECT (submenu));
     }
   else
     {
-      /* hide the templates menu item */
-      gtk_widget_hide (item);
+      gchar *msg;
+
+      msg = g_strdup_printf (_("Missing Templates directory\n'%s'"), templates_path);
+      menu_item = gtk_menu_item_new_with_label (msg);
+      g_free (msg);
+
+      gtk_widget_set_sensitive (menu_item, FALSE);
+      gtk_menu_shell_append (GTK_MENU_SHELL (submenu), menu_item);
+      gtk_widget_show (menu_item);
     }
+
+  /* set the submenu */
+  gtk_menu_item_set_submenu (GTK_MENU_ITEM (item), submenu);
+
+  /* release */
+  g_object_unref (G_OBJECT (submenu));
 
   /* cleanup */
   g_free (templates_path);
