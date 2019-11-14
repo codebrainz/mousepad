@@ -180,6 +180,9 @@ static void              mousepad_window_menu_textview_deactivate     (GtkWidget
 static void              mousepad_window_menu_textview_popup          (GtkTextView            *textview,
                                                                        GtkMenu                *old_menu,
                                                                        MousepadWindow         *window);
+static void              mousepad_window_update_fullscreen_action     (MousepadWindow         *window);
+static void              mousepad_window_update_line_numbers_action   (MousepadWindow         *window);
+static void              mousepad_window_update_document_actions      (MousepadWindow         *window);
 static void              mousepad_window_update_actions               (MousepadWindow         *window);
 static gboolean          mousepad_window_update_gomenu_idle           (gpointer                user_data);
 static void              mousepad_window_update_gomenu_idle_destroy   (gpointer                user_data);
@@ -610,15 +613,12 @@ mousepad_window_update_toolbar (MousepadWindow *window,
                                 gchar          *key,
                                 GSettings      *settings)
 {
-  gboolean visible;
   GtkIconSize size;
   GtkToolbarStyle style;
 
-  visible = MOUSEPAD_SETTING_GET_BOOLEAN (TOOLBAR_VISIBLE);
   size = MOUSEPAD_SETTING_GET_ENUM (TOOLBAR_ICON_SIZE);
   style = MOUSEPAD_SETTING_GET_ENUM (TOOLBAR_STYLE);
 
-  gtk_widget_set_visible (window->toolbar, visible);
   gtk_toolbar_set_icon_size (GTK_TOOLBAR (window->toolbar), size);
   gtk_toolbar_set_style (GTK_TOOLBAR (window->toolbar), style);
 }
@@ -810,7 +810,7 @@ mousepad_window_create_toolbar (MousepadWindow *window)
 
   /* connect to some signals to keep in sync */
   MOUSEPAD_SETTING_CONNECT_OBJECT (TOOLBAR_VISIBLE,
-                                   G_CALLBACK (mousepad_window_update_toolbar),
+                                   G_CALLBACK (mousepad_window_update_main_widgets),
                                    window,
                                    G_CONNECT_SWAPPED);
 
@@ -1091,6 +1091,33 @@ mousepad_window_init (MousepadWindow *window)
   /* update the recent items menu when 'window-recent-menu-items' setting changes */
   MOUSEPAD_SETTING_CONNECT_OBJECT (RECENT_MENU_ITEMS,
                                    G_CALLBACK (mousepad_window_update_recent_menu),
+                                   window,
+                                   G_CONNECT_SWAPPED);
+
+  /* sync the fullscreen action state to its setting */
+  mousepad_window_update_fullscreen_action (window);
+
+  /* sync the view action states to their settings */
+  MOUSEPAD_SETTING_CONNECT_OBJECT (SHOW_LINE_NUMBERS,
+                                   G_CALLBACK (mousepad_window_update_line_numbers_action),
+                                   window,
+                                   G_CONNECT_SWAPPED);
+
+  /* sync the document action states to their settings */
+  MOUSEPAD_SETTING_CONNECT_OBJECT (WORD_WRAP,
+                                   G_CALLBACK (mousepad_window_update_document_actions),
+                                   window,
+                                   G_CONNECT_SWAPPED);
+  MOUSEPAD_SETTING_CONNECT_OBJECT (AUTO_INDENT,
+                                   G_CALLBACK (mousepad_window_update_document_actions),
+                                   window,
+                                   G_CONNECT_SWAPPED);
+  MOUSEPAD_SETTING_CONNECT_OBJECT (TAB_WIDTH,
+                                   G_CALLBACK (mousepad_window_update_document_actions),
+                                   window,
+                                   G_CONNECT_SWAPPED);
+  MOUSEPAD_SETTING_CONNECT_OBJECT (INSERT_SPACES,
+                                   G_CALLBACK (mousepad_window_update_document_actions),
                                    window,
                                    G_CONNECT_SWAPPED);
 }
@@ -2637,20 +2664,104 @@ mousepad_window_menu_textview_popup (GtkTextView    *textview,
 
 
 static void
+mousepad_window_update_fullscreen_action (MousepadWindow *window)
+{
+  GtkAction *action;
+  gboolean   active;
+
+  g_return_if_fail (MOUSEPAD_IS_WINDOW (window));
+
+  /* avoid menu actions */
+  lock_menu_updates++;
+
+  /* toggle the fullscreen setting */
+  active = MOUSEPAD_SETTING_GET_BOOLEAN (WINDOW_FULLSCREEN);
+  action = gtk_action_group_get_action (window->action_group, "fullscreen");
+  gtk_toggle_action_set_active (GTK_TOGGLE_ACTION (action), active);
+
+  /* allow menu actions again */
+  lock_menu_updates--;
+}
+
+
+
+static void
+mousepad_window_update_line_numbers_action (MousepadWindow *window)
+{
+  GtkAction *action;
+  gboolean   active;
+
+  g_return_if_fail (MOUSEPAD_IS_WINDOW (window));
+
+  /* avoid menu actions */
+  lock_menu_updates++;
+
+  /* toggle the line numbers setting */
+  active = MOUSEPAD_SETTING_GET_BOOLEAN (SHOW_LINE_NUMBERS);
+  action = gtk_action_group_get_action (window->action_group, "line-numbers");
+  gtk_toggle_action_set_active (GTK_TOGGLE_ACTION (action), active);
+
+  /* allow menu actions again */
+  lock_menu_updates--;
+}
+
+
+
+static void
+mousepad_window_update_document_actions (MousepadWindow *window)
+{
+  GtkAction *action;
+  gboolean   active;
+
+  g_return_if_fail (MOUSEPAD_IS_WINDOW (window));
+
+  /* update the actions for the active document */
+  if (G_LIKELY (window->active))
+    {
+      /* avoid menu actions */
+      lock_menu_updates++;
+
+      /* toggle the document settings */
+      active = MOUSEPAD_SETTING_GET_BOOLEAN (WORD_WRAP);
+      action = gtk_action_group_get_action (window->action_group, "word-wrap");
+      gtk_toggle_action_set_active (GTK_TOGGLE_ACTION (action), active);
+
+      active = MOUSEPAD_SETTING_GET_BOOLEAN (AUTO_INDENT);
+      action = gtk_action_group_get_action (window->action_group, "auto-indent");
+      gtk_toggle_action_set_active (GTK_TOGGLE_ACTION (action), active);
+
+      /* update the tabs size menu */
+      mousepad_window_menu_tab_sizes_update (window);
+
+      active = MOUSEPAD_SETTING_GET_BOOLEAN (INSERT_SPACES);
+      action = gtk_action_group_get_action (window->action_group, "insert-spaces");
+      gtk_toggle_action_set_active (GTK_TOGGLE_ACTION (action), active);
+
+      /* allow menu actions again */
+      lock_menu_updates--;
+    }
+}
+
+
+
+static void
 mousepad_window_update_actions (MousepadWindow *window)
 {
   GtkAction          *action;
-  GtkNotebook        *notebook = GTK_NOTEBOOK (window->notebook);
-  MousepadDocument   *document = window->active;
+  GtkNotebook        *notebook;
+  MousepadDocument   *document;
   gboolean            cycle_tabs;
   gint                n_pages;
   gint                page_num;
-  gboolean            active, sensitive;
+  gboolean            sensitive;
   MousepadLineEnding  line_ending;
   const gchar        *action_name;
   GtkSourceLanguage  *language;
 
   g_return_if_fail (MOUSEPAD_IS_WINDOW (window));
+
+  notebook = GTK_NOTEBOOK (window->notebook);
+  document = window->active;
 
   /* update the actions for the active document */
   if (G_LIKELY (document))
@@ -2693,7 +2804,7 @@ mousepad_window_update_actions (MousepadWindow *window)
       else
         action_name = "unix";
 
-      /* set the corrent line ending type */
+      /* set the current line ending type */
       action = gtk_action_group_get_action (window->action_group, action_name);
       gtk_toggle_action_set_active (GTK_TOGGLE_ACTION (action), TRUE);
 
@@ -2703,24 +2814,7 @@ mousepad_window_update_actions (MousepadWindow *window)
       gtk_action_set_sensitive (action, sensitive);
 
       /* toggle the document settings */
-      active = MOUSEPAD_SETTING_GET_BOOLEAN (WORD_WRAP);
-      action = gtk_action_group_get_action (window->action_group, "word-wrap");
-      gtk_toggle_action_set_active (GTK_TOGGLE_ACTION (action), active);
-
-      active = MOUSEPAD_SETTING_GET_BOOLEAN (SHOW_LINE_NUMBERS);
-      action = gtk_action_group_get_action (window->action_group, "line-numbers");
-      gtk_toggle_action_set_active (GTK_TOGGLE_ACTION (action), active);
-
-      active = MOUSEPAD_SETTING_GET_BOOLEAN (AUTO_INDENT);
-      action = gtk_action_group_get_action (window->action_group, "auto-indent");
-      gtk_toggle_action_set_active (GTK_TOGGLE_ACTION (action), active);
-
-      /* update the tabs size menu */
-      mousepad_window_menu_tab_sizes_update (window);
-
-      active = MOUSEPAD_SETTING_GET_BOOLEAN (INSERT_SPACES);
-      action = gtk_action_group_get_action (window->action_group, "insert-spaces");
-      gtk_toggle_action_set_active (GTK_TOGGLE_ACTION (action), active);
+      mousepad_window_update_document_actions (window);
 
       /* set the sensitivity of the undo and redo actions */
       mousepad_window_can_undo (window, NULL, G_OBJECT (document->buffer));
@@ -4897,7 +4991,6 @@ mousepad_window_action_line_numbers (GtkToggleAction *action,
   gboolean active;
 
   g_return_if_fail (MOUSEPAD_IS_WINDOW (window));
-  g_return_if_fail (MOUSEPAD_IS_DOCUMENT (window->active));
 
   /* get the current state */
   active = gtk_toggle_action_get_active (action);
@@ -4992,8 +5085,11 @@ mousepad_window_fullscreen_bars_timer (gpointer user_data)
 static void
 mousepad_window_update_main_widgets (MousepadWindow *window)
 {
-  gboolean       fullscreen, mb_visible, tb_visible, sb_visible;
+  gboolean       fullscreen;
+  gboolean       mb_visible, tb_visible, sb_visible;
+  gboolean       mb_active, tb_active, sb_active;
   gint           mb_visible_fs, tb_visible_fs, sb_visible_fs;
+  GtkAction     *action;
 
   if (! gtk_widget_get_visible (GTK_WIDGET (window)))
     return;
@@ -5015,10 +5111,31 @@ mousepad_window_update_main_widgets (MousepadWindow *window)
   tb_visible_fs = (tb_visible_fs == 0) ? tb_visible : (tb_visible_fs == 2);
   sb_visible_fs = (sb_visible_fs == 0) ? sb_visible : (sb_visible_fs == 2);
 
+  mb_active = fullscreen ? mb_visible_fs : mb_visible;
+  tb_active = fullscreen ? tb_visible_fs : tb_visible;
+  sb_active = fullscreen ? sb_visible_fs : sb_visible;
+
   /* update the widgets' visibility */
-  gtk_widget_set_visible (window->menubar, fullscreen ? mb_visible_fs : mb_visible);
-  gtk_widget_set_visible (window->toolbar, fullscreen ? tb_visible_fs : tb_visible);
-  gtk_widget_set_visible (window->statusbar, fullscreen ? sb_visible_fs : sb_visible);
+  gtk_widget_set_visible (window->menubar, mb_active);
+  gtk_widget_set_visible (window->toolbar, tb_active);
+  gtk_widget_set_visible (window->statusbar, sb_active);
+
+  /* update the toolbar with the settings */
+  mousepad_window_update_toolbar (window, NULL, NULL);
+
+  /* avoid menu actions */
+  lock_menu_updates++;
+
+  /* sync the action states to the settings */
+  action = gtk_action_group_get_action (window->action_group, "menubar");
+  gtk_toggle_action_set_active (GTK_TOGGLE_ACTION (action), mb_active);
+  action = gtk_action_group_get_action (window->action_group, "toolbar");
+  gtk_toggle_action_set_active (GTK_TOGGLE_ACTION (action), tb_active);
+  action = gtk_action_group_get_action (window->action_group, "statusbar");
+  gtk_toggle_action_set_active (GTK_TOGGLE_ACTION (action), sb_active);
+
+  /* allow menu actions again */
+  lock_menu_updates--;
 }
 
 
