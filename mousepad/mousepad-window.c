@@ -506,6 +506,8 @@ static guint   window_signals[LAST_SIGNAL];
 static gint    lock_menu_updates = 0;
 static GSList *clipboard_history = NULL;
 static guint   clipboard_history_ref_count = 0;
+static gchar  *last_save_location = NULL;
+static guint   last_save_location_ref_count = 0;
 
 
 
@@ -1009,6 +1011,9 @@ mousepad_window_init (MousepadWindow *window)
   /* increase clipboard history ref count */
   clipboard_history_ref_count++;
 
+  /* increase last save location ref count */
+  last_save_location_ref_count++;
+
   /* signal for handling the window delete event */
   g_signal_connect (G_OBJECT (window), "delete-event", G_CALLBACK (mousepad_window_delete_event), NULL);
 
@@ -1154,6 +1159,9 @@ mousepad_window_finalize (GObject *object)
   /* decrease history clipboard ref count */
   clipboard_history_ref_count--;
 
+  /* decrease last save location ref count */
+  last_save_location_ref_count--;
+
   /* cancel a scheduled recent menu update */
   if (G_UNLIKELY (window->update_recent_menu_id != 0))
     g_source_remove (window->update_recent_menu_id);
@@ -1174,6 +1182,13 @@ mousepad_window_finalize (GObject *object)
     {
       g_slist_foreach (clipboard_history, (GFunc) g_free, NULL);
       g_slist_free (clipboard_history);
+    }
+
+  /* free last save location if needed */
+  if (last_save_location_ref_count == 0 && last_save_location != NULL)
+    {
+      g_free (last_save_location);
+      last_save_location = NULL;
     }
 
   (*G_OBJECT_CLASS (mousepad_window_parent_class)->finalize) (object);
@@ -4129,10 +4144,12 @@ mousepad_window_action_save_as (GtkAction      *action,
   gtk_file_chooser_set_do_overwrite_confirmation (GTK_FILE_CHOOSER (dialog), TRUE);
   gtk_dialog_set_default_response (GTK_DIALOG (dialog), GTK_RESPONSE_OK);
 
-  /* set the current filename if there is one */
+  /* set the current filename if there is one, or use the last save location */
   current_filename = mousepad_file_get_filename (document->file);
   if (current_filename)
     gtk_file_chooser_set_filename (GTK_FILE_CHOOSER (dialog), current_filename);
+  else if (last_save_location)
+    gtk_file_chooser_set_current_folder (GTK_FILE_CHOOSER (dialog), last_save_location);
 
   /* run the dialog */
   if (gtk_dialog_run (GTK_DIALOG (dialog)) == GTK_RESPONSE_OK)
@@ -4145,15 +4162,21 @@ mousepad_window_action_save_as (GtkAction      *action,
           /* set the new filename */
           mousepad_file_set_filename (document->file, filename);
 
-          /* cleanup */
-          g_free (filename);
-
           /* save the file with the function above */
           succeed = mousepad_window_action_save (NULL, window);
 
-          /* add to the recent history is saving succeeded */
           if (G_LIKELY (succeed))
-            mousepad_window_recent_add (window, document->file);
+            {
+              /* add to the recent history if saving succeeded */
+              mousepad_window_recent_add (window, document->file);
+
+              /* update last save location */
+              g_free (last_save_location);
+              last_save_location = g_path_get_dirname (filename);
+            }
+
+          /* cleanup */
+          g_free (filename);
         }
     }
 
