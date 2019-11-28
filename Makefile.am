@@ -16,6 +16,13 @@ desktop_in_files = $(desktop_in_in_files:.desktop.in.in=.desktop.in)
 desktop_DATA = $(desktop_in_files:.desktop.in=.desktop)
 @INTLTOOL_DESKTOP_RULE@
 
+#
+# appdata
+#
+@INTLTOOL_XML_RULE@
+appdatadir = $(datadir)/appdata
+appdata_DATA = $(appdata_in_files:.xml.in=.xml)
+appdata_in_files = mousepad.appdata.xml.in
 
 polkit_policydir = $(datadir)/polkit-1/actions
 polkit_in_in_files =			\
@@ -41,6 +48,7 @@ EXTRA_DIST =									\
 	intltool-merge.in							\
 	intltool-update.in							\
 	$(desktop_in_in_files)						\
+	$(appdata_in_files)							\
 	$(polkit_in_in_files)
 
 DISTCLEANFILES =								\
@@ -49,6 +57,7 @@ DISTCLEANFILES =								\
 	intltool-update								\
 	$(desktop_in_files)							\
 	$(desktop_DATA)								\
+	$(appdata_DATA)								\
 	$(polkit_in_files)							\
 	$(polkit_policy_DATA)
 

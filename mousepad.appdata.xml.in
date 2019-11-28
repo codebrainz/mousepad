@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Copyright 2014 Eric Koegel <eric.koegel@gmail.com> and Simon Steinbeiss <simon@xfce.org> -->
+<component type="desktop">
+  <id>mousepad.desktop</id>
+  <metadata_license>CC-BY-3.0</metadata_license>
+  <project_license>GPL-2.0+</project_license>
+  <name>Mousepad</name>
+  <summary>Mousepad is a simple text editor for the Xfce desktop environment</summary>
+
+  <description>
+    <_p>Mousepad aims to be an easy-to-use and fast editor. Our target is an
+        editor for quickly editing text files, not a development environment
+        or an editor with a huge bunch of plugins.
+   </_p>
+   <_p>On the other hand we try to use the latest Gtk+ features available,
+        which means that if Gtk adds something new in a major release that is
+        useful for the editor, we will likely bump the Gtk dependency and
+        integrate this new feature in Mousepad.
+    </_p>
+  </description>
+
+  <screenshots>
+    <screenshot type="default">
+      <image>https://docs.xfce.org/_media/apps/mousepad/mousepad_window.png</image>
+    </screenshot>
+  </screenshots>
+
+  <url type="homepage">https://xfce.org</url>
+  <url type="bugtracker">https://bugzilla.xfce.org/describecomponents.cgi?product=Mousepad</url>
+  <url type="help">https://docs.xfce.org/apps/mousepad/start</url>
+
+  <project_group>Xfce</project_group>
+  <updatecontact>xfce4-dev@xfce.org</updatecontact>
+  <translation type="gettext">Mousepad</translation>
+
+  <provides>
+    <binary>mousepad</binary>
+  </provides>
+
+</component>
