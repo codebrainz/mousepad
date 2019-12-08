@@ -2447,13 +2447,17 @@ mousepad_window_menu_templates (GtkWidget      *item,
   /* schedule the idle build of the recent menu */
   mousepad_window_recent_menu (window);
 
-  /* get the home directory */
-  homedir = g_getenv ("HOME");
-  if (G_UNLIKELY (homedir == NULL))
-    homedir = g_get_home_dir ();
-
   /* get the templates path */
-  templates_path = g_build_filename (homedir, "Templates", NULL);
+  templates_path = g_strdup (g_get_user_special_dir (G_USER_DIRECTORY_TEMPLATES));
+
+  /* check if the templates directory is valid and is not home */
+  homedir = g_get_home_dir ();
+
+  if (G_UNLIKELY (templates_path == NULL) || g_strcmp0 (templates_path, homedir) == 0)
+    {
+      /* if not, fall back to "~/Templates" */
+      templates_path = g_build_filename (homedir, "Templates", NULL);
+    }
 
   /* create submenu */
   submenu = gtk_menu_new ();
