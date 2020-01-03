@@ -4,7 +4,7 @@
 # 
 # Translators:
 # Alois Nešpor <info@aloisnespor.info>, 2014
-# Michal Várady <miko.vaji@gmail.com>, 2014,2018-2019
+# Michal Várady <miko.vaji@gmail.com>, 2014,2018-2020
 # Pavel Borecki <pavel.borecki@gmail.com>, 2018-2019
 # Programy1 Programy1 <programy1.borec.cz@gmail.com>, 2019
 msgid ""
@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-12-06 06:31+0100\n"
-"PO-Revision-Date: 2019-12-25 12:35+0000\n"
+"PO-Revision-Date: 2020-01-03 12:31+0000\n"
 "Last-Translator: Michal Várady <miko.vaji@gmail.com>\n"
 "Language-Team: Czech (http://www.transifex.com/xfce/xfce-apps/language/cs/)\n"
 "MIME-Version: 1.0\n"
@@ -1358,7 +1358,7 @@ msgid ""
 "Mousepad aims to be an easy-to-use and fast editor. Our target is an editor "
 "for quickly editing text files, not a development environment or an editor "
 "with a huge bunch of plugins."
-msgstr ""
+msgstr "Mousepad má za cíl být snadno použitelným a rychlým editorem. Naším cílem je editor pro rychlou úpravu souborů, ne vývojářské prostředí nebo editor s obrovským množstvím zásuvných modulů."
 
 #: ../mousepad.appdata.xml.in.h:2
 msgid ""
@@ -1366,7 +1366,7 @@ msgid ""
 "means that if Gtk adds something new in a major release that is useful for "
 "the editor, we will likely bump the Gtk dependency and integrate this new "
 "feature in Mousepad."
-msgstr ""
+msgstr "Na druhou stranu se snažíme využít nejnovější dostupné funkce knihoven Gtk+, což znamená, že pokud Gtk v hlavním vydání přidá novou užitečnou funkci pro editor, pravděpodobně ji do aplikace Mousepad integrujeme."
 
 #. SECURITY:
 #. - A normal active user can run mousepad without elevated rights. They
