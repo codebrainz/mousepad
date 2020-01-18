@@ -15,7 +15,6 @@
  */
 
 #include <mousepad/mousepad-private.h>
-#include <mousepad/mousepad-gtkcompat.h>
 #include <mousepad/mousepad-close-button.h>
 #include <mousepad/mousepad-settings.h>
 #include <mousepad/mousepad-util.h>
@@ -24,11 +23,7 @@
 #include <mousepad/mousepad-view.h>
 #include <mousepad/mousepad-window.h>
 
-#if GTK_CHECK_VERSION(3, 0, 0)
 #include <gtksourceview/gtksource.h>
-#else
-#include <gtksourceview/gtksourcebuffer.h>
-#endif
 
 #ifdef HAVE_MEMORY_H
 #include <memory.h>

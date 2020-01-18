@@ -18,40 +18,9 @@ G_DEFINE_TYPE (MousepadCloseButton, mousepad_close_button, GTK_TYPE_BUTTON)
 
 
 
-#if ! GTK_CHECK_VERSION(3, 0, 0)
-static void
-mousepad_close_button_style_set (GtkWidget *widget,
-                                 GtkStyle  *previous_style)
-{
-  GtkSettings *settings;
-  gint         w, h;
-
-  settings = gtk_widget_get_settings (widget);
-  gtk_icon_size_lookup_for_settings (settings, GTK_ICON_SIZE_MENU, &w, &h);
-  gtk_widget_set_size_request(widget, w + 2, h + 2);
-}
-#endif
-
-
-
 static void
 mousepad_close_button_class_init (MousepadCloseButtonClass *klass)
 {
-#if !GTK_CHECK_VERSION(3, 0, 0)
-  GtkWidgetClass *widget_class;
-
-  gtk_rc_parse_string (
-    "style \"mousepad-close-button-style\" {\n"
-    "  GtkWidget::focus-padding = 0\n"
-    "  GtkWidget::focus-line-width = 0\n"
-    "  xthickness = 0\n"
-    "  ythickness = 0\n"
-    "}\n"
-    "widget \"*.mousepad-close-button\" style \"mousepad-close-button-style\"\n");
-
-  widget_class = GTK_WIDGET_CLASS (klass);
-  widget_class->style_set = mousepad_close_button_style_set;
-#endif
 }
 
 
@@ -60,8 +29,6 @@ static void
 mousepad_close_button_init (MousepadCloseButton *button)
 {
   GtkWidget *image;
-
-#if GTK_CHECK_VERSION(3, 0, 0)
   GtkCssProvider  *css_provider;
   GtkStyleContext *context;
 
@@ -80,9 +47,6 @@ mousepad_close_button_init (MousepadCloseButton *button)
                                   GTK_STYLE_PROVIDER (css_provider),
                                   GTK_STYLE_PROVIDER_PRIORITY_APPLICATION);
   g_object_unref (css_provider);
-#else
-  gtk_widget_set_name (GTK_WIDGET (button), "mousepad-close-button");
-#endif
 
   image = gtk_image_new_from_icon_name ("window-close", GTK_ICON_SIZE_MENU);
   gtk_container_add (GTK_CONTAINER (button), image);

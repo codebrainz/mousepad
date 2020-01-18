@@ -15,7 +15,6 @@
  */
 
 #include <mousepad/mousepad-private.h>
-#include <mousepad/mousepad-gtkcompat.h>
 #include <mousepad/mousepad-statusbar.h>
 #include <mousepad/mousepad-window.h>
 #include <mousepad/mousepad-util.h>
@@ -107,11 +106,6 @@ mousepad_statusbar_init (MousepadStatusbar *statusbar)
   GtkWidget    *ebox, *box, *separator, *label;
   GtkStatusbar *bar = GTK_STATUSBAR (statusbar);
   GList *frame;
-
-  /* init statusbar */
-#if ! GTK_CHECK_VERSION(3, 0, 0)
-  gtk_statusbar_set_has_resize_grip (bar, TRUE);
-#endif
 
   /* create a new horizontal box */
   box = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 8);
