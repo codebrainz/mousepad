@@ -15,18 +15,11 @@
  */
 
 #include <mousepad/mousepad-private.h>
-#include <mousepad/mousepad-gtkcompat.h>
 #include <mousepad/mousepad-file.h>
 
 #include <glib/gstdio.h>
 
-#if GTK_CHECK_VERSION(3, 0, 0)
 #include <gtksourceview/gtksource.h>
-#else
-#include <gtksourceview/gtksourcebuffer.h>
-#include <gtksourceview/gtksourcelanguage.h>
-#include <gtksourceview/gtksourcelanguagemanager.h>
-#endif
 
 #ifdef HAVE_SYS_TYPES_H
 #include <sys/types.h>
@@ -42,6 +35,7 @@
 #endif
 
 #include <errno.h>
+
 
 
 enum

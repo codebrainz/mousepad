@@ -15,7 +15,6 @@
  */
 
 #include <mousepad/mousepad-private.h>
-#include <mousepad/mousepad-gtkcompat.h>
 #include <mousepad/mousepad-document.h>
 #include <mousepad/mousepad-encoding.h>
 #include <mousepad/mousepad-encoding-dialog.h>
@@ -23,11 +22,7 @@
 
 #include <glib/gstdio.h>
 
-#if GTK_CHECK_VERSION(3, 0, 0)
 #include <gtksourceview/gtksource.h>
-#else
-#include <gtksourceview/gtksourceview.h>
-#endif
 
 
 
@@ -120,7 +115,6 @@ mousepad_encoding_dialog_init (MousepadEncodingDialog *dialog)
   GtkCellRenderer *cell;
 
   /* set some dialog properties */
-  gtk_dialog_set_has_separator (GTK_DIALOG (dialog), FALSE);
   gtk_window_set_default_size (GTK_WINDOW (dialog), 550, 350);
 
   /* add buttons */

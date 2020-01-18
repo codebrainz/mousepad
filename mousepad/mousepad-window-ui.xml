@@ -56,7 +56,6 @@
       <menuitem action="delete" />
       <separator />
       <menuitem action="select-all" />
-      <menuitem action="change-selection" />
       <separator />
       <menu action="convert-menu">
         <menuitem action="lowercase" />
@@ -183,7 +182,6 @@
     <menuitem action="delete" />
     <separator />
     <menuitem action="select-all" />
-    <menuitem action="change-selection" />
     <separator />
     <menu action="convert-menu">
       <menuitem action="lowercase" />

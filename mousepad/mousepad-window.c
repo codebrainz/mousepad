@@ -21,7 +21,6 @@
 #include <mousepad/mousepad-marshal.h>
 #include <mousepad/mousepad-document.h>
 #include <mousepad/mousepad-dialogs.h>
-#include <mousepad/mousepad-gtkcompat.h>
 #include <mousepad/mousepad-replace-dialog.h>
 #include <mousepad/mousepad-encoding-dialog.h>
 #include <mousepad/mousepad-search-bar.h>
@@ -32,13 +31,7 @@
 
 #include <glib/gstdio.h>
 
-#if GTK_CHECK_VERSION(3, 0, 0)
 #include <gtksourceview/gtksource.h>
-#else
-#include <gtksourceview/gtksourcelanguage.h>
-#include <gtksourceview/gtksourcelanguagemanager.h>
-#include <gtksourceview/gtksourcebuffer.h>
-#endif
 
 #ifdef HAVE_SYS_TYPES_H
 #include <sys/types.h>
@@ -282,8 +275,6 @@ static void              mousepad_window_action_delete                (GtkAction
                                                                        MousepadWindow         *window);
 static void              mousepad_window_action_select_all            (GtkAction              *action,
                                                                        MousepadWindow         *window);
-static void              mousepad_window_action_change_selection      (GtkAction              *action,
-                                                                       MousepadWindow         *window);
 static void              mousepad_window_action_preferences           (GtkAction              *action,
                                                                        MousepadWindow         *window);
 static void              mousepad_window_action_lowercase             (GtkAction              *action,
@@ -438,7 +429,6 @@ static const GtkActionEntry action_entries[] =
       { "paste-column", NULL, N_("Paste as _Column"), NULL, N_("Paste the clipboard text into a column"), G_CALLBACK (mousepad_window_action_paste_column), },
     { "delete", GTK_STOCK_DELETE, NULL, NULL, N_("Delete the current selection"), G_CALLBACK (mousepad_window_action_delete), },
     { "select-all", GTK_STOCK_SELECT_ALL, NULL, NULL, N_("Select the text in the entire document"), G_CALLBACK (mousepad_window_action_select_all), },
-    { "change-selection", NULL, N_("Change the selection"), NULL, N_("Change a normal selection into a column selection and vice versa"), G_CALLBACK (mousepad_window_action_change_selection), },
     { "convert-menu", NULL, N_("Conve_rt"), NULL, NULL, NULL, },
       { "uppercase", NULL, N_("To _Uppercase"), NULL, N_("Change the case of the selection to uppercase"), G_CALLBACK (mousepad_window_action_uppercase), },
       { "lowercase", NULL, N_("To _Lowercase"), NULL, N_("Change the case of the selection to lowercase"), G_CALLBACK (mousepad_window_action_lowercase), },
@@ -888,10 +878,6 @@ mousepad_window_create_notebook (MousepadWindow *window)
                                    "scrollable", TRUE,
                                    "show-border", FALSE,
                                    "show-tabs", FALSE,
-#if ! GTK_CHECK_VERSION(3, 0, 0)
-                                   "tab-hborder", 0,
-                                   "tab-vborder", 0,
-#endif
                                    NULL);
 
   /* set the group id */
@@ -1004,9 +990,7 @@ mousepad_window_init (MousepadWindow *window)
   window->active = NULL;
   window->recent_manager = NULL;
 
-#if GTK_CHECK_VERSION(3, 0, 0)
   gtk_window_set_has_resize_grip (GTK_WINDOW (window), TRUE);
-#endif
 
   /* increase clipboard history ref count */
   clipboard_history_ref_count++;
@@ -2210,10 +2194,6 @@ mousepad_window_selection_changed (MousepadDocument *document,
   const gchar *action_names1[] = { "tabs-to-spaces", "spaces-to-tabs", "duplicate", "strip-trailing" };
   const gchar *action_names2[] = { "line-up", "line-down" };
   const gchar *action_names3[] = { "cut", "copy", "delete", "lowercase", "uppercase", "titlecase", "opposite-case" };
-
-  /* sensitivity of the change selection action */
-  action = gtk_action_group_get_action (window->action_group, "change-selection");
-  gtk_action_set_sensitive (action, selection != 0);
 
   /* actions that are unsensitive during a column selection */
   for (i = 0; i < G_N_ELEMENTS (action_names1); i++)
@@ -4620,19 +4600,6 @@ mousepad_window_action_select_all (GtkAction      *action,
 
 
 static void
-mousepad_window_action_change_selection (GtkAction      *action,
-                                         MousepadWindow *window)
-{
-  g_return_if_fail (MOUSEPAD_IS_WINDOW (window));
-  g_return_if_fail (MOUSEPAD_IS_DOCUMENT (window->active));
-
-  /* change the selection */
-  mousepad_view_change_selection (window->active->textview);
-}
-
-
-
-static void
 mousepad_window_action_preferences (GtkAction      *action,
                                     MousepadWindow *window)
 {
@@ -4990,7 +4957,7 @@ mousepad_window_action_select_font (GtkAction      *action,
 
   if (G_LIKELY (font_name))
     {
-      gtk_font_chooser_dialog_set_font_name (GTK_FONT_CHOOSER_DIALOG (dialog), font_name);
+      gtk_font_chooser_set_font (GTK_FONT_CHOOSER (dialog), font_name);
       g_free (font_name);
     }
 
@@ -4998,7 +4965,7 @@ mousepad_window_action_select_font (GtkAction      *action,
   if (G_LIKELY (gtk_dialog_run (GTK_DIALOG (dialog)) == GTK_RESPONSE_OK))
     {
       /* get the selected font from the dialog */
-      font_name = gtk_font_chooser_dialog_get_font_name (GTK_FONT_CHOOSER_DIALOG (dialog));
+      font_name = gtk_font_chooser_get_font (GTK_FONT_CHOOSER (dialog));
 
       /* store the font in the preferences */
       MOUSEPAD_SETTING_SET_STRING (FONT_NAME, font_name);

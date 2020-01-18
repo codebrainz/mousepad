@@ -17,10 +17,10 @@ and integrate this new feature in **Mousepad**.
 
 Mousepad depends on the following packages:
 
-* [GTK](https://www.gtk.org) >=2.24.0 or >=3.20.0
+* [GTK](https://www.gtk.org) >=3.20.0
 * [GLib](https://wiki.gnome.org/Projects/GLib) >=2.42.0
 * [xfconf](https://gitlab.xfce.org/xfce/xfconf) >=4.12.0
-* [GtkSourceView](https://wiki.gnome.org/Projects/GtkSourceView) >=2.0 or >=3.0
+* [GtkSourceView](https://wiki.gnome.org/Projects/GtkSourceView) >=3.20
 
 The following packages are optional:
 

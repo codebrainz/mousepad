@@ -15,16 +15,11 @@
  */
 
 #include <mousepad/mousepad-private.h>
-#include <mousepad/mousepad-gtkcompat.h>
 #include <mousepad/mousepad-dialogs.h>
 #include <mousepad/mousepad-util.h>
 
-#if GTK_CHECK_VERSION(3, 0, 0)
 #include <gtksourceview/gtksource.h>
-#else
-#include <gtksourceview/gtksourcestylescheme.h>
-#include <gtksourceview/gtksourcestyleschememanager.h>
-#endif
+
 
 
 void

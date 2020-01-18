@@ -15,7 +15,6 @@
  */
 
 #include <mousepad/mousepad-private.h>
-#include <mousepad/mousepad-gtkcompat.h>
 #include <mousepad/mousepad-settings.h>
 #include <mousepad/mousepad-marshal.h>
 #include <mousepad/mousepad-document.h>
@@ -131,7 +130,7 @@ mousepad_search_bar_class_init (MousepadSearchBarClass *klass)
 
   /* setup key bindings for the search bar */
   binding_set = gtk_binding_set_by_class (klass);
-  gtk_binding_entry_add_signal (binding_set, GDK_Escape, 0, "hide-bar", 0);
+  gtk_binding_entry_add_signal (binding_set, GDK_KEY_Escape, 0, "hide-bar", 0);
 
   /* In GTK3, gtkrc is deprecated */
 #if GTK_CHECK_VERSION(3, 0, 0) && (__GNUC__ > 4 || __GNUC__ == 4 && __GNUC_MINOR__ > 2)
@@ -169,8 +168,8 @@ mousepad_search_bar_class_init (MousepadSearchBarClass *klass)
                    g_cclosure_marshal_VOID__VOID,
                    G_TYPE_NONE, 0);
       binding_set = gtk_binding_set_by_class(entry_class);
-      gtk_binding_entry_add_signal(binding_set, GDK_Return, GDK_SHIFT_MASK, "activate-backward", 0);
-      gtk_binding_entry_add_signal(binding_set, GDK_KP_Enter, GDK_SHIFT_MASK, "activate-backward", 0);
+      gtk_binding_entry_add_signal(binding_set, GDK_KEY_Return, GDK_SHIFT_MASK, "activate-backward", 0);
+      gtk_binding_entry_add_signal(binding_set, GDK_KEY_KP_Enter, GDK_SHIFT_MASK, "activate-backward", 0);
     }
   g_type_class_unref (entry_class);
 }

@@ -21,7 +21,6 @@
 #include <mousepad/mousepad-dialogs.h>
 #include <mousepad/mousepad-util.h>
 #include <mousepad/mousepad-marshal.h>
-#include <mousepad/mousepad-gtkcompat.h>
 
 
 
@@ -136,7 +135,6 @@ mousepad_replace_dialog_init (MousepadReplaceDialog *dialog)
   /* set dialog properties */
   gtk_window_set_title (GTK_WINDOW (dialog), _("Replace"));
   gtk_window_set_default_size (GTK_WINDOW (dialog), 400, -1);
-  gtk_dialog_set_has_separator (GTK_DIALOG (dialog), FALSE);
   g_signal_connect (G_OBJECT (dialog), "response", G_CALLBACK (mousepad_replace_dialog_response), NULL);
 
   /* dialog buttons */
