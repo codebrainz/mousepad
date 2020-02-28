@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-12-06 06:31+0100\n"
-"PO-Revision-Date: 2020-01-23 13:11+0000\n"
+"PO-Revision-Date: 2020-02-28 18:35+0000\n"
 "Last-Translator: Саша Петровић <salepetronije@gmail.com>\n"
 "Language-Team: Serbian (http://www.transifex.com/xfce/xfce-apps/language/sr/)\n"
 "MIME-Version: 1.0\n"
@@ -50,7 +50,7 @@ msgstr "Нисам успео да отворим приказ."
 
 #: ../mousepad/main.c:106
 msgid "The Xfce development team. All rights reserved."
-msgstr "ИксФЦЕ развојна дружина. Сва права су задржана."
+msgstr "Раазвојна дружина ИксФЦЕ-а. Сва права су задржана."
 
 #: ../mousepad/main.c:107
 #, c-format
@@ -82,7 +82,7 @@ msgstr "Скочи до"
 
 #: ../mousepad/mousepad-dialogs.c:222
 msgid "_Line number:"
-msgstr "Број _реда: "
+msgstr "_Број _реда: "
 
 #: ../mousepad/mousepad-dialogs.c:241
 msgid "C_olumn number:"
@@ -692,12 +692,12 @@ msgstr "Врста датотека: Ни једна"
 
 #: ../mousepad/mousepad-statusbar.c:168
 msgid "Toggle the overwrite mode"
-msgstr "Укучивање/искучивање начина преписивања"
+msgstr "Укључивање/искључивање начина преписивања"
 
 #. overwrite label
 #: ../mousepad/mousepad-statusbar.c:173
 msgid "OVR"
-msgstr "ПРП"
+msgstr "препис"
 
 #: ../mousepad/mousepad-statusbar.c:258
 #, c-format
@@ -1283,17 +1283,17 @@ msgstr "Нема података из исечака"
 #. set error message
 #: ../mousepad/mousepad-window.c:3835
 msgid "Templates should be UTF-8 valid"
-msgstr "Шаблон треба бити УТФ-8 исправан"
+msgstr "Образац треба бити по УТФ-8 исправан"
 
 #. set error message
 #: ../mousepad/mousepad-window.c:3843
 msgid "Reading the template failed, the menu item has been removed"
-msgstr "Читање шаблона није успело, ставка изборника је уклоњена"
+msgstr "Читање образаца није успело, ставка изборника је уклоњена"
 
 #. set error message
 #: ../mousepad/mousepad-window.c:3848
 msgid "Loading the template failed"
-msgstr "Учитавање шаблона није успело"
+msgstr "Учитавање образаца није успело"
 
 #. create new file chooser dialog
 #: ../mousepad/mousepad-window.c:3873
@@ -1314,7 +1314,7 @@ msgstr "Нисам успео да отворим „%s“ за читање. Б
 #. show the warning and cleanup
 #: ../mousepad/mousepad-window.c:3990
 msgid "Failed to open file"
-msgstr "Не успевам да отворим датотеку"
+msgstr "Нисам успео да отворим датотеку"
 
 #. show the error
 #: ../mousepad/mousepad-window.c:4096 ../mousepad/mousepad-window.c:4219
@@ -1357,7 +1357,7 @@ msgid ""
 "Mousepad aims to be an easy-to-use and fast editor. Our target is an editor "
 "for quickly editing text files, not a development environment or an editor "
 "with a huge bunch of plugins."
-msgstr "Мишоловке стреми да буде уређивач писања лак за употребу. Наш циљ је уредник за брзо уређивање писаних докумената, а не развојно окружење или уређивач са мноштвом прикључака."
+msgstr "Мишоловка стреми да буде уређивач писања лак за употребу. Наш циљ је уредник за брзо уређивање писаних докумената, а не развојно окружење или уређивач са мноштвом прикључака."
 
 #: ../mousepad.appdata.xml.in.h:2
 msgid ""
@@ -1377,4 +1377,4 @@ msgstr "Покрени Мишоловку као корени корисник"
 
 #: ../org.xfce.mousepad.policy.in.in.h:7
 msgid "Authentication is required to run Mousepad as root."
-msgstr "Потребна је потврда идентитета да би покренули Мишоловку као корени корисник."
+msgstr "Потребна је пријава ради покретања Мишоловке као корени корисник."
