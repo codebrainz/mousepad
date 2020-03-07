@@ -9,14 +9,15 @@
 # 629cf3e396111bb8c5fb6664e2dbc91d, 2015
 # prflr88 <prflr88@gmail.com>, 2013-2015
 # prflr88 <prflr88@gmail.com>, 2017
+# Toni Estévez <toni.estevez@gmail.com>, 2020
 # Markel @wakutiteo, 2018
 msgid ""
 msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-12-06 06:31+0100\n"
-"PO-Revision-Date: 2019-12-08 15:21+0000\n"
-"Last-Translator: Ignacio Poggi <ignaciop.3@gmail.com>\n"
+"PO-Revision-Date: 2020-03-07 18:18+0000\n"
+"Last-Translator: Toni Estévez <toni.estevez@gmail.com>\n"
 "Language-Team: Spanish (http://www.transifex.com/xfce/xfce-apps/language/es/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -26,11 +27,11 @@ msgstr ""
 
 #: ../mousepad/main.c:44
 msgid "Do not register with the D-BUS session message bus"
-msgstr "No registrar con el bus de mensajes de la sesión D-BUS"
+msgstr "No registrar con el bus de mensajes de la sesión de D-BUS"
 
 #: ../mousepad/main.c:45
 msgid "Quit a running Mousepad instance"
-msgstr "Salir de una instancia en ejecución de Mousepad"
+msgstr "Salir de una instancia de Mousepad en ejecución"
 
 #: ../mousepad/main.c:47
 msgid "Print version information and exit"
@@ -49,7 +50,7 @@ msgstr "[ARCHIVOS...]"
 #. no error message, the gui initialization failed
 #: ../mousepad/main.c:89
 msgid "Failed to open display."
-msgstr "No se pudo abrir la pantalla."
+msgstr "No se ha podido abrir la pantalla."
 
 #: ../mousepad/main.c:106
 msgid "The Xfce development team. All rights reserved."
@@ -62,7 +63,7 @@ msgstr "Informe de errores a <%s>."
 
 #: ../mousepad/mousepad-dialogs.c:44
 msgid "Mousepad is a fast text editor for the Xfce Desktop Environment."
-msgstr "Mousepad es un editor de texto veloz para el entorno de escritorio Xfce."
+msgstr "Mousepad es un editor de texto rápido para el entorno de escritorio Xfce."
 
 #: ../mousepad/mousepad-dialogs.c:49
 msgid "translator-credits"
@@ -71,12 +72,12 @@ msgstr "Pablo Lezaeta <prflr88@gmail.com> 2013-2016"
 #. display an error message to the user
 #: ../mousepad/mousepad-dialogs.c:104
 msgid "Failed to open the documentation browser"
-msgstr "No se pudo abrir el navegador de documentación"
+msgstr "No se ha podido abrir el navegador de la documentación"
 
 #. build dialog
 #: ../mousepad/mousepad-dialogs.c:119
 msgid "Select Tab Size"
-msgstr "Seleccione el tamaño de tabulación"
+msgstr "Seleccione el tamaño de la tabulación"
 
 #. build the dialog
 #: ../mousepad/mousepad-dialogs.c:200
@@ -93,17 +94,17 @@ msgstr "Número de c_olumna:"
 
 #: ../mousepad/mousepad-dialogs.c:299
 msgid "Remove all entries from the documents history?"
-msgstr "¿Quiere quitar todas las entradas del historial de documentos?"
+msgstr "¿Quiere eliminar todas las entradas del historial de documentos?"
 
 #: ../mousepad/mousepad-dialogs.c:304
 msgid "Clear Documents History"
-msgstr "Limpiar historial de documentos"
+msgstr "Borrar el historial de documentos"
 
 #: ../mousepad/mousepad-dialogs.c:307
 msgid ""
 "Clearing the documents history will permanently remove all currently listed "
 "entries."
-msgstr "Al borrar el historial de documentos se eliminará permanentemente todas las entradas que figuran actualmente."
+msgstr "Al borrar el historial de documentos se eliminarán permanentemente todas las entradas que figuran actualmente."
 
 #: ../mousepad/mousepad-dialogs.c:338
 msgid "Do you want to save the changes before closing?"
@@ -111,7 +112,7 @@ msgstr "¿Quiere guardar los cambios antes de cerrar?"
 
 #: ../mousepad/mousepad-dialogs.c:339
 msgid "Save Changes"
-msgstr "Guardar cambios"
+msgstr "Guardar los cambios"
 
 #: ../mousepad/mousepad-dialogs.c:340
 msgid "_Don't Save"
