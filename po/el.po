@@ -6,16 +6,16 @@
 # Apóstolos Papaðimitríu <apostolos.papadimitriu@gmail.com>, 2016
 # Efstathios Iosifidis <iefstathios@gmail.com>, 2013,2015
 # Georgios Zarkadas <georgios.zarkadas@gmail.com>, 2018
-# Ioannis LM, 2019
+# Ioannis LM, 2019-2020
 # Γιώργος Στεφανάκης <nonviotale@gmail.com>, 2013
 # Πέτρος Σαμαράς <psamaras1@gmail.com>, 2018-2019
 msgid ""
 msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-08-26 00:31+0200\n"
-"PO-Revision-Date: 2019-10-24 23:45+0000\n"
-"Last-Translator: Πέτρος Σαμαράς <psamaras1@gmail.com>\n"
+"POT-Creation-Date: 2019-12-06 06:31+0100\n"
+"PO-Revision-Date: 2020-03-18 12:44+0000\n"
+"Last-Translator: Ioannis LM\n"
 "Language-Team: Greek (http://www.transifex.com/xfce/xfce-apps/language/el/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -52,7 +52,7 @@ msgstr "Απέτυχε το άνοιγμα της οθόνης"
 
 #: ../mousepad/main.c:106
 msgid "The Xfce development team. All rights reserved."
-msgstr "Η ομάδα ανάπτυξης του XFCE. Με επιφύλαξη όλων των δικαιωμάτων."
+msgstr "Η ομάδα ανάπτυξης του Xfce. Με επιφύλαξη όλων των δικαιωμάτων."
 
 #: ../mousepad/main.c:107
 #, c-format
@@ -80,7 +80,7 @@ msgstr "Επιλογή μεγέθους καρτέλας"
 #. build the dialog
 #: ../mousepad/mousepad-dialogs.c:200
 msgid "Go To"
-msgstr "Μετάβαση Σε"
+msgstr "Μετάβαση σε"
 
 #: ../mousepad/mousepad-dialogs.c:222
 msgid "_Line number:"
@@ -96,7 +96,7 @@ msgstr "Αφαίρεση όλων των καταχωρήσεων από το ι
 
 #: ../mousepad/mousepad-dialogs.c:304
 msgid "Clear Documents History"
-msgstr "Εκκαθάριση ιστορίκου εγγράφου"
+msgstr "Εκκαθάριση ιστορικού εγγράφου"
 
 #: ../mousepad/mousepad-dialogs.c:307
 msgid ""
@@ -114,7 +114,7 @@ msgstr "Αποθήκευση αλλαγών"
 
 #: ../mousepad/mousepad-dialogs.c:340
 msgid "_Don't Save"
-msgstr "_Ακύρωση Αποθήκευσης"
+msgstr "_Ακύρωση αποθήκευσης"
 
 #. secondary text
 #: ../mousepad/mousepad-dialogs.c:362
@@ -320,7 +320,7 @@ msgid "No filetype"
 msgstr "Κανένας τύπος αρχείου"
 
 #. setup the window properties
-#: ../mousepad/mousepad-prefs-dialog.c:437 ../mousepad/mousepad-window.c:450
+#: ../mousepad/mousepad-prefs-dialog.c:437 ../mousepad/mousepad-window.c:457
 msgid "Preferences"
 msgstr "Προτιμήσεις"
 
@@ -398,7 +398,7 @@ msgid "Text Beside Icons"
 msgstr "Κείμενο δίπλα στα εικονίδια"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:19
-#: ../mousepad/mousepad-window.c:477
+#: ../mousepad/mousepad-window.c:484
 msgid "Show line numbers"
 msgstr "Εμφάνιση αριθμών γραμμής"
 
@@ -736,569 +736,576 @@ msgstr "Αδυναμία δημιουργίας καταλόγου \"%s\". Η α
 msgid "Failed to store the preferences to \"%s\": %s"
 msgstr "Αποτυχία αποθήκευσης των προτιμήσεων στο \"%s\": %s"
 
-#: ../mousepad/mousepad-window.c:406
+#: ../mousepad/mousepad-window.c:413
 msgid "_File"
 msgstr "Α_ρχείο"
 
-#: ../mousepad/mousepad-window.c:407
+#: ../mousepad/mousepad-window.c:414
 msgid "_New"
 msgstr "_Νέο"
 
-#: ../mousepad/mousepad-window.c:407
+#: ../mousepad/mousepad-window.c:414
 msgid "Create a new document"
 msgstr "Δημιουργία νέου εγγράφου"
 
-#: ../mousepad/mousepad-window.c:408
+#: ../mousepad/mousepad-window.c:415
 msgid "New _Window"
 msgstr "Νέο _παράθυρο"
 
-#: ../mousepad/mousepad-window.c:408
+#: ../mousepad/mousepad-window.c:415
 msgid "Create a new document in a new window"
 msgstr "Δημιουργία ενός νέου εγγράφου σε ένα νέο παράθυρο"
 
-#: ../mousepad/mousepad-window.c:409
+#: ../mousepad/mousepad-window.c:416
 msgid "New From Te_mplate"
 msgstr "Νέo από πρό_τυπο"
 
-#: ../mousepad/mousepad-window.c:410
+#: ../mousepad/mousepad-window.c:417
 msgid "_Open..."
 msgstr "Άν_οιγμα"
 
-#: ../mousepad/mousepad-window.c:410
+#: ../mousepad/mousepad-window.c:417
 msgid "Open a file"
 msgstr "Άνοιγμα αρχείου"
 
-#: ../mousepad/mousepad-window.c:411
+#: ../mousepad/mousepad-window.c:418
 msgid "Op_en Recent"
 msgstr "Άνοιγμα π_ρόσφατου"
 
-#: ../mousepad/mousepad-window.c:412
+#: ../mousepad/mousepad-window.c:419
 msgid "No items found"
 msgstr "Δε βρέθηκαν αντικείμενα"
 
-#: ../mousepad/mousepad-window.c:413
+#: ../mousepad/mousepad-window.c:420
 msgid "Clear _History"
 msgstr "Εκκαθάριση _ιστορικού"
 
-#: ../mousepad/mousepad-window.c:413
+#: ../mousepad/mousepad-window.c:420
 msgid "Clear the recently used files history"
 msgstr "Εκκαθάριση του ιστορικού προσφάτως χρησιμοποιημένων αρχείων"
 
-#: ../mousepad/mousepad-window.c:414
+#: ../mousepad/mousepad-window.c:421
 msgid "Save the current document"
 msgstr "Αποθήκευση του τρέχοντος εγγράφου"
 
-#: ../mousepad/mousepad-window.c:415
+#: ../mousepad/mousepad-window.c:422
 msgid "Save _As..."
 msgstr "Αποθήκευση _ως..."
 
-#: ../mousepad/mousepad-window.c:415
+#: ../mousepad/mousepad-window.c:422
 msgid "Save current document as another file"
 msgstr "Αποθήκευση τρέχοντος εγγράφου ως άλλο αρχείο"
 
-#: ../mousepad/mousepad-window.c:416
+#: ../mousepad/mousepad-window.c:423
 msgid "Save A_ll"
 msgstr "Αποθήκευση ό_λων"
 
-#: ../mousepad/mousepad-window.c:416
+#: ../mousepad/mousepad-window.c:423
 msgid "Save all document in this window"
 msgstr "Αποθήκευση όλων των εγγράφων σε αυτό το παράθυρο"
 
-#: ../mousepad/mousepad-window.c:417
+#: ../mousepad/mousepad-window.c:424
 msgid "Re_vert"
 msgstr "Επανα_φορά"
 
-#: ../mousepad/mousepad-window.c:417
+#: ../mousepad/mousepad-window.c:424
 msgid "Revert to the saved version of the file"
 msgstr "Επαναφορά σε μια αποθηκευμένη έκδοση του αρχείου"
 
-#: ../mousepad/mousepad-window.c:418
+#: ../mousepad/mousepad-window.c:425
 msgid "_Print..."
 msgstr "_Εκτύπωση..."
 
-#: ../mousepad/mousepad-window.c:418
+#: ../mousepad/mousepad-window.c:425
 msgid "Print the current document"
 msgstr "Εκτύπωση του τρέχοντος εγγράφου"
 
-#: ../mousepad/mousepad-window.c:419
+#: ../mousepad/mousepad-window.c:426
 msgid "_Detach Tab"
 msgstr "Από_σπαση καρτέλας"
 
-#: ../mousepad/mousepad-window.c:419
+#: ../mousepad/mousepad-window.c:426
 msgid "Move the current document to a new window"
 msgstr "Μετακίνηση του τρέχοντος εγγράφου σε νέο παράθυρο"
 
-#: ../mousepad/mousepad-window.c:420
+#: ../mousepad/mousepad-window.c:427
 msgid "Close _Tab"
 msgstr "Κλεί_σιμο καρτέλας"
 
-#: ../mousepad/mousepad-window.c:420
+#: ../mousepad/mousepad-window.c:427
 msgid "Close the current document"
 msgstr "Κλείσιμο του τρέχοντος εγγράφου"
 
-#: ../mousepad/mousepad-window.c:421
+#: ../mousepad/mousepad-window.c:428
 msgid "_Close Window"
 msgstr "Κλείσι_μο παραθύρου"
 
-#: ../mousepad/mousepad-window.c:421
+#: ../mousepad/mousepad-window.c:428
 msgid "Close this window"
 msgstr "Κλείσιμο αυτού του παραθύρου"
 
-#: ../mousepad/mousepad-window.c:423
+#: ../mousepad/mousepad-window.c:430
 msgid "_Edit"
 msgstr "_Επεξεργασία"
 
-#: ../mousepad/mousepad-window.c:424
+#: ../mousepad/mousepad-window.c:431
 msgid "Undo the last action"
 msgstr "Αναίρεση της τελευταίας ενέργειας"
 
-#: ../mousepad/mousepad-window.c:425
+#: ../mousepad/mousepad-window.c:432
 msgid "Redo the last undone action"
 msgstr "Επανάληψη της τελευταίας ακυρωμένης ενέργειας"
 
-#: ../mousepad/mousepad-window.c:426
+#: ../mousepad/mousepad-window.c:433
 msgid "Cut the selection"
 msgstr "Αποκοπή της επιλογής"
 
-#: ../mousepad/mousepad-window.c:427
+#: ../mousepad/mousepad-window.c:434
 msgid "Copy the selection"
 msgstr "Αντιγραφή της επιλογής"
 
-#: ../mousepad/mousepad-window.c:428
+#: ../mousepad/mousepad-window.c:435
 msgid "Paste the clipboard"
 msgstr "Επικόλληση του προχείρου"
 
-#: ../mousepad/mousepad-window.c:429
+#: ../mousepad/mousepad-window.c:436
 msgid "Paste _Special"
 msgstr "Ε_ιδική επικόλληση"
 
-#: ../mousepad/mousepad-window.c:430
+#: ../mousepad/mousepad-window.c:437
 msgid "Paste from _History"
 msgstr "Επικόλληση από το π_ρόχειρο"
 
-#: ../mousepad/mousepad-window.c:430
+#: ../mousepad/mousepad-window.c:437
 msgid "Paste from the clipboard history"
 msgstr "Επικόλληση από το ιστορικό του Πρόχειρου"
 
-#: ../mousepad/mousepad-window.c:431
+#: ../mousepad/mousepad-window.c:438
 msgid "Paste as _Column"
 msgstr "Επικόλληση ως _στήλη"
 
-#: ../mousepad/mousepad-window.c:431
+#: ../mousepad/mousepad-window.c:438
 msgid "Paste the clipboard text into a column"
 msgstr "Επικόλληση του κειμένου του προχείρου σε μια στήλη"
 
-#: ../mousepad/mousepad-window.c:432
+#: ../mousepad/mousepad-window.c:439
 msgid "Delete the current selection"
 msgstr "Διαγραφή τρέχουσας επιλογής"
 
-#: ../mousepad/mousepad-window.c:433
+#: ../mousepad/mousepad-window.c:440
 msgid "Select the text in the entire document"
 msgstr "Επιλογή του κειμένου σε όλο το έγγραφο"
 
-#: ../mousepad/mousepad-window.c:434
+#: ../mousepad/mousepad-window.c:441
 msgid "Change the selection"
 msgstr "Αλλαγή επιλογής"
 
-#: ../mousepad/mousepad-window.c:434
+#: ../mousepad/mousepad-window.c:441
 msgid "Change a normal selection into a column selection and vice versa"
 msgstr "Αλλαγή μιας κανονικής επιλογής κειμένου σε επιλογή στηλών και το αντίθετο"
 
-#: ../mousepad/mousepad-window.c:435
+#: ../mousepad/mousepad-window.c:442
 msgid "Conve_rt"
 msgstr "_Μετατροπή"
 
-#: ../mousepad/mousepad-window.c:436
+#: ../mousepad/mousepad-window.c:443
 msgid "To _Uppercase"
 msgstr "Σε _κεφαλαία"
 
-#: ../mousepad/mousepad-window.c:436
+#: ../mousepad/mousepad-window.c:443
 msgid "Change the case of the selection to uppercase"
 msgstr "Αλλαγή της επιλογής σε κεφαλαία"
 
-#: ../mousepad/mousepad-window.c:437
+#: ../mousepad/mousepad-window.c:444
 msgid "To _Lowercase"
 msgstr "Σε _πεζά"
 
-#: ../mousepad/mousepad-window.c:437
+#: ../mousepad/mousepad-window.c:444
 msgid "Change the case of the selection to lowercase"
 msgstr "Αλλαγή της επιλογής σε πεζά"
 
-#: ../mousepad/mousepad-window.c:438
+#: ../mousepad/mousepad-window.c:445
 msgid "To _Title Case"
-msgstr "Το Πρώτο Γράμμα Κεφαλαίο"
+msgstr "Το πρώτο γράμμα κεφαλαίο"
 
-#: ../mousepad/mousepad-window.c:438
+#: ../mousepad/mousepad-window.c:445
 msgid "Change the case of the selection to title case"
 msgstr "Αλλαγή του επιλεγμένου κειμένου σε μορφοποίηση τίτλων"
 
-#: ../mousepad/mousepad-window.c:439
+#: ../mousepad/mousepad-window.c:446
 msgid "To _Opposite Case"
 msgstr "Στην αντί_θετη μορφή"
 
-#: ../mousepad/mousepad-window.c:439
+#: ../mousepad/mousepad-window.c:446
 msgid "Change the case of the selection opposite case"
 msgstr "Εναλλαγή του επιλεγμένου κειμένου από κεφαλαία σε πεζά και το αντίστροφο"
 
-#: ../mousepad/mousepad-window.c:440
+#: ../mousepad/mousepad-window.c:447
 msgid "_Tabs to Spaces"
 msgstr "Από σ_τηλοθέτες σε διαστήματα"
 
-#: ../mousepad/mousepad-window.c:440
+#: ../mousepad/mousepad-window.c:447
 msgid "Convert all tabs to spaces in the selection or document"
 msgstr "Μετατροπή όλων των tabs σε κενά στο επιλεγμένο κείμενο ή το έγγραφο"
 
-#: ../mousepad/mousepad-window.c:441
+#: ../mousepad/mousepad-window.c:448
 msgid "_Spaces to Tabs"
 msgstr "_Από διαστήματα σε στηλοθέτες"
 
-#: ../mousepad/mousepad-window.c:441
+#: ../mousepad/mousepad-window.c:448
 msgid ""
 "Convert all the leading spaces to tabs in the selected line(s) or document"
 msgstr "Μετατροπή όλων των αρχικών κενών σε στηλοθετών στο επιλεγμένο κείμενο ή το έγγραφο"
 
-#: ../mousepad/mousepad-window.c:442
+#: ../mousepad/mousepad-window.c:449
 msgid "St_rip Trailing Spaces"
 msgstr "Α_φαίρεση τελικών διαστημάτων"
 
-#: ../mousepad/mousepad-window.c:442
+#: ../mousepad/mousepad-window.c:449
 msgid "Remove all the trailing spaces from the selected line(s) or document"
 msgstr "Αφαίρεση όλων των τελικών διαστημάτων από τις επιλεγμένες γραμμές ή το έγγραφο"
 
-#: ../mousepad/mousepad-window.c:443
+#: ../mousepad/mousepad-window.c:450
 msgid "_Transpose"
 msgstr "Αντιμετά_θεση"
 
-#: ../mousepad/mousepad-window.c:443
+#: ../mousepad/mousepad-window.c:450
 msgid "Reverse the order of something"
 msgstr "Αντιστροφή της διάταξης"
 
-#: ../mousepad/mousepad-window.c:444
+#: ../mousepad/mousepad-window.c:451
 msgid "_Move Selection"
 msgstr "Μετα_κίνηση επιλογής"
 
-#: ../mousepad/mousepad-window.c:445
+#: ../mousepad/mousepad-window.c:452
 msgid "Line _Up"
 msgstr "Γραμμή _πάνω"
 
-#: ../mousepad/mousepad-window.c:445
+#: ../mousepad/mousepad-window.c:452
 msgid "Move the selection one line up"
 msgstr "Μετακίνηση της επιλογής μια γραμμή πάνω"
 
-#: ../mousepad/mousepad-window.c:446
+#: ../mousepad/mousepad-window.c:453
 msgid "Line _Down"
 msgstr "Γραμμή _κάτω"
 
-#: ../mousepad/mousepad-window.c:446
+#: ../mousepad/mousepad-window.c:453
 msgid "Move the selection one line down"
 msgstr "Μετακίνηση της επιλογής μια γραμμή κάτω"
 
-#: ../mousepad/mousepad-window.c:447
+#: ../mousepad/mousepad-window.c:454
 msgid "Dup_licate Line / Selection"
 msgstr "Διπ_λασιασμός γραμμής / επιλογής"
 
-#: ../mousepad/mousepad-window.c:447
+#: ../mousepad/mousepad-window.c:454
 msgid "Duplicate the current line or selection"
 msgstr "Διπλασιασμός τρέχουσας γραμμής ή επιλογής"
 
-#: ../mousepad/mousepad-window.c:448
+#: ../mousepad/mousepad-window.c:455
 msgid "_Increase Indent"
 msgstr "Αύ_ξηση εσοχής"
 
-#: ../mousepad/mousepad-window.c:448
+#: ../mousepad/mousepad-window.c:455
 msgid "Increase the indentation of the selection or current line"
 msgstr "Αύξηση εσοχής της επιλογής ή της τρέχουσας γραμμής"
 
-#: ../mousepad/mousepad-window.c:449
+#: ../mousepad/mousepad-window.c:456
 msgid "_Decrease Indent"
 msgstr "Μεί_ωση εσοχής"
 
-#: ../mousepad/mousepad-window.c:449
+#: ../mousepad/mousepad-window.c:456
 msgid "Decrease the indentation of the selection or current line"
 msgstr "Μείωση εσοχής της επιλογής ή της τρέχουσας γραμμής"
 
-#: ../mousepad/mousepad-window.c:450
+#: ../mousepad/mousepad-window.c:457
 msgid "Show the preferences dialog"
 msgstr "Εμφάνιση διαλόγου προτιμήσεων"
 
-#: ../mousepad/mousepad-window.c:452
+#: ../mousepad/mousepad-window.c:459
 msgid "_Search"
 msgstr "_Αναζήτηση"
 
-#: ../mousepad/mousepad-window.c:453
+#: ../mousepad/mousepad-window.c:460
 msgid "Search for text"
 msgstr "Αναζήτηση για κείμενο"
 
-#: ../mousepad/mousepad-window.c:454
+#: ../mousepad/mousepad-window.c:461
 msgid "Find _Next"
 msgstr "Έυρεση _επόμενου"
 
-#: ../mousepad/mousepad-window.c:454
+#: ../mousepad/mousepad-window.c:461
 msgid "Search forwards for the same text"
 msgstr "Αναζήτηση προς τα εμπρός για το ίδιο κείμενο"
 
-#: ../mousepad/mousepad-window.c:455
+#: ../mousepad/mousepad-window.c:462
 msgid "Find _Previous"
 msgstr "Εύρεση _προηγούμενο"
 
-#: ../mousepad/mousepad-window.c:455
+#: ../mousepad/mousepad-window.c:462
 msgid "Search backwards for the same text"
 msgstr "Αναζήτηση προς τα πίσω για το ίδιο κείμενο"
 
-#: ../mousepad/mousepad-window.c:456
+#: ../mousepad/mousepad-window.c:463
 msgid "Find and Rep_lace..."
 msgstr "Αναζήτηση και α_ντικατάσταση..."
 
-#: ../mousepad/mousepad-window.c:456
+#: ../mousepad/mousepad-window.c:463
 msgid "Search for and replace text"
 msgstr "Εύρεση για και αντικατάσταση κειμένου"
 
-#: ../mousepad/mousepad-window.c:457
+#: ../mousepad/mousepad-window.c:464
 msgid "_Go to..."
 msgstr "_Μετάβαση..."
 
-#: ../mousepad/mousepad-window.c:457
+#: ../mousepad/mousepad-window.c:464
 msgid "Go to a specific location in the document"
 msgstr "Μετάβαση σε μια συγκεκριμένη τοποθεσία στο έγγραφο"
 
-#: ../mousepad/mousepad-window.c:459
+#: ../mousepad/mousepad-window.c:466
 msgid "_View"
 msgstr "_Προβολή"
 
-#: ../mousepad/mousepad-window.c:460
+#: ../mousepad/mousepad-window.c:467
 msgid "Select F_ont..."
 msgstr "Επιλογή γραμματ_οσειράς..."
 
-#: ../mousepad/mousepad-window.c:460
+#: ../mousepad/mousepad-window.c:467
 msgid "Change the editor font"
 msgstr "Αλλαγή γραμματοσειράς επεξεργαστή"
 
-#: ../mousepad/mousepad-window.c:461
+#: ../mousepad/mousepad-window.c:468
 msgid "_Color Scheme"
 msgstr "_Συνδυασμός χρωμάτων"
 
-#: ../mousepad/mousepad-window.c:463
+#: ../mousepad/mousepad-window.c:470
 msgid "_Document"
 msgstr "Έ_γγραφο"
 
-#: ../mousepad/mousepad-window.c:464
+#: ../mousepad/mousepad-window.c:471
 msgid "Line E_nding"
 msgstr "_Τέλος γραμμής"
 
-#: ../mousepad/mousepad-window.c:465
+#: ../mousepad/mousepad-window.c:472
 msgid "Tab _Size"
 msgstr "_Μέγεθος στηλοθέτη"
 
-#: ../mousepad/mousepad-window.c:466
+#: ../mousepad/mousepad-window.c:473
 msgid "_Filetype"
 msgstr "_Τύπος αρχείου"
 
-#: ../mousepad/mousepad-window.c:467
+#: ../mousepad/mousepad-window.c:474
 msgid "_Previous Tab"
 msgstr "_Προηγούμενη καρτέλα"
 
-#: ../mousepad/mousepad-window.c:467
+#: ../mousepad/mousepad-window.c:474
 msgid "Select the previous tab"
 msgstr "Μετάβαση στην προηγούμενη καρτέλα"
 
-#: ../mousepad/mousepad-window.c:468
+#: ../mousepad/mousepad-window.c:475
 msgid "_Next Tab"
 msgstr "Επόμενη καρτέλα"
 
-#: ../mousepad/mousepad-window.c:468
+#: ../mousepad/mousepad-window.c:475
 msgid "Select the next tab"
 msgstr "Μετάβαση στην επόμενη καρτέλα"
 
-#: ../mousepad/mousepad-window.c:470
+#: ../mousepad/mousepad-window.c:477
 msgid "_Help"
 msgstr "_Βοήθεια"
 
-#: ../mousepad/mousepad-window.c:471
+#: ../mousepad/mousepad-window.c:478
 msgid "_Contents"
 msgstr "_Περιεχόμενα"
 
-#: ../mousepad/mousepad-window.c:471
+#: ../mousepad/mousepad-window.c:478
 msgid "Display the Mousepad user manual"
 msgstr "Προβολή του εγχειριδίου χρήστη του Mousepad"
 
-#: ../mousepad/mousepad-window.c:472
+#: ../mousepad/mousepad-window.c:479
 msgid "About this application"
 msgstr "Περί της εφαρμογής"
 
-#: ../mousepad/mousepad-window.c:477
+#: ../mousepad/mousepad-window.c:484
 msgid "Line N_umbers"
 msgstr "Α_ριθμοί γραμμών:"
 
-#: ../mousepad/mousepad-window.c:478
+#: ../mousepad/mousepad-window.c:485
 msgid "_Menubar"
 msgstr "_Μπάρα μενού"
 
-#: ../mousepad/mousepad-window.c:478
+#: ../mousepad/mousepad-window.c:485
 msgid "Change the visibility of the main menubar"
 msgstr "Αλλαγή της ορατότητας της κύριας μπάρας μενού"
 
-#: ../mousepad/mousepad-window.c:479
+#: ../mousepad/mousepad-window.c:486
 msgid "_Toolbar"
 msgstr "_Εργαλειοθήκη"
 
-#: ../mousepad/mousepad-window.c:479
+#: ../mousepad/mousepad-window.c:486
 msgid "Change the visibility of the toolbar"
 msgstr "Αλλαγή της ορατότητας της εργαλειοθήκης"
 
-#: ../mousepad/mousepad-window.c:480
+#: ../mousepad/mousepad-window.c:487
 msgid "St_atusbar"
 msgstr "Γραμμή _κατάστασης"
 
-#: ../mousepad/mousepad-window.c:480
+#: ../mousepad/mousepad-window.c:487
 msgid "Change the visibility of the statusbar"
 msgstr "Αλλαγή της ορατότητας της γραμμής κατάστασης"
 
-#: ../mousepad/mousepad-window.c:481
+#: ../mousepad/mousepad-window.c:488
 msgid "_Fullscreen"
 msgstr "_Πλήρης οθόνη"
 
-#: ../mousepad/mousepad-window.c:481 ../mousepad/mousepad-window.c:5026
+#: ../mousepad/mousepad-window.c:488 ../mousepad/mousepad-window.c:5173
 msgid "Make the window fullscreen"
 msgstr "Αλλαγή σε παράθυρο πλήρους οθόνης"
 
-#: ../mousepad/mousepad-window.c:482
+#: ../mousepad/mousepad-window.c:489
 msgid "_Auto Indent"
 msgstr "_Αυτόματη δημιουργία εσοχών"
 
-#: ../mousepad/mousepad-window.c:482
+#: ../mousepad/mousepad-window.c:489
 msgid "Auto indent a new line"
 msgstr "Αυτόματη εσοχή σε νέα γραμμή"
 
-#: ../mousepad/mousepad-window.c:483
+#: ../mousepad/mousepad-window.c:490
 msgid "Insert _Spaces"
 msgstr "Εισαγωγή _κενών"
 
-#: ../mousepad/mousepad-window.c:483
+#: ../mousepad/mousepad-window.c:490
 msgid "Insert spaces when the tab button is pressed"
 msgstr "Εισαγωγή κενών όταν πατάτε το πλήκτρο Tab"
 
-#: ../mousepad/mousepad-window.c:484
+#: ../mousepad/mousepad-window.c:491
 msgid "_Word Wrap"
 msgstr "Ανα_δίπλωση λέξεων"
 
-#: ../mousepad/mousepad-window.c:484
+#: ../mousepad/mousepad-window.c:491
 msgid "Toggle breaking lines in between words"
 msgstr "Εναλλαγή διαχωρισμού γραμμών στη μέση των λέξεων"
 
-#: ../mousepad/mousepad-window.c:485
+#: ../mousepad/mousepad-window.c:492
 msgid "Write Unicode _BOM"
 msgstr "Εγγραφή Unicode BOM"
 
-#: ../mousepad/mousepad-window.c:485
+#: ../mousepad/mousepad-window.c:492
 msgid "Store the byte-order mark in the file"
 msgstr "Αποθήκευση της σήμανσης σειράς byte (ΒΟΜ) στο αρχείο"
 
-#: ../mousepad/mousepad-window.c:490
+#: ../mousepad/mousepad-window.c:497
 msgid "Unix (_LF)"
 msgstr "Unix (_LF)"
 
-#: ../mousepad/mousepad-window.c:490
+#: ../mousepad/mousepad-window.c:497
 msgid "Set the line ending of the document to Unix (LF)"
 msgstr "Ορισμός τύπου τέλους γραμμής σε Unix (LF)"
 
-#: ../mousepad/mousepad-window.c:491
+#: ../mousepad/mousepad-window.c:498
 msgid "Mac (_CR)"
 msgstr "Mac (_CR)"
 
-#: ../mousepad/mousepad-window.c:491
+#: ../mousepad/mousepad-window.c:498
 msgid "Set the line ending of the document to Mac (CR)"
 msgstr "Ορισμός τύπου τέλους γραμμής σε Mac (CR)"
 
-#: ../mousepad/mousepad-window.c:492
+#: ../mousepad/mousepad-window.c:499
 msgid "DOS / Windows (C_R LF)"
 msgstr "DOS / Windows (C_R LF)"
 
-#: ../mousepad/mousepad-window.c:492
+#: ../mousepad/mousepad-window.c:499
 msgid "Set the line ending of the document to DOS / Windows (CR LF)"
 msgstr "Ορισμός τύπου τέλους γραμμής σε DOS / Windows (CR LF)"
 
 #. add the label with the root warning
-#: ../mousepad/mousepad-window.c:865
+#: ../mousepad/mousepad-window.c:869
 msgid "Warning, you are using the root account, you may harm your system."
 msgstr "Προειδοποίηση. Χρησιμοποιείτε το λογαριασμό root. Ενδέχεται να βλάψετε το σύστημα."
 
 #. show the warning
-#: ../mousepad/mousepad-window.c:1521
+#: ../mousepad/mousepad-window.c:1557
 msgid "Failed to open the document"
 msgstr "Αποτυχία ανοίγματος εγγράφου"
 
-#: ../mousepad/mousepad-window.c:1718
+#: ../mousepad/mousepad-window.c:1754
 msgid "Read Only"
 msgstr "Μόνο για ανάγνωση"
 
-#: ../mousepad/mousepad-window.c:2388
+#: ../mousepad/mousepad-window.c:2424
 #, c-format
 msgid ""
 "No template files found in\n"
 "'%s'"
 msgstr "Δεν βρέθηκαν πρότυπα στο\n'%s'"
 
+#: ../mousepad/mousepad-window.c:2473
+#, c-format
+msgid ""
+"Missing Templates directory\n"
+"'%s'"
+msgstr "Λείπει ο φάκελος των προτύπων\n'%s'"
+
 #. create other action
-#: ../mousepad/mousepad-window.c:2504
+#: ../mousepad/mousepad-window.c:2547
 msgid "Set custom tab size"
 msgstr "Καθορισμός προσαρμοσμένου μεγέθους καρτέλας"
 
 #. create suitable label for the other menu
-#: ../mousepad/mousepad-window.c:2552
+#: ../mousepad/mousepad-window.c:2595
 #, c-format
 msgid "Ot_her (%d)..."
 msgstr "Ά_λλο (%d)..."
 
 #. set action label
-#: ../mousepad/mousepad-window.c:2563
+#: ../mousepad/mousepad-window.c:2606
 msgid "Ot_her..."
 msgstr "Ά_λλο..."
 
 #. build description
 #. get the offset length: 'Encoding: '
-#: ../mousepad/mousepad-window.c:2879 ../mousepad/mousepad-window.c:3106
+#: ../mousepad/mousepad-window.c:2989 ../mousepad/mousepad-window.c:3216
 msgid "Charset"
 msgstr "Σύνολο χαρακτήρων"
 
-#: ../mousepad/mousepad-window.c:3011
+#: ../mousepad/mousepad-window.c:3121
 #, c-format
 msgid "Open '%s'"
 msgstr "Άνοιγμα '%s'"
 
-#: ../mousepad/mousepad-window.c:3156
+#: ../mousepad/mousepad-window.c:3266
 msgid "Failed to clear the recent history"
 msgstr "Αποτυχία εκκαθάρισης πρόσφατου ιστορικού"
 
 #. create an item to inform the user
-#: ../mousepad/mousepad-window.c:3586
+#: ../mousepad/mousepad-window.c:3696
 msgid "No clipboard data"
 msgstr "Δεν υπάρχουν δεδομένα στο πρόχειρο"
 
 #. set error message
-#: ../mousepad/mousepad-window.c:3725
+#: ../mousepad/mousepad-window.c:3835
 msgid "Templates should be UTF-8 valid"
 msgstr "Τα πρότυπα πρέπει να είναι έγκυρα, συμβατά με το UTF-8"
 
 #. set error message
-#: ../mousepad/mousepad-window.c:3733
+#: ../mousepad/mousepad-window.c:3843
 msgid "Reading the template failed, the menu item has been removed"
 msgstr "Η ανάγνωση του προτύπου απέτυχε, το αντικείμενο μενού αφαιρέθηκε"
 
 #. set error message
-#: ../mousepad/mousepad-window.c:3738
+#: ../mousepad/mousepad-window.c:3848
 msgid "Loading the template failed"
 msgstr "Αποτυχία φόρτωσης προτύπου"
 
 #. create new file chooser dialog
-#: ../mousepad/mousepad-window.c:3763
+#: ../mousepad/mousepad-window.c:3873
 msgid "Open File"
 msgstr "Άνοιγμα αρχείου"
 
-#: ../mousepad/mousepad-window.c:3779
+#: ../mousepad/mousepad-window.c:3889
 msgid "_Encoding:"
 msgstr "Κω_δικοποίηση:"
 
-#: ../mousepad/mousepad-window.c:3876
+#: ../mousepad/mousepad-window.c:3986
 #, c-format
 msgid ""
 "Failed to open \"%s\" for reading. It will be removed from the document "
@@ -1306,35 +1313,35 @@ msgid ""
 msgstr "Αποτυχία ανοίγματος του \"%s\" για ανάγνωση. Θα αφαιρεθεί από το ιστορικό εγγράφων."
 
 #. show the warning and cleanup
-#: ../mousepad/mousepad-window.c:3880
+#: ../mousepad/mousepad-window.c:3990
 msgid "Failed to open file"
 msgstr "Αποτυχία ανοίγματος αρχείου"
 
 #. show the error
-#: ../mousepad/mousepad-window.c:3986 ../mousepad/mousepad-window.c:4109
+#: ../mousepad/mousepad-window.c:4096 ../mousepad/mousepad-window.c:4219
 msgid "Failed to save the document"
 msgstr "Αποτυχία αποθήκευσης εγγράφου"
 
 #. create the dialog
-#: ../mousepad/mousepad-window.c:4010
+#: ../mousepad/mousepad-window.c:4120
 msgid "Save As"
 msgstr "Αποθήκευση ως"
 
 #. show the error
-#: ../mousepad/mousepad-window.c:4201
+#: ../mousepad/mousepad-window.c:4311
 msgid "Failed to reload the document"
 msgstr "Αποτυχία επαναφόρτισης εγγράφου"
 
 #. show the error
-#: ../mousepad/mousepad-window.c:4228
+#: ../mousepad/mousepad-window.c:4338
 msgid "Failed to print the document"
 msgstr "Αποτυχία εκτύπωσης εγγράφου"
 
-#: ../mousepad/mousepad-window.c:4852
+#: ../mousepad/mousepad-window.c:4962
 msgid "Choose Mousepad Font"
 msgstr "Επιλογή γραμματοσειράς mousepad"
 
-#: ../mousepad/mousepad-window.c:5019
+#: ../mousepad/mousepad-window.c:5166
 msgid "Leave fullscreen mode"
 msgstr "Έξοδος από κατάσταση πλήρους οθόνης"
 
@@ -1345,6 +1352,21 @@ msgstr "Απλός επεξεργαστής κειμένου"
 #: ../mousepad.desktop.in.in.h:3
 msgid "Text Editor"
 msgstr "Επεξεργαστής Κειμένου"
+
+#: ../mousepad.appdata.xml.in.h:1
+msgid ""
+"Mousepad aims to be an easy-to-use and fast editor. Our target is an editor "
+"for quickly editing text files, not a development environment or an editor "
+"with a huge bunch of plugins."
+msgstr "Το Mousepad αποσκοπεί στο να είναι ένας εύκολος στη χρήση και γρήγορος επεξεργαστής κειμένου. Στόχος μας είναι, ένας επεξεργαστής για την γρήγορη επεξεργασία αρχείων κειμένου και όχι ένα περιβάλλον ανάπτυξης ή ένας επεξεργαστής με τεράστιο αριθμό πρόσθετων."
+
+#: ../mousepad.appdata.xml.in.h:2
+msgid ""
+"On the other hand we try to use the latest Gtk+ features available, which "
+"means that if Gtk adds something new in a major release that is useful for "
+"the editor, we will likely bump the Gtk dependency and integrate this new "
+"feature in Mousepad."
+msgstr "Από την άλλη προσπαθούμε να χρησιμοποιήσουμε τα τελευταία διαθέσιμα χαρακτηριστικά του Gtk+ που σημαίνει ότι, όταν το Gtk προσθέτει κάτι νέο στη κύρια έκδοση του που είναι χρήσιμο για τον επεξεργαστή, πιθανά θα πάρουμε την εξάρτηση και θα την ενσωματώσουμε στο Mousepad."
 
 #. SECURITY:
 #. - A normal active user can run mousepad without elevated rights. They
