@@ -14,7 +14,7 @@ msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-12-06 06:31+0100\n"
-"PO-Revision-Date: 2020-03-18 12:44+0000\n"
+"PO-Revision-Date: 2020-03-19 10:33+0000\n"
 "Last-Translator: Ioannis LM\n"
 "Language-Team: Greek (http://www.transifex.com/xfce/xfce-apps/language/el/)\n"
 "MIME-Version: 1.0\n"
@@ -92,17 +92,17 @@ msgstr "Αριθμός σ_τήλης:"
 
 #: ../mousepad/mousepad-dialogs.c:299
 msgid "Remove all entries from the documents history?"
-msgstr "Αφαίρεση όλων των καταχωρήσεων από το ιστορικό του εγγράφου;"
+msgstr "Αφαίρεση όλων των καταχωρήσεων από το ιστορικό των εγγράφων;"
 
 #: ../mousepad/mousepad-dialogs.c:304
 msgid "Clear Documents History"
-msgstr "Εκκαθάριση ιστορικού εγγράφου"
+msgstr "Εκκαθάριση ιστορικού εγγράφων"
 
 #: ../mousepad/mousepad-dialogs.c:307
 msgid ""
 "Clearing the documents history will permanently remove all currently listed "
 "entries."
-msgstr "Ο καθαρισμός του ιστορικού του εγγράφου θα έχει ως αποτέλεσμα την μόνιμη αφαίρεση των καταχωρήσεων."
+msgstr "Ο καθαρισμός του ιστορικού των εγγράφων θα έχει ως αποτέλεσμα την μόνιμη αφαίρεση όλων των καταχωρήσεων."
 
 #: ../mousepad/mousepad-dialogs.c:338
 msgid "Do you want to save the changes before closing?"
