@@ -462,15 +462,24 @@ mousepad_file_guess_language (MousepadFile *file)
   gchar             *basename;
   gboolean           result_uncertain;
   GtkSourceLanguage *language;
+  gchar             *data;
+  GtkTextIter        start;
+  GtkTextIter        end;
 
   g_return_val_if_fail ((file->filename != NULL), NULL);
 
-  content_type = g_content_type_guess (file->filename, NULL, 0, &result_uncertain);
+  gtk_text_buffer_get_start_iter (file->buffer, &start);
+  end = start;
+  gtk_text_iter_forward_chars (&end, 255);
+  data = gtk_text_buffer_get_text (file->buffer, &start, &end, TRUE);
+
+  content_type = g_content_type_guess (file->filename, (const guchar *)data, strlen (data), &result_uncertain);
   basename = g_path_get_basename (file->filename);
   language = gtk_source_language_manager_guess_language (gtk_source_language_manager_get_default (),
                                                          basename,
                                                          result_uncertain ? NULL : content_type);
 
+  g_free (data);
   g_free (basename);
   g_free (content_type);
 
