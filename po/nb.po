@@ -8,13 +8,13 @@
 # Åsmund Berg Holm <berg.holm@outlook.com>, 2018
 # Erlend Østlie <erlendandreas12368@gmail.com>, 2018
 # Harald H. <haarektrans@gmail.com>, 2014
-# Kjell Cato Heskjestad <cato@heskjestad.xyz>, 2019
+# Kjell Cato Heskjestad <cato@heskjestad.xyz>, 2019-2020
 msgid ""
 msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-12-06 06:31+0100\n"
-"PO-Revision-Date: 2019-12-08 06:02+0000\n"
+"PO-Revision-Date: 2020-04-10 05:26+0000\n"
 "Last-Translator: Kjell Cato Heskjestad <cato@heskjestad.xyz>\n"
 "Language-Team: Norwegian Bokmål (http://www.transifex.com/xfce/xfce-apps/language/nb/)\n"
 "MIME-Version: 1.0\n"
@@ -703,7 +703,7 @@ msgstr "OVS."
 #: ../mousepad/mousepad-statusbar.c:258
 #, c-format
 msgid "Filetype: %s"
-msgstr "Filetype: %s"
+msgstr "Filtype: %s"
 
 #: ../mousepad/mousepad-statusbar.c:278
 #, c-format
@@ -906,11 +906,11 @@ msgstr "Endre vanlig utvalg til kolonne-utvalg og vice versa"
 
 #: ../mousepad/mousepad-window.c:442
 msgid "Conve_rt"
-msgstr "Konver_rter"
+msgstr "Konve_rter"
 
 #: ../mousepad/mousepad-window.c:443
 msgid "To _Uppercase"
-msgstr "Til _storversaler"
+msgstr "Til _store bokstaver"
 
 #: ../mousepad/mousepad-window.c:443
 msgid "Change the case of the selection to uppercase"
@@ -918,7 +918,7 @@ msgstr "Endre utvalget til store bokstaver"
 
 #: ../mousepad/mousepad-window.c:444
 msgid "To _Lowercase"
-msgstr "Til _småversaler"
+msgstr "Til _små bokstaver"
 
 #: ../mousepad/mousepad-window.c:444
 msgid "Change the case of the selection to lowercase"
@@ -1083,7 +1083,7 @@ msgstr "_Dokument"
 
 #: ../mousepad/mousepad-window.c:471
 msgid "Line E_nding"
-msgstr "Linje-E_ndelse"
+msgstr "Linjeavslut_ning"
 
 #: ../mousepad/mousepad-window.c:472
 msgid "Tab _Size"
