@@ -8,9 +8,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-06-05 06:31+0200\n"
-"PO-Revision-Date: 2018-09-14 00:16+0000\n"
-"Last-Translator: Ardjuna <Asyura.x@gmail.com>\n"
+"POT-Creation-Date: 2019-12-06 06:31+0100\n"
+"PO-Revision-Date: 2019-12-06 05:31+0000\n"
+"Last-Translator: Xfce Bot <transifex@xfce.org>\n"
 "Language-Team: Indonesian (http://www.transifex.com/xfce/xfce-apps/language/id/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -18,158 +18,158 @@ msgstr ""
 "Language: id\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: ../mousepad/main.c:42
+#: ../mousepad/main.c:44
 msgid "Do not register with the D-BUS session message bus"
 msgstr "Jangan daftarkan dengan bus pesan ses D-BUS"
 
-#: ../mousepad/main.c:43
+#: ../mousepad/main.c:45
 msgid "Quit a running Mousepad instance"
 msgstr "Keluar instansi Mousepad yang sedang berjalan"
 
-#: ../mousepad/main.c:45
+#: ../mousepad/main.c:47
 msgid "Print version information and exit"
 msgstr "Cetak informasi versi lalu keluar"
 
 #. default application name
-#: ../mousepad/main.c:70 ../mousepad.desktop.in.in.h:1
+#: ../mousepad/main.c:69 ../mousepad.desktop.in.in.h:1
 msgid "Mousepad"
 msgstr "Mousepad"
 
 #. initialize gtk+
-#: ../mousepad/main.c:84
+#: ../mousepad/main.c:83
 msgid "[FILES...]"
 msgstr "[BERKAS...]"
 
 #. no error message, the gui initialization failed
-#: ../mousepad/main.c:90
+#: ../mousepad/main.c:89
 msgid "Failed to open display."
 msgstr "Gagal membuka tampilan."
 
-#: ../mousepad/main.c:107
+#: ../mousepad/main.c:106
 msgid "The Xfce development team. All rights reserved."
 msgstr "Tim pengembang Xfce. Hak cipta dilindungi undang-undang."
 
-#: ../mousepad/main.c:108
+#: ../mousepad/main.c:107
 #, c-format
 msgid "Please report bugs to <%s>."
 msgstr "Silakan laporkan kutu ke <%s>."
 
-#: ../mousepad/mousepad-dialogs.c:41
+#: ../mousepad/mousepad-dialogs.c:44
 msgid "Mousepad is a fast text editor for the Xfce Desktop Environment."
 msgstr "Mousepad adalah penyunting teks cepat untuk Lingkungan Desktop Xfce."
 
-#: ../mousepad/mousepad-dialogs.c:46
+#: ../mousepad/mousepad-dialogs.c:49
 msgid "translator-credits"
 msgstr "Andhika Padmawan <andhika.padmawan@gmail.com>, 2012.\nKukuh Syafaat <syafaatkukuh@gmail.com>, 2017."
 
 #. display an error message to the user
-#: ../mousepad/mousepad-dialogs.c:101
+#: ../mousepad/mousepad-dialogs.c:104
 msgid "Failed to open the documentation browser"
 msgstr "Gagal membuka peramban dokumentasi"
 
 #. build dialog
-#: ../mousepad/mousepad-dialogs.c:116
+#: ../mousepad/mousepad-dialogs.c:119
 msgid "Select Tab Size"
 msgstr "Pilih Ukuran Tab"
 
 #. build the dialog
-#: ../mousepad/mousepad-dialogs.c:197
+#: ../mousepad/mousepad-dialogs.c:200
 msgid "Go To"
 msgstr "Pergi Ke"
 
-#: ../mousepad/mousepad-dialogs.c:219
+#: ../mousepad/mousepad-dialogs.c:222
 msgid "_Line number:"
 msgstr "_Nomor baris:"
 
-#: ../mousepad/mousepad-dialogs.c:238
+#: ../mousepad/mousepad-dialogs.c:241
 msgid "C_olumn number:"
 msgstr "Nomor k_olom:"
 
-#: ../mousepad/mousepad-dialogs.c:296
+#: ../mousepad/mousepad-dialogs.c:299
 msgid "Remove all entries from the documents history?"
 msgstr "Hapus semuan entri dari riwayat dokumen?"
 
-#: ../mousepad/mousepad-dialogs.c:301
+#: ../mousepad/mousepad-dialogs.c:304
 msgid "Clear Documents History"
 msgstr "Hapus Riwayat Dokumen"
 
-#: ../mousepad/mousepad-dialogs.c:304
+#: ../mousepad/mousepad-dialogs.c:307
 msgid ""
 "Clearing the documents history will permanently remove all currently listed "
 "entries."
 msgstr "Menghapus riwayat dokumen akan menghapus secara permanen semua entri yang saat ini ditampilkan."
 
-#: ../mousepad/mousepad-dialogs.c:335
+#: ../mousepad/mousepad-dialogs.c:338
 msgid "Do you want to save the changes before closing?"
 msgstr "Anda ingin menyimpan perubahan sebelum keluar?"
 
-#: ../mousepad/mousepad-dialogs.c:336
+#: ../mousepad/mousepad-dialogs.c:339
 msgid "Save Changes"
 msgstr "Simpan Perubahan"
 
-#: ../mousepad/mousepad-dialogs.c:337
+#: ../mousepad/mousepad-dialogs.c:340
 msgid "_Don't Save"
 msgstr "_Jangan Simpan"
 
 #. secondary text
-#: ../mousepad/mousepad-dialogs.c:359
+#: ../mousepad/mousepad-dialogs.c:362
 msgid "If you don't save the document, all the changes will be lost."
 msgstr "Jika anda tidak menyimpan dokumen, semua perubahan akan hilang."
 
-#: ../mousepad/mousepad-dialogs.c:381
+#: ../mousepad/mousepad-dialogs.c:384
 msgid ""
 "The document has been externally modified. Do you want to continue saving?"
 msgstr "Dokumen tekah dimodifikasi secara eksternal. Anda ingin tetap menyimpannya?"
 
-#: ../mousepad/mousepad-dialogs.c:382
+#: ../mousepad/mousepad-dialogs.c:385
 msgid "Externally Modified"
 msgstr "Dimodifikasi Secara Eksternal"
 
-#: ../mousepad/mousepad-dialogs.c:384
+#: ../mousepad/mousepad-dialogs.c:387
 msgid "If you save the document, all of the external changes will be lost."
 msgstr "Jika anda tidak menyimpan dokumen, semua perubahan eksternal akan hilang."
 
-#: ../mousepad/mousepad-dialogs.c:412
+#: ../mousepad/mousepad-dialogs.c:415
 msgid "Do you want to save your changes before reloading?"
 msgstr "Anda ingin menyimpan perubahan anda sebelum memuat ulang?"
 
-#: ../mousepad/mousepad-dialogs.c:414
+#: ../mousepad/mousepad-dialogs.c:417
 msgid "If you revert the file, all unsaved changes will be lost."
 msgstr "Jika anda mengembalikan berkas, semua perubahan yang tidak disimpan akan hilang."
 
 #. pack button, add signal and tooltip
-#: ../mousepad/mousepad-document.c:502
+#: ../mousepad/mousepad-document.c:500
 msgid "Close this tab"
 msgstr "Tutup tab ini"
 
 #. create an unique untitled document name
-#: ../mousepad/mousepad-document.c:532
+#: ../mousepad/mousepad-document.c:530
 msgid "Untitled"
 msgstr "Tanpa Judul"
 
 #. create the header
-#: ../mousepad/mousepad-encoding-dialog.c:126
+#: ../mousepad/mousepad-encoding-dialog.c:131
 msgid "The document was not UTF-8 valid"
 msgstr "Dokumen tidak valid UTF-8"
 
-#: ../mousepad/mousepad-encoding-dialog.c:127
+#: ../mousepad/mousepad-encoding-dialog.c:132
 msgid "Please select an encoding below."
 msgstr "Silakan pilih penyandian dibawah."
 
 #. encoding radio buttons
-#: ../mousepad/mousepad-encoding-dialog.c:139
+#: ../mousepad/mousepad-encoding-dialog.c:144
 msgid "Default (UTF-8)"
 msgstr "Standar (UTF-8)"
 
-#: ../mousepad/mousepad-encoding-dialog.c:145
+#: ../mousepad/mousepad-encoding-dialog.c:150
 msgid "System"
 msgstr "Sistem"
 
-#: ../mousepad/mousepad-encoding-dialog.c:152
+#: ../mousepad/mousepad-encoding-dialog.c:157
 msgid "Other:"
 msgstr "Lainnya:"
 
-#: ../mousepad/mousepad-encoding-dialog.c:172
+#: ../mousepad/mousepad-encoding-dialog.c:177
 msgid "Checking encodings..."
 msgstr "Memeriksa penyandian..."
 
@@ -291,17 +291,17 @@ msgstr "Jepang"
 msgid "Korean"
 msgstr "Korea"
 
-#: ../mousepad/mousepad-file.c:554
+#: ../mousepad/mousepad-file.c:559
 #, c-format
 msgid "Invalid byte sequence in conversion input"
 msgstr "Runutan bita tidak valid dalam masukan konversi"
 
-#: ../mousepad/mousepad-file.c:878
+#: ../mousepad/mousepad-file.c:903
 #, c-format
 msgid "The file \"%s\" you tried to reload does not exist anymore"
 msgstr "Berkas \"%s\" yang anda coba muat ulang tidak ada lagi"
 
-#: ../mousepad/mousepad-file.c:919
+#: ../mousepad/mousepad-file.c:944
 #, c-format
 msgid "Failed to read the status of \"%s\""
 msgstr "Gagal membaca status \"%s\""
@@ -315,7 +315,7 @@ msgid "No filetype"
 msgstr "Tidak ada filetype"
 
 #. setup the window properties
-#: ../mousepad/mousepad-prefs-dialog.c:433 ../mousepad/mousepad-window.c:445
+#: ../mousepad/mousepad-prefs-dialog.c:437 ../mousepad/mousepad-window.c:457
 msgid "Preferences"
 msgstr "Preferensi"
 
@@ -348,7 +348,7 @@ msgid "none"
 msgstr "tidak ada"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:8
-#: ../mousepad/mousepad-style-scheme-action.c:193
+#: ../mousepad/mousepad-style-scheme-action.c:197
 msgid "None"
 msgstr "Tak Ada"
 
@@ -393,7 +393,7 @@ msgid "Text Beside Icons"
 msgstr "Teks Di Samping Ikon"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:19
-#: ../mousepad/mousepad-window.c:472
+#: ../mousepad/mousepad-window.c:484
 msgid "Show line numbers"
 msgstr "Tampilkan jumlah baris"
 
@@ -526,62 +526,62 @@ msgid "Window"
 msgstr "Jendela"
 
 #. set a custom tab label
-#: ../mousepad/mousepad-print.c:121
+#: ../mousepad/mousepad-print.c:125
 msgid "Document Settings"
 msgstr "Pengaturan Dokumen"
 
-#: ../mousepad/mousepad-print.c:596
+#: ../mousepad/mousepad-print.c:600
 msgid "Page Setup"
 msgstr "Pengaturan Halaman"
 
-#: ../mousepad/mousepad-print.c:606
+#: ../mousepad/mousepad-print.c:610
 msgid "_Adjust page size and orientation"
 msgstr "_Sesuaikan ukuran dan orientasi halaman"
 
-#: ../mousepad/mousepad-print.c:616
+#: ../mousepad/mousepad-print.c:620
 msgid "Appearance"
 msgstr "Tampilan"
 
-#: ../mousepad/mousepad-print.c:630
+#: ../mousepad/mousepad-print.c:634
 msgid "Print page _headers"
 msgstr "Cetak _tajuk halaman"
 
-#: ../mousepad/mousepad-print.c:637
+#: ../mousepad/mousepad-print.c:641
 msgid "Print _line numbers"
 msgstr "Cetak _nomor baris"
 
-#: ../mousepad/mousepad-print.c:654
+#: ../mousepad/mousepad-print.c:658
 msgid "Numbering interval:"
 msgstr "Interval penomoran:"
 
-#: ../mousepad/mousepad-print.c:662
+#: ../mousepad/mousepad-print.c:666
 msgid ""
 "The interval at which to print line numbers. For example a value of 1 will "
 "print a line number on each line, a value of 2 will print a line number on "
 "every other line, and so on."
 msgstr "Interval untuk mencetak nomor baris. Misalnya nilai 1 akan mencetak nomor baris pada setiap baris, nilai 2 akan mencetak nomor baris pada setiap baris lainnya, dan seterusnya."
 
-#: ../mousepad/mousepad-print.c:674
+#: ../mousepad/mousepad-print.c:678
 msgid "Enable text _wrapping"
 msgstr "Aktifkan penggulung _teks"
 
-#: ../mousepad/mousepad-print.c:681
+#: ../mousepad/mousepad-print.c:685
 msgid "Enable _syntax highlighting"
 msgstr "Aktifkan penyorotan sintaks"
 
-#: ../mousepad/mousepad-print.c:693
+#: ../mousepad/mousepad-print.c:697
 msgid "Fonts"
 msgstr "Fonta"
 
-#: ../mousepad/mousepad-print.c:715
+#: ../mousepad/mousepad-print.c:719
 msgid "Header:"
 msgstr "Tajuk:"
 
-#: ../mousepad/mousepad-print.c:725
+#: ../mousepad/mousepad-print.c:729
 msgid "Body:"
 msgstr "Tubuh:"
 
-#: ../mousepad/mousepad-print.c:735
+#: ../mousepad/mousepad-print.c:739
 msgid "Line numbers:"
 msgstr "Jumlah baris:"
 
@@ -647,9 +647,9 @@ msgstr "Semua Dokumen"
 
 #: ../mousepad/mousepad-replace-dialog.c:422
 #, c-format
-msgid "%d occurence"
-msgid_plural "%d occurences"
-msgstr[0] "%d ditemukan"
+msgid "%d occurrence"
+msgid_plural "%d occurrences"
+msgstr[0] ""
 
 #: ../mousepad/mousepad-replace-dialog.c:443
 msgid "_Replace All"
@@ -709,9 +709,14 @@ msgstr "Baris: %d Kolom: %d Pilihan: %d"
 msgid "Line: %d Column: %d"
 msgstr "Baris: %d Kolom: %d"
 
-#: ../mousepad/mousepad-style-scheme-action.c:194
+#: ../mousepad/mousepad-style-scheme-action.c:198
 msgid "No style scheme"
 msgstr "Tidak ada skema gaya"
+
+#: ../mousepad/mousepad-style-scheme-action.c:212
+#, c-format
+msgid "%s | Authors: %s | Filename: %s"
+msgstr ""
 
 #. show warning to the user
 #: ../mousepad/mousepad-util.c:549
@@ -725,565 +730,576 @@ msgstr "Tak dapat membuat direktori dasar \"%s\". Menyimpan ke berkas \"%s\" aka
 msgid "Failed to store the preferences to \"%s\": %s"
 msgstr "Gagal menyimpan pengaturan ke \"%s\": %s"
 
-#: ../mousepad/mousepad-window.c:401
+#: ../mousepad/mousepad-window.c:413
 msgid "_File"
 msgstr "_Berkas"
 
-#: ../mousepad/mousepad-window.c:402
+#: ../mousepad/mousepad-window.c:414
 msgid "_New"
 msgstr "_Baru"
 
-#: ../mousepad/mousepad-window.c:402
+#: ../mousepad/mousepad-window.c:414
 msgid "Create a new document"
 msgstr "Buat dokumen baru"
 
-#: ../mousepad/mousepad-window.c:403
+#: ../mousepad/mousepad-window.c:415
 msgid "New _Window"
 msgstr "Jendela _Baru"
 
-#: ../mousepad/mousepad-window.c:403
+#: ../mousepad/mousepad-window.c:415
 msgid "Create a new document in a new window"
 msgstr "Buat dokumen baru di jendela baru"
 
-#: ../mousepad/mousepad-window.c:404
+#: ../mousepad/mousepad-window.c:416
 msgid "New From Te_mplate"
 msgstr "Baru Dari Te_mplat"
 
-#: ../mousepad/mousepad-window.c:405
+#: ../mousepad/mousepad-window.c:417
 msgid "_Open..."
 msgstr "_Buka..."
 
-#: ../mousepad/mousepad-window.c:405
+#: ../mousepad/mousepad-window.c:417
 msgid "Open a file"
 msgstr "Buka berkas"
 
-#: ../mousepad/mousepad-window.c:406
+#: ../mousepad/mousepad-window.c:418
 msgid "Op_en Recent"
 msgstr "Bu_ka Terkini"
 
-#: ../mousepad/mousepad-window.c:407
+#: ../mousepad/mousepad-window.c:419
 msgid "No items found"
 msgstr "Tak ada item ditemukan"
 
-#: ../mousepad/mousepad-window.c:408
+#: ../mousepad/mousepad-window.c:420
 msgid "Clear _History"
 msgstr "Hapus _Riwayat"
 
-#: ../mousepad/mousepad-window.c:408
+#: ../mousepad/mousepad-window.c:420
 msgid "Clear the recently used files history"
 msgstr "Hapus riwayat berkas yang baru-baru ini digunakan"
 
-#: ../mousepad/mousepad-window.c:409
+#: ../mousepad/mousepad-window.c:421
 msgid "Save the current document"
 msgstr "Simpan dokumen saat ini"
 
-#: ../mousepad/mousepad-window.c:410
+#: ../mousepad/mousepad-window.c:422
 msgid "Save _As..."
 msgstr "Simpan _Sebagai..."
 
-#: ../mousepad/mousepad-window.c:410
+#: ../mousepad/mousepad-window.c:422
 msgid "Save current document as another file"
 msgstr "Simpan dokumen saat ini sebagai berkas lainnya"
 
-#: ../mousepad/mousepad-window.c:411
+#: ../mousepad/mousepad-window.c:423
 msgid "Save A_ll"
 msgstr "Simpan S_emua"
 
-#: ../mousepad/mousepad-window.c:411
+#: ../mousepad/mousepad-window.c:423
 msgid "Save all document in this window"
 msgstr "Simpan semua dokumen di jendela ini"
 
-#: ../mousepad/mousepad-window.c:412
+#: ../mousepad/mousepad-window.c:424
 msgid "Re_vert"
 msgstr "Ke_mbalikan"
 
-#: ../mousepad/mousepad-window.c:412
+#: ../mousepad/mousepad-window.c:424
 msgid "Revert to the saved version of the file"
 msgstr "Kembalikan ke versi yang tersimpan di berkas"
 
-#: ../mousepad/mousepad-window.c:413
+#: ../mousepad/mousepad-window.c:425
 msgid "_Print..."
 msgstr "_Cetak..."
 
-#: ../mousepad/mousepad-window.c:413
+#: ../mousepad/mousepad-window.c:425
 msgid "Print the current document"
 msgstr "Cetak dokumen saat ini"
 
-#: ../mousepad/mousepad-window.c:414
+#: ../mousepad/mousepad-window.c:426
 msgid "_Detach Tab"
 msgstr "_Lepaskan Tab"
 
-#: ../mousepad/mousepad-window.c:414
+#: ../mousepad/mousepad-window.c:426
 msgid "Move the current document to a new window"
 msgstr "Pindah dokumen saat ini ke jendela baru"
 
-#: ../mousepad/mousepad-window.c:415
+#: ../mousepad/mousepad-window.c:427
 msgid "Close _Tab"
 msgstr "Tutup _Tab"
 
-#: ../mousepad/mousepad-window.c:415
+#: ../mousepad/mousepad-window.c:427
 msgid "Close the current document"
 msgstr "Tutup dokumen saat ini"
 
-#: ../mousepad/mousepad-window.c:416
+#: ../mousepad/mousepad-window.c:428
 msgid "_Close Window"
 msgstr "_Tutup Jendela"
 
-#: ../mousepad/mousepad-window.c:416
+#: ../mousepad/mousepad-window.c:428
 msgid "Close this window"
 msgstr "Tutup jendela"
 
-#: ../mousepad/mousepad-window.c:418
+#: ../mousepad/mousepad-window.c:430
 msgid "_Edit"
 msgstr "_Sunting"
 
-#: ../mousepad/mousepad-window.c:419
+#: ../mousepad/mousepad-window.c:431
 msgid "Undo the last action"
 msgstr "Batalkan aksi terakhir"
 
-#: ../mousepad/mousepad-window.c:420
+#: ../mousepad/mousepad-window.c:432
 msgid "Redo the last undone action"
 msgstr "Jadikan aksi yang tidak jadi terakhir"
 
-#: ../mousepad/mousepad-window.c:421
+#: ../mousepad/mousepad-window.c:433
 msgid "Cut the selection"
 msgstr "Potong pilihan"
 
-#: ../mousepad/mousepad-window.c:422
+#: ../mousepad/mousepad-window.c:434
 msgid "Copy the selection"
 msgstr "Salin pilihan"
 
-#: ../mousepad/mousepad-window.c:423
+#: ../mousepad/mousepad-window.c:435
 msgid "Paste the clipboard"
 msgstr "Tempel papan klip"
 
-#: ../mousepad/mousepad-window.c:424
+#: ../mousepad/mousepad-window.c:436
 msgid "Paste _Special"
 msgstr "Tempel _Khusus"
 
-#: ../mousepad/mousepad-window.c:425
+#: ../mousepad/mousepad-window.c:437
 msgid "Paste from _History"
 msgstr "Tempel dari _Riwayat"
 
-#: ../mousepad/mousepad-window.c:425
+#: ../mousepad/mousepad-window.c:437
 msgid "Paste from the clipboard history"
 msgstr "Tempel dari riwayat papan klip"
 
-#: ../mousepad/mousepad-window.c:426
+#: ../mousepad/mousepad-window.c:438
 msgid "Paste as _Column"
 msgstr "Tempel sebagai _Kolom"
 
-#: ../mousepad/mousepad-window.c:426
+#: ../mousepad/mousepad-window.c:438
 msgid "Paste the clipboard text into a column"
 msgstr "Tempel teks papan klip sebagai kolom"
 
-#: ../mousepad/mousepad-window.c:427
+#: ../mousepad/mousepad-window.c:439
 msgid "Delete the current selection"
 msgstr "Hapus pilihan saat ini"
 
-#: ../mousepad/mousepad-window.c:428
+#: ../mousepad/mousepad-window.c:440
 msgid "Select the text in the entire document"
 msgstr "Pilih teks di seluruh dokumen"
 
-#: ../mousepad/mousepad-window.c:429
+#: ../mousepad/mousepad-window.c:441
 msgid "Change the selection"
 msgstr "Ubah pilihan"
 
-#: ../mousepad/mousepad-window.c:429
+#: ../mousepad/mousepad-window.c:441
 msgid "Change a normal selection into a column selection and vice versa"
 msgstr "Ubah pilihan normal menjadi pilihan kolom dan sebaliknya"
 
-#: ../mousepad/mousepad-window.c:430
+#: ../mousepad/mousepad-window.c:442
 msgid "Conve_rt"
 msgstr "Konversi"
 
-#: ../mousepad/mousepad-window.c:431
+#: ../mousepad/mousepad-window.c:443
 msgid "To _Uppercase"
 msgstr "Ke H_uruf Besar"
 
-#: ../mousepad/mousepad-window.c:431
+#: ../mousepad/mousepad-window.c:443
 msgid "Change the case of the selection to uppercase"
 msgstr "Ubah pilihan huruf ke huruf besar"
 
-#: ../mousepad/mousepad-window.c:432
+#: ../mousepad/mousepad-window.c:444
 msgid "To _Lowercase"
 msgstr "Ke Huruf Keci_l"
 
-#: ../mousepad/mousepad-window.c:432
+#: ../mousepad/mousepad-window.c:444
 msgid "Change the case of the selection to lowercase"
 msgstr "Ubah pilihan huruf ke huruf kecil"
 
-#: ../mousepad/mousepad-window.c:433
+#: ../mousepad/mousepad-window.c:445
 msgid "To _Title Case"
 msgstr "Ke Huruf Kapi_tal"
 
-#: ../mousepad/mousepad-window.c:433
+#: ../mousepad/mousepad-window.c:445
 msgid "Change the case of the selection to title case"
 msgstr "Ubah pilihan huruf ke huruf kapital"
 
-#: ../mousepad/mousepad-window.c:434
+#: ../mousepad/mousepad-window.c:446
 msgid "To _Opposite Case"
 msgstr "Ke Huruf yang Berla_wanan"
 
-#: ../mousepad/mousepad-window.c:434
+#: ../mousepad/mousepad-window.c:446
 msgid "Change the case of the selection opposite case"
 msgstr "Ubah pilihan huruf ke huruf yang berlawanan"
 
-#: ../mousepad/mousepad-window.c:435
+#: ../mousepad/mousepad-window.c:447
 msgid "_Tabs to Spaces"
 msgstr "_Tab Menjadi Spasi"
 
-#: ../mousepad/mousepad-window.c:435
+#: ../mousepad/mousepad-window.c:447
 msgid "Convert all tabs to spaces in the selection or document"
 msgstr "Konversi semua tab menjadi spasi di pilihan atau dokumen"
 
-#: ../mousepad/mousepad-window.c:436
+#: ../mousepad/mousepad-window.c:448
 msgid "_Spaces to Tabs"
 msgstr "_Spasi Menjadi Tab"
 
-#: ../mousepad/mousepad-window.c:436
+#: ../mousepad/mousepad-window.c:448
 msgid ""
 "Convert all the leading spaces to tabs in the selected line(s) or document"
 msgstr "Ubah semua spasi menjadi tab di baris atau dokumen terpilih"
 
-#: ../mousepad/mousepad-window.c:437
+#: ../mousepad/mousepad-window.c:449
 msgid "St_rip Trailing Spaces"
 msgstr "Co_pot Spasi Jejak"
 
-#: ../mousepad/mousepad-window.c:437
+#: ../mousepad/mousepad-window.c:449
 msgid "Remove all the trailing spaces from the selected line(s) or document"
 msgstr "Hapus semua spasi jejak dari baris atau dokumen terpilih"
 
-#: ../mousepad/mousepad-window.c:438
+#: ../mousepad/mousepad-window.c:450
 msgid "_Transpose"
 msgstr "_Ubah Posisi"
 
-#: ../mousepad/mousepad-window.c:438
+#: ../mousepad/mousepad-window.c:450
 msgid "Reverse the order of something"
 msgstr "Mundurkan urutan sesuatu"
 
-#: ../mousepad/mousepad-window.c:439
+#: ../mousepad/mousepad-window.c:451
 msgid "_Move Selection"
 msgstr "_Pindahkan Pilihan"
 
-#: ../mousepad/mousepad-window.c:440
+#: ../mousepad/mousepad-window.c:452
 msgid "Line _Up"
 msgstr "Satu Baris ke _Atas"
 
-#: ../mousepad/mousepad-window.c:440
+#: ../mousepad/mousepad-window.c:452
 msgid "Move the selection one line up"
 msgstr "Pindah pilihan satu baris ke atas"
 
-#: ../mousepad/mousepad-window.c:441
+#: ../mousepad/mousepad-window.c:453
 msgid "Line _Down"
 msgstr "Satu Baris ke _Bawah"
 
-#: ../mousepad/mousepad-window.c:441
+#: ../mousepad/mousepad-window.c:453
 msgid "Move the selection one line down"
 msgstr "Pindah pilihan satu baris ke bawah"
 
-#: ../mousepad/mousepad-window.c:442
+#: ../mousepad/mousepad-window.c:454
 msgid "Dup_licate Line / Selection"
 msgstr "Duplikat Baris/Seleksi"
 
-#: ../mousepad/mousepad-window.c:442
+#: ../mousepad/mousepad-window.c:454
 msgid "Duplicate the current line or selection"
 msgstr "Duplikat baris atau pilihan saat ini"
 
-#: ../mousepad/mousepad-window.c:443
+#: ../mousepad/mousepad-window.c:455
 msgid "_Increase Indent"
 msgstr "_Tingkatkan Alinea"
 
-#: ../mousepad/mousepad-window.c:443
+#: ../mousepad/mousepad-window.c:455
 msgid "Increase the indentation of the selection or current line"
 msgstr "Tingkatkan alinea pilihan atau baris saat ini"
 
-#: ../mousepad/mousepad-window.c:444
+#: ../mousepad/mousepad-window.c:456
 msgid "_Decrease Indent"
 msgstr "Turunkan _Alinea"
 
-#: ../mousepad/mousepad-window.c:444
+#: ../mousepad/mousepad-window.c:456
 msgid "Decrease the indentation of the selection or current line"
 msgstr "Turunkan alinea pilihan atau baris saat ini"
 
-#: ../mousepad/mousepad-window.c:445
+#: ../mousepad/mousepad-window.c:457
 msgid "Show the preferences dialog"
 msgstr "Tampilkan dialog preferensi"
 
-#: ../mousepad/mousepad-window.c:447
+#: ../mousepad/mousepad-window.c:459
 msgid "_Search"
 msgstr "_Cari"
 
-#: ../mousepad/mousepad-window.c:448
+#: ../mousepad/mousepad-window.c:460
 msgid "Search for text"
 msgstr "Cari teks"
 
-#: ../mousepad/mousepad-window.c:449
+#: ../mousepad/mousepad-window.c:461
 msgid "Find _Next"
 msgstr "Cari _Berikutnya"
 
-#: ../mousepad/mousepad-window.c:449
+#: ../mousepad/mousepad-window.c:461
 msgid "Search forwards for the same text"
 msgstr "Cari maju untuk teks yang sama"
 
-#: ../mousepad/mousepad-window.c:450
+#: ../mousepad/mousepad-window.c:462
 msgid "Find _Previous"
 msgstr "Cari _Sebelumnya"
 
-#: ../mousepad/mousepad-window.c:450
+#: ../mousepad/mousepad-window.c:462
 msgid "Search backwards for the same text"
 msgstr "Cari mundur untuk teks yang sama"
 
-#: ../mousepad/mousepad-window.c:451
+#: ../mousepad/mousepad-window.c:463
 msgid "Find and Rep_lace..."
 msgstr "Cari dan Ga_nti..."
 
-#: ../mousepad/mousepad-window.c:451
+#: ../mousepad/mousepad-window.c:463
 msgid "Search for and replace text"
 msgstr "Cari dan ganti teks"
 
-#: ../mousepad/mousepad-window.c:452
+#: ../mousepad/mousepad-window.c:464
 msgid "_Go to..."
 msgstr "_Pergi ke..."
 
-#: ../mousepad/mousepad-window.c:452
+#: ../mousepad/mousepad-window.c:464
 msgid "Go to a specific location in the document"
 msgstr "Pergi ke lokasi spesifik di dokumen"
 
-#: ../mousepad/mousepad-window.c:454
+#: ../mousepad/mousepad-window.c:466
 msgid "_View"
 msgstr "_Tampilan"
 
-#: ../mousepad/mousepad-window.c:455
+#: ../mousepad/mousepad-window.c:467
 msgid "Select F_ont..."
 msgstr "Pilih F_onta..."
 
-#: ../mousepad/mousepad-window.c:455
+#: ../mousepad/mousepad-window.c:467
 msgid "Change the editor font"
 msgstr "Ubah fonta editor"
 
-#: ../mousepad/mousepad-window.c:456
+#: ../mousepad/mousepad-window.c:468
 msgid "_Color Scheme"
 msgstr "_Skema Warna"
 
-#: ../mousepad/mousepad-window.c:458
+#: ../mousepad/mousepad-window.c:470
 msgid "_Document"
 msgstr "_Dokumen"
 
-#: ../mousepad/mousepad-window.c:459
+#: ../mousepad/mousepad-window.c:471
 msgid "Line E_nding"
 msgstr "Akhira_n Baris"
 
-#: ../mousepad/mousepad-window.c:460
+#: ../mousepad/mousepad-window.c:472
 msgid "Tab _Size"
 msgstr "Ukuran _Tab"
 
-#: ../mousepad/mousepad-window.c:461
+#: ../mousepad/mousepad-window.c:473
 msgid "_Filetype"
 msgstr "_Berkas Sistem"
 
-#: ../mousepad/mousepad-window.c:462
+#: ../mousepad/mousepad-window.c:474
 msgid "_Previous Tab"
 msgstr "_Tab Sebelumnya"
 
-#: ../mousepad/mousepad-window.c:462
+#: ../mousepad/mousepad-window.c:474
 msgid "Select the previous tab"
 msgstr "Pilih tab sebelumnya"
 
-#: ../mousepad/mousepad-window.c:463
+#: ../mousepad/mousepad-window.c:475
 msgid "_Next Tab"
 msgstr "Tab _Berikutnya"
 
-#: ../mousepad/mousepad-window.c:463
+#: ../mousepad/mousepad-window.c:475
 msgid "Select the next tab"
 msgstr "Pilih tab berikutnya"
 
-#: ../mousepad/mousepad-window.c:465
+#: ../mousepad/mousepad-window.c:477
 msgid "_Help"
 msgstr "_Bantuan"
 
-#: ../mousepad/mousepad-window.c:466
+#: ../mousepad/mousepad-window.c:478
 msgid "_Contents"
 msgstr "_Isi"
 
-#: ../mousepad/mousepad-window.c:466
+#: ../mousepad/mousepad-window.c:478
 msgid "Display the Mousepad user manual"
 msgstr "Tampilkan manual pengguna Mousepad"
 
-#: ../mousepad/mousepad-window.c:467
+#: ../mousepad/mousepad-window.c:479
 msgid "About this application"
 msgstr "Tentang aplikasi ini"
 
-#: ../mousepad/mousepad-window.c:472
+#: ../mousepad/mousepad-window.c:484
 msgid "Line N_umbers"
 msgstr "J_umlah Baris"
 
-#: ../mousepad/mousepad-window.c:473
+#: ../mousepad/mousepad-window.c:485
 msgid "_Menubar"
 msgstr "Bilah _Menu"
 
-#: ../mousepad/mousepad-window.c:473
+#: ../mousepad/mousepad-window.c:485
 msgid "Change the visibility of the main menubar"
 msgstr "Ubah visibilitas bilah menu utama"
 
-#: ../mousepad/mousepad-window.c:474
+#: ../mousepad/mousepad-window.c:486
 msgid "_Toolbar"
 msgstr "Bilah Ala_t"
 
-#: ../mousepad/mousepad-window.c:474
+#: ../mousepad/mousepad-window.c:486
 msgid "Change the visibility of the toolbar"
 msgstr "Ubah visibilitas bilah alat"
 
-#: ../mousepad/mousepad-window.c:475
+#: ../mousepad/mousepad-window.c:487
 msgid "St_atusbar"
 msgstr "_Batang Status"
 
-#: ../mousepad/mousepad-window.c:475
+#: ../mousepad/mousepad-window.c:487
 msgid "Change the visibility of the statusbar"
 msgstr "Ubah visibilitas batang status"
 
-#: ../mousepad/mousepad-window.c:476
+#: ../mousepad/mousepad-window.c:488
 msgid "_Fullscreen"
 msgstr "_Layar Penuh"
 
-#: ../mousepad/mousepad-window.c:476 ../mousepad/mousepad-window.c:5018
+#: ../mousepad/mousepad-window.c:488 ../mousepad/mousepad-window.c:5173
 msgid "Make the window fullscreen"
 msgstr "Buat jendela layar penuh"
 
-#: ../mousepad/mousepad-window.c:477
+#: ../mousepad/mousepad-window.c:489
 msgid "_Auto Indent"
 msgstr "_Alinea Otomatis"
 
-#: ../mousepad/mousepad-window.c:477
+#: ../mousepad/mousepad-window.c:489
 msgid "Auto indent a new line"
 msgstr "Alinea otomatis pada baris baru"
 
-#: ../mousepad/mousepad-window.c:478
+#: ../mousepad/mousepad-window.c:490
 msgid "Insert _Spaces"
 msgstr "Masukkan _Spasi"
 
-#: ../mousepad/mousepad-window.c:478
+#: ../mousepad/mousepad-window.c:490
 msgid "Insert spaces when the tab button is pressed"
 msgstr "Masukkan spasi ketika tombol tab ditekan"
 
-#: ../mousepad/mousepad-window.c:479
+#: ../mousepad/mousepad-window.c:491
 msgid "_Word Wrap"
 msgstr "_Gulung Kata"
 
-#: ../mousepad/mousepad-window.c:479
+#: ../mousepad/mousepad-window.c:491
 msgid "Toggle breaking lines in between words"
 msgstr "Ubah memenggal baris di antara kata"
 
-#: ../mousepad/mousepad-window.c:480
+#: ../mousepad/mousepad-window.c:492
 msgid "Write Unicode _BOM"
 msgstr "Tulis Unicode _BOM"
 
-#: ../mousepad/mousepad-window.c:480
+#: ../mousepad/mousepad-window.c:492
 msgid "Store the byte-order mark in the file"
 msgstr "Simpan tanda urutan bita di berkas"
 
-#: ../mousepad/mousepad-window.c:485
+#: ../mousepad/mousepad-window.c:497
 msgid "Unix (_LF)"
 msgstr "Unix (_LF)"
 
-#: ../mousepad/mousepad-window.c:485
+#: ../mousepad/mousepad-window.c:497
 msgid "Set the line ending of the document to Unix (LF)"
 msgstr "Atur akhir baris dokumen menjadi Unix (LF)"
 
-#: ../mousepad/mousepad-window.c:486
+#: ../mousepad/mousepad-window.c:498
 msgid "Mac (_CR)"
 msgstr "Mac (_CR)"
 
-#: ../mousepad/mousepad-window.c:486
+#: ../mousepad/mousepad-window.c:498
 msgid "Set the line ending of the document to Mac (CR)"
 msgstr "Ubah akhir baris dokumen menjadi Mac (CR)"
 
-#: ../mousepad/mousepad-window.c:487
+#: ../mousepad/mousepad-window.c:499
 msgid "DOS / Windows (C_R LF)"
 msgstr "DOS / Windows (C_R LF)"
 
-#: ../mousepad/mousepad-window.c:487
+#: ../mousepad/mousepad-window.c:499
 msgid "Set the line ending of the document to DOS / Windows (CR LF)"
 msgstr "Ubah akhir baris dokumen menjadi DOS / Windows (CR LF)"
 
 #. add the label with the root warning
-#: ../mousepad/mousepad-window.c:860
+#: ../mousepad/mousepad-window.c:869
 msgid "Warning, you are using the root account, you may harm your system."
 msgstr "Peringatan, anda menggunakan akun root, anda dapat membayakan sistem anda."
 
 #. show the warning
-#: ../mousepad/mousepad-window.c:1516
+#: ../mousepad/mousepad-window.c:1557
 msgid "Failed to open the document"
 msgstr "Gagal membuka dokumen"
 
-#: ../mousepad/mousepad-window.c:1713
+#: ../mousepad/mousepad-window.c:1754
 msgid "Read Only"
 msgstr "Hanya Baca"
 
-#: ../mousepad/mousepad-window.c:2382
+#: ../mousepad/mousepad-window.c:2424
 #, c-format
 msgid ""
 "No template files found in\n"
 "'%s'"
 msgstr "Tidak ada berkas templat yang ditemukan dalam\n'%s'"
 
+#: ../mousepad/mousepad-window.c:2473
+#, c-format
+msgid ""
+"Missing Templates directory\n"
+"'%s'"
+msgstr ""
+
 #. create other action
-#: ../mousepad/mousepad-window.c:2498
+#: ../mousepad/mousepad-window.c:2547
 msgid "Set custom tab size"
 msgstr "Atur ukuran tab suai"
 
 #. create suitable label for the other menu
-#: ../mousepad/mousepad-window.c:2546
+#: ../mousepad/mousepad-window.c:2595
 #, c-format
 msgid "Ot_her (%d)..."
 msgstr "Lai_nnya (%d)..."
 
 #. set action label
-#: ../mousepad/mousepad-window.c:2557
+#: ../mousepad/mousepad-window.c:2606
 msgid "Ot_her..."
 msgstr "Lai_nnya..."
 
 #. build description
 #. get the offset length: 'Encoding: '
-#: ../mousepad/mousepad-window.c:2873 ../mousepad/mousepad-window.c:3100
+#: ../mousepad/mousepad-window.c:2989 ../mousepad/mousepad-window.c:3216
 msgid "Charset"
 msgstr "Perangkat Karakter"
 
-#: ../mousepad/mousepad-window.c:3005
+#: ../mousepad/mousepad-window.c:3121
 #, c-format
 msgid "Open '%s'"
 msgstr "Buka '%s'"
 
-#: ../mousepad/mousepad-window.c:3150
+#: ../mousepad/mousepad-window.c:3266
 msgid "Failed to clear the recent history"
 msgstr "Gagal menghapus riwayat terkini"
 
 #. create an item to inform the user
-#: ../mousepad/mousepad-window.c:3580
+#: ../mousepad/mousepad-window.c:3696
 msgid "No clipboard data"
 msgstr "Tak ada data papan klip"
 
 #. set error message
-#: ../mousepad/mousepad-window.c:3719
+#: ../mousepad/mousepad-window.c:3835
 msgid "Templates should be UTF-8 valid"
 msgstr "Templat harus valid UTF-8"
 
 #. set error message
-#: ../mousepad/mousepad-window.c:3727
+#: ../mousepad/mousepad-window.c:3843
 msgid "Reading the template failed, the menu item has been removed"
 msgstr "Gagal membaca templat, item menu telah dihapus"
 
 #. set error message
-#: ../mousepad/mousepad-window.c:3732
+#: ../mousepad/mousepad-window.c:3848
 msgid "Loading the template failed"
 msgstr "Gagal memuat templat"
 
 #. create new file chooser dialog
-#: ../mousepad/mousepad-window.c:3757
+#: ../mousepad/mousepad-window.c:3873
 msgid "Open File"
 msgstr "Buka Berkas"
 
-#: ../mousepad/mousepad-window.c:3870
+#: ../mousepad/mousepad-window.c:3889
+msgid "_Encoding:"
+msgstr ""
+
+#: ../mousepad/mousepad-window.c:3986
 #, c-format
 msgid ""
 "Failed to open \"%s\" for reading. It will be removed from the document "
@@ -1291,35 +1307,35 @@ msgid ""
 msgstr "Gagal membuka \"%s\" untuk pembacaan. Berkas akan dihapus dari riwayat dokumen"
 
 #. show the warning and cleanup
-#: ../mousepad/mousepad-window.c:3874
+#: ../mousepad/mousepad-window.c:3990
 msgid "Failed to open file"
 msgstr "Gagal membuka berkas"
 
 #. show the error
-#: ../mousepad/mousepad-window.c:3980 ../mousepad/mousepad-window.c:4103
+#: ../mousepad/mousepad-window.c:4096 ../mousepad/mousepad-window.c:4219
 msgid "Failed to save the document"
 msgstr "Gagal menyimpan dokumen"
 
 #. create the dialog
-#: ../mousepad/mousepad-window.c:4004
+#: ../mousepad/mousepad-window.c:4120
 msgid "Save As"
 msgstr "Simpan Sebagai"
 
 #. show the error
-#: ../mousepad/mousepad-window.c:4195
+#: ../mousepad/mousepad-window.c:4311
 msgid "Failed to reload the document"
 msgstr "Gagal memuat dokumen"
 
 #. show the error
-#: ../mousepad/mousepad-window.c:4222
+#: ../mousepad/mousepad-window.c:4338
 msgid "Failed to print the document"
 msgstr "Gagal mencetak dokumen"
 
-#: ../mousepad/mousepad-window.c:4846
+#: ../mousepad/mousepad-window.c:4962
 msgid "Choose Mousepad Font"
 msgstr "Pilih Fonta Mousepad"
 
-#: ../mousepad/mousepad-window.c:5011
+#: ../mousepad/mousepad-window.c:5166
 msgid "Leave fullscreen mode"
 msgstr "Tinggalkan mode layar penuh"
 
@@ -1330,6 +1346,21 @@ msgstr "Penyunting Teks Sederhana"
 #: ../mousepad.desktop.in.in.h:3
 msgid "Text Editor"
 msgstr "Penyunting Teks"
+
+#: ../mousepad.appdata.xml.in.h:1
+msgid ""
+"Mousepad aims to be an easy-to-use and fast editor. Our target is an editor "
+"for quickly editing text files, not a development environment or an editor "
+"with a huge bunch of plugins."
+msgstr ""
+
+#: ../mousepad.appdata.xml.in.h:2
+msgid ""
+"On the other hand we try to use the latest Gtk+ features available, which "
+"means that if Gtk adds something new in a major release that is useful for "
+"the editor, we will likely bump the Gtk dependency and integrate this new "
+"feature in Mousepad."
+msgstr ""
 
 #. SECURITY:
 #. - A normal active user can run mousepad without elevated rights. They
