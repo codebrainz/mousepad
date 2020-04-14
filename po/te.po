@@ -7,9 +7,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-06-05 06:31+0200\n"
-"PO-Revision-Date: 2018-09-14 00:16+0000\n"
-"Last-Translator: ప్రవీణ్ ఇళ్ళ <mail2ipn@gmail.com>\n"
+"POT-Creation-Date: 2019-12-06 06:31+0100\n"
+"PO-Revision-Date: 2019-12-06 05:31+0000\n"
+"Last-Translator: Xfce Bot <transifex@xfce.org>\n"
 "Language-Team: Telugu (http://www.transifex.com/xfce/xfce-apps/language/te/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -17,158 +17,158 @@ msgstr ""
 "Language: te\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: ../mousepad/main.c:42
+#: ../mousepad/main.c:44
 msgid "Do not register with the D-BUS session message bus"
 msgstr ""
 
-#: ../mousepad/main.c:43
+#: ../mousepad/main.c:45
 msgid "Quit a running Mousepad instance"
 msgstr "నడుచుచున్న మౌస్‌ప్యాడ్ ప్రక్రియ నుండి నిష్క్రమించు"
 
-#: ../mousepad/main.c:45
+#: ../mousepad/main.c:47
 msgid "Print version information and exit"
 msgstr "రూపాంతరం సమాచారం ముద్రించి నిష్క్రమించు"
 
 #. default application name
-#: ../mousepad/main.c:70 ../mousepad.desktop.in.in.h:1
+#: ../mousepad/main.c:69 ../mousepad.desktop.in.in.h:1
 msgid "Mousepad"
 msgstr "మౌస్‌ప్యాడ్"
 
 #. initialize gtk+
-#: ../mousepad/main.c:84
+#: ../mousepad/main.c:83
 msgid "[FILES...]"
 msgstr "[దస్ర్తాలు...]"
 
 #. no error message, the gui initialization failed
-#: ../mousepad/main.c:90
+#: ../mousepad/main.c:89
 msgid "Failed to open display."
 msgstr "తెరను తెరుచుటలో విఫలమైంది."
 
-#: ../mousepad/main.c:107
+#: ../mousepad/main.c:106
 msgid "The Xfce development team. All rights reserved."
 msgstr ""
 
-#: ../mousepad/main.c:108
+#: ../mousepad/main.c:107
 #, c-format
 msgid "Please report bugs to <%s>."
 msgstr "దయచేసి లోపాలను <%s>కు నివేదించండి."
 
-#: ../mousepad/mousepad-dialogs.c:41
+#: ../mousepad/mousepad-dialogs.c:44
 msgid "Mousepad is a fast text editor for the Xfce Desktop Environment."
 msgstr ""
 
-#: ../mousepad/mousepad-dialogs.c:46
+#: ../mousepad/mousepad-dialogs.c:49
 msgid "translator-credits"
 msgstr "Praveen Illa <mail2ipn@gmail.com>, 2014"
 
 #. display an error message to the user
-#: ../mousepad/mousepad-dialogs.c:101
+#: ../mousepad/mousepad-dialogs.c:104
 msgid "Failed to open the documentation browser"
 msgstr "పత్రీకరణ విహారకాన్ని తెరుచుటలో విఫలమైంది"
 
 #. build dialog
-#: ../mousepad/mousepad-dialogs.c:116
+#: ../mousepad/mousepad-dialogs.c:119
 msgid "Select Tab Size"
 msgstr "ట్యాబ్ పరిమాణం ఎంచుకోండి"
 
 #. build the dialog
-#: ../mousepad/mousepad-dialogs.c:197
+#: ../mousepad/mousepad-dialogs.c:200
 msgid "Go To"
 msgstr "ఇక్కడకు వెళ్ళు"
 
-#: ../mousepad/mousepad-dialogs.c:219
+#: ../mousepad/mousepad-dialogs.c:222
 msgid "_Line number:"
 msgstr "పంక్తి సంఖ్య (_L):"
 
-#: ../mousepad/mousepad-dialogs.c:238
+#: ../mousepad/mousepad-dialogs.c:241
 msgid "C_olumn number:"
 msgstr "నిలువువరస సంఖ్య (_o):"
 
-#: ../mousepad/mousepad-dialogs.c:296
+#: ../mousepad/mousepad-dialogs.c:299
 msgid "Remove all entries from the documents history?"
 msgstr ""
 
-#: ../mousepad/mousepad-dialogs.c:301
+#: ../mousepad/mousepad-dialogs.c:304
 msgid "Clear Documents History"
 msgstr "పత్రాల చరిత్రను శుభ్రపరచు"
 
-#: ../mousepad/mousepad-dialogs.c:304
+#: ../mousepad/mousepad-dialogs.c:307
 msgid ""
 "Clearing the documents history will permanently remove all currently listed "
 "entries."
 msgstr ""
 
-#: ../mousepad/mousepad-dialogs.c:335
+#: ../mousepad/mousepad-dialogs.c:338
 msgid "Do you want to save the changes before closing?"
 msgstr ""
 
-#: ../mousepad/mousepad-dialogs.c:336
+#: ../mousepad/mousepad-dialogs.c:339
 msgid "Save Changes"
 msgstr "మార్పులను భద్రపరుచు"
 
-#: ../mousepad/mousepad-dialogs.c:337
+#: ../mousepad/mousepad-dialogs.c:340
 msgid "_Don't Save"
 msgstr "భద్రపరచవద్దు (_D)"
 
 #. secondary text
-#: ../mousepad/mousepad-dialogs.c:359
+#: ../mousepad/mousepad-dialogs.c:362
 msgid "If you don't save the document, all the changes will be lost."
 msgstr "ఒకవేళ మీరు పత్రాన్ని భద్రపరచకపోతే, చేసిన అన్ని మార్పులు పోతాయి."
 
-#: ../mousepad/mousepad-dialogs.c:381
+#: ../mousepad/mousepad-dialogs.c:384
 msgid ""
 "The document has been externally modified. Do you want to continue saving?"
 msgstr ""
 
-#: ../mousepad/mousepad-dialogs.c:382
+#: ../mousepad/mousepad-dialogs.c:385
 msgid "Externally Modified"
 msgstr "బాహ్యముగా మార్చబడినది"
 
-#: ../mousepad/mousepad-dialogs.c:384
+#: ../mousepad/mousepad-dialogs.c:387
 msgid "If you save the document, all of the external changes will be lost."
 msgstr "ఒకవేళ మీరు పత్రాన్ని భద్రపరచినట్లయితే, అన్ని బాహ్య మార్పులు పోతాయి."
 
-#: ../mousepad/mousepad-dialogs.c:412
+#: ../mousepad/mousepad-dialogs.c:415
 msgid "Do you want to save your changes before reloading?"
 msgstr ""
 
-#: ../mousepad/mousepad-dialogs.c:414
+#: ../mousepad/mousepad-dialogs.c:417
 msgid "If you revert the file, all unsaved changes will be lost."
 msgstr "ఒకవేళ మీరు దస్త్రాన్ని తిరిదిప్పితే, భద్రపరచని అన్ని మార్పులు పోతాయి."
 
 #. pack button, add signal and tooltip
-#: ../mousepad/mousepad-document.c:502
+#: ../mousepad/mousepad-document.c:500
 msgid "Close this tab"
 msgstr "ఈ ట్యాబ్‌ని మూసివేయి"
 
 #. create an unique untitled document name
-#: ../mousepad/mousepad-document.c:532
+#: ../mousepad/mousepad-document.c:530
 msgid "Untitled"
 msgstr "శీర్షికలేనిది"
 
 #. create the header
-#: ../mousepad/mousepad-encoding-dialog.c:126
+#: ../mousepad/mousepad-encoding-dialog.c:131
 msgid "The document was not UTF-8 valid"
 msgstr "పత్రం UTF-8 సరికాదు"
 
-#: ../mousepad/mousepad-encoding-dialog.c:127
+#: ../mousepad/mousepad-encoding-dialog.c:132
 msgid "Please select an encoding below."
 msgstr "దయచేసి క్రిందనున్న ఒక సంకేతరచనను ఎంచుకోండి"
 
 #. encoding radio buttons
-#: ../mousepad/mousepad-encoding-dialog.c:139
+#: ../mousepad/mousepad-encoding-dialog.c:144
 msgid "Default (UTF-8)"
 msgstr "అప్రమేయం (UTF-8)"
 
-#: ../mousepad/mousepad-encoding-dialog.c:145
+#: ../mousepad/mousepad-encoding-dialog.c:150
 msgid "System"
 msgstr "వ్యవస్థ"
 
-#: ../mousepad/mousepad-encoding-dialog.c:152
+#: ../mousepad/mousepad-encoding-dialog.c:157
 msgid "Other:"
 msgstr "ఇతరాలు:"
 
-#: ../mousepad/mousepad-encoding-dialog.c:172
+#: ../mousepad/mousepad-encoding-dialog.c:177
 msgid "Checking encodings..."
 msgstr "సంకేతరచనలను పరీక్షిస్తోంది..."
 
@@ -290,17 +290,17 @@ msgstr "జపనీస్"
 msgid "Korean"
 msgstr "కొరియన్"
 
-#: ../mousepad/mousepad-file.c:554
+#: ../mousepad/mousepad-file.c:559
 #, c-format
 msgid "Invalid byte sequence in conversion input"
 msgstr "పరివర్తన నివేశంలో చెల్లని బైట్ క్రమం"
 
-#: ../mousepad/mousepad-file.c:878
+#: ../mousepad/mousepad-file.c:903
 #, c-format
 msgid "The file \"%s\" you tried to reload does not exist anymore"
 msgstr ""
 
-#: ../mousepad/mousepad-file.c:919
+#: ../mousepad/mousepad-file.c:944
 #, c-format
 msgid "Failed to read the status of \"%s\""
 msgstr ""
@@ -314,7 +314,7 @@ msgid "No filetype"
 msgstr "ఎటువంటి దస్త్రరకం లేదు"
 
 #. setup the window properties
-#: ../mousepad/mousepad-prefs-dialog.c:433 ../mousepad/mousepad-window.c:445
+#: ../mousepad/mousepad-prefs-dialog.c:437 ../mousepad/mousepad-window.c:457
 msgid "Preferences"
 msgstr "అభిరుచులు"
 
@@ -347,7 +347,7 @@ msgid "none"
 msgstr ""
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:8
-#: ../mousepad/mousepad-style-scheme-action.c:193
+#: ../mousepad/mousepad-style-scheme-action.c:197
 msgid "None"
 msgstr "ఏదీకాదు"
 
@@ -392,7 +392,7 @@ msgid "Text Beside Icons"
 msgstr ""
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:19
-#: ../mousepad/mousepad-window.c:472
+#: ../mousepad/mousepad-window.c:484
 msgid "Show line numbers"
 msgstr "పంక్తి సంఖ్యలను చూపించు"
 
@@ -525,62 +525,62 @@ msgid "Window"
 msgstr ""
 
 #. set a custom tab label
-#: ../mousepad/mousepad-print.c:121
+#: ../mousepad/mousepad-print.c:125
 msgid "Document Settings"
 msgstr "పత్రం అమరికలు"
 
-#: ../mousepad/mousepad-print.c:596
+#: ../mousepad/mousepad-print.c:600
 msgid "Page Setup"
 msgstr "పుట అమరిక"
 
-#: ../mousepad/mousepad-print.c:606
+#: ../mousepad/mousepad-print.c:610
 msgid "_Adjust page size and orientation"
 msgstr "పుట పరిమాణం మరియు దిశను సవరించు (_A)"
 
-#: ../mousepad/mousepad-print.c:616
+#: ../mousepad/mousepad-print.c:620
 msgid "Appearance"
 msgstr "రూపురేఖలు"
 
-#: ../mousepad/mousepad-print.c:630
+#: ../mousepad/mousepad-print.c:634
 msgid "Print page _headers"
 msgstr "పుట పీఠికలను ముద్రించు (_h)"
 
-#: ../mousepad/mousepad-print.c:637
+#: ../mousepad/mousepad-print.c:641
 msgid "Print _line numbers"
 msgstr "పంక్తి సంఖ్యలను ముద్రించు (_l)"
 
-#: ../mousepad/mousepad-print.c:654
+#: ../mousepad/mousepad-print.c:658
 msgid "Numbering interval:"
 msgstr ""
 
-#: ../mousepad/mousepad-print.c:662
+#: ../mousepad/mousepad-print.c:666
 msgid ""
 "The interval at which to print line numbers. For example a value of 1 will "
 "print a line number on each line, a value of 2 will print a line number on "
 "every other line, and so on."
 msgstr ""
 
-#: ../mousepad/mousepad-print.c:674
+#: ../mousepad/mousepad-print.c:678
 msgid "Enable text _wrapping"
 msgstr ""
 
-#: ../mousepad/mousepad-print.c:681
+#: ../mousepad/mousepad-print.c:685
 msgid "Enable _syntax highlighting"
 msgstr ""
 
-#: ../mousepad/mousepad-print.c:693
+#: ../mousepad/mousepad-print.c:697
 msgid "Fonts"
 msgstr "ఖతులు"
 
-#: ../mousepad/mousepad-print.c:715
+#: ../mousepad/mousepad-print.c:719
 msgid "Header:"
 msgstr "పీఠిక:"
 
-#: ../mousepad/mousepad-print.c:725
+#: ../mousepad/mousepad-print.c:729
 msgid "Body:"
 msgstr "విషయం:"
 
-#: ../mousepad/mousepad-print.c:735
+#: ../mousepad/mousepad-print.c:739
 msgid "Line numbers:"
 msgstr "పంక్తి సంఖ్య:"
 
@@ -646,10 +646,10 @@ msgstr "అన్ని పత్రాలు"
 
 #: ../mousepad/mousepad-replace-dialog.c:422
 #, c-format
-msgid "%d occurence"
-msgid_plural "%d occurences"
-msgstr[0] "%d సంభవం"
-msgstr[1] "%d సంభవాలు"
+msgid "%d occurrence"
+msgid_plural "%d occurrences"
+msgstr[0] ""
+msgstr[1] ""
 
 #: ../mousepad/mousepad-replace-dialog.c:443
 msgid "_Replace All"
@@ -709,8 +709,13 @@ msgstr "పంక్తి: %d నిలువువరుస: %d ఎంపి�
 msgid "Line: %d Column: %d"
 msgstr "పంక్తి: %d నిలువువరుస: %d"
 
-#: ../mousepad/mousepad-style-scheme-action.c:194
+#: ../mousepad/mousepad-style-scheme-action.c:198
 msgid "No style scheme"
+msgstr ""
+
+#: ../mousepad/mousepad-style-scheme-action.c:212
+#, c-format
+msgid "%s | Authors: %s | Filename: %s"
 msgstr ""
 
 #. show warning to the user
@@ -725,565 +730,576 @@ msgstr ""
 msgid "Failed to store the preferences to \"%s\": %s"
 msgstr ""
 
-#: ../mousepad/mousepad-window.c:401
+#: ../mousepad/mousepad-window.c:413
 msgid "_File"
 msgstr "దస్త్రం (_F)"
 
-#: ../mousepad/mousepad-window.c:402
+#: ../mousepad/mousepad-window.c:414
 msgid "_New"
 msgstr "కొత్తది (_N)"
 
-#: ../mousepad/mousepad-window.c:402
+#: ../mousepad/mousepad-window.c:414
 msgid "Create a new document"
 msgstr "కొత్త పత్రమును సృష్టించు"
 
-#: ../mousepad/mousepad-window.c:403
+#: ../mousepad/mousepad-window.c:415
 msgid "New _Window"
 msgstr "కొత్త కిటికీ (_W)"
 
-#: ../mousepad/mousepad-window.c:403
+#: ../mousepad/mousepad-window.c:415
 msgid "Create a new document in a new window"
 msgstr "కొత్త పత్రాన్ని ఒక కొత్త కిటికీలో సృష్టించు"
 
-#: ../mousepad/mousepad-window.c:404
+#: ../mousepad/mousepad-window.c:416
 msgid "New From Te_mplate"
 msgstr "మూస నుండి కొత్తది (_m)"
 
-#: ../mousepad/mousepad-window.c:405
+#: ../mousepad/mousepad-window.c:417
 msgid "_Open..."
 msgstr "తెరువు...(_O)"
 
-#: ../mousepad/mousepad-window.c:405
+#: ../mousepad/mousepad-window.c:417
 msgid "Open a file"
 msgstr "ఒక దస్త్రాన్ని తెరువు"
 
-#: ../mousepad/mousepad-window.c:406
+#: ../mousepad/mousepad-window.c:418
 msgid "Op_en Recent"
 msgstr "ఇటీవలివి తెరువు (_e)"
 
-#: ../mousepad/mousepad-window.c:407
+#: ../mousepad/mousepad-window.c:419
 msgid "No items found"
 msgstr "ఏ అంశములు కనబడలేదు"
 
-#: ../mousepad/mousepad-window.c:408
+#: ../mousepad/mousepad-window.c:420
 msgid "Clear _History"
 msgstr "చరిత్రను శుభ్రపరచు (_H)"
 
-#: ../mousepad/mousepad-window.c:408
+#: ../mousepad/mousepad-window.c:420
 msgid "Clear the recently used files history"
 msgstr "ఇటీవలి వాడిన దస్త్రాల చరిత్రను శుభ్రపరుచు"
 
-#: ../mousepad/mousepad-window.c:409
+#: ../mousepad/mousepad-window.c:421
 msgid "Save the current document"
 msgstr "ప్రస్థుత పత్రమును భద్రపరుచు"
 
-#: ../mousepad/mousepad-window.c:410
+#: ../mousepad/mousepad-window.c:422
 msgid "Save _As..."
 msgstr "ఇలా భద్రపరుచు (_A)"
 
-#: ../mousepad/mousepad-window.c:410
+#: ../mousepad/mousepad-window.c:422
 msgid "Save current document as another file"
 msgstr ""
 
-#: ../mousepad/mousepad-window.c:411
+#: ../mousepad/mousepad-window.c:423
 msgid "Save A_ll"
 msgstr "అన్ని భద్రపరుచు (_l)"
 
-#: ../mousepad/mousepad-window.c:411
+#: ../mousepad/mousepad-window.c:423
 msgid "Save all document in this window"
 msgstr "ఈ కిటికీలోని అన్ని పత్రాలను భద్రపరుచు"
 
-#: ../mousepad/mousepad-window.c:412
+#: ../mousepad/mousepad-window.c:424
 msgid "Re_vert"
 msgstr "తిరిదిప్పు (_v)"
 
-#: ../mousepad/mousepad-window.c:412
+#: ../mousepad/mousepad-window.c:424
 msgid "Revert to the saved version of the file"
 msgstr "ఈ దస్త్రం యొక్క భద్రపరిచిన రూపాంతరానికి తిరిదిప్పు"
 
-#: ../mousepad/mousepad-window.c:413
+#: ../mousepad/mousepad-window.c:425
 msgid "_Print..."
 msgstr "ముద్రించు...(_P)"
 
-#: ../mousepad/mousepad-window.c:413
+#: ../mousepad/mousepad-window.c:425
 msgid "Print the current document"
 msgstr "ప్రస్తుత పత్రమును ముద్రించు"
 
-#: ../mousepad/mousepad-window.c:414
+#: ../mousepad/mousepad-window.c:426
 msgid "_Detach Tab"
 msgstr "ట్యాబ్‌ను వేరుచేయి (_D)"
 
-#: ../mousepad/mousepad-window.c:414
+#: ../mousepad/mousepad-window.c:426
 msgid "Move the current document to a new window"
 msgstr "ప్రస్తుత పత్రమును ఒక కొత్త కిటికీకు తరలించు"
 
-#: ../mousepad/mousepad-window.c:415
+#: ../mousepad/mousepad-window.c:427
 msgid "Close _Tab"
 msgstr "ట్యాబును మూసివేయి (_T)"
 
-#: ../mousepad/mousepad-window.c:415
+#: ../mousepad/mousepad-window.c:427
 msgid "Close the current document"
 msgstr "ప్రస్తుత పత్రమును మూసివేయి"
 
-#: ../mousepad/mousepad-window.c:416
+#: ../mousepad/mousepad-window.c:428
 msgid "_Close Window"
 msgstr "కిటికీని మూసివేయి (_C)"
 
-#: ../mousepad/mousepad-window.c:416
+#: ../mousepad/mousepad-window.c:428
 msgid "Close this window"
 msgstr "ఈ కిటీకీని మూసివేయి"
 
-#: ../mousepad/mousepad-window.c:418
+#: ../mousepad/mousepad-window.c:430
 msgid "_Edit"
 msgstr "సవరణ (_E)"
 
-#: ../mousepad/mousepad-window.c:419
+#: ../mousepad/mousepad-window.c:431
 msgid "Undo the last action"
 msgstr "గత చర్యను రద్దుచేయి"
 
-#: ../mousepad/mousepad-window.c:420
+#: ../mousepad/mousepad-window.c:432
 msgid "Redo the last undone action"
 msgstr "చివరిలో రద్దు చేసిన చర్యను మళ్ళాచేయి"
 
-#: ../mousepad/mousepad-window.c:421
+#: ../mousepad/mousepad-window.c:433
 msgid "Cut the selection"
 msgstr "ఎంపికను కత్తిరించు"
 
-#: ../mousepad/mousepad-window.c:422
+#: ../mousepad/mousepad-window.c:434
 msgid "Copy the selection"
 msgstr "ఎంపికను నకలుతీయి"
 
-#: ../mousepad/mousepad-window.c:423
+#: ../mousepad/mousepad-window.c:435
 msgid "Paste the clipboard"
 msgstr "క్లిప్‌బోర్డును అతికించు"
 
-#: ../mousepad/mousepad-window.c:424
+#: ../mousepad/mousepad-window.c:436
 msgid "Paste _Special"
 msgstr ""
 
-#: ../mousepad/mousepad-window.c:425
+#: ../mousepad/mousepad-window.c:437
 msgid "Paste from _History"
 msgstr ""
 
-#: ../mousepad/mousepad-window.c:425
+#: ../mousepad/mousepad-window.c:437
 msgid "Paste from the clipboard history"
 msgstr ""
 
-#: ../mousepad/mousepad-window.c:426
+#: ../mousepad/mousepad-window.c:438
 msgid "Paste as _Column"
 msgstr ""
 
-#: ../mousepad/mousepad-window.c:426
+#: ../mousepad/mousepad-window.c:438
 msgid "Paste the clipboard text into a column"
 msgstr ""
 
-#: ../mousepad/mousepad-window.c:427
+#: ../mousepad/mousepad-window.c:439
 msgid "Delete the current selection"
 msgstr "ప్రస్తుత ఎంపికను తొలగించు"
 
-#: ../mousepad/mousepad-window.c:428
+#: ../mousepad/mousepad-window.c:440
 msgid "Select the text in the entire document"
 msgstr "పత్రంలోని మొత్తం పాఠాన్ని ఎంచుకోండి"
 
-#: ../mousepad/mousepad-window.c:429
+#: ../mousepad/mousepad-window.c:441
 msgid "Change the selection"
 msgstr "ఎంపికను మార్చు"
 
-#: ../mousepad/mousepad-window.c:429
+#: ../mousepad/mousepad-window.c:441
 msgid "Change a normal selection into a column selection and vice versa"
 msgstr ""
 
-#: ../mousepad/mousepad-window.c:430
+#: ../mousepad/mousepad-window.c:442
 msgid "Conve_rt"
 msgstr ""
 
-#: ../mousepad/mousepad-window.c:431
+#: ../mousepad/mousepad-window.c:443
 msgid "To _Uppercase"
 msgstr ""
 
-#: ../mousepad/mousepad-window.c:431
+#: ../mousepad/mousepad-window.c:443
 msgid "Change the case of the selection to uppercase"
 msgstr ""
 
-#: ../mousepad/mousepad-window.c:432
+#: ../mousepad/mousepad-window.c:444
 msgid "To _Lowercase"
 msgstr ""
 
-#: ../mousepad/mousepad-window.c:432
+#: ../mousepad/mousepad-window.c:444
 msgid "Change the case of the selection to lowercase"
 msgstr ""
 
-#: ../mousepad/mousepad-window.c:433
+#: ../mousepad/mousepad-window.c:445
 msgid "To _Title Case"
 msgstr ""
 
-#: ../mousepad/mousepad-window.c:433
+#: ../mousepad/mousepad-window.c:445
 msgid "Change the case of the selection to title case"
 msgstr ""
 
-#: ../mousepad/mousepad-window.c:434
+#: ../mousepad/mousepad-window.c:446
 msgid "To _Opposite Case"
 msgstr ""
 
-#: ../mousepad/mousepad-window.c:434
+#: ../mousepad/mousepad-window.c:446
 msgid "Change the case of the selection opposite case"
 msgstr ""
 
-#: ../mousepad/mousepad-window.c:435
+#: ../mousepad/mousepad-window.c:447
 msgid "_Tabs to Spaces"
 msgstr ""
 
-#: ../mousepad/mousepad-window.c:435
+#: ../mousepad/mousepad-window.c:447
 msgid "Convert all tabs to spaces in the selection or document"
 msgstr ""
 
-#: ../mousepad/mousepad-window.c:436
+#: ../mousepad/mousepad-window.c:448
 msgid "_Spaces to Tabs"
 msgstr ""
 
-#: ../mousepad/mousepad-window.c:436
+#: ../mousepad/mousepad-window.c:448
 msgid ""
 "Convert all the leading spaces to tabs in the selected line(s) or document"
 msgstr ""
 
-#: ../mousepad/mousepad-window.c:437
+#: ../mousepad/mousepad-window.c:449
 msgid "St_rip Trailing Spaces"
 msgstr ""
 
-#: ../mousepad/mousepad-window.c:437
+#: ../mousepad/mousepad-window.c:449
 msgid "Remove all the trailing spaces from the selected line(s) or document"
 msgstr ""
 
-#: ../mousepad/mousepad-window.c:438
+#: ../mousepad/mousepad-window.c:450
 msgid "_Transpose"
 msgstr ""
 
-#: ../mousepad/mousepad-window.c:438
+#: ../mousepad/mousepad-window.c:450
 msgid "Reverse the order of something"
 msgstr ""
 
-#: ../mousepad/mousepad-window.c:439
+#: ../mousepad/mousepad-window.c:451
 msgid "_Move Selection"
 msgstr "ఎంపికను తరలించు (_M)"
 
-#: ../mousepad/mousepad-window.c:440
+#: ../mousepad/mousepad-window.c:452
 msgid "Line _Up"
 msgstr "పంక్తి పైన (_U)"
 
-#: ../mousepad/mousepad-window.c:440
+#: ../mousepad/mousepad-window.c:452
 msgid "Move the selection one line up"
 msgstr "ఎంపికను ఒక పంక్తి పైకి తరలించు"
 
-#: ../mousepad/mousepad-window.c:441
+#: ../mousepad/mousepad-window.c:453
 msgid "Line _Down"
 msgstr "పంక్తి క్రిందకు (_D)"
 
-#: ../mousepad/mousepad-window.c:441
+#: ../mousepad/mousepad-window.c:453
 msgid "Move the selection one line down"
 msgstr "ఎంపికను ఒక పంక్తి క్రిందకు తరలించు"
 
-#: ../mousepad/mousepad-window.c:442
+#: ../mousepad/mousepad-window.c:454
 msgid "Dup_licate Line / Selection"
 msgstr ""
 
-#: ../mousepad/mousepad-window.c:442
+#: ../mousepad/mousepad-window.c:454
 msgid "Duplicate the current line or selection"
 msgstr "ప్రస్తుత పంక్తి లేదా ఎంపికను నకలుచేయి"
 
-#: ../mousepad/mousepad-window.c:443
+#: ../mousepad/mousepad-window.c:455
 msgid "_Increase Indent"
 msgstr "గంటును పెంచు (_I)"
 
-#: ../mousepad/mousepad-window.c:443
+#: ../mousepad/mousepad-window.c:455
 msgid "Increase the indentation of the selection or current line"
 msgstr ""
 
-#: ../mousepad/mousepad-window.c:444
+#: ../mousepad/mousepad-window.c:456
 msgid "_Decrease Indent"
 msgstr "గంటును తగ్గించు (_D)"
 
-#: ../mousepad/mousepad-window.c:444
+#: ../mousepad/mousepad-window.c:456
 msgid "Decrease the indentation of the selection or current line"
 msgstr ""
 
-#: ../mousepad/mousepad-window.c:445
+#: ../mousepad/mousepad-window.c:457
 msgid "Show the preferences dialog"
 msgstr ""
 
-#: ../mousepad/mousepad-window.c:447
+#: ../mousepad/mousepad-window.c:459
 msgid "_Search"
 msgstr ""
 
-#: ../mousepad/mousepad-window.c:448
+#: ../mousepad/mousepad-window.c:460
 msgid "Search for text"
 msgstr "పాఠ్యం కోసం వెతుకు"
 
-#: ../mousepad/mousepad-window.c:449
+#: ../mousepad/mousepad-window.c:461
 msgid "Find _Next"
 msgstr "తరువాతది కనుగొను (_N)"
 
-#: ../mousepad/mousepad-window.c:449
+#: ../mousepad/mousepad-window.c:461
 msgid "Search forwards for the same text"
 msgstr ""
 
-#: ../mousepad/mousepad-window.c:450
+#: ../mousepad/mousepad-window.c:462
 msgid "Find _Previous"
 msgstr "మునుపటిది కనుగొను (_P)"
 
-#: ../mousepad/mousepad-window.c:450
+#: ../mousepad/mousepad-window.c:462
 msgid "Search backwards for the same text"
 msgstr " పాఠముకొరకు వెనుకకు వెతుకు"
 
-#: ../mousepad/mousepad-window.c:451
+#: ../mousepad/mousepad-window.c:463
 msgid "Find and Rep_lace..."
 msgstr " మరియు విలువలలో సరళులను కనిపెట్టు "
 
-#: ../mousepad/mousepad-window.c:451
+#: ../mousepad/mousepad-window.c:463
 msgid "Search for and replace text"
 msgstr ""
 
-#: ../mousepad/mousepad-window.c:452
+#: ../mousepad/mousepad-window.c:464
 msgid "_Go to..."
 msgstr "వెళ్ళండి...(_G)"
 
-#: ../mousepad/mousepad-window.c:452
+#: ../mousepad/mousepad-window.c:464
 msgid "Go to a specific location in the document"
 msgstr "పత్రంలోని ఒక నిర్ణీత స్థానానికి వెళ్ళు"
 
-#: ../mousepad/mousepad-window.c:454
+#: ../mousepad/mousepad-window.c:466
 msgid "_View"
 msgstr "చూడటం (_V)"
 
-#: ../mousepad/mousepad-window.c:455
+#: ../mousepad/mousepad-window.c:467
 msgid "Select F_ont..."
 msgstr "ఖతిని ఎంచుకోండి...(_o)"
 
-#: ../mousepad/mousepad-window.c:455
+#: ../mousepad/mousepad-window.c:467
 msgid "Change the editor font"
 msgstr "కూర్పకం ఖతిని మార్చు"
 
-#: ../mousepad/mousepad-window.c:456
+#: ../mousepad/mousepad-window.c:468
 msgid "_Color Scheme"
 msgstr "రంగు విధానం (_C):"
 
-#: ../mousepad/mousepad-window.c:458
+#: ../mousepad/mousepad-window.c:470
 msgid "_Document"
 msgstr "పత్రం (_D)"
 
-#: ../mousepad/mousepad-window.c:459
+#: ../mousepad/mousepad-window.c:471
 msgid "Line E_nding"
 msgstr "పంక్తి ముగింపు (_n)"
 
-#: ../mousepad/mousepad-window.c:460
+#: ../mousepad/mousepad-window.c:472
 msgid "Tab _Size"
 msgstr "ట్యాబ్ పరిమాణం (_S)"
 
-#: ../mousepad/mousepad-window.c:461
+#: ../mousepad/mousepad-window.c:473
 msgid "_Filetype"
 msgstr "దస్త్రరకం (_F)"
 
-#: ../mousepad/mousepad-window.c:462
+#: ../mousepad/mousepad-window.c:474
 msgid "_Previous Tab"
 msgstr "మునుపటి ట్యాబ్ (_P)"
 
-#: ../mousepad/mousepad-window.c:462
+#: ../mousepad/mousepad-window.c:474
 msgid "Select the previous tab"
 msgstr "మునుపటి ట్యాబ్‌ను ఎంచు"
 
-#: ../mousepad/mousepad-window.c:463
+#: ../mousepad/mousepad-window.c:475
 msgid "_Next Tab"
 msgstr "తరువాత ట్యాబ్ (_N)"
 
-#: ../mousepad/mousepad-window.c:463
+#: ../mousepad/mousepad-window.c:475
 msgid "Select the next tab"
 msgstr "తరువాత ట్యాబ్‌ను ఎంచు"
 
-#: ../mousepad/mousepad-window.c:465
+#: ../mousepad/mousepad-window.c:477
 msgid "_Help"
 msgstr "సహాయం (_H)"
 
-#: ../mousepad/mousepad-window.c:466
+#: ../mousepad/mousepad-window.c:478
 msgid "_Contents"
 msgstr "విషయాలు (_C)"
 
-#: ../mousepad/mousepad-window.c:466
+#: ../mousepad/mousepad-window.c:478
 msgid "Display the Mousepad user manual"
 msgstr "మౌస్‌ప్యాడ్ వాడుకరి కరదీపికను చూపించు"
 
-#: ../mousepad/mousepad-window.c:467
+#: ../mousepad/mousepad-window.c:479
 msgid "About this application"
 msgstr "ఈ అనువర్తనము గురించి"
 
-#: ../mousepad/mousepad-window.c:472
+#: ../mousepad/mousepad-window.c:484
 msgid "Line N_umbers"
 msgstr "పంక్తి సంఖ్యలు (_u)"
 
-#: ../mousepad/mousepad-window.c:473
+#: ../mousepad/mousepad-window.c:485
 msgid "_Menubar"
 msgstr ""
 
-#: ../mousepad/mousepad-window.c:473
+#: ../mousepad/mousepad-window.c:485
 msgid "Change the visibility of the main menubar"
 msgstr ""
 
-#: ../mousepad/mousepad-window.c:474
+#: ../mousepad/mousepad-window.c:486
 msgid "_Toolbar"
 msgstr "సాధనపట్టీ (_T)"
 
-#: ../mousepad/mousepad-window.c:474
+#: ../mousepad/mousepad-window.c:486
 msgid "Change the visibility of the toolbar"
 msgstr ""
 
-#: ../mousepad/mousepad-window.c:475
+#: ../mousepad/mousepad-window.c:487
 msgid "St_atusbar"
 msgstr "స్థితిపట్టీ (_a)"
 
-#: ../mousepad/mousepad-window.c:475
+#: ../mousepad/mousepad-window.c:487
 msgid "Change the visibility of the statusbar"
 msgstr "స్థితిపట్టీ కనిపించువిధాన్ని మార్చు"
 
-#: ../mousepad/mousepad-window.c:476
+#: ../mousepad/mousepad-window.c:488
 msgid "_Fullscreen"
 msgstr "నిండుతెర (_F)"
 
-#: ../mousepad/mousepad-window.c:476 ../mousepad/mousepad-window.c:5018
+#: ../mousepad/mousepad-window.c:488 ../mousepad/mousepad-window.c:5173
 msgid "Make the window fullscreen"
 msgstr ""
 
-#: ../mousepad/mousepad-window.c:477
+#: ../mousepad/mousepad-window.c:489
 msgid "_Auto Indent"
 msgstr "స్వీయ గంటు (_A)"
 
-#: ../mousepad/mousepad-window.c:477
+#: ../mousepad/mousepad-window.c:489
 msgid "Auto indent a new line"
 msgstr ""
 
-#: ../mousepad/mousepad-window.c:478
+#: ../mousepad/mousepad-window.c:490
 msgid "Insert _Spaces"
 msgstr "ఖాళీలను చొప్పించు (_S)"
 
-#: ../mousepad/mousepad-window.c:478
+#: ../mousepad/mousepad-window.c:490
 msgid "Insert spaces when the tab button is pressed"
 msgstr ""
 
-#: ../mousepad/mousepad-window.c:479
+#: ../mousepad/mousepad-window.c:491
 msgid "_Word Wrap"
 msgstr "సర్దుబాటు పంక్తులు (_W)"
 
-#: ../mousepad/mousepad-window.c:479
+#: ../mousepad/mousepad-window.c:491
 msgid "Toggle breaking lines in between words"
 msgstr ""
 
-#: ../mousepad/mousepad-window.c:480
+#: ../mousepad/mousepad-window.c:492
 msgid "Write Unicode _BOM"
 msgstr ""
 
-#: ../mousepad/mousepad-window.c:480
+#: ../mousepad/mousepad-window.c:492
 msgid "Store the byte-order mark in the file"
 msgstr ""
 
-#: ../mousepad/mousepad-window.c:485
+#: ../mousepad/mousepad-window.c:497
 msgid "Unix (_LF)"
 msgstr "యునిక్స్ (_LF)"
 
-#: ../mousepad/mousepad-window.c:485
+#: ../mousepad/mousepad-window.c:497
 msgid "Set the line ending of the document to Unix (LF)"
 msgstr ""
 
-#: ../mousepad/mousepad-window.c:486
+#: ../mousepad/mousepad-window.c:498
 msgid "Mac (_CR)"
 msgstr "మ్యాక్ (_CR)"
 
-#: ../mousepad/mousepad-window.c:486
+#: ../mousepad/mousepad-window.c:498
 msgid "Set the line ending of the document to Mac (CR)"
 msgstr ""
 
-#: ../mousepad/mousepad-window.c:487
+#: ../mousepad/mousepad-window.c:499
 msgid "DOS / Windows (C_R LF)"
 msgstr "డాస్ / విండోస్ (C_R LF)"
 
-#: ../mousepad/mousepad-window.c:487
+#: ../mousepad/mousepad-window.c:499
 msgid "Set the line ending of the document to DOS / Windows (CR LF)"
 msgstr ""
 
 #. add the label with the root warning
-#: ../mousepad/mousepad-window.c:860
+#: ../mousepad/mousepad-window.c:869
 msgid "Warning, you are using the root account, you may harm your system."
 msgstr ""
 
 #. show the warning
-#: ../mousepad/mousepad-window.c:1516
+#: ../mousepad/mousepad-window.c:1557
 msgid "Failed to open the document"
 msgstr "పత్రాన్ని తెరుచుటలో విఫలమైంది"
 
-#: ../mousepad/mousepad-window.c:1713
+#: ../mousepad/mousepad-window.c:1754
 msgid "Read Only"
 msgstr "చదువుటకు మాత్రమే"
 
-#: ../mousepad/mousepad-window.c:2382
+#: ../mousepad/mousepad-window.c:2424
 #, c-format
 msgid ""
 "No template files found in\n"
 "'%s'"
 msgstr ""
 
+#: ../mousepad/mousepad-window.c:2473
+#, c-format
+msgid ""
+"Missing Templates directory\n"
+"'%s'"
+msgstr ""
+
 #. create other action
-#: ../mousepad/mousepad-window.c:2498
+#: ../mousepad/mousepad-window.c:2547
 msgid "Set custom tab size"
 msgstr "అనురూపిత ట్యాబ్ పరిమాణం అమర్చు:"
 
 #. create suitable label for the other menu
-#: ../mousepad/mousepad-window.c:2546
+#: ../mousepad/mousepad-window.c:2595
 #, c-format
 msgid "Ot_her (%d)..."
 msgstr "ఇతరాలు (%d)...(_h)"
 
 #. set action label
-#: ../mousepad/mousepad-window.c:2557
+#: ../mousepad/mousepad-window.c:2606
 msgid "Ot_her..."
 msgstr "ఇతరాలు...(_h)"
 
 #. build description
 #. get the offset length: 'Encoding: '
-#: ../mousepad/mousepad-window.c:2873 ../mousepad/mousepad-window.c:3100
+#: ../mousepad/mousepad-window.c:2989 ../mousepad/mousepad-window.c:3216
 msgid "Charset"
 msgstr "అక్షరసమితి"
 
-#: ../mousepad/mousepad-window.c:3005
+#: ../mousepad/mousepad-window.c:3121
 #, c-format
 msgid "Open '%s'"
 msgstr " '%s'ను తెరువు"
 
-#: ../mousepad/mousepad-window.c:3150
+#: ../mousepad/mousepad-window.c:3266
 msgid "Failed to clear the recent history"
 msgstr "ఇటీవలి చరిత్రను శుభ్రపరుచుటలో విఫలమైంది"
 
 #. create an item to inform the user
-#: ../mousepad/mousepad-window.c:3580
+#: ../mousepad/mousepad-window.c:3696
 msgid "No clipboard data"
 msgstr "ఎటువంటి క్లిప్‌బోర్డు దత్తాంశము లేదు"
 
 #. set error message
-#: ../mousepad/mousepad-window.c:3719
+#: ../mousepad/mousepad-window.c:3835
 msgid "Templates should be UTF-8 valid"
 msgstr ""
 
 #. set error message
-#: ../mousepad/mousepad-window.c:3727
+#: ../mousepad/mousepad-window.c:3843
 msgid "Reading the template failed, the menu item has been removed"
 msgstr ""
 
 #. set error message
-#: ../mousepad/mousepad-window.c:3732
+#: ../mousepad/mousepad-window.c:3848
 msgid "Loading the template failed"
 msgstr "మూసను నింపుటలో విఫలమైనది"
 
 #. create new file chooser dialog
-#: ../mousepad/mousepad-window.c:3757
+#: ../mousepad/mousepad-window.c:3873
 msgid "Open File"
 msgstr "దస్త్రాన్ని తెరువు"
 
-#: ../mousepad/mousepad-window.c:3870
+#: ../mousepad/mousepad-window.c:3889
+msgid "_Encoding:"
+msgstr ""
+
+#: ../mousepad/mousepad-window.c:3986
 #, c-format
 msgid ""
 "Failed to open \"%s\" for reading. It will be removed from the document "
@@ -1291,35 +1307,35 @@ msgid ""
 msgstr ""
 
 #. show the warning and cleanup
-#: ../mousepad/mousepad-window.c:3874
+#: ../mousepad/mousepad-window.c:3990
 msgid "Failed to open file"
 msgstr "దస్త్రాన్ని తెరచుటలో విఫలమైంది"
 
 #. show the error
-#: ../mousepad/mousepad-window.c:3980 ../mousepad/mousepad-window.c:4103
+#: ../mousepad/mousepad-window.c:4096 ../mousepad/mousepad-window.c:4219
 msgid "Failed to save the document"
 msgstr "పత్రమును భద్రపరుచుటలో విఫలమైంది"
 
 #. create the dialog
-#: ../mousepad/mousepad-window.c:4004
+#: ../mousepad/mousepad-window.c:4120
 msgid "Save As"
 msgstr "ఇలా భద్రపరుచు"
 
 #. show the error
-#: ../mousepad/mousepad-window.c:4195
+#: ../mousepad/mousepad-window.c:4311
 msgid "Failed to reload the document"
 msgstr "పత్రమును తిరిగిలోడుచేయుటలో విఫలమైంది"
 
 #. show the error
-#: ../mousepad/mousepad-window.c:4222
+#: ../mousepad/mousepad-window.c:4338
 msgid "Failed to print the document"
 msgstr "పత్రమును ముద్రించుటలో విఫలమైంది"
 
-#: ../mousepad/mousepad-window.c:4846
+#: ../mousepad/mousepad-window.c:4962
 msgid "Choose Mousepad Font"
 msgstr "మౌస్ ప్యాడ్ ఖతిని ఎంచుకోండి"
 
-#: ../mousepad/mousepad-window.c:5011
+#: ../mousepad/mousepad-window.c:5166
 msgid "Leave fullscreen mode"
 msgstr ""
 
@@ -1330,6 +1346,21 @@ msgstr "సులభ పాఠ్య కూర్పకం"
 #: ../mousepad.desktop.in.in.h:3
 msgid "Text Editor"
 msgstr "పాఠ్య కూర్పకం"
+
+#: ../mousepad.appdata.xml.in.h:1
+msgid ""
+"Mousepad aims to be an easy-to-use and fast editor. Our target is an editor "
+"for quickly editing text files, not a development environment or an editor "
+"with a huge bunch of plugins."
+msgstr ""
+
+#: ../mousepad.appdata.xml.in.h:2
+msgid ""
+"On the other hand we try to use the latest Gtk+ features available, which "
+"means that if Gtk adds something new in a major release that is useful for "
+"the editor, we will likely bump the Gtk dependency and integrate this new "
+"feature in Mousepad."
+msgstr ""
 
 #. SECURITY:
 #. - A normal active user can run mousepad without elevated rights. They
