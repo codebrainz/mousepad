@@ -6,6 +6,7 @@
 # Demiray Muhterem <mdemiray@msn.com>, 2019
 # Demiray Muhterem <mdemiray@msn.com>, 2018
 # Emin Tufan <etcetin@gmail.com>, 2018
+# Hüseyin Fahri Uzun <mail@fahriuzun.com>, 2019
 # Mustafa TEKKOYUN <inactive+tekotek@transifex.com>, 2013
 # Natavan Mirzayeva <mirzayevanatavan@gmail.com>, 2014
 # Necdet Yücel <necdetyucel@gmail.com>, 2013-2014
@@ -16,9 +17,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-08-26 00:31+0200\n"
-"PO-Revision-Date: 2019-08-26 18:28+0000\n"
-"Last-Translator: Serdar Sağlam <teknomobil@msn.com>\n"
+"POT-Creation-Date: 2019-12-06 06:31+0100\n"
+"PO-Revision-Date: 2019-12-06 07:46+0000\n"
+"Last-Translator: Hüseyin Fahri Uzun <mail@fahriuzun.com>\n"
 "Language-Team: Turkish (http://www.transifex.com/xfce/xfce-apps/language/tr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -323,7 +324,7 @@ msgid "No filetype"
 msgstr "Dosya tipi yok"
 
 #. setup the window properties
-#: ../mousepad/mousepad-prefs-dialog.c:437 ../mousepad/mousepad-window.c:450
+#: ../mousepad/mousepad-prefs-dialog.c:437 ../mousepad/mousepad-window.c:457
 msgid "Preferences"
 msgstr "Tercihler"
 
@@ -401,7 +402,7 @@ msgid "Text Beside Icons"
 msgstr "Simgelerin Yanındaki Metin"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:19
-#: ../mousepad/mousepad-window.c:477
+#: ../mousepad/mousepad-window.c:484
 msgid "Show line numbers"
 msgstr "Satır numaralarını göster"
 
@@ -739,569 +740,576 @@ msgstr "\"%s\" temel dizini oluşturulamadı. \"%s\" dosyasını kaydetme iptal 
 msgid "Failed to store the preferences to \"%s\": %s"
 msgstr "Tercihler \"%s\" dosyasına kaydedilemedi: %s"
 
-#: ../mousepad/mousepad-window.c:406
+#: ../mousepad/mousepad-window.c:413
 msgid "_File"
 msgstr "_Dosya"
 
-#: ../mousepad/mousepad-window.c:407
+#: ../mousepad/mousepad-window.c:414
 msgid "_New"
 msgstr "_Yeni"
 
-#: ../mousepad/mousepad-window.c:407
+#: ../mousepad/mousepad-window.c:414
 msgid "Create a new document"
 msgstr "Yeni bir belge oluştur"
 
-#: ../mousepad/mousepad-window.c:408
+#: ../mousepad/mousepad-window.c:415
 msgid "New _Window"
 msgstr "Yeni _Pencere"
 
-#: ../mousepad/mousepad-window.c:408
+#: ../mousepad/mousepad-window.c:415
 msgid "Create a new document in a new window"
 msgstr "Yeni bir pencerede yeni belge oluştur"
 
-#: ../mousepad/mousepad-window.c:409
+#: ../mousepad/mousepad-window.c:416
 msgid "New From Te_mplate"
 msgstr "Ş_ablondan Yeni"
 
-#: ../mousepad/mousepad-window.c:410
+#: ../mousepad/mousepad-window.c:417
 msgid "_Open..."
 msgstr "_Aç..."
 
-#: ../mousepad/mousepad-window.c:410
+#: ../mousepad/mousepad-window.c:417
 msgid "Open a file"
 msgstr "Bir dosya aç"
 
-#: ../mousepad/mousepad-window.c:411
+#: ../mousepad/mousepad-window.c:418
 msgid "Op_en Recent"
 msgstr "_Son Kullanılanı Aç"
 
-#: ../mousepad/mousepad-window.c:412
+#: ../mousepad/mousepad-window.c:419
 msgid "No items found"
 msgstr "Öge bulunamadı"
 
-#: ../mousepad/mousepad-window.c:413
+#: ../mousepad/mousepad-window.c:420
 msgid "Clear _History"
 msgstr "Geçmişi _Temizle"
 
-#: ../mousepad/mousepad-window.c:413
+#: ../mousepad/mousepad-window.c:420
 msgid "Clear the recently used files history"
 msgstr "Yakında kullanılmış dosya geçmişini temizle"
 
-#: ../mousepad/mousepad-window.c:414
+#: ../mousepad/mousepad-window.c:421
 msgid "Save the current document"
 msgstr "Geçerli belgeyi kaydet"
 
-#: ../mousepad/mousepad-window.c:415
+#: ../mousepad/mousepad-window.c:422
 msgid "Save _As..."
 msgstr "F_arklı Kaydet.."
 
-#: ../mousepad/mousepad-window.c:415
+#: ../mousepad/mousepad-window.c:422
 msgid "Save current document as another file"
 msgstr "Geçerli belgeyi farklı dosya olarak kaydet"
 
-#: ../mousepad/mousepad-window.c:416
+#: ../mousepad/mousepad-window.c:423
 msgid "Save A_ll"
 msgstr "T_ümünü Kaydet"
 
-#: ../mousepad/mousepad-window.c:416
+#: ../mousepad/mousepad-window.c:423
 msgid "Save all document in this window"
 msgstr "Bu penceredeki tüm belgeleri kaydet"
 
-#: ../mousepad/mousepad-window.c:417
+#: ../mousepad/mousepad-window.c:424
 msgid "Re_vert"
 msgstr "Geri _Döndür"
 
-#: ../mousepad/mousepad-window.c:417
+#: ../mousepad/mousepad-window.c:424
 msgid "Revert to the saved version of the file"
 msgstr "Dosyanın kayıtlı sürümüne geri dön"
 
-#: ../mousepad/mousepad-window.c:418
+#: ../mousepad/mousepad-window.c:425
 msgid "_Print..."
 msgstr "_Yazdır..."
 
-#: ../mousepad/mousepad-window.c:418
+#: ../mousepad/mousepad-window.c:425
 msgid "Print the current document"
 msgstr "Geçerli belgeyi yazdır"
 
-#: ../mousepad/mousepad-window.c:419
+#: ../mousepad/mousepad-window.c:426
 msgid "_Detach Tab"
 msgstr "Sekmeyi Ayır"
 
-#: ../mousepad/mousepad-window.c:419
+#: ../mousepad/mousepad-window.c:426
 msgid "Move the current document to a new window"
 msgstr "Geçerli belgeyi yeni bir pencereye taşı"
 
-#: ../mousepad/mousepad-window.c:420
+#: ../mousepad/mousepad-window.c:427
 msgid "Close _Tab"
 msgstr "Sekmeyi _Kapat"
 
-#: ../mousepad/mousepad-window.c:420
+#: ../mousepad/mousepad-window.c:427
 msgid "Close the current document"
 msgstr "Geçerli belgeyi kapat"
 
-#: ../mousepad/mousepad-window.c:421
+#: ../mousepad/mousepad-window.c:428
 msgid "_Close Window"
 msgstr "_Pencereyi Kapat"
 
-#: ../mousepad/mousepad-window.c:421
+#: ../mousepad/mousepad-window.c:428
 msgid "Close this window"
 msgstr "Bu pencereyi kapat"
 
-#: ../mousepad/mousepad-window.c:423
+#: ../mousepad/mousepad-window.c:430
 msgid "_Edit"
 msgstr "Dü_zenle"
 
-#: ../mousepad/mousepad-window.c:424
+#: ../mousepad/mousepad-window.c:431
 msgid "Undo the last action"
 msgstr "Son işlemi geri al"
 
-#: ../mousepad/mousepad-window.c:425
+#: ../mousepad/mousepad-window.c:432
 msgid "Redo the last undone action"
 msgstr "Son geri alınan işlemi yenile"
 
-#: ../mousepad/mousepad-window.c:426
+#: ../mousepad/mousepad-window.c:433
 msgid "Cut the selection"
 msgstr "Seçimi kes"
 
-#: ../mousepad/mousepad-window.c:427
+#: ../mousepad/mousepad-window.c:434
 msgid "Copy the selection"
 msgstr "Seçimi kopyala"
 
-#: ../mousepad/mousepad-window.c:428
+#: ../mousepad/mousepad-window.c:435
 msgid "Paste the clipboard"
 msgstr "Panodan yapıştır"
 
-#: ../mousepad/mousepad-window.c:429
+#: ../mousepad/mousepad-window.c:436
 msgid "Paste _Special"
 msgstr "Öze_l Yapıştır"
 
-#: ../mousepad/mousepad-window.c:430
+#: ../mousepad/mousepad-window.c:437
 msgid "Paste from _History"
 msgstr "_Geçmişten Yapıştır"
 
-#: ../mousepad/mousepad-window.c:430
+#: ../mousepad/mousepad-window.c:437
 msgid "Paste from the clipboard history"
 msgstr "Pano geçmişinden yapıştır"
 
-#: ../mousepad/mousepad-window.c:431
+#: ../mousepad/mousepad-window.c:438
 msgid "Paste as _Column"
 msgstr "_Sütun Olarak Yapıştır"
 
-#: ../mousepad/mousepad-window.c:431
+#: ../mousepad/mousepad-window.c:438
 msgid "Paste the clipboard text into a column"
 msgstr "Pano metnini bir sütun olarak yapıştır"
 
-#: ../mousepad/mousepad-window.c:432
+#: ../mousepad/mousepad-window.c:439
 msgid "Delete the current selection"
 msgstr "Geçerli seçimi sil"
 
-#: ../mousepad/mousepad-window.c:433
+#: ../mousepad/mousepad-window.c:440
 msgid "Select the text in the entire document"
 msgstr "Tüm belgedeki metni seç"
 
-#: ../mousepad/mousepad-window.c:434
+#: ../mousepad/mousepad-window.c:441
 msgid "Change the selection"
 msgstr "Seçimi değiştir"
 
-#: ../mousepad/mousepad-window.c:434
+#: ../mousepad/mousepad-window.c:441
 msgid "Change a normal selection into a column selection and vice versa"
 msgstr "Seçimi sütun seçimine ve tam tersine değiştir"
 
-#: ../mousepad/mousepad-window.c:435
+#: ../mousepad/mousepad-window.c:442
 msgid "Conve_rt"
 msgstr "_Dönüştürme"
 
-#: ../mousepad/mousepad-window.c:436
+#: ../mousepad/mousepad-window.c:443
 msgid "To _Uppercase"
 msgstr "_Büyük Harfle"
 
-#: ../mousepad/mousepad-window.c:436
+#: ../mousepad/mousepad-window.c:443
 msgid "Change the case of the selection to uppercase"
 msgstr "Seçimi büyük harfe dönüştür"
 
-#: ../mousepad/mousepad-window.c:437
+#: ../mousepad/mousepad-window.c:444
 msgid "To _Lowercase"
 msgstr "_Küçük Harfle"
 
-#: ../mousepad/mousepad-window.c:437
+#: ../mousepad/mousepad-window.c:444
 msgid "Change the case of the selection to lowercase"
 msgstr "Seçimi küçük harfe dönüştür"
 
-#: ../mousepad/mousepad-window.c:438
+#: ../mousepad/mousepad-window.c:445
 msgid "To _Title Case"
 msgstr "_Başlık Durumunda"
 
-#: ../mousepad/mousepad-window.c:438
+#: ../mousepad/mousepad-window.c:445
 msgid "Change the case of the selection to title case"
 msgstr "Seçimdeki sözcüklerin ilk harflerini büyüt"
 
-#: ../mousepad/mousepad-window.c:439
+#: ../mousepad/mousepad-window.c:446
 msgid "To _Opposite Case"
 msgstr "_Durum Karşısında"
 
-#: ../mousepad/mousepad-window.c:439
+#: ../mousepad/mousepad-window.c:446
 msgid "Change the case of the selection opposite case"
 msgstr "Seçimi büyükse/küçük küçükse/büyük harfe değiştir"
 
-#: ../mousepad/mousepad-window.c:440
+#: ../mousepad/mousepad-window.c:447
 msgid "_Tabs to Spaces"
 msgstr "_Sekmeleri Boşluklara Dönüştür"
 
-#: ../mousepad/mousepad-window.c:440
+#: ../mousepad/mousepad-window.c:447
 msgid "Convert all tabs to spaces in the selection or document"
 msgstr "Seçimde veya belgedeki tüm sekmeleri boşluklara dönüştür"
 
-#: ../mousepad/mousepad-window.c:441
+#: ../mousepad/mousepad-window.c:448
 msgid "_Spaces to Tabs"
 msgstr "_Boşlukları Sekmelere Dönüştür"
 
-#: ../mousepad/mousepad-window.c:441
+#: ../mousepad/mousepad-window.c:448
 msgid ""
 "Convert all the leading spaces to tabs in the selected line(s) or document"
 msgstr "Seçili satır(lar)da veya belgedeki tüm boşlukları sekmelere dönüştür"
 
-#: ../mousepad/mousepad-window.c:442
+#: ../mousepad/mousepad-window.c:449
 msgid "St_rip Trailing Spaces"
 msgstr "Gereksiz _Boşlukları Temizle"
 
-#: ../mousepad/mousepad-window.c:442
+#: ../mousepad/mousepad-window.c:449
 msgid "Remove all the trailing spaces from the selected line(s) or document"
 msgstr "Seçili satır(lar)da veya belgedeki tüm gereksiz boşlukları kaldır"
 
-#: ../mousepad/mousepad-window.c:443
+#: ../mousepad/mousepad-window.c:450
 msgid "_Transpose"
 msgstr "_Transpoze"
 
-#: ../mousepad/mousepad-window.c:443
+#: ../mousepad/mousepad-window.c:450
 msgid "Reverse the order of something"
 msgstr "Bir şeyin sırasını tersine çevir"
 
-#: ../mousepad/mousepad-window.c:444
+#: ../mousepad/mousepad-window.c:451
 msgid "_Move Selection"
 msgstr "_Seçimi Taşı"
 
-#: ../mousepad/mousepad-window.c:445
+#: ../mousepad/mousepad-window.c:452
 msgid "Line _Up"
 msgstr "_Üst Satıra"
 
-#: ../mousepad/mousepad-window.c:445
+#: ../mousepad/mousepad-window.c:452
 msgid "Move the selection one line up"
 msgstr "Seçimi bir satır yukarı taşı"
 
-#: ../mousepad/mousepad-window.c:446
+#: ../mousepad/mousepad-window.c:453
 msgid "Line _Down"
 msgstr "_Alt Satıra"
 
-#: ../mousepad/mousepad-window.c:446
+#: ../mousepad/mousepad-window.c:453
 msgid "Move the selection one line down"
 msgstr "Seçimi bir satır aşağı taşı"
 
-#: ../mousepad/mousepad-window.c:447
+#: ../mousepad/mousepad-window.c:454
 msgid "Dup_licate Line / Selection"
 msgstr "Satırı / Seçimi Yinele"
 
-#: ../mousepad/mousepad-window.c:447
+#: ../mousepad/mousepad-window.c:454
 msgid "Duplicate the current line or selection"
 msgstr "Geçerli satırı veya seçimi yinele"
 
-#: ../mousepad/mousepad-window.c:448
+#: ../mousepad/mousepad-window.c:455
 msgid "_Increase Indent"
 msgstr "Girintiyi _Arttır"
 
-#: ../mousepad/mousepad-window.c:448
+#: ../mousepad/mousepad-window.c:455
 msgid "Increase the indentation of the selection or current line"
 msgstr "Seçimin veya geçerli satırın girintisini arttır"
 
-#: ../mousepad/mousepad-window.c:449
+#: ../mousepad/mousepad-window.c:456
 msgid "_Decrease Indent"
 msgstr "Girintiyi A_zalt"
 
-#: ../mousepad/mousepad-window.c:449
+#: ../mousepad/mousepad-window.c:456
 msgid "Decrease the indentation of the selection or current line"
 msgstr "Seçimin veya geçerli satırın girintisini azat"
 
-#: ../mousepad/mousepad-window.c:450
+#: ../mousepad/mousepad-window.c:457
 msgid "Show the preferences dialog"
 msgstr "İletişim tercihlerini göster"
 
-#: ../mousepad/mousepad-window.c:452
+#: ../mousepad/mousepad-window.c:459
 msgid "_Search"
 msgstr "_Arama"
 
-#: ../mousepad/mousepad-window.c:453
+#: ../mousepad/mousepad-window.c:460
 msgid "Search for text"
 msgstr "Metin ara"
 
-#: ../mousepad/mousepad-window.c:454
+#: ../mousepad/mousepad-window.c:461
 msgid "Find _Next"
 msgstr "Sonrakini _Bu"
 
-#: ../mousepad/mousepad-window.c:454
+#: ../mousepad/mousepad-window.c:461
 msgid "Search forwards for the same text"
 msgstr "Aynı metin için ileri ara"
 
-#: ../mousepad/mousepad-window.c:455
+#: ../mousepad/mousepad-window.c:462
 msgid "Find _Previous"
 msgstr "Önceki_ni Bu"
 
-#: ../mousepad/mousepad-window.c:455
+#: ../mousepad/mousepad-window.c:462
 msgid "Search backwards for the same text"
 msgstr "Aynı metni geri doğru ara"
 
-#: ../mousepad/mousepad-window.c:456
+#: ../mousepad/mousepad-window.c:463
 msgid "Find and Rep_lace..."
 msgstr "Bul ve _Değiştir.."
 
-#: ../mousepad/mousepad-window.c:456
+#: ../mousepad/mousepad-window.c:463
 msgid "Search for and replace text"
 msgstr "Metin bul ve değiştir"
 
-#: ../mousepad/mousepad-window.c:457
+#: ../mousepad/mousepad-window.c:464
 msgid "_Go to..."
 msgstr "_Git..."
 
-#: ../mousepad/mousepad-window.c:457
+#: ../mousepad/mousepad-window.c:464
 msgid "Go to a specific location in the document"
 msgstr "Belge içinde belirli bir konuma git"
 
-#: ../mousepad/mousepad-window.c:459
+#: ../mousepad/mousepad-window.c:466
 msgid "_View"
 msgstr "_Görünüm"
 
-#: ../mousepad/mousepad-window.c:460
+#: ../mousepad/mousepad-window.c:467
 msgid "Select F_ont..."
 msgstr "Yazı T_ipi Seç..."
 
-#: ../mousepad/mousepad-window.c:460
+#: ../mousepad/mousepad-window.c:467
 msgid "Change the editor font"
 msgstr "Düzenleyici yazı tipini değiştir"
 
-#: ../mousepad/mousepad-window.c:461
+#: ../mousepad/mousepad-window.c:468
 msgid "_Color Scheme"
 msgstr "_Renk Şeması"
 
-#: ../mousepad/mousepad-window.c:463
+#: ../mousepad/mousepad-window.c:470
 msgid "_Document"
 msgstr "_Belge"
 
-#: ../mousepad/mousepad-window.c:464
+#: ../mousepad/mousepad-window.c:471
 msgid "Line E_nding"
 msgstr "Satır _Sonlandırma"
 
-#: ../mousepad/mousepad-window.c:465
+#: ../mousepad/mousepad-window.c:472
 msgid "Tab _Size"
 msgstr "Sekme _Boyutu"
 
-#: ../mousepad/mousepad-window.c:466
+#: ../mousepad/mousepad-window.c:473
 msgid "_Filetype"
 msgstr "_Dosyatipi"
 
-#: ../mousepad/mousepad-window.c:467
+#: ../mousepad/mousepad-window.c:474
 msgid "_Previous Tab"
 msgstr "Önceki_Sekme"
 
-#: ../mousepad/mousepad-window.c:467
+#: ../mousepad/mousepad-window.c:474
 msgid "Select the previous tab"
 msgstr "Önceki sekmeyi seç"
 
-#: ../mousepad/mousepad-window.c:468
+#: ../mousepad/mousepad-window.c:475
 msgid "_Next Tab"
 msgstr "So_nraki Sekme"
 
-#: ../mousepad/mousepad-window.c:468
+#: ../mousepad/mousepad-window.c:475
 msgid "Select the next tab"
 msgstr "Sonraki sekmeyi seç"
 
-#: ../mousepad/mousepad-window.c:470
+#: ../mousepad/mousepad-window.c:477
 msgid "_Help"
 msgstr "_Yardım"
 
-#: ../mousepad/mousepad-window.c:471
+#: ../mousepad/mousepad-window.c:478
 msgid "_Contents"
 msgstr "_İçindekiler"
 
-#: ../mousepad/mousepad-window.c:471
+#: ../mousepad/mousepad-window.c:478
 msgid "Display the Mousepad user manual"
 msgstr "Mousepad kullanım kılavuzunu görüntüle"
 
-#: ../mousepad/mousepad-window.c:472
+#: ../mousepad/mousepad-window.c:479
 msgid "About this application"
 msgstr "Bu uygulama hakkında"
 
-#: ../mousepad/mousepad-window.c:477
+#: ../mousepad/mousepad-window.c:484
 msgid "Line N_umbers"
 msgstr "Satır _Numaraları"
 
-#: ../mousepad/mousepad-window.c:478
+#: ../mousepad/mousepad-window.c:485
 msgid "_Menubar"
 msgstr "_Menü çubuğu"
 
-#: ../mousepad/mousepad-window.c:478
+#: ../mousepad/mousepad-window.c:485
 msgid "Change the visibility of the main menubar"
 msgstr "Ana menü çubuğunun görünürlüğünü değiştir"
 
-#: ../mousepad/mousepad-window.c:479
+#: ../mousepad/mousepad-window.c:486
 msgid "_Toolbar"
 msgstr "_Araç çubuğu"
 
-#: ../mousepad/mousepad-window.c:479
+#: ../mousepad/mousepad-window.c:486
 msgid "Change the visibility of the toolbar"
 msgstr "Araç çubuğunun görünürlüğünü değiştir"
 
-#: ../mousepad/mousepad-window.c:480
+#: ../mousepad/mousepad-window.c:487
 msgid "St_atusbar"
 msgstr "_Durum çubuğu"
 
-#: ../mousepad/mousepad-window.c:480
+#: ../mousepad/mousepad-window.c:487
 msgid "Change the visibility of the statusbar"
 msgstr "Durum çubuğunun görünürlüğünü değiştir"
 
-#: ../mousepad/mousepad-window.c:481
+#: ../mousepad/mousepad-window.c:488
 msgid "_Fullscreen"
 msgstr "_Tam ekran"
 
-#: ../mousepad/mousepad-window.c:481 ../mousepad/mousepad-window.c:5026
+#: ../mousepad/mousepad-window.c:488 ../mousepad/mousepad-window.c:5173
 msgid "Make the window fullscreen"
 msgstr "Pencereyi tam ekran yap"
 
-#: ../mousepad/mousepad-window.c:482
+#: ../mousepad/mousepad-window.c:489
 msgid "_Auto Indent"
 msgstr "_Otomatik Girinti"
 
-#: ../mousepad/mousepad-window.c:482
+#: ../mousepad/mousepad-window.c:489
 msgid "Auto indent a new line"
 msgstr "Yeni bir satırı kendiliğinden girintile"
 
-#: ../mousepad/mousepad-window.c:483
+#: ../mousepad/mousepad-window.c:490
 msgid "Insert _Spaces"
 msgstr "_Boşluk Ekle"
 
-#: ../mousepad/mousepad-window.c:483
+#: ../mousepad/mousepad-window.c:490
 msgid "Insert spaces when the tab button is pressed"
 msgstr "Sekme tuşuna basıldığında boşluk ekle"
 
-#: ../mousepad/mousepad-window.c:484
+#: ../mousepad/mousepad-window.c:491
 msgid "_Word Wrap"
 msgstr "_Sözcük Kaydır"
 
-#: ../mousepad/mousepad-window.c:484
+#: ../mousepad/mousepad-window.c:491
 msgid "Toggle breaking lines in between words"
 msgstr "Sözcükler arasında kesme çizgisi kullan"
 
-#: ../mousepad/mousepad-window.c:485
+#: ../mousepad/mousepad-window.c:492
 msgid "Write Unicode _BOM"
 msgstr "Unicode _BOM Yaz"
 
-#: ../mousepad/mousepad-window.c:485
+#: ../mousepad/mousepad-window.c:492
 msgid "Store the byte-order mark in the file"
 msgstr "Byte-sıra işaretini dosyada sakla"
 
-#: ../mousepad/mousepad-window.c:490
+#: ../mousepad/mousepad-window.c:497
 msgid "Unix (_LF)"
 msgstr "Unix (_LF)"
 
-#: ../mousepad/mousepad-window.c:490
+#: ../mousepad/mousepad-window.c:497
 msgid "Set the line ending of the document to Unix (LF)"
 msgstr "Belgenin satır sonunu Unix için ayarla (LF)"
 
-#: ../mousepad/mousepad-window.c:491
+#: ../mousepad/mousepad-window.c:498
 msgid "Mac (_CR)"
 msgstr "Mac (_CR)"
 
-#: ../mousepad/mousepad-window.c:491
+#: ../mousepad/mousepad-window.c:498
 msgid "Set the line ending of the document to Mac (CR)"
 msgstr "Belgenin satır sonunu Mac için ayarla (CR)"
 
-#: ../mousepad/mousepad-window.c:492
+#: ../mousepad/mousepad-window.c:499
 msgid "DOS / Windows (C_R LF)"
 msgstr "DOS / Windows (C_R LF)"
 
-#: ../mousepad/mousepad-window.c:492
+#: ../mousepad/mousepad-window.c:499
 msgid "Set the line ending of the document to DOS / Windows (CR LF)"
 msgstr "Belgenin satır sonunu DOS / Windows için ayarla (CR LF)"
 
 #. add the label with the root warning
-#: ../mousepad/mousepad-window.c:865
+#: ../mousepad/mousepad-window.c:869
 msgid "Warning, you are using the root account, you may harm your system."
 msgstr "Uyarı, kök hesabını kullanıyorsunuz, sisteminize zarar verebilirsiniz."
 
 #. show the warning
-#: ../mousepad/mousepad-window.c:1521
+#: ../mousepad/mousepad-window.c:1557
 msgid "Failed to open the document"
 msgstr "Belge açılamadı"
 
-#: ../mousepad/mousepad-window.c:1718
+#: ../mousepad/mousepad-window.c:1754
 msgid "Read Only"
 msgstr "Salt okunur"
 
-#: ../mousepad/mousepad-window.c:2388
+#: ../mousepad/mousepad-window.c:2424
 #, c-format
 msgid ""
 "No template files found in\n"
 "'%s'"
 msgstr "Şablon dosyaları bulunamadı\n'%s'"
 
+#: ../mousepad/mousepad-window.c:2473
+#, c-format
+msgid ""
+"Missing Templates directory\n"
+"'%s'"
+msgstr "Taslak klasörü yok\n'%s'"
+
 #. create other action
-#: ../mousepad/mousepad-window.c:2504
+#: ../mousepad/mousepad-window.c:2547
 msgid "Set custom tab size"
 msgstr "Özel sekme boyutu belirle"
 
 #. create suitable label for the other menu
-#: ../mousepad/mousepad-window.c:2552
+#: ../mousepad/mousepad-window.c:2595
 #, c-format
 msgid "Ot_her (%d)..."
 msgstr "Diğer (%d)..."
 
 #. set action label
-#: ../mousepad/mousepad-window.c:2563
+#: ../mousepad/mousepad-window.c:2606
 msgid "Ot_her..."
 msgstr "_Diğer..."
 
 #. build description
 #. get the offset length: 'Encoding: '
-#: ../mousepad/mousepad-window.c:2879 ../mousepad/mousepad-window.c:3106
+#: ../mousepad/mousepad-window.c:2989 ../mousepad/mousepad-window.c:3216
 msgid "Charset"
 msgstr "Karakter Seti"
 
-#: ../mousepad/mousepad-window.c:3011
+#: ../mousepad/mousepad-window.c:3121
 #, c-format
 msgid "Open '%s'"
 msgstr "'%s' aç"
 
-#: ../mousepad/mousepad-window.c:3156
+#: ../mousepad/mousepad-window.c:3266
 msgid "Failed to clear the recent history"
 msgstr "Güncel geçmiş temizlenemedi"
 
 #. create an item to inform the user
-#: ../mousepad/mousepad-window.c:3586
+#: ../mousepad/mousepad-window.c:3696
 msgid "No clipboard data"
 msgstr "Panoda veri yok"
 
 #. set error message
-#: ../mousepad/mousepad-window.c:3725
+#: ../mousepad/mousepad-window.c:3835
 msgid "Templates should be UTF-8 valid"
 msgstr "Şablonlar UTF-8 geçerli olmalı"
 
 #. set error message
-#: ../mousepad/mousepad-window.c:3733
+#: ../mousepad/mousepad-window.c:3843
 msgid "Reading the template failed, the menu item has been removed"
 msgstr "Şablon okunamadı, menü nesnesi kaldırıldı"
 
 #. set error message
-#: ../mousepad/mousepad-window.c:3738
+#: ../mousepad/mousepad-window.c:3848
 msgid "Loading the template failed"
 msgstr "Şablon yüklenemedi"
 
 #. create new file chooser dialog
-#: ../mousepad/mousepad-window.c:3763
+#: ../mousepad/mousepad-window.c:3873
 msgid "Open File"
 msgstr "Dosya Aç"
 
-#: ../mousepad/mousepad-window.c:3779
+#: ../mousepad/mousepad-window.c:3889
 msgid "_Encoding:"
 msgstr "_Kodlama:"
 
-#: ../mousepad/mousepad-window.c:3876
+#: ../mousepad/mousepad-window.c:3986
 #, c-format
 msgid ""
 "Failed to open \"%s\" for reading. It will be removed from the document "
@@ -1309,35 +1317,35 @@ msgid ""
 msgstr "\"%s\" okumak için açılamadı. Belge geçmişinden kaldırılacak"
 
 #. show the warning and cleanup
-#: ../mousepad/mousepad-window.c:3880
+#: ../mousepad/mousepad-window.c:3990
 msgid "Failed to open file"
 msgstr "Dosya açılamadı"
 
 #. show the error
-#: ../mousepad/mousepad-window.c:3986 ../mousepad/mousepad-window.c:4109
+#: ../mousepad/mousepad-window.c:4096 ../mousepad/mousepad-window.c:4219
 msgid "Failed to save the document"
 msgstr "Belge kaydedilemedi"
 
 #. create the dialog
-#: ../mousepad/mousepad-window.c:4010
+#: ../mousepad/mousepad-window.c:4120
 msgid "Save As"
 msgstr "Farklı Kaydet"
 
 #. show the error
-#: ../mousepad/mousepad-window.c:4201
+#: ../mousepad/mousepad-window.c:4311
 msgid "Failed to reload the document"
 msgstr "Belge yeniden yüklenemedi"
 
 #. show the error
-#: ../mousepad/mousepad-window.c:4228
+#: ../mousepad/mousepad-window.c:4338
 msgid "Failed to print the document"
 msgstr "Belge yazdırılamadı"
 
-#: ../mousepad/mousepad-window.c:4852
+#: ../mousepad/mousepad-window.c:4962
 msgid "Choose Mousepad Font"
 msgstr "Mousepad Yazı Tipini Seç"
 
-#: ../mousepad/mousepad-window.c:5019
+#: ../mousepad/mousepad-window.c:5166
 msgid "Leave fullscreen mode"
 msgstr "Tam ekran kipinden çık"
 
@@ -1348,6 +1356,21 @@ msgstr "Basit Metin Düzenleyici"
 #: ../mousepad.desktop.in.in.h:3
 msgid "Text Editor"
 msgstr "Metin Düzenleyici"
+
+#: ../mousepad.appdata.xml.in.h:1
+msgid ""
+"Mousepad aims to be an easy-to-use and fast editor. Our target is an editor "
+"for quickly editing text files, not a development environment or an editor "
+"with a huge bunch of plugins."
+msgstr "Mousepad amaç olarak kolay kullanım ve hızlı bir editör olmayı hedefler. Hedefimiz geliştirme ortamı sunmak veya oldukça büyük ve sayıca fazla eklentiye sahip düzenleyici olmaktan ziyade hızlı bir şekilde metin dosyalarını düzenlemektir."
+
+#: ../mousepad.appdata.xml.in.h:2
+msgid ""
+"On the other hand we try to use the latest Gtk+ features available, which "
+"means that if Gtk adds something new in a major release that is useful for "
+"the editor, we will likely bump the Gtk dependency and integrate this new "
+"feature in Mousepad."
+msgstr "Bunun yanında aynı zamanda son Gtk+ yeniliklerini de çıktıkça kullanmaya çalışıyoruz, yani eğer Gtk büyük güncellemeleri ile bizim içinde faydalı bir yenilik ekler ise, bu yeni özellikleri Mousepad'e entegre etme için Gtk gereksinim versiyonunu artırabiliriz."
 
 #. SECURITY:
 #. - A normal active user can run mousepad without elevated rights. They
