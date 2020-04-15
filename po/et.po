@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-12-06 06:31+0100\n"
-"PO-Revision-Date: 2020-04-15 20:33+0000\n"
+"PO-Revision-Date: 2020-04-15 21:01+0000\n"
 "Last-Translator: Priit Jõerüüt <transifex@joeruut.com>\n"
 "Language-Team: Estonian (http://www.transifex.com/xfce/xfce-apps/language/et/)\n"
 "MIME-Version: 1.0\n"
@@ -70,12 +70,12 @@ msgstr ""
 #. build dialog
 #: ../mousepad/mousepad-dialogs.c:119
 msgid "Select Tab Size"
-msgstr ""
+msgstr "Vali tabulaatori samm"
 
 #. build the dialog
 #: ../mousepad/mousepad-dialogs.c:200
 msgid "Go To"
-msgstr ""
+msgstr "Mine reale"
 
 #: ../mousepad/mousepad-dialogs.c:222
 msgid "_Line number:"
@@ -159,7 +159,7 @@ msgstr ""
 #. encoding radio buttons
 #: ../mousepad/mousepad-encoding-dialog.c:144
 msgid "Default (UTF-8)"
-msgstr ""
+msgstr "Vaikimisi (UTF-8)"
 
 #: ../mousepad/mousepad-encoding-dialog.c:150
 msgid "System"
@@ -171,7 +171,7 @@ msgstr ""
 
 #: ../mousepad/mousepad-encoding-dialog.c:177
 msgid "Checking encodings..."
-msgstr ""
+msgstr "Kontrollin kodeeringuid..."
 
 #. west european
 #: ../mousepad/mousepad-encoding.c:25
@@ -193,7 +193,7 @@ msgstr "Lõuna-Euroopa"
 #: ../mousepad/mousepad-encoding.c:30 ../mousepad/mousepad-encoding.c:31
 #: ../mousepad/mousepad-encoding.c:32 ../mousepad/mousepad-encoding.c:33
 msgid "Western"
-msgstr ""
+msgstr "Lääne"
 
 #. east european
 #: ../mousepad/mousepad-encoding.c:36 ../mousepad/mousepad-encoding.c:37
@@ -210,15 +210,15 @@ msgstr "Kesk-Euroopa"
 #: ../mousepad/mousepad-encoding.c:44 ../mousepad/mousepad-encoding.c:45
 #: ../mousepad/mousepad-encoding.c:46
 msgid "Cyrillic"
-msgstr ""
+msgstr "Kirillitsa"
 
 #: ../mousepad/mousepad-encoding.c:47
 msgid "Cyrillic/Russian"
-msgstr ""
+msgstr "Vene kirillitsa"
 
 #: ../mousepad/mousepad-encoding.c:48
 msgid "Cyrillic/Ukrainian"
-msgstr ""
+msgstr "Ukraina kirillitsa"
 
 #: ../mousepad/mousepad-encoding.c:49
 msgid "Romanian"
@@ -237,7 +237,7 @@ msgstr "Heebrea"
 
 #: ../mousepad/mousepad-encoding.c:58
 msgid "Hebrew Visual"
-msgstr ""
+msgstr "Visuaalne heebrea"
 
 #. asian
 #: ../mousepad/mousepad-encoding.c:61
@@ -407,7 +407,7 @@ msgstr "Näita realõpumärke"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:22
 msgid "Long line margin at column:"
-msgstr ""
+msgstr "Pika rea märge veerus:"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:23
 msgid "Highlight current line"
@@ -435,7 +435,7 @@ msgstr ""
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:29
 msgid "<b>Colour scheme</b>"
-msgstr ""
+msgstr "<b>Värviskeem</b>"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:30
 msgid "View"
@@ -601,7 +601,7 @@ msgstr "_Otsingusõna"
 
 #: ../mousepad/mousepad-replace-dialog.c:183
 msgid "Replace _with:"
-msgstr ""
+msgstr "Asen_dus:"
 
 #: ../mousepad/mousepad-replace-dialog.c:203
 msgid "Search _direction:"
@@ -609,7 +609,7 @@ msgstr "Otsin_gusuund:"
 
 #: ../mousepad/mousepad-replace-dialog.c:212
 msgid "Up"
-msgstr ""
+msgstr "Üles"
 
 #: ../mousepad/mousepad-replace-dialog.c:213
 msgid "Down"
@@ -617,21 +617,21 @@ msgstr "Alla"
 
 #: ../mousepad/mousepad-replace-dialog.c:214
 msgid "Both"
-msgstr ""
+msgstr "Mõlemas suunas"
 
 #. case sensitive
 #: ../mousepad/mousepad-replace-dialog.c:223
 msgid "Case sensi_tive"
-msgstr ""
+msgstr "Tõstutundl_ik"
 
 #. match whole word
 #: ../mousepad/mousepad-replace-dialog.c:230
 msgid "_Match whole word"
-msgstr ""
+msgstr "Ainult terved sõnad"
 
 #: ../mousepad/mousepad-replace-dialog.c:241
 msgid "Replace _all in:"
-msgstr ""
+msgstr "Kus _asendame:"
 
 #: ../mousepad/mousepad-replace-dialog.c:249
 msgid "Selection"
@@ -893,11 +893,11 @@ msgstr "Vali terve dokumendi tekst"
 
 #: ../mousepad/mousepad-window.c:441
 msgid "Change the selection"
-msgstr ""
+msgstr "Muuda valikut"
 
 #: ../mousepad/mousepad-window.c:441
 msgid "Change a normal selection into a column selection and vice versa"
-msgstr ""
+msgstr "Muuda tavavalik veeruvalikuks ja vastupidi"
 
 #: ../mousepad/mousepad-window.c:442
 msgid "Conve_rt"
@@ -1050,11 +1050,11 @@ msgstr "Otsi ja asenda teksti"
 
 #: ../mousepad/mousepad-window.c:464
 msgid "_Go to..."
-msgstr ""
+msgstr "_Mine reale..."
 
 #: ../mousepad/mousepad-window.c:464
 msgid "Go to a specific location in the document"
-msgstr ""
+msgstr "Mine dokumendi kindlale reale või veergu"
 
 #: ../mousepad/mousepad-window.c:466
 msgid "_View"
