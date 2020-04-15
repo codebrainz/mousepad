@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-12-06 06:31+0100\n"
-"PO-Revision-Date: 2020-04-15 21:01+0000\n"
+"PO-Revision-Date: 2020-04-15 21:44+0000\n"
 "Last-Translator: Priit Jõerüüt <transifex@joeruut.com>\n"
 "Language-Team: Estonian (http://www.transifex.com/xfce/xfce-apps/language/et/)\n"
 "MIME-Version: 1.0\n"
@@ -33,7 +33,7 @@ msgstr ""
 #. default application name
 #: ../mousepad/main.c:69 ../mousepad.desktop.in.in.h:1
 msgid "Mousepad"
-msgstr ""
+msgstr "Mousepad"
 
 #. initialize gtk+
 #: ../mousepad/main.c:83
@@ -167,7 +167,7 @@ msgstr ""
 
 #: ../mousepad/mousepad-encoding-dialog.c:157
 msgid "Other:"
-msgstr ""
+msgstr "Muu:"
 
 #: ../mousepad/mousepad-encoding-dialog.c:177
 msgid "Checking encodings..."
@@ -308,7 +308,7 @@ msgstr ""
 
 #: ../mousepad/mousepad-language-action.c:230
 msgid "Plain Text"
-msgstr ""
+msgstr "Lihttekst"
 
 #: ../mousepad/mousepad-language-action.c:231
 msgid "No filetype"
@@ -635,7 +635,7 @@ msgstr "Kus _asendame:"
 
 #: ../mousepad/mousepad-replace-dialog.c:249
 msgid "Selection"
-msgstr ""
+msgstr "Valik"
 
 #: ../mousepad/mousepad-replace-dialog.c:250
 msgid "Document"
@@ -688,7 +688,7 @@ msgstr "Faili tüüp: teadmata"
 
 #: ../mousepad/mousepad-statusbar.c:168
 msgid "Toggle the overwrite mode"
-msgstr ""
+msgstr "Lülita ülekirjutamise režiim sisse-välja"
 
 #. overwrite label
 #: ../mousepad/mousepad-statusbar.c:173
@@ -853,11 +853,11 @@ msgstr "Korda viimast tagasivõetud tegevust"
 
 #: ../mousepad/mousepad-window.c:433
 msgid "Cut the selection"
-msgstr ""
+msgstr "Lõika valik"
 
 #: ../mousepad/mousepad-window.c:434
 msgid "Copy the selection"
-msgstr ""
+msgstr "Kopeeri valik"
 
 #: ../mousepad/mousepad-window.c:435
 msgid "Paste the clipboard"
@@ -885,7 +885,7 @@ msgstr "Aseta lõikepuhvri tekst veeruna"
 
 #: ../mousepad/mousepad-window.c:439
 msgid "Delete the current selection"
-msgstr ""
+msgstr "Kustuta valik"
 
 #: ../mousepad/mousepad-window.c:440
 msgid "Select the text in the entire document"
@@ -893,7 +893,7 @@ msgstr "Vali terve dokumendi tekst"
 
 #: ../mousepad/mousepad-window.c:441
 msgid "Change the selection"
-msgstr "Muuda valikut"
+msgstr "Muuda valiku tüüpi"
 
 #: ../mousepad/mousepad-window.c:441
 msgid "Change a normal selection into a column selection and vice versa"
@@ -970,7 +970,7 @@ msgstr ""
 
 #: ../mousepad/mousepad-window.c:451
 msgid "_Move Selection"
-msgstr ""
+msgstr "_Liiguta valik"
 
 #: ../mousepad/mousepad-window.c:452
 msgid "Line _Up"
@@ -990,11 +990,11 @@ msgstr "Tõsta valik ühe rea võrra alla"
 
 #: ../mousepad/mousepad-window.c:454
 msgid "Dup_licate Line / Selection"
-msgstr ""
+msgstr "Dubleeri rida või valik"
 
 #: ../mousepad/mousepad-window.c:454
 msgid "Duplicate the current line or selection"
-msgstr ""
+msgstr "Tee praegusest reast või valikust automaatne koopia"
 
 #: ../mousepad/mousepad-window.c:455
 msgid "_Increase Indent"
@@ -1078,7 +1078,7 @@ msgstr "_Dokument"
 
 #: ../mousepad/mousepad-window.c:471
 msgid "Line E_nding"
-msgstr ""
+msgstr "Rea _lõpumärk"
 
 #: ../mousepad/mousepad-window.c:472
 msgid "Tab _Size"
@@ -1122,15 +1122,15 @@ msgstr ""
 
 #: ../mousepad/mousepad-window.c:484
 msgid "Line N_umbers"
-msgstr ""
+msgstr "Rea_numbrid"
 
 #: ../mousepad/mousepad-window.c:485
 msgid "_Menubar"
-msgstr ""
+msgstr "_Menüüriba"
 
 #: ../mousepad/mousepad-window.c:485
 msgid "Change the visibility of the main menubar"
-msgstr ""
+msgstr "Määra, kas menüüriba on kuvatud või mitte"
 
 #: ../mousepad/mousepad-window.c:486
 msgid "_Toolbar"
@@ -1138,15 +1138,15 @@ msgstr "_Tööriistariba"
 
 #: ../mousepad/mousepad-window.c:486
 msgid "Change the visibility of the toolbar"
-msgstr "Muuda tööriistariba nähtavust"
+msgstr "Määra, kas tööriistariba on kuvatud või mitte"
 
 #: ../mousepad/mousepad-window.c:487
 msgid "St_atusbar"
-msgstr ""
+msgstr "St_aatuseriba"
 
 #: ../mousepad/mousepad-window.c:487
 msgid "Change the visibility of the statusbar"
-msgstr ""
+msgstr "Määra, kas staatuseriba on kuvatud või mitte"
 
 #: ../mousepad/mousepad-window.c:488
 msgid "_Fullscreen"
@@ -1182,11 +1182,11 @@ msgstr ""
 
 #: ../mousepad/mousepad-window.c:492
 msgid "Write Unicode _BOM"
-msgstr "Salvesta Unicode _baidijärjestuse tähis (BOM)"
+msgstr "Salvesta Unicode _BOM"
 
 #: ../mousepad/mousepad-window.c:492
 msgid "Store the byte-order mark in the file"
-msgstr "Salvesta faili baidijärjestuse tähis"
+msgstr "Salvesta faili algusesse Unicode baidijärjestuse tähis (BOM)"
 
 #: ../mousepad/mousepad-window.c:497
 msgid "Unix (_LF)"
@@ -1194,7 +1194,7 @@ msgstr ""
 
 #: ../mousepad/mousepad-window.c:497
 msgid "Set the line ending of the document to Unix (LF)"
-msgstr ""
+msgstr "Määra selles dokumendis rea lõpumärgiks LF (Unix)"
 
 #: ../mousepad/mousepad-window.c:498
 msgid "Mac (_CR)"
@@ -1202,7 +1202,7 @@ msgstr ""
 
 #: ../mousepad/mousepad-window.c:498
 msgid "Set the line ending of the document to Mac (CR)"
-msgstr ""
+msgstr "Määra selles dokumendis rea lõpumärgiks CR (Mac)"
 
 #: ../mousepad/mousepad-window.c:499
 msgid "DOS / Windows (C_R LF)"
@@ -1210,7 +1210,7 @@ msgstr ""
 
 #: ../mousepad/mousepad-window.c:499
 msgid "Set the line ending of the document to DOS / Windows (CR LF)"
-msgstr ""
+msgstr "Määra selles dokumendis rea lõpumärgiks CR LF (DOS/Windows)"
 
 #. add the label with the root warning
 #: ../mousepad/mousepad-window.c:869
