@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-12-06 06:31+0100\n"
-"PO-Revision-Date: 2020-04-15 21:44+0000\n"
+"PO-Revision-Date: 2020-04-15 22:43+0000\n"
 "Last-Translator: Priit Jõerüüt <transifex@joeruut.com>\n"
 "Language-Team: Estonian (http://www.transifex.com/xfce/xfce-apps/language/et/)\n"
 "MIME-Version: 1.0\n"
@@ -83,7 +83,7 @@ msgstr "_Reanumber:"
 
 #: ../mousepad/mousepad-dialogs.c:241
 msgid "C_olumn number:"
-msgstr ""
+msgstr "V_eeru number:"
 
 #: ../mousepad/mousepad-dialogs.c:299
 msgid "Remove all entries from the documents history?"
@@ -154,7 +154,7 @@ msgstr "See dokument ei ole korrektses UTF-8 kodeeringus"
 
 #: ../mousepad/mousepad-encoding-dialog.c:132
 msgid "Please select an encoding below."
-msgstr ""
+msgstr "Palun vali alljärgnevast kodeering"
 
 #. encoding radio buttons
 #: ../mousepad/mousepad-encoding-dialog.c:144
@@ -304,7 +304,7 @@ msgstr ""
 #: ../mousepad/mousepad-file.c:944
 #, c-format
 msgid "Failed to read the status of \"%s\""
-msgstr ""
+msgstr "Ei õnnestunud lugeda \"%s\" staatust"
 
 #: ../mousepad/mousepad-language-action.c:230
 msgid "Plain Text"
@@ -536,7 +536,7 @@ msgstr ""
 
 #: ../mousepad/mousepad-print.c:610
 msgid "_Adjust page size and orientation"
-msgstr ""
+msgstr "Koh_anda lehe mõõtu ja paigutust"
 
 #: ../mousepad/mousepad-print.c:620
 msgid "Appearance"
@@ -544,7 +544,7 @@ msgstr "Välimus"
 
 #: ../mousepad/mousepad-print.c:634
 msgid "Print page _headers"
-msgstr ""
+msgstr "Trüki lehe päiserida"
 
 #: ../mousepad/mousepad-print.c:641
 msgid "Print _line numbers"
@@ -552,18 +552,18 @@ msgstr "Trüki _reanumbrid"
 
 #: ../mousepad/mousepad-print.c:658
 msgid "Numbering interval:"
-msgstr ""
+msgstr "Reanumbrite intervall:"
 
 #: ../mousepad/mousepad-print.c:666
 msgid ""
 "The interval at which to print line numbers. For example a value of 1 will "
 "print a line number on each line, a value of 2 will print a line number on "
 "every other line, and so on."
-msgstr ""
+msgstr "Intervall reanumbrite trükkimiseks. Näiteks kui väärtus on 1, siis trükitakse kõik reanumbrid, kui väärtus on 2, siis trükitakse iga teise rea numbrid, jne."
 
 #: ../mousepad/mousepad-print.c:678
 msgid "Enable text _wrapping"
-msgstr ""
+msgstr "Luba ridade murdmine"
 
 #: ../mousepad/mousepad-print.c:685
 msgid "Enable _syntax highlighting"
@@ -575,7 +575,7 @@ msgstr ""
 
 #: ../mousepad/mousepad-print.c:719
 msgid "Header:"
-msgstr ""
+msgstr "Päis:"
 
 #: ../mousepad/mousepad-print.c:729
 msgid "Body:"
@@ -757,11 +757,11 @@ msgstr ""
 
 #: ../mousepad/mousepad-window.c:417
 msgid "_Open..."
-msgstr ""
+msgstr "_Ava..."
 
 #: ../mousepad/mousepad-window.c:417
 msgid "Open a file"
-msgstr ""
+msgstr "Ava fail"
 
 #: ../mousepad/mousepad-window.c:418
 msgid "Op_en Recent"
@@ -901,72 +901,72 @@ msgstr "Muuda tavavalik veeruvalikuks ja vastupidi"
 
 #: ../mousepad/mousepad-window.c:442
 msgid "Conve_rt"
-msgstr ""
+msgstr "Muuda teksti välimust"
 
 #: ../mousepad/mousepad-window.c:443
 msgid "To _Uppercase"
-msgstr ""
+msgstr "Muuda _suurtähtedeks"
 
 #: ../mousepad/mousepad-window.c:443
 msgid "Change the case of the selection to uppercase"
-msgstr ""
+msgstr "Muuda valitud tekstis sõnade tähed suurtähtedeks"
 
 #: ../mousepad/mousepad-window.c:444
 msgid "To _Lowercase"
-msgstr ""
+msgstr "Muuda _väiketähtedeks"
 
 #: ../mousepad/mousepad-window.c:444
 msgid "Change the case of the selection to lowercase"
-msgstr ""
+msgstr "Muuda valitud tekstis sõnade tähed väiketähtedeks"
 
 #: ../mousepad/mousepad-window.c:445
 msgid "To _Title Case"
-msgstr ""
+msgstr "Muuda sõnade _esitähed suureks"
 
 #: ../mousepad/mousepad-window.c:445
 msgid "Change the case of the selection to title case"
-msgstr ""
+msgstr "Muuda valitud tekstis sõnade esitähed suureks"
 
 #: ../mousepad/mousepad-window.c:446
 msgid "To _Opposite Case"
-msgstr ""
+msgstr "Muuda va_standtähtedeks"
 
 #: ../mousepad/mousepad-window.c:446
 msgid "Change the case of the selection opposite case"
-msgstr ""
+msgstr "Muuda valitud tekstis sõnade tähed vastandtähtedeks"
 
 #: ../mousepad/mousepad-window.c:447
 msgid "_Tabs to Spaces"
-msgstr ""
+msgstr "Muuda _tabulaatorid tühikuteks"
 
 #: ../mousepad/mousepad-window.c:447
 msgid "Convert all tabs to spaces in the selection or document"
-msgstr ""
+msgstr "Muuda valitud ridade või kõikide ridade kõik taandrea tabulaatorid tühikuteks"
 
 #: ../mousepad/mousepad-window.c:448
 msgid "_Spaces to Tabs"
-msgstr ""
+msgstr "Muuda tühikud tabulaatoritek_s"
 
 #: ../mousepad/mousepad-window.c:448
 msgid ""
 "Convert all the leading spaces to tabs in the selected line(s) or document"
-msgstr ""
+msgstr "Muuda valitud ridade või kõikide ridade kõik taandrea tühikud tabulaatoriteks"
 
 #: ../mousepad/mousepad-window.c:449
 msgid "St_rip Trailing Spaces"
-msgstr ""
+msgstr "Eemalda lõputühikud"
 
 #: ../mousepad/mousepad-window.c:449
 msgid "Remove all the trailing spaces from the selected line(s) or document"
-msgstr ""
+msgstr "Eemalda tühikud valitud ridade või kõikide ridade lõpust"
 
 #: ../mousepad/mousepad-window.c:450
 msgid "_Transpose"
-msgstr ""
+msgstr "_Transponeeri"
 
 #: ../mousepad/mousepad-window.c:450
 msgid "Reverse the order of something"
-msgstr ""
+msgstr "Transponeeri teksti ehk pööra järjekord vastupidiseks"
 
 #: ../mousepad/mousepad-window.c:451
 msgid "_Move Selection"
@@ -1014,7 +1014,7 @@ msgstr "Vähenda valiku või ühe rea taandrida"
 
 #: ../mousepad/mousepad-window.c:457
 msgid "Show the preferences dialog"
-msgstr ""
+msgstr "Näidatakse eelistuste dialoogi"
 
 #: ../mousepad/mousepad-window.c:459
 msgid "_Search"
@@ -1265,7 +1265,7 @@ msgstr ""
 #: ../mousepad/mousepad-window.c:3121
 #, c-format
 msgid "Open '%s'"
-msgstr ""
+msgstr "Ava '%s'"
 
 #: ../mousepad/mousepad-window.c:3266
 msgid "Failed to clear the recent history"
@@ -1294,7 +1294,7 @@ msgstr ""
 #. create new file chooser dialog
 #: ../mousepad/mousepad-window.c:3873
 msgid "Open File"
-msgstr ""
+msgstr "Ava fail"
 
 #: ../mousepad/mousepad-window.c:3889
 msgid "_Encoding:"
@@ -1310,7 +1310,7 @@ msgstr "Ei õnnestunud avada faili \"%s\". Eemaldame ta dokumentide ajaloost."
 #. show the warning and cleanup
 #: ../mousepad/mousepad-window.c:3990
 msgid "Failed to open file"
-msgstr ""
+msgstr "Faili avamine ebaõnnestus"
 
 #. show the error
 #: ../mousepad/mousepad-window.c:4096 ../mousepad/mousepad-window.c:4219
