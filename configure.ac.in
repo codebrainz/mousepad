@@ -17,7 +17,7 @@ m4_define([mousepad_debug_default], [ifelse(mousepad_version_tag(), [git], [yes]
 dnl ***************************
 dnl *** Initialize autoconf ***
 dnl ***************************
-AC_COPYRIGHT([Copyright (c) 2007-2010
+AC_COPYRIGHT([Copyright (c) 2007-2020
         The Xfce development team. All rights reserved.])
 AC_INIT([Mousepad], [mousepad_version], [https://bugzilla.xfce.org/], [mousepad])
 AC_PREREQ([2.50])
@@ -142,20 +142,6 @@ AS_IF([test "x$enable_dbus" = "xyes"],
   XDT_CHECK_PACKAGE([GIO_UNIX], [gio-unix-2.0], [2.42.0])
   AC_PATH_PROG([GDBUS_CODEGEN], [gdbus-codegen])
   AC_DEFINE([HAVE_DBUS], [1], [Define if DBUS support is enabled])
-])
-
-dnl ***************************************************
-dnl *** Check for tools required in maintainer mode ***
-dnl ***************************************************
-AS_IF([test "x$USE_MAINTAINER_MODE" = "xyes"],
-[
-  AC_PATH_PROG([EXO_CSOURCE], [exo-csource])
-  AS_IF([test -z "$EXO_CSOURCE"],
-  [
-    echo '*** The program "exo-csource" is required to build when --enable-maintainer-mode'
-    echo '*** is specified.'
-    exit 1
-  ])
 ])
 
 dnl ***********************************
