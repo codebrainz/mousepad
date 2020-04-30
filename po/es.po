@@ -16,7 +16,7 @@ msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-12-06 06:31+0100\n"
-"PO-Revision-Date: 2020-04-21 01:40+0000\n"
+"PO-Revision-Date: 2020-04-30 16:29+0000\n"
 "Last-Translator: Ignacio Poggi <ignaciop.3@gmail.com>\n"
 "Language-Team: Spanish (http://www.transifex.com/xfce/xfce-apps/language/es/)\n"
 "MIME-Version: 1.0\n"
@@ -936,7 +936,7 @@ msgstr "Cambiar el tipo de la selección a la del título"
 
 #: ../mousepad/mousepad-window.c:446
 msgid "To _Opposite Case"
-msgstr "A tipo de caso contrario"
+msgstr "A tipo contrario"
 
 #: ../mousepad/mousepad-window.c:446
 msgid "Change the case of the selection opposite case"
