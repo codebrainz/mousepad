@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-12-06 06:31+0100\n"
-"PO-Revision-Date: 2020-04-18 23:04+0000\n"
+"PO-Revision-Date: 2020-05-04 16:11+0000\n"
 "Last-Translator: Priit Jõerüüt <transifex@joeruut.com>\n"
 "Language-Team: Estonian (http://www.transifex.com/xfce/xfce-apps/language/et/)\n"
 "MIME-Version: 1.0\n"
@@ -28,7 +28,7 @@ msgstr ""
 
 #: ../mousepad/main.c:47
 msgid "Print version information and exit"
-msgstr ""
+msgstr "Kuva versiooniteavet ja lõpeta töö"
 
 #. default application name
 #: ../mousepad/main.c:69 ../mousepad.desktop.in.in.h:1
@@ -38,7 +38,7 @@ msgstr "Mousepad"
 #. initialize gtk+
 #: ../mousepad/main.c:83
 msgid "[FILES...]"
-msgstr ""
+msgstr "[FAILID...]"
 
 #. no error message, the gui initialization failed
 #: ../mousepad/main.c:89
@@ -532,7 +532,7 @@ msgstr "Dokumendi seaded"
 
 #: ../mousepad/mousepad-print.c:600
 msgid "Page Setup"
-msgstr ""
+msgstr "Lehe paigutus"
 
 #: ../mousepad/mousepad-print.c:610
 msgid "_Adjust page size and orientation"
@@ -571,7 +571,7 @@ msgstr "Luba süntaksi esiletõstmine"
 
 #: ../mousepad/mousepad-print.c:697
 msgid "Fonts"
-msgstr ""
+msgstr "Fondid"
 
 #: ../mousepad/mousepad-print.c:719
 msgid "Header:"
@@ -579,7 +579,7 @@ msgstr "Päis:"
 
 #: ../mousepad/mousepad-print.c:729
 msgid "Body:"
-msgstr ""
+msgstr "Põhitekst:"
 
 #: ../mousepad/mousepad-print.c:739
 msgid "Line numbers:"
@@ -649,8 +649,8 @@ msgstr "Kõik dokumendid"
 #, c-format
 msgid "%d occurrence"
 msgid_plural "%d occurrences"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%d ilming"
+msgstr[1] "%d ilmingut"
 
 #: ../mousepad/mousepad-replace-dialog.c:443
 msgid "_Replace All"
@@ -729,7 +729,7 @@ msgstr ""
 #: ../mousepad/mousepad-util.c:595
 #, c-format
 msgid "Failed to store the preferences to \"%s\": %s"
-msgstr ""
+msgstr "Eelistuste salvestamine ebaõnnestus \"%s\": %s"
 
 #: ../mousepad/mousepad-window.c:413
 msgid "_File"
@@ -1231,14 +1231,14 @@ msgstr "Kirjutuskaitstud"
 msgid ""
 "No template files found in\n"
 "'%s'"
-msgstr ""
+msgstr "Ei leidnud malli asukohast\n'%s'"
 
 #: ../mousepad/mousepad-window.c:2473
 #, c-format
 msgid ""
 "Missing Templates directory\n"
 "'%s'"
-msgstr ""
+msgstr "Puudub mallide kaust\n'%s'"
 
 #. create other action
 #: ../mousepad/mousepad-window.c:2547
@@ -1269,7 +1269,7 @@ msgstr "Ava '%s'"
 
 #: ../mousepad/mousepad-window.c:3266
 msgid "Failed to clear the recent history"
-msgstr ""
+msgstr "Viimati avatud failide ajaloo kustutamine ei õnnestunud"
 
 #. create an item to inform the user
 #: ../mousepad/mousepad-window.c:3696
@@ -1284,7 +1284,7 @@ msgstr "Mallid peavad olema koostatud korrektses UTF-8 kodeeringus"
 #. set error message
 #: ../mousepad/mousepad-window.c:3843
 msgid "Reading the template failed, the menu item has been removed"
-msgstr ""
+msgstr "Malli ei õnnestunud lugeda ja see valik on menüüdt ka eemaldatud"
 
 #. set error message
 #: ../mousepad/mousepad-window.c:3848
@@ -1298,7 +1298,7 @@ msgstr "Ava fail"
 
 #: ../mousepad/mousepad-window.c:3889
 msgid "_Encoding:"
-msgstr ""
+msgstr "Kod_eering:"
 
 #: ../mousepad/mousepad-window.c:3986
 #, c-format
@@ -1334,7 +1334,7 @@ msgstr "Dokumendi trükkimine ebaõnnestus"
 
 #: ../mousepad/mousepad-window.c:4962
 msgid "Choose Mousepad Font"
-msgstr ""
+msgstr "Vali Mousepad'i font"
 
 #: ../mousepad/mousepad-window.c:5166
 msgid "Leave fullscreen mode"
