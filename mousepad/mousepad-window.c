@@ -868,7 +868,7 @@ mousepad_window_create_root_warning (MousepadWindow *window)
       gtk_widget_show (ebox);
 
       /* add the label with the root warning */
-      label = gtk_label_new (_("Warning, you are using the root account, you may harm your system."));
+      label = gtk_label_new (_("Warning: you are using the root account. You may harm your system."));
       gtk_misc_set_padding (GTK_MISC (label), 6, 3);
       gtk_container_add (GTK_CONTAINER (ebox), label);
       gtk_widget_show (label);
