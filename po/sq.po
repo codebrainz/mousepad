@@ -3,14 +3,15 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
-# Besnik <besnik@programeshqip.org>, 2018-2019
+# Besnik Bleta <besnik@programeshqip.org>, 2020
+# Besnik Bleta <besnik@programeshqip.org>, 2018-2019
 msgid ""
 msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-12-06 06:31+0100\n"
-"PO-Revision-Date: 2020-01-27 11:50+0000\n"
-"Last-Translator: Besnik <besnik@programeshqip.org>\n"
+"POT-Creation-Date: 2020-05-07 12:47+0200\n"
+"PO-Revision-Date: 2020-05-08 07:09+0000\n"
+"Last-Translator: Besnik Bleta <besnik@programeshqip.org>\n"
 "Language-Team: Albanian (http://www.transifex.com/xfce/xfce-apps/language/sq/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -291,17 +292,17 @@ msgstr "Japoneze"
 msgid "Korean"
 msgstr "Koreane"
 
-#: ../mousepad/mousepad-file.c:559
+#: ../mousepad/mousepad-file.c:568
 #, c-format
 msgid "Invalid byte sequence in conversion input"
 msgstr "Sekuencë e pavlefshme bajtesh në input shndërrimi"
 
-#: ../mousepad/mousepad-file.c:903
+#: ../mousepad/mousepad-file.c:912
 #, c-format
 msgid "The file \"%s\" you tried to reload does not exist anymore"
 msgstr "Kartela \"%s\" që provuat të ringarkoni, s’ekziston më"
 
-#: ../mousepad/mousepad-file.c:944
+#: ../mousepad/mousepad-file.c:953
 #, c-format
 msgid "Failed to read the status of \"%s\""
 msgstr "Dështoi leximi i gjendjes së \"%s\""
@@ -407,7 +408,7 @@ msgstr "Shfaq funde rreshtash"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:22
 msgid "Long line margin at column:"
-msgstr ""
+msgstr "Mënjanë e madhe rreshti te shtylla:"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:23
 msgid "Highlight current line"
@@ -1152,7 +1153,7 @@ msgstr "Ndryshoni dukshmërinë e shtyllës së gjendjeve"
 msgid "_Fullscreen"
 msgstr "_Sa krejt ekrani"
 
-#: ../mousepad/mousepad-window.c:488 ../mousepad/mousepad-window.c:5173
+#: ../mousepad/mousepad-window.c:488 ../mousepad/mousepad-window.c:5200
 msgid "Make the window fullscreen"
 msgstr "Hape dritaren sa krejt ekrani"
 
@@ -1213,27 +1214,27 @@ msgid "Set the line ending of the document to DOS / Windows (CR LF)"
 msgstr "Caktoni si fund rreshtash për dokumentin atë DOS / Windows (CR LF)"
 
 #. add the label with the root warning
-#: ../mousepad/mousepad-window.c:869
-msgid "Warning, you are using the root account, you may harm your system."
+#: ../mousepad/mousepad-window.c:871
+msgid "Warning: you are using the root account. You may harm your system."
 msgstr "Kujdes, po përdorni llogarinë rrënjë, mund të dëmtoni sistemin tuaj."
 
 #. show the warning
-#: ../mousepad/mousepad-window.c:1557
+#: ../mousepad/mousepad-window.c:1572
 msgid "Failed to open the document"
 msgstr "S’u arrit të hapej dokumenti"
 
-#: ../mousepad/mousepad-window.c:1754
+#: ../mousepad/mousepad-window.c:1769
 msgid "Read Only"
 msgstr "Vetëm i Lexueshëm"
 
-#: ../mousepad/mousepad-window.c:2424
+#: ../mousepad/mousepad-window.c:2439
 #, c-format
 msgid ""
 "No template files found in\n"
 "'%s'"
 msgstr "S’u gjetën kartela gjedhe te\n'%s'"
 
-#: ../mousepad/mousepad-window.c:2473
+#: ../mousepad/mousepad-window.c:2492
 #, c-format
 msgid ""
 "Missing Templates directory\n"
@@ -1241,66 +1242,66 @@ msgid ""
 msgstr "Mungon Drejtori Gjedhesh\n'%s'"
 
 #. create other action
-#: ../mousepad/mousepad-window.c:2547
+#: ../mousepad/mousepad-window.c:2566
 msgid "Set custom tab size"
 msgstr "Caktoni madhësi vetjake tabulacionesh"
 
 #. create suitable label for the other menu
-#: ../mousepad/mousepad-window.c:2595
+#: ../mousepad/mousepad-window.c:2614
 #, c-format
 msgid "Ot_her (%d)..."
 msgstr "_Tjetër (%d)…"
 
 #. set action label
-#: ../mousepad/mousepad-window.c:2606
+#: ../mousepad/mousepad-window.c:2625
 msgid "Ot_her..."
 msgstr "_Tjetër…"
 
 #. build description
 #. get the offset length: 'Encoding: '
-#: ../mousepad/mousepad-window.c:2989 ../mousepad/mousepad-window.c:3216
+#: ../mousepad/mousepad-window.c:3008 ../mousepad/mousepad-window.c:3235
 msgid "Charset"
 msgstr "Shkronja"
 
-#: ../mousepad/mousepad-window.c:3121
+#: ../mousepad/mousepad-window.c:3140
 #, c-format
 msgid "Open '%s'"
 msgstr "Hap '%s'"
 
-#: ../mousepad/mousepad-window.c:3266
+#: ../mousepad/mousepad-window.c:3285
 msgid "Failed to clear the recent history"
 msgstr "S’u arrit të spastrohej historiku së fundi"
 
 #. create an item to inform the user
-#: ../mousepad/mousepad-window.c:3696
+#: ../mousepad/mousepad-window.c:3715
 msgid "No clipboard data"
 msgstr "S’ka të dhëna në të papastër"
 
 #. set error message
-#: ../mousepad/mousepad-window.c:3835
+#: ../mousepad/mousepad-window.c:3854
 msgid "Templates should be UTF-8 valid"
 msgstr "Gjedhet duhet të jenë nën UTF-8"
 
 #. set error message
-#: ../mousepad/mousepad-window.c:3843
+#: ../mousepad/mousepad-window.c:3862
 msgid "Reading the template failed, the menu item has been removed"
 msgstr "Dështoi leximi i gjedhes, elementi i menusë është hequr"
 
 #. set error message
-#: ../mousepad/mousepad-window.c:3848
+#: ../mousepad/mousepad-window.c:3867
 msgid "Loading the template failed"
 msgstr "Ngarkimi i gjedhes dështoi"
 
 #. create new file chooser dialog
-#: ../mousepad/mousepad-window.c:3873
+#: ../mousepad/mousepad-window.c:3892
 msgid "Open File"
 msgstr "Hapni Kartelë"
 
-#: ../mousepad/mousepad-window.c:3889
+#: ../mousepad/mousepad-window.c:3908
 msgid "_Encoding:"
 msgstr "_Kodim:"
 
-#: ../mousepad/mousepad-window.c:3986
+#: ../mousepad/mousepad-window.c:4005
 #, c-format
 msgid ""
 "Failed to open \"%s\" for reading. It will be removed from the document "
@@ -1308,35 +1309,35 @@ msgid ""
 msgstr "S’u arrit të hapej \"%s\" për lexim. Do të hiqet nga historiku i dokumentit"
 
 #. show the warning and cleanup
-#: ../mousepad/mousepad-window.c:3990
+#: ../mousepad/mousepad-window.c:4009
 msgid "Failed to open file"
 msgstr "Dështoi hapja e kartelës"
 
 #. show the error
-#: ../mousepad/mousepad-window.c:4096 ../mousepad/mousepad-window.c:4219
+#: ../mousepad/mousepad-window.c:4115 ../mousepad/mousepad-window.c:4246
 msgid "Failed to save the document"
 msgstr "Dështoi ruajtja e dokumentit"
 
 #. create the dialog
-#: ../mousepad/mousepad-window.c:4120
+#: ../mousepad/mousepad-window.c:4139
 msgid "Save As"
 msgstr "Ruaje Si"
 
 #. show the error
-#: ../mousepad/mousepad-window.c:4311
+#: ../mousepad/mousepad-window.c:4338
 msgid "Failed to reload the document"
 msgstr "Dështoi ringarkimi i dokumentit"
 
 #. show the error
-#: ../mousepad/mousepad-window.c:4338
+#: ../mousepad/mousepad-window.c:4365
 msgid "Failed to print the document"
 msgstr "Dështoi shtypja e dokumentit"
 
-#: ../mousepad/mousepad-window.c:4962
+#: ../mousepad/mousepad-window.c:4989
 msgid "Choose Mousepad Font"
 msgstr "Zgjidhni Shkronja MousePad-i"
 
-#: ../mousepad/mousepad-window.c:5166
+#: ../mousepad/mousepad-window.c:5193
 msgid "Leave fullscreen mode"
 msgstr "Dil nga Sa tërë ekrani"
 
