@@ -3,15 +3,16 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
+# beriain, 2020
 # Piarres Beobide <pi@beobide.net>, 2013
 # Sr Aldeano <sraldeano@gmail.com>, 2017
 msgid ""
 msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-12-06 06:31+0100\n"
-"PO-Revision-Date: 2019-12-06 05:31+0000\n"
-"Last-Translator: Xfce Bot <transifex@xfce.org>\n"
+"POT-Creation-Date: 2020-05-07 12:47+0200\n"
+"PO-Revision-Date: 2020-05-08 12:15+0000\n"
+"Last-Translator: beriain\n"
 "Language-Team: Basque (http://www.transifex.com/xfce/xfce-apps/language/eu/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -292,17 +293,17 @@ msgstr "Japoniarra"
 msgid "Korean"
 msgstr "Korearra"
 
-#: ../mousepad/mousepad-file.c:559
+#: ../mousepad/mousepad-file.c:568
 #, c-format
 msgid "Invalid byte sequence in conversion input"
 msgstr "Byteen sekuentzia baliogabea bihurketa-sarreran"
 
-#: ../mousepad/mousepad-file.c:903
+#: ../mousepad/mousepad-file.c:912
 #, c-format
 msgid "The file \"%s\" you tried to reload does not exist anymore"
 msgstr ""
 
-#: ../mousepad/mousepad-file.c:944
+#: ../mousepad/mousepad-file.c:953
 #, c-format
 msgid "Failed to read the status of \"%s\""
 msgstr "Huts \"%s\"-ren egoera irakurtzerakoan."
@@ -326,11 +327,11 @@ msgstr "Desgaiturik"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:2
 msgid "Before"
-msgstr ""
+msgstr "Aurretik"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:3
 msgid "After"
-msgstr ""
+msgstr "Ondoren"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:4
 msgid "Always"
@@ -338,11 +339,11 @@ msgstr "Beti"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:5
 msgid "Insert Tabs"
-msgstr ""
+msgstr "Tabuladoreak sartu"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:6
 msgid "Insert Spaces"
-msgstr ""
+msgstr "Zuriuneak sartu"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:7
 msgid "none"
@@ -359,11 +360,11 @@ msgstr "Menua"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:10
 msgid "Small Toolbar"
-msgstr ""
+msgstr "Tresna-barra txikia"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:11
 msgid "Large Toolbar"
-msgstr ""
+msgstr "Tresna-barra handia"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:12
 msgid "Button"
@@ -379,7 +380,7 @@ msgstr ""
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:15
 msgid "Icons Only"
-msgstr ""
+msgstr "Ikonoak soilik"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:16
 msgid "Text Only"
@@ -387,11 +388,11 @@ msgstr "Testua Soilik"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:17
 msgid "Text Below Icons"
-msgstr ""
+msgstr "Testua ikonoen azpian"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:18
 msgid "Text Beside Icons"
-msgstr ""
+msgstr "Testua ikonoen ondoan"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:19
 #: ../mousepad/mousepad-window.c:484
@@ -400,43 +401,43 @@ msgstr "Ikusi lerro zenbakiak"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:20
 msgid "Display whitespace"
-msgstr ""
+msgstr "Zuriuneak erakutsi"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:21
 msgid "Display line endings"
-msgstr ""
+msgstr "Lerro amaierak erakutsi"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:22
 msgid "Long line margin at column:"
-msgstr ""
+msgstr "Lerro luzearen marjina zutabe honetan:"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:23
 msgid "Highlight current line"
-msgstr ""
+msgstr "Uneko lerroa nabarmendu"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:24
 msgid "Highlight matching brackets"
-msgstr ""
+msgstr "Bat datozen kakoak nabarmendu"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:25
 msgid "Wrap long lines"
-msgstr ""
+msgstr "Lerro luzeak doitu"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:26
 msgid "<b>Display</b>"
-msgstr ""
+msgstr "<b>Erakutsi</b>"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:27
 msgid "Use system monospace font"
-msgstr ""
+msgstr "Erabili sistemaren letra-tipo monoespaziatua"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:28
 msgid "<b>Font</b>"
-msgstr ""
+msgstr "<b>Letra-tipoa</b>"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:29
 msgid "<b>Colour scheme</b>"
-msgstr ""
+msgstr "<b>Kolore eskema</b>"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:30
 msgid "View"
@@ -444,55 +445,55 @@ msgstr "Ikusi"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:31
 msgid "Tab width:"
-msgstr ""
+msgstr "Tabuladorearen zabalera:"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:32
 msgid "Tab mode:"
-msgstr ""
+msgstr "Tabulazio modua:"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:33
 msgid "Enable automatic indentation"
-msgstr ""
+msgstr "Koska automatikoa gaitu"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:34
 msgid "<b>Indentation</b>"
-msgstr ""
+msgstr "<b>Koska</b>"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:35
 msgid "Behaviour:"
-msgstr ""
+msgstr "Portaera:"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:36
 msgid "<b>Home/End Keys</b>"
-msgstr ""
+msgstr "<b>Etxea/Amaiera teklak</b>"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:37
 msgid "Editor"
-msgstr ""
+msgstr "Editorea"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:38
 msgid "Show status bar"
-msgstr ""
+msgstr "Egoera barra erakutsi"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:39
 msgid "Show full filename in title bar"
-msgstr ""
+msgstr "Fitxategiaren izen osoa erakutsi izenburu-barran"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:40
 msgid "Remember window size"
-msgstr ""
+msgstr "Leihoaren neurriak gogoratu"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:41
 msgid "Remember window position"
-msgstr ""
+msgstr "Leihoaren kokapena gogoratu"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:42
 msgid "Remember window state"
-msgstr ""
+msgstr "Leihoaren egoera gogoratu"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:43
 msgid "<b>General</b>"
-msgstr ""
+msgstr "<b>Orokorra</b>"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:44
 msgid "Show toolbar"
@@ -504,15 +505,15 @@ msgstr "Itxura:"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:46
 msgid "Icon Size:"
-msgstr ""
+msgstr "Ikonoen neurria:"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:47
 msgid "<b>Toolbar</b>"
-msgstr ""
+msgstr "<b>Tresna-barra</b>"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:48
 msgid "Always show tabs even with one file"
-msgstr ""
+msgstr "Beti erakutsi fitxak nahiz eta fitxategi bakarra egon"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:49
 msgid "Cycled notebook tab switching"
@@ -606,7 +607,7 @@ msgstr "Ordeztu _honekin:"
 
 #: ../mousepad/mousepad-replace-dialog.c:203
 msgid "Search _direction:"
-msgstr ""
+msgstr "Bilaketa norabidea:"
 
 #: ../mousepad/mousepad-replace-dialog.c:212
 msgid "Up"
@@ -632,7 +633,7 @@ msgstr "Hitz _osoak soilik"
 
 #: ../mousepad/mousepad-replace-dialog.c:241
 msgid "Replace _all in:"
-msgstr ""
+msgstr "Aldatu dena hemen:"
 
 #: ../mousepad/mousepad-replace-dialog.c:249
 msgid "Selection"
@@ -650,8 +651,8 @@ msgstr "Dokumentu guztiak"
 #, c-format
 msgid "%d occurrence"
 msgid_plural "%d occurrences"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%d aurkitu da"
+msgstr[1] "%d aurkitu dira"
 
 #: ../mousepad/mousepad-replace-dialog.c:443
 msgid "_Replace All"
@@ -671,7 +672,7 @@ msgstr "_Aurrekoa"
 
 #: ../mousepad/mousepad-search-bar.c:252
 msgid "Highlight _All"
-msgstr ""
+msgstr "Guztiak nabarmendu"
 
 #. overflow menu item for when window is too narrow to show the tool bar item
 #: ../mousepad/mousepad-search-bar.c:265 ../mousepad/mousepad-search-bar.c:276
@@ -718,7 +719,7 @@ msgstr ""
 #: ../mousepad/mousepad-style-scheme-action.c:212
 #, c-format
 msgid "%s | Authors: %s | Filename: %s"
-msgstr ""
+msgstr "%s | Egileak: %s | Fitxategi-izena: %s"
 
 #. show warning to the user
 #: ../mousepad/mousepad-util.c:549
@@ -902,23 +903,23 @@ msgstr ""
 
 #: ../mousepad/mousepad-window.c:442
 msgid "Conve_rt"
-msgstr ""
+msgstr "Bihurtu"
 
 #: ../mousepad/mousepad-window.c:443
 msgid "To _Uppercase"
-msgstr ""
+msgstr "Maiuskuletara"
 
 #: ../mousepad/mousepad-window.c:443
 msgid "Change the case of the selection to uppercase"
-msgstr ""
+msgstr "Aldatu hautatutako testua maiuskuletara"
 
 #: ../mousepad/mousepad-window.c:444
 msgid "To _Lowercase"
-msgstr ""
+msgstr "Minuskuletara"
 
 #: ../mousepad/mousepad-window.c:444
 msgid "Change the case of the selection to lowercase"
-msgstr ""
+msgstr "Aldatu hautatutako testua minuskuletara"
 
 #: ../mousepad/mousepad-window.c:445
 msgid "To _Title Case"
@@ -1153,7 +1154,7 @@ msgstr "Aldatu egoera-barraren ikusgarritasuna"
 msgid "_Fullscreen"
 msgstr "_Pantaila-osoa"
 
-#: ../mousepad/mousepad-window.c:488 ../mousepad/mousepad-window.c:5173
+#: ../mousepad/mousepad-window.c:488 ../mousepad/mousepad-window.c:5200
 msgid "Make the window fullscreen"
 msgstr ""
 
@@ -1214,27 +1215,27 @@ msgid "Set the line ending of the document to DOS / Windows (CR LF)"
 msgstr ""
 
 #. add the label with the root warning
-#: ../mousepad/mousepad-window.c:869
-msgid "Warning, you are using the root account, you may harm your system."
-msgstr "Adi, root kontua erabiltzen ari zara, zure sistema hondatu dezakezu."
+#: ../mousepad/mousepad-window.c:871
+msgid "Warning: you are using the root account. You may harm your system."
+msgstr ""
 
 #. show the warning
-#: ../mousepad/mousepad-window.c:1557
+#: ../mousepad/mousepad-window.c:1572
 msgid "Failed to open the document"
 msgstr "Dokumentu irekitzeak huts egin du"
 
-#: ../mousepad/mousepad-window.c:1754
+#: ../mousepad/mousepad-window.c:1769
 msgid "Read Only"
 msgstr "Irakurtzeko soilik"
 
-#: ../mousepad/mousepad-window.c:2424
+#: ../mousepad/mousepad-window.c:2439
 #, c-format
 msgid ""
 "No template files found in\n"
 "'%s'"
 msgstr ""
 
-#: ../mousepad/mousepad-window.c:2473
+#: ../mousepad/mousepad-window.c:2492
 #, c-format
 msgid ""
 "Missing Templates directory\n"
@@ -1242,66 +1243,66 @@ msgid ""
 msgstr ""
 
 #. create other action
-#: ../mousepad/mousepad-window.c:2547
+#: ../mousepad/mousepad-window.c:2566
 msgid "Set custom tab size"
 msgstr "Ezarri fitxa tamaina pertsonala"
 
 #. create suitable label for the other menu
-#: ../mousepad/mousepad-window.c:2595
+#: ../mousepad/mousepad-window.c:2614
 #, c-format
 msgid "Ot_her (%d)..."
 msgstr "Ge_hiago (%d)"
 
 #. set action label
-#: ../mousepad/mousepad-window.c:2606
+#: ../mousepad/mousepad-window.c:2625
 msgid "Ot_her..."
 msgstr "Ge_hiago..."
 
 #. build description
 #. get the offset length: 'Encoding: '
-#: ../mousepad/mousepad-window.c:2989 ../mousepad/mousepad-window.c:3216
+#: ../mousepad/mousepad-window.c:3008 ../mousepad/mousepad-window.c:3235
 msgid "Charset"
 msgstr "Karaktere-jokoa"
 
-#: ../mousepad/mousepad-window.c:3121
+#: ../mousepad/mousepad-window.c:3140
 #, c-format
 msgid "Open '%s'"
 msgstr "Ireki '%s'"
 
-#: ../mousepad/mousepad-window.c:3266
+#: ../mousepad/mousepad-window.c:3285
 msgid "Failed to clear the recent history"
 msgstr "Huts azken aldiko historia sortzean"
 
 #. create an item to inform the user
-#: ../mousepad/mousepad-window.c:3696
+#: ../mousepad/mousepad-window.c:3715
 msgid "No clipboard data"
 msgstr "Ez dago arbel daturik"
 
 #. set error message
-#: ../mousepad/mousepad-window.c:3835
+#: ../mousepad/mousepad-window.c:3854
 msgid "Templates should be UTF-8 valid"
 msgstr ""
 
 #. set error message
-#: ../mousepad/mousepad-window.c:3843
+#: ../mousepad/mousepad-window.c:3862
 msgid "Reading the template failed, the menu item has been removed"
 msgstr ""
 
 #. set error message
-#: ../mousepad/mousepad-window.c:3848
+#: ../mousepad/mousepad-window.c:3867
 msgid "Loading the template failed"
 msgstr ""
 
 #. create new file chooser dialog
-#: ../mousepad/mousepad-window.c:3873
+#: ../mousepad/mousepad-window.c:3892
 msgid "Open File"
 msgstr ""
 
-#: ../mousepad/mousepad-window.c:3889
+#: ../mousepad/mousepad-window.c:3908
 msgid "_Encoding:"
 msgstr ""
 
-#: ../mousepad/mousepad-window.c:3986
+#: ../mousepad/mousepad-window.c:4005
 #, c-format
 msgid ""
 "Failed to open \"%s\" for reading. It will be removed from the document "
@@ -1309,35 +1310,35 @@ msgid ""
 msgstr ""
 
 #. show the warning and cleanup
-#: ../mousepad/mousepad-window.c:3990
+#: ../mousepad/mousepad-window.c:4009
 msgid "Failed to open file"
 msgstr "Huts fitxategia irekitzerakoan"
 
 #. show the error
-#: ../mousepad/mousepad-window.c:4096 ../mousepad/mousepad-window.c:4219
+#: ../mousepad/mousepad-window.c:4115 ../mousepad/mousepad-window.c:4246
 msgid "Failed to save the document"
 msgstr ""
 
 #. create the dialog
-#: ../mousepad/mousepad-window.c:4120
+#: ../mousepad/mousepad-window.c:4139
 msgid "Save As"
 msgstr "Gorde Honela"
 
 #. show the error
-#: ../mousepad/mousepad-window.c:4311
+#: ../mousepad/mousepad-window.c:4338
 msgid "Failed to reload the document"
 msgstr ""
 
 #. show the error
-#: ../mousepad/mousepad-window.c:4338
+#: ../mousepad/mousepad-window.c:4365
 msgid "Failed to print the document"
 msgstr ""
 
-#: ../mousepad/mousepad-window.c:4962
+#: ../mousepad/mousepad-window.c:4989
 msgid "Choose Mousepad Font"
 msgstr ""
 
-#: ../mousepad/mousepad-window.c:5166
+#: ../mousepad/mousepad-window.c:5193
 msgid "Leave fullscreen mode"
 msgstr ""
 
