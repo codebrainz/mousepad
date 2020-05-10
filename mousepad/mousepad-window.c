@@ -4833,20 +4833,17 @@ mousepad_window_action_find (GtkAction      *action,
       g_signal_connect_swapped (G_OBJECT (window->search_bar), "search", G_CALLBACK (mousepad_window_search), window);
     }
 
-  /* set the search entry text if the search bar is hidden*/
-  if (gtk_widget_get_visible (window->search_bar) == FALSE)
+  /* set the search entry text */
+  if (gtk_text_buffer_get_has_selection (window->active->buffer) == TRUE)
     {
-      if (gtk_text_buffer_get_has_selection (window->active->buffer) == TRUE)
-        {
-          gtk_text_buffer_get_selection_bounds (window->active->buffer, &selection_start, &selection_end);
-          selection = gtk_text_buffer_get_text (window->active->buffer, &selection_start, &selection_end, 0);
+      gtk_text_buffer_get_selection_bounds (window->active->buffer, &selection_start, &selection_end);
+      selection = gtk_text_buffer_get_text (window->active->buffer, &selection_start, &selection_end, 0);
 
-          /* selection should be one line */
-          if (g_strrstr (selection, "\n") == NULL && g_strrstr (selection, "\r") == NULL)
-            mousepad_search_bar_set_text (MOUSEPAD_SEARCH_BAR (window->search_bar), selection);
+      /* selection should be one line */
+      if (g_strrstr (selection, "\n") == NULL && g_strrstr (selection, "\r") == NULL)
+        mousepad_search_bar_set_text (MOUSEPAD_SEARCH_BAR (window->search_bar), selection);
 
-          g_free (selection);
-        }
+      g_free (selection);
     }
 
   /* show the search bar */
@@ -4931,19 +4928,6 @@ mousepad_window_action_replace (GtkAction      *action,
       gtk_window_set_transient_for (GTK_WINDOW (window->replace_dialog), GTK_WINDOW (window));
       gtk_widget_show (window->replace_dialog);
 
-      /* set the search entry text */
-      if (gtk_text_buffer_get_has_selection (window->active->buffer) == TRUE)
-        {
-          gtk_text_buffer_get_selection_bounds (window->active->buffer, &selection_start, &selection_end);
-          selection = gtk_text_buffer_get_text (window->active->buffer, &selection_start, &selection_end, 0);
-
-          /* selection should be one line */
-          if (g_strrstr(selection, "\n") == NULL && g_strrstr(selection, "\r") == NULL)
-            mousepad_replace_dialog_set_text (MOUSEPAD_REPLACE_DIALOG (window->replace_dialog), selection);
-
-          g_free (selection);
-        }
-
       /* connect signals */
       g_signal_connect_swapped (G_OBJECT (window->replace_dialog), "destroy", G_CALLBACK (mousepad_window_action_replace_destroy), window);
       g_signal_connect_swapped (G_OBJECT (window->replace_dialog), "search", G_CALLBACK (mousepad_window_search), window);
@@ -4953,6 +4937,19 @@ mousepad_window_action_replace (GtkAction      *action,
     {
       /* focus the existing dialog */
       gtk_window_present (GTK_WINDOW (window->replace_dialog));
+    }
+
+  /* set the search entry text */
+  if (gtk_text_buffer_get_has_selection (window->active->buffer) == TRUE)
+    {
+      gtk_text_buffer_get_selection_bounds (window->active->buffer, &selection_start, &selection_end);
+      selection = gtk_text_buffer_get_text (window->active->buffer, &selection_start, &selection_end, 0);
+
+      /* selection should be one line */
+      if (g_strrstr(selection, "\n") == NULL && g_strrstr(selection, "\r") == NULL)
+        mousepad_replace_dialog_set_text (MOUSEPAD_REPLACE_DIALOG (window->replace_dialog), selection);
+
+      g_free (selection);
     }
 }
 
