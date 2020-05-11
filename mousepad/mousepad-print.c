@@ -240,7 +240,7 @@ mousepad_print_settings_load (GtkPrintOperation *operation)
                     "print-line-numbers",
                     gtk_print_settings_get_int (settings, "line-numbers-increment"),
                     "wrap-mode",
-                    gtk_print_settings_get_bool (settings, "text-wrapping") ? GTK_WRAP_WORD : GTK_WRAP_NONE,
+                    gtk_print_settings_get_bool (settings, "text-wrapping") ? GTK_WRAP_WORD_CHAR : GTK_WRAP_NONE,
                     "highlight-syntax",
                     gtk_print_settings_get_bool (settings, "highlight-syntax"),
                     NULL);
@@ -509,7 +509,7 @@ mousepad_print_button_toggled (GtkWidget     *button,
       gtk_source_print_compositor_set_print_line_numbers (print->compositor, 0);
   }
   else if (button == print->widget_text_wrapping)
-    gtk_source_print_compositor_set_wrap_mode (print->compositor, active ? GTK_WRAP_WORD : GTK_WRAP_NONE);
+    gtk_source_print_compositor_set_wrap_mode (print->compositor, active ? GTK_WRAP_WORD_CHAR : GTK_WRAP_NONE);
   else if (button == print->widget_syntax_highlighting)
     gtk_source_print_compositor_set_highlight_syntax (print->compositor, active);
 }

@@ -1847,7 +1847,7 @@ mousepad_view_set_word_wrap (MousepadView *view,
   g_return_if_fail (MOUSEPAD_IS_VIEW (view));
 
   gtk_text_view_set_wrap_mode (GTK_TEXT_VIEW (view),
-                               enabled ? GTK_WRAP_WORD : GTK_WRAP_NONE);
+                               enabled ? GTK_WRAP_WORD_CHAR : GTK_WRAP_NONE);
   g_object_notify (G_OBJECT (view), "word-wrap");
 }
 
@@ -1862,7 +1862,7 @@ mousepad_view_get_word_wrap (MousepadView *view)
 
   mode = gtk_text_view_get_wrap_mode (GTK_TEXT_VIEW (view));
 
-  return (mode == GTK_WRAP_WORD);
+  return (mode == GTK_WRAP_WORD_CHAR);
 }
 
 
