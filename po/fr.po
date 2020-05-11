@@ -13,13 +13,13 @@
 # Luc Pionchon <luc@handhelds.org>, 2004
 # Urien Desterres <urien.desterres@gmail.com>, 2014
 # Urien Desterres <urien.desterres@gmail.com>, 2014
-# Yannick Le Guen <leguen.yannick@gmail.com>, 2014,2018-2019
+# Yannick Le Guen <leguen.yannick@gmail.com>, 2014,2018-2020
 msgid ""
 msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-12-06 06:31+0100\n"
-"PO-Revision-Date: 2019-12-22 10:52+0000\n"
+"POT-Creation-Date: 2020-05-07 12:47+0200\n"
+"PO-Revision-Date: 2020-05-11 10:25+0000\n"
 "Last-Translator: Yannick Le Guen <leguen.yannick@gmail.com>\n"
 "Language-Team: French (http://www.transifex.com/xfce/xfce-apps/language/fr/)\n"
 "MIME-Version: 1.0\n"
@@ -301,17 +301,17 @@ msgstr "Japonais"
 msgid "Korean"
 msgstr "Coréen"
 
-#: ../mousepad/mousepad-file.c:559
+#: ../mousepad/mousepad-file.c:568
 #, c-format
 msgid "Invalid byte sequence in conversion input"
 msgstr "Séquence d’octets non valide en entrée de conversion"
 
-#: ../mousepad/mousepad-file.c:903
+#: ../mousepad/mousepad-file.c:912
 #, c-format
 msgid "The file \"%s\" you tried to reload does not exist anymore"
 msgstr "Le fichier « %s » que vous avez essayé de recharger n’existe plus"
 
-#: ../mousepad/mousepad-file.c:944
+#: ../mousepad/mousepad-file.c:953
 #, c-format
 msgid "Failed to read the status of \"%s\""
 msgstr "Impossible de lire le statut de « %s »"
@@ -1162,7 +1162,7 @@ msgstr "Modifier la visibilité de la barre d’état"
 msgid "_Fullscreen"
 msgstr "_Plein écran"
 
-#: ../mousepad/mousepad-window.c:488 ../mousepad/mousepad-window.c:5173
+#: ../mousepad/mousepad-window.c:488 ../mousepad/mousepad-window.c:5200
 msgid "Make the window fullscreen"
 msgstr "Basculer la fenêtre en plein écran"
 
@@ -1223,27 +1223,27 @@ msgid "Set the line ending of the document to DOS / Windows (CR LF)"
 msgstr "Définir la fin de ligne du document pour DOS / Windows (CR LF)"
 
 #. add the label with the root warning
-#: ../mousepad/mousepad-window.c:869
-msgid "Warning, you are using the root account, you may harm your system."
-msgstr "Attention, vous utilisez le compte root ; vous risquez d’endommager votre système."
+#: ../mousepad/mousepad-window.c:871
+msgid "Warning: you are using the root account. You may harm your system."
+msgstr "Attention : vous utilisez le compte administrateur. Vous risquez d’endommager votre système."
 
 #. show the warning
-#: ../mousepad/mousepad-window.c:1557
+#: ../mousepad/mousepad-window.c:1572
 msgid "Failed to open the document"
 msgstr "Impossible d’ouvrir le document"
 
-#: ../mousepad/mousepad-window.c:1754
+#: ../mousepad/mousepad-window.c:1769
 msgid "Read Only"
 msgstr "Lecture seule"
 
-#: ../mousepad/mousepad-window.c:2424
+#: ../mousepad/mousepad-window.c:2439
 #, c-format
 msgid ""
 "No template files found in\n"
 "'%s'"
 msgstr "Aucun modèle de fichier trouvé dans\n« %s »"
 
-#: ../mousepad/mousepad-window.c:2473
+#: ../mousepad/mousepad-window.c:2492
 #, c-format
 msgid ""
 "Missing Templates directory\n"
@@ -1251,66 +1251,66 @@ msgid ""
 msgstr "Répertoire des modèles manquant\n« %s »"
 
 #. create other action
-#: ../mousepad/mousepad-window.c:2547
+#: ../mousepad/mousepad-window.c:2566
 msgid "Set custom tab size"
 msgstr "Personnaliser la taille des tabulations"
 
 #. create suitable label for the other menu
-#: ../mousepad/mousepad-window.c:2595
+#: ../mousepad/mousepad-window.c:2614
 #, c-format
 msgid "Ot_her (%d)..."
 msgstr "Aut_re (%d)…"
 
 #. set action label
-#: ../mousepad/mousepad-window.c:2606
+#: ../mousepad/mousepad-window.c:2625
 msgid "Ot_her..."
 msgstr "Aut_re…"
 
 #. build description
 #. get the offset length: 'Encoding: '
-#: ../mousepad/mousepad-window.c:2989 ../mousepad/mousepad-window.c:3216
+#: ../mousepad/mousepad-window.c:3008 ../mousepad/mousepad-window.c:3235
 msgid "Charset"
 msgstr "Jeu de caractères"
 
-#: ../mousepad/mousepad-window.c:3121
+#: ../mousepad/mousepad-window.c:3140
 #, c-format
 msgid "Open '%s'"
 msgstr "Ouvrir « %s »"
 
-#: ../mousepad/mousepad-window.c:3266
+#: ../mousepad/mousepad-window.c:3285
 msgid "Failed to clear the recent history"
 msgstr "Impossible d’effacer l’historique"
 
 #. create an item to inform the user
-#: ../mousepad/mousepad-window.c:3696
+#: ../mousepad/mousepad-window.c:3715
 msgid "No clipboard data"
 msgstr "Le presse-papiers est vide"
 
 #. set error message
-#: ../mousepad/mousepad-window.c:3835
+#: ../mousepad/mousepad-window.c:3854
 msgid "Templates should be UTF-8 valid"
 msgstr "Les modèles devraient être en UTF-8 valide"
 
 #. set error message
-#: ../mousepad/mousepad-window.c:3843
+#: ../mousepad/mousepad-window.c:3862
 msgid "Reading the template failed, the menu item has been removed"
 msgstr "La lecture du modèle a échoué, l’élément a été supprimé du menu"
 
 #. set error message
-#: ../mousepad/mousepad-window.c:3848
+#: ../mousepad/mousepad-window.c:3867
 msgid "Loading the template failed"
 msgstr "Le chargement du modèle a échoué"
 
 #. create new file chooser dialog
-#: ../mousepad/mousepad-window.c:3873
+#: ../mousepad/mousepad-window.c:3892
 msgid "Open File"
 msgstr "Ouvrir un fichier"
 
-#: ../mousepad/mousepad-window.c:3889
+#: ../mousepad/mousepad-window.c:3908
 msgid "_Encoding:"
 msgstr "_Encodage :"
 
-#: ../mousepad/mousepad-window.c:3986
+#: ../mousepad/mousepad-window.c:4005
 #, c-format
 msgid ""
 "Failed to open \"%s\" for reading. It will be removed from the document "
@@ -1318,35 +1318,35 @@ msgid ""
 msgstr "Impossible d’ouvrir « %s ». Il sera supprimé de l’historique des documents"
 
 #. show the warning and cleanup
-#: ../mousepad/mousepad-window.c:3990
+#: ../mousepad/mousepad-window.c:4009
 msgid "Failed to open file"
 msgstr "Impossible d’ouvrir le fichier"
 
 #. show the error
-#: ../mousepad/mousepad-window.c:4096 ../mousepad/mousepad-window.c:4219
+#: ../mousepad/mousepad-window.c:4115 ../mousepad/mousepad-window.c:4246
 msgid "Failed to save the document"
 msgstr "Impossible d’enregistrer le document"
 
 #. create the dialog
-#: ../mousepad/mousepad-window.c:4120
+#: ../mousepad/mousepad-window.c:4139
 msgid "Save As"
 msgstr "Enregistrer sous"
 
 #. show the error
-#: ../mousepad/mousepad-window.c:4311
+#: ../mousepad/mousepad-window.c:4338
 msgid "Failed to reload the document"
 msgstr "Impossible de recharger le document"
 
 #. show the error
-#: ../mousepad/mousepad-window.c:4338
+#: ../mousepad/mousepad-window.c:4365
 msgid "Failed to print the document"
 msgstr "Impossible d’imprimer le document"
 
-#: ../mousepad/mousepad-window.c:4962
+#: ../mousepad/mousepad-window.c:4989
 msgid "Choose Mousepad Font"
 msgstr "Choisir la police de Mousepad"
 
-#: ../mousepad/mousepad-window.c:5166
+#: ../mousepad/mousepad-window.c:5193
 msgid "Leave fullscreen mode"
 msgstr "Quitter le mode plein écran"
 
