@@ -506,9 +506,6 @@ mousepad_search_bar_focus (MousepadSearchBar *bar)
   /* focus the entry field */
   gtk_widget_grab_focus (bar->entry);
 
-  /* trigger search function */
-  mousepad_search_bar_entry_changed (NULL, bar);
-
   /* update the highlight */
   mousepad_search_bar_highlight_schedule (bar);
 
