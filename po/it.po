@@ -6,13 +6,14 @@
 # Cristian Marchi <cri.penta@gmail.com>, 2013-2014
 # Emanuele Petriglia <transifex@emanuelepetriglia.com>, 2018
 # Emanuele Petriglia <transifex@emanuelepetriglia.com>, 2019-2020
+# Vincenzo Reale <vinx.reale@gmail.com>, 2020
 msgid ""
 msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-05-07 12:47+0200\n"
-"PO-Revision-Date: 2020-05-09 12:08+0000\n"
-"Last-Translator: Emanuele Petriglia <transifex@emanuelepetriglia.com>\n"
+"PO-Revision-Date: 2020-05-21 18:26+0000\n"
+"Last-Translator: Vincenzo Reale <vinx.reale@gmail.com>\n"
 "Language-Team: Italian (http://www.transifex.com/xfce/xfce-apps/language/it/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -62,7 +63,7 @@ msgstr "Mousepad è un editor di testo veloce per l'ambiente grafico Xfce."
 
 #: ../mousepad/mousepad-dialogs.c:49
 msgid "translator-credits"
-msgstr "Salvatore Caputo, <salvatorexfce@gmail.com> 2012\nCristian Marchi, <cri.penta@gmail.com> 2012, 2013, 2014\nEmanuele Petriglia, <inbox@emanuelepetriglia.com> 2018, 2019"
+msgstr "Salvatore Caputo, <salvatorexfce@gmail.com> 2012\nCristian Marchi, <cri.penta@gmail.com> 2012, 2013, 2014\nEmanuele Petriglia, <inbox@emanuelepetriglia.com> 2018, 2019\nVincenzo Reale, <smart2128@baslug.org>, 2020"
 
 #. display an error message to the user
 #: ../mousepad/mousepad-dialogs.c:104
@@ -1363,7 +1364,7 @@ msgid ""
 "means that if Gtk adds something new in a major release that is useful for "
 "the editor, we will likely bump the Gtk dependency and integrate this new "
 "feature in Mousepad."
-msgstr "Dall'altra parte Mousepad cerca di utilizzare le ultime funzionalità Gtk+ disponibili, questo significa che quando Gtk aggunge qualcosa di nuovo che può tornare utile per l'editor, Mousepad integra le nuove funzionalità utilizzando la nuova versione di Gtk."
+msgstr "Dall'altra parte Mousepad cerca di utilizzare le ultime funzionalità Gtk+ disponibili, questo significa che quando Gtk aggiunge qualcosa di nuovo che può tornare utile per l'editor, Mousepad integra le nuove funzionalità utilizzando la nuova versione di Gtk."
 
 #. SECURITY:
 #. - A normal active user can run mousepad without elevated rights. They
