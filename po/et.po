@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-05-07 12:47+0200\n"
-"PO-Revision-Date: 2020-05-11 05:23+0000\n"
+"PO-Revision-Date: 2020-05-22 20:45+0000\n"
 "Last-Translator: Priit Jõerüüt <transifex@joeruut.com>\n"
 "Language-Team: Estonian (http://www.transifex.com/xfce/xfce-apps/language/et/)\n"
 "MIME-Version: 1.0\n"
@@ -366,7 +366,7 @@ msgstr "Suur tööriistariba"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:12
 msgid "Button"
-msgstr ""
+msgstr "Nupp"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:13
 msgid "Drag & Drop"
