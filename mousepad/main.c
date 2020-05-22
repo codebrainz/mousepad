@@ -57,6 +57,7 @@ main (gint argc, gchar **argv)
   MousepadApplication *application;
   GError              *error = NULL;
   gchar               *working_directory;
+  gboolean             succeed;
 
   /* bind the text domain to the locale directory */
   bindtextdomain (GETTEXT_PACKAGE, PACKAGE_LOCALE_DIR);
@@ -179,14 +180,14 @@ main (gint argc, gchar **argv)
   application = mousepad_application_get ();
 
   /* open an empty window (with an empty document or the files) */
-  mousepad_application_new_window_with_files (application, NULL, working_directory, filenames);
+  succeed = mousepad_application_new_window_with_files (application, NULL, working_directory, filenames);
 
   /* cleanup */
   g_free (working_directory);
   g_strfreev (filenames);
 
   /* do not enter the main loop, unless we have atleast one window */
-  if (G_LIKELY (mousepad_application_has_windows (application)))
+  if (G_LIKELY (mousepad_application_has_windows (application)) && succeed == TRUE)
     {
 #ifdef HAVE_DBUS
       /* register with dbus */
@@ -203,5 +204,5 @@ main (gint argc, gchar **argv)
   /* release application reference */
   g_object_unref (G_OBJECT (application));
 
-  return EXIT_SUCCESS;
+  return succeed ? EXIT_SUCCESS : EXIT_FAILURE;
 }

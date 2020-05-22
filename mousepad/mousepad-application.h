@@ -40,7 +40,7 @@ gboolean             mousepad_application_has_windows            (MousepadApplic
 void                 mousepad_application_take_window            (MousepadApplication  *application,
                                                                   GtkWindow            *window);
 
-void                 mousepad_application_new_window_with_files  (MousepadApplication  *application,
+gboolean             mousepad_application_new_window_with_files  (MousepadApplication  *application,
                                                                   GdkScreen            *screen,
                                                                   const gchar          *working_directory,
                                                                   gchar               **filenames);
