@@ -1,6 +1,6 @@
 ## What is it?
 
-*** Mousepad*** is a simple text editor for the [Xfce](https://www.xfce.org) desktop environment.
+**Mousepad** is a simple text editor for the [Xfce](https://www.xfce.org) desktop environment.
 
 
 ## The Mousepad Mission
