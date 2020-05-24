@@ -1,7 +1,7 @@
 ACLOCAL_AMFLAGS = -I m4
 
 SUBDIRS =									\
-	mousepad                                                        	\
+	mousepad								\
 	po
 
 distclean-local:
@@ -44,6 +44,7 @@ ChangeLog: Makefile
 dist-hook: ChangeLog
 
 EXTRA_DIST =									\
+	README.md									\
 	intltool-extract.in							\
 	intltool-merge.in							\
 	intltool-update.in							\
@@ -52,6 +53,7 @@ EXTRA_DIST =									\
 	$(polkit_in_in_files)
 
 DISTCLEANFILES =								\
+	README.md									\
 	intltool-extract							\
 	intltool-merge								\
 	intltool-update								\
