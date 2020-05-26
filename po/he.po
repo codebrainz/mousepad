@@ -5,13 +5,14 @@
 # Translators:
 # Elishai Eliyahu <e1907@mm.st>, 2016,2018-2020
 # GenghisKhan <genghiskhan@gmx.ca>, 2016
+# Omer, 2020
 msgid ""
 msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-12-06 06:31+0100\n"
-"PO-Revision-Date: 2020-02-02 20:16+0000\n"
-"Last-Translator: Elishai Eliyahu <e1907@mm.st>\n"
+"POT-Creation-Date: 2020-05-07 12:47+0200\n"
+"PO-Revision-Date: 2020-05-26 13:22+0000\n"
+"Last-Translator: Omer\n"
 "Language-Team: Hebrew (http://www.transifex.com/xfce/xfce-apps/language/he/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -29,7 +30,7 @@ msgstr "Quit a running Mousepad instance"
 
 #: ../mousepad/main.c:47
 msgid "Print version information and exit"
-msgstr "Print version information and exit"
+msgstr "הדפס את מידע הגירסה וצא"
 
 #. default application name
 #: ../mousepad/main.c:69 ../mousepad.desktop.in.in.h:1
@@ -39,12 +40,12 @@ msgstr "Mousepad"
 #. initialize gtk+
 #: ../mousepad/main.c:83
 msgid "[FILES...]"
-msgstr "[FILES...]"
+msgstr "[קבצים...]"
 
 #. no error message, the gui initialization failed
 #: ../mousepad/main.c:89
 msgid "Failed to open display."
-msgstr "Failed to open display."
+msgstr "נכשל בפתיחת הצג."
 
 #: ../mousepad/main.c:106
 msgid "The Xfce development team. All rights reserved."
@@ -292,17 +293,17 @@ msgstr "יפני"
 msgid "Korean"
 msgstr "קוריאני"
 
-#: ../mousepad/mousepad-file.c:559
+#: ../mousepad/mousepad-file.c:568
 #, c-format
 msgid "Invalid byte sequence in conversion input"
 msgstr "רצף בייטים לא חוקי בקלט המרה"
 
-#: ../mousepad/mousepad-file.c:903
+#: ../mousepad/mousepad-file.c:912
 #, c-format
 msgid "The file \"%s\" you tried to reload does not exist anymore"
 msgstr "הקובץ \"%s\" שניסית להעלות מחדש אינו קיים יותר"
 
-#: ../mousepad/mousepad-file.c:944
+#: ../mousepad/mousepad-file.c:953
 #, c-format
 msgid "Failed to read the status of \"%s\""
 msgstr "נכשל לקרוא את הסטטוס של \"%s\" "
@@ -1155,7 +1156,7 @@ msgstr "שנה ראות של שורת מצב"
 msgid "_Fullscreen"
 msgstr "_מסך מלא"
 
-#: ../mousepad/mousepad-window.c:488 ../mousepad/mousepad-window.c:5173
+#: ../mousepad/mousepad-window.c:488 ../mousepad/mousepad-window.c:5200
 msgid "Make the window fullscreen"
 msgstr "הפוך את החלון למסך מלא"
 
@@ -1216,27 +1217,27 @@ msgid "Set the line ending of the document to DOS / Windows (CR LF)"
 msgstr "קבע את סיומת השורה של המסמך לדוס / ווינדוס (CR LF) "
 
 #. add the label with the root warning
-#: ../mousepad/mousepad-window.c:869
-msgid "Warning, you are using the root account, you may harm your system."
-msgstr "זהירות, אתה משתמש בחשבון משתמש-על, אתה עלול להזיק למערכת שלך."
+#: ../mousepad/mousepad-window.c:871
+msgid "Warning: you are using the root account. You may harm your system."
+msgstr "אזהרה: אתה אולי משתמש בחשבון־על (root), אתה עלול להזיק למערכת שלך."
 
 #. show the warning
-#: ../mousepad/mousepad-window.c:1557
+#: ../mousepad/mousepad-window.c:1572
 msgid "Failed to open the document"
 msgstr "נכשל לפתוח את המסמך"
 
-#: ../mousepad/mousepad-window.c:1754
+#: ../mousepad/mousepad-window.c:1769
 msgid "Read Only"
 msgstr "לקריאה בלבד"
 
-#: ../mousepad/mousepad-window.c:2424
+#: ../mousepad/mousepad-window.c:2439
 #, c-format
 msgid ""
 "No template files found in\n"
 "'%s'"
 msgstr "לא נמצאו קבצי תבנית ב\n'%s'"
 
-#: ../mousepad/mousepad-window.c:2473
+#: ../mousepad/mousepad-window.c:2492
 #, c-format
 msgid ""
 "Missing Templates directory\n"
@@ -1244,66 +1245,66 @@ msgid ""
 msgstr "ספריית שבלונות חסרה\n'%s'"
 
 #. create other action
-#: ../mousepad/mousepad-window.c:2547
+#: ../mousepad/mousepad-window.c:2566
 msgid "Set custom tab size"
 msgstr "קבע גודל כרטיסייה מותאם"
 
 #. create suitable label for the other menu
-#: ../mousepad/mousepad-window.c:2595
+#: ../mousepad/mousepad-window.c:2614
 #, c-format
 msgid "Ot_her (%d)..."
 msgstr "_אחר (%d)..."
 
 #. set action label
-#: ../mousepad/mousepad-window.c:2606
+#: ../mousepad/mousepad-window.c:2625
 msgid "Ot_her..."
 msgstr "_אחר..."
 
 #. build description
 #. get the offset length: 'Encoding: '
-#: ../mousepad/mousepad-window.c:2989 ../mousepad/mousepad-window.c:3216
+#: ../mousepad/mousepad-window.c:3008 ../mousepad/mousepad-window.c:3235
 msgid "Charset"
 msgstr "מערך תווים"
 
-#: ../mousepad/mousepad-window.c:3121
+#: ../mousepad/mousepad-window.c:3140
 #, c-format
 msgid "Open '%s'"
 msgstr "פתח את '%s'"
 
-#: ../mousepad/mousepad-window.c:3266
+#: ../mousepad/mousepad-window.c:3285
 msgid "Failed to clear the recent history"
 msgstr "נכשל לנקות את ההיסטוריה האחרונה"
 
 #. create an item to inform the user
-#: ../mousepad/mousepad-window.c:3696
+#: ../mousepad/mousepad-window.c:3715
 msgid "No clipboard data"
 msgstr "אין מידע לוח גזירה"
 
 #. set error message
-#: ../mousepad/mousepad-window.c:3835
+#: ../mousepad/mousepad-window.c:3854
 msgid "Templates should be UTF-8 valid"
 msgstr "תבניות צריכות להיות חוקיות לפי UTF-8 "
 
 #. set error message
-#: ../mousepad/mousepad-window.c:3843
+#: ../mousepad/mousepad-window.c:3862
 msgid "Reading the template failed, the menu item has been removed"
 msgstr "קריאת התבנית נכשלה, פריט התפריט הוסר"
 
 #. set error message
-#: ../mousepad/mousepad-window.c:3848
+#: ../mousepad/mousepad-window.c:3867
 msgid "Loading the template failed"
 msgstr "העלאת התבנית נכשלה"
 
 #. create new file chooser dialog
-#: ../mousepad/mousepad-window.c:3873
+#: ../mousepad/mousepad-window.c:3892
 msgid "Open File"
 msgstr "פתיחת קובץ"
 
-#: ../mousepad/mousepad-window.c:3889
+#: ../mousepad/mousepad-window.c:3908
 msgid "_Encoding:"
 msgstr "_קידוד:"
 
-#: ../mousepad/mousepad-window.c:3986
+#: ../mousepad/mousepad-window.c:4005
 #, c-format
 msgid ""
 "Failed to open \"%s\" for reading. It will be removed from the document "
@@ -1311,35 +1312,35 @@ msgid ""
 msgstr "נכשל לפתוח \"%s\" לקריאה. הוא יוסר מהיסטוריית המסמכים"
 
 #. show the warning and cleanup
-#: ../mousepad/mousepad-window.c:3990
+#: ../mousepad/mousepad-window.c:4009
 msgid "Failed to open file"
 msgstr "נכשל לפתוח קובץ"
 
 #. show the error
-#: ../mousepad/mousepad-window.c:4096 ../mousepad/mousepad-window.c:4219
+#: ../mousepad/mousepad-window.c:4115 ../mousepad/mousepad-window.c:4246
 msgid "Failed to save the document"
 msgstr "נכשל לשמור את המסמך"
 
 #. create the dialog
-#: ../mousepad/mousepad-window.c:4120
+#: ../mousepad/mousepad-window.c:4139
 msgid "Save As"
 msgstr "שמירה בשם"
 
 #. show the error
-#: ../mousepad/mousepad-window.c:4311
+#: ../mousepad/mousepad-window.c:4338
 msgid "Failed to reload the document"
 msgstr "נכשל להעלות מחדש את המסמך"
 
 #. show the error
-#: ../mousepad/mousepad-window.c:4338
+#: ../mousepad/mousepad-window.c:4365
 msgid "Failed to print the document"
 msgstr "נכשל להדפיס את המסמך"
 
-#: ../mousepad/mousepad-window.c:4962
+#: ../mousepad/mousepad-window.c:4989
 msgid "Choose Mousepad Font"
 msgstr "בחירת גופן Mousepad"
 
-#: ../mousepad/mousepad-window.c:5166
+#: ../mousepad/mousepad-window.c:5193
 msgid "Leave fullscreen mode"
 msgstr "עזוב מסך מלא"
 
