@@ -226,6 +226,13 @@ mousepad_replace_dialog_init (MousepadReplaceDialog *dialog)
 
   mousepad_replace_dialog_bind_setting (dialog, MOUSEPAD_SETTING_SEARCH_MATCH_CASE, check, "active");
 
+  /* enable regex search */
+  check = gtk_check_button_new_with_mnemonic (_("_Enable Regex"));
+  gtk_box_pack_start (GTK_BOX (vbox), check, FALSE, FALSE, 0);
+  gtk_widget_show (check);
+
+  mousepad_replace_dialog_bind_setting (dialog, MOUSEPAD_SETTING_SEARCH_ENABLE_REGEX, check, "active");
+
   /* match whole word */
   check = gtk_check_button_new_with_mnemonic (_("_Match whole word"));
   gtk_box_pack_start (GTK_BOX (vbox), check, FALSE, FALSE, 0);
@@ -304,21 +311,25 @@ mousepad_replace_dialog_response (GtkWidget *widget,
   const gchar           *search_str, *replace_str;
   gchar                 *message;
   gint                   search_direction, replace_all_location;
-  gboolean               match_case, match_whole_word, replace_all;
+  gboolean               match_case, enable_regex, match_whole_word, replace_all;
+
+  /* close dialog */
+  if (response_id == MOUSEPAD_RESPONSE_CLOSE || response_id < 0)
+    {
+      gtk_widget_destroy (widget);
+      return;
+    }
 
   /* read the search settings */
   search_direction = MOUSEPAD_SETTING_GET_INT (SEARCH_DIRECTION);
   replace_all_location = MOUSEPAD_SETTING_GET_INT (SEARCH_REPLACE_ALL_LOCATION);
   match_case = MOUSEPAD_SETTING_GET_BOOLEAN (SEARCH_MATCH_CASE);
+  enable_regex = MOUSEPAD_SETTING_GET_BOOLEAN (SEARCH_ENABLE_REGEX);
   match_whole_word = MOUSEPAD_SETTING_GET_BOOLEAN (SEARCH_MATCH_WHOLE_WORD);
   replace_all = MOUSEPAD_SETTING_GET_BOOLEAN (SEARCH_REPLACE_ALL);
 
-  /* close dialog */
-  if (response_id == MOUSEPAD_RESPONSE_CLOSE)
-    goto destroy_dialog;
-
   /* search direction */
-  if (search_direction == DIRECTION_UP && ! replace_all)
+  if (search_direction == DIRECTION_UP)
     flags = MOUSEPAD_SEARCH_FLAGS_DIR_BACKWARD;
   else
     flags = MOUSEPAD_SEARCH_FLAGS_DIR_FORWARD;
@@ -327,37 +338,33 @@ mousepad_replace_dialog_response (GtkWidget *widget,
   if (match_case)
     flags |= MOUSEPAD_SEARCH_FLAGS_MATCH_CASE;
 
+  /* enable regex search */
+  if (enable_regex)
+    flags |= MOUSEPAD_SEARCH_FLAGS_ENABLE_REGEX;
+
   /* only match whole words */
   if (match_whole_word)
     flags |= MOUSEPAD_SEARCH_FLAGS_WHOLE_WORD;
 
   /* wrap around */
-  if (search_direction == DIRECTION_BOTH && ! replace_all)
+  if (search_direction == DIRECTION_BOTH)
     flags |= MOUSEPAD_SEARCH_FLAGS_WRAP_AROUND;
 
   /* search area */
-  if (replace_all && replace_all_location == IN_SELECTION)
-    flags |= MOUSEPAD_SEARCH_FLAGS_AREA_SELECTION;
-  else
-    flags |= MOUSEPAD_SEARCH_FLAGS_AREA_DOCUMENT;
+  if (replace_all)
+    {
+      flags |= MOUSEPAD_SEARCH_FLAGS_ENTIRE_AREA;
+      if (replace_all_location == IN_ALL_DOCUMENTS)
+        flags |= MOUSEPAD_SEARCH_FLAGS_AREA_ALL_DOCUMENTS;
+      else if (replace_all_location == IN_SELECTION)
+        flags |= MOUSEPAD_SEARCH_FLAGS_AREA_SELECTION;
+    }
 
   /* start position */
-  if (response_id == MOUSEPAD_RESPONSE_CHECK_ENTRY)
-    {
-      /* no visible actions */
-      flags |= MOUSEPAD_SEARCH_FLAGS_ACTION_NONE;
-
-      if (replace_all)
-        goto replace_flags;
-      else
-        goto search_flags;
-    }
-  else if (response_id == MOUSEPAD_RESPONSE_FIND)
+  if (response_id == MOUSEPAD_RESPONSE_FIND)
     {
       /* select the first match */
       flags |= MOUSEPAD_SEARCH_FLAGS_ACTION_SELECT;
-
-      search_flags:
 
       /* start at the 'end' of the selection */
       if (flags & MOUSEPAD_SEARCH_FLAGS_DIR_BACKWARD)
@@ -370,36 +377,11 @@ mousepad_replace_dialog_response (GtkWidget *widget,
       /* replace matches */
       flags |= MOUSEPAD_SEARCH_FLAGS_ACTION_REPLACE;
 
-      if (replace_all)
-        {
-          replace_flags:
-
-          /* replace all from the beginning of the document */
-          flags |= MOUSEPAD_SEARCH_FLAGS_ITER_AREA_START
-                   | MOUSEPAD_SEARCH_FLAGS_ENTIRE_AREA;
-
-          /* search all opened documents (flag used in mousepad-window.c) */
-          if (replace_all_location == IN_ALL_DOCUMENTS)
-            flags |= MOUSEPAD_SEARCH_FLAGS_ALL_DOCUMENTS;
-        }
+      /* start at the 'beginning' of the selection */
+      if (flags & MOUSEPAD_SEARCH_FLAGS_DIR_BACKWARD)
+        flags |= MOUSEPAD_SEARCH_FLAGS_ITER_SEL_END;
       else
-        {
-          /* start at the 'beginning' of the selection */
-          if (flags & MOUSEPAD_SEARCH_FLAGS_DIR_BACKWARD)
-            flags |= MOUSEPAD_SEARCH_FLAGS_ITER_SEL_END;
-          else
-            flags |= MOUSEPAD_SEARCH_FLAGS_ITER_SEL_START;
-        }
-    }
-  else
-    {
-      destroy_dialog:
-
-      /* destroy the window */
-      gtk_widget_destroy (widget);
-
-      /* leave */
-      return;
+        flags |= MOUSEPAD_SEARCH_FLAGS_ITER_SEL_START;
     }
 
   /* get strings */
@@ -448,7 +430,7 @@ mousepad_replace_dialog_changed (MousepadReplaceDialog *dialog)
   if (text != NULL && *text != '\0')
     {
       /* do an invisible search to give the user some visible feedback */
-      gtk_dialog_response (GTK_DIALOG (dialog), MOUSEPAD_RESPONSE_CHECK_ENTRY);
+      gtk_dialog_response (GTK_DIALOG (dialog), MOUSEPAD_RESPONSE_FIND);
 
       /* buttons are sensitive */
       sensitive = TRUE;

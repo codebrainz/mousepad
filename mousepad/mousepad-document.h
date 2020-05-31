@@ -46,8 +46,9 @@ struct _MousepadDocument
   /* file */
   MousepadFile            *file;
 
-  /* text buffer */
+  /* text buffer and associated search context */
   GtkTextBuffer           *buffer;
+  GtkSourceSearchContext  *search_context;
 
   /* text view */
   MousepadView            *textview;

@@ -3399,12 +3399,11 @@ mousepad_window_search (MousepadWindow      *window,
 
   g_return_val_if_fail (MOUSEPAD_IS_WINDOW (window), -1);
 
-  if (flags & MOUSEPAD_SEARCH_FLAGS_ACTION_HIGHTLIGHT)
-    {
-      /* highlight all the matches */
-      nmatches = mousepad_util_highlight (window->active->buffer, window->active->tag, string, flags);
-    }
-  else if (flags & MOUSEPAD_SEARCH_FLAGS_ALL_DOCUMENTS)
+  if (flags & MOUSEPAD_SEARCH_FLAGS_ACTION_HIGHLIGHT_ON)
+    gtk_source_search_context_set_highlight (window->active->search_context, TRUE);
+  else if (flags & MOUSEPAD_SEARCH_FLAGS_ACTION_HIGHLIGHT_OFF)
+    gtk_source_search_context_set_highlight (window->active->search_context, FALSE);
+  else if (flags & MOUSEPAD_SEARCH_FLAGS_AREA_ALL_DOCUMENTS)
     {
       /* get the number of documents in this window */
       npages = gtk_notebook_get_n_pages (GTK_NOTEBOOK (window->notebook));
@@ -3416,16 +3415,18 @@ mousepad_window_search (MousepadWindow      *window,
           document = gtk_notebook_get_nth_page (GTK_NOTEBOOK (window->notebook), i);
 
           /* replace the matches in the document */
-          nmatches += mousepad_util_search (MOUSEPAD_DOCUMENT (document)->buffer, string, replacement, flags);
+          nmatches += mousepad_util_search (MOUSEPAD_DOCUMENT (document)->search_context, string,
+                                            replacement, flags);
         }
     }
   else if (window->active != NULL)
     {
       /* search or replace in the active document */
-      nmatches = mousepad_util_search (window->active->buffer, string, replacement, flags);
+      nmatches = mousepad_util_search (window->active->search_context, string, replacement, flags);
 
       /* make sure the selection is visible */
-      if (flags & (MOUSEPAD_SEARCH_FLAGS_ACTION_SELECT | MOUSEPAD_SEARCH_FLAGS_ACTION_REPLACE) && nmatches > 0)
+      if (flags & (MOUSEPAD_SEARCH_FLAGS_ACTION_SELECT | MOUSEPAD_SEARCH_FLAGS_ACTION_REPLACE)
+          && nmatches > 0)
         mousepad_view_scroll_to_cursor (window->active->textview);
     }
   else
@@ -3452,8 +3453,7 @@ mousepad_window_hide_search_bar (MousepadWindow *window)
   g_return_if_fail (MOUSEPAD_IS_SEARCH_BAR (window->search_bar));
 
   /* setup flags */
-  flags = MOUSEPAD_SEARCH_FLAGS_ACTION_HIGHTLIGHT
-          | MOUSEPAD_SEARCH_FLAGS_ACTION_CLEANUP;
+  flags = MOUSEPAD_SEARCH_FLAGS_ACTION_HIGHLIGHT_OFF;
 
   /* remove the highlight */
   mousepad_window_search (window, flags, NULL, NULL);

@@ -18,6 +18,7 @@
 #define __MOUSEPAD_UTIL_H__
 
 #include <gtk/gtk.h>
+#include <gtksourceview/gtksource.h>
 
 G_BEGIN_DECLS
 
@@ -26,33 +27,29 @@ G_BEGIN_DECLS
 typedef enum
 {
   /* search area */
-  MOUSEPAD_SEARCH_FLAGS_AREA_DOCUMENT     = 1 << 0,  /* search the entire document */
-  MOUSEPAD_SEARCH_FLAGS_AREA_SELECTION    = 1 << 1,  /* search inside selection */
+  MOUSEPAD_SEARCH_FLAGS_ENTIRE_AREA          = 1 << 0,  /* search the whole area */
+  MOUSEPAD_SEARCH_FLAGS_AREA_SELECTION       = 1 << 1,  /* search inside selection */
+  MOUSEPAD_SEARCH_FLAGS_AREA_ALL_DOCUMENTS   = 1 << 2,  /* search all documents */
 
   /* iter start point */
-  MOUSEPAD_SEARCH_FLAGS_ITER_AREA_START   = 1 << 2,  /* search from the beginning of the area */
-  MOUSEPAD_SEARCH_FLAGS_ITER_AREA_END     = 1 << 3,  /* search from the end of the area */
-  MOUSEPAD_SEARCH_FLAGS_ITER_SEL_START    = 1 << 4,  /* start at from the beginning of the selection */
-  MOUSEPAD_SEARCH_FLAGS_ITER_SEL_END      = 1 << 5,  /* start at from the end of the selection */
+  MOUSEPAD_SEARCH_FLAGS_ITER_SEL_START       = 1 << 3,  /* start at from the beginning of the selection */
+  MOUSEPAD_SEARCH_FLAGS_ITER_SEL_END         = 1 << 4,  /* start at from the end of the selection */
 
   /* direction */
-  MOUSEPAD_SEARCH_FLAGS_DIR_FORWARD       = 1 << 6,  /* search forward to end of area */
-  MOUSEPAD_SEARCH_FLAGS_DIR_BACKWARD      = 1 << 7,  /* search backwards to start of area */
+  MOUSEPAD_SEARCH_FLAGS_DIR_FORWARD          = 1 << 5,  /* search forward to end of area */
+  MOUSEPAD_SEARCH_FLAGS_DIR_BACKWARD         = 1 << 6,  /* search backwards to start of area */
 
   /* search settings */
-  MOUSEPAD_SEARCH_FLAGS_MATCH_CASE        = 1 << 8,  /* match case */
-  MOUSEPAD_SEARCH_FLAGS_WHOLE_WORD        = 1 << 9,  /* only match whole words */
-  MOUSEPAD_SEARCH_FLAGS_WRAP_AROUND       = 1 << 10, /* wrap around */
-  MOUSEPAD_SEARCH_FLAGS_ENTIRE_AREA       = 1 << 11, /* keep searching until the end of the area is reached */
-  MOUSEPAD_SEARCH_FLAGS_ALL_DOCUMENTS     = 1 << 12, /* search all documents */
-
+  MOUSEPAD_SEARCH_FLAGS_MATCH_CASE           = 1 << 7,  /* match case */
+  MOUSEPAD_SEARCH_FLAGS_ENABLE_REGEX         = 1 << 8,  /* enable regex search */
+  MOUSEPAD_SEARCH_FLAGS_WHOLE_WORD           = 1 << 9,  /* only match whole words */
+  MOUSEPAD_SEARCH_FLAGS_WRAP_AROUND          = 1 << 10, /* wrap around */
 
   /* actions */
-  MOUSEPAD_SEARCH_FLAGS_ACTION_NONE       = 1 << 13, /* no visible actions */
-  MOUSEPAD_SEARCH_FLAGS_ACTION_HIGHTLIGHT = 1 << 14, /* highlight all the occurrences */
-  MOUSEPAD_SEARCH_FLAGS_ACTION_CLEANUP    = 1 << 15, /* cleanup the highlighted occurrences */
-  MOUSEPAD_SEARCH_FLAGS_ACTION_SELECT     = 1 << 16, /* select the match */
-  MOUSEPAD_SEARCH_FLAGS_ACTION_REPLACE    = 1 << 17, /* replace the match */
+  MOUSEPAD_SEARCH_FLAGS_ACTION_HIGHLIGHT_ON  = 1 << 11, /* enable occurrence highlighting */
+  MOUSEPAD_SEARCH_FLAGS_ACTION_HIGHLIGHT_OFF = 1 << 12, /* disable occurrence highlighting */
+  MOUSEPAD_SEARCH_FLAGS_ACTION_SELECT        = 1 << 13, /* select the match */
+  MOUSEPAD_SEARCH_FLAGS_ACTION_REPLACE       = 1 << 14, /* replace the match */
 }
 MousepadSearchFlags;
 
@@ -105,15 +102,10 @@ void       mousepad_util_save_key_file                    (GKeyFile            *
 
 GType      mousepad_util_search_flags_get_type            (void) G_GNUC_CONST;
 
-gint       mousepad_util_highlight                        (GtkTextBuffer       *buffer,
-                                                           GtkTextTag          *tag,
-                                                           const gchar         *string,
-                                                           MousepadSearchFlags  flags);
-
-gint       mousepad_util_search                           (GtkTextBuffer       *buffer,
-                                                           const gchar         *string,
-                                                           const gchar         *replace,
-                                                           MousepadSearchFlags  flags);
+gint       mousepad_util_search                           (GtkSourceSearchContext *search_context,
+                                                           const gchar            *string,
+                                                           const gchar            *replace,
+                                                           MousepadSearchFlags     flags);
 
 GtkAction *mousepad_util_find_related_action              (GtkWidget           *widget);
 

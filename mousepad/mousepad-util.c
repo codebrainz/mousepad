@@ -17,6 +17,7 @@
 #include <mousepad/mousepad-private.h>
 #include <mousepad/mousepad-gtkcompat.h>
 #include <mousepad/mousepad-util.h>
+#include <gtksourceview/gtksource.h>
 
 
 
@@ -626,430 +627,128 @@ mousepad_util_search_flags_get_type (void)
 
 
 
-static gboolean
-mousepad_util_search_iter (const GtkTextIter   *start,
-                           const gchar         *string,
-                           MousepadSearchFlags  flags,
-                           GtkTextIter         *match_start,
-                           GtkTextIter         *match_end,
-                           const GtkTextIter   *limit)
-{
-  GtkTextIter  iter, begin;
-  gunichar     iter_char, str_char;
-  gboolean     succeed = FALSE;
-  const gchar *needle = string;
-  gboolean     match_case, search_backwards, whole_word;
-  guint        needle_offset = 0;
-
-  g_return_val_if_fail (start != NULL, FALSE);
-  g_return_val_if_fail (string != NULL, FALSE);
-  g_return_val_if_fail (limit != NULL, FALSE);
-
-  /* search properties */
-  match_case       = (flags & MOUSEPAD_SEARCH_FLAGS_MATCH_CASE) != 0;
-  search_backwards = (flags & MOUSEPAD_SEARCH_FLAGS_DIR_BACKWARD) != 0;
-  whole_word       = (flags & MOUSEPAD_SEARCH_FLAGS_WHOLE_WORD) != 0;
-
-  /* set the start iter */
-  iter = *start;
-
-  /* walk from the start to the end iter */
-  for (;;)
-    {
-      /* break when we reach the limit iter, for backwards searching it's
-       * it has to be less than the limit which is 0 so that we can match
-       * at the very start of the buffer. for forwards searching the limit
-       * is the index after the last char so break when we are at or past
-       * the limit. */
-      if ((search_backwards && gtk_text_iter_compare (&iter, limit) < 0) ||
-          (!search_backwards && gtk_text_iter_compare (&iter, limit) >= 0))
-        {
-          break;
-        }
-
-      /* get the unichar characters */
-      iter_char = gtk_text_iter_get_char (&iter);
-      str_char  = g_utf8_get_char (needle);
-
-      /* skip unknown characters */
-      if (G_UNLIKELY (iter_char == 0xFFFC))
-        goto continue_searching;
-
-      /* lower case searching */
-      if (!match_case)
-        {
-          /* convert the characters to lower case */
-          iter_char = g_unichar_tolower (iter_char);
-          str_char  = g_unichar_tolower (str_char);
-        }
-
-      /* compare the two characters */
-      if (iter_char == str_char)
-        {
-          /* first character matched, set the begin iter */
-          if (needle_offset == 0)
-            begin = iter;
-
-          /* get the next character and increase the offset counter */
-          needle = g_utf8_next_char (needle);
-          needle_offset++;
-
-          /* we hit the end of the search string, so we had a full match */
-          if (G_UNLIKELY (*needle == '\0'))
-            {
-              if (G_LIKELY (!search_backwards))
-                {
-                  /* set the end iter after the character (for selection) */
-                  gtk_text_iter_forward_char (&iter);
-
-                  /* check if we match a whole word */
-                  if (whole_word && !(mousepad_util_iter_starts_word (&begin) && mousepad_util_iter_ends_word (&iter)))
-                    goto reset_and_continue_searching;
-                }
-              else
-                {
-                  /* set the start iter after the character (for selection) */
-                  gtk_text_iter_forward_char (&begin);
-
-                  /* check if we match a whole word */
-                  if (whole_word && !(mousepad_util_iter_starts_word (&iter) && mousepad_util_iter_ends_word (&begin)))
-                    goto reset_and_continue_searching;
-                }
-
-              /* set the start and end iters */
-              *match_start = begin;
-              *match_end   = iter;
-
-              /* return true and stop searching */
-              succeed = TRUE;
-
-              break;
-            }
-        }
-      else if (needle_offset > 0)
-        {
-          /* label */
-          reset_and_continue_searching:
-
-          /* reset the needle */
-          needle = string;
-          needle_offset = 0;
-
-          /* reset the iter */
-          iter = begin;
-        }
-
-      /* label */
-      continue_searching:
-
-      /* jump to next iter in the buffer */
-      if ((!search_backwards && !gtk_text_iter_forward_char (&iter))
-          || (search_backwards && !gtk_text_iter_backward_char (&iter)))
-        break;
-    }
-
-  return succeed;
-}
-
-
-
-static void
-mousepad_util_search_get_iters (GtkTextBuffer       *buffer,
-                                MousepadSearchFlags  flags,
-                                GtkTextIter         *start,
-                                GtkTextIter         *end,
-                                GtkTextIter         *iter)
-{
-  GtkTextIter sel_start, sel_end, tmp;
-
-  /* get selection bounds */
-  gtk_text_buffer_get_selection_bounds (buffer, &sel_start, &sel_end);
-
-  if (flags & MOUSEPAD_SEARCH_FLAGS_AREA_DOCUMENT)
-    {
-      /* get document bounds */
-      gtk_text_buffer_get_bounds (buffer, start, end);
-
-      /* set the start iter */
-      if (flags & MOUSEPAD_SEARCH_FLAGS_ITER_AREA_START)
-        *iter = *start;
-      else if (flags & MOUSEPAD_SEARCH_FLAGS_ITER_AREA_END)
-        *iter = *end;
-      else
-        goto set_selection_iter;
-    }
-  else if (flags & MOUSEPAD_SEARCH_FLAGS_AREA_SELECTION)
-    {
-      /* set area iters */
-      *start = sel_start;
-      *end = sel_end;
-
-      set_selection_iter:
-
-      /* set the start iter */
-      if (flags & (MOUSEPAD_SEARCH_FLAGS_ITER_AREA_START | MOUSEPAD_SEARCH_FLAGS_ITER_SEL_START))
-        *iter = sel_start;
-      else if (flags & (MOUSEPAD_SEARCH_FLAGS_ITER_AREA_END | MOUSEPAD_SEARCH_FLAGS_ITER_SEL_END))
-        *iter = sel_end;
-      else
-        g_assert_not_reached ();
-    }
-  else
-    {
-      /* this should never happen */
-      g_assert_not_reached ();
-    }
-
-  /* invert the start and end iter on backwards searching */
-  if (flags & MOUSEPAD_SEARCH_FLAGS_DIR_BACKWARD)
-    {
-      tmp = *start;
-      *start = *end;
-      *end = tmp;
-    }
-}
-
-
-
 gint
-mousepad_util_highlight (GtkTextBuffer       *buffer,
-                         GtkTextTag          *tag,
-                         const gchar         *string,
-                         MousepadSearchFlags  flags)
+mousepad_util_search (GtkSourceSearchContext *search_context,
+                      const gchar            *string,
+                      const gchar            *replace,
+                      MousepadSearchFlags     flags)
 {
-  GtkTextIter start, iter, end;
-  GtkTextIter match_start, match_end;
-  GtkTextIter cache_start, cache_end;
-  gboolean    found, cached = FALSE;
-  gint        counter = 0;
+  GtkSourceSearchSettings *search_settings;
+  GtkTextBuffer           *buffer, *selection_buffer;
+  GtkTextIter              start, end, iter, bstart, fend, biter, fiter;
+  const gchar             *selected_text;
+  gint                     counter = 0;
+  gboolean                 found;
 
-  g_return_val_if_fail (GTK_IS_TEXT_BUFFER (buffer), -1);
-  g_return_val_if_fail (GTK_IS_TEXT_TAG (tag), -1);
-  g_return_val_if_fail (string == NULL || g_utf8_validate (string, -1, NULL), -1);
-  g_return_val_if_fail ((flags & MOUSEPAD_SEARCH_FLAGS_DIR_BACKWARD) == 0, -1);
-
-  /* get the buffer bounds */
-  gtk_text_buffer_get_bounds (buffer, &start, &end);
-
-  /* remove all the highlight tags */
-  gtk_text_buffer_remove_tag (buffer, tag, &start, &end);
-
-  /* quit if there is nothing to highlight */
-  if (string == NULL || *string == '\0' || flags & MOUSEPAD_SEARCH_FLAGS_ACTION_CLEANUP)
-    return 0;
-
-  /* get the search iters */
-  mousepad_util_search_get_iters (buffer, flags, &start, &end, &iter);
-
-  /* initialize cache iters */
-  cache_start = cache_end = iter;
-
-  /* highlight all the occurrences of the strings */
-  do
-    {
-      /* search for the next occurrence of the string */
-      found = mousepad_util_search_iter (&iter, string, flags, &match_start, &match_end, &end);
-
-      if (G_LIKELY (found))
-        {
-          /* try to extend the cache */
-          if (gtk_text_iter_equal (&cache_end, &match_start))
-            {
-              /* enable caching */
-              cached = TRUE;
-            }
-          else
-            {
-              if (cached)
-                {
-                  /* highlight the cached occurrences */
-                  gtk_text_buffer_apply_tag (buffer, tag, &cache_start, &cache_end);
-
-                  /* cache is flushed */
-                  cached = FALSE;
-                }
-
-              /* highlight the matched occurrence */
-              gtk_text_buffer_apply_tag (buffer, tag, &match_start, &match_end);
-
-              /* set the new cache start iter */
-              cache_start = match_start;
-            }
-
-          /* set the end iters */
-          iter = cache_end = match_end;
-
-          /* increase the counter */
-          counter++;
-        }
-      else if (G_UNLIKELY (cached))
-        {
-          /* flush the cached iters */
-          gtk_text_buffer_apply_tag (buffer, tag, &cache_start, &cache_end);
-        }
-    }
-  while (G_LIKELY (found));
-
-  return counter;
-}
-
-
-
-gint
-mousepad_util_search (GtkTextBuffer       *buffer,
-                      const gchar         *string,
-                      const gchar         *replace,
-                      MousepadSearchFlags  flags)
-{
-  gchar       *reversed = NULL;
-  gint         counter = 0;
-  gboolean     found, search_again = FALSE;
-  gboolean     search_backwards, wrap_around;
-  GtkTextIter  start, end, iter;
-  GtkTextIter  match_start, match_end;
-  GtkTextMark *mark_start, *mark_iter, *mark_end, *mark_replace;
-
-  g_return_val_if_fail (GTK_IS_TEXT_BUFFER (buffer), -1);
-  g_return_val_if_fail (string && g_utf8_validate (string, -1, NULL), -1);
+  g_return_val_if_fail (GTK_SOURCE_IS_SEARCH_CONTEXT (search_context), -1);
+  g_return_val_if_fail (string != NULL && g_utf8_validate (string, -1, NULL), -1);
   g_return_val_if_fail (replace == NULL || g_utf8_validate (replace, -1, NULL), -1);
-  g_return_val_if_fail ((flags & MOUSEPAD_SEARCH_FLAGS_ACTION_HIGHTLIGHT) == 0, -1);
 
   /* freeze buffer notifications */
+  buffer = GTK_TEXT_BUFFER (gtk_source_search_context_get_buffer (search_context));
   g_object_freeze_notify (G_OBJECT (buffer));
 
   /* get the search iters */
-  mousepad_util_search_get_iters (buffer, flags, &start, &end, &iter);
+  if (flags & MOUSEPAD_SEARCH_FLAGS_ITER_SEL_START)
+    gtk_text_buffer_get_selection_bounds (buffer, &iter, NULL);
+  else
+    gtk_text_buffer_get_selection_bounds (buffer, NULL, &iter);
 
-  /* store the initial iters in marks */
-  mark_start = gtk_text_buffer_create_mark (buffer, NULL, &start, TRUE);
-  mark_iter  = gtk_text_buffer_create_mark (buffer, NULL, &iter, TRUE);
-  mark_end   = gtk_text_buffer_create_mark (buffer, NULL, &end, FALSE);
-
-  /* some to make the code easier to read */
-  search_backwards = ((flags & MOUSEPAD_SEARCH_FLAGS_DIR_BACKWARD) != 0);
-  wrap_around = ((flags & MOUSEPAD_SEARCH_FLAGS_WRAP_AROUND) != 0 && !gtk_text_iter_equal (&start, &iter));
-
-  /* if we're not really searching anything, reset the cursor */
-  if (string == NULL || *string == '\0')
-    goto reset_cursor;
-
-  if (search_backwards)
-    {
-      /* reverse the search string */
-      reversed = g_utf8_strreverse (string, -1);
-
-      /* set the new search string */
-      string = reversed;
-
-      /* start before the selection */
-      gtk_text_iter_backward_char (&iter);
-    }
-
-  do
-    {
-      /* search the string */
-      found = mousepad_util_search_iter (&iter, string, flags, &match_start, &match_end, &end);
-
-      /* don't search again unless changed below */
-      search_again = FALSE;
-
-      if (found)
-        {
-          /* handle the action */
-          if (flags & MOUSEPAD_SEARCH_FLAGS_ACTION_SELECT)
-            {
-              /* select the match */
-              if (! search_backwards)
-                gtk_text_buffer_select_range (buffer, &match_start, &match_end);
-              else
-                gtk_text_buffer_select_range (buffer, &match_end, &match_start);
-            }
-          else if (flags & MOUSEPAD_SEARCH_FLAGS_ACTION_REPLACE)
-            {
-              /* create text mark */
-              mark_replace = gtk_text_buffer_create_mark (buffer, NULL, &match_start, search_backwards);
-
-              /* delete the match */
-              gtk_text_buffer_delete (buffer, &match_start, &match_end);
-
-              /* restore the iter */
-              gtk_text_buffer_get_iter_at_mark (buffer, &iter, mark_replace);
-
-              /* insert the replacement */
-              if (G_LIKELY (replace))
-                gtk_text_buffer_insert (buffer, &iter, replace, -1);
-
-              /* remove the mark */
-              gtk_text_buffer_delete_mark (buffer, mark_replace);
-
-              /* restore the begin and end iters */
-              gtk_text_buffer_get_iter_at_mark (buffer, &start, mark_start);
-              gtk_text_buffer_get_iter_at_mark (buffer, &end, mark_end);
-
-              /* when we don't replace all matches, select the next one */
-              if ((flags & MOUSEPAD_SEARCH_FLAGS_ENTIRE_AREA) == 0)
-                flags |= MOUSEPAD_SEARCH_FLAGS_ACTION_SELECT;
-
-              /* search again */
-              search_again = TRUE;
-            }
-          else if (flags & MOUSEPAD_SEARCH_FLAGS_ACTION_NONE)
-            {
-              /* keep searching when requested */
-              if (flags & MOUSEPAD_SEARCH_FLAGS_ENTIRE_AREA)
-                search_again = TRUE;
-
-              /* move iter */
-              iter = match_end;
-            }
-          else
-            {
-              /* no valid action was defined */
-              g_assert_not_reached ();
-            }
-
-          /* increase the counter */
-          counter++;
-        }
-      else if (wrap_around)
-        {
-          /* get the start iter (note that the start and iter were already
-           * reversed for backwards searching) */
-          gtk_text_buffer_get_iter_at_mark (buffer, &iter, mark_start);
-
-          /* get end iter */
-          gtk_text_buffer_get_iter_at_mark (buffer, &end, mark_iter);
-
-          /* we wrapped, don't try again */
-          wrap_around = FALSE;
-
-          /* search again */
-          search_again = TRUE;
-        }
-      else
-        {
-          reset_cursor:
-
-          /* get the initial start mark */
-          gtk_text_buffer_get_iter_at_mark (buffer, &iter, mark_iter);
-
-          /* reset the cursor */
-          gtk_text_buffer_place_cursor (buffer, &iter);
-        }
-    }
-  while (search_again);
-
-  /* make sure the selection is restored */
+  /* substitute a virtual selection buffer to the real buffer and work inside */
   if (flags & MOUSEPAD_SEARCH_FLAGS_AREA_SELECTION)
+    {
+      selection_buffer = GTK_TEXT_BUFFER (gtk_source_buffer_new (NULL));
+      gtk_text_buffer_get_selection_bounds (buffer, &start, &end);
+      selected_text = gtk_text_buffer_get_text (buffer, &start, &end, FALSE);
+      gtk_text_buffer_set_text (selection_buffer, selected_text, -1);
+      search_context = gtk_source_search_context_new (GTK_SOURCE_BUFFER (selection_buffer), NULL);
+      gtk_text_buffer_get_start_iter (selection_buffer, &iter);
+    }
+
+  /* set the search context settings */
+  search_settings = gtk_source_search_context_get_settings (search_context);
+  gtk_source_search_settings_set_search_text (search_settings, string);
+  gtk_source_search_settings_set_case_sensitive (search_settings,
+                                                 flags & MOUSEPAD_SEARCH_FLAGS_MATCH_CASE);
+  gtk_source_search_settings_set_at_word_boundaries (search_settings,
+                                                     flags & MOUSEPAD_SEARCH_FLAGS_WHOLE_WORD);
+  gtk_source_search_settings_set_wrap_around (search_settings,
+                                              (flags & MOUSEPAD_SEARCH_FLAGS_WRAP_AROUND));
+  gtk_source_search_settings_set_regex_enabled (search_settings,
+                                                flags & MOUSEPAD_SEARCH_FLAGS_ENABLE_REGEX);
+
+  /* search the string */
+  if (flags & MOUSEPAD_SEARCH_FLAGS_DIR_BACKWARD)
+    found = gtk_source_search_context_backward2 (search_context, &iter, &start, &end, NULL);
+  else
+    found = gtk_source_search_context_forward2 (search_context, &iter, &start, &end, NULL);
+
+  /* set the counter, ensuring the buffer is fully scanned if needed (searching in both
+   * directions leads faster to a full scan) */
+  counter = gtk_source_search_context_get_occurrences_count (search_context);
+  if (counter == -1 && (flags & MOUSEPAD_SEARCH_FLAGS_ENTIRE_AREA))
+    {
+      gtk_source_search_settings_set_wrap_around (search_settings, TRUE);
+      if (! found)
+        {
+          start = iter;
+          end = iter;
+        }
+      biter = start;
+      fiter = end;
+      do
+        {
+          gtk_source_search_context_backward2 (search_context, &biter, &bstart, NULL, NULL);
+          gtk_source_search_context_forward2 (search_context, &fiter, NULL, &fend, NULL);
+          counter = gtk_source_search_context_get_occurrences_count (search_context);
+          biter = bstart;
+          fiter = fend;
+        }
+      while (counter == -1 && ! gtk_text_iter_equal (&biter, &start)
+                           && ! gtk_text_iter_equal (&fiter, &end));
+      gtk_source_search_settings_set_wrap_around (search_settings,
+                                                  (flags & MOUSEPAD_SEARCH_FLAGS_WRAP_AROUND));
+    }
+  else if (counter == -1 && ! (flags & MOUSEPAD_SEARCH_FLAGS_ENTIRE_AREA))
+    counter = found;
+
+  /* handle the action */
+  if (found && (flags & MOUSEPAD_SEARCH_FLAGS_ACTION_SELECT)
+      && ! (flags & MOUSEPAD_SEARCH_FLAGS_AREA_SELECTION))
     gtk_text_buffer_select_range (buffer, &start, &end);
-
-  /* cleanup */
-  g_free (reversed);
-
-  /* cleanup marks */
-  gtk_text_buffer_delete_mark (buffer, mark_start);
-  gtk_text_buffer_delete_mark (buffer, mark_iter);
-  gtk_text_buffer_delete_mark (buffer, mark_end);
+  else if (flags & MOUSEPAD_SEARCH_FLAGS_ACTION_REPLACE)
+    {
+      if (found && ! (flags & MOUSEPAD_SEARCH_FLAGS_ENTIRE_AREA))
+        {
+          /* replace selected occurrence */
+          gtk_source_search_context_replace2 (search_context, &start, &end, replace, -1, NULL);
+          
+          /* select next occurrence */
+          flags |= MOUSEPAD_SEARCH_FLAGS_ACTION_SELECT;
+          flags &= ~MOUSEPAD_SEARCH_FLAGS_ACTION_REPLACE;
+          counter = mousepad_util_search (search_context, string, NULL, flags);
+        }
+      else if (counter > 0 && (flags & MOUSEPAD_SEARCH_FLAGS_ENTIRE_AREA))
+        {
+          gtk_source_search_context_replace_all (search_context, replace, -1, NULL);
+          if (flags & MOUSEPAD_SEARCH_FLAGS_AREA_SELECTION)
+            {
+              /* replace all occurrences in the virtual selection buffer */
+              gtk_source_search_context_replace_all (search_context, replace, -1, NULL);
+              gtk_text_buffer_get_bounds (selection_buffer, &start, &end);
+              selected_text = gtk_text_buffer_get_text (selection_buffer, &start, &end, FALSE);
+              
+              /* replace selection in the real buffer by the text in the virtual selection buffer */
+              gtk_text_buffer_get_selection_bounds (buffer, &start, &end);
+              gtk_text_buffer_begin_user_action (buffer);
+              gtk_text_buffer_delete (buffer, &start, &end);
+              gtk_text_buffer_insert (buffer, &start, selected_text, -1);
+              gtk_text_buffer_end_user_action (buffer);
+            }
+        }
+    }
+  else if (! (flags & MOUSEPAD_SEARCH_FLAGS_AREA_SELECTION))
+    gtk_text_buffer_place_cursor (buffer, &iter);
 
   /* thawn buffer notifications */
   g_object_thaw_notify (G_OBJECT (buffer));

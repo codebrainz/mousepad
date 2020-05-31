@@ -343,6 +343,14 @@
         be case-insensitive.
       </description>
     </key>
+    <key name="enable-regex" type="b">
+      <default>false</default>
+      <summary>Enable regex</summary>
+      <description>
+        When true regex search will be enabled, when false it will
+        be disabled.
+      </description>
+    </key>
     <key name="match-whole-word" type="b">
       <default>false</default>
       <summary>Match whole word</summary>

@@ -182,8 +182,10 @@ mousepad_document_init (MousepadDocument *document)
   gtk_scrolled_window_set_hadjustment (GTK_SCROLLED_WINDOW (document), NULL);
   gtk_scrolled_window_set_vadjustment (GTK_SCROLLED_WINDOW (document), NULL);
 
-  /* create a textbuffer */
+  /* create a textbuffer and associated search context */
   document->buffer = GTK_TEXT_BUFFER (gtk_source_buffer_new (NULL));
+  document->search_context = gtk_source_search_context_new (GTK_SOURCE_BUFFER (document->buffer), NULL);
+  gtk_source_search_context_set_highlight (document->search_context, FALSE);
 
   /* initialize the file */
   document->file = mousepad_file_new (document->buffer);
