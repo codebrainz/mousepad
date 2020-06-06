@@ -7,13 +7,14 @@
 # Andre Miranda <andre42m@gmail.com>, 2013-2014
 # C. E., 2020
 # Michael Martins <michaelfm21@gmail.com>, 2019
+# Wellington Almeida <wsalmeida6@gmail.com>, 2020
 msgid ""
 msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-05-07 12:47+0200\n"
-"PO-Revision-Date: 2020-05-07 22:57+0000\n"
-"Last-Translator: C. E.\n"
+"POT-Creation-Date: 2020-06-05 12:47+0200\n"
+"PO-Revision-Date: 2020-06-06 22:13+0000\n"
+"Last-Translator: Wellington Almeida <wsalmeida6@gmail.com>\n"
 "Language-Team: Portuguese (Brazil) (http://www.transifex.com/xfce/xfce-apps/language/pt_BR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -34,25 +35,25 @@ msgid "Print version information and exit"
 msgstr "Exibe a versão e sai"
 
 #. default application name
-#: ../mousepad/main.c:69 ../mousepad.desktop.in.in.h:1
+#: ../mousepad/main.c:70 ../mousepad.desktop.in.in.h:1
 msgid "Mousepad"
 msgstr "Mousepad"
 
 #. initialize gtk+
-#: ../mousepad/main.c:83
+#: ../mousepad/main.c:84
 msgid "[FILES...]"
 msgstr "[ARQUIVOS...]"
 
 #. no error message, the gui initialization failed
-#: ../mousepad/main.c:89
+#: ../mousepad/main.c:90
 msgid "Failed to open display."
 msgstr "Falha na abertura da exibição."
 
-#: ../mousepad/main.c:106
+#: ../mousepad/main.c:107
 msgid "The Xfce development team. All rights reserved."
 msgstr "Equipe de desenvolvimento do Xfce. Todos os direitos reservados."
 
-#: ../mousepad/main.c:107
+#: ../mousepad/main.c:108
 #, c-format
 msgid "Please report bugs to <%s>."
 msgstr "Por favor, relate erros em <%s>"
@@ -141,12 +142,12 @@ msgid "If you revert the file, all unsaved changes will be lost."
 msgstr "Se você reverter o arquivo, todas as alterações não salvas serão perdidas."
 
 #. pack button, add signal and tooltip
-#: ../mousepad/mousepad-document.c:500
+#: ../mousepad/mousepad-document.c:502
 msgid "Close this tab"
 msgstr "Fechar esta aba"
 
 #. create an unique untitled document name
-#: ../mousepad/mousepad-document.c:530
+#: ../mousepad/mousepad-document.c:532
 msgid "Untitled"
 msgstr "Sem título"
 
@@ -594,7 +595,7 @@ msgid "Replace"
 msgstr "Substituir"
 
 #: ../mousepad/mousepad-replace-dialog.c:144
-#: ../mousepad/mousepad-replace-dialog.c:443
+#: ../mousepad/mousepad-replace-dialog.c:425
 msgid "_Replace"
 msgstr "Substitui_r"
 
@@ -627,56 +628,62 @@ msgstr "Ambos"
 msgid "Case sensi_tive"
 msgstr "Diferenciar _maiúsculas de minúsculas"
 
-#. match whole word
+#. enable regex search
 #: ../mousepad/mousepad-replace-dialog.c:230
+#: ../mousepad/mousepad-search-bar.c:287 ../mousepad/mousepad-search-bar.c:297
+msgid "_Enable Regex"
+msgstr "_Ativar Regex"
+
+#. match whole word
+#: ../mousepad/mousepad-replace-dialog.c:237
 msgid "_Match whole word"
 msgstr "Coincidir palavra inteira"
 
-#: ../mousepad/mousepad-replace-dialog.c:241
+#: ../mousepad/mousepad-replace-dialog.c:248
 msgid "Replace _all in:"
 msgstr "Substituir _tudo em:"
 
-#: ../mousepad/mousepad-replace-dialog.c:249
+#: ../mousepad/mousepad-replace-dialog.c:256
 msgid "Selection"
 msgstr "Seleção"
 
-#: ../mousepad/mousepad-replace-dialog.c:250
+#: ../mousepad/mousepad-replace-dialog.c:257
 msgid "Document"
 msgstr "Documento"
 
-#: ../mousepad/mousepad-replace-dialog.c:251
+#: ../mousepad/mousepad-replace-dialog.c:258
 msgid "All Documents"
 msgstr "Todos Documentos"
 
-#: ../mousepad/mousepad-replace-dialog.c:422
+#: ../mousepad/mousepad-replace-dialog.c:404
 #, c-format
 msgid "%d occurrence"
 msgid_plural "%d occurrences"
 msgstr[0] "%d ocorrência"
 msgstr[1] "%d ocorrências"
 
-#: ../mousepad/mousepad-replace-dialog.c:443
+#: ../mousepad/mousepad-replace-dialog.c:425
 msgid "_Replace All"
 msgstr "_Substituir Tudo:"
 
-#: ../mousepad/mousepad-search-bar.c:208
+#: ../mousepad/mousepad-search-bar.c:206
 msgid "Fi_nd:"
 msgstr "_Localizar"
 
-#: ../mousepad/mousepad-search-bar.c:230
+#: ../mousepad/mousepad-search-bar.c:228
 msgid "_Next"
 msgstr "Pró_ximo"
 
-#: ../mousepad/mousepad-search-bar.c:241
+#: ../mousepad/mousepad-search-bar.c:239
 msgid "_Previous"
 msgstr "_Anterior"
 
-#: ../mousepad/mousepad-search-bar.c:252
+#: ../mousepad/mousepad-search-bar.c:250
 msgid "Highlight _All"
 msgstr "Realçar _Tudo"
 
 #. overflow menu item for when window is too narrow to show the tool bar item
-#: ../mousepad/mousepad-search-bar.c:265 ../mousepad/mousepad-search-bar.c:276
+#: ../mousepad/mousepad-search-bar.c:263 ../mousepad/mousepad-search-bar.c:274
 msgid "Mat_ch Case"
 msgstr "_Diferenciar Minúsculas de Maiúsculas"
 
@@ -723,13 +730,13 @@ msgid "%s | Authors: %s | Filename: %s"
 msgstr "%s | Autores: %s | Nome do arquivo: %s"
 
 #. show warning to the user
-#: ../mousepad/mousepad-util.c:549
+#: ../mousepad/mousepad-util.c:550
 #, c-format
 msgid "Unable to create base directory \"%s\". Saving to file \"%s\" will be aborted."
 msgstr "Não foi possí­vel criar diretório base \"%s\". O salvamento do arquivo \"%s\" será abortado."
 
 #. print error
-#: ../mousepad/mousepad-util.c:595
+#: ../mousepad/mousepad-util.c:596
 #, c-format
 msgid "Failed to store the preferences to \"%s\": %s"
 msgstr "Falha no armazenamento das preferências de \"%s\": %s"
@@ -1155,7 +1162,7 @@ msgstr "Altera a visibilidade da barra de estado"
 msgid "_Fullscreen"
 msgstr "Tela _cheia"
 
-#: ../mousepad/mousepad-window.c:488 ../mousepad/mousepad-window.c:5200
+#: ../mousepad/mousepad-window.c:488 ../mousepad/mousepad-window.c:5197
 msgid "Make the window fullscreen"
 msgstr "Torna a janela tela cheia"
 
@@ -1335,11 +1342,11 @@ msgstr "Falha no recarregamento do documento"
 msgid "Failed to print the document"
 msgstr "Falha na impressão do documento"
 
-#: ../mousepad/mousepad-window.c:4989
+#: ../mousepad/mousepad-window.c:4986
 msgid "Choose Mousepad Font"
 msgstr "Escolha a Fonte do Mousepad"
 
-#: ../mousepad/mousepad-window.c:5193
+#: ../mousepad/mousepad-window.c:5190
 msgid "Leave fullscreen mode"
 msgstr "Sair do modo tela cheia"
 
