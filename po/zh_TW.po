@@ -11,8 +11,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-05-07 12:47+0200\n"
-"PO-Revision-Date: 2020-05-08 02:04+0000\n"
+"POT-Creation-Date: 2020-06-05 12:47+0200\n"
+"PO-Revision-Date: 2020-06-06 02:18+0000\n"
 "Last-Translator: 黃柏諺 <s8321414@gmail.com>\n"
 "Language-Team: Chinese (Taiwan) (http://www.transifex.com/xfce/xfce-apps/language/zh_TW/)\n"
 "MIME-Version: 1.0\n"
@@ -34,25 +34,25 @@ msgid "Print version information and exit"
 msgstr "顯示版本資訊並結束"
 
 #. default application name
-#: ../mousepad/main.c:69 ../mousepad.desktop.in.in.h:1
+#: ../mousepad/main.c:70 ../mousepad.desktop.in.in.h:1
 msgid "Mousepad"
 msgstr "Mousepad"
 
 #. initialize gtk+
-#: ../mousepad/main.c:83
+#: ../mousepad/main.c:84
 msgid "[FILES...]"
 msgstr "[檔案...]"
 
 #. no error message, the gui initialization failed
-#: ../mousepad/main.c:89
+#: ../mousepad/main.c:90
 msgid "Failed to open display."
 msgstr "未能開啟顯示。"
 
-#: ../mousepad/main.c:106
+#: ../mousepad/main.c:107
 msgid "The Xfce development team. All rights reserved."
 msgstr "Xfce 開發團隊。著作權所有。"
 
-#: ../mousepad/main.c:107
+#: ../mousepad/main.c:108
 #, c-format
 msgid "Please report bugs to <%s>."
 msgstr "請將臭蟲回報至 <%s>。"
@@ -141,12 +141,12 @@ msgid "If you revert the file, all unsaved changes will be lost."
 msgstr "若還原檔案，所有變更都會丟失。"
 
 #. pack button, add signal and tooltip
-#: ../mousepad/mousepad-document.c:500
+#: ../mousepad/mousepad-document.c:502
 msgid "Close this tab"
 msgstr "關閉此分頁"
 
 #. create an unique untitled document name
-#: ../mousepad/mousepad-document.c:530
+#: ../mousepad/mousepad-document.c:532
 msgid "Untitled"
 msgstr "未命名"
 
@@ -594,7 +594,7 @@ msgid "Replace"
 msgstr "取代"
 
 #: ../mousepad/mousepad-replace-dialog.c:144
-#: ../mousepad/mousepad-replace-dialog.c:443
+#: ../mousepad/mousepad-replace-dialog.c:425
 msgid "_Replace"
 msgstr "取代(_R)"
 
@@ -627,55 +627,61 @@ msgstr "兩者"
 msgid "Case sensi_tive"
 msgstr "區分大小寫(_T)"
 
-#. match whole word
+#. enable regex search
 #: ../mousepad/mousepad-replace-dialog.c:230
+#: ../mousepad/mousepad-search-bar.c:287 ../mousepad/mousepad-search-bar.c:297
+msgid "_Enable Regex"
+msgstr "啟用正規表達示(_E)"
+
+#. match whole word
+#: ../mousepad/mousepad-replace-dialog.c:237
 msgid "_Match whole word"
 msgstr "比對整個單字(_M)"
 
-#: ../mousepad/mousepad-replace-dialog.c:241
+#: ../mousepad/mousepad-replace-dialog.c:248
 msgid "Replace _all in:"
 msgstr "此範圍內的全部取代(_A)："
 
-#: ../mousepad/mousepad-replace-dialog.c:249
+#: ../mousepad/mousepad-replace-dialog.c:256
 msgid "Selection"
 msgstr "選取"
 
-#: ../mousepad/mousepad-replace-dialog.c:250
+#: ../mousepad/mousepad-replace-dialog.c:257
 msgid "Document"
 msgstr "文件"
 
-#: ../mousepad/mousepad-replace-dialog.c:251
+#: ../mousepad/mousepad-replace-dialog.c:258
 msgid "All Documents"
 msgstr "全部文件"
 
-#: ../mousepad/mousepad-replace-dialog.c:422
+#: ../mousepad/mousepad-replace-dialog.c:404
 #, c-format
 msgid "%d occurrence"
 msgid_plural "%d occurrences"
 msgstr[0] "%d 事件"
 
-#: ../mousepad/mousepad-replace-dialog.c:443
+#: ../mousepad/mousepad-replace-dialog.c:425
 msgid "_Replace All"
 msgstr "全部取代(_R)"
 
-#: ../mousepad/mousepad-search-bar.c:208
+#: ../mousepad/mousepad-search-bar.c:206
 msgid "Fi_nd:"
 msgstr "尋找(_N)："
 
-#: ../mousepad/mousepad-search-bar.c:230
+#: ../mousepad/mousepad-search-bar.c:228
 msgid "_Next"
 msgstr "下一個(_N)"
 
-#: ../mousepad/mousepad-search-bar.c:241
+#: ../mousepad/mousepad-search-bar.c:239
 msgid "_Previous"
 msgstr "上一個(_P)"
 
-#: ../mousepad/mousepad-search-bar.c:252
+#: ../mousepad/mousepad-search-bar.c:250
 msgid "Highlight _All"
 msgstr "全部標明(_A)"
 
 #. overflow menu item for when window is too narrow to show the tool bar item
-#: ../mousepad/mousepad-search-bar.c:265 ../mousepad/mousepad-search-bar.c:276
+#: ../mousepad/mousepad-search-bar.c:263 ../mousepad/mousepad-search-bar.c:274
 msgid "Mat_ch Case"
 msgstr "比對字母大小寫(_C)"
 
@@ -722,13 +728,13 @@ msgid "%s | Authors: %s | Filename: %s"
 msgstr "%s | 作者：%s | 檔案名稱：%s"
 
 #. show warning to the user
-#: ../mousepad/mousepad-util.c:549
+#: ../mousepad/mousepad-util.c:550
 #, c-format
 msgid "Unable to create base directory \"%s\". Saving to file \"%s\" will be aborted."
 msgstr "無法建立基礎目錄「%s」。會放棄儲存「%s」檔案。"
 
 #. print error
-#: ../mousepad/mousepad-util.c:595
+#: ../mousepad/mousepad-util.c:596
 #, c-format
 msgid "Failed to store the preferences to \"%s\": %s"
 msgstr "未能將偏好設定儲存至 \"%s\": %s"
@@ -1154,7 +1160,7 @@ msgstr "變更狀態列的可見性"
 msgid "_Fullscreen"
 msgstr "全螢幕(_F)"
 
-#: ../mousepad/mousepad-window.c:488 ../mousepad/mousepad-window.c:5200
+#: ../mousepad/mousepad-window.c:488 ../mousepad/mousepad-window.c:5197
 msgid "Make the window fullscreen"
 msgstr "讓視窗變為全螢幕"
 
@@ -1334,11 +1340,11 @@ msgstr "未能重新載入文件"
 msgid "Failed to print the document"
 msgstr "未能列印文件"
 
-#: ../mousepad/mousepad-window.c:4989
+#: ../mousepad/mousepad-window.c:4986
 msgid "Choose Mousepad Font"
 msgstr "選擇 Mousepad 字型"
 
-#: ../mousepad/mousepad-window.c:5193
+#: ../mousepad/mousepad-window.c:5190
 msgid "Leave fullscreen mode"
 msgstr "離開全螢幕模式"
 
