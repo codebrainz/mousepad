@@ -636,7 +636,7 @@ mousepad_util_search (GtkSourceSearchContext *search_context,
   GtkSourceSearchSettings *search_settings;
   GtkTextBuffer           *buffer, *selection_buffer;
   GtkTextIter              start, end, iter, bstart, fend, biter, fiter;
-  const gchar             *selected_text;
+  gchar                   *selected_text;
   gint                     counter = 0;
   gboolean                 found;
 
@@ -686,7 +686,7 @@ mousepad_util_search (GtkSourceSearchContext *search_context,
   /* set the counter, ensuring the buffer is fully scanned if needed (searching in both
    * directions leads faster to a full scan) */
   counter = gtk_source_search_context_get_occurrences_count (search_context);
-  if (counter == -1 && (flags & MOUSEPAD_SEARCH_FLAGS_ENTIRE_AREA))
+  if (counter == -1 && (flags & MOUSEPAD_SEARCH_FLAGS_ENTIRE_AREA) && *string != '\0')
     {
       gtk_source_search_settings_set_wrap_around (search_settings, TRUE);
       if (! found)
@@ -709,7 +709,7 @@ mousepad_util_search (GtkSourceSearchContext *search_context,
       gtk_source_search_settings_set_wrap_around (search_settings,
                                                   (flags & MOUSEPAD_SEARCH_FLAGS_WRAP_AROUND));
     }
-  else if (counter == -1 && ! (flags & MOUSEPAD_SEARCH_FLAGS_ENTIRE_AREA))
+  else if (counter == -1)
     counter = found;
 
   /* handle the action */
@@ -752,6 +752,14 @@ mousepad_util_search (GtkSourceSearchContext *search_context,
 
   /* thawn buffer notifications */
   g_object_thaw_notify (G_OBJECT (buffer));
+
+  /* cleanup */
+  if (flags & MOUSEPAD_SEARCH_FLAGS_AREA_SELECTION)
+    {
+      g_object_unref (G_OBJECT (selection_buffer));
+      g_object_unref (G_OBJECT (search_context));
+      g_free (selected_text);
+    }
 
   return counter;
 }

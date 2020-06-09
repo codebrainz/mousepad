@@ -224,8 +224,9 @@ mousepad_document_finalize (GObject *object)
   /* release the file */
   g_object_unref (G_OBJECT (document->file));
 
-  /* release the buffer reference */
+  /* release the buffer reference and the search context reference */
   g_object_unref (G_OBJECT (document->buffer));
+  g_object_unref (G_OBJECT (document->search_context));
 
   (*G_OBJECT_CLASS (mousepad_document_parent_class)->finalize) (object);
 }
