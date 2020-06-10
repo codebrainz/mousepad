@@ -24,16 +24,20 @@
 
 
 
-static void                 mousepad_replace_dialog_unrealize           (GtkWidget             *widget);
-static void                 mousepad_replace_dialog_finalize            (GObject               *object);
-static void                 mousepad_replace_dialog_response            (GtkWidget             *widget,
+static void              mousepad_replace_dialog_unrealize              (GtkWidget             *widget);
+static void              mousepad_replace_dialog_finalize               (GObject               *object);
+static void              mousepad_replace_dialog_response               (GtkWidget             *widget,
                                                                          gint                   response_id);
-static void                 mousepad_replace_dialog_changed             (MousepadReplaceDialog *dialog);
-static void                 mousepad_replace_dialog_settings_changed    (MousepadReplaceDialog *dialog,
+static void              mousepad_replace_dialog_changed                (MousepadReplaceDialog *dialog);
+static void              mousepad_replace_dialog_settings_changed       (MousepadReplaceDialog *dialog,
                                                                          gchar                 *key,
                                                                          GSettings             *settings);
-static void                 mousepad_replace_dialog_history_combo_box   (GtkComboBoxText       *combo_box);
-static void                 mousepad_replace_dialog_history_insert_text (const gchar           *text);
+static void              mousepad_replace_dialog_entry_activate         (GtkWidget             *entry,
+                                                                         MousepadReplaceDialog *dialog);
+static void              mousepad_replace_dialog_entry_reverse_activate (GtkWidget             *entry,
+                                                                         MousepadReplaceDialog *dialog);
+static void              mousepad_replace_dialog_history_combo_box      (GtkComboBoxText       *combo_box);
+static void              mousepad_replace_dialog_history_insert_text    (const gchar           *text);
 
 
 
@@ -47,12 +51,15 @@ struct _MousepadReplaceDialog
   GtkDialog __parent__;
 
   /* dialog widgets */
-  GtkWidget           *search_entry;
-  GtkWidget           *replace_entry;
-  GtkWidget           *find_button;
-  GtkWidget           *replace_button;
-  GtkWidget           *search_location_combo;
-  GtkWidget           *hits_label;
+  GtkWidget *search_entry;
+  GtkWidget *replace_entry;
+  GtkWidget *find_button;
+  GtkWidget *replace_button;
+  GtkWidget *search_location_combo;
+  GtkWidget *hits_label;
+
+  /* dialog buttons sensitivity */
+  gboolean   sensitive;
 };
 
 enum
@@ -88,8 +95,9 @@ G_DEFINE_TYPE (MousepadReplaceDialog, mousepad_replace_dialog, GTK_TYPE_DIALOG)
 static void
 mousepad_replace_dialog_class_init (MousepadReplaceDialogClass *klass)
 {
-  GObjectClass   *gobject_class;
+  GObjectClass   *gobject_class, *entry_class;
   GtkWidgetClass *gtkwidget_class;
+  GtkBindingSet  *binding_set;
 
   gobject_class = G_OBJECT_CLASS (klass);
   gobject_class->finalize = mousepad_replace_dialog_finalize;
@@ -106,6 +114,23 @@ mousepad_replace_dialog_class_init (MousepadReplaceDialogClass *klass)
                   G_TYPE_INT, 3,
                   MOUSEPAD_TYPE_SEARCH_FLAGS,
                   G_TYPE_STRING, G_TYPE_STRING);
+
+  /* add a reverse-activate signal to GtkEntry */
+  entry_class = g_type_class_ref (GTK_TYPE_ENTRY);
+  if (G_LIKELY (g_signal_lookup ("reverse-activate", GTK_TYPE_ENTRY) == 0))
+    {
+      /* install the signal */
+      g_signal_new ("reverse-activate",
+                   GTK_TYPE_ENTRY,
+                   G_SIGNAL_RUN_LAST | G_SIGNAL_ACTION,
+                   0, NULL, NULL,
+                   g_cclosure_marshal_VOID__VOID,
+                   G_TYPE_NONE, 0);
+      binding_set = gtk_binding_set_by_class (entry_class);
+      gtk_binding_entry_add_signal (binding_set, GDK_KEY_Return, GDK_SHIFT_MASK, "reverse-activate", 0);
+      gtk_binding_entry_add_signal (binding_set, GDK_KEY_KP_Enter, GDK_SHIFT_MASK, "reverse-activate", 0);
+    }
+  g_type_class_unref (entry_class);
 }
 
 
@@ -171,7 +196,12 @@ mousepad_replace_dialog_init (MousepadReplaceDialog *dialog)
 
   /* store as an entry widget */
   dialog->search_entry = gtk_bin_get_child (GTK_BIN (combo));
-  g_signal_connect_swapped (G_OBJECT (dialog->search_entry), "changed", G_CALLBACK (mousepad_replace_dialog_changed), dialog);
+  g_signal_connect_swapped (G_OBJECT (dialog->search_entry), "changed",
+                            G_CALLBACK (mousepad_replace_dialog_changed), dialog);
+  g_signal_connect (G_OBJECT (dialog->search_entry), "activate",
+                    G_CALLBACK (mousepad_replace_dialog_entry_activate), dialog);
+  g_signal_connect (G_OBJECT (dialog->search_entry), "reverse-activate",
+                    G_CALLBACK (mousepad_replace_dialog_entry_reverse_activate), dialog);
 
   /* horizontal box for replace string */
   hbox = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 8);
@@ -327,7 +357,8 @@ mousepad_replace_dialog_response (GtkWidget *widget,
   replace_all = MOUSEPAD_SETTING_GET_BOOLEAN (SEARCH_REPLACE_ALL);
 
   /* search direction */
-  if (search_direction == DIRECTION_UP)
+  if ((search_direction == DIRECTION_UP && response_id != MOUSEPAD_RESPONSE_REVERSE_FIND)
+      || (search_direction != DIRECTION_UP && response_id == MOUSEPAD_RESPONSE_REVERSE_FIND))
     flags = MOUSEPAD_SEARCH_FLAGS_DIR_BACKWARD;
   else
     flags = MOUSEPAD_SEARCH_FLAGS_DIR_FORWARD;
@@ -359,7 +390,7 @@ mousepad_replace_dialog_response (GtkWidget *widget,
     }
 
   /* start position */
-  if (response_id == MOUSEPAD_RESPONSE_FIND)
+  if (response_id == MOUSEPAD_RESPONSE_FIND || response_id == MOUSEPAD_RESPONSE_REVERSE_FIND)
     {
       /* select the first match */
       flags |= MOUSEPAD_SEARCH_FLAGS_ACTION_SELECT;
@@ -421,9 +452,9 @@ static void
 mousepad_replace_dialog_changed (MousepadReplaceDialog *dialog)
 {
   const gchar *text;
-  gboolean     sensitive = TRUE;
   gboolean     replace_all;
 
+  dialog->sensitive = TRUE;
   replace_all = MOUSEPAD_SETTING_GET_BOOLEAN (SEARCH_REPLACE_ALL);
 
   /* set the sensitivity of some dialog widgets */
@@ -451,12 +482,12 @@ mousepad_replace_dialog_changed (MousepadReplaceDialog *dialog)
       gtk_label_set_text (GTK_LABEL (dialog->hits_label), NULL);
 
       /* buttons are not sensitive */
-      sensitive = FALSE;
+      dialog->sensitive = FALSE;
     }
 
   /* set the sensitivity */
-  gtk_widget_set_sensitive (dialog->find_button, sensitive);
-  gtk_widget_set_sensitive (dialog->replace_button, sensitive);
+  gtk_widget_set_sensitive (dialog->find_button, dialog->sensitive);
+  gtk_widget_set_sensitive (dialog->replace_button, dialog->sensitive);
 }
 
 
@@ -470,6 +501,26 @@ mousepad_replace_dialog_settings_changed (MousepadReplaceDialog *dialog,
   gtk_label_set_text (GTK_LABEL (dialog->hits_label), NULL);
 
   mousepad_replace_dialog_changed (dialog);
+}
+
+
+
+static void
+mousepad_replace_dialog_entry_activate (GtkWidget             *entry,
+                                        MousepadReplaceDialog *dialog)
+{
+  if (dialog->sensitive)
+    gtk_dialog_response (GTK_DIALOG (dialog), MOUSEPAD_RESPONSE_FIND);
+}
+
+
+
+static void
+mousepad_replace_dialog_entry_reverse_activate (GtkWidget             *entry,
+                                                MousepadReplaceDialog *dialog)
+{
+  if (dialog->sensitive)
+    gtk_dialog_response (GTK_DIALOG (dialog), MOUSEPAD_RESPONSE_REVERSE_FIND);
 }
 
 
