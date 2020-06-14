@@ -5,14 +5,15 @@
 # Translators:
 # Åke Svensson <webaake@gmail.com>, 2012
 # Arve Eriksson <031299870@telia.com>, 2020
+# Carlos Dz <cls567@tuta.io>, 2020
 # Påvel Nicklasson <pavel@frimix.se>, 2015
 msgid ""
 msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-12-06 06:31+0100\n"
-"PO-Revision-Date: 2020-01-05 13:09+0000\n"
-"Last-Translator: Arve Eriksson <031299870@telia.com>\n"
+"POT-Creation-Date: 2020-06-05 12:47+0200\n"
+"PO-Revision-Date: 2020-06-14 11:49+0000\n"
+"Last-Translator: Carlos Dz <cls567@tuta.io>\n"
 "Language-Team: Swedish (http://www.transifex.com/xfce/xfce-apps/language/sv/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -33,25 +34,25 @@ msgid "Print version information and exit"
 msgstr "Visa versionsinformation och avsluta."
 
 #. default application name
-#: ../mousepad/main.c:69 ../mousepad.desktop.in.in.h:1
+#: ../mousepad/main.c:70 ../mousepad.desktop.in.in.h:1
 msgid "Mousepad"
 msgstr "Mousepad"
 
 #. initialize gtk+
-#: ../mousepad/main.c:83
+#: ../mousepad/main.c:84
 msgid "[FILES...]"
 msgstr "[FILER...]"
 
 #. no error message, the gui initialization failed
-#: ../mousepad/main.c:89
+#: ../mousepad/main.c:90
 msgid "Failed to open display."
 msgstr "Misslyckades med att öppna vy."
 
-#: ../mousepad/main.c:106
+#: ../mousepad/main.c:107
 msgid "The Xfce development team. All rights reserved."
 msgstr "Xfce utvecklingsteam. Alla rättigheter reserverade."
 
-#: ../mousepad/main.c:107
+#: ../mousepad/main.c:108
 #, c-format
 msgid "Please report bugs to <%s>."
 msgstr "Rapportera buggar till <%s>."
@@ -140,12 +141,12 @@ msgid "If you revert the file, all unsaved changes will be lost."
 msgstr "Om du återgår, kommer alla osparade ändringar att förloras."
 
 #. pack button, add signal and tooltip
-#: ../mousepad/mousepad-document.c:500
+#: ../mousepad/mousepad-document.c:502
 msgid "Close this tab"
 msgstr "Stäng denna flik"
 
 #. create an unique untitled document name
-#: ../mousepad/mousepad-document.c:530
+#: ../mousepad/mousepad-document.c:532
 msgid "Untitled"
 msgstr "Namnlös"
 
@@ -293,17 +294,17 @@ msgstr "Japansk"
 msgid "Korean"
 msgstr "Koreansk"
 
-#: ../mousepad/mousepad-file.c:559
+#: ../mousepad/mousepad-file.c:568
 #, c-format
 msgid "Invalid byte sequence in conversion input"
 msgstr "Ogiltig bytessekvens i konverteringsindata"
 
-#: ../mousepad/mousepad-file.c:903
+#: ../mousepad/mousepad-file.c:912
 #, c-format
 msgid "The file \"%s\" you tried to reload does not exist anymore"
 msgstr "Filen \"%s\" som du försökte läsa om finns inte längre"
 
-#: ../mousepad/mousepad-file.c:944
+#: ../mousepad/mousepad-file.c:953
 #, c-format
 msgid "Failed to read the status of \"%s\""
 msgstr "Misslyckades med att läsa status på \"%s\""
@@ -593,7 +594,7 @@ msgid "Replace"
 msgstr "Ersätt"
 
 #: ../mousepad/mousepad-replace-dialog.c:144
-#: ../mousepad/mousepad-replace-dialog.c:443
+#: ../mousepad/mousepad-replace-dialog.c:425
 msgid "_Replace"
 msgstr "_Ersätt"
 
@@ -626,56 +627,62 @@ msgstr "Båda"
 msgid "Case sensi_tive"
 msgstr "Ma_tcha gemener/versaler"
 
-#. match whole word
+#. enable regex search
 #: ../mousepad/mousepad-replace-dialog.c:230
+#: ../mousepad/mousepad-search-bar.c:287 ../mousepad/mousepad-search-bar.c:297
+msgid "_Enable Regex"
+msgstr "_Aktivera Regex"
+
+#. match whole word
+#: ../mousepad/mousepad-replace-dialog.c:237
 msgid "_Match whole word"
 msgstr "_Matcha helt ord"
 
-#: ../mousepad/mousepad-replace-dialog.c:241
+#: ../mousepad/mousepad-replace-dialog.c:248
 msgid "Replace _all in:"
 msgstr "Ersätt_alla i:"
 
-#: ../mousepad/mousepad-replace-dialog.c:249
+#: ../mousepad/mousepad-replace-dialog.c:256
 msgid "Selection"
 msgstr "Markering"
 
-#: ../mousepad/mousepad-replace-dialog.c:250
+#: ../mousepad/mousepad-replace-dialog.c:257
 msgid "Document"
 msgstr "Dokument"
 
-#: ../mousepad/mousepad-replace-dialog.c:251
+#: ../mousepad/mousepad-replace-dialog.c:258
 msgid "All Documents"
 msgstr "Alla dokument"
 
-#: ../mousepad/mousepad-replace-dialog.c:422
+#: ../mousepad/mousepad-replace-dialog.c:404
 #, c-format
 msgid "%d occurrence"
 msgid_plural "%d occurrences"
 msgstr[0] "%d förekomst"
 msgstr[1] "%d förekomster"
 
-#: ../mousepad/mousepad-replace-dialog.c:443
+#: ../mousepad/mousepad-replace-dialog.c:425
 msgid "_Replace All"
 msgstr "E_rsätt alla"
 
-#: ../mousepad/mousepad-search-bar.c:208
+#: ../mousepad/mousepad-search-bar.c:206
 msgid "Fi_nd:"
 msgstr "Sök:"
 
-#: ../mousepad/mousepad-search-bar.c:230
+#: ../mousepad/mousepad-search-bar.c:228
 msgid "_Next"
 msgstr "_Nästa"
 
-#: ../mousepad/mousepad-search-bar.c:241
+#: ../mousepad/mousepad-search-bar.c:239
 msgid "_Previous"
 msgstr "_Föregående"
 
-#: ../mousepad/mousepad-search-bar.c:252
+#: ../mousepad/mousepad-search-bar.c:250
 msgid "Highlight _All"
 msgstr "Markera _alla"
 
 #. overflow menu item for when window is too narrow to show the tool bar item
-#: ../mousepad/mousepad-search-bar.c:265 ../mousepad/mousepad-search-bar.c:276
+#: ../mousepad/mousepad-search-bar.c:263 ../mousepad/mousepad-search-bar.c:274
 msgid "Mat_ch Case"
 msgstr "Matcha gemener/versaler"
 
@@ -722,13 +729,13 @@ msgid "%s | Authors: %s | Filename: %s"
 msgstr "%s | Upphovsmän: %s | Filnamn: %s"
 
 #. show warning to the user
-#: ../mousepad/mousepad-util.c:549
+#: ../mousepad/mousepad-util.c:550
 #, c-format
 msgid "Unable to create base directory \"%s\". Saving to file \"%s\" will be aborted."
 msgstr "Misslyckades med att skapa baskatalog \"%s\". Sparande till fil \"%s\" kommer att avbrytas."
 
 #. print error
-#: ../mousepad/mousepad-util.c:595
+#: ../mousepad/mousepad-util.c:596
 #, c-format
 msgid "Failed to store the preferences to \"%s\": %s"
 msgstr "Misslyckades med att spara inställningarna till \"%s\": %s"
@@ -1154,7 +1161,7 @@ msgstr "Ändra synligheten för statusraden"
 msgid "_Fullscreen"
 msgstr "_Fullskärmsläge"
 
-#: ../mousepad/mousepad-window.c:488 ../mousepad/mousepad-window.c:5173
+#: ../mousepad/mousepad-window.c:488 ../mousepad/mousepad-window.c:5197
 msgid "Make the window fullscreen"
 msgstr "Visa fönstret i fullskärmsläge"
 
@@ -1215,27 +1222,27 @@ msgid "Set the line ending of the document to DOS / Windows (CR LF)"
 msgstr "Ställ in dokumentets radslut till DOS / Windows (CR LF)"
 
 #. add the label with the root warning
-#: ../mousepad/mousepad-window.c:869
-msgid "Warning, you are using the root account, you may harm your system."
-msgstr "Varning, du använder rootkontot och kan skada ditt system."
+#: ../mousepad/mousepad-window.c:871
+msgid "Warning: you are using the root account. You may harm your system."
+msgstr "Varning: du använder rootkontot. Du kan skada ditt ditt system."
 
 #. show the warning
-#: ../mousepad/mousepad-window.c:1557
+#: ../mousepad/mousepad-window.c:1572
 msgid "Failed to open the document"
 msgstr "Misslyckades med att öppna dokument"
 
-#: ../mousepad/mousepad-window.c:1754
+#: ../mousepad/mousepad-window.c:1769
 msgid "Read Only"
 msgstr "Skrivskyddat"
 
-#: ../mousepad/mousepad-window.c:2424
+#: ../mousepad/mousepad-window.c:2439
 #, c-format
 msgid ""
 "No template files found in\n"
 "'%s'"
 msgstr "Inga malldokument hittades i\n'%s'"
 
-#: ../mousepad/mousepad-window.c:2473
+#: ../mousepad/mousepad-window.c:2492
 #, c-format
 msgid ""
 "Missing Templates directory\n"
@@ -1243,66 +1250,66 @@ msgid ""
 msgstr "Saknar mallmapp\n'%s'"
 
 #. create other action
-#: ../mousepad/mousepad-window.c:2547
+#: ../mousepad/mousepad-window.c:2566
 msgid "Set custom tab size"
 msgstr "Ställ in anpassad tabblängd"
 
 #. create suitable label for the other menu
-#: ../mousepad/mousepad-window.c:2595
+#: ../mousepad/mousepad-window.c:2614
 #, c-format
 msgid "Ot_her (%d)..."
 msgstr "Ann_at (%d)..."
 
 #. set action label
-#: ../mousepad/mousepad-window.c:2606
+#: ../mousepad/mousepad-window.c:2625
 msgid "Ot_her..."
 msgstr "Ann_at..."
 
 #. build description
 #. get the offset length: 'Encoding: '
-#: ../mousepad/mousepad-window.c:2989 ../mousepad/mousepad-window.c:3216
+#: ../mousepad/mousepad-window.c:3008 ../mousepad/mousepad-window.c:3235
 msgid "Charset"
 msgstr "Teckenuppsättning"
 
-#: ../mousepad/mousepad-window.c:3121
+#: ../mousepad/mousepad-window.c:3140
 #, c-format
 msgid "Open '%s'"
 msgstr "Öppna '%s'"
 
-#: ../mousepad/mousepad-window.c:3266
+#: ../mousepad/mousepad-window.c:3285
 msgid "Failed to clear the recent history"
 msgstr "Misslyckades med att rensa senaste historik"
 
 #. create an item to inform the user
-#: ../mousepad/mousepad-window.c:3696
+#: ../mousepad/mousepad-window.c:3715
 msgid "No clipboard data"
 msgstr "Ingen data i urklipp"
 
 #. set error message
-#: ../mousepad/mousepad-window.c:3835
+#: ../mousepad/mousepad-window.c:3854
 msgid "Templates should be UTF-8 valid"
 msgstr "Mallar bör vara UTF-8 giltiga"
 
 #. set error message
-#: ../mousepad/mousepad-window.c:3843
+#: ../mousepad/mousepad-window.c:3862
 msgid "Reading the template failed, the menu item has been removed"
 msgstr "Läsning av mallen misslyckades, menyposten har tagits bort."
 
 #. set error message
-#: ../mousepad/mousepad-window.c:3848
+#: ../mousepad/mousepad-window.c:3867
 msgid "Loading the template failed"
 msgstr "Läsning av mallen misslyckades"
 
 #. create new file chooser dialog
-#: ../mousepad/mousepad-window.c:3873
+#: ../mousepad/mousepad-window.c:3892
 msgid "Open File"
 msgstr "Öppna fil"
 
-#: ../mousepad/mousepad-window.c:3889
+#: ../mousepad/mousepad-window.c:3908
 msgid "_Encoding:"
 msgstr "_Kodning:"
 
-#: ../mousepad/mousepad-window.c:3986
+#: ../mousepad/mousepad-window.c:4005
 #, c-format
 msgid ""
 "Failed to open \"%s\" for reading. It will be removed from the document "
@@ -1310,35 +1317,35 @@ msgid ""
 msgstr "Misslyckades med att öppna \"%s\" för läsning. Det kommer att tas bort från dokumenthistoriken"
 
 #. show the warning and cleanup
-#: ../mousepad/mousepad-window.c:3990
+#: ../mousepad/mousepad-window.c:4009
 msgid "Failed to open file"
 msgstr "Misslyckades med att öppna fil"
 
 #. show the error
-#: ../mousepad/mousepad-window.c:4096 ../mousepad/mousepad-window.c:4219
+#: ../mousepad/mousepad-window.c:4115 ../mousepad/mousepad-window.c:4246
 msgid "Failed to save the document"
 msgstr "Misslyckades med att spara dokumentet"
 
 #. create the dialog
-#: ../mousepad/mousepad-window.c:4120
+#: ../mousepad/mousepad-window.c:4139
 msgid "Save As"
 msgstr "Spara som"
 
 #. show the error
-#: ../mousepad/mousepad-window.c:4311
+#: ../mousepad/mousepad-window.c:4338
 msgid "Failed to reload the document"
 msgstr "Misslyckades med att läsa om dokumentet"
 
 #. show the error
-#: ../mousepad/mousepad-window.c:4338
+#: ../mousepad/mousepad-window.c:4365
 msgid "Failed to print the document"
 msgstr "Misslyckades med att skriva ut dokumentet"
 
-#: ../mousepad/mousepad-window.c:4962
+#: ../mousepad/mousepad-window.c:4986
 msgid "Choose Mousepad Font"
 msgstr "Välj Mousepad-typsnitt"
 
-#: ../mousepad/mousepad-window.c:5166
+#: ../mousepad/mousepad-window.c:5190
 msgid "Leave fullscreen mode"
 msgstr "Lämna fullskämsläge"
 
