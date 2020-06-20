@@ -20,8 +20,8 @@ msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-06-05 12:47+0200\n"
-"PO-Revision-Date: 2020-06-13 16:01+0000\n"
-"Last-Translator: Luclu7 <theluc7andcompagnie@gmail.com>\n"
+"PO-Revision-Date: 2020-06-20 11:11+0000\n"
+"Last-Translator: Yannick Le Guen <leguen.yannick@gmail.com>\n"
 "Language-Team: French (http://www.transifex.com/xfce/xfce-apps/language/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -639,7 +639,7 @@ msgstr "Respecter la _casse"
 #: ../mousepad/mousepad-replace-dialog.c:230
 #: ../mousepad/mousepad-search-bar.c:287 ../mousepad/mousepad-search-bar.c:297
 msgid "_Enable Regex"
-msgstr "_Activer les expression régulières"
+msgstr "_Activer les expressions régulières"
 
 #. match whole word
 #: ../mousepad/mousepad-replace-dialog.c:237
