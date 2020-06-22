@@ -6,13 +6,14 @@
 # Elishai Eliyahu <e1907@mm.st>, 2016,2018-2020
 # GenghisKhan <genghiskhan@gmx.ca>, 2016
 # Omer, 2020
+# Omer, 2020
 msgid ""
 msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-06-05 12:47+0200\n"
-"PO-Revision-Date: 2020-06-10 14:58+0000\n"
-"Last-Translator: Elishai Eliyahu <e1907@mm.st>\n"
+"PO-Revision-Date: 2020-06-22 16:04+0000\n"
+"Last-Translator: Omer\n"
 "Language-Team: Hebrew (http://www.transifex.com/xfce/xfce-apps/language/he/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -639,7 +640,7 @@ msgstr "התאם מילה שלמה"
 
 #: ../mousepad/mousepad-replace-dialog.c:248
 msgid "Replace _all in:"
-msgstr "החלף הכל ב:"
+msgstr "החלף _הכל עם:"
 
 #: ../mousepad/mousepad-replace-dialog.c:256
 msgid "Selection"
