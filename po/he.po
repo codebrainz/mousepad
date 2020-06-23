@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-06-05 12:47+0200\n"
-"PO-Revision-Date: 2020-06-22 16:04+0000\n"
+"PO-Revision-Date: 2020-06-23 21:48+0000\n"
 "Last-Translator: Omer\n"
 "Language-Team: Hebrew (http://www.transifex.com/xfce/xfce-apps/language/he/)\n"
 "MIME-Version: 1.0\n"
@@ -27,7 +27,7 @@ msgstr "Do not register with the D-BUS session message bus"
 
 #: ../mousepad/main.c:45
 msgid "Quit a running Mousepad instance"
-msgstr "Quit a running Mousepad instance"
+msgstr "הפסק תהליך Mousepad שרץ"
 
 #: ../mousepad/main.c:47
 msgid "Print version information and exit"
@@ -307,7 +307,7 @@ msgstr "הקובץ \"%s\" שניסית להעלות מחדש אינו קיים �
 #: ../mousepad/mousepad-file.c:953
 #, c-format
 msgid "Failed to read the status of \"%s\""
-msgstr "נכשל לקרוא את הסטטוס של \"%s\" "
+msgstr "נכשלה קריאת הסטטוס של \"%s\" "
 
 #: ../mousepad/mousepad-language-action.c:230
 msgid "Plain Text"
@@ -446,11 +446,11 @@ msgstr "תצוגה"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:31
 msgid "Tab width:"
-msgstr "רוחב כרטיסייה:"
+msgstr "רוחב לשונית:"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:32
 msgid "Tab mode:"
-msgstr "מצב כרטיסייה:"
+msgstr "מצב לשונית:"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:33
 msgid "Enable automatic indentation"
@@ -1093,7 +1093,7 @@ msgstr "סיו_מת שורה"
 
 #: ../mousepad/mousepad-window.c:472
 msgid "Tab _Size"
-msgstr "_גודל כרטיסייה"
+msgstr "גודל לשונית"
 
 #: ../mousepad/mousepad-window.c:473
 msgid "_Filetype"
