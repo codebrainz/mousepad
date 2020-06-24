@@ -37,7 +37,6 @@ mousepad_SOURCES = \
 	mousepad-encoding-dialog.h \
 	mousepad-file.c \
 	mousepad-file.h \
-	mousepad-gtkcompat.h \
 	mousepad-language-action.c \
 	mousepad-language-action.h \
 	mousepad-prefs-dialog.c \
