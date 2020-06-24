@@ -26,7 +26,7 @@
   </screenshots>
 
   <url type="homepage">https://xfce.org</url>
-  <url type="bugtracker">https://bugzilla.xfce.org/describecomponents.cgi?product=Mousepad</url>
+  <url type="bugtracker">https://gitlab.xfce.org/apps/mousepad/</url>
   <url type="help">https://docs.xfce.org/apps/mousepad/start</url>
 
   <project_group>Xfce</project_group>

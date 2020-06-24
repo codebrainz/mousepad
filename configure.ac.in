@@ -19,7 +19,7 @@ dnl *** Initialize autoconf ***
 dnl ***************************
 AC_COPYRIGHT([Copyright (c) 2007-2020
         The Xfce development team. All rights reserved.])
-AC_INIT([Mousepad], [mousepad_version], [https://bugzilla.xfce.org/], [mousepad])
+AC_INIT([Mousepad], [mousepad_version], [https://gitlab.xfce.org/apps/mousepad], [mousepad])
 AC_PREREQ([2.50])
 AC_CONFIG_MACRO_DIR([m4])
 AC_CANONICAL_TARGET()
@@ -48,7 +48,6 @@ AM_PROG_CC_C_O()
 AC_PROG_LD()
 AC_PROG_INSTALL()
 IT_PROG_INTLTOOL([0.35.0])
-AC_CHECK_PROGS([PERL], [perl5 perl])
 
 dnl **************************
 dnl *** Initialize libtool ***
