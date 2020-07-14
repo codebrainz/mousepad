@@ -673,7 +673,7 @@ mousepad_util_search (GtkSourceSearchContext *search_context,
   gtk_source_search_settings_set_at_word_boundaries (search_settings,
                                                      flags & MOUSEPAD_SEARCH_FLAGS_WHOLE_WORD);
   gtk_source_search_settings_set_wrap_around (search_settings,
-                                              (flags & MOUSEPAD_SEARCH_FLAGS_WRAP_AROUND));
+                                              flags & MOUSEPAD_SEARCH_FLAGS_WRAP_AROUND);
   gtk_source_search_settings_set_regex_enabled (search_settings,
                                                 flags & MOUSEPAD_SEARCH_FLAGS_ENABLE_REGEX);
 
@@ -685,32 +685,35 @@ mousepad_util_search (GtkSourceSearchContext *search_context,
 
   /* set the counter, ensuring the buffer is fully scanned if needed (searching in both
    * directions leads faster to a full scan) */
-  counter = gtk_source_search_context_get_occurrences_count (search_context);
-  if (counter == -1 && (flags & MOUSEPAD_SEARCH_FLAGS_ENTIRE_AREA) && *string != '\0')
-    {
-      gtk_source_search_settings_set_wrap_around (search_settings, TRUE);
-      if (! found)
-        {
-          start = iter;
-          end = iter;
-        }
-      biter = start;
-      fiter = end;
-      do
-        {
-          gtk_source_search_context_backward2 (search_context, &biter, &bstart, NULL, NULL);
-          gtk_source_search_context_forward2 (search_context, &fiter, NULL, &fend, NULL);
-          counter = gtk_source_search_context_get_occurrences_count (search_context);
-          biter = bstart;
-          fiter = fend;
-        }
-      while (counter == -1 && ! gtk_text_iter_equal (&biter, &start)
-                           && ! gtk_text_iter_equal (&fiter, &end));
-      gtk_source_search_settings_set_wrap_around (search_settings,
-                                                  (flags & MOUSEPAD_SEARCH_FLAGS_WRAP_AROUND));
-    }
-  else if (counter == -1)
+  if (! (flags & MOUSEPAD_SEARCH_FLAGS_ENTIRE_AREA) || *string == '\0')
     counter = found;
+  else
+    {
+      counter = gtk_source_search_context_get_occurrences_count (search_context);
+      if (counter == -1)
+        {
+          gtk_source_search_settings_set_wrap_around (search_settings, TRUE);
+          if (! found)
+            {
+              start = iter;
+              end = iter;
+            }
+          biter = start;
+          fiter = end;
+          do
+            {
+              gtk_source_search_context_backward2 (search_context, &biter, &bstart, NULL, NULL);
+              gtk_source_search_context_forward2 (search_context, &fiter, NULL, &fend, NULL);
+              counter = gtk_source_search_context_get_occurrences_count (search_context);
+              biter = bstart;
+              fiter = fend;
+            }
+          while (counter == -1 && ! gtk_text_iter_equal (&biter, &start)
+                               && ! gtk_text_iter_equal (&fiter, &end));
+          gtk_source_search_settings_set_wrap_around (search_settings,
+                                                      flags & MOUSEPAD_SEARCH_FLAGS_WRAP_AROUND);
+        }
+    }
 
   /* handle the action */
   if (found && (flags & MOUSEPAD_SEARCH_FLAGS_ACTION_SELECT)

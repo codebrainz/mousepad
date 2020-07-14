@@ -181,15 +181,10 @@ mousepad_search_bar_init (MousepadSearchBar *bar)
 {
   GtkWidget   *label, *image, *check, *menuitem;
   GtkToolItem *item;
-  gboolean     match_case, enable_regex;
 
   /* load some saved state */
-  match_case = MOUSEPAD_SETTING_GET_BOOLEAN (SEARCH_MATCH_CASE);
-  enable_regex = MOUSEPAD_SETTING_GET_BOOLEAN (SEARCH_ENABLE_REGEX);
-
-  /* init variables */
-  bar->match_case = match_case;
-  bar->enable_regex = enable_regex;
+  bar->match_case = MOUSEPAD_SETTING_GET_BOOLEAN (SEARCH_MATCH_CASE);
+  bar->enable_regex = MOUSEPAD_SETTING_GET_BOOLEAN (SEARCH_ENABLE_REGEX);
   bar->highlight_all = MOUSEPAD_SETTING_GET_BOOLEAN (SEARCH_HIGHLIGHT_ALL);
 
   /* the close button */
@@ -265,7 +260,6 @@ mousepad_search_bar_init (MousepadSearchBar *bar)
   check = gtk_check_button_new_with_mnemonic (_("Mat_ch Case"));
   g_signal_connect_object (G_OBJECT (bar), "destroy", G_CALLBACK (gtk_widget_destroy), item, G_CONNECT_SWAPPED);
   gtk_container_add (GTK_CONTAINER (item), check);
-  gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (check), match_case);
   g_signal_connect (G_OBJECT (check), "toggled", G_CALLBACK (mousepad_search_bar_match_case_toggled), bar);
   gtk_widget_show (check);
 
@@ -276,6 +270,7 @@ mousepad_search_bar_init (MousepadSearchBar *bar)
   bar->match_case_entry = menuitem = gtk_check_menu_item_new_with_mnemonic (_("Mat_ch Case"));
   g_signal_connect_object (G_OBJECT (bar), "destroy", G_CALLBACK (gtk_widget_destroy), item, G_CONNECT_SWAPPED);
   gtk_tool_item_set_proxy_menu_item (item, "case-sensitive", menuitem);
+
   /* Keep toolbar check button and overflow proxy menu item in sync */
   g_object_bind_property (check, "active", menuitem, "active", G_BINDING_BIDIRECTIONAL | G_BINDING_SYNC_CREATE);
   gtk_widget_show (menuitem);
@@ -289,16 +284,17 @@ mousepad_search_bar_init (MousepadSearchBar *bar)
   check = gtk_check_button_new_with_mnemonic (_("_Enable Regex"));
   g_signal_connect_object (G_OBJECT (bar), "destroy", G_CALLBACK (gtk_widget_destroy), item, G_CONNECT_SWAPPED);
   gtk_container_add (GTK_CONTAINER (item), check);
-  gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (check), enable_regex);
   g_signal_connect (G_OBJECT (check), "toggled", G_CALLBACK (mousepad_search_bar_enable_regex_toggled), bar);
   gtk_widget_show (check);
 
   /* keep the widgets in sync with the GSettings */
   MOUSEPAD_SETTING_BIND (SEARCH_ENABLE_REGEX, check, "active", G_SETTINGS_BIND_DEFAULT);
 
+  /* overflow menu item for when window is too narrow to show the tool bar item */
   bar->enable_regex_entry = menuitem = gtk_check_menu_item_new_with_mnemonic (_("_Enable Regex"));
   g_signal_connect_object (G_OBJECT (bar), "destroy", G_CALLBACK (gtk_widget_destroy), item, G_CONNECT_SWAPPED);
   gtk_tool_item_set_proxy_menu_item (item, "enable-regex", menuitem);
+
   /* Keep toolbar check button and overflow proxy menu item in sync */
   g_object_bind_property (check, "active", menuitem, "active", G_BINDING_BIDIRECTIONAL | G_BINDING_SYNC_CREATE);
   gtk_widget_show (menuitem);
@@ -321,10 +317,9 @@ mousepad_search_bar_find_string (MousepadSearchBar   *bar,
   const gchar *string;
   gint         nmatches;
 
-  /* if we don't hightlight, we select with wrapping */
-  if (! (flags & MOUSEPAD_SEARCH_FLAGS_ACTION_HIGHLIGHT_ON))
-    flags |= MOUSEPAD_SEARCH_FLAGS_ACTION_SELECT
-             | MOUSEPAD_SEARCH_FLAGS_WRAP_AROUND;
+  /* always true when using the search bar */
+  flags |= MOUSEPAD_SEARCH_FLAGS_ACTION_SELECT
+           | MOUSEPAD_SEARCH_FLAGS_WRAP_AROUND;
 
   /* append the insensitive flags when needed */
   if (bar->match_case)
@@ -340,8 +335,9 @@ mousepad_search_bar_find_string (MousepadSearchBar   *bar,
   /* emit signal */
   g_signal_emit (G_OBJECT (bar), search_bar_signals[SEARCH], 0, flags, string, NULL, &nmatches);
 
-  /* do nothing with the error entry when highlight when trigged with highlight */
-  if (! (flags & MOUSEPAD_SEARCH_FLAGS_ACTION_HIGHLIGHT_ON))
+  /* do nothing with the entry error when triggered by highlight */
+  if (! (flags & (MOUSEPAD_SEARCH_FLAGS_ACTION_HIGHLIGHT_ON
+                  | MOUSEPAD_SEARCH_FLAGS_ACTION_HIGHLIGHT_OFF)))
     {
       /* make sure the search entry is not red when no text was typed */
       if (string == NULL || *string == '\0')
