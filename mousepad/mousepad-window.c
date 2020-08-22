@@ -1491,36 +1491,36 @@ mousepad_window_open_file (MousepadWindow   *window,
             /* we only try this once */
             encoding_from_recent = TRUE;
 
+            /* make sure the recent manager is initialized */
+            mousepad_window_recent_manager_init (window);
+
+            /* build uri */
+            uri = g_filename_to_uri (filename, NULL, NULL);
+
             /* try to lookup the recent item */
-            if (window->recent_manager)
+            if (G_LIKELY (uri))
               {
-                /* build uri */
-                uri = g_filename_to_uri (filename, NULL, NULL);
+                info = gtk_recent_manager_lookup_item (window->recent_manager, uri, NULL);
 
-                if (G_LIKELY (uri))
+                /* cleanup */
+                g_free (uri);
+
+                if (info)
                   {
-                    info = gtk_recent_manager_lookup_item (window->recent_manager, uri, NULL);
+                    /* try to find the encoding */
+                    charset = mousepad_window_recent_get_charset (info);
 
-                    /* cleanup */
-                    g_free (uri);
+                    encoding = mousepad_encoding_find (charset);
 
-                    if (info)
-                      {
-                        /* try to find the encoding */
-                        charset = mousepad_window_recent_get_charset (info);
+                    /* set the new encoding */
+                    mousepad_file_set_encoding (document->file, encoding);
 
-                        encoding = mousepad_encoding_find (charset);
+                    /* release */
+                    gtk_recent_info_unref (info);
 
-                        /* set the new encoding */
-                        mousepad_file_set_encoding (document->file, encoding);
-
-                        /* release */
-                        gtk_recent_info_unref (info);
-
-                        /* try to open again with the last used encoding */
-                        if (G_LIKELY (encoding))
-                          goto retry;
-                      }
+                    /* try to open again with the last used encoding */
+                    if (G_LIKELY (encoding))
+                      goto retry;
                   }
               }
           }

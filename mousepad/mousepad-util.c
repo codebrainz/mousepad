@@ -634,7 +634,7 @@ mousepad_util_search (GtkSourceSearchContext *search_context,
                       MousepadSearchFlags     flags)
 {
   GtkSourceSearchSettings *search_settings;
-  GtkTextBuffer           *buffer, *selection_buffer;
+  GtkTextBuffer           *buffer, *selection_buffer = NULL;
   GtkTextIter              start, end, iter, bstart, fend, biter, fiter;
   gchar                   *selected_text;
   gint                     counter = 0;
