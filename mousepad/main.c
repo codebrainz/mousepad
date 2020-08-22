@@ -165,7 +165,7 @@ main (gint argc, gchar **argv)
 #endif /* !HAVE_DBUS */
 
   /* use the Mousepad icon as default for new windows */
-  gtk_window_set_default_icon_name ("accessories-text-editor");
+  gtk_window_set_default_icon_name ("org.xfce.mousepad");
 
   /* Initialize xfconf */
   if (G_UNLIKELY (xfconf_init(&error) == FALSE))

@@ -1,11 +1,15 @@
 ACLOCAL_AMFLAGS = -I m4
 
 SUBDIRS =									\
+	icons									\
 	mousepad								\
 	po
 
 distclean-local:
 	rm -rf *.cache *~
+
+distuninstallcheck_listfiles = 						\
+	find . -type f \! -path ./share/icons/hicolor/icon-theme.cache
 
 desktopdir = $(datadir)/applications
 desktop_in_in_files = 								\

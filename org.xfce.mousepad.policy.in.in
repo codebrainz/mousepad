@@ -12,7 +12,7 @@
 
  <vendor>Mousepad</vendor>
  <vendor_url>https://xfce.org/</vendor_url>
- <icon_name>accessories-text-editor</icon_name>
+ <icon_name>org.xfce.mousepad</icon_name>
 
 
  <action id="org.xfce.mousepad">
