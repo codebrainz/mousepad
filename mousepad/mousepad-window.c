@@ -1163,10 +1163,7 @@ mousepad_window_finalize (GObject *object)
 
   /* free clipboard history if needed */
   if (clipboard_history_ref_count == 0 && clipboard_history != NULL)
-    {
-      g_slist_foreach (clipboard_history, (GFunc) g_free, NULL);
-      g_slist_free (clipboard_history);
-    }
+    g_slist_free_full (clipboard_history, g_free);
 
   /* free last save location if needed */
   if (last_save_location_ref_count == 0 && last_save_location != NULL)
@@ -1494,32 +1491,36 @@ mousepad_window_open_file (MousepadWindow   *window,
             /* we only try this once */
             encoding_from_recent = TRUE;
 
-            /* build uri */
-            uri = g_filename_to_uri (filename, NULL, NULL);
-            if (G_LIKELY (uri))
+            /* try to lookup the recent item */
+            if (window->recent_manager)
               {
-                /* try to lookup the recent item */
-                info = gtk_recent_manager_lookup_item (window->recent_manager, uri, NULL);
+                /* build uri */
+                uri = g_filename_to_uri (filename, NULL, NULL);
 
-                /* cleanup */
-                g_free (uri);
-
-                if (info)
+                if (G_LIKELY (uri))
                   {
-                    /* try to find the encoding */
-                    charset = mousepad_window_recent_get_charset (info);
+                    info = gtk_recent_manager_lookup_item (window->recent_manager, uri, NULL);
 
-                    encoding = mousepad_encoding_find (charset);
+                    /* cleanup */
+                    g_free (uri);
 
-                    /* set the new encoding */
-                    mousepad_file_set_encoding (document->file, encoding);
+                    if (info)
+                      {
+                        /* try to find the encoding */
+                        charset = mousepad_window_recent_get_charset (info);
 
-                    /* release */
-                    gtk_recent_info_unref (info);
+                        encoding = mousepad_encoding_find (charset);
 
-                    /* try to open again with the last used encoding */
-                    if (G_LIKELY (encoding))
-                      goto retry;
+                        /* set the new encoding */
+                        mousepad_file_set_encoding (document->file, encoding);
+
+                        /* release */
+                        gtk_recent_info_unref (info);
+
+                        /* try to open again with the last used encoding */
+                        if (G_LIKELY (encoding))
+                          goto retry;
+                      }
                   }
               }
           }
@@ -1545,6 +1546,10 @@ mousepad_window_open_file (MousepadWindow   *window,
         /* handle */
         if (response == GTK_RESPONSE_OK)
           goto retry;
+        else
+          g_object_unref (G_OBJECT (document));
+
+        break;
 
       default:
         /* something went wrong, release the document */
@@ -3089,7 +3094,7 @@ mousepad_window_recent_menu_idle (gpointer user_data)
       if (!gtk_recent_info_has_group (li->data, PACKAGE_NAME))
         continue;
 
-      /* insert the the list, sorted by date */
+      /* insert the list, sorted by date */
       filtered = g_list_insert_sorted (filtered, li->data, (GCompareFunc) mousepad_window_recent_sort);
     }
 
@@ -3166,8 +3171,7 @@ mousepad_window_recent_menu_idle (gpointer user_data)
   gtk_action_set_sensitive (action, (filtered != NULL));
 
   /* cleanup */
-  g_list_foreach (items, (GFunc) gtk_recent_info_unref, NULL);
-  g_list_free (items);
+  g_list_free_full (items, (GDestroyNotify) gtk_recent_info_unref);
   g_list_free (filtered);
 
   /* stop the idle function */
@@ -3256,8 +3260,7 @@ mousepad_window_recent_clear (MousepadWindow *window)
      }
 
   /* cleanup */
-  g_list_foreach (items, (GFunc) gtk_recent_info_unref, NULL);
-  g_list_free (items);
+  g_list_free_full (items, (GDestroyNotify) gtk_recent_info_unref);
 
   /* print a warning is there is one */
   if (G_UNLIKELY (error != NULL))
