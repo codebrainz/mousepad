@@ -688,11 +688,7 @@ mousepad_file_open (MousepadFile  *file,
       g_free (encoded);
 
       /* close the mapped file */
-#if GLIB_CHECK_VERSION (2, 21, 0)
       g_mapped_file_unref (mapped_file);
-#else
-      g_mapped_file_free (mapped_file);
-#endif
 
       if (G_LIKELY (filename != template_filename))
         {
@@ -777,7 +773,7 @@ mousepad_file_save (MousepadFile  *file,
               contents = g_realloc (contents, length + 5);
 
               /* move the existing contents 3 bytes */
-              g_memmove (contents + 3, contents, length + 1);
+              memmove (contents + 3, contents, length + 1);
 
               /* write an utf-8 bom at the start of the contents */
               contents[0] = (guchar) 0xef;

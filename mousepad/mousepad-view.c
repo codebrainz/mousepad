@@ -211,14 +211,12 @@ mousepad_view_buffer_changed (MousepadView *view,
       scheme = gtk_source_style_scheme_manager_get_scheme (manager,
         view->color_scheme ? view->color_scheme : "");
 
-#ifdef GTK_SOURCE_CHECK_VERSION
 #if GTK_SOURCE_CHECK_VERSION (3, 21, 0)
       if (!GTK_SOURCE_IS_STYLE_SCHEME (scheme))
       {
         scheme = gtk_source_style_scheme_manager_get_scheme (manager, "classic");
         enable_highlight = FALSE;
       }
-#endif
 #endif
 
       gtk_source_buffer_set_style_scheme (buffer, scheme);
@@ -1189,13 +1187,6 @@ mousepad_view_convert_selection_case (MousepadView *view,
       /* select range */
       gtk_text_buffer_select_range (buffer, &end_iter, &start_iter);
     }
-#ifdef HAVE_MULTISELECT
-  else
-    {
-      /* redraw column selection */
-      mousepad_view_selection_draw (view, FALSE);
-    }
-#endif
 
   /* end user action */
   gtk_text_buffer_end_user_action (buffer);

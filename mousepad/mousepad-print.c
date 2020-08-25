@@ -700,7 +700,7 @@ mousepad_print_create_custom_widget (GtkPrintOperation *operation)
   gtk_widget_show (alignment);
 
   /* In GTK3, GtkTable is deprecated */
-#if GTK_CHECK_VERSION(3, 0, 0) && (__GNUC__ > 4 || __GNUC__ == 4 && __GNUC_MINOR__ > 2)
+#if G_GNUC_CHECK_VERSION (4, 3)
 # pragma GCC diagnostic push
 # pragma GCC diagnostic ignored "-Wdeprecated-declarations"
 #endif
@@ -741,7 +741,7 @@ mousepad_print_create_custom_widget (GtkPrintOperation *operation)
   g_signal_connect (G_OBJECT (print->widget_line_numbers_font), "font-set", G_CALLBACK (mousepad_print_button_font_set), print);
   gtk_widget_show (print->widget_line_numbers_font);
 
-#if GTK_CHECK_VERSION(3, 0, 0) && (__GNUC__ > 4 || __GNUC__ == 4 && __GNUC_MINOR__ > 2)
+#if G_GNUC_CHECK_VERSION (4, 3)
 # pragma GCC diagnostic pop
 #endif
 

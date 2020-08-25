@@ -74,12 +74,6 @@ main (gint argc, gchar **argv)
   g_log_set_always_fatal (G_LOG_LEVEL_CRITICAL | G_LOG_LEVEL_WARNING);
 #endif
 
-#if !GLIB_CHECK_VERSION (2, 30, 0)
-  /* initialize the gthread system */
-  if (G_LIKELY (!g_thread_supported ()))
-    g_thread_init (NULL);
-#endif
-
   /* initialize gtk+ */
   if (!gtk_init_with_args (&argc, &argv, _("[FILES...]"), (GOptionEntry *) option_entries, (gchar *) GETTEXT_PACKAGE, &error))
     {

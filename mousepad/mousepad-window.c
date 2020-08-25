@@ -833,7 +833,7 @@ mousepad_window_create_root_warning (MousepadWindow *window)
       GtkWidget *ebox, *label, *separator;
 
   /* In GTK3, gtkrc is deprecated */
-#if GTK_CHECK_VERSION(3, 0, 0) && (__GNUC__ > 4 || __GNUC__ == 4 && __GNUC_MINOR__ > 2)
+#if G_GNUC_CHECK_VERSION (4, 3)
 # pragma GCC diagnostic push
 # pragma GCC diagnostic ignored "-Wdeprecated-declarations"
 #endif
@@ -847,7 +847,7 @@ mousepad_window_create_root_warning (MousepadWindow *window)
                            "widget\"MousepadWindow.*.root-warning\"style\"mousepad-window-root-style\"\n"
                            "widget\"MousepadWindow.*.root-warning.GtkLabel\"style\"mousepad-window-root-style\"\n");
 
-#if GTK_CHECK_VERSION(3, 0, 0) && (__GNUC__ > 4 || __GNUC__ == 4 && __GNUC_MINOR__ > 2)
+#if G_GNUC_CHECK_VERSION (4, 3)
 # pragma GCC diagnostic pop
 #endif
 
@@ -1613,6 +1613,9 @@ mousepad_window_open_files (MousepadWindow  *window,
         {
           /* create an absolute file */
 #if GLIB_CHECK_VERSION (2, 58, 0)
+          /* better, if we can
+           * see https://gitlab.xfce.org/apps/mousepad/-/merge_requests/19
+           */
           filename = g_canonicalize_filename (filenames[n], working_directory);
 #else
           filename = g_build_filename (working_directory, filenames[n], NULL);
@@ -2150,14 +2153,7 @@ mousepad_window_notebook_create_window (GtkNotebook    *notebook,
       g_object_ref (G_OBJECT (document));
 
       /* remove the document from the active window */
-#if GTK_CHECK_VERSION (3, 16, 0)
       gtk_notebook_detach_tab (GTK_NOTEBOOK (window->notebook), page);
-#else
-      /* crashes on GTK+ 3 somewhere between 3.10-3.16
-       * Fixed above using new function added in 3.16
-       * See: https://bugzilla.gnome.org/show_bug.cgi?id=744385 */
-      gtk_container_remove (GTK_CONTAINER (window->notebook), page);
-#endif
 
       /* emit the new window with document signal */
       g_signal_emit (G_OBJECT (window), window_signals[NEW_WINDOW_WITH_DOCUMENT], 0, document, x, y);

@@ -301,11 +301,7 @@ mousepad_encoding_dialog_test_encodings_idle (gpointer user_data)
             }
 
           /* close the mapped file */
-#if GLIB_CHECK_VERSION (2, 21, 0)
           g_mapped_file_unref (mapped_file);
-#else
-          g_mapped_file_free (mapped_file);
-#endif
         }
     }
 

@@ -112,7 +112,7 @@ enum
 #undef G_LIKELY
 #undef G_UNLIKELY
 
-#if defined(NDEBUG) && defined(__GNUC__) && (__GNUC__ > 2)
+#if defined (NDEBUG) && G_GNUC_CHECK_VERSION (3, 0)
 #define G_LIKELY(expr) (__builtin_expect (!!(expr), TRUE))
 #define G_UNLIKELY(expr) (__builtin_expect (!!(expr), FALSE))
 #else

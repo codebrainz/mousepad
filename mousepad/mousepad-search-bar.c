@@ -133,7 +133,7 @@ mousepad_search_bar_class_init (MousepadSearchBarClass *klass)
   gtk_binding_entry_add_signal (binding_set, GDK_KEY_Escape, 0, "hide-bar", 0);
 
   /* In GTK3, gtkrc is deprecated */
-#if GTK_CHECK_VERSION(3, 0, 0) && (__GNUC__ > 4 || __GNUC__ == 4 && __GNUC_MINOR__ > 2)
+#if G_GNUC_CHECK_VERSION (4, 3)
 # pragma GCC diagnostic push
 # pragma GCC diagnostic ignored "-Wdeprecated-declarations"
 #endif
@@ -152,7 +152,7 @@ mousepad_search_bar_class_init (MousepadSearchBarClass *klass)
                          "}\n"
                        "widget \"MousepadWindow.*.Gtk*ToolButton\" style \"mousepad-button-style\"\n");
 
-#if GTK_CHECK_VERSION(3, 0, 0) && (__GNUC__ > 4 || __GNUC__ == 4 && __GNUC_MINOR__ > 2)
+#if G_GNUC_CHECK_VERSION (4, 3)
 # pragma GCC diagnostic pop
 #endif
 
