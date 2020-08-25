@@ -352,9 +352,9 @@
     </key>
     <key name="enable-regex" type="b">
       <default>false</default>
-      <summary>Enable regex</summary>
+      <summary>Enable regular expressions</summary>
       <description>
-        When true regex search will be enabled, when false it will
+        When true regular expression search will be enabled, when false it will
         be disabled.
       </description>
     </key>

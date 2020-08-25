@@ -257,7 +257,7 @@ mousepad_search_bar_init (MousepadSearchBar *bar)
   gtk_toolbar_insert (GTK_TOOLBAR (bar), item, -1);
   gtk_widget_show (GTK_WIDGET (item));
 
-  check = gtk_check_button_new_with_mnemonic (_("Mat_ch Case"));
+  check = gtk_check_button_new_with_mnemonic (_("Match _case"));
   g_signal_connect_object (G_OBJECT (bar), "destroy", G_CALLBACK (gtk_widget_destroy), item, G_CONNECT_SWAPPED);
   gtk_container_add (GTK_CONTAINER (item), check);
   g_signal_connect (G_OBJECT (check), "toggled", G_CALLBACK (mousepad_search_bar_match_case_toggled), bar);
@@ -267,7 +267,7 @@ mousepad_search_bar_init (MousepadSearchBar *bar)
   MOUSEPAD_SETTING_BIND (SEARCH_MATCH_CASE, check, "active", G_SETTINGS_BIND_DEFAULT);
 
   /* overflow menu item for when window is too narrow to show the tool bar item */
-  bar->match_case_entry = menuitem = gtk_check_menu_item_new_with_mnemonic (_("Mat_ch Case"));
+  bar->match_case_entry = menuitem = gtk_check_menu_item_new_with_mnemonic (_("Match _case"));
   g_signal_connect_object (G_OBJECT (bar), "destroy", G_CALLBACK (gtk_widget_destroy), item, G_CONNECT_SWAPPED);
   gtk_tool_item_set_proxy_menu_item (item, "case-sensitive", menuitem);
 
@@ -281,7 +281,7 @@ mousepad_search_bar_init (MousepadSearchBar *bar)
   gtk_toolbar_insert (GTK_TOOLBAR (bar), item, -1);
   gtk_widget_show (GTK_WIDGET (item));
 
-  check = gtk_check_button_new_with_mnemonic (_("_Enable Regex"));
+  check = gtk_check_button_new_with_mnemonic (_("Regular e_xpression"));
   g_signal_connect_object (G_OBJECT (bar), "destroy", G_CALLBACK (gtk_widget_destroy), item, G_CONNECT_SWAPPED);
   gtk_container_add (GTK_CONTAINER (item), check);
   g_signal_connect (G_OBJECT (check), "toggled", G_CALLBACK (mousepad_search_bar_enable_regex_toggled), bar);
@@ -291,7 +291,7 @@ mousepad_search_bar_init (MousepadSearchBar *bar)
   MOUSEPAD_SETTING_BIND (SEARCH_ENABLE_REGEX, check, "active", G_SETTINGS_BIND_DEFAULT);
 
   /* overflow menu item for when window is too narrow to show the tool bar item */
-  bar->enable_regex_entry = menuitem = gtk_check_menu_item_new_with_mnemonic (_("_Enable Regex"));
+  bar->enable_regex_entry = menuitem = gtk_check_menu_item_new_with_mnemonic (_("Regular e_xpression"));
   g_signal_connect_object (G_OBJECT (bar), "destroy", G_CALLBACK (gtk_widget_destroy), item, G_CONNECT_SWAPPED);
   gtk_tool_item_set_proxy_menu_item (item, "enable-regex", menuitem);
 
