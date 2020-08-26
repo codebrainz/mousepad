@@ -11,8 +11,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-08-21 00:46+0200\n"
-"PO-Revision-Date: 2020-08-22 03:42+0000\n"
+"POT-Creation-Date: 2020-08-25 12:53+0200\n"
+"PO-Revision-Date: 2020-08-26 02:59+0000\n"
 "Last-Translator: 黃柏諺 <s8321414@gmail.com>\n"
 "Language-Team: Chinese (Taiwan) (http://www.transifex.com/xfce/xfce-apps/language/zh_TW/)\n"
 "MIME-Version: 1.0\n"
@@ -624,21 +624,23 @@ msgid "_Wrap around"
 msgstr "自動換列(_W)"
 
 #. case sensitive
+#. overflow menu item for when window is too narrow to show the tool bar item
 #: ../mousepad/mousepad-replace-dialog.c:256
-msgid "Case sensi_tive"
-msgstr "區分大小寫(_T)"
+#: ../mousepad/mousepad-search-bar.c:260 ../mousepad/mousepad-search-bar.c:270
+msgid "Match _case"
+msgstr "符合大小寫(_C)"
+
+#. match whole word
+#: ../mousepad/mousepad-replace-dialog.c:263
+msgid "_Match whole word"
+msgstr "比對整個單字(_M)"
 
 #. enable regex search
 #. overflow menu item for when window is too narrow to show the tool bar item
-#: ../mousepad/mousepad-replace-dialog.c:263
-#: ../mousepad/mousepad-search-bar.c:284 ../mousepad/mousepad-search-bar.c:294
-msgid "_Enable Regex"
-msgstr "啟用正規表達示(_E)"
-
-#. match whole word
 #: ../mousepad/mousepad-replace-dialog.c:270
-msgid "_Match whole word"
-msgstr "比對整個單字(_M)"
+#: ../mousepad/mousepad-search-bar.c:284 ../mousepad/mousepad-search-bar.c:294
+msgid "Regular e_xpression"
+msgstr "正規表達式(_X)"
 
 #: ../mousepad/mousepad-replace-dialog.c:281
 msgid "Replace _all in:"
@@ -681,11 +683,6 @@ msgstr "上一個(_P)"
 #: ../mousepad/mousepad-search-bar.c:245
 msgid "Highlight _All"
 msgstr "全部標明(_A)"
-
-#. overflow menu item for when window is too narrow to show the tool bar item
-#: ../mousepad/mousepad-search-bar.c:260 ../mousepad/mousepad-search-bar.c:270
-msgid "Mat_ch Case"
-msgstr "比對字母大小寫(_C)"
 
 #: ../mousepad/mousepad-statusbar.c:134
 msgid "Choose a filetype"
@@ -1154,7 +1151,7 @@ msgstr "變更狀態列的可見性"
 msgid "_Fullscreen"
 msgstr "全螢幕(_F)"
 
-#: ../mousepad/mousepad-window.c:478 ../mousepad/mousepad-window.c:5177
+#: ../mousepad/mousepad-window.c:478 ../mousepad/mousepad-window.c:5196
 msgid "Make the window fullscreen"
 msgstr "讓視窗變為全螢幕"
 
@@ -1220,22 +1217,22 @@ msgid "Warning: you are using the root account. You may harm your system."
 msgstr "警告：您正在使用 root 帳號。您可能會弄壞您的系統。"
 
 #. show the warning
-#: ../mousepad/mousepad-window.c:1556
+#: ../mousepad/mousepad-window.c:1573
 msgid "Failed to open the document"
 msgstr "未能開啟文件"
 
-#: ../mousepad/mousepad-window.c:1753
+#: ../mousepad/mousepad-window.c:1774
 msgid "Read Only"
 msgstr "唯讀"
 
-#: ../mousepad/mousepad-window.c:2419
+#: ../mousepad/mousepad-window.c:2440
 #, c-format
 msgid ""
 "No template files found in\n"
 "'%s'"
 msgstr "在下列的位置中沒有發現模板檔案\n'%s'"
 
-#: ../mousepad/mousepad-window.c:2472
+#: ../mousepad/mousepad-window.c:2493
 #, c-format
 msgid ""
 "Missing Templates directory\n"
@@ -1243,66 +1240,66 @@ msgid ""
 msgstr "模板目錄遺失\n「%s」"
 
 #. create other action
-#: ../mousepad/mousepad-window.c:2546
+#: ../mousepad/mousepad-window.c:2567
 msgid "Set custom tab size"
 msgstr "設定自訂定位點大小"
 
 #. create suitable label for the other menu
-#: ../mousepad/mousepad-window.c:2594
+#: ../mousepad/mousepad-window.c:2615
 #, c-format
 msgid "Ot_her (%d)..."
 msgstr "其他(_H) (%d)..."
 
 #. set action label
-#: ../mousepad/mousepad-window.c:2605
+#: ../mousepad/mousepad-window.c:2626
 msgid "Ot_her..."
 msgstr "其他(_H)..."
 
 #. build description
 #. get the offset length: 'Encoding: '
-#: ../mousepad/mousepad-window.c:2988 ../mousepad/mousepad-window.c:3215
+#: ../mousepad/mousepad-window.c:3009 ../mousepad/mousepad-window.c:3235
 msgid "Charset"
 msgstr "字元集"
 
-#: ../mousepad/mousepad-window.c:3120
+#: ../mousepad/mousepad-window.c:3141
 #, c-format
 msgid "Open '%s'"
 msgstr "開啟「%s」"
 
-#: ../mousepad/mousepad-window.c:3265
+#: ../mousepad/mousepad-window.c:3284
 msgid "Failed to clear the recent history"
 msgstr "無法清除最近歷史"
 
 #. create an item to inform the user
-#: ../mousepad/mousepad-window.c:3708
+#: ../mousepad/mousepad-window.c:3727
 msgid "No clipboard data"
 msgstr "剪貼簿沒有資料"
 
 #. set error message
-#: ../mousepad/mousepad-window.c:3847
+#: ../mousepad/mousepad-window.c:3866
 msgid "Templates should be UTF-8 valid"
 msgstr "範本應該要是有效的 UTF-8 編碼"
 
 #. set error message
-#: ../mousepad/mousepad-window.c:3855
+#: ../mousepad/mousepad-window.c:3874
 msgid "Reading the template failed, the menu item has been removed"
 msgstr "範本讀取失敗，選單項目已移除"
 
 #. set error message
-#: ../mousepad/mousepad-window.c:3860
+#: ../mousepad/mousepad-window.c:3879
 msgid "Loading the template failed"
 msgstr "範本載入失敗"
 
 #. create new file chooser dialog
-#: ../mousepad/mousepad-window.c:3885
+#: ../mousepad/mousepad-window.c:3904
 msgid "Open File"
 msgstr "開啟檔案"
 
-#: ../mousepad/mousepad-window.c:3901
+#: ../mousepad/mousepad-window.c:3920
 msgid "_Encoding:"
 msgstr "編碼：(_E)"
 
-#: ../mousepad/mousepad-window.c:3998
+#: ../mousepad/mousepad-window.c:4017
 #, c-format
 msgid ""
 "Failed to open \"%s\" for reading. It will be removed from the document "
@@ -1310,35 +1307,35 @@ msgid ""
 msgstr "未能開啟「%s」供讀取。會將其自文件歷史移除"
 
 #. show the warning and cleanup
-#: ../mousepad/mousepad-window.c:4002
+#: ../mousepad/mousepad-window.c:4021
 msgid "Failed to open file"
 msgstr "未能開啟檔案"
 
 #. show the error
-#: ../mousepad/mousepad-window.c:4108 ../mousepad/mousepad-window.c:4239
+#: ../mousepad/mousepad-window.c:4127 ../mousepad/mousepad-window.c:4258
 msgid "Failed to save the document"
 msgstr "未能儲存文件"
 
 #. create the dialog
-#: ../mousepad/mousepad-window.c:4132
+#: ../mousepad/mousepad-window.c:4151
 msgid "Save As"
 msgstr "另存為"
 
 #. show the error
-#: ../mousepad/mousepad-window.c:4331
+#: ../mousepad/mousepad-window.c:4350
 msgid "Failed to reload the document"
 msgstr "未能重新載入文件"
 
 #. show the error
-#: ../mousepad/mousepad-window.c:4358
+#: ../mousepad/mousepad-window.c:4377
 msgid "Failed to print the document"
 msgstr "未能列印文件"
 
-#: ../mousepad/mousepad-window.c:4966
+#: ../mousepad/mousepad-window.c:4985
 msgid "Choose Mousepad Font"
 msgstr "選擇 Mousepad 字型"
 
-#: ../mousepad/mousepad-window.c:5170
+#: ../mousepad/mousepad-window.c:5189
 msgid "Leave fullscreen mode"
 msgstr "離開全螢幕模式"
 
