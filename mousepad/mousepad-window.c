@@ -1674,7 +1674,8 @@ mousepad_window_add (MousepadWindow   *window,
   /* insert the page right of the active tab */
   page = gtk_notebook_insert_page (GTK_NOTEBOOK (window->notebook), GTK_WIDGET (document), label, page + 1);
 
-  /* allow tab reordering and detaching */
+  /* set tab child properties */
+  gtk_container_child_set (GTK_CONTAINER (window->notebook), GTK_WIDGET (document), "tab-expand", TRUE, NULL);
   gtk_notebook_set_tab_reorderable (GTK_NOTEBOOK (window->notebook), GTK_WIDGET (document), TRUE);
   gtk_notebook_set_tab_detachable (GTK_NOTEBOOK (window->notebook), GTK_WIDGET (document), TRUE);
 
