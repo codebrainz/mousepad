@@ -859,7 +859,10 @@ mousepad_window_create_root_warning (MousepadWindow *window)
 
       /* add the label with the root warning */
       label = gtk_label_new (_("Warning: you are using the root account. You may harm your system."));
-      gtk_misc_set_padding (GTK_MISC (label), 6, 3);
+      gtk_widget_set_margin_start (label, 6);
+      gtk_widget_set_margin_end (label, 6);
+      gtk_widget_set_margin_top (label, 3);
+      gtk_widget_set_margin_bottom (label, 3);
       gtk_container_add (GTK_CONTAINER (ebox), label);
       gtk_widget_show (label);
 
@@ -3632,13 +3635,15 @@ mousepad_window_paste_history_menu_item (const gchar *text,
   /* create the clipboard label */
   label = gtk_label_new (label_str);
   gtk_box_pack_start (GTK_BOX (hbox), label, TRUE, TRUE, 0);
-  gtk_misc_set_alignment (GTK_MISC (label), 0.0, 0.5);
+  gtk_label_set_xalign (GTK_LABEL (label), 0.0);
+  gtk_label_set_yalign (GTK_LABEL (label), 0.5);
   gtk_widget_show (label);
 
   /* create the mnemonic label */
   label = gtk_label_new_with_mnemonic (mnemonic);
   gtk_box_pack_start (GTK_BOX (hbox), label, FALSE, FALSE, 0);
-  gtk_misc_set_alignment (GTK_MISC (label), 1.0, 0.5);
+  gtk_label_set_xalign (GTK_LABEL (label), 1.0);
+  gtk_label_set_yalign (GTK_LABEL (label), 0.5);
   gtk_label_set_mnemonic_widget (GTK_LABEL (label), item);
   gtk_widget_show (label);
 
@@ -3914,7 +3919,8 @@ mousepad_window_action_open (GtkAction      *action,
   gtk_widget_show (hbox);
 
   label = gtk_label_new_with_mnemonic (_("_Encoding:"));
-  gtk_misc_set_alignment (GTK_MISC (label), 1.0, 0.5);
+  gtk_label_set_xalign (GTK_LABEL (label), 1.0);
+  gtk_label_set_yalign (GTK_LABEL (label), 0.5);
   gtk_box_pack_start (GTK_BOX (hbox), label, TRUE, TRUE, 0);
   gtk_widget_show (label);
 

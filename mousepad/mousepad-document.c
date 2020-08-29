@@ -467,8 +467,7 @@ mousepad_document_send_signals (MousepadDocument *document)
 GtkWidget *
 mousepad_document_get_tab_label (MousepadDocument *document)
 {
-  GtkWidget  *hbox, *align;
-  GtkWidget  *button;
+  GtkWidget  *hbox, *button;
 
   /* create the box */
   hbox = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 0);
@@ -489,16 +488,13 @@ mousepad_document_get_tab_label (MousepadDocument *document)
   mousepad_document_label_color (document);
 
   /* create the button */
-  align = gtk_alignment_new (1.0, 0.5, 0.0, 0.0);
   button = mousepad_close_button_new ();
-  gtk_container_add (GTK_CONTAINER (align), button);
   gtk_widget_show (button);
 
   /* pack button, add signal and tooltip */
   gtk_widget_set_tooltip_text (button, _("Close this tab"));
-  gtk_box_pack_start (GTK_BOX (hbox), align, FALSE, FALSE, 0);
+  gtk_box_pack_start (GTK_BOX (hbox), button, FALSE, FALSE, 0);
   g_signal_connect (G_OBJECT (button), "clicked", G_CALLBACK (mousepad_document_tab_button_clicked), document);
-  gtk_widget_show (align);
 
   return hbox;
 }

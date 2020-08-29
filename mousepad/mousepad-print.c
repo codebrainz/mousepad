@@ -579,9 +579,8 @@ mousepad_print_create_custom_widget (GtkPrintOperation *operation)
   GtkWidget     *button;
   GtkWidget     *vbox, *vbox2;
   GtkWidget     *frame;
-  GtkWidget     *alignment;
   GtkWidget     *label;
-  GtkWidget     *table;
+  GtkWidget     *grid;
   GtkAdjustment *adjustment;
 
   vbox = gtk_box_new (GTK_ORIENTATION_VERTICAL, 6);
@@ -597,14 +596,17 @@ mousepad_print_create_custom_widget (GtkPrintOperation *operation)
   gtk_frame_set_label_widget (GTK_FRAME (frame), label);
   gtk_widget_show (label);
 
-  alignment = gtk_alignment_new (0.0, 0.5, 0.0, 1.0);
-  gtk_alignment_set_padding (GTK_ALIGNMENT (alignment), 6, 6, 12, 6);
-  gtk_container_add (GTK_CONTAINER (frame), alignment);
-  gtk_widget_show (alignment);
-
   button = mousepad_util_image_button ("document-properties", _("_Adjust page size and orientation"));
-  g_signal_connect (G_OBJECT (button), "clicked", G_CALLBACK (mousepad_print_page_setup_dialog), operation);
-  gtk_container_add (GTK_CONTAINER (alignment), button);
+  g_signal_connect (G_OBJECT (button),
+                    "clicked",
+                    G_CALLBACK (mousepad_print_page_setup_dialog),
+                    operation);
+  gtk_widget_set_halign (button, GTK_ALIGN_START);
+  gtk_widget_set_margin_start (button, 12);
+  gtk_widget_set_margin_end (button, 6);
+  gtk_widget_set_margin_top (button, 6);
+  gtk_widget_set_margin_bottom (button, 6);
+  gtk_container_add (GTK_CONTAINER (frame), button);
   gtk_widget_show (button);
 
   frame = gtk_frame_new (NULL);
@@ -617,13 +619,13 @@ mousepad_print_create_custom_widget (GtkPrintOperation *operation)
   gtk_frame_set_label_widget (GTK_FRAME (frame), label);
   gtk_widget_show (label);
 
-  alignment = gtk_alignment_new (0.5, 0.5, 1.0, 1.0);
-  gtk_alignment_set_padding (GTK_ALIGNMENT (alignment), 6, 6, 12, 6);
-  gtk_container_add (GTK_CONTAINER (frame), alignment);
-  gtk_widget_show (alignment);
-
   vbox2 = gtk_box_new (GTK_ORIENTATION_VERTICAL, 6);
-  gtk_container_add (GTK_CONTAINER (alignment), vbox2);
+  gtk_widget_set_halign (vbox2, GTK_ALIGN_START);
+  gtk_widget_set_margin_start (vbox2, 12);
+  gtk_widget_set_margin_end (vbox2, 6);
+  gtk_widget_set_margin_top (vbox2, 6);
+  gtk_widget_set_margin_bottom (vbox2, 6);
+  gtk_container_add (GTK_CONTAINER (frame), vbox2);
   gtk_widget_show (vbox2);
 
   button = print->widget_page_headers = gtk_check_button_new_with_mnemonic (_("Print page _headers"));
@@ -640,18 +642,19 @@ mousepad_print_create_custom_widget (GtkPrintOperation *operation)
   gtk_box_pack_start (GTK_BOX (vbox2), button, FALSE, FALSE, 0);
   gtk_widget_show (button);
 
-  alignment = gtk_alignment_new (0.0, 0.5, 0.0, 1.0);
-  gtk_alignment_set_padding (GTK_ALIGNMENT (alignment), 0, 0, 24, 0);
-  gtk_box_pack_start (GTK_BOX (vbox2), alignment, FALSE, FALSE, 0);
-  gtk_widget_show (alignment);
-
   print->widget_line_numbers_hbox = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 6);
   gtk_widget_set_sensitive (print->widget_line_numbers_hbox, print->print_line_numbers);
-  gtk_container_add (GTK_CONTAINER (alignment), print->widget_line_numbers_hbox);
+  gtk_widget_set_halign (print->widget_line_numbers_hbox, GTK_ALIGN_START);
+  gtk_widget_set_margin_start (print->widget_line_numbers_hbox, 24);
+  gtk_widget_set_margin_end (print->widget_line_numbers_hbox, 0);
+  gtk_widget_set_margin_top (print->widget_line_numbers_hbox, 0);
+  gtk_widget_set_margin_bottom (print->widget_line_numbers_hbox, 0);
+  gtk_container_add (GTK_CONTAINER (vbox2), print->widget_line_numbers_hbox);
   gtk_widget_show (print->widget_line_numbers_hbox);
 
   label = gtk_label_new (_("Numbering interval:"));
-  gtk_misc_set_alignment (GTK_MISC (label), 0.0, 0.5);
+  gtk_label_set_xalign (GTK_LABEL (label), 0.0);
+  gtk_label_set_yalign (GTK_LABEL (label), 0.5);
   gtk_box_pack_start (GTK_BOX (print->widget_line_numbers_hbox), label, FALSE, TRUE, 0);
   gtk_widget_show (label);
 
@@ -667,12 +670,14 @@ mousepad_print_create_custom_widget (GtkPrintOperation *operation)
                     "value-changed",
                     G_CALLBACK (mousepad_print_spin_value_changed),
                     print);
-  gtk_box_pack_start (GTK_BOX (print->widget_line_numbers_hbox), print->widget_line_numbers_spin, FALSE, TRUE, 0);
+  gtk_box_pack_start (GTK_BOX (print->widget_line_numbers_hbox),
+                      print->widget_line_numbers_spin, FALSE, TRUE, 0);
   gtk_widget_show (print->widget_line_numbers_spin);
 
   button = print->widget_text_wrapping = gtk_check_button_new_with_mnemonic (_("Enable text _wrapping"));
   gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (button),
-                                gtk_source_print_compositor_get_wrap_mode (print->compositor) == GTK_WRAP_NONE ? FALSE : TRUE);
+                                gtk_source_print_compositor_get_wrap_mode (print->compositor)
+                                  == GTK_WRAP_NONE ? FALSE : TRUE);
   g_signal_connect (G_OBJECT (button), "toggled", G_CALLBACK (mousepad_print_button_toggled), print);
   gtk_box_pack_start (GTK_BOX (vbox2), button, FALSE, FALSE, 0);
   gtk_widget_show (button);
@@ -694,56 +699,56 @@ mousepad_print_create_custom_widget (GtkPrintOperation *operation)
   gtk_frame_set_label_widget (GTK_FRAME (frame), label);
   gtk_widget_show (label);
 
-  alignment = gtk_alignment_new (0.0, 0.5, 0.0, 1.0);
-  gtk_alignment_set_padding (GTK_ALIGNMENT (alignment), 6, 6, 12, 6);
-  gtk_container_add (GTK_CONTAINER (frame), alignment);
-  gtk_widget_show (alignment);
-
-  /* In GTK3, GtkTable is deprecated */
-#if G_GNUC_CHECK_VERSION (4, 3)
-# pragma GCC diagnostic push
-# pragma GCC diagnostic ignored "-Wdeprecated-declarations"
-#endif
-
-  table = gtk_table_new (3, 2, FALSE);
-  gtk_table_set_col_spacings (GTK_TABLE (table), 6);
-  gtk_table_set_row_spacings (GTK_TABLE (table), 6);
-  gtk_container_add (GTK_CONTAINER (alignment), table);
-  gtk_widget_show (table);
+  grid = gtk_grid_new ();
+  gtk_grid_set_row_spacing (GTK_GRID (grid), 6);
+  gtk_grid_set_column_spacing (GTK_GRID (grid), 6);
+  gtk_widget_set_halign (grid, GTK_ALIGN_START);
+  gtk_widget_set_margin_start (grid, 12);
+  gtk_widget_set_margin_end (grid, 6);
+  gtk_widget_set_margin_top (grid, 6);
+  gtk_widget_set_margin_bottom (grid, 6);
+  gtk_container_add (GTK_CONTAINER (frame), grid);
+  gtk_widget_show (grid);
 
   label = gtk_label_new (_("Header:"));
-  gtk_misc_set_alignment (GTK_MISC (label), 0.0, 0.5);
-  gtk_table_attach_defaults (GTK_TABLE (table), label, 0, 1, 0, 1);
+  gtk_label_set_xalign (GTK_LABEL (label), 0.0);
+  gtk_label_set_yalign (GTK_LABEL (label), 0.5);
+  gtk_grid_attach (GTK_GRID (grid), label, 0, 0, 1, 1);
   gtk_widget_show (label);
 
   print->widget_header_font = gtk_font_button_new_with_font (gtk_source_print_compositor_get_header_font_name (print->compositor));
-  gtk_table_attach_defaults (GTK_TABLE (table), print->widget_header_font, 1, 2, 0, 1);
-  g_signal_connect (G_OBJECT (print->widget_header_font), "font-set", G_CALLBACK (mousepad_print_button_font_set), print);
+  gtk_grid_attach (GTK_GRID (grid), print->widget_header_font, 1, 0, 1, 1);
+  g_signal_connect (G_OBJECT (print->widget_header_font),
+                    "font-set",
+                    G_CALLBACK (mousepad_print_button_font_set), print);
   gtk_widget_show (print->widget_header_font);
 
   label = gtk_label_new (_("Body:"));
-  gtk_misc_set_alignment (GTK_MISC (label), 0.0, 0.5);
-  gtk_table_attach_defaults (GTK_TABLE (table), label, 0, 1, 1, 2);
+  gtk_label_set_xalign (GTK_LABEL (label), 0.0);
+  gtk_label_set_yalign (GTK_LABEL (label), 0.5);
+  gtk_grid_attach (GTK_GRID (grid), label, 0, 1, 1, 1);
   gtk_widget_show (label);
 
-  print->widget_body_font = gtk_font_button_new_with_font (gtk_source_print_compositor_get_body_font_name (print->compositor));
-  gtk_table_attach_defaults (GTK_TABLE (table), print->widget_body_font, 1, 2, 1, 2);
-  g_signal_connect (G_OBJECT (print->widget_body_font), "font-set", G_CALLBACK (mousepad_print_button_font_set), print);
+  print->widget_body_font = gtk_font_button_new_with_font (
+                              gtk_source_print_compositor_get_body_font_name (print->compositor));
+  gtk_grid_attach (GTK_GRID (grid), print->widget_body_font, 1, 1, 1, 1);
+  g_signal_connect (G_OBJECT (print->widget_body_font),
+                    "font-set",
+                    G_CALLBACK (mousepad_print_button_font_set), print);
   gtk_widget_show (print->widget_body_font);
 
   label = gtk_label_new (_("Line numbers:"));
-  gtk_misc_set_alignment (GTK_MISC (label), 0.0, 0.5);
-  gtk_table_attach_defaults (GTK_TABLE (table), label, 0, 1, 2, 3);
+  gtk_label_set_xalign (GTK_LABEL (label), 0.0);
+  gtk_label_set_yalign (GTK_LABEL (label), 0.5);
+  gtk_grid_attach (GTK_GRID (grid), label, 0, 2, 1, 1);
   gtk_widget_show (label);
 
   print->widget_line_numbers_font = gtk_font_button_new_with_font (gtk_source_print_compositor_get_line_numbers_font_name (print->compositor));
-  gtk_table_attach_defaults (GTK_TABLE (table), print->widget_line_numbers_font, 1, 2, 2, 3);
-  g_signal_connect (G_OBJECT (print->widget_line_numbers_font), "font-set", G_CALLBACK (mousepad_print_button_font_set), print);
+  gtk_grid_attach (GTK_GRID (grid), print->widget_line_numbers_font, 1, 2, 1, 1);
+  g_signal_connect (G_OBJECT (print->widget_line_numbers_font),
+                    "font-set",
+                    G_CALLBACK (mousepad_print_button_font_set), print);
   gtk_widget_show (print->widget_line_numbers_font);
-
-#if G_GNUC_CHECK_VERSION (4, 3)
-# pragma GCC diagnostic pop
-#endif
 
   return vbox;
 }

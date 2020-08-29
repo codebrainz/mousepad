@@ -200,7 +200,10 @@ mousepad_search_bar_init (MousepadSearchBar *bar)
 
   label = gtk_label_new_with_mnemonic (_("Fi_nd:"));
   gtk_container_add (GTK_CONTAINER (item), label);
-  gtk_misc_set_padding (GTK_MISC (label), 2, 0);
+  gtk_widget_set_margin_start (label, 2);
+  gtk_widget_set_margin_end (label, 2);
+  gtk_widget_set_margin_top (label, 0);
+  gtk_widget_set_margin_bottom (label, 0);
   gtk_widget_show (label);
 
   /* the entry field */
