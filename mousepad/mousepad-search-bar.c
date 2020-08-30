@@ -158,18 +158,20 @@ mousepad_search_bar_class_init (MousepadSearchBarClass *klass)
 
   /* add an activate-backwards signal to GtkEntry */
   entry_class = g_type_class_ref (GTK_TYPE_ENTRY);
-  if (G_LIKELY (g_signal_lookup("activate-backward", GTK_TYPE_ENTRY) == 0))
+  if (G_LIKELY (g_signal_lookup ("activate-backward", GTK_TYPE_ENTRY) == 0))
     {
       /* install the signal */
-      g_signal_new("activate-backward",
+      g_signal_new ("activate-backward",
                    GTK_TYPE_ENTRY,
                    G_SIGNAL_RUN_LAST | G_SIGNAL_ACTION,
                    0, NULL, NULL,
                    g_cclosure_marshal_VOID__VOID,
                    G_TYPE_NONE, 0);
-      binding_set = gtk_binding_set_by_class(entry_class);
-      gtk_binding_entry_add_signal(binding_set, GDK_KEY_Return, GDK_SHIFT_MASK, "activate-backward", 0);
-      gtk_binding_entry_add_signal(binding_set, GDK_KEY_KP_Enter, GDK_SHIFT_MASK, "activate-backward", 0);
+      binding_set = gtk_binding_set_by_class (entry_class);
+      gtk_binding_entry_add_signal (binding_set, GDK_KEY_Return,
+                                    GDK_SHIFT_MASK, "activate-backward", 0);
+      gtk_binding_entry_add_signal (binding_set, GDK_KEY_KP_Enter,
+                                    GDK_SHIFT_MASK, "activate-backward", 0);
     }
   g_type_class_unref (entry_class);
 }
@@ -188,9 +190,12 @@ mousepad_search_bar_init (MousepadSearchBar *bar)
   bar->highlight_all = MOUSEPAD_SETTING_GET_BOOLEAN (SEARCH_HIGHLIGHT_ALL);
 
   /* the close button */
-  item = gtk_tool_button_new_from_stock (GTK_STOCK_CLOSE);
+  image = gtk_image_new_from_icon_name ("window-close", GTK_ICON_SIZE_BUTTON);
+  gtk_widget_show (image);
+  item = gtk_tool_button_new (image, NULL);
   gtk_toolbar_insert (GTK_TOOLBAR (bar), item, -1);
-  g_signal_connect_swapped (G_OBJECT (item), "clicked", G_CALLBACK (mousepad_search_bar_hide_clicked), bar);
+  g_signal_connect_swapped (G_OBJECT (item), "clicked",
+                            G_CALLBACK (mousepad_search_bar_hide_clicked), bar);
   gtk_widget_show (GTK_WIDGET (item));
 
   /* the find label */
@@ -214,8 +219,10 @@ mousepad_search_bar_init (MousepadSearchBar *bar)
   bar->entry = gtk_entry_new ();
   gtk_container_add (GTK_CONTAINER (item), bar->entry);
   gtk_label_set_mnemonic_widget (GTK_LABEL (label), bar->entry);
-  g_signal_connect (G_OBJECT (bar->entry), "changed", G_CALLBACK (mousepad_search_bar_entry_changed), bar);
-  g_signal_connect (G_OBJECT (bar->entry), "activate", G_CALLBACK (mousepad_search_bar_entry_activate), bar);
+  g_signal_connect (G_OBJECT (bar->entry), "changed",
+                    G_CALLBACK (mousepad_search_bar_entry_changed), bar);
+  g_signal_connect (G_OBJECT (bar->entry), "activate",
+                    G_CALLBACK (mousepad_search_bar_entry_activate), bar);
   g_signal_connect (G_OBJECT (bar->entry), "activate-backward", G_CALLBACK (mousepad_search_bar_entry_activate_backward), bar);
   gtk_widget_show (bar->entry);
 
@@ -227,7 +234,8 @@ mousepad_search_bar_init (MousepadSearchBar *bar)
   gtk_tool_item_set_is_important (item, TRUE);
   gtk_tool_button_set_use_underline (GTK_TOOL_BUTTON (item), TRUE);
   gtk_toolbar_insert (GTK_TOOLBAR (bar), item, -1);
-  g_signal_connect_swapped (G_OBJECT (item), "clicked", G_CALLBACK (mousepad_search_bar_find_next), bar);
+  g_signal_connect_swapped (G_OBJECT (item), "clicked",
+                            G_CALLBACK (mousepad_search_bar_find_next), bar);
   gtk_widget_show (GTK_WIDGET (item));
 
   /* previous button */
@@ -238,68 +246,83 @@ mousepad_search_bar_init (MousepadSearchBar *bar)
   gtk_tool_item_set_is_important (item, TRUE);
   gtk_tool_button_set_use_underline (GTK_TOOL_BUTTON (item), TRUE);
   gtk_toolbar_insert (GTK_TOOLBAR (bar), item, -1);
-  g_signal_connect_swapped (G_OBJECT (item), "clicked", G_CALLBACK (mousepad_search_bar_find_previous), bar);
+  g_signal_connect_swapped (G_OBJECT (item), "clicked",
+                            G_CALLBACK (mousepad_search_bar_find_previous), bar);
   gtk_widget_show (GTK_WIDGET (item));
 
   /* highlight all */
   item = (GtkToolItem *) gtk_toggle_tool_button_new ();
-  g_signal_connect_object (G_OBJECT (bar), "destroy", G_CALLBACK (gtk_widget_destroy), item, G_CONNECT_SWAPPED);
+  g_signal_connect_object (G_OBJECT (bar), "destroy",
+                           G_CALLBACK (gtk_widget_destroy), item, G_CONNECT_SWAPPED);
   gtk_tool_button_set_icon_name (GTK_TOOL_BUTTON (item), "edit-select-all");
   gtk_tool_button_set_label (GTK_TOOL_BUTTON (item), _("Highlight _All"));
   gtk_tool_item_set_is_important (item, TRUE);
   gtk_tool_button_set_use_underline (GTK_TOOL_BUTTON (item), TRUE);
   gtk_toolbar_insert (GTK_TOOLBAR (bar), item, -1);
-  g_signal_connect (G_OBJECT (item), "clicked", G_CALLBACK (mousepad_search_bar_highlight_toggled), bar);
+  g_signal_connect (G_OBJECT (item), "clicked",
+                    G_CALLBACK (mousepad_search_bar_highlight_toggled), bar);
   gtk_widget_show (GTK_WIDGET (item));
 
   MOUSEPAD_SETTING_BIND (SEARCH_HIGHLIGHT_ALL, item, "active", G_SETTINGS_BIND_DEFAULT);
 
   /* check button for case sensitive, including the proxy menu item */
   item = gtk_tool_item_new ();
-  g_signal_connect_object (G_OBJECT (bar), "destroy", G_CALLBACK (gtk_widget_destroy), item, G_CONNECT_SWAPPED);
+  g_signal_connect_object (G_OBJECT (bar), "destroy",
+                           G_CALLBACK (gtk_widget_destroy), item, G_CONNECT_SWAPPED);
   gtk_toolbar_insert (GTK_TOOLBAR (bar), item, -1);
   gtk_widget_show (GTK_WIDGET (item));
 
   check = gtk_check_button_new_with_mnemonic (_("Match _case"));
-  g_signal_connect_object (G_OBJECT (bar), "destroy", G_CALLBACK (gtk_widget_destroy), item, G_CONNECT_SWAPPED);
+  g_signal_connect_object (G_OBJECT (bar), "destroy",
+                           G_CALLBACK (gtk_widget_destroy), item, G_CONNECT_SWAPPED);
   gtk_container_add (GTK_CONTAINER (item), check);
-  g_signal_connect (G_OBJECT (check), "toggled", G_CALLBACK (mousepad_search_bar_match_case_toggled), bar);
+  g_signal_connect (G_OBJECT (check), "toggled",
+                    G_CALLBACK (mousepad_search_bar_match_case_toggled), bar);
   gtk_widget_show (check);
 
   /* keep the widgets in sync with the GSettings */
   MOUSEPAD_SETTING_BIND (SEARCH_MATCH_CASE, check, "active", G_SETTINGS_BIND_DEFAULT);
 
   /* overflow menu item for when window is too narrow to show the tool bar item */
-  bar->match_case_entry = menuitem = gtk_check_menu_item_new_with_mnemonic (_("Match _case"));
-  g_signal_connect_object (G_OBJECT (bar), "destroy", G_CALLBACK (gtk_widget_destroy), item, G_CONNECT_SWAPPED);
+  bar->match_case_entry = menuitem
+                        = gtk_check_menu_item_new_with_mnemonic (_("Match _case"));
+  g_signal_connect_object (G_OBJECT (bar), "destroy",
+                           G_CALLBACK (gtk_widget_destroy), item, G_CONNECT_SWAPPED);
   gtk_tool_item_set_proxy_menu_item (item, "case-sensitive", menuitem);
 
   /* Keep toolbar check button and overflow proxy menu item in sync */
-  g_object_bind_property (check, "active", menuitem, "active", G_BINDING_BIDIRECTIONAL | G_BINDING_SYNC_CREATE);
+  g_object_bind_property (check, "active", menuitem, "active",
+                          G_BINDING_BIDIRECTIONAL | G_BINDING_SYNC_CREATE);
   gtk_widget_show (menuitem);
 
   /* check button for enabling regex, including the proxy menu item */
   item = gtk_tool_item_new ();
-  g_signal_connect_object (G_OBJECT (bar), "destroy", G_CALLBACK (gtk_widget_destroy), item, G_CONNECT_SWAPPED);
+  g_signal_connect_object (G_OBJECT (bar), "destroy",
+                           G_CALLBACK (gtk_widget_destroy), item, G_CONNECT_SWAPPED);
   gtk_toolbar_insert (GTK_TOOLBAR (bar), item, -1);
   gtk_widget_show (GTK_WIDGET (item));
 
   check = gtk_check_button_new_with_mnemonic (_("Regular e_xpression"));
-  g_signal_connect_object (G_OBJECT (bar), "destroy", G_CALLBACK (gtk_widget_destroy), item, G_CONNECT_SWAPPED);
+  g_signal_connect_object (G_OBJECT (bar), "destroy",
+                           G_CALLBACK (gtk_widget_destroy), item, G_CONNECT_SWAPPED);
   gtk_container_add (GTK_CONTAINER (item), check);
-  g_signal_connect (G_OBJECT (check), "toggled", G_CALLBACK (mousepad_search_bar_enable_regex_toggled), bar);
+  g_signal_connect (G_OBJECT (check), "toggled",
+                    G_CALLBACK (mousepad_search_bar_enable_regex_toggled), bar);
   gtk_widget_show (check);
 
   /* keep the widgets in sync with the GSettings */
   MOUSEPAD_SETTING_BIND (SEARCH_ENABLE_REGEX, check, "active", G_SETTINGS_BIND_DEFAULT);
 
   /* overflow menu item for when window is too narrow to show the tool bar item */
-  bar->enable_regex_entry = menuitem = gtk_check_menu_item_new_with_mnemonic (_("Regular e_xpression"));
-  g_signal_connect_object (G_OBJECT (bar), "destroy", G_CALLBACK (gtk_widget_destroy), item, G_CONNECT_SWAPPED);
+  bar->enable_regex_entry = menuitem
+                          = gtk_check_menu_item_new_with_mnemonic (_("Regular e_xpression"));
+  g_signal_connect_object (G_OBJECT (bar), "destroy",
+                           G_CALLBACK (gtk_widget_destroy), item, G_CONNECT_SWAPPED);
   gtk_tool_item_set_proxy_menu_item (item, "enable-regex", menuitem);
 
   /* Keep toolbar check button and overflow proxy menu item in sync */
-  g_object_bind_property (check, "active", menuitem, "active", G_BINDING_BIDIRECTIONAL | G_BINDING_SYNC_CREATE);
+  g_object_bind_property (check, "active", menuitem, "active",
+                          G_BINDING_BIDIRECTIONAL | G_BINDING_SYNC_CREATE);
   gtk_widget_show (menuitem);
 }
 

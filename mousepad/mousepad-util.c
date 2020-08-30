@@ -726,7 +726,7 @@ mousepad_util_search (GtkSourceSearchContext *search_context,
         {
           /* replace selected occurrence */
           gtk_source_search_context_replace2 (search_context, &start, &end, replace, -1, NULL);
-          
+
           /* select next occurrence */
           flags |= MOUSEPAD_SEARCH_FLAGS_ACTION_SELECT;
           flags &= ~MOUSEPAD_SEARCH_FLAGS_ACTION_REPLACE;
@@ -741,7 +741,7 @@ mousepad_util_search (GtkSourceSearchContext *search_context,
               gtk_source_search_context_replace_all (search_context, replace, -1, NULL);
               gtk_text_buffer_get_bounds (selection_buffer, &start, &end);
               selected_text = gtk_text_buffer_get_text (selection_buffer, &start, &end, FALSE);
-              
+
               /* replace selection in the real buffer by the text in the virtual selection buffer */
               gtk_text_buffer_get_selection_bounds (buffer, &start, &end);
               gtk_text_buffer_begin_user_action (buffer);

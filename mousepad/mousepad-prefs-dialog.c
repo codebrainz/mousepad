@@ -18,6 +18,7 @@
 #include <mousepad/mousepad-prefs-dialog.h>
 #include <mousepad/mousepad-prefs-dialog-ui.h>
 #include <mousepad/mousepad-settings.h>
+#include <mousepad/mousepad-util.h>
 
 #include <gtksourceview/gtksource.h>
 
@@ -377,7 +378,7 @@ mousepad_prefs_dialog_toolbar_icon_size_setting_changed (MousepadPrefsDialog *se
   combo = GTK_COMBO_BOX (gtk_builder_get_object (self->builder, WID_TOOLBAR_ICON_SIZE_COMBO));
   model = gtk_combo_box_get_model (combo);
   valid = gtk_tree_model_get_iter_first (model, &iter);
-  
+
   while (valid)
     {
       gint size = 0;
@@ -404,6 +405,7 @@ mousepad_prefs_dialog_init (MousepadPrefsDialog *self)
   GError *error = NULL;
   GtkWidget *notebook;
   GtkWidget *content_area;
+  GtkWidget *button;
   GtkWidget *check, *widget;
 
   self->builder = gtk_builder_new ();
@@ -415,7 +417,8 @@ mousepad_prefs_dialog_init (MousepadPrefsDialog *self)
                                      &error))
     {
       g_error ("Failed to load the internal preferences dialog: %s", error->message);
-      g_error_free (error); // not reached
+      /* not reached */
+      g_error_free (error);
     }
 
   /* add the Glade/GtkBuilder notebook into this dialog */
@@ -425,7 +428,9 @@ mousepad_prefs_dialog_init (MousepadPrefsDialog *self)
   gtk_widget_show (notebook);
 
   /* add the close button */
-  gtk_dialog_add_button (GTK_DIALOG (self), GTK_STOCK_CLOSE, GTK_RESPONSE_CLOSE);
+  button = mousepad_util_image_button ("window-close", _("_Close"));
+  gtk_widget_set_can_default (button, TRUE);
+  gtk_dialog_add_action_widget (GTK_DIALOG (self), button, GTK_RESPONSE_CLOSE);
   gtk_dialog_set_default_response (GTK_DIALOG (self), GTK_RESPONSE_CLOSE);
 
   /* setup the window properties */

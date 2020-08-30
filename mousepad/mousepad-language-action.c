@@ -110,7 +110,7 @@ mousepad_language_action_set_property (GObject      *object,
                                        GParamSpec   *pspec)
 {
   MousepadLanguageAction *self = MOUSEPAD_LANGUAGE_ACTION (object);
-  
+
   switch (prop_id)
     {
     case PROP_LANGUAGE:
@@ -131,7 +131,7 @@ mousepad_language_action_get_property (GObject    *object,
                                        GParamSpec *pspec)
 {
   MousepadLanguageAction *self = MOUSEPAD_LANGUAGE_ACTION (object);
-  
+
   switch (prop_id)
     {
     case PROP_LANGUAGE:
