@@ -5,16 +5,16 @@
 # Translators:
 # Daichi Kawahata <daichi@xfce.org>, 2005
 # Masato HASHIMOTO <cabezon.hashimoto@gmail.com>, 2012
-# Nobuhiro Iwamatsu <iwamatsu@nigauri.org>, 2008,2018-2019
+# Nobuhiro Iwamatsu <iwamatsu@nigauri.org>, 2008,2018-2020
 # Tarot Osuji <tarot@sdf.lonestar.org>, 2004
 # UTUMI Hirosi <utuhiro78@yahoo.co.jp>, 2019-2020
 msgid ""
 msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-05-07 12:47+0200\n"
-"PO-Revision-Date: 2020-05-13 01:30+0000\n"
-"Last-Translator: UTUMI Hirosi <utuhiro78@yahoo.co.jp>\n"
+"POT-Creation-Date: 2020-08-25 12:53+0200\n"
+"PO-Revision-Date: 2020-08-29 23:53+0000\n"
+"Last-Translator: Nobuhiro Iwamatsu <iwamatsu@nigauri.org>\n"
 "Language-Team: Japanese (http://www.transifex.com/xfce/xfce-apps/language/ja/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -35,145 +35,145 @@ msgid "Print version information and exit"
 msgstr "バージョン情報を表示して終了する"
 
 #. default application name
-#: ../mousepad/main.c:69 ../mousepad.desktop.in.in.h:1
+#: ../mousepad/main.c:70 ../mousepad.desktop.in.in.h:1
 msgid "Mousepad"
 msgstr "Mousepad"
 
 #. initialize gtk+
-#: ../mousepad/main.c:83
+#: ../mousepad/main.c:84
 msgid "[FILES...]"
 msgstr "[ファイル...]"
 
 #. no error message, the gui initialization failed
-#: ../mousepad/main.c:89
+#: ../mousepad/main.c:90
 msgid "Failed to open display."
 msgstr "ディスプレイのオープンに失敗しました。"
 
-#: ../mousepad/main.c:106
+#: ../mousepad/main.c:107
 msgid "The Xfce development team. All rights reserved."
 msgstr "The Xfce development team. All rights reserved."
 
-#: ../mousepad/main.c:107
+#: ../mousepad/main.c:108
 #, c-format
 msgid "Please report bugs to <%s>."
 msgstr "バグの報告は <%s> までお願いします。"
 
-#: ../mousepad/mousepad-dialogs.c:44
+#: ../mousepad/mousepad-dialogs.c:39
 msgid "Mousepad is a fast text editor for the Xfce Desktop Environment."
 msgstr "Mousepad は Xfce デスクトップ環境用の高速なテキストエディターです。"
 
-#: ../mousepad/mousepad-dialogs.c:49
+#: ../mousepad/mousepad-dialogs.c:44
 msgid "translator-credits"
 msgstr "Tarot Osuji <tarot@sdf.lonestar.org>, 2004.\nDaichi Kawahata <daichi@xfce.org>, 2005.\nNobuhiro Iwamatsu <iwamatsu@nigauri.org>, 2008.\nMasato Hashimoto <hashimo@xfce.org>, 2012, 2014."
 
 #. display an error message to the user
-#: ../mousepad/mousepad-dialogs.c:104
+#: ../mousepad/mousepad-dialogs.c:99
 msgid "Failed to open the documentation browser"
 msgstr "ドキュメントブラウザーを開くことに失敗しました"
 
 #. build dialog
-#: ../mousepad/mousepad-dialogs.c:119
+#: ../mousepad/mousepad-dialogs.c:114
 msgid "Select Tab Size"
 msgstr "タブサイズの選択"
 
 #. build the dialog
-#: ../mousepad/mousepad-dialogs.c:200
+#: ../mousepad/mousepad-dialogs.c:195
 msgid "Go To"
 msgstr "移動"
 
-#: ../mousepad/mousepad-dialogs.c:222
+#: ../mousepad/mousepad-dialogs.c:217
 msgid "_Line number:"
 msgstr "行番号(_L):"
 
-#: ../mousepad/mousepad-dialogs.c:241
+#: ../mousepad/mousepad-dialogs.c:236
 msgid "C_olumn number:"
 msgstr "列番号(_O):"
 
-#: ../mousepad/mousepad-dialogs.c:299
+#: ../mousepad/mousepad-dialogs.c:294
 msgid "Remove all entries from the documents history?"
 msgstr "ドキュメント履歴からすべてのアイテムを削除しますか?"
 
-#: ../mousepad/mousepad-dialogs.c:304
+#: ../mousepad/mousepad-dialogs.c:299
 msgid "Clear Documents History"
 msgstr "ドキュメント履歴のクリア"
 
-#: ../mousepad/mousepad-dialogs.c:307
+#: ../mousepad/mousepad-dialogs.c:302
 msgid ""
 "Clearing the documents history will permanently remove all currently listed "
 "entries."
 msgstr "ドキュメント履歴をクリアすると、現在表示されているすべてのアイテムを完全に削除します。"
 
-#: ../mousepad/mousepad-dialogs.c:338
+#: ../mousepad/mousepad-dialogs.c:333
 msgid "Do you want to save the changes before closing?"
 msgstr "閉じる前に変更を保存しますか?"
 
-#: ../mousepad/mousepad-dialogs.c:339
+#: ../mousepad/mousepad-dialogs.c:334
 msgid "Save Changes"
 msgstr "変更の保存"
 
-#: ../mousepad/mousepad-dialogs.c:340
+#: ../mousepad/mousepad-dialogs.c:335
 msgid "_Don't Save"
 msgstr "保存しない(_D)"
 
 #. secondary text
-#: ../mousepad/mousepad-dialogs.c:362
+#: ../mousepad/mousepad-dialogs.c:357
 msgid "If you don't save the document, all the changes will be lost."
 msgstr "保存しない場合、すべての変更箇所は失われます。"
 
-#: ../mousepad/mousepad-dialogs.c:384
+#: ../mousepad/mousepad-dialogs.c:379
 msgid ""
 "The document has been externally modified. Do you want to continue saving?"
 msgstr "この文書は外部から変更されています。このまま保存しますか?"
 
-#: ../mousepad/mousepad-dialogs.c:385
+#: ../mousepad/mousepad-dialogs.c:380
 msgid "Externally Modified"
 msgstr "外部からの変更"
 
-#: ../mousepad/mousepad-dialogs.c:387
+#: ../mousepad/mousepad-dialogs.c:382
 msgid "If you save the document, all of the external changes will be lost."
 msgstr "保存すると、すべての外部からの変更箇所は失われます。"
 
-#: ../mousepad/mousepad-dialogs.c:415
+#: ../mousepad/mousepad-dialogs.c:410
 msgid "Do you want to save your changes before reloading?"
 msgstr "再読み込み前に変更を保存しますか?"
 
-#: ../mousepad/mousepad-dialogs.c:417
+#: ../mousepad/mousepad-dialogs.c:412
 msgid "If you revert the file, all unsaved changes will be lost."
 msgstr "ファイルを復帰すると、保存されていないすべての変更箇所は失われます。"
 
 #. pack button, add signal and tooltip
-#: ../mousepad/mousepad-document.c:500
+#: ../mousepad/mousepad-document.c:498
 msgid "Close this tab"
 msgstr "このタブを閉じます"
 
 #. create an unique untitled document name
-#: ../mousepad/mousepad-document.c:530
+#: ../mousepad/mousepad-document.c:528
 msgid "Untitled"
 msgstr "無題"
 
 #. create the header
-#: ../mousepad/mousepad-encoding-dialog.c:131
+#: ../mousepad/mousepad-encoding-dialog.c:125
 msgid "The document was not UTF-8 valid"
 msgstr "この文書は正常な UTF−8 ではありません"
 
-#: ../mousepad/mousepad-encoding-dialog.c:132
+#: ../mousepad/mousepad-encoding-dialog.c:126
 msgid "Please select an encoding below."
 msgstr "以下から文字エンコーディングを選択してください。"
 
 #. encoding radio buttons
-#: ../mousepad/mousepad-encoding-dialog.c:144
+#: ../mousepad/mousepad-encoding-dialog.c:138
 msgid "Default (UTF-8)"
 msgstr "デフォルト (UTF-8)"
 
-#: ../mousepad/mousepad-encoding-dialog.c:150
+#: ../mousepad/mousepad-encoding-dialog.c:144
 msgid "System"
 msgstr "システム"
 
-#: ../mousepad/mousepad-encoding-dialog.c:157
+#: ../mousepad/mousepad-encoding-dialog.c:151
 msgid "Other:"
 msgstr "その他:"
 
-#: ../mousepad/mousepad-encoding-dialog.c:177
+#: ../mousepad/mousepad-encoding-dialog.c:171
 msgid "Checking encodings..."
 msgstr "エンコーディングをチェックしています..."
 
@@ -295,31 +295,31 @@ msgstr "日本語"
 msgid "Korean"
 msgstr "韓国語"
 
-#: ../mousepad/mousepad-file.c:568
+#: ../mousepad/mousepad-file.c:562
 #, c-format
 msgid "Invalid byte sequence in conversion input"
 msgstr "変換入力内に不正なバイト列があります"
 
-#: ../mousepad/mousepad-file.c:912
+#: ../mousepad/mousepad-file.c:906
 #, c-format
 msgid "The file \"%s\" you tried to reload does not exist anymore"
 msgstr "再読み込みしようとしたファイル \"%s\" はもう存在していません"
 
-#: ../mousepad/mousepad-file.c:953
+#: ../mousepad/mousepad-file.c:947
 #, c-format
 msgid "Failed to read the status of \"%s\""
 msgstr "\"%s\" の状態の読み込みに失敗しました"
 
-#: ../mousepad/mousepad-language-action.c:230
+#: ../mousepad/mousepad-language-action.c:229
 msgid "Plain Text"
 msgstr "プレーンテキスト"
 
-#: ../mousepad/mousepad-language-action.c:231
+#: ../mousepad/mousepad-language-action.c:230
 msgid "No filetype"
 msgstr "ファイルタイプなし"
 
 #. setup the window properties
-#: ../mousepad/mousepad-prefs-dialog.c:437 ../mousepad/mousepad-window.c:457
+#: ../mousepad/mousepad-prefs-dialog.c:432 ../mousepad/mousepad-window.c:447
 msgid "Preferences"
 msgstr "設定"
 
@@ -352,7 +352,7 @@ msgid "none"
 msgstr "なし"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:8
-#: ../mousepad/mousepad-style-scheme-action.c:197
+#: ../mousepad/mousepad-style-scheme-action.c:193
 msgid "None"
 msgstr "なし"
 
@@ -397,7 +397,7 @@ msgid "Text Beside Icons"
 msgstr "アイコンの横に文字"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:19
-#: ../mousepad/mousepad-window.c:484
+#: ../mousepad/mousepad-window.c:474
 msgid "Show line numbers"
 msgstr "行番号を表示する"
 
@@ -530,713 +530,710 @@ msgid "Window"
 msgstr "ウィンドウ"
 
 #. set a custom tab label
-#: ../mousepad/mousepad-print.c:125
+#: ../mousepad/mousepad-print.c:120
 msgid "Document Settings"
 msgstr "文書の設定"
 
-#: ../mousepad/mousepad-print.c:600
+#: ../mousepad/mousepad-print.c:595
 msgid "Page Setup"
 msgstr "ページの設定"
 
-#: ../mousepad/mousepad-print.c:610
+#: ../mousepad/mousepad-print.c:605
 msgid "_Adjust page size and orientation"
 msgstr "ページのサイズと方向を調整(_A)"
 
-#: ../mousepad/mousepad-print.c:620
+#: ../mousepad/mousepad-print.c:615
 msgid "Appearance"
 msgstr "外観"
 
-#: ../mousepad/mousepad-print.c:634
+#: ../mousepad/mousepad-print.c:629
 msgid "Print page _headers"
 msgstr "ページヘッダーを印刷する(_H)"
 
-#: ../mousepad/mousepad-print.c:641
+#: ../mousepad/mousepad-print.c:636
 msgid "Print _line numbers"
 msgstr "行番号を印刷する(_L)"
 
-#: ../mousepad/mousepad-print.c:658
+#: ../mousepad/mousepad-print.c:653
 msgid "Numbering interval:"
 msgstr "出力する行番号の間隔:"
 
-#: ../mousepad/mousepad-print.c:666
+#: ../mousepad/mousepad-print.c:661
 msgid ""
 "The interval at which to print line numbers. For example a value of 1 will "
 "print a line number on each line, a value of 2 will print a line number on "
 "every other line, and so on."
 msgstr "印刷するときに出力する行番号の間隔です。例えば 1 を指定すると行ごとに番号を印刷し、2 を指定すると 1 行おきに印刷します。"
 
-#: ../mousepad/mousepad-print.c:678
+#: ../mousepad/mousepad-print.c:673
 msgid "Enable text _wrapping"
 msgstr "文字の折り返しを有効にする(_W)"
 
-#: ../mousepad/mousepad-print.c:685
+#: ../mousepad/mousepad-print.c:680
 msgid "Enable _syntax highlighting"
 msgstr "シンタックスハイライトを有効にする(_S)"
 
-#: ../mousepad/mousepad-print.c:697
+#: ../mousepad/mousepad-print.c:692
 msgid "Fonts"
 msgstr "フォント"
 
-#: ../mousepad/mousepad-print.c:719
+#: ../mousepad/mousepad-print.c:714
 msgid "Header:"
 msgstr "ヘッダー:"
 
-#: ../mousepad/mousepad-print.c:729
+#: ../mousepad/mousepad-print.c:724
 msgid "Body:"
 msgstr "本文:"
 
-#: ../mousepad/mousepad-print.c:739
+#: ../mousepad/mousepad-print.c:734
 msgid "Line numbers:"
 msgstr "行番号:"
 
 #. set dialog properties
-#: ../mousepad/mousepad-replace-dialog.c:137
-msgid "Replace"
-msgstr "置換"
+#: ../mousepad/mousepad-replace-dialog.c:160
+msgid "Find and Replace"
+msgstr "検索と置換"
 
-#: ../mousepad/mousepad-replace-dialog.c:144
-#: ../mousepad/mousepad-replace-dialog.c:443
+#: ../mousepad/mousepad-replace-dialog.c:166
+#: ../mousepad/mousepad-replace-dialog.c:471
 msgid "_Replace"
 msgstr "置換(_R)"
 
-#: ../mousepad/mousepad-replace-dialog.c:162
+#: ../mousepad/mousepad-replace-dialog.c:184
 msgid "_Search for:"
 msgstr "検索文字列(_S):"
 
-#: ../mousepad/mousepad-replace-dialog.c:183
+#: ../mousepad/mousepad-replace-dialog.c:210
 msgid "Replace _with:"
 msgstr "置換文字列(_W):"
 
-#: ../mousepad/mousepad-replace-dialog.c:203
+#: ../mousepad/mousepad-replace-dialog.c:230
 msgid "Search _direction:"
 msgstr "検索方向(_D):"
 
-#: ../mousepad/mousepad-replace-dialog.c:212
+#: ../mousepad/mousepad-replace-dialog.c:239
 msgid "Up"
 msgstr "上"
 
-#: ../mousepad/mousepad-replace-dialog.c:213
+#: ../mousepad/mousepad-replace-dialog.c:240
 msgid "Down"
 msgstr "下"
 
-#: ../mousepad/mousepad-replace-dialog.c:214
-msgid "Both"
-msgstr "両方"
+#. wrap around
+#: ../mousepad/mousepad-replace-dialog.c:249
+msgid "_Wrap around"
+msgstr "行の折り返しを含む(_W)"
 
 #. case sensitive
-#: ../mousepad/mousepad-replace-dialog.c:223
-msgid "Case sensi_tive"
-msgstr "大文字/小文字を区別する(_T)"
+#. overflow menu item for when window is too narrow to show the tool bar item
+#: ../mousepad/mousepad-replace-dialog.c:256
+#: ../mousepad/mousepad-search-bar.c:260 ../mousepad/mousepad-search-bar.c:270
+msgid "Match _case"
+msgstr "大文字/小文字を区別する(_C)"
 
 #. match whole word
-#: ../mousepad/mousepad-replace-dialog.c:230
+#: ../mousepad/mousepad-replace-dialog.c:263
 msgid "_Match whole word"
 msgstr "完全一致(_M)"
 
-#: ../mousepad/mousepad-replace-dialog.c:241
+#. enable regex search
+#. overflow menu item for when window is too narrow to show the tool bar item
+#: ../mousepad/mousepad-replace-dialog.c:270
+#: ../mousepad/mousepad-search-bar.c:284 ../mousepad/mousepad-search-bar.c:294
+msgid "Regular e_xpression"
+msgstr "正規表現(_X)"
+
+#: ../mousepad/mousepad-replace-dialog.c:281
 msgid "Replace _all in:"
 msgstr "一括置換(_A):"
 
-#: ../mousepad/mousepad-replace-dialog.c:249
+#: ../mousepad/mousepad-replace-dialog.c:289
 msgid "Selection"
 msgstr "選択範囲"
 
-#: ../mousepad/mousepad-replace-dialog.c:250
+#: ../mousepad/mousepad-replace-dialog.c:290
 msgid "Document"
 msgstr "文書"
 
-#: ../mousepad/mousepad-replace-dialog.c:251
+#: ../mousepad/mousepad-replace-dialog.c:291
 msgid "All Documents"
 msgstr "全文書"
 
-#: ../mousepad/mousepad-replace-dialog.c:422
+#: ../mousepad/mousepad-replace-dialog.c:450
 #, c-format
 msgid "%d occurrence"
 msgid_plural "%d occurrences"
 msgstr[0] "%d 件"
 
-#: ../mousepad/mousepad-replace-dialog.c:443
+#: ../mousepad/mousepad-replace-dialog.c:471
 msgid "_Replace All"
 msgstr "すべて置換(_R)"
 
-#: ../mousepad/mousepad-search-bar.c:208
+#: ../mousepad/mousepad-search-bar.c:201
 msgid "Fi_nd:"
 msgstr "検索(_N)"
 
-#: ../mousepad/mousepad-search-bar.c:230
+#: ../mousepad/mousepad-search-bar.c:223
 msgid "_Next"
 msgstr "次(_N)"
 
-#: ../mousepad/mousepad-search-bar.c:241
+#: ../mousepad/mousepad-search-bar.c:234
 msgid "_Previous"
 msgstr "前(_P)"
 
-#: ../mousepad/mousepad-search-bar.c:252
+#: ../mousepad/mousepad-search-bar.c:245
 msgid "Highlight _All"
 msgstr "すべて強調表示(_A)"
 
-#. overflow menu item for when window is too narrow to show the tool bar item
-#: ../mousepad/mousepad-search-bar.c:265 ../mousepad/mousepad-search-bar.c:276
-msgid "Mat_ch Case"
-msgstr "大文字/小文字を区別する(_C)"
-
-#: ../mousepad/mousepad-statusbar.c:140
+#: ../mousepad/mousepad-statusbar.c:134
 msgid "Choose a filetype"
 msgstr "ファイルタイプを選択します"
 
 #. language/filetype
-#: ../mousepad/mousepad-statusbar.c:145 ../mousepad/mousepad-statusbar.c:255
+#: ../mousepad/mousepad-statusbar.c:139 ../mousepad/mousepad-statusbar.c:249
 msgid "Filetype: None"
 msgstr "ファイルタイプ: なし"
 
-#: ../mousepad/mousepad-statusbar.c:168
+#: ../mousepad/mousepad-statusbar.c:162
 msgid "Toggle the overwrite mode"
 msgstr "上書きモードと挿入モードを切り替えます"
 
 #. overwrite label
-#: ../mousepad/mousepad-statusbar.c:173
+#: ../mousepad/mousepad-statusbar.c:167
 msgid "OVR"
 msgstr "上書"
 
-#: ../mousepad/mousepad-statusbar.c:258
+#: ../mousepad/mousepad-statusbar.c:252
 #, c-format
 msgid "Filetype: %s"
 msgstr "ファイルタイプ: %s"
 
-#: ../mousepad/mousepad-statusbar.c:278
+#: ../mousepad/mousepad-statusbar.c:272
 #, c-format
 msgid "Line: %d Column: %d Selection: %d"
 msgstr "行: %d 列: %d 選択範囲: %d"
 
-#: ../mousepad/mousepad-statusbar.c:280
+#: ../mousepad/mousepad-statusbar.c:274
 #, c-format
 msgid "Line: %d Column: %d"
 msgstr "行: %d 列: %d"
 
-#: ../mousepad/mousepad-style-scheme-action.c:198
+#: ../mousepad/mousepad-style-scheme-action.c:194
 msgid "No style scheme"
 msgstr "スタイルスキームを使用していません"
 
-#: ../mousepad/mousepad-style-scheme-action.c:212
+#: ../mousepad/mousepad-style-scheme-action.c:208
 #, c-format
 msgid "%s | Authors: %s | Filename: %s"
 msgstr "%s | 作者: %s | ファイル名: %s"
 
 #. show warning to the user
-#: ../mousepad/mousepad-util.c:549
+#: ../mousepad/mousepad-util.c:550
 #, c-format
 msgid "Unable to create base directory \"%s\". Saving to file \"%s\" will be aborted."
 msgstr "ベースディレクトリ \"%s\" を作成できません。ファイル \"%s\" の保存は中止されます。"
 
 #. print error
-#: ../mousepad/mousepad-util.c:595
+#: ../mousepad/mousepad-util.c:596
 #, c-format
 msgid "Failed to store the preferences to \"%s\": %s"
 msgstr "設定の \"%s\" への格納に失敗しました: %s"
 
-#: ../mousepad/mousepad-window.c:413
+#: ../mousepad/mousepad-window.c:404
 msgid "_File"
 msgstr "ファイル(_F)"
 
-#: ../mousepad/mousepad-window.c:414
+#: ../mousepad/mousepad-window.c:405
 msgid "_New"
 msgstr "新規作成(_N)"
 
-#: ../mousepad/mousepad-window.c:414
+#: ../mousepad/mousepad-window.c:405
 msgid "Create a new document"
 msgstr "新しい文書を作成します"
 
-#: ../mousepad/mousepad-window.c:415
+#: ../mousepad/mousepad-window.c:406
 msgid "New _Window"
 msgstr "新しいウィンドウ(_W)"
 
-#: ../mousepad/mousepad-window.c:415
+#: ../mousepad/mousepad-window.c:406
 msgid "Create a new document in a new window"
 msgstr "新しい文書を新しいウィンドウで作成します"
 
-#: ../mousepad/mousepad-window.c:416
+#: ../mousepad/mousepad-window.c:407
 msgid "New From Te_mplate"
 msgstr "テンプレートから新規作成(_M)"
 
-#: ../mousepad/mousepad-window.c:417
+#: ../mousepad/mousepad-window.c:408
 msgid "_Open..."
 msgstr "開く(_O)..."
 
-#: ../mousepad/mousepad-window.c:417
+#: ../mousepad/mousepad-window.c:408
 msgid "Open a file"
 msgstr "ファイルを開きます"
 
-#: ../mousepad/mousepad-window.c:418
+#: ../mousepad/mousepad-window.c:409
 msgid "Op_en Recent"
 msgstr "最近開いたファイル(_E)"
 
-#: ../mousepad/mousepad-window.c:419
+#: ../mousepad/mousepad-window.c:410
 msgid "No items found"
 msgstr "アイテムが見つかりません"
 
-#: ../mousepad/mousepad-window.c:420
+#: ../mousepad/mousepad-window.c:411
 msgid "Clear _History"
 msgstr "履歴のクリア(_H)"
 
-#: ../mousepad/mousepad-window.c:420
+#: ../mousepad/mousepad-window.c:411
 msgid "Clear the recently used files history"
 msgstr "最近使ったファイルの履歴をクリアします"
 
-#: ../mousepad/mousepad-window.c:421
+#: ../mousepad/mousepad-window.c:412
 msgid "Save the current document"
 msgstr "現在の文書を保存します"
 
-#: ../mousepad/mousepad-window.c:422
+#: ../mousepad/mousepad-window.c:413
 msgid "Save _As..."
 msgstr "名前を付けて保存(_A)..."
 
-#: ../mousepad/mousepad-window.c:422
+#: ../mousepad/mousepad-window.c:413
 msgid "Save current document as another file"
 msgstr "現在の文書を別のファイルとして保存します"
 
-#: ../mousepad/mousepad-window.c:423
+#: ../mousepad/mousepad-window.c:414
 msgid "Save A_ll"
 msgstr "すべて保存(_L)"
 
-#: ../mousepad/mousepad-window.c:423
+#: ../mousepad/mousepad-window.c:414
 msgid "Save all document in this window"
 msgstr "このウィンドウのすべての文書を保存します"
 
-#: ../mousepad/mousepad-window.c:424
+#: ../mousepad/mousepad-window.c:415
 msgid "Re_vert"
 msgstr "復帰(_V)"
 
-#: ../mousepad/mousepad-window.c:424
+#: ../mousepad/mousepad-window.c:415
 msgid "Revert to the saved version of the file"
 msgstr "保存されているファイルに戻します"
 
-#: ../mousepad/mousepad-window.c:425
+#: ../mousepad/mousepad-window.c:416
 msgid "_Print..."
 msgstr "印刷(_P)..."
 
-#: ../mousepad/mousepad-window.c:425
+#: ../mousepad/mousepad-window.c:416
 msgid "Print the current document"
 msgstr "現在の文書を印刷します"
 
-#: ../mousepad/mousepad-window.c:426
+#: ../mousepad/mousepad-window.c:417
 msgid "_Detach Tab"
 msgstr "タブを切り離す(_D)"
 
-#: ../mousepad/mousepad-window.c:426
+#: ../mousepad/mousepad-window.c:417
 msgid "Move the current document to a new window"
 msgstr "現在の文書を新しいウィンドウに移動します"
 
-#: ../mousepad/mousepad-window.c:427
+#: ../mousepad/mousepad-window.c:418
 msgid "Close _Tab"
 msgstr "タブを閉じる(_T)"
 
-#: ../mousepad/mousepad-window.c:427
+#: ../mousepad/mousepad-window.c:418
 msgid "Close the current document"
 msgstr "現在の文書を閉じます"
 
-#: ../mousepad/mousepad-window.c:428
+#: ../mousepad/mousepad-window.c:419
 msgid "_Close Window"
 msgstr "ウィンドウを閉じる(_C)"
 
-#: ../mousepad/mousepad-window.c:428
+#: ../mousepad/mousepad-window.c:419
 msgid "Close this window"
 msgstr "このウィンドウを閉じます"
 
-#: ../mousepad/mousepad-window.c:430
+#: ../mousepad/mousepad-window.c:421
 msgid "_Edit"
 msgstr "編集(_E)"
 
-#: ../mousepad/mousepad-window.c:431
+#: ../mousepad/mousepad-window.c:422
 msgid "Undo the last action"
 msgstr "最後に行った操作を元に戻します"
 
-#: ../mousepad/mousepad-window.c:432
+#: ../mousepad/mousepad-window.c:423
 msgid "Redo the last undone action"
 msgstr "最後に元に戻した操作をやり直します"
 
-#: ../mousepad/mousepad-window.c:433
+#: ../mousepad/mousepad-window.c:424
 msgid "Cut the selection"
 msgstr "選択範囲を切り抜きます"
 
-#: ../mousepad/mousepad-window.c:434
+#: ../mousepad/mousepad-window.c:425
 msgid "Copy the selection"
 msgstr "選択範囲をコピーします"
 
-#: ../mousepad/mousepad-window.c:435
+#: ../mousepad/mousepad-window.c:426
 msgid "Paste the clipboard"
 msgstr "クリップボードから貼り付けます"
 
-#: ../mousepad/mousepad-window.c:436
+#: ../mousepad/mousepad-window.c:427
 msgid "Paste _Special"
 msgstr "特殊な貼り付け(_S)"
 
-#: ../mousepad/mousepad-window.c:437
+#: ../mousepad/mousepad-window.c:428
 msgid "Paste from _History"
 msgstr "履歴から貼り付け(_H)"
 
-#: ../mousepad/mousepad-window.c:437
+#: ../mousepad/mousepad-window.c:428
 msgid "Paste from the clipboard history"
 msgstr "クリップボード履歴から貼り付けます"
 
-#: ../mousepad/mousepad-window.c:438
+#: ../mousepad/mousepad-window.c:429
 msgid "Paste as _Column"
 msgstr "列として貼り付け(_C)"
 
-#: ../mousepad/mousepad-window.c:438
+#: ../mousepad/mousepad-window.c:429
 msgid "Paste the clipboard text into a column"
 msgstr "クリップボードの文字列を列に貼り付けます"
 
-#: ../mousepad/mousepad-window.c:439
+#: ../mousepad/mousepad-window.c:430
 msgid "Delete the current selection"
 msgstr "現在の選択範囲を削除します"
 
-#: ../mousepad/mousepad-window.c:440
+#: ../mousepad/mousepad-window.c:431
 msgid "Select the text in the entire document"
 msgstr "文書全体の文字を選択します"
 
-#: ../mousepad/mousepad-window.c:441
-msgid "Change the selection"
-msgstr "選択範囲の変更"
-
-#: ../mousepad/mousepad-window.c:441
-msgid "Change a normal selection into a column selection and vice versa"
-msgstr "通常の選択範囲を列選択に、またはその逆に変更します"
-
-#: ../mousepad/mousepad-window.c:442
+#: ../mousepad/mousepad-window.c:432
 msgid "Conve_rt"
 msgstr "変換(_R)"
 
-#: ../mousepad/mousepad-window.c:443
+#: ../mousepad/mousepad-window.c:433
 msgid "To _Uppercase"
 msgstr "大文字化(_U)"
 
-#: ../mousepad/mousepad-window.c:443
+#: ../mousepad/mousepad-window.c:433
 msgid "Change the case of the selection to uppercase"
 msgstr "選択範囲の文字列を大文字に変換します"
 
-#: ../mousepad/mousepad-window.c:444
+#: ../mousepad/mousepad-window.c:434
 msgid "To _Lowercase"
 msgstr "小文字化(_L)"
 
-#: ../mousepad/mousepad-window.c:444
+#: ../mousepad/mousepad-window.c:434
 msgid "Change the case of the selection to lowercase"
 msgstr "選択範囲の文字列を小文字に変換します"
 
-#: ../mousepad/mousepad-window.c:445
+#: ../mousepad/mousepad-window.c:435
 msgid "To _Title Case"
 msgstr "頭文字のみ大文字化(_T)"
 
-#: ../mousepad/mousepad-window.c:445
+#: ../mousepad/mousepad-window.c:435
 msgid "Change the case of the selection to title case"
 msgstr "選択範囲の単語の頭文字を大文字に、その他を小文字に変換します"
 
-#: ../mousepad/mousepad-window.c:446
+#: ../mousepad/mousepad-window.c:436
 msgid "To _Opposite Case"
 msgstr "大文字小文字の入れ替え(_O)"
 
-#: ../mousepad/mousepad-window.c:446
+#: ../mousepad/mousepad-window.c:436
 msgid "Change the case of the selection opposite case"
 msgstr "選択範囲の文字列の大文字小文字を反転します"
 
-#: ../mousepad/mousepad-window.c:447
+#: ../mousepad/mousepad-window.c:437
 msgid "_Tabs to Spaces"
 msgstr "タブをスペースに(_T)"
 
-#: ../mousepad/mousepad-window.c:447
+#: ../mousepad/mousepad-window.c:437
 msgid "Convert all tabs to spaces in the selection or document"
 msgstr "選択範囲または文書内のすべてのタブをスペースに変換します"
 
-#: ../mousepad/mousepad-window.c:448
+#: ../mousepad/mousepad-window.c:438
 msgid "_Spaces to Tabs"
 msgstr "スペースをタブに(_S)"
 
-#: ../mousepad/mousepad-window.c:448
+#: ../mousepad/mousepad-window.c:438
 msgid ""
 "Convert all the leading spaces to tabs in the selected line(s) or document"
 msgstr "選択範囲または文書内の行頭のスペースをタブに変換します"
 
-#: ../mousepad/mousepad-window.c:449
+#: ../mousepad/mousepad-window.c:439
 msgid "St_rip Trailing Spaces"
 msgstr "行末のスペースを除去(_R)"
 
-#: ../mousepad/mousepad-window.c:449
+#: ../mousepad/mousepad-window.c:439
 msgid "Remove all the trailing spaces from the selected line(s) or document"
 msgstr "選択範囲または文書内の行末のスペースを除去します"
 
-#: ../mousepad/mousepad-window.c:450
+#: ../mousepad/mousepad-window.c:440
 msgid "_Transpose"
 msgstr "転置(_T)"
 
-#: ../mousepad/mousepad-window.c:450
+#: ../mousepad/mousepad-window.c:440
 msgid "Reverse the order of something"
 msgstr "何らかの順序を反転します"
 
-#: ../mousepad/mousepad-window.c:451
+#: ../mousepad/mousepad-window.c:441
 msgid "_Move Selection"
 msgstr "選択範囲の移動(_M)"
 
-#: ../mousepad/mousepad-window.c:452
+#: ../mousepad/mousepad-window.c:442
 msgid "Line _Up"
 msgstr "1 行上へ(_U)"
 
-#: ../mousepad/mousepad-window.c:452
+#: ../mousepad/mousepad-window.c:442
 msgid "Move the selection one line up"
 msgstr "選択範囲を 1 行上に移動します"
 
-#: ../mousepad/mousepad-window.c:453
+#: ../mousepad/mousepad-window.c:443
 msgid "Line _Down"
 msgstr "1 行下へ(_D)"
 
-#: ../mousepad/mousepad-window.c:453
+#: ../mousepad/mousepad-window.c:443
 msgid "Move the selection one line down"
 msgstr "選択範囲を 1 行下に移動します"
 
-#: ../mousepad/mousepad-window.c:454
+#: ../mousepad/mousepad-window.c:444
 msgid "Dup_licate Line / Selection"
 msgstr "行/選択範囲の複製(_L)"
 
-#: ../mousepad/mousepad-window.c:454
+#: ../mousepad/mousepad-window.c:444
 msgid "Duplicate the current line or selection"
 msgstr "現在の行または選択範囲を複製します"
 
-#: ../mousepad/mousepad-window.c:455
+#: ../mousepad/mousepad-window.c:445
 msgid "_Increase Indent"
 msgstr "インデントを増やす(_I)"
 
-#: ../mousepad/mousepad-window.c:455
+#: ../mousepad/mousepad-window.c:445
 msgid "Increase the indentation of the selection or current line"
 msgstr "選択範囲または現在の行のインデントを増やします"
 
-#: ../mousepad/mousepad-window.c:456
+#: ../mousepad/mousepad-window.c:446
 msgid "_Decrease Indent"
 msgstr "インデントを減らす(_D)"
 
-#: ../mousepad/mousepad-window.c:456
+#: ../mousepad/mousepad-window.c:446
 msgid "Decrease the indentation of the selection or current line"
 msgstr "選択範囲または現在の行のインデントを減らします"
 
-#: ../mousepad/mousepad-window.c:457
+#: ../mousepad/mousepad-window.c:447
 msgid "Show the preferences dialog"
 msgstr "設定ダイアログを表示します"
 
-#: ../mousepad/mousepad-window.c:459
+#: ../mousepad/mousepad-window.c:449
 msgid "_Search"
 msgstr "検索(_S)"
 
-#: ../mousepad/mousepad-window.c:460
+#: ../mousepad/mousepad-window.c:450
 msgid "Search for text"
 msgstr "文字列を検索します"
 
-#: ../mousepad/mousepad-window.c:461
+#: ../mousepad/mousepad-window.c:451
 msgid "Find _Next"
 msgstr "次を検索(_N)"
 
-#: ../mousepad/mousepad-window.c:461
+#: ../mousepad/mousepad-window.c:451
 msgid "Search forwards for the same text"
 msgstr "前方に同じ文字列を検索します"
 
-#: ../mousepad/mousepad-window.c:462
+#: ../mousepad/mousepad-window.c:452
 msgid "Find _Previous"
 msgstr "前を検索(_P)"
 
-#: ../mousepad/mousepad-window.c:462
+#: ../mousepad/mousepad-window.c:452
 msgid "Search backwards for the same text"
 msgstr "後方に同じ文字列を検索します"
 
-#: ../mousepad/mousepad-window.c:463
+#: ../mousepad/mousepad-window.c:453
 msgid "Find and Rep_lace..."
 msgstr "検索と置換(_L)..."
 
-#: ../mousepad/mousepad-window.c:463
+#: ../mousepad/mousepad-window.c:453
 msgid "Search for and replace text"
 msgstr "文字列を検索および置換します"
 
-#: ../mousepad/mousepad-window.c:464
+#: ../mousepad/mousepad-window.c:454
 msgid "_Go to..."
 msgstr "移動(_G)..."
 
-#: ../mousepad/mousepad-window.c:464
+#: ../mousepad/mousepad-window.c:454
 msgid "Go to a specific location in the document"
 msgstr "文書内の指定場所に移動します"
 
-#: ../mousepad/mousepad-window.c:466
+#: ../mousepad/mousepad-window.c:456
 msgid "_View"
 msgstr "表示(_V)"
 
-#: ../mousepad/mousepad-window.c:467
+#: ../mousepad/mousepad-window.c:457
 msgid "Select F_ont..."
 msgstr "フォントの選択(_O)..."
 
-#: ../mousepad/mousepad-window.c:467
+#: ../mousepad/mousepad-window.c:457
 msgid "Change the editor font"
 msgstr "エディターフォントを変更します"
 
-#: ../mousepad/mousepad-window.c:468
+#: ../mousepad/mousepad-window.c:458
 msgid "_Color Scheme"
 msgstr "カラースキーム(_C)"
 
-#: ../mousepad/mousepad-window.c:470
+#: ../mousepad/mousepad-window.c:460
 msgid "_Document"
 msgstr "文書(_D)"
 
-#: ../mousepad/mousepad-window.c:471
+#: ../mousepad/mousepad-window.c:461
 msgid "Line E_nding"
 msgstr "改行コード(_N)"
 
-#: ../mousepad/mousepad-window.c:472
+#: ../mousepad/mousepad-window.c:462
 msgid "Tab _Size"
 msgstr "タブのサイズ(_S)"
 
-#: ../mousepad/mousepad-window.c:473
+#: ../mousepad/mousepad-window.c:463
 msgid "_Filetype"
 msgstr "ファイルタイプ(_F)"
 
-#: ../mousepad/mousepad-window.c:474
+#: ../mousepad/mousepad-window.c:464
 msgid "_Previous Tab"
 msgstr "前のタブ(_P)"
 
-#: ../mousepad/mousepad-window.c:474
+#: ../mousepad/mousepad-window.c:464
 msgid "Select the previous tab"
 msgstr "前のタブを選択します"
 
-#: ../mousepad/mousepad-window.c:475
+#: ../mousepad/mousepad-window.c:465
 msgid "_Next Tab"
 msgstr "次のタブ(_N)"
 
-#: ../mousepad/mousepad-window.c:475
+#: ../mousepad/mousepad-window.c:465
 msgid "Select the next tab"
 msgstr "次のタブを選択します"
 
-#: ../mousepad/mousepad-window.c:477
+#: ../mousepad/mousepad-window.c:467
 msgid "_Help"
 msgstr "ヘルプ(_H)"
 
-#: ../mousepad/mousepad-window.c:478
+#: ../mousepad/mousepad-window.c:468
 msgid "_Contents"
 msgstr "目次(_C)"
 
-#: ../mousepad/mousepad-window.c:478
+#: ../mousepad/mousepad-window.c:468
 msgid "Display the Mousepad user manual"
 msgstr "Mousepad ユーザーマニュアルを表示します"
 
-#: ../mousepad/mousepad-window.c:479
+#: ../mousepad/mousepad-window.c:469
 msgid "About this application"
 msgstr "Mousepad についての情報を表示します"
 
-#: ../mousepad/mousepad-window.c:484
+#: ../mousepad/mousepad-window.c:474
 msgid "Line N_umbers"
 msgstr "行番号(_U)"
 
-#: ../mousepad/mousepad-window.c:485
+#: ../mousepad/mousepad-window.c:475
 msgid "_Menubar"
 msgstr "メニューバー(_M)"
 
-#: ../mousepad/mousepad-window.c:485
+#: ../mousepad/mousepad-window.c:475
 msgid "Change the visibility of the main menubar"
 msgstr "メインメニューバーの表示/非表示を切り替えます"
 
-#: ../mousepad/mousepad-window.c:486
+#: ../mousepad/mousepad-window.c:476
 msgid "_Toolbar"
 msgstr "ツールバー(_T)"
 
-#: ../mousepad/mousepad-window.c:486
+#: ../mousepad/mousepad-window.c:476
 msgid "Change the visibility of the toolbar"
 msgstr "ツールバーの表示/非表示を切り替えます"
 
-#: ../mousepad/mousepad-window.c:487
+#: ../mousepad/mousepad-window.c:477
 msgid "St_atusbar"
 msgstr "ステータスバー(_A)"
 
-#: ../mousepad/mousepad-window.c:487
+#: ../mousepad/mousepad-window.c:477
 msgid "Change the visibility of the statusbar"
 msgstr "ステータスバーの表示/非表示を切り替えます"
 
-#: ../mousepad/mousepad-window.c:488
+#: ../mousepad/mousepad-window.c:478
 msgid "_Fullscreen"
 msgstr "全画面化(_F)"
 
-#: ../mousepad/mousepad-window.c:488 ../mousepad/mousepad-window.c:5200
+#: ../mousepad/mousepad-window.c:478 ../mousepad/mousepad-window.c:5196
 msgid "Make the window fullscreen"
 msgstr "ウィンドウを全画面化します"
 
-#: ../mousepad/mousepad-window.c:489
+#: ../mousepad/mousepad-window.c:479
 msgid "_Auto Indent"
 msgstr "自動インデント(_A)"
 
-#: ../mousepad/mousepad-window.c:489
+#: ../mousepad/mousepad-window.c:479
 msgid "Auto indent a new line"
 msgstr "新しい行で自動的にインデントします"
 
-#: ../mousepad/mousepad-window.c:490
+#: ../mousepad/mousepad-window.c:480
 msgid "Insert _Spaces"
 msgstr "スペースを挿入(_S)"
 
-#: ../mousepad/mousepad-window.c:490
+#: ../mousepad/mousepad-window.c:480
 msgid "Insert spaces when the tab button is pressed"
 msgstr "Tab キーが押されたときにスペースを挿入します"
 
-#: ../mousepad/mousepad-window.c:491
+#: ../mousepad/mousepad-window.c:481
 msgid "_Word Wrap"
 msgstr "行の折り返し(_W)"
 
-#: ../mousepad/mousepad-window.c:491
+#: ../mousepad/mousepad-window.c:481
 msgid "Toggle breaking lines in between words"
 msgstr "単語間での行の折り返しを切り替えます"
 
-#: ../mousepad/mousepad-window.c:492
+#: ../mousepad/mousepad-window.c:482
 msgid "Write Unicode _BOM"
 msgstr "Unicode BOM の書き出し(_B)"
 
-#: ../mousepad/mousepad-window.c:492
+#: ../mousepad/mousepad-window.c:482
 msgid "Store the byte-order mark in the file"
 msgstr "バイトオーダーマークをファイルに格納します"
 
-#: ../mousepad/mousepad-window.c:497
+#: ../mousepad/mousepad-window.c:487
 msgid "Unix (_LF)"
 msgstr "Unix (_LF)"
 
-#: ../mousepad/mousepad-window.c:497
+#: ../mousepad/mousepad-window.c:487
 msgid "Set the line ending of the document to Unix (LF)"
 msgstr "文書の改行コードを Unix 形式 (LF のみ) に設定します"
 
-#: ../mousepad/mousepad-window.c:498
+#: ../mousepad/mousepad-window.c:488
 msgid "Mac (_CR)"
 msgstr "Mac (_CR)"
 
-#: ../mousepad/mousepad-window.c:498
+#: ../mousepad/mousepad-window.c:488
 msgid "Set the line ending of the document to Mac (CR)"
 msgstr "文書の改行コードを Mac 形式 (CR のみ) に設定します"
 
-#: ../mousepad/mousepad-window.c:499
+#: ../mousepad/mousepad-window.c:489
 msgid "DOS / Windows (C_R LF)"
 msgstr "DOS / Windows (C_R LF)"
 
-#: ../mousepad/mousepad-window.c:499
+#: ../mousepad/mousepad-window.c:489
 msgid "Set the line ending of the document to DOS / Windows (CR LF)"
 msgstr "文書の改行コードを DOS/Windows 形式 (CR LF) に設定します"
 
 #. add the label with the root warning
-#: ../mousepad/mousepad-window.c:871
+#: ../mousepad/mousepad-window.c:861
 msgid "Warning: you are using the root account. You may harm your system."
 msgstr "警告: rootアカウントを使用しています。システムに害を及ぼす可能性があります。"
 
 #. show the warning
-#: ../mousepad/mousepad-window.c:1572
+#: ../mousepad/mousepad-window.c:1573
 msgid "Failed to open the document"
 msgstr "文書を開くことに失敗しました"
 
-#: ../mousepad/mousepad-window.c:1769
+#: ../mousepad/mousepad-window.c:1774
 msgid "Read Only"
 msgstr "読込専用"
 
-#: ../mousepad/mousepad-window.c:2439
+#: ../mousepad/mousepad-window.c:2440
 #, c-format
 msgid ""
 "No template files found in\n"
 "'%s'"
 msgstr "テンプレートファイルが '%s' 内に\nありません"
 
-#: ../mousepad/mousepad-window.c:2492
+#: ../mousepad/mousepad-window.c:2493
 #, c-format
 msgid ""
 "Missing Templates directory\n"
@@ -1244,66 +1241,66 @@ msgid ""
 msgstr "テンプレートディレクトリがありません\n'%s'"
 
 #. create other action
-#: ../mousepad/mousepad-window.c:2566
+#: ../mousepad/mousepad-window.c:2567
 msgid "Set custom tab size"
 msgstr "カスタムタブサイズを設定します"
 
 #. create suitable label for the other menu
-#: ../mousepad/mousepad-window.c:2614
+#: ../mousepad/mousepad-window.c:2615
 #, c-format
 msgid "Ot_her (%d)..."
 msgstr "その他 (%d)(_H)..."
 
 #. set action label
-#: ../mousepad/mousepad-window.c:2625
+#: ../mousepad/mousepad-window.c:2626
 msgid "Ot_her..."
 msgstr "その他(_H)..."
 
 #. build description
 #. get the offset length: 'Encoding: '
-#: ../mousepad/mousepad-window.c:3008 ../mousepad/mousepad-window.c:3235
+#: ../mousepad/mousepad-window.c:3009 ../mousepad/mousepad-window.c:3235
 msgid "Charset"
 msgstr "文字セット"
 
-#: ../mousepad/mousepad-window.c:3140
+#: ../mousepad/mousepad-window.c:3141
 #, c-format
 msgid "Open '%s'"
 msgstr "'%s' を開きます"
 
-#: ../mousepad/mousepad-window.c:3285
+#: ../mousepad/mousepad-window.c:3284
 msgid "Failed to clear the recent history"
 msgstr "ドキュメント履歴のクリアに失敗しました"
 
 #. create an item to inform the user
-#: ../mousepad/mousepad-window.c:3715
+#: ../mousepad/mousepad-window.c:3727
 msgid "No clipboard data"
 msgstr "クリップボードにデータがありません"
 
 #. set error message
-#: ../mousepad/mousepad-window.c:3854
+#: ../mousepad/mousepad-window.c:3866
 msgid "Templates should be UTF-8 valid"
 msgstr "テンプレートは正常な UTF-8 であるべきです"
 
 #. set error message
-#: ../mousepad/mousepad-window.c:3862
+#: ../mousepad/mousepad-window.c:3874
 msgid "Reading the template failed, the menu item has been removed"
 msgstr "テンプレートの読み込みに失敗しました。メニューアイテムは除去されました。"
 
 #. set error message
-#: ../mousepad/mousepad-window.c:3867
+#: ../mousepad/mousepad-window.c:3879
 msgid "Loading the template failed"
 msgstr "テンプレートの読み込みに失敗しました"
 
 #. create new file chooser dialog
-#: ../mousepad/mousepad-window.c:3892
+#: ../mousepad/mousepad-window.c:3904
 msgid "Open File"
 msgstr "ファイルを開く"
 
-#: ../mousepad/mousepad-window.c:3908
+#: ../mousepad/mousepad-window.c:3920
 msgid "_Encoding:"
 msgstr "エンコーディング(_E)"
 
-#: ../mousepad/mousepad-window.c:4005
+#: ../mousepad/mousepad-window.c:4017
 #, c-format
 msgid ""
 "Failed to open \"%s\" for reading. It will be removed from the document "
@@ -1311,35 +1308,35 @@ msgid ""
 msgstr "読み込むために \"%s\" を開くことに失敗しました。これはドキュメント履歴から除去されます。"
 
 #. show the warning and cleanup
-#: ../mousepad/mousepad-window.c:4009
+#: ../mousepad/mousepad-window.c:4021
 msgid "Failed to open file"
 msgstr "ファイルを開くことに失敗しました"
 
 #. show the error
-#: ../mousepad/mousepad-window.c:4115 ../mousepad/mousepad-window.c:4246
+#: ../mousepad/mousepad-window.c:4127 ../mousepad/mousepad-window.c:4258
 msgid "Failed to save the document"
 msgstr "文書の保存に失敗しました"
 
 #. create the dialog
-#: ../mousepad/mousepad-window.c:4139
+#: ../mousepad/mousepad-window.c:4151
 msgid "Save As"
 msgstr "名前を付けて保存"
 
 #. show the error
-#: ../mousepad/mousepad-window.c:4338
+#: ../mousepad/mousepad-window.c:4350
 msgid "Failed to reload the document"
 msgstr "文書の再読み込みに失敗しました"
 
 #. show the error
-#: ../mousepad/mousepad-window.c:4365
+#: ../mousepad/mousepad-window.c:4377
 msgid "Failed to print the document"
 msgstr "文書の印刷に失敗しました"
 
-#: ../mousepad/mousepad-window.c:4989
+#: ../mousepad/mousepad-window.c:4985
 msgid "Choose Mousepad Font"
 msgstr "Mousepad 上のフォントの選択"
 
-#: ../mousepad/mousepad-window.c:5193
+#: ../mousepad/mousepad-window.c:5189
 msgid "Leave fullscreen mode"
 msgstr "全画面モードから復帰します"
 
