@@ -134,7 +134,7 @@ mousepad_view_class_init (MousepadViewClass *klass)
   gobject_class->get_property = mousepad_view_get_property;
 
   widget_class = GTK_WIDGET_CLASS (klass);
-  widget_class->key_press_event      = mousepad_view_key_press_event;
+  widget_class->key_press_event = mousepad_view_key_press_event;
 
   g_object_class_install_property (
     gobject_class,
@@ -1695,6 +1695,41 @@ mousepad_view_set_font_name (MousepadView *view,
 static void
 mousepad_view_update_draw_spaces (MousepadView *view)
 {
+#if GTK_SOURCE_CHECK_VERSION (3, 24, 0)
+
+  GtkSourceSpaceDrawer *drawer;
+  GtkSourceSpaceLocationFlags location_flags = GTK_SOURCE_SPACE_LOCATION_NONE;
+  GtkSourceSpaceTypeFlags type_flags = GTK_SOURCE_SPACE_TYPE_NONE;
+  gboolean enable_matrix = FALSE;
+
+  drawer = gtk_source_view_get_space_drawer (GTK_SOURCE_VIEW (view));
+
+  if (view->show_whitespace)
+    {
+      location_flags = GTK_SOURCE_SPACE_LOCATION_ALL;
+      type_flags |= GTK_SOURCE_SPACE_TYPE_SPACE
+                    | GTK_SOURCE_SPACE_TYPE_TAB
+                    | GTK_SOURCE_SPACE_TYPE_NBSP;
+      enable_matrix = TRUE;
+    }
+
+  if (view->show_line_endings)
+    {
+      location_flags = GTK_SOURCE_SPACE_LOCATION_ALL;
+      type_flags |= GTK_SOURCE_SPACE_TYPE_NEWLINE;
+      enable_matrix = TRUE;
+    }
+
+  gtk_source_space_drawer_set_types_for_locations (drawer, location_flags, type_flags);
+  gtk_source_space_drawer_set_enable_matrix (drawer, enable_matrix);
+
+#else
+
+#if G_GNUC_CHECK_VERSION (4, 3)
+# pragma GCC diagnostic push
+# pragma GCC diagnostic ignored "-Wdeprecated-declarations"
+#endif
+
   GtkSourceDrawSpacesFlags flags = 0;
 
   if (view->show_whitespace)
@@ -1711,6 +1746,12 @@ mousepad_view_update_draw_spaces (MousepadView *view)
     flags |= GTK_SOURCE_DRAW_SPACES_NEWLINE;
 
   gtk_source_view_set_draw_spaces (GTK_SOURCE_VIEW (view), flags);
+
+#if G_GNUC_CHECK_VERSION (4, 3)
+# pragma GCC diagnostic pop
+#endif
+
+#endif
 }
 
 

@@ -224,7 +224,22 @@ mousepad_statusbar_filetype_clicked (GtkWidget         *widget,
       g_signal_connect (menu, "selection-done", G_CALLBACK (gtk_widget_destroy), NULL);
 
       /* show the menu */
+#if GTK_CHECK_VERSION (3, 22, 0)
+      gtk_menu_popup_at_pointer (menu, (GdkEvent*) event);
+#else
+
+#if G_GNUC_CHECK_VERSION (4, 3)
+# pragma GCC diagnostic push
+# pragma GCC diagnostic ignored "-Wdeprecated-declarations"
+#endif
+
       gtk_menu_popup (menu, NULL, NULL, NULL, NULL, event->button, event->time);
+
+#if G_GNUC_CHECK_VERSION (4, 3)
+# pragma GCC diagnostic pop
+#endif
+
+#endif
     }
   else
     {

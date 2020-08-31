@@ -120,11 +120,13 @@ static void              mousepad_window_notebook_removed             (GtkNotebo
                                                                        GtkWidget              *page,
                                                                        guint                   page_num,
                                                                        MousepadWindow         *window);
+#if !GTK_CHECK_VERSION (3, 22, 0)
 static void              mousepad_window_notebook_menu_position       (GtkMenu                *menu,
                                                                        gint                   *x,
                                                                        gint                   *y,
                                                                        gboolean               *push_in,
                                                                        gpointer                user_data);
+#endif
 static gboolean          mousepad_window_notebook_button_release_event (GtkNotebook           *notebook,
                                                                         GdkEventButton        *event,
                                                                         MousepadWindow        *window);
@@ -211,11 +213,13 @@ static void              mousepad_window_hide_search_bar              (MousepadW
 
 /* history clipboard functions */
 static void              mousepad_window_paste_history_add            (MousepadWindow         *window);
+#if !GTK_CHECK_VERSION (3, 22, 0)
 static void              mousepad_window_paste_history_menu_position  (GtkMenu                *menu,
                                                                        gint                   *x,
                                                                        gint                   *y,
                                                                        gboolean               *push_in,
                                                                        gpointer                user_data);
+#endif
 static void              mousepad_window_paste_history_activate       (GtkMenuItem            *item,
                                                                        MousepadWindow         *window);
 static GtkWidget        *mousepad_window_paste_history_menu_item      (const gchar            *text,
@@ -1005,8 +1009,6 @@ mousepad_window_init (MousepadWindow *window)
   window->active = NULL;
   window->recent_manager = NULL;
 
-  gtk_window_set_has_resize_grip (GTK_WINDOW (window), TRUE);
-
   /* increase clipboard history ref count */
   clipboard_history_ref_count++;
 
@@ -1358,7 +1360,7 @@ mousepad_window_save_geometry_timer (gpointer user_data)
   if (remember_size || remember_position || remember_state)
     {
       /* check if the window is still visible */
-      if (gtk_widget_get_visible (GTK_WIDGET(window)))
+      if (gtk_widget_get_visible (GTK_WIDGET (window)))
         {
           /* determine the current state of the window */
           state = gdk_window_get_state (gtk_widget_get_window (GTK_WIDGET (window)));
@@ -1954,6 +1956,7 @@ mousepad_window_notebook_removed (GtkNotebook     *notebook,
 
 
 
+#if !GTK_CHECK_VERSION (3, 22, 0)
 static void
 mousepad_window_notebook_menu_position (GtkMenu  *menu,
                                         gint     *x,
@@ -1972,12 +1975,12 @@ mousepad_window_notebook_menu_position (GtkMenu  *menu,
 
   *push_in = TRUE;
 }
-
+#endif
 
 
 /* stolen from Geany notebook.c */
 static gboolean
-mousepad_window_is_position_on_tab_bar(GtkNotebook *notebook, GdkEventButton *event)
+mousepad_window_is_position_on_tab_bar (GtkNotebook *notebook, GdkEventButton *event)
 {
   GtkWidget      *page, *tab, *nb;
   GtkPositionType tab_pos;
@@ -2075,9 +2078,25 @@ mousepad_window_notebook_button_press_event (GtkNotebook    *notebook,
                   menu = gtk_ui_manager_get_widget (window->ui_manager, "/tab-menu");
 
                   /* show it */
+#if GTK_CHECK_VERSION (3, 22, 0)
+                  gtk_menu_popup_at_widget (GTK_MENU (menu), label, GDK_GRAVITY_SOUTH_WEST,
+                                            GDK_GRAVITY_NORTH_WEST, (GdkEvent*) event);
+#else
+
+#if G_GNUC_CHECK_VERSION (4, 3)
+# pragma GCC diagnostic push
+# pragma GCC diagnostic ignored "-Wdeprecated-declarations"
+#endif
+
                   gtk_menu_popup (GTK_MENU (menu), NULL, NULL,
                                   mousepad_window_notebook_menu_position, label,
                                   event->button, event->time);
+
+#if G_GNUC_CHECK_VERSION (4, 3)
+# pragma GCC diagnostic pop
+#endif
+
+#endif
                 }
               else if (event->button == 2)
                 {
@@ -3528,6 +3547,7 @@ mousepad_window_paste_history_add (MousepadWindow *window)
 
 
 
+#if !GTK_CHECK_VERSION (3, 22, 0)
 static void
 mousepad_window_paste_history_menu_position (GtkMenu  *menu,
                                              gint     *x,
@@ -3565,6 +3585,7 @@ mousepad_window_paste_history_menu_position (GtkMenu  *menu,
   *x += iter_x;
   *y += iter_y + location.height;
 }
+#endif
 
 
 
@@ -4569,6 +4590,9 @@ mousepad_window_action_paste_history (GtkAction      *action,
                                       MousepadWindow *window)
 {
   GtkWidget *menu;
+#if GTK_CHECK_VERSION (3, 22, 0)
+  GdkRectangle  location;
+#endif
 
   g_return_if_fail (MOUSEPAD_IS_WINDOW (window));
   g_return_if_fail (MOUSEPAD_IS_DOCUMENT (window->active));
@@ -4579,10 +4603,35 @@ mousepad_window_action_paste_history (GtkAction      *action,
   /* select the first item in the menu */
   gtk_menu_shell_select_first (GTK_MENU_SHELL (menu), TRUE);
 
+#if GTK_CHECK_VERSION (3, 22, 0)
+  /* get cursor location in textview coordinates */
+  gtk_text_view_get_cursor_locations (GTK_TEXT_VIEW (window->active->textview), NULL, &location, NULL);
+  gtk_text_view_buffer_to_window_coords (GTK_TEXT_VIEW (window->active->textview),
+                                         GTK_TEXT_WINDOW_WIDGET,
+                                         location.x, location.y,
+                                         &(location.x), &(location.y));
+
+  /* popup the menu */
+  gtk_menu_popup_at_rect (GTK_MENU (menu),
+                          gtk_widget_get_parent_window (GTK_WIDGET (window->active->textview)),
+                          &location, GDK_GRAVITY_SOUTH_WEST, GDK_GRAVITY_NORTH_WEST, NULL);
+#else
+
+#if G_GNUC_CHECK_VERSION (4, 3)
+# pragma GCC diagnostic push
+# pragma GCC diagnostic ignored "-Wdeprecated-declarations"
+#endif
+
   /* popup the menu */
   gtk_menu_popup (GTK_MENU (menu), NULL, NULL,
                   mousepad_window_paste_history_menu_position,
                   window, 0, gtk_get_current_event_time ());
+
+#if G_GNUC_CHECK_VERSION (4, 3)
+# pragma GCC diagnostic pop
+#endif
+
+#endif
 }
 
 
@@ -4948,7 +4997,7 @@ mousepad_window_action_replace (GtkAction      *action,
       selection = gtk_text_buffer_get_text (window->active->buffer, &selection_start, &selection_end, 0);
 
       /* selection should be one line */
-      if (g_strrstr(selection, "\n") == NULL && g_strrstr(selection, "\r") == NULL)
+      if (g_strrstr (selection, "\n") == NULL && g_strrstr (selection, "\r") == NULL)
         mousepad_replace_dialog_set_text (MOUSEPAD_REPLACE_DIALOG (window->replace_dialog), selection);
 
       g_free (selection);

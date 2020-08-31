@@ -523,7 +523,7 @@ mousepad_print_button_font_set (GtkFontButton *button,
   const gchar *font;
   GtkWidget   *widget = GTK_WIDGET (button);
 
-  font = gtk_font_button_get_font_name (button);
+  font = gtk_font_chooser_get_font (GTK_FONT_CHOOSER (button));
 
   if (widget == print->widget_body_font)
     gtk_source_print_compositor_set_body_font_name (print->compositor, font);
@@ -716,7 +716,8 @@ mousepad_print_create_custom_widget (GtkPrintOperation *operation)
   gtk_grid_attach (GTK_GRID (grid), label, 0, 0, 1, 1);
   gtk_widget_show (label);
 
-  print->widget_header_font = gtk_font_button_new_with_font (gtk_source_print_compositor_get_header_font_name (print->compositor));
+  print->widget_header_font = gtk_font_button_new_with_font (
+                                gtk_source_print_compositor_get_header_font_name (print->compositor));
   gtk_grid_attach (GTK_GRID (grid), print->widget_header_font, 1, 0, 1, 1);
   g_signal_connect (G_OBJECT (print->widget_header_font),
                     "font-set",

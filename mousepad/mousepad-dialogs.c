@@ -82,9 +82,26 @@ mousepad_dialogs_show_help (GtkWindow   *parent,
                             const gchar *page,
                             const gchar *offset)
 {
+#if !GTK_CHECK_VERSION (3, 22, 0)
   GdkScreen   *screen;
+#endif
   GError      *error = NULL;
-  const gchar *uri;
+  const gchar *uri = "https://docs.xfce.org/apps/mousepad/start";
+
+  /* try to run the documentation browser */
+#if GTK_CHECK_VERSION (3, 22, 0)
+  if (!gtk_show_uri_on_window (parent, uri, gtk_get_current_event_time (), &error))
+    {
+      /* display an error message to the user */
+      mousepad_dialogs_show_error (parent, error, _("Failed to open the documentation browser"));
+      g_error_free (error);
+    }
+#else
+
+#if G_GNUC_CHECK_VERSION (4, 3)
+# pragma GCC diagnostic push
+# pragma GCC diagnostic ignored "-Wdeprecated-declarations"
+#endif
 
   /* get screen */
   if (G_LIKELY (parent))
@@ -92,15 +109,18 @@ mousepad_dialogs_show_help (GtkWindow   *parent,
   else
     screen = gdk_screen_get_default ();
 
-  uri = "https://docs.xfce.org/apps/mousepad/start";
-
-  /* try to run the documentation browser */
   if (!gtk_show_uri (screen, uri, gtk_get_current_event_time (), &error))
     {
       /* display an error message to the user */
       mousepad_dialogs_show_error (parent, error, _("Failed to open the documentation browser"));
       g_error_free (error);
     }
+
+#if G_GNUC_CHECK_VERSION (4, 3)
+# pragma GCC diagnostic pop
+#endif
+
+#endif
 }
 
 
@@ -127,7 +147,7 @@ mousepad_dialogs_other_tab_size (GtkWindow *parent,
   gtk_scale_set_digits (GTK_SCALE (scale), 0);
   gtk_scale_set_draw_value (GTK_SCALE (scale), TRUE);
   gtk_scale_set_value_pos (GTK_SCALE (scale), GTK_POS_TOP);
-  gtk_box_pack_start (GTK_BOX (gtk_dialog_get_content_area (GTK_DIALOG(dialog))), scale, TRUE, TRUE, 0);
+  gtk_box_pack_start (GTK_BOX (gtk_dialog_get_content_area (GTK_DIALOG (dialog))), scale, TRUE, TRUE, 0);
   gtk_widget_show (scale);
 
   /* run the dialog */
@@ -204,7 +224,7 @@ mousepad_dialogs_go_to (GtkWindow     *parent,
   gtk_window_set_resizable (GTK_WINDOW (dialog), FALSE);
 
   vbox = gtk_box_new (GTK_ORIENTATION_VERTICAL, 6);
-  gtk_box_pack_start (GTK_BOX (gtk_dialog_get_content_area (GTK_DIALOG(dialog))), vbox, TRUE, TRUE, 0);
+  gtk_box_pack_start (GTK_BOX (gtk_dialog_get_content_area (GTK_DIALOG (dialog))), vbox, TRUE, TRUE, 0);
   gtk_container_set_border_width (GTK_CONTAINER (vbox), 6);
   gtk_widget_show (vbox);
 
@@ -289,27 +309,50 @@ gboolean
 mousepad_dialogs_clear_recent (GtkWindow *parent)
 {
   GtkWidget *dialog;
+  GtkWidget *area, *hbox, *vbox;
   GtkWidget *image;
+  GtkWidget *label;
   gboolean   succeed = FALSE;
 
   /* create the question dialog */
-  dialog = gtk_message_dialog_new (parent, GTK_DIALOG_MODAL | GTK_DIALOG_DESTROY_WITH_PARENT,
-                                   GTK_MESSAGE_OTHER, GTK_BUTTONS_NONE,
-                                   _("Remove all entries from the documents history?"));
-  gtk_dialog_add_buttons (GTK_DIALOG (dialog),
-                          GTK_STOCK_CANCEL, MOUSEPAD_RESPONSE_CANCEL,
-                          GTK_STOCK_CLEAR, MOUSEPAD_RESPONSE_CLEAR,
-                          NULL);
-  gtk_window_set_title (GTK_WINDOW (dialog), _("Clear Documents History"));
+  dialog = gtk_dialog_new_with_buttons (_("Clear Documents History"),
+                                        parent,
+                                        GTK_DIALOG_MODAL | GTK_DIALOG_DESTROY_WITH_PARENT,
+                                        GTK_STOCK_CANCEL, MOUSEPAD_RESPONSE_CANCEL,
+                                        GTK_STOCK_CLEAR, MOUSEPAD_RESPONSE_CLEAR,
+                                        NULL);
   gtk_dialog_set_default_response (GTK_DIALOG (dialog), MOUSEPAD_RESPONSE_CANCEL);
-  gtk_message_dialog_format_secondary_text (GTK_MESSAGE_DIALOG (dialog),
-                                            _("Clearing the documents history will permanently "
-                                              "remove all currently listed entries."));
+  gtk_window_set_default_size (GTK_WINDOW (dialog), 400, -1);
+
+  /* the content area */
+  area = gtk_dialog_get_content_area (GTK_DIALOG (dialog));
+  hbox = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 8);
+  gtk_box_pack_start (GTK_BOX (area), hbox, TRUE, TRUE, 6);
+  gtk_widget_show (hbox);
 
   /* the dialog icon */
   image = gtk_image_new_from_icon_name ("edit-clear", GTK_ICON_SIZE_DIALOG);
-  gtk_message_dialog_set_image (GTK_MESSAGE_DIALOG (dialog), image);
+  gtk_box_pack_start (GTK_BOX (hbox), image, TRUE, TRUE, 0);
   gtk_widget_show (image);
+
+  /* the dialog message */
+  vbox = gtk_box_new (GTK_ORIENTATION_VERTICAL, 8);
+  gtk_box_pack_start (GTK_BOX (hbox), vbox, TRUE, TRUE, 6);
+  gtk_widget_show (vbox);
+
+  /* primary text */
+  label = gtk_label_new (NULL);
+  gtk_label_set_markup (GTK_LABEL (label),
+                        _("<big><b>Remove all entries from the documents history?</b></big>"));
+  gtk_box_pack_start (GTK_BOX (vbox), label, TRUE, TRUE, 0);
+  gtk_widget_show (label);
+
+  /* secondary text */
+  label = gtk_label_new (_("Clearing the documents history will permanently "
+                           "remove all currently listed entries."));
+  gtk_label_set_line_wrap (GTK_LABEL (label), TRUE);
+  gtk_box_pack_start (GTK_BOX (vbox), label, TRUE, TRUE, 0);
+  gtk_widget_show (label);
 
   /* popup the dialog */
   if (gtk_dialog_run (GTK_DIALOG (dialog)) == MOUSEPAD_RESPONSE_CLEAR)
@@ -328,16 +371,21 @@ mousepad_dialogs_save_changes (GtkWindow *parent,
                                gboolean   readonly)
 {
   GtkWidget *dialog;
+  GtkWidget *area, *hbox, *vbox;
   GtkWidget *image;
+  GtkWidget *label;
   gint       response;
 
   /* create the question dialog */
-  dialog = gtk_message_dialog_new (parent, GTK_DIALOG_MODAL | GTK_DIALOG_DESTROY_WITH_PARENT,
-                                   GTK_MESSAGE_OTHER, GTK_BUTTONS_NONE,
-                                   _("Do you want to save the changes before closing?"));
-  gtk_window_set_title (GTK_WINDOW (dialog), _("Save Changes"));
-  gtk_dialog_add_action_widget (GTK_DIALOG (dialog), mousepad_util_image_button ("edit-delete", _("_Don't Save")), MOUSEPAD_RESPONSE_DONT_SAVE);
-  gtk_dialog_add_button (GTK_DIALOG (dialog), GTK_STOCK_CANCEL, MOUSEPAD_RESPONSE_CANCEL);
+  dialog = gtk_dialog_new_with_buttons (_("Save Changes"),
+                                        parent,
+                                        GTK_DIALOG_MODAL | GTK_DIALOG_DESTROY_WITH_PARENT,
+                                        GTK_STOCK_CANCEL, MOUSEPAD_RESPONSE_CANCEL,
+                                        NULL);
+  gtk_window_set_default_size (GTK_WINDOW (dialog), 400, -1);
+  gtk_dialog_add_action_widget (GTK_DIALOG (dialog),
+                                mousepad_util_image_button ("edit-delete", _("_Don't Save")),
+                                MOUSEPAD_RESPONSE_DONT_SAVE);
 
   /* we show the save as button instead of save for readonly document */
   if (G_UNLIKELY (readonly))
@@ -353,12 +401,32 @@ mousepad_dialogs_save_changes (GtkWindow *parent,
       gtk_dialog_set_default_response (GTK_DIALOG (dialog), MOUSEPAD_RESPONSE_SAVE);
     }
 
+  /* the content area */
+  area = gtk_dialog_get_content_area (GTK_DIALOG (dialog));
+  hbox = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 8);
+  gtk_box_pack_start (GTK_BOX (area), hbox, TRUE, TRUE, 6);
+  gtk_widget_show (hbox);
+
   /* the dialog icon */
-  gtk_message_dialog_set_image (GTK_MESSAGE_DIALOG (dialog), image);
+  gtk_box_pack_start (GTK_BOX (hbox), image, TRUE, TRUE, 0);
   gtk_widget_show (image);
 
+  /* the dialog message */
+  vbox = gtk_box_new (GTK_ORIENTATION_VERTICAL, 8);
+  gtk_box_pack_start (GTK_BOX (hbox), vbox, TRUE, TRUE, 6);
+  gtk_widget_show (vbox);
+
+  /* primary text */
+  label = gtk_label_new (NULL);
+  gtk_label_set_markup (GTK_LABEL (label),
+                        _("<big><b>Do you want to save the changes before closing?</b></big>"));
+  gtk_box_pack_start (GTK_BOX (vbox), label, TRUE, TRUE, 0);
+  gtk_widget_show (label);
+
   /* secondary text */
-  gtk_message_dialog_format_secondary_text (GTK_MESSAGE_DIALOG (dialog), _("If you don't save the document, all the changes will be lost."));
+  label = gtk_label_new (_("If you don't save the document, all the changes will be lost."));
+  gtk_box_pack_start (GTK_BOX (vbox), label, TRUE, TRUE, 0);
+  gtk_widget_show (label);
 
   /* run the dialog and wait for a response */
   response = gtk_dialog_run (GTK_DIALOG (dialog));
