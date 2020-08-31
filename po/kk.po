@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-06-24 12:48+0200\n"
-"PO-Revision-Date: 2020-06-28 08:51+0000\n"
+"POT-Creation-Date: 2020-08-25 12:53+0200\n"
+"PO-Revision-Date: 2020-08-31 04:18+0000\n"
 "Last-Translator: Baurzhan Muftakhidinov <baurthefirst@gmail.com>\n"
 "Language-Team: Kazakh (http://www.transifex.com/xfce/xfce-apps/language/kk/)\n"
 "MIME-Version: 1.0\n"
@@ -138,12 +138,12 @@ msgid "If you revert the file, all unsaved changes will be lost."
 msgstr "Файлды қалпына келтірсеңіз, барлық сақталмаған өзгерістер жоғалады."
 
 #. pack button, add signal and tooltip
-#: ../mousepad/mousepad-document.c:497
+#: ../mousepad/mousepad-document.c:498
 msgid "Close this tab"
 msgstr "Бұл бетті жабу"
 
 #. create an unique untitled document name
-#: ../mousepad/mousepad-document.c:527
+#: ../mousepad/mousepad-document.c:528
 msgid "Untitled"
 msgstr "Атаусыз"
 
@@ -586,102 +586,101 @@ msgid "Line numbers:"
 msgstr "Жолдар нөмірлері:"
 
 #. set dialog properties
-#: ../mousepad/mousepad-replace-dialog.c:136
-msgid "Replace"
-msgstr "Алмастыру"
+#: ../mousepad/mousepad-replace-dialog.c:160
+msgid "Find and Replace"
+msgstr "Табу және алмастыру"
 
-#: ../mousepad/mousepad-replace-dialog.c:142
-#: ../mousepad/mousepad-replace-dialog.c:423
+#: ../mousepad/mousepad-replace-dialog.c:166
+#: ../mousepad/mousepad-replace-dialog.c:471
 msgid "_Replace"
 msgstr "А_лмастыру"
 
-#: ../mousepad/mousepad-replace-dialog.c:160
+#: ../mousepad/mousepad-replace-dialog.c:184
 msgid "_Search for:"
 msgstr "_Нені іздеу керек:"
 
-#: ../mousepad/mousepad-replace-dialog.c:181
+#: ../mousepad/mousepad-replace-dialog.c:210
 msgid "Replace _with:"
 msgstr "Не_мен алмастыру:"
 
-#: ../mousepad/mousepad-replace-dialog.c:201
+#: ../mousepad/mousepad-replace-dialog.c:230
 msgid "Search _direction:"
 msgstr "Іздеу _бағыты:"
 
-#: ../mousepad/mousepad-replace-dialog.c:210
+#: ../mousepad/mousepad-replace-dialog.c:239
 msgid "Up"
 msgstr "Жоғары"
 
-#: ../mousepad/mousepad-replace-dialog.c:211
+#: ../mousepad/mousepad-replace-dialog.c:240
 msgid "Down"
 msgstr "Төмен"
 
-#: ../mousepad/mousepad-replace-dialog.c:212
-msgid "Both"
-msgstr "Екеуі де"
+#. wrap around
+#: ../mousepad/mousepad-replace-dialog.c:249
+msgid "_Wrap around"
+msgstr "Соң_ына жеткенде, басына апару"
 
 #. case sensitive
-#: ../mousepad/mousepad-replace-dialog.c:221
-msgid "Case sensi_tive"
-msgstr "Регистрге _тәуелді"
-
-#. enable regex search
-#: ../mousepad/mousepad-replace-dialog.c:228
-#: ../mousepad/mousepad-search-bar.c:286 ../mousepad/mousepad-search-bar.c:296
-msgid "_Enable Regex"
-msgstr "_Тұрақты өрнекті іске қосу"
+#. overflow menu item for when window is too narrow to show the tool bar item
+#: ../mousepad/mousepad-replace-dialog.c:256
+#: ../mousepad/mousepad-search-bar.c:260 ../mousepad/mousepad-search-bar.c:270
+msgid "Match _case"
+msgstr "Реги_стрді сәйкестеу"
 
 #. match whole word
-#: ../mousepad/mousepad-replace-dialog.c:235
+#: ../mousepad/mousepad-replace-dialog.c:263
 msgid "_Match whole word"
 msgstr "Сөзді то_лығымен сәйкестеу"
 
-#: ../mousepad/mousepad-replace-dialog.c:246
+#. enable regex search
+#. overflow menu item for when window is too narrow to show the tool bar item
+#: ../mousepad/mousepad-replace-dialog.c:270
+#: ../mousepad/mousepad-search-bar.c:284 ../mousepad/mousepad-search-bar.c:294
+msgid "Regular e_xpression"
+msgstr "Тұрақты өр_нек"
+
+#: ../mousepad/mousepad-replace-dialog.c:281
 msgid "Replace _all in:"
 msgstr "Б_арлығын алмастыру, қайда:"
 
-#: ../mousepad/mousepad-replace-dialog.c:254
+#: ../mousepad/mousepad-replace-dialog.c:289
 msgid "Selection"
 msgstr "Таңдалған"
 
-#: ../mousepad/mousepad-replace-dialog.c:255
+#: ../mousepad/mousepad-replace-dialog.c:290
 msgid "Document"
 msgstr "Құжат"
 
-#: ../mousepad/mousepad-replace-dialog.c:256
+#: ../mousepad/mousepad-replace-dialog.c:291
 msgid "All Documents"
 msgstr "Барлық құжаттар"
 
-#: ../mousepad/mousepad-replace-dialog.c:402
+#: ../mousepad/mousepad-replace-dialog.c:450
 #, c-format
 msgid "%d occurrence"
 msgid_plural "%d occurrences"
 msgstr[0] "%d кездесу"
 msgstr[1] "%d кездесу"
 
-#: ../mousepad/mousepad-replace-dialog.c:423
+#: ../mousepad/mousepad-replace-dialog.c:471
 msgid "_Replace All"
 msgstr "Барл_ығын алмастыру"
 
-#: ../mousepad/mousepad-search-bar.c:205
+#: ../mousepad/mousepad-search-bar.c:201
 msgid "Fi_nd:"
 msgstr "Та_бу:"
 
-#: ../mousepad/mousepad-search-bar.c:227
+#: ../mousepad/mousepad-search-bar.c:223
 msgid "_Next"
 msgstr "_Келесі"
 
-#: ../mousepad/mousepad-search-bar.c:238
+#: ../mousepad/mousepad-search-bar.c:234
 msgid "_Previous"
 msgstr "А_лдыңғы"
 
-#: ../mousepad/mousepad-search-bar.c:249
+#: ../mousepad/mousepad-search-bar.c:245
 msgid "Highlight _All"
 msgstr "Б_арлығын түспен ерекшелеу"
-
-#. overflow menu item for when window is too narrow to show the tool bar item
-#: ../mousepad/mousepad-search-bar.c:262 ../mousepad/mousepad-search-bar.c:273
-msgid "Mat_ch Case"
-msgstr "_Регистрді ескеру"
 
 #: ../mousepad/mousepad-statusbar.c:134
 msgid "Choose a filetype"
@@ -1150,7 +1149,7 @@ msgstr "Қалып-күй жолағының көрсетілуін іске қ�
 msgid "_Fullscreen"
 msgstr "_Толық экран"
 
-#: ../mousepad/mousepad-window.c:478 ../mousepad/mousepad-window.c:5164
+#: ../mousepad/mousepad-window.c:478 ../mousepad/mousepad-window.c:5196
 msgid "Make the window fullscreen"
 msgstr "Терезені толық экранды қылу"
 
@@ -1216,22 +1215,22 @@ msgid "Warning: you are using the root account. You may harm your system."
 msgstr "Ескерту, сіз root тіркелгісін қолданудасыз. Жүйеңізге зақым келтіруге болады."
 
 #. show the warning
-#: ../mousepad/mousepad-window.c:1556
+#: ../mousepad/mousepad-window.c:1573
 msgid "Failed to open the document"
 msgstr "Құжатты ашу сәтсіз аяқталды"
 
-#: ../mousepad/mousepad-window.c:1753
+#: ../mousepad/mousepad-window.c:1774
 msgid "Read Only"
 msgstr "Тек оқу үшін"
 
-#: ../mousepad/mousepad-window.c:2419
+#: ../mousepad/mousepad-window.c:2440
 #, c-format
 msgid ""
 "No template files found in\n"
 "'%s'"
 msgstr "Келесі бумадан үлгілер табылмады:\n'%s'"
 
-#: ../mousepad/mousepad-window.c:2472
+#: ../mousepad/mousepad-window.c:2493
 #, c-format
 msgid ""
 "Missing Templates directory\n"
@@ -1239,66 +1238,66 @@ msgid ""
 msgstr "Үлгілер бумасы жоқ:\n'%s'"
 
 #. create other action
-#: ../mousepad/mousepad-window.c:2546
+#: ../mousepad/mousepad-window.c:2567
 msgid "Set custom tab size"
 msgstr "Таңдауыңызша табуляция өлшемі"
 
 #. create suitable label for the other menu
-#: ../mousepad/mousepad-window.c:2594
+#: ../mousepad/mousepad-window.c:2615
 #, c-format
 msgid "Ot_her (%d)..."
 msgstr "Б_асқа (%d)..."
 
 #. set action label
-#: ../mousepad/mousepad-window.c:2605
+#: ../mousepad/mousepad-window.c:2626
 msgid "Ot_her..."
 msgstr "Б_асқа..."
 
 #. build description
 #. get the offset length: 'Encoding: '
-#: ../mousepad/mousepad-window.c:2988 ../mousepad/mousepad-window.c:3215
+#: ../mousepad/mousepad-window.c:3009 ../mousepad/mousepad-window.c:3235
 msgid "Charset"
 msgstr "Кодтауы"
 
-#: ../mousepad/mousepad-window.c:3120
+#: ../mousepad/mousepad-window.c:3141
 #, c-format
 msgid "Open '%s'"
 msgstr "'%s' ашу"
 
-#: ../mousepad/mousepad-window.c:3265
+#: ../mousepad/mousepad-window.c:3284
 msgid "Failed to clear the recent history"
 msgstr "Жуырдағы тарихты тазарту сәтсіз аяқталды"
 
 #. create an item to inform the user
-#: ../mousepad/mousepad-window.c:3695
+#: ../mousepad/mousepad-window.c:3727
 msgid "No clipboard data"
 msgstr "Алмасу буферінде деректер жоқ"
 
 #. set error message
-#: ../mousepad/mousepad-window.c:3834
+#: ../mousepad/mousepad-window.c:3866
 msgid "Templates should be UTF-8 valid"
 msgstr "Үлгілер жарамды UTF-8 болуы тиіс"
 
 #. set error message
-#: ../mousepad/mousepad-window.c:3842
+#: ../mousepad/mousepad-window.c:3874
 msgid "Reading the template failed, the menu item has been removed"
 msgstr "Үлгіні оқу сәтсіз аяқталды, мәзір элементі өшірілді"
 
 #. set error message
-#: ../mousepad/mousepad-window.c:3847
+#: ../mousepad/mousepad-window.c:3879
 msgid "Loading the template failed"
 msgstr "Үлгіні жүктеу сәтсіз аяқталды"
 
 #. create new file chooser dialog
-#: ../mousepad/mousepad-window.c:3872
+#: ../mousepad/mousepad-window.c:3904
 msgid "Open File"
 msgstr "Файлды ашу"
 
-#: ../mousepad/mousepad-window.c:3888
+#: ../mousepad/mousepad-window.c:3920
 msgid "_Encoding:"
 msgstr "_Кодталуы:"
 
-#: ../mousepad/mousepad-window.c:3985
+#: ../mousepad/mousepad-window.c:4017
 #, c-format
 msgid ""
 "Failed to open \"%s\" for reading. It will be removed from the document "
@@ -1306,35 +1305,35 @@ msgid ""
 msgstr "\"%s\" құжатын оқу үшін ашу сәтсіз аяқталды. Ол ашылған құжаттар тарихынан өшірілетін болады"
 
 #. show the warning and cleanup
-#: ../mousepad/mousepad-window.c:3989
+#: ../mousepad/mousepad-window.c:4021
 msgid "Failed to open file"
 msgstr "Файлды ашу сәтсіз"
 
 #. show the error
-#: ../mousepad/mousepad-window.c:4095 ../mousepad/mousepad-window.c:4226
+#: ../mousepad/mousepad-window.c:4127 ../mousepad/mousepad-window.c:4258
 msgid "Failed to save the document"
 msgstr "Құжатты сақтау сәтсіз аяқталды"
 
 #. create the dialog
-#: ../mousepad/mousepad-window.c:4119
+#: ../mousepad/mousepad-window.c:4151
 msgid "Save As"
 msgstr "Қалайша сақтау"
 
 #. show the error
-#: ../mousepad/mousepad-window.c:4318
+#: ../mousepad/mousepad-window.c:4350
 msgid "Failed to reload the document"
 msgstr "Құжатты қайта жүктеу сәтсіз"
 
 #. show the error
-#: ../mousepad/mousepad-window.c:4345
+#: ../mousepad/mousepad-window.c:4377
 msgid "Failed to print the document"
 msgstr "Құжатты баспаға шығару сәтсіз"
 
-#: ../mousepad/mousepad-window.c:4953
+#: ../mousepad/mousepad-window.c:4985
 msgid "Choose Mousepad Font"
 msgstr "Mousepad қарібін таңдаңыз"
 
-#: ../mousepad/mousepad-window.c:5157
+#: ../mousepad/mousepad-window.c:5189
 msgid "Leave fullscreen mode"
 msgstr "Толық экраннан шығу"
 
