@@ -14,7 +14,7 @@ msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-09-06 12:48+0200\n"
-"PO-Revision-Date: 2020-09-06 22:50+0000\n"
+"PO-Revision-Date: 2020-09-08 17:01+0000\n"
 "Last-Translator: Lucas Wilm <lucaswilm@gmail.com>\n"
 "Language-Team: Portuguese (Brazil) (http://www.transifex.com/xfce/xfce-apps/language/pt_BR/)\n"
 "MIME-Version: 1.0\n"
@@ -100,7 +100,7 @@ msgstr "Ir para"
 
 #: ../mousepad/mousepad-dialogs.c:223
 msgid "_Jump to"
-msgstr ""
+msgstr "_Pular para"
 
 #: ../mousepad/mousepad-dialogs.c:243
 msgid "_Line number:"
@@ -184,7 +184,7 @@ msgstr "Se você reverter o arquivo, todas as alterações não salvas serão pe
 
 #: ../mousepad/mousepad-dialogs.c:504
 msgid "_Revert"
-msgstr ""
+msgstr "_Reverter"
 
 #. pack button, add signal and tooltip
 #: ../mousepad/mousepad-document.c:495
@@ -684,7 +684,7 @@ msgstr "_Translinear"
 #: ../mousepad/mousepad-replace-dialog.c:278
 #: ../mousepad/mousepad-search-bar.c:275 ../mousepad/mousepad-search-bar.c:288
 msgid "Match _case"
-msgstr ""
+msgstr "Diferenciar _maiúsculas e minúsculas "
 
 #. match whole word
 #: ../mousepad/mousepad-replace-dialog.c:288
@@ -916,7 +916,7 @@ msgstr "Desfaz a última ação"
 
 #: ../mousepad/mousepad-window.c:427
 msgid "_Redo"
-msgstr ""
+msgstr "_Refazer"
 
 #: ../mousepad/mousepad-window.c:427
 msgid "Redo the last undone action"
