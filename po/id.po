@@ -4,12 +4,13 @@
 # 
 # Translators:
 # Andhika Padmawan <andhika.padmawan@gmail.com>, 2012
+# Triyan W. Nugroho <triyan.wn@gmail.com>, 2020
 msgid ""
 msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-09-06 12:48+0200\n"
-"PO-Revision-Date: 2020-09-07 04:39+0000\n"
+"PO-Revision-Date: 2020-09-08 08:24+0000\n"
 "Last-Translator: Triyan W. Nugroho <triyan.wn@gmail.com>\n"
 "Language-Team: Indonesian (http://www.transifex.com/xfce/xfce-apps/language/id/)\n"
 "MIME-Version: 1.0\n"
@@ -590,7 +591,7 @@ msgstr "_Sesuaikan ukuran dan orientasi halaman"
 
 #: ../mousepad/mousepad-print.c:617
 msgid "Appearance"
-msgstr "Tampilan"
+msgstr "Penampilan"
 
 #: ../mousepad/mousepad-print.c:631
 msgid "Print page _headers"
