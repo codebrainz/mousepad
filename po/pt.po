@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-09-06 12:48+0200\n"
-"PO-Revision-Date: 2020-09-09 15:25+0000\n"
+"PO-Revision-Date: 2020-09-12 18:04+0000\n"
 "Last-Translator: Hugo Carvalho <hugokarvalho@hotmail.com>\n"
 "Language-Team: Portuguese (http://www.transifex.com/xfce/xfce-apps/language/pt/)\n"
 "MIME-Version: 1.0\n"
@@ -90,7 +90,7 @@ msgstr "_Cancelar"
 #: ../mousepad/mousepad-dialogs.c:141
 #: ../mousepad/mousepad-encoding-dialog.c:122
 msgid "_OK"
-msgstr "_OK"
+msgstr "Aceitar"
 
 #. build the dialog
 #: ../mousepad/mousepad-dialogs.c:218
@@ -145,7 +145,7 @@ msgstr "Guardar como"
 #: ../mousepad/mousepad-dialogs.c:409 ../mousepad/mousepad-dialogs.c:472
 #: ../mousepad/mousepad-window.c:416 ../mousepad/mousepad-window.c:4182
 msgid "_Save"
-msgstr "_Guardar"
+msgstr "Guardar"
 
 #: ../mousepad/mousepad-dialogs.c:433
 msgid "<big><b>Do you want to save the changes before closing?</b></big>"
