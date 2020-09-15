@@ -1,9 +1,8 @@
-## What is it?
+[![License](https://img.shields.io/badge/License-GPL%20v2-blue.svg)](https://gitlab.xfce.org/apps/mousepad/-/blob/master/COPYING)
 
-**Mousepad** is a simple text editor for the [Xfce](https://www.xfce.org) desktop environment.
+# mousepad
 
-
-## The Mousepad Mission
+Mousepad is a simple text editor for the [Xfce](https://www.xfce.org) desktop environment.
 
 **Mousepad** aims to be an easy-to-use and fast editor. Our target is an
 editor for quickly editing text files, not a development environment or an
@@ -12,8 +11,18 @@ GTK features available, which means that if GTK adds something new in a major
 release that is useful for the editor, we will likely bump the GTK dependency
 and integrate this new feature in **Mousepad**.
 
+----
 
-## Required packages
+### Homepage
+
+[Mousepad documentation](https://docs.xfce.org/apps/mousepad/start)
+
+### Changelog
+
+See [NEWS](https://gitlab.xfce.org/apps/mousepad/-/blob/master/NEWS) for details on changes and fixes made in the current release.
+
+
+### Required Packages 
 
 Mousepad depends on the following packages:
 
@@ -24,16 +33,36 @@ Mousepad depends on the following packages:
 
 The following packages are optional:
 
-* [D-BUS](https://www.freedesktop.org/wiki/Software/dbus) >=0.34 (strongly suggested)
+* [D-Bus](https://www.freedesktop.org/wiki/Software/dbus) >=0.34 (strongly suggested)
 
+### Source Code Repository
 
-## Installation
+[Mousepad source code](https://gitlab.xfce.org/apps/mousepad)
 
-The file [INSTALL](INSTALL) contains generic installation instructions.
+### Download a Release Tarball
 
+[Mousepad archive](https://archive.xfce.org/src/apps/mousepad)
+    or
+[Mousepad tags](https://gitlab.xfce.org/apps/mousepad/-/tags)
 
-## How to report bugs?
+### Installation
 
-Bugs should be reported at [Xfce's gitlab](https://gitlab.xfce.org/apps/mousepad/-/issues). You will need to create an account for yourself.
+From source code repository: 
 
-Please read [how to report bugs ](https://docs.xfce.org/contribute/start#bug_reporting_and_testing) for information on where to send changes or bugfixes.
+    % cd mousepad
+    % ./autogen.sh
+    % make
+    % make install
+
+From release tarball:
+
+    % tar xf mousepad-<version>.tar.bz2
+    % cd mousepad-<version>
+    % ./configure
+    % make
+    % make install
+
+### Reporting Bugs
+
+Visit the [reporting bugs](https://docs.xfce.org/apps/mousepad/bugs) page to view currently open bug reports and instructions on reporting new bugs or submitting bugfixes.
+
