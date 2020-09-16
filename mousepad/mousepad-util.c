@@ -382,7 +382,7 @@ void
 mousepad_util_entry_error (GtkWidget *widget,
                            gboolean   error)
 {
-  gpointer       pointer;
+  gpointer pointer;
 
   g_return_if_fail (GTK_IS_WIDGET (widget));
 
@@ -413,10 +413,9 @@ mousepad_util_dialog_header (GtkDialog   *dialog,
                              const gchar *iconname)
 {
   gchar     *full_title;
-  GtkWidget *vbox, *ebox, *hbox;
+  GtkWidget *vbox, *hbox;
   GtkWidget *icon, *label, *line;
   GtkWidget *dialog_vbox;
-  GtkStyle  *style;
 
   /* remove the main vbox */
   dialog_vbox = gtk_bin_get_child (GTK_BIN (dialog));
@@ -428,17 +427,10 @@ mousepad_util_dialog_header (GtkDialog   *dialog,
   gtk_container_add (GTK_CONTAINER (dialog), vbox);
   gtk_widget_show (vbox);
 
-  /* event box for the background color */
-  ebox = gtk_event_box_new ();
-  gtk_box_pack_start (GTK_BOX (vbox), ebox, FALSE, FALSE, 0);
-  style = gtk_widget_get_style (ebox);
-  gtk_widget_modify_bg (ebox, GTK_STATE_NORMAL, &style->base[GTK_STATE_NORMAL]);
-  gtk_widget_show (ebox);
-
   /* create a hbox */
   hbox = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 12);
   gtk_container_set_border_width (GTK_CONTAINER (hbox), 6);
-  gtk_container_add (GTK_CONTAINER (ebox), hbox);
+  gtk_container_add (GTK_CONTAINER (vbox), hbox);
   gtk_widget_show (hbox);
 
   /* title icon */

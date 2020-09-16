@@ -90,8 +90,8 @@ struct _MousepadView
   guint                 selection_editing : 1;
 
   /* the font used in the view */
-  gchar                *font_name;
   PangoFontDescription *font_desc;
+  GtkCssProvider       *css_provider;
 
   /* whitespace visualization */
   gboolean              show_whitespace;
@@ -247,9 +247,9 @@ mousepad_view_init (MousepadView *view)
   view->selection_length = 0;
   view->selection_editing = FALSE;
   view->color_scheme = g_strdup ("none");
-  view->font_name = NULL;
   view->font_desc = NULL;
   view->match_braces = FALSE;
+  view->css_provider = gtk_css_provider_new ();
 
   /* make sure any buffers set on the view get the color scheme applied to them */
   g_signal_connect (view,
@@ -361,11 +361,14 @@ mousepad_view_get_property (GObject    *object,
                             GParamSpec *pspec)
 {
   MousepadView *view = MOUSEPAD_VIEW (object);
+  gchar        *font_name;
 
   switch (prop_id)
     {
     case PROP_FONT_NAME:
-      g_value_set_string (value, mousepad_view_get_font_name (view));
+      font_name = pango_font_description_to_string (view->font_desc);
+      g_value_set_string (value, font_name);
+      g_free (font_name);
       break;
     case PROP_SHOW_WHITESPACE:
       g_value_set_boolean (value, mousepad_view_get_show_whitespace (view));
@@ -1675,10 +1678,6 @@ mousepad_view_set_font_name (MousepadView *view,
   font_desc = pango_font_description_from_string (font_name);
   if (G_LIKELY (font_desc != NULL))
     {
-      /* Save the normalized representation of the font as a string */
-      g_free (view->font_name);
-      view->font_name = pango_font_description_to_string (font_desc);
-
       /* save the font description for later updating */
       pango_font_description_free (view->font_desc);
       view->font_desc = font_desc;
@@ -1762,15 +1761,18 @@ mousepad_view_update_draw_spaces (MousepadView *view)
 static void
 mousepad_view_update_font (MousepadView *view)
 {
-  gboolean use_default;
+  PangoFontDescription *font_desc;
+  XfconfChannel        *channel;
+  GtkStyleContext      *context;
+  gchar                *font, *css_string;
 
-  use_default = MOUSEPAD_SETTING_GET_BOOLEAN (USE_DEFAULT_FONT);
+  context = gtk_widget_get_style_context (GTK_WIDGET (view));
 
-  if (use_default)
+  /* determine which font description to use */
+  if (MOUSEPAD_SETTING_GET_BOOLEAN (USE_DEFAULT_FONT))
     {
-      XfconfChannel *channel = xfconf_channel_get ("xsettings");
-      gchar *font = xfconf_channel_get_string (channel, "/Gtk/MonospaceFontName", NULL);
-      PangoFontDescription *font_desc;
+      channel = xfconf_channel_get ("xsettings");
+      font = xfconf_channel_get_string (channel, "/Gtk/MonospaceFontName", NULL);
 
       if (G_LIKELY (font != NULL))
         {
@@ -1778,23 +1780,22 @@ mousepad_view_update_font (MousepadView *view)
           g_free (font);
         }
       else
-          font_desc = pango_font_description_from_string (MOUSEPAD_VIEW_DEFAULT_FONT);
-
-      gtk_widget_override_font (GTK_WIDGET (view), font_desc);
-      pango_font_description_free (font_desc);
+        font_desc = pango_font_description_from_string (MOUSEPAD_VIEW_DEFAULT_FONT);
     }
   else
-    gtk_widget_override_font (GTK_WIDGET (view), view->font_desc);
-}
+    font_desc = pango_font_description_copy (view->font_desc);
 
+  /* update font */
+  css_string = g_strdup_printf ("textview { font: %dpt %s; }",
+                                pango_font_description_get_size (font_desc) / PANGO_SCALE,
+                                pango_font_description_get_family (font_desc));
+  gtk_css_provider_load_from_data (view->css_provider, css_string, -1, NULL);
+  gtk_style_context_add_provider (context, GTK_STYLE_PROVIDER (view->css_provider),
+                                  GTK_STYLE_PROVIDER_PRIORITY_APPLICATION);
 
-
-const gchar *
-mousepad_view_get_font_name (MousepadView *view)
-{
-  g_return_val_if_fail (MOUSEPAD_IS_VIEW (view), NULL);
-
-  return view->font_name;
+  /* cleanup */
+  pango_font_description_free (font_desc);
+  g_free (css_string);
 }
 
 

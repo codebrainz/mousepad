@@ -80,9 +80,10 @@ struct _MousepadDocumentPrivate
 {
   GtkScrolledWindow __parent__;
 
-  /* the tab label and ebox */
+  /* the tab label, ebox and CSS provider */
   GtkWidget           *ebox;
   GtkWidget           *label;
+  GtkCssProvider      *css_provider;
 
   /* utf-8 valid document names */
   gchar               *utf8_filename;
@@ -170,9 +171,11 @@ mousepad_document_init (MousepadDocument *document)
   document->priv->utf8_filename = NULL;
   document->priv->utf8_basename = NULL;
   document->priv->label = NULL;
+  document->priv->css_provider = gtk_css_provider_new ();
 
   /* setup the scolled window */
-  gtk_scrolled_window_set_policy (GTK_SCROLLED_WINDOW (document), GTK_POLICY_AUTOMATIC, GTK_POLICY_AUTOMATIC);
+  gtk_scrolled_window_set_policy (GTK_SCROLLED_WINDOW (document),
+                                  GTK_POLICY_AUTOMATIC, GTK_POLICY_AUTOMATIC);
   gtk_scrolled_window_set_shadow_type (GTK_SCROLLED_WINDOW (document), GTK_SHADOW_ETCHED_IN);
   gtk_scrolled_window_set_hadjustment (GTK_SCROLLED_WINDOW (document), NULL);
   gtk_scrolled_window_set_vadjustment (GTK_SCROLLED_WINDOW (document), NULL);
@@ -220,6 +223,7 @@ mousepad_document_finalize (GObject *object)
   /* cleanup */
   g_free (document->priv->utf8_filename);
   g_free (document->priv->utf8_basename);
+  g_object_unref (document->priv->css_provider);
 
   /* release the file */
   g_object_unref (G_OBJECT (document->file));
@@ -396,9 +400,8 @@ mousepad_document_filename_changed (MousepadDocument *document,
 static void
 mousepad_document_label_color (MousepadDocument *document)
 {
-  GdkColor  green = {0, 0x0000, 0x9999, 0x0000};
-  GdkColor  red   = {0, 0xffff, 0x0000, 0x0000};
-  GdkColor *color;
+  GtkStyleContext *context;
+  const gchar     *css_string;
 
   g_return_if_fail (MOUSEPAD_IS_DOCUMENT (document));
   g_return_if_fail (GTK_IS_TEXT_BUFFER (document->buffer));
@@ -406,17 +409,24 @@ mousepad_document_label_color (MousepadDocument *document)
 
   if (document->priv->label)
     {
+      context = gtk_widget_get_style_context (document->priv->label);
+
       /* label color */
       if (gtk_text_buffer_get_modified (document->buffer))
-        color = &red;
+        css_string = "label { color: red; }";
       else if (mousepad_file_get_read_only (document->file))
-        color = &green;
+        css_string = "label { color: green; }";
       else
-        color = NULL;
+        {
+          /* fallback to default color */
+          gtk_style_context_remove_provider (context, GTK_STYLE_PROVIDER (document->priv->css_provider));
+          return;
+        }
 
-      /* update colors */
-      gtk_widget_modify_fg (document->priv->label, GTK_STATE_NORMAL, color);
-      gtk_widget_modify_fg (document->priv->label, GTK_STATE_ACTIVE, color);
+      /* update color */
+      gtk_css_provider_load_from_data (document->priv->css_provider, css_string, -1, NULL);
+      gtk_style_context_add_provider (context, GTK_STYLE_PROVIDER (document->priv->css_provider),
+                                      GTK_STYLE_PROVIDER_PRIORITY_APPLICATION);
     }
 }
 
@@ -474,7 +484,8 @@ mousepad_document_get_tab_label (MousepadDocument *document)
   gtk_widget_show (hbox);
 
   /* the ebox */
-  document->priv->ebox = g_object_new (GTK_TYPE_EVENT_BOX, "border-width", 2, "visible-window", FALSE, NULL);
+  document->priv->ebox = g_object_new (GTK_TYPE_EVENT_BOX, "border-width", 2,
+                                       "visible-window", FALSE, NULL);
   gtk_box_pack_start (GTK_BOX (hbox), document->priv->ebox, TRUE, TRUE, 0);
   gtk_widget_set_tooltip_text (document->priv->ebox, document->priv->utf8_filename);
   gtk_widget_show (document->priv->ebox);
@@ -494,7 +505,8 @@ mousepad_document_get_tab_label (MousepadDocument *document)
   /* pack button, add signal and tooltip */
   gtk_widget_set_tooltip_text (button, _("Close this tab"));
   gtk_box_pack_start (GTK_BOX (hbox), button, FALSE, FALSE, 0);
-  g_signal_connect (G_OBJECT (button), "clicked", G_CALLBACK (mousepad_document_tab_button_clicked), document);
+  g_signal_connect (G_OBJECT (button), "clicked",
+                    G_CALLBACK (mousepad_document_tab_button_clicked), document);
 
   return hbox;
 }

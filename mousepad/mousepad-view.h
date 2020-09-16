@@ -95,8 +95,6 @@ gint            mousepad_view_get_selection_length      (MousepadView      *view
 void            mousepad_view_set_font_name             (MousepadView      *view,
                                                          const gchar       *font_name);
 
-const gchar    *mousepad_view_get_font_name             (MousepadView      *view);
-
 void            mousepad_view_set_show_whitespace       (MousepadView      *view,
                                                          gboolean           show);
 
