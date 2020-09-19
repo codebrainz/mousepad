@@ -191,8 +191,6 @@ mousepad_setting_get (const gchar *path,
 
       variant = g_settings_get_value (settings, key_name);
 
-      g_variant_ref_sink (variant);
-
       va_start (ap, format_string);
       g_variant_get_va (variant, format_string, NULL, &ap);
       va_end (ap);

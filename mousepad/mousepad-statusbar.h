@@ -49,11 +49,10 @@ void        mousepad_statusbar_set_overwrite        (MousepadStatusbar *statusba
 void        mousepad_statusbar_set_language         (MousepadStatusbar *statusbar,
                                                      GtkSourceLanguage *language);
 
-gboolean    mousepad_statusbar_push_tooltip         (MousepadStatusbar *statusbar,
-                                                     GtkWidget         *widget);
+void        mousepad_statusbar_push_tooltip         (MousepadStatusbar *statusbar,
+                                                     const gchar       *tooltip);
 
-void        mousepad_statusbar_pop_tooltip          (MousepadStatusbar *statusbar,
-                                                     GtkWidget         *widget);
+void        mousepad_statusbar_pop_tooltip          (MousepadStatusbar *statusbar);
 
 G_END_DECLS
 

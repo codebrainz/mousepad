@@ -256,7 +256,7 @@ mousepad_dbus_client_launch_files (gchar       **filenames,
 
   if (proxy)
     {
-     succeed = mousepad_dbus_service_call_launch_files_sync (
+      succeed = mousepad_dbus_service_call_launch_files_sync (
         proxy, utf8_dir, (const gchar* const*) utf8_filenames->pdata, NULL, error);
 
       g_object_unref (proxy);

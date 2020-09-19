@@ -43,18 +43,22 @@ static const GtkTargetEntry drop_targets[] =
 typedef struct _MousepadWindowClass MousepadWindowClass;
 typedef struct _MousepadWindow      MousepadWindow;
 
-GType           mousepad_window_get_type         (void) G_GNUC_CONST;
+GType           mousepad_window_get_type           (void) G_GNUC_CONST;
 
-GtkWidget      *mousepad_window_new              (void);
+GtkWidget      *mousepad_window_new                (void);
 
-void            mousepad_window_add              (MousepadWindow   *window,
-                                                  MousepadDocument *document);
+void            mousepad_window_add                (MousepadWindow   *window,
+                                                    MousepadDocument *document);
 
-gboolean        mousepad_window_open_files       (MousepadWindow  *window,
-                                                  const gchar     *working_directory,
-                                                  gchar          **filenames);
+gboolean        mousepad_window_open_files         (MousepadWindow   *window,
+                                                    const gchar      *working_directory,
+                                                    gchar           **filenames);
 
-void            mousepad_window_show_preferences (MousepadWindow  *window);
+void            mousepad_window_show_preferences   (MousepadWindow   *window);
+
+void            mousepad_window_create_menubar     (MousepadWindow   *window);
+
+GtkWidget      *mousepad_window_get_languages_menu (MousepadWindow   *window);
 
 G_END_DECLS
 

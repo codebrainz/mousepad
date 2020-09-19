@@ -34,7 +34,6 @@ static gboolean mousepad_statusbar_filetype_clicked  (GtkWidget         *widget,
 enum
 {
   ENABLE_OVERWRITE,
-  PROVIDE_LANGUAGES_MENU,
   LAST_SIGNAL,
 };
 
@@ -88,14 +87,6 @@ mousepad_statusbar_class_init (MousepadStatusbarClass *klass)
                   0, NULL, NULL,
                   g_cclosure_marshal_VOID__BOOLEAN,
                   G_TYPE_NONE, 1, G_TYPE_BOOLEAN);
-
-  statusbar_signals[PROVIDE_LANGUAGES_MENU] =
-    g_signal_new (I_("provide-languages-menu"),
-                  G_TYPE_FROM_CLASS (gobject_class),
-                  G_SIGNAL_RUN_LAST,
-                  0, NULL, NULL,
-                  g_cclosure_marshal_generic,
-                  GTK_TYPE_MENU, 0);
 }
 
 
@@ -198,9 +189,10 @@ mousepad_statusbar_filetype_clicked (GtkWidget         *widget,
                                      GdkEventButton    *event,
                                      MousepadStatusbar *statusbar)
 {
-  GtkMenu *menu = NULL;
-  GList   *children;
-  gint     n_children = 0;
+  GtkWidget *window;
+  GtkMenu   *menu = NULL;
+  GList     *children;
+  gint       n_children = 0;
 
   g_return_val_if_fail (MOUSEPAD_IS_STATUSBAR (statusbar), FALSE);
 
@@ -208,8 +200,9 @@ mousepad_statusbar_filetype_clicked (GtkWidget         *widget,
   if (event->type != GDK_BUTTON_PRESS || event->button != 1)
     return FALSE;
 
-  /* get the window to create the popup menu for us */
-  g_signal_emit (statusbar, statusbar_signals[PROVIDE_LANGUAGES_MENU], 0, &menu);
+  /* get the languages menu from the window */
+  window = gtk_widget_get_ancestor (GTK_WIDGET (statusbar), MOUSEPAD_TYPE_WINDOW);
+  menu = GTK_MENU (mousepad_window_get_languages_menu (MOUSEPAD_WINDOW (window)));
   g_warn_if_fail (GTK_IS_MENU (menu));
 
   /* get the number of items in the menu */
@@ -220,9 +213,6 @@ mousepad_statusbar_filetype_clicked (GtkWidget         *widget,
   /* make sure there's at least one item in the menu */
   if (n_children)
     {
-      /* cleanup the menu once a selection is made or the menu is cancelled */
-      g_signal_connect (menu, "selection-done", G_CALLBACK (gtk_widget_destroy), NULL);
-
       /* show the menu */
 #if GTK_CHECK_VERSION (3, 22, 0)
       gtk_menu_popup_at_pointer (menu, (GdkEvent*) event);
@@ -240,11 +230,6 @@ mousepad_statusbar_filetype_clicked (GtkWidget         *widget,
 #endif
 
 #endif
-    }
-  else
-    {
-      /* since the menu wasn't shown, just destroy it straight-away */
-      gtk_widget_destroy (GTK_WIDGET (menu));
     }
 
   return TRUE;
@@ -306,42 +291,24 @@ mousepad_statusbar_set_overwrite (MousepadStatusbar *statusbar,
 }
 
 
-
-gboolean
+void
 mousepad_statusbar_push_tooltip (MousepadStatusbar *statusbar,
-                                 GtkWidget         *widget)
+                                 const gchar       *tooltip)
 {
-  GtkAction   *action = NULL;
-  const gchar *tooltip = NULL;
-  gint         id;
+  gint id;
 
-  /* get the widget's related action */
-  action = mousepad_util_find_related_action (widget);
-
-  /* if the action has a tooltip, use it */
-  if (G_LIKELY (action != NULL))
-    tooltip = gtk_action_get_tooltip (action);
-
-  /* if the action doesn't have a tooltip, see if the widget has one */
-  if (G_UNLIKELY (tooltip == NULL) && gtk_widget_get_has_tooltip (widget))
-    tooltip = gtk_widget_get_tooltip_text (widget);
-
-  if (G_LIKELY (tooltip != NULL))
+  if (tooltip != NULL)
     {
       /* show the tooltip */
       id = gtk_statusbar_get_context_id (GTK_STATUSBAR (statusbar), "tooltip");
       gtk_statusbar_push (GTK_STATUSBAR (statusbar), id, tooltip);
-      return TRUE;
     }
-
-  return FALSE;
 }
 
 
 
 void
-mousepad_statusbar_pop_tooltip (MousepadStatusbar *statusbar,
-                                GtkWidget         *widget)
+mousepad_statusbar_pop_tooltip (MousepadStatusbar *statusbar)
 {
   gint id;
 

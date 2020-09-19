@@ -211,6 +211,7 @@ mousepad_settings_store_add_settings (MousepadSettingsStore *self,
       g_free (child_schema_id);
     }
   g_strfreev (children);
+  g_settings_schema_unref (schema);
 }
 
 #else

@@ -770,34 +770,6 @@ mousepad_util_search (GtkSourceSearchContext *search_context,
 
 
 
-/* get the related action of the widget or walk up the parents to find one.
- * useful for example to get the related action of a tool item from its child. */
-GtkAction *
-mousepad_util_find_related_action (GtkWidget *widget)
-{
-  GtkAction *action = NULL;
-
-  g_return_val_if_fail (GTK_IS_WIDGET (widget), NULL);
-
-  do
-    {
-      if (GTK_IS_ACTIVATABLE (widget))
-        action = gtk_activatable_get_related_action (GTK_ACTIVATABLE (widget));
-
-      if (G_UNLIKELY (action == NULL))
-        {
-          if (gtk_widget_is_toplevel (widget))
-            break;
-          widget = gtk_widget_get_parent (widget);
-        }
-    }
-  while (action == NULL);
-
-  return action;
-}
-
-
-
 GIcon *
 mousepad_util_icon_for_mime_type (const gchar *mime_type)
 {
@@ -874,4 +846,150 @@ mousepad_util_container_move_children (GtkContainer *source,
     }
 
   g_list_free (list);
+}
+
+
+
+static gint
+mousepad_util_style_schemes_name_compare (gconstpointer a,
+                                                  gconstpointer b)
+{
+  const gchar *name_a, *name_b;
+
+  if (G_UNLIKELY (!GTK_SOURCE_IS_STYLE_SCHEME (a)))
+    return -(a != b);
+  if (G_UNLIKELY (!GTK_SOURCE_IS_STYLE_SCHEME (b)))
+    return a != b;
+
+  name_a = gtk_source_style_scheme_get_name (GTK_SOURCE_STYLE_SCHEME (a));
+  name_b = gtk_source_style_scheme_get_name (GTK_SOURCE_STYLE_SCHEME (b));
+
+  return g_utf8_collate (name_a, name_b);
+}
+
+
+
+static GSList *
+mousepad_util_get_style_schemes (void)
+{
+  GSList               *list = NULL;
+  const gchar * const  *schemes;
+  GtkSourceStyleScheme *scheme;
+
+  schemes = gtk_source_style_scheme_manager_get_scheme_ids (
+              gtk_source_style_scheme_manager_get_default ());
+
+  while (*schemes)
+    {
+      scheme = gtk_source_style_scheme_manager_get_scheme (
+                gtk_source_style_scheme_manager_get_default (), *schemes);
+      list = g_slist_prepend (list, scheme);
+      schemes++;
+    }
+
+  return list;
+}
+
+
+
+GSList *
+mousepad_util_style_schemes_get_sorted (void)
+{
+  return g_slist_sort (mousepad_util_get_style_schemes (),
+                       mousepad_util_style_schemes_name_compare);
+}
+
+
+
+GSList *
+mousepad_util_get_sorted_section_names (void)
+{
+  GSList                   *list = NULL;
+  const gchar *const       *languages;
+  GtkSourceLanguage        *language;
+  GtkSourceLanguageManager *manager;
+
+  manager = gtk_source_language_manager_get_default ();
+  languages = gtk_source_language_manager_get_language_ids (manager);
+
+  while (*languages)
+    {
+      language = gtk_source_language_manager_get_language (manager, *languages);
+      if (G_LIKELY (GTK_SOURCE_IS_LANGUAGE (language)))
+        {
+          /* ignore hidden languages */
+          if(gtk_source_language_get_hidden(language))
+            {
+              languages++;
+              continue;
+            }
+
+          /* ensure no duplicates in list */
+          if (!g_slist_find_custom (list,
+                                    gtk_source_language_get_section (language),
+                                    (GCompareFunc)g_strcmp0))
+            {
+              list = g_slist_prepend (list, (gchar *)gtk_source_language_get_section (language));
+            }
+        }
+      languages++;
+    }
+
+  return g_slist_sort (list, (GCompareFunc) g_utf8_collate);
+}
+
+
+
+static gint
+mousepad_util_languages_name_compare (gconstpointer a,
+                                              gconstpointer b)
+{
+  const gchar *name_a, *name_b;
+
+  if (G_UNLIKELY (!GTK_SOURCE_IS_LANGUAGE (a)))
+    return -(a != b);
+  if (G_UNLIKELY (!GTK_SOURCE_IS_LANGUAGE (b)))
+    return a != b;
+
+  name_a = gtk_source_language_get_name (GTK_SOURCE_LANGUAGE (a));
+  name_b = gtk_source_language_get_name (GTK_SOURCE_LANGUAGE (b));
+
+  return g_utf8_collate (name_a, name_b);
+}
+
+
+
+GSList *
+mousepad_util_get_sorted_languages_for_section (const gchar *section)
+{
+  GSList                   *list = NULL;
+  const gchar *const       *languages;
+  GtkSourceLanguage        *language;
+  GtkSourceLanguageManager *manager;
+
+  g_return_val_if_fail (section != NULL, NULL);
+
+  manager = gtk_source_language_manager_get_default ();
+  languages = gtk_source_language_manager_get_language_ids (manager);
+
+  while (*languages)
+    {
+      language = gtk_source_language_manager_get_language (manager, *languages);
+      if (G_LIKELY (GTK_SOURCE_IS_LANGUAGE (language)))
+        {
+          /* ignore hidden languages */
+          if(gtk_source_language_get_hidden(language))
+            {
+              languages++;
+              continue;
+            }
+
+          /* only get languages in the specified section */
+          if (g_strcmp0 (gtk_source_language_get_section (language), section) == 0)
+            list = g_slist_prepend (list, language);
+        }
+      languages++;
+    }
+
+  return g_slist_sort(list, (GCompareFunc) mousepad_util_languages_name_compare);
 }

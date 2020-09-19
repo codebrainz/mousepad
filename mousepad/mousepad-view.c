@@ -310,6 +310,9 @@ mousepad_view_finalize (GObject *object)
   /* cleanup color scheme name */
   g_free (view->color_scheme);
 
+  /* cleanup font description */
+  pango_font_description_free (view->font_desc);
+
   (*G_OBJECT_CLASS (mousepad_view_parent_class)->finalize) (object);
 }
 

@@ -142,6 +142,17 @@ mousepad_disconnect_by_func_ (gpointer  instance,
 #define mousepad_disconnect_by_func(instance, callback, data) \
   mousepad_disconnect_by_func_ (instance, G_CALLBACK (callback), data)
 
+/*
+ * To suppress warnings from GCC 8 onwards with -Wextra or -Wcast-function-type enabled
+ * about the function types being incompatible.
+ * See https://developer.gnome.org/glib/stable/glib-The-Main-Event-Loop.html#G-SOURCE-FUNC:CAPS
+ * and https://gitlab.xfce.org/apps/mousepad/-/merge_requests/25#note_15876
+ */
+#if !GLIB_CHECK_VERSION (2, 58, 0)
+# define G_SOURCE_FUNC(f) ((GSourceFunc) (void (*)(void)) (f))
+#endif
+
+
 G_END_DECLS
 
 #endif /* !__MOUSEPAD_PRIVATE_H__ */

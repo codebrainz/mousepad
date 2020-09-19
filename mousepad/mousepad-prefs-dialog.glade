@@ -161,7 +161,6 @@
                     <property name="receives_default">False</property>
                     <property name="active">True</property>
                     <property name="draw_indicator">True</property>
-                    <signal name="toggled" handler="on_show_line_numbers_toggled" object="prefs_dialog" swapped="yes"/>
                   </object>
                   <packing>
                     <property name="expand">True</property>

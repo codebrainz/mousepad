@@ -1,0 +1,629 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <requires lib="gtk+" version="3.20"/>
+
+  <menu id='menubar'>
+
+    <submenu id="file">
+      <attribute name="label" translatable="yes">_File</attribute>
+      <section>
+        <item>
+          <attribute name="label" translatable="yes">_New</attribute>
+          <attribute name="action">win.file.new</attribute>
+          <attribute name="accel">&lt;Control&gt;N</attribute>
+          <attribute name="icon">document-new</attribute>
+        </item>
+        <item>
+          <attribute name="label" translatable="yes">New _Window</attribute>
+          <attribute name="action">win.file.new-window</attribute>
+          <attribute name="accel">&lt;Shift&gt;&lt;Control&gt;N</attribute>
+        </item>
+        <submenu id="file.new-from-template">
+          <attribute name="label" translatable="yes">New From Te_mplate</attribute>
+          <attribute name="submenu-action">win.file.new-from-template</attribute>
+        </submenu>
+      </section>
+      <section>
+        <item>
+          <attribute name="label" translatable="yes">_Open...</attribute>
+          <attribute name="action">win.file.open</attribute>
+          <attribute name="accel">&lt;Control&gt;O</attribute>
+          <attribute name="icon">document-open</attribute>
+        </item>
+        <submenu id="file.open-recent">
+          <attribute name="label" translatable="yes">Op_en Recent</attribute>
+          <attribute name="submenu-action">win.file.open-recent</attribute>
+          <section id="file.open-recent.list">
+          </section>
+          <section>
+            <item>
+              <attribute name="label" translatable="yes">Clear _History</attribute>
+              <attribute name="action">win.file.open-recent.clear-history</attribute>
+              <attribute name="icon">edit-clear</attribute>
+            </item>
+          </section>
+        </submenu>
+      </section>
+      <section>
+        <item>
+          <attribute name="label" translatable="yes">_Save</attribute>
+          <attribute name="action">win.file.save</attribute>
+          <attribute name="accel">&lt;Control&gt;S</attribute>
+          <attribute name="icon">document-save</attribute>
+        </item>
+        <item>
+          <attribute name="label" translatable="yes">Save _As...</attribute>
+          <attribute name="action">win.file.save-as</attribute>
+          <attribute name="accel">&lt;Shift&gt;&lt;Control&gt;S</attribute>
+          <attribute name="icon">document-save-as</attribute>
+        </item>
+        <item>
+          <attribute name="label" translatable="yes">Save A_ll</attribute>
+          <attribute name="action">win.file.save-all</attribute>
+        </item>
+        <item>
+          <attribute name="label" translatable="yes">Re_vert</attribute>
+          <attribute name="action">win.file.revert</attribute>
+          <attribute name="icon">document-revert</attribute>
+        </item>
+      </section>
+      <section>
+        <item>
+          <attribute name="label" translatable="yes">_Print...</attribute>
+          <attribute name="action">win.file.print</attribute>
+          <attribute name="accel">&lt;Control&gt;P</attribute>
+          <attribute name="icon">document-print</attribute>
+        </item>
+      </section>
+      <section>
+        <item>
+          <attribute name="label" translatable="yes">_Detach Tab</attribute>
+          <attribute name="action">win.file.detach-tab</attribute>
+          <attribute name="accel">&lt;Control&gt;D</attribute>
+        </item>
+      </section>
+      <section>
+        <item>
+          <attribute name="label" translatable="yes">Close _Tab</attribute>
+          <attribute name="action">win.file.close-tab</attribute>
+          <attribute name="accel">&lt;Control&gt;W</attribute>
+          <attribute name="icon">window-close</attribute>
+        </item>
+        <item>
+          <attribute name="label" translatable="yes">_Close Window</attribute>
+          <attribute name="action">win.file.close-window</attribute>
+          <attribute name="accel">&lt;Control&gt;Q</attribute>
+          <attribute name="icon">application-exit</attribute>
+        </item>
+      </section>
+    </submenu>
+
+    <submenu id="edit">
+      <attribute name="label" translatable="yes">_Edit</attribute>
+      <section>
+        <item>
+          <attribute name="label" translatable="yes">_Undo</attribute>
+          <attribute name="action">win.edit.undo</attribute>
+          <attribute name="accel">&lt;Control&gt;Z</attribute>
+          <attribute name="icon">edit-undo</attribute>
+        </item>
+        <item>
+          <attribute name="label" translatable="yes">_Redo</attribute>
+          <attribute name="action">win.edit.redo</attribute>
+          <attribute name="accel">&lt;Control&gt;Y</attribute>
+          <attribute name="icon">edit-redo</attribute>
+        </item>
+      </section>
+      <section>
+        <item>
+          <attribute name="label" translatable="yes">Cu_t</attribute>
+          <attribute name="action">win.edit.cut</attribute>
+          <attribute name="accel">&lt;Control&gt;X</attribute>
+          <attribute name="icon">edit-cut</attribute>
+        </item>
+        <item>
+          <attribute name="label" translatable="yes">_Copy</attribute>
+          <attribute name="action">win.edit.copy</attribute>
+          <attribute name="accel">&lt;Control&gt;C</attribute>
+          <attribute name="icon">edit-copy</attribute>
+        </item>
+        <item>
+          <attribute name="label" translatable="yes">_Paste</attribute>
+          <attribute name="action">win.edit.paste</attribute>
+          <attribute name="accel">&lt;Control&gt;V</attribute>
+          <attribute name="icon">edit-paste</attribute>
+        </item>
+        <submenu id="edit.paste-special">
+          <attribute name="label" translatable="yes">Paste _Special</attribute>
+          <item>
+            <attribute name="label" translatable="yes">Paste from _History</attribute>
+            <attribute name="action">win.edit.paste-special.paste-from-history</attribute>
+          </item>
+          <item>
+            <attribute name="label" translatable="yes">Paste as _Column</attribute>
+            <attribute name="action">win.edit.paste-special.paste-as-column</attribute>
+          </item>
+        </submenu>
+        <item>
+          <attribute name="label" translatable="yes">_Delete</attribute>
+          <attribute name="action">win.edit.delete</attribute>
+          <attribute name="icon">edit-delete</attribute>
+        </item>
+      </section>
+      <section>
+        <item>
+          <attribute name="label" translatable="yes">Select _All</attribute>
+          <attribute name="action">win.edit.select-all</attribute>
+          <attribute name="icon">edit-select-all</attribute>
+        </item>
+      </section>
+      <section>
+        <submenu id="edit.convert">
+          <attribute name="label" translatable="yes">Conve_rt</attribute>
+          <section>
+            <item>
+              <attribute name="label" translatable="yes">To _Lowercase</attribute>
+              <attribute name="action">win.edit.convert.to-lowercase</attribute>
+            </item>
+            <item>
+              <attribute name="label" translatable="yes">To _Uppercase</attribute>
+              <attribute name="action">win.edit.convert.to-uppercase</attribute>
+            </item>
+            <item>
+              <attribute name="label" translatable="yes">To _Title Case</attribute>
+              <attribute name="action">win.edit.convert.to-title-case</attribute>
+            </item>
+            <item>
+              <attribute name="label" translatable="yes">To _Opposite Case</attribute>
+              <attribute name="action">win.edit.convert.to-opposite-case</attribute>
+            </item>
+          </section>
+          <section>
+            <item>
+              <attribute name="label" translatable="yes">_Tabs to Spaces</attribute>
+              <attribute name="action">win.edit.convert.tabs-to-spaces</attribute>
+            </item>
+            <item>
+              <attribute name="label" translatable="yes">_Spaces to Tabs</attribute>
+              <attribute name="action">win.edit.convert.spaces-to-tabs</attribute>
+            </item>
+          </section>
+          <section>
+            <item>
+              <attribute name="label" translatable="yes">St_rip Trailing Spaces</attribute>
+              <attribute name="action">win.edit.convert.strip-trailing-spaces</attribute>
+            </item>
+          </section>
+          <section>
+            <item>
+              <attribute name="label" translatable="yes">_Transpose</attribute>
+              <attribute name="action">win.edit.convert.transpose</attribute>
+              <attribute name="accel">&lt;Control&gt;T</attribute>
+            </item>
+          </section>
+        </submenu>
+        <submenu id="edit.move-selection">
+          <attribute name="label" translatable="yes">_Move Selection</attribute>
+          <item>
+            <attribute name="label" translatable="yes">Line _Up</attribute>
+            <attribute name="action">win.edit.move-selection.line-up</attribute>
+          </item>
+          <item>
+            <attribute name="label" translatable="yes">Line _Down</attribute>
+            <attribute name="action">win.edit.move-selection.line-down</attribute>
+          </item>
+        </submenu>
+        <item>
+          <attribute name="label" translatable="yes">Dup_licate Line / Selection</attribute>
+          <attribute name="action">win.edit.duplicate-line-selection</attribute>
+        </item>
+        <item>
+          <attribute name="label" translatable="yes">_Increase Indent</attribute>
+          <attribute name="action">win.edit.increase-indent</attribute>
+          <attribute name="icon">format-indent-more</attribute>
+        </item>
+        <item>
+          <attribute name="label" translatable="yes">_Decrease Indent</attribute>
+          <attribute name="action">win.edit.decrease-indent</attribute>
+          <attribute name="icon">format-indent-less</attribute>
+        </item>
+      </section>
+      <section>
+        <item>
+          <attribute name="label" translatable="yes">Preferences</attribute>
+          <attribute name="action">win.edit.preferences</attribute>
+          <attribute name="icon">preferences-system</attribute>
+        </item>
+      </section>
+    </submenu>
+
+    <submenu id="search">
+      <attribute name="label" translatable="yes">_Search</attribute>
+      <section>
+        <item>
+          <attribute name="label" translatable="yes">_Find</attribute>
+          <attribute name="action">win.search.find</attribute>
+          <attribute name="accel">&lt;Control&gt;F</attribute>
+          <attribute name="icon">edit-find</attribute>
+        </item>
+        <item>
+          <attribute name="label" translatable="yes">Find _Next</attribute>
+          <attribute name="action">win.search.find-next</attribute>
+          <attribute name="accel">&lt;Control&gt;G</attribute>
+        </item>
+        <item>
+          <attribute name="label" translatable="yes">Find _Previous</attribute>
+          <attribute name="action">win.search.find-previous</attribute>
+          <attribute name="accel">&lt;Shift&gt;&lt;Control&gt;G</attribute>
+        </item>
+        <item>
+          <attribute name="label" translatable="yes">Find and Rep_lace...</attribute>
+          <attribute name="action">win.search.find-and-replace</attribute>
+          <attribute name="accel">&lt;Control&gt;R</attribute>
+          <attribute name="icon">edit-find-replace</attribute>
+        </item>
+      </section>
+      <section>
+        <item>
+          <attribute name="label" translatable="yes">_Go to...</attribute>
+          <attribute name="action">win.search.go-to</attribute>
+          <attribute name="accel">&lt;Control&gt;L</attribute>
+          <attribute name="icon">go-jump</attribute>
+        </item>
+      </section>
+    </submenu>
+
+    <submenu id="view">
+      <attribute name="label" translatable="yes">_View</attribute>
+      <section>
+        <item>
+          <attribute name="label" translatable="yes">Select F_ont...</attribute>
+          <attribute name="action">win.view.select-font</attribute>
+          <attribute name="icon">font-x-generic</attribute>
+        </item>
+      </section>
+      <section>
+        <submenu id="view.color-scheme">
+          <attribute name="label" translatable="yes">_Color Scheme</attribute>
+          <section>
+            <item>
+              <attribute name="label" translatable="yes">None</attribute>
+              <attribute name="action">win.view.color-scheme</attribute>
+              <attribute name="target" type="s">'none'</attribute>
+            </item>
+          </section>
+          <section id="view.color-scheme.list">
+          </section>
+        </submenu>
+        <item>
+          <attribute name="label" translatable="yes">Line N_umbers</attribute>
+          <attribute name="action">win.view.line-numbers</attribute>
+        </item>
+      </section>
+      <section>
+        <item>
+          <attribute name="label" translatable="yes">_Menubar</attribute>
+          <attribute name="action">win.view.menubar</attribute>
+          <attribute name="accel">&lt;Control&gt;M</attribute>
+        </item>
+        <item>
+          <attribute name="label" translatable="yes">_Toolbar</attribute>
+          <attribute name="action">win.view.toolbar</attribute>
+        </item>
+        <item>
+          <attribute name="label" translatable="yes">St_atusbar</attribute>
+          <attribute name="action">win.view.statusbar</attribute>
+        </item>
+      </section>
+      <section id="view.fullscreen">
+        <item>
+          <attribute name="label" translatable="yes">_Fullscreen</attribute>
+          <attribute name="action">win.view.fullscreen</attribute>
+          <attribute name="icon">view-fullscreen</attribute>
+          <attribute name="accel">F11</attribute>
+        </item>
+      </section>
+    </submenu>
+
+    <submenu id="document">
+      <attribute name="label" translatable="yes">_Document</attribute>
+      <attribute name="submenu-action">win.document</attribute>
+      <section>
+        <item>
+          <attribute name="label" translatable="yes">_Word Wrap</attribute>
+          <attribute name="action">win.document.word-wrap</attribute>
+        </item>
+        <item>
+          <attribute name="label" translatable="yes">_Auto Indent</attribute>
+          <attribute name="action">win.document.auto-indent</attribute>
+        </item>
+        <submenu id="document.tab">
+          <attribute name="label" translatable="yes">Tab _Size</attribute>
+          <section id="document.tab.tab-size">
+            <item>
+              <attribute name="label">2</attribute>
+              <attribute name="action">win.document.tab.tab-size</attribute>
+              <attribute name="target" type="i">2</attribute>
+            </item>
+            <item>
+              <attribute name="label">3</attribute>
+              <attribute name="action">win.document.tab.tab-size</attribute>
+              <attribute name="target" type="i">3</attribute>
+            </item>
+            <item>
+              <attribute name="label">4</attribute>
+              <attribute name="action">win.document.tab.tab-size</attribute>
+              <attribute name="target" type="i">4</attribute>
+            </item>
+            <item>
+              <attribute name="label">8</attribute>
+              <attribute name="action">win.document.tab.tab-size</attribute>
+              <attribute name="target" type="i">8</attribute>
+            </item>
+            <item>
+              <attribute name="label" translatable="yes">Other...</attribute>
+              <attribute name="action">win.document.tab.tab-size</attribute>
+              <attribute name="target" type="i">0</attribute>
+            </item>
+          </section>
+          <section>
+            <item>
+              <attribute name="label" translatable="yes">Insert _Spaces</attribute>
+              <attribute name="action">win.document.tab.insert-spaces</attribute>
+            </item>
+          </section>
+        </submenu>
+      </section>
+      <section>
+        <submenu id="document.filetype">
+          <attribute name="label" translatable="yes">_Filetype</attribute>
+          <section>
+            <item>
+              <attribute name="label" translatable="yes">Plain Text</attribute>
+              <attribute name="action">win.document.filetype</attribute>
+              <attribute name="target" type="s">'plain-text'</attribute>
+            </item>
+          </section>
+          <section id="document.filetype.list">
+          </section>
+        </submenu>
+        <submenu id="document.line-ending">
+          <attribute name="label" translatable="yes">Line E_nding</attribute>
+          <item>
+            <attribute name="label">Unix (_LF)</attribute>
+            <attribute name="action">win.document.line-ending</attribute>
+            <attribute name="target" type="i">0</attribute>
+          </item>
+          <item>
+            <attribute name="label">Mac (_CR)</attribute>
+            <attribute name="action">win.document.line-ending</attribute>
+            <attribute name="target" type="i">1</attribute>
+          </item>
+          <item>
+            <attribute name="label">DOS / Windows (C_R LF)</attribute>
+            <attribute name="action">win.document.line-ending</attribute>
+            <attribute name="target" type="i">2</attribute>
+          </item>
+        </submenu>
+      </section>
+      <section>
+        <item>
+          <attribute name="label" translatable="yes">Write Unicode _BOM</attribute>
+          <attribute name="action">win.document.write-unicode-bom</attribute>
+        </item>
+      </section>
+      <section>
+        <item>
+          <attribute name="label" translatable="yes">_Previous Tab</attribute>
+          <attribute name="action">win.document.previous-tab</attribute>
+          <attribute name="icon">go-previous</attribute>
+          <attribute name="accel">&lt;Control&gt;Page_Up</attribute>
+        </item>
+        <item>
+          <attribute name="label" translatable="yes">_Next Tab</attribute>
+          <attribute name="action">win.document.next-tab</attribute>
+          <attribute name="icon">go-next</attribute>
+          <attribute name="accel">&lt;Control&gt;Page_Down</attribute>
+        </item>
+      </section>
+      <section id="document.go-to-tab">
+      </section>
+    </submenu>
+
+    <submenu id="help">
+      <attribute name="label" translatable="yes">_Help</attribute>
+      <item>
+        <attribute name="label" translatable="yes">_Contents</attribute>
+        <attribute name="action">win.help.contents</attribute>
+        <attribute name="icon">help-browser</attribute>
+        <attribute name="accel">F1</attribute>
+      </item>
+      <item>
+        <attribute name="label" translatable="yes">_About</attribute>
+        <attribute name="action">win.help.about</attribute>
+        <attribute name="icon">help-about</attribute>
+      </item>
+    </submenu>
+
+  </menu>
+
+
+
+  <menu id='tab-menu'>
+
+    <section>
+      <item>
+        <attribute name="label" translatable="yes">_Save</attribute>
+        <attribute name="action">win.file.save</attribute>
+        <attribute name="icon">document-save</attribute>
+      </item>
+      <item>
+        <attribute name="label" translatable="yes">Save _As...</attribute>
+        <attribute name="action">win.file.save-as</attribute>
+        <attribute name="icon">document-save-as</attribute>
+      </item>
+    </section>
+
+    <section>
+      <item>
+        <attribute name="label" translatable="yes">Re_vert</attribute>
+        <attribute name="action">win.file.revert</attribute>
+        <attribute name="icon">document-revert</attribute>
+      </item>
+    </section>
+
+    <section>
+      <item>
+        <attribute name="label" translatable="yes">_Detach Tab</attribute>
+        <attribute name="action">win.file.detach-tab</attribute>
+      </item>
+      <item>
+        <attribute name="label" translatable="yes">Close _Tab</attribute>
+        <attribute name="action">win.file.close-tab</attribute>
+        <attribute name="icon">window-close</attribute>
+      </item>
+    </section>
+
+  </menu>
+
+
+
+  <menu id='textview-menu'>
+
+    <section>
+      <item>
+        <attribute name="label" translatable="yes">_Undo</attribute>
+        <attribute name="action">win.edit.undo</attribute>
+        <attribute name="icon">edit-undo</attribute>
+      </item>
+      <item>
+        <attribute name="label" translatable="yes">_Redo</attribute>
+        <attribute name="action">win.edit.redo</attribute>
+        <attribute name="icon">edit-redo</attribute>
+      </item>
+    </section>
+
+    <section>
+      <item>
+        <attribute name="label" translatable="yes">Cu_t</attribute>
+        <attribute name="action">win.edit.cut</attribute>
+        <attribute name="icon">edit-cut</attribute>
+      </item>
+      <item>
+        <attribute name="label" translatable="yes">_Copy</attribute>
+        <attribute name="action">win.edit.copy</attribute>
+        <attribute name="icon">edit-copy</attribute>
+      </item>
+      <item>
+        <attribute name="label" translatable="yes">_Paste</attribute>
+        <attribute name="action">win.edit.paste</attribute>
+        <attribute name="icon">edit-paste</attribute>
+      </item>
+      <submenu id="textview.paste-special">
+        <attribute name="label" translatable="yes">Paste _Special</attribute>
+        <item>
+          <attribute name="label" translatable="yes">Paste from _History</attribute>
+          <attribute name="action">win.edit.paste-special.paste-from-history</attribute>
+        </item>
+        <item>
+          <attribute name="label" translatable="yes">Paste as _Column</attribute>
+          <attribute name="action">win.edit.paste-special.paste-as-column</attribute>
+        </item>
+      </submenu>
+      <item>
+        <attribute name="label" translatable="yes">_Delete</attribute>
+        <attribute name="action">win.edit.delete</attribute>
+        <attribute name="icon">edit-delete</attribute>
+      </item>
+    </section>
+
+    <section>
+      <item>
+        <attribute name="label" translatable="yes">Select _All</attribute>
+        <attribute name="action">win.edit.select-all</attribute>
+        <attribute name="icon">edit-select-all</attribute>
+      </item>
+    </section>
+
+    <section>
+      <submenu id="textview.convert">
+        <attribute name="label" translatable="yes">Conve_rt</attribute>
+        <section>
+          <item>
+            <attribute name="label" translatable="yes">To _Lowercase</attribute>
+            <attribute name="action">win.edit.convert.to-lowercase</attribute>
+          </item>
+          <item>
+            <attribute name="label" translatable="yes">To _Uppercase</attribute>
+            <attribute name="action">win.edit.convert.to-uppercase</attribute>
+          </item>
+          <item>
+            <attribute name="label" translatable="yes">To _Title Case</attribute>
+            <attribute name="action">win.edit.convert.to-title-case</attribute>
+          </item>
+          <item>
+            <attribute name="label" translatable="yes">To _Opposite Case</attribute>
+            <attribute name="action">win.edit.convert.to-opposite-case</attribute>
+          </item>
+        </section>
+        <section>
+          <item>
+            <attribute name="label" translatable="yes">_Tabs to Spaces</attribute>
+            <attribute name="action">win.edit.convert.tabs-to-spaces</attribute>
+          </item>
+          <item>
+            <attribute name="label" translatable="yes">_Spaces to Tabs</attribute>
+            <attribute name="action">win.edit.convert.spaces-to-tabs</attribute>
+          </item>
+        </section>
+        <section>
+          <item>
+            <attribute name="label" translatable="yes">St_rip Trailing Spaces</attribute>
+            <attribute name="action">win.edit.convert.strip-trailing-spaces</attribute>
+          </item>
+        </section>
+        <section>
+          <item>
+            <attribute name="label" translatable="yes">_Transpose</attribute>
+            <attribute name="action">win.edit.convert.transpose</attribute>
+          </item>
+        </section>
+      </submenu>
+      <submenu id="textview.move-selection">
+        <attribute name="label" translatable="yes">_Move Selection</attribute>
+        <item>
+          <attribute name="label" translatable="yes">Line _Up</attribute>
+          <attribute name="action">win.edit.move-selection.line-up</attribute>
+        </item>
+        <item>
+          <attribute name="label" translatable="yes">Line _Down</attribute>
+          <attribute name="action">win.edit.move-selection.line-down</attribute>
+        </item>
+      </submenu>
+      <item>
+        <attribute name="label" translatable="yes">Dup_licate Line / Selection</attribute>
+        <attribute name="action">win.edit.duplicate-line-selection</attribute>
+      </item>
+      <item>
+        <attribute name="label" translatable="yes">_Increase Indent</attribute>
+        <attribute name="action">win.edit.increase-indent</attribute>
+        <attribute name="icon">format-indent-more</attribute>
+      </item>
+      <item>
+        <attribute name="label" translatable="yes">_Decrease Indent</attribute>
+        <attribute name="action">win.edit.decrease-indent</attribute>
+        <attribute name="icon">format-indent-less</attribute>
+      </item>
+    </section>
+
+    <section>
+      <item>
+        <attribute name="label" translatable="yes">_Menubar</attribute>
+        <attribute name="action">win.textview.menubar</attribute>
+        <attribute name="hidden-when">action-disabled</attribute>
+      </item>
+    </section>
+
+  </menu>
+
+</interface>

@@ -107,8 +107,6 @@ gint       mousepad_util_search                           (GtkSourceSearchContex
                                                            const gchar            *replace,
                                                            MousepadSearchFlags     flags);
 
-GtkAction *mousepad_util_find_related_action              (GtkWidget           *widget);
-
 GIcon     *mousepad_util_icon_for_mime_type               (const gchar         *mime_type);
 
 gboolean   mousepad_util_container_has_children           (GtkContainer        *container);
@@ -117,6 +115,12 @@ void       mousepad_util_container_clear                  (GtkContainer        *
 
 void       mousepad_util_container_move_children          (GtkContainer        *source,
                                                            GtkContainer        *destination);
+
+GSList    *mousepad_util_style_schemes_get_sorted         (void);
+
+GSList    *mousepad_util_get_sorted_section_names         (void);
+
+GSList    *mousepad_util_get_sorted_languages_for_section (const gchar *section);
 
 G_END_DECLS
 
