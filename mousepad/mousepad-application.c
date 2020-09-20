@@ -433,7 +433,7 @@ mousepad_application_create_languages_menu (MousepadApplication *application)
 
   sections = mousepad_util_get_sorted_section_names ();
   application->languages_tooltips = g_ptr_array_new_with_free_func (g_free);
-  g_ptr_array_add (application->languages_tooltips, g_strdup ("No filetype"));
+  g_ptr_array_add (application->languages_tooltips, g_strdup (_("No filetype")));
 
   for (iter_sect = sections; iter_sect != NULL; iter_sect = g_slist_next (iter_sect))
     {
@@ -484,7 +484,7 @@ mousepad_application_create_style_schemes_menu (MousepadApplication *application
 
   schemes = mousepad_util_style_schemes_get_sorted ();
   application->style_schemes_tooltips = g_ptr_array_new_with_free_func (g_free);
-  g_ptr_array_add (application->style_schemes_tooltips, g_strdup ("No style scheme"));
+  g_ptr_array_add (application->style_schemes_tooltips, g_strdup (_("No style scheme")));
   (application->n_style_schemes)++;
 
   for (iter = schemes; iter != NULL; iter = g_slist_next (iter))

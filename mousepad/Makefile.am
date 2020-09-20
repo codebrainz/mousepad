@@ -57,7 +57,6 @@ mousepad_SOURCES = \
 	mousepad-util.h \
 	mousepad-window.c \
 	mousepad-window.h \
-	mousepad-window.ui \
 	mousepad-window-ui.h
 
 mousepad_CFLAGS = \

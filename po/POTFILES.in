@@ -20,7 +20,7 @@ mousepad/mousepad-statusbar.c
 mousepad/mousepad-util.c
 mousepad/mousepad-view.c
 mousepad/mousepad-window.c
-mousepad/mousepad-window.ui
+[type: gettext/glade]mousepad/mousepad-window.ui
 
 
 

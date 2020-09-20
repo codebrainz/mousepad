@@ -594,119 +594,119 @@ static const gchar *menubar_tooltips[] =
 {
   /* "File" menu */
   NULL,
-    "Create a new document", /* 1, toolbar item 1 */
-    "Create a new document in a new window",
+    N_("Create a new document"), /* 1, toolbar item 1 */
+    N_("Create a new document in a new window"),
     NULL, /* 3, template menu insertion flag */
 
-    "Open a file", /* 4, toolbar item 2 */
+    N_("Open a file"), /* 4, toolbar item 2 */
     NULL, /* 5, recent menu insertion flag */
-      "Clear the recently used files history",
+      N_("Clear the recently used files history"),
 
-    "Save the current document", /* 7, tab menu start, toolbar item 3 */
-    "Save current document as another file", /* 8, tab menu 2, toolbar item 4 */
-    "Save all document in this window",
-    "Revert to the saved version of the file", /* 10, tab menu 3, toolbar item 5 */
+    N_("Save the current document"), /* 7, tab menu start, toolbar item 3 */
+    N_("Save current document as another file"), /* 8, tab menu 2, toolbar item 4 */
+    N_("Save all document in this window"),
+    N_("Revert to the saved version of the file"), /* 10, tab menu 3, toolbar item 5 */
 
-    "Print the current document",
+    N_("Print the current document"),
 
-    "Move the current document to a new window", /* 12, tab menu 4 */
+    N_("Move the current document to a new window"), /* 12, tab menu 4 */
 
-    "Close the current document", /* 13, tab menu end, toolbar item 6 */
-    "Close this window",
+    N_("Close the current document"), /* 13, tab menu end, toolbar item 6 */
+    N_("Close this window"),
 
   /* "Edit" menu */
   NULL,
-    "Undo the last action", /* 16, textview menu start, toolbar item 7 */
-    "Redo the last undone action", /* 17, toolbar item 8 */
+    N_("Undo the last action"), /* 16, textview menu start, toolbar item 7 */
+    N_("Redo the last undone action"), /* 17, toolbar item 8 */
 
-    "Cut the selection", /* 18, toolbar item 9 */
-    "Copy the selection", /* 19, toolbar item 10 */
-    "Paste the clipboard", /* 20, toolbar item 11 */
+    N_("Cut the selection"), /* 18, toolbar item 9 */
+    N_("Copy the selection"), /* 19, toolbar item 10 */
+    N_("Paste the clipboard"), /* 20, toolbar item 11 */
     /* "Paste Special" submenu */
     NULL,
-      "Paste from the clipboard history",
-      "Paste the clipboard text into a column",
-    "Delete the current selection",
+      N_("Paste from the clipboard history"),
+      N_("Paste the clipboard text into a column"),
+    N_("Delete the current selection"),
 
-    "Select the text in the entire document",
+    N_("Select the text in the entire document"),
 
     /* "Convert" submenu */
     NULL,
-      "Change the case of the selection to lowercase",
-      "Change the case of the selection to uppercase",
-      "Change the case of the selection to title case",
-      "Change the case of the selection opposite case",
+      N_("Change the case of the selection to lowercase"),
+      N_("Change the case of the selection to uppercase"),
+      N_("Change the case of the selection to title case"),
+      N_("Change the case of the selection opposite case"),
 
-      "Convert all tabs to spaces in the selection or document",
-      "Convert all the leading spaces to tabs in the selected line(s) or document",
+      N_("Convert all tabs to spaces in the selection or document"),
+      N_("Convert all the leading spaces to tabs in the selected line(s) or document"),
 
-      "Remove all the trailing spaces from the selected line(s) or document",
+      N_("Remove all the trailing spaces from the selected line(s) or document"),
 
-      "Reverse the order of something",
+      N_("Reverse the order of something"),
     /* "Move selection" submenu */
     NULL,
-      "Move the selection one line up",
-      "Move the selection one line down",
-    "Duplicate the current line or selection",
-    "Increase the indentation of the selection or current line",
-    "Decrease the indentation of the selection or current line", /* 40, textview menu end */
+      N_("Move the selection one line up"),
+      N_("Move the selection one line down"),
+    N_("Duplicate the current line or selection"),
+    N_("Increase the indentation of the selection or current line"),
+    N_("Decrease the indentation of the selection or current line"), /* 40, textview menu end */
 
-    "Show the preferences dialog",
+    N_("Show the preferences dialog"),
 
   /* "Search" menu */
   NULL,
-    "Search for text", /* 43, toolbar item 12 */
-    "Search forwards for the same text",
-    "Search backwards for the same text",
-    "Search for and replace text", /* 46, toolbar item 13 */
+    N_("Search for text"), /* 43, toolbar item 12 */
+    N_("Search forwards for the same text"),
+    N_("Search backwards for the same text"),
+    N_("Search for and replace text"), /* 46, toolbar item 13 */
 
-    "Go to a specific location in the document", /* 47, toolbar item 14 */
+    N_("Go to a specific location in the document"), /* 47, toolbar item 14 */
 
   /* "View" menu */
   NULL, /* 48, view menu insertion flag */
-    "Change the editor font",
+    N_("Change the editor font"),
 
     /* "Color Scheme" submenu */
     NULL, /* 50, style sheme menu insertion flag */
-    "Show line numbers",
+    N_("Show line numbers"),
 
-    "Change the visibility of the main menubar", /* 52, textview menu additional item */
-    "Change the visibility of the toolbar",
-    "Change the visibility of the statusbar",
+    N_("Change the visibility of the main menubar"), /* 52, textview menu additional item */
+    N_("Change the visibility of the toolbar"),
+    N_("Change the visibility of the statusbar"),
 
-    "Make the window fullscreen", /* 55, toolbar item 15 */
+    N_("Make the window fullscreen"), /* 55, toolbar item 15 */
 
   /* "Document" menu */
   NULL, /* 56, document menu insertion flag */
-    "Toggle breaking lines in between words",
-    "Auto indent a new line",
+    N_("Toggle breaking lines in between words"),
+    N_("Auto indent a new line"),
     /* "Tab Size" submenu */
     NULL, /* 59, tab size menu insertion flag */
       NULL,
       NULL,
       NULL,
       NULL,
-      "Set custom tab size", /* 64, custom tab size tooltip */
+      N_("Set custom tab size"), /* 64, custom tab size tooltip */
 
-      "Insert spaces when the tab button is pressed",
+      N_("Insert spaces when the tab button is pressed"),
 
     /* "Filetype" submenu */
     NULL, /* 66, languages menu insertion flag */
     /* "Line Ending" submenu */
     NULL,
-      "Set the line ending of the document to Unix (LF)",
-      "Set the line ending of the document to Mac (CR)",
-      "Set the line ending of the document to DOS / Windows (CR LF)",
+      N_("Set the line ending of the document to Unix (LF)"),
+      N_("Set the line ending of the document to Mac (CR)"),
+      N_("Set the line ending of the document to DOS / Windows (CR LF)"),
 
-    "Store the byte-order mark in the file",
+    N_("Store the byte-order mark in the file"),
 
-    "Select the previous tab",
-    "Select the next tab",
+    N_("Select the previous tab"),
+    N_("Select the next tab"),
 
   /* "Help" menu */
   NULL,
-    "Display the Mousepad user manual",
-    "About this application"
+    N_("Display the Mousepad user manual"),
+    N_("About this application")
 };
 
 
@@ -1052,7 +1052,7 @@ mousepad_window_toolbar_insert (MousepadWindow *window,
   item = gtk_tool_button_new (NULL, label);
   gtk_tool_button_set_use_underline (GTK_TOOL_BUTTON (item), TRUE);
   gtk_tool_button_set_icon_name (GTK_TOOL_BUTTON (item), icon_name);
-  gtk_tool_item_set_tooltip_text (item, tooltip);
+  gtk_tool_item_set_tooltip_text (item, gettext (tooltip));
 
   /* make the widget actionable just as the corresponding menu item */
   gtk_actionable_set_action_name (GTK_ACTIONABLE (item), action_name);
@@ -1099,41 +1099,41 @@ mousepad_window_create_toolbar (MousepadWindow *window)
 
   /* insert items */
   mousepad_window_toolbar_insert (window, _("_New"), "document-new",
-                                  _(menubar_tooltips[1]), "win.file.new");
+                                  menubar_tooltips[1], "win.file.new");
   mousepad_window_toolbar_insert (window, _("_Open..."), "document-open",
-                                  _(menubar_tooltips[4]), "win.file.open");
+                                  menubar_tooltips[4], "win.file.open");
   mousepad_window_toolbar_insert (window, _("_Save"), "document-save",
-                                  _(menubar_tooltips[7]), "win.file.save");
+                                  menubar_tooltips[7], "win.file.save");
   mousepad_window_toolbar_insert (window, _("Save _As..."), "document-save-as",
-                                  _(menubar_tooltips[8]), "win.file.save-as");
+                                  menubar_tooltips[8], "win.file.save-as");
   mousepad_window_toolbar_insert (window, _("Re_vert"), "document-revert",
-                                  _(menubar_tooltips[10]), "win.file.revert");
+                                  menubar_tooltips[10], "win.file.revert");
   mousepad_window_toolbar_insert (window, _("Close _Tab"), "window-close",
-                                  _(menubar_tooltips[13]), "win.file.close-tab");
+                                  menubar_tooltips[13], "win.file.close-tab");
 
   item = gtk_separator_tool_item_new ();
   gtk_toolbar_insert (GTK_TOOLBAR (window->toolbar), item, -1);
 
   mousepad_window_toolbar_insert (window, _("_Undo"), "edit-undo",
-                                  _(menubar_tooltips[16]), "win.edit.undo");
+                                  menubar_tooltips[16], "win.edit.undo");
   mousepad_window_toolbar_insert (window, _("_Redo"), "edit-redo",
-                                  _(menubar_tooltips[17]), "win.edit.redo");
+                                  menubar_tooltips[17], "win.edit.redo");
   mousepad_window_toolbar_insert (window, _("Cu_t"), "edit-cut",
-                                  _(menubar_tooltips[18]), "win.edit.cut");
+                                  menubar_tooltips[18], "win.edit.cut");
   mousepad_window_toolbar_insert (window, _("_Copy"), "edit-copy",
-                                  _(menubar_tooltips[19]), "win.edit.copy");
+                                  menubar_tooltips[19], "win.edit.copy");
   mousepad_window_toolbar_insert (window, _("_Paste"), "edit-paste",
-                                  _(menubar_tooltips[20]), "win.edit.paste");
+                                  menubar_tooltips[20], "win.edit.paste");
 
   item = gtk_separator_tool_item_new ();
   gtk_toolbar_insert (GTK_TOOLBAR (window->toolbar), item, -1);
 
   mousepad_window_toolbar_insert (window, _("_Find"), "edit-find",
-                                  _(menubar_tooltips[43]), "win.search.find");
+                                  menubar_tooltips[43], "win.search.find");
   mousepad_window_toolbar_insert (window, _("Find and Rep_lace..."), "edit-find-replace",
-                                  _(menubar_tooltips[46]), "win.search.find-and-replace");
+                                  menubar_tooltips[46], "win.search.find-and-replace");
   mousepad_window_toolbar_insert (window, _("_Go to..."), "go-jump",
-                                  _(menubar_tooltips[47]), "win.search.go-to");
+                                  menubar_tooltips[47], "win.search.go-to");
 
   /* make the last toolbar separator so it expands properly */
   item = gtk_separator_tool_item_new ();
@@ -1142,7 +1142,7 @@ mousepad_window_create_toolbar (MousepadWindow *window)
   gtk_tool_item_set_expand (item, TRUE);
 
   mousepad_window_toolbar_insert (window, _("_Fullscreen"), "view-fullscreen",
-                                  _(menubar_tooltips[55]), "win.view.fullscreen");
+                                  menubar_tooltips[55], "win.view.fullscreen");
 
   /* insert the toolbar in the main window box and show all widgets */
   gtk_box_pack_start (GTK_BOX (window->box), window->toolbar, FALSE, FALSE, 0);
@@ -1587,7 +1587,7 @@ mousepad_window_menu_set_tooltips_full (MousepadWindow  *window,
       /* set tooltip and connect handlers to the menu item select/deselect signals */
       if (! GTK_IS_SEPARATOR_MENU_ITEM (child->data))
         {
-          tooltip = _((const gchar*) g_ptr_array_index (tooltips, (*index)++));
+          tooltip = gettext ((const gchar*) g_ptr_array_index (tooltips, (*index)++));
           gtk_widget_set_tooltip_text (child->data, tooltip);
           gtk_widget_set_has_tooltip (child->data, FALSE);
           g_signal_connect_object (child->data, "select",
@@ -1719,7 +1719,7 @@ mousepad_window_menu_set_tooltips (MousepadWindow  *window,
   /* from bottom to top */
   for (n = n_tooltips - 1; n >= 0; n--)
     {
-      tooltip = _((const gchar*) g_ptr_array_index (tooltips, n));
+      tooltip = gettext ((const gchar*) g_ptr_array_index (tooltips, n));
       gtk_widget_set_tooltip_text (child->data, tooltip);
       gtk_widget_set_has_tooltip (child->data, FALSE);
       g_signal_connect_object (child->data, "select",
@@ -5707,14 +5707,14 @@ mousepad_window_action_fullscreen (GSimpleAction *action,
     {
       gtk_window_fullscreen (GTK_WINDOW (window));
       icon = g_icon_new_for_string ("view-restore", NULL);
-      tooltip = "Leave fullscreen mode";
+      tooltip = _("Leave fullscreen mode");
     }
   /* leaving fullscreen mode */
   else if (mousepad_window_get_in_fullscreen (window))
     {
       gtk_window_unfullscreen (GTK_WINDOW (window));
       icon = g_icon_new_for_string ("view-fullscreen", NULL);
-      tooltip = "Make the window fullscreen";
+      tooltip = _("Make the window fullscreen");
     }
 
   /* update the menu item icon */
@@ -5740,7 +5740,7 @@ mousepad_window_action_fullscreen (GSimpleAction *action,
 
   tool_item = gtk_toolbar_get_nth_item (GTK_TOOLBAR (window->toolbar),
                                         gtk_toolbar_get_n_items (GTK_TOOLBAR (window->toolbar)) - 1);
-  gtk_tool_item_set_tooltip_text (tool_item, _(tooltip));
+  gtk_tool_item_set_tooltip_text (tool_item, tooltip);
 
   /* update the widgets based on whether in fullscreen mode or not */
   if (window->fullscreen_bars_timer_id == 0)
