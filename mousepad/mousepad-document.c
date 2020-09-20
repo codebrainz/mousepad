@@ -350,7 +350,8 @@ mousepad_document_drag_data_received (GtkWidget        *widget,
 
   /* emit the drag-data-received signal from the document when a tab or uri has been dropped */
   if (info == TARGET_TEXT_URI_LIST || info == TARGET_GTK_NOTEBOOK_TAB)
-    g_signal_emit_by_name (G_OBJECT (document), "drag-data-received", context, x, y, selection_data, info, drag_time);
+    g_signal_emit_by_name (G_OBJECT (document), "drag-data-received", context,
+                           x, y, selection_data, info, drag_time);
 }
 
 
@@ -401,7 +402,6 @@ static void
 mousepad_document_label_color (MousepadDocument *document)
 {
   GtkStyleContext *context;
-  const gchar     *css_string;
 
   g_return_if_fail (MOUSEPAD_IS_DOCUMENT (document));
   g_return_if_fail (GTK_IS_TEXT_BUFFER (document->buffer));
@@ -411,22 +411,22 @@ mousepad_document_label_color (MousepadDocument *document)
     {
       context = gtk_widget_get_style_context (document->priv->label);
 
-      /* label color */
-      if (gtk_text_buffer_get_modified (document->buffer))
-        css_string = "label { color: red; }";
-      else if (mousepad_file_get_read_only (document->file))
-        css_string = "label { color: green; }";
+      /* grey out the label text */
+      if (mousepad_file_get_read_only (document->file))
+        gtk_style_context_add_class (context, GTK_STYLE_CLASS_DIM_LABEL);
       else
-        {
-          /* fallback to default color */
-          gtk_style_context_remove_provider (context, GTK_STYLE_PROVIDER (document->priv->css_provider));
-          return;
-        }
+        gtk_style_context_remove_class (context, GTK_STYLE_CLASS_DIM_LABEL);
 
-      /* update color */
-      gtk_css_provider_load_from_data (document->priv->css_provider, css_string, -1, NULL);
-      gtk_style_context_add_provider (context, GTK_STYLE_PROVIDER (document->priv->css_provider),
-                                      GTK_STYLE_PROVIDER_PRIORITY_APPLICATION);
+      /* change the label text color */
+      if (gtk_text_buffer_get_modified (document->buffer))
+        {
+          gtk_css_provider_load_from_data (document->priv->css_provider,
+                                           "label { color: red; }", -1, NULL);
+          gtk_style_context_add_provider (context, GTK_STYLE_PROVIDER (document->priv->css_provider),
+                                          GTK_STYLE_PROVIDER_PRIORITY_APPLICATION);
+        }
+      else
+        gtk_style_context_remove_provider (context, GTK_STYLE_PROVIDER (document->priv->css_provider));
     }
 }
 
