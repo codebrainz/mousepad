@@ -18,8 +18,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-19 12:51+0200\n"
-"PO-Revision-Date: 2020-09-20 23:26+0000\n"
+"POT-Creation-Date: 2020-09-22 12:47+0200\n"
+"PO-Revision-Date: 2020-09-23 04:36+0000\n"
 "Last-Translator: 玉堂白鹤 <yjwork@qq.com>\n"
 "Language-Team: Chinese (China) (http://www.transifex.com/xfce/xfce-apps/language/zh_CN/)\n"
 "MIME-Version: 1.0\n"
@@ -63,6 +63,14 @@ msgstr "Xfce 开发团队。版权所有。"
 #, c-format
 msgid "Please report bugs to <%s>."
 msgstr "请向 <%s> 报告缺陷。"
+
+#: ../mousepad/mousepad-application.c:436
+msgid "No filetype"
+msgstr "无文件类型"
+
+#: ../mousepad/mousepad-application.c:487
+msgid "No style scheme"
+msgstr "无风格方案"
 
 #: ../mousepad/mousepad-application.c:502
 #, c-format
@@ -155,6 +163,7 @@ msgstr "另存为(_S)"
 
 #: ../mousepad/mousepad-dialogs.c:409 ../mousepad/mousepad-dialogs.c:472
 #: ../mousepad/mousepad-window.c:1105 ../mousepad/mousepad-window.c:4512
+#: ../mousepad/mousepad-window.ui.h:8
 msgid "_Save"
 msgstr "保存(_S)"
 
@@ -197,12 +206,12 @@ msgid "_Revert"
 msgstr "还原(_R)"
 
 #. pack button, add signal and tooltip
-#: ../mousepad/mousepad-document.c:495
+#: ../mousepad/mousepad-document.c:506
 msgid "Close this tab"
 msgstr "关闭此标签"
 
 #. create an unique untitled document name
-#: ../mousepad/mousepad-document.c:524
+#: ../mousepad/mousepad-document.c:536
 msgid "Untitled"
 msgstr "未命名"
 
@@ -372,7 +381,7 @@ msgid "_Close"
 msgstr "关闭(_C)"
 
 #. setup the window properties
-#: ../mousepad/mousepad-prefs-dialog.c:437
+#: ../mousepad/mousepad-prefs-dialog.c:437 ../mousepad/mousepad-window.ui.h:42
 msgid "Preferences"
 msgstr "首选项"
 
@@ -405,6 +414,7 @@ msgid "none"
 msgstr "无"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:8
+#: ../mousepad/mousepad-window.ui.h:52
 msgid "None"
 msgstr "无"
 
@@ -448,7 +458,10 @@ msgstr "文字在图标下"
 msgid "Text Beside Icons"
 msgstr "文字在图标旁"
 
+#. "Color Scheme" submenu
+#. 50, style sheme menu insertion flag
 #: ../mousepad/mousepad-prefs-dialog.glade.h:19
+#: ../mousepad/mousepad-window.c:671
 msgid "Show line numbers"
 msgstr "显示行号"
 
@@ -647,7 +660,7 @@ msgstr "查找并替换"
 
 #. dialog buttons
 #: ../mousepad/mousepad-replace-dialog.c:170
-#: ../mousepad/mousepad-window.c:1131
+#: ../mousepad/mousepad-window.c:1131 ../mousepad/mousepad-window.ui.h:44
 msgid "_Find"
 msgstr "查找(_F)"
 
@@ -774,67 +787,320 @@ msgid "Line: %d Column: %d"
 msgstr "行： %d 列：%d"
 
 #. show warning to the user
-#: ../mousepad/mousepad-util.c:551
+#: ../mousepad/mousepad-util.c:543
 #, c-format
 msgid "Unable to create base directory \"%s\". Saving to file \"%s\" will be aborted."
 msgstr "无法创建基本目录 \"%s\"。保存到文件 \"%s\" 将被中止。"
 
 #. print error
-#: ../mousepad/mousepad-util.c:597
+#: ../mousepad/mousepad-util.c:589
 #, c-format
 msgid "Failed to store the preferences to \"%s\": %s"
 msgstr "保存设置  \"%s\"： %s 失败"
 
+#: ../mousepad/mousepad-window.c:597
+msgid "Create a new document"
+msgstr "创建新文档"
+
+#. 1, toolbar item 1
+#: ../mousepad/mousepad-window.c:598
+msgid "Create a new document in a new window"
+msgstr "在新窗口创建新文档"
+
+#. 3, template menu insertion flag
+#: ../mousepad/mousepad-window.c:601
+msgid "Open a file"
+msgstr "打开文件"
+
+#. 4, toolbar item 2
+#. 5, recent menu insertion flag
+#: ../mousepad/mousepad-window.c:603
+msgid "Clear the recently used files history"
+msgstr "清除最近使用的文件历史"
+
+#: ../mousepad/mousepad-window.c:605
+msgid "Save the current document"
+msgstr "保存当前文档"
+
+#. 7, tab menu start, toolbar item 3
+#: ../mousepad/mousepad-window.c:606
+msgid "Save current document as another file"
+msgstr "保持当前文档为其他文件"
+
+#. 8, tab menu 2, toolbar item 4
+#: ../mousepad/mousepad-window.c:607
+msgid "Save all document in this window"
+msgstr "保存该窗口的所有文档"
+
+#: ../mousepad/mousepad-window.c:608
+msgid "Revert to the saved version of the file"
+msgstr "恢复到文件保存时的版本"
+
+#. 10, tab menu 3, toolbar item 5
+#: ../mousepad/mousepad-window.c:610
+msgid "Print the current document"
+msgstr "打印当前文档"
+
+#: ../mousepad/mousepad-window.c:612
+msgid "Move the current document to a new window"
+msgstr "将当前文档移动到一个新的窗口"
+
+#. 12, tab menu 4
+#: ../mousepad/mousepad-window.c:614
+msgid "Close the current document"
+msgstr "关闭当前文档"
+
+#. 13, tab menu end, toolbar item 6
+#: ../mousepad/mousepad-window.c:615
+msgid "Close this window"
+msgstr "关闭该窗口"
+
+#: ../mousepad/mousepad-window.c:619
+msgid "Undo the last action"
+msgstr "撤销上一个动作"
+
+#. 16, textview menu start, toolbar item 7
+#: ../mousepad/mousepad-window.c:620
+msgid "Redo the last undone action"
+msgstr "重做上次撤消的操作"
+
+#. 17, toolbar item 8
+#: ../mousepad/mousepad-window.c:622
+msgid "Cut the selection"
+msgstr "剪切选定内容"
+
+#. 18, toolbar item 9
+#: ../mousepad/mousepad-window.c:623
+msgid "Copy the selection"
+msgstr "复制选定内容"
+
+#. 19, toolbar item 10
+#: ../mousepad/mousepad-window.c:624
+msgid "Paste the clipboard"
+msgstr "粘贴剪切板内容"
+
+#: ../mousepad/mousepad-window.c:627
+msgid "Paste from the clipboard history"
+msgstr "从剪切板历史粘贴"
+
+#: ../mousepad/mousepad-window.c:628
+msgid "Paste the clipboard text into a column"
+msgstr "粘贴剪切板文本到一列中"
+
+#: ../mousepad/mousepad-window.c:629
+msgid "Delete the current selection"
+msgstr "删除当前选择内容"
+
+#: ../mousepad/mousepad-window.c:631
+msgid "Select the text in the entire document"
+msgstr "选中整个文档的文本"
+
+#: ../mousepad/mousepad-window.c:635
+msgid "Change the case of the selection to lowercase"
+msgstr "改变选中部分大小写方式为小写"
+
+#: ../mousepad/mousepad-window.c:636
+msgid "Change the case of the selection to uppercase"
+msgstr "改变选中部分大小写方式为大写"
+
+#: ../mousepad/mousepad-window.c:637
+msgid "Change the case of the selection to title case"
+msgstr "改变选中部分大小写方式为首字母大写"
+
+#: ../mousepad/mousepad-window.c:638
+msgid "Change the case of the selection opposite case"
+msgstr "反转选中内容的大小写"
+
+#: ../mousepad/mousepad-window.c:640
+msgid "Convert all tabs to spaces in the selection or document"
+msgstr "转换选中行或者整个文档开头的所有制表符为空格"
+
+#: ../mousepad/mousepad-window.c:641
+msgid ""
+"Convert all the leading spaces to tabs in the selected line(s) or document"
+msgstr "转换选中行或者整个文档开头的所有空格为制表符"
+
+#: ../mousepad/mousepad-window.c:643
+msgid "Remove all the trailing spaces from the selected line(s) or document"
+msgstr "删除选中行或者整个文档末尾的所有空格"
+
+#: ../mousepad/mousepad-window.c:645
+msgid "Reverse the order of something"
+msgstr "反转顺序"
+
+#: ../mousepad/mousepad-window.c:648
+msgid "Move the selection one line up"
+msgstr "向上移动选中行"
+
+#: ../mousepad/mousepad-window.c:649
+msgid "Move the selection one line down"
+msgstr "向下移动选中行"
+
+#: ../mousepad/mousepad-window.c:650
+msgid "Duplicate the current line or selection"
+msgstr "复制当前行或选中部分"
+
+#: ../mousepad/mousepad-window.c:651
+msgid "Increase the indentation of the selection or current line"
+msgstr "增加选中部分或者当前行的缩进"
+
+#: ../mousepad/mousepad-window.c:652
+msgid "Decrease the indentation of the selection or current line"
+msgstr "减少选中部分或者当前行的缩进"
+
+#. 40, textview menu end
+#: ../mousepad/mousepad-window.c:654
+msgid "Show the preferences dialog"
+msgstr "显示首选项对话框"
+
+#: ../mousepad/mousepad-window.c:658
+msgid "Search for text"
+msgstr "搜索文本"
+
+#. 43, toolbar item 12
+#: ../mousepad/mousepad-window.c:659
+msgid "Search forwards for the same text"
+msgstr "向前搜索相同的文本"
+
+#: ../mousepad/mousepad-window.c:660
+msgid "Search backwards for the same text"
+msgstr "反向搜索相同的文本"
+
+#: ../mousepad/mousepad-window.c:661
+msgid "Search for and replace text"
+msgstr "搜索和替换文本"
+
+#. 46, toolbar item 13
+#: ../mousepad/mousepad-window.c:663
+msgid "Go to a specific location in the document"
+msgstr "转至文档中的特定位置"
+
+#. 47, toolbar item 14
+#. "View" menu
+#. 48, view menu insertion flag
+#: ../mousepad/mousepad-window.c:667
+msgid "Change the editor font"
+msgstr "更改编辑器字体"
+
+#: ../mousepad/mousepad-window.c:673
+msgid "Change the visibility of the main menubar"
+msgstr "改变主菜单栏的可见性"
+
+#. 52, textview menu additional item
+#: ../mousepad/mousepad-window.c:674
+msgid "Change the visibility of the toolbar"
+msgstr "修改工具栏的可见性"
+
+#: ../mousepad/mousepad-window.c:675
+msgid "Change the visibility of the statusbar"
+msgstr "修改状态栏的可见性"
+
+#: ../mousepad/mousepad-window.c:677 ../mousepad/mousepad-window.c:5717
+msgid "Make the window fullscreen"
+msgstr "使窗口全屏"
+
+#. 55, toolbar item 15
+#. "Document" menu
+#. 56, document menu insertion flag
+#: ../mousepad/mousepad-window.c:681
+msgid "Toggle breaking lines in between words"
+msgstr "切换词间换行"
+
+#: ../mousepad/mousepad-window.c:682
+msgid "Auto indent a new line"
+msgstr "自动缩进新的行"
+
+#: ../mousepad/mousepad-window.c:689
+msgid "Set custom tab size"
+msgstr "设置自定义制表符大小"
+
+#. 64, custom tab size tooltip
+#: ../mousepad/mousepad-window.c:691
+msgid "Insert spaces when the tab button is pressed"
+msgstr "当按下制表键时插入空格"
+
+#: ../mousepad/mousepad-window.c:697
+msgid "Set the line ending of the document to Unix (LF)"
+msgstr "设置文档行结束符为 Unix  格式 (LF)"
+
+#: ../mousepad/mousepad-window.c:698
+msgid "Set the line ending of the document to Mac (CR)"
+msgstr "设置文档行结束符为 Mac 格式 (CR)"
+
+#: ../mousepad/mousepad-window.c:699
+msgid "Set the line ending of the document to DOS / Windows (CR LF)"
+msgstr "设置文档行结束符为 DOS / Windows 格式 (CR LF)"
+
+#: ../mousepad/mousepad-window.c:701
+msgid "Store the byte-order mark in the file"
+msgstr "在文件中存储字节顺标记"
+
+#: ../mousepad/mousepad-window.c:703
+msgid "Select the previous tab"
+msgstr "选择前一个标签"
+
+#: ../mousepad/mousepad-window.c:704
+msgid "Select the next tab"
+msgstr "选择下一个标签"
+
+#: ../mousepad/mousepad-window.c:708
+msgid "Display the Mousepad user manual"
+msgstr "显示 Mousepad 的用户手册"
+
+#: ../mousepad/mousepad-window.c:709
+msgid "About this application"
+msgstr "关于这个应用程序"
+
 #. insert items
-#: ../mousepad/mousepad-window.c:1101
+#: ../mousepad/mousepad-window.c:1101 ../mousepad/mousepad-window.ui.h:2
 msgid "_New"
 msgstr "新建(_N)"
 
-#: ../mousepad/mousepad-window.c:1103
+#: ../mousepad/mousepad-window.c:1103 ../mousepad/mousepad-window.ui.h:5
 msgid "_Open..."
 msgstr "打开(_O)..."
 
-#: ../mousepad/mousepad-window.c:1107
+#: ../mousepad/mousepad-window.c:1107 ../mousepad/mousepad-window.ui.h:9
 msgid "Save _As..."
 msgstr "另存为(_A)..."
 
-#: ../mousepad/mousepad-window.c:1109
+#: ../mousepad/mousepad-window.c:1109 ../mousepad/mousepad-window.ui.h:11
 msgid "Re_vert"
 msgstr "恢复(_V)"
 
-#: ../mousepad/mousepad-window.c:1111
+#: ../mousepad/mousepad-window.c:1111 ../mousepad/mousepad-window.ui.h:14
 msgid "Close _Tab"
 msgstr "关闭标签(_T)"
 
-#: ../mousepad/mousepad-window.c:1117
+#: ../mousepad/mousepad-window.c:1117 ../mousepad/mousepad-window.ui.h:17
 msgid "_Undo"
 msgstr "撤消(_U)"
 
-#: ../mousepad/mousepad-window.c:1119
+#: ../mousepad/mousepad-window.c:1119 ../mousepad/mousepad-window.ui.h:18
 msgid "_Redo"
 msgstr "重做(_R)"
 
-#: ../mousepad/mousepad-window.c:1121
+#: ../mousepad/mousepad-window.c:1121 ../mousepad/mousepad-window.ui.h:19
 msgid "Cu_t"
 msgstr "剪切(_T)"
 
-#: ../mousepad/mousepad-window.c:1123
+#: ../mousepad/mousepad-window.c:1123 ../mousepad/mousepad-window.ui.h:20
 msgid "_Copy"
 msgstr "复制(_C)"
 
-#: ../mousepad/mousepad-window.c:1125
+#: ../mousepad/mousepad-window.c:1125 ../mousepad/mousepad-window.ui.h:21
 msgid "_Paste"
 msgstr "粘贴(_P)"
 
-#: ../mousepad/mousepad-window.c:1133
+#: ../mousepad/mousepad-window.c:1133 ../mousepad/mousepad-window.ui.h:47
 msgid "Find and Rep_lace..."
 msgstr "查找并替换(_L)..."
 
-#: ../mousepad/mousepad-window.c:1135
+#: ../mousepad/mousepad-window.c:1135 ../mousepad/mousepad-window.ui.h:48
 msgid "_Go to..."
 msgstr "转至(_G)..."
 
-#: ../mousepad/mousepad-window.c:1144
+#: ../mousepad/mousepad-window.c:1144 ../mousepad/mousepad-window.ui.h:57
 msgid "_Fullscreen"
 msgstr "全屏(_F)"
 
@@ -968,6 +1234,230 @@ msgstr "打印文档失败"
 #: ../mousepad/mousepad-window.c:5477
 msgid "Choose Mousepad Font"
 msgstr "选择 Mousepad 字体"
+
+#: ../mousepad/mousepad-window.c:5710
+msgid "Leave fullscreen mode"
+msgstr "退出全屏模式"
+
+#: ../mousepad/mousepad-window.ui.h:1
+msgid "_File"
+msgstr "文件(_F)"
+
+#: ../mousepad/mousepad-window.ui.h:3
+msgid "New _Window"
+msgstr "新窗口(_W)"
+
+#: ../mousepad/mousepad-window.ui.h:4
+msgid "New From Te_mplate"
+msgstr "从模板新建(_M)"
+
+#: ../mousepad/mousepad-window.ui.h:6
+msgid "Op_en Recent"
+msgstr "打开最近使用的文档(_E)"
+
+#: ../mousepad/mousepad-window.ui.h:7
+msgid "Clear _History"
+msgstr "清除历史记录(_H)"
+
+#: ../mousepad/mousepad-window.ui.h:10
+msgid "Save A_ll"
+msgstr "全部保存(_L)"
+
+#: ../mousepad/mousepad-window.ui.h:12
+msgid "_Print..."
+msgstr "打印(_P)..."
+
+#: ../mousepad/mousepad-window.ui.h:13
+msgid "_Detach Tab"
+msgstr "分离标签(_D)"
+
+#: ../mousepad/mousepad-window.ui.h:15
+msgid "_Close Window"
+msgstr "关闭窗口(_C)"
+
+#: ../mousepad/mousepad-window.ui.h:16
+msgid "_Edit"
+msgstr "编辑(_E)"
+
+#: ../mousepad/mousepad-window.ui.h:22
+msgid "Paste _Special"
+msgstr "选择性粘贴(_S)"
+
+#: ../mousepad/mousepad-window.ui.h:23
+msgid "Paste from _History"
+msgstr "从历史粘贴(_H)"
+
+#: ../mousepad/mousepad-window.ui.h:24
+msgid "Paste as _Column"
+msgstr "粘贴成列(_C)"
+
+#: ../mousepad/mousepad-window.ui.h:25
+msgid "_Delete"
+msgstr "删除(&D)"
+
+#: ../mousepad/mousepad-window.ui.h:26
+msgid "Select _All"
+msgstr "全选(_A)"
+
+#: ../mousepad/mousepad-window.ui.h:27
+msgid "Conve_rt"
+msgstr "转换(_R)"
+
+#: ../mousepad/mousepad-window.ui.h:28
+msgid "To _Lowercase"
+msgstr "小写(_L)"
+
+#: ../mousepad/mousepad-window.ui.h:29
+msgid "To _Uppercase"
+msgstr "大写(_U)"
+
+#: ../mousepad/mousepad-window.ui.h:30
+msgid "To _Title Case"
+msgstr "首字母大写(_T)"
+
+#: ../mousepad/mousepad-window.ui.h:31
+msgid "To _Opposite Case"
+msgstr "大小写反转(_O)"
+
+#: ../mousepad/mousepad-window.ui.h:32
+msgid "_Tabs to Spaces"
+msgstr "制表符到空格 (_T)"
+
+#: ../mousepad/mousepad-window.ui.h:33
+msgid "_Spaces to Tabs"
+msgstr "空格到制表符(_S)"
+
+#: ../mousepad/mousepad-window.ui.h:34
+msgid "St_rip Trailing Spaces"
+msgstr "去掉末尾空格(_R)"
+
+#: ../mousepad/mousepad-window.ui.h:35
+msgid "_Transpose"
+msgstr "转置(_T)"
+
+#: ../mousepad/mousepad-window.ui.h:36
+msgid "_Move Selection"
+msgstr "移动选中部分(_M)"
+
+#: ../mousepad/mousepad-window.ui.h:37
+msgid "Line _Up"
+msgstr "上移一行(_U)"
+
+#: ../mousepad/mousepad-window.ui.h:38
+msgid "Line _Down"
+msgstr "下移一行(_U)"
+
+#: ../mousepad/mousepad-window.ui.h:39
+msgid "Dup_licate Line / Selection"
+msgstr "复制行或选中部分(_L)"
+
+#: ../mousepad/mousepad-window.ui.h:40
+msgid "_Increase Indent"
+msgstr "增加缩进(_I)"
+
+#: ../mousepad/mousepad-window.ui.h:41
+msgid "_Decrease Indent"
+msgstr "减少缩进(_I)"
+
+#: ../mousepad/mousepad-window.ui.h:43
+msgid "_Search"
+msgstr "搜索(_S)"
+
+#: ../mousepad/mousepad-window.ui.h:45
+msgid "Find _Next"
+msgstr "查找下一个(_N)"
+
+#: ../mousepad/mousepad-window.ui.h:46
+msgid "Find _Previous"
+msgstr "查找上一个(_P)"
+
+#: ../mousepad/mousepad-window.ui.h:49
+msgid "_View"
+msgstr "视图(_V)"
+
+#: ../mousepad/mousepad-window.ui.h:50
+msgid "Select F_ont..."
+msgstr "选择字体(_O)..."
+
+#: ../mousepad/mousepad-window.ui.h:51
+msgid "_Color Scheme"
+msgstr "颜色方案(_C)"
+
+#: ../mousepad/mousepad-window.ui.h:53
+msgid "Line N_umbers"
+msgstr "行号(_U)"
+
+#: ../mousepad/mousepad-window.ui.h:54
+msgid "_Menubar"
+msgstr "菜单栏(_M)"
+
+#: ../mousepad/mousepad-window.ui.h:55
+msgid "_Toolbar"
+msgstr "工具栏(_T)"
+
+#: ../mousepad/mousepad-window.ui.h:56
+msgid "St_atusbar"
+msgstr "状态栏(_A)"
+
+#: ../mousepad/mousepad-window.ui.h:58
+msgid "_Document"
+msgstr "文档(_D)"
+
+#: ../mousepad/mousepad-window.ui.h:59
+msgid "_Word Wrap"
+msgstr "自动换行"
+
+#: ../mousepad/mousepad-window.ui.h:60
+msgid "_Auto Indent"
+msgstr "自动缩进(_A)"
+
+#: ../mousepad/mousepad-window.ui.h:61
+msgid "Tab _Size"
+msgstr "制表符大小(_S)"
+
+#: ../mousepad/mousepad-window.ui.h:62
+msgid "Other..."
+msgstr "其他..."
+
+#: ../mousepad/mousepad-window.ui.h:63
+msgid "Insert _Spaces"
+msgstr "插入空格(_S)"
+
+#: ../mousepad/mousepad-window.ui.h:64
+msgid "_Filetype"
+msgstr "文件类型(_F)"
+
+#: ../mousepad/mousepad-window.ui.h:65
+msgid "Plain Text"
+msgstr "纯文本"
+
+#: ../mousepad/mousepad-window.ui.h:66
+msgid "Line E_nding"
+msgstr "行结束符(_N)"
+
+#: ../mousepad/mousepad-window.ui.h:67
+msgid "Write Unicode _BOM"
+msgstr "写入 Unicode BOM(_B)"
+
+#: ../mousepad/mousepad-window.ui.h:68
+msgid "_Previous Tab"
+msgstr "上一标签(_P)"
+
+#: ../mousepad/mousepad-window.ui.h:69
+msgid "_Next Tab"
+msgstr "下一个标签(_N)"
+
+#: ../mousepad/mousepad-window.ui.h:70
+msgid "_Help"
+msgstr "帮助(_H)"
+
+#: ../mousepad/mousepad-window.ui.h:71
+msgid "_Contents"
+msgstr "内容(_C)"
+
+#: ../mousepad/mousepad-window.ui.h:72
+msgid "_About"
+msgstr "关于(&A)"
 
 #: ../mousepad.desktop.in.in.h:2
 msgid "Simple Text Editor"
