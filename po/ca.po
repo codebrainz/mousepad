@@ -12,8 +12,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-08-25 12:53+0200\n"
-"PO-Revision-Date: 2020-08-26 08:05+0000\n"
+"POT-Creation-Date: 2020-09-22 12:47+0200\n"
+"PO-Revision-Date: 2020-09-23 07:44+0000\n"
 "Last-Translator: Robert Antoni Buj Gelonch <rbuj@fedoraproject.org>\n"
 "Language-Team: Catalan (http://www.transifex.com/xfce/xfce-apps/language/ca/)\n"
 "MIME-Version: 1.0\n"
@@ -40,114 +40,172 @@ msgid "Mousepad"
 msgstr "Mousepad"
 
 #. initialize gtk+
-#: ../mousepad/main.c:84
+#: ../mousepad/main.c:78
 msgid "[FILES...]"
 msgstr "[FITXERS...]"
 
 #. no error message, the gui initialization failed
-#: ../mousepad/main.c:90
+#: ../mousepad/main.c:84
 msgid "Failed to open display."
 msgstr "Ha fallat l'obriment de la pantalla."
 
-#: ../mousepad/main.c:107
+#: ../mousepad/main.c:101
 msgid "The Xfce development team. All rights reserved."
 msgstr "L'equip de desenvolupadors de Xfce. Tots els drets reservats."
 
-#: ../mousepad/main.c:108
+#: ../mousepad/main.c:102
 #, c-format
 msgid "Please report bugs to <%s>."
 msgstr "Notifiqueu els errors a <%s>."
+
+#: ../mousepad/mousepad-application.c:436
+msgid "No filetype"
+msgstr "Sense tipus de fitxer"
+
+#: ../mousepad/mousepad-application.c:487
+msgid "No style scheme"
+msgstr "Sense esquema d'estil"
+
+#: ../mousepad/mousepad-application.c:502
+#, c-format
+msgid "%s | Authors: %s | Filename: %s"
+msgstr "%s | Autors: %s | Nom de fitxer: %s"
 
 #: ../mousepad/mousepad-dialogs.c:39
 msgid "Mousepad is a fast text editor for the Xfce Desktop Environment."
 msgstr "Mousepad és un editor de text ràpid per a l'entorn d'escriptori Xfce."
 
-#: ../mousepad/mousepad-dialogs.c:44
+#: ../mousepad/mousepad-dialogs.c:46
 msgid "translator-credits"
 msgstr "Robert Antoni Buj Gelonch <rbuj@fedoraproject.org>"
 
 #. display an error message to the user
-#: ../mousepad/mousepad-dialogs.c:99
+#: ../mousepad/mousepad-dialogs.c:96 ../mousepad/mousepad-dialogs.c:115
 msgid "Failed to open the documentation browser"
 msgstr "Ha fallat l'obriment del navegador de la documentació"
 
 #. build dialog
-#: ../mousepad/mousepad-dialogs.c:114
+#: ../mousepad/mousepad-dialogs.c:137
 msgid "Select Tab Size"
 msgstr "Seleccioneu la mida del tabulador"
 
+#. add buttons
+#. cancel button
+#: ../mousepad/mousepad-dialogs.c:140 ../mousepad/mousepad-dialogs.c:221
+#: ../mousepad/mousepad-dialogs.c:326 ../mousepad/mousepad-dialogs.c:390
+#: ../mousepad/mousepad-dialogs.c:469 ../mousepad/mousepad-dialogs.c:501
+#: ../mousepad/mousepad-encoding-dialog.c:121
+#: ../mousepad/mousepad-encoding-dialog.c:184
+#: ../mousepad/mousepad-window.c:4253 ../mousepad/mousepad-window.c:4510
+msgid "_Cancel"
+msgstr "_Cancel·la"
+
+#: ../mousepad/mousepad-dialogs.c:141
+#: ../mousepad/mousepad-encoding-dialog.c:122
+msgid "_OK"
+msgstr "D'ac_ord"
+
 #. build the dialog
-#: ../mousepad/mousepad-dialogs.c:195
+#: ../mousepad/mousepad-dialogs.c:218
 msgid "Go To"
 msgstr "Vés-hi"
 
-#: ../mousepad/mousepad-dialogs.c:217
+#: ../mousepad/mousepad-dialogs.c:223
+msgid "_Jump to"
+msgstr "_Vés a"
+
+#: ../mousepad/mousepad-dialogs.c:243
 msgid "_Line number:"
 msgstr "Número de _línia:"
 
-#: ../mousepad/mousepad-dialogs.c:236
+#: ../mousepad/mousepad-dialogs.c:263
 msgid "C_olumn number:"
 msgstr "Número de c_olumna:"
 
-#: ../mousepad/mousepad-dialogs.c:294
-msgid "Remove all entries from the documents history?"
-msgstr "Voleu suprimir totes les entrades de l'historial de documents?"
-
-#: ../mousepad/mousepad-dialogs.c:299
+#. create the question dialog
+#: ../mousepad/mousepad-dialogs.c:323
 msgid "Clear Documents History"
 msgstr "Neteja l'historial de documents"
 
-#: ../mousepad/mousepad-dialogs.c:302
+#: ../mousepad/mousepad-dialogs.c:328
+msgid "Clea_r"
+msgstr "Nete_ja"
+
+#: ../mousepad/mousepad-dialogs.c:352
+msgid "<big><b>Remove all entries from the documents history?</b></big>"
+msgstr "<big><b>Voleu suprimir totes les entrades de l'historial de documents?</b></big>"
+
+#. secondary text
+#: ../mousepad/mousepad-dialogs.c:357
 msgid ""
 "Clearing the documents history will permanently remove all currently listed "
 "entries."
 msgstr "Netejar l'historial de documents eliminarà permanentment totes les entrades mostrades actualment."
 
-#: ../mousepad/mousepad-dialogs.c:333
-msgid "Do you want to save the changes before closing?"
-msgstr "Voleu desar els canvis abans de tancar?"
-
-#: ../mousepad/mousepad-dialogs.c:334
+#. create the question dialog
+#: ../mousepad/mousepad-dialogs.c:387
 msgid "Save Changes"
 msgstr "Desa els canvis"
 
-#: ../mousepad/mousepad-dialogs.c:335
+#: ../mousepad/mousepad-dialogs.c:394
 msgid "_Don't Save"
 msgstr "No ho _desis"
 
+#: ../mousepad/mousepad-dialogs.c:401 ../mousepad/mousepad-dialogs.c:502
+msgid "_Save As"
+msgstr "Anomena i de_sa"
+
+#: ../mousepad/mousepad-dialogs.c:409 ../mousepad/mousepad-dialogs.c:472
+#: ../mousepad/mousepad-window.c:1105 ../mousepad/mousepad-window.c:4512
+#: ../mousepad/mousepad-window.ui.h:8
+msgid "_Save"
+msgstr "De_sa"
+
+#: ../mousepad/mousepad-dialogs.c:433
+msgid "<big><b>Do you want to save the changes before closing?</b></big>"
+msgstr "<big><b>Voleu desar els canvis abans de tancar?</b></big>"
+
 #. secondary text
-#: ../mousepad/mousepad-dialogs.c:357
+#: ../mousepad/mousepad-dialogs.c:438
 msgid "If you don't save the document, all the changes will be lost."
 msgstr "Si no deseu el document, es perdran tots els canvis."
 
-#: ../mousepad/mousepad-dialogs.c:379
+#: ../mousepad/mousepad-dialogs.c:463
 msgid ""
 "The document has been externally modified. Do you want to continue saving?"
 msgstr "El document ha estat modificat externament. Encara voleu desar-ho?"
 
-#: ../mousepad/mousepad-dialogs.c:380
+#: ../mousepad/mousepad-dialogs.c:465
 msgid "Externally Modified"
 msgstr "Externament modificat"
 
-#: ../mousepad/mousepad-dialogs.c:382
+#: ../mousepad/mousepad-dialogs.c:467
 msgid "If you save the document, all of the external changes will be lost."
 msgstr "Si no deseu el document, es perdran tots els canvis externs."
 
-#: ../mousepad/mousepad-dialogs.c:410
+#: ../mousepad/mousepad-dialogs.c:470
+msgid "Save _As"
+msgstr "_Anomena i desa"
+
+#: ../mousepad/mousepad-dialogs.c:498
 msgid "Do you want to save your changes before reloading?"
 msgstr "Voleu desar els canvis abans de la recàrrega?"
 
-#: ../mousepad/mousepad-dialogs.c:412
+#: ../mousepad/mousepad-dialogs.c:500
 msgid "If you revert the file, all unsaved changes will be lost."
 msgstr "Si revertiu el fitxer, es perdran tots els canvis no s'hagin desat."
 
+#: ../mousepad/mousepad-dialogs.c:504
+msgid "_Revert"
+msgstr "_Reverteix"
+
 #. pack button, add signal and tooltip
-#: ../mousepad/mousepad-document.c:498
+#: ../mousepad/mousepad-document.c:506
 msgid "Close this tab"
 msgstr "Tanca aquesta pestanya"
 
 #. create an unique untitled document name
-#: ../mousepad/mousepad-document.c:528
+#: ../mousepad/mousepad-document.c:536
 msgid "Untitled"
 msgstr "Sense títol"
 
@@ -161,19 +219,19 @@ msgid "Please select an encoding below."
 msgstr "Seleccioneu una codificació de caràcters de les de sota."
 
 #. encoding radio buttons
-#: ../mousepad/mousepad-encoding-dialog.c:138
+#: ../mousepad/mousepad-encoding-dialog.c:139
 msgid "Default (UTF-8)"
 msgstr "Predeterminada (UTF-8)"
 
-#: ../mousepad/mousepad-encoding-dialog.c:144
+#: ../mousepad/mousepad-encoding-dialog.c:146
 msgid "System"
 msgstr "Sistema"
 
-#: ../mousepad/mousepad-encoding-dialog.c:151
+#: ../mousepad/mousepad-encoding-dialog.c:156
 msgid "Other:"
 msgstr "Altres:"
 
-#: ../mousepad/mousepad-encoding-dialog.c:171
+#: ../mousepad/mousepad-encoding-dialog.c:180
 msgid "Checking encodings..."
 msgstr "Comprovant codificacions de caràcters..."
 
@@ -300,26 +358,24 @@ msgstr "Coreà"
 msgid "Invalid byte sequence in conversion input"
 msgstr "Seqüència de bytes invàlida en la conversió de l'entrada"
 
-#: ../mousepad/mousepad-file.c:906
+#: ../mousepad/mousepad-file.c:902
 #, c-format
 msgid "The file \"%s\" you tried to reload does not exist anymore"
 msgstr "El fitxer «%s» que heu intentat recarregar ja no existeix"
 
-#: ../mousepad/mousepad-file.c:947
+#: ../mousepad/mousepad-file.c:943
 #, c-format
 msgid "Failed to read the status of \"%s\""
 msgstr "Ha fallat la lectura de l'estat de «%s»"
 
-#: ../mousepad/mousepad-language-action.c:229
-msgid "Plain Text"
-msgstr "Text pla"
-
-#: ../mousepad/mousepad-language-action.c:230
-msgid "No filetype"
-msgstr "Sense tipus de fitxer"
+#. add the close button
+#: ../mousepad/mousepad-prefs-dialog.c:431
+#: ../mousepad/mousepad-replace-dialog.c:177
+msgid "_Close"
+msgstr "Tan_ca"
 
 #. setup the window properties
-#: ../mousepad/mousepad-prefs-dialog.c:432 ../mousepad/mousepad-window.c:447
+#: ../mousepad/mousepad-prefs-dialog.c:437 ../mousepad/mousepad-window.ui.h:42
 msgid "Preferences"
 msgstr "Preferències"
 
@@ -352,7 +408,7 @@ msgid "none"
 msgstr "sense"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:8
-#: ../mousepad/mousepad-style-scheme-action.c:193
+#: ../mousepad/mousepad-window.ui.h:52
 msgid "None"
 msgstr "Sense"
 
@@ -396,8 +452,10 @@ msgstr "Text a sota de les icones"
 msgid "Text Beside Icons"
 msgstr "Text al costat de les icones"
 
+#. "Color Scheme" submenu
+#. 50, style sheme menu insertion flag
 #: ../mousepad/mousepad-prefs-dialog.glade.h:19
-#: ../mousepad/mousepad-window.c:474
+#: ../mousepad/mousepad-window.c:671
 msgid "Show line numbers"
 msgstr "Mostra els números de les línies"
 
@@ -534,173 +592,177 @@ msgstr "Finestra"
 msgid "Document Settings"
 msgstr "Ajusts del document"
 
-#: ../mousepad/mousepad-print.c:595
+#: ../mousepad/mousepad-print.c:594
 msgid "Page Setup"
 msgstr "Configuració de la pàgina"
 
-#: ../mousepad/mousepad-print.c:605
+#: ../mousepad/mousepad-print.c:599
 msgid "_Adjust page size and orientation"
 msgstr "_Ajusta la mida i l'orientació de la pàgina"
 
-#: ../mousepad/mousepad-print.c:615
+#: ../mousepad/mousepad-print.c:617
 msgid "Appearance"
 msgstr "Aparença"
 
-#: ../mousepad/mousepad-print.c:629
+#: ../mousepad/mousepad-print.c:631
 msgid "Print page _headers"
 msgstr "Imprimeix les _capçaleres de la pàgina"
 
-#: ../mousepad/mousepad-print.c:636
+#: ../mousepad/mousepad-print.c:638
 msgid "Print _line numbers"
 msgstr "Imprimeix els _números de les línies"
 
-#: ../mousepad/mousepad-print.c:653
+#: ../mousepad/mousepad-print.c:655
 msgid "Numbering interval:"
 msgstr "Interval de numeració:"
 
-#: ../mousepad/mousepad-print.c:661
+#: ../mousepad/mousepad-print.c:664
 msgid ""
 "The interval at which to print line numbers. For example a value of 1 will "
 "print a line number on each line, a value of 2 will print a line number on "
 "every other line, and so on."
 msgstr "L'interval en què voleu imprimir els números de línia. Per exemple, amb un valor d'1 s'imprimirà un número de línia a cada línia, amb un valor de 2 s'imprimirà un número de línia cada dues línies, i així successivament."
 
-#: ../mousepad/mousepad-print.c:673
+#: ../mousepad/mousepad-print.c:677
 msgid "Enable text _wrapping"
 msgstr "Habilita l'a_justament del text"
 
-#: ../mousepad/mousepad-print.c:680
+#: ../mousepad/mousepad-print.c:685
 msgid "Enable _syntax highlighting"
 msgstr "Activa el ressaltat de la _sintaxi"
 
-#: ../mousepad/mousepad-print.c:692
+#: ../mousepad/mousepad-print.c:697
 msgid "Fonts"
 msgstr "Lletres"
 
-#: ../mousepad/mousepad-print.c:714
+#: ../mousepad/mousepad-print.c:713
 msgid "Header:"
 msgstr "Capçalera:"
 
-#: ../mousepad/mousepad-print.c:724
+#: ../mousepad/mousepad-print.c:727
 msgid "Body:"
 msgstr "Cos:"
 
-#: ../mousepad/mousepad-print.c:734
+#: ../mousepad/mousepad-print.c:741
 msgid "Line numbers:"
 msgstr "Números de les línies:"
 
 #. set dialog properties
-#: ../mousepad/mousepad-replace-dialog.c:160
+#: ../mousepad/mousepad-replace-dialog.c:164
 msgid "Find and Replace"
 msgstr "Troba i substitueix"
 
-#: ../mousepad/mousepad-replace-dialog.c:166
-#: ../mousepad/mousepad-replace-dialog.c:471
+#. dialog buttons
+#: ../mousepad/mousepad-replace-dialog.c:170
+#: ../mousepad/mousepad-window.c:1131 ../mousepad/mousepad-window.ui.h:44
+msgid "_Find"
+msgstr "_Troba"
+
+#: ../mousepad/mousepad-replace-dialog.c:174
+#: ../mousepad/mousepad-replace-dialog.c:507
 msgid "_Replace"
 msgstr "_Substitueix"
 
-#: ../mousepad/mousepad-replace-dialog.c:184
+#: ../mousepad/mousepad-replace-dialog.c:197
 msgid "_Search for:"
 msgstr "_Cerca:"
 
-#: ../mousepad/mousepad-replace-dialog.c:210
+#: ../mousepad/mousepad-replace-dialog.c:226
 msgid "Replace _with:"
 msgstr "Substitueix _amb:"
 
-#: ../mousepad/mousepad-replace-dialog.c:230
+#: ../mousepad/mousepad-replace-dialog.c:249
 msgid "Search _direction:"
 msgstr "Sentit _de la cerca:"
 
-#: ../mousepad/mousepad-replace-dialog.c:239
+#: ../mousepad/mousepad-replace-dialog.c:259
 msgid "Up"
 msgstr "Cap amunt"
 
-#: ../mousepad/mousepad-replace-dialog.c:240
+#: ../mousepad/mousepad-replace-dialog.c:260
 msgid "Down"
 msgstr "Cap avall"
 
 #. wrap around
-#: ../mousepad/mousepad-replace-dialog.c:249
+#: ../mousepad/mousepad-replace-dialog.c:270
 msgid "_Wrap around"
 msgstr "Ajusta al _voltant"
 
 #. case sensitive
-#. overflow menu item for when window is too narrow to show the tool bar item
-#: ../mousepad/mousepad-replace-dialog.c:256
-#: ../mousepad/mousepad-search-bar.c:260 ../mousepad/mousepad-search-bar.c:270
+#: ../mousepad/mousepad-replace-dialog.c:278
+#: ../mousepad/mousepad-search-bar.c:275 ../mousepad/mousepad-search-bar.c:288
 msgid "Match _case"
 msgstr "Coincidència exa_cta"
 
 #. match whole word
-#: ../mousepad/mousepad-replace-dialog.c:263
+#: ../mousepad/mousepad-replace-dialog.c:288
 msgid "_Match whole word"
 msgstr "Ha de co_incidir tota la paraula"
 
 #. enable regex search
-#. overflow menu item for when window is too narrow to show the tool bar item
-#: ../mousepad/mousepad-replace-dialog.c:270
-#: ../mousepad/mousepad-search-bar.c:284 ../mousepad/mousepad-search-bar.c:294
+#: ../mousepad/mousepad-replace-dialog.c:298
+#: ../mousepad/mousepad-search-bar.c:305 ../mousepad/mousepad-search-bar.c:318
 msgid "Regular e_xpression"
 msgstr "E_xpressió regular"
 
-#: ../mousepad/mousepad-replace-dialog.c:281
+#: ../mousepad/mousepad-replace-dialog.c:314
 msgid "Replace _all in:"
 msgstr "S_ubstitueix-ho tot en:"
 
-#: ../mousepad/mousepad-replace-dialog.c:289
+#: ../mousepad/mousepad-replace-dialog.c:323
 msgid "Selection"
 msgstr "Selecció"
 
-#: ../mousepad/mousepad-replace-dialog.c:290
+#: ../mousepad/mousepad-replace-dialog.c:324
 msgid "Document"
 msgstr "Document"
 
-#: ../mousepad/mousepad-replace-dialog.c:291
+#: ../mousepad/mousepad-replace-dialog.c:325
 msgid "All Documents"
 msgstr "Tots els documents"
 
-#: ../mousepad/mousepad-replace-dialog.c:450
+#: ../mousepad/mousepad-replace-dialog.c:486
 #, c-format
 msgid "%d occurrence"
 msgid_plural "%d occurrences"
 msgstr[0] "%d coincidència"
 msgstr[1] "%d coincidències"
 
-#: ../mousepad/mousepad-replace-dialog.c:471
+#: ../mousepad/mousepad-replace-dialog.c:507
 msgid "_Replace All"
 msgstr "_Substitueix-ho tot"
 
-#: ../mousepad/mousepad-search-bar.c:201
+#: ../mousepad/mousepad-search-bar.c:206
 msgid "Fi_nd:"
 msgstr "Bu_sca:"
 
-#: ../mousepad/mousepad-search-bar.c:223
+#: ../mousepad/mousepad-search-bar.c:233
 msgid "_Next"
 msgstr "Següe_nt:"
 
-#: ../mousepad/mousepad-search-bar.c:234
+#: ../mousepad/mousepad-search-bar.c:245
 msgid "_Previous"
 msgstr "A_nterior"
 
-#: ../mousepad/mousepad-search-bar.c:245
+#: ../mousepad/mousepad-search-bar.c:258
 msgid "Highlight _All"
 msgstr "Ressalta-ho t_ot"
 
-#: ../mousepad/mousepad-statusbar.c:134
+#: ../mousepad/mousepad-statusbar.c:125
 msgid "Choose a filetype"
 msgstr "Escull un tipus de fitxer"
 
 #. language/filetype
-#: ../mousepad/mousepad-statusbar.c:139 ../mousepad/mousepad-statusbar.c:249
+#: ../mousepad/mousepad-statusbar.c:130 ../mousepad/mousepad-statusbar.c:249
 msgid "Filetype: None"
 msgstr "Tipus de fitxer: Sense"
 
-#: ../mousepad/mousepad-statusbar.c:162
+#: ../mousepad/mousepad-statusbar.c:153
 msgid "Toggle the overwrite mode"
 msgstr "Alterna el mode d'escriptura"
 
 #. overwrite label
-#: ../mousepad/mousepad-statusbar.c:167
+#: ../mousepad/mousepad-statusbar.c:158
 msgid "OVR"
 msgstr "Sobreescriu"
 
@@ -719,589 +781,420 @@ msgstr "Línia: %d Columna: %d Selecció: %d"
 msgid "Line: %d Column: %d"
 msgstr "Línia: %d Columna: %d"
 
-#: ../mousepad/mousepad-style-scheme-action.c:194
-msgid "No style scheme"
-msgstr "Sense esquema d'estil"
-
-#: ../mousepad/mousepad-style-scheme-action.c:208
-#, c-format
-msgid "%s | Authors: %s | Filename: %s"
-msgstr "%s | Autors: %s | Nom de fitxer: %s"
-
 #. show warning to the user
-#: ../mousepad/mousepad-util.c:550
+#: ../mousepad/mousepad-util.c:543
 #, c-format
 msgid "Unable to create base directory \"%s\". Saving to file \"%s\" will be aborted."
 msgstr "No es pot crear el directori base «%s». S'avortarà el desament del fitxer «%s»."
 
 #. print error
-#: ../mousepad/mousepad-util.c:596
+#: ../mousepad/mousepad-util.c:589
 #, c-format
 msgid "Failed to store the preferences to \"%s\": %s"
 msgstr "Ha fallat el desament de les preferències a «%s»: %s"
 
-#: ../mousepad/mousepad-window.c:404
-msgid "_File"
-msgstr "_Fitxer"
-
-#: ../mousepad/mousepad-window.c:405
-msgid "_New"
-msgstr "_Nou"
-
-#: ../mousepad/mousepad-window.c:405
+#: ../mousepad/mousepad-window.c:597
 msgid "Create a new document"
 msgstr "Crea un document nou"
 
-#: ../mousepad/mousepad-window.c:406
-msgid "New _Window"
-msgstr "_Finestra nova"
-
-#: ../mousepad/mousepad-window.c:406
+#. 1, toolbar item 1
+#: ../mousepad/mousepad-window.c:598
 msgid "Create a new document in a new window"
 msgstr "Crea un document nou en una finestra nova"
 
-#: ../mousepad/mousepad-window.c:407
-msgid "New From Te_mplate"
-msgstr "Nou des d'una p_lantilla"
-
-#: ../mousepad/mousepad-window.c:408
-msgid "_Open..."
-msgstr "_Obre..."
-
-#: ../mousepad/mousepad-window.c:408
+#. 3, template menu insertion flag
+#: ../mousepad/mousepad-window.c:601
 msgid "Open a file"
 msgstr "Obre un fitxer"
 
-#: ../mousepad/mousepad-window.c:409
-msgid "Op_en Recent"
-msgstr "Obr_e un fitxer recent"
-
-#: ../mousepad/mousepad-window.c:410
-msgid "No items found"
-msgstr "No s'han trobat elements"
-
-#: ../mousepad/mousepad-window.c:411
-msgid "Clear _History"
-msgstr "Neteja l'_historial"
-
-#: ../mousepad/mousepad-window.c:411
+#. 4, toolbar item 2
+#. 5, recent menu insertion flag
+#: ../mousepad/mousepad-window.c:603
 msgid "Clear the recently used files history"
 msgstr "Neteja l'historial dels fitxers recents"
 
-#: ../mousepad/mousepad-window.c:412
+#: ../mousepad/mousepad-window.c:605
 msgid "Save the current document"
 msgstr "Desa el document actual"
 
-#: ../mousepad/mousepad-window.c:413
-msgid "Save _As..."
-msgstr "_Anomena i desa..."
-
-#: ../mousepad/mousepad-window.c:413
+#. 7, tab menu start, toolbar item 3
+#: ../mousepad/mousepad-window.c:606
 msgid "Save current document as another file"
 msgstr "Desa el document actual com a un altre fitxer"
 
-#: ../mousepad/mousepad-window.c:414
-msgid "Save A_ll"
-msgstr "Des_a-ho tot"
-
-#: ../mousepad/mousepad-window.c:414
+#. 8, tab menu 2, toolbar item 4
+#: ../mousepad/mousepad-window.c:607
 msgid "Save all document in this window"
 msgstr "Desa tots els documents d'aquesta finestra"
 
-#: ../mousepad/mousepad-window.c:415
-msgid "Re_vert"
-msgstr "Re_verteix"
-
-#: ../mousepad/mousepad-window.c:415
+#: ../mousepad/mousepad-window.c:608
 msgid "Revert to the saved version of the file"
 msgstr "Reverteix a la versió desada del fitxer"
 
-#: ../mousepad/mousepad-window.c:416
-msgid "_Print..."
-msgstr "Im_primeix..."
-
-#: ../mousepad/mousepad-window.c:416
+#. 10, tab menu 3, toolbar item 5
+#: ../mousepad/mousepad-window.c:610
 msgid "Print the current document"
 msgstr "Imprimeix el document actual"
 
-#: ../mousepad/mousepad-window.c:417
-msgid "_Detach Tab"
-msgstr "_Desadhereix la pestanya"
-
-#: ../mousepad/mousepad-window.c:417
+#: ../mousepad/mousepad-window.c:612
 msgid "Move the current document to a new window"
 msgstr "Mou el document actual a una finestra nova"
 
-#: ../mousepad/mousepad-window.c:418
-msgid "Close _Tab"
-msgstr "_Tanca la pestanya"
-
-#: ../mousepad/mousepad-window.c:418
+#. 12, tab menu 4
+#: ../mousepad/mousepad-window.c:614
 msgid "Close the current document"
 msgstr "Tanca el document actual"
 
-#: ../mousepad/mousepad-window.c:419
-msgid "_Close Window"
-msgstr "Tan_ca la finestra"
-
-#: ../mousepad/mousepad-window.c:419
+#. 13, tab menu end, toolbar item 6
+#: ../mousepad/mousepad-window.c:615
 msgid "Close this window"
 msgstr "Tanca aquesta finestra"
 
-#: ../mousepad/mousepad-window.c:421
-msgid "_Edit"
-msgstr "_Edita"
-
-#: ../mousepad/mousepad-window.c:422
+#: ../mousepad/mousepad-window.c:619
 msgid "Undo the last action"
 msgstr "Desfés l'última acció"
 
-#: ../mousepad/mousepad-window.c:423
+#. 16, textview menu start, toolbar item 7
+#: ../mousepad/mousepad-window.c:620
 msgid "Redo the last undone action"
 msgstr "Refés l'última acció desfeta"
 
-#: ../mousepad/mousepad-window.c:424
+#. 17, toolbar item 8
+#: ../mousepad/mousepad-window.c:622
 msgid "Cut the selection"
 msgstr "Retalla la selecció"
 
-#: ../mousepad/mousepad-window.c:425
+#. 18, toolbar item 9
+#: ../mousepad/mousepad-window.c:623
 msgid "Copy the selection"
 msgstr "Copia la selecció"
 
-#: ../mousepad/mousepad-window.c:426
+#. 19, toolbar item 10
+#: ../mousepad/mousepad-window.c:624
 msgid "Paste the clipboard"
 msgstr "Enganxa el porta-retalls"
 
-#: ../mousepad/mousepad-window.c:427
-msgid "Paste _Special"
-msgstr "Enganxament e_special"
-
-#: ../mousepad/mousepad-window.c:428
-msgid "Paste from _History"
-msgstr "Enganxa des de l'_historial"
-
-#: ../mousepad/mousepad-window.c:428
+#: ../mousepad/mousepad-window.c:627
 msgid "Paste from the clipboard history"
 msgstr "Enganxa des de l'historial del porta-retalls"
 
-#: ../mousepad/mousepad-window.c:429
-msgid "Paste as _Column"
-msgstr "Enganxa com a _columna"
-
-#: ../mousepad/mousepad-window.c:429
+#: ../mousepad/mousepad-window.c:628
 msgid "Paste the clipboard text into a column"
 msgstr "Enganxa el text del porta-retalls dins d'una columna"
 
-#: ../mousepad/mousepad-window.c:430
+#: ../mousepad/mousepad-window.c:629
 msgid "Delete the current selection"
 msgstr "Suprimeix la selecció actual"
 
-#: ../mousepad/mousepad-window.c:431
+#: ../mousepad/mousepad-window.c:631
 msgid "Select the text in the entire document"
 msgstr "Selecciona el text de tot el document"
 
-#: ../mousepad/mousepad-window.c:432
-msgid "Conve_rt"
-msgstr "Conve_rteix"
-
-#: ../mousepad/mousepad-window.c:433
-msgid "To _Uppercase"
-msgstr "A majúsc_ules"
-
-#: ../mousepad/mousepad-window.c:433
-msgid "Change the case of the selection to uppercase"
-msgstr "Canvia les minúscules de la selecció a majúscules"
-
-#: ../mousepad/mousepad-window.c:434
-msgid "To _Lowercase"
-msgstr "A minúscu_les"
-
-#: ../mousepad/mousepad-window.c:434
+#: ../mousepad/mousepad-window.c:635
 msgid "Change the case of the selection to lowercase"
 msgstr "Canvia les majúscules de la selecció a minúscules"
 
-#: ../mousepad/mousepad-window.c:435
-msgid "To _Title Case"
-msgstr "A majúscules de _títol"
+#: ../mousepad/mousepad-window.c:636
+msgid "Change the case of the selection to uppercase"
+msgstr "Canvia les minúscules de la selecció a majúscules"
 
-#: ../mousepad/mousepad-window.c:435
+#: ../mousepad/mousepad-window.c:637
 msgid "Change the case of the selection to title case"
 msgstr "Canvia les majúscules de la selecció a majúscules de títol"
 
-#: ../mousepad/mousepad-window.c:436
-msgid "To _Opposite Case"
-msgstr "Al c_ontrari"
-
-#: ../mousepad/mousepad-window.c:436
+#: ../mousepad/mousepad-window.c:638
 msgid "Change the case of the selection opposite case"
 msgstr "Canvia les majúscules a minúscules, i viceversa"
 
-#: ../mousepad/mousepad-window.c:437
-msgid "_Tabs to Spaces"
-msgstr "_Tabuladors a espais"
-
-#: ../mousepad/mousepad-window.c:437
+#: ../mousepad/mousepad-window.c:640
 msgid "Convert all tabs to spaces in the selection or document"
 msgstr "Converteix tots els tabuladors a espais en la selecció o el document"
 
-#: ../mousepad/mousepad-window.c:438
-msgid "_Spaces to Tabs"
-msgstr "E_spais a tabuladors"
-
-#: ../mousepad/mousepad-window.c:438
+#: ../mousepad/mousepad-window.c:641
 msgid ""
 "Convert all the leading spaces to tabs in the selected line(s) or document"
 msgstr "Converteix tots els espais inicials a tabulacions en les línies seleccionades o el document"
 
-#: ../mousepad/mousepad-window.c:439
-msgid "St_rip Trailing Spaces"
-msgstr "T_reu els espais finals"
-
-#: ../mousepad/mousepad-window.c:439
+#: ../mousepad/mousepad-window.c:643
 msgid "Remove all the trailing spaces from the selected line(s) or document"
 msgstr "Elimina tots els espais finals de les línies seleccionades o del document"
 
-#: ../mousepad/mousepad-window.c:440
-msgid "_Transpose"
-msgstr "_Transposa"
-
-#: ../mousepad/mousepad-window.c:440
+#: ../mousepad/mousepad-window.c:645
 msgid "Reverse the order of something"
 msgstr "Inverteix l'ordre d'alguna cosa"
 
-#: ../mousepad/mousepad-window.c:441
-msgid "_Move Selection"
-msgstr "_Mou la selecció"
-
-#: ../mousepad/mousepad-window.c:442
-msgid "Line _Up"
-msgstr "Línia am_unt"
-
-#: ../mousepad/mousepad-window.c:442
+#: ../mousepad/mousepad-window.c:648
 msgid "Move the selection one line up"
 msgstr "Mou la selecció una línia amunt"
 
-#: ../mousepad/mousepad-window.c:443
-msgid "Line _Down"
-msgstr "Línia a_vall"
-
-#: ../mousepad/mousepad-window.c:443
+#: ../mousepad/mousepad-window.c:649
 msgid "Move the selection one line down"
 msgstr "Mou la selecció una línia avall"
 
-#: ../mousepad/mousepad-window.c:444
-msgid "Dup_licate Line / Selection"
-msgstr "Dup_lica la línia / selecció"
-
-#: ../mousepad/mousepad-window.c:444
+#: ../mousepad/mousepad-window.c:650
 msgid "Duplicate the current line or selection"
 msgstr "Duplica la línia actual o la selecció"
 
-#: ../mousepad/mousepad-window.c:445
-msgid "_Increase Indent"
-msgstr "Au_gmenta el sagnat"
-
-#: ../mousepad/mousepad-window.c:445
+#: ../mousepad/mousepad-window.c:651
 msgid "Increase the indentation of the selection or current line"
 msgstr "Augmenta el sagnat de la selecció o de la línia actual"
 
-#: ../mousepad/mousepad-window.c:446
-msgid "_Decrease Indent"
-msgstr "_Disminueix el sagnat"
-
-#: ../mousepad/mousepad-window.c:446
+#: ../mousepad/mousepad-window.c:652
 msgid "Decrease the indentation of the selection or current line"
 msgstr "Disminueix el sagnat de la selecció o de la línia actual"
 
-#: ../mousepad/mousepad-window.c:447
+#. 40, textview menu end
+#: ../mousepad/mousepad-window.c:654
 msgid "Show the preferences dialog"
 msgstr "Mostra el diàleg de preferències"
 
-#: ../mousepad/mousepad-window.c:449
-msgid "_Search"
-msgstr "_Cerca"
-
-#: ../mousepad/mousepad-window.c:450
+#: ../mousepad/mousepad-window.c:658
 msgid "Search for text"
 msgstr "Cerca el text"
 
-#: ../mousepad/mousepad-window.c:451
-msgid "Find _Next"
-msgstr "Troba el _següent"
-
-#: ../mousepad/mousepad-window.c:451
+#. 43, toolbar item 12
+#: ../mousepad/mousepad-window.c:659
 msgid "Search forwards for the same text"
 msgstr "Cerca endavant el mateix text"
 
-#: ../mousepad/mousepad-window.c:452
-msgid "Find _Previous"
-msgstr "Troba l'_anterior"
-
-#: ../mousepad/mousepad-window.c:452
+#: ../mousepad/mousepad-window.c:660
 msgid "Search backwards for the same text"
 msgstr "Cerca enrere el mateix text"
 
-#: ../mousepad/mousepad-window.c:453
-msgid "Find and Rep_lace..."
-msgstr "Troba i _substitueix..."
-
-#: ../mousepad/mousepad-window.c:453
+#: ../mousepad/mousepad-window.c:661
 msgid "Search for and replace text"
 msgstr "Cerca i substitueix el text"
 
-#: ../mousepad/mousepad-window.c:454
-msgid "_Go to..."
-msgstr "_Vés a..."
-
-#: ../mousepad/mousepad-window.c:454
+#. 46, toolbar item 13
+#: ../mousepad/mousepad-window.c:663
 msgid "Go to a specific location in the document"
 msgstr "Vés a una ubicació específica del document"
 
-#: ../mousepad/mousepad-window.c:456
-msgid "_View"
-msgstr "_Visualitza"
-
-#: ../mousepad/mousepad-window.c:457
-msgid "Select F_ont..."
-msgstr "Selecciona una ll_etra..."
-
-#: ../mousepad/mousepad-window.c:457
+#. 47, toolbar item 14
+#. "View" menu
+#. 48, view menu insertion flag
+#: ../mousepad/mousepad-window.c:667
 msgid "Change the editor font"
 msgstr "Canvia la lletra de l'editor"
 
-#: ../mousepad/mousepad-window.c:458
-msgid "_Color Scheme"
-msgstr "Esquema de _colors"
-
-#: ../mousepad/mousepad-window.c:460
-msgid "_Document"
-msgstr "_Document"
-
-#: ../mousepad/mousepad-window.c:461
-msgid "Line E_nding"
-msgstr "Final de lí_nia"
-
-#: ../mousepad/mousepad-window.c:462
-msgid "Tab _Size"
-msgstr "Mida del _tabulador"
-
-#: ../mousepad/mousepad-window.c:463
-msgid "_Filetype"
-msgstr "Tipus de _fitxer"
-
-#: ../mousepad/mousepad-window.c:464
-msgid "_Previous Tab"
-msgstr "Pestanya _anterior"
-
-#: ../mousepad/mousepad-window.c:464
-msgid "Select the previous tab"
-msgstr "Selecciona la pestanya anterior"
-
-#: ../mousepad/mousepad-window.c:465
-msgid "_Next Tab"
-msgstr "Pestanya _següent"
-
-#: ../mousepad/mousepad-window.c:465
-msgid "Select the next tab"
-msgstr "Selecciona la pestanya següent"
-
-#: ../mousepad/mousepad-window.c:467
-msgid "_Help"
-msgstr "A_juda"
-
-#: ../mousepad/mousepad-window.c:468
-msgid "_Contents"
-msgstr "_Contingut"
-
-#: ../mousepad/mousepad-window.c:468
-msgid "Display the Mousepad user manual"
-msgstr "Mostra el manual d'usuari de Mousepad"
-
-#: ../mousepad/mousepad-window.c:469
-msgid "About this application"
-msgstr "Quant a aquesta aplicació"
-
-#: ../mousepad/mousepad-window.c:474
-msgid "Line N_umbers"
-msgstr "Nú_meros de línies"
-
-#: ../mousepad/mousepad-window.c:475
-msgid "_Menubar"
-msgstr "Barra de _menús"
-
-#: ../mousepad/mousepad-window.c:475
+#: ../mousepad/mousepad-window.c:673
 msgid "Change the visibility of the main menubar"
 msgstr "Canvia la visibilitat de la barra de menús principal"
 
-#: ../mousepad/mousepad-window.c:476
-msgid "_Toolbar"
-msgstr "Barra d'_eines"
-
-#: ../mousepad/mousepad-window.c:476
+#. 52, textview menu additional item
+#: ../mousepad/mousepad-window.c:674
 msgid "Change the visibility of the toolbar"
 msgstr "Canvia la visibilitat de la barra d'eines"
 
-#: ../mousepad/mousepad-window.c:477
-msgid "St_atusbar"
-msgstr "Barra d'e_stat"
-
-#: ../mousepad/mousepad-window.c:477
+#: ../mousepad/mousepad-window.c:675
 msgid "Change the visibility of the statusbar"
 msgstr "Canvia la visibilitat de la barra d'estat"
 
-#: ../mousepad/mousepad-window.c:478
-msgid "_Fullscreen"
-msgstr "_Pantalla completa"
-
-#: ../mousepad/mousepad-window.c:478 ../mousepad/mousepad-window.c:5196
+#: ../mousepad/mousepad-window.c:677 ../mousepad/mousepad-window.c:5717
 msgid "Make the window fullscreen"
 msgstr "Fes que la finestra ocupi tota la pantalla"
 
-#: ../mousepad/mousepad-window.c:479
-msgid "_Auto Indent"
-msgstr "Sagnat _automàtic"
-
-#: ../mousepad/mousepad-window.c:479
-msgid "Auto indent a new line"
-msgstr "Sagnat automàtic en una línia nova"
-
-#: ../mousepad/mousepad-window.c:480
-msgid "Insert _Spaces"
-msgstr "Insereix e_spais"
-
-#: ../mousepad/mousepad-window.c:480
-msgid "Insert spaces when the tab button is pressed"
-msgstr "Insereix espais quan es premi el botó de tabulació"
-
-#: ../mousepad/mousepad-window.c:481
-msgid "_Word Wrap"
-msgstr "Ajus_t de paraula"
-
-#: ../mousepad/mousepad-window.c:481
+#. 55, toolbar item 15
+#. "Document" menu
+#. 56, document menu insertion flag
+#: ../mousepad/mousepad-window.c:681
 msgid "Toggle breaking lines in between words"
 msgstr "Alterna els salts de línia entre paraules"
 
-#: ../mousepad/mousepad-window.c:482
-msgid "Write Unicode _BOM"
-msgstr "Escriu Unicode _BOM"
+#: ../mousepad/mousepad-window.c:682
+msgid "Auto indent a new line"
+msgstr "Sagnat automàtic en una línia nova"
 
-#: ../mousepad/mousepad-window.c:482
-msgid "Store the byte-order mark in the file"
-msgstr "Desa la marca d'ordre de bytes al fitxer"
+#: ../mousepad/mousepad-window.c:689
+msgid "Set custom tab size"
+msgstr "Estableix la mida personalitzada del tabulador"
 
-#: ../mousepad/mousepad-window.c:487
-msgid "Unix (_LF)"
-msgstr "Unix (_LF)"
+#. 64, custom tab size tooltip
+#: ../mousepad/mousepad-window.c:691
+msgid "Insert spaces when the tab button is pressed"
+msgstr "Insereix espais quan es premi el botó de tabulació"
 
-#: ../mousepad/mousepad-window.c:487
+#: ../mousepad/mousepad-window.c:697
 msgid "Set the line ending of the document to Unix (LF)"
 msgstr "Estableix el final de línia del document a Unix (LF)"
 
-#: ../mousepad/mousepad-window.c:488
-msgid "Mac (_CR)"
-msgstr "Mac (_CR)"
-
-#: ../mousepad/mousepad-window.c:488
+#: ../mousepad/mousepad-window.c:698
 msgid "Set the line ending of the document to Mac (CR)"
 msgstr "Estableix el final de línia del document a Mac (CR)"
 
-#: ../mousepad/mousepad-window.c:489
-msgid "DOS / Windows (C_R LF)"
-msgstr "DOS / Windows (C_R LF)"
-
-#: ../mousepad/mousepad-window.c:489
+#: ../mousepad/mousepad-window.c:699
 msgid "Set the line ending of the document to DOS / Windows (CR LF)"
 msgstr "Estableix el final de línia del document a DOS / Windows (CR LF)"
 
+#: ../mousepad/mousepad-window.c:701
+msgid "Store the byte-order mark in the file"
+msgstr "Desa la marca d'ordre de bytes al fitxer"
+
+#: ../mousepad/mousepad-window.c:703
+msgid "Select the previous tab"
+msgstr "Selecciona la pestanya anterior"
+
+#: ../mousepad/mousepad-window.c:704
+msgid "Select the next tab"
+msgstr "Selecciona la pestanya següent"
+
+#: ../mousepad/mousepad-window.c:708
+msgid "Display the Mousepad user manual"
+msgstr "Mostra el manual d'usuari de Mousepad"
+
+#: ../mousepad/mousepad-window.c:709
+msgid "About this application"
+msgstr "Quant a aquesta aplicació"
+
+#. insert items
+#: ../mousepad/mousepad-window.c:1101 ../mousepad/mousepad-window.ui.h:2
+msgid "_New"
+msgstr "_Nou"
+
+#: ../mousepad/mousepad-window.c:1103 ../mousepad/mousepad-window.ui.h:5
+msgid "_Open..."
+msgstr "_Obre..."
+
+#: ../mousepad/mousepad-window.c:1107 ../mousepad/mousepad-window.ui.h:9
+msgid "Save _As..."
+msgstr "_Anomena i desa..."
+
+#: ../mousepad/mousepad-window.c:1109 ../mousepad/mousepad-window.ui.h:11
+msgid "Re_vert"
+msgstr "Re_verteix"
+
+#: ../mousepad/mousepad-window.c:1111 ../mousepad/mousepad-window.ui.h:14
+msgid "Close _Tab"
+msgstr "_Tanca la pestanya"
+
+#: ../mousepad/mousepad-window.c:1117 ../mousepad/mousepad-window.ui.h:17
+msgid "_Undo"
+msgstr "_Desfés"
+
+#: ../mousepad/mousepad-window.c:1119 ../mousepad/mousepad-window.ui.h:18
+msgid "_Redo"
+msgstr "_Refés"
+
+#: ../mousepad/mousepad-window.c:1121 ../mousepad/mousepad-window.ui.h:19
+msgid "Cu_t"
+msgstr "Re_talla"
+
+#: ../mousepad/mousepad-window.c:1123 ../mousepad/mousepad-window.ui.h:20
+msgid "_Copy"
+msgstr "_Copia"
+
+#: ../mousepad/mousepad-window.c:1125 ../mousepad/mousepad-window.ui.h:21
+msgid "_Paste"
+msgstr "_Enganxa"
+
+#: ../mousepad/mousepad-window.c:1133 ../mousepad/mousepad-window.ui.h:47
+msgid "Find and Rep_lace..."
+msgstr "Troba i _substitueix..."
+
+#: ../mousepad/mousepad-window.c:1135 ../mousepad/mousepad-window.ui.h:48
+msgid "_Go to..."
+msgstr "_Vés a..."
+
+#: ../mousepad/mousepad-window.c:1144 ../mousepad/mousepad-window.ui.h:57
+msgid "_Fullscreen"
+msgstr "_Pantalla completa"
+
 #. add the label with the root warning
-#: ../mousepad/mousepad-window.c:861
+#: ../mousepad/mousepad-window.c:1220
 msgid "Warning: you are using the root account. You may harm your system."
 msgstr "Advertència: esteu utilitzant el compte de root, això podria malmetre el vostre sistema."
 
 #. show the warning
-#: ../mousepad/mousepad-window.c:1573
+#: ../mousepad/mousepad-window.c:1973
 msgid "Failed to open the document"
 msgstr "Ha fallat l'obriment del document"
 
-#: ../mousepad/mousepad-window.c:1774
+#: ../mousepad/mousepad-window.c:2177
 msgid "Read Only"
 msgstr "Només de lectura"
 
-#: ../mousepad/mousepad-window.c:2440
+#: ../mousepad/mousepad-window.c:2841
+#, c-format
+msgid "Use '%s' as template"
+msgstr "Utilitza '%s' com a plantilla"
+
+#: ../mousepad/mousepad-window.c:2869
 #, c-format
 msgid ""
 "No template files found in\n"
 "'%s'"
 msgstr "No s'ha trobat cap fitxer de plantilla a\n«%s»"
 
-#: ../mousepad/mousepad-window.c:2493
+#: ../mousepad/mousepad-window.c:2937
 #, c-format
 msgid ""
 "Missing Templates directory\n"
 "'%s'"
 msgstr "Falta el directori Plantilles\n'%s'"
 
-#. create other action
-#: ../mousepad/mousepad-window.c:2567
-msgid "Set custom tab size"
-msgstr "Estableix la mida personalitzada del tabulador"
-
-#. create suitable label for the other menu
-#: ../mousepad/mousepad-window.c:2615
+#. create suitable text label for the "Other" menu
+#: ../mousepad/mousepad-window.c:2994
 #, c-format
 msgid "Ot_her (%d)..."
 msgstr "A_ltre (%d)..."
 
-#. set action label
-#: ../mousepad/mousepad-window.c:2626
+#: ../mousepad/mousepad-window.c:3004
 msgid "Ot_her..."
 msgstr "A_ltres..."
 
 #. build description
 #. get the offset length: 'Encoding: '
-#: ../mousepad/mousepad-window.c:3009 ../mousepad/mousepad-window.c:3235
+#: ../mousepad/mousepad-window.c:3368 ../mousepad/mousepad-window.c:3567
 msgid "Charset"
 msgstr "Conjunt de caràcters"
 
-#: ../mousepad/mousepad-window.c:3141
+#: ../mousepad/mousepad-window.c:3498
 #, c-format
 msgid "Open '%s'"
 msgstr "Obre «%s»"
 
-#: ../mousepad/mousepad-window.c:3284
+#: ../mousepad/mousepad-window.c:3526
+msgid "No items found"
+msgstr "No s'han trobat elements"
+
+#: ../mousepad/mousepad-window.c:3616
 msgid "Failed to clear the recent history"
 msgstr "Ha fallat l'esborrament de l'historial recent"
 
 #. create an item to inform the user
-#: ../mousepad/mousepad-window.c:3727
+#: ../mousepad/mousepad-window.c:4064
 msgid "No clipboard data"
 msgstr "No hi ha dades al porta-retalls"
 
 #. set error message
-#: ../mousepad/mousepad-window.c:3866
+#: ../mousepad/mousepad-window.c:4212
 msgid "Templates should be UTF-8 valid"
 msgstr "Les plantilles haurien de tenir una codificació UTF-8 vàlida"
 
 #. set error message
-#: ../mousepad/mousepad-window.c:3874
-msgid "Reading the template failed, the menu item has been removed"
-msgstr "Ha fallat la lectura de la plantilla, l'element del menú ha estat eliminat"
+#: ../mousepad/mousepad-window.c:4217
+msgid "Reading the template failed"
+msgstr "Ha fallat la lectura de la plantilla"
 
 #. set error message
-#: ../mousepad/mousepad-window.c:3879
+#: ../mousepad/mousepad-window.c:4222
 msgid "Loading the template failed"
 msgstr "Ha fallat la càrrega de la plantilla"
 
 #. create new file chooser dialog
-#: ../mousepad/mousepad-window.c:3904
+#: ../mousepad/mousepad-window.c:4250
 msgid "Open File"
 msgstr "Obre un fitxer"
 
-#: ../mousepad/mousepad-window.c:3920
+#: ../mousepad/mousepad-window.c:4255
+msgid "_Open"
+msgstr "_Obre"
+
+#: ../mousepad/mousepad-window.c:4268
 msgid "_Encoding:"
 msgstr "_Codificació:"
 
-#: ../mousepad/mousepad-window.c:4017
+#: ../mousepad/mousepad-window.c:4367
 #, c-format
 msgid ""
 "Failed to open \"%s\" for reading. It will be removed from the document "
@@ -1309,37 +1202,257 @@ msgid ""
 msgstr "Ha fallat l'obriment de «%s» per a la lectura. S'eliminarà de l'historial de documents"
 
 #. show the warning and cleanup
-#: ../mousepad/mousepad-window.c:4021
+#: ../mousepad/mousepad-window.c:4371
 msgid "Failed to open file"
 msgstr "Ha fallat l'obriment del fitxer"
 
 #. show the error
-#: ../mousepad/mousepad-window.c:4127 ../mousepad/mousepad-window.c:4258
+#: ../mousepad/mousepad-window.c:4483 ../mousepad/mousepad-window.c:4621
 msgid "Failed to save the document"
 msgstr "Ha fallat el desament del fitxer"
 
 #. create the dialog
-#: ../mousepad/mousepad-window.c:4151
+#: ../mousepad/mousepad-window.c:4508
 msgid "Save As"
 msgstr "Anomena i desa"
 
 #. show the error
-#: ../mousepad/mousepad-window.c:4350
+#: ../mousepad/mousepad-window.c:4720
 msgid "Failed to reload the document"
 msgstr "Ha fallat la recàrrega del document"
 
 #. show the error
-#: ../mousepad/mousepad-window.c:4377
+#: ../mousepad/mousepad-window.c:4749
 msgid "Failed to print the document"
 msgstr "Ha fallat la impressió del document"
 
-#: ../mousepad/mousepad-window.c:4985
+#: ../mousepad/mousepad-window.c:5477
 msgid "Choose Mousepad Font"
 msgstr "Trieu la lletra de Mousepad"
 
-#: ../mousepad/mousepad-window.c:5189
+#: ../mousepad/mousepad-window.c:5710
 msgid "Leave fullscreen mode"
 msgstr "Surt del mode de pantalla completa"
+
+#: ../mousepad/mousepad-window.ui.h:1
+msgid "_File"
+msgstr "_Fitxer"
+
+#: ../mousepad/mousepad-window.ui.h:3
+msgid "New _Window"
+msgstr "_Finestra nova"
+
+#: ../mousepad/mousepad-window.ui.h:4
+msgid "New From Te_mplate"
+msgstr "Nou des d'una p_lantilla"
+
+#: ../mousepad/mousepad-window.ui.h:6
+msgid "Op_en Recent"
+msgstr "Obr_e un fitxer recent"
+
+#: ../mousepad/mousepad-window.ui.h:7
+msgid "Clear _History"
+msgstr "Neteja l'_historial"
+
+#: ../mousepad/mousepad-window.ui.h:10
+msgid "Save A_ll"
+msgstr "Des_a-ho tot"
+
+#: ../mousepad/mousepad-window.ui.h:12
+msgid "_Print..."
+msgstr "Im_primeix..."
+
+#: ../mousepad/mousepad-window.ui.h:13
+msgid "_Detach Tab"
+msgstr "_Desadhereix la pestanya"
+
+#: ../mousepad/mousepad-window.ui.h:15
+msgid "_Close Window"
+msgstr "Tan_ca la finestra"
+
+#: ../mousepad/mousepad-window.ui.h:16
+msgid "_Edit"
+msgstr "_Edita"
+
+#: ../mousepad/mousepad-window.ui.h:22
+msgid "Paste _Special"
+msgstr "Enganxament e_special"
+
+#: ../mousepad/mousepad-window.ui.h:23
+msgid "Paste from _History"
+msgstr "Enganxa des de l'_historial"
+
+#: ../mousepad/mousepad-window.ui.h:24
+msgid "Paste as _Column"
+msgstr "Enganxa com a _columna"
+
+#: ../mousepad/mousepad-window.ui.h:25
+msgid "_Delete"
+msgstr "_Suprimeix"
+
+#: ../mousepad/mousepad-window.ui.h:26
+msgid "Select _All"
+msgstr "Selecciona-ho _tot"
+
+#: ../mousepad/mousepad-window.ui.h:27
+msgid "Conve_rt"
+msgstr "Conve_rteix"
+
+#: ../mousepad/mousepad-window.ui.h:28
+msgid "To _Lowercase"
+msgstr "A minúscu_les"
+
+#: ../mousepad/mousepad-window.ui.h:29
+msgid "To _Uppercase"
+msgstr "A majúsc_ules"
+
+#: ../mousepad/mousepad-window.ui.h:30
+msgid "To _Title Case"
+msgstr "A majúscules de _títol"
+
+#: ../mousepad/mousepad-window.ui.h:31
+msgid "To _Opposite Case"
+msgstr "Al c_ontrari"
+
+#: ../mousepad/mousepad-window.ui.h:32
+msgid "_Tabs to Spaces"
+msgstr "_Tabuladors a espais"
+
+#: ../mousepad/mousepad-window.ui.h:33
+msgid "_Spaces to Tabs"
+msgstr "E_spais a tabuladors"
+
+#: ../mousepad/mousepad-window.ui.h:34
+msgid "St_rip Trailing Spaces"
+msgstr "T_reu els espais finals"
+
+#: ../mousepad/mousepad-window.ui.h:35
+msgid "_Transpose"
+msgstr "_Transposa"
+
+#: ../mousepad/mousepad-window.ui.h:36
+msgid "_Move Selection"
+msgstr "_Mou la selecció"
+
+#: ../mousepad/mousepad-window.ui.h:37
+msgid "Line _Up"
+msgstr "Línia am_unt"
+
+#: ../mousepad/mousepad-window.ui.h:38
+msgid "Line _Down"
+msgstr "Línia a_vall"
+
+#: ../mousepad/mousepad-window.ui.h:39
+msgid "Dup_licate Line / Selection"
+msgstr "Dup_lica la línia / selecció"
+
+#: ../mousepad/mousepad-window.ui.h:40
+msgid "_Increase Indent"
+msgstr "Au_gmenta el sagnat"
+
+#: ../mousepad/mousepad-window.ui.h:41
+msgid "_Decrease Indent"
+msgstr "_Disminueix el sagnat"
+
+#: ../mousepad/mousepad-window.ui.h:43
+msgid "_Search"
+msgstr "_Cerca"
+
+#: ../mousepad/mousepad-window.ui.h:45
+msgid "Find _Next"
+msgstr "Troba el _següent"
+
+#: ../mousepad/mousepad-window.ui.h:46
+msgid "Find _Previous"
+msgstr "Troba l'_anterior"
+
+#: ../mousepad/mousepad-window.ui.h:49
+msgid "_View"
+msgstr "_Visualitza"
+
+#: ../mousepad/mousepad-window.ui.h:50
+msgid "Select F_ont..."
+msgstr "Selecciona una ll_etra..."
+
+#: ../mousepad/mousepad-window.ui.h:51
+msgid "_Color Scheme"
+msgstr "Esquema de _colors"
+
+#: ../mousepad/mousepad-window.ui.h:53
+msgid "Line N_umbers"
+msgstr "Nú_meros de línies"
+
+#: ../mousepad/mousepad-window.ui.h:54
+msgid "_Menubar"
+msgstr "Barra de _menús"
+
+#: ../mousepad/mousepad-window.ui.h:55
+msgid "_Toolbar"
+msgstr "Barra d'_eines"
+
+#: ../mousepad/mousepad-window.ui.h:56
+msgid "St_atusbar"
+msgstr "Barra d'e_stat"
+
+#: ../mousepad/mousepad-window.ui.h:58
+msgid "_Document"
+msgstr "_Document"
+
+#: ../mousepad/mousepad-window.ui.h:59
+msgid "_Word Wrap"
+msgstr "Ajus_t de paraula"
+
+#: ../mousepad/mousepad-window.ui.h:60
+msgid "_Auto Indent"
+msgstr "Sagnat _automàtic"
+
+#: ../mousepad/mousepad-window.ui.h:61
+msgid "Tab _Size"
+msgstr "Mida del _tabulador"
+
+#: ../mousepad/mousepad-window.ui.h:62
+msgid "Other..."
+msgstr "Altres..."
+
+#: ../mousepad/mousepad-window.ui.h:63
+msgid "Insert _Spaces"
+msgstr "Insereix e_spais"
+
+#: ../mousepad/mousepad-window.ui.h:64
+msgid "_Filetype"
+msgstr "Tipus de _fitxer"
+
+#: ../mousepad/mousepad-window.ui.h:65
+msgid "Plain Text"
+msgstr "Text pla"
+
+#: ../mousepad/mousepad-window.ui.h:66
+msgid "Line E_nding"
+msgstr "Final de lí_nia"
+
+#: ../mousepad/mousepad-window.ui.h:67
+msgid "Write Unicode _BOM"
+msgstr "Escriu Unicode _BOM"
+
+#: ../mousepad/mousepad-window.ui.h:68
+msgid "_Previous Tab"
+msgstr "Pestanya _anterior"
+
+#: ../mousepad/mousepad-window.ui.h:69
+msgid "_Next Tab"
+msgstr "Pestanya _següent"
+
+#: ../mousepad/mousepad-window.ui.h:70
+msgid "_Help"
+msgstr "_Ajuda"
+
+#: ../mousepad/mousepad-window.ui.h:71
+msgid "_Contents"
+msgstr "_Contingut"
+
+#: ../mousepad/mousepad-window.ui.h:72
+msgid "_About"
+msgstr "_Quant a"
 
 #: ../mousepad.desktop.in.in.h:2
 msgid "Simple Text Editor"
