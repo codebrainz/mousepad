@@ -14,8 +14,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-06 12:48+0200\n"
-"PO-Revision-Date: 2020-09-13 06:41+0000\n"
+"POT-Creation-Date: 2020-09-22 12:47+0200\n"
+"PO-Revision-Date: 2020-09-25 16:41+0000\n"
 "Last-Translator: Kjell Cato Heskjestad <cato@heskjestad.xyz>\n"
 "Language-Team: Norwegian Bokmål (http://www.transifex.com/xfce/xfce-apps/language/nb/)\n"
 "MIME-Version: 1.0\n"
@@ -60,6 +60,19 @@ msgstr "Xfce-utviklingslaget. Alle rettigheter reservert."
 msgid "Please report bugs to <%s>."
 msgstr "Meld inn feil til <%s>."
 
+#: ../mousepad/mousepad-application.c:436
+msgid "No filetype"
+msgstr "Ingen filtype"
+
+#: ../mousepad/mousepad-application.c:487
+msgid "No style scheme"
+msgstr "Ingen stilpalett"
+
+#: ../mousepad/mousepad-application.c:502
+#, c-format
+msgid "%s | Authors: %s | Filename: %s"
+msgstr "%s | Forfattere: %s | Filnavn: %s"
+
 #: ../mousepad/mousepad-dialogs.c:39
 msgid "Mousepad is a fast text editor for the Xfce Desktop Environment."
 msgstr "Mousepad er et raskt skriveprogram for Xfce-skrivebordsmiljøet."
@@ -85,7 +98,7 @@ msgstr "Velg fanestørrelse"
 #: ../mousepad/mousepad-dialogs.c:469 ../mousepad/mousepad-dialogs.c:501
 #: ../mousepad/mousepad-encoding-dialog.c:121
 #: ../mousepad/mousepad-encoding-dialog.c:184
-#: ../mousepad/mousepad-window.c:3930 ../mousepad/mousepad-window.c:4180
+#: ../mousepad/mousepad-window.c:4253 ../mousepad/mousepad-window.c:4510
 msgid "_Cancel"
 msgstr "_Avbryt"
 
@@ -145,7 +158,8 @@ msgid "_Save As"
 msgstr "_Lagre som"
 
 #: ../mousepad/mousepad-dialogs.c:409 ../mousepad/mousepad-dialogs.c:472
-#: ../mousepad/mousepad-window.c:416 ../mousepad/mousepad-window.c:4182
+#: ../mousepad/mousepad-window.c:1105 ../mousepad/mousepad-window.c:4512
+#: ../mousepad/mousepad-window.ui.h:8
 msgid "_Save"
 msgstr "_Lagre"
 
@@ -188,12 +202,12 @@ msgid "_Revert"
 msgstr "_Tilbakestill"
 
 #. pack button, add signal and tooltip
-#: ../mousepad/mousepad-document.c:495
+#: ../mousepad/mousepad-document.c:506
 msgid "Close this tab"
 msgstr "Lukk denne fanen"
 
 #. create an unique untitled document name
-#: ../mousepad/mousepad-document.c:524
+#: ../mousepad/mousepad-document.c:536
 msgid "Untitled"
 msgstr "Uten tittel"
 
@@ -356,14 +370,6 @@ msgstr "Filen «%s» som du forsøkte å laste inn på nytt finnes ikke lengre."
 msgid "Failed to read the status of \"%s\""
 msgstr "Klarte ikke å lese statusen for «%s»"
 
-#: ../mousepad/mousepad-language-action.c:229
-msgid "Plain Text"
-msgstr "Ren tekst"
-
-#: ../mousepad/mousepad-language-action.c:230
-msgid "No filetype"
-msgstr "Ingen filtype"
-
 #. add the close button
 #: ../mousepad/mousepad-prefs-dialog.c:431
 #: ../mousepad/mousepad-replace-dialog.c:177
@@ -371,7 +377,7 @@ msgid "_Close"
 msgstr "_Lukk"
 
 #. setup the window properties
-#: ../mousepad/mousepad-prefs-dialog.c:437 ../mousepad/mousepad-window.c:451
+#: ../mousepad/mousepad-prefs-dialog.c:437 ../mousepad/mousepad-window.ui.h:42
 msgid "Preferences"
 msgstr "Innstillinger"
 
@@ -404,7 +410,7 @@ msgid "none"
 msgstr "ingen"
 
 #: ../mousepad/mousepad-prefs-dialog.glade.h:8
-#: ../mousepad/mousepad-style-scheme-action.c:193
+#: ../mousepad/mousepad-window.ui.h:52
 msgid "None"
 msgstr "Ingen"
 
@@ -448,8 +454,10 @@ msgstr "Tekst under ikoner"
 msgid "Text Beside Icons"
 msgstr "Tekst ved siden av ikoner"
 
+#. "Color Scheme" submenu
+#. 50, style sheme menu insertion flag
 #: ../mousepad/mousepad-prefs-dialog.glade.h:19
-#: ../mousepad/mousepad-window.c:478
+#: ../mousepad/mousepad-window.c:671
 msgid "Show line numbers"
 msgstr "Vis linjenummerering"
 
@@ -647,7 +655,8 @@ msgid "Find and Replace"
 msgstr "Søk og erstatt"
 
 #. dialog buttons
-#: ../mousepad/mousepad-replace-dialog.c:170 ../mousepad/mousepad-window.c:454
+#: ../mousepad/mousepad-replace-dialog.c:170
+#: ../mousepad/mousepad-window.c:1131 ../mousepad/mousepad-window.ui.h:44
 msgid "_Find"
 msgstr "_Finn"
 
@@ -741,658 +750,453 @@ msgstr "_Forrige"
 msgid "Highlight _All"
 msgstr "Uthev _alle"
 
-#: ../mousepad/mousepad-statusbar.c:134
+#: ../mousepad/mousepad-statusbar.c:125
 msgid "Choose a filetype"
 msgstr "Velg en filtype"
 
 #. language/filetype
-#: ../mousepad/mousepad-statusbar.c:139 ../mousepad/mousepad-statusbar.c:264
+#: ../mousepad/mousepad-statusbar.c:130 ../mousepad/mousepad-statusbar.c:249
 msgid "Filetype: None"
 msgstr "Filtype: Ingen"
 
-#: ../mousepad/mousepad-statusbar.c:162
+#: ../mousepad/mousepad-statusbar.c:153
 msgid "Toggle the overwrite mode"
 msgstr "Veksle overskriving"
 
 #. overwrite label
-#: ../mousepad/mousepad-statusbar.c:167
+#: ../mousepad/mousepad-statusbar.c:158
 msgid "OVR"
 msgstr "OVS."
 
-#: ../mousepad/mousepad-statusbar.c:267
+#: ../mousepad/mousepad-statusbar.c:252
 #, c-format
 msgid "Filetype: %s"
 msgstr "Filtype: %s"
 
-#: ../mousepad/mousepad-statusbar.c:287
+#: ../mousepad/mousepad-statusbar.c:272
 #, c-format
 msgid "Line: %d Column: %d Selection: %d"
 msgstr "Linje: %d Kolonne: %d Utvalg: %d"
 
-#: ../mousepad/mousepad-statusbar.c:289
+#: ../mousepad/mousepad-statusbar.c:274
 #, c-format
 msgid "Line: %d Column: %d"
 msgstr "Linje: %d Kolonne: %d"
 
-#: ../mousepad/mousepad-style-scheme-action.c:194
-msgid "No style scheme"
-msgstr "Ingen stilpalett"
-
-#: ../mousepad/mousepad-style-scheme-action.c:208
-#, c-format
-msgid "%s | Authors: %s | Filename: %s"
-msgstr "%s | Forfattere: %s | Filnavn: %s"
-
 #. show warning to the user
-#: ../mousepad/mousepad-util.c:551
+#: ../mousepad/mousepad-util.c:543
 #, c-format
 msgid "Unable to create base directory \"%s\". Saving to file \"%s\" will be aborted."
 msgstr "Klarte ikke opprette basismappen «%s». Lagring til filen «%s» avbrytes."
 
 #. print error
-#: ../mousepad/mousepad-util.c:597
+#: ../mousepad/mousepad-util.c:589
 #, c-format
 msgid "Failed to store the preferences to \"%s\": %s"
 msgstr "Klarte ikke lagre innstillinger til «%s»: %s"
 
-#: ../mousepad/mousepad-window.c:408
-msgid "_File"
-msgstr "_Fil"
-
-#: ../mousepad/mousepad-window.c:409
-msgid "_New"
-msgstr "_Ny"
-
-#: ../mousepad/mousepad-window.c:409
+#: ../mousepad/mousepad-window.c:597
 msgid "Create a new document"
 msgstr "Opprett nytt dokument"
 
-#: ../mousepad/mousepad-window.c:410
-msgid "New _Window"
-msgstr "Nytt _vindu"
-
-#: ../mousepad/mousepad-window.c:410
+#. 1, toolbar item 1
+#: ../mousepad/mousepad-window.c:598
 msgid "Create a new document in a new window"
 msgstr "Opprett nytt dokument i nytt vindu"
 
-#: ../mousepad/mousepad-window.c:411
-msgid "New From Te_mplate"
-msgstr "Nytt fra m_al"
-
-#: ../mousepad/mousepad-window.c:412
-msgid "_Open..."
-msgstr "_Åpne …"
-
-#: ../mousepad/mousepad-window.c:412
+#. 3, template menu insertion flag
+#: ../mousepad/mousepad-window.c:601
 msgid "Open a file"
 msgstr "Åpne en fil"
 
-#: ../mousepad/mousepad-window.c:413
-msgid "Op_en Recent"
-msgstr "Åp_ne nylige"
-
-#: ../mousepad/mousepad-window.c:414
-msgid "No items found"
-msgstr "Ingen elementer funnet"
-
-#: ../mousepad/mousepad-window.c:415
-msgid "Clear _History"
-msgstr "Tøm _historikk"
-
-#: ../mousepad/mousepad-window.c:415
+#. 4, toolbar item 2
+#. 5, recent menu insertion flag
+#: ../mousepad/mousepad-window.c:603
 msgid "Clear the recently used files history"
 msgstr "Tøm nylig filhistorikk"
 
-#: ../mousepad/mousepad-window.c:416
+#: ../mousepad/mousepad-window.c:605
 msgid "Save the current document"
 msgstr "Lagre gjeldende dokument"
 
-#: ../mousepad/mousepad-window.c:417
-msgid "Save _As..."
-msgstr "Lagre _som …"
-
-#: ../mousepad/mousepad-window.c:417
+#. 7, tab menu start, toolbar item 3
+#: ../mousepad/mousepad-window.c:606
 msgid "Save current document as another file"
 msgstr "Lagre gjeldende dokument som annen fil"
 
-#: ../mousepad/mousepad-window.c:418
-msgid "Save A_ll"
-msgstr "Lagre a_lle"
-
-#: ../mousepad/mousepad-window.c:418
+#. 8, tab menu 2, toolbar item 4
+#: ../mousepad/mousepad-window.c:607
 msgid "Save all document in this window"
 msgstr "Lagre alle dokumenter i dette vinduet"
 
-#: ../mousepad/mousepad-window.c:419
-msgid "Re_vert"
-msgstr "Til_bakestill"
-
-#: ../mousepad/mousepad-window.c:419
+#: ../mousepad/mousepad-window.c:608
 msgid "Revert to the saved version of the file"
 msgstr "Tilbakestill til lagret versjon av fila"
 
-#: ../mousepad/mousepad-window.c:420
-msgid "_Print..."
-msgstr "_Skriv ut …"
-
-#: ../mousepad/mousepad-window.c:420
+#. 10, tab menu 3, toolbar item 5
+#: ../mousepad/mousepad-window.c:610
 msgid "Print the current document"
 msgstr "Skriv ut gjeldende dokument"
 
-#: ../mousepad/mousepad-window.c:421
-msgid "_Detach Tab"
-msgstr "Lø_sne fane"
-
-#: ../mousepad/mousepad-window.c:421
+#: ../mousepad/mousepad-window.c:612
 msgid "Move the current document to a new window"
 msgstr "Flytt gjeldende dokument til et nytt vindu"
 
-#: ../mousepad/mousepad-window.c:422
-msgid "Close _Tab"
-msgstr "Lukk _fane"
-
-#: ../mousepad/mousepad-window.c:422
+#. 12, tab menu 4
+#: ../mousepad/mousepad-window.c:614
 msgid "Close the current document"
 msgstr "Lukk gjeldende dokument"
 
-#: ../mousepad/mousepad-window.c:423
-msgid "_Close Window"
-msgstr "_Lukk vindu"
-
-#: ../mousepad/mousepad-window.c:423
+#. 13, tab menu end, toolbar item 6
+#: ../mousepad/mousepad-window.c:615
 msgid "Close this window"
 msgstr "Lukk dette vinduet"
 
-#: ../mousepad/mousepad-window.c:425
-msgid "_Edit"
-msgstr "_Rediger"
-
-#: ../mousepad/mousepad-window.c:426
-msgid "_Undo"
-msgstr "_Angre"
-
-#: ../mousepad/mousepad-window.c:426
+#: ../mousepad/mousepad-window.c:619
 msgid "Undo the last action"
 msgstr "Angre siste handling"
 
-#: ../mousepad/mousepad-window.c:427
-msgid "_Redo"
-msgstr "_Gjenta"
-
-#: ../mousepad/mousepad-window.c:427
+#. 16, textview menu start, toolbar item 7
+#: ../mousepad/mousepad-window.c:620
 msgid "Redo the last undone action"
 msgstr "Gjenta siste angrede handling"
 
-#: ../mousepad/mousepad-window.c:428
-msgid "Cu_t"
-msgstr "_Klipp ut"
-
-#: ../mousepad/mousepad-window.c:428
+#. 17, toolbar item 8
+#: ../mousepad/mousepad-window.c:622
 msgid "Cut the selection"
 msgstr "Klipp ut valgt"
 
-#: ../mousepad/mousepad-window.c:429
-msgid "_Copy"
-msgstr "Ko_pier"
-
-#: ../mousepad/mousepad-window.c:429
+#. 18, toolbar item 9
+#: ../mousepad/mousepad-window.c:623
 msgid "Copy the selection"
 msgstr "Kopier valgt"
 
-#: ../mousepad/mousepad-window.c:430
-msgid "_Paste"
-msgstr "_Lim inn"
-
-#: ../mousepad/mousepad-window.c:430
+#. 19, toolbar item 10
+#: ../mousepad/mousepad-window.c:624
 msgid "Paste the clipboard"
 msgstr "Lim inn fra utklippstavle"
 
-#: ../mousepad/mousepad-window.c:431
-msgid "Paste _Special"
-msgstr "Lim inn _spesiell"
-
-#: ../mousepad/mousepad-window.c:432
-msgid "Paste from _History"
-msgstr "Lim inn fra _historikk"
-
-#: ../mousepad/mousepad-window.c:432
+#: ../mousepad/mousepad-window.c:627
 msgid "Paste from the clipboard history"
 msgstr "Lim inn fra utklippstavlehistorikk"
 
-#: ../mousepad/mousepad-window.c:433
-msgid "Paste as _Column"
-msgstr "Lim inn som _kolonne"
-
-#: ../mousepad/mousepad-window.c:433
+#: ../mousepad/mousepad-window.c:628
 msgid "Paste the clipboard text into a column"
 msgstr "Lim inn tekst fra utklippstavle i en kolonne"
 
-#: ../mousepad/mousepad-window.c:434
-msgid "_Delete"
-msgstr "_Slett"
-
-#: ../mousepad/mousepad-window.c:434
+#: ../mousepad/mousepad-window.c:629
 msgid "Delete the current selection"
 msgstr "Slett markert område"
 
-#: ../mousepad/mousepad-window.c:435
-msgid "Select _All"
-msgstr "Velg _alt"
-
-#: ../mousepad/mousepad-window.c:435
+#: ../mousepad/mousepad-window.c:631
 msgid "Select the text in the entire document"
 msgstr "Velg tekst i hele dokumentet"
 
-#: ../mousepad/mousepad-window.c:436
-msgid "Conve_rt"
-msgstr "Konve_rter"
-
-#: ../mousepad/mousepad-window.c:437
-msgid "To _Uppercase"
-msgstr "Til _store bokstaver"
-
-#: ../mousepad/mousepad-window.c:437
-msgid "Change the case of the selection to uppercase"
-msgstr "Endre utvalget til store bokstaver"
-
-#: ../mousepad/mousepad-window.c:438
-msgid "To _Lowercase"
-msgstr "Til _små bokstaver"
-
-#: ../mousepad/mousepad-window.c:438
+#: ../mousepad/mousepad-window.c:635
 msgid "Change the case of the selection to lowercase"
 msgstr "Endre utvalget til små bokstaver"
 
-#: ../mousepad/mousepad-window.c:439
-msgid "To _Title Case"
-msgstr "Til _tittelversaler"
+#: ../mousepad/mousepad-window.c:636
+msgid "Change the case of the selection to uppercase"
+msgstr "Endre utvalget til store bokstaver"
 
-#: ../mousepad/mousepad-window.c:439
+#: ../mousepad/mousepad-window.c:637
 msgid "Change the case of the selection to title case"
 msgstr "Endre tekstformen for utvalget til samme som tittel."
 
-#: ../mousepad/mousepad-window.c:440
-msgid "To _Opposite Case"
-msgstr "Til _omvendte versaler"
-
-#: ../mousepad/mousepad-window.c:440
+#: ../mousepad/mousepad-window.c:638
 msgid "Change the case of the selection opposite case"
 msgstr "Endre fra stor eller liten tekst til motsatt tekstform"
 
-#: ../mousepad/mousepad-window.c:441
-msgid "_Tabs to Spaces"
-msgstr "_Tabulatorer til mellomrom"
-
-#: ../mousepad/mousepad-window.c:441
+#: ../mousepad/mousepad-window.c:640
 msgid "Convert all tabs to spaces in the selection or document"
 msgstr "Endre alle tabulatortegn til mellomrom i utvalget eller dokumentet"
 
-#: ../mousepad/mousepad-window.c:442
-msgid "_Spaces to Tabs"
-msgstr "_Mellomrom til tabulatorer"
-
-#: ../mousepad/mousepad-window.c:442
+#: ../mousepad/mousepad-window.c:641
 msgid ""
 "Convert all the leading spaces to tabs in the selected line(s) or document"
 msgstr "Endre alle foregående mellomrom til tabulatortegn i valgt linje(r) eller dokument"
 
-#: ../mousepad/mousepad-window.c:443
-msgid "St_rip Trailing Spaces"
-msgstr "Fj_ern etterfølgende mellomrom"
-
-#: ../mousepad/mousepad-window.c:443
+#: ../mousepad/mousepad-window.c:643
 msgid "Remove all the trailing spaces from the selected line(s) or document"
 msgstr "Fjern alle etterfølgende mellomrom fra valgte linje(r) eller dokument"
 
-#: ../mousepad/mousepad-window.c:444
-msgid "_Transpose"
-msgstr "_Gjør kolonner til rader"
-
-#: ../mousepad/mousepad-window.c:444
+#: ../mousepad/mousepad-window.c:645
 msgid "Reverse the order of something"
 msgstr "Reverser rekkefølgen på noe"
 
-#: ../mousepad/mousepad-window.c:445
-msgid "_Move Selection"
-msgstr "_Flytt utvalg"
-
-#: ../mousepad/mousepad-window.c:446
-msgid "Line _Up"
-msgstr "Linje _opp"
-
-#: ../mousepad/mousepad-window.c:446
+#: ../mousepad/mousepad-window.c:648
 msgid "Move the selection one line up"
 msgstr "Flytt utvalget én linje oppover"
 
-#: ../mousepad/mousepad-window.c:447
-msgid "Line _Down"
-msgstr "Linje _ned"
-
-#: ../mousepad/mousepad-window.c:447
+#: ../mousepad/mousepad-window.c:649
 msgid "Move the selection one line down"
 msgstr "Flytt utvalget én linje nedover"
 
-#: ../mousepad/mousepad-window.c:448
-msgid "Dup_licate Line / Selection"
-msgstr "Dup_liser linje / utvalg"
-
-#: ../mousepad/mousepad-window.c:448
+#: ../mousepad/mousepad-window.c:650
 msgid "Duplicate the current line or selection"
 msgstr "Dupliker gjeldende linje eller utvalg"
 
-#: ../mousepad/mousepad-window.c:449
-msgid "_Increase Indent"
-msgstr "_Øk innrykk"
-
-#: ../mousepad/mousepad-window.c:449
+#: ../mousepad/mousepad-window.c:651
 msgid "Increase the indentation of the selection or current line"
 msgstr "Øk innrykket til gjeldende utvalg eller fil"
 
-#: ../mousepad/mousepad-window.c:450
-msgid "_Decrease Indent"
-msgstr "_Mink innrykk"
-
-#: ../mousepad/mousepad-window.c:450
+#: ../mousepad/mousepad-window.c:652
 msgid "Decrease the indentation of the selection or current line"
 msgstr "Minker innrykket til gjeldende utvalg eller fil"
 
-#: ../mousepad/mousepad-window.c:451
+#. 40, textview menu end
+#: ../mousepad/mousepad-window.c:654
 msgid "Show the preferences dialog"
 msgstr "Vis innstillingsdialogen"
 
-#: ../mousepad/mousepad-window.c:453
-msgid "_Search"
-msgstr "_Søk"
-
-#: ../mousepad/mousepad-window.c:454
+#: ../mousepad/mousepad-window.c:658
 msgid "Search for text"
 msgstr "Søk etter tekst"
 
-#: ../mousepad/mousepad-window.c:455
-msgid "Find _Next"
-msgstr "Finn _neste"
-
-#: ../mousepad/mousepad-window.c:455
+#. 43, toolbar item 12
+#: ../mousepad/mousepad-window.c:659
 msgid "Search forwards for the same text"
 msgstr "Søk fremover for jamført tekst"
 
-#: ../mousepad/mousepad-window.c:456
-msgid "Find _Previous"
-msgstr "Finn _forrige"
-
-#: ../mousepad/mousepad-window.c:456
+#: ../mousepad/mousepad-window.c:660
 msgid "Search backwards for the same text"
 msgstr "Søk bakover for jamført tekst"
 
-#: ../mousepad/mousepad-window.c:457
-msgid "Find and Rep_lace..."
-msgstr "Søk og er_statt …"
-
-#: ../mousepad/mousepad-window.c:457
+#: ../mousepad/mousepad-window.c:661
 msgid "Search for and replace text"
 msgstr "Søk etter og erstatt tekst"
 
-#: ../mousepad/mousepad-window.c:458
-msgid "_Go to..."
-msgstr "_Gå til …"
-
-#: ../mousepad/mousepad-window.c:458
+#. 46, toolbar item 13
+#: ../mousepad/mousepad-window.c:663
 msgid "Go to a specific location in the document"
 msgstr "Gå til en gitt plassering i dokumentet"
 
-#: ../mousepad/mousepad-window.c:460
-msgid "_View"
-msgstr "_Vis"
-
-#: ../mousepad/mousepad-window.c:461
-msgid "Select F_ont..."
-msgstr "Velg skri_ft …"
-
-#: ../mousepad/mousepad-window.c:461
+#. 47, toolbar item 14
+#. "View" menu
+#. 48, view menu insertion flag
+#: ../mousepad/mousepad-window.c:667
 msgid "Change the editor font"
 msgstr "Endre skrift i tekstbehandleren"
 
-#: ../mousepad/mousepad-window.c:462
-msgid "_Color Scheme"
-msgstr "_Fargetema"
-
-#: ../mousepad/mousepad-window.c:464
-msgid "_Document"
-msgstr "_Dokument"
-
-#: ../mousepad/mousepad-window.c:465
-msgid "Line E_nding"
-msgstr "Linjeavslut_ning"
-
-#: ../mousepad/mousepad-window.c:466
-msgid "Tab _Size"
-msgstr "Fane_størrelse"
-
-#: ../mousepad/mousepad-window.c:467
-msgid "_Filetype"
-msgstr "_Filtype"
-
-#: ../mousepad/mousepad-window.c:468
-msgid "_Previous Tab"
-msgstr "_Forrige fane"
-
-#: ../mousepad/mousepad-window.c:468
-msgid "Select the previous tab"
-msgstr "Velg forrige fane"
-
-#: ../mousepad/mousepad-window.c:469
-msgid "_Next Tab"
-msgstr "_Neste fane"
-
-#: ../mousepad/mousepad-window.c:469
-msgid "Select the next tab"
-msgstr "Velg neste fane"
-
-#: ../mousepad/mousepad-window.c:471
-msgid "_Help"
-msgstr "_Hjelp"
-
-#: ../mousepad/mousepad-window.c:472
-msgid "_Contents"
-msgstr "_Innhold"
-
-#: ../mousepad/mousepad-window.c:472
-msgid "Display the Mousepad user manual"
-msgstr "Vis Mousepads brukermanual"
-
-#: ../mousepad/mousepad-window.c:473
-msgid "_About"
-msgstr "_Om"
-
-#: ../mousepad/mousepad-window.c:473
-msgid "About this application"
-msgstr "Om dette programmet"
-
-#: ../mousepad/mousepad-window.c:478
-msgid "Line N_umbers"
-msgstr "Linjen_ummer"
-
-#: ../mousepad/mousepad-window.c:479
-msgid "_Menubar"
-msgstr "_Menyfelt"
-
-#: ../mousepad/mousepad-window.c:479
+#: ../mousepad/mousepad-window.c:673
 msgid "Change the visibility of the main menubar"
 msgstr "Endre synlighet for hovedmenylinje"
 
-#: ../mousepad/mousepad-window.c:480
-msgid "_Toolbar"
-msgstr "_Verktøylinje"
-
-#: ../mousepad/mousepad-window.c:480
+#. 52, textview menu additional item
+#: ../mousepad/mousepad-window.c:674
 msgid "Change the visibility of the toolbar"
 msgstr "Endre synlighet for verktøylinjen"
 
-#: ../mousepad/mousepad-window.c:481
-msgid "St_atusbar"
-msgstr "St_atuslinje"
-
-#: ../mousepad/mousepad-window.c:481
+#: ../mousepad/mousepad-window.c:675
 msgid "Change the visibility of the statusbar"
 msgstr "Endre synlighet på statuslinje"
 
-#: ../mousepad/mousepad-window.c:482
-msgid "_Fullscreen"
-msgstr "_Fullskjermsvisning"
-
-#: ../mousepad/mousepad-window.c:482 ../mousepad/mousepad-window.c:5254
+#: ../mousepad/mousepad-window.c:677 ../mousepad/mousepad-window.c:5717
 msgid "Make the window fullscreen"
 msgstr "Bytt til fullskjermsvisning av vindu"
 
-#: ../mousepad/mousepad-window.c:483
-msgid "_Auto Indent"
-msgstr "_Automatisk innrykk"
-
-#: ../mousepad/mousepad-window.c:483
-msgid "Auto indent a new line"
-msgstr "Automatisk innrykk på ny linje"
-
-#: ../mousepad/mousepad-window.c:484
-msgid "Insert _Spaces"
-msgstr "Legg til _mellomrom"
-
-#: ../mousepad/mousepad-window.c:484
-msgid "Insert spaces when the tab button is pressed"
-msgstr "Leg til mellomrom når det trykkes tabulator"
-
-#: ../mousepad/mousepad-window.c:485
-msgid "_Word Wrap"
-msgstr "_Linjebrytning"
-
-#: ../mousepad/mousepad-window.c:485
+#. 55, toolbar item 15
+#. "Document" menu
+#. 56, document menu insertion flag
+#: ../mousepad/mousepad-window.c:681
 msgid "Toggle breaking lines in between words"
 msgstr "Slå på/av brytningslinjer mellom ord"
 
-#: ../mousepad/mousepad-window.c:486
-msgid "Write Unicode _BOM"
-msgstr "Skriv Unicode _BOM"
+#: ../mousepad/mousepad-window.c:682
+msgid "Auto indent a new line"
+msgstr "Automatisk innrykk på ny linje"
 
-#: ../mousepad/mousepad-window.c:486
-msgid "Store the byte-order mark in the file"
-msgstr "Lagre BOM (Byte-order mark) i fila"
+#: ../mousepad/mousepad-window.c:689
+msgid "Set custom tab size"
+msgstr "Velg egentilpasset fanestørrelse"
 
-#: ../mousepad/mousepad-window.c:491
-msgid "Unix (_LF)"
-msgstr "Unix (_LF)"
+#. 64, custom tab size tooltip
+#: ../mousepad/mousepad-window.c:691
+msgid "Insert spaces when the tab button is pressed"
+msgstr "Leg til mellomrom når det trykkes tabulator"
 
-#: ../mousepad/mousepad-window.c:491
+#: ../mousepad/mousepad-window.c:697
 msgid "Set the line ending of the document to Unix (LF)"
 msgstr "Sett linjeavslutning for dokumentet til Unix (LF)"
 
-#: ../mousepad/mousepad-window.c:492
-msgid "Mac (_CR)"
-msgstr "Mac (_CR)"
-
-#: ../mousepad/mousepad-window.c:492
+#: ../mousepad/mousepad-window.c:698
 msgid "Set the line ending of the document to Mac (CR)"
 msgstr "Sett linjeavslutning for dokumentet til Mac (CR)"
 
-#: ../mousepad/mousepad-window.c:493
-msgid "DOS / Windows (C_R LF)"
-msgstr "DOS / Windows (C_R LF)"
-
-#: ../mousepad/mousepad-window.c:493
+#: ../mousepad/mousepad-window.c:699
 msgid "Set the line ending of the document to DOS / Windows (CR LF)"
 msgstr "Sett linjeavslutning for dokumentet til DOS / Windows (CR LF)"
 
+#: ../mousepad/mousepad-window.c:701
+msgid "Store the byte-order mark in the file"
+msgstr "Lagre BOM (Byte-order mark) i fila"
+
+#: ../mousepad/mousepad-window.c:703
+msgid "Select the previous tab"
+msgstr "Velg forrige fane"
+
+#: ../mousepad/mousepad-window.c:704
+msgid "Select the next tab"
+msgstr "Velg neste fane"
+
+#: ../mousepad/mousepad-window.c:708
+msgid "Display the Mousepad user manual"
+msgstr "Vis Mousepads brukermanual"
+
+#: ../mousepad/mousepad-window.c:709
+msgid "About this application"
+msgstr "Om dette programmet"
+
+#. insert items
+#: ../mousepad/mousepad-window.c:1101 ../mousepad/mousepad-window.ui.h:2
+msgid "_New"
+msgstr "_Ny"
+
+#: ../mousepad/mousepad-window.c:1103 ../mousepad/mousepad-window.ui.h:5
+msgid "_Open..."
+msgstr "_Åpne …"
+
+#: ../mousepad/mousepad-window.c:1107 ../mousepad/mousepad-window.ui.h:9
+msgid "Save _As..."
+msgstr "Lagre _som …"
+
+#: ../mousepad/mousepad-window.c:1109 ../mousepad/mousepad-window.ui.h:11
+msgid "Re_vert"
+msgstr "Til_bakestill"
+
+#: ../mousepad/mousepad-window.c:1111 ../mousepad/mousepad-window.ui.h:14
+msgid "Close _Tab"
+msgstr "Lukk _fane"
+
+#: ../mousepad/mousepad-window.c:1117 ../mousepad/mousepad-window.ui.h:17
+msgid "_Undo"
+msgstr "_Angre"
+
+#: ../mousepad/mousepad-window.c:1119 ../mousepad/mousepad-window.ui.h:18
+msgid "_Redo"
+msgstr "_Gjenta"
+
+#: ../mousepad/mousepad-window.c:1121 ../mousepad/mousepad-window.ui.h:19
+msgid "Cu_t"
+msgstr "_Klipp ut"
+
+#: ../mousepad/mousepad-window.c:1123 ../mousepad/mousepad-window.ui.h:20
+msgid "_Copy"
+msgstr "Ko_pier"
+
+#: ../mousepad/mousepad-window.c:1125 ../mousepad/mousepad-window.ui.h:21
+msgid "_Paste"
+msgstr "_Lim inn"
+
+#: ../mousepad/mousepad-window.c:1133 ../mousepad/mousepad-window.ui.h:47
+msgid "Find and Rep_lace..."
+msgstr "Søk og er_statt …"
+
+#: ../mousepad/mousepad-window.c:1135 ../mousepad/mousepad-window.ui.h:48
+msgid "_Go to..."
+msgstr "_Gå til …"
+
+#: ../mousepad/mousepad-window.c:1144 ../mousepad/mousepad-window.ui.h:57
+msgid "_Fullscreen"
+msgstr "_Fullskjermsvisning"
+
 #. add the label with the root warning
-#: ../mousepad/mousepad-window.c:865
+#: ../mousepad/mousepad-window.c:1220
 msgid "Warning: you are using the root account. You may harm your system."
 msgstr "Advarsel: Du bruker root-kontoen. Dette kan skade systemet ditt."
 
 #. show the warning
-#: ../mousepad/mousepad-window.c:1578
+#: ../mousepad/mousepad-window.c:1973
 msgid "Failed to open the document"
 msgstr "Feil ved åpning av dokument"
 
-#: ../mousepad/mousepad-window.c:1783
+#: ../mousepad/mousepad-window.c:2177
 msgid "Read Only"
 msgstr "Kun lesing"
 
-#: ../mousepad/mousepad-window.c:2459
+#: ../mousepad/mousepad-window.c:2841
+#, c-format
+msgid "Use '%s' as template"
+msgstr "Bruk «%s» som mal"
+
+#: ../mousepad/mousepad-window.c:2869
 #, c-format
 msgid ""
 "No template files found in\n"
 "'%s'"
 msgstr "Fant ingen maler i\n«%s»"
 
-#: ../mousepad/mousepad-window.c:2512
+#: ../mousepad/mousepad-window.c:2937
 #, c-format
 msgid ""
 "Missing Templates directory\n"
 "'%s'"
 msgstr "Mangler mappe med maler\n«%s»"
 
-#. create other action
-#: ../mousepad/mousepad-window.c:2586
-msgid "Set custom tab size"
-msgstr "Velg egentilpasset fanestørrelse"
-
-#. create suitable label for the other menu
-#: ../mousepad/mousepad-window.c:2634
+#. create suitable text label for the "Other" menu
+#: ../mousepad/mousepad-window.c:2994
 #, c-format
 msgid "Ot_her (%d)..."
 msgstr "An_nen (%d) …"
 
-#. set action label
-#: ../mousepad/mousepad-window.c:2645
+#: ../mousepad/mousepad-window.c:3004
 msgid "Ot_her..."
 msgstr "An_nen …"
 
 #. build description
 #. get the offset length: 'Encoding: '
-#: ../mousepad/mousepad-window.c:3028 ../mousepad/mousepad-window.c:3254
+#: ../mousepad/mousepad-window.c:3368 ../mousepad/mousepad-window.c:3567
 msgid "Charset"
 msgstr "Tegnsett"
 
-#: ../mousepad/mousepad-window.c:3160
+#: ../mousepad/mousepad-window.c:3498
 #, c-format
 msgid "Open '%s'"
 msgstr "Åpne «%s»"
 
-#: ../mousepad/mousepad-window.c:3303
+#: ../mousepad/mousepad-window.c:3526
+msgid "No items found"
+msgstr "Ingen elementer funnet"
+
+#: ../mousepad/mousepad-window.c:3616
 msgid "Failed to clear the recent history"
 msgstr "Feil under tømming av nylig historikk"
 
 #. create an item to inform the user
-#: ../mousepad/mousepad-window.c:3750
+#: ../mousepad/mousepad-window.c:4064
 msgid "No clipboard data"
 msgstr "Ingen data i utklippstavle"
 
 #. set error message
-#: ../mousepad/mousepad-window.c:3889
+#: ../mousepad/mousepad-window.c:4212
 msgid "Templates should be UTF-8 valid"
 msgstr "Mal må være i gyldig UTF-8"
 
 #. set error message
-#: ../mousepad/mousepad-window.c:3897
-msgid "Reading the template failed, the menu item has been removed"
-msgstr "Klarte ikke lese inn mal. Fjernet oppførinen fra menyen."
+#: ../mousepad/mousepad-window.c:4217
+msgid "Reading the template failed"
+msgstr "Klarte ikke lese inn mal"
 
 #. set error message
-#: ../mousepad/mousepad-window.c:3902
+#: ../mousepad/mousepad-window.c:4222
 msgid "Loading the template failed"
 msgstr "Klarte ikke laste inn mal"
 
 #. create new file chooser dialog
-#: ../mousepad/mousepad-window.c:3927
+#: ../mousepad/mousepad-window.c:4250
 msgid "Open File"
 msgstr "Åpne fil"
 
-#: ../mousepad/mousepad-window.c:3932
+#: ../mousepad/mousepad-window.c:4255
 msgid "_Open"
 msgstr "_Åpne"
 
-#: ../mousepad/mousepad-window.c:3945
+#: ../mousepad/mousepad-window.c:4268
 msgid "_Encoding:"
 msgstr "T_egnkoding:"
 
-#: ../mousepad/mousepad-window.c:4043
+#: ../mousepad/mousepad-window.c:4367
 #, c-format
 msgid ""
 "Failed to open \"%s\" for reading. It will be removed from the document "
@@ -1400,37 +1204,257 @@ msgid ""
 msgstr "Klarte ikke åpne «%s» for lesing. Den vil bli fjernet fra dokumenthistorikken"
 
 #. show the warning and cleanup
-#: ../mousepad/mousepad-window.c:4047
+#: ../mousepad/mousepad-window.c:4371
 msgid "Failed to open file"
 msgstr "Klarte ikke å åpne fil"
 
 #. show the error
-#: ../mousepad/mousepad-window.c:4153 ../mousepad/mousepad-window.c:4288
+#: ../mousepad/mousepad-window.c:4483 ../mousepad/mousepad-window.c:4621
 msgid "Failed to save the document"
 msgstr "Klarte ikke å lagre dokumentet"
 
 #. create the dialog
-#: ../mousepad/mousepad-window.c:4178
+#: ../mousepad/mousepad-window.c:4508
 msgid "Save As"
 msgstr "Lagre som"
 
 #. show the error
-#: ../mousepad/mousepad-window.c:4380
+#: ../mousepad/mousepad-window.c:4720
 msgid "Failed to reload the document"
 msgstr "Klarte ikke laste inn dokumentet på nytt"
 
 #. show the error
-#: ../mousepad/mousepad-window.c:4407
+#: ../mousepad/mousepad-window.c:4749
 msgid "Failed to print the document"
 msgstr "Feil under utskrift av dokument"
 
-#: ../mousepad/mousepad-window.c:5043
+#: ../mousepad/mousepad-window.c:5477
 msgid "Choose Mousepad Font"
 msgstr "Velg skrift til bruk i Mousepad"
 
-#: ../mousepad/mousepad-window.c:5247
+#: ../mousepad/mousepad-window.c:5710
 msgid "Leave fullscreen mode"
 msgstr "Forlat fullskjermsmodus"
+
+#: ../mousepad/mousepad-window.ui.h:1
+msgid "_File"
+msgstr "_Fil"
+
+#: ../mousepad/mousepad-window.ui.h:3
+msgid "New _Window"
+msgstr "Nytt _vindu"
+
+#: ../mousepad/mousepad-window.ui.h:4
+msgid "New From Te_mplate"
+msgstr "Nytt fra m_al"
+
+#: ../mousepad/mousepad-window.ui.h:6
+msgid "Op_en Recent"
+msgstr "Åp_ne nylige"
+
+#: ../mousepad/mousepad-window.ui.h:7
+msgid "Clear _History"
+msgstr "Tøm _historikk"
+
+#: ../mousepad/mousepad-window.ui.h:10
+msgid "Save A_ll"
+msgstr "Lagre a_lle"
+
+#: ../mousepad/mousepad-window.ui.h:12
+msgid "_Print..."
+msgstr "_Skriv ut …"
+
+#: ../mousepad/mousepad-window.ui.h:13
+msgid "_Detach Tab"
+msgstr "Lø_sne fane"
+
+#: ../mousepad/mousepad-window.ui.h:15
+msgid "_Close Window"
+msgstr "_Lukk vindu"
+
+#: ../mousepad/mousepad-window.ui.h:16
+msgid "_Edit"
+msgstr "_Rediger"
+
+#: ../mousepad/mousepad-window.ui.h:22
+msgid "Paste _Special"
+msgstr "Lim inn _spesiell"
+
+#: ../mousepad/mousepad-window.ui.h:23
+msgid "Paste from _History"
+msgstr "Lim inn fra _historikk"
+
+#: ../mousepad/mousepad-window.ui.h:24
+msgid "Paste as _Column"
+msgstr "Lim inn som _kolonne"
+
+#: ../mousepad/mousepad-window.ui.h:25
+msgid "_Delete"
+msgstr "_Slett"
+
+#: ../mousepad/mousepad-window.ui.h:26
+msgid "Select _All"
+msgstr "Velg _alt"
+
+#: ../mousepad/mousepad-window.ui.h:27
+msgid "Conve_rt"
+msgstr "Konve_rter"
+
+#: ../mousepad/mousepad-window.ui.h:28
+msgid "To _Lowercase"
+msgstr "Til _små bokstaver"
+
+#: ../mousepad/mousepad-window.ui.h:29
+msgid "To _Uppercase"
+msgstr "Til _store bokstaver"
+
+#: ../mousepad/mousepad-window.ui.h:30
+msgid "To _Title Case"
+msgstr "Til _tittelversaler"
+
+#: ../mousepad/mousepad-window.ui.h:31
+msgid "To _Opposite Case"
+msgstr "Til _omvendte versaler"
+
+#: ../mousepad/mousepad-window.ui.h:32
+msgid "_Tabs to Spaces"
+msgstr "_Tabulatorer til mellomrom"
+
+#: ../mousepad/mousepad-window.ui.h:33
+msgid "_Spaces to Tabs"
+msgstr "_Mellomrom til tabulatorer"
+
+#: ../mousepad/mousepad-window.ui.h:34
+msgid "St_rip Trailing Spaces"
+msgstr "Fj_ern etterfølgende mellomrom"
+
+#: ../mousepad/mousepad-window.ui.h:35
+msgid "_Transpose"
+msgstr "_Gjør kolonner til rader"
+
+#: ../mousepad/mousepad-window.ui.h:36
+msgid "_Move Selection"
+msgstr "_Flytt utvalg"
+
+#: ../mousepad/mousepad-window.ui.h:37
+msgid "Line _Up"
+msgstr "Linje _opp"
+
+#: ../mousepad/mousepad-window.ui.h:38
+msgid "Line _Down"
+msgstr "Linje _ned"
+
+#: ../mousepad/mousepad-window.ui.h:39
+msgid "Dup_licate Line / Selection"
+msgstr "Dup_liser linje / utvalg"
+
+#: ../mousepad/mousepad-window.ui.h:40
+msgid "_Increase Indent"
+msgstr "_Øk innrykk"
+
+#: ../mousepad/mousepad-window.ui.h:41
+msgid "_Decrease Indent"
+msgstr "_Mink innrykk"
+
+#: ../mousepad/mousepad-window.ui.h:43
+msgid "_Search"
+msgstr "_Søk"
+
+#: ../mousepad/mousepad-window.ui.h:45
+msgid "Find _Next"
+msgstr "Finn _neste"
+
+#: ../mousepad/mousepad-window.ui.h:46
+msgid "Find _Previous"
+msgstr "Finn _forrige"
+
+#: ../mousepad/mousepad-window.ui.h:49
+msgid "_View"
+msgstr "_Vis"
+
+#: ../mousepad/mousepad-window.ui.h:50
+msgid "Select F_ont..."
+msgstr "Velg skri_ft …"
+
+#: ../mousepad/mousepad-window.ui.h:51
+msgid "_Color Scheme"
+msgstr "_Fargetema"
+
+#: ../mousepad/mousepad-window.ui.h:53
+msgid "Line N_umbers"
+msgstr "Linjen_ummer"
+
+#: ../mousepad/mousepad-window.ui.h:54
+msgid "_Menubar"
+msgstr "_Menyfelt"
+
+#: ../mousepad/mousepad-window.ui.h:55
+msgid "_Toolbar"
+msgstr "_Verktøylinje"
+
+#: ../mousepad/mousepad-window.ui.h:56
+msgid "St_atusbar"
+msgstr "St_atuslinje"
+
+#: ../mousepad/mousepad-window.ui.h:58
+msgid "_Document"
+msgstr "_Dokument"
+
+#: ../mousepad/mousepad-window.ui.h:59
+msgid "_Word Wrap"
+msgstr "_Linjebrytning"
+
+#: ../mousepad/mousepad-window.ui.h:60
+msgid "_Auto Indent"
+msgstr "_Automatisk innrykk"
+
+#: ../mousepad/mousepad-window.ui.h:61
+msgid "Tab _Size"
+msgstr "Fane_størrelse"
+
+#: ../mousepad/mousepad-window.ui.h:62
+msgid "Other..."
+msgstr "Andre …"
+
+#: ../mousepad/mousepad-window.ui.h:63
+msgid "Insert _Spaces"
+msgstr "Legg til _mellomrom"
+
+#: ../mousepad/mousepad-window.ui.h:64
+msgid "_Filetype"
+msgstr "_Filtype"
+
+#: ../mousepad/mousepad-window.ui.h:65
+msgid "Plain Text"
+msgstr "Ren tekst"
+
+#: ../mousepad/mousepad-window.ui.h:66
+msgid "Line E_nding"
+msgstr "Linjeavslut_ning"
+
+#: ../mousepad/mousepad-window.ui.h:67
+msgid "Write Unicode _BOM"
+msgstr "Skriv Unicode _BOM"
+
+#: ../mousepad/mousepad-window.ui.h:68
+msgid "_Previous Tab"
+msgstr "_Forrige fane"
+
+#: ../mousepad/mousepad-window.ui.h:69
+msgid "_Next Tab"
+msgstr "_Neste fane"
+
+#: ../mousepad/mousepad-window.ui.h:70
+msgid "_Help"
+msgstr "_Hjelp"
+
+#: ../mousepad/mousepad-window.ui.h:71
+msgid "_Contents"
+msgstr "_Innhold"
+
+#: ../mousepad/mousepad-window.ui.h:72
+msgid "_About"
+msgstr "_Om"
 
 #: ../mousepad.desktop.in.in.h:2
 msgid "Simple Text Editor"
