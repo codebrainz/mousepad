@@ -3678,7 +3678,7 @@ mousepad_window_drag_data_received (GtkWidget        *widget,
       g_object_ref (G_OBJECT (*document));
 
       /* remove the document from the source window */
-      gtk_container_remove (GTK_CONTAINER (notebook), *document);
+      gtk_notebook_detach_tab (GTK_NOTEBOOK (notebook), *document);
 
       /* get the number of pages in the notebook */
       n_pages = gtk_notebook_get_n_pages (GTK_NOTEBOOK (window->notebook));
