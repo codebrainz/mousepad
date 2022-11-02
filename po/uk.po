@@ -44,7 +44,7 @@ msgstr "[ФАЙЛИ...]"
 #. no error message, the gui initialization failed
 #: ../mousepad/main.c:89
 msgid "Failed to open display."
-msgstr "Не можу відкрити дсиплей."
+msgstr "Не можу відкрити дисплей."
 
 #: ../mousepad/main.c:106
 msgid "The Xfce development team. All rights reserved."
@@ -57,7 +57,7 @@ msgstr "Будь ласка, повідомте про ваду до <%s>."
 
 #: ../mousepad/mousepad-dialogs.c:44
 msgid "Mousepad is a fast text editor for the Xfce Desktop Environment."
-msgstr "Mousepad - це швидкий текстовий редактор для серередовища робочого столу Xfce."
+msgstr "Mousepad - це швидкий текстовий редактор для середовища робочого столу Xfce."
 
 #: ../mousepad/mousepad-dialogs.c:49
 msgid "translator-credits"
@@ -776,7 +776,7 @@ msgstr "Нічого не знайдено"
 
 #: ../mousepad/mousepad-window.c:420
 msgid "Clear _History"
-msgstr "Очитстити _історію"
+msgstr "Очистити _історію"
 
 #: ../mousepad/mousepad-window.c:420
 msgid "Clear the recently used files history"
